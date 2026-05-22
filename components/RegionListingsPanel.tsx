@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { EnrichedListing, Offer } from "@/lib/listingsData";
+import { asset } from "@/lib/url";
 
 type Props = {
   region: string | null;
@@ -606,7 +607,7 @@ function ListingCard({
       <div className="aspect-[16/9] bg-slate-100 overflow-hidden flex-shrink-0">
         {thumb ? (
           <img
-            src={thumb}
+            src={asset(thumb)}
             alt=""
             loading="lazy"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform"
