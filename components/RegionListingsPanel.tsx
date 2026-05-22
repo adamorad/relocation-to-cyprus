@@ -249,18 +249,20 @@ export default function RegionListingsPanel({
     <div
       className={`fixed inset-0 z-30 flex items-center transition-all duration-300 ${
         pushedAside
-          ? "justify-start pl-3 pr-2 md:right-[568px] right-0 pointer-events-none"
-          : "justify-center p-4 md:p-8"
+          ? "md:justify-start md:pl-3 md:pr-2 md:right-[568px] md:left-0 md:pointer-events-none -translate-x-full md:translate-x-0 opacity-0 md:opacity-100"
+          : "justify-center p-2 md:p-8"
       } ${
-        visible
-          ? `${pushedAside ? "opacity-100" : "opacity-100 pointer-events-auto bg-slate-900/30 backdrop-blur-[2px]"}`
-          : "opacity-0 pointer-events-none"
+        visible && !pushedAside
+          ? "opacity-100 pointer-events-auto bg-slate-900/30 backdrop-blur-[2px]"
+          : visible && pushedAside
+            ? ""
+            : "opacity-0 pointer-events-none"
       }`}
       onClick={pushedAside ? undefined : onClose}
       aria-hidden={!visible}
     >
       <aside
-        className={`relative w-full ${pushedAside ? "pointer-events-auto" : "max-w-[960px]"} h-full max-h-[88vh] bg-white text-slate-900 shadow-2xl rounded-2xl overflow-hidden flex flex-col transition-all duration-300 ${
+        className={`relative w-full h-full ${pushedAside ? "md:pointer-events-auto" : "max-w-[960px] max-h-[92vh] md:max-h-[88vh]"} bg-white text-slate-900 shadow-2xl rounded-xl md:rounded-2xl overflow-hidden flex flex-col transition-all duration-300 ${
           visible ? "scale-100" : "scale-95"
         }`}
         onClick={(e) => e.stopPropagation()}
