@@ -96,14 +96,14 @@ export default function AppShell() {
       </div>
 
       {selectedRegion ? null : (
-        <div className="pointer-events-none absolute top-0 left-0 right-0 p-6 md:p-10 flex items-start justify-between">
-          <div className="max-w-md bg-white rounded-2xl p-6 border border-slate-200 shadow-xl transition-all">
+        <div className="pointer-events-none absolute top-0 left-0 right-0 p-3 md:p-10 flex items-start justify-between gap-2">
+          <div className="max-w-md bg-white rounded-xl md:rounded-2xl p-4 md:p-6 border border-slate-200 shadow-xl transition-all">
             {hoverPreview ? (
               <>
                 <p className="text-[10px] uppercase tracking-[0.25em] text-slate-500 font-semibold">
                   Region
                 </p>
-                <h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+                <h1 className="mt-2 text-2xl md:text-4xl font-bold tracking-tight text-slate-900">
                   {hoverPreview.name}
                 </h1>
                 <p className="mt-2 text-sm text-slate-600">
@@ -115,8 +115,8 @@ export default function AppShell() {
                     ? ` · from ${formatEuros(hoverPreview.from)}`
                     : ""}
                 </p>
-                <p className="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-slate-900">
-                  Click to view listings
+                <p className="mt-3 inline-flex items-center gap-2 text-xs font-semibold text-slate-900">
+                  Tap to view listings
                   <span aria-hidden>→</span>
                 </p>
               </>
@@ -125,16 +125,15 @@ export default function AppShell() {
                 <p className="text-[10px] uppercase tracking-[0.25em] text-slate-500 font-semibold">
                   For people relocating
                 </p>
-                <h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+                <h1 className="mt-2 text-2xl md:text-4xl font-bold tracking-tight text-slate-900">
                   Cyprus New Developments
                 </h1>
-                <p className="mt-2 text-sm text-slate-600">
-                  Browse new-build apartments, residences, and villas across the
-                  island — by city, price, and developer.
+                <p className="mt-2 text-xs md:text-sm text-slate-600">
+                  New-build apartments, residences and villas across the island
+                  — by region, price and developer.
                 </p>
-                <p className="mt-4 text-xs text-slate-500">
-                  {LISTINGS.length} listings · hover a region to preview · click
-                  to explore
+                <p className="mt-3 text-[11px] md:text-xs text-slate-500">
+                  {LISTINGS.length} listings · tap a region to explore
                 </p>
               </>
             )}
@@ -170,10 +169,10 @@ export default function AppShell() {
           setViewMode((m) => (m === "default" ? "top" : "default"));
           setCameraResetTick((t) => t + 1);
         }}
-        className="pointer-events-auto fixed bottom-6 right-6 md:bottom-8 md:right-8 z-20 bg-white/95 hover:bg-white border border-slate-200 shadow-lg rounded-full px-4 py-2 text-xs font-semibold text-slate-900 flex items-center gap-2 transition-colors"
+        className="pointer-events-auto fixed bottom-3 right-3 md:bottom-8 md:right-8 z-20 bg-white/95 hover:bg-white border border-slate-200 shadow-lg rounded-full px-3 md:px-4 py-2 text-[11px] md:text-xs font-semibold text-slate-900 flex items-center gap-1.5 md:gap-2 transition-colors min-h-[44px]"
         aria-label={`Switch to ${viewMode === "default" ? "top" : "default"} view`}
       >
-        <span aria-hidden className="text-base leading-none">
+        <span aria-hidden className="text-sm md:text-base leading-none">
           {viewMode === "default" ? "⬒" : "⬔"}
         </span>
         {viewMode === "default" ? "Top view" : "3D view"}
