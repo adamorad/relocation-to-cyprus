@@ -46,3 +46,20 @@ coverage/
 # Vite
 dist-ssr/
 *.local
+
+# Next.js
+.next/
+out/
+
+# Local-only: ~2.4 GB of brochure PDFs (kept off the GH Pages deploy)
+scripts/brochures-cache/
+
+# Scraper artefacts — kept locally for re-runs but not committed
+listings/new_developments/
+listings/new_developments_json/
+listings/new_developments_v2/
+scripts/.venv/
+/tmp/
+out/
+tsconfig.tsbuildinfo
+*.tsbuildinfo

@@ -18,7 +18,8 @@ repos:
       - id: end-of-file-fixer
       - id: check-merge-conflict
       - id: check-added-large-files
-        args: [--maxkb=500]
+        # 2 MB cap: listing photos are heavy renders, listings.json is 1.9 MB.
+        args: [--maxkb=2048]
       - id: check-case-conflict
       - id: check-yaml
       - id: check-json
