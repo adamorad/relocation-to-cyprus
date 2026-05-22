@@ -442,30 +442,45 @@ function viewDestination(
   viewMode: "default" | "top",
   aspect: number,
 ): { position: THREE.Vector3; target: THREE.Vector3 } {
-  const s = aspectScale(aspect);
-  // On narrow viewports, keep the camera near-centred (don't scale x with
-  // aspect — that pushed the camera east and clipped Paphos on the left).
-  // Pull y/z back to widen the visible horizontal span.
+  // Portrait mobile (aspect < 1) is so narrow that no amount of pulling the
+  // standard 3/4 camera back fits the full east-west island. Switch to a
+  // near-top-down camera with a small south tilt on portrait viewports;
+  // the user can still flip to the 3D-toggle if they want.
+  const portrait = aspect < 1;
+
   if (view.mode === "overview") {
     if (viewMode === "top") {
+      const h = portrait ? 18 : 13;
       return {
-        position: new THREE.Vector3(0, 13 * s, 0.001),
+        position: new THREE.Vector3(0, h, 0.001),
+        target: OVERVIEW_TARGET.clone(),
+      };
+    }
+    if (portrait) {
+      // Top-leaning to frame the full E-W extent on phones.
+      return {
+        position: new THREE.Vector3(0.5, 16, 5),
         target: OVERVIEW_TARGET.clone(),
       };
     }
     return {
-      position: new THREE.Vector3(3, 8 * s, 11 * s),
+      position: OVERVIEW_CAMERA.clone(),
       target: OVERVIEW_TARGET.clone(),
     };
   }
   const target = view.center.clone();
   if (viewMode === "top") {
-    const position = view.center.clone().add(new THREE.Vector3(0, 5.5 * s, 0.001));
+    const h = portrait ? 7.5 : 5.5;
+    const position = view.center.clone().add(new THREE.Vector3(0, h, 0.001));
+    return { position, target };
+  }
+  if (portrait) {
+    const position = view.center.clone().add(new THREE.Vector3(0.2, 5, 2.5));
     return { position, target };
   }
   const position = view.center
     .clone()
-    .add(new THREE.Vector3(0.3, 3.4 * s, 4.5 * s));
+    .add(new THREE.Vector3(0.3, 3.4, 4.5));
   return { position, target };
 }
 
