@@ -423,26 +423,46 @@ type ViewState =
 
 const TOP_OVERVIEW_CAMERA = new THREE.Vector3(0, 13, 0.001);
 
+/**
+ * Camera distances are calibrated for a desktop ~1.7 aspect. On portrait
+ * mobile (aspect ~0.5) the same camera shows only a slim middle slice of
+ * the island. We scale the position outward when the viewport is narrower
+ * than the calibration aspect so the island always fits horizontally.
+ */
+const CALIB_ASPECT = 1.7;
+
+function aspectScale(aspect: number): number {
+  if (aspect >= CALIB_ASPECT) return 1;
+  // Push camera back proportionally to how narrow the viewport is.
+  return CALIB_ASPECT / Math.max(aspect, 0.4);
+}
+
 function viewDestination(
   view: ViewState,
   viewMode: "default" | "top",
+  aspect: number,
 ): { position: THREE.Vector3; target: THREE.Vector3 } {
+  const s = aspectScale(aspect);
   if (view.mode === "overview") {
+    if (viewMode === "top") {
+      return {
+        position: new THREE.Vector3(0, 13 * s, 0.001),
+        target: OVERVIEW_TARGET.clone(),
+      };
+    }
     return {
-      position:
-        viewMode === "top"
-          ? TOP_OVERVIEW_CAMERA.clone()
-          : OVERVIEW_CAMERA.clone(),
+      position: new THREE.Vector3(3 * s, 8 * s, 11 * s),
       target: OVERVIEW_TARGET.clone(),
     };
   }
   const target = view.center.clone();
   if (viewMode === "top") {
-    // Straight down on the region — small z offset prevents gimbal lock.
-    const position = view.center.clone().add(new THREE.Vector3(0, 5.5, 0.001));
+    const position = view.center.clone().add(new THREE.Vector3(0, 5.5 * s, 0.001));
     return { position, target };
   }
-  const position = view.center.clone().add(new THREE.Vector3(0.3, 3.4, 4.5));
+  const position = view.center
+    .clone()
+    .add(new THREE.Vector3(0.3 * s, 3.4 * s, 4.5 * s));
   return { position, target };
 }
 
@@ -463,8 +483,12 @@ function CameraRig({
   viewMode: "default" | "top";
   controlsRef: React.RefObject<OrbitControlsImpl | null>;
 }) {
-  const { camera } = useThree();
-  const dest = useMemo(() => viewDestination(view, viewMode), [view, viewMode]);
+  const { camera, size } = useThree();
+  const aspect = size.width / Math.max(size.height, 1);
+  const dest = useMemo(
+    () => viewDestination(view, viewMode, aspect),
+    [view, viewMode, aspect],
+  );
   const transitioning = useRef(true);
 
   // Re-trigger a transition whenever the destination changes OR the parent
