@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import type { EnrichedListing, ImageGallery } from "@/lib/listingsData";
+import { asset } from "@/lib/url";
 
 type Props = {
   listing: EnrichedListing | null;
@@ -317,7 +318,7 @@ function DeveloperBlock({ listing }: { listing: EnrichedListing }) {
     <div className="flex items-center gap-3">
       {dev.logo ? (
         <img
-          src={dev.logo}
+          src={asset(dev.logo)}
           alt=""
           className="h-10 w-10 rounded object-contain bg-white border border-slate-200 p-1"
         />
@@ -374,7 +375,7 @@ function UnitCard({
             aria-label="Open unit images"
           >
             <img
-              src={images[0]}
+              src={asset(images[0])}
               alt=""
               className="w-full h-full object-cover group-hover:scale-105 transition-transform"
               loading="lazy"
@@ -452,7 +453,7 @@ function FloorPlansSection({
             className="aspect-[4/3] rounded-md overflow-hidden bg-slate-100 border border-slate-200 cursor-zoom-in group"
           >
             <img
-              src={src}
+              src={asset(src)}
               alt=""
               loading="lazy"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform"
@@ -487,7 +488,7 @@ function ImageGallery({
         className="block w-full aspect-[16/10] rounded-lg overflow-hidden bg-slate-100 border border-slate-200 group cursor-zoom-in"
       >
         <img
-          src={safe[active]}
+          src={asset(safe[active])}
           alt=""
           className="w-full h-full object-cover transition-transform group-hover:scale-105"
           loading="lazy"
@@ -506,7 +507,7 @@ function ImageGallery({
               }`}
             >
               <img
-                src={src}
+                src={asset(src)}
                 alt=""
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -601,7 +602,7 @@ function Lightbox({
       ) : null}
 
       <img
-        src={images[activeIndex]}
+        src={asset(images[activeIndex])}
         alt=""
         className="max-w-[92vw] max-h-[88vh] object-contain"
         onClick={(e) => e.stopPropagation()}
