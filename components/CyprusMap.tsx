@@ -443,6 +443,9 @@ function viewDestination(
   aspect: number,
 ): { position: THREE.Vector3; target: THREE.Vector3 } {
   const s = aspectScale(aspect);
+  // On narrow viewports, keep the camera near-centred (don't scale x with
+  // aspect — that pushed the camera east and clipped Paphos on the left).
+  // Pull y/z back to widen the visible horizontal span.
   if (view.mode === "overview") {
     if (viewMode === "top") {
       return {
@@ -451,7 +454,7 @@ function viewDestination(
       };
     }
     return {
-      position: new THREE.Vector3(3 * s, 8 * s, 11 * s),
+      position: new THREE.Vector3(3, 8 * s, 11 * s),
       target: OVERVIEW_TARGET.clone(),
     };
   }
@@ -462,7 +465,7 @@ function viewDestination(
   }
   const position = view.center
     .clone()
-    .add(new THREE.Vector3(0.3 * s, 3.4 * s, 4.5 * s));
+    .add(new THREE.Vector3(0.3, 3.4 * s, 4.5 * s));
   return { position, target };
 }
 
