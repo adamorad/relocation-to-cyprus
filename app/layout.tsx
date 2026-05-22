@@ -1,5 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#52b2cf",
+};
 
 const SITE_NAME = "Cyprus New Developments";
 const SITE_TAGLINE = "Find your new build in Cyprus — interactive map by region";
