@@ -457,9 +457,10 @@ function viewDestination(
       };
     }
     if (portrait) {
-      // Top-leaning to frame the full E-W extent on phones.
+      // Portrait phones: pull far back + high so the full E-W island fits
+      // the narrow viewport. Reads as a near-top-down map view.
       return {
-        position: new THREE.Vector3(0.5, 16, 5),
+        position: new THREE.Vector3(0, 30, 10),
         target: OVERVIEW_TARGET.clone(),
       };
     }
@@ -475,7 +476,9 @@ function viewDestination(
     return { position, target };
   }
   if (portrait) {
-    const position = view.center.clone().add(new THREE.Vector3(0.2, 5, 2.5));
+    // Tighter region zoom — the camera is already mostly top-down on mobile
+    // so we keep that vibe when drilling into a region.
+    const position = view.center.clone().add(new THREE.Vector3(0, 9, 3));
     return { position, target };
   }
   const position = view.center
