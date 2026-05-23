@@ -12,11 +12,11 @@ type RegionLabel = {
 };
 
 const LABELS: ReadonlyArray<RegionLabel> = [
-  { name: "Paphos", x: 15, y: 50 },
-  { name: "Limassol", x: 39, y: 73 },
+  { name: "Paphos", x: 16, y: 52 },
+  { name: "Limassol", x: 38, y: 64 },
   { name: "Nicosia", x: 45, y: 38 },
-  { name: "Larnaca", x: 60, y: 60 },
-  { name: "Ayia Napa", x: 77, y: 49 },
+  { name: "Larnaca", x: 60, y: 58 },
+  { name: "Ayia Napa", x: 82, y: 48 },
 ];
 
 type Props = {
@@ -48,21 +48,19 @@ export default function IllustratedMap({
         className="absolute inset-0 cursor-default"
       />
 
-      {/* Inner box sized to the image aspect ratio — fills the viewport
-        as far as possible while preserving 1280×675. Labels position in %
-        of this box so they track with the image at any size. */}
+      {/* Full-bleed image. object-cover fills the viewport with no margins;
+        labels are positioned relative to the image's natural 1280×691 box
+        which means at extreme aspects (very wide / very narrow) they sit
+        within the visible centre band of the image. */}
       <div
-        className="relative pointer-events-none"
-        style={{
-          width: "min(100vw, calc(100vh * 1280 / 675))",
-          height: "min(100vh, calc(100vw * 675 / 1280))",
-        }}
+        className="relative pointer-events-none w-full h-full"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={asset("/cyprus-illustrated.png")}
           alt="Map of Cyprus regions"
-          className="absolute inset-0 w-full h-full object-contain select-none"
+          className="absolute inset-0 w-full h-full object-cover select-none"
+          style={{ imageRendering: "auto" }}
           draggable={false}
         />
 
