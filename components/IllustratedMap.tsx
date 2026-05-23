@@ -13,11 +13,16 @@ type RegionLabel = {
 
 // Four coastal regions visible on the illustration (Nicosia is inland and not
 // drawn on this map; its listings stay reachable via the region page).
+// Positions are tuned per illustration element so labels never cover icons:
+//   Paphos    → between the sun (upper) and the pillar (lower)
+//   Limassol  → above the marina tower
+//   Larnaca   → below the church
+//   Ayia Napa → above the beach umbrella
 const LABELS: ReadonlyArray<RegionLabel> = [
-  { name: "Paphos", x: 36, y: 60 },
-  { name: "Limassol", x: 47, y: 67 },
-  { name: "Larnaca", x: 58, y: 53 },
-  { name: "Ayia Napa", x: 68, y: 53 },
+  { name: "Paphos", x: 33, y: 45 },
+  { name: "Limassol", x: 47, y: 30 },
+  { name: "Larnaca", x: 58, y: 70 },
+  { name: "Ayia Napa", x: 77, y: 48 },
 ];
 
 type Props = {
