@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import IllustratedMap from "./IllustratedMap";
+import { Suspense, useEffect, useMemo, useState } from "react";
+import dynamic from "next/dynamic";
 import ListingPanel from "./ListingPanel";
 import RegionListingsPanel from "./RegionListingsPanel";
 import {
@@ -9,6 +9,9 @@ import {
   LISTINGS_BY_REGION,
   type EnrichedListing,
 } from "@/lib/listingsData";
+
+// The 3D map is browser-only — no SSR.
+const CyprusMap = dynamic(() => import("./CyprusMap"), { ssr: false });
 
 function parsePriceEuros(s: string | null | undefined): number[] {
   if (!s) return [];
@@ -43,6 +46,8 @@ export default function AppShell() {
   const [selectedListing, setSelectedListing] = useState<EnrichedListing | null>(
     null,
   );
+  const [cameraResetTick, setCameraResetTick] = useState(0);
+  const [viewMode, setViewMode] = useState<"default" | "top">("default");
 
   useEffect(() => {
     if (selectedRegion === null) {
@@ -50,8 +55,8 @@ export default function AppShell() {
       return;
     }
     if (modalRegion === selectedRegion) return;
-    // Small delay so the click feels intentional, not jarring.
-    const t = setTimeout(() => setModalRegion(selectedRegion), 250);
+    // Let the 3D camera zoom land before the modal slides in.
+    const t = setTimeout(() => setModalRegion(selectedRegion), ZOOM_DELAY_MS);
     return () => clearTimeout(t);
   }, [selectedRegion, modalRegion]);
 
@@ -72,14 +77,23 @@ export default function AppShell() {
   return (
     <main className="relative h-screen w-screen overflow-hidden bg-stone-50 text-slate-900">
       <div className="absolute inset-0">
-        <IllustratedMap
-          selectedRegion={selectedRegion}
-          onSelectRegion={(c) => {
-            setSelectedRegion(c);
-            if (!c) setSelectedListing(null);
-          }}
-          onHoverRegion={setHoveredRegion}
-        />
+        <Suspense fallback={null}>
+          <CyprusMap
+            selectedRegion={selectedRegion}
+            selectedListing={selectedListing}
+            cameraResetTick={cameraResetTick}
+            viewMode={viewMode}
+            onSelectRegion={(c) => {
+              setSelectedRegion(c);
+              if (!c) {
+                setSelectedListing(null);
+                setCameraResetTick((t) => t + 1);
+              }
+            }}
+            onSelectListing={setSelectedListing}
+            onHoverRegion={setHoveredRegion}
+          />
+        </Suspense>
       </div>
 
       {selectedRegion ? null : (
@@ -103,7 +117,7 @@ export default function AppShell() {
                     : ""}
                 </p>
                 <p className="mt-3 inline-flex items-center gap-2 text-xs font-semibold text-slate-900">
-                  Tap to view listings
+                  Click to view listings
                   <span aria-hidden>→</span>
                 </p>
               </>
@@ -120,14 +134,14 @@ export default function AppShell() {
                   — by region, price and developer.
                 </p>
                 <p className="mt-3 text-[11px] md:text-xs text-slate-500">
-                  {LISTINGS.length} listings · tap a region to explore
+                  {LISTINGS.length} listings · click a region to explore
                 </p>
               </>
             )}
           </div>
           <div className="hidden md:block text-right text-xs text-slate-600 bg-white/90 rounded-xl p-3 border border-slate-200 shadow-md">
-            <p>Click a region to view listings</p>
-            <p className="mt-1">Click the sea to reset</p>
+            <p>Drag to rotate · Scroll to zoom</p>
+            <p className="mt-1">Click a region · click sea to reset</p>
           </div>
         </div>
       )}
@@ -140,6 +154,7 @@ export default function AppShell() {
           setSelectedRegion(null);
           setModalRegion(null);
           setSelectedListing(null);
+          setCameraResetTick((t) => t + 1);
         }}
         onPick={setSelectedListing}
       />
@@ -148,6 +163,21 @@ export default function AppShell() {
         listing={selectedListing}
         onClose={() => setSelectedListing(null)}
       />
+
+      <button
+        type="button"
+        onClick={() => {
+          setViewMode((m) => (m === "default" ? "top" : "default"));
+          setCameraResetTick((t) => t + 1);
+        }}
+        className="pointer-events-auto fixed bottom-3 right-3 md:bottom-8 md:right-8 z-20 bg-white/95 hover:bg-white border border-slate-200 shadow-lg rounded-full px-3 md:px-4 py-2 text-[11px] md:text-xs font-semibold text-slate-900 flex items-center gap-1.5 md:gap-2 transition-colors min-h-[44px]"
+        aria-label={`Switch to ${viewMode === "default" ? "top" : "default"} view`}
+      >
+        <span aria-hidden className="text-sm md:text-base leading-none">
+          {viewMode === "default" ? "⬒" : "⬔"}
+        </span>
+        {viewMode === "default" ? "Top view" : "3D view"}
+      </button>
     </main>
   );
 }
