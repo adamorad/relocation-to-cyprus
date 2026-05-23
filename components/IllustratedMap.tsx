@@ -80,7 +80,7 @@ export default function IllustratedMap({
               onMouseLeave={() => onHoverRegion(null)}
               onFocus={() => onHoverRegion(r.name)}
               onBlur={() => onHoverRegion(null)}
-              className={`pointer-events-auto absolute -translate-x-1/2 -translate-y-1/2 rounded-full border shadow-lg transition-all backdrop-blur-sm flex items-center gap-1.5 md:gap-2 ${
+              className={`pointer-events-auto absolute -translate-x-1/2 -translate-y-1/2 rounded-full border shadow-lg transition-all backdrop-blur-sm flex items-center gap-1.5 md:gap-2 whitespace-nowrap ${
                 isActive
                   ? "bg-slate-900 text-white border-slate-900 scale-110"
                   : "bg-white/95 hover:bg-white text-slate-900 border-slate-200 hover:scale-110 hover:shadow-xl"
