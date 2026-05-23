@@ -70,11 +70,14 @@ export type City = {
 };
 
 export const CITIES: ReadonlyArray<City> = [
-  { name: "Nicosia",   lon: 33.36, lat: 35.13, capital: true, region: [27, 153, 139]  },  // #1b998b verdigris
-  { name: "Limassol",  lon: 33.04, lat: 34.71,                region: [247, 146, 86]  },  // #f79256 tangerine dream
-  { name: "Larnaca",   lon: 33.62, lat: 34.93,                region: [183, 79, 111]  },  // #b74f6f berry crush
-  { name: "Paphos",    lon: 32.42, lat: 34.80,                region: [226, 241, 175] },  // #e2f1af pale lime
-  { name: "Ayia Napa", lon: 34.00, lat: 34.99,                region: [228, 183, 229] },  // #e4b7e5 pale lavender
+  // Illustrated travel-poster palette inspired by reference image —
+  // soft pale sea, warm orange west, deep indigo centre, vivid greens
+  // and bright teal on the south/east coast.
+  { name: "Nicosia",   lon: 33.36, lat: 35.13, capital: true, region: [88, 103, 176] },   // #5867b0 indigo
+  { name: "Limassol",  lon: 33.04, lat: 34.71,                region: [45, 157, 78]  },   // #2d9d4e vivid green
+  { name: "Larnaca",   lon: 33.62, lat: 34.93,                region: [46, 187, 193] },   // #2ebbc1 teal
+  { name: "Paphos",    lon: 32.42, lat: 34.80,                region: [233, 112, 49] },   // #e97031 sunset orange
+  { name: "Ayia Napa", lon: 34.00, lat: 34.99,                region: [69, 168, 71]  },   // #45a847 kelly green
 ];
 
 export const CYPRUS_CENTER = { lon: 33.4, lat: 35.15 };
