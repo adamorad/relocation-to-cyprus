@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import IllustratedMap from "./IllustratedMap";
 import ListingPanel from "./ListingPanel";
 import RegionListingsPanel from "./RegionListingsPanel";
@@ -10,13 +10,7 @@ import {
   type EnrichedListing,
 } from "@/lib/listingsData";
 
-const COMING_SOON = [
-  { name: "Rentals", desc: "Long-term lets across the island" },
-  { name: "Hotels", desc: "Stays for relocation scouting trips" },
-  { name: "Food", desc: "Restaurants, tavernas, delivery" },
-  { name: "Shopping", desc: "Malls, markets, local shops" },
-  { name: "More", desc: "Services, schools, healthcare" },
-] as const;
+const COMING_SOON = ["Rentals", "Hotels", "Food", "Shopping", "More"] as const;
 
 function parsePriceEuros(s: string | null | undefined): number[] {
   if (!s) return [];
@@ -42,78 +36,27 @@ function formatEuros(n: number): string {
   return `€${Math.round(n / 1000)}k`;
 }
 
-function ComingSoonNotch() {
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    function onDoc(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
-        setOpen(false);
-      }
-    }
-    function onEsc(e: KeyboardEvent) {
-      if (e.key === "Escape") setOpen(false);
-    }
-    document.addEventListener("mousedown", onDoc);
-    document.addEventListener("keydown", onEsc);
-    return () => {
-      document.removeEventListener("mousedown", onDoc);
-      document.removeEventListener("keydown", onEsc);
-    };
-  }, [open]);
-
+function ComingSoonTiles() {
   return (
     <div
-      ref={ref}
-      className="absolute top-0 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center pointer-events-none"
+      className="absolute top-0 left-1/2 -translate-x-1/2 z-30 flex gap-1.5 md:gap-2 bg-white/95 backdrop-blur-sm border border-slate-200 border-t-0 rounded-b-xl shadow-md px-2 md:px-3 py-1.5 md:py-2"
+      aria-label="Coming soon to RealCy.app"
     >
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        aria-label="Show coming-soon RealCy sections"
-        className="pointer-events-auto bg-white border border-slate-200 border-t-0 rounded-b-xl shadow-md hover:shadow-lg px-4 py-1.5 text-[11px] md:text-xs font-semibold text-slate-900 flex items-center gap-2 transition-all hover:bg-slate-50"
-      >
-        <span className="hidden sm:inline">Coming to</span>
-        <span className="text-amber-700">RealCy.app</span>
-        <span
-          className={`text-slate-500 transition-transform ${
-            open ? "rotate-180" : ""
-          }`}
-          aria-hidden
+      {COMING_SOON.map((name) => (
+        <div
+          key={name}
+          className="relative rounded-md bg-slate-50 border border-slate-100 px-2 md:px-2.5 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-slate-900 whitespace-nowrap"
+          title={`${name} — coming soon`}
         >
-          ▾
-        </span>
-      </button>
-
-      <div
-        className={`pointer-events-auto overflow-hidden transition-all duration-300 ease-out ${
-          open
-            ? "max-h-[400px] opacity-100 mt-1"
-            : "max-h-0 opacity-0 mt-0 pointer-events-none"
-        }`}
-      >
-        <div className="bg-white border border-slate-200 rounded-xl shadow-xl p-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 w-[88vw] max-w-3xl">
-          {COMING_SOON.map((c) => (
-            <div
-              key={c.name}
-              className="relative rounded-lg border border-slate-100 bg-slate-50 px-3 py-2.5"
-            >
-              <div className="text-[13px] font-bold text-slate-900">
-                {c.name}
-              </div>
-              <div className="text-[10px] text-slate-500 mt-0.5 leading-tight">
-                {c.desc}
-              </div>
-              <span className="absolute top-1.5 right-1.5 text-[8px] uppercase tracking-wider font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded px-1 py-px">
-                Soon
-              </span>
-            </div>
-          ))}
+          {name}
+          <span
+            className="absolute -top-1.5 -right-1.5 text-[7px] md:text-[8px] uppercase tracking-wider font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded px-1 py-px leading-tight"
+            aria-label="Coming soon"
+          >
+            Soon
+          </span>
         </div>
-      </div>
+      ))}
     </div>
   );
 }
@@ -151,7 +94,7 @@ export default function AppShell() {
 
   return (
     <main className="relative min-h-screen md:h-screen w-full md:overflow-hidden bg-stone-50 text-slate-900">
-      <ComingSoonNotch />
+      <ComingSoonTiles />
 
       <div className="relative w-full aspect-[16/9] md:absolute md:inset-0 md:aspect-auto">
         <IllustratedMap
