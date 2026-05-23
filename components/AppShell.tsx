@@ -95,7 +95,7 @@ export default function AppShell() {
   return (
     <main
       id="main"
-      className="relative min-h-screen md:h-screen w-full md:overflow-hidden bg-stone-50 text-slate-900"
+      className="relative md:h-screen w-full md:overflow-hidden bg-stone-50 text-slate-900"
     >
       <ComingSoonTiles />
 
