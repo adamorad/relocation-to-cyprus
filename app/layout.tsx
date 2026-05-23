@@ -12,7 +12,7 @@ const SITE_NAME = "Cyprus New Developments";
 const SITE_TAGLINE = "Find your new build in Cyprus — interactive map by region";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://adamorad.github.io/relocation-to-cyprus"),
+  metadataBase: new URL("https://realcy.app"),
   title: {
     default: `${SITE_NAME} — ${SITE_TAGLINE}`,
     template: `%s · ${SITE_NAME}`,

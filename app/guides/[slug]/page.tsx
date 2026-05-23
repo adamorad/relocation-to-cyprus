@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { GUIDES, guideBySlug } from "@/lib/guides";
 
-const SITE_URL = "https://adamorad.github.io/relocation-to-cyprus";
+const SITE_URL = "https://realcy.app";
 
 export function generateStaticParams() {
   return GUIDES.map((g) => ({ slug: g.slug }));
