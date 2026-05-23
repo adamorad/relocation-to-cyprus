@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import IllustratedMap from "./IllustratedMap";
 import ListingPanel from "./ListingPanel";
 import RegionListingsPanel from "./RegionListingsPanel";
@@ -9,6 +9,14 @@ import {
   LISTINGS_BY_REGION,
   type EnrichedListing,
 } from "@/lib/listingsData";
+
+const COMING_SOON = [
+  { name: "Rentals", desc: "Long-term lets across the island" },
+  { name: "Hotels", desc: "Stays for relocation scouting trips" },
+  { name: "Food", desc: "Restaurants, tavernas, delivery" },
+  { name: "Shopping", desc: "Malls, markets, local shops" },
+  { name: "More", desc: "Services, schools, healthcare" },
+] as const;
 
 function parsePriceEuros(s: string | null | undefined): number[] {
   if (!s) return [];
@@ -34,6 +42,82 @@ function formatEuros(n: number): string {
   return `€${Math.round(n / 1000)}k`;
 }
 
+function ComingSoonNotch() {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    function onDoc(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    function onEsc(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
+    document.addEventListener("mousedown", onDoc);
+    document.addEventListener("keydown", onEsc);
+    return () => {
+      document.removeEventListener("mousedown", onDoc);
+      document.removeEventListener("keydown", onEsc);
+    };
+  }, [open]);
+
+  return (
+    <div
+      ref={ref}
+      className="absolute top-0 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center pointer-events-none"
+    >
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-label="Show coming-soon RealCy sections"
+        className="pointer-events-auto bg-white border border-slate-200 border-t-0 rounded-b-xl shadow-md hover:shadow-lg px-4 py-1.5 text-[11px] md:text-xs font-semibold text-slate-900 flex items-center gap-2 transition-all hover:bg-slate-50"
+      >
+        <span className="hidden sm:inline">Coming to</span>
+        <span className="text-amber-700">RealCy.app</span>
+        <span
+          className={`text-slate-500 transition-transform ${
+            open ? "rotate-180" : ""
+          }`}
+          aria-hidden
+        >
+          ▾
+        </span>
+      </button>
+
+      <div
+        className={`pointer-events-auto overflow-hidden transition-all duration-300 ease-out ${
+          open
+            ? "max-h-[400px] opacity-100 mt-1"
+            : "max-h-0 opacity-0 mt-0 pointer-events-none"
+        }`}
+      >
+        <div className="bg-white border border-slate-200 rounded-xl shadow-xl p-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 w-[88vw] max-w-3xl">
+          {COMING_SOON.map((c) => (
+            <div
+              key={c.name}
+              className="relative rounded-lg border border-slate-100 bg-slate-50 px-3 py-2.5"
+            >
+              <div className="text-[13px] font-bold text-slate-900">
+                {c.name}
+              </div>
+              <div className="text-[10px] text-slate-500 mt-0.5 leading-tight">
+                {c.desc}
+              </div>
+              <span className="absolute top-1.5 right-1.5 text-[8px] uppercase tracking-wider font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded px-1 py-px">
+                Soon
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function AppShell() {
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
   const [modalRegion, setModalRegion] = useState<string | null>(null);
@@ -47,7 +131,6 @@ export default function AppShell() {
       return;
     }
     if (modalRegion === selectedRegion) return;
-    // Brief delay so the click feels intentional, not jarring.
     const t = setTimeout(() => setModalRegion(selectedRegion), 250);
     return () => clearTimeout(t);
   }, [selectedRegion, modalRegion]);
@@ -67,8 +150,10 @@ export default function AppShell() {
   }, [hoveredRegion]);
 
   return (
-    <main className="relative h-screen w-screen overflow-hidden bg-stone-50 text-slate-900">
-      <div className="absolute inset-0">
+    <main className="relative min-h-screen md:h-screen w-full md:overflow-hidden bg-stone-50 text-slate-900">
+      <ComingSoonNotch />
+
+      <div className="relative w-full aspect-[16/9] md:absolute md:inset-0 md:aspect-auto">
         <IllustratedMap
           selectedRegion={selectedRegion}
           onSelectRegion={(c) => {
@@ -80,8 +165,8 @@ export default function AppShell() {
       </div>
 
       {selectedRegion ? null : (
-        <div className="pointer-events-none absolute top-0 left-0 right-0 p-3 md:p-10 flex items-start justify-between gap-2">
-          <div className="max-w-md bg-white rounded-xl md:rounded-2xl p-4 md:p-6 border border-slate-200 shadow-xl transition-all">
+        <div className="px-4 pt-4 pb-8 md:p-10 md:pt-12 md:pointer-events-none md:absolute md:top-0 md:left-0 md:right-0 md:flex md:items-start md:justify-between md:gap-2">
+          <div className="max-w-md bg-white rounded-xl md:rounded-2xl p-4 md:p-6 border border-slate-200 shadow-xl transition-all md:pointer-events-auto">
             {hoverPreview ? (
               <>
                 <p className="text-[10px] uppercase tracking-[0.25em] text-slate-500 font-semibold">
@@ -106,18 +191,18 @@ export default function AppShell() {
               </>
             ) : (
               <>
-                <p className="text-[10px] uppercase tracking-[0.25em] text-slate-500 font-semibold">
-                  For people relocating
+                <p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+                  RealCy.app
                 </p>
                 <h1 className="mt-2 text-2xl md:text-4xl font-bold tracking-tight text-slate-900">
-                  Cyprus New Developments
+                  Your Portal to Cyprus
                 </h1>
                 <p className="mt-2 text-xs md:text-sm text-slate-600">
-                  New-build apartments, residences and villas across the island
-                  — by region, price and developer.
+                  Real estate is just the start. Find your next home today —
+                  rentals, hotels, food and more coming soon.
                 </p>
                 <p className="mt-3 text-[11px] md:text-xs text-slate-500">
-                  {LISTINGS.length} listings · click a region to explore
+                  {LISTINGS.length} new developments · click a region to start
                 </p>
               </>
             )}
