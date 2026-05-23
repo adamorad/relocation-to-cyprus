@@ -1,7 +1,7 @@
 "use client";
 
-import { Suspense, useEffect, useMemo, useState } from "react";
-import dynamic from "next/dynamic";
+import { useEffect, useMemo, useState } from "react";
+import IllustratedMap from "./IllustratedMap";
 import ListingPanel from "./ListingPanel";
 import RegionListingsPanel from "./RegionListingsPanel";
 import {
@@ -9,9 +9,6 @@ import {
   LISTINGS_BY_REGION,
   type EnrichedListing,
 } from "@/lib/listingsData";
-
-// The 3D map is browser-only — no SSR.
-const CyprusMap = dynamic(() => import("./CyprusMap"), { ssr: false });
 
 function parsePriceEuros(s: string | null | undefined): number[] {
   if (!s) return [];
@@ -46,8 +43,6 @@ export default function AppShell() {
   const [selectedListing, setSelectedListing] = useState<EnrichedListing | null>(
     null,
   );
-  const [cameraResetTick, setCameraResetTick] = useState(0);
-  const [viewMode, setViewMode] = useState<"default" | "top">("default");
 
   useEffect(() => {
     if (selectedRegion === null) {
@@ -55,7 +50,8 @@ export default function AppShell() {
       return;
     }
     if (modalRegion === selectedRegion) return;
-    const t = setTimeout(() => setModalRegion(selectedRegion), ZOOM_DELAY_MS);
+    // Small delay so the click feels intentional, not jarring.
+    const t = setTimeout(() => setModalRegion(selectedRegion), 250);
     return () => clearTimeout(t);
   }, [selectedRegion, modalRegion]);
 
@@ -76,23 +72,14 @@ export default function AppShell() {
   return (
     <main className="relative h-screen w-screen overflow-hidden bg-stone-50 text-slate-900">
       <div className="absolute inset-0">
-        <Suspense fallback={null}>
-          <CyprusMap
-            selectedRegion={selectedRegion}
-            selectedListing={selectedListing}
-            cameraResetTick={cameraResetTick}
-            viewMode={viewMode}
-            onSelectRegion={(c) => {
-              setSelectedRegion(c);
-              if (!c) {
-                setSelectedListing(null);
-                setCameraResetTick((t) => t + 1);
-              }
-            }}
-            onSelectListing={setSelectedListing}
-            onHoverRegion={setHoveredRegion}
-          />
-        </Suspense>
+        <IllustratedMap
+          selectedRegion={selectedRegion}
+          onSelectRegion={(c) => {
+            setSelectedRegion(c);
+            if (!c) setSelectedListing(null);
+          }}
+          onHoverRegion={setHoveredRegion}
+        />
       </div>
 
       {selectedRegion ? null : (
@@ -153,7 +140,6 @@ export default function AppShell() {
           setSelectedRegion(null);
           setModalRegion(null);
           setSelectedListing(null);
-          setCameraResetTick((t) => t + 1);
         }}
         onPick={setSelectedListing}
       />
@@ -162,21 +148,6 @@ export default function AppShell() {
         listing={selectedListing}
         onClose={() => setSelectedListing(null)}
       />
-
-      <button
-        type="button"
-        onClick={() => {
-          setViewMode((m) => (m === "default" ? "top" : "default"));
-          setCameraResetTick((t) => t + 1);
-        }}
-        className="pointer-events-auto fixed bottom-3 right-3 md:bottom-8 md:right-8 z-20 bg-white/95 hover:bg-white border border-slate-200 shadow-lg rounded-full px-3 md:px-4 py-2 text-[11px] md:text-xs font-semibold text-slate-900 flex items-center gap-1.5 md:gap-2 transition-colors min-h-[44px]"
-        aria-label={`Switch to ${viewMode === "default" ? "top" : "default"} view`}
-      >
-        <span aria-hidden className="text-sm md:text-base leading-none">
-          {viewMode === "default" ? "⬒" : "⬔"}
-        </span>
-        {viewMode === "default" ? "Top view" : "3D view"}
-      </button>
     </main>
   );
 }
