@@ -4,8 +4,7 @@ import { notFound } from "next/navigation";
 import { REGIONS, regionBySlug } from "@/lib/regions";
 import { listingsForRegion } from "@/lib/listings";
 
-const SITE_URL = "https://adamorad.github.io/relocation-to-cyprus";
-const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const SITE_URL = "https://realcy.app";
 
 export function generateStaticParams() {
   return REGIONS.map((r) => ({ name: r.slug }));
@@ -103,7 +102,7 @@ export default async function RegionPage({
                   <div className="aspect-[16/9] bg-slate-100 overflow-hidden">
                     <img
                       // biome-ignore lint/performance/noImgElement: static export
-                      src={`${BASE}${l.images[0]}`}
+                      src={`${l.images[0]}`}
                       alt={l.title}
                       className="w-full h-full object-cover"
                       loading="lazy"

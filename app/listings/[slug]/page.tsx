@@ -3,8 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { allListings, listingBySlug } from "@/lib/listings";
 
-const SITE_URL = "https://adamorad.github.io/relocation-to-cyprus";
-const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const SITE_URL = "https://realcy.app";
 
 export function generateStaticParams() {
   return allListings().map((l) => ({ slug: l.slug }));
@@ -19,7 +18,7 @@ export async function generateMetadata({
   const l = listingBySlug(slug);
   if (!l) return {};
   const heroImage = l.images?.[0]
-    ? `${SITE_URL}${BASE}${l.images[0]}`
+    ? `${SITE_URL}${l.images[0]}`
     : undefined;
   const desc =
     l.description?.slice(0, 160) ??
@@ -70,7 +69,7 @@ export default async function ListingPage({
     "@type": "Product",
     name: l.title,
     description: l.description,
-    image: (l.images ?? []).map((u) => `${SITE_URL}${BASE}${u}`),
+    image: (l.images ?? []).map((u) => `${SITE_URL}${u}`),
     brand: l.developer?.name
       ? { "@type": "Organization", name: l.developer.name }
       : undefined,
@@ -133,7 +132,7 @@ export default async function ListingPage({
             <img
               // biome-ignore lint/performance/noImgElement: static export
               key={src}
-              src={`${BASE}${src}`}
+              src={`${src}`}
               alt={`${l.title} — view ${i + 1}`}
               className={
                 i === 0
