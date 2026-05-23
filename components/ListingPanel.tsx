@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import type { EnrichedListing, ImageGallery } from "@/lib/listingsData";
-import { asset } from "@/lib/url";
 
 type Props = {
   listing: EnrichedListing | null;
@@ -12,11 +11,22 @@ type Props = {
 
 export default function ListingPanel({ listing, onClose }: Props) {
   const visible = listing !== null;
+  useEffect(() => {
+    if (!visible) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") onClose();
+    }
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [visible, onClose]);
   return (
     <aside
       className={`pointer-events-auto fixed top-0 right-0 h-full w-full md:w-[560px] bg-white text-slate-900 shadow-2xl overflow-y-auto transition-transform duration-300 ease-out z-40 ${
         visible ? "translate-x-0" : "translate-x-full"
       }`}
+      role="dialog"
+      aria-modal={visible}
+      aria-label={listing ? `${listing.title} details` : undefined}
       aria-hidden={!visible}
     >
       {listing ? (
@@ -63,7 +73,7 @@ function ListingPanelBody({
               {listing.title}
             </h2>
             {listing.location ? (
-              <p className="text-sm text-slate-500 mt-1 truncate">
+              <p className="text-sm text-slate-600 mt-1 truncate">
                 {listing.location}
               </p>
             ) : null}
@@ -71,7 +81,7 @@ function ListingPanelBody({
           <button
             type="button"
             onClick={onClose}
-            className="flex-shrink-0 text-slate-400 hover:text-slate-900 text-2xl leading-none w-8 h-8 -mt-1 rounded-full hover:bg-slate-100 flex items-center justify-center"
+            className="flex-shrink-0 text-slate-500 hover:text-slate-900 text-2xl leading-none w-11 h-11 -mt-2 rounded-full hover:bg-slate-100 flex items-center justify-center"
             aria-label="Close"
           >
             ×
@@ -135,7 +145,7 @@ function ListingPanelBody({
             <dl className="grid grid-cols-2 gap-x-3 gap-y-1 text-xs">
               {Object.entries(listing.specs).map(([k, v]) => (
                 <div key={k} className="contents">
-                  <dt className="text-slate-500">{k}</dt>
+                  <dt className="text-slate-600">{k}</dt>
                   <dd className="text-slate-900 font-medium">{v}</dd>
                 </div>
               ))}
@@ -161,7 +171,7 @@ function ListingPanelBody({
             <dl className="grid grid-cols-2 gap-x-3 gap-y-1 text-xs">
               {Object.entries(listing.nearby).map(([k, v]) => (
                 <div key={k} className="contents">
-                  <dt className="text-slate-500">{k}</dt>
+                  <dt className="text-slate-600">{k}</dt>
                   <dd className="text-slate-900 font-medium">{v}</dd>
                 </div>
               ))}
@@ -260,6 +270,8 @@ function MapEmbed({
           className="absolute inset-x-0 border-0 w-full"
           style={{ top: 0, height: "calc(100% + 34px)" }}
           loading="lazy"
+          sandbox="allow-scripts allow-same-origin allow-popups"
+          referrerPolicy="no-referrer"
         />
       </div>
       <a
@@ -275,12 +287,10 @@ function MapEmbed({
 }
 
 function VideoEmbed({ url }: { url: string }) {
-  // YouTube embed URLs use `https://www.youtube.com/embed/<id>` form.
-  // Fall back to a plain link for other sources.
-  const isEmbeddable =
-    url.includes("/embed/") ||
-    url.startsWith("https://www.youtube.com") ||
-    url.startsWith("https://youtu.be");
+  // Only YouTube embed URLs are accepted into the iframe; anything else falls
+  // back to a plain link to avoid embedding arbitrary content from data.
+  const ytEmbed = /^https:\/\/(www\.)?youtube(-nocookie)?\.com\/embed\/[A-Za-z0-9_-]{6,}(\?.*)?$/;
+  const isEmbeddable = ytEmbed.test(url);
   return (
     <Section title="Video tour">
       {isEmbeddable ? (
@@ -292,6 +302,8 @@ function VideoEmbed({ url }: { url: string }) {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             loading="lazy"
+            sandbox="allow-scripts allow-same-origin allow-popups allow-presentation"
+            referrerPolicy="no-referrer"
           />
         </div>
       ) : (
@@ -318,7 +330,7 @@ function DeveloperBlock({ listing }: { listing: EnrichedListing }) {
     <div className="flex items-center gap-3">
       {dev.logo ? (
         <img
-          src={asset(dev.logo)}
+          src={dev.logo}
           alt=""
           className="h-10 w-10 rounded object-contain bg-white border border-slate-200 p-1"
         />
@@ -326,7 +338,7 @@ function DeveloperBlock({ listing }: { listing: EnrichedListing }) {
       <div className="min-w-0">
         <div className="text-sm font-semibold truncate">{dev.name}</div>
         {dev.address ? (
-          <div className="text-xs text-slate-500 truncate">{dev.address}</div>
+          <div className="text-xs text-slate-600 truncate">{dev.address}</div>
         ) : null}
       </div>
     </div>
@@ -375,7 +387,7 @@ function UnitCard({
             aria-label="Open unit images"
           >
             <img
-              src={asset(images[0])}
+              src={images[0]}
               alt=""
               className="w-full h-full object-cover group-hover:scale-105 transition-transform"
               loading="lazy"
@@ -398,7 +410,7 @@ function UnitCard({
             </div>
           </div>
           {pricePerM2 ? (
-            <div className="text-[11px] text-slate-500 mt-0.5">
+            <div className="text-[11px] text-slate-600 mt-0.5">
               {pricePerM2}
             </div>
           ) : null}
@@ -419,7 +431,7 @@ function UnitCard({
       </div>
 
       {offer.note || offer.description ? (
-        <div className="mt-2 text-[11px] text-slate-500 italic">
+        <div className="mt-2 text-[11px] text-slate-600 italic">
           {offer.note ?? offer.description}
         </div>
       ) : null}
@@ -453,7 +465,7 @@ function FloorPlansSection({
             className="aspect-[4/3] rounded-md overflow-hidden bg-slate-100 border border-slate-200 cursor-zoom-in group"
           >
             <img
-              src={asset(src)}
+              src={src}
               alt=""
               loading="lazy"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform"
@@ -462,7 +474,7 @@ function FloorPlansSection({
         ))}
       </div>
       {combined.length > 12 ? (
-        <div className="text-[11px] text-slate-500 mt-1">
+        <div className="text-[11px] text-slate-600 mt-1">
           showing 12 of {combined.length} · open one to view all
         </div>
       ) : null}
@@ -488,7 +500,7 @@ function ImageGallery({
         className="block w-full aspect-[16/10] rounded-lg overflow-hidden bg-slate-100 border border-slate-200 group cursor-zoom-in"
       >
         <img
-          src={asset(safe[active])}
+          src={safe[active]}
           alt=""
           className="w-full h-full object-cover transition-transform group-hover:scale-105"
           loading="lazy"
@@ -507,7 +519,7 @@ function ImageGallery({
               }`}
             >
               <img
-                src={asset(src)}
+                src={src}
                 alt=""
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -602,7 +614,7 @@ function Lightbox({
       ) : null}
 
       <img
-        src={asset(images[activeIndex])}
+        src={images[activeIndex]}
         alt=""
         className="max-w-[92vw] max-h-[88vh] object-contain"
         onClick={(e) => e.stopPropagation()}
@@ -628,7 +640,7 @@ function Section({
 }) {
   return (
     <div>
-      <h3 className="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-semibold mb-2">
+      <h3 className="text-[10px] uppercase tracking-[0.2em] text-slate-600 font-semibold mb-2">
         {title}
       </h3>
       {children}
@@ -639,7 +651,7 @@ function Section({
 function Spec({ k, v }: { k: string; v: string }) {
   return (
     <div className="contents">
-      <div className="text-slate-500">{k}</div>
+      <div className="text-slate-600">{k}</div>
       <div className="text-slate-900 font-medium">{v}</div>
     </div>
   );

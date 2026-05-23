@@ -46,20 +46,30 @@ export default async function RegionPage({
     "@type": "Article",
     headline: `${r.name} new developments`,
     description: r.oneLiner,
-    author: { "@type": "Organization", name: "Cyprus New Developments" },
-    publisher: { "@type": "Organization", name: "Cyprus New Developments" },
+    author: { "@type": "Organization", name: "RealCy.app" },
+    publisher: { "@type": "Organization", name: "RealCy.app" },
     datePublished: "2026-05-22",
     mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/regions/${r.slug}/` },
   };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Map", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: r.name },
+    ],
+  };
 
   return (
-    <main className="max-w-4xl mx-auto px-6 py-10">
+    <main id="main" className="max-w-4xl mx-auto px-6 py-10">
       <script
         type="application/ld+json"
         // biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([articleJsonLd, breadcrumbJsonLd]),
+        }}
       />
-      <nav className="text-xs text-slate-500 mb-6">
+      <nav className="text-xs text-slate-600 mb-6">
         <Link href="/" className="hover:text-slate-900">
           Map
         </Link>{" "}
@@ -113,7 +123,7 @@ export default async function RegionPage({
                   <div className="font-semibold text-sm line-clamp-2">
                     {l.title}
                   </div>
-                  <div className="text-[11px] text-slate-500 mt-0.5 truncate">
+                  <div className="text-[11px] text-slate-600 mt-0.5 truncate">
                     {l.location ?? r.name}
                   </div>
                   <div className="text-amber-700 text-sm font-semibold mt-1.5">
@@ -126,7 +136,7 @@ export default async function RegionPage({
         </section>
       ) : null}
 
-      <p className="mt-10 text-xs text-slate-500">
+      <p className="mt-10 text-xs text-slate-600">
         <Link href="/" className="underline hover:text-slate-900">
           ← Back to the map
         </Link>

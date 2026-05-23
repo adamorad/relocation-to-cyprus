@@ -4,10 +4,11 @@ import { LISTINGS } from "@/lib/listingsData";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "RealCy.app - Your Portal To Cyprus",
+    absolute:
+      "RealCy.app - Your Cyprus Portal | New Developments, Relocation & More",
   },
   description:
-    "RealCy.app — your portal to Cyprus. Browse 260+ new-build apartments and villas on an interactive map. Rentals, hotels, food and more coming soon.",
+    "RealCy.app — your portal for anything Cyprus. Browse 260+ new-build apartments and villas on an interactive map. Rentals, hotels, food, shopping and more coming soon.",
   alternates: { canonical: "/" },
 };
 
@@ -21,7 +22,7 @@ export default function Home() {
     alternateName: "RealCy",
     url: SITE_URL,
     description:
-      "Your portal to Cyprus — real estate, and soon rentals, hotels, food and more.",
+      "Your portal for anything Cyprus — real estate today; rentals, hotels, food, shopping and more coming soon.",
     publisher: { "@type": "Organization", name: "RealCy.app" },
   };
   const itemList = {
