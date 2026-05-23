@@ -5,7 +5,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#52b2cf",
+  themeColor: "#c8d5dc",
 };
 
 const SITE_NAME = "Cyprus New Developments";
