@@ -23,7 +23,7 @@ import { LISTINGS_BY_REGION, type EnrichedListing } from "@/lib/listingsData";
 
 const ISLAND_DEPTH = 0.35;
 const SIDE_WALL_COLOR = "#f5e0c2";
-const SEA_COLOR = "#52b2cf";
+const SEA_COLOR = "#c8d5dc";
 const FALLBACK_GROUND: [number, number, number] = [200, 180, 140];
 const OVERVIEW_CAMERA = new THREE.Vector3(3, 8, 11);
 const OVERVIEW_TARGET = new THREE.Vector3(0, 0, 0);
