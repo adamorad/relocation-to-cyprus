@@ -5,7 +5,7 @@ import { GUIDES } from "@/lib/guides";
 
 export const dynamic = "force-static";
 
-const SITE_URL = "https://adamorad.github.io/relocation-to-cyprus";
+const SITE_URL = "https://realcy.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
