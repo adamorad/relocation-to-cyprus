@@ -9,20 +9,16 @@ type RegionLabel = {
   /** Centre of the region as % of the underlying image (1672×941). */
   x: number;
   y: number;
+  /** Desktop-only pixel nudge applied on top of the percentage anchor. */
+  dx?: number;
+  dy?: number;
 };
 
-// Four coastal regions visible on the illustration (Nicosia is inland and not
-// drawn on this map; its listings stay reachable via the region page).
-// Positions are tuned per illustration element so labels never cover icons:
-//   Paphos    → between the sun (upper) and the pillar (lower)
-//   Limassol  → above the marina tower
-//   Larnaca   → below the church
-//   Ayia Napa → above the beach umbrella
 const LABELS: ReadonlyArray<RegionLabel> = [
-  { name: "Paphos", x: 33, y: 50 },
-  { name: "Limassol", x: 47, y: 42 },
-  { name: "Larnaca", x: 58, y: 56 },
-  { name: "Ayia Napa", x: 77, y: 48 },
+  { name: "Paphos", x: 33, y: 50, dx: 0, dy: -15 },
+  { name: "Limassol", x: 47, y: 42, dx: 0, dy: 5 },
+  { name: "Larnaca", x: 58, y: 56, dx: -5, dy: 15 },
+  { name: "Ayia Napa", x: 77, y: 48, dx: -20, dy: 30 },
 ];
 
 type Props = {
@@ -77,12 +73,19 @@ export default function IllustratedMap({
               onMouseLeave={() => onHoverRegion(null)}
               onFocus={() => onHoverRegion(r.name)}
               onBlur={() => onHoverRegion(null)}
-              className={`pointer-events-auto absolute -translate-x-1/2 -translate-y-1/2 rounded-full border shadow-lg transition-all backdrop-blur-sm flex items-center gap-1.5 md:gap-2 whitespace-nowrap ${
+              className={`pointer-events-auto absolute -translate-x-1/2 -translate-y-1/2 md:translate-x-[calc(-50%+var(--ldx))] md:translate-y-[calc(-50%+var(--ldy))] rounded-full border shadow-lg transition-all backdrop-blur-sm flex items-center gap-1.5 md:gap-2 whitespace-nowrap ${
                 isActive
                   ? "bg-slate-900 text-white border-slate-900 scale-110"
                   : "bg-white/95 hover:bg-white text-slate-900 border-slate-200 hover:scale-110 hover:shadow-xl"
               } px-2.5 py-1 md:px-3.5 md:py-1.5 text-xs md:text-sm font-bold`}
-              style={{ left: `${r.x}%`, top: `${r.y}%` }}
+              style={
+                {
+                  left: `${r.x}%`,
+                  top: `${r.y}%`,
+                  "--ldx": `${r.dx ?? 0}px`,
+                  "--ldy": `${r.dy ?? 0}px`,
+                } as React.CSSProperties
+              }
               aria-label={`View ${r.name} listings (${counts[r.name] ?? 0})`}
             >
               <span>{r.name}</span>

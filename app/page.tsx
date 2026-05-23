@@ -3,9 +3,11 @@ import AppShell from "@/components/AppShell";
 import { LISTINGS } from "@/lib/listingsData";
 
 export const metadata: Metadata = {
-  title: "Cyprus New Developments — interactive 3D map by region",
+  title: {
+    absolute: "RealCy.app - Your Portal To Cyprus",
+  },
   description:
-    "Explore 260+ new-build apartments, residences and villas across Cyprus on an interactive 3D map. Filter by Paphos, Limassol, Larnaca, Nicosia or Ayia Napa, by price, bedrooms, view and developer.",
+    "RealCy.app — your portal to Cyprus. Browse 260+ new-build apartments and villas on an interactive map. Rentals, hotels, food and more coming soon.",
   alternates: { canonical: "/" },
 };
 
@@ -15,11 +17,12 @@ export default function Home() {
   const websiteJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Cyprus New Developments",
+    name: "RealCy.app",
+    alternateName: "RealCy",
     url: SITE_URL,
     description:
-      "Interactive 3D map of new-build developments across Cyprus, with content guides for relocators.",
-    publisher: { "@type": "Organization", name: "Cyprus New Developments" },
+      "Your portal to Cyprus — real estate, and soon rentals, hotels, food and more.",
+    publisher: { "@type": "Organization", name: "RealCy.app" },
   };
   const itemList = {
     "@context": "https://schema.org",
