@@ -2,7 +2,6 @@
 
 import { useMemo } from "react";
 import { LISTINGS_BY_REGION } from "@/lib/listingsData";
-import { asset } from "@/lib/url";
 
 type RegionLabel = {
   name: string;
@@ -51,13 +50,19 @@ export default function IllustratedMap({
       />
 
       <div className="relative pointer-events-none w-full h-full">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={asset("/cyprus-illustrated.png")}
-          alt="Map of Cyprus regions"
-          className="absolute inset-0 w-full h-full object-cover select-none"
-          draggable={false}
-        />
+        <picture>
+          <source srcSet="/cyprus-illustrated.webp" type="image/webp" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/cyprus-illustrated.png"
+            alt="Illustrated map of Cyprus showing Paphos, Limassol, Larnaca and Ayia Napa regions"
+            width={1672}
+            height={941}
+            fetchPriority="high"
+            className="absolute inset-0 w-full h-full object-cover select-none"
+            draggable={false}
+          />
+        </picture>
 
         {LABELS.map((r) => {
           const isActive = selectedRegion === r.name;
@@ -91,7 +96,7 @@ export default function IllustratedMap({
               <span>{r.name}</span>
               <span
                 className={`text-[10px] md:text-xs font-semibold ${
-                  isActive ? "text-amber-300" : "text-slate-500"
+                  isActive ? "text-amber-300" : "text-slate-600"
                 }`}
               >
                 · {counts[r.name] ?? 0}

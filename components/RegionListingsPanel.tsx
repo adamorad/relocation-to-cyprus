@@ -1,8 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { EnrichedListing, Offer } from "@/lib/listingsData";
-import { asset } from "@/lib/url";
 
 type Props = {
   region: string | null;
@@ -142,6 +141,16 @@ export default function RegionListingsPanel({
   const [sort, setSort] = useState<SortKey>("price-asc");
   const [moreOpen, setMoreOpen] = useState(false);
 
+  const open = region !== null;
+  useEffect(() => {
+    if (!open) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") onClose();
+    }
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open, onClose]);
+
   const types = useMemo(
     () => uniqueSpec(listings, "Building type"),
     [listings],
@@ -266,6 +275,9 @@ export default function RegionListingsPanel({
           visible ? "scale-100" : "scale-95"
         }`}
         onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal={visible}
+        aria-label={region ? `${region} new developments` : undefined}
       >
       <div className="px-5 pt-5 pb-3 border-b border-slate-200 bg-white">
         <div className="flex items-start justify-between gap-3">
@@ -276,7 +288,7 @@ export default function RegionListingsPanel({
             <h2 className="mt-0.5 text-2xl font-bold leading-snug">
               {region ?? ""}
             </h2>
-            <p className="text-xs text-slate-500 mt-1">
+            <p className="text-xs text-slate-600 mt-1">
               <span className="text-slate-700 font-semibold">
                 {filtered.length}
               </span>{" "}
@@ -286,7 +298,7 @@ export default function RegionListingsPanel({
           <button
             type="button"
             onClick={onClose}
-            className="flex-shrink-0 text-slate-400 hover:text-slate-900 text-2xl leading-none w-8 h-8 rounded-full hover:bg-slate-100 flex items-center justify-center"
+            className="flex-shrink-0 text-slate-500 hover:text-slate-900 text-2xl leading-none w-11 h-11 rounded-full hover:bg-slate-100 flex items-center justify-center"
             aria-label="Close"
           >
             ×
@@ -297,7 +309,7 @@ export default function RegionListingsPanel({
           {/* Max price */}
           <div>
             <div className="flex items-baseline justify-between mb-1">
-              <span className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
+              <span className="text-[10px] uppercase tracking-wider text-slate-600 font-semibold">
                 Max price
               </span>
               <span className="text-xs text-slate-900 font-semibold">
@@ -345,7 +357,7 @@ export default function RegionListingsPanel({
               onChange={setType}
             />
             <div>
-              <div className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold mb-1">
+              <div className="text-[10px] uppercase tracking-wider text-slate-600 font-semibold mb-1">
                 Sort
               </div>
               <select
@@ -384,7 +396,7 @@ export default function RegionListingsPanel({
             <div className="space-y-3 pt-1 border-t border-slate-200">
               <div>
                 <div className="flex items-baseline justify-between mb-1 mt-2">
-                  <span className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
+                  <span className="text-[10px] uppercase tracking-wider text-slate-600 font-semibold">
                     Min living area
                   </span>
                   <span className="text-xs text-slate-900 font-semibold">
@@ -416,7 +428,7 @@ export default function RegionListingsPanel({
                 />
               </div>
               <div>
-                <div className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold mb-1">
+                <div className="text-[10px] uppercase tracking-wider text-slate-600 font-semibold mb-1">
                   Energy efficiency
                 </div>
                 <div className="flex gap-1">
@@ -451,7 +463,7 @@ export default function RegionListingsPanel({
 
       <div className="overflow-y-auto flex-1 p-4 bg-stone-50/60">
         {filtered.length === 0 ? (
-          <div className="text-center text-sm text-slate-500 py-12">
+          <div className="text-center text-sm text-slate-600 py-12">
             No listings match these filters.
           </div>
         ) : (
@@ -480,7 +492,7 @@ function ChipRow<T extends string>({
 }) {
   return (
     <div>
-      <div className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold mb-1">
+      <div className="text-[10px] uppercase tracking-wider text-slate-600 font-semibold mb-1">
         {label}
       </div>
       <div className="flex gap-1">
@@ -516,7 +528,7 @@ function Dropdown({
 }) {
   return (
     <div>
-      <div className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold mb-1">
+      <div className="text-[10px] uppercase tracking-wider text-slate-600 font-semibold mb-1">
         {label}
       </div>
       <select
@@ -551,7 +563,7 @@ function TriToggle({
   ];
   return (
     <div>
-      <div className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold mb-1">
+      <div className="text-[10px] uppercase tracking-wider text-slate-600 font-semibold mb-1">
         {label}
       </div>
       <div className="flex gap-1">
@@ -609,7 +621,7 @@ function ListingCard({
       <div className="aspect-[16/9] bg-slate-100 overflow-hidden flex-shrink-0">
         {thumb ? (
           <img
-            src={asset(thumb)}
+            src={thumb}
             alt=""
             loading="lazy"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform"
@@ -623,7 +635,7 @@ function ListingCard({
         >
           {listing.title}
         </div>
-        <div className="text-[11px] text-slate-500 truncate">
+        <div className="text-[11px] text-slate-600 truncate">
           {listing.location ?? listing.regionCity}
         </div>
         <div className="mt-auto pt-1.5">

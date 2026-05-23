@@ -93,7 +93,10 @@ export default function AppShell() {
   }, [hoveredRegion]);
 
   return (
-    <main className="relative min-h-screen md:h-screen w-full md:overflow-hidden bg-stone-50 text-slate-900">
+    <main
+      id="main"
+      className="relative min-h-screen md:h-screen w-full md:overflow-hidden bg-stone-50 text-slate-900"
+    >
       <ComingSoonTiles />
 
       <div className="relative w-full aspect-[16/9] md:absolute md:inset-0 md:aspect-auto">
@@ -112,7 +115,7 @@ export default function AppShell() {
           <div className="max-w-md bg-white rounded-xl md:rounded-2xl p-4 md:p-6 border border-slate-200 shadow-xl transition-all md:pointer-events-auto">
             {hoverPreview ? (
               <>
-                <p className="text-[10px] uppercase tracking-[0.25em] text-slate-500 font-semibold">
+                <p className="text-[10px] uppercase tracking-[0.25em] text-slate-600 font-semibold">
                   Region
                 </p>
                 <h1 className="mt-2 text-2xl md:text-4xl font-bold tracking-tight text-slate-900">
@@ -138,13 +141,13 @@ export default function AppShell() {
                   RealCy.app
                 </p>
                 <h1 className="mt-2 text-2xl md:text-4xl font-bold tracking-tight text-slate-900">
-                  Your Portal to Cyprus
+                  Your Cyprus Portal
                 </h1>
                 <p className="mt-2 text-xs md:text-sm text-slate-600">
-                  Real estate is just the start. Find your next home today —
-                  rentals, hotels, food and more coming soon.
+                  Everything Cyprus, in one place. Find a new-build home today —
+                  rentals, hotels, food, shopping and more coming soon.
                 </p>
-                <p className="mt-3 text-[11px] md:text-xs text-slate-500">
+                <p className="mt-3 text-[11px] md:text-xs text-slate-600">
                   {LISTINGS.length} new developments · click a region to start
                 </p>
               </>
