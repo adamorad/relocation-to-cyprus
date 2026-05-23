@@ -6,17 +6,18 @@ import { asset } from "@/lib/url";
 
 type RegionLabel = {
   name: string;
-  /** Centre of the region as % of the underlying image (1280×675). */
+  /** Centre of the region as % of the underlying image (1672×941). */
   x: number;
   y: number;
 };
 
+// Four coastal regions visible on the illustration (Nicosia is inland and not
+// drawn on this map; its listings stay reachable via the region page).
 const LABELS: ReadonlyArray<RegionLabel> = [
-  { name: "Paphos", x: 16, y: 52 },
-  { name: "Limassol", x: 38, y: 64 },
-  { name: "Nicosia", x: 45, y: 38 },
-  { name: "Larnaca", x: 60, y: 58 },
-  { name: "Ayia Napa", x: 82, y: 48 },
+  { name: "Paphos", x: 36, y: 60 },
+  { name: "Limassol", x: 47, y: 67 },
+  { name: "Larnaca", x: 58, y: 53 },
+  { name: "Ayia Napa", x: 68, y: 53 },
 ];
 
 type Props = {
@@ -39,7 +40,7 @@ export default function IllustratedMap({
   }, []);
 
   return (
-    <div className="absolute inset-0 grid place-items-center bg-[#c8d5dc] overflow-hidden">
+    <div className="absolute inset-0 grid place-items-center bg-[#3fc1bd] overflow-hidden">
       {/* Background click resets the selection. */}
       <button
         type="button"
@@ -48,19 +49,12 @@ export default function IllustratedMap({
         className="absolute inset-0 cursor-default"
       />
 
-      {/* Full-bleed image. object-cover fills the viewport with no margins;
-        labels are positioned relative to the image's natural 1280×691 box
-        which means at extreme aspects (very wide / very narrow) they sit
-        within the visible centre band of the image. */}
-      <div
-        className="relative pointer-events-none w-full h-full"
-      >
+      <div className="relative pointer-events-none w-full h-full">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={asset("/cyprus-illustrated.png")}
           alt="Map of Cyprus regions"
           className="absolute inset-0 w-full h-full object-cover select-none"
-          style={{ imageRendering: "auto" }}
           draggable={false}
         />
 
