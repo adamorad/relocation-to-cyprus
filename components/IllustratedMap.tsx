@@ -1,81 +1,22 @@
 "use client";
 
-import { useState } from "react";
-import type { EnrichedListing } from "@/lib/listingsData";
+import { useMemo } from "react";
+import { LISTINGS_BY_REGION } from "@/lib/listingsData";
 import { asset } from "@/lib/url";
 
-type Region = {
+type RegionLabel = {
   name: string;
-  // Bounding boxes in % of the image (Cyprus illustrated is 1280×675).
-  // Approximate, hand-traced over the supplied reference.
-  // Each defines a polygon as percentage points [x, y].
-  polygon: ReadonlyArray<[number, number]>;
+  /** Centre of the region as % of the underlying image (1280×675). */
+  x: number;
+  y: number;
 };
 
-const REGIONS: ReadonlyArray<Region> = [
-  {
-    name: "Paphos",
-    polygon: [
-      [6, 30],
-      [22, 22],
-      [27, 30],
-      [28, 50],
-      [29, 65],
-      [25, 75],
-      [18, 75],
-      [10, 60],
-      [6, 45],
-    ],
-  },
-  {
-    name: "Nicosia",
-    polygon: [
-      [27, 22],
-      [55, 22],
-      [62, 35],
-      [60, 50],
-      [52, 55],
-      [40, 56],
-      [29, 50],
-      [27, 35],
-    ],
-  },
-  {
-    name: "Limassol",
-    polygon: [
-      [27, 55],
-      [40, 56],
-      [52, 56],
-      [55, 70],
-      [50, 85],
-      [37, 88],
-      [28, 78],
-      [27, 65],
-    ],
-  },
-  {
-    name: "Larnaca",
-    polygon: [
-      [52, 55],
-      [70, 50],
-      [73, 60],
-      [71, 70],
-      [60, 76],
-      [55, 70],
-      [50, 65],
-    ],
-  },
-  {
-    name: "Ayia Napa",
-    polygon: [
-      [70, 38],
-      [82, 35],
-      [85, 45],
-      [82, 55],
-      [73, 60],
-      [70, 50],
-    ],
-  },
+const LABELS: ReadonlyArray<RegionLabel> = [
+  { name: "Paphos", x: 15, y: 50 },
+  { name: "Limassol", x: 39, y: 73 },
+  { name: "Nicosia", x: 45, y: 38 },
+  { name: "Larnaca", x: 60, y: 60 },
+  { name: "Ayia Napa", x: 77, y: 49 },
 ];
 
 type Props = {
@@ -85,73 +26,79 @@ type Props = {
 };
 
 export default function IllustratedMap({
-  selectedRegion: _selectedRegion,
+  selectedRegion,
   onSelectRegion,
   onHoverRegion,
 }: Props) {
-  const [hovered, setHovered] = useState<string | null>(null);
+  const counts = useMemo(() => {
+    const m: Record<string, number> = {};
+    for (const l of LABELS) {
+      m[l.name] = LISTINGS_BY_REGION[l.name]?.length ?? 0;
+    }
+    return m;
+  }, []);
 
   return (
-    <div className="relative w-full h-full flex items-center justify-center bg-[#c8d5dc] select-none">
-      {/* Click on empty area resets */}
+    <div className="absolute inset-0 grid place-items-center bg-[#c8d5dc] overflow-hidden">
+      {/* Background click resets the selection. */}
       <button
         type="button"
+        aria-label="Reset view"
         onClick={() => onSelectRegion(null)}
         className="absolute inset-0 cursor-default"
-        aria-label="Reset view"
       />
 
+      {/* Inner box sized to the image aspect ratio — fills the viewport
+        as far as possible while preserving 1280×675. Labels position in %
+        of this box so they track with the image at any size. */}
       <div
-        className="relative w-full h-full max-w-[1400px] max-h-full"
-        style={{ aspectRatio: "1280 / 675" }}
+        className="relative pointer-events-none"
+        style={{
+          width: "min(100vw, calc(100vh * 1280 / 675))",
+          height: "min(100vh, calc(100vw * 675 / 1280))",
+        }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={asset("/cyprus-illustrated.png")}
           alt="Map of Cyprus regions"
-          className="absolute inset-0 w-full h-full object-contain pointer-events-none"
+          className="absolute inset-0 w-full h-full object-contain select-none"
           draggable={false}
         />
 
-        {/* SVG overlay with one clickable polygon per region. */}
-        <svg
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-          className="absolute inset-0 w-full h-full"
-        >
-          <title>Cyprus region hotspots</title>
-          {REGIONS.map((r) => {
-            const points = r.polygon.map(([x, y]) => `${x},${y}`).join(" ");
-            const isHovered = hovered === r.name;
-            return (
-              <polygon
-                key={r.name}
-                points={points}
-                fill={isHovered ? "rgba(255,255,255,0.18)" : "rgba(0,0,0,0)"}
-                stroke={isHovered ? "rgba(15,23,42,0.45)" : "transparent"}
-                strokeWidth="0.4"
-                style={{
-                  cursor: "pointer",
-                  transition: "fill 120ms, stroke 120ms",
-                }}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onSelectRegion(r.name);
-                }}
-                onMouseEnter={() => {
-                  setHovered(r.name);
-                  onHoverRegion(r.name);
-                }}
-                onMouseLeave={() => {
-                  setHovered(null);
-                  onHoverRegion(null);
-                }}
+        {LABELS.map((r) => {
+          const isActive = selectedRegion === r.name;
+          return (
+            <button
+              key={r.name}
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onSelectRegion(r.name);
+              }}
+              onMouseEnter={() => onHoverRegion(r.name)}
+              onMouseLeave={() => onHoverRegion(null)}
+              onFocus={() => onHoverRegion(r.name)}
+              onBlur={() => onHoverRegion(null)}
+              className={`pointer-events-auto absolute -translate-x-1/2 -translate-y-1/2 rounded-full border shadow-lg transition-all backdrop-blur-sm flex items-center gap-1.5 md:gap-2 ${
+                isActive
+                  ? "bg-slate-900 text-white border-slate-900 scale-110"
+                  : "bg-white/95 hover:bg-white text-slate-900 border-slate-200 hover:scale-110 hover:shadow-xl"
+              } px-2.5 py-1 md:px-3.5 md:py-1.5 text-xs md:text-sm font-bold`}
+              style={{ left: `${r.x}%`, top: `${r.y}%` }}
+              aria-label={`View ${r.name} listings (${counts[r.name] ?? 0})`}
+            >
+              <span>{r.name}</span>
+              <span
+                className={`text-[10px] md:text-xs font-semibold ${
+                  isActive ? "text-amber-300" : "text-slate-500"
+                }`}
               >
-                <title>{r.name}</title>
-              </polygon>
-            );
-          })}
-        </svg>
+                · {counts[r.name] ?? 0}
+              </span>
+            </button>
+          );
+        })}
       </div>
     </div>
   );
