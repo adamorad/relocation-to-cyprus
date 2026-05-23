@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function GuidesIndex() {
   return (
     <main className="max-w-3xl mx-auto px-6 py-10">
-      <nav className="text-xs text-slate-500 mb-6">
+      <nav className="text-xs text-slate-600 mb-6">
         <Link href="/" className="hover:text-slate-900">
           Map
         </Link>{" "}

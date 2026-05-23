@@ -30417,7 +30417,7 @@
   {
     "title": "HOME CITY ''C''",
     "id": 306,
-    "slug": "306-home_city_''c''",
+    "slug": "306-home_city-c",
     "url": null,
     "priceRange": "€185.000 – €350.000 +VAT",
     "pricePerM2": "",
@@ -30425,14 +30425,14 @@
     "lat": 34.93961529828261,
     "lng": 33.63262199999999,
     "images": [
-      "/images/306-home_city_''c''/00.webp",
-      "/images/306-home_city_''c''/01.webp",
-      "/images/306-home_city_''c''/02.webp",
-      "/images/306-home_city_''c''/03.webp",
-      "/images/306-home_city_''c''/04.webp",
-      "/images/306-home_city_''c''/05.webp",
-      "/images/306-home_city_''c''/06.webp",
-      "/images/306-home_city_''c''/07.webp"
+      "/images/306-home_city-c/00.webp",
+      "/images/306-home_city-c/01.webp",
+      "/images/306-home_city-c/02.webp",
+      "/images/306-home_city-c/03.webp",
+      "/images/306-home_city-c/04.webp",
+      "/images/306-home_city-c/05.webp",
+      "/images/306-home_city-c/06.webp",
+      "/images/306-home_city-c/07.webp"
     ],
     "developer": {
       "name": "HOME CITY INVESTMENTS",
@@ -30483,7 +30483,7 @@
           "floor": "1"
         },
         "images": [
-          "/images/306-home_city_''c''/u0_00.webp"
+          "/images/306-home_city-c/u0_00.webp"
         ]
       },
       {
@@ -30501,7 +30501,7 @@
           "floor": "1"
         },
         "images": [
-          "/images/306-home_city_''c''/u1_00.webp"
+          "/images/306-home_city-c/u1_00.webp"
         ]
       },
       {
@@ -30519,7 +30519,7 @@
           "floor": "2"
         },
         "images": [
-          "/images/306-home_city_''c''/u2_00.webp"
+          "/images/306-home_city-c/u2_00.webp"
         ]
       },
       {
@@ -30537,7 +30537,7 @@
           "floor": "2"
         },
         "images": [
-          "/images/306-home_city_''c''/u3_00.webp"
+          "/images/306-home_city-c/u3_00.webp"
         ]
       },
       {
@@ -30555,7 +30555,7 @@
           "floor": "3"
         },
         "images": [
-          "/images/306-home_city_''c''/u4_00.webp"
+          "/images/306-home_city-c/u4_00.webp"
         ]
       },
       {
@@ -30573,8 +30573,8 @@
           "floor": "3"
         },
         "images": [
-          "/images/306-home_city_''c''/u5_00.webp",
-          "/images/306-home_city_''c''/u5_01.webp"
+          "/images/306-home_city-c/u5_00.webp",
+          "/images/306-home_city-c/u5_01.webp"
         ]
       },
       {
@@ -30592,7 +30592,7 @@
           "floor": "3"
         },
         "images": [
-          "/images/306-home_city_''c''/u6_00.webp"
+          "/images/306-home_city-c/u6_00.webp"
         ]
       }
     ],

@@ -64,15 +64,58 @@ export default async function ListingPage({
   );
   const lowPrice = priceNumber(l.priceRange);
 
-  const jsonLd = {
+  const livingAreas = offers
+    .map((o) => {
+      const raw =
+        (o["living area"] as string | undefined) ??
+        (o.features?.living_area as string | undefined);
+      if (!raw) return null;
+      const n = Number((raw.match(/[\d.]+/) ?? [""])[0]);
+      return Number.isFinite(n) && n > 0 ? n : null;
+    })
+    .filter((n): n is number => n !== null);
+  const minLiving = livingAreas.length ? Math.min(...livingAreas) : null;
+  const maxLiving = livingAreas.length ? Math.max(...livingAreas) : null;
+  const bathrooms = Array.from(
+    new Set(
+      offers
+        .map((o) => Number(o.bathrooms ?? o.features?.bathrooms))
+        .filter((n) => Number.isFinite(n) && n > 0),
+    ),
+  );
+
+  const productJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Product",
+    "@type": ["Product", "Residence"],
     name: l.title,
     description: l.description,
+    url: `${SITE_URL}/listings/${l.slug}/`,
     image: (l.images ?? []).map((u) => `${SITE_URL}${u}`),
     brand: l.developer?.name
       ? { "@type": "Organization", name: l.developer.name }
       : undefined,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: l.regionCity,
+      addressRegion: l.regionCity,
+      addressCountry: "CY",
+      streetAddress: l.location ?? undefined,
+    },
+    geo:
+      Number.isFinite(l.lat) && Number.isFinite(l.lng)
+        ? { "@type": "GeoCoordinates", latitude: l.lat, longitude: l.lng }
+        : undefined,
+    numberOfBedroomsTotal: beds.length ? Math.max(...beds) : undefined,
+    numberOfBathroomsTotal: bathrooms.length ? Math.max(...bathrooms) : undefined,
+    floorSize:
+      minLiving && maxLiving
+        ? {
+            "@type": "QuantitativeValue",
+            minValue: minLiving,
+            maxValue: maxLiving,
+            unitCode: "MTK",
+          }
+        : undefined,
     offers: lowPrice
       ? {
           "@type": "Offer",
@@ -94,6 +137,23 @@ export default async function ListingPage({
     ],
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Map", item: `${SITE_URL}/` },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: l.regionCity,
+        item: `${SITE_URL}/regions/${l.regionCity.toLowerCase().replace(/\s+/g, "-")}/`,
+      },
+      { "@type": "ListItem", position: 3, name: l.title },
+    ],
+  };
+
+  const jsonLd = [productJsonLd, breadcrumbJsonLd];
+
   return (
     <main className="max-w-4xl mx-auto px-6 py-10">
       <script
@@ -102,7 +162,7 @@ export default async function ListingPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <nav className="text-xs text-slate-500 mb-6">
+      <nav className="text-xs text-slate-600 mb-6">
         <Link href="/" className="hover:text-slate-900">
           Map
         </Link>{" "}
@@ -128,20 +188,24 @@ export default async function ListingPage({
 
       {l.images && l.images.length > 0 ? (
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-2">
-          {l.images.slice(0, 6).map((src, i) => (
-            <img
-              // biome-ignore lint/performance/noImgElement: static export
-              key={src}
-              src={`${src}`}
-              alt={`${l.title} — view ${i + 1}`}
-              className={
-                i === 0
-                  ? "w-full rounded-lg col-span-1 md:col-span-2 aspect-[16/9] object-cover"
-                  : "w-full rounded-lg aspect-[4/3] object-cover"
-              }
-              loading={i === 0 ? "eager" : "lazy"}
-            />
-          ))}
+          {l.images.slice(0, 6).map((src, i) => {
+            const heroAlt = `${l.title} — ${beds.length ? `${Math.max(...beds)}-bedroom ` : ""}new-build in ${l.regionCity}, Cyprus`;
+            return (
+              <img
+                // biome-ignore lint/performance/noImgElement: static export
+                key={src}
+                src={src}
+                alt={i === 0 ? heroAlt : `${l.title} — interior view ${i}`}
+                className={
+                  i === 0
+                    ? "w-full rounded-lg col-span-1 md:col-span-2 aspect-[16/9] object-cover"
+                    : "w-full rounded-lg aspect-[4/3] object-cover"
+                }
+                loading={i === 0 ? "eager" : "lazy"}
+                fetchPriority={i === 0 ? "high" : undefined}
+              />
+            );
+          })}
         </div>
       ) : null}
 
@@ -160,7 +224,7 @@ export default async function ListingPage({
           <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
             {Object.entries(l.specs).map(([k, v]) => (
               <div key={k} className="flex justify-between border-b border-slate-100 py-1">
-                <dt className="text-slate-500">{k}</dt>
+                <dt className="text-slate-600">{k}</dt>
                 <dd className="text-slate-900 font-medium">{v}</dd>
               </div>
             ))}
@@ -174,7 +238,7 @@ export default async function ListingPage({
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="text-left border-b border-slate-200 text-xs uppercase tracking-wider text-slate-500">
+                <tr className="text-left border-b border-slate-200 text-xs uppercase tracking-wider text-slate-600">
                   <th className="py-2 pr-3">Unit</th>
                   <th className="py-2 pr-3">Beds</th>
                   <th className="py-2 pr-3">Baths</th>
@@ -224,7 +288,7 @@ export default async function ListingPage({
           <dl className="grid grid-cols-2 gap-x-6 gap-y-1 text-sm">
             {Object.entries(l.nearby).map(([k, v]) => (
               <div key={k} className="flex justify-between border-b border-slate-100 py-1">
-                <dt className="text-slate-500">{k}</dt>
+                <dt className="text-slate-600">{k}</dt>
                 <dd className="text-slate-900 font-medium">{v}</dd>
               </div>
             ))}
@@ -249,7 +313,7 @@ export default async function ListingPage({
         </section>
       ) : null}
 
-      <p className="mt-10 text-xs text-slate-500">
+      <p className="mt-10 text-xs text-slate-600">
         <Link href="/" className="underline hover:text-slate-900">
           ← Back to the map
         </Link>
