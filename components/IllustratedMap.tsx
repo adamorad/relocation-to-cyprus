@@ -19,9 +19,9 @@ type RegionLabel = {
 //   Larnaca   → below the church
 //   Ayia Napa → above the beach umbrella
 const LABELS: ReadonlyArray<RegionLabel> = [
-  { name: "Paphos", x: 33, y: 45 },
-  { name: "Limassol", x: 47, y: 30 },
-  { name: "Larnaca", x: 58, y: 70 },
+  { name: "Paphos", x: 33, y: 50 },
+  { name: "Limassol", x: 47, y: 42 },
+  { name: "Larnaca", x: 58, y: 56 },
   { name: "Ayia Napa", x: 77, y: 48 },
 ];
 
