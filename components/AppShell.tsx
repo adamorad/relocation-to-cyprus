@@ -122,10 +122,6 @@ export default function AppShell() {
               </>
             )}
           </div>
-          <div className="hidden md:block text-right text-xs text-slate-600 bg-white/90 rounded-xl p-3 border border-slate-200 shadow-md">
-            <p>Click a region to view listings</p>
-            <p className="mt-1">Click the sea to reset</p>
-          </div>
         </div>
       )}
 
