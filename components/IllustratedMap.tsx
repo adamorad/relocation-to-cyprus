@@ -14,10 +14,10 @@ type RegionLabel = {
 };
 
 const LABELS: ReadonlyArray<RegionLabel> = [
-  { name: "Paphos", x: 33, y: 50, dx: 0, dy: -15 },
-  { name: "Limassol", x: 47, y: 42, dx: 0, dy: 5 },
-  { name: "Larnaca", x: 58, y: 56, dx: -5, dy: 15 },
-  { name: "Ayia Napa", x: 77, y: 48, dx: -20, dy: 30 },
+  { name: "Paphos", x: 33, y: 50, dx: 0, dy: -25 },
+  { name: "Limassol", x: 47, y: 42, dx: 0, dy: 15 },
+  { name: "Larnaca", x: 58, y: 56, dx: 15, dy: 55 },
+  { name: "Ayia Napa", x: 77, y: 48, dx: -60, dy: 70 },
 ];
 
 type Props = {
