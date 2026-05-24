@@ -10,7 +10,16 @@ import {
   type EnrichedListing,
 } from "@/lib/listingsData";
 
-const COMING_SOON = ["Rentals", "Hotels", "Food", "Shopping", "More"] as const;
+type Section = { name: string; soon: boolean };
+
+const SECTIONS: ReadonlyArray<Section> = [
+  { name: "New Developments", soon: false },
+  { name: "Rentals", soon: true },
+  { name: "Hotels", soon: true },
+  { name: "Food", soon: true },
+  { name: "Shopping", soon: true },
+  { name: "More", soon: true },
+];
 
 function parsePriceEuros(s: string | null | undefined): number[] {
   if (!s) return [];
@@ -36,27 +45,41 @@ function formatEuros(n: number): string {
   return `€${Math.round(n / 1000)}k`;
 }
 
-function ComingSoonTiles() {
+function SectionTiles() {
   return (
     <div
-      className="absolute top-0 left-1/2 -translate-x-1/2 z-30 flex gap-1.5 md:gap-2 bg-white/95 backdrop-blur-sm border border-slate-200 border-t-0 rounded-b-xl shadow-md px-2 md:px-3 py-1.5 md:py-2"
-      aria-label="Coming soon to RealCy.app"
+      className="absolute top-0 left-1/2 -translate-x-1/2 z-30 flex gap-1 md:gap-1.5 bg-white/95 backdrop-blur-sm border border-slate-200 border-t-0 rounded-b-xl shadow-md px-1.5 md:px-2.5 py-1 md:py-1.5 max-w-[calc(100vw-0.75rem)] overflow-x-auto"
+      aria-label="RealCy.app sections"
     >
-      {COMING_SOON.map((name) => (
-        <div
-          key={name}
-          className="relative rounded-md bg-slate-50 border border-slate-100 px-2 md:px-2.5 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-slate-900 whitespace-nowrap"
-          title={`${name} — coming soon`}
-        >
-          {name}
-          <span
-            className="absolute -top-1.5 -right-1.5 text-[7px] md:text-[8px] uppercase tracking-wider font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded px-1 py-px leading-tight"
-            aria-label="Coming soon"
+      {SECTIONS.map((s) =>
+        s.soon ? (
+          <div
+            key={s.name}
+            className="relative rounded-md bg-slate-50 border border-slate-100 hidden sm:block px-1.5 md:px-2.5 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-slate-700 whitespace-nowrap"
+            title={`${s.name} — coming soon`}
           >
-            Soon
-          </span>
-        </div>
-      ))}
+            {s.name}
+            <span
+              className="absolute -top-1.5 -right-1.5 text-[7px] md:text-[8px] uppercase tracking-wider font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded px-1 py-px leading-tight"
+              aria-label="Coming soon"
+            >
+              Soon
+            </span>
+          </div>
+        ) : (
+          <div
+            key={s.name}
+            className="rounded-md bg-slate-900 px-2 md:px-3 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-white whitespace-nowrap"
+            aria-current="page"
+            title={`${s.name} — current section`}
+          >
+            {s.name}
+          </div>
+        ),
+      )}
+      <span className="sm:hidden text-[9px] uppercase tracking-wider font-semibold text-slate-500 self-center pr-1">
+        + 5 soon
+      </span>
     </div>
   );
 }
@@ -95,11 +118,16 @@ export default function AppShell() {
   return (
     <main
       id="main"
-      className="relative md:h-screen w-full md:overflow-hidden bg-stone-50 text-slate-900"
+      className="relative md:h-screen w-full md:overflow-hidden bg-[#35cdc4] text-slate-900"
     >
-      <ComingSoonTiles />
+      <SectionTiles />
 
-      <div className="relative w-full aspect-[16/9] md:absolute md:inset-0 md:aspect-auto">
+      {/* The map is always rendered at the illustration's native aspect
+        (1672:941 ≈ 16:9). On wider/taller viewports the surrounding area
+        keeps the sea-teal so the page reads as a continuous illustration —
+        and labels positioned at % of this container always land on the
+        correct image pixel regardless of viewport. */}
+      <div className="relative w-full aspect-[1672/941] md:absolute md:inset-0 md:m-auto md:max-h-screen md:max-w-[177.78vh]">
         <IllustratedMap
           selectedRegion={selectedRegion}
           onSelectRegion={(c) => {
