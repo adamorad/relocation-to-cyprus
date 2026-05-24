@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import FoodPanel from "./FoodPanel";
 import IllustratedMap from "./IllustratedMap";
 import ListingPanel from "./ListingPanel";
 import RegionListingsPanel from "./RegionListingsPanel";
@@ -11,15 +12,20 @@ import {
   type EnrichedListing,
 } from "@/lib/listingsData";
 
-type Section = { name: string; soon: boolean };
+type Section = {
+  name: string;
+  /** `current` = the page the user is already on (the map). `available` =
+   * real section that opens in a popup. `soon` = placeholder. */
+  kind: "current" | "available" | "soon";
+};
 
 const SECTIONS: ReadonlyArray<Section> = [
-  { name: "New Developments", soon: false },
-  { name: "Rentals", soon: true },
-  { name: "Hotels", soon: true },
-  { name: "Food", soon: true },
-  { name: "Shopping", soon: true },
-  { name: "More", soon: true },
+  { name: "New Developments", kind: "current" },
+  { name: "Rentals", kind: "soon" },
+  { name: "Hotels", kind: "soon" },
+  { name: "Food", kind: "available" },
+  { name: "Shopping", kind: "soon" },
+  { name: "More", kind: "soon" },
 ];
 
 function parsePriceEuros(s: string | null | undefined): number[] {
@@ -46,28 +52,55 @@ function formatEuros(n: number): string {
   return `€${Math.round(n / 1000)}k`;
 }
 
-function SectionTiles() {
+function SectionTiles({
+  onOpenFood,
+  foodOpen,
+}: {
+  onOpenFood: () => void;
+  foodOpen: boolean;
+}) {
   return (
     <div
       className="absolute top-0 left-1/2 -translate-x-1/2 z-30 flex gap-1 md:gap-1.5 bg-white/95 backdrop-blur-sm border border-slate-200 border-t-0 rounded-b-xl shadow-md px-1.5 md:px-2.5 py-1 md:py-1.5 max-w-[calc(100vw-0.75rem)] overflow-x-auto"
       aria-label="RealCy.app sections"
     >
-      {SECTIONS.map((s) =>
-        s.soon ? (
-          <div
-            key={s.name}
-            className="relative rounded-md bg-slate-50 border border-slate-100 hidden sm:block px-1.5 md:px-2.5 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-slate-700 whitespace-nowrap"
-            title={`${s.name} — coming soon`}
-          >
-            {s.name}
-            <span
-              className="absolute -top-1.5 -right-1.5 text-[7px] md:text-[8px] uppercase tracking-wider font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded px-1 py-px leading-tight"
-              aria-label="Coming soon"
+      {SECTIONS.map((s) => {
+        if (s.kind === "soon") {
+          return (
+            <div
+              key={s.name}
+              className="relative rounded-md bg-slate-50 border border-slate-100 hidden sm:block px-1.5 md:px-2.5 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-slate-700 whitespace-nowrap"
+              title={`${s.name} — coming soon`}
             >
-              Soon
-            </span>
-          </div>
-        ) : (
+              {s.name}
+              <span
+                className="absolute -top-1.5 -right-1.5 text-[7px] md:text-[8px] uppercase tracking-wider font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded px-1 py-px leading-tight"
+                aria-label="Coming soon"
+              >
+                Soon
+              </span>
+            </div>
+          );
+        }
+        if (s.kind === "available") {
+          // Real section, opens in a popup. Same dark style as the current
+          // page so it reads as a peer of `New Developments`.
+          return (
+            <button
+              key={s.name}
+              type="button"
+              onClick={onOpenFood}
+              aria-haspopup="dialog"
+              aria-expanded={foodOpen}
+              className="rounded-md bg-slate-900 hover:bg-slate-700 px-2 md:px-3 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-white whitespace-nowrap transition-colors cursor-pointer"
+              title={`${s.name} — click to open`}
+            >
+              {s.name}
+            </button>
+          );
+        }
+        // current page
+        return (
           <div
             key={s.name}
             className="rounded-md bg-slate-900 px-2 md:px-3 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-white whitespace-nowrap"
@@ -76,10 +109,10 @@ function SectionTiles() {
           >
             {s.name}
           </div>
-        ),
-      )}
+        );
+      })}
       <span className="sm:hidden text-[9px] uppercase tracking-wider font-semibold text-slate-500 self-center pr-1">
-        + 5 soon
+        + 4 soon
       </span>
     </div>
   );
@@ -92,6 +125,7 @@ export default function AppShell() {
   const [selectedListing, setSelectedListing] = useState<EnrichedListing | null>(
     null,
   );
+  const [foodOpen, setFoodOpen] = useState(false);
   useEffect(() => {
     if (selectedRegion === null) {
       setModalRegion(null);
@@ -121,7 +155,13 @@ export default function AppShell() {
       id="main"
       className="relative md:h-screen w-full md:overflow-hidden bg-[#35cdc4] text-slate-900"
     >
-      <SectionTiles />
+      <SectionTiles
+        foodOpen={foodOpen}
+        onOpenFood={() => {
+          setFoodOpen(true);
+          trackEvent("food_section_open");
+        }}
+      />
 
       {/* The map is always rendered at the illustration's native aspect
         (1672:941 ≈ 16:9). On wider/taller viewports the surrounding area
@@ -217,6 +257,14 @@ export default function AppShell() {
       <ListingPanel
         listing={selectedListing}
         onClose={() => setSelectedListing(null)}
+      />
+
+      <FoodPanel
+        open={foodOpen}
+        onClose={() => {
+          setFoodOpen(false);
+          trackEvent("food_section_close");
+        }}
       />
     </main>
   );
