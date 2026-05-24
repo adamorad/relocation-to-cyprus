@@ -180,13 +180,13 @@ export default function IllustratedMap({
                 isActive
                   ? "bg-slate-900 text-white border-slate-900 scale-110"
                   : "bg-white/95 hover:bg-white text-slate-900 border-slate-200 hover:scale-110 hover:shadow-xl"
-              } ${isDev ? (isDragging ? "cursor-grabbing ring-2 ring-amber-400" : "cursor-grab") : ""} font-bold gap-[clamp(3px,0.6cqi,8px)] px-[clamp(4px,1.4cqi,16px)] py-[clamp(1px,0.5cqi,7px)] text-[clamp(8px,1.6cqi,18px)]`}
+              } ${isDev ? (isDragging ? "cursor-grabbing ring-2 ring-amber-400" : "cursor-grab") : ""} font-bold gap-[clamp(2px,0.48cqi,6px)] px-[clamp(3px,1.12cqi,13px)] py-[clamp(1px,0.4cqi,6px)] text-[clamp(7px,1.28cqi,15px)]`}
               style={{ left: `${r.x}%`, top: `${r.y}%` }}
               aria-label={`View ${r.name} listings (${counts[r.name] ?? 0})`}
             >
               <span>{r.name}</span>
               <span
-                className={`hidden @[32rem]:inline font-semibold text-[clamp(7px,1.2cqi,15px)] ${
+                className={`hidden @[32rem]:inline font-semibold text-[clamp(6px,0.96cqi,12px)] ${
                   isActive ? "text-amber-300" : "text-slate-600"
                 }`}
               >
