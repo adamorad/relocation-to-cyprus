@@ -20,14 +20,14 @@ type RegionLabel = {
 // Zigzag y values (down/up/down/up) prevent adjacent label overlap on the
 // small mobile map without forcing the labels onto landmarks.
 const LABELS: ReadonlyArray<RegionLabel> = [
-  // Paphos — mid-red region, right of sun, above the temple/ruins.
-  { name: "Paphos", x: 33, y: 53 },
+  // Paphos — well left of the sun, above the temple/ruins.
+  { name: "Paphos", x: 28, y: 50 },
   // Limassol — above the marina tower (high in the region).
   { name: "Limassol", x: 47, y: 45 },
-  // Larnaca — between the church and the umbrella (low in the region).
-  { name: "Larnaca", x: 60, y: 54 },
-  // Ayia Napa — top of purple region, above the lighthouse (high).
-  { name: "Ayia Napa", x: 75, y: 46 },
+  // Larnaca — above the church spire, left side of the teal region.
+  { name: "Larnaca", x: 57, y: 50 },
+  // Ayia Napa — centre of purple region, clear of the lighthouse.
+  { name: "Ayia Napa", x: 76, y: 47 },
 ];
 
 type Props = {
@@ -50,7 +50,7 @@ export default function IllustratedMap({
   }, []);
 
   return (
-    <div className="absolute inset-0 grid place-items-center bg-[#3fc1bd] overflow-hidden">
+    <div className="absolute inset-0 grid place-items-center bg-[#35cdc4] overflow-hidden">
       {/* Background click resets the selection. */}
       <button
         type="button"

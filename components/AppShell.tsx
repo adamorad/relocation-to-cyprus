@@ -118,7 +118,7 @@ export default function AppShell() {
   return (
     <main
       id="main"
-      className="relative md:h-screen w-full md:overflow-hidden bg-[#3fc1bd] text-slate-900"
+      className="relative md:h-screen w-full md:overflow-hidden bg-[#35cdc4] text-slate-900"
     >
       <SectionTiles />
 
