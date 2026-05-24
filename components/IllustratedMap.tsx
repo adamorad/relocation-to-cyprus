@@ -5,19 +5,21 @@ import { LISTINGS_BY_REGION } from "@/lib/listingsData";
 
 type RegionLabel = {
   name: string;
-  /** Centre of the region as % of the underlying image (1672×941). */
+  /**
+   * Centre of the label as % of the underlying image (1672×941, 16:9).
+   * Tuned per region so labels sit in empty illustrated space (between the
+   * region's painted props), not on top of buildings/landmarks.
+   * Pure percentages — no pixel offsets — so they scale at any viewport.
+   */
   x: number;
   y: number;
-  /** Desktop-only pixel nudge applied on top of the percentage anchor. */
-  dx?: number;
-  dy?: number;
 };
 
 const LABELS: ReadonlyArray<RegionLabel> = [
-  { name: "Paphos", x: 33, y: 50, dx: 0, dy: -25 },
-  { name: "Limassol", x: 47, y: 42, dx: 0, dy: 15 },
-  { name: "Larnaca", x: 58, y: 56, dx: 15, dy: 55 },
-  { name: "Ayia Napa", x: 77, y: 48, dx: -60, dy: 70 },
+  { name: "Paphos", x: 33.2, y: 47 },
+  { name: "Limassol", x: 46.1, y: 44.8 },
+  { name: "Larnaca", x: 56, y: 63.7 },
+  { name: "Ayia Napa", x: 69.3, y: 59 },
 ];
 
 type Props = {
@@ -40,7 +42,7 @@ export default function IllustratedMap({
   }, []);
 
   return (
-    <div className="absolute inset-0 grid place-items-center bg-[#3fc1bd] overflow-hidden">
+    <div className="absolute inset-0 grid place-items-center bg-[#35cdc4] overflow-hidden">
       {/* Background click resets the selection. */}
       <button
         type="button"
@@ -49,7 +51,7 @@ export default function IllustratedMap({
         className="absolute inset-0 cursor-default"
       />
 
-      <div className="relative pointer-events-none w-full h-full">
+      <div className="relative pointer-events-none w-full h-full @container">
         <picture>
           <source srcSet="/cyprus-illustrated.webp" type="image/webp" />
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -78,24 +80,17 @@ export default function IllustratedMap({
               onMouseLeave={() => onHoverRegion(null)}
               onFocus={() => onHoverRegion(r.name)}
               onBlur={() => onHoverRegion(null)}
-              className={`pointer-events-auto absolute -translate-x-1/2 -translate-y-1/2 md:translate-x-[calc(-50%+var(--ldx))] md:translate-y-[calc(-50%+var(--ldy))] rounded-full border shadow-lg transition-all backdrop-blur-sm flex items-center gap-1.5 md:gap-2 whitespace-nowrap ${
+              className={`pointer-events-auto absolute -translate-x-1/2 -translate-y-1/2 rounded-full border shadow transition-all backdrop-blur-sm flex items-center whitespace-nowrap ${
                 isActive
                   ? "bg-slate-900 text-white border-slate-900 scale-110"
                   : "bg-white/95 hover:bg-white text-slate-900 border-slate-200 hover:scale-110 hover:shadow-xl"
-              } px-2.5 py-1 md:px-3.5 md:py-1.5 text-xs md:text-sm font-bold`}
-              style={
-                {
-                  left: `${r.x}%`,
-                  top: `${r.y}%`,
-                  "--ldx": `${r.dx ?? 0}px`,
-                  "--ldy": `${r.dy ?? 0}px`,
-                } as React.CSSProperties
-              }
+              } font-bold gap-[clamp(2px,0.48cqi,6px)] px-[clamp(3px,1.12cqi,13px)] py-[clamp(1px,0.4cqi,6px)] text-[clamp(7px,1.28cqi,15px)]`}
+              style={{ left: `${r.x}%`, top: `${r.y}%` }}
               aria-label={`View ${r.name} listings (${counts[r.name] ?? 0})`}
             >
               <span>{r.name}</span>
               <span
-                className={`text-[10px] md:text-xs font-semibold ${
+                className={`hidden @[32rem]:inline font-semibold text-[clamp(6px,0.96cqi,12px)] ${
                   isActive ? "text-amber-300" : "text-slate-600"
                 }`}
               >
