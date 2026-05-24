@@ -55,7 +55,7 @@ function SectionTiles() {
         s.soon ? (
           <div
             key={s.name}
-            className="relative rounded-md bg-slate-50 border border-slate-100 px-1.5 md:px-2.5 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-slate-700 whitespace-nowrap"
+            className="relative rounded-md bg-slate-50 border border-slate-100 hidden sm:block px-1.5 md:px-2.5 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-slate-700 whitespace-nowrap"
             title={`${s.name} — coming soon`}
           >
             {s.name}
@@ -77,6 +77,9 @@ function SectionTiles() {
           </div>
         ),
       )}
+      <span className="sm:hidden text-[9px] uppercase tracking-wider font-semibold text-slate-500 self-center pr-1">
+        + 5 soon
+      </span>
     </div>
   );
 }
@@ -115,11 +118,16 @@ export default function AppShell() {
   return (
     <main
       id="main"
-      className="relative md:h-screen w-full md:overflow-hidden bg-stone-50 text-slate-900"
+      className="relative md:h-screen w-full md:overflow-hidden bg-[#3fc1bd] text-slate-900"
     >
       <SectionTiles />
 
-      <div className="relative w-full aspect-[16/9] md:absolute md:inset-0 md:aspect-auto">
+      {/* The map is always rendered at the illustration's native aspect
+        (1672:941 ≈ 16:9). On wider/taller viewports the surrounding area
+        keeps the sea-teal so the page reads as a continuous illustration —
+        and labels positioned at % of this container always land on the
+        correct image pixel regardless of viewport. */}
+      <div className="relative w-full aspect-[1672/941] md:absolute md:inset-0 md:m-auto md:max-h-screen md:max-w-[177.78vh]">
         <IllustratedMap
           selectedRegion={selectedRegion}
           onSelectRegion={(c) => {
