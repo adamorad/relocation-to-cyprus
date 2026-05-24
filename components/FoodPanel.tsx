@@ -26,6 +26,22 @@ function priceBand(p: 1 | 2 | 3 | 4): string {
   return "€".repeat(p);
 }
 
+/**
+ * Google Maps deep-link that searches for the place. Works on mobile (opens
+ * the Maps app) and desktop (opens maps.google.com), and avoids hard-coding
+ * fragile place-specific URLs per restaurant.
+ */
+function googleMapsUrl(
+  name: string,
+  city: string,
+  neighbourhood?: string,
+): string {
+  const q = neighbourhood
+    ? `${name} ${neighbourhood} ${city} Cyprus`
+    : `${name} ${city} Cyprus`;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+}
+
 function CityChip({
   city,
   selected,
@@ -281,22 +297,42 @@ export default function FoodPanel({ open, onClose }: Props) {
                                 <p className="mt-1 text-slate-700 leading-relaxed">
                                   {p.why}
                                 </p>
-                                {p.instagram ? (
+                                <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] font-semibold">
                                   <a
-                                    href={`https://www.instagram.com/${p.instagram}/`}
+                                    href={googleMapsUrl(
+                                      p.name,
+                                      city,
+                                      p.neighbourhood,
+                                    )}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     onClick={() =>
-                                      trackEvent("food_place_instagram_click", {
+                                      trackEvent("food_place_maps_click", {
                                         place: p.name,
                                         city,
                                       })
                                     }
-                                    className="mt-1 inline-block text-[10px] font-semibold text-amber-700 hover:text-amber-900"
+                                    className="text-slate-700 hover:text-slate-900"
                                   >
-                                    @{p.instagram} ↗
+                                    📍 Maps
                                   </a>
-                                ) : null}
+                                  {p.instagram ? (
+                                    <a
+                                      href={`https://www.instagram.com/${p.instagram}/`}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      onClick={() =>
+                                        trackEvent(
+                                          "food_place_instagram_click",
+                                          { place: p.name, city },
+                                        )
+                                      }
+                                      className="text-amber-700 hover:text-amber-900"
+                                    >
+                                      @{p.instagram} ↗
+                                    </a>
+                                  ) : null}
+                                </div>
                               </li>
                             ))}
                           </ul>
