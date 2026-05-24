@@ -1,9 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
+import Script from "next/script";
 import { REGIONS } from "@/lib/regions";
 import { GUIDES } from "@/lib/guides";
 import { LISTINGS_BY_REGION } from "@/lib/listingsData";
 import "./globals.css";
+
+// Google Analytics 4 — measurement ID. Set via NEXT_PUBLIC_GA_ID at build
+// time so we can swap it without code changes; falls back to "" which
+// silently no-ops the tag.
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -194,6 +200,20 @@ export default function RootLayout({
         </a>
         {children}
         <SiteFooter />
+        {GA_ID ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_ID}', { anonymize_ip: true });`}
+            </Script>
+          </>
+        ) : null}
       </body>
     </html>
   );
