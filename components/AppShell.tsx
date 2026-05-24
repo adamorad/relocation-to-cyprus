@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import IllustratedMap from "./IllustratedMap";
 import ListingPanel from "./ListingPanel";
 import RegionListingsPanel from "./RegionListingsPanel";
+import { trackEvent } from "@/lib/analytics";
 import {
   LISTINGS,
   LISTINGS_BY_REGION,
@@ -132,7 +133,15 @@ export default function AppShell() {
           selectedRegion={selectedRegion}
           onSelectRegion={(c) => {
             setSelectedRegion(c);
-            if (!c) setSelectedListing(null);
+            if (c) {
+              trackEvent("region_select", {
+                region: c,
+                listings_in_region: LISTINGS_BY_REGION[c]?.length ?? 0,
+              });
+            } else {
+              trackEvent("map_reset");
+              setSelectedListing(null);
+            }
           }}
           onHoverRegion={setHoveredRegion}
         />
@@ -193,7 +202,16 @@ export default function AppShell() {
           setModalRegion(null);
           setSelectedListing(null);
         }}
-        onPick={setSelectedListing}
+        onPick={(listing) => {
+          setSelectedListing(listing);
+          trackEvent("listing_open", {
+            slug: listing.slug,
+            region: listing.regionCity ?? modalRegion ?? "unknown",
+            title: listing.title,
+            has_price: Boolean(listing.priceRange),
+            has_developer: Boolean(listing.developer?.name),
+          });
+        }}
       />
 
       <ListingPanel
