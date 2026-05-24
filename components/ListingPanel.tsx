@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { trackEvent } from "@/lib/analytics";
 import type { EnrichedListing, ImageGallery } from "@/lib/listingsData";
 
 type Props = {
@@ -48,8 +49,10 @@ function ListingPanelBody({
   const [lightboxState, setLightboxState] = useState<
     { images: string[]; index: number } | null
   >(null);
-  const openLightbox = (images: string[], index: number) =>
+  const openLightbox = (images: string[], index: number) => {
     setLightboxState({ images, index });
+    trackEvent("gallery_open", { slug: listing.slug, image_index: index });
+  };
 
   return (
     <div>
@@ -210,6 +213,12 @@ function ActionButtons({ listing }: { listing: EnrichedListing }) {
           href={devSearchUrl}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() =>
+            trackEvent("developer_click", {
+              slug: listing.slug,
+              developer: listing.developer?.name,
+            })
+          }
           className="flex-1 min-w-[160px] text-center text-sm font-semibold bg-slate-900 hover:bg-slate-700 text-white py-2 rounded-md transition-colors"
         >
           Find developer ↗
@@ -220,6 +229,9 @@ function ActionButtons({ listing }: { listing: EnrichedListing }) {
           href={brochure}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() =>
+            trackEvent("brochure_click", { slug: listing.slug })
+          }
           className="px-3 py-2 text-sm font-semibold border border-slate-300 text-slate-700 hover:bg-slate-100 rounded-md"
         >
           📄 Brochure
@@ -228,6 +240,7 @@ function ActionButtons({ listing }: { listing: EnrichedListing }) {
       {phones.length > 0 ? (
         <a
           href={`tel:${phones[0]}`}
+          onClick={() => trackEvent("phone_click", { slug: listing.slug })}
           className="px-3 py-2 text-sm font-semibold bg-emerald-500 hover:bg-emerald-600 text-white rounded-md"
         >
           ☎ {phones[0]}
