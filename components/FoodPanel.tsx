@@ -8,6 +8,7 @@ import {
   CYPRIOT_FOODS,
   FOOD_CREATORS,
   FOOD_EVENTS,
+  FOOD_IMAGE_CREDITS,
   LIFESTYLE_CREATORS,
   NAME_GUIDE,
   PITA_COMPARISON,
@@ -160,24 +161,37 @@ export default function FoodPanel({ open, onClose }: Props) {
               ].map((p) => (
                 <div
                   key={p.name}
-                  className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-xs"
+                  className="rounded-lg border border-slate-200 bg-slate-50 overflow-hidden text-xs"
                 >
-                  <p className="font-bold text-sm text-slate-900">{p.name}</p>
-                  <p className="mt-1.5 text-slate-700 leading-relaxed">
-                    {p.description}
-                  </p>
-                  <p className="mt-2 text-slate-600">
-                    <span className="font-semibold text-slate-700">
-                      Texture.{" "}
-                    </span>
-                    {p.texture}
-                  </p>
-                  <p className="mt-1 text-slate-600">
-                    <span className="font-semibold text-slate-700">
-                      Used for.{" "}
-                    </span>
-                    {p.uses}
-                  </p>
+                  {p.image ? (
+                    // biome-ignore lint/performance/noImgElement: static export
+                    <img
+                      src={p.image}
+                      alt={p.imageAlt ?? p.name}
+                      width={800}
+                      height={500}
+                      loading="lazy"
+                      className="w-full h-32 object-cover"
+                    />
+                  ) : null}
+                  <div className="p-3">
+                    <p className="font-bold text-sm text-slate-900">{p.name}</p>
+                    <p className="mt-1.5 text-slate-700 leading-relaxed">
+                      {p.description}
+                    </p>
+                    <p className="mt-2 text-slate-600">
+                      <span className="font-semibold text-slate-700">
+                        Texture.{" "}
+                      </span>
+                      {p.texture}
+                    </p>
+                    <p className="mt-1 text-slate-600">
+                      <span className="font-semibold text-slate-700">
+                        Used for.{" "}
+                      </span>
+                      {p.uses}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -226,12 +240,25 @@ export default function FoodPanel({ open, onClose }: Props) {
               {CYPRIOT_FOODS.map((f) => (
                 <div
                   key={f.name}
-                  className="rounded-lg border border-slate-200 bg-white p-3 text-xs"
+                  className="rounded-lg border border-slate-200 bg-white overflow-hidden text-xs flex flex-row"
                 >
-                  <p className="font-bold text-sm text-slate-900">{f.name}</p>
-                  <p className="mt-1.5 text-slate-700 leading-relaxed">
-                    {f.description}
-                  </p>
+                  {f.image ? (
+                    // biome-ignore lint/performance/noImgElement: static export
+                    <img
+                      src={f.image}
+                      alt={f.imageAlt ?? f.name}
+                      width={800}
+                      height={600}
+                      loading="lazy"
+                      className="w-28 sm:w-32 h-auto object-cover flex-shrink-0"
+                    />
+                  ) : null}
+                  <div className="p-3 min-w-0">
+                    <p className="font-bold text-sm text-slate-900">{f.name}</p>
+                    <p className="mt-1 text-slate-700 leading-relaxed">
+                      {f.description}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -507,6 +534,34 @@ export default function FoodPanel({ open, onClose }: Props) {
                 </tbody>
               </table>
             </div>
+          </section>
+
+          {/* IMAGE CREDITS — required by the CC licenses of the source files. */}
+          <section className="pt-4 border-t border-slate-200">
+            <p className="text-[9px] uppercase tracking-wider text-slate-500 font-semibold mb-1">
+              Image credits
+            </p>
+            <p className="text-[10px] text-slate-500 leading-relaxed">
+              Food photos from Wikimedia Commons, used under their respective
+              Creative Commons licenses.{" "}
+              {FOOD_IMAGE_CREDITS.map((c, i) => (
+                <span key={c.image}>
+                  <a
+                    href={c.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-slate-700 underline-offset-2 hover:underline"
+                  >
+                    {c.image.replace(".webp", "")}
+                  </a>
+                  <span className="text-slate-400">
+                    {" "}
+                    — {c.credit} ({c.license})
+                  </span>
+                  {i < FOOD_IMAGE_CREDITS.length - 1 ? " · " : ""}
+                </span>
+              ))}
+            </p>
           </section>
         </div>
       </aside>

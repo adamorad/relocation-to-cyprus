@@ -59,7 +59,72 @@ export type PitaInfo = {
   description: string;
   texture: string;
   uses: string;
+  /** Path under /public — root-relative URL like /images/food/greek-pita.webp */
+  image?: string;
+  imageAlt?: string;
 };
+
+/**
+ * Image credits — Wikimedia Commons sources, all CC-licensed and re-used
+ * with credit. Rendered as a small footer note in FoodPanel.
+ */
+export type ImageCredit = {
+  image: string;
+  credit: string;
+  license: string;
+  url: string;
+};
+
+export const FOOD_IMAGE_CREDITS: ReadonlyArray<ImageCredit> = [
+  {
+    image: "greek-pita.webp",
+    credit: "fugzu",
+    license: "CC BY 2.0",
+    url: "https://commons.wikimedia.org/wiki/File:Pita_Flatbread.jpg",
+  },
+  {
+    image: "cypriot-pita.webp",
+    credit: "Kolforn",
+    license: "CC BY-SA 4.0",
+    url: "https://commons.wikimedia.org/wiki/File:2017-04-17_Souvlaki,_Cypriot_salad_and_Pitta_Bread,_Trimingham.JPG",
+  },
+  {
+    image: "israeli-pita.webp",
+    credit: "Ajale",
+    license: "CC0",
+    url: "https://commons.wikimedia.org/wiki/File:Arabic_Bread_Pita.jpg",
+  },
+  {
+    image: "halloumi.webp",
+    credit: "Hmioannou",
+    license: "CC BY 3.0",
+    url: "https://commons.wikimedia.org/wiki/File:Grilled_Halloumi.jpg",
+  },
+  {
+    image: "sheftalia.webp",
+    credit: "Georgios LCA",
+    license: "CC BY-SA 4.0",
+    url: "https://commons.wikimedia.org/wiki/File:Sheftalies.jpg",
+  },
+  {
+    image: "koupes.webp",
+    credit: "George M. Groutas",
+    license: "CC BY 2.0",
+    url: "https://commons.wikimedia.org/wiki/File:Koupes_%C3%A0_Limassol.jpg",
+  },
+  {
+    image: "loukoumades.webp",
+    credit: "avlxyz",
+    license: "CC BY-SA 2.0",
+    url: "https://commons.wikimedia.org/wiki/File:Loukoumades.jpg",
+  },
+  {
+    image: "kleftiko.webp",
+    credit: "Lord Mountbatten",
+    license: "CC BY-SA 3.0",
+    url: "https://commons.wikimedia.org/wiki/File:Kleftiko.JPG",
+  },
+];
 
 export const PITA_COMPARISON: {
   greek: PitaInfo;
@@ -72,6 +137,8 @@ export const PITA_COMPARISON: {
       "Pillowy flatbread, no pocket. Around 8–10 mm thick. Wrapped around the meat rather than stuffed into it. The topping side gets oiled and finished on a plancha so it picks up a little colour before serving.",
     texture: "Soft, slightly chewy, mildly sweet from a touch of yeast.",
     uses: "Wrapping souvlaki and gyros. Sometimes torn and used to mop tzatziki.",
+    image: "/images/food/greek-pita.webp",
+    imageAlt: "Greek pita flatbread, pillowy and unpocketed",
   },
   cypriot: {
     name: "Cypriot pita",
@@ -79,6 +146,8 @@ export const PITA_COMPARISON: {
       "Pocket bread — smaller, drier, with a hollow interior designed to be slit open and stuffed. Closer to a Lebanese/Levantine pita than to a Greek one. Sold in supermarkets as 'arabikies' alongside the round Greek ones.",
     texture: "Drier than Greek pita, slightly crisp at the edges, holds shape when filled.",
     uses: "The standard vehicle for souvlaki and sheftalia in Cyprus. Also stuffed at home for cold lunches.",
+    image: "/images/food/cypriot-pita.webp",
+    imageAlt: "Cypriot pita bread served with souvlaki and salad",
   },
   israeli: {
     name: "Israeli pita",
@@ -86,6 +155,8 @@ export const PITA_COMPARISON: {
       "Closest cousin to Cypriot pita — pocket bread, slightly larger, sometimes wholewheat. Included as a reference point for Israeli readers: if you know Israeli pita, you basically know Cypriot pita.",
     texture: "Similar to Cypriot; slightly softer crumb in the wholewheat version.",
     uses: "Falafel, sabich, schwarma. Doesn't appear on Cypriot menus but you'll find it in the larger supermarkets.",
+    image: "/images/food/israeli-pita.webp",
+    imageAlt: "Levantine pita pocket bread",
   },
 };
 
@@ -182,6 +253,8 @@ export const PRICE_TABLE: ReadonlyArray<PriceRow> = [
 export type CypriotFood = {
   name: string;
   description: string;
+  image?: string;
+  imageAlt?: string;
 };
 
 export const CYPRIOT_FOODS: ReadonlyArray<CypriotFood> = [
@@ -189,26 +262,36 @@ export const CYPRIOT_FOODS: ReadonlyArray<CypriotFood> = [
     name: "Halloumi",
     description:
       "The famous one. PDO-protected since 2021, traditionally made from a mix of sheep and goat milk (look for 'παραδοσιακό' / 'traditional' on the label — the supermarket cow-milk version is a different product). Squeaky when cooked, holds its shape on a grill, brined to keep. Eaten grilled in salads, fried in halloumi-bread, melted onto pasta, or sliced cold for breakfast.",
+    image: "/images/food/halloumi.webp",
+    imageAlt: "Slices of grilled halloumi with griddle marks",
   },
   {
     name: "Sheftalia",
     description:
       "Already in the naming guide above, but worth repeating: hand-rolled minced pork (often with parsley, onion, cinnamon) wrapped in caul fat and charcoal-grilled. The caul fat melts as it cooks, basting the meat from inside out. Loose-textured, smoky, herbal. Best eaten freshly off the grill at a roadside ψησταριά.",
+    image: "/images/food/sheftalia.webp",
+    imageAlt: "Sheftalia — Cypriot caul-wrapped minced-meat sausages",
   },
   {
     name: "Koupes",
     description:
       "Bulgur-shell torpedoes stuffed with spiced minced meat (or, in the Lent version, with sautéed mushroom and onion). Deep-fried. Cypriot answer to Lebanese kibbeh, slightly smaller and with more cracked wheat. Sold by the piece in bakeries from 8am onward; locals eat them as a mid-morning snack with lemon.",
+    image: "/images/food/koupes.webp",
+    imageAlt: "Koupes — Cypriot bulgur-shell torpedoes stuffed with spiced meat",
   },
   {
     name: "Loukoumades",
     description:
       "Small fried-dough balls, crisp outside, custardy inside, soaked in honey syrup and sprinkled with cinnamon (and increasingly chocolate, pistachio, lotus, etc.). Cyprus has a strong loukoumades tradition — every city has at least one dedicated specialist who fries them to order. Eat them while they're still hot; they don't keep.",
+    image: "/images/food/loukoumades.webp",
+    imageAlt: "Loukoumades — fried dough balls soaked in honey syrup",
   },
   {
     name: "Kleftiko",
     description:
       "Slow-cooked lamb (sometimes goat), traditionally baked overnight in a wood-fired clay oven sealed shut so the meat steams in its own juices. The name comes from κλέφτης (thief) — the dish supposedly originated with Greek bandits who'd cook stolen lamb underground without smoke. Tender to falling-apart, lemon-and-oregano forward. Order in advance at proper Cypriot tavernas; the good ones still seal the oven door with bread dough.",
+    image: "/images/food/kleftiko.webp",
+    imageAlt: "Kleftiko — slow-cooked lamb on the bone",
   },
 ];
 
