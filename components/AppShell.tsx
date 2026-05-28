@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import FoodPanel from "./FoodPanel";
+import HotelsPanel from "./HotelsPanel";
 import ShoppingPanel from "./ShoppingPanel";
 import IllustratedMap from "./IllustratedMap";
 import ListingPanel from "./ListingPanel";
@@ -23,7 +24,7 @@ type Section = {
 const SECTIONS: ReadonlyArray<Section> = [
   { name: "New Developments", kind: "current" },
   { name: "Rentals", kind: "soon" },
-  { name: "Hotels", kind: "soon" },
+  { name: "Hotels", kind: "available" },
   { name: "Food", kind: "available" },
   { name: "Shopping", kind: "available" },
   { name: "More", kind: "soon" },
@@ -58,12 +59,27 @@ function SectionTiles({
   foodOpen,
   onOpenShopping,
   shoppingOpen,
+  onOpenHotels,
+  hotelsOpen,
 }: {
   onOpenFood: () => void;
   foodOpen: boolean;
   onOpenShopping: () => void;
   shoppingOpen: boolean;
+  onOpenHotels: () => void;
+  hotelsOpen: boolean;
 }) {
+  const handlers: Record<string, () => void> = {
+    Food: onOpenFood,
+    Shopping: onOpenShopping,
+    Hotels: onOpenHotels,
+  };
+  const expanded: Record<string, boolean> = {
+    Food: foodOpen,
+    Shopping: shoppingOpen,
+    Hotels: hotelsOpen,
+  };
+
   return (
     <div
       className="absolute top-0 left-1/2 -translate-x-1/2 z-30 flex gap-1 md:gap-1.5 bg-white/95 backdrop-blur-sm border border-slate-200 border-t-0 rounded-b-xl shadow-md px-1.5 md:px-2.5 py-1 md:py-1.5 max-w-[calc(100vw-0.75rem)] overflow-x-auto"
@@ -88,16 +104,13 @@ function SectionTiles({
           );
         }
         if (s.kind === "available") {
-          // Real section, opens in a popup. Same dark style as the current
-          // page so it reads as a peer of `New Developments`.
-          const isFood = s.name === "Food";
           return (
             <button
               key={s.name}
               type="button"
-              onClick={isFood ? onOpenFood : onOpenShopping}
+              onClick={handlers[s.name]}
               aria-haspopup="dialog"
-              aria-expanded={isFood ? foodOpen : shoppingOpen}
+              aria-expanded={expanded[s.name] ?? false}
               className="rounded-md bg-slate-900 hover:bg-slate-700 px-2 md:px-3 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-white whitespace-nowrap transition-colors cursor-pointer"
               title={`${s.name} — click to open`}
             >
@@ -118,7 +131,7 @@ function SectionTiles({
         );
       })}
       <span className="sm:hidden text-[9px] uppercase tracking-wider font-semibold text-slate-500 self-center pr-1">
-        + 3 soon
+        + 2 soon
       </span>
     </div>
   );
@@ -133,6 +146,7 @@ export default function AppShell() {
   );
   const [foodOpen, setFoodOpen] = useState(false);
   const [shoppingOpen, setShoppingOpen] = useState(false);
+  const [hotelsOpen, setHotelsOpen] = useState(false);
   useEffect(() => {
     if (selectedRegion === null) {
       setModalRegion(null);
@@ -172,6 +186,11 @@ export default function AppShell() {
         onOpenShopping={() => {
           setShoppingOpen(true);
           trackEvent("shopping_section_open");
+        }}
+        hotelsOpen={hotelsOpen}
+        onOpenHotels={() => {
+          setHotelsOpen(true);
+          trackEvent("hotels_section_open");
         }}
       />
 
@@ -284,6 +303,14 @@ export default function AppShell() {
         onClose={() => {
           setShoppingOpen(false);
           trackEvent("shopping_section_close");
+        }}
+      />
+
+      <HotelsPanel
+        open={hotelsOpen}
+        onClose={() => {
+          setHotelsOpen(false);
+          trackEvent("hotels_section_close");
         }}
       />
     </main>
