@@ -197,6 +197,20 @@ export default function AppShell() {
           }}
           onHoverRegion={setHoveredRegion}
         />
+        {selectedRegion ? (
+          <button
+            type="button"
+            onClick={() => {
+              setSelectedRegion(null);
+              setModalRegion(null);
+              setSelectedListing(null);
+              trackEvent("map_reset");
+            }}
+            className="absolute top-3 left-3 z-20 bg-white/90 backdrop-blur-sm text-slate-700 text-xs font-semibold px-3 py-1.5 rounded-full shadow border border-slate-200 hover:bg-white transition-colors"
+          >
+            ← All regions
+          </button>
+        ) : null}
       </div>
 
       {selectedRegion ? null : (

@@ -63,15 +63,26 @@ export default async function GuidePage({
       { "@type": "ListItem", position: 3, name: g.title },
     ],
   };
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: g.sections.map((s) => ({
-      "@type": "Question",
-      name: s.heading,
-      acceptedAnswer: { "@type": "Answer", text: s.body },
-    })),
-  };
+  const faqJsonLd =
+    g.faqs && g.faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: g.faqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }
+      : {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: g.sections.map((s) => ({
+            "@type": "Question",
+            name: s.heading,
+            acceptedAnswer: { "@type": "Answer", text: s.body },
+          })),
+        };
 
   return (
     <main id="main" className="max-w-3xl mx-auto px-6 py-10">
@@ -111,6 +122,25 @@ export default async function GuidePage({
           </section>
         ))}
       </article>
+
+      {g.faqs && g.faqs.length > 0 ? (
+        <section className="mt-10">
+          <h2 className="text-xl font-bold mb-4">Frequently asked questions</h2>
+          <dl className="space-y-4">
+            {g.faqs.map((faq) => (
+              <details key={faq.q} className="group border border-slate-200 rounded-lg">
+                <summary className="flex items-center justify-between px-4 py-3 cursor-pointer font-semibold text-sm text-slate-900 list-none hover:bg-slate-50">
+                  {faq.q}
+                  <span className="ml-3 text-slate-400 group-open:rotate-180 transition-transform">▾</span>
+                </summary>
+                <div className="px-4 pb-4 pt-1 text-sm text-slate-700 leading-relaxed">
+                  {faq.a}
+                </div>
+              </details>
+            ))}
+          </dl>
+        </section>
+      ) : null}
 
       <aside className="mt-12 p-4 bg-amber-50 border border-amber-200 rounded-lg text-xs text-slate-700">
         This is general information, not legal or tax advice. Cyprus rules

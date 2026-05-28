@@ -297,7 +297,7 @@ export default function FoodPanel({ open, onClose }: Props) {
                                 <p className="mt-1 text-slate-700 leading-relaxed">
                                   {p.why}
                                 </p>
-                                <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] font-semibold">
+                                <div className="mt-2 flex flex-wrap items-center gap-2">
                                   <a
                                     href={googleMapsUrl(
                                       p.name,
@@ -312,9 +312,9 @@ export default function FoodPanel({ open, onClose }: Props) {
                                         city,
                                       })
                                     }
-                                    className="text-slate-700 hover:text-slate-900"
+                                    className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 hover:border-slate-400 transition-colors"
                                   >
-                                    📍 Maps
+                                    📍 Open in Maps
                                   </a>
                                   {p.instagram ? (
                                     <a
@@ -327,7 +327,7 @@ export default function FoodPanel({ open, onClose }: Props) {
                                           { place: p.name, city },
                                         )
                                       }
-                                      className="text-amber-700 hover:text-amber-900"
+                                      className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full border border-amber-300 text-amber-700 hover:bg-amber-50 transition-colors"
                                     >
                                       @{p.instagram} ↗
                                     </a>
