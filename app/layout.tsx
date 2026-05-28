@@ -19,7 +19,7 @@ export const viewport: Viewport = {
 };
 
 const SITE_NAME = "RealCy.app";
-const SITE_TAGLINE = "Your Cyprus Portal";
+const SITE_TAGLINE = "Cyprus New Developments & Relocation Guide";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://realcy.app"),
