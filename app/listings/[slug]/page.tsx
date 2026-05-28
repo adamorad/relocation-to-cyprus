@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { allListings, listingBySlug } from "@/lib/listings";
+import DeveloperCTA from "./DeveloperCTA";
 
 const SITE_URL = "https://realcy.app";
 
@@ -186,6 +187,16 @@ export default async function ListingPage({
         <p className="mt-3 text-lg text-slate-700">{l.priceRange ?? "—"}</p>
       </header>
 
+      {l.developer?.name ? (
+        <DeveloperCTA
+          name={l.developer.name}
+          searchHref={`https://www.google.com/search?q=${encodeURIComponent(
+            `${l.developer.name} Cyprus real estate`,
+          )}`}
+          slug={l.slug}
+        />
+      ) : null}
+
       {l.images && l.images.length > 0 ? (
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-2">
           {l.images.slice(0, 6).map((src, i) => {
@@ -293,23 +304,6 @@ export default async function ListingPage({
               </div>
             ))}
           </dl>
-        </section>
-      ) : null}
-
-      {l.developer?.name ? (
-        <section className="mt-8 p-4 bg-slate-50 rounded-lg border border-slate-200">
-          <h2 className="text-base font-semibold mb-1">Developer</h2>
-          <p className="text-sm text-slate-700">{l.developer.name}</p>
-          <a
-            href={`https://www.google.com/search?q=${encodeURIComponent(
-              `${l.developer.name} Cyprus real estate`,
-            )}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 inline-block text-xs font-semibold text-amber-700 hover:text-amber-900"
-          >
-            Find developer ↗
-          </a>
         </section>
       ) : null}
 

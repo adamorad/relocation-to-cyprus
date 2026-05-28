@@ -14,6 +14,7 @@ export type GuideInfo = {
   /** URL: /guides/{slug}. */
   description: string;
   sections: Array<{ heading: string; body: string }>;
+  faqs?: Array<{ q: string; a: string }>;
 };
 
 export const GUIDES: ReadonlyArray<GuideInfo> = [
@@ -44,6 +45,20 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
         body: "Three pieces of advice that come up consistently in expat forums. First, do not rely on a tourist entry to scout property and then formalise the residency later — both the PR and digital nomad visas require you to apply from outside Cyprus or via a specific in-country procedure, and people get bounced back to their home country surprisingly often if they apply wrong. Second, work with a local lawyer for any property-based application — fees of €1,500–€3,000 are normal, the paperwork is genuinely intricate, and a botched application can delay things by a year. Third, keep originals of every document you used in the application. Cyprus immigration is paper-heavy and a request to re-prove your income from three years ago is not unusual at renewal.",
       },
     ],
+    faqs: [
+      {
+        q: "Can I get Cyprus residency by buying property?",
+        a: "Yes. The standard route is the Category F permanent residency permit, which requires purchasing property worth at least €300,000 (VAT included) and proving a secured annual income from abroad of at least €30,000. The permit is granted within 2–3 months and grants permanent residency — not citizenship — to the buyer and immediate family.",
+      },
+      {
+        q: "How long does the Cyprus Digital Nomad Visa take to process?",
+        a: "The Digital Nomad Visa (MEU1 temporary residency) typically takes 4–8 weeks to process once a complete application is submitted to the Civil Registry and Migration Department. You must apply from within Cyprus on a valid tourist entry, and your income must be at least €3,500/month net from clients outside Cyprus.",
+      },
+      {
+        q: "Do I need to physically live in Cyprus to keep my residency?",
+        a: "For permanent residency under Category F, you must visit Cyprus at least once every two years to avoid the permit being considered abandoned. EU citizens under the MEU1 system must not be absent for more than 12 consecutive months. Digital Nomad Visa holders must maintain active residency during their permit period.",
+      },
+    ],
   },
   {
     slug: "cost-of-living",
@@ -72,6 +87,20 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
         body: "Cyprus is a car culture. Public transport is functional within Limassol and Nicosia and almost non-existent everywhere else; outside the cities a car is essentially mandatory. Used cars are cheap by EU standards (a 2018 Toyota Yaris is €7,000–€9,000) but new cars carry significant registration tax. Petrol runs around €1.40 per litre. Putting it all together, a realistic monthly budget for a family of four living comfortably (two-bed apartment in a non-towering complex, one car, private school for one child, both adults working): Limassol €4,500–€6,000, Larnaca/Paphos/Nicosia €3,200–€4,500. A retired couple in Paphos or Larnaca living modestly can do well on €2,500–€3,000 per month. Add €500–€1,000 if you want to eat out frequently or run a second car.",
       },
     ],
+    faqs: [
+      {
+        q: "How much does it cost to rent a 2-bedroom flat in Limassol?",
+        a: "A modern 2-bedroom apartment in Limassol city ranges from €1,400–€2,200/month depending on proximity to the seafront and building quality. New-build developments in Limassol's prime areas (Germasogeia, Neapolis) typically start at €1,600/month. Older stock further inland can be found from €1,000/month.",
+      },
+      {
+        q: "Is Cyprus more expensive than Portugal for expats?",
+        a: "Cyprus and Portugal are broadly similar in overall cost, but differ by category. Rent in Limassol and Paphos is typically 15–25% higher than Lisbon outside the city centre. Groceries and dining are cheaper in Cyprus. Healthcare is comparable. Tax treatment differs significantly: Cyprus's non-dom regime exempts foreign-source dividends and interest, making it more attractive than Portugal's NHR scheme for investment income.",
+      },
+      {
+        q: "What is a realistic monthly budget for a couple relocating to Cyprus?",
+        a: "A comfortable lifestyle for two people in Limassol — 2-bedroom apartment, eating out 3–4 times per week, a car, and private health insurance — costs €4,500–€6,000/month all-in. In Paphos or Larnaca the same lifestyle runs €3,500–€4,500/month. These figures exclude mortgage payments and school fees.",
+      },
+    ],
   },
   {
     slug: "taxes-for-expats",
@@ -98,6 +127,20 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
       {
         heading: "Filing, deadlines and getting it right",
         body: "Cyprus's tax year is the calendar year. Individual tax returns (Form TD1) are due by 31 July of the following year if you file electronically — the deadline used to be later but was tightened in 2024. The forms are not complex by EU standards, but the non-dom and 60-day declarations need to be made affirmatively each year, and the Tax Department has increasingly asked for travel-day records, accommodation contracts and economic-substance evidence to support 60-day claims. An accountant fee for a non-dom individual return runs €400–€900 per year, which is money well spent — DIY filing is technically possible but the cost of getting the non-dom claim wrong is large. The final pragmatic note: Cyprus has double-tax treaties with over 65 countries including the UK, Germany, France, India, Russia, South Africa and most of the EU, so relocators rarely face actual double-taxation; they face complexity. The cleanest move is to settle your prior-country tax exit properly before claiming Cyprus residency, rather than trying to do both at once.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is the Cyprus non-dom regime?",
+        a: "The non-domiciled (non-dom) resident status exempts qualifying individuals from the Special Defence Contribution (SDC) — a 17% tax on dividends and 30% tax on interest — for 17 years from becoming a Cyprus tax resident. To qualify you must become a Cyprus tax resident and must not have been a Cyprus tax resident for 20 or more of the preceding 25 years. Effectively, foreign-source dividends and interest are received entirely tax-free.",
+      },
+      {
+        q: "How do I become a Cyprus tax resident?",
+        a: "You become a Cyprus tax resident either by spending more than 183 days in Cyprus in a calendar year, or under the '60-day rule': spending at least 60 days in Cyprus, not spending more than 183 days in any other single country, and having a permanent home and business or employment in Cyprus. The 60-day rule was introduced specifically to accommodate internationally mobile entrepreneurs and investors.",
+      },
+      {
+        q: "Does Cyprus tax foreign pension or employment income?",
+        a: "Foreign pension income remitted to Cyprus is taxed at a flat 5% rate above a €3,420 annual exemption (alternatively taxed at normal rates if lower). Foreign employment income earned for work performed outside Cyprus by a non-dom resident is exempt from Cyprus income tax. Cyprus has double-tax treaties with over 65 countries, which further reduce withholding taxes on cross-border income.",
       },
     ],
   },
