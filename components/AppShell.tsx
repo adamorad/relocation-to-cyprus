@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import FoodPanel from "./FoodPanel";
+import ShoppingPanel from "./ShoppingPanel";
 import IllustratedMap from "./IllustratedMap";
 import ListingPanel from "./ListingPanel";
 import RegionListingsPanel from "./RegionListingsPanel";
@@ -24,7 +25,7 @@ const SECTIONS: ReadonlyArray<Section> = [
   { name: "Rentals", kind: "soon" },
   { name: "Hotels", kind: "soon" },
   { name: "Food", kind: "available" },
-  { name: "Shopping", kind: "soon" },
+  { name: "Shopping", kind: "available" },
   { name: "More", kind: "soon" },
 ];
 
@@ -55,9 +56,13 @@ function formatEuros(n: number): string {
 function SectionTiles({
   onOpenFood,
   foodOpen,
+  onOpenShopping,
+  shoppingOpen,
 }: {
   onOpenFood: () => void;
   foodOpen: boolean;
+  onOpenShopping: () => void;
+  shoppingOpen: boolean;
 }) {
   return (
     <div
@@ -85,13 +90,14 @@ function SectionTiles({
         if (s.kind === "available") {
           // Real section, opens in a popup. Same dark style as the current
           // page so it reads as a peer of `New Developments`.
+          const isFood = s.name === "Food";
           return (
             <button
               key={s.name}
               type="button"
-              onClick={onOpenFood}
+              onClick={isFood ? onOpenFood : onOpenShopping}
               aria-haspopup="dialog"
-              aria-expanded={foodOpen}
+              aria-expanded={isFood ? foodOpen : shoppingOpen}
               className="rounded-md bg-slate-900 hover:bg-slate-700 px-2 md:px-3 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-white whitespace-nowrap transition-colors cursor-pointer"
               title={`${s.name} — click to open`}
             >
@@ -112,7 +118,7 @@ function SectionTiles({
         );
       })}
       <span className="sm:hidden text-[9px] uppercase tracking-wider font-semibold text-slate-500 self-center pr-1">
-        + 4 soon
+        + 3 soon
       </span>
     </div>
   );
@@ -126,6 +132,7 @@ export default function AppShell() {
     null,
   );
   const [foodOpen, setFoodOpen] = useState(false);
+  const [shoppingOpen, setShoppingOpen] = useState(false);
   useEffect(() => {
     if (selectedRegion === null) {
       setModalRegion(null);
@@ -160,6 +167,11 @@ export default function AppShell() {
         onOpenFood={() => {
           setFoodOpen(true);
           trackEvent("food_section_open");
+        }}
+        shoppingOpen={shoppingOpen}
+        onOpenShopping={() => {
+          setShoppingOpen(true);
+          trackEvent("shopping_section_open");
         }}
       />
 
@@ -264,6 +276,14 @@ export default function AppShell() {
         onClose={() => {
           setFoodOpen(false);
           trackEvent("food_section_close");
+        }}
+      />
+
+      <ShoppingPanel
+        open={shoppingOpen}
+        onClose={() => {
+          setShoppingOpen(false);
+          trackEvent("shopping_section_close");
         }}
       />
     </main>
