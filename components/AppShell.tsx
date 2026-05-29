@@ -219,6 +219,19 @@ export default function AppShell() {
         and labels positioned at % of this container always land on the
         correct image pixel regardless of viewport. */}
       <div className="relative w-full aspect-[1672/941] md:absolute md:inset-0 md:m-auto md:max-h-screen md:max-w-[177.78vh]">
+        {selectedRegion === null && (
+          <div className="md:hidden absolute bottom-4 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
+            <span className="inline-flex items-center gap-1.5 bg-slate-900/80 backdrop-blur-sm text-white text-xs font-semibold rounded-full px-3 py-1.5 shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5" aria-hidden="true">
+                <path d="M18 11V6a2 2 0 00-2-2 2 2 0 00-2 2"/>
+                <path d="M14 10V4a2 2 0 00-2-2 2 2 0 00-2 2v2"/>
+                <path d="M10 10.5V6a2 2 0 00-2-2 2 2 0 00-2 2v8"/>
+                <path d="M18 8a2 2 0 114 0v6a8 8 0 01-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 012.83-2.82L7 15"/>
+              </svg>
+              Tap a region to explore
+            </span>
+          </div>
+        )}
         <IllustratedMap
           selectedRegion={selectedRegion}
           onSelectRegion={(c) => {
