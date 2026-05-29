@@ -128,10 +128,10 @@ export default function FoodPanel({ open, onClose }: Props) {
           </div>
           <nav className="mt-3 flex flex-wrap gap-1.5 text-xs">
             {[
-              ["about", "About the food"],
               ["eat", "Where to eat"],
               ["events", "Events 2026"],
               ["follow", "Who to follow"],
+              ["about", "About the food"],
               ["prices", "Prices"],
             ].map(([id, label]) => (
               <a
@@ -145,99 +145,8 @@ export default function FoodPanel({ open, onClose }: Props) {
           </nav>
         </header>
 
-        <div className="flex-1 overflow-y-auto px-5 md:px-8 py-6 space-y-10">
-          {/* ABOUT THE FOOD */}
-          <section id="food-about">
-            <h3 className="text-lg font-bold mb-3">About the food</h3>
-            <p className="text-xs uppercase tracking-wider text-slate-500 font-semibold mt-4 mb-2">
-              Greek vs Cypriot pita (and Israeli, for reference)
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              {[
-                PITA_COMPARISON.greek,
-                PITA_COMPARISON.cypriot,
-                PITA_COMPARISON.israeli,
-              ].map((p) => (
-                <div
-                  key={p.name}
-                  className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-xs"
-                >
-                  <p className="font-bold text-sm text-slate-900">{p.name}</p>
-                  <p className="mt-1.5 text-slate-700 leading-relaxed">
-                    {p.description}
-                  </p>
-                  <p className="mt-2 text-slate-600">
-                    <span className="font-semibold text-slate-700">
-                      Texture.{" "}
-                    </span>
-                    {p.texture}
-                  </p>
-                  <p className="mt-1 text-slate-600">
-                    <span className="font-semibold text-slate-700">
-                      Used for.{" "}
-                    </span>
-                    {p.uses}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <p className="text-xs uppercase tracking-wider text-slate-500 font-semibold mt-6 mb-2">
-              Naming guide — souvlaki / gyros / sheftalia / kebab / döner / shawarma
-            </p>
-            <div className="overflow-x-auto rounded-lg border border-slate-200">
-              <table className="w-full text-xs">
-                <thead className="bg-slate-50">
-                  <tr className="text-left text-slate-700">
-                    <th className="px-3 py-2 font-semibold">Term</th>
-                    <th className="px-3 py-2 font-semibold">Origin</th>
-                    <th className="px-3 py-2 font-semibold">What it is</th>
-                    <th className="px-3 py-2 font-semibold">In Cyprus</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {NAME_GUIDE.map((row) => (
-                    <tr
-                      key={row.term}
-                      className="border-t border-slate-100 align-top"
-                    >
-                      <td className="px-3 py-2 font-bold text-slate-900 whitespace-nowrap">
-                        {row.term}
-                      </td>
-                      <td className="px-3 py-2 text-slate-600 whitespace-nowrap">
-                        {row.origin}
-                      </td>
-                      <td className="px-3 py-2 text-slate-700 leading-relaxed">
-                        {row.whatItIs}
-                      </td>
-                      <td className="px-3 py-2 text-slate-700 leading-relaxed">
-                        {row.inCyprus}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <p className="text-xs uppercase tracking-wider text-slate-500 font-semibold mt-6 mb-2">
-              Signature Cypriot foods you'll see everywhere
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {CYPRIOT_FOODS.map((f) => (
-                <div
-                  key={f.name}
-                  className="rounded-lg border border-slate-200 bg-white p-3 text-xs"
-                >
-                  <p className="font-bold text-sm text-slate-900">{f.name}</p>
-                  <p className="mt-1.5 text-slate-700 leading-relaxed">
-                    {f.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* WHERE TO EAT */}
+        <div className="flex-1 overflow-y-auto px-5 md:px-8 py-6 space-y-10" style={{ scrollBehavior: "smooth" }}>
+          {/* WHERE TO EAT — leads with actionable content */}
           <section id="food-eat">
             <div className="flex items-end justify-between gap-3 mb-3">
               <h3 className="text-lg font-bold">Where to eat</h3>
@@ -297,7 +206,7 @@ export default function FoodPanel({ open, onClose }: Props) {
                                 <p className="mt-1 text-slate-700 leading-relaxed">
                                   {p.why}
                                 </p>
-                                <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] font-semibold">
+                                <div className="mt-2 flex flex-wrap items-center gap-2">
                                   <a
                                     href={googleMapsUrl(
                                       p.name,
@@ -312,9 +221,9 @@ export default function FoodPanel({ open, onClose }: Props) {
                                         city,
                                       })
                                     }
-                                    className="text-slate-700 hover:text-slate-900"
+                                    className="inline-flex items-center gap-1 rounded bg-slate-900 hover:bg-slate-700 text-white text-[10px] font-semibold px-2 py-1 transition-colors"
                                   >
-                                    📍 Maps
+                                    View on Maps ↗
                                   </a>
                                   {p.instagram ? (
                                     <a
@@ -327,7 +236,7 @@ export default function FoodPanel({ open, onClose }: Props) {
                                           { place: p.name, city },
                                         )
                                       }
-                                      className="text-amber-700 hover:text-amber-900"
+                                      className="text-[10px] font-semibold text-amber-700 hover:text-amber-900"
                                     >
                                       @{p.instagram} ↗
                                     </a>
@@ -466,6 +375,97 @@ export default function FoodPanel({ open, onClose }: Props) {
                 </li>
               ))}
             </ul>
+          </section>
+
+          {/* ABOUT THE FOOD */}
+          <section id="food-about">
+            <h3 className="text-lg font-bold mb-3">About the food</h3>
+            <p className="text-xs uppercase tracking-wider text-slate-500 font-semibold mt-4 mb-2">
+              Greek vs Cypriot pita (and Israeli, for reference)
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              {[
+                PITA_COMPARISON.greek,
+                PITA_COMPARISON.cypriot,
+                PITA_COMPARISON.israeli,
+              ].map((p) => (
+                <div
+                  key={p.name}
+                  className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-xs"
+                >
+                  <p className="font-bold text-sm text-slate-900">{p.name}</p>
+                  <p className="mt-1.5 text-slate-700 leading-relaxed">
+                    {p.description}
+                  </p>
+                  <p className="mt-2 text-slate-600">
+                    <span className="font-semibold text-slate-700">
+                      Texture.{" "}
+                    </span>
+                    {p.texture}
+                  </p>
+                  <p className="mt-1 text-slate-600">
+                    <span className="font-semibold text-slate-700">
+                      Used for.{" "}
+                    </span>
+                    {p.uses}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-xs uppercase tracking-wider text-slate-500 font-semibold mt-6 mb-2">
+              Naming guide — souvlaki / gyros / sheftalia / kebab / döner / shawarma
+            </p>
+            <div className="overflow-x-auto rounded-lg border border-slate-200">
+              <table className="w-full text-xs">
+                <thead className="bg-slate-50">
+                  <tr className="text-left text-slate-700">
+                    <th className="px-3 py-2 font-semibold">Term</th>
+                    <th className="px-3 py-2 font-semibold">Origin</th>
+                    <th className="px-3 py-2 font-semibold">What it is</th>
+                    <th className="px-3 py-2 font-semibold">In Cyprus</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {NAME_GUIDE.map((row) => (
+                    <tr
+                      key={row.term}
+                      className="border-t border-slate-100 align-top"
+                    >
+                      <td className="px-3 py-2 font-bold text-slate-900 whitespace-nowrap">
+                        {row.term}
+                      </td>
+                      <td className="px-3 py-2 text-slate-600 whitespace-nowrap">
+                        {row.origin}
+                      </td>
+                      <td className="px-3 py-2 text-slate-700 leading-relaxed">
+                        {row.whatItIs}
+                      </td>
+                      <td className="px-3 py-2 text-slate-700 leading-relaxed">
+                        {row.inCyprus}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <p className="text-xs uppercase tracking-wider text-slate-500 font-semibold mt-6 mb-2">
+              Signature Cypriot foods you'll see everywhere
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {CYPRIOT_FOODS.map((f) => (
+                <div
+                  key={f.name}
+                  className="rounded-lg border border-slate-200 bg-white p-3 text-xs"
+                >
+                  <p className="font-bold text-sm text-slate-900">{f.name}</p>
+                  <p className="mt-1.5 text-slate-700 leading-relaxed">
+                    {f.description}
+                  </p>
+                </div>
+              ))}
+            </div>
           </section>
 
           {/* PRICES */}
