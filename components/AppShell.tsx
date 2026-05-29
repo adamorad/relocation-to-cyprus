@@ -86,9 +86,12 @@ function SectionTiles({
 
   return (
     <div
-      className="absolute top-0 left-1/2 -translate-x-1/2 z-30 flex gap-1 md:gap-1.5 bg-white/95 backdrop-blur-sm border border-slate-200 border-t-0 rounded-b-xl shadow-md px-1.5 md:px-2.5 py-1 md:py-1.5 max-w-[calc(100vw-0.75rem)] overflow-x-auto"
+      className="absolute top-0 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1 md:gap-1.5 bg-white/95 backdrop-blur-sm border border-slate-200 border-t-0 rounded-b-xl shadow-md px-1.5 md:px-2.5 py-1 md:py-1.5 max-w-[calc(100vw-0.75rem)] overflow-x-auto"
       aria-label="RealCy.app sections"
     >
+      <span className="text-[10px] md:text-xs font-bold text-slate-900 tracking-tight pr-1.5 mr-0.5 border-r border-slate-200 whitespace-nowrap select-none">
+        RealCy
+      </span>
       {SECTIONS.map((s) => {
         if (s.kind === "soon") {
           return (
@@ -134,11 +137,11 @@ function SectionTiles({
             </Link>
           );
         }
-        // current page
+        // current page — distinct teal so users can tell it apart from clickable tiles
         return (
           <div
             key={s.name}
-            className="rounded-md bg-slate-900 px-2 md:px-3 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-white whitespace-nowrap"
+            className="rounded-md bg-[#35cdc4] px-2 md:px-3 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-white whitespace-nowrap"
             aria-current="page"
             title={`${s.name} — current section`}
           >

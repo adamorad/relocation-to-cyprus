@@ -96,6 +96,7 @@ function ListingPanelBody({
         {listing.images && listing.images.length > 0 ? (
           <ImageGallery
             images={listing.images}
+            title={listing.title}
             onOpen={(i) => openLightbox(listing.images!, i)}
           />
         ) : null}
@@ -183,13 +184,7 @@ function ListingPanelBody({
         ) : null}
 
         {listing.description ? (
-          <Section title="About">
-            <p className="text-xs text-slate-700 whitespace-pre-line leading-relaxed">
-              {listing.description.length > 800
-                ? `${listing.description.slice(0, 800)}…`
-                : listing.description}
-            </p>
-          </Section>
+          <DescriptionSection description={listing.description} />
         ) : null}
       </div>
     </div>
@@ -206,6 +201,7 @@ function ActionButtons({ listing }: { listing: EnrichedListing }) {
     : null;
   const brochure = normaliseBrochure(listing);
   const phones = listing.contacts?.phone ?? [];
+  const email = listing.contacts?.email?.trim() || null;
   return (
     <div className="flex flex-wrap gap-2">
       {devSearchUrl ? (
@@ -224,6 +220,19 @@ function ActionButtons({ listing }: { listing: EnrichedListing }) {
           Find developer ↗
         </a>
       ) : null}
+      {email ? (
+        <a
+          href={`mailto:${email}`}
+          onClick={() => trackEvent("email_click", { slug: listing.slug })}
+          className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold bg-sky-600 hover:bg-sky-700 text-white rounded-md transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          Email
+        </a>
+      ) : null}
       {brochure ? (
         <a
           href={brochure}
@@ -232,18 +241,26 @@ function ActionButtons({ listing }: { listing: EnrichedListing }) {
           onClick={() =>
             trackEvent("brochure_click", { slug: listing.slug })
           }
-          className="px-3 py-2 text-sm font-semibold border border-slate-300 text-slate-700 hover:bg-slate-100 rounded-md"
+          className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold border border-slate-300 text-slate-700 hover:bg-slate-100 rounded-md transition-colors"
         >
-          📄 Brochure
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Brochure
         </a>
       ) : null}
       {phones.length > 0 ? (
         <a
           href={`tel:${phones[0]}`}
           onClick={() => trackEvent("phone_click", { slug: listing.slug })}
-          className="px-3 py-2 text-sm font-semibold bg-emerald-500 hover:bg-emerald-600 text-white rounded-md"
+          className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold bg-emerald-500 hover:bg-emerald-600 text-white rounded-md transition-colors"
         >
-          ☎ {phones[0]}
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.7A2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l.62-.62a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.93z"/>
+          </svg>
+          {phones[0]}
         </a>
       ) : null}
     </div>
@@ -497,9 +514,11 @@ function FloorPlansSection({
 
 function ImageGallery({
   images,
+  title,
   onOpen,
 }: {
   images: string[];
+  title: string;
   onOpen: (index: number) => void;
 }) {
   const [active, setActive] = useState(0);
@@ -511,10 +530,11 @@ function ImageGallery({
         type="button"
         onClick={() => onOpen(active)}
         className="block w-full aspect-[16/10] rounded-lg overflow-hidden bg-slate-100 border border-slate-200 group cursor-zoom-in"
+        aria-label={`View ${title} gallery`}
       >
         <img
           src={safe[active]}
-          alt=""
+          alt={title}
           className="w-full h-full object-cover transition-transform group-hover:scale-105"
           loading="lazy"
         />
@@ -525,11 +545,11 @@ function ImageGallery({
             <button
               key={src}
               type="button"
-              onClick={() => setActive(i)}
-              onDoubleClick={() => onOpen(i)}
+              onClick={() => onOpen(i)}
               className={`flex-shrink-0 w-14 h-10 rounded overflow-hidden border-2 ${
                 i === active ? "border-slate-900" : "border-transparent"
               }`}
+              aria-label={`View image ${i + 1}`}
             >
               <img
                 src={src}
@@ -641,6 +661,30 @@ function Lightbox({
       </div>
     </div>,
     document.body,
+  );
+}
+
+function DescriptionSection({ description }: { description: string }) {
+  const [expanded, setExpanded] = useState(false);
+  const LIMIT = 600;
+  const isTruncated = description.length > LIMIT;
+  return (
+    <Section title="About">
+      <p className="text-xs text-slate-700 whitespace-pre-line leading-relaxed">
+        {isTruncated && !expanded
+          ? `${description.slice(0, LIMIT)}…`
+          : description}
+      </p>
+      {isTruncated ? (
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          className="mt-1.5 text-xs font-semibold text-slate-900 hover:text-slate-600"
+        >
+          {expanded ? "Read less" : "Read more"}
+        </button>
+      ) : null}
+    </Section>
   );
 }
 
