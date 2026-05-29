@@ -376,10 +376,15 @@ export default function RegionListingsPanel({
             <button
               type="button"
               onClick={() => setMoreOpen((v) => !v)}
-              className="text-xs font-semibold text-slate-900 hover:text-slate-700"
+              className="flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors"
+              aria-expanded={moreOpen}
             >
-              {moreOpen ? "Hide" : "More"} filters{" "}
               <span aria-hidden>{moreOpen ? "▴" : "▾"}</span>
+              {moreOpen ? "Hide" : "More"} filters
+              {(() => {
+                const n = [view !== "any", locType !== "any", energy !== "any", pool !== "any", wheelchair !== "any", minArea > 0].filter(Boolean).length;
+                return n > 0 ? <span className="ml-0.5 bg-slate-900 text-white text-[9px] font-bold rounded-full px-1.5 py-px leading-none">{n}</span> : null;
+              })()}
             </button>
             {filtersActive ? (
               <button
@@ -463,8 +468,15 @@ export default function RegionListingsPanel({
 
       <div className="overflow-y-auto flex-1 p-4 bg-stone-50/60">
         {filtered.length === 0 ? (
-          <div className="text-center text-sm text-slate-600 py-12">
-            No listings match these filters.
+          <div className="text-center text-sm text-slate-600 py-12 space-y-3">
+            <p>No listings match these filters.</p>
+            <button
+              type="button"
+              onClick={resetFilters}
+              className="text-xs font-semibold px-3 py-1.5 rounded border border-slate-300 text-slate-700 hover:bg-slate-100"
+            >
+              Reset filters
+            </button>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 auto-rows-fr">
@@ -501,6 +513,7 @@ function ChipRow<T extends string>({
             key={b}
             type="button"
             onClick={() => onChange(b)}
+            aria-pressed={value === b}
             className={`flex-1 text-xs font-medium px-1.5 py-1 rounded ${
               value === b
                 ? "bg-slate-900 text-white"
@@ -572,6 +585,7 @@ function TriToggle({
             key={v}
             type="button"
             onClick={() => onChange(v)}
+            aria-pressed={value === v}
             className={`flex-1 text-xs font-medium px-1 py-1 rounded ${
               value === v
                 ? "bg-slate-900 text-white"
@@ -622,7 +636,7 @@ function ListingCard({
         {thumb ? (
           <img
             src={thumb}
-            alt=""
+            alt={listing.title}
             loading="lazy"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform"
           />
