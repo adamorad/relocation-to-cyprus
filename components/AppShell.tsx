@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import FoodPanel from "./FoodPanel";
 import HotelsPanel from "./HotelsPanel";
 import ShoppingPanel from "./ShoppingPanel";
@@ -17,8 +18,10 @@ import {
 type Section = {
   name: string;
   /** `current` = the page the user is already on (the map). `available` =
-   * real section that opens in a popup. `soon` = placeholder. */
-  kind: "current" | "available" | "soon";
+   * real section that opens in a popup. `soon` = placeholder.
+   * `link` = navigates to a URL. */
+  kind: "current" | "available" | "soon" | "link";
+  href?: string;
 };
 
 const SECTIONS: ReadonlyArray<Section> = [
@@ -27,6 +30,7 @@ const SECTIONS: ReadonlyArray<Section> = [
   { name: "Hotels", kind: "available" },
   { name: "Food", kind: "available" },
   { name: "Shopping", kind: "available" },
+  { name: "Guides", kind: "link", href: "/guides/" },
   { name: "More", kind: "soon" },
 ];
 
@@ -116,6 +120,18 @@ function SectionTiles({
             >
               {s.name}
             </button>
+          );
+        }
+        if (s.kind === "link") {
+          return (
+            <Link
+              key={s.name}
+              href={s.href!}
+              className="rounded-md bg-slate-900 hover:bg-slate-700 px-2 md:px-3 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-white whitespace-nowrap transition-colors"
+              title={`${s.name} — view guides`}
+            >
+              {s.name}
+            </Link>
           );
         }
         // current page

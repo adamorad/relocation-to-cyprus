@@ -101,6 +101,62 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
       },
     ],
   },
+  {
+    slug: "arrival-checklist",
+    title: "Moving to Cyprus: your first-month checklist (2026)",
+    description:
+      "The exact steps to take in weeks 1–4 after arriving in Cyprus — in the right order, with the dependency logic explained so you don't hit each bureaucratic wall by surprise.",
+    sections: [
+      {
+        heading: "Week 1: SIM card, temporary address, and booking your registration appointment",
+        body: "The moment you land, buy a Cypriot SIM from the airport arrivals hall — Epic and Cyta both have desks there, and €15 gets you a 30-day unlimited data plan. You need a local number for almost every next step. Your temporary address — a hotel, serviced apartment, or a friend's address — matters too: it's the address on your first official documents, and several later steps require a document sent there. Book your Civil Registry appointment immediately. EU citizens need this for the MEU1 registration (the Yellow Slip); non-EU citizens need it to start the Alien Registration Certificate (ARC) process. Appointment slots at crmd.moi.gov.cy typically fill 2–3 weeks out, so booking on day one means you won't lose three weeks waiting. You can book before you arrive.",
+      },
+      {
+        heading: "Week 1–2: Opening your bank account",
+        body: "A Cypriot bank account is the hardest practical step in the first month, and the one that blocks the most other things — landlords require a local IBAN, utility direct debits require one, and some tax filings do too. Bank of Cyprus and Hellenic Bank are the main retail options; both require proof of address, proof of income or source of funds, and a valid immigration document (Yellow Slip, ARC, or a letter confirming your application is in progress). Bring every financial document you own to your first appointment. Expect 2–4 weeks from first contact to a functioning account. In the meantime: Revolut and Wise work as a bridge for day-to-day spending and EUR transfers, but they cannot substitute for a CY-prefix IBAN for deposits and bills. Non-EU applicants with complex fund sources should also look at AstroBank, which has historically been more accommodating for non-standard profiles. See our full Banking Guide for a decision tree by profile.",
+      },
+      {
+        heading: "Week 2–3: Civil Registry appointment — Yellow Slip or ARC",
+        body: "EU citizens: bring your passport, proof of accommodation, proof of health insurance (or a note that you're registering for GeSY), and proof of income or employment (or sufficient funds — typically bank statements showing €30,000+ per year). The officer issues the Registration Certificate, sometimes still called the Yellow Slip. It's permanent and does not expire. Non-EU citizens: the ARC (Alien Registration Certificate) process is longer and requires your immigration permit document (tourist visa stamp, approved DNV, or PR permit letter), two passport photos, and proof of address. Depending on your permit type, the ARC takes 4–10 weeks to issue; you receive a receipt that serves as your interim document. Either way, the Civil Registry appointment is the single most important step in month one — everything downstream (bank, GeSY, utilities) becomes smoother once you have a registration number.",
+      },
+      {
+        heading: "Week 3–4: GeSY, utilities, and broadband",
+        body: "Register with GeSY (General Healthcare System) at hio.org.cy — you need your ARC or Yellow Slip number. Registration gives you access to free or subsidised primary care, GP referrals, and most hospital procedures with small co-payments. It's worth registering even if you also carry private health insurance, since it costs nothing and provides emergency coverage. Electricity (EAC) and water are set up through your landlord's transfer — your letting agent handles the paperwork, but you provide your passport and ARC/Yellow Slip. Plan ahead: EAC connections take 2–5 working days. Broadband: Cablenet, Primetel, Epic and Cyta all offer 300–1000 Mbps fibre for €40–60/month; order on your first day in the apartment since installation typically takes 5–10 working days. For the gap period, your mobile data SIM (from week one) and most landlords' existing WiFi get you through.",
+      },
+      {
+        heading: "Month 1–2: Driving licence, Tax Identification Number, and getting settled",
+        body: "EU licence holders: your EU driving licence is valid in Cyprus indefinitely — no exchange needed, though you may want to record it with the Traffic Department eventually. Non-EU licence holders must exchange within 6 months of becoming a Cyprus resident. The Traffic Department offices in Nicosia and Limassol handle this; book the appointment alongside your Civil Registry appointment since both have similar wait times. Your Tax Identification Number (TIC) can be obtained at any Tax Department district office; bring your passport and ARC/Yellow Slip. You'll need it for employment, self-employment, and for filing as a non-dom resident. Separately: if you're bringing a car from abroad, the import process involves the Customs Department and Vehicle Registration Office and typically takes 3–8 weeks — budget this into your timeline if you're shipping a vehicle rather than buying locally.",
+      },
+    ],
+  },
+  {
+    slug: "moving-to-cyprus-with-pets",
+    title: "Moving to Cyprus with your pet: import rules by country (2026)",
+    description:
+      "The exact requirements for bringing a dog or cat to Cyprus — covering EU passport holders, post-Brexit UK residents, and non-EU countries including Israel, the US and the UAE — with backwards-planning timelines so you don't miss a step.",
+    sections: [
+      {
+        heading: "Why Cyprus pet import is stricter than most EU entry",
+        body: "Cyprus is an island, and like all island EU member states (Ireland, Malta, Finland for ferries) it enforces stricter border biosecurity than most continental EU countries. All animals must enter via an approved port of entry — Larnaca International Airport, Paphos International Airport, or Limassol Port — and must be presented to the Veterinary Services of Cyprus officer on arrival, who checks microchip, documentation and (where applicable) serology records. The process at Larnaca typically takes 30–60 minutes and is routine if your paperwork is complete. The rules have not changed materially since Cyprus's EU accession, but the UK's post-Brexit status and the growing number of non-EU relocators (particularly from Israel, the UAE, and the US) have made the non-EU routes more commonly navigated. Start early — the most common mistake is discovering a 3-month waiting period after the titre test when you are already committed to a move date.",
+      },
+      {
+        heading: "EU pet passport holders: the simplest route",
+        body: "If your pet has a valid EU pet passport issued in any EU member state (including Cyprus), entry is straightforward: the passport must show a microchip implanted before or on the same day as the first rabies vaccination, a valid rabies vaccination (within the manufacturer's stated validity period, typically 1–3 years), and the vet's stamp confirming the pet is fit to travel. No titre test, no waiting period, no quarantine. At the arrival counter, the Veterinary Services officer scans the microchip, checks the passport matches, and clears the animal. If your EU passport has expired (e.g. the rabies booster is overdue), get the booster at least 21 days before travel — the 21-day post-vaccination waiting period applies even within the EU if the animal has been unvaccinated for a period.",
+      },
+      {
+        heading: "Post-Brexit UK pets: the 21-day trap",
+        body: "UK-issued pet passports have not been valid for EU entry since January 2021. UK pets now need an Animal Health Certificate (AHC) instead. The AHC is issued by a UK government-authorised vet (RCVS-listed), must be issued within 10 days of the travel date, and the rabies vaccination recorded in the AHC must have been administered at least 21 days before the AHC issue date. This creates the trap: if your pet's rabies booster is due or you are getting a new vaccination, you cannot travel within 21 days of that vaccination. Many UK residents preparing a last-minute move — especially those making the decision in September for a Christmas arrival — get caught by this. Build 21 days of post-vaccination time into your timeline before you book flights. The AHC also records the microchip number; the chip must have been implanted before or on the vaccination date. Your vet in Cyprus will re-issue an EU pet passport at the first routine appointment, which then serves for future travel.",
+      },
+      {
+        heading: "Non-EU countries (Israel, UAE, US and others): titre test and timeline",
+        body: "The EU classifies third countries into listed and unlisted categories; most non-EU countries relocators come from fall into Part 2 (listed, additional requirements apply). These requirements typically include: microchip (implanted first), a valid rabies vaccination administered after the microchip was implanted, a rabies antibody titre test (blood test confirming the vaccination is effective, conducted at an EU-approved laboratory), and a waiting period of at least 3 months from the date the titre test result meets the required threshold (≥0.5 IU/ml) before the animal can enter the EU. For Israel specifically: Israel is a listed Part 2 country. The titre test is required. The 3-month wait after a qualifying titre test result is mandatory — there is no way to shorten it. A health certificate issued by an Israeli government vet replaces the EU pet passport for entry; Cyprus's Veterinary Services check the certificate and titre test documentation at arrival. For US and UAE pets: same requirements apply. Titre tests must be done at an EU-approved laboratory (the list is maintained by the European Commission — search 'approved serology laboratories EU pet travel'); results take 2–4 weeks to process. Start the process at minimum 4–5 months before your planned move date.",
+      },
+      {
+        heading: "Backwards-planning timeline and arrival at Cyprus",
+        body: "Here is how to plan backwards from a target move date. For UK residents: confirm your pet's rabies vaccination status → if a booster is needed, book it at least 21 days before you want the AHC issued → book the AHC appointment within 10 days of your travel date → book an approved port of entry arrival and notify Veterinary Services of Cyprus at least 24 hours in advance via vetservices.gov.cy. For non-EU residents (Israel, US, UAE): confirm microchip exists → confirm rabies vaccination is current and was administered after the microchip → book titre test at an approved lab → wait for result (allow 4 weeks) → if result passes, note that date → you cannot enter Cyprus until 3 months after that date → within that window, arrange the government-issued health certificate → notify Veterinary Services of Cyprus 24–48 hours before arrival. Cyprus Veterinary Services (vetservices.gov.cy) publishes the current import declaration forms; download and complete them before travel. The officer at Larnaca or Paphos will check: microchip (physical scan), vaccination record, titre test documentation if applicable, and health certificate. The process is methodical and takes 30–90 minutes depending on traffic. Keep all original documents — do not submit originals to the officer, only copies; the officer signs your copies.",
+      },
+    ],
+  },
 ];
 
 export function guideBySlug(slug: string): GuideInfo | undefined {
