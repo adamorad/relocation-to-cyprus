@@ -35,6 +35,7 @@ const SECTIONS: ReadonlyArray<Section> = [
   { name: "Schools", kind: "available" },
   { name: "Healthcare", kind: "available" },
   { name: "Guides", kind: "link", href: "/guides/" },
+  { name: "Explore", kind: "link", href: "/explore/" },
   { name: "More", kind: "soon" },
 ];
 

@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Cyprus Relocation Tools — RealCy.app",
   description:
-    "Free interactive tools for relocating to Cyprus: calculators, planners, trackers, and comparison tables covering tax, visas, finance, lifestyle, and connectivity.",
+    "Free interactive tools for Cyprus relocators: rent vs buy calculator, visa pathway finder, tax residency planner, social insurance calculator, banking fee comparison, and more.",
   alternates: { canonical: "/tools/" },
 };
 
@@ -17,7 +17,6 @@ type Tool = {
 };
 
 const TOOLS: Tool[] = [
-  // TL1 — Tools 1–4
   {
     href: "/tools/rent-vs-buy-calculator",
     title: "Rent vs Buy Calculator",
@@ -50,7 +49,6 @@ const TOOLS: Tool[] = [
     tag: "Visas",
     tagColor: "bg-green-100 text-green-800",
   },
-  // TL2 — Tools 5–8
   {
     href: "/tools/tax-residency-planner",
     title: "Cyprus 60-Day Tax Residency Planner",
@@ -83,40 +81,38 @@ const TOOLS: Tool[] = [
     tag: "Tax",
     tagColor: "bg-amber-100 text-amber-800",
   },
-  // TL3 — Tools 9–12
   {
-    href: "/tools/school-fee-estimator",
-    title: "Cyprus School Fee Estimator",
+    href: "/tools/double-tax-treaty-finder",
+    title: "Double Tax Treaty Finder",
     description:
-      "Estimate international school fees across Limassol, Paphos, Larnaca, and Nicosia. Filter by curriculum (British, American, IB), year group, and city to see realistic annual costs.",
-    tag: "Education",
-    tagColor: "bg-pink-100 text-pink-800",
+      "Check whether Cyprus has a tax treaty with your home country and what it means for your income, dividends, interest, and capital gains.",
+    tag: "Tax",
+    tagColor: "bg-amber-100 text-amber-800",
   },
   {
-    href: "/tools/property-transfer-calculator",
-    title: "Property Transfer Fee Calculator",
+    href: "/tools/freelancer-vs-company",
+    title: "Freelancer vs Company Calculator",
     description:
-      "Calculate Cyprus property transfer fees, immovable property tax, and stamp duty on any purchase price. Includes VAT exemption scenarios for first-time buyers.",
-    tag: "Property",
-    tagColor: "bg-orange-100 text-orange-800",
-  },
-  {
-    href: "/tools/moving-cost-estimator",
-    title: "Relocation Cost Estimator",
-    description:
-      "Build a complete relocation budget from scratch. Covers shipping containers, flights, temporary accommodation, agency fees, utility deposits, and first-month living costs.",
+      "Compare operating as a self-employed freelancer versus a Cyprus limited company on take-home pay, tax obligations, and administrative burden.",
     tag: "Finance",
     tagColor: "bg-blue-100 text-blue-800",
   },
   {
-    href: "/tools/gesy-eligibility-checker",
-    title: "GeSY Eligibility & Contribution Checker",
+    href: "/tools/grants-finder",
+    title: "Cyprus Grants & Incentives Finder",
     description:
-      "Find out whether you are eligible for Cyprus's public healthcare system (GeSY), what contribution rate applies to you, and what is covered versus what requires top-up insurance.",
+      "Find available grants, subsidies, and incentives for businesses, startups, and individuals relocating or investing in Cyprus.",
+    tag: "Business",
+    tagColor: "bg-orange-100 text-orange-800",
+  },
+  {
+    href: "/tools/health-insurance-comparison",
+    title: "Cyprus Health Insurance Comparison",
+    description:
+      "Compare private health insurance plans in Cyprus by coverage, premium, deductible, and network. Understand what GeSY covers versus what requires top-up insurance.",
     tag: "Healthcare",
     tagColor: "bg-red-100 text-red-800",
   },
-  // TL4 — Tools 13–16 (this batch)
   {
     href: "/tools/flight-connectivity",
     title: "Cyprus Flight Connectivity",
@@ -137,7 +133,7 @@ const TOOLS: Tool[] = [
     href: "/tools/isp-comparison",
     title: "Internet & Mobile Provider Comparison",
     description:
-      "Compare home broadband (Cyta, Epic, Primetel, Cablenet) and mobile carriers (Cyta/MTN, Epic, Primetel) on speed, price, contract terms, eSIM, and city coverage.",
+      "Compare home broadband (Cyta, Epic, Primetel, Cablenet) and mobile carriers on speed, price, contract terms, eSIM, and city coverage.",
     tag: "Connectivity",
     tagColor: "bg-teal-100 text-teal-800",
   },
