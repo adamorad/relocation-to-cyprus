@@ -5,6 +5,8 @@ import Link from "next/link";
 import FoodPanel from "./FoodPanel";
 import HotelsPanel from "./HotelsPanel";
 import ShoppingPanel from "./ShoppingPanel";
+import SchoolsPanel from "./SchoolsPanel";
+import HealthcarePanel from "./HealthcarePanel";
 import IllustratedMap from "./IllustratedMap";
 import ListingPanel from "./ListingPanel";
 import RegionListingsPanel from "./RegionListingsPanel";
@@ -30,6 +32,8 @@ const SECTIONS: ReadonlyArray<Section> = [
   { name: "Hotels", kind: "available" },
   { name: "Food", kind: "available" },
   { name: "Shopping", kind: "available" },
+  { name: "Schools", kind: "available" },
+  { name: "Healthcare", kind: "available" },
   { name: "Guides", kind: "link", href: "/guides/" },
   { name: "More", kind: "soon" },
 ];
@@ -65,6 +69,10 @@ function SectionTiles({
   shoppingOpen,
   onOpenHotels,
   hotelsOpen,
+  onOpenSchools,
+  schoolsOpen,
+  onOpenHealthcare,
+  healthcareOpen,
 }: {
   onOpenFood: () => void;
   foodOpen: boolean;
@@ -72,16 +80,24 @@ function SectionTiles({
   shoppingOpen: boolean;
   onOpenHotels: () => void;
   hotelsOpen: boolean;
+  onOpenSchools: () => void;
+  schoolsOpen: boolean;
+  onOpenHealthcare: () => void;
+  healthcareOpen: boolean;
 }) {
   const handlers: Record<string, () => void> = {
     Food: onOpenFood,
     Shopping: onOpenShopping,
     Hotels: onOpenHotels,
+    Schools: onOpenSchools,
+    Healthcare: onOpenHealthcare,
   };
   const expanded: Record<string, boolean> = {
     Food: foodOpen,
     Shopping: shoppingOpen,
     Hotels: hotelsOpen,
+    Schools: schoolsOpen,
+    Healthcare: healthcareOpen,
   };
 
   return (
@@ -166,6 +182,8 @@ export default function AppShell() {
   const [foodOpen, setFoodOpen] = useState(false);
   const [shoppingOpen, setShoppingOpen] = useState(false);
   const [hotelsOpen, setHotelsOpen] = useState(false);
+  const [schoolsOpen, setSchoolsOpen] = useState(false);
+  const [healthcareOpen, setHealthcareOpen] = useState(false);
   useEffect(() => {
     if (selectedRegion === null) {
       setModalRegion(null);
@@ -210,6 +228,16 @@ export default function AppShell() {
         onOpenHotels={() => {
           setHotelsOpen(true);
           trackEvent("hotels_section_open");
+        }}
+        schoolsOpen={schoolsOpen}
+        onOpenSchools={() => {
+          setSchoolsOpen(true);
+          trackEvent("schools_section_open");
+        }}
+        healthcareOpen={healthcareOpen}
+        onOpenHealthcare={() => {
+          setHealthcareOpen(true);
+          trackEvent("healthcare_section_open");
         }}
       />
 
@@ -343,6 +371,22 @@ export default function AppShell() {
         onClose={() => {
           setHotelsOpen(false);
           trackEvent("hotels_section_close");
+        }}
+      />
+
+      <SchoolsPanel
+        open={schoolsOpen}
+        onClose={() => {
+          setSchoolsOpen(false);
+          trackEvent("schools_section_close");
+        }}
+      />
+
+      <HealthcarePanel
+        open={healthcareOpen}
+        onClose={() => {
+          setHealthcareOpen(false);
+          trackEvent("healthcare_section_close");
         }}
       />
     </main>
