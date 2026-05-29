@@ -157,6 +157,34 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
       },
     ],
   },
+  {
+    slug: "banking-in-cyprus",
+    title: "Opening a bank account in Cyprus — the practical reality (2026)",
+    description:
+      "Which banks take new residents, what documents you actually need, realistic timelines, and why Revolut is a bridge not a replacement.",
+    sections: [
+      {
+        heading: "Why bank accounts take longer than you expect",
+        body: "Every relocator to Cyprus underestimates the bank account. The common assumption is that it takes a week — you show up with your passport, they open an account, you get a card. The reality, since the post-2022 KYC and AML tightening across Cypriot banking, is materially different. The Central Bank of Cyprus and the European Banking Authority have significantly increased compliance requirements on all retail banks, meaning every new account requires a full know-your-customer file: verified identity, verified address, verified source of funds, and a completed anti-money-laundering questionnaire. From first appointment to a functioning account with a card, 2–4 weeks is the realistic timeline. Some applicants take 6–8 weeks. The document list is longer than any bank's website advertises, the branch staff are often helpful but constrained by compliance rules they cannot override, and the most common bottleneck is incomplete documentation at the first meeting — which resets the clock. Set your expectations before you arrive, not after.",
+      },
+      {
+        heading: "What documents you actually need",
+        body: "Banks in Cyprus will ask for, at minimum: a valid passport, your ARC (Alien Registration Certificate) or Yellow Slip (EU citizens), TWO separate proofs of address — a utility bill or signed and stamped lease agreement; hotel invoices and serviced apartment confirmations are explicitly rejected by most branches — and documented proof of source of funds, typically three months of payslips from an employer, or three months of company bank statements if self-employed. You will also complete an AML questionnaire at the branch, which asks about the nature of your income, expected transaction volumes, and business relationships. The practical tip most relocators learn too late: bring original documents AND certified copies of everything. Banks are required to copy and verify originals but cannot keep originals, so if you bring only originals you will be asked to return with copies, which adds another week. Certifications can be done by a local notary in Cyprus for €15–€25 per document.",
+      },
+      {
+        heading: "Bank of Cyprus and Hellenic Bank: the standard path",
+        body: "Bank of Cyprus and Hellenic Bank are the two main retail banks and the default recommendation for most new residents. Both offer full English-language service, online banking in English, and standard retail products (current account, debit card, online transfers). For expats, the most highly regarded branches are the Limassol Marina branch of Bank of Cyprus and the Makarios Avenue branch of Hellenic Bank in Limassol — both have staff experienced with international account openings and shorter average processing times for new-resident applications. Outbound wire transfer fees run €15–€25 per transfer at both banks; SEPA transfers within the Eurozone are cheaper at around €2–€5. Account opening typically takes 2–4 weeks from your first appointment to account activation, and debit cards are issued and shipped separately — typically 1–2 weeks after account activation. Do not assume you will have a card on the day the account activates. Plan for two separate waits.",
+      },
+      {
+        heading: "AstroBank: worth knowing for non-EU and complex profiles",
+        body: "AstroBank — formerly Arab Jordan Investment Bank Cyprus, rebranded in 2016 — is the third name that experienced relocators mention, and it is specifically relevant if you have a non-EU passport or a complex source-of-funds profile. Historically, AstroBank has been more accommodating for applicants from MENA, CIS, and South Asian countries whose profiles Bank of Cyprus or Hellenic may decline at the compliance stage. This is not a reflection on the legitimacy of those profiles — it is a reflection of each bank's risk appetite and their established compliance frameworks for different geographic profiles. AstroBank has a smaller branch network than the main two (Limassol, Nicosia, Larnaca are covered), but the account-opening success rate for applications that the bigger banks reject is meaningfully higher. Fees are broadly comparable. If your profile is non-standard — dual nationality, foreign company income, source-of-funds documentation in a non-EU context — contact AstroBank in parallel with your other applications, not as a fallback after the others decline.",
+      },
+      {
+        heading: "Revolut and Wise as a bridge — but not a substitute",
+        body: "Revolut and Wise both work from day one for day-to-day spending, receiving EUR transfers, and saving on exchange rates versus bank wire fees. Many relocators lean heavily on one or both during the 2–4 week account-opening period. However, they cannot substitute for a Cypriot bank account in three important ways: landlords require a CY-prefix IBAN for deposit payments and often for ongoing rent — a LT-prefix (Revolut Lithuania) or BE-prefix (Wise Belgium) IBAN is frequently rejected; utility direct debits require a domestic IBAN in many cases; and certain tax and non-dom filings require a verifiable Cypriot bank account on record. Use Revolut and Wise as your spending account while the traditional account application processes — they are genuinely useful for that — but treat them as a bridge, not a destination. For sign-up: Revolut's referral link (revolut.com/referral) and Wise's referral (wise.com/invite) both offer fee-free transfers for the first period after sign-up, which is worth using given you will likely be making international transfers during your relocation.",
+      },
+    ],
+  },
 ];
 
 export function guideBySlug(slug: string): GuideInfo | undefined {
