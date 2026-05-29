@@ -157,7 +157,7 @@ function SectionTiles({
         return (
           <div
             key={s.name}
-            className="rounded-md bg-white text-slate-900 ring-1 ring-slate-900/30 px-2 md:px-3 py-1 md:py-1.5 text-[10px] md:text-xs font-bold whitespace-nowrap"
+            className="rounded-md bg-amber-400 text-slate-900 px-2 md:px-3 py-1 md:py-1.5 text-[10px] md:text-xs font-bold whitespace-nowrap"
             aria-current="page"
             title={`${s.name} — current section`}
           >
