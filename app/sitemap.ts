@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${SITE_URL}/about/`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/contact/`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${SITE_URL}/privacy/`, lastModified: now, changeFrequency: "yearly" as const, priority: 0.3 },
     { url: `${SITE_URL}/guides/`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     ...REGIONS.map((r) => ({
       url: `${SITE_URL}/regions/${r.slug}/`,

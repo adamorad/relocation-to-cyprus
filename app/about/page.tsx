@@ -70,6 +70,23 @@ export default function AboutPage() {
             already live somewhere hidden.
           </li>
         </ul>
+
+        <h2 className="text-xl font-bold mt-8 mb-2">Built by</h2>
+        <p className="text-slate-700 leading-relaxed">
+          RealCy.app is an independent project built by a Cyprus relocator —
+          someone who went through this process and found the available
+          information scattered, outdated, or written for an audience that
+          already knew Cyprus. The site is not affiliated with any real-estate
+          agency, law firm, or government body. If you have corrections,
+          additions, or feedback,{" "}
+          <Link
+            href="/contact/"
+            className="text-amber-700 hover:text-amber-900 underline"
+          >
+            get in touch
+          </Link>
+          .
+        </p>
       </section>
 
       <aside className="mt-12 p-5 bg-amber-50 border border-amber-200 rounded-lg text-sm text-slate-700">
