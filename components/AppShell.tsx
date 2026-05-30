@@ -41,17 +41,28 @@ type Section = {
 
 const ICON_CLS = "w-5 h-5 flex-shrink-0";
 
+/** Full list — used by the mobile bottom-sheet drawer */
 const SECTIONS: ReadonlyArray<Section> = [
-  { name: "New Developments", icon: <Map className={ICON_CLS} />,           kind: "current" },
-  { name: "Rentals",          icon: <Home className={ICON_CLS} />,          kind: "soon" },
-  { name: "Hotels",           icon: <Building2 className={ICON_CLS} />,    kind: "available" },
+  { name: "New Developments", icon: <Map className={ICON_CLS} />,             kind: "current" },
+  { name: "Rentals",          icon: <Home className={ICON_CLS} />,            kind: "soon" },
+  { name: "Hotels",           icon: <Building2 className={ICON_CLS} />,      kind: "available" },
   { name: "Food",             icon: <UtensilsCrossed className={ICON_CLS} />, kind: "available" },
-  { name: "Shopping",         icon: <ShoppingBag className={ICON_CLS} />,   kind: "available" },
-  { name: "Schools",          icon: <GraduationCap className={ICON_CLS} />, kind: "available" },
-  { name: "Healthcare",       icon: <HeartPulse className={ICON_CLS} />,    kind: "available" },
-  { name: "Guides",           icon: <BookOpen className={ICON_CLS} />,      kind: "link", href: "/guides/" },
-  { name: "Explore",          icon: <Compass className={ICON_CLS} />,       kind: "link", href: "/explore/" },
-  { name: "More",             icon: <MoreHorizontal className={ICON_CLS} />, kind: "soon" },
+  { name: "Shopping",         icon: <ShoppingBag className={ICON_CLS} />,     kind: "available" },
+  { name: "Schools",          icon: <GraduationCap className={ICON_CLS} />,   kind: "available" },
+  { name: "Healthcare",       icon: <HeartPulse className={ICON_CLS} />,      kind: "available" },
+  { name: "Guides",           icon: <BookOpen className={ICON_CLS} />,        kind: "link", href: "/guides/" },
+  { name: "Explore",          icon: <Compass className={ICON_CLS} />,         kind: "link", href: "/explore/" },
+  { name: "More",             icon: <MoreHorizontal className={ICON_CLS} />,  kind: "soon" },
+];
+
+/** Condensed list for the desktop pill bar — max 6 tiles, no clutter */
+const DESKTOP_NAV: ReadonlyArray<Section> = [
+  { name: "New Developments", icon: <Map className={ICON_CLS} />,             kind: "current" },
+  { name: "Hotels",           icon: <Building2 className={ICON_CLS} />,      kind: "available" },
+  { name: "Food",             icon: <UtensilsCrossed className={ICON_CLS} />, kind: "available" },
+  { name: "Shopping",         icon: <ShoppingBag className={ICON_CLS} />,     kind: "available" },
+  { name: "Guides",           icon: <BookOpen className={ICON_CLS} />,        kind: "link", href: "/guides/" },
+  { name: "More",             icon: <Compass className={ICON_CLS} />,         kind: "link", href: "/explore/" },
 ];
 
 function parsePriceEuros(s: string | null | undefined): number[] {
@@ -258,30 +269,13 @@ function SectionTiles({
     <>
       {/* ── Desktop pill bar (hidden on mobile) ─────────────────────────── */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 z-30 hidden sm:flex items-center gap-1 md:gap-1.5 bg-white/95 backdrop-blur-sm border border-slate-200 border-t-0 rounded-b-xl shadow-md px-1.5 md:px-2.5 py-1 md:py-1.5 max-w-[calc(100vw-0.75rem)] overflow-x-auto"
+        className="absolute top-0 left-1/2 -translate-x-1/2 z-30 hidden sm:flex items-center gap-1 md:gap-1.5 bg-white/95 backdrop-blur-sm border border-slate-200 border-t-0 rounded-b-xl shadow-md px-2 md:px-3 py-1 md:py-1.5"
         aria-label="RealCy.app sections"
         role="navigation"
       >
-        <span className="text-[10px] md:text-xs font-bold text-slate-900 tracking-tight pr-1.5 mr-0.5 border-r border-slate-200 whitespace-nowrap select-none">
-          RealCy
-        </span>
-        {SECTIONS.map((s) => {
+        {DESKTOP_NAV.map((s) => {
           if (s.kind === "soon") {
-            return (
-              <div
-                key={s.name}
-                className="relative rounded-md bg-slate-50 border border-slate-100 hidden sm:block px-1.5 md:px-2.5 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-slate-700 whitespace-nowrap"
-                title={`${s.name} — coming soon`}
-              >
-                {s.name}
-                <span
-                  className="absolute -top-1.5 -right-1.5 text-[7px] md:text-[8px] uppercase tracking-wider font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded px-1 py-px leading-tight"
-                  aria-label="Coming soon"
-                >
-                  Soon
-                </span>
-              </div>
-            );
+            return null; // no soon tiles on desktop bar
           }
           if (s.kind === "available") {
             return (
