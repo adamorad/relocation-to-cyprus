@@ -2,6 +2,18 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import {
+  Map,
+  Home,
+  Building2,
+  UtensilsCrossed,
+  ShoppingBag,
+  GraduationCap,
+  HeartPulse,
+  BookOpen,
+  Compass,
+  MoreHorizontal,
+} from "lucide-react";
 import FoodPanel from "./FoodPanel";
 import HotelsPanel from "./HotelsPanel";
 import ShoppingPanel from "./ShoppingPanel";
@@ -19,7 +31,7 @@ import {
 
 type Section = {
   name: string;
-  emoji: string;
+  icon: React.ReactNode;
   /** `current` = the page the user is already on (the map). `available` =
    * real section that opens in a popup. `soon` = placeholder.
    * `link` = navigates to a URL. */
@@ -27,17 +39,19 @@ type Section = {
   href?: string;
 };
 
+const ICON_CLS = "w-5 h-5 flex-shrink-0";
+
 const SECTIONS: ReadonlyArray<Section> = [
-  { name: "New Developments", emoji: "🗺️", kind: "current" },
-  { name: "Rentals",          emoji: "🏠", kind: "soon" },
-  { name: "Hotels",           emoji: "🏨", kind: "available" },
-  { name: "Food",             emoji: "🍽️", kind: "available" },
-  { name: "Shopping",         emoji: "🛍️", kind: "available" },
-  { name: "Schools",          emoji: "🏫", kind: "available" },
-  { name: "Healthcare",       emoji: "🏥", kind: "available" },
-  { name: "Guides",           emoji: "📚", kind: "link", href: "/guides/" },
-  { name: "Explore",          emoji: "🔍", kind: "link", href: "/explore/" },
-  { name: "More",             emoji: "⭐", kind: "soon" },
+  { name: "New Developments", icon: <Map className={ICON_CLS} />,           kind: "current" },
+  { name: "Rentals",          icon: <Home className={ICON_CLS} />,          kind: "soon" },
+  { name: "Hotels",           icon: <Building2 className={ICON_CLS} />,    kind: "available" },
+  { name: "Food",             icon: <UtensilsCrossed className={ICON_CLS} />, kind: "available" },
+  { name: "Shopping",         icon: <ShoppingBag className={ICON_CLS} />,   kind: "available" },
+  { name: "Schools",          icon: <GraduationCap className={ICON_CLS} />, kind: "available" },
+  { name: "Healthcare",       icon: <HeartPulse className={ICON_CLS} />,    kind: "available" },
+  { name: "Guides",           icon: <BookOpen className={ICON_CLS} />,      kind: "link", href: "/guides/" },
+  { name: "Explore",          icon: <Compass className={ICON_CLS} />,       kind: "link", href: "/explore/" },
+  { name: "More",             icon: <MoreHorizontal className={ICON_CLS} />, kind: "soon" },
 ];
 
 function parsePriceEuros(s: string | null | undefined): number[] {
@@ -134,8 +148,8 @@ function MobileDrawer({
 
             const rowContent = (
               <div className="flex items-center gap-3 px-5 py-3.5">
-                <span className="text-xl w-7 text-center leading-none" aria-hidden>
-                  {s.emoji}
+                <span className="w-7 flex items-center justify-center text-slate-600" aria-hidden>
+                  {s.icon}
                 </span>
                 <span
                   className={`flex-1 text-sm font-semibold ${

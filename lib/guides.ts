@@ -8,9 +8,45 @@
  * accountant or lawyer before acting.
  */
 
+export type GuideCategory =
+  | "immigration"
+  | "tax"
+  | "business"
+  | "property"
+  | "family"
+  | "healthcare"
+  | "transport"
+  | "lifestyle"
+  | "environment";
+
+export const GUIDE_CATEGORY_LABEL: Record<GuideCategory, string> = {
+  immigration: "Immigration & Visas",
+  tax: "Taxes & Finance",
+  business: "Business",
+  property: "Property",
+  family: "Family & Children",
+  healthcare: "Healthcare",
+  transport: "Transport",
+  lifestyle: "Lifestyle",
+  environment: "Environment",
+};
+
+export const ALL_GUIDE_CATEGORIES: ReadonlyArray<GuideCategory> = [
+  "immigration",
+  "tax",
+  "business",
+  "property",
+  "family",
+  "healthcare",
+  "transport",
+  "lifestyle",
+  "environment",
+];
+
 export type GuideInfo = {
   slug: string;
   title: string;
+  category: GuideCategory;
   /** URL: /guides/{slug}. */
   description: string;
   sections: Array<{ heading: string; body: string }>;
@@ -19,6 +55,7 @@ export type GuideInfo = {
 export const GUIDES: ReadonlyArray<GuideInfo> = [
   {
     slug: "residency-and-visas",
+    category: "immigration",
     title: "Cyprus residency and visa options for relocators (2026 guide)",
     description:
       "What kind of permit you actually need to move to Cyprus — Permanent Residency by Investment, the Digital Nomad Visa, EU registration, and more.",
@@ -47,6 +84,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "cost-of-living",
+    category: "lifestyle",
     title: "Cost of living in Cyprus — what relocators actually spend (2026)",
     description:
       "Realistic monthly budgets for Limassol, Paphos, Larnaca and Nicosia — rent, utilities, food, schooling, healthcare and transport.",
@@ -75,6 +113,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "taxes-for-expats",
+    category: "tax",
     title: "Taxes for relocators in Cyprus — the non-dom regime and what it means",
     description:
       "How Cyprus's tax system works for new residents — the famous non-domiciled rules, the tax-free income band, capital gains and crypto.",
@@ -103,6 +142,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "arrival-checklist",
+    category: "immigration",
     title: "Moving to Cyprus: your first-month checklist (2026)",
     description:
       "The exact steps to take in weeks 1–4 after arriving in Cyprus — in the right order, with the dependency logic explained so you don't hit each bureaucratic wall by surprise.",
@@ -131,6 +171,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "moving-to-cyprus-with-pets",
+    category: "lifestyle",
     title: "Moving to Cyprus with your pet: import rules by country (2026)",
     description:
       "The exact requirements for bringing a dog or cat to Cyprus — covering EU passport holders, post-Brexit UK residents, and non-EU countries including Israel, the US and the UAE — with backwards-planning timelines so you don't miss a step.",
@@ -159,6 +200,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "banking-in-cyprus",
+    category: "business",
     title: "Opening a bank account in Cyprus — the practical reality (2026)",
     description:
       "Which banks take new residents, what documents you actually need, realistic timelines, and why Revolut is a bridge not a replacement.",
@@ -187,6 +229,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "title-deed-status-guide",
+    category: "property",
     title: "Cyprus Title Deed Guide — Protecting Yourself as a Foreign Buyer",
     description:
       "How to check title deed status at the Land Registry, what 'subject to mortgage' means in practice, and the contract protections that matter most. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -215,6 +258,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "off-plan-buying-guide",
+    category: "property",
     title: "Buying Off-Plan in Cyprus — Due Diligence Checklist",
     description:
       "Developer vetting, escrow requirements, planning documents to demand, title deed timelines, and the most common completion delay scenarios. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -243,6 +287,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "rental-transition-guide",
+    category: "property",
     title: "Moving from Short-Term to Long-Term Rental in Cyprus",
     description:
       "Standard lease terms, typical deposit amounts, what landlords require from foreign tenants, furnished versus unfurnished market realities, breaking a lease, and rent increase rules.",
@@ -271,6 +316,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "digital-nomad-visa-guide",
+    category: "immigration",
     title: "Cyprus Digital Nomad Visa — Complete Step-by-Step Guide (2026)",
     description:
       "Eligibility, required documents, the application portal, processing times, renewal up to three years, and family extension options. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -299,6 +345,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "family-reunification-guide",
+    category: "immigration",
     title: "Bringing Your Family to Cyprus — Reunification and Dependent Visas",
     description:
       "How the primary visa holder brings a spouse, children, and parents to Cyprus — documents by dependent type, income thresholds, processing timelines, and rights granted to dependents. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -327,6 +374,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "permanent-residency-5year",
+    category: "immigration",
     title: "Cyprus Permanent Residency After 5 Years — Requirements and Process",
     description:
       "The qualifying residency period, points criteria, language requirements, application documents, timeline, and how PR rights compare to citizenship. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -355,6 +403,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "company-formation-visa",
+    category: "immigration",
     title: "Forming a Cyprus Company to Enable Residency — What You Need to Know",
     description:
       "Which visa categories require a Cyprus entity, minimum substance requirements, company formation steps, typical costs, and common pitfalls. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -383,6 +432,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "new-development-buying-guide",
+    category: "property",
     title: "Buying a New Development in Cyprus — From Reservation to Title Deed",
     description:
       "The reservation process, signing the contract of sale, VAT on new builds, the Land Registry deposit requirement, title deed transfer timelines, and the snagging process. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -411,6 +461,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "work-permits-non-eu",
+    category: "immigration",
     title: "Work Permits for Non-EU Nationals Employed in Cyprus (2026)",
     description:
       "How the Cyprus employer-sponsored work permit system operates — quota rules, required documents, the critical permit, fast-track tech scheme, and renewal. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -439,6 +490,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "citizenship-naturalization",
+    category: "immigration",
     title: "Cypriot Citizenship Through Naturalization — The 7-Year Route",
     description:
       "The requirements, timeline, and practical realities of becoming a Cypriot citizen through the standard naturalization track — residency period, language test, and what dual nationality rules apply. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -467,6 +519,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "non-dom-status-guide",
+    category: "tax",
     title: "Cyprus Non-Dom Status — What It Actually Covers and Who Qualifies",
     description:
       "The precise scope of the Special Defence Contribution exemption, which income types it covers, how long it lasts, common misconceptions, and the GESY contribution that catches non-doms off guard. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -495,6 +548,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "ip-box-regime",
+    category: "tax",
     title: "Cyprus IP Box Regime — 2.5% Effective Tax on Qualifying Intellectual Property",
     description:
       "How Cyprus's IP Box works, which types of IP qualify, how the nexus fraction determines the effective rate, practical structuring considerations, and a worked example. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -523,6 +577,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "vat-registration-guide",
+    category: "tax",
     title: "VAT Registration in Cyprus — Thresholds, Filing, and the OSS Scheme",
     description:
       "When you must register for VAT in Cyprus, how to register via TaxisNet, quarterly filing obligations, the VAT rules for new property, and how the EU OSS scheme works for e-commerce sellers. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -551,6 +606,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "crypto-tax-cyprus",
+    category: "tax",
     title: "Cryptocurrency Tax Treatment in Cyprus (2026)",
     description:
       "How Cyprus currently taxes cryptocurrency gains, where the investing-versus-trading line is drawn, VAT on crypto services, documentation best practices for non-dom filers, and what local accountants currently recommend.",
@@ -579,6 +635,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "company-types-comparison",
+    category: "business",
     title: "Cyprus Ltd vs Sole Trader vs Partnership — Choosing the Right Structure",
     description:
       "A frank comparison of the main business structures available in Cyprus — formation costs, tax treatment, liability exposure, audit requirements, and when each makes sense for a relocating founder.",
@@ -607,6 +664,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "corporate-bank-account-guide",
+    category: "business",
     title: "Opening a Cyprus Corporate Bank Account as a Foreign Director",
     description:
       "Which banks take foreign-director applications, what documents the KYC process actually requires, realistic timelines post-2022, and when an EMI is the right bridge or alternative.",
@@ -635,6 +693,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "hiring-in-cyprus",
+    category: "business",
     title: "Hiring Employees in Cyprus — Employment Law, Costs, and Process",
     description:
       "What Cyprus employment law requires when you hire your first employee — contracts, minimum wage, social insurance, probation, and how to calculate redundancy. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -663,6 +722,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "startup-visa-ict",
+    category: "immigration",
     title: "Cyprus Innovative Company Residence Permit — The Tech Founder Visa",
     description:
       "How non-EU tech founders can get a 2-year Cyprus residence permit through the Innovative Company scheme — income requirements, the business plan evaluation, and what happens if you are rejected. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -691,6 +751,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "ip-registration-cyprus",
+    category: "business",
     title: "Registering IP in Cyprus — Trademarks, Patents, and Software",
     description:
       "How to protect a brand, patent an invention, and understand software copyright in Cyprus — covering the Cyprus Trademark Registry, EUIPO, the European Patent Office, and the .cy domain registry. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -719,6 +780,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "trade-licenses-cyprus",
+    category: "business",
     title: "Trade License Requirements in Cyprus — Which Businesses Need One",
     description:
       "Which business activities require a license before trading in Cyprus, which authority issues each one, and what the typical costs and timelines look like. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -747,6 +809,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "international-vs-public-school",
+    category: "family",
     title: "International vs Public Schools in Cyprus — An Honest Comparison",
     description:
       "A frank look at what public and international schools in Cyprus actually deliver — language, curriculum, costs, university outcomes, and who each track works for.",
@@ -775,6 +838,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "universities-in-cyprus",
+    category: "family",
     title: "Universities in Cyprus — Guide for Students and Relocating Families",
     description:
       "The public and private universities in Cyprus, fees for EU and non-EU students, English-medium programmes, degree recognition, and why some expat families factor university proximity into their relocation decision.",
@@ -803,6 +867,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "child-registration-guide",
+    category: "family",
     title: "Registering Your Child in Cyprus — School, ARC, and Healthcare",
     description:
       "The documents and steps to register a child born in Cyprus or arriving as part of a relocating family — birth registration, ARC for minors, school enrollment paperwork, and the GeSY children's healthcare card. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -831,6 +896,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "sen-guide",
+    category: "family",
     title: "Special Educational Needs in Cyprus — Resources and School Support",
     description:
       "What SEN provision actually looks like in Cyprus public and private schools, how to request an assessment, the role of the Educational Support and Evaluation Service, and where to find English-speaking therapists.",
@@ -859,6 +925,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "family-neighborhoods-guide",
+    category: "lifestyle",
     title:
       "Best Family-Friendly Neighborhoods in Cyprus — District by District",
     description:
@@ -888,6 +955,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "maternity-paternity-rights",
+    category: "family",
     title:
       "Maternity and Paternity Rights in Cyprus — What Employed Parents Are Entitled To",
     description:
@@ -917,6 +985,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "gesy-registration-guide",
+    category: "healthcare",
     title: "How to Register with GeSY — Cyprus Public Health System Step-by-Step",
     description:
       "Who must register, how to complete the process on the HIO portal, choosing a personal GP, contribution rates for employed and self-employed residents, and what is and is not covered. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -945,6 +1014,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "pharmacies-medication",
+    category: "healthcare",
     title: "Pharmacies and Prescription Medication in Cyprus",
     description:
       "How Cyprus pharmacies work, the after-hours duty rota, GeSY prescription coverage, transferring a foreign prescription, and what you can bring into Cyprus from abroad.",
@@ -973,6 +1043,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "dental-care-guide",
+    category: "healthcare",
     title: "Dental Care in Cyprus — Cost, Quality, and Finding a Good Dentist",
     description:
       "What GeSY covers for dental, typical private dental costs, how Cyprus compares to the UK and Germany, how to find an English-speaking dentist, and dental insurance options.",
@@ -1001,6 +1072,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "emergency-services-guide",
+    category: "healthcare",
     title: "Emergency Services in Cyprus — 112, A&E, and What to Expect",
     description:
       "The single emergency number, which hospitals have 24-hour A&E, ambulance response times, what to bring, and the difference between public and private A&E for non-critical situations.",
@@ -1029,6 +1101,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "air-quality-allergens",
+    category: "environment",
     title: "Air Quality and Allergens in Cyprus — A Relocator's Guide",
     description:
       "Saharan dust events, pollen seasons, wildfire smoke, where to find AQI data, and practical steps for relocators who suffer from hay fever or respiratory conditions.",
@@ -1057,6 +1130,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "driving-licence-conversion",
+    category: "transport",
     title: "Converting Your Driving Licence to a Cyprus Licence",
     description:
       "EU licences, reciprocal-agreement countries, non-reciprocal countries that require a test, documents required, Traffic Department offices, timeline, and cost. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -1085,6 +1159,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "car-import-registration",
+    category: "transport",
     title: "Importing and Registering a Car in Cyprus",
     description:
       "What it actually costs to bring your car to Cyprus — customs duties, registration tax, KTEO roadworthiness testing, and an honest verdict on whether importing beats buying locally. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -1113,6 +1188,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "car-rental-long-term",
+    category: "transport",
     title: "Long-Term Car Rental in Cyprus — vs Buying Analysis",
     description:
       "Monthly costs for renting a car for 3–12 months in Cyprus, a genuine break-even analysis against buying used, and which rental companies actually offer expat-friendly long-term deals.",
@@ -1141,6 +1217,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "airport-transfers-guide",
+    category: "transport",
     title: "Getting from Cyprus Airports to Your Destination",
     description:
       "Fixed taxi rates, intercity buses, shared transfer services, and Bolt availability from Larnaca and Paphos airports — with realistic journey time estimates for every major route.",
@@ -1169,6 +1246,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "cycling-guide",
+    category: "transport",
     title: "Cycling in Cyprus — Infrastructure, Best Routes, and Honest Assessment",
     description:
       "A city-by-city assessment of cycling conditions in Cyprus, the best routes for road and mountain bikers, honest notes on the challenges, and when to actually go.",
@@ -1197,6 +1275,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "ferry-routes-guide",
+    category: "transport",
     title: "Ferry Routes from Cyprus to Greece, Lebanon, and Egypt",
     description:
       "Passenger ferry and cargo-passenger services from Limassol port — Grimaldi Lines to Piraeus, seasonal cruise routes, vehicle transport costs, and practical tips for overnight crossings.",
@@ -1225,6 +1304,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "road-safety-driving",
+    category: "transport",
     title: "Driving in Cyprus — Road Safety, Culture, and What to Expect",
     description:
       "Everything you need to know before driving in Cyprus — left-hand traffic, speed limits, camera locations, accident procedures, and an honest assessment of local driving culture.",
@@ -1253,6 +1333,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "language-learning-cyprus",
+    category: "lifestyle",
     title: "Learning Greek in Cyprus — Resources, Schools, and How Much You Actually Need",
     description:
       "A frank guide to Cypriot dialect vs Standard Modern Greek, which one to learn, how much you actually need day-to-day, and the best schools and apps for learning while living in Cyprus.",
@@ -1281,6 +1362,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "cultural-etiquette-guide",
+    category: "lifestyle",
     title: "Cypriot Culture and Social Etiquette — A Guide for Newcomers",
     description:
       "Filoxenia, name days, Orthodox holidays, the kafeneion as a social institution, tipping norms, and the practical cultural knowledge that helps newcomers build real relationships in Cyprus.",
@@ -1309,6 +1391,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "hiking-trails-guide",
+    category: "lifestyle",
     title: "Hiking in Cyprus — Troodos, Akamas, and Coastal Trails",
     description:
       "A practical guide to the best hiking in Cyprus — from the Troodos mountain circuit trails to the Akamas Peninsula and coastal paths — with difficulty ratings, trailhead logistics, and seasonal advice.",
@@ -1337,6 +1420,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "beach-guide-by-district",
+    category: "lifestyle",
     title: "Cyprus Beach Guide — Best Beaches by District",
     description:
       "A district-by-district guide to Cyprus's best beaches — from Limassol and Paphos to Larnaca, Ayia Napa, and Protaras — with crowd levels, facilities, Blue Flag status, and who each beach suits best.",
@@ -1365,6 +1449,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "food-delivery-apps",
+    category: "lifestyle",
     title: "Food Delivery in Cyprus — Apps, Coverage, and What Actually Works",
     description:
       "A practical guide to food delivery apps in Cyprus — Bolt Food, Wolt, Foody — with honest coverage maps, typical fees, delivery times, and which cities and hours actually work.",
@@ -1393,6 +1478,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "cypriot-cuisine-guide",
+    category: "lifestyle",
     title: "Cypriot Food Culture — A Relocator's Guide to Eating Like a Local",
     description:
       "What to order, how to eat it, where to find it, and the food customs that define Cypriot dining — from meze to kafeneion to seasonal produce.",
@@ -1421,6 +1507,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "coffee-culture-guide",
+    category: "lifestyle",
     title: "Coffee Culture in Cyprus — Cypriot Coffee, Freddo, and the Specialty Scene",
     description:
       "From Cypriot mud coffee to iced freddo espresso to the specialty third-wave scene in Limassol and Nicosia — how coffee works in Cyprus and where to find the best cup.",
@@ -1449,6 +1536,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "home-cooking-ingredients",
+    category: "lifestyle",
     title: "Sourcing International Cooking Ingredients in Cyprus",
     description:
       "Where to find international cooking ingredients in Cyprus — from Asian and Indian spices to Middle Eastern staples and online delivery — plus what is genuinely abundant and cheap locally.",
@@ -1477,6 +1565,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "restaurant-reservations",
+    category: "lifestyle",
     title: "Booking Restaurants in Cyprus — How the System Actually Works",
     description:
       "How to book restaurants in Cyprus, when you actually need to book versus walk in, which platforms work, and the social customs around dining that new residents often get wrong.",
@@ -1505,6 +1594,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "utilities-setup-guide",
+    category: "lifestyle",
     title: "Setting Up Utilities After Moving Into Your Cyprus Home",
     description:
       "How to get electricity, water, broadband, and gas connected after moving into a Cyprus property — with realistic timelines, costs, and the paperwork each utility requires.",
@@ -1533,6 +1623,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "solar-energy-guide",
+    category: "environment",
     title: "Solar Panels in Cyprus — Net Metering, ROI, and Installation",
     description:
       "Why Cyprus is one of the best countries in Europe for solar power, how the net metering scheme works, what a residential system costs, and how to navigate the EAC connection process.",
@@ -1561,6 +1652,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "water-quality-scarcity",
+    category: "environment",
     title: "Water Quality and Scarcity in Cyprus — What You Need to Know",
     description:
       "Tap water safety, the desalination infrastructure that underpins Cyprus's water supply, seasonal pressure issues, filtration options, and practical conservation tips for households and gardens.",
@@ -1589,6 +1681,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "waste-recycling-guide",
+    category: "environment",
     title: "Recycling in Cyprus — A Practical Guide for New Residents",
     description:
       "How to use the kerbside bins, where to drop off electronics, batteries, textiles and glass, and an honest assessment of Cyprus's recycling culture.",
@@ -1617,6 +1710,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "earthquake-preparedness",
+    category: "environment",
     title: "Earthquakes in Cyprus — Risk Level, Building Standards, and What to Do",
     description:
       "The seismic reality of living in Cyprus, how modern buildings are rated, what to do during and after a tremor, and how to register for Civil Emergency alerts.",
@@ -1645,6 +1739,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "wildfire-risk-guide",
+    category: "environment",
     title: "Wildfire Risk in Cyprus — Which Areas Are Exposed and How to Prepare",
     description:
       "Which areas of Cyprus face genuine wildfire exposure, when the fire season runs, how to register for SMS alerts, and practical steps to prepare your property and evacuation routes.",
@@ -1673,6 +1768,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "environmental-impact-guide",
+    category: "environment",
     title: "Living Sustainably in Cyprus — Environmental Considerations for Relocators",
     description:
       "An honest assessment of Cyprus's environmental footprint, practical ways to reduce your impact, local biodiversity worth knowing, and the environmental organisations active on the island.",
@@ -1701,6 +1797,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   },
   {
     slug: "climate-zones-seasonal",
+    category: "environment",
     title: "Cyprus Climate Month by Month — A Seasonal Living Guide",
     description:
       "A practical month-by-month breakdown of what living in Cyprus actually feels like through the year — what to do, what to avoid, and how to budget your time and activity by season.",

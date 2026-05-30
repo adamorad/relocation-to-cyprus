@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { MetaPixelEvent } from "@/components/MetaPixelEvent";
 
 export const metadata: Metadata = {
   title: "Contact RealCy.app",
@@ -13,6 +14,7 @@ const EMAIL = "hello@realcy.app";
 export default function ContactPage() {
   return (
     <main id="main" className="max-w-3xl mx-auto px-6 py-10 md:py-16">
+      <MetaPixelEvent event="Contact" />
       <nav className="text-xs text-slate-600 mb-6">
         <Link href="/" className="hover:text-slate-900">
           Map

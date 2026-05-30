@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { GUIDES, guideBySlug } from "@/lib/guides";
+import { MetaPixelEvent } from "@/components/MetaPixelEvent";
 
 const SITE_URL = "https://realcy.app";
 
@@ -75,6 +76,7 @@ export default async function GuidePage({
 
   return (
     <main id="main" className="max-w-3xl mx-auto px-6 py-10">
+      <MetaPixelEvent event="ViewContent" params={{ content_name: g.title, content_category: "guide" }} />
       <script
         type="application/ld+json"
         // biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
