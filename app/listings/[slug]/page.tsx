@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { allListings, listingBySlug } from "@/lib/listings";
+import { MetaPixelEvent } from "@/components/MetaPixelEvent";
 
 const SITE_URL = "https://realcy.app";
 
@@ -156,6 +157,7 @@ export default async function ListingPage({
 
   return (
     <main className="max-w-4xl mx-auto px-6 py-10">
+      <MetaPixelEvent event="ViewContent" params={{ content_name: l.title, content_category: "listing" }} />
       <script
         type="application/ld+json"
         // biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
