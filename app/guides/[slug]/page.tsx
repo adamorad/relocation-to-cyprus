@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { GUIDES, guideBySlug, type GuideCategory } from "@/lib/guides";
 import { MetaPixelEvent } from "@/components/MetaPixelEvent";
 
+const SITE_URL = "https://realcy.app";
+
 const toId = (h: string) =>
   h.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
@@ -49,8 +51,6 @@ const GUIDE_CATEGORY_TOOLS: Record<GuideCategory, Array<{ slug: string; title: s
   ],
 };
 
-const SITE_URL = "https://realcy.app";
-
 export function generateStaticParams() {
   return GUIDES.map((g) => ({ slug: g.slug }));
 }
@@ -72,6 +72,9 @@ export async function generateMetadata({
       description: g.description,
       url: `${SITE_URL}/guides/${g.slug}/`,
       type: "article",
+      ...(g.heroImage && {
+        images: [{ url: `${SITE_URL}${g.heroImage}`, width: 1200, height: 630, alt: g.title }],
+      }),
     },
   };
 }
@@ -85,6 +88,8 @@ export default async function GuidePage({
   const g = guideBySlug(slug);
   if (!g) notFound();
 
+  const relatedTools = GUIDE_CATEGORY_TOOLS[g.category] ?? [];
+
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -94,6 +99,7 @@ export default async function GuidePage({
     publisher: { "@type": "Organization", name: "RealCy.app" },
     datePublished: "2026-05-22",
     dateModified: "2026-05-30",
+    ...(g.heroImage && { image: `${SITE_URL}${g.heroImage}` }),
     mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/guides/${g.slug}/` },
   };
   const breadcrumbJsonLd = {
@@ -101,12 +107,7 @@ export default async function GuidePage({
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Map", item: `${SITE_URL}/` },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Guides",
-        item: `${SITE_URL}/guides/`,
-      },
+      { "@type": "ListItem", position: 2, name: "Guides", item: `${SITE_URL}/guides/` },
       { "@type": "ListItem", position: 3, name: g.title },
     ],
   };
@@ -120,8 +121,6 @@ export default async function GuidePage({
     })),
   };
 
-  const relatedTools = GUIDE_CATEGORY_TOOLS[g.category] ?? [];
-
   return (
     <main id="main" className="max-w-3xl mx-auto px-6 py-10">
       <MetaPixelEvent event="ViewContent" params={{ content_name: g.title, content_category: "guide" }} />
@@ -133,13 +132,9 @@ export default async function GuidePage({
         }}
       />
       <nav className="text-xs text-slate-600 mb-6">
-        <Link href="/" className="hover:text-slate-900">
-          Map
-        </Link>{" "}
+        <Link href="/" className="hover:text-slate-900">Map</Link>{" "}
         ›{" "}
-        <Link href="/guides/" className="hover:text-slate-900">
-          Guides
-        </Link>{" "}
+        <Link href="/guides/" className="hover:text-slate-900">Guides</Link>{" "}
         › <span className="text-slate-900">{g.title}</span>
       </nav>
 
@@ -152,6 +147,20 @@ export default async function GuidePage({
         </h1>
         <p className="mt-3 text-base text-slate-600">{g.description}</p>
       </header>
+
+      {g.heroImage && (
+        <div className="mt-6 rounded-xl overflow-hidden">
+          <img
+            src={g.heroImage}
+            alt={g.title}
+            className="w-full aspect-[2/1] object-cover"
+            loading="eager"
+            fetchPriority="high"
+            width={1200}
+            height={630}
+          />
+        </div>
+      )}
 
       {g.sections.length > 2 && (
         <nav aria-label="In this guide" className="mt-6 mb-2 p-4 bg-slate-50 border border-slate-200 rounded-lg text-sm">
