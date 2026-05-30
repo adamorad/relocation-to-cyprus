@@ -11,6 +11,9 @@ import "./globals.css";
 // silently no-ops the tag.
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
 
+// Meta Pixel — set via NEXT_PUBLIC_META_PIXEL_ID at build time.
+const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "";
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -83,19 +86,27 @@ function SiteFooter() {
   );
   return (
     <footer className="bg-slate-900 text-slate-300 mt-0">
-      <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-5 gap-8 text-sm">
+      <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-6 gap-8 text-sm">
         <div className="col-span-2 md:col-span-2">
           <p className="font-bold text-white text-lg">RealCy.app</p>
           <p className="mt-2 text-slate-400 leading-relaxed text-xs">
-            Your portal for anything Cyprus. New-build real estate today;
-            rentals, hotels, food, shopping and more coming soon.
+            Your portal for anything Cyprus — new-build real estate, relocation
+            guides, curated directories, and interactive tools.
           </p>
-          <p className="mt-4 text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
-            Coming soon
-          </p>
-          <p className="mt-1 text-xs text-slate-400">
-            Rentals · Hotels · Food · Shopping · More
-          </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <Link href="/explore/" className="text-xs text-[#35cdc4] hover:text-white transition-colors font-semibold">
+              Explore all →
+            </Link>
+            <Link href="/guides/" className="text-xs text-slate-400 hover:text-white transition-colors">
+              63 guides
+            </Link>
+            <Link href="/sections/" className="text-xs text-slate-400 hover:text-white transition-colors">
+              28 directories
+            </Link>
+            <Link href="/tools/" className="text-xs text-slate-400 hover:text-white transition-colors">
+              16 tools
+            </Link>
+          </div>
         </div>
         <nav aria-label="Regions">
           <p className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
@@ -114,52 +125,89 @@ function SiteFooter() {
             ))}
           </ul>
         </nav>
-        <nav aria-label="Guides">
+        <nav aria-label="Popular guides">
           <p className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
             Guides
           </p>
           <ul className="mt-3 space-y-2">
-            {GUIDES.map((g) => (
+            {[
+              { slug: "residency-and-visas", label: "Residency & Visas" },
+              { slug: "taxes-for-expats", label: "Taxes for Expats" },
+              { slug: "cost-of-living", label: "Cost of Living" },
+              { slug: "arrival-checklist", label: "First Month Checklist" },
+              { slug: "banking-in-cyprus", label: "Banking in Cyprus" },
+              { slug: "gesy-registration-guide", label: "GeSY Registration" },
+            ].map((g) => (
               <li key={g.slug}>
-                <Link
-                  href={`/guides/${g.slug}/`}
-                  className="hover:text-white transition-colors"
-                >
-                  {g.title.replace(/\s*\(.*\)\s*$/, "")}
+                <Link href={`/guides/${g.slug}/`} className="hover:text-white transition-colors">
+                  {g.label}
                 </Link>
               </li>
             ))}
+            <li>
+              <Link href="/guides/" className="text-[#35cdc4] hover:text-white transition-colors text-xs">
+                All 63 guides →
+              </Link>
+            </li>
           </ul>
         </nav>
-        <nav aria-label="Company">
+        <nav aria-label="Directories">
           <p className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
+            Directories
+          </p>
+          <ul className="mt-3 space-y-2">
+            {[
+              { slug: "property-lawyers", label: "Property Lawyers" },
+              { slug: "immigration-lawyers", label: "Immigration Lawyers" },
+              { slug: "accountants", label: "Accountants" },
+              { slug: "specialist-doctors", label: "Specialist Doctors" },
+              { slug: "coworking", label: "Coworking Spaces" },
+              { slug: "expat-communities", label: "Expat Communities" },
+            ].map((s) => (
+              <li key={s.slug}>
+                <Link href={`/sections/${s.slug}`} className="hover:text-white transition-colors">
+                  {s.label}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link href="/sections/" className="text-[#35cdc4] hover:text-white transition-colors text-xs">
+                All 28 directories →
+              </Link>
+            </li>
+          </ul>
+        </nav>
+        <nav aria-label="Tools and company">
+          <p className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
+            Tools
+          </p>
+          <ul className="mt-3 space-y-2">
+            {[
+              { slug: "rent-vs-buy-calculator", label: "Rent vs Buy" },
+              { slug: "tax-residency-planner", label: "Tax Residency" },
+              { slug: "visa-pathway-finder", label: "Visa Finder" },
+              { slug: "banking-fee-comparison", label: "Banking Fees" },
+            ].map((t) => (
+              <li key={t.slug}>
+                <Link href={`/tools/${t.slug}`} className="hover:text-white transition-colors">
+                  {t.label}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link href="/tools/" className="text-[#35cdc4] hover:text-white transition-colors text-xs">
+                All 16 tools →
+              </Link>
+            </li>
+          </ul>
+          <p className="mt-6 text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
             RealCy.app
           </p>
           <ul className="mt-3 space-y-2">
-            <li>
-              <Link
-                href="/about/"
-                className="hover:text-white transition-colors"
-              >
-                About
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/contact/"
-                className="hover:text-white transition-colors"
-              >
-                Contact
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/sitemap.xml"
-                className="hover:text-white transition-colors"
-              >
-                Sitemap
-              </Link>
-            </li>
+            <li><Link href="/about/" className="hover:text-white transition-colors">About</Link></li>
+            <li><Link href="/contact/" className="hover:text-white transition-colors">Contact</Link></li>
+            <li><Link href="/explore/" className="hover:text-white transition-colors">Explore</Link></li>
+            <li><Link href="/sitemap.xml" className="hover:text-white transition-colors">Sitemap</Link></li>
           </ul>
         </nav>
       </div>
@@ -221,6 +269,16 @@ window.gtag('js', new Date());
 window.gtag('config', '${GA_ID}', { anonymize_ip: true });`}
             </Script>
           </>
+        ) : null}
+        {META_PIXEL_ID ? (
+          <Script id="meta-pixel" strategy="afterInteractive">
+            {`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','${META_PIXEL_ID}');fbq('track','PageView');`}
+          </Script>
         ) : null}
       </body>
     </html>
