@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
-import Script from "next/script";
+import { CookieConsentManager } from "@/components/CookieConsentManager";
 import { REGIONS } from "@/lib/regions";
 import { GUIDES } from "@/lib/guides";
 import { LISTINGS_BY_REGION } from "@/lib/listingsData";
@@ -165,7 +165,7 @@ function SiteFooter() {
               { slug: "expat-communities", label: "Expat Communities" },
             ].map((s) => (
               <li key={s.slug}>
-                <Link href={`/sections/${s.slug}`} className="hover:text-white transition-colors">
+                <Link href={`/sections/${s.slug}/`} className="hover:text-white transition-colors">
                   {s.label}
                 </Link>
               </li>
@@ -189,7 +189,7 @@ function SiteFooter() {
               { slug: "banking-fee-comparison", label: "Banking Fees" },
             ].map((t) => (
               <li key={t.slug}>
-                <Link href={`/tools/${t.slug}`} className="hover:text-white transition-colors">
+                <Link href={`/tools/${t.slug}/`} className="hover:text-white transition-colors">
                   {t.label}
                 </Link>
               </li>
@@ -207,6 +207,7 @@ function SiteFooter() {
             <li><Link href="/about/" className="hover:text-white transition-colors">About</Link></li>
             <li><Link href="/contact/" className="hover:text-white transition-colors">Contact</Link></li>
             <li><Link href="/explore/" className="hover:text-white transition-colors">Explore</Link></li>
+            <li><Link href="/privacy/" className="hover:text-white transition-colors">Privacy</Link></li>
             <li><Link href="/sitemap.xml" className="hover:text-white transition-colors">Sitemap</Link></li>
           </ul>
         </nav>
@@ -256,30 +257,7 @@ export default function RootLayout({
         </a>
         {children}
         <SiteFooter />
-        {GA_ID ? (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="ga4-init" strategy="afterInteractive">
-              {`window.dataLayer = window.dataLayer || [];
-window.gtag = function(){window.dataLayer.push(arguments);};
-window.gtag('js', new Date());
-window.gtag('config', '${GA_ID}', { anonymize_ip: true });`}
-            </Script>
-          </>
-        ) : null}
-        {META_PIXEL_ID ? (
-          <Script id="meta-pixel" strategy="afterInteractive">
-            {`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','${META_PIXEL_ID}');fbq('track','PageView');`}
-          </Script>
-        ) : null}
+        <CookieConsentManager gaId={GA_ID} pixelId={META_PIXEL_ID} />
       </body>
     </html>
   );
