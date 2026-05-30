@@ -19,6 +19,7 @@ import {
 
 type Section = {
   name: string;
+  emoji: string;
   /** `current` = the page the user is already on (the map). `available` =
    * real section that opens in a popup. `soon` = placeholder.
    * `link` = navigates to a URL. */
@@ -27,16 +28,16 @@ type Section = {
 };
 
 const SECTIONS: ReadonlyArray<Section> = [
-  { name: "New Developments", kind: "current" },
-  { name: "Rentals", kind: "soon" },
-  { name: "Hotels", kind: "available" },
-  { name: "Food", kind: "available" },
-  { name: "Shopping", kind: "available" },
-  { name: "Schools", kind: "available" },
-  { name: "Healthcare", kind: "available" },
-  { name: "Guides", kind: "link", href: "/guides/" },
-  { name: "Explore", kind: "link", href: "/explore/" },
-  { name: "More", kind: "soon" },
+  { name: "New Developments", emoji: "🗺️", kind: "current" },
+  { name: "Rentals",          emoji: "🏠", kind: "soon" },
+  { name: "Hotels",           emoji: "🏨", kind: "available" },
+  { name: "Food",             emoji: "🍽️", kind: "available" },
+  { name: "Shopping",         emoji: "🛍️", kind: "available" },
+  { name: "Schools",          emoji: "🏫", kind: "available" },
+  { name: "Healthcare",       emoji: "🏥", kind: "available" },
+  { name: "Guides",           emoji: "📚", kind: "link", href: "/guides/" },
+  { name: "Explore",          emoji: "🔍", kind: "link", href: "/explore/" },
+  { name: "More",             emoji: "⭐", kind: "soon" },
 ];
 
 function parsePriceEuros(s: string | null | undefined): number[] {
@@ -63,6 +64,142 @@ function formatEuros(n: number): string {
   return `€${Math.round(n / 1000)}k`;
 }
 
+// ── Mobile bottom-sheet drawer ────────────────────────────────────────────────
+
+function MobileDrawer({
+  open,
+  onClose,
+  handlers,
+}: {
+  open: boolean;
+  onClose: () => void;
+  handlers: Record<string, (() => void) | undefined>;
+}) {
+  useEffect(() => {
+    if (!open) return;
+    const fn = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", fn);
+    return () => document.removeEventListener("keydown", fn);
+  }, [open, onClose]);
+
+  return (
+    /* sm:hidden — only renders on mobile; on desktop it's display:none */
+    <div
+      className={`sm:hidden fixed inset-0 z-50 transition-opacity duration-300 ${
+        open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+      }`}
+      style={{ background: "rgba(15,23,42,0.55)" }}
+      onClick={onClose}
+      aria-hidden={!open}
+    >
+      {/* Sheet */}
+      <div
+        className={`absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl
+          max-h-[82vh] overflow-y-auto shadow-2xl
+          transition-transform duration-300 ${
+          open ? "translate-y-0" : "translate-y-full"
+        }`}
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal={open}
+        aria-label="Site sections"
+      >
+        {/* Drag handle */}
+        <div className="flex justify-center pt-3 pb-1">
+          <div className="w-10 h-1 rounded-full bg-slate-300" />
+        </div>
+
+        {/* Header */}
+        <div className="flex items-center justify-between px-5 py-3 border-b border-slate-100">
+          <p className="font-bold text-slate-900">Sections</p>
+          <button
+            type="button"
+            onClick={onClose}
+            className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-slate-100 text-slate-500 text-xl leading-none"
+            aria-label="Close menu"
+          >
+            ×
+          </button>
+        </div>
+
+        {/* Section rows */}
+        <ul className="py-2 pb-8">
+          {SECTIONS.map((s) => {
+            const isSoon = s.kind === "soon";
+            const isLink = s.kind === "link";
+            const isCurrent = s.kind === "current";
+            const handler = handlers[s.name];
+
+            const rowContent = (
+              <div className="flex items-center gap-3 px-5 py-3.5">
+                <span className="text-xl w-7 text-center leading-none" aria-hidden>
+                  {s.emoji}
+                </span>
+                <span
+                  className={`flex-1 text-sm font-semibold ${
+                    isSoon ? "text-slate-400" : "text-slate-900"
+                  }`}
+                >
+                  {s.name}
+                </span>
+                {isSoon && (
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-amber-700 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5">
+                    Soon
+                  </span>
+                )}
+                {isCurrent && (
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-teal-700 bg-teal-50 border border-teal-200 rounded px-1.5 py-0.5">
+                    Here
+                  </span>
+                )}
+              </div>
+            );
+
+            if (isSoon) {
+              return (
+                <li key={s.name} className="opacity-50">
+                  {rowContent}
+                </li>
+              );
+            }
+            if (isLink) {
+              return (
+                <li key={s.name}>
+                  <Link
+                    href={s.href!}
+                    onClick={onClose}
+                    className="block hover:bg-slate-50 active:bg-slate-100 transition-colors"
+                  >
+                    {rowContent}
+                  </Link>
+                </li>
+              );
+            }
+            return (
+              <li key={s.name}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    handler?.();
+                    onClose();
+                  }}
+                  className="w-full text-left hover:bg-slate-50 active:bg-slate-100 transition-colors"
+                >
+                  {rowContent}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+// ── Desktop pill bar + mobile trigger ─────────────────────────────────────────
+
 function SectionTiles({
   onOpenFood,
   foodOpen,
@@ -74,6 +211,7 @@ function SectionTiles({
   schoolsOpen,
   onOpenHealthcare,
   healthcareOpen,
+  onOpenMobileMenu,
 }: {
   onOpenFood: () => void;
   foodOpen: boolean;
@@ -85,6 +223,7 @@ function SectionTiles({
   schoolsOpen: boolean;
   onOpenHealthcare: () => void;
   healthcareOpen: boolean;
+  onOpenMobileMenu: () => void;
 }) {
   const handlers: Record<string, () => void> = {
     Food: onOpenFood,
@@ -102,76 +241,95 @@ function SectionTiles({
   };
 
   return (
-    <div
-      className="absolute top-0 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1 md:gap-1.5 bg-white/95 backdrop-blur-sm border border-slate-200 border-t-0 rounded-b-xl shadow-md px-1.5 md:px-2.5 py-1 md:py-1.5 max-w-[calc(100vw-0.75rem)] overflow-x-auto"
-      aria-label="RealCy.app sections"
-    >
-      <span className="text-[10px] md:text-xs font-bold text-slate-900 tracking-tight pr-1.5 mr-0.5 border-r border-slate-200 whitespace-nowrap select-none">
-        RealCy
-      </span>
-      {SECTIONS.map((s) => {
-        if (s.kind === "soon") {
+    <>
+      {/* ── Desktop pill bar (hidden on mobile) ─────────────────────────── */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 z-30 hidden sm:flex items-center gap-1 md:gap-1.5 bg-white/95 backdrop-blur-sm border border-slate-200 border-t-0 rounded-b-xl shadow-md px-1.5 md:px-2.5 py-1 md:py-1.5 max-w-[calc(100vw-0.75rem)] overflow-x-auto"
+        aria-label="RealCy.app sections"
+        role="navigation"
+      >
+        <span className="text-[10px] md:text-xs font-bold text-slate-900 tracking-tight pr-1.5 mr-0.5 border-r border-slate-200 whitespace-nowrap select-none">
+          RealCy
+        </span>
+        {SECTIONS.map((s) => {
+          if (s.kind === "soon") {
+            return (
+              <div
+                key={s.name}
+                className="relative rounded-md bg-slate-50 border border-slate-100 hidden sm:block px-1.5 md:px-2.5 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-slate-700 whitespace-nowrap"
+                title={`${s.name} — coming soon`}
+              >
+                {s.name}
+                <span
+                  className="absolute -top-1.5 -right-1.5 text-[7px] md:text-[8px] uppercase tracking-wider font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded px-1 py-px leading-tight"
+                  aria-label="Coming soon"
+                >
+                  Soon
+                </span>
+              </div>
+            );
+          }
+          if (s.kind === "available") {
+            return (
+              <button
+                key={s.name}
+                type="button"
+                onClick={handlers[s.name]}
+                aria-haspopup="dialog"
+                aria-expanded={expanded[s.name] ?? false}
+                className="rounded-md bg-slate-900 hover:bg-slate-700 px-2 md:px-3 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-white whitespace-nowrap transition-colors cursor-pointer"
+                title={`${s.name} — click to open`}
+              >
+                {s.name}
+              </button>
+            );
+          }
+          if (s.kind === "link") {
+            return (
+              <Link
+                key={s.name}
+                href={s.href!}
+                className="rounded-md bg-slate-900 hover:bg-slate-700 px-2 md:px-3 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-white whitespace-nowrap transition-colors"
+                title={`${s.name}`}
+              >
+                {s.name}
+              </Link>
+            );
+          }
+          // current page
           return (
             <div
               key={s.name}
-              className="relative rounded-md bg-slate-50 border border-slate-100 hidden sm:block px-1.5 md:px-2.5 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-slate-700 whitespace-nowrap"
-              title={`${s.name} — coming soon`}
+              className="rounded-md bg-amber-400 text-slate-900 px-2 md:px-3 py-1 md:py-1.5 text-[10px] md:text-xs font-bold whitespace-nowrap"
+              aria-current="page"
+              title={`${s.name} — current section`}
             >
               {s.name}
-              <span
-                className="absolute -top-1.5 -right-1.5 text-[7px] md:text-[8px] uppercase tracking-wider font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded px-1 py-px leading-tight"
-                aria-label="Coming soon"
-              >
-                Soon
-              </span>
             </div>
           );
-        }
-        if (s.kind === "available") {
-          return (
-            <button
-              key={s.name}
-              type="button"
-              onClick={handlers[s.name]}
-              aria-haspopup="dialog"
-              aria-expanded={expanded[s.name] ?? false}
-              className="rounded-md bg-slate-900 hover:bg-slate-700 px-2 md:px-3 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-white whitespace-nowrap transition-colors cursor-pointer"
-              title={`${s.name} — click to open`}
-            >
-              {s.name}
-            </button>
-          );
-        }
-        if (s.kind === "link") {
-          return (
-            <Link
-              key={s.name}
-              href={s.href!}
-              className="rounded-md bg-slate-900 hover:bg-slate-700 px-2 md:px-3 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-white whitespace-nowrap transition-colors"
-              title={`${s.name} — view guides`}
-            >
-              {s.name}
-            </Link>
-          );
-        }
-        // current page — distinct teal so users can tell it apart from clickable tiles
-        return (
-          <div
-            key={s.name}
-            className="rounded-md bg-amber-400 text-slate-900 px-2 md:px-3 py-1 md:py-1.5 text-[10px] md:text-xs font-bold whitespace-nowrap"
-            aria-current="page"
-            title={`${s.name} — current section`}
-          >
-            {s.name}
-          </div>
-        );
-      })}
-      <span className="sm:hidden text-[9px] uppercase tracking-wider font-semibold text-slate-500 self-center pr-1">
-        + 2 soon
-      </span>
-    </div>
+        })}
+      </div>
+
+      {/* ── Mobile trigger button (visible only on mobile) ───────────────── */}
+      <div className="sm:hidden absolute top-0 left-1/2 -translate-x-1/2 z-30 bg-white/95 backdrop-blur-sm border border-slate-200 border-t-0 rounded-b-xl shadow-md">
+        <button
+          type="button"
+          onClick={onOpenMobileMenu}
+          className="flex items-center gap-2 px-4 py-2.5 text-xs font-bold text-slate-900"
+          aria-label="Open sections menu"
+          aria-haspopup="dialog"
+        >
+          <span className="text-sm leading-none" aria-hidden>
+            ≡
+          </span>
+          <span>Sections</span>
+        </button>
+      </div>
+    </>
   );
 }
+
+// ── Main shell ────────────────────────────────────────────────────────────────
 
 export default function AppShell() {
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
@@ -185,6 +343,8 @@ export default function AppShell() {
   const [hotelsOpen, setHotelsOpen] = useState(false);
   const [schoolsOpen, setSchoolsOpen] = useState(false);
   const [healthcareOpen, setHealthcareOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   useEffect(() => {
     if (selectedRegion === null) {
       setModalRegion(null);
@@ -208,6 +368,30 @@ export default function AppShell() {
       from: regionPriceFrom(list),
     };
   }, [hoveredRegion]);
+
+  const mobileHandlers: Record<string, (() => void) | undefined> = {
+    "New Developments": undefined,
+    Hotels: () => {
+      setHotelsOpen(true);
+      trackEvent("hotels_section_open");
+    },
+    Food: () => {
+      setFoodOpen(true);
+      trackEvent("food_section_open");
+    },
+    Shopping: () => {
+      setShoppingOpen(true);
+      trackEvent("shopping_section_open");
+    },
+    Schools: () => {
+      setSchoolsOpen(true);
+      trackEvent("schools_section_open");
+    },
+    Healthcare: () => {
+      setHealthcareOpen(true);
+      trackEvent("healthcare_section_open");
+    },
+  };
 
   return (
     <main
@@ -240,6 +424,13 @@ export default function AppShell() {
           setHealthcareOpen(true);
           trackEvent("healthcare_section_open");
         }}
+        onOpenMobileMenu={() => setMobileMenuOpen(true)}
+      />
+
+      <MobileDrawer
+        open={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+        handlers={mobileHandlers}
       />
 
       {/* The map is always rendered at the illustration's native aspect
