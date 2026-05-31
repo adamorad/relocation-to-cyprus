@@ -231,7 +231,7 @@ export default function FreelancerVsCompanyPage() {
     <main id="main" className="max-w-4xl mx-auto px-4 sm:px-6 py-10 md:py-16">
       {/* Breadcrumb */}
       <nav className="text-xs text-slate-500 mb-6">
-        <Link href="/" className="hover:text-slate-900">Map</Link>
+        <Link href="/" className="hover:text-slate-900">Home</Link>
         {" › "}
         <span className="text-slate-900">Freelancer vs Cyprus Ltd</span>
       </nav>

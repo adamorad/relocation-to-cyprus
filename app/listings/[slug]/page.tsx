@@ -32,7 +32,7 @@ export async function generateMetadata({
       title: l.title,
       description: desc,
       images: heroImage ? [heroImage] : undefined,
-      type: "article",
+      type: "website",
       url: `${SITE_URL}/listings/${l.slug}/`,
     },
   };
@@ -165,9 +165,7 @@ export default async function ListingPage({
       />
 
       <nav className="text-xs text-slate-600 mb-6">
-        <Link href="/" className="hover:text-slate-900">
-          Map
-        </Link>{" "}
+        <Link href="/" className="hover:text-slate-900">Home</Link>{" "}
         ›{" "}
         <Link
           href={`/regions/${l.regionCity.toLowerCase().replace(/\s+/g, "-")}/`}

@@ -97,9 +97,7 @@ export default function Meu1TrackerPage() {
   return (
     <main className="max-w-3xl mx-auto px-6 py-10">
       <nav className="text-xs text-slate-500 mb-6 flex gap-3">
-        <Link href="/" className="hover:text-slate-900">
-          ← Map
-        </Link>
+        <Link href="/" className="hover:text-slate-900">← Home</Link>
         <span className="text-slate-300">|</span>
         <Link href="/tools" className="hover:text-slate-900">
           ← All Tools
@@ -237,6 +235,14 @@ export default function Meu1TrackerPage() {
           ← All Tools
         </Link>
       </p>
+
+      <aside className="mt-10 p-5 rounded-xl bg-slate-50 border border-slate-200">
+        <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">Next steps</p>
+        <div className="flex flex-wrap gap-3">
+
+<Link href="/guides/residency-and-visas/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Read: Cyprus Residency & Visas Guide →</Link>          <Link href="/sections/immigration-lawyers/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Find an immigration lawyer →</Link>
+        </div>
+      </aside>
     </main>
   );
 }

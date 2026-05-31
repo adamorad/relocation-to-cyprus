@@ -11,9 +11,7 @@ export default function PrivacyPage() {
   return (
     <main id="main" className="max-w-3xl mx-auto px-6 py-10 md:py-16">
       <nav className="text-xs text-slate-600 mb-6">
-        <Link href="/" className="hover:text-slate-900">
-          Map
-        </Link>{" "}
+        <Link href="/" className="hover:text-slate-900">Home</Link>{" "}
         › <span className="text-slate-900">Privacy Policy</span>
       </nav>
 
