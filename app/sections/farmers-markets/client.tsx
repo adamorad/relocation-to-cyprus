@@ -24,6 +24,7 @@ function CityChip({
     <button
       type="button"
       onClick={onClick}
+          aria-pressed={selected}
       className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
         selected
           ? "bg-slate-900 text-white border border-slate-900"
@@ -48,6 +49,7 @@ function DayChip({
     <button
       type="button"
       onClick={onClick}
+          aria-pressed={selected}
       className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
         selected
           ? "bg-amber-700 text-white border border-amber-700"
@@ -73,9 +75,7 @@ export default function FarmersMarketsPage() {
     <main id="main" className="max-w-5xl mx-auto px-4 py-8 md:py-12">
       {/* Back nav */}
       <nav className="text-xs text-slate-500 mb-6">
-        <Link href="/" className="hover:text-slate-900 transition-colors">
-          ← Map
-        </Link>
+        <Link href="/" className="hover:text-slate-900 transition-colors">← Home</Link>
       </nav>
 
       {/* Header */}

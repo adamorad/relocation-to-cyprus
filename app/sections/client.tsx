@@ -18,7 +18,7 @@ export default function SectionsIndexPage() {
   return (
     <main id="main" className="max-w-4xl mx-auto px-6 py-10 md:py-16">
       <nav className="text-xs text-slate-600 mb-6">
-        <Link href="/" className="hover:text-slate-900">Map</Link>{" "}
+        <Link href="/" className="hover:text-slate-900">Home</Link>{" "}
         &rsaquo;{" "}
         <Link href="/explore/" className="hover:text-slate-900">Explore</Link>{" "}
         &rsaquo; <span className="text-slate-900">Directories</span>

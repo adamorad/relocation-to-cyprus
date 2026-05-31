@@ -16,9 +16,7 @@ export default function ContactPage() {
     <main id="main" className="max-w-3xl mx-auto px-6 py-10 md:py-16">
       <MetaPixelEvent event="Contact" />
       <nav className="text-xs text-slate-600 mb-6">
-        <Link href="/" className="hover:text-slate-900">
-          Map
-        </Link>{" "}
+        <Link href="/" className="hover:text-slate-900">Home</Link>{" "}
         › <span className="text-slate-900">Contact</span>
       </nav>
 

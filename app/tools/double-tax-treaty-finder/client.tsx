@@ -98,7 +98,7 @@ export default function DoubleTaxTreatyFinderPage() {
     <main id="main" className="max-w-4xl mx-auto px-4 sm:px-6 py-10 md:py-16">
       {/* Breadcrumb */}
       <nav className="text-xs text-slate-500 mb-6">
-        <Link href="/" className="hover:text-slate-900">Map</Link>
+        <Link href="/" className="hover:text-slate-900">Home</Link>
         {" › "}
         <span className="text-slate-900">Cyprus Double Tax Treaty Finder</span>
       </nav>
@@ -234,6 +234,14 @@ export default function DoubleTaxTreatyFinderPage() {
           ← Back to the map
         </Link>
       </p>
+
+      <aside className="mt-10 p-5 rounded-xl bg-slate-50 border border-slate-200">
+        <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">Next steps</p>
+        <div className="flex flex-wrap gap-3">
+
+<Link href="/guides/non-dom-status-guide/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Read: Non-Dom Status Guide →</Link>          <Link href="/sections/accountants/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Find a tax advisor →</Link>
+        </div>
+      </aside>
     </main>
   );
 }

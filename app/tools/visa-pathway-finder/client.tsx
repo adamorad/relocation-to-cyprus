@@ -155,9 +155,7 @@ export default function VisaPathwayFinderPage() {
   return (
     <main className="max-w-3xl mx-auto px-6 py-10">
       <nav className="text-xs text-slate-500 mb-6 flex gap-3">
-        <Link href="/" className="hover:text-slate-900">
-          ← Map
-        </Link>
+        <Link href="/" className="hover:text-slate-900">← Home</Link>
         <span className="text-slate-300">|</span>
         <Link href="/tools" className="hover:text-slate-900">
           ← All Tools
