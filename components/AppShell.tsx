@@ -14,11 +14,12 @@ import {
   Compass,
   MoreHorizontal,
 } from "lucide-react";
-import FoodPanel from "./FoodPanel";
-import HotelsPanel from "./HotelsPanel";
-import ShoppingPanel from "./ShoppingPanel";
-import SchoolsPanel from "./SchoolsPanel";
-import HealthcarePanel from "./HealthcarePanel";
+import dynamic from "next/dynamic";
+const FoodPanel = dynamic(() => import("./FoodPanel"), { ssr: false, loading: () => null });
+const HotelsPanel = dynamic(() => import("./HotelsPanel"), { ssr: false, loading: () => null });
+const ShoppingPanel = dynamic(() => import("./ShoppingPanel"), { ssr: false, loading: () => null });
+const SchoolsPanel = dynamic(() => import("./SchoolsPanel"), { ssr: false, loading: () => null });
+const HealthcarePanel = dynamic(() => import("./HealthcarePanel"), { ssr: false, loading: () => null });
 import IllustratedMap from "./IllustratedMap";
 import ListingPanel from "./ListingPanel";
 import RegionListingsPanel from "./RegionListingsPanel";

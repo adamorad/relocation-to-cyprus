@@ -34,6 +34,7 @@ function CityChip({
     <button
       type="button"
       onClick={onClick}
+          aria-pressed={selected}
       className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
         selected
           ? "bg-slate-900 text-white border border-slate-900"
@@ -60,6 +61,7 @@ function FilterChip({
     <button
       type="button"
       onClick={onClick}
+          aria-pressed={selected}
       className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors border ${
         selected ? colorClass : "bg-white text-slate-700 border-slate-300 hover:bg-slate-100"
       }`}
@@ -88,9 +90,7 @@ export default function HalalKosherPage() {
     <main id="main" className="max-w-5xl mx-auto px-4 py-8 md:py-12">
       {/* Back nav */}
       <nav className="text-xs text-slate-500 mb-6">
-        <Link href="/" className="hover:text-slate-900 transition-colors">
-          ← Map
-        </Link>
+        <Link href="/" className="hover:text-slate-900 transition-colors">← Home</Link>
       </nav>
 
       {/* Header */}

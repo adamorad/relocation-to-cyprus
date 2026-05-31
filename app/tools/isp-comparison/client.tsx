@@ -329,6 +329,14 @@ export default function ISPComparisonPage() {
           &larr; Back to tools
         </Link>
       </p>
+
+      <aside className="mt-10 p-5 rounded-xl bg-slate-50 border border-slate-200">
+        <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">Next steps</p>
+        <div className="flex flex-wrap gap-3">
+
+<Link href="/guides/utilities-setup-guide/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Read: Setting Up Utilities in Cyprus →</Link>          <Link href="/guides/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Explore Cyprus guides →</Link>
+        </div>
+      </aside>
     </main>
   );
 }

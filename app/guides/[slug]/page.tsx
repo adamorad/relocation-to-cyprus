@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { GUIDES, guideBySlug, type GuideCategory } from "@/lib/guides";
+import { AUTHORS, CATEGORY_AUTHOR } from "@/lib/authors";
 import { MetaPixelEvent } from "@/components/MetaPixelEvent";
+import { EmailCapture } from "@/components/EmailCapture";
 
 const SITE_URL = "https://realcy.app";
 
@@ -89,16 +91,21 @@ export default async function GuidePage({
   if (!g) notFound();
 
   const relatedTools = GUIDE_CATEGORY_TOOLS[g.category] ?? [];
+  const author = AUTHORS[CATEGORY_AUTHOR[g.category]] ?? AUTHORS.team;
 
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: g.title,
     description: g.description,
-    author: { "@type": "Organization", name: "RealCy.app" },
-    publisher: { "@type": "Organization", name: "RealCy.app" },
+    author: { "@type": "Person", name: author.name, jobTitle: author.role },
+    publisher: {
+      "@type": "Organization",
+      name: "RealCy.app",
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/apple-touch-icon.png`, width: 180, height: 180 },
+    },
     datePublished: "2026-05-22",
-    dateModified: "2026-05-30",
+    dateModified: "2026-05-31",
     ...(g.heroImage && { image: `${SITE_URL}${g.heroImage}` }),
     mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/guides/${g.slug}/` },
   };
@@ -132,7 +139,7 @@ export default async function GuidePage({
         }}
       />
       <nav className="text-xs text-slate-600 mb-6">
-        <Link href="/" className="hover:text-slate-900">Map</Link>{" "}
+        <Link href="/" className="hover:text-slate-900">Home</Link>{" "}
         ›{" "}
         <Link href="/guides/" className="hover:text-slate-900">Guides</Link>{" "}
         › <span className="text-slate-900">{g.title}</span>
@@ -146,6 +153,11 @@ export default async function GuidePage({
           {g.title}
         </h1>
         <p className="mt-3 text-base text-slate-600">{g.description}</p>
+        <p className="mt-3 text-xs text-slate-400">
+          By <span className="font-semibold text-slate-600">{author.name}</span>
+          {" · "}{author.role}
+          {" · "}Last reviewed May 2026
+        </p>
       </header>
 
       {g.heroImage && (
@@ -186,8 +198,6 @@ export default async function GuidePage({
         ))}
       </article>
 
-      <p className="mt-8 text-xs text-slate-400">Last reviewed: May 2026</p>
-
       {relatedTools.length > 0 && (
         <aside className="mt-4 p-4 bg-teal-50 border border-teal-200 rounded-lg">
           <p className="text-[10px] font-semibold text-teal-800 uppercase tracking-wider mb-3">Related tools</p>
@@ -205,6 +215,14 @@ export default async function GuidePage({
         </aside>
       )}
 
+      {(g.category === "immigration" || g.category === "tax" || g.category === "property") && (
+        <aside className="mt-6 p-5 bg-slate-900 rounded-xl text-white">
+          <p className="text-sm font-semibold mb-1">Get the free Cyprus Relocation Checklist</p>
+          <p className="text-xs text-slate-400">Week-by-week guide for your first month. Free.</p>
+          <EmailCapture compact />
+        </aside>
+      )}
+
       <aside className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg text-xs text-slate-700">
         This is general information, not legal or tax advice. Cyprus rules
         change frequently — verify with the relevant Cypriot government
@@ -212,8 +230,8 @@ export default async function GuidePage({
       </aside>
 
       <p className="mt-10 text-xs text-slate-600">
-        <Link href="/" className="underline hover:text-slate-900">
-          ← Back to the map
+        <Link href="/guides/" className="underline hover:text-slate-900">
+          ← All guides
         </Link>
       </p>
     </main>

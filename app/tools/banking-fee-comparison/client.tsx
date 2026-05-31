@@ -218,7 +218,7 @@ export default function BankingFeeComparisonPage() {
   return (
     <main id="main" className="max-w-5xl mx-auto px-6 py-10 md:py-16">
       <nav className="text-xs text-slate-600 mb-6">
-        <Link href="/" className="hover:text-slate-900">Map</Link>{" "}
+        <Link href="/" className="hover:text-slate-900">Home</Link>{" "}
         ›{" "}
         <Link href="/tools" className="hover:text-slate-900">Tools</Link>{" "}
         › <span className="text-slate-900">Banking Fee Comparison</span>
@@ -347,6 +347,14 @@ export default function BankingFeeComparisonPage() {
           ← Back to Tools
         </Link>
       </p>
+
+      <aside className="mt-10 p-5 rounded-xl bg-slate-50 border border-slate-200">
+        <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">Next steps</p>
+        <div className="flex flex-wrap gap-3">
+
+<Link href="/guides/banking-in-cyprus/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Read: Banking in Cyprus Guide →</Link>          <Link href="/sections/accountants/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Find an accountant →</Link>
+        </div>
+      </aside>
     </main>
   );
 }

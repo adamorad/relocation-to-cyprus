@@ -1,9 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import { CookieConsentManager } from "@/components/CookieConsentManager";
+import { EmailCapture } from "@/components/EmailCapture";
+import { SiteHeader } from "@/components/SiteHeader";
 import { REGIONS } from "@/lib/regions";
 import { GUIDES } from "@/lib/guides";
+import { SECTIONS_INDEX } from "@/lib/sections-index";
 import { LISTINGS_BY_REGION } from "@/lib/listingsData";
+
+const TOOL_COUNT = 16;
 import "./globals.css";
 
 // Google Analytics 4 — measurement ID. Set via NEXT_PUBLIC_GA_ID at build
@@ -61,12 +66,14 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} - ${SITE_TAGLINE}`,
     description:
       "Your portal to Cyprus. New-build real estate today; rentals, hotels, food and more coming soon.",
+    images: [{ url: "https://realcy.app/og-default.webp", width: 1200, height: 630, alt: "RealCy.app — Cyprus relocation portal" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} - ${SITE_TAGLINE}`,
     description:
       "Your portal to Cyprus. New-build real estate today; rentals, hotels, food and more coming soon.",
+    images: ["https://realcy.app/og-default.webp"],
   },
   robots: {
     index: true,
@@ -98,13 +105,13 @@ function SiteFooter() {
               Explore all →
             </Link>
             <Link href="/guides/" className="text-xs text-slate-400 hover:text-white transition-colors">
-              63 guides
+              {GUIDES.length} guides
             </Link>
             <Link href="/sections/" className="text-xs text-slate-400 hover:text-white transition-colors">
-              28 directories
+              {SECTIONS_INDEX.length} directories
             </Link>
             <Link href="/tools/" className="text-xs text-slate-400 hover:text-white transition-colors">
-              16 tools
+              {TOOL_COUNT} tools
             </Link>
           </div>
         </div>
@@ -146,7 +153,7 @@ function SiteFooter() {
             ))}
             <li>
               <Link href="/guides/" className="text-[#35cdc4] hover:text-white transition-colors text-xs">
-                All 63 guides →
+                All {GUIDES.length} guides →
               </Link>
             </li>
           </ul>
@@ -172,7 +179,7 @@ function SiteFooter() {
             ))}
             <li>
               <Link href="/sections/" className="text-[#35cdc4] hover:text-white transition-colors text-xs">
-                All 28 directories →
+                All {SECTIONS_INDEX.length} directories →
               </Link>
             </li>
           </ul>
@@ -196,7 +203,7 @@ function SiteFooter() {
             ))}
             <li>
               <Link href="/tools/" className="text-[#35cdc4] hover:text-white transition-colors text-xs">
-                All 16 tools →
+                All {TOOL_COUNT} tools →
               </Link>
             </li>
           </ul>
@@ -235,9 +242,15 @@ function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-slate-800">
+        <div className="max-w-6xl mx-auto px-6 py-6">
+          <p className="text-sm font-semibold text-white mb-1">Get the free Cyprus Relocation Checklist</p>
+          <p className="text-xs text-slate-400 mb-3">Week-by-week guide for your first month in Cyprus.</p>
+          <EmailCapture compact />
+        </div>
+      </div>
+      <div className="border-t border-slate-800">
         <div className="max-w-6xl mx-auto px-6 py-4 text-xs text-slate-500">
-          © {new Date().getFullYear()} RealCy.app — your portal for anything
-          Cyprus.
+          © {new Date().getFullYear()} RealCy.app — independent Cyprus relocation portal.
         </div>
       </div>
     </footer>
@@ -255,6 +268,7 @@ export default function RootLayout({
         <a href="#main" className="skip-to-content">
           Skip to content
         </a>
+        <SiteHeader />
         {children}
         <SiteFooter />
         <CookieConsentManager gaId={GA_ID} pixelId={META_PIXEL_ID} />

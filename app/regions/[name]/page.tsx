@@ -26,7 +26,8 @@ export async function generateMetadata({
       title: `${r.name} — Cyprus new developments`,
       description: r.oneLiner,
       url: `${SITE_URL}/regions/${r.slug}/`,
-      type: "article",
+      type: "website",
+      images: [{ url: "https://realcy.app/og-default.webp", width: 1200, height: 630 }],
     },
   };
 }
@@ -70,9 +71,7 @@ export default async function RegionPage({
         }}
       />
       <nav className="text-xs text-slate-600 mb-6">
-        <Link href="/" className="hover:text-slate-900">
-          Map
-        </Link>{" "}
+        <Link href="/" className="hover:text-slate-900">Home</Link>{" "}
         › <span className="text-slate-900">{r.name}</span>
       </nav>
 

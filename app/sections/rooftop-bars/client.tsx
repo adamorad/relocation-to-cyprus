@@ -37,6 +37,7 @@ function CityChip({
     <button
       type="button"
       onClick={onClick}
+          aria-pressed={selected}
       className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
         selected
           ? "bg-slate-900 text-white border border-slate-900"
@@ -67,6 +68,7 @@ function ViewTypeChip({
     <button
       type="button"
       onClick={onClick}
+          aria-pressed={selected}
       className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
         selected
           ? "bg-[#35cdc4] text-white border border-[#35cdc4]"
@@ -160,9 +162,7 @@ export default function RooftopBarsPage() {
     <main id="main" className="max-w-5xl mx-auto px-4 py-8 md:py-14">
       {/* Back nav */}
       <nav className="text-xs text-slate-600 mb-6">
-        <Link href="/" className="hover:text-slate-900">
-          ← Map
-        </Link>
+        <Link href="/" className="hover:text-slate-900">← Home</Link>
         {" / "}
         <Link href="/" className="hover:text-slate-900">
           ← Explore
