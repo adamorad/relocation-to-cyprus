@@ -27,6 +27,7 @@ function CityChip({
     <button
       type="button"
       onClick={onClick}
+          aria-pressed={selected}
       className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
         selected
           ? "bg-slate-900 text-white border border-slate-900"
@@ -51,6 +52,7 @@ function FilterChip({
     <button
       type="button"
       onClick={onClick}
+          aria-pressed={selected}
       className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
         selected
           ? "bg-slate-900 text-white border border-slate-900"

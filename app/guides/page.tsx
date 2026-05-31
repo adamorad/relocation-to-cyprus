@@ -21,9 +21,7 @@ export default function GuidesIndex() {
   return (
     <main className="max-w-3xl mx-auto px-6 py-10">
       <nav className="text-xs text-slate-600 mb-6">
-        <Link href="/" className="hover:text-slate-900">
-          Map
-        </Link>{" "}
+        <Link href="/" className="hover:text-slate-900">Home</Link>{" "}
         › <span className="text-slate-900">Guides</span>
       </nav>
 

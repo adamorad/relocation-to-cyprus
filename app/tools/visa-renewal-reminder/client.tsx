@@ -349,6 +349,14 @@ export default function VisaRenewalReminderPage() {
           &larr; Back to tools
         </Link>
       </p>
+
+      <aside className="mt-10 p-5 rounded-xl bg-slate-50 border border-slate-200">
+        <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">Next steps</p>
+        <div className="flex flex-wrap gap-3">
+
+<Link href="/guides/permanent-residency-5year/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Read: Permanent Residency After 5 Years →</Link>          <Link href="/sections/immigration-lawyers/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Find an immigration lawyer →</Link>
+        </div>
+      </aside>
     </main>
   );
 }
