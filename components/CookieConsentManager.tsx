@@ -66,7 +66,7 @@ fbq('init','${pixelId}');fbq('track','PageView');`}
         <div className="fixed bottom-0 left-0 right-0 z-50 bg-slate-900 border-t border-slate-700 px-4 py-3 md:py-4">
           <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-3">
             <p className="flex-1 text-xs text-slate-300 leading-relaxed">
-              We use cookies to understand how visitors use this site (Google Analytics). No advertising cookies.{" "}
+              We use cookies for analytics (Google Analytics) and to measure ad performance (Meta Pixel).{" "}
               <Link href="/privacy/" className="underline hover:text-white">
                 Privacy Policy
               </Link>
