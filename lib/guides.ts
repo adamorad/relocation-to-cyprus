@@ -57,9 +57,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   {
     slug: "residency-and-visas",
     category: "immigration",
-    heroImage: "/images/guides/residency-and-visas.webp",    title: "Cyprus residency and visa options for relocators (2026 guide)",
+    heroImage: "/images/guides/residency-and-visas.webp",    title: "Cyprus Residency Visa 2026: Golden Visa, Digital Nomad & EU Routes",
     description:
-      "What kind of permit you actually need to move to Cyprus — Permanent Residency by Investment, the Digital Nomad Visa, EU registration, and more.",
+      "Compare Cyprus visas: Golden Visa (€300K), Digital Nomad (€3.5K/mo), EU registration, Category F & EU Blue Card. Investor timelines, costs & eligibility.",
     sections: [
       {
         heading: "Why Cyprus has multiple paths",
@@ -318,9 +318,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   {
     slug: "digital-nomad-visa-guide",
     category: "immigration",
-    heroImage: "/images/guides/digital-nomad-visa-guide.webp",    title: "Cyprus Digital Nomad Visa — Complete Step-by-Step Guide (2026)",
+    heroImage: "/images/guides/digital-nomad-visa-guide.webp",    title: "Cyprus Digital Nomad Visa 2026: Requirements, Income, Taxes & Application",
     description:
-      "Eligibility, required documents, the application portal, processing times, renewal up to three years, and family extension options. Prices and rules change — verify with official Cyprus sources before acting.",
+      "Cyprus digital nomad visa: €3,500/mo income requirement, non-dom tax benefits, required documents, application process, and 3-year renewal. Updated 2026.",
     sections: [
       {
         heading: "Who qualifies for the Cyprus Digital Nomad Visa",
@@ -329,6 +329,10 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
       {
         heading: "Required documents",
         body: "The DNV application requires the following documents, all in English or accompanied by certified translations: a completed application form (available on crmd.moi.gov.cy); a valid passport with at least 12 months remaining validity; two recent passport-size photographs; proof of remote income — for employees, an employment contract and the last three months of payslips and bank statements; for freelancers, service agreements or contracts with foreign clients and three to six months of bank statements showing consistent income deposits; a clean criminal record certificate from your home country (apostilled or legalised for Cyprus); health insurance valid in Cyprus with at least €30,000 coverage (public GeSY registration does not satisfy this — you need a private policy in place before the application); proof of accommodation in Cyprus (signed rental agreement or property purchase documentation); and a cover letter explaining your work arrangement and why you qualify. For family members, add marriage certificate (apostilled), birth certificates for children, and proof that the primary applicant's income meets the family threshold. All personal status documents require apostille or legalisation; check the requirements for your country of issue.",
+      },
+      {
+        heading: "Tax benefits and non-dom status for Digital Nomad Visa holders",
+        body: "Cyprus's non-domiciled (non-dom) tax regime is the single most important financial advantage of the Cyprus DNV compared to alternatives like Portugal or Spain. Once you become a Cyprus tax resident — which the 60-day rule enables — you qualify for non-dom status if you have not been a Cyprus tax resident for 17 of the preceding 20 years. Non-dom status exempts you entirely from the Special Defence Contribution (SDC) on foreign-sourced dividends, interest, and rental income for up to 17 years. In practical terms: if your income is structured as dividends from a foreign company, you pay 0% Cypriot SDC on those dividends for 17 years. The 60-day tax residency rule requires you to spend at least 60 days in Cyprus within the tax year, not be tax resident in any other single country for more than 183 days, and not be tax resident in any other country under that country's rules. Capital gains: Cyprus has no general capital gains tax. Gains from selling foreign shares, cryptocurrency, and most investment assets are exempt — the exception is real property in Cyprus and shares in companies where more than 50% of value derives from Cypriot real estate. Employment income and Cyprus-sourced income is taxed under the standard progressive scale (0% up to €19,500, then 20%, 25%, 30%, up to 35% above €60,000). Non-dom status does not exempt employment income from income tax. One common trap: the GeSY healthcare contribution (2.65% for employees, 4% for self-employed) applies regardless of non-dom status. Verify your specific situation with a Cyprus-registered tax adviser before making residency decisions based on tax planning. Prices and rules change — verify with official Cyprus sources before acting.",
       },
       {
         heading: "Applying via the CRMD portal",
@@ -550,7 +554,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   {
     slug: "ip-box-regime",
     category: "tax",
-    heroImage: "/images/guides/ip-box-regime.webp",    title: "Cyprus IP Box Regime — 2.5% Effective Tax on Qualifying Intellectual Property",
+    heroImage: "/images/guides/ip-box-regime.webp",    title: "Cyprus IP Box Regime — 3.0% Effective Tax on Qualifying Intellectual Property",
     description:
       "How Cyprus's IP Box works, which types of IP qualify, how the nexus fraction determines the effective rate, practical structuring considerations, and a worked example. Prices and rules change — verify with official Cyprus sources before acting.",
     sections: [
@@ -987,13 +991,17 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   {
     slug: "gesy-registration-guide",
     category: "healthcare",
-    heroImage: "/images/guides/gesy-registration-guide.webp",    title: "How to Register with GeSY — Cyprus Public Health System Step-by-Step",
+    heroImage: "/images/guides/gesy-registration-guide.webp",    title: "GeSY Registration Guide: Step-by-Step for Cyprus Expats 2026",
     description:
-      "Who must register, how to complete the process on the HIO portal, choosing a personal GP, contribution rates for employed and self-employed residents, and what is and is not covered. Prices and rules change — verify with official Cyprus sources before acting.",
+      "GeSY registration for Cyprus expats: 5-step HIO portal walkthrough, GP selection, contribution rates, and what's covered. Updated 2026.",
     sections: [
       {
         heading: "Who must register and why it matters",
         body: "GeSY (General Healthcare System, from the Greek Γενικό Σύστημα Υγείας) launched in June 2019 and became fully operational for all services in June 2020. Every legal resident of Cyprus — EU citizens, non-EU residents with ARC, and Cypriot nationals — is required to register and contribute. Registration is also mandatory for employers, self-employed individuals, and pensioners. Unlike the old system where public healthcare was free but largely inaccessible to non-citizens and of highly variable quality, GeSY creates a single-payer insurance model where all registered residents have equal access to GPs, specialists, and public hospitals. The practical reason to register immediately upon arrival: without a registered personal doctor (GeSY uses the term 'personal doctor'), you cannot get GP referrals or prescription coverage, and attending a public hospital A&E without a GeSY card results in higher co-payments. Registration takes about 20 minutes online if you have your documents ready.",
+      },
+      {
+        heading: "5-step GeSY registration checklist",
+        body: "Step 1 — Gather your documents: your ARC number (non-EU residents) or Yellow Slip number (EU residents), valid passport, a Cypriot mobile number for SMS verification, and an active email address. Step 2 — Create your HIO account: go to hio.org.cy, navigate to Beneficiaries > New Registration, and enter your identity details. The portal is available in English, Greek, Russian, and Arabic. Step 3 — Complete SMS verification: a one-time password is sent to your Cypriot mobile number; codes are valid for five minutes only. Step 4 — Confirm your details: select your employment status (employed, self-employed, pensioner, or unemployed), enter your residential address in Cyprus, and choose your preferred language. Step 5 — Receive your beneficiary number: the system issues your GeSY beneficiary number immediately on completion — this is your active credential from day one. The physical HIO card (blue, with a magnetic strip) is posted to your registered address within 2–4 weeks. Use your beneficiary number at GP visits and pharmacies while you wait for the card to arrive.",
       },
       {
         heading: "Registration process on hio.org.cy",
