@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, trackMetaEvent } from "@/lib/analytics";
 
 export function MetaPixelEvent({
   event,
@@ -12,6 +12,7 @@ export function MetaPixelEvent({
 }) {
   useEffect(() => {
     trackEvent(event, params);
+    trackMetaEvent(event, params);
     // fire once on mount only
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
