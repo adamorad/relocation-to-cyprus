@@ -86,9 +86,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   {
     slug: "cost-of-living",
     category: "lifestyle",
-    heroImage: "/images/guides/cost-of-living.webp",    title: "Cost of living in Cyprus — what relocators actually spend (2026)",
+    heroImage: "/images/guides/cost-of-living.webp",    title: "Cost of Living in Cyprus 2026 — Expat Monthly Budgets by City",
     description:
-      "Realistic monthly budgets for Limassol, Paphos, Larnaca and Nicosia — rent, utilities, food, schooling, healthcare and transport.",
+      "Real monthly budgets for expats in Limassol, Paphos, Larnaca & Nicosia. Housing, utilities, schooling, healthcare costs + realistic family budgets by city.",
     sections: [
       {
         heading: "How the regions compare",
@@ -97,6 +97,10 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
       {
         heading: "Rent and utilities",
         body: "A two-bedroom apartment in a modern building (built in the last ten years, balcony, parking, walking distance to amenities) runs roughly: Limassol €1,400–€2,200, Larnaca €900–€1,400, Paphos €850–€1,400, Nicosia €900–€1,500. Sea-view tower apartments in Limassol's seafront strip push past €3,000 easily. Electricity in Cyprus is notoriously expensive — the EAC (Electricity Authority) is a state monopoly and a hot Cypriot summer with the AC on can produce a €350–€450 bill for a two-bedroom flat, billed every two months. Water is comparatively cheap (under €30 per month for most households). Internet is fast and reliable — 1 Gbps fibre packages run €40 to €60 per month with most providers — and mobile data is among the cheapest in the EU at €15 to €25 for an unlimited plan.",
+      },
+      {
+        heading: "Seasonal budget swings: summer vs winter",
+        body: "Cyprus's climate creates a predictable budget spike that most relocation guides ignore. In July and August, air conditioning runs almost continuously in all but the mountain villages — a two-bedroom apartment on the coast will consume €350–€450 in electricity over a two-month billing cycle, compared to €80–€120 in December or January. This is the single largest variable expense for most households. Heating costs are minimal — Cyprus winters are mild enough that most homes manage with portable radiators and extra layers rather than central heating, though Nicosia and the Troodos foothills get genuinely cold in January. Restaurant pricing also inflates in tourist zones during peak season (May–October): a meal that costs €60 in March can cost €90 in July at the same restaurant in a beach area. Practical implication: budget monthly averages are misleading for summer arrivals. A family of four spending €4,500/month in October may find July–August closer to €5,200–€5,800 before any lifestyle changes. Annual smoothing: divide your expected annual electricity bill over 12 months rather than treating it as a variable expense to avoid budget shock.",
       },
       {
         heading: "Food, restaurants and groceries",
@@ -231,13 +235,17 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   {
     slug: "title-deed-status-guide",
     category: "property",
-    heroImage: "/images/guides/title-deed-status-guide.webp",    title: "Cyprus Title Deed Guide — Protecting Yourself as a Foreign Buyer",
+    heroImage: "/images/guides/title-deed-status-guide.webp",    title: "Cyprus Title Deed Guide — Complete 2026 Overview for Buyers",
     description:
-      "How to check title deed status at the Land Registry, what 'subject to mortgage' means in practice, and the contract protections that matter most. Prices and rules change — verify with official Cyprus sources before acting.",
+      "Complete guide to Cyprus title deeds: how to search the Land Registry, understand mortgages, protect yourself with contract clauses, and transfer fees. 2026.",
     sections: [
       {
         heading: "The legacy backlog — why title deeds are still a major issue",
         body: "Cyprus accumulated a well-documented title deed backlog over the 1990s and 2000s: developers built properties on bank-mortgaged land, sold the units to buyers, and then — in many cases — failed to transfer the deeds once construction completed. At its peak, the backlog exceeded 130,000 properties. Legislative reforms from 2015 onwards (Law 139(I)/2015 and subsequent amendments) introduced a fast-track transfer mechanism allowing buyers to transfer titles even when an outstanding developer mortgage exists, provided the buyer pays the transfer fees. As of 2025, the backlog is materially smaller, but legacy-stock properties built before 2010 still commonly lack clear individual title deeds, and buyers of resale units in older complexes are still frequently purchasing properties where the communal or individual title deed has never been separated from the original plot title. Always treat a title deed search as mandatory due diligence, not optional.",
+      },
+      {
+        heading: "Trapped buyers — what the term means and recent legal reforms",
+        body: "A 'trapped buyer' in Cyprus is a property owner who has paid the full purchase price but cannot obtain an individual title deed because the developer's mortgage on the land was never cleared. The term entered common use during the post-2008 crisis when hundreds of developers became insolvent, leaving buyers holding valid contracts but no deeds and no practical way to force a transfer. Legislative reforms, particularly Law 139(I)/2015 and the December 2023 amendment requiring developers to obtain a search certificate before accepting deposits, have materially reduced the creation of new trapped-buyer situations. The fast-track transfer mechanism introduced by Law 139(I)/2015 allows a buyer to transfer an individual title deed directly, even where the developer's mortgage remains outstanding, provided the buyer applies at the DLS, pays the applicable transfer fees, and follows the statutory procedure. The bank holding the developer's mortgage is compelled to release the specific unit from the charge upon transfer. This mechanism works in practice but requires a competent property lawyer to execute — it is not self-service. For resale properties: always check whether the property you are buying was originally sold under a pre-2015 development, and whether the developer is still a going concern. Legacy trapped-buyer situations on older stock still surface regularly in 2025–2026, especially for resale apartments in complexes built between 1995 and 2010.",
       },
       {
         heading: "How to search the Land Registry",
@@ -260,10 +268,14 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   {
     slug: "off-plan-buying-guide",
     category: "property",
-    heroImage: "/images/guides/off-plan-buying-guide.webp",    title: "Buying Off-Plan in Cyprus — Due Diligence Checklist",
+    heroImage: "/images/guides/off-plan-buying-guide.webp",    title: "Complete Guide to Buying Off-Plan Property in Cyprus (2026)",
     description:
-      "Developer vetting, escrow requirements, planning documents to demand, title deed timelines, and the most common completion delay scenarios. Prices and rules change — verify with official Cyprus sources before acting.",
+      "Independent guide to buying off-plan in Cyprus: vet developers, protect your deposit, secure title deeds, understand payment schedules, and avoid common delays.",
     sections: [
+      {
+        heading: "What 'off-plan' means and the typical payment structure",
+        body: "Buying off-plan means purchasing a property before it is built — or during construction — based on architectural plans, a show apartment, and a legal description of what will be delivered. The buyer pays in stages as construction progresses rather than in full at completion. The typical Cyprus off-plan payment structure: 20–30% deposit at contract signing (this is the amount most at risk if the developer fails), 40–50% paid in stage payments tied to construction milestones (slab pour, structural completion, internal fit-out), and a final 10–20% at handover. The appeal of off-plan over resale is price: off-plan properties in Cyprus are typically priced 15–25% below the equivalent completed unit, and buyers who purchase early in a development's lifecycle sometimes benefit from price appreciation by the time the building completes. The risk is delivery: construction delays of 12–24 months are common, and some projects have been delayed by 3–5 years or stalled entirely. Cyprus has no mandatory escrow, so the stages paid before completion sit in the developer's accounts, not in a protected fund. This guide focuses on how to buy off-plan safely — specifically, how to maximise protection on the 60–80% of the purchase price paid before you have keys in your hand.",
+      },
       {
         heading: "Vetting the developer before you sign anything",
         body: "The developer's track record is the single most important variable in an off-plan purchase — more than the location, the floor plan, or the price. Cyprus has no mandatory developer licensing in the way some jurisdictions do, but you can verify a development's legitimacy through several sources. First, confirm the Department of Lands and Surveys has issued a building permit and, for larger schemes, a planning permission for the specific development you are buying into. Request copies of both documents from the developer; if they refuse or stall, that is a significant warning sign. Second, search the developer's corporate registry record at the Registrar of Companies (mygov.cy) — check when the company was incorporated, who the directors are, and whether the company has filed accounts. Third, look at the developer's completed projects: visit or drive past buildings they have delivered in the past five years. Talk to residents where possible. A developer who delivered their last project three years late and never transferred title deeds has told you everything you need to know.",
@@ -525,9 +537,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   {
     slug: "non-dom-status-guide",
     category: "tax",
-    heroImage: "/images/guides/non-dom-status-guide.webp",    title: "Cyprus Non-Dom Status — What It Actually Covers and Who Qualifies",
+    heroImage: "/images/guides/non-dom-status-guide.webp",    title: "Cyprus Non-Dom Tax Status 2026: 17 Years of 0% Tax on Dividends & Interest",
     description:
-      "The precise scope of the Special Defence Contribution exemption, which income types it covers, how long it lasts, common misconceptions, and the GESY contribution that catches non-doms off guard. Prices and rules change — verify with official Cyprus sources before acting.",
+      "0% tax on dividends & interest for 17 years, GESY contributions, qualification rules, the 2026 extension option, and common misconceptions explained.",
     sections: [
       {
         heading: "What non-dom status is and is not",
@@ -540,6 +552,10 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
       {
         heading: "Who gets non-dom status and the 17-year clock",
         body: "Non-dom status is available to any individual who is not 'domiciled' in Cyprus for the purposes of the SDC law. Domicile is defined by Cypriot law using an English common-law concept: broadly, if you were not born to a Cypriot-domiciled parent and have not lived in Cyprus with the intention of remaining permanently for the majority of your adult life, you are not domiciled in Cyprus. In practice, virtually every relocating foreign national qualifies as non-dom automatically from their first day as a Cyprus tax resident — there is no application process, no certificate, and no fee. You simply declare your non-dom status on your annual tax return (Form TD1) by confirming that you are not domiciled in Cyprus. The clock matters: if you have been tax resident in Cyprus for 17 or more of the 20 consecutive tax years ending with the current year, you are deemed domicile-of-choice in Cyprus and lose non-dom status. This is a long runway — someone who first became Cyprus tax resident in 2015 would not lose non-dom status until 2032 at the earliest under the 17-of-20 rule.",
+      },
+      {
+        heading: "The 2026 extension option and how long non-dom actually lasts",
+        body: "The standard non-dom period is 17 tax years of Cyprus residency — enough for most relocators who arrive in their 30s or 40s to comfortably plan around. But a 2025 amendment (effective January 2026) introduced an optional extension mechanism: non-dom individuals who have reached or are approaching the 17-year limit can apply to extend their non-dom status for two additional periods of five years each, by paying a one-time flat contribution of €250,000 per extension period. This means the maximum non-dom runway under the new rules is 27 years. The same amendment simplified the 60-day rule: the requirement that the individual must not be tax resident in any other country under that country's domestic rules was clarified and modestly relaxed, making the 60-day route slightly easier to defend for globally mobile individuals. The extension is not automatic — it requires an application to the Cyprus Tax Department before the 17th year of residency expires. Individuals who have been Cyprus tax resident since 2008 or earlier should check whether they are approaching the window. As with all Cyprus tax planning, verify current procedure and thresholds with a Cyprus-registered accountant, as the implementation regulations for the 2026 changes were still being finalised as of mid-2026. Prices and rules change — verify with official Cyprus sources before acting.",
       },
       {
         heading: "GESY contribution on passive income — the number everyone misses",
