@@ -31,6 +31,7 @@ jobs:
         env:
           NODE_ENV: production
           NEXT_PUBLIC_GA_ID: G-B0LWNF9WEG
+          NEXT_PUBLIC_META_PIXEL_ID: 1973755576021251
       - run: touch out/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
