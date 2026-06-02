@@ -66,37 +66,50 @@ export default function IllustratedMap({
           />
         </picture>
 
-        {LABELS.map((r) => {
+        {LABELS.map((r, i) => {
           const isActive = selectedRegion === r.name;
           return (
-            <button
+            <div
               key={r.name}
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                onSelectRegion(r.name);
-              }}
-              onMouseEnter={() => onHoverRegion(r.name)}
-              onMouseLeave={() => onHoverRegion(null)}
-              onFocus={() => onHoverRegion(r.name)}
-              onBlur={() => onHoverRegion(null)}
-              className={`pointer-events-auto absolute -translate-x-1/2 -translate-y-1/2 rounded-full border shadow transition-all backdrop-blur-sm flex items-center whitespace-nowrap ${
-                isActive
-                  ? "bg-slate-900 text-white border-slate-900 scale-110"
-                  : "bg-white/95 hover:bg-white text-slate-900 border-slate-200 hover:scale-110 hover:shadow-xl"
-              } font-bold gap-[clamp(2px,0.48cqi,6px)] px-[clamp(3px,1.12cqi,13px)] py-[clamp(1px,0.4cqi,6px)] text-[clamp(7px,1.28cqi,15px)]`}
+              className="absolute -translate-x-1/2 -translate-y-1/2"
               style={{ left: `${r.x}%`, top: `${r.y}%` }}
-              aria-label={`View ${r.name} listings (${counts[r.name] ?? 0})`}
             >
-              <span>{r.name}</span>
-              <span
-                className={`hidden @[32rem]:inline font-semibold text-[clamp(6px,0.96cqi,12px)] ${
-                  isActive ? "text-amber-300" : "text-slate-600"
-                }`}
+              {selectedRegion === null && (
+                <span
+                  className="pointer-events-none absolute inset-0 rounded-full animate-ping bg-amber-400/50"
+                  style={{
+                    animationDelay: `${i * 0.35}s`,
+                    animationIterationCount: 3,
+                  }}
+                />
+              )}
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onSelectRegion(r.name);
+                }}
+                onMouseEnter={() => onHoverRegion(r.name)}
+                onMouseLeave={() => onHoverRegion(null)}
+                onFocus={() => onHoverRegion(r.name)}
+                onBlur={() => onHoverRegion(null)}
+                className={`relative pointer-events-auto rounded-full border shadow transition-all backdrop-blur-sm flex items-center whitespace-nowrap ${
+                  isActive
+                    ? "bg-slate-900 text-white border-slate-900 scale-110"
+                    : "bg-white/95 hover:bg-white text-slate-900 border-slate-200 hover:scale-110 hover:shadow-xl"
+                } font-bold gap-[clamp(2px,0.48cqi,6px)] px-[clamp(3px,1.12cqi,13px)] py-[clamp(1px,0.4cqi,6px)] text-[clamp(7px,1.28cqi,15px)]`}
+                aria-label={`View ${r.name} listings (${counts[r.name] ?? 0})`}
               >
-                · {counts[r.name] ?? 0}
-              </span>
-            </button>
+                <span>{r.name}</span>
+                <span
+                  className={`hidden @[32rem]:inline font-semibold text-[clamp(6px,0.96cqi,12px)] ${
+                    isActive ? "text-amber-300" : "text-slate-600"
+                  }`}
+                >
+                  · {counts[r.name] ?? 0}
+                </span>
+              </button>
+            </div>
           );
         })}
       </div>
