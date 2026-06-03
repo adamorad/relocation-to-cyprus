@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { trackEvent } from "@/lib/analytics";
 import type { EnrichedListing, ImageGallery } from "@/lib/listingsData";
+import { EmailCapture } from "./EmailCapture";
 
 type Props = {
   listing: EnrichedListing | null;
@@ -186,6 +187,13 @@ function ListingPanelBody({
         {listing.description ? (
           <DescriptionSection description={listing.description} />
         ) : null}
+
+        <div className="rounded-xl border border-[#35cdc4]/40 bg-teal-50/50 p-4">
+          <EmailCapture
+            region={listing.regionCity ?? undefined}
+            source="listing_panel"
+          />
+        </div>
       </div>
     </div>
   );
