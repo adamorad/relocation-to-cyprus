@@ -9,33 +9,26 @@ Run:
 
 from __future__ import annotations
 
-import os
 import sys
 
 from google.analytics.admin import AnalyticsAdminServiceClient
 from google.analytics.admin_v1alpha.types import ConversionEvent
 
-PROPERTY_ID_FILE = os.path.expanduser("~/.config/realcy/ga4-property-id.txt")
+from analytics_lib import ga4_property_id
+
 EVENT_NAME = "listing_open"
 
 
-def get_property_id() -> str:
-    if os.path.exists(PROPERTY_ID_FILE):
-        return open(PROPERTY_ID_FILE).read().strip()
-    pid = os.environ.get("GA4_PROPERTY_ID", "").strip()
-    if pid:
-        return pid
-    sys.exit("ERROR: GA4 property ID not configured.")
-
-
 def main() -> None:
-    pid = get_property_id()
+    pid = ga4_property_id()
+    if not pid:
+        sys.exit("ERROR: GA4 property ID not configured.")
+
     parent = f"properties/{pid}"
     client = AnalyticsAdminServiceClient()
 
-    # Check if already a conversion
     existing = client.list_conversion_events(parent=parent)
-    already = any(e.event_name == EVENT_NAME for e in existing)
+    already  = any(e.event_name == EVENT_NAME for e in existing)
     if already:
         print(f"'{EVENT_NAME}' is already marked as a conversion — nothing to do.")
         return

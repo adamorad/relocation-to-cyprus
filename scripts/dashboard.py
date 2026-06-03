@@ -11,66 +11,32 @@ Run:
 
 from __future__ import annotations
 
+import html
 import json
 import os
-import sys
 from datetime import datetime
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse, parse_qs
-from urllib.request import urlopen
-from urllib.error import HTTPError
 
-from google.analytics.data_v1beta import BetaAnalyticsDataClient
-from google.analytics.data_v1beta.types import (
-    DateRange, Dimension, Metric, OrderBy, RunReportRequest,
+from analytics_lib import (
+    ga4_client, ga4_property_id, run_ga4_report,
+    meta_token, meta_api,
+    META_AD_ID, META_CAMPAIGN_ID, META_CAMPAIGN_START,
 )
-from google.oauth2 import service_account
 
-PORT             = 8765
-GA4_KEY_PATH     = os.path.expanduser("~/.config/realcy/ga4-sa.json")
-GA4_PROP_FILE    = os.path.expanduser("~/.config/realcy/ga4-property-id.txt")
-META_TOKEN_FILE  = os.path.expanduser("~/.config/realcy/meta-access-token.txt")
-META_AD_ID       = "6989212684739"
-META_CAMPAIGN_ID = "6989003237139"
-META_API_VER     = "v21.0"
-META_BASE        = f"https://graph.facebook.com/{META_API_VER}"
+PORT = 8765
 
 
 # ── GA4 ───────────────────────────────────────────────────────────────────────
 
-def ga4_client():
-    if os.environ.get("GA4_USE_SERVICE_ACCOUNT") and os.path.exists(GA4_KEY_PATH):
-        creds = service_account.Credentials.from_service_account_file(GA4_KEY_PATH)
-        return BetaAnalyticsDataClient(credentials=creds)
-    return BetaAnalyticsDataClient()
-
-
-def ga4_prop():
-    if os.path.exists(GA4_PROP_FILE):
-        return open(GA4_PROP_FILE).read().strip()
-    return os.environ.get("GA4_PROPERTY_ID", "")
-
-
-def ga4_run(cli, pid, dims, metrics, days, order=None, limit=15):
-    req = RunReportRequest(
-        property=f"properties/{pid}",
-        date_ranges=[DateRange(start_date=f"{days}daysAgo", end_date="today")],
-        dimensions=[Dimension(name=d) for d in dims],
-        metrics=[Metric(name=m) for m in metrics],
-        order_bys=[OrderBy(metric=OrderBy.MetricOrderBy(metric_name=order), desc=True)] if order else [],
-        limit=limit,
-    )
-    return cli.run_report(req)
-
-
 def fetch_ga4(days: int) -> dict:
     cli = ga4_client()
-    pid = ga4_prop()
+    pid = ga4_property_id()
     if not pid:
         return {"error": "GA4 property ID not configured"}
 
     try:
-        ov = ga4_run(cli, pid, [], [
+        ov = run_ga4_report(cli, pid, [], [
             "activeUsers", "newUsers", "sessions",
             "engagementRate", "averageSessionDuration", "screenPageViews",
         ], days)
@@ -86,14 +52,14 @@ def fetch_ga4(days: int) -> dict:
                 "pageviews":  r.metric_values[5].value,
             }
 
-        pg = ga4_run(cli, pid, ["pagePath"], ["screenPageViews", "activeUsers"], days,
-                     order="screenPageViews", limit=8)
+        pg = run_ga4_report(cli, pid, ["pagePath"], ["screenPageViews", "activeUsers"], days,
+                            order="screenPageViews", limit=8)
         pages = [{"path": r.dimension_values[0].value[:50],
                   "views": r.metric_values[0].value,
                   "users": r.metric_values[1].value} for r in pg.rows]
 
-        src = ga4_run(cli, pid, ["sessionSourceMedium"], ["sessions", "engagedSessions"], days,
-                      order="sessions", limit=7)
+        src = run_ga4_report(cli, pid, ["sessionSourceMedium"], ["sessions", "engagedSessions"], days,
+                             order="sessions", limit=7)
         sources = []
         for r in src.rows:
             s = int(r.metric_values[0].value or 0)
@@ -101,9 +67,9 @@ def fetch_ga4(days: int) -> dict:
             sources.append({"source": r.dimension_values[0].value[:35],
                              "sessions": s, "rate": f"{e/s*100:.0f}%" if s else "0%"})
 
-        daily = ga4_run(cli, pid, ["date"], ["activeUsers"], days, limit=90)
+        daily = run_ga4_report(cli, pid, ["date"], ["activeUsers"], days, limit=90)
         trend = sorted([{"date": r.dimension_values[0].value,
-                          "users": int(r.metric_values[0].value)} for r in daily.rows],
+                         "users": int(r.metric_values[0].value)} for r in daily.rows],
                        key=lambda x: x["date"])
 
         return {"overview": overview, "pages": pages, "sources": sources, "trend": trend}
@@ -113,23 +79,6 @@ def fetch_ga4(days: int) -> dict:
 
 # ── Meta ──────────────────────────────────────────────────────────────────────
 
-def meta_token():
-    if os.path.exists(META_TOKEN_FILE):
-        return open(META_TOKEN_FILE).read().strip()
-    return os.environ.get("META_ACCESS_TOKEN", "")
-
-
-def meta_api(path: str, params: dict) -> dict:
-    from urllib.parse import urlencode
-    params["access_token"] = meta_token()
-    url = f"{META_BASE}/{path}?{urlencode(params)}"
-    try:
-        with urlopen(url) as r:
-            return json.loads(r.read())
-    except HTTPError as e:
-        return {"error": e.read().decode()}
-
-
 def fetch_meta() -> dict:
     if not meta_token():
         return {"error": "No Meta access token"}
@@ -138,21 +87,23 @@ def fetch_meta() -> dict:
         "clicks", "unique_clicks", "ctr", "cpc", "cpm",
         "actions", "cost_per_action_type",
     ])
-    data = meta_api(f"{META_AD_ID}/insights", {
-        "fields": fields,
-        "time_range": json.dumps({"since": "2026-05-31", "until": "2099-12-31"}),
-        "level": "ad",
-    })
-    if "error" in data:
-        return data
-    stats = (data.get("data") or [{}])[0]
+    time_range = json.dumps({"since": META_CAMPAIGN_START, "until": "2099-12-31"})
+    try:
+        data = meta_api(f"{META_AD_ID}/insights", {
+            "fields": fields,
+            "time_range": time_range,
+            "level": "ad",
+        })
+        daily_data = meta_api(f"{META_CAMPAIGN_ID}/insights", {
+            "fields": "impressions,spend,clicks",
+            "time_increment": 1,
+            "time_range": time_range,
+            "level": "campaign",
+        })
+    except RuntimeError as e:
+        return {"error": str(e)}
 
-    daily_data = meta_api(f"{META_CAMPAIGN_ID}/insights", {
-        "fields": "impressions,spend,clicks",
-        "time_increment": 1,
-        "time_range": json.dumps({"since": "2026-05-31", "until": "2099-12-31"}),
-        "level": "campaign",
-    })
+    stats = (data.get("data") or [{}])[0]
     daily = daily_data.get("data", [])
 
     def av(lst, t):
@@ -345,61 +296,67 @@ new Chart(document.getElementById('ga4Users'), {{
 
 
 def render(meta: dict, ga4: dict, days: int) -> str:
-    meta_err = f'<p class="err">⚠️ Meta error: {meta["error"]}</p>' if "error" in meta else ""
-    ga4_err  = f'<p class="err">⚠️ GA4 error: {ga4["error"]}</p>'  if "error" in ga4  else ""
+    meta_err = (
+        f'<p class="err">⚠️ Meta error: {html.escape(meta["error"])}</p>'
+        if "error" in meta else ""
+    )
+    ga4_err = (
+        f'<p class="err">⚠️ GA4 error: {html.escape(ga4["error"])}</p>'
+        if "error" in ga4 else ""
+    )
 
-    daily  = meta.get("daily", [])
+    daily    = meta.get("daily", [])
     m_dates  = json.dumps([d.get("date_start", "") for d in daily])
     m_spends = json.dumps([float(d.get("spend", 0)) for d in daily])
     m_clicks = json.dumps([int(d.get("clicks", 0)) for d in daily])
 
-    trend  = ga4.get("trend", [])
+    trend   = ga4.get("trend", [])
     g_dates = json.dumps([t["date"][4:6] + "/" + t["date"][6:] for t in trend])
     g_uarr  = json.dumps([t["users"] for t in trend])
 
     ov = ga4.get("overview", {})
 
     pages_rows = "".join(
-        f"<tr><td>{p['path']}</td><td>{p['views']}</td></tr>"
+        f"<tr><td>{html.escape(p['path'])}</td><td>{p['views']}</td></tr>"
         for p in ga4.get("pages", [])
     ) or "<tr><td colspan='2' style='color:#475569'>No data</td></tr>"
 
     source_rows = "".join(
-        f"<tr><td>{s['source']}</td><td>{s['sessions']}</td><td>{s['rate']}</td></tr>"
+        f"<tr><td>{html.escape(s['source'])}</td><td>{s['sessions']}</td><td>{s['rate']}</td></tr>"
         for s in ga4.get("sources", [])
     ) or "<tr><td colspan='3' style='color:#475569'>No data</td></tr>"
 
     return HTML.format(
-        updated     = datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        meta_error  = meta_err,
-        m_spend     = meta.get("spend", "—"),
-        m_impr      = meta.get("impr", "—"),
-        m_reach     = meta.get("reach", "—"),
-        m_clicks    = meta.get("clicks", "—"),
-        m_cpc       = meta.get("cpc", "—"),
-        m_lpv       = meta.get("lpv", "—"),
-        m_cost_lpv  = meta.get("cost_lpv", "—"),
-        m_ctr       = meta.get("ctr", "—"),
-        m_freq      = meta.get("freq", "—"),
-        m_dates     = m_dates,
-        m_spend_arr = m_spends,
-        m_clicks_arr= m_clicks,
-        ga4_error   = ga4_err,
-        g_users     = ov.get("users", "—"),
-        g_new       = ov.get("new_users", "—"),
-        g_sessions  = ov.get("sessions", "—"),
-        g_pv        = ov.get("pageviews", "—"),
-        g_dur       = ov.get("avg_dur", "—"),
-        g_eng       = ov.get("engagement", "—"),
-        g_dates     = g_dates,
-        g_users_arr = g_uarr,
-        pages_rows  = pages_rows,
-        source_rows = source_rows,
-        days        = days,
-        d1  = "on" if days == 1  else "",
-        d7  = "on" if days == 7  else "",
-        d30 = "on" if days == 30 else "",
-        d90 = "on" if days == 90 else "",
+        updated      = datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        meta_error   = meta_err,
+        m_spend      = meta.get("spend", "—"),
+        m_impr       = meta.get("impr", "—"),
+        m_reach      = meta.get("reach", "—"),
+        m_clicks     = meta.get("clicks", "—"),
+        m_cpc        = meta.get("cpc", "—"),
+        m_lpv        = meta.get("lpv", "—"),
+        m_cost_lpv   = meta.get("cost_lpv", "—"),
+        m_ctr        = meta.get("ctr", "—"),
+        m_freq       = meta.get("freq", "—"),
+        m_dates      = m_dates,
+        m_spend_arr  = m_spends,
+        m_clicks_arr = m_clicks,
+        ga4_error    = ga4_err,
+        g_users      = ov.get("users", "—"),
+        g_new        = ov.get("new_users", "—"),
+        g_sessions   = ov.get("sessions", "—"),
+        g_pv         = ov.get("pageviews", "—"),
+        g_dur        = ov.get("avg_dur", "—"),
+        g_eng        = ov.get("engagement", "—"),
+        g_dates      = g_dates,
+        g_users_arr  = g_uarr,
+        pages_rows   = pages_rows,
+        source_rows  = source_rows,
+        days         = days,
+        d1           = "on" if days == 1  else "",
+        d7           = "on" if days == 7  else "",
+        d30          = "on" if days == 30 else "",
+        d90          = "on" if days == 90 else "",
     )
 
 
@@ -407,19 +364,22 @@ class Handler(BaseHTTPRequestHandler):
     def log_message(self, *_): pass
 
     def do_GET(self):
-        qs   = parse_qs(urlparse(self.path).query)
-        days = int(qs.get("days", ["7"])[0])
+        qs = parse_qs(urlparse(self.path).query)
         try:
-            meta = fetch_meta()
-            ga4  = fetch_ga4(days)
-            html = render(meta, ga4, days).encode()
+            days = int(qs.get("days", ["7"])[0])
+        except ValueError:
+            days = 7
+        try:
+            meta     = fetch_meta()
+            ga4      = fetch_ga4(days)
+            html_out = render(meta, ga4, days).encode()
             self.send_response(200)
             self.send_header("Content-Type", "text/html; charset=utf-8")
-            self.send_header("Content-Length", str(len(html)))
+            self.send_header("Content-Length", str(len(html_out)))
             self.end_headers()
-            self.wfile.write(html)
+            self.wfile.write(html_out)
         except Exception as e:
-            msg = f"<pre style='color:red;background:#111;padding:20px'>{e}</pre>".encode()
+            msg = f"<pre style='color:red;background:#111;padding:20px'>{html.escape(str(e))}</pre>".encode()
             self.send_response(500)
             self.send_header("Content-Type", "text/html")
             self.end_headers()

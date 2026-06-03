@@ -6,73 +6,53 @@ Auth: save your Meta access token to ~/.config/realcy/meta-access-token.txt
 
 Run:
   scripts/.venv/bin/python scripts/meta_dashboard.py
-  Then open: http://localhost:8765
+  Then open: http://localhost:8767
 """
 
 from __future__ import annotations
 
+import html
 import json
-import os
 import sys
+from datetime import datetime
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from urllib.parse import urlencode, urlparse, parse_qs
-from urllib.request import urlopen
-from urllib.error import HTTPError
+from urllib.parse import urlparse, parse_qs
 
-TOKEN_PATH = os.path.expanduser("~/.config/realcy/meta-access-token.txt")
-CAMPAIGN_ID = "6989003237139"
-ADSET_ID   = "6989006567539"
-AD_ID      = "6989212684739"
-PORT       = 8765
-API_VER    = "v21.0"
-BASE       = f"https://graph.facebook.com/{API_VER}"
+from analytics_lib import (
+    meta_token, meta_api,
+    META_AD_ID, META_CAMPAIGN_ID, META_CAMPAIGN_START,
+)
+
+PORT = 8767  # 8765 = unified dashboard, 8766 = GA4-only, 8767 = Meta-only
 
 
-def get_token() -> str:
-    if os.path.exists(TOKEN_PATH):
-        return open(TOKEN_PATH).read().strip()
-    t = os.environ.get("META_ACCESS_TOKEN", "").strip()
-    if t:
-        return t
-    print(f"ERROR: No Meta access token found.\n"
-          f"  Save it to:  {TOKEN_PATH}\n"
-          f"  Or export:   META_ACCESS_TOKEN=your_token\n"
-          f"  Get one at:  https://developers.facebook.com/tools/explorer/")
-    sys.exit(1)
-
-
-def api(path: str, params: dict) -> dict:
-    params["access_token"] = get_token()
-    url = f"{BASE}/{path}?{urlencode(params)}"
-    try:
-        with urlopen(url) as r:
-            return json.loads(r.read())
-    except HTTPError as e:
-        body = e.read().decode()
-        raise RuntimeError(f"Meta API error {e.code}: {body}") from e
-
-
-def fetch_insights(time_range: str = "maximum") -> dict:
+def fetch_insights() -> dict:
+    if not meta_token():
+        print(
+            f"ERROR: No Meta access token found.\n"
+            f"  Save it to:  ~/.config/realcy/meta-access-token.txt\n"
+            f"  Or export:   META_ACCESS_TOKEN=your_token\n"
+            f"  Get one at:  https://developers.facebook.com/tools/explorer/"
+        )
+        sys.exit(1)
     fields = ",".join([
         "impressions", "reach", "frequency", "spend",
         "clicks", "unique_clicks", "ctr", "cpc", "cpm",
         "actions", "cost_per_action_type",
     ])
-    data = api(f"{AD_ID}/insights", {
+    data = meta_api(f"{META_AD_ID}/insights", {
         "fields": fields,
-        "time_range": json.dumps({"since": "2026-05-31", "until": "2099-12-31"})
-        if time_range == "maximum" else time_range,
+        "time_range": json.dumps({"since": META_CAMPAIGN_START, "until": "2099-12-31"}),
         "level": "ad",
     })
-    return data.get("data", [{}])[0] if data.get("data") else {}
+    return (data.get("data") or [{}])[0]
 
 
 def fetch_daily() -> list[dict]:
-    fields = "impressions,reach,spend,clicks,ctr,cpc,actions"
-    data = api(f"{CAMPAIGN_ID}/insights", {
-        "fields": fields,
+    data = meta_api(f"{META_CAMPAIGN_ID}/insights", {
+        "fields": "impressions,reach,spend,clicks,ctr,cpc,actions",
         "time_increment": 1,
-        "time_range": json.dumps({"since": "2026-05-31", "until": "2099-12-31"}),
+        "time_range": json.dumps({"since": META_CAMPAIGN_START, "until": "2099-12-31"}),
         "level": "campaign",
     })
     return data.get("data", [])
@@ -203,7 +183,6 @@ new Chart(document.getElementById('chart'), {{
   }}
 }});
 
-// Auto-refresh
 setTimeout(() => location.reload(), 60000);
 </script>
 </body>
@@ -211,61 +190,65 @@ setTimeout(() => location.reload(), 60000);
 
 
 def render(stats: dict, daily: list[dict]) -> str:
-    from datetime import datetime
-
     def fmt_num(v: str) -> str:
-        try: return f"{int(v):,}"
-        except: return v or "0"
+        try:
+            return f"{int(v):,}"
+        except (ValueError, TypeError):
+            return v or "0"
 
     def fmt_pct(v: str) -> str:
-        try: return f"{float(v):.2f}%"
-        except: return v or "0%"
+        try:
+            return f"{float(v):.2f}%"
+        except (ValueError, TypeError):
+            return v or "0%"
 
     def fmt_ils(v: str) -> str:
-        try: return f"₪{float(v):.2f}"
-        except: return v or "₪0"
+        try:
+            return f"₪{float(v):.2f}"
+        except (ValueError, TypeError):
+            return v or "₪0"
 
-    actions    = stats.get("actions", [])
-    cost_list  = stats.get("cost_per_action_type", [])
-    lpv        = action_value(actions, "landing_page_view")
-    labels     = json.dumps([d["date_start"] for d in daily])
+    actions   = stats.get("actions", [])
+    cost_list = stats.get("cost_per_action_type", [])
+    lpv       = action_value(actions, "landing_page_view")
+    labels    = json.dumps([d["date_start"] for d in daily])
     spend_data = json.dumps([float(d.get("spend", 0)) for d in daily])
     click_data = json.dumps([int(d.get("clicks", 0)) for d in daily])
 
     return HTML_TEMPLATE.format(
-        spend       = fmt_ils(stats.get("spend", "0")),
-        impressions = fmt_num(stats.get("impressions", "0")),
-        reach       = fmt_num(stats.get("reach", "0")),
-        ctr         = fmt_pct(stats.get("ctr", "0")),
-        clicks      = fmt_num(stats.get("clicks", "0")),
+        spend         = fmt_ils(stats.get("spend", "0")),
+        impressions   = fmt_num(stats.get("impressions", "0")),
+        reach         = fmt_num(stats.get("reach", "0")),
+        ctr           = fmt_pct(stats.get("ctr", "0")),
+        clicks        = fmt_num(stats.get("clicks", "0")),
         unique_clicks = fmt_num(stats.get("unique_clicks", "0")),
-        cpm         = fmt_ils(stats.get("cpm", "0")),
-        cpc         = fmt_ils(stats.get("cpc", "0")),
-        lpv         = fmt_num(lpv),
-        cost_lpv    = cost_per(cost_list, "landing_page_view"),
-        frequency   = f"{float(stats.get('frequency', 0)):.2f}",
-        labels      = labels,
-        spend_data  = spend_data,
-        click_data  = click_data,
-        updated     = datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        cpm           = fmt_ils(stats.get("cpm", "0")),
+        cpc           = fmt_ils(stats.get("cpc", "0")),
+        lpv           = fmt_num(lpv),
+        cost_lpv      = cost_per(cost_list, "landing_page_view"),
+        frequency     = f"{float(stats.get('frequency', 0)):.2f}",
+        labels        = labels,
+        spend_data    = spend_data,
+        click_data    = click_data,
+        updated       = datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
     )
 
 
 class Handler(BaseHTTPRequestHandler):
-    def log_message(self, *_): pass  # suppress request logs
+    def log_message(self, *_): pass
 
     def do_GET(self):
         try:
-            stats = fetch_insights()
-            daily = fetch_daily()
-            html  = render(stats, daily).encode()
+            stats    = fetch_insights()
+            daily    = fetch_daily()
+            html_out = render(stats, daily).encode()
             self.send_response(200)
             self.send_header("Content-Type", "text/html; charset=utf-8")
-            self.send_header("Content-Length", str(len(html)))
+            self.send_header("Content-Length", str(len(html_out)))
             self.end_headers()
-            self.wfile.write(html)
+            self.wfile.write(html_out)
         except Exception as e:
-            msg = f"<pre style='color:red;background:#111;padding:20px'>{e}</pre>".encode()
+            msg = f"<pre style='color:red;background:#111;padding:20px'>{html.escape(str(e))}</pre>".encode()
             self.send_response(500)
             self.send_header("Content-Type", "text/html")
             self.end_headers()

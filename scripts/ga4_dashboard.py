@@ -12,63 +12,26 @@ Run:
 from __future__ import annotations
 
 import argparse
+import html
 import json
-import os
 import sys
+from datetime import datetime
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from typing import Iterable
+from urllib.parse import urlparse, parse_qs
 
-from google.analytics.data_v1beta import BetaAnalyticsDataClient
-from google.analytics.data_v1beta.types import (
-    DateRange, Dimension, Metric, OrderBy, RunReportRequest,
-)
-from google.oauth2 import service_account
+from analytics_lib import ga4_client, ga4_property_id, run_ga4_report
 
-KEY_PATH          = os.path.expanduser("~/.config/realcy/ga4-sa.json")
-PROPERTY_ID_FILE  = os.path.expanduser("~/.config/realcy/ga4-property-id.txt")
-PORT              = 8766
-DAYS              = 7  # default, overridden by --days
-
-
-def get_property_id() -> str:
-    if os.path.exists(PROPERTY_ID_FILE):
-        return open(PROPERTY_ID_FILE).read().strip()
-    pid = os.environ.get("GA4_PROPERTY_ID", "").strip()
-    if pid:
-        return pid
-    sys.exit("ERROR: GA4 property ID not configured. See ga4_report.py for setup instructions.")
-
-
-def ga4_client() -> BetaAnalyticsDataClient:
-    # Mirror ga4_report.py: use service account only when explicitly requested,
-    # otherwise fall back to ADC (gcloud auth application-default login)
-    if os.environ.get("GA4_USE_SERVICE_ACCOUNT") and os.path.exists(KEY_PATH):
-        creds = service_account.Credentials.from_service_account_file(KEY_PATH)
-        return BetaAnalyticsDataClient(credentials=creds)
-    return BetaAnalyticsDataClient()
-
-
-def run_report(cli, pid, dimensions, metrics, days, order_metric=None, limit=20):
-    req = RunReportRequest(
-        property=f"properties/{pid}",
-        date_ranges=[DateRange(start_date=f"{days}daysAgo", end_date="today")],
-        dimensions=[Dimension(name=d) for d in dimensions],
-        metrics=[Metric(name=m) for m in metrics],
-        order_bys=(
-            [OrderBy(metric=OrderBy.MetricOrderBy(metric_name=order_metric), desc=True)]
-            if order_metric else []
-        ),
-        limit=limit,
-    )
-    return cli.run_report(req)
+PORT = 8766
+DAYS = 7  # default, overridden by --days
 
 
 def fetch_all(days: int) -> dict:
     cli = ga4_client()
-    pid = get_property_id()
+    pid = ga4_property_id()
+    if not pid:
+        sys.exit("ERROR: GA4 property ID not configured. See ga4_report.py for setup instructions.")
 
-    # Overview
-    ov = run_report(cli, pid, [], [
+    ov = run_ga4_report(cli, pid, [], [
         "activeUsers", "newUsers", "sessions",
         "engagementRate", "averageSessionDuration", "screenPageViews",
     ], days)
@@ -76,17 +39,16 @@ def fetch_all(days: int) -> dict:
     if ov.rows:
         r = ov.rows[0]
         overview = {
-            "users":       r.metric_values[0].value,
-            "new_users":   r.metric_values[1].value,
-            "sessions":    r.metric_values[2].value,
-            "engagement":  f"{float(r.metric_values[3].value or 0):.0%}",
-            "avg_dur":     f"{float(r.metric_values[4].value or 0):.0f}s",
-            "pageviews":   r.metric_values[5].value,
+            "users":      r.metric_values[0].value,
+            "new_users":  r.metric_values[1].value,
+            "sessions":   r.metric_values[2].value,
+            "engagement": f"{float(r.metric_values[3].value or 0):.0%}",
+            "avg_dur":    f"{float(r.metric_values[4].value or 0):.0f}s",
+            "pageviews":  r.metric_values[5].value,
         }
 
-    # Top pages
-    pg = run_report(cli, pid, ["pagePath"], ["screenPageViews", "activeUsers"], days,
-                    order_metric="screenPageViews", limit=10)
+    pg = run_ga4_report(cli, pid, ["pagePath"], ["screenPageViews", "activeUsers"], days,
+                        order="screenPageViews", limit=10)
     pages = [
         {"path": r.dimension_values[0].value[:55],
          "views": r.metric_values[0].value,
@@ -94,9 +56,8 @@ def fetch_all(days: int) -> dict:
         for r in pg.rows
     ]
 
-    # Traffic sources
-    src = run_report(cli, pid, ["sessionSourceMedium"], ["sessions", "engagedSessions"], days,
-                     order_metric="sessions", limit=8)
+    src = run_ga4_report(cli, pid, ["sessionSourceMedium"], ["sessions", "engagedSessions"], days,
+                         order="sessions", limit=8)
     sources = []
     for r in src.rows:
         s = int(r.metric_values[0].value or 0)
@@ -107,9 +68,7 @@ def fetch_all(days: int) -> dict:
             "rate": f"{e/s*100:.0f}%" if s else "0%",
         })
 
-    # Daily trend
-    daily = run_report(cli, pid, ["date"], ["activeUsers", "sessions"], days,
-                       order_metric=None, limit=60)
+    daily = run_ga4_report(cli, pid, ["date"], ["activeUsers", "sessions"], days, limit=60)
     trend = [
         {"date": r.dimension_values[0].value,
          "users": int(r.metric_values[0].value),
@@ -265,17 +224,15 @@ setTimeout(() => location.reload(), 60000);
 
 
 def render(data: dict, days: int) -> str:
-    from datetime import datetime
-
     ov = data["overview"]
 
     pages_rows = "".join(
-        f"<tr><td>{p['path']}</td><td>{p['views']}</td><td>{p['users']}</td></tr>"
+        f"<tr><td>{html.escape(p['path'])}</td><td>{p['views']}</td><td>{p['users']}</td></tr>"
         for p in data["pages"]
     ) or "<tr><td colspan='3' style='color:#475569'>No data yet</td></tr>"
 
     source_rows = "".join(
-        f"<tr><td>{s['source']}</td><td>{s['sessions']}</td><td>{s['rate']}</td></tr>"
+        f"<tr><td>{html.escape(s['source'])}</td><td>{s['sessions']}</td><td>{s['rate']}</td></tr>"
         for s in data["sources"]
     ) or "<tr><td colspan='3' style='color:#475569'>No data yet</td></tr>"
 
@@ -305,22 +262,25 @@ def render(data: dict, days: int) -> str:
 
 class Handler(BaseHTTPRequestHandler):
     days: int = DAYS
+
     def log_message(self, *_): pass
 
     def do_GET(self):
-        from urllib.parse import urlparse, parse_qs
-        qs   = parse_qs(urlparse(self.path).query)
-        days = int(qs.get("days", [str(self.days)])[0])
+        qs = parse_qs(urlparse(self.path).query)
         try:
-            data = fetch_all(days)
-            html = render(data, days).encode()
+            days = int(qs.get("days", [str(self.days)])[0])
+        except ValueError:
+            days = self.days
+        try:
+            data     = fetch_all(days)
+            html_out = render(data, days).encode()
             self.send_response(200)
             self.send_header("Content-Type", "text/html; charset=utf-8")
-            self.send_header("Content-Length", str(len(html)))
+            self.send_header("Content-Length", str(len(html_out)))
             self.end_headers()
-            self.wfile.write(html)
+            self.wfile.write(html_out)
         except Exception as e:
-            msg = f"<pre style='color:red;background:#111;padding:20px'>{e}</pre>".encode()
+            msg = f"<pre style='color:red;background:#111;padding:20px'>{html.escape(str(e))}</pre>".encode()
             self.send_response(500)
             self.send_header("Content-Type", "text/html")
             self.end_headers()
@@ -329,7 +289,7 @@ class Handler(BaseHTTPRequestHandler):
 
 def main() -> None:
     p = argparse.ArgumentParser()
-    p.add_argument("--days", type=int, default=7)
+    p.add_argument("--days", type=int, default=DAYS)
     args = p.parse_args()
     Handler.days = args.days
     print(f"RealCy GA4 Dashboard → http://localhost:{PORT}")
