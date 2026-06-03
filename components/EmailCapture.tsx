@@ -26,13 +26,15 @@ export function EmailCapture({ compact = false, region, source }: Props) {
       setStatus("error");
       return;
     }
+    let isNew = false;
     try {
       const existing = JSON.parse(localStorage.getItem("realcy_subscribers") ?? "[]");
       if (!existing.includes(email)) {
         localStorage.setItem("realcy_subscribers", JSON.stringify([...existing, email]));
+        isNew = true;
       }
     } catch {}
-    trackEvent("email_signup", { source: source ?? "unknown", region: region ?? "unknown" });
+    if (isNew) trackEvent("email_signup", { source: source ?? "unknown", region: region ?? "unknown" });
     setStatus("success");
     setEmail("");
   };
