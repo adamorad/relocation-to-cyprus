@@ -1,10 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 
-export function EmailCapture({ compact = false }: { compact?: boolean }) {
+type Props = {
+  compact?: boolean;
+  region?: string;
+  source?: string;
+};
+
+export function EmailCapture({ compact = false, region, source }: Props) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+
+  useEffect(() => {
+    try {
+      const existing = JSON.parse(localStorage.getItem("realcy_subscribers") ?? "[]");
+      if (existing.length > 0) setStatus("success");
+    } catch {}
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -12,16 +26,20 @@ export function EmailCapture({ compact = false }: { compact?: boolean }) {
       setStatus("error");
       return;
     }
-    // Store locally — wire to email service later
     try {
       const existing = JSON.parse(localStorage.getItem("realcy_subscribers") ?? "[]");
       if (!existing.includes(email)) {
         localStorage.setItem("realcy_subscribers", JSON.stringify([...existing, email]));
       }
     } catch {}
+    trackEvent("email_signup", { source: source ?? "unknown", region: region ?? "unknown" });
     setStatus("success");
     setEmail("");
   };
+
+  const headline = region
+    ? `Eyeing ${region} properties?`
+    : "Get the free Cyprus Relocation Checklist";
 
   if (status === "success") {
     return (
@@ -54,6 +72,10 @@ export function EmailCapture({ compact = false }: { compact?: boolean }) {
 
   return (
     <form onSubmit={handleSubmit} className="mt-4">
+      <p className="text-sm font-semibold text-slate-900 mb-1">{headline}</p>
+      <p className="text-xs text-slate-500 mb-3">
+        Free Cyprus Relocation Checklist — visas, taxes, banking, and more.
+      </p>
       <div className="flex flex-col sm:flex-row gap-2">
         <input
           type="email"
