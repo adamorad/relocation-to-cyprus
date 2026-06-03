@@ -73,7 +73,7 @@ export function EmailCapture({ compact = false, region, source }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mt-4">
+    <form onSubmit={handleSubmit}>
       <p className="text-sm font-semibold text-slate-900 mb-1">{headline}</p>
       <p className="text-xs text-slate-500 mb-3">
         Free Cyprus Relocation Checklist — visas, taxes, banking, and more.
