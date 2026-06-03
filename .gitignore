@@ -67,3 +67,4 @@ scripts/.venv/
 out/
 tsconfig.tsbuildinfo
 *.tsbuildinfo
+.superpowers/
