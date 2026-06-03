@@ -7,6 +7,9 @@
 .secrets/
 .mcp.json
 
+# MCP tooling artefacts — browser session snapshots, screenshots
+.playwright-mcp/
+
 # OS
 .DS_Store
 Thumbs.db
