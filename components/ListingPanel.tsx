@@ -118,6 +118,13 @@ function ListingPanelBody({
 
         <ActionButtons listing={listing} />
 
+        <div className="rounded-xl border border-[#35cdc4]/40 bg-teal-50/50 p-4">
+          <EmailCapture
+            region={listing.regionCity ?? undefined}
+            source="listing_panel"
+          />
+        </div>
+
         {listing.videoUrl ? <VideoEmbed url={listing.videoUrl} /> : null}
 
         <MapEmbed lat={listing.lat} lng={listing.lng} location={listing.location} />
