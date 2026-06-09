@@ -456,8 +456,8 @@ export default function HealthInsuranceComparisonPage() {
 
       {/* Back */}
       <p className="mt-8 text-xs text-slate-500">
-        <Link href="/" className="underline hover:text-slate-900">
-          ← Back to the map
+        <Link href="/tools" className="underline hover:text-slate-900">
+          ← Back to Tools
         </Link>
       </p>
 

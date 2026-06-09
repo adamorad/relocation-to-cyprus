@@ -233,6 +233,8 @@ export default function FreelancerVsCompanyPage() {
       <nav className="text-xs text-slate-500 mb-6">
         <Link href="/" className="hover:text-slate-900">Home</Link>
         {" › "}
+        <Link href="/tools" className="hover:text-slate-900">Tools</Link>
+        {" › "}
         <span className="text-slate-900">Freelancer vs Cyprus Ltd</span>
       </nav>
 
@@ -441,8 +443,8 @@ export default function FreelancerVsCompanyPage() {
 
       {/* Back */}
       <p className="mt-8 text-xs text-slate-500">
-        <Link href="/" className="underline hover:text-slate-900">
-          ← Back to the map
+        <Link href="/tools" className="underline hover:text-slate-900">
+          ← Back to Tools
         </Link>
       </p>
     </main>

@@ -93,8 +93,8 @@ export default function LongTermRentalsPage() {
     <main id="main" className="max-w-5xl mx-auto px-6 py-10 md:py-16">
       {/* Back nav */}
       <nav className="text-xs text-slate-600 mb-6">
-        <Link href="/" className="hover:text-slate-900">
-          ← Explore
+        <Link href="/sections" className="hover:text-slate-900">
+          ← Directories
         </Link>
       </nav>
 
