@@ -1,4 +1,6 @@
 allowBuilds:
+  protobufjs: true
   sharp: true
 onlyBuiltDependencies:
   - sharp
+  - protobufjs

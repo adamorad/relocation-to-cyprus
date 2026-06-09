@@ -20,10 +20,13 @@ const HotelsPanel = dynamic(() => import("./HotelsPanel"), { ssr: false, loading
 const ShoppingPanel = dynamic(() => import("./ShoppingPanel"), { ssr: false, loading: () => null });
 const SchoolsPanel = dynamic(() => import("./SchoolsPanel"), { ssr: false, loading: () => null });
 const HealthcarePanel = dynamic(() => import("./HealthcarePanel"), { ssr: false, loading: () => null });
+const GoogleMapView = dynamic(() => import("./GoogleMapView"), { ssr: false, loading: () => null });
+import { APIProvider } from "@vis.gl/react-google-maps";
 import IllustratedMap from "./IllustratedMap";
 import ListingPanel from "./ListingPanel";
 import RegionListingsPanel from "./RegionListingsPanel";
 import { trackEvent } from "@/lib/analytics";
+import { formatEuros } from "@/lib/listingFilters";
 import {
   LISTINGS,
   LISTINGS_BY_REGION,
@@ -82,12 +85,6 @@ function regionPriceFrom(listings: EnrichedListing[]): number | null {
     }
   }
   return Number.isFinite(lo) ? lo : null;
-}
-
-function formatEuros(n: number): string {
-  if (n >= 1_000_000)
-    return `€${(n / 1_000_000).toFixed(1).replace(/\.0$/, "")}M`;
-  return `€${Math.round(n / 1000)}k`;
 }
 
 // ── Mobile bottom-sheet drawer ────────────────────────────────────────────────
@@ -341,6 +338,7 @@ function SectionTiles({
 // ── Main shell ────────────────────────────────────────────────────────────────
 
 export default function AppShell() {
+  const [mapMode, setMapMode] = useState<"illustrated" | "google">("illustrated");
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
   const [modalRegion, setModalRegion] = useState<string | null>(null);
   const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
@@ -403,9 +401,10 @@ export default function AppShell() {
   };
 
   return (
+    <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? ""}>
     <main
       id="main"
-      className="relative md:h-screen w-full md:overflow-hidden bg-[#35cdc4] text-slate-900"
+      className={`relative w-full text-slate-900 ${mapMode === "google" ? "h-screen overflow-hidden bg-[#aadaff]" : "md:h-screen md:overflow-hidden bg-[#35cdc4]"}`}
     >
       <SectionTiles
         foodOpen={foodOpen}
@@ -447,7 +446,7 @@ export default function AppShell() {
         keeps the sea-teal so the page reads as a continuous illustration —
         and labels positioned at % of this container always land on the
         correct image pixel regardless of viewport. */}
-      <div className="relative w-full aspect-[1672/941] md:absolute md:inset-0 md:m-auto md:max-h-screen md:max-w-[177.78vh]">
+      <div className={mapMode === "google" ? "absolute inset-0" : "relative w-full aspect-[1672/941] md:absolute md:inset-0 md:m-auto md:max-h-screen md:max-w-[177.78vh]"}>
         {selectedRegion === null && (
           <div className="md:hidden absolute bottom-4 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
             <span className="inline-flex items-center gap-1.5 bg-slate-900/80 backdrop-blur-sm text-white text-xs font-semibold rounded-full px-3 py-1.5 shadow-lg">
@@ -461,25 +460,64 @@ export default function AppShell() {
             </span>
           </div>
         )}
-        <IllustratedMap
-          selectedRegion={selectedRegion}
-          onSelectRegion={(c) => {
-            setSelectedRegion(c);
-            if (c) {
-              trackEvent("region_select", {
-                region: c,
-                listings_in_region: LISTINGS_BY_REGION[c]?.length ?? 0,
+        {mapMode === "illustrated" ? (
+          <IllustratedMap
+            selectedRegion={selectedRegion}
+            onSelectRegion={(c) => {
+              setSelectedRegion(c);
+              if (c) {
+                trackEvent("region_select", {
+                  region: c,
+                  listings_in_region: LISTINGS_BY_REGION[c]?.length ?? 0,
+                });
+              } else {
+                trackEvent("map_reset");
+                setSelectedListing(null);
+              }
+            }}
+            onHoverRegion={setHoveredRegion}
+          />
+        ) : (
+          <GoogleMapView
+            onToggleMode={() => setMapMode("illustrated")}
+            onPickListing={(listing) => {
+              setSelectedListing(listing);
+              trackEvent("listing_open", {
+                slug: listing.slug,
+                region: listing.regionCity ?? "unknown",
+                title: listing.title,
+                has_price: Boolean(listing.priceRange),
+                has_developer: Boolean(listing.developer?.name),
               });
-            } else {
-              trackEvent("map_reset");
+            }}
+          />
+        )}
+        {mapMode === "illustrated" && (
+          <button
+            type="button"
+            onClick={() => setMapMode("google")}
+            className="absolute top-3 right-3 z-20 bg-white/70 backdrop-blur-xl border border-white/60 rounded-full px-3 py-1.5 text-xs font-semibold shadow-lg hover:bg-white/90 transition-colors pointer-events-auto"
+          >
+            🗺 Real map
+          </button>
+        )}
+        {selectedRegion ? (
+          <button
+            type="button"
+            onClick={() => {
+              setSelectedRegion(null);
+              setModalRegion(null);
               setSelectedListing(null);
-            }
-          }}
-          onHoverRegion={setHoveredRegion}
-        />
+              trackEvent("map_reset");
+            }}
+            className="absolute top-3 left-3 z-20 bg-white/70 backdrop-blur-xl text-slate-700 text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg border border-white/60 hover:bg-white/90 transition-colors"
+          >
+            ← All regions
+          </button>
+        ) : null}
       </div>
 
-      {selectedRegion ? null : (
+      {selectedRegion || mapMode === "google" ? null : (
         <div className="px-4 pt-4 pb-8 md:p-10 md:pt-12 md:pointer-events-none md:absolute md:top-0 md:left-0 md:right-0 md:flex md:items-start md:justify-between md:gap-2">
           <div className="max-w-md bg-white rounded-xl md:rounded-2xl p-4 md:p-6 border border-slate-200 shadow-xl transition-all md:pointer-events-auto">
             {hoverPreview ? (
@@ -591,5 +629,6 @@ export default function AppShell() {
         }}
       />
     </main>
+    </APIProvider>
   );
 }

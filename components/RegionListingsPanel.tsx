@@ -1,7 +1,30 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import type { EnrichedListing, Offer } from "@/lib/listingsData";
+import dynamic from "next/dynamic";
+import type { EnrichedListing } from "@/lib/listingsData";
+import {
+  BED_OPTIONS,
+  BATH_OPTIONS,
+  ENERGY_OPTIONS,
+  type BedFilter,
+  type BathFilter,
+  type SortKey,
+  type Tri,
+  offerBedCounts,
+  listingMinPrice,
+  listingMaxPrice,
+  listingMaxLivingArea,
+  listingMinPricePerM2,
+  listingBuildingType,
+  specVal,
+  matchesBeds,
+  matchesBaths,
+  formatEuros,
+  uniqueSpec,
+} from "@/lib/listingFilters";
+
+const ListingsMap = dynamic(() => import("./ListingsMap"), { ssr: false, loading: () => <div className="flex-1 flex items-center justify-center text-sm text-slate-500">Loading map…</div> });
 
 type Props = {
   region: string | null;
@@ -10,110 +33,6 @@ type Props = {
   onClose: () => void;
   onPick: (listing: EnrichedListing) => void;
 };
-
-type SortKey = "price-asc" | "price-desc" | "title";
-type BedFilter = "any" | "1" | "2" | "3" | "4+";
-type BathFilter = "any" | "1" | "2" | "3+";
-type Tri = "any" | "yes" | "no";
-
-const BED_OPTIONS: ReadonlyArray<BedFilter> = ["any", "1", "2", "3", "4+"];
-const BATH_OPTIONS: ReadonlyArray<BathFilter> = ["any", "1", "2", "3+"];
-const ENERGY_OPTIONS = ["any", "A", "B", "C", "D"] as const;
-
-function parsePriceRange(s: string | null | undefined): [number, number] | null {
-  if (!s) return null;
-  const nums = Array.from(s.matchAll(/€?\s*([\d.,]+)/g))
-    .map((m) => Number(m[1].replace(/[.,]/g, "")))
-    .filter((n) => Number.isFinite(n) && n > 1000);
-  if (nums.length === 0) return null;
-  return [Math.min(...nums), Math.max(...nums)];
-}
-
-function offerBedCounts(offers: Offer[]): number[] {
-  const out: number[] = [];
-  for (const o of offers) {
-    const b = Number(o.bedrooms ?? (o as { features?: Record<string, string> }).features?.bedrooms);
-    if (Number.isFinite(b) && b > 0) out.push(b);
-  }
-  return out;
-}
-
-function offerBathCounts(offers: Offer[]): number[] {
-  const out: number[] = [];
-  for (const o of offers) {
-    const b = Number(o.bathrooms ?? (o as { features?: Record<string, string> }).features?.bathrooms);
-    if (Number.isFinite(b) && b > 0) out.push(b);
-  }
-  return out;
-}
-
-function offerLivingAreas(offers: Offer[]): number[] {
-  const out: number[] = [];
-  for (const o of offers) {
-    const v =
-      (o["living area"] as string | null | undefined) ??
-      (o as { features?: Record<string, string> }).features?.living_area;
-    const n = v ? Number((v.match(/[\d.]+/) ?? [""])[0]) : NaN;
-    if (Number.isFinite(n) && n > 0) out.push(n);
-  }
-  return out;
-}
-
-function listingBuildingType(l: EnrichedListing): string {
-  return (l.specs?.["Building type"] ?? "").trim();
-}
-
-function specVal(l: EnrichedListing, key: string): string {
-  return (l.specs?.[key] ?? "").trim();
-}
-
-function matchesBeds(l: EnrichedListing, bed: BedFilter): boolean {
-  if (bed === "any") return true;
-  const counts = offerBedCounts(l.offers);
-  if (counts.length === 0) return false;
-  if (bed === "4+") return counts.some((c) => c >= 4);
-  return counts.includes(Number(bed));
-}
-
-function matchesBaths(l: EnrichedListing, bath: BathFilter): boolean {
-  if (bath === "any") return true;
-  const counts = offerBathCounts(l.offers);
-  if (counts.length === 0) return false;
-  if (bath === "3+") return counts.some((c) => c >= 3);
-  return counts.includes(Number(bath));
-}
-
-function listingMinPrice(l: EnrichedListing): number {
-  const range = parsePriceRange(l.priceRange);
-  if (range) return range[0];
-  let min = Number.POSITIVE_INFINITY;
-  for (const o of l.offers) {
-    const p = parsePriceRange(o.price);
-    if (p && p[0] < min) min = p[0];
-  }
-  return Number.isFinite(min) ? min : 0;
-}
-
-function listingMaxPrice(l: EnrichedListing): number {
-  const range = parsePriceRange(l.priceRange);
-  if (range) return range[1];
-  let max = 0;
-  for (const o of l.offers) {
-    const p = parsePriceRange(o.price);
-    if (p && p[1] > max) max = p[1];
-  }
-  return max;
-}
-
-function listingMaxLivingArea(l: EnrichedListing): number {
-  const areas = offerLivingAreas(l.offers);
-  return areas.length ? Math.max(...areas) : 0;
-}
-
-function formatEuros(n: number): string {
-  if (!Number.isFinite(n) || n <= 0) return "—";
-  return `€${(n / 1000).toLocaleString("en-US", { maximumFractionDigits: 0 })}k`;
-}
 
 function firstImage(l: EnrichedListing): string | null {
   if (l.headerImage) return l.headerImage;
@@ -138,8 +57,11 @@ export default function RegionListingsPanel({
   const [pool, setPool] = useState<Tri>("any");
   const [wheelchair, setWheelchair] = useState<Tri>("any");
   const [minArea, setMinArea] = useState<number>(0);
+  const [maxPricePerM2, setMaxPricePerM2] = useState<number | null>(null);
   const [sort, setSort] = useState<SortKey>("price-asc");
   const [moreOpen, setMoreOpen] = useState(false);
+  const [filtersCollapsed, setFiltersCollapsed] = useState(true);
+  const [listView, setListView] = useState<"grid" | "map">("grid");
 
   const open = region !== null;
   useEffect(() => {
@@ -150,6 +72,10 @@ export default function RegionListingsPanel({
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, [open, onClose]);
+
+  useEffect(() => {
+    setListView("grid");
+  }, [region]);
 
   const types = useMemo(
     () => uniqueSpec(listings, "Building type"),
@@ -179,6 +105,15 @@ export default function RegionListingsPanel({
     return m || 500;
   }, [listings]);
 
+  const ppmCeiling = useMemo(() => {
+    let m = 0;
+    for (const l of listings) {
+      const v = listingMinPricePerM2(l);
+      if (v > m) m = v;
+    }
+    return Math.ceil((m || 10_000) / 500) * 500;
+  }, [listings]);
+
   const filtered = useMemo(() => {
     const f = listings.filter((l) => {
       if (bed !== "any" && !matchesBeds(l, bed)) return false;
@@ -203,6 +138,10 @@ export default function RegionListingsPanel({
       }
       if (maxPrice != null && listingMinPrice(l) > maxPrice) return false;
       if (minArea > 0 && listingMaxLivingArea(l) < minArea) return false;
+      if (maxPricePerM2 != null) {
+        const ppm = listingMinPricePerM2(l);
+        if (ppm > 0 && ppm > maxPricePerM2) return false;
+      }
       return true;
     });
     const sorted = [...f];
@@ -224,11 +163,13 @@ export default function RegionListingsPanel({
     wheelchair,
     maxPrice,
     minArea,
+    maxPricePerM2,
     sort,
   ]);
 
   const resetFilters = () => {
     setMaxPrice(null);
+    setMaxPricePerM2(null);
     setBed("any");
     setBath("any");
     setType("any");
@@ -242,6 +183,7 @@ export default function RegionListingsPanel({
 
   const filtersActive =
     maxPrice !== null ||
+    maxPricePerM2 !== null ||
     bed !== "any" ||
     bath !== "any" ||
     type !== "any" ||
@@ -257,15 +199,11 @@ export default function RegionListingsPanel({
   return (
     <div
       className={`fixed inset-0 z-30 flex items-center transition-all duration-300 ${
-        pushedAside
-          ? "md:justify-start md:pl-3 md:pr-2 md:right-[568px] md:left-0 md:pointer-events-none -translate-x-full md:translate-x-0 opacity-0 md:opacity-100"
-          : "justify-center p-2 md:p-8"
-      } ${
-        visible && !pushedAside
-          ? "opacity-100 pointer-events-auto bg-slate-900/30 backdrop-blur-[2px]"
-          : visible && pushedAside
-            ? ""
-            : "opacity-0 pointer-events-none"
+        !visible
+          ? "opacity-0 pointer-events-none"
+          : pushedAside
+            ? "md:justify-start md:pl-3 md:pr-2 md:right-[568px] md:left-0 md:pointer-events-none -translate-x-full md:translate-x-0 md:opacity-100"
+            : "justify-center p-2 md:p-8 opacity-100 pointer-events-auto bg-slate-900/30 backdrop-blur-[2px]"
       }`}
       onClick={pushedAside ? undefined : onClose}
       aria-hidden={!visible}
@@ -295,17 +233,29 @@ export default function RegionListingsPanel({
               of {listings.length} listings
             </p>
           </div>
-          <button
-            type="button"
-            onClick={onClose}
-            className="flex-shrink-0 text-slate-500 hover:text-slate-900 text-2xl leading-none w-11 h-11 rounded-full hover:bg-slate-100 flex items-center justify-center"
-            aria-label="Close"
-          >
-            ×
-          </button>
+          <div className="flex items-center gap-2 flex-shrink-0 mt-1">
+            <button
+              type="button"
+              onClick={() => setFiltersCollapsed((v) => !v)}
+              className="text-slate-500 hover:text-slate-900 text-xs font-semibold px-2 py-1.5 rounded border border-slate-200 hover:bg-slate-50 flex items-center gap-1 transition-colors"
+              aria-label={filtersCollapsed ? "Show filters" : "Hide filters"}
+              title={filtersCollapsed ? "Show filters" : "Hide filters"}
+            >
+              <span aria-hidden>{filtersCollapsed ? "▾" : "▴"}</span>
+              Filters
+            </button>
+            <button
+              type="button"
+              onClick={onClose}
+              className="text-slate-500 hover:text-slate-900 text-2xl leading-none w-11 h-11 rounded-full hover:bg-slate-100 flex items-center justify-center"
+              aria-label="Close"
+            >
+              ×
+            </button>
+          </div>
         </div>
 
-        <div className="mt-3 space-y-3">
+        {!filtersCollapsed && <div className="mt-3 space-y-3">
           {/* Max price */}
           <div>
             <div className="flex items-baseline justify-between mb-1">
@@ -373,19 +323,37 @@ export default function RegionListingsPanel({
           </div>
 
           <div className="flex items-center justify-between gap-3">
-            <button
-              type="button"
-              onClick={() => setMoreOpen((v) => !v)}
-              className="flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors"
-              aria-expanded={moreOpen}
-            >
-              <span aria-hidden>{moreOpen ? "▴" : "▾"}</span>
-              {moreOpen ? "Hide" : "More"} filters
-              {(() => {
-                const n = [view !== "any", locType !== "any", energy !== "any", pool !== "any", wheelchair !== "any", minArea > 0].filter(Boolean).length;
-                return n > 0 ? <span className="ml-0.5 bg-slate-900 text-white text-[9px] font-bold rounded-full px-1.5 py-px leading-none">{n}</span> : null;
-              })()}
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setMoreOpen((v) => !v)}
+                className="flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors"
+                aria-expanded={moreOpen}
+              >
+                <span aria-hidden>{moreOpen ? "▴" : "▾"}</span>
+                {moreOpen ? "Hide" : "More"} filters
+                {(() => {
+                  const n = [view !== "any", locType !== "any", energy !== "any", pool !== "any", wheelchair !== "any", minArea > 0, maxPricePerM2 !== null].filter(Boolean).length;
+                  return n > 0 ? <span className="ml-0.5 bg-slate-900 text-white text-[9px] font-bold rounded-full px-1.5 py-px leading-none">{n}</span> : null;
+                })()}
+              </button>
+              <div className="flex gap-0.5 bg-slate-100 p-0.5 rounded-lg">
+                <button
+                  type="button"
+                  onClick={() => setListView("grid")}
+                  className={`text-xs font-semibold px-2.5 py-0.5 rounded-md transition-colors ${listView === "grid" ? "bg-white shadow text-slate-900" : "text-slate-500 hover:text-slate-700"}`}
+                >
+                  Grid
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setListView("map")}
+                  className={`text-xs font-semibold px-2.5 py-0.5 rounded-md transition-colors ${listView === "map" ? "bg-white shadow text-slate-900" : "text-slate-500 hover:text-slate-700"}`}
+                >
+                  Map
+                </button>
+              </div>
+            </div>
             {filtersActive ? (
               <button
                 type="button"
@@ -415,6 +383,30 @@ export default function RegionListingsPanel({
                   step={10}
                   value={minArea}
                   onChange={(e) => setMinArea(Number(e.target.value))}
+                  className="w-full accent-slate-900"
+                />
+              </div>
+              <div>
+                <div className="flex items-baseline justify-between mb-1">
+                  <span className="text-[10px] uppercase tracking-wider text-slate-600 font-semibold">
+                    Max price / m²
+                  </span>
+                  <span className="text-xs text-slate-900 font-semibold">
+                    {maxPricePerM2 == null
+                      ? `Up to €${ppmCeiling.toLocaleString()}/m²`
+                      : `≤ €${maxPricePerM2.toLocaleString()}/m²`}
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min={500}
+                  max={ppmCeiling}
+                  step={500}
+                  value={maxPricePerM2 ?? ppmCeiling}
+                  onChange={(e) => {
+                    const v = Number(e.target.value);
+                    setMaxPricePerM2(v >= ppmCeiling ? null : v);
+                  }}
                   className="w-full accent-slate-900"
                 />
               </div>
@@ -463,29 +455,35 @@ export default function RegionListingsPanel({
               </div>
             </div>
           ) : null}
-        </div>
+        </div>}
       </div>
 
-      <div className="overflow-y-auto flex-1 p-4 bg-stone-50/60">
-        {filtered.length === 0 ? (
-          <div className="text-center text-sm text-slate-600 py-12 space-y-3">
-            <p>No listings match these filters.</p>
-            <button
-              type="button"
-              onClick={resetFilters}
-              className="text-xs font-semibold px-3 py-1.5 rounded border border-slate-300 text-slate-700 hover:bg-slate-100"
-            >
-              Reset filters
-            </button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 auto-rows-fr">
-            {filtered.map((l) => (
-              <ListingCard key={l.slug} listing={l} onPick={onPick} />
-            ))}
-          </div>
-        )}
-      </div>
+      {listView === "map" ? (
+        <div className="flex-1 overflow-hidden">
+          <ListingsMap listings={filtered} onPick={onPick} />
+        </div>
+      ) : (
+        <div className="overflow-y-auto flex-1 p-4 bg-stone-50/60">
+          {filtered.length === 0 ? (
+            <div className="text-center text-sm text-slate-600 py-12 space-y-3">
+              <p>No listings match these filters.</p>
+              <button
+                type="button"
+                onClick={resetFilters}
+                className="text-xs font-semibold px-3 py-1.5 rounded border border-slate-300 text-slate-700 hover:bg-slate-100"
+              >
+                Reset filters
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 auto-rows-fr">
+              {filtered.map((l) => (
+                <ListingCard key={l.slug} listing={l} onPick={onPick} />
+              ))}
+            </div>
+          )}
+        </div>
+      )}
       </aside>
     </div>
   );
@@ -598,15 +596,6 @@ function TriToggle({
       </div>
     </div>
   );
-}
-
-function uniqueSpec(listings: EnrichedListing[], key: string): string[] {
-  const set = new Set<string>();
-  for (const l of listings) {
-    const v = specVal(l, key);
-    if (v) set.add(v);
-  }
-  return Array.from(set).sort();
 }
 
 function ListingCard({

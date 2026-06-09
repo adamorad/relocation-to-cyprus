@@ -221,9 +221,9 @@ export default function FoodPanel({ open, onClose }: Props) {
                                         city,
                                       })
                                     }
-                                    className="inline-flex items-center gap-1 rounded bg-slate-900 hover:bg-slate-700 text-white text-[10px] font-semibold px-2 py-1 transition-colors"
+                                    className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 hover:border-slate-400 transition-colors"
                                   >
-                                    View on Maps ↗
+                                    📍 Open in Maps
                                   </a>
                                   {p.instagram ? (
                                     <a
@@ -236,7 +236,7 @@ export default function FoodPanel({ open, onClose }: Props) {
                                           { place: p.name, city },
                                         )
                                       }
-                                      className="text-[10px] font-semibold text-amber-700 hover:text-amber-900"
+                                      className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full border border-amber-300 text-amber-700 hover:bg-amber-50 transition-colors"
                                     >
                                       @{p.instagram} ↗
                                     </a>

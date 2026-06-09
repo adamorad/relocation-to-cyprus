@@ -3,13 +3,27 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { GUIDES, guideBySlug, type GuideCategory } from "@/lib/guides";
 import { AUTHORS, CATEGORY_AUTHOR } from "@/lib/authors";
+import { SECTIONS_INDEX } from "@/lib/sections-index";
 import { MetaPixelEvent } from "@/components/MetaPixelEvent";
 import { EmailCapture } from "@/components/EmailCapture";
+import { ShareBar } from "@/components/ShareBar";
 
 const SITE_URL = "https://realcy.app";
 
 const toId = (h: string) =>
   h.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+const GUIDE_CATEGORY_SECTIONS: Record<GuideCategory, string[]> = {
+  immigration: ["immigration-lawyers", "expat-communities"],
+  tax: ["accountants"],
+  business: ["accountants", "coworking", "startup-ecosystem"],
+  property: ["property-lawyers", "long-term-rentals", "property-management"],
+  family: ["childcare-nurseries", "after-school-activities", "expat-communities"],
+  healthcare: ["specialist-doctors", "mental-health-services"],
+  transport: ["public-transport"],
+  lifestyle: ["expat-communities", "fitness-wellness", "sports-clubs"],
+  environment: [],
+};
 
 const GUIDE_CATEGORY_TOOLS: Record<GuideCategory, Array<{ slug: string; title: string }>> = {
   immigration: [
@@ -91,6 +105,11 @@ export default async function GuidePage({
   if (!g) notFound();
 
   const relatedTools = GUIDE_CATEGORY_TOOLS[g.category] ?? [];
+  const relatedSectionSlugs = GUIDE_CATEGORY_SECTIONS[g.category] ?? [];
+  const relatedSections = relatedSectionSlugs
+    .map((slug) => SECTIONS_INDEX.find((s) => s.slug === slug))
+    .filter((s) => s !== undefined);
+  const canonicalUrl = `${SITE_URL}/guides/${g.slug}/`;
   const author = AUTHORS[CATEGORY_AUTHOR[g.category]] ?? AUTHORS.team;
 
   const articleJsonLd = {
@@ -118,15 +137,26 @@ export default async function GuidePage({
       { "@type": "ListItem", position: 3, name: g.title },
     ],
   };
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: g.sections.map((s) => ({
-      "@type": "Question",
-      name: s.heading,
-      acceptedAnswer: { "@type": "Answer", text: s.body },
-    })),
-  };
+  const faqJsonLd =
+    g.faqs && g.faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: g.faqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }
+      : {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: g.sections.map((s) => ({
+            "@type": "Question",
+            name: s.heading,
+            acceptedAnswer: { "@type": "Answer", text: s.body },
+          })),
+        };
 
   return (
     <main id="main" className="max-w-3xl mx-auto px-6 py-10">
@@ -174,6 +204,8 @@ export default async function GuidePage({
         </div>
       )}
 
+      <ShareBar url={canonicalUrl} title={g.title} guideSlug={g.slug} />
+
       {g.sections.length > 2 && (
         <nav aria-label="In this guide" className="mt-6 mb-2 p-4 bg-slate-50 border border-slate-200 rounded-lg text-sm">
           <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-2">In this guide</p>
@@ -215,6 +247,23 @@ export default async function GuidePage({
         </aside>
       )}
 
+      {relatedSections.length > 0 && (
+        <aside className="mt-4 p-4 bg-indigo-50 border border-indigo-200 rounded-lg">
+          <p className="text-[10px] font-semibold text-indigo-800 uppercase tracking-wider mb-3">Related directories</p>
+          <div className="flex flex-wrap gap-2">
+            {relatedSections.map((s) => (
+              <Link
+                key={s.slug}
+                href={`/sections/${s.slug}/`}
+                className="text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-indigo-200 text-indigo-700 hover:bg-indigo-700 hover:text-white transition-colors"
+              >
+                {s.name} →
+              </Link>
+            ))}
+          </div>
+        </aside>
+      )}
+
       {(g.category === "immigration" || g.category === "tax" || g.category === "property") && (
         <aside className="mt-6 p-5 bg-slate-900 rounded-xl text-white">
           <p className="text-sm font-semibold mb-1">Get the free Cyprus Relocation Checklist</p>
@@ -222,6 +271,25 @@ export default async function GuidePage({
           <EmailCapture compact />
         </aside>
       )}
+
+      {g.faqs && g.faqs.length > 0 ? (
+        <section className="mt-10">
+          <h2 className="text-xl font-bold mb-4">Frequently asked questions</h2>
+          <dl className="space-y-4">
+            {g.faqs.map((faq) => (
+              <details key={faq.q} className="group border border-slate-200 rounded-lg">
+                <summary className="flex items-center justify-between px-4 py-3 cursor-pointer font-semibold text-sm text-slate-900 list-none hover:bg-slate-50">
+                  {faq.q}
+                  <span className="ml-3 text-slate-400 group-open:rotate-180 transition-transform">▾</span>
+                </summary>
+                <div className="px-4 pb-4 pt-1 text-sm text-slate-700 leading-relaxed">
+                  {faq.a}
+                </div>
+              </details>
+            ))}
+          </dl>
+        </section>
+      ) : null}
 
       <aside className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg text-xs text-slate-700">
         This is general information, not legal or tax advice. Cyprus rules
