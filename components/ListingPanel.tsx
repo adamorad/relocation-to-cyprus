@@ -95,7 +95,7 @@ function ListingPanelBody({
 
       <div className="p-6 space-y-5">
         {listing.images && listing.images.length > 0 ? (
-          <ImageGallery
+          <ListingImageStrip
             images={listing.images}
             title={listing.title}
             onOpen={(i) => openLightbox(listing.images!, i)}
@@ -527,7 +527,7 @@ function FloorPlansSection({
   );
 }
 
-function ImageGallery({
+function ListingImageStrip({
   images,
   title,
   onOpen,

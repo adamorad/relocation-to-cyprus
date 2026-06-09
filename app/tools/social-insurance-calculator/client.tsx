@@ -186,7 +186,7 @@ export default function SocialInsuranceCalculatorPage() {
     selfRows = [
       {
         label: "Social Insurance (SI)",
-        rate: "15.6%",
+        rate: "16.6%",
         monthly: siMonthly,
         annual: siMonthly * 12,
         side: "self",

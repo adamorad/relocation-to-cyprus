@@ -148,7 +148,7 @@ export default function AfterSchoolActivitiesPage() {
         <Link href="/" className="hover:text-slate-800 transition-colors">← Home</Link>
         {" / "}
         <Link href="/sections" className="hover:text-slate-800 transition-colors">
-          Explore
+          Directories
         </Link>
       </nav>
 

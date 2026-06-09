@@ -136,8 +136,6 @@ function taxpayerBadgeClass(type: TaxpayerType): string {
 export default function TaxFilingCalendarPage() {
   const [filter, setFilter] = useState<TaxpayerType | "all">("all");
 
-  // Use a fixed reference date so the component is deterministic
-  // In production this would be: const today = new Date();
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 

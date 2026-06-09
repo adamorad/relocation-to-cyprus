@@ -2,11 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MetaPixelEvent } from "@/components/MetaPixelEvent";
 
+const SITE_URL = "https://realcy.app";
+const title = "Contact RealCy.app";
+const description = "Get in touch with RealCy.app — questions about a Cyprus listing, suggestions, partnerships, or a category you want us to build next.";
+
 export const metadata: Metadata = {
-  title: "Contact RealCy.app",
-  description:
-    "Get in touch with RealCy.app — questions about a Cyprus listing, suggestions, partnerships, or a category you want us to build next.",
+  title,
+  description,
   alternates: { canonical: "/contact/" },
+  openGraph: { title, description, url: `${SITE_URL}/contact/`, type: "website" },
 };
 
 const EMAIL = "hello@realcy.app";

@@ -35,13 +35,6 @@ function CityChip({
   );
 }
 
-function ageLabel(from: number, to: number): string {
-  const fromStr = from < 12 ? `${from}m` : from === 12 ? "1yr" : `${Math.round(from / 12 > 1 ? from / 12 : 1)}yr`;
-  // from is in months if < 12, else interpret directly as months
-  const fromLabel = from < 12 ? `${from} months` : `${from} months`;
-  // Simplify: from is always months for ageRangeFrom in the data
-  return `${from < 12 ? `${from}m` : from < 24 ? `${from}m` : `${Math.floor(from / 12)}yr`}–${to}yr`;
-}
 
 function NurseryCard({ nursery }: { nursery: Nursery }) {
   return (
