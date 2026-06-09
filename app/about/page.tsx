@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+const SITE_URL = "https://realcy.app";
+const title = "About RealCy.app";
+const description = "RealCy.app is a portal for anything Cyprus — starting with new-build real estate, expanding to rentals, hotels, food, shopping and more.";
+
 export const metadata: Metadata = {
-  title: "About RealCy.app",
-  description:
-    "RealCy.app is a portal for anything Cyprus — starting with new-build real estate, expanding to rentals, hotels, food, shopping and more.",
+  title,
+  description,
   alternates: { canonical: "/about/" },
+  openGraph: { title, description, url: `${SITE_URL}/about/`, type: "website" },
 };
 
 export default function AboutPage() {

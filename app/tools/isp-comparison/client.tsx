@@ -7,7 +7,7 @@ type CoverageCity = "Limassol" | "Paphos" | "Larnaca" | "Nicosia" | "Ayia Napa" 
 
 type BroadbandISP = {
   name: string;
-  type: "fibre" | "cable" | "vdsl";
+  type: "fibre" | "cable";
   maxSpeedDown: number; // Mbps
   maxSpeedUp: number; // Mbps
   monthlyPrice: number; // €
@@ -123,13 +123,11 @@ const COVERAGE_CITIES: CoverageCity[] = ["Limassol", "Paphos", "Larnaca", "Nicos
 const TYPE_LABEL = {
   fibre: "Fibre (FTTH)",
   cable: "Cable",
-  vdsl: "VDSL",
 };
 
 const TYPE_COLOR = {
   fibre: "bg-teal-100 text-teal-800",
   cable: "bg-blue-100 text-blue-800",
-  vdsl: "bg-amber-100 text-amber-800",
 };
 
 export default function ISPComparisonPage() {

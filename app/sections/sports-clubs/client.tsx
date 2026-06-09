@@ -50,6 +50,8 @@ export default function SportsClubsPage() {
       {/* Back nav */}
       <nav className="text-xs text-slate-600 mb-6">
         <Link href="/" className="hover:text-slate-900">← Home</Link>
+        {" / "}
+        <Link href="/sections" className="hover:text-slate-900">Directories</Link>
       </nav>
 
       {/* Header */}

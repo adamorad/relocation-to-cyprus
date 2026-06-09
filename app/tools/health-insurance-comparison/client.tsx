@@ -103,7 +103,7 @@ const PROVIDERS: ReadonlyArray<InsuranceProvider> = [
     gesyCompatible: true,
     directBillingCyprusHospitals: true,
     keyNote: "Now integrated into AXA's international portfolio. Historically competitive on premiums for healthy individuals. Maternity and dental available as optional extras at additional cost. Good for young, healthy individuals who want solid hospital cover without the extras.",
-    website: "https://www.axa.com",
+    website: "https://www.interhealth.com",
   },
   {
     name: "Laiki Asfalistiki (Local Cyprus)",

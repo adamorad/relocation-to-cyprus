@@ -219,9 +219,9 @@ export default function BankingFeeComparisonPage() {
     <main id="main" className="max-w-5xl mx-auto px-6 py-10 md:py-16">
       <nav className="text-xs text-slate-600 mb-6">
         <Link href="/" className="hover:text-slate-900">Home</Link>{" "}
-        ›{" "}
+        &rsaquo;{" "}
         <Link href="/tools" className="hover:text-slate-900">Tools</Link>{" "}
-        › <span className="text-slate-900">Banking Fee Comparison</span>
+        &rsaquo; <span className="text-slate-900">Banking Fee Comparison</span>
       </nav>
 
       <header className="mb-8">

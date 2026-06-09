@@ -21,8 +21,8 @@ const EMPLOYED_RATES = {
   },
 };
 
-// Self-employed: 15.6% SI on insurable earnings, capped at €54,864/yr
-const SELF_EMPLOYED_SI_RATE = 0.156;
+// Self-employed: 16.6% SI on insurable earnings, capped at €54,864/yr (2025 rate)
+const SELF_EMPLOYED_SI_RATE = 0.166;
 const SELF_EMPLOYED_GESY_RATE = 0.0265;
 const SELF_EMPLOYED_MAX_ANNUAL = 54864;
 
@@ -186,7 +186,7 @@ export default function SocialInsuranceCalculatorPage() {
     selfRows = [
       {
         label: "Social Insurance (SI)",
-        rate: "15.6%",
+        rate: "16.6%",
         monthly: siMonthly,
         annual: siMonthly * 12,
         side: "self",

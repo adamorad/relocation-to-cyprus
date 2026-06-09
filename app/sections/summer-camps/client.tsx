@@ -38,12 +38,10 @@ function CityChip({
 }
 
 function TypeChip({
-  type,
   label,
   selected,
   onClick,
 }: {
-  type: CampType;
   label: string;
   selected: boolean;
   onClick: () => void;
@@ -225,7 +223,6 @@ export default function SummerCampsPage() {
           ).map(({ type, label }) => (
             <TypeChip
               key={type}
-              type={type}
               label={label}
               selected={typeFilter === type}
               onClick={() => setTypeFilter(type)}
