@@ -3,13 +3,27 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { GUIDES, guideBySlug, type GuideCategory } from "@/lib/guides";
 import { AUTHORS, CATEGORY_AUTHOR } from "@/lib/authors";
+import { SECTIONS_INDEX } from "@/lib/sections-index";
 import { MetaPixelEvent } from "@/components/MetaPixelEvent";
 import { EmailCapture } from "@/components/EmailCapture";
+import { ShareBar } from "@/components/ShareBar";
 
 const SITE_URL = "https://realcy.app";
 
 const toId = (h: string) =>
   h.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+const GUIDE_CATEGORY_SECTIONS: Record<GuideCategory, string[]> = {
+  immigration: ["immigration-lawyers", "expat-communities"],
+  tax: ["accountants"],
+  business: ["accountants", "coworking", "startup-ecosystem"],
+  property: ["property-lawyers", "long-term-rentals", "property-management"],
+  family: ["childcare-nurseries", "after-school-activities", "expat-communities"],
+  healthcare: ["specialist-doctors", "mental-health-services"],
+  transport: ["public-transport"],
+  lifestyle: ["expat-communities", "fitness-wellness", "sports-clubs"],
+  environment: [],
+};
 
 const GUIDE_CATEGORY_TOOLS: Record<GuideCategory, Array<{ slug: string; title: string }>> = {
   immigration: [
@@ -91,6 +105,11 @@ export default async function GuidePage({
   if (!g) notFound();
 
   const relatedTools = GUIDE_CATEGORY_TOOLS[g.category] ?? [];
+  const relatedSectionSlugs = GUIDE_CATEGORY_SECTIONS[g.category] ?? [];
+  const relatedSections = relatedSectionSlugs
+    .map((slug) => SECTIONS_INDEX.find((s) => s.slug === slug))
+    .filter((s) => s !== undefined);
+  const canonicalUrl = `${SITE_URL}/guides/${g.slug}/`;
   const author = AUTHORS[CATEGORY_AUTHOR[g.category]] ?? AUTHORS.team;
 
   const articleJsonLd = {
@@ -185,6 +204,8 @@ export default async function GuidePage({
         </div>
       )}
 
+      <ShareBar url={canonicalUrl} title={g.title} guideSlug={g.slug} />
+
       {g.sections.length > 2 && (
         <nav aria-label="In this guide" className="mt-6 mb-2 p-4 bg-slate-50 border border-slate-200 rounded-lg text-sm">
           <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-2">In this guide</p>
@@ -220,6 +241,23 @@ export default async function GuidePage({
                 className="text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-teal-200 text-teal-700 hover:bg-teal-700 hover:text-white transition-colors"
               >
                 {t.title} →
+              </Link>
+            ))}
+          </div>
+        </aside>
+      )}
+
+      {relatedSections.length > 0 && (
+        <aside className="mt-4 p-4 bg-indigo-50 border border-indigo-200 rounded-lg">
+          <p className="text-[10px] font-semibold text-indigo-800 uppercase tracking-wider mb-3">Related directories</p>
+          <div className="flex flex-wrap gap-2">
+            {relatedSections.map((s) => (
+              <Link
+                key={s.slug}
+                href={`/sections/${s.slug}/`}
+                className="text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-indigo-200 text-indigo-700 hover:bg-indigo-700 hover:text-white transition-colors"
+              >
+                {s.name} →
               </Link>
             ))}
           </div>
