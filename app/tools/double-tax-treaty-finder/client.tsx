@@ -112,7 +112,7 @@ export default function DoubleTaxTreatyFinderPage() {
           Cyprus Double Tax Treaty Finder
         </h1>
         <p className="mt-3 text-lg text-slate-600 leading-relaxed">
-          Search Cyprus&apos;s ~65 double tax treaties. See withholding tax rates on dividends,
+          Search Cyprus&apos;s ~57 countries covered by double tax treaties. See withholding tax rates on dividends,
           interest and royalties — and which countries have no treaty at all.
         </p>
       </header>
