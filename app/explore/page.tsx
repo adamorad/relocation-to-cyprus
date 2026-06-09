@@ -33,82 +33,82 @@ const CATEGORIES: Category[] = [
   {
     title: "Property & Housing",
     items: [
-      { name: "Long-Term Rentals", href: "/sections/long-term-rentals" },
-      { name: "Co-Living", href: "/sections/co-living" },
-      { name: "Property Management", href: "/sections/property-management" },
+      { name: "Long-Term Rentals", href: "/sections/long-term-rentals/" },
+      { name: "Co-Living", href: "/sections/co-living/" },
+      { name: "Property Management", href: "/sections/property-management/" },
     ],
   },
   {
     title: "Legal & Professional",
     items: [
-      { name: "Property Lawyers", href: "/sections/property-lawyers" },
-      { name: "Immigration Lawyers", href: "/sections/immigration-lawyers" },
-      { name: "Accountants", href: "/sections/accountants" },
+      { name: "Property Lawyers", href: "/sections/property-lawyers/" },
+      { name: "Immigration Lawyers", href: "/sections/immigration-lawyers/" },
+      { name: "Accountants", href: "/sections/accountants/" },
     ],
   },
   {
     title: "Business",
     items: [
-      { name: "Startup Ecosystem", href: "/sections/startup-ecosystem" },
-      { name: "Registered Address", href: "/sections/registered-address" },
-      { name: "Coworking", href: "/sections/coworking" },
+      { name: "Startup Ecosystem", href: "/sections/startup-ecosystem/" },
+      { name: "Registered Address", href: "/sections/registered-address/" },
+      { name: "Coworking", href: "/sections/coworking/" },
     ],
   },
   {
     title: "Family & Education",
     items: [
-      { name: "Childcare & Nurseries", href: "/sections/childcare-nurseries" },
-      { name: "After-School Activities", href: "/sections/after-school-activities" },
-      { name: "Summer Camps", href: "/sections/summer-camps" },
+      { name: "Childcare & Nurseries", href: "/sections/childcare-nurseries/" },
+      { name: "After-School Activities", href: "/sections/after-school-activities/" },
+      { name: "Summer Camps", href: "/sections/summer-camps/" },
     ],
   },
   {
     title: "Healthcare",
     items: [
-      { name: "Specialist Doctors", href: "/sections/specialist-doctors" },
-      { name: "Mental Health Services", href: "/sections/mental-health-services" },
-      { name: "Veterinary Services", href: "/sections/veterinary-services" },
+      { name: "Specialist Doctors", href: "/sections/specialist-doctors/" },
+      { name: "Mental Health Services", href: "/sections/mental-health-services/" },
+      { name: "Veterinary Services", href: "/sections/veterinary-services/" },
     ],
   },
   {
     title: "Active Living",
     items: [
-      { name: "Fitness & Wellness", href: "/sections/fitness-wellness" },
-      { name: "Sports Clubs", href: "/sections/sports-clubs" },
-      { name: "EV Charging", href: "/sections/ev-charging" },
+      { name: "Fitness & Wellness", href: "/sections/fitness-wellness/" },
+      { name: "Sports Clubs", href: "/sections/sports-clubs/" },
+      { name: "EV Charging", href: "/sections/ev-charging/" },
     ],
   },
   {
     title: "Getting Around",
-    items: [{ name: "Public Transport", href: "/sections/public-transport" }],
+    items: [{ name: "Public Transport", href: "/sections/public-transport/" }],
   },
   {
     title: "Community",
     items: [
-      { name: "Expat Communities", href: "/sections/expat-communities" },
-      { name: "Religious Services", href: "/sections/religious-services" },
-      { name: "Volunteering", href: "/sections/volunteering" },
+      { name: "Expat Communities", href: "/sections/expat-communities/" },
+      { name: "Religious Services", href: "/sections/religious-services/" },
+      { name: "Volunteering", href: "/sections/volunteering/" },
     ],
   },
   {
     title: "Arts & Culture",
     items: [
-      { name: "Art & Culture", href: "/sections/art-culture" },
-      { name: "Wineries", href: "/sections/wineries" },
+      { name: "Art & Culture", href: "/sections/art-culture/" },
+      { name: "Wineries", href: "/sections/wineries/" },
     ],
   },
   {
     title: "Food & Drink",
     items: [
-      { name: "Farmers Markets", href: "/sections/farmers-markets" },
-      { name: "International Grocery", href: "/sections/international-grocery" },
-      { name: "Halal & Kosher", href: "/sections/halal-kosher" },
-      { name: "Rooftop Bars", href: "/sections/rooftop-bars" },
+      { name: "Farmers Markets", href: "/sections/farmers-markets/" },
+      { name: "International Grocery", href: "/sections/international-grocery/" },
+      { name: "Halal & Kosher", href: "/sections/halal-kosher/" },
+      { name: "Rooftop Bars", href: "/sections/rooftop-bars/" },
     ],
   },
   {
     title: "Environment",
-    items: [{ name: "Community Gardens", href: "/sections/community-gardens" }],
+    items: [{ name: "Community Gardens", href: "/sections/community-gardens/" }],
   },
   {
     title: "Guides",
@@ -244,7 +244,7 @@ export default function ExplorePage() {
                 <ul className="space-y-2">
                   {toolResults.map((r) => (
                     <li key={r.slug}>
-                      <Link href={`/tools/${r.slug}`} className="flex items-start gap-3 p-3 border border-slate-200 rounded-lg hover:border-[#35cdc4] hover:shadow-sm transition-all group">
+                      <Link href={`/tools/${r.slug}/`} className="flex items-start gap-3 p-3 border border-slate-200 rounded-lg hover:border-[#35cdc4] hover:shadow-sm transition-all group">
                         <span className="flex-shrink-0 inline-block text-[10px] font-semibold uppercase tracking-wider text-teal-700 bg-teal-50 border border-teal-200 rounded-full px-2 py-0.5 mt-0.5">{r.tag}</span>
                         <div className="min-w-0">
                           <p className="text-sm font-semibold text-slate-900 group-hover:text-[#35cdc4] transition-colors leading-snug">{r.name}</p>
@@ -266,7 +266,7 @@ export default function ExplorePage() {
                 <ul className="space-y-2">
                   {sectionResults.map((r) => (
                     <li key={r.slug}>
-                      <Link href={`/sections/${r.slug}`} className="flex items-start gap-3 p-3 border border-slate-200 rounded-lg hover:border-[#35cdc4] hover:shadow-sm transition-all group">
+                      <Link href={`/sections/${r.slug}/`} className="flex items-start gap-3 p-3 border border-slate-200 rounded-lg hover:border-[#35cdc4] hover:shadow-sm transition-all group">
                         <span className="flex-shrink-0 inline-block text-[10px] font-semibold uppercase tracking-wider text-slate-600 bg-slate-100 border border-slate-200 rounded-full px-2 py-0.5 mt-0.5">{r.category}</span>
                         <div className="min-w-0">
                           <p className="text-sm font-semibold text-slate-900 group-hover:text-[#35cdc4] transition-colors leading-snug">{r.name}</p>

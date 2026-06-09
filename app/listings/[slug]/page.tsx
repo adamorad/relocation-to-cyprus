@@ -157,7 +157,7 @@ export default async function ListingPage({
   const jsonLd = [productJsonLd, breadcrumbJsonLd];
 
   return (
-    <main className="max-w-4xl mx-auto px-6 py-10">
+    <main id="main" className="max-w-4xl mx-auto px-6 py-10">
       <MetaPixelEvent event="ViewContent" params={{ content_name: l.title, content_category: "listing" }} />
       <script
         type="application/ld+json"

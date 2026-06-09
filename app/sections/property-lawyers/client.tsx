@@ -156,8 +156,8 @@ export default function PropertyLawyersPage() {
       <nav className="text-xs text-slate-500 mb-6">
         <Link href="/" className="hover:text-slate-800 transition-colors">← Home</Link>
         {" / "}
-        <Link href="/explore" className="hover:text-slate-800 transition-colors">
-          Explore
+        <Link href="/sections" className="hover:text-slate-800 transition-colors">
+          Directories
         </Link>
       </nav>
 

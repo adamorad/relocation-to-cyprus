@@ -159,8 +159,8 @@ export default function CommunityGardensPage() {
       <nav className="text-xs text-slate-600 mb-6">
         <Link href="/" className="hover:text-slate-900">← Home</Link>
         {" / "}
-        <Link href="/" className="hover:text-slate-900">
-          ← Explore
+        <Link href="/sections" className="hover:text-slate-900">
+          ← Directories
         </Link>
       </nav>
 

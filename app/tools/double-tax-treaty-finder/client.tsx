@@ -100,6 +100,8 @@ export default function DoubleTaxTreatyFinderPage() {
       <nav className="text-xs text-slate-500 mb-6">
         <Link href="/" className="hover:text-slate-900">Home</Link>
         {" › "}
+        <Link href="/tools" className="hover:text-slate-900">Tools</Link>
+        {" › "}
         <span className="text-slate-900">Cyprus Double Tax Treaty Finder</span>
       </nav>
 
@@ -230,8 +232,8 @@ export default function DoubleTaxTreatyFinderPage() {
 
       {/* Back link */}
       <p className="mt-8 text-xs text-slate-500">
-        <Link href="/" className="underline hover:text-slate-900">
-          ← Back to the map
+        <Link href="/tools" className="underline hover:text-slate-900">
+          ← Back to Tools
         </Link>
       </p>
 
