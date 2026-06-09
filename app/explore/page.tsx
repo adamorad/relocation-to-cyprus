@@ -14,9 +14,24 @@ export const metadata: Metadata = {
 };
 
 export default function ExplorePage() {
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Explore" },
+    ],
+  };
   return (
-    <Suspense>
-      <ExploreClient />
-    </Suspense>
+    <>
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <Suspense>
+        <ExploreClient />
+      </Suspense>
+    </>
   );
 }
