@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { GROCERY_TIPS } from "@/lib/international-grocery";
 import InternationalGroceryClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "International & Specialty Food Stores in Cyprus";
@@ -31,6 +32,7 @@ export default function InternationalGroceryPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <InternationalGroceryClient />
+      <SectionRelatedGuides sectionSlug="international-grocery" />
     </>
   );
 }

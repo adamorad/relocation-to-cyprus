@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { VOLUNTEER_TIPS } from "@/lib/volunteering";
 import VolunteeringClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Volunteering in Cyprus";
@@ -31,6 +32,7 @@ export default function VolunteeringPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <VolunteeringClient />
+      <SectionRelatedGuides sectionSlug="volunteering" />
     </>
   );
 }

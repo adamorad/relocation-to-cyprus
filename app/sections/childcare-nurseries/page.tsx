@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CHILDCARE_TIPS } from "@/lib/childcare";
 import ChildcareNurseriesClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Childcare & Nurseries in Cyprus";
@@ -31,6 +32,7 @@ export default function ChildcareNurseriesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <ChildcareNurseriesClient />
+      <SectionRelatedGuides sectionSlug="childcare-nurseries" />
     </>
   );
 }

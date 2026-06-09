@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { IMMIGRATION_LAWYER_TIPS } from "@/lib/immigration-lawyers";
 import ImmigrationLawyersClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Immigration Lawyers in Cyprus";
@@ -31,6 +32,7 @@ export default function ImmigrationLawyersPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <ImmigrationLawyersClient />
+      <SectionRelatedGuides sectionSlug="immigration-lawyers" />
     </>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SPORTS_TIPS } from "@/lib/sports-clubs";
 import SportsClubsClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Sports & Recreation Clubs in Cyprus";
@@ -31,6 +32,7 @@ export default function SportsClubsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <SportsClubsClient />
+      <SectionRelatedGuides sectionSlug="sports-clubs" />
     </>
   );
 }

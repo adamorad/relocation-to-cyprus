@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { EV_TIPS } from "@/lib/ev-charging";
 import EvChargingClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "EV Charging Stations in Cyprus — Directory";
@@ -31,6 +32,7 @@ export default function EvChargingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <EvChargingClient />
+      <SectionRelatedGuides sectionSlug="ev-charging" />
     </>
   );
 }

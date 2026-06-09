@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { VIEW_BAR_TIPS } from "@/lib/rooftop-bars";
 import RooftopBarsClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Rooftop & Sea View Bars in Cyprus";
@@ -31,6 +32,7 @@ export default function RooftopBarsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <RooftopBarsClient />
+      <SectionRelatedGuides sectionSlug="rooftop-bars" />
     </>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { RELIGIOUS_TIPS } from "@/lib/religious-services";
 import ReligiousServicesClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Religious Services in Cyprus";
@@ -31,6 +32,7 @@ export default function ReligiousServicesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <ReligiousServicesClient />
+      <SectionRelatedGuides sectionSlug="religious-services" />
     </>
   );
 }

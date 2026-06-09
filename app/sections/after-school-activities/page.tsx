@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ACTIVITY_TIPS } from "@/lib/after-school";
 import AfterSchoolActivitiesClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "After-School Activities for Children in Cyprus";
@@ -31,6 +32,7 @@ export default function AfterSchoolActivitiesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <AfterSchoolActivitiesClient />
+      <SectionRelatedGuides sectionSlug="after-school-activities" />
     </>
   );
 }

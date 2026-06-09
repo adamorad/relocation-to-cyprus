@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DIETARY_TIPS } from "@/lib/halal-kosher";
 import HalalKosherClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Halal & Kosher Food in Cyprus";
@@ -31,6 +32,7 @@ export default function HalalKosherPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <HalalKosherClient />
+      <SectionRelatedGuides sectionSlug="halal-kosher" />
     </>
   );
 }

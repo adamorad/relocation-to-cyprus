@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LAWYER_TIPS } from "@/lib/property-lawyers";
 import PropertyLawyersClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Property Lawyers in Cyprus — Vetted Directory";
@@ -31,6 +32,7 @@ export default function PropertyLawyersPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <PropertyLawyersClient />
+      <SectionRelatedGuides sectionSlug="property-lawyers" />
     </>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { COWORK_TIPS } from "@/lib/coworking";
 import CoworkingClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Coworking Spaces in Cyprus";
@@ -31,6 +32,7 @@ export default function CoworkingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <CoworkingClient />
+      <SectionRelatedGuides sectionSlug="coworking" />
     </>
   );
 }

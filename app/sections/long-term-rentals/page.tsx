@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { RENTAL_TIPS } from "@/lib/long-term-rentals";
 import LongTermRentalsClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Long-Term Rentals in Cyprus";
@@ -31,6 +32,7 @@ export default function LongTermRentalsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <LongTermRentalsClient />
+      <SectionRelatedGuides sectionSlug="long-term-rentals" />
     </>
   );
 }

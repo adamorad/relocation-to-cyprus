@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CULTURE_TIPS } from "@/lib/art-culture";
 import ArtCultureClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Art Galleries, Museums & Cultural Venues in Cyprus";
@@ -31,6 +32,7 @@ export default function ArtCulturePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <ArtCultureClient />
+      <SectionRelatedGuides sectionSlug="art-culture" />
     </>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { MARKET_TIPS } from "@/lib/farmers-markets";
 import FarmersMarketsClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Farmers Markets & Local Produce in Cyprus";
@@ -31,6 +32,7 @@ export default function FarmersMarketsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <FarmersMarketsClient />
+      <SectionRelatedGuides sectionSlug="farmers-markets" />
     </>
   );
 }

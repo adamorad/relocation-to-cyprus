@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { HEALTHCARE_TIPS } from "@/lib/healthcare";
 import SpecialistDoctorsClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Specialist Doctors in Cyprus";
@@ -31,6 +32,7 @@ export default function SpecialistDoctorsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <SpecialistDoctorsClient />
+      <SectionRelatedGuides sectionSlug="specialist-doctors" />
     </>
   );
 }

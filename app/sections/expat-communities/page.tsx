@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { COMMUNITY_TIPS } from "@/lib/expat-communities";
 import ExpatCommunitiesClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Expat Community Groups in Cyprus";
@@ -31,6 +32,7 @@ export default function ExpatCommunitiesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <ExpatCommunitiesClient />
+      <SectionRelatedGuides sectionSlug="expat-communities" />
     </>
   );
 }

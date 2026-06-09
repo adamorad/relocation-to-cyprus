@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ACCOUNTANT_TIPS } from "@/lib/accountants";
 import AccountantsClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Accountants & Tax Advisors in Cyprus";
@@ -31,6 +32,7 @@ export default function AccountantsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <AccountantsClient />
+      <SectionRelatedGuides sectionSlug="accountants" />
     </>
   );
 }

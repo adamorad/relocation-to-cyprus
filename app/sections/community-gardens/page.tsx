@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { GARDEN_TIPS } from "@/lib/community-gardens";
 import CommunityGardensClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Community Gardens & Urban Farming in Cyprus";
@@ -31,6 +32,7 @@ export default function CommunityGardensPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <CommunityGardensClient />
+      <SectionRelatedGuides sectionSlug="community-gardens" />
     </>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { STARTUP_TIPS } from "@/lib/startup-ecosystem";
 import StartupEcosystemClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Cyprus Startup Ecosystem — Coworking, Incubators & Tech Hubs";
@@ -31,6 +32,7 @@ export default function StartupEcosystemPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <StartupEcosystemClient />
+      <SectionRelatedGuides sectionSlug="startup-ecosystem" />
     </>
   );
 }

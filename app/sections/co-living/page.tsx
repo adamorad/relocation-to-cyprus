@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CO_LIVING_TIPS } from "@/lib/co-living";
 import CoLivingClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Co-Living & Serviced Apartments in Cyprus";
@@ -31,6 +32,7 @@ export default function CoLivingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <CoLivingClient />
+      <SectionRelatedGuides sectionSlug="co-living" />
     </>
   );
 }

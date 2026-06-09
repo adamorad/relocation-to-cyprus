@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { TRANSPORT_TIPS } from "@/lib/public-transport";
 import PublicTransportClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Getting Around Cyprus — Public Transport Guide";
@@ -31,6 +32,7 @@ export default function PublicTransportPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <PublicTransportClient />
+      <SectionRelatedGuides sectionSlug="public-transport" />
     </>
   );
 }

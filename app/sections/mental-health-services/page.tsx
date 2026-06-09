@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { MENTAL_HEALTH_TIPS } from "@/lib/mental-health";
 import MentalHealthServicesClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Mental Health Services in Cyprus";
@@ -31,6 +32,7 @@ export default function MentalHealthServicesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <MentalHealthServicesClient />
+      <SectionRelatedGuides sectionSlug="mental-health-services" />
     </>
   );
 }

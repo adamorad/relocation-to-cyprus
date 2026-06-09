@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { REGISTERED_ADDRESS_TIPS } from "@/lib/registered-address";
 import RegisteredAddressClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Registered Address Providers in Cyprus";
@@ -31,6 +32,7 @@ export default function RegisteredAddressPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <RegisteredAddressClient />
+      <SectionRelatedGuides sectionSlug="registered-address" />
     </>
   );
 }

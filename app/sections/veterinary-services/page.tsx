@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { VET_TIPS } from "@/lib/veterinary";
 import VeterinaryServicesClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Veterinary Services in Cyprus";
@@ -31,6 +32,7 @@ export default function VeterinaryServicesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <VeterinaryServicesClient />
+      <SectionRelatedGuides sectionSlug="veterinary-services" />
     </>
   );
 }

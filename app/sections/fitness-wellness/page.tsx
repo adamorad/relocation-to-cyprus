@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { FITNESS_TIPS } from "@/lib/fitness-wellness";
 import FitnessWellnessClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Gyms, Fitness Studios & Wellness in Cyprus";
@@ -31,6 +32,7 @@ export default function FitnessWellnessPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <FitnessWellnessClient />
+      <SectionRelatedGuides sectionSlug="fitness-wellness" />
     </>
   );
 }

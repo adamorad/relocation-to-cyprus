@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SUMMER_CAMP_TIPS } from "@/lib/summer-camps";
 import SummerCampsClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Summer Camps in Cyprus — Day and Residential";
@@ -31,6 +32,7 @@ export default function SummerCampsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <SummerCampsClient />
+      <SectionRelatedGuides sectionSlug="summer-camps" />
     </>
   );
 }

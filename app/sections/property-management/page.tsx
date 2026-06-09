@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PROPERTY_MANAGEMENT_TIPS } from "@/lib/property-management";
 import PropertyManagementClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Property Management Companies in Cyprus";
@@ -31,6 +32,7 @@ export default function PropertyManagementPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <PropertyManagementClient />
+      <SectionRelatedGuides sectionSlug="property-management" />
     </>
   );
 }
