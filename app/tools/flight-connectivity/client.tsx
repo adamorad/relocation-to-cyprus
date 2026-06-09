@@ -34,9 +34,6 @@ const ROUTES: Route[] = [
   { destination: "Stuttgart", country: "Germany", airportTo: "STR", carriers: ["Condor"], flightTimeMinutes: 220, frequency: "seasonal", fromLCA: true, fromPFO: false },
   // Israel
   { destination: "Tel Aviv", country: "Israel", airportTo: "TLV", carriers: ["El Al", "Arkia", "Israir", "Cyprus Airways"], flightTimeMinutes: 105, frequency: "daily", fromLCA: true, fromPFO: true },
-  // Russia / CIS
-  { destination: "Moscow Sheremetyevo", country: "Russia", airportTo: "SVO", carriers: ["Cyprus Airways"], flightTimeMinutes: 210, frequency: "several/week", fromLCA: true, fromPFO: false },
-  { destination: "St. Petersburg", country: "Russia", airportTo: "LED", carriers: ["Cyprus Airways"], flightTimeMinutes: 225, frequency: "several/week", fromLCA: true, fromPFO: false },
   // UAE
   { destination: "Dubai", country: "UAE", airportTo: "DXB", carriers: ["Emirates", "flydubai"], flightTimeMinutes: 230, frequency: "daily", fromLCA: true, fromPFO: false },
   { destination: "Abu Dhabi", country: "UAE", airportTo: "AUH", carriers: ["Etihad Airways"], flightTimeMinutes: 235, frequency: "several/week", fromLCA: true, fromPFO: false },
@@ -77,8 +74,8 @@ const ROUTES: Route[] = [
   // Spain
   { destination: "Madrid", country: "Spain", airportTo: "MAD", carriers: ["Iberia", "Volotea"], flightTimeMinutes: 280, frequency: "seasonal", fromLCA: true, fromPFO: false },
   { destination: "Barcelona", country: "Spain", airportTo: "BCN", carriers: ["Vueling", "Ryanair"], flightTimeMinutes: 265, frequency: "seasonal", fromLCA: true, fromPFO: false },
-  // Ukraine
-  { destination: "Kyiv", country: "Ukraine", airportTo: "KBP", carriers: ["Ukraine International Airlines"], flightTimeMinutes: 195, frequency: "seasonal", fromLCA: true, fromPFO: false },
+  // Ukraine (suspended — Ukrainian airspace closed since Feb 2022)
+  // { destination: "Kyiv", country: "Ukraine", airportTo: "KBP", carriers: ["Ukraine International Airlines"], flightTimeMinutes: 195, frequency: "seasonal", fromLCA: true, fromPFO: false },
   // Armenia
   { destination: "Yerevan", country: "Armenia", airportTo: "EVN", carriers: ["Armenia Aviation", "Flyone Armenia"], flightTimeMinutes: 200, frequency: "several/week", fromLCA: true, fromPFO: false },
 ];

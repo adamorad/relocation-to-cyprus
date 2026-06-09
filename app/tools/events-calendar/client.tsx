@@ -54,8 +54,8 @@ const EVENTS: CyprusEvent[] = [
   {
     name: "Green Monday (Kathara Deftera)",
     city: "Island-wide",
-    month: 3,
-    dateDescription: "First Monday of Lent (date varies — typically February or March)",
+    month: 2,
+    dateDescription: "First Monday of Lent (date varies — February or March)",
     type: "cultural",
     description: "The start of Orthodox Lent, celebrated as a public holiday with picnics in the countryside, kite-flying, and traditional Lenten food (lagana bread, tahini, olives, seafood). It is one of Cyprus's most beloved outdoor celebrations — hills and parks across the island fill with families.",
     free: true,
@@ -247,7 +247,7 @@ const EVENTS: CyprusEvent[] = [
   // December
   {
     name: "Christmas Markets (Limassol & Nicosia)",
-    city: "Limassol",
+    city: "Island-wide",
     month: 12,
     dateDescription: "December",
     type: "cultural",

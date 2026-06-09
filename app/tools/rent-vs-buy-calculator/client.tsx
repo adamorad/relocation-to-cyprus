@@ -95,7 +95,7 @@ function runModel(inputs: Inputs): YearRow[] {
     missedInvestment *= 1 + investmentReturn / 100;
 
     // Net buy cost = cumulative payments + opportunity cost of down payment - equity gained
-    const netBuyCost = buyCumulative + (missedInvestment - (downPayment + upfrontCosts)) - homeEquity + purchasePrice;
+    const netBuyCost = buyCumulative + (missedInvestment - (downPayment + upfrontCosts)) - homeEquity;
 
     rows.push({
       year: y,

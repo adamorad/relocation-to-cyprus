@@ -74,7 +74,7 @@ const DEADLINES: Deadline[] = [
     formRef: "TD6",
     description:
       "Submission of the provisional tax return (TD6) and payment of the second instalment. If your actual income differs from the provisional estimate, revise and adjust.",
-    taxpayer: "both",
+    taxpayer: "company",
   },
   {
     id: "td4-final",
@@ -84,7 +84,7 @@ const DEADLINES: Deadline[] = [
     formRef: "–",
     description:
       "Final provisional tax instalment payment for the current year. Failure to pay at least 75% of the actual tax due results in an additional 10% charge.",
-    taxpayer: "both",
+    taxpayer: "company",
   },
 ];
 
@@ -117,12 +117,7 @@ function getUrgencyBadge(daysUntil: number): { text: string; class: string } {
 }
 
 function getDaysUntil(month: number, day: number, today: Date): number {
-  const year = today.getFullYear();
-  let target = new Date(year, month - 1, day);
-  if (target < today) {
-    // If deadline has passed this year, it's in the past
-    return Math.floor((target.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
-  }
+  const target = new Date(today.getFullYear(), month - 1, day);
   return Math.floor((target.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
 }
 

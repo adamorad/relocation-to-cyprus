@@ -86,7 +86,7 @@ const GRANTS: ReadonlyArray<Grant> = [
     coveragePercent: 50,
     eligibility: "Cyprus-registered SMEs with a demonstrable R&D component and market readiness. Partnerships with research institutions preferred.",
     deadline: "2025-09-30",
-    status: "open",
+    status: "closed",
     companySizes: ["sme"],
     url: "https://www.research.org.cy",
     description: "Supports innovation and technology transfer. Up to €1M for collaborative R&D projects between businesses and research organisations.",
@@ -112,7 +112,7 @@ const GRANTS: ReadonlyArray<Grant> = [
     coveragePercent: 40,
     eligibility: "Cyprus-registered businesses investing in green practices, energy efficiency, and circular economy. All sizes eligible.",
     deadline: "2025-12-31",
-    status: "open",
+    status: "closed",
     companySizes: ["micro", "sme", "large"],
     url: "https://www.mcit.gov.cy",
     description: "Incentivises environmentally responsible business practices: energy audits, renewable energy installation, waste reduction, sustainable supply chains.",
@@ -138,7 +138,7 @@ const GRANTS: ReadonlyArray<Grant> = [
     coveragePercent: 85,
     eligibility: "Organisations in EU Mediterranean coastal regions (including Cyprus). Requires a transnational project partnership with at least 3 countries.",
     deadline: "2026-03-31",
-    status: "open",
+    status: "closed",
     companySizes: ["micro", "sme", "large"],
     url: "https://interreg-med.eu",
     description: "Cross-border cooperation for sustainable development in the Mediterranean. Covers blue economy, sustainable tourism, and climate resilience.",
@@ -151,7 +151,7 @@ const GRANTS: ReadonlyArray<Grant> = [
     coveragePercent: 80,
     eligibility: "Organisations in Cyprus and eligible Greek regions. Partnership with Greek counterpart required. Public bodies, NGOs, research orgs and businesses eligible.",
     deadline: "2025-10-15",
-    status: "open",
+    status: "closed",
     companySizes: ["micro", "sme", "large"],
     url: "https://www.greece-cyprus.eu",
     description: "Joint Greece-Cyprus programme covering smart growth, green transition, cross-border cooperation and cultural/tourism development.",
@@ -164,7 +164,7 @@ const GRANTS: ReadonlyArray<Grant> = [
     coveragePercent: 45,
     eligibility: "SMEs registered and operating in Cyprus for at least 2 years. Must demonstrate impact on competitiveness, exports or employment.",
     deadline: "2025-11-30",
-    status: "open",
+    status: "closed",
     companySizes: ["micro", "sme"],
     url: "https://www.digitalpolicy.gov.cy",
     description: "Broad competitiveness support for Cypriot SMEs. Covers equipment, process improvement, certification, quality management and market access.",
@@ -203,7 +203,7 @@ const GRANTS: ReadonlyArray<Grant> = [
     coveragePercent: 40,
     eligibility: "Hotels, agro-tourism operators, tour operators and hospitality businesses registered in Cyprus. Minimum 2 years of operation.",
     deadline: "2025-08-31",
-    status: "open",
+    status: "closed",
     companySizes: ["micro", "sme", "large"],
     url: "https://www.visitcyprus.com",
     description: "Supports tourism product quality improvement, sustainability certification, accessible tourism investment, and digital marketing for Cyprus tourism businesses.",
@@ -352,7 +352,7 @@ export default function GrantsFinderPage() {
           Cyprus Business Grants Finder
         </h1>
         <p className="mt-3 text-lg text-slate-600 leading-relaxed">
-          Browse 19 active and recently active grant programmes for businesses in Cyprus.
+          Browse {GRANTS.length} active and recently active grant programmes for businesses in Cyprus.
           Filter by sector, company size, and status.
         </p>
       </header>
