@@ -24,12 +24,21 @@ export default function AccountantsPage() {
       acceptedAnswer: { "@type": "Answer", text: t.body },
     })),
   };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Directories", item: `${SITE_URL}/sections/` },
+      { "@type": "ListItem", position: 3, name: title },
+    ],
+  };
   return (
     <>
       <script
         type="application/ld+json"
         // biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([faqJsonLd, breadcrumbJsonLd]) }}
       />
       <AccountantsClient />
       <SectionRelatedGuides sectionSlug="accountants" />
