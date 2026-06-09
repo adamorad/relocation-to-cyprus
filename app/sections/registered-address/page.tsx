@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { REGISTERED_ADDRESS_TIPS } from "@/lib/registered-address";
 import RegisteredAddressClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -13,5 +14,23 @@ export const metadata: Metadata = {
 };
 
 export default function RegisteredAddressPage() {
-  return <RegisteredAddressClient />;
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: REGISTERED_ADDRESS_TIPS.map((t) => ({
+      "@type": "Question",
+      name: t.heading,
+      acceptedAnswer: { "@type": "Answer", text: t.body },
+    })),
+  };
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <RegisteredAddressClient />
+    </>
+  );
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SUMMER_CAMP_TIPS } from "@/lib/summer-camps";
 import SummerCampsClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -13,5 +14,23 @@ export const metadata: Metadata = {
 };
 
 export default function SummerCampsPage() {
-  return <SummerCampsClient />;
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: SUMMER_CAMP_TIPS.map((t) => ({
+      "@type": "Question",
+      name: t.heading,
+      acceptedAnswer: { "@type": "Answer", text: t.body },
+    })),
+  };
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <SummerCampsClient />
+    </>
+  );
 }

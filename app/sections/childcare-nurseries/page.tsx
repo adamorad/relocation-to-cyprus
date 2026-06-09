@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CHILDCARE_TIPS } from "@/lib/childcare";
 import ChildcareNurseriesClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -13,5 +14,23 @@ export const metadata: Metadata = {
 };
 
 export default function ChildcareNurseriesPage() {
-  return <ChildcareNurseriesClient />;
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: CHILDCARE_TIPS.map((t) => ({
+      "@type": "Question",
+      name: t.heading,
+      acceptedAnswer: { "@type": "Answer", text: t.body },
+    })),
+  };
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <ChildcareNurseriesClient />
+    </>
+  );
 }

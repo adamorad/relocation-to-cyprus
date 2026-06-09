@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { MENTAL_HEALTH_TIPS } from "@/lib/mental-health";
 import MentalHealthServicesClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -13,5 +14,23 @@ export const metadata: Metadata = {
 };
 
 export default function MentalHealthServicesPage() {
-  return <MentalHealthServicesClient />;
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: MENTAL_HEALTH_TIPS.map((t) => ({
+      "@type": "Question",
+      name: t.heading,
+      acceptedAnswer: { "@type": "Answer", text: t.body },
+    })),
+  };
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <MentalHealthServicesClient />
+    </>
+  );
 }

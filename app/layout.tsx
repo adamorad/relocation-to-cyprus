@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     template: `%s · ${SITE_NAME}`,
   },
   description:
-    "RealCy.app — your portal for anything Cyprus. Browse new-build apartments and villas on an interactive map. Rentals, hotels, food, shopping and more coming soon.",
+    "RealCy.app — your portal for anything Cyprus. Browse new-build apartments and villas on an interactive map. 30+ service directories, 16 relocation tools, and 68 in-depth guides.",
   keywords: [
     "Cyprus real estate",
     "Cyprus new developments",
@@ -65,14 +65,14 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} - ${SITE_TAGLINE}`,
     description:
-      "Your portal to Cyprus. New-build real estate today; rentals, hotels, food and more coming soon.",
+      "Your portal to Cyprus — new-build real estate, 30+ service directories, 16 relocation tools, and 68 in-depth guides.",
     images: [{ url: "https://realcy.app/og-default.webp", width: 1200, height: 630, alt: "RealCy.app — Cyprus relocation portal" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} - ${SITE_TAGLINE}`,
     description:
-      "Your portal to Cyprus. New-build real estate today; rentals, hotels, food and more coming soon.",
+      "Your portal to Cyprus — new-build real estate, 30+ service directories, 16 relocation tools, and 68 in-depth guides.",
     images: ["https://realcy.app/og-default.webp"],
   },
   robots: {

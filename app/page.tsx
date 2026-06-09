@@ -8,7 +8,7 @@ export const metadata: Metadata = {
       "RealCy.app - Your Cyprus Portal | New Developments, Relocation & More",
   },
   description:
-    "RealCy.app — your portal for anything Cyprus. Browse 260+ new-build apartments and villas on an interactive map. Rentals, hotels, food, shopping and more coming soon.",
+    "RealCy.app — your portal for anything Cyprus. Browse 260+ new-build developments on an interactive map. 30+ service directories, 16 relocation tools, and 68 in-depth guides.",
   alternates: { canonical: "/" },
 };
 
@@ -22,7 +22,7 @@ export default function Home() {
     alternateName: "RealCy",
     url: SITE_URL,
     description:
-      "Your portal for anything Cyprus — real estate today; rentals, hotels, food, shopping and more coming soon.",
+      "Your portal for anything Cyprus — new-build real estate, relocation guides, interactive tools, and curated service directories.",
     publisher: { "@type": "Organization", name: "RealCy.app" },
   };
   const itemList = {
