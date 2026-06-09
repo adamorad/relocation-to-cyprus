@@ -303,7 +303,10 @@ export default function RentVsBuyPage() {
         <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">Next steps</p>
         <div className="flex flex-wrap gap-3">
 
-<Link href="/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Browse the property map →</Link>          <Link href="/sections/property-lawyers/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Find a property lawyer →</Link>
+<Link href="/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Browse the property map →</Link>
+          <Link href="/sections/property-lawyers/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Find a property lawyer →</Link>
+          <Link href="/guides/buying-process/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Read: Buying Process Guide →</Link>
+          <Link href="/guides/rental-transition-guide/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Read: Short-Term to Long-Term Rental →</Link>
         </div>
       </aside>
     </main>

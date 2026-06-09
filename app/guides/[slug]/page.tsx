@@ -109,6 +109,9 @@ export default async function GuidePage({
   const relatedSections = relatedSectionSlugs
     .map((slug) => SECTIONS_INDEX.find((s) => s.slug === slug))
     .filter((s) => s !== undefined);
+  const relatedGuides = GUIDES.filter(
+    (guide) => guide.category === g.category && guide.slug !== g.slug,
+  ).slice(0, 3);
   const canonicalUrl = `${SITE_URL}/guides/${g.slug}/`;
   const author = AUTHORS[CATEGORY_AUTHOR[g.category]] ?? AUTHORS.team;
 
@@ -258,6 +261,26 @@ export default async function GuidePage({
                 className="text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-indigo-200 text-indigo-700 hover:bg-indigo-700 hover:text-white transition-colors"
               >
                 {s.name} →
+              </Link>
+            ))}
+          </div>
+        </aside>
+      )}
+
+      {relatedGuides.length > 0 && (
+        <aside className="mt-4 p-4 bg-slate-50 border border-slate-200 rounded-lg">
+          <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">More guides in this category</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            {relatedGuides.map((guide) => (
+              <Link
+                key={guide.slug}
+                href={`/guides/${guide.slug}/`}
+                className="flex items-start gap-2 p-3 bg-white border border-slate-200 rounded-lg hover:border-slate-300 hover:bg-slate-50 transition-colors group"
+              >
+                <span className="flex-1 text-xs font-semibold text-slate-700 group-hover:text-slate-900 line-clamp-2">
+                  {guide.title}
+                </span>
+                <span className="text-slate-400 text-xs shrink-0 mt-0.5">→</span>
               </Link>
             ))}
           </div>

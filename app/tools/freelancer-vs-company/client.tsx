@@ -439,6 +439,15 @@ export default function FreelancerVsCompanyPage() {
         </p>
       </aside>
 
+      <aside className="mt-6 p-5 rounded-xl bg-slate-50 border border-slate-200">
+        <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">Related guides</p>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/guides/company-types-comparison/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Read: Company Types in Cyprus →</Link>
+          <Link href="/guides/taxes-for-expats/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Read: Taxes for Expats →</Link>
+          <Link href="/sections/accountants/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Find an accountant →</Link>
+        </div>
+      </aside>
+
       {/* Back */}
       <p className="mt-8 text-xs text-slate-500">
         <Link href="/tools" className="underline hover:text-slate-900">

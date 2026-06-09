@@ -262,7 +262,10 @@ export default function NeighborhoodComparisonPage() {
         <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">Next steps</p>
         <div className="flex flex-wrap gap-3">
 
-<Link href="/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Browse new developments on the map →</Link>          <Link href="/sections/property-lawyers/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Find a property lawyer →</Link>
+<Link href="/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Browse new developments on the map →</Link>
+          <Link href="/sections/property-lawyers/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Find a property lawyer →</Link>
+          <Link href="/guides/family-neighborhoods-guide/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Read: Family Neighbourhoods Guide →</Link>
+          <Link href="/guides/cost-of-living/" className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors">Read: Cost of Living by City →</Link>
         </div>
       </aside>
     </main>
