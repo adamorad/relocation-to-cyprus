@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { GUIDES, GUIDE_CATEGORY_LABEL } from "@/lib/guides";
 import { SECTIONS_INDEX } from "@/lib/sections-index";
 
@@ -126,7 +127,13 @@ type SearchResult =
   | { kind: "section"; name: string; slug: string; category: string; description: string };
 
 export default function ExploreClient() {
-  const [query, setQuery] = useState("");
+  const searchParams = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get("q") ?? "");
+
+  useEffect(() => {
+    const q = searchParams.get("q");
+    if (q) setQuery(q);
+  }, [searchParams]);
 
   const q = query.trim().toLowerCase();
 

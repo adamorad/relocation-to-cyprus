@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import ExploreClient from "./ExploreClient";
 
 const SITE_URL = "https://realcy.app";
@@ -13,5 +14,9 @@ export const metadata: Metadata = {
 };
 
 export default function ExplorePage() {
-  return <ExploreClient />;
+  return (
+    <Suspense>
+      <ExploreClient />
+    </Suspense>
+  );
 }

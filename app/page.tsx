@@ -24,6 +24,21 @@ export default function Home() {
     description:
       "Your portal for anything Cyprus — new-build real estate, relocation guides, interactive tools, and curated service directories.",
     publisher: { "@type": "Organization", name: "RealCy.app" },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: { "@type": "EntryPoint", urlTemplate: `${SITE_URL}/explore/?q={search_term_string}` },
+      "query-input": "required name=search_term_string",
+    },
+  };
+  const orgJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "RealCy.app",
+    url: SITE_URL,
+    logo: `${SITE_URL}/apple-touch-icon.png`,
+    description:
+      "Independent Cyprus relocation portal — new-build real estate, 30+ service directories, 16 relocation tools, and 68 in-depth guides.",
+    sameAs: [],
   };
   const itemList = {
     "@context": "https://schema.org",
@@ -43,7 +58,7 @@ export default function Home() {
         type="application/ld+json"
         // biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify([websiteJsonLd, itemList]),
+          __html: JSON.stringify([websiteJsonLd, orgJsonLd, itemList]),
         }}
       />
       <AppShell />
