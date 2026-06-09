@@ -13,6 +13,25 @@ export const metadata: Metadata = {
   },
 };
 
+const SITE_URL = "https://realcy.app";
+
 export default function SectionsIndexPage() {
-  return <SectionsIndexClient />;
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Directories" },
+    ],
+  };
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <SectionsIndexClient />
+    </>
+  );
 }

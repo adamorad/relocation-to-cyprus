@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { FITNESS_TIPS } from "@/lib/fitness-wellness";
 import FitnessWellnessClient from "./client";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Gyms, Fitness Studios & Wellness in Cyprus";
@@ -13,5 +15,33 @@ export const metadata: Metadata = {
 };
 
 export default function FitnessWellnessPage() {
-  return <FitnessWellnessClient />;
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FITNESS_TIPS.map((t) => ({
+      "@type": "Question",
+      name: t.heading,
+      acceptedAnswer: { "@type": "Answer", text: t.body },
+    })),
+  };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Directories", item: `${SITE_URL}/sections/` },
+      { "@type": "ListItem", position: 3, name: title },
+    ],
+  };
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([faqJsonLd, breadcrumbJsonLd]) }}
+      />
+      <FitnessWellnessClient />
+      <SectionRelatedGuides sectionSlug="fitness-wellness" />
+    </>
+  );
 }

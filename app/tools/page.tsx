@@ -18,7 +18,7 @@ type Tool = {
 
 const TOOLS: Tool[] = [
   {
-    href: "/tools/rent-vs-buy-calculator",
+    href: "/tools/rent-vs-buy-calculator/",
     title: "Rent vs Buy Calculator",
     description:
       "Compare the true total cost of renting versus buying in Cyprus over your time horizon, accounting for mortgage payments, property appreciation, and the opportunity cost of your down payment.",
@@ -26,7 +26,7 @@ const TOOLS: Tool[] = [
     tagColor: "bg-blue-100 text-blue-800",
   },
   {
-    href: "/tools/neighborhood-comparison",
+    href: "/tools/neighborhood-comparison/",
     title: "Neighbourhood Comparison",
     description:
       "Side-by-side comparison of Limassol, Paphos, Larnaca, Nicosia, and Ayia Napa across 10 metrics including rent, property prices, schools, nightlife, and cost of living.",
@@ -34,7 +34,7 @@ const TOOLS: Tool[] = [
     tagColor: "bg-slate-100 text-slate-800",
   },
   {
-    href: "/tools/meu1-tracker",
+    href: "/tools/meu1-tracker/",
     title: "MEU1 Registration Tracker",
     description:
       "An interactive step-by-step checklist for EU citizens registering their residence in Cyprus. Track your progress through all required documents and appointments.",
@@ -42,7 +42,7 @@ const TOOLS: Tool[] = [
     tagColor: "bg-purple-100 text-purple-800",
   },
   {
-    href: "/tools/visa-pathway-finder",
+    href: "/tools/visa-pathway-finder/",
     title: "Visa Pathway Finder",
     description:
       "Answer two questions to find your recommended Cyprus visa or registration route. Covers EU citizens, Digital Nomad Visa, Permanent Residency by Investment, work permits, and more.",
@@ -50,7 +50,7 @@ const TOOLS: Tool[] = [
     tagColor: "bg-green-100 text-green-800",
   },
   {
-    href: "/tools/tax-residency-planner",
+    href: "/tools/tax-residency-planner/",
     title: "Cyprus 60-Day Tax Residency Planner",
     description:
       "Check whether you qualify for Cyprus tax residency under the 183-day rule or the 60-day rule. See which conditions pass or fail in real time.",
@@ -58,7 +58,7 @@ const TOOLS: Tool[] = [
     tagColor: "bg-amber-100 text-amber-800",
   },
   {
-    href: "/tools/social-insurance-calculator",
+    href: "/tools/social-insurance-calculator/",
     title: "Cyprus Social Insurance Calculator",
     description:
       "Calculate your Social Insurance and GeSY contributions based on 2025 rates. Full breakdown for employed and self-employed, including employer contributions.",
@@ -66,7 +66,7 @@ const TOOLS: Tool[] = [
     tagColor: "bg-teal-100 text-teal-800",
   },
   {
-    href: "/tools/banking-fee-comparison",
+    href: "/tools/banking-fee-comparison/",
     title: "Cyprus Banking Fee Comparison",
     description:
       "Compare fees and features across Bank of Cyprus, Hellenic Bank, AstroBank, Revolut, and Wise. Highlights the best value in each category.",
@@ -74,7 +74,7 @@ const TOOLS: Tool[] = [
     tagColor: "bg-blue-100 text-blue-800",
   },
   {
-    href: "/tools/tax-filing-calendar",
+    href: "/tools/tax-filing-calendar/",
     title: "Cyprus Annual Tax Filing Calendar",
     description:
       "All key Cyprus tax deadlines in a monthly view. Colour-coded by urgency. Filter by individual or company. Current month highlighted.",
@@ -82,7 +82,7 @@ const TOOLS: Tool[] = [
     tagColor: "bg-amber-100 text-amber-800",
   },
   {
-    href: "/tools/double-tax-treaty-finder",
+    href: "/tools/double-tax-treaty-finder/",
     title: "Double Tax Treaty Finder",
     description:
       "Check whether Cyprus has a tax treaty with your home country and what it means for your income, dividends, interest, and capital gains.",
@@ -90,7 +90,7 @@ const TOOLS: Tool[] = [
     tagColor: "bg-amber-100 text-amber-800",
   },
   {
-    href: "/tools/freelancer-vs-company",
+    href: "/tools/freelancer-vs-company/",
     title: "Freelancer vs Company Calculator",
     description:
       "Compare operating as a self-employed freelancer versus a Cyprus limited company on take-home pay, tax obligations, and administrative burden.",
@@ -98,7 +98,7 @@ const TOOLS: Tool[] = [
     tagColor: "bg-blue-100 text-blue-800",
   },
   {
-    href: "/tools/grants-finder",
+    href: "/tools/grants-finder/",
     title: "Cyprus Grants & Incentives Finder",
     description:
       "Find available grants, subsidies, and incentives for businesses, startups, and individuals relocating or investing in Cyprus.",
@@ -106,7 +106,7 @@ const TOOLS: Tool[] = [
     tagColor: "bg-orange-100 text-orange-800",
   },
   {
-    href: "/tools/health-insurance-comparison",
+    href: "/tools/health-insurance-comparison/",
     title: "Cyprus Health Insurance Comparison",
     description:
       "Compare private health insurance plans in Cyprus by coverage, premium, deductible, and network. Understand what GeSY covers versus what requires top-up insurance.",
@@ -114,7 +114,7 @@ const TOOLS: Tool[] = [
     tagColor: "bg-red-100 text-red-800",
   },
   {
-    href: "/tools/flight-connectivity",
+    href: "/tools/flight-connectivity/",
     title: "Cyprus Flight Connectivity",
     description:
       "Explore 40+ direct routes from Larnaca (LCA) and Paphos (PFO) airports. Search by destination, filter by airport and season. See airlines, flight times, and frequency at a glance.",
@@ -122,7 +122,7 @@ const TOOLS: Tool[] = [
     tagColor: "bg-sky-100 text-sky-800",
   },
   {
-    href: "/tools/events-calendar",
+    href: "/tools/events-calendar/",
     title: "Cyprus Annual Events & Festivals",
     description:
       "30+ annual festivals and cultural events across Cyprus in a 12-month calendar. Filter by type (carnival, wine, music, religious) or city. Highlights: Limassol Carnival, Kataklysmos, and Wine Festival.",
@@ -130,7 +130,7 @@ const TOOLS: Tool[] = [
     tagColor: "bg-rose-100 text-rose-800",
   },
   {
-    href: "/tools/isp-comparison",
+    href: "/tools/isp-comparison/",
     title: "Internet & Mobile Provider Comparison",
     description:
       "Compare home broadband (Cyta, Epic, Primetel, Cablenet) and mobile carriers on speed, price, contract terms, eSIM, and city coverage.",
@@ -138,7 +138,7 @@ const TOOLS: Tool[] = [
     tagColor: "bg-teal-100 text-teal-800",
   },
   {
-    href: "/tools/visa-renewal-reminder",
+    href: "/tools/visa-renewal-reminder/",
     title: "Visa & Document Renewal Reminder",
     description:
       "Track expiry dates for your ARC, passport, visa, health insurance, and driving licence. Colour-coded alerts at 30 and 90 days. Stores data in your browser — nothing sent to a server.",
@@ -147,8 +147,24 @@ const TOOLS: Tool[] = [
   },
 ];
 
+const SITE_URL = "https://realcy.app";
+
 export default function ToolsIndexPage() {
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Tools" },
+    ],
+  };
   return (
+    <>
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
     <main id="main" className="max-w-4xl mx-auto px-6 py-10 md:py-16">
       <nav className="text-xs text-slate-600 mb-6">
         <Link href="/" className="hover:text-slate-900">Home</Link>{" "}
@@ -213,5 +229,6 @@ export default function ToolsIndexPage() {
         </Link>
       </p>
     </main>
+    </>
   );
 }
