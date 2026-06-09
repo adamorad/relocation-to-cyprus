@@ -56,15 +56,17 @@ const SECTIONS: ReadonlyArray<Section> = [
   { name: "Healthcare",       icon: <HeartPulse className={ICON_CLS} />,      kind: "available" },
   { name: "Guides",           icon: <BookOpen className={ICON_CLS} />,        kind: "link", href: "/guides/" },
   { name: "Explore",          icon: <Compass className={ICON_CLS} />,         kind: "link", href: "/explore/" },
-  { name: "More",             icon: <MoreHorizontal className={ICON_CLS} />,  kind: "soon" },
+  { name: "More",             icon: <MoreHorizontal className={ICON_CLS} />,  kind: "link", href: "/explore/" },
 ];
 
-/** Condensed list for the desktop pill bar — max 6 tiles, no clutter */
+/** Condensed list for the desktop pill bar */
 const DESKTOP_NAV: ReadonlyArray<Section> = [
   { name: "New Developments", icon: <Map className={ICON_CLS} />,             kind: "current" },
   { name: "Hotels",           icon: <Building2 className={ICON_CLS} />,      kind: "available" },
   { name: "Food",             icon: <UtensilsCrossed className={ICON_CLS} />, kind: "available" },
   { name: "Shopping",         icon: <ShoppingBag className={ICON_CLS} />,     kind: "available" },
+  { name: "Schools",          icon: <GraduationCap className={ICON_CLS} />,   kind: "available" },
+  { name: "Healthcare",       icon: <HeartPulse className={ICON_CLS} />,      kind: "available" },
   { name: "Guides",           icon: <BookOpen className={ICON_CLS} />,        kind: "link", href: "/guides/" },
   { name: "More",             icon: <Compass className={ICON_CLS} />,         kind: "link", href: "/explore/" },
 ];

@@ -160,6 +160,8 @@ export default function HealthInsuranceComparisonPage() {
 
   const filtered = useMemo(() => {
     return PROVIDERS.filter((p) => {
+      if (filters.coverageType === "individual" && p.annualPremiumSingle30yo === null) return false;
+      if (filters.coverageType === "family" && p.annualPremiumFamily4 === null) return false;
       if (filters.maternity === true && !p.maternity) return false;
       if (filters.preExisting === true && !p.preExistingCovered) return false;
       if (filters.providerType !== "all" && p.type !== filters.providerType) return false;

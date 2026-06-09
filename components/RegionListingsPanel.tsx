@@ -6,7 +6,6 @@ import type { EnrichedListing } from "@/lib/listingsData";
 import {
   BED_OPTIONS,
   BATH_OPTIONS,
-  ENERGY_OPTIONS,
   type BedFilter,
   type BathFilter,
   type SortKey,
@@ -84,6 +83,10 @@ export default function RegionListingsPanel({
   const views = useMemo(() => uniqueSpec(listings, "View"), [listings]);
   const locTypes = useMemo(
     () => uniqueSpec(listings, "Type of location"),
+    [listings],
+  );
+  const energyOptions = useMemo(
+    () => ["any", ...uniqueSpec(listings, "Energy Efficiency")],
     [listings],
   );
 
@@ -429,7 +432,7 @@ export default function RegionListingsPanel({
                   Energy efficiency
                 </div>
                 <div className="flex gap-1">
-                  {ENERGY_OPTIONS.map((e) => (
+                  {energyOptions.map((e) => (
                     <button
                       key={e}
                       type="button"

@@ -71,11 +71,9 @@ function computeRecommendation(inputs: Inputs): Recommendation {
   // --- Scoring ---
   let ltdScore = 0;
   let holdingScore = 0;
-  let soleTraderScore = 0;
 
   // Income level
-  if (annualIncome < 60000) soleTraderScore += 2;
-  else ltdScore += 3;
+  if (annualIncome >= 60000) ltdScore += 3;
   if (annualIncome > 200000) holdingScore += 3;
 
   // Foreign income
