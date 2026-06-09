@@ -293,9 +293,9 @@ export default function ShoppingPanel({ open, onClose }: Props) {
             </div>
             {visibleMalls.length === 0 ? (
               <p className="text-xs text-slate-600 bg-slate-50 rounded-lg border border-slate-200 px-4 py-3">
-                No malls in Ayia Napa — the nearest is Metropolis Mall in
-                Larnaca (~45 min drive) or small retail centres in Paralimni
-                town.
+                {cityFilter === "Ayia Napa"
+                  ? "No malls in Ayia Napa — the nearest is Metropolis Mall in Larnaca (~45 min drive) or small retail centres in Paralimni town."
+                  : "No malls found for the selected area."}
               </p>
             ) : (
               <ul className="space-y-3">

@@ -249,7 +249,7 @@ export default function TaxResidencyPlannerPage() {
               label="Days spent in Cyprus this year"
               value={daysInCyprus}
               min={0}
-              max={365}
+              max={365 - daysInOtherCountry}
               unit="days"
               highlight={
                 daysInCyprus >= 183
@@ -264,13 +264,18 @@ export default function TaxResidencyPlannerPage() {
               label="Days in any single other country"
               value={daysInOtherCountry}
               min={0}
-              max={365}
+              max={365 - daysInCyprus}
               unit="days"
               highlight={
                 daysInOtherCountry > 183 ? "text-red-600" : "text-slate-900"
               }
               onChange={setDaysInOtherCountry}
             />
+            {daysInCyprus + daysInOtherCountry > 183 && (
+              <p className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+                Combined days in Cyprus + other country: {daysInCyprus + daysInOtherCountry}. The 183-day threshold is a key test — spending more than 183 days in another country will disqualify the 60-day rule.
+              </p>
+            )}
           </div>
 
           <div className="bg-white border border-slate-200 rounded-xl p-6 space-y-1">

@@ -43,12 +43,15 @@ const PRICE_LABEL: Record<1 | 2 | 3, string> = {
 export default function WineriesPage() {
   const [cityFilter, setCityFilter] = useState<City | "All">("All");
   const [tastingFilter, setTastingFilter] = useState<boolean | "All">("All");
+  const [restaurantFilter, setRestaurantFilter] = useState<boolean | "All">("All");
 
   const filtered = WINERIES.filter((winery) => {
     const cityMatch = cityFilter === "All" || winery.city === cityFilter;
     const tastingMatch =
       tastingFilter === "All" || winery.tastingAvailable === tastingFilter;
-    return cityMatch && tastingMatch;
+    const restaurantMatch =
+      restaurantFilter === "All" || winery.restaurantOnSite === restaurantFilter;
+    return cityMatch && tastingMatch && restaurantMatch;
   });
 
   return (
@@ -112,8 +115,8 @@ export default function WineriesPage() {
         />
         <CityChip
           label="Restaurant on site"
-          selected={tastingFilter === "All"}
-          onClick={() => {}}
+          selected={restaurantFilter === true}
+          onClick={() => setRestaurantFilter(restaurantFilter === true ? "All" : true)}
         />
       </div>
 
