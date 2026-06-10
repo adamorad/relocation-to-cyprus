@@ -146,12 +146,12 @@ const TOOLS: Tool[] = [
     tagColor: "bg-green-100 text-green-800",
   },
   {
-    href: "/tools/development-comparison/",
-    title: "Development Comparison",
+    href: "/tools/mortgage-calculator/",
+    title: "Mortgage Calculator",
     description:
-      "Select up to 3 Cyprus new-build developments and compare them side by side on price, location, specs, developer, and available bedrooms.",
-    tag: "Research",
-    tagColor: "bg-slate-100 text-slate-800",
+      "Calculate monthly payments, total interest, and an amortization schedule for a Cyprus property purchase. Covers standard LTV limits for residents and non-residents.",
+    tag: "Finance",
+    tagColor: "bg-blue-100 text-blue-800",
   },
 ||||||| 4eccb7b
   {
@@ -161,6 +161,14 @@ const TOOLS: Tool[] = [
       "Estimate your monthly living costs in Cyprus by city, household size, and lifestyle. Covers rent, groceries, dining, transport, utilities, and entertainment.",
     tag: "Finance",
     tagColor: "bg-blue-100 text-blue-800",
+  },
+{
+    href: "/tools/development-comparison/",
+    title: "Development Comparison",
+    description:
+      "Select up to 3 Cyprus new-build developments and compare them side by side on price, location, specs, developer, and available bedrooms.",
+    tag: "Research",
+    tagColor: "bg-slate-100 text-slate-800",
   },
 ];
 
