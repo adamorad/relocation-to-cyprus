@@ -22,6 +22,13 @@ const TOOL_SLUGS = [
   "isp-comparison",
   "visa-renewal-reminder",
   "grants-finder",
+  "budget-builder",
+  "mortgage-calculator",
+  "country-comparison",
+  "rental-yield-calculator",
+  "relocation-tracker",
+  "development-comparison",
+  "price-benchmarker",
 ];
 
 export const dynamic = "force-static";

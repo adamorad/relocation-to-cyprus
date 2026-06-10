@@ -25,6 +25,13 @@ const TOOLS_LIST: ToolEntry[] = [
   { name: "Events & Festivals Calendar", slug: "events-calendar", tag: "Lifestyle", description: "30+ annual festivals across Cyprus in a 12-month calendar." },
   { name: "ISP & Mobile Comparison", slug: "isp-comparison", tag: "Connectivity", description: "Compare broadband and mobile carriers by speed and price." },
   { name: "Visa Renewal Reminder", slug: "visa-renewal-reminder", tag: "Visas", description: "Track expiry dates for ARC, passport, visa, and driving licence." },
+  { name: "Monthly Budget Builder", slug: "budget-builder", tag: "Finance", description: "Build a personalised monthly budget for living in Cyprus by city and lifestyle." },
+  { name: "Mortgage Calculator", slug: "mortgage-calculator", tag: "Finance", description: "Calculate monthly payments, total interest, and affordability for a Cyprus mortgage." },
+  { name: "Country Comparison", slug: "country-comparison", tag: "Research", description: "Compare Cyprus vs Portugal, Malta, Greece, Spain and Italy on tax, cost of living, and visa." },
+  { name: "Rental Yield Calculator", slug: "rental-yield-calculator", tag: "Finance", description: "Calculate gross and net yield, cashflow, and total return on a Cyprus buy-to-let." },
+  { name: "Relocation Progress Tracker", slug: "relocation-tracker", tag: "Checklists", description: "32-task checklist covering pre-move planning, arrival, and settling in." },
+  { name: "Development Comparison", slug: "development-comparison", tag: "Research", description: "Compare up to 3 new-build developments side by side on price, specs, and developer." },
+  { name: "Property Price Benchmarker", slug: "price-benchmarker", tag: "Research", description: "See how a property's price compares to other developments in the same city." },
 ];
 
 type SectionItem = { name: string; href: string };
@@ -118,6 +125,14 @@ const CATEGORIES: Category[] = [
   {
     title: "Interactive Tools",
     items: [{ name: "All Relocation Tools", href: "/tools/" }],
+  },
+  {
+    title: "Property Developers",
+    items: [{ name: "Developer Profiles", href: "/developers/" }],
+  },
+  {
+    title: "My Lists",
+    items: [{ name: "Saved Shortlist", href: "/my-shortlist/" }],
   },
 ];
 
