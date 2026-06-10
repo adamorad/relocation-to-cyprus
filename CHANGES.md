@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+## 2026-06-10 — 10 new tools (PRs #71–81)
+
+- `school-finder`: International School Finder — filter by city, curriculum, and age group (#71)
+- `ltd-setup-calculator`: Cyprus Ltd Setup Cost Calculator — one-time and annual company costs (#72)
+- `weather-climate`: Cyprus Weather & Climate — monthly data with SVG chart vs home cities (#73)
+- `drivers-licence-exchange`: Driver's Licence Exchange — direct exchange vs test requirements by country (#74)
+- `neighbourhood-explorer`: Neighbourhood Explorer — browse areas by vibe, beach, expat density (#75)
+- `tax-savings-calculator`: Cyprus Tax Savings Calculator — Non-Dom vs Standard vs home country (#76)
+- `pet-import-checklist`: Cyprus Pet Import Checklist — personalised checklist by pet type and origin (#77)
+- `relocation-cost-estimator`: Relocation Cost Estimator — itemised one-time move cost with contingency (#78)
+- `rental-price-trends`: Cyprus Rental Price Trends — SVG charts 2021–2025 by city and bedroom count (#79)
+- `gesy-registration`: GeSY Registration Guide — step-by-step wizard with 2025 contribution calculator (#80)
+- All 10 tools wired into tools index, sitemap, and explore search (#81)
+
 ## 2026-06-09 — SEO overhaul + audit fixes (PRs #52–58)
 
 ### Data & calculation fixes (PR #52)
