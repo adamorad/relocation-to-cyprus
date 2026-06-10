@@ -146,10 +146,10 @@ const TOOLS: Tool[] = [
     tagColor: "bg-green-100 text-green-800",
   },
   {
-    href: "/tools/rental-yield-calculator/",
-    title: "Rental Yield Calculator",
+    href: "/tools/mortgage-calculator/",
+    title: "Mortgage Calculator",
     description:
-      "Calculate gross yield, net yield, annual cash flow, and total return for a Cyprus buy-to-let investment. Includes appreciation and expense modelling over up to 15 years.",
+      "Calculate monthly payments, total interest, and an amortization schedule for a Cyprus property purchase. Covers standard LTV limits for residents and non-residents.",
     tag: "Finance",
     tagColor: "bg-blue-100 text-blue-800",
   },
@@ -159,6 +159,14 @@ const TOOLS: Tool[] = [
     title: "Monthly Budget Builder",
     description:
       "Estimate your monthly living costs in Cyprus by city, household size, and lifestyle. Covers rent, groceries, dining, transport, utilities, and entertainment.",
+    tag: "Finance",
+    tagColor: "bg-blue-100 text-blue-800",
+  },
+{
+    href: "/tools/rental-yield-calculator/",
+    title: "Rental Yield Calculator",
+    description:
+      "Calculate gross yield, net yield, annual cash flow, and total return for a Cyprus buy-to-let investment. Includes appreciation and expense modelling over up to 15 years.",
     tag: "Finance",
     tagColor: "bg-blue-100 text-blue-800",
   },
