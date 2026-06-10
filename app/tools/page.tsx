@@ -145,6 +145,14 @@ const TOOLS: Tool[] = [
     tag: "Visas",
     tagColor: "bg-green-100 text-green-800",
   },
+  {
+    href: "/tools/relocation-tracker/",
+    title: "Relocation Progress Tracker",
+    description:
+      "A 32-task checklist covering pre-move planning, arrival week, month one, and settling in. Persistent progress saved in your browser.",
+    tag: "Checklists",
+    tagColor: "bg-purple-100 text-purple-800",
+  },
 ];
 
 const SITE_URL = "https://realcy.app";
