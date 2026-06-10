@@ -3,6 +3,7 @@ import { allListings } from "@/lib/listings";
 import { REGIONS } from "@/lib/regions";
 import { GUIDES } from "@/lib/guides";
 import { SECTIONS_INDEX } from "@/lib/sections-index";
+import { DEVELOPERS } from "@/lib/developers";
 
 const TOOL_SLUGS = [
   "rent-vs-buy-calculator",
@@ -64,6 +65,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/tools/`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.8 },
     ...TOOL_SLUGS.map((slug) => ({
       url: `${SITE_URL}/tools/${slug}/`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+    { url: `${SITE_URL}/developers/`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.8 },
+    ...DEVELOPERS.map((d) => ({
+      url: `${SITE_URL}/developers/${d.slug}/`,
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.7,
