@@ -145,6 +145,14 @@ const TOOLS: Tool[] = [
     tag: "Visas",
     tagColor: "bg-green-100 text-green-800",
   },
+  {
+    href: "/tools/budget-builder/",
+    title: "Monthly Budget Builder",
+    description:
+      "Estimate your monthly living costs in Cyprus by city, household size, and lifestyle. Covers rent, groceries, dining, transport, utilities, and entertainment.",
+    tag: "Finance",
+    tagColor: "bg-blue-100 text-blue-800",
+  },
 ];
 
 const SITE_URL = "https://realcy.app";
