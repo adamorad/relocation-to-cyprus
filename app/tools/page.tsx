@@ -145,6 +145,14 @@ const TOOLS: Tool[] = [
     tag: "Visas",
     tagColor: "bg-green-100 text-green-800",
   },
+  {
+    href: "/tools/mortgage-calculator/",
+    title: "Mortgage Calculator",
+    description:
+      "Calculate monthly payments, total interest, and an amortization schedule for a Cyprus property purchase. Covers standard LTV limits for residents and non-residents.",
+    tag: "Finance",
+    tagColor: "bg-blue-100 text-blue-800",
+  },
 ];
 
 const SITE_URL = "https://realcy.app";
