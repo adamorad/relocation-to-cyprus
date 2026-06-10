@@ -145,6 +145,14 @@ const TOOLS: Tool[] = [
     tag: "Visas",
     tagColor: "bg-green-100 text-green-800",
   },
+  {
+    href: "/tools/development-comparison/",
+    title: "Development Comparison",
+    description:
+      "Select up to 3 Cyprus new-build developments and compare them side by side on price, location, specs, developer, and available bedrooms.",
+    tag: "Research",
+    tagColor: "bg-slate-100 text-slate-800",
+  },
 ];
 
 const SITE_URL = "https://realcy.app";
