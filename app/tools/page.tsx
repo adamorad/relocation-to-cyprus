@@ -153,7 +153,6 @@ const TOOLS: Tool[] = [
     tag: "Finance",
     tagColor: "bg-blue-100 text-blue-800",
   },
-||||||| 4eccb7b
   {
     href: "/tools/budget-builder/",
     title: "Monthly Budget Builder",
