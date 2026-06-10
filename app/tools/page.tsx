@@ -145,6 +145,14 @@ const TOOLS: Tool[] = [
     tag: "Visas",
     tagColor: "bg-green-100 text-green-800",
   },
+  {
+    href: "/tools/price-benchmarker/",
+    title: "Property Price Benchmarker",
+    description:
+      "See how a property's asking price compares to other developments in the same Cyprus city — based on real listings data.",
+    tag: "Research",
+    tagColor: "bg-slate-100 text-slate-800",
+  },
 ];
 
 const SITE_URL = "https://realcy.app";
