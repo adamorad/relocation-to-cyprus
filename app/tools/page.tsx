@@ -146,12 +146,12 @@ const TOOLS: Tool[] = [
     tagColor: "bg-green-100 text-green-800",
   },
   {
-    href: "/tools/relocation-tracker/",
-    title: "Relocation Progress Tracker",
+    href: "/tools/mortgage-calculator/",
+    title: "Mortgage Calculator",
     description:
-      "A 32-task checklist covering pre-move planning, arrival week, month one, and settling in. Persistent progress saved in your browser.",
-    tag: "Checklists",
-    tagColor: "bg-purple-100 text-purple-800",
+      "Calculate monthly payments, total interest, and an amortization schedule for a Cyprus property purchase. Covers standard LTV limits for residents and non-residents.",
+    tag: "Finance",
+    tagColor: "bg-blue-100 text-blue-800",
   },
 ||||||| 4eccb7b
   {
@@ -161,6 +161,14 @@ const TOOLS: Tool[] = [
       "Estimate your monthly living costs in Cyprus by city, household size, and lifestyle. Covers rent, groceries, dining, transport, utilities, and entertainment.",
     tag: "Finance",
     tagColor: "bg-blue-100 text-blue-800",
+  },
+{
+    href: "/tools/relocation-tracker/",
+    title: "Relocation Progress Tracker",
+    description:
+      "A 32-task checklist covering pre-move planning, arrival week, month one, and settling in. Persistent progress saved in your browser.",
+    tag: "Checklists",
+    tagColor: "bg-purple-100 text-purple-800",
   },
 ];
 
