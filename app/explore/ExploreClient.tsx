@@ -32,6 +32,16 @@ const TOOLS_LIST: ToolEntry[] = [
   { name: "Relocation Progress Tracker", slug: "relocation-tracker", tag: "Checklists", description: "32-task checklist covering pre-move planning, arrival, and settling in." },
   { name: "Development Comparison", slug: "development-comparison", tag: "Research", description: "Compare up to 3 new-build developments side by side on price, specs, and developer." },
   { name: "Property Price Benchmarker", slug: "price-benchmarker", tag: "Research", description: "See how a property's price compares to other developments in the same city." },
+  { name: "Cyprus Tax Savings Calculator", slug: "tax-savings-calculator", tag: "Tax", description: "Compare your home country's tax burden against Cyprus Standard and Non-Dom regimes." },
+  { name: "Relocation Cost Estimator", slug: "relocation-cost-estimator", tag: "Finance", description: "Calculate one-time moving costs — flights, shipping, deposits, furnishing, and legal fees." },
+  { name: "Cyprus Ltd Setup Calculator", slug: "ltd-setup-calculator", tag: "Business", description: "Estimate incorporation and annual running costs of a Cyprus limited company." },
+  { name: "Neighbourhood Explorer", slug: "neighbourhood-explorer", tag: "Research", description: "Explore neighbourhoods by vibe, beach access, expat density, and value for money." },
+  { name: "Cyprus Weather & Climate", slug: "weather-climate", tag: "Lifestyle", description: "Monthly temperatures, sea warmth, rain days, and UV index. Compare to your home city." },
+  { name: "International School Finder", slug: "school-finder", tag: "Family", description: "Find and compare international schools in Cyprus by city, curriculum, and age group." },
+  { name: "Cyprus Pet Import Checklist", slug: "pet-import-checklist", tag: "Lifestyle", description: "Personalised checklist for importing your pet to Cyprus based on species and origin country." },
+  { name: "Driver's Licence Exchange", slug: "drivers-licence-exchange", tag: "Bureaucracy", description: "Check if your licence can be exchanged directly or requires tests in Cyprus." },
+  { name: "GeSY Registration Guide", slug: "gesy-registration", tag: "Healthcare", description: "Step-by-step GeSY registration wizard with 2025 contribution rates and income cap." },
+  { name: "Cyprus Rental Price Trends", slug: "rental-price-trends", tag: "Research", description: "Track rent changes across Limassol, Paphos, Larnaca, and Ayia Napa since 2021." },
 ];
 
 type SectionItem = { name: string; href: string };

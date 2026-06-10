@@ -29,6 +29,16 @@ const TOOL_SLUGS = [
   "relocation-tracker",
   "development-comparison",
   "price-benchmarker",
+  "tax-savings-calculator",
+  "relocation-cost-estimator",
+  "ltd-setup-calculator",
+  "neighbourhood-explorer",
+  "weather-climate",
+  "school-finder",
+  "pet-import-checklist",
+  "drivers-licence-exchange",
+  "gesy-registration",
+  "rental-price-trends",
 ];
 
 export const dynamic = "force-static";

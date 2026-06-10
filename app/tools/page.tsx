@@ -201,6 +201,86 @@ const TOOLS: Tool[] = [
     tag: "Research",
     tagColor: "bg-slate-100 text-slate-800",
   },
+  {
+    href: "/tools/tax-savings-calculator/",
+    title: "Cyprus Tax Savings Calculator",
+    description:
+      "Compare your current country's income tax burden against Cyprus Standard and Non-Dom regimes. Enter your income, employment type, and country to see your estimated annual tax saving at a glance.",
+    tag: "Tax",
+    tagColor: "bg-amber-100 text-amber-800",
+  },
+  {
+    href: "/tools/relocation-cost-estimator/",
+    title: "Relocation Cost Estimator",
+    description:
+      "Calculate your one-time moving costs to Cyprus — flights, shipping containers, car import, pet fees, rental deposits, furnishing, and legal fees. Get a full itemised breakdown with low/midpoint/high ranges and a 10% contingency buffer.",
+    tag: "Finance",
+    tagColor: "bg-blue-100 text-blue-800",
+  },
+  {
+    href: "/tools/ltd-setup-calculator/",
+    title: "Cyprus Ltd Setup Cost Calculator",
+    description:
+      "Estimate the one-time registration costs and annual running costs of a Cyprus limited company based on your specific situation — directors, residency, turnover, VAT, and business type.",
+    tag: "Business",
+    tagColor: "bg-orange-100 text-orange-800",
+  },
+  {
+    href: "/tools/neighbourhood-explorer/",
+    title: "Neighbourhood Explorer",
+    description:
+      "Explore and compare neighbourhoods across Cyprus cities. Filter by vibe, beach access, expat density, schools, and value for money to find your ideal area.",
+    tag: "Research",
+    tagColor: "bg-slate-100 text-slate-800",
+  },
+  {
+    href: "/tools/weather-climate/",
+    title: "Cyprus Weather & Climate",
+    description:
+      "Explore Cyprus weather month by month — temperatures, sea warmth, rain days, and UV index. Compare Cyprus climate against London, Amsterdam, Berlin, New York, Toronto, and more.",
+    tag: "Lifestyle",
+    tagColor: "bg-rose-100 text-rose-800",
+  },
+  {
+    href: "/tools/school-finder/",
+    title: "International School Finder",
+    description:
+      "Find and compare international schools in Cyprus. Filter by city, curriculum (British, IB, German, French, Waldorf, Montessori), and age group to shortlist the right options for your family.",
+    tag: "Family",
+    tagColor: "bg-pink-100 text-pink-800",
+  },
+  {
+    href: "/tools/pet-import-checklist/",
+    title: "Cyprus Pet Import Checklist",
+    description:
+      "Generate a personalised checklist for importing your dog, cat, bird, or other pet into Cyprus. Covers microchipping, rabies titre tests, health certificates, and arrival procedures based on your pet type and country of origin.",
+    tag: "Lifestyle",
+    tagColor: "bg-rose-100 text-rose-800",
+  },
+  {
+    href: "/tools/drivers-licence-exchange/",
+    title: "Driver's Licence Exchange",
+    description:
+      "Find out if you can directly exchange your foreign driving licence in Cyprus or whether you need to take theory and practical tests. Includes costs, required documents, and step-by-step guidance.",
+    tag: "Bureaucracy",
+    tagColor: "bg-purple-100 text-purple-800",
+  },
+  {
+    href: "/tools/gesy-registration/",
+    title: "GeSY Registration Guide",
+    description:
+      "Step-by-step wizard for registering with Cyprus's General Healthcare System (GeSY). Covers prerequisites, online and in-person registration options, GP selection, co-payments table, family registration, and an interactive contribution calculator with all 2025 employment-status rates.",
+    tag: "Healthcare",
+    tagColor: "bg-red-100 text-red-800",
+  },
+  {
+    href: "/tools/rental-price-trends/",
+    title: "Cyprus Rental Price Trends",
+    description:
+      "Track how apartment rents have changed across Limassol, Paphos, Larnaca, and Ayia Napa since 2021. Interactive SVG line chart for 1BR, 2BR, and 3BR units with city toggles, hover tooltips, and year-on-year comparison table.",
+    tag: "Research",
+    tagColor: "bg-slate-100 text-slate-800",
+  },
 ];
 
 const SITE_URL = "https://realcy.app";
