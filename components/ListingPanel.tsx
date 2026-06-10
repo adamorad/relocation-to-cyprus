@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import { trackEvent } from "@/lib/analytics";
 import type { EnrichedListing, ImageGallery } from "@/lib/listingsData";
 import { EmailCapture } from "./EmailCapture";
+import HeartButton from "./HeartButton";
 
 type Props = {
   listing: EnrichedListing | null;
@@ -82,14 +83,17 @@ function ListingPanelBody({
               </p>
             ) : null}
           </div>
-          <button
-            type="button"
-            onClick={onClose}
-            className="flex-shrink-0 text-slate-500 hover:text-slate-900 text-2xl leading-none w-11 h-11 -mt-2 rounded-full hover:bg-slate-100 flex items-center justify-center"
-            aria-label="Close"
-          >
-            ×
-          </button>
+          <div className="flex items-center gap-1 flex-shrink-0 -mt-2">
+            <HeartButton slug={listing.slug} />
+            <button
+              type="button"
+              onClick={onClose}
+              className="text-slate-500 hover:text-slate-900 text-2xl leading-none w-11 h-11 rounded-full hover:bg-slate-100 flex items-center justify-center"
+              aria-label="Close"
+            >
+              ×
+            </button>
+          </div>
         </div>
       </div>
 
