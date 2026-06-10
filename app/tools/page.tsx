@@ -170,6 +170,38 @@ const TOOLS: Tool[] = [
     tag: "Research",
     tagColor: "bg-slate-100 text-slate-800",
   },
+  {
+    href: "/tools/rental-yield-calculator/",
+    title: "Rental Yield Calculator",
+    description:
+      "Calculate gross yield, net yield, annual cash flow, and total return for a Cyprus buy-to-let investment. Includes appreciation and expense modelling over up to 15 years.",
+    tag: "Finance",
+    tagColor: "bg-blue-100 text-blue-800",
+  },
+  {
+    href: "/tools/relocation-tracker/",
+    title: "Relocation Progress Tracker",
+    description:
+      "A 32-task checklist covering pre-move planning, arrival week, month one, and settling in. Persistent progress saved in your browser.",
+    tag: "Checklists",
+    tagColor: "bg-purple-100 text-purple-800",
+  },
+  {
+    href: "/tools/development-comparison/",
+    title: "Development Comparison",
+    description:
+      "Select up to 3 Cyprus new-build developments and compare them side by side on price, location, specs, developer, and available bedrooms.",
+    tag: "Research",
+    tagColor: "bg-slate-100 text-slate-800",
+  },
+  {
+    href: "/tools/price-benchmarker/",
+    title: "Property Price Benchmarker",
+    description:
+      "See how a property's asking price compares to other developments in the same Cyprus city — based on real listings data.",
+    tag: "Research",
+    tagColor: "bg-slate-100 text-slate-800",
+  },
 ];
 
 const SITE_URL = "https://realcy.app";
