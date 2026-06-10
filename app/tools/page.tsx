@@ -145,6 +145,14 @@ const TOOLS: Tool[] = [
     tag: "Visas",
     tagColor: "bg-green-100 text-green-800",
   },
+  {
+    href: "/tools/country-comparison/",
+    title: "Country Comparison",
+    description:
+      "Compare Cyprus against Portugal, Malta, Greece, Spain and Italy across corporate tax, income tax, special regimes, property prices, cost of living, and visa options.",
+    tag: "Research",
+    tagColor: "bg-slate-100 text-slate-800",
+  },
 ];
 
 const SITE_URL = "https://realcy.app";
