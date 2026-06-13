@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import AppShell from "@/components/AppShell";
+import HomeHub from "@/components/HomeHub";
 import { LISTINGS } from "@/lib/listingsData";
+import { GUIDES } from "@/lib/guides";
+import { SECTIONS_INDEX } from "@/lib/sections-index";
 
 export const metadata: Metadata = {
   title: {
@@ -8,11 +11,20 @@ export const metadata: Metadata = {
       "RealCy.app - Your Cyprus Portal | New Developments, Relocation & More",
   },
   description:
-    "RealCy.app — your portal for anything Cyprus. Browse 260+ new-build developments on an interactive map. 30+ service directories, 16 relocation tools, and 68 in-depth guides.",
+    "RealCy.app — your portal for anything Cyprus. Browse 260+ new-build developments on an interactive map. 30+ service directories, 33 relocation tools, and 68 in-depth guides.",
   alternates: { canonical: "/" },
 };
 
 const SITE_URL = "https://realcy.app";
+
+const FEATURED_GUIDE_SLUGS = [
+  "taxes-for-expats",
+  "residency-and-visas",
+  "cost-of-living",
+  "banking-in-cyprus",
+  "title-deed-status-guide",
+  "digital-nomad-visa-guide",
+];
 
 export default function Home() {
   const websiteJsonLd = {
@@ -37,7 +49,7 @@ export default function Home() {
     url: SITE_URL,
     logo: `${SITE_URL}/apple-touch-icon.png`,
     description:
-      "Independent Cyprus relocation portal — new-build real estate, 30+ service directories, 16 relocation tools, and 68 in-depth guides.",
+      "Independent Cyprus relocation portal — new-build real estate, 30+ service directories, 33 relocation tools, and 68 in-depth guides.",
     sameAs: [],
   };
   const itemList = {
@@ -52,6 +64,11 @@ export default function Home() {
       name: l.title,
     })),
   };
+  const featuredGuides = FEATURED_GUIDE_SLUGS.map((slug) => {
+    const g = GUIDES.find((g) => g.slug === slug);
+    return g ? { slug: g.slug, title: g.title, category: g.category, description: g.description } : null;
+  }).filter((g): g is NonNullable<typeof g> => g !== null);
+
   return (
     <>
       <script
@@ -62,6 +79,13 @@ export default function Home() {
         }}
       />
       <AppShell />
+      <h1 className="sr-only">Cyprus New Developments, Relocation Guides and Non-Dom Tax Tools | RealCy.app</h1>
+      <HomeHub
+        totalListings={LISTINGS.length}
+        totalGuides={GUIDES.length}
+        totalSections={SECTIONS_INDEX.length}
+        featuredGuides={featuredGuides}
+      />
     </>
   );
 }
