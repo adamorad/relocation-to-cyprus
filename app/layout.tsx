@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Lora, DM_Sans } from "next/font/google";
 import Link from "next/link";
 import { CookieConsentManager } from "@/components/CookieConsentManager";
 import { EmailCapture } from "@/components/EmailCapture";
@@ -8,8 +9,21 @@ import { GUIDES } from "@/lib/guides";
 import { SECTIONS_INDEX } from "@/lib/sections-index";
 import { LISTINGS_BY_REGION } from "@/lib/listingsData";
 
-const TOOL_COUNT = 16;
+const TOOL_COUNT = 33;
 import "./globals.css";
+
+const lora = Lora({
+  subsets: ["latin"],
+  variable: "--font-lora",
+  display: "swap",
+  weight: ["400", "500", "600"],
+});
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  display: "swap",
+  weight: ["400", "500", "600"],
+});
 
 // Google Analytics 4 — measurement ID. Set via NEXT_PUBLIC_GA_ID at build
 // time so we can swap it without code changes; falls back to "" which
@@ -44,7 +58,7 @@ export const metadata: Metadata = {
     template: `%s · ${SITE_NAME}`,
   },
   description:
-    "RealCy.app — your portal for anything Cyprus. Browse new-build apartments and villas on an interactive map. 30+ service directories, 16 relocation tools, and 68 in-depth guides.",
+    "RealCy.app — your portal for anything Cyprus. Browse new-build apartments and villas on an interactive map. 30+ service directories, 33 relocation tools, and 68 in-depth guides.",
   keywords: [
     "Cyprus real estate",
     "Cyprus new developments",
@@ -53,7 +67,6 @@ export const metadata: Metadata = {
     "Paphos apartments",
     "Limassol new builds",
     "Larnaca real estate",
-    "Nicosia property",
     "Ayia Napa apartments",
     "relocate to Cyprus",
     "Cyprus residency real estate",
@@ -65,14 +78,14 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} - ${SITE_TAGLINE}`,
     description:
-      "Your portal to Cyprus — new-build real estate, 30+ service directories, 16 relocation tools, and 68 in-depth guides.",
+      "Your portal to Cyprus — new-build real estate, 30+ service directories, 33 relocation tools, and 68 in-depth guides.",
     images: [{ url: "https://realcy.app/og-default.webp", width: 1200, height: 630, alt: "RealCy.app — Cyprus relocation portal" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} - ${SITE_TAGLINE}`,
     description:
-      "Your portal to Cyprus — new-build real estate, 30+ service directories, 16 relocation tools, and 68 in-depth guides.",
+      "Your portal to Cyprus — new-build real estate, 30+ service directories, 33 relocation tools, and 68 in-depth guides.",
     images: ["https://realcy.app/og-default.webp"],
   },
   robots: {
@@ -263,8 +276,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="antialiased text-slate-900">
+    <html lang="en" className={`${lora.variable} ${dmSans.variable}`}>
+      <body className="antialiased text-slate-900 font-[family-name:var(--font-dm-sans)]">
         <a href="#main" className="skip-to-content">
           Skip to content
         </a>
