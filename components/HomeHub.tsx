@@ -485,17 +485,22 @@ export default function HomeHub({ totalListings, totalGuides, totalSections, fea
       </section>
 
       {/* ── Advertise strip ──────────────────────────────────────── */}
-      <section className="bg-[#1C1917] py-6 border-t border-white/5">
-        <div className="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-          <p className="text-sm text-white/60">
-            Reach people planning a Cyprus move —{" "}
-            <span className="text-white/80">featured listings, guide sponsorship, and newsletter placement.</span>
+      <section className="bg-[#1C1917] py-10 border-t border-white/5">
+        <div className="max-w-5xl mx-auto px-6 flex flex-col items-center text-center gap-4">
+          <p className="text-[10px] uppercase tracking-[0.25em] text-[#35cdc4] font-semibold">
+            Work with us
+          </p>
+          <p className="text-lg md:text-xl font-medium text-white max-w-xl leading-snug" style={{ fontFamily: "var(--font-lora)" }}>
+            Reach people actively planning a Cyprus move
+          </p>
+          <p className="text-sm text-white/50 max-w-md">
+            Featured listings, guide sponsorship, and newsletter placement — for law firms, accountants, and healthcare providers.
           </p>
           <Link
             href="/advertise/"
-            className="text-xs font-semibold text-[#35cdc4] hover:underline flex-shrink-0"
+            className="mt-1 inline-block px-6 py-2.5 rounded-lg bg-[#35cdc4] text-slate-900 text-sm font-semibold hover:bg-teal-300 transition-colors"
           >
-            Advertise on RealCy →
+            See advertising options →
           </Link>
         </div>
       </section>
