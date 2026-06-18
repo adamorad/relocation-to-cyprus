@@ -484,6 +484,22 @@ export default function HomeHub({ totalListings, totalGuides, totalSections, fea
         </div>
       </section>
 
+      {/* ── Advertise strip ──────────────────────────────────────── */}
+      <section className="bg-[#1C1917] py-6 border-t border-white/5">
+        <div className="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <p className="text-sm text-white/60">
+            Reach people planning a Cyprus move —{" "}
+            <span className="text-white/80">featured listings, guide sponsorship, and newsletter placement.</span>
+          </p>
+          <Link
+            href="/advertise/"
+            className="text-xs font-semibold text-[#35cdc4] hover:underline flex-shrink-0"
+          >
+            Advertise on RealCy →
+          </Link>
+        </div>
+      </section>
+
       {/* ── Section 7: Search CTA ─────────────────────────────────── */}
       <section className="hub-warm py-10 border-t border-[#E8E2D9]">
         <div className="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
