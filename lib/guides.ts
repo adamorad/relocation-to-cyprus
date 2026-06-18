@@ -1518,9 +1518,10 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   {
     slug: "food-delivery-apps",
     category: "lifestyle",
-    heroImage: "/images/guides/food-delivery-apps.webp",    title: "Food Delivery in Cyprus — Apps, Coverage, and What Actually Works",
+    heroImage: "/images/guides/food-delivery-apps.webp",
+    title: "Food Delivery Apps in Cyprus 2026 — Bolt Food, Wolt, and Foody Compared",
     description:
-      "A practical guide to food delivery apps in Cyprus — Bolt Food, Wolt, Foody — with honest coverage maps, typical fees, delivery times, and which cities and hours actually work.",
+      "How Bolt Food, Wolt, and Foody divide the Cyprus food delivery market in 2026 — city coverage, fees, subscription plans, late-night availability, grocery delivery via Bolt Market and Wolt Market, and which app to use when.",
     sections: [
       {
         heading: "The three main apps and how they divide the market",
@@ -1539,8 +1540,34 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
         body: "Expected delivery time for a prepared order is 25–45 minutes in the main cities under normal conditions. This stretches to 45–60 minutes during peak hours (Friday and Saturday 7–9pm in Limassol particularly) and can exceed 60 minutes on public holidays or during storms. Bolt Food typically gives the most accurate real-time tracking. Late-night delivery is available but limited: most Cypriot restaurants stop taking delivery orders by 10pm or 11pm. The apps continue to operate until midnight–1am in the larger cities, but the available restaurants after 10pm are largely fast food chains, pizza outlets, and a small number of late-service restaurants. Genuine late-night food variety (post-midnight) is effectively only available in Limassol and occasionally central Nicosia. Ayia Napa in summer is an exception: July–August late-night delivery coverage briefly improves due to seasonal restaurant activity.",
       },
       {
+        heading: "Grocery delivery: Bolt Market and Wolt Market",
+        body: "Both Bolt Food and Wolt have expanded into rapid grocery delivery under Bolt Market and Wolt Market respectively, and both operate in Cyprus. These are not full supermarket replacements — the catalogue is typically 2,000–4,000 SKUs versus 20,000+ in a Sklavenitis — but they cover essentials well: fresh produce, dairy, meat, drinks, cleaning products, and a rotating range of ready meals. Bolt Market promises delivery in 15–20 minutes and is available in Limassol and Nicosia; Wolt Market is present in Limassol and expanding. Prices are 10–20% higher than supermarket shelf prices, and there is a small delivery fee unless you hold a Bolt Pass or Wolt+ subscription, which bundles restaurant and grocery delivery together. The main use case for relocators is the first week in a new apartment — before you have oriented yourself to the nearest supermarket — and for top-up shops rather than a full weekly basket. For a full weekly shop, Sklavenitis or Alphamega in person or via Agora.cy will be cheaper and better stocked.",
+      },
+      {
         heading: "Practical tips for new residents",
         body: "Set your delivery address precisely on first use — Cyprus street addressing is inconsistent, and dropping the pin on the map is more reliable than typing the address. New buildings under 3 years old may not appear in the apps' address databases at all; in that case, add a delivery note with the building name and entry gate instructions. Cash on delivery is available on Foody and Bolt Food at many restaurants; Wolt is predominantly card only. All three apps work in Greek and English — the English UI is complete on all platforms, and most restaurant menus have English translations. For restaurants listing only in Greek, Google Translate's camera function on the menu image is faster than in-app translation. Ratings on Cyprus delivery platforms skew high; anything below 4.3 stars usually indicates a real consistency problem. The photo of the dish is often aspirational rather than literal — this is not unique to Cyprus, but the gap between photo and plate seems wider at local Cypriot restaurants than at chain restaurants.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is the best food delivery app in Cyprus?",
+        a: "Bolt Food is the best all-round option in Cyprus — it has the largest restaurant selection across Limassol, Nicosia, Larnaca, and Paphos, the most accurate tracking, and a Bolt Pass subscription (approximately €5–7/month) that eliminates delivery fees. Wolt is the better choice when you want a reliably good result from a curated restaurant. Foody is worth installing specifically to find independent Cypriot restaurants not listed on the other two platforms.",
+      },
+      {
+        q: "Does Deliveroo operate in Cyprus?",
+        a: "No. Deliveroo does not operate in Cyprus. The three platforms active in Cyprus are Bolt Food, Wolt, and the locally founded Foody. UK expats relocating to Cyprus should expect Bolt Food to be the closest functional equivalent to Deliveroo in terms of coverage and app experience.",
+      },
+      {
+        q: "Is there 24-hour food delivery in Cyprus?",
+        a: "Genuine 24-hour food delivery is not widely available in Cyprus. Most restaurants stop taking delivery orders by 10–11pm. After midnight, delivery options in Limassol are limited to fast food chains, pizza, and a small number of late-service restaurants. Nicosia has some late-night coverage in the city centre. Outside Limassol and Nicosia, post-midnight delivery is effectively unavailable.",
+      },
+      {
+        q: "How much does food delivery cost in Cyprus?",
+        a: "Delivery fees are typically €1–3 per order, with a platform service charge of €0.30–0.70. Most restaurants set a minimum order of €10–12. With a Bolt Pass or Wolt+ subscription (approximately €5–7/month), delivery fees are eliminated on eligible restaurants, which pays for itself in 2–3 orders per week.",
+      },
+      {
+        q: "Does food delivery work in Paphos?",
+        a: "Yes, but with more limited coverage than Limassol or Nicosia. Bolt Food and Wolt both operate in Paphos, with good coverage in Kato Paphos and central Paphos town. Outlying residential areas more than 4–5km from the centre may fall outside delivery zones. Foody has some Paphos listings but a thinner catalogue than in the larger cities.",
       },
     ],
   },
