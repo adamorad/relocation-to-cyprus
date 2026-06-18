@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 const SITE_URL = "https://realcy.app";
 const title = "Advertise on RealCy.app — Reach People Relocating to Cyprus";
@@ -209,20 +208,6 @@ export default function AdvertisePage() {
           </div>
         </section>
 
-        {/* Footer nav */}
-        <div className="py-8 border-t border-[#EBE8E3] bg-[#FAFAF8]">
-          <div className="max-w-3xl mx-auto px-6 flex gap-6 text-xs text-slate-400">
-            <Link href="/" className="hover:text-[#35cdc4] transition-colors">
-              Home
-            </Link>
-            <Link href="/guides/" className="hover:text-[#35cdc4] transition-colors">
-              Guides
-            </Link>
-            <Link href="/tools/" className="hover:text-[#35cdc4] transition-colors">
-              Tools
-            </Link>
-          </div>
-        </div>
       </main>
     </>
   );
