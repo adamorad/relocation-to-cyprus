@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import AppShell from "@/components/AppShell";
 
 const SITE_URL = "https://realcy.app";
 const title = "Advertise on RealCy.app — Reach People Relocating to Cyprus";
@@ -66,7 +65,6 @@ const STATS = [
 export default function AdvertisePage() {
   return (
     <>
-      <AppShell />
       <main className="min-h-screen bg-[#FAFAF8]">
         {/* Hero */}
         <section className="bg-[#1C1917] py-16 md:py-20">
