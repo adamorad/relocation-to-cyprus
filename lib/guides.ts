@@ -1112,9 +1112,10 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   {
     slug: "dental-care-guide",
     category: "healthcare",
-    heroImage: "/images/guides/dental-care-guide.webp",    title: "Dental Care in Cyprus — Cost, Quality, and Finding a Good Dentist",
+    heroImage: "/images/guides/dental-care-guide.webp",
+    title: "Dental Care in Cyprus 2026 — Prices, GeSY Coverage, and Finding a Good Dentist",
     description:
-      "What GeSY covers for dental, typical private dental costs, how Cyprus compares to the UK and Germany, how to find an English-speaking dentist, and dental insurance options.",
+      "Private dental costs in Cyprus in 2026 — fillings from €80, implants from €800, crowns from €400. What GeSY actually covers (almost nothing for adults), how prices compare to UK and German rates, and how to find an English-speaking dentist.",
     sections: [
       {
         heading: "GeSY dental coverage: what is and is not included",
@@ -1135,6 +1136,28 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
       {
         heading: "Dental tourism context: Cyprus as a destination",
         body: "Cyprus's combination of low costs, English language, and EU healthcare standards has made it a minor dental tourism destination, with clinics in Limassol and Paphos that specifically market to UK, German, and Scandinavian patients who come for multi-day implant or cosmetic work. For relocators this is relevant in two ways: first, these clinics are often the most internationally experienced and English-fluent options; second, availability at popular implant clinics can be tighter than at general practices. If you are planning major restorative work — full arch implants, significant cosmetic treatment — the total cost including flights and accommodation from the UK typically saves £1,500–£3,000 versus UK private rates even for a dedicated trip, which gives a sense of the scale of the price differential. Once resident in Cyprus, the same work is available at the same prices without the travel element, making Cyprus a compelling place to catch up on deferred dental work.",
+      },
+    ],
+    faqs: [
+      {
+        q: "How much does a dental implant cost in Cyprus?",
+        a: "A single dental implant including the crown costs approximately €800–€1,200 in Cyprus for a standard case. Full-arch implant procedures (All-on-4 or similar) run €6,000–€10,000 per arch depending on the clinic and complexity. These prices are 40–60% below comparable UK private rates, which makes Cyprus a practical destination for significant implant work.",
+      },
+      {
+        q: "Does GeSY cover dental treatment in Cyprus?",
+        a: "GeSY dental coverage for adults is very limited. It covers emergency dental care only — emergency extractions, urgent pain treatment, and temporary fillings. Routine check-ups, professional cleaning, fillings, root canals, crowns, implants, and orthodontics are not covered by GeSY for adults and are entirely private costs. Children under 18 receive basic preventive dental care under GeSY.",
+      },
+      {
+        q: "How much does a filling cost at a dentist in Cyprus?",
+        a: "A composite (white) filling costs approximately €80–€120 in Cyprus, depending on the size and number of surfaces involved. A professional clean and scale runs €60–€80. Full dental X-rays (set of 4) cost €20–€40. These prices are significantly lower than UK private dental rates, where a comparable filling typically costs £150–£250.",
+      },
+      {
+        q: "Are dentists in Cyprus good?",
+        a: "Yes, the standard of dentistry in Cyprus is generally high. The majority of Cypriot dentists trained at European universities — commonly in Greece, the UK, Italy, or Germany — and are registered with the Cyprus Dental Association. The University of Nicosia dental school has also raised the overall standard on the island in recent years. English is effectively the default language for non-Greek-speaking patients at most clinics in the four main cities.",
+      },
+      {
+        q: "How do I find an English-speaking dentist in Cyprus?",
+        a: "The most reliable method is to ask for recommendations in the main expat Facebook groups for your city — Expats in Cyprus, Limassol Expats, or Paphos Expats each have tens of thousands of members and produce well-sourced dental recommendations. Google Maps reviews filtered to English are also useful. Walk-in bookings are generally possible for new patients at most clinics, though popular practices in Limassol often require a week's notice.",
       },
     ],
   },
@@ -1344,9 +1367,10 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   {
     slug: "ferry-routes-guide",
     category: "transport",
-    heroImage: "/images/guides/ferry-routes-guide.webp",    title: "Ferry Routes from Cyprus to Greece, Lebanon, and Egypt",
+    heroImage: "/images/guides/ferry-routes-guide.webp",
+    title: "Ferry Routes from Cyprus 2026 — Greece, Egypt, and Lebanon: What Is Running",
     description:
-      "Passenger ferry and cargo-passenger services from Limassol port — Grimaldi Lines to Piraeus, seasonal cruise routes, vehicle transport costs, and practical tips for overnight crossings.",
+      "Current ferry routes from Limassol port in 2026 — Grimaldi Lines to Piraeus (Athens) via Crete, vehicle transport costs, Egypt and Lebanon service status, and practical tips for the 36-hour crossing.",
     sections: [
       {
         heading: "The state of Cyprus ferry services",
@@ -1367,6 +1391,28 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
       {
         heading: "Practical tips: booking, packing, and the overnight experience",
         body: "Four pieces of practical advice for the Limassol-Piraeus crossing. First, book a cabin rather than deck passage if you are doing the full 36-hour journey — the price difference (€50–€100) is small relative to the quality difference, and deck seats are uncomfortable for a full day and night. Second, bring your own food supplements — the on-board restaurant is functional but limited and expensive; a bag of snacks, fruit, and good coffee from the supermarket makes the journey significantly better. Third, boarding begins 3 hours before departure, and vehicles are loaded before passengers — if you are transporting a car, arrive at the port with considerable margin. Fourth, check the Grimaldi schedule against your preferred travel date rather than assuming weekly sailings — during the shoulder season (October-November and March-April) the frequency drops to every 10–14 days, and missing your sailing by a day can mean a long wait for the next one.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Is there a ferry from Cyprus to Greece in 2026?",
+        a: "Yes. Grimaldi Lines operates a cargo-passenger service between Limassol and Piraeus (Athens) in 2026, routing via Heraklion (Crete). The crossing takes approximately 36–40 hours. The service runs roughly weekly during high season (April to October) and reduces frequency in winter. Book directly at grimaldi-lines.com or through a Limassol travel agent, and confirm current schedules before planning — sailing dates change seasonally.",
+      },
+      {
+        q: "Is there a ferry from Cyprus to Egypt?",
+        a: "As of early 2026, there is no regular scheduled passenger ferry service between Cyprus and Egypt. Historical routes connecting Limassol with Port Said or Alexandria have operated intermittently but are not currently running on a reliable schedule. Freight connections exist. Check with Limassol Port Authority (limassolport.com.cy) for the most current status — services can resume depending on commercial demand and regional conditions.",
+      },
+      {
+        q: "Can I take my car on the ferry from Cyprus to Greece?",
+        a: "Yes. The Grimaldi Lines Limassol-Piraeus service carries vehicles. A standard car (up to 4m) costs approximately €250 each way. You drive the vehicle onto the ship at Limassol and off at Heraklion or Piraeus; you cannot access the car during the crossing. Book vehicle transport in advance with exact vehicle dimensions — weight and size restrictions apply.",
+      },
+      {
+        q: "How long is the ferry from Cyprus to Greece?",
+        a: "The Grimaldi Lines crossing from Limassol to Piraeus takes approximately 36–40 hours, with a stop in Heraklion (Crete). Direct sailing time to Heraklion alone is roughly 18–20 hours. There is no direct overnight ferry that reaches Piraeus in under 30 hours — this is a significant sea crossing, not a short hop.",
+      },
+      {
+        q: "Is there a ferry from Cyprus to Lebanon?",
+        a: "Historically yes, but the Limassol-Beirut and Limassol-Tripoli passenger routes have been subject to repeated suspensions due to geopolitical instability in Lebanon. As of 2026 no regular scheduled passenger service is running. Verify the current status with Limassol Port Authority (limassolport.com.cy) before planning travel that depends on this route.",
       },
     ],
   },
