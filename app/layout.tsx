@@ -225,6 +225,7 @@ function SiteFooter() {
           </p>
           <ul className="mt-3 space-y-2">
             <li><Link href="/about/" className="hover:text-white transition-colors">About</Link></li>
+            <li><Link href="/advertise/" className="hover:text-white transition-colors">Advertise</Link></li>
             <li><Link href="/contact/" className="hover:text-white transition-colors">Contact</Link></li>
             <li><Link href="/explore/" className="hover:text-white transition-colors">Explore</Link></li>
             <li><Link href="/privacy/" className="hover:text-white transition-colors">Privacy</Link></li>
