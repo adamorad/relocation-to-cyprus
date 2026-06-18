@@ -1050,13 +1050,13 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   {
     slug: "gesy-registration-guide",
     category: "healthcare",
-    heroImage: "/images/guides/gesy-registration-guide.webp",    title: "GeSY Registration Guide: Step-by-Step for Cyprus Expats 2026",
+    heroImage: "/images/guides/gesy-registration-guide.webp",    title: "GeSY Registration Guide 2026 — Register at gesyportal.hio.org.cy",
     description:
-      "GeSY registration for Cyprus expats: 5-step HIO portal walkthrough, GP selection, contribution rates, and what's covered. Updated 2026.",
+      "Register for GeSY at gesyportal.hio.org.cy — step-by-step walkthrough for Cyprus expats: documents needed, GP selection, 2026 contribution rates, and what the public healthcare system covers.",
     sections: [
       {
         heading: "Who must register and why it matters",
-        body: "GeSY (General Healthcare System, from the Greek Γενικό Σύστημα Υγείας) launched in June 2019 and became fully operational for all services in June 2020. Every legal resident of Cyprus — EU citizens, non-EU residents with ARC, and Cypriot nationals — is required to register and contribute. Registration is also mandatory for employers, self-employed individuals, and pensioners. Unlike the old system where public healthcare was free but largely inaccessible to non-citizens and of highly variable quality, GeSY creates a single-payer insurance model where all registered residents have equal access to GPs, specialists, and public hospitals. The practical reason to register immediately upon arrival: without a registered personal doctor (GeSY uses the term 'personal doctor'), you cannot get GP referrals or prescription coverage, and attending a public hospital A&E without a GeSY card results in higher co-payments. Registration takes about 20 minutes online if you have your documents ready.",
+        body: "GeSY (General Healthcare System, from the Greek Γενικό Σύστημα Υγείας) launched in June 2019 and became fully operational for all services in June 2020. The GeSY portal is at gesyportal.hio.org.cy — this is where you register, choose your personal doctor, and manage your account. Every legal resident of Cyprus — EU citizens, non-EU residents with ARC, and Cypriot nationals — is required to register and contribute. Registration is also mandatory for employers, self-employed individuals, and pensioners. Unlike the old system where public healthcare was free but largely inaccessible to non-citizens and of highly variable quality, GeSY creates a single-payer insurance model where all registered residents have equal access to GPs, specialists, and public hospitals. The practical reason to register immediately upon arrival: without a registered personal doctor (GeSY uses the term 'personal doctor'), you cannot get GP referrals or prescription coverage, and attending a public hospital A&E without a GeSY card results in higher co-payments. Registration takes about 20 minutes online at gesyportal.hio.org.cy if you have your documents ready.",
       },
       {
         heading: "5-step GeSY registration checklist",
@@ -1077,6 +1077,28 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
       {
         heading: "GeSY for self-employed and non-standard residents",
         body: "Self-employed residents register under the 'self-employed' beneficiary category and pay 4.00% of declared insurable income rather than the employed rate. The minimum GeSY contribution for self-employed individuals is based on the statutory minimum insurable income, which means even if your declared income is very low, there is a floor contribution — currently approximately €180–€200 per year. For non-EU residents on a Digital Nomad Visa whose income is from foreign sources: you are still required to register for GeSY as a legal resident, and the contribution is treated as 4.00% of your declared income in Cyprus (which for a pure DNV holder may be zero — in that case, the HIO assesses contributions at minimum rates). If you hold both private health insurance and GeSY, you are still legally required to make GeSY contributions — opting out of the public system is not permitted. Most long-term residents keep both, using GeSY for routine care and private insurance for faster specialist access and private hospital admissions.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is the GeSY portal URL?",
+        a: "The GeSY patient portal is at gesyportal.hio.org.cy. This is where you register as a beneficiary, choose your personal doctor, view your medical history, and manage your GeSY account. The main HIO organisation website is hio.org.cy.",
+      },
+      {
+        q: "How do I register for GeSY in Cyprus?",
+        a: "Register at gesyportal.hio.org.cy. You need your ARC number (non-EU residents) or Yellow Slip number (EU citizens), a valid passport, a Cyprus mobile number for SMS verification, and an email address. The process takes around 20 minutes. After completing registration you receive a GeSY beneficiary number immediately; the physical HIO card arrives by post within 2–4 weeks.",
+      },
+      {
+        q: "How much does GeSY cost in 2026?",
+        a: "For employees: 2.65% of gross salary (employee share), with the employer contributing a further 2.90%. For self-employed individuals: 4.00% of declared insurable income, with a minimum contribution floor of approximately €180–€200 per year. For pensioners: 2.65% of pension income. Contributions are deducted automatically for employees and paid via tax return for the self-employed.",
+      },
+      {
+        q: "Can I register for GeSY on a Digital Nomad Visa?",
+        a: "Yes. All legal residents of Cyprus — including Digital Nomad Visa holders — are required to register for GeSY. If your income is entirely foreign-sourced and you declare zero Cypriot income, the HIO applies minimum contribution rates (approximately €180–€200 per year). You register at gesyportal.hio.org.cy using your ARC number.",
+      },
+      {
+        q: "What does GeSY cover?",
+        a: "GeSY covers GP visits (no co-payment for your registered personal doctor), specialist visits via referral (€6 co-payment), prescription medications (€1 for generics), A&E, most public hospital admissions and procedures, physiotherapy (limited sessions), and mental health sessions (limited). Adult dental is almost entirely excluded — GeSY covers very little for teeth beyond emergency extractions. Private health insurance is commonly held alongside GeSY for faster specialist access and private hospital admissions.",
       },
     ],
   },
@@ -1368,9 +1390,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
     slug: "ferry-routes-guide",
     category: "transport",
     heroImage: "/images/guides/ferry-routes-guide.webp",
-    title: "Ferry Routes from Cyprus 2026 — Greece, Egypt, and Lebanon: What Is Running",
+    title: "Cyprus Ferry Routes 2026 — Limassol to Athens, Egypt to Cyprus, Lebanon: What Is Running",
     description:
-      "Current ferry routes from Limassol port in 2026 — Grimaldi Lines to Piraeus (Athens) via Crete, vehicle transport costs, Egypt and Lebanon service status, and practical tips for the 36-hour crossing.",
+      "Every ferry route in and out of Cyprus in 2026 — Grimaldi Lines Limassol to Piraeus via Crete (36 hrs), Egypt to Cyprus (Alexandria/Port Said status), Lebanon service status, vehicle transport costs, and booking tips.",
     sections: [
       {
         heading: "The state of Cyprus ferry services",
@@ -1736,9 +1758,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   {
     slug: "utilities-setup-guide",
     category: "lifestyle",
-    heroImage: "/images/guides/utilities-setup-guide.webp",    title: "Setting Up Utilities After Moving Into Your Cyprus Home",
+    heroImage: "/images/guides/utilities-setup-guide.webp",    title: "Cyprus Utilities Setup Guide 2026 — Electricity, Water, Broadband, and Gas",
     description:
-      "How to get electricity, water, broadband, and gas connected after moving into a Cyprus property — with realistic timelines, costs, and the paperwork each utility requires.",
+      "How to connect EAC electricity, water, broadband (Cyta, Cablenet, Epic, Primetel), and LPG gas after moving into a Cyprus home. Realistic timelines, 2026 costs, and the documents each utility requires.",
     sections: [
       {
         heading: "EAC electricity: connection process and costs",
