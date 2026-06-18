@@ -1112,9 +1112,10 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   {
     slug: "dental-care-guide",
     category: "healthcare",
-    heroImage: "/images/guides/dental-care-guide.webp",    title: "Dental Care in Cyprus — Cost, Quality, and Finding a Good Dentist",
+    heroImage: "/images/guides/dental-care-guide.webp",
+    title: "Dental Care in Cyprus 2026 — Prices, GeSY Coverage, and Finding a Good Dentist",
     description:
-      "What GeSY covers for dental, typical private dental costs, how Cyprus compares to the UK and Germany, how to find an English-speaking dentist, and dental insurance options.",
+      "Private dental costs in Cyprus in 2026 — fillings from €80, implants from €800, crowns from €400. What GeSY actually covers (almost nothing for adults), how prices compare to UK and German rates, and how to find an English-speaking dentist.",
     sections: [
       {
         heading: "GeSY dental coverage: what is and is not included",
@@ -1135,6 +1136,28 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
       {
         heading: "Dental tourism context: Cyprus as a destination",
         body: "Cyprus's combination of low costs, English language, and EU healthcare standards has made it a minor dental tourism destination, with clinics in Limassol and Paphos that specifically market to UK, German, and Scandinavian patients who come for multi-day implant or cosmetic work. For relocators this is relevant in two ways: first, these clinics are often the most internationally experienced and English-fluent options; second, availability at popular implant clinics can be tighter than at general practices. If you are planning major restorative work — full arch implants, significant cosmetic treatment — the total cost including flights and accommodation from the UK typically saves £1,500–£3,000 versus UK private rates even for a dedicated trip, which gives a sense of the scale of the price differential. Once resident in Cyprus, the same work is available at the same prices without the travel element, making Cyprus a compelling place to catch up on deferred dental work.",
+      },
+    ],
+    faqs: [
+      {
+        q: "How much does a dental implant cost in Cyprus?",
+        a: "A single dental implant including the crown costs approximately €800–€1,200 in Cyprus for a standard case. Full-arch implant procedures (All-on-4 or similar) run €6,000–€10,000 per arch depending on the clinic and complexity. These prices are 40–60% below comparable UK private rates, which makes Cyprus a practical destination for significant implant work.",
+      },
+      {
+        q: "Does GeSY cover dental treatment in Cyprus?",
+        a: "GeSY dental coverage for adults is very limited. It covers emergency dental care only — emergency extractions, urgent pain treatment, and temporary fillings. Routine check-ups, professional cleaning, fillings, root canals, crowns, implants, and orthodontics are not covered by GeSY for adults and are entirely private costs. Children under 18 receive basic preventive dental care under GeSY.",
+      },
+      {
+        q: "How much does a filling cost at a dentist in Cyprus?",
+        a: "A composite (white) filling costs approximately €80–€120 in Cyprus, depending on the size and number of surfaces involved. A professional clean and scale runs €60–€80. Full dental X-rays (set of 4) cost €20–€40. These prices are significantly lower than UK private dental rates, where a comparable filling typically costs £150–£250.",
+      },
+      {
+        q: "Are dentists in Cyprus good?",
+        a: "Yes, the standard of dentistry in Cyprus is generally high. The majority of Cypriot dentists trained at European universities — commonly in Greece, the UK, Italy, or Germany — and are registered with the Cyprus Dental Association. The University of Nicosia dental school has also raised the overall standard on the island in recent years. English is effectively the default language for non-Greek-speaking patients at most clinics in the four main cities.",
+      },
+      {
+        q: "How do I find an English-speaking dentist in Cyprus?",
+        a: "The most reliable method is to ask for recommendations in the main expat Facebook groups for your city — Expats in Cyprus, Limassol Expats, or Paphos Expats each have tens of thousands of members and produce well-sourced dental recommendations. Google Maps reviews filtered to English are also useful. Walk-in bookings are generally possible for new patients at most clinics, though popular practices in Limassol often require a week's notice.",
       },
     ],
   },
@@ -1344,9 +1367,10 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   {
     slug: "ferry-routes-guide",
     category: "transport",
-    heroImage: "/images/guides/ferry-routes-guide.webp",    title: "Ferry Routes from Cyprus to Greece, Lebanon, and Egypt",
+    heroImage: "/images/guides/ferry-routes-guide.webp",
+    title: "Ferry Routes from Cyprus 2026 — Greece, Egypt, and Lebanon: What Is Running",
     description:
-      "Passenger ferry and cargo-passenger services from Limassol port — Grimaldi Lines to Piraeus, seasonal cruise routes, vehicle transport costs, and practical tips for overnight crossings.",
+      "Current ferry routes from Limassol port in 2026 — Grimaldi Lines to Piraeus (Athens) via Crete, vehicle transport costs, Egypt and Lebanon service status, and practical tips for the 36-hour crossing.",
     sections: [
       {
         heading: "The state of Cyprus ferry services",
@@ -1367,6 +1391,28 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
       {
         heading: "Practical tips: booking, packing, and the overnight experience",
         body: "Four pieces of practical advice for the Limassol-Piraeus crossing. First, book a cabin rather than deck passage if you are doing the full 36-hour journey — the price difference (€50–€100) is small relative to the quality difference, and deck seats are uncomfortable for a full day and night. Second, bring your own food supplements — the on-board restaurant is functional but limited and expensive; a bag of snacks, fruit, and good coffee from the supermarket makes the journey significantly better. Third, boarding begins 3 hours before departure, and vehicles are loaded before passengers — if you are transporting a car, arrive at the port with considerable margin. Fourth, check the Grimaldi schedule against your preferred travel date rather than assuming weekly sailings — during the shoulder season (October-November and March-April) the frequency drops to every 10–14 days, and missing your sailing by a day can mean a long wait for the next one.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Is there a ferry from Cyprus to Greece in 2026?",
+        a: "Yes. Grimaldi Lines operates a cargo-passenger service between Limassol and Piraeus (Athens) in 2026, routing via Heraklion (Crete). The crossing takes approximately 36–40 hours. The service runs roughly weekly during high season (April to October) and reduces frequency in winter. Book directly at grimaldi-lines.com or through a Limassol travel agent, and confirm current schedules before planning — sailing dates change seasonally.",
+      },
+      {
+        q: "Is there a ferry from Cyprus to Egypt?",
+        a: "As of early 2026, there is no regular scheduled passenger ferry service between Cyprus and Egypt. Historical routes connecting Limassol with Port Said or Alexandria have operated intermittently but are not currently running on a reliable schedule. Freight connections exist. Check with Limassol Port Authority (limassolport.com.cy) for the most current status — services can resume depending on commercial demand and regional conditions.",
+      },
+      {
+        q: "Can I take my car on the ferry from Cyprus to Greece?",
+        a: "Yes. The Grimaldi Lines Limassol-Piraeus service carries vehicles. A standard car (up to 4m) costs approximately €250 each way. You drive the vehicle onto the ship at Limassol and off at Heraklion or Piraeus; you cannot access the car during the crossing. Book vehicle transport in advance with exact vehicle dimensions — weight and size restrictions apply.",
+      },
+      {
+        q: "How long is the ferry from Cyprus to Greece?",
+        a: "The Grimaldi Lines crossing from Limassol to Piraeus takes approximately 36–40 hours, with a stop in Heraklion (Crete). Direct sailing time to Heraklion alone is roughly 18–20 hours. There is no direct overnight ferry that reaches Piraeus in under 30 hours — this is a significant sea crossing, not a short hop.",
+      },
+      {
+        q: "Is there a ferry from Cyprus to Lebanon?",
+        a: "Historically yes, but the Limassol-Beirut and Limassol-Tripoli passenger routes have been subject to repeated suspensions due to geopolitical instability in Lebanon. As of 2026 no regular scheduled passenger service is running. Verify the current status with Limassol Port Authority (limassolport.com.cy) before planning travel that depends on this route.",
       },
     ],
   },
@@ -1518,9 +1564,10 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
   {
     slug: "food-delivery-apps",
     category: "lifestyle",
-    heroImage: "/images/guides/food-delivery-apps.webp",    title: "Food Delivery in Cyprus — Apps, Coverage, and What Actually Works",
+    heroImage: "/images/guides/food-delivery-apps.webp",
+    title: "Food Delivery Apps in Cyprus 2026 — Bolt Food, Wolt, and Foody Compared",
     description:
-      "A practical guide to food delivery apps in Cyprus — Bolt Food, Wolt, Foody — with honest coverage maps, typical fees, delivery times, and which cities and hours actually work.",
+      "How Bolt Food, Wolt, and Foody divide the Cyprus food delivery market in 2026 — city coverage, fees, subscription plans, late-night availability, grocery delivery via Bolt Market and Wolt Market, and which app to use when.",
     sections: [
       {
         heading: "The three main apps and how they divide the market",
@@ -1539,8 +1586,34 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
         body: "Expected delivery time for a prepared order is 25–45 minutes in the main cities under normal conditions. This stretches to 45–60 minutes during peak hours (Friday and Saturday 7–9pm in Limassol particularly) and can exceed 60 minutes on public holidays or during storms. Bolt Food typically gives the most accurate real-time tracking. Late-night delivery is available but limited: most Cypriot restaurants stop taking delivery orders by 10pm or 11pm. The apps continue to operate until midnight–1am in the larger cities, but the available restaurants after 10pm are largely fast food chains, pizza outlets, and a small number of late-service restaurants. Genuine late-night food variety (post-midnight) is effectively only available in Limassol and occasionally central Nicosia. Ayia Napa in summer is an exception: July–August late-night delivery coverage briefly improves due to seasonal restaurant activity.",
       },
       {
+        heading: "Grocery delivery: Bolt Market and Wolt Market",
+        body: "Both Bolt Food and Wolt have expanded into rapid grocery delivery under Bolt Market and Wolt Market respectively, and both operate in Cyprus. These are not full supermarket replacements — the catalogue is typically 2,000–4,000 SKUs versus 20,000+ in a Sklavenitis — but they cover essentials well: fresh produce, dairy, meat, drinks, cleaning products, and a rotating range of ready meals. Bolt Market promises delivery in 15–20 minutes and is available in Limassol and Nicosia; Wolt Market is present in Limassol and expanding. Prices are 10–20% higher than supermarket shelf prices, and there is a small delivery fee unless you hold a Bolt Pass or Wolt+ subscription, which bundles restaurant and grocery delivery together. The main use case for relocators is the first week in a new apartment — before you have oriented yourself to the nearest supermarket — and for top-up shops rather than a full weekly basket. For a full weekly shop, Sklavenitis or Alphamega in person or via Agora.cy will be cheaper and better stocked.",
+      },
+      {
         heading: "Practical tips for new residents",
         body: "Set your delivery address precisely on first use — Cyprus street addressing is inconsistent, and dropping the pin on the map is more reliable than typing the address. New buildings under 3 years old may not appear in the apps' address databases at all; in that case, add a delivery note with the building name and entry gate instructions. Cash on delivery is available on Foody and Bolt Food at many restaurants; Wolt is predominantly card only. All three apps work in Greek and English — the English UI is complete on all platforms, and most restaurant menus have English translations. For restaurants listing only in Greek, Google Translate's camera function on the menu image is faster than in-app translation. Ratings on Cyprus delivery platforms skew high; anything below 4.3 stars usually indicates a real consistency problem. The photo of the dish is often aspirational rather than literal — this is not unique to Cyprus, but the gap between photo and plate seems wider at local Cypriot restaurants than at chain restaurants.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is the best food delivery app in Cyprus?",
+        a: "Bolt Food is the best all-round option in Cyprus — it has the largest restaurant selection across Limassol, Nicosia, Larnaca, and Paphos, the most accurate tracking, and a Bolt Pass subscription (approximately €5–7/month) that eliminates delivery fees. Wolt is the better choice when you want a reliably good result from a curated restaurant. Foody is worth installing specifically to find independent Cypriot restaurants not listed on the other two platforms.",
+      },
+      {
+        q: "Does Deliveroo operate in Cyprus?",
+        a: "No. Deliveroo does not operate in Cyprus. The three platforms active in Cyprus are Bolt Food, Wolt, and the locally founded Foody. UK expats relocating to Cyprus should expect Bolt Food to be the closest functional equivalent to Deliveroo in terms of coverage and app experience.",
+      },
+      {
+        q: "Is there 24-hour food delivery in Cyprus?",
+        a: "Genuine 24-hour food delivery is not widely available in Cyprus. Most restaurants stop taking delivery orders by 10–11pm. After midnight, delivery options in Limassol are limited to fast food chains, pizza, and a small number of late-service restaurants. Nicosia has some late-night coverage in the city centre. Outside Limassol and Nicosia, post-midnight delivery is effectively unavailable.",
+      },
+      {
+        q: "How much does food delivery cost in Cyprus?",
+        a: "Delivery fees are typically €1–3 per order, with a platform service charge of €0.30–0.70. Most restaurants set a minimum order of €10–12. With a Bolt Pass or Wolt+ subscription (approximately €5–7/month), delivery fees are eliminated on eligible restaurants, which pays for itself in 2–3 orders per week.",
+      },
+      {
+        q: "Does food delivery work in Paphos?",
+        a: "Yes, but with more limited coverage than Limassol or Nicosia. Bolt Food and Wolt both operate in Paphos, with good coverage in Kato Paphos and central Paphos town. Outlying residential areas more than 4–5km from the centre may fall outside delivery zones. Foody has some Paphos listings but a thinner catalogue than in the larger cities.",
       },
     ],
   },
