@@ -2195,6 +2195,114 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
       },
     ],
   },
+  {
+    slug: "long-term-car-rental-cyprus",
+    category: "lifestyle",
+    title: "Long-Term Car Rental in Cyprus 2026 — Monthly Rates, Providers, and What to Know",
+    description: "Everything about renting a car for one month or more in Cyprus — which providers offer monthly rates, what €350–€900/month buys you, what is and isn't included in a long-term contract, and whether renting beats buying a used car for your first year.",
+    sections: [
+      {
+        heading: "Monthly vs daily rentals — they are different products",
+        body: "Most car rental websites in Cyprus are built around 3–14 day holiday rentals. Long-term rental — typically defined as 28 days or more — is a different product with different pricing, different contracts, and usually handled by a different department or a specialist company. Do not expect to price a 60-day stay by multiplying the daily rate by 60. Monthly contracts are priced as a separate category, typically between 40–60% lower on a per-day basis than short-term rates, and they come with dedicated agreements covering mileage limits, maintenance responsibilities, and insurance terms. The main international chains (Hertz, Avis, Budget, Enterprise, Europcar) all have a long-term division in Cyprus and will quote monthly and multi-month rates on request or through their long-term portals. Limassol and Larnaca are the primary hubs; Paphos has fewer options but major chains are present. Local Cypriot operators — Auto Union, Christodoulou Rentals, Astra Car Rental, Thrifty Cyprus, and a handful of independent dealers — often undercut the international chains on monthly rates and are worth getting quotes from.",
+      },
+      {
+        heading: "What to budget: monthly rates in 2026",
+        body: "Rates for monthly rentals in Cyprus in 2026 run roughly as follows. Economy class (Fiat Panda, Toyota Aygo, Hyundai i10): €300–€450/month. Compact class (VW Polo, Toyota Yaris, Opel Corsa): €380–€550/month. Mid-size class (VW Golf, Toyota Corolla, Seat Leon): €500–€750/month. SUV/crossover (Toyota C-HR, Kia Sportage, Hyundai Tucson): €650–€950/month. Premium/large SUV (Toyota RAV4, Volvo XC40, VW Tiguan): €900–€1,400/month. These figures assume a contract of 1–3 months; rates fall further for 6-month and 12-month agreements, sometimes by 15–25% relative to the monthly rate. All major providers increase rates during peak summer months (June through September), when demand from the tourism market competes with long-term contracts. If your timing is flexible, signing a long-term agreement that starts in October or November gives you better rates and more vehicle choice.",
+      },
+      {
+        heading: "What is and is not included",
+        body: "A standard long-term rental in Cyprus typically includes: third-party liability insurance (legally required), Collision Damage Waiver (CDW) with a standard excess of €500–€2,000 depending on the provider and plan, breakdown assistance, routine servicing and tyres for contracts over three months, and road tax (if the vehicle is registered in Cyprus). What is usually not included: personal accident insurance (PAI), theft protection top-up to reduce or eliminate your excess, windscreen and tyre damage (this is almost always excluded from CDW), and fuel. Mileage allowances vary significantly — the most common structures for monthly contracts are 2,000 km/month included (with a per-km charge of €0.08–€0.15 for excess mileage) or unlimited mileage at a slight price premium. If you expect to drive more than 2,500 km per month, clarify the unlimited option upfront; excess mileage charges add up quickly. Many contracts for stays over three months include a vehicle swap or service interval clause — the provider swaps the car for a service if you exceed the manufacturer's service interval during your rental period.",
+      },
+      {
+        heading: "The main providers",
+        body: "Hertz and Avis have the widest fleet variety and the most straightforward online long-term booking portals, but their rates are typically the highest among the options available in Cyprus. Enterprise and Europcar are competitive on price and strong on fleet condition. Budget and Sixt are present in Cyprus and worth getting quotes from. For competitive pricing, local specialists are worth approaching directly: Auto Union (Limassol), Astra Car Rental (Limassol and Larnaca), and Christodoulou Rentals (multiple locations) regularly come out 15–30% cheaper than international chains for 1–3 month contracts. Some local operators offer the option to rent older vehicles (3–5 years) at materially lower rates — typically €230–€380/month for a compact — which is worth considering if your primary need is reliable daily transport rather than a new vehicle. For stays over six months, full operational leasing from companies like Intercar, Autohellas, or Sunseeker (which has a fleet of managed rental vehicles via their property business) can be competitive.",
+      },
+      {
+        heading: "Long-term rental vs buying a used car — which makes sense",
+        body: "The break-even for renting versus buying a used car in Cyprus typically falls around the 9–12 month mark for a mid-range car. A used compact or mid-size car in good condition costs €6,000–€14,000 from a Cypriot dealer, plus registration (if importing), insurance (€500–€1,200/year), annual road tax (€50–€140/year), and maintenance. If you buy for €10,000 and sell after two years, your effective cost assuming 10% depreciation and annual running costs is roughly €2,500–€3,500/year — less than renting a compact car for 12 months. For stays under 12 months, renting wins on simplicity: no registration hassle, no insurance setup, no resale risk, and no capital tied up. For stays over 18 months that look likely to extend, buying makes more sense economically. For a first year in Cyprus when you are still uncertain about your city, neighbourhood, and long-term commitment, renting preserves flexibility and frees up capital for the decisions that matter more — your apartment deposit and initial setup costs.",
+      },
+      {
+        heading: "Practical things they do not tell you",
+        body: "A credit card with a sufficient available limit is almost universally required at pickup for the damage deposit, even if you have paid for full CDW. Most providers require a minimum credit card limit of €1,500–€3,000 at pickup and will not accept debit cards for the security pre-authorisation. Your driving licence must be from a country whose licence Cyprus recognises — EU licences are fully accepted; many non-EU licences (UK, US, Australian, Israeli) are accepted for short periods; for stays over three months on a non-EU licence, check with the provider whether an International Driving Permit is required. Car rental in Cyprus includes VAT at 19% — confirm whether the quoted rate includes VAT or is ex-VAT, as this is often presented inconsistently in quotes. Taking the car to other countries: most standard monthly contracts prohibit taking the vehicle outside Cyprus or restrict travel to EU countries only. If you plan to take a ferry to Greece or drive through a border, clarify this before signing and obtain a written authorisation letter if required. Finally, the fuel policy in Cyprus is almost always full-to-full — return the car with the same fuel level it was handed over with. Providers charge a premium refuelling fee if you return with less fuel.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is a good monthly rental rate for a car in Cyprus in 2026?",
+        a: "Expect to pay €380–€550/month for a compact class car (VW Polo, Toyota Yaris) on a 1–3 month contract from a local provider. International chains typically run €450–€650 for the same class. Economy cars start around €300/month. Mid-size cars and SUVs run €600–€950/month. Rates are lower for 6-month or 12-month agreements and higher during peak summer months.",
+      },
+      {
+        q: "Which companies offer long-term monthly car rental in Cyprus?",
+        a: "All major international chains operate in Cyprus: Hertz, Avis, Budget, Enterprise, Europcar, and Sixt. Local Cypriot providers — Auto Union (Limassol), Astra Car Rental (Limassol and Larnaca), and Christodoulou Rentals — typically offer 15–30% lower rates on monthly contracts. For stays over six months, operational leasing from Intercar or Autohellas is also worth comparing.",
+      },
+      {
+        q: "Can I get a long-term car rental in Cyprus without a credit card?",
+        a: "Unlikely with most major providers. A credit card with a minimum available limit of €1,500–€3,000 is almost always required for the security pre-authorisation at pickup, even if you've purchased full CDW coverage. Some local independent operators accept debit cards, but this is not standard practice. Check before booking if this is a constraint.",
+      },
+      {
+        q: "Is it cheaper to rent long-term or buy a used car in Cyprus for one year?",
+        a: "For a one-year stay, renting and buying are broadly comparable in total cost, but renting wins on simplicity and flexibility. A used compact car can be bought for €7,000–€11,000 and resold, but factoring in registration, insurance, maintenance, and resale risk, the real advantage of buying only emerges for stays of 18 months or more. For a first year in Cyprus when you're still working out your long-term plans, renting preserves flexibility.",
+      },
+      {
+        q: "Can I take a long-term rental car in Cyprus outside the country?",
+        a: "Most standard monthly contracts in Cyprus prohibit taking the vehicle outside Cyprus, or restrict it to EU countries only. Taking the car on a ferry to Greece or crossing into the non-controlled areas of Cyprus typically requires advance written authorisation from the rental provider. Always confirm the geographic restriction clause before signing, and obtain a written letter from the provider if cross-border travel is part of your plans.",
+      },
+    ],
+  },
+  {
+    slug: "property-lawyers-cyprus",
+    category: "property",
+    title: "Property Lawyers in Cyprus 2026 — How to Find One, What They Do, and What It Costs",
+    description: "A practical guide to using a property lawyer when buying in Cyprus — what they do that your estate agent does not, what normal fees look like (1–2% or €1,500–€3,000 fixed), how to find a reputable one, and the red flags that cost buyers tens of thousands of euros.",
+    sections: [
+      {
+        heading: "Why a property lawyer is not optional in Cyprus",
+        body: "Cyprus property law is distinct from most European systems and carries specific risks — developer mortgages, title deed delays, deposited contracts, DLS registration — that are not self-evident and cannot be managed by reading a standard guide. An estate agent in Cyprus is legally prohibited from providing legal advice and is typically paid by the developer or seller, not by you. A notary in Cyprus performs a different function than in continental European systems — a Cypriot notary who signs a property deed is not reviewing the transaction for your protection. The person who is paid to protect your interests, and whose professional indemnity insurance backs that obligation, is your independent property lawyer. The Cyprus Bar Association licenses and regulates property lawyers. Using one is not a bureaucratic formality — it is the mechanism by which you discover whether the property you're buying has an uncleared developer mortgage, whether the title deed exists and matches the unit, whether the seller has authority to sell, and whether your deposit is protected by a deposited contract at the DLS.",
+      },
+      {
+        heading: "What a Cyprus property lawyer actually does",
+        body: "The core work of a Cyprus property lawyer in a residential purchase covers six areas. Due diligence: the lawyer searches the Department of Lands and Surveys (DLS) to confirm the registered owner, check for mortgages or charges on the property, verify that the title deed matches the physical unit, and confirm there are no court orders or restrictions. Contract review and negotiation: the lawyer reviews the sale and purchase agreement before you sign, negotiates clauses protecting your interests (completion dates, retention sums, title deed delivery timeline, deposit protection), and advises you on what provisions are standard and what is missing. DLS contract deposit: within 60 days of signing, the lawyer deposits the contract at the DLS — this is a legal requirement and your primary protection against the developer re-mortgaging or selling the property again. Transfer of title: when the title deed is ready to be transferred (after construction is complete and the developer has cleared their obligations), the lawyer attends the transfer with you at the DLS, pays the applicable transfer fees, and ensures the title is correctly registered in your name. Conveyancing: for mortgage-backed purchases, the lawyer liaises with the bank's legal department. For off-plan purchases, the lawyer tracks the developer's progress against contractual milestones. Ongoing: the lawyer keeps a copy of your deposited contract and can be called on at renewal if issues arise — title deed delays, disputes with the developer, or resale.",
+      },
+      {
+        heading: "What normal fees look like",
+        body: "Cyprus property lawyer fees for a residential purchase follow one of two structures. The more common structure for straightforward transactions is a percentage of the purchase price: typically 1–1.5% for purchases under €500,000, sometimes with a minimum fee floor of €1,500. For a €250,000 apartment, this runs €2,500–€3,750. For complex transactions (off-plan with developer risk, international buyer with foreign currency complications, estates or divorce sales, company-owned property) or purchases over €1 million, fixed-fee structures of €3,000–€6,000 are more common. Both fee structures typically exclude VAT at 19%, the DLS contract deposit fee (€20–€50), and any title deed transfer stamp duty or transfer fees — these are paid separately to the DLS and are not part of the lawyer's fee. Disbursements (land registry search certificates, document translations, courier fees) add a further €200–€500 on average. Be cautious of quotes materially below these ranges — a property lawyer charging €500 flat for a €300,000 purchase is either billing their time at implausible rates or is not performing all the due diligence steps.",
+      },
+      {
+        heading: "How to find a reputable property lawyer",
+        body: "The Cyprus Bar Association (cyprusbar.org) publishes a register of licensed advocates. This is the starting point for verifying that a lawyer is properly licensed and not under any disciplinary proceedings. Beyond verification, the most reliable sources for individual recommendations are: expat community forums (Cyprus Expats on Facebook, r/cyprus on Reddit, Internations Cyprus) where people report specific positive experiences with named lawyers; referrals from independent financial advisors or tax consultants you are already working with in Cyprus (they work with property lawyers regularly and know whose due diligence holds up); and the Limassol, Paphos, and Larnaca expat Facebook groups, where specific lawyer names surface repeatedly in property threads. Look specifically for recommendations that mention DLS due diligence, title deed searches, and deposited contract — these are the procedural markers that distinguish a competent property lawyer from one who mainly reviews contracts and rubber-stamps deals. For UK buyers, the British High Commission in Nicosia maintains an unofficial list of English-speaking Cypriot lawyers — available on request.",
+      },
+      {
+        heading: "Red flags that cost buyers money",
+        body: "The most common mistake in Cyprus property transactions is using the developer's recommended lawyer. In Cyprus, it is entirely legal for a developer to recommend a specific law firm and for that firm to represent the buyer — but the conflict of interest is real and has contributed to some of the most significant buyer losses in Cyprus property history. A lawyer who handles large volumes of work from a single developer is not structurally positioned to advise you that the developer's title deed timeline is unrealistic, that the construction finance mortgage has not been cleared, or that the contract terms are materially weaker than the market standard. Use a lawyer who is independent of the developer and the estate agent. The second major red flag: a lawyer who does not independently search the DLS before contract exchange. Some lawyers in Cyprus review the contract provided by the developer without performing an independent title search — they are relying on the developer's representations rather than the register. Insist on seeing a DLS search certificate for the specific plot or unit before you sign anything. The third flag: any pressure to sign the reservation agreement or pay a deposit before your lawyer has reviewed the contract. A reservation fee of €2,000–€10,000 is typically refundable if you withdraw within a short window, but some developers use non-refundable reservation structures — your lawyer must see these terms before you commit.",
+      },
+      {
+        heading: "Working effectively with your lawyer",
+        body: "Engage your lawyer before you make an offer, not after. The moment you identify a property you are serious about, brief your lawyer — they can perform the initial DLS search within 24–48 hours, which will either confirm the property is clean or surface issues before you are emotionally committed. Provide your lawyer with your full purchasing structure upfront: whether you are buying personally or through a company, your citizenship and tax residency status, whether you need a mortgage, and whether you plan to let the property. All of these affect the contract structure, the applicable transfer fees, and the tax treatment of the purchase. Keep the communication chain clean — all offers and correspondence with the developer or agent should copy your lawyer, and you should not sign any amendment to the contract without lawyer sign-off. After the sale, do not lose contact with your lawyer until the individual title deed is in your name. Title deed transfers can take 12–60 months after completion in off-plan purchases, and your lawyer is the person who tracks the developer's progress and enforces the timeline written into your contract.",
+      },
+    ],
+    faqs: [
+      {
+        q: "How much does a property lawyer cost in Cyprus?",
+        a: "For a standard residential purchase, expect 1–1.5% of the purchase price, with a minimum floor of around €1,500. On a €250,000 apartment this runs €2,500–€3,750 plus VAT at 19%. Fixed-fee structures of €3,000–€5,000 are common for complex transactions or purchases over €500,000. These figures exclude DLS fees, transfer stamp duty, and disbursements.",
+      },
+      {
+        q: "Can I buy property in Cyprus without using a lawyer?",
+        a: "Legally, yes. Practically, it is not advisable. The risks in Cyprus property — uncleared developer mortgages, title deed delays, and inadequate contract terms — are well-documented and have cost buyers large sums. The DLS contract deposit, which is your primary legal protection, requires legal preparation. Even experienced property buyers from other European markets who attempt to manage a Cyprus purchase themselves routinely miss procedural steps that Cypriot lawyers handle as standard.",
+      },
+      {
+        q: "What is a title deed lawyer in Cyprus?",
+        a: "The term 'title deed lawyer' is used colloquially to describe a property lawyer who specifically handles the transfer of individual title deeds at the Department of Lands and Surveys — including the fast-track procedure under Law 139(I)/2015 that allows buyers to obtain a title deed even where the developer's mortgage has not been cleared. If you are buying a property that does not have an individual title deed attached to your specific unit, this is a specific area of expertise to ask about.",
+      },
+      {
+        q: "How long does a property transaction take with a lawyer in Cyprus?",
+        a: "For a standard resale with a clean title, the legal process from instruction to contract exchange is typically 2–4 weeks. The DLS transfer, once the title deed is ready, takes 1–2 weeks to complete after payment of transfer fees. For off-plan purchases, the contractual process completes quickly but the title deed transfer can take 12–60 months after the property is built and handed over, depending on the developer's ability to clear construction finance and obtain DLS approvals.",
+      },
+      {
+        q: "Should I use the developer's recommended lawyer when buying in Cyprus?",
+        a: "No. This is the most common mistake in Cyprus property purchases. A lawyer who handles large volumes of work from a single developer has a structural conflict of interest — they depend on developer referrals and are not positioned to advise you against the developer's interests. Always instruct a lawyer who is independent of the developer and the estate agent, even if the developer asserts that their recommended lawyer is 'experienced with their projects'.",
+      },
+    ],
+  },
 ];
 
 export function guideBySlug(slug: string): GuideInfo | undefined {

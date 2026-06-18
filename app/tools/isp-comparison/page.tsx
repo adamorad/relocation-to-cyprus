@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import IspComparisonClient from "./client";
 
 const SITE_URL = "https://realcy.app";
-const title = "Internet & Mobile Providers in Cyprus";
-const description = "Compare broadband and mobile plans from Cyta, Epic, Primetel, and Cablenet — speeds, prices, and contract terms across Cyprus.";
+const title = "Best Broadband & Mobile Plans in Cyprus 2026 — Cyta, Epic, Primetel, Cablenet";
+const description = "Compare home broadband and mobile plans from all four Cyprus providers. Monthly costs, speeds, contract lengths, and coverage by city — updated 2026 pricing.";
 
 export const metadata: Metadata = {
   title,
