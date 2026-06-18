@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import VisaPathwayFinderClient from "./client";
 
 const SITE_URL = "https://realcy.app";
-const title = "Cyprus Visa Pathway Finder";
-const description = "Answer 2 questions to find the right Cyprus visa or residency route — Digital Nomad Visa, PR by Investment, EU registration, and more.";
+const title = "Cyprus Visa Pathway Finder 2026 — Find Your Route in 2 Questions";
+const description = "Two questions to your Cyprus visa route: EU MEU1 registration, Digital Nomad Visa, Yellow Slip, or Permanent Residency by Investment. Updated 2026 income thresholds and requirements.";
 
 export const metadata: Metadata = {
   title,

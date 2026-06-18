@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import SocialInsuranceCalculatorClient from "./client";
 
 const SITE_URL = "https://realcy.app";
-const title = "Cyprus Social Insurance Calculator";
-const description = "Calculate Cyprus social insurance contributions for employed and self-employed — monthly and annual breakdown.";
+const title = "Cyprus Social Insurance Calculator 2026 — Employee and Self-Employed Contributions";
+const description = "Calculate 2026 Cyprus social insurance and GeSY contributions for employed and self-employed. Shows employee rate, employer rate, and annual totals for any income level.";
 
 export const metadata: Metadata = {
   title,

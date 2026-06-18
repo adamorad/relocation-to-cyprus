@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import RelocationCostEstimatorClient from "./client";
 
 const SITE_URL = "https://realcy.app";
-const title = "Relocation Cost Estimator";
+const title = "Cyprus Relocation Cost Estimator 2026 — What It Costs to Move";
 const description =
-  "Calculate your one-time moving costs to Cyprus — flights, shipping, car import, pet fees, deposits, and more. Get a detailed breakdown from low to high estimate.";
+  "Calculate your one-time costs to relocate to Cyprus — international shipping, car import, visa fees, tenancy deposit, pet import, and more. Itemised low-to-high estimate with 2026 prices.";
 
 export const metadata: Metadata = {
   title,

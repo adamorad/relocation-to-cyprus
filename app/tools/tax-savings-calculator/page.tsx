@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import TaxSavingsCalculatorClient from "./client";
 
 const SITE_URL = "https://realcy.app";
-const title = "Cyprus Tax Savings Calculator";
+const title = "Cyprus Non-Dom Tax Calculator 2026 — See Your Annual Tax Saving";
 const description =
-  "See how much tax you could save by moving to Cyprus. Compare your current country's income tax against Cyprus Standard and Non-Dom regimes side by side.";
+  "Enter your income and source country to calculate your exact tax saving under Cyprus's Non-Dom regime. Side-by-side comparison of income tax, dividend tax, and social insurance vs your current country.";
 
 export const metadata: Metadata = {
   title,
