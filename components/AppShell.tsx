@@ -15,6 +15,7 @@ import {
   MoreHorizontal,
 } from "lucide-react";
 import dynamic from "next/dynamic";
+import { MapNavContext } from "./MapNavContext";
 const FoodPanel = dynamic(() => import("./FoodPanel"), { ssr: false, loading: () => null });
 const HotelsPanel = dynamic(() => import("./HotelsPanel"), { ssr: false, loading: () => null });
 const ShoppingPanel = dynamic(() => import("./ShoppingPanel"), { ssr: false, loading: () => null });
@@ -267,57 +268,6 @@ function SectionTiles({
 
   return (
     <>
-      {/* ── Desktop pill bar (hidden on mobile) ─────────────────────────── */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 z-30 hidden sm:flex items-center gap-1 md:gap-1.5 bg-white/95 backdrop-blur-sm border border-slate-200 border-t-0 rounded-b-xl shadow-md px-2 md:px-3 py-1 md:py-1.5"
-        aria-label="RealCy.app sections"
-        role="navigation"
-      >
-        {DESKTOP_NAV.map((s) => {
-          if (s.kind === "soon") {
-            return null; // no soon tiles on desktop bar
-          }
-          if (s.kind === "available") {
-            return (
-              <button
-                key={s.name}
-                type="button"
-                onClick={handlers[s.name]}
-                aria-haspopup="dialog"
-                aria-expanded={expanded[s.name] ?? false}
-                className="rounded-md bg-slate-900 hover:bg-slate-700 px-2 md:px-3 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-white whitespace-nowrap transition-colors cursor-pointer"
-                title={`${s.name} — click to open`}
-              >
-                {s.name}
-              </button>
-            );
-          }
-          if (s.kind === "link") {
-            return (
-              <Link
-                key={s.name}
-                href={s.href!}
-                className="rounded-md bg-slate-900 hover:bg-slate-700 px-2 md:px-3 py-1 md:py-1.5 text-[10px] md:text-xs font-bold text-white whitespace-nowrap transition-colors"
-                title={`${s.name}`}
-              >
-                {s.name}
-              </Link>
-            );
-          }
-          // current page
-          return (
-            <div
-              key={s.name}
-              className="rounded-md bg-amber-400 text-slate-900 px-2 md:px-3 py-1 md:py-1.5 text-[10px] md:text-xs font-bold whitespace-nowrap"
-              aria-current="page"
-              title={`${s.name} — current section`}
-            >
-              {s.name}
-            </div>
-          );
-        })}
-      </div>
-
       {/* ── Mobile trigger button (visible only on mobile) ───────────────── */}
       <div className="sm:hidden absolute top-0 left-1/2 -translate-x-1/2 z-30 bg-white/95 backdrop-blur-sm border border-slate-200 border-t-0 rounded-b-xl shadow-md">
         <button
@@ -403,6 +353,19 @@ export default function AppShell() {
   };
 
   return (
+    <MapNavContext.Provider value={{
+      onOpenFood: () => { setFoodOpen(true); trackEvent("food_section_open"); },
+      foodOpen,
+      onOpenHotels: () => { setHotelsOpen(true); trackEvent("hotels_section_open"); },
+      hotelsOpen,
+      onOpenShopping: () => { setShoppingOpen(true); trackEvent("shopping_section_open"); },
+      shoppingOpen,
+      onOpenSchools: () => { setSchoolsOpen(true); trackEvent("schools_section_open"); },
+      schoolsOpen,
+      onOpenHealthcare: () => { setHealthcareOpen(true); trackEvent("healthcare_section_open"); },
+      healthcareOpen,
+      onOpenMobileMenu: () => setMobileMenuOpen(true),
+    }}>
     <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? ""}>
     <main
       id="main"
@@ -643,5 +606,6 @@ export default function AppShell() {
       )}
     </main>
     </APIProvider>
+    </MapNavContext.Provider>
   );
 }
