@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Globe, Home, TrendingUp, Users } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { EmailCapture } from "@/components/EmailCapture";
 
 const TOOL_COUNT = 33;
@@ -65,34 +65,59 @@ const CATEGORY_COLOR: Record<string, string> = {
   healthcare: "text-[#35cdc4]",
 };
 
-const TASK_TILES = [
+type SituationGuide = { label: string; href: string };
+type Situation = {
+  num: string;
+  label: string;
+  desc: string;
+  guides: SituationGuide[];
+  tool: { label: string; href: string };
+};
+
+const SITUATIONS: Situation[] = [
   {
     num: "01",
-    heading: "Visas & registration",
-    description: "EU, Digital Nomad, or Permanent Residency",
-    Icon: Globe,
-    href: "/tools/visa-pathway-finder/",
+    label: "Working remotely",
+    desc: "Digital nomad or remote employee relocating for lifestyle and tax",
+    guides: [
+      { label: "Digital Nomad Visa Guide", href: "/guides/digital-nomad-visa-guide/" },
+      { label: "Non-Dom Tax Guide", href: "/guides/non-dom-status-guide/" },
+      { label: "Banking in Cyprus", href: "/guides/banking-in-cyprus/" },
+    ],
+    tool: { label: "Tax Savings Calculator", href: "/tools/tax-savings-calculator/" },
   },
   {
     num: "02",
-    heading: "Find a property",
-    description: "Compare renting vs buying and browse 260+ new builds",
-    Icon: Home,
-    href: "/tools/rent-vs-buy-calculator/",
+    label: "Buying property",
+    desc: "Purchasing a home or investment property in Cyprus",
+    guides: [
+      { label: "Buying Process Guide", href: "/guides/buying-process/" },
+      { label: "Property Lawyers Guide", href: "/guides/property-lawyers-cyprus/" },
+      { label: "Title Deed Status Explained", href: "/guides/title-deed-status-guide/" },
+    ],
+    tool: { label: "Rent vs Buy Calculator", href: "/tools/rent-vs-buy-calculator/" },
   },
   {
     num: "03",
-    heading: "Tax & finances",
-    description: "Calculate your savings under the Cyprus Non-Dom regime",
-    Icon: TrendingUp,
-    href: "/tools/tax-savings-calculator/",
+    label: "Moving with family",
+    desc: "Relocating with children — schools, neighbourhoods, healthcare",
+    guides: [
+      { label: "Best Areas to Live in Cyprus", href: "/guides/best-areas-to-live-cyprus/" },
+      { label: "Schools in Cyprus", href: "/guides/schools-in-cyprus/" },
+      { label: "GeSY Registration Guide", href: "/guides/gesy-registration-guide/" },
+    ],
+    tool: { label: "Monthly Budget Builder", href: "/tools/budget-builder/" },
   },
   {
     num: "04",
-    heading: "Schools & healthcare",
-    description: "Find international schools and register with GeSY",
-    Icon: Users,
-    href: "/tools/school-finder/",
+    label: "Retiring or long stay",
+    desc: "Pension income, residency options, and life in Cyprus long-term",
+    guides: [
+      { label: "Retiring in Cyprus", href: "/guides/retiring-in-cyprus/" },
+      { label: "Cost of Living Guide", href: "/guides/cost-of-living/" },
+      { label: "Residency and Visas", href: "/guides/residency-and-visas/" },
+    ],
+    tool: { label: "Visa Pathway Finder", href: "/tools/visa-pathway-finder/" },
   },
 ];
 
@@ -228,42 +253,58 @@ export default function HomeHub({ totalListings, totalGuides, totalSections, fea
         </div>
       </section>
 
-      {/* ── Section 2: Task Entry ─────────────────────────────────── */}
-      <section className="hub-warm pt-14 pb-4">
+      {/* ── Section 2: Situation Selector ────────────────────────── */}
+      <section className="hub-warm pt-14 pb-10">
         <div className="max-w-5xl mx-auto px-6">
-          <div className="flex items-baseline justify-between mb-10">
-            <div>
-              <p className="text-[10px] uppercase tracking-[0.28em] text-[#C4733A] font-semibold">
-                Where to start
-              </p>
-              <h2 className="text-2xl md:text-3xl font-[family-name:var(--font-lora)] text-[#1C1917] mt-1.5">
-                Find what you need
-              </h2>
-            </div>
+          <div className="mb-10">
+            <p className="text-[10px] uppercase tracking-[0.28em] text-[#C4733A] font-semibold">
+              Where to start
+            </p>
+            <h2 className="text-2xl md:text-3xl font-[family-name:var(--font-lora)] text-[#1C1917] mt-1.5">
+              What kind of move are you planning?
+            </h2>
           </div>
 
-          {/* Numbered editorial rows */}
-          <div ref={taskRef} className={`divide-y divide-[#E8E2D9] ${taskVisible ? "stagger-visible" : ""}`}>
-            {TASK_TILES.map(({ num, heading, description, Icon, href }) => (
-              <Link
-                key={href}
-                href={href}
-                className="group flex items-center gap-6 py-5 -mx-6 px-6 hover:bg-[#F0EAE0] transition-colors"
-              >
-                <span aria-hidden="true" className="font-[family-name:var(--font-lora)] text-3xl font-medium text-[#D4C9BC] w-10 flex-shrink-0 tabular-nums leading-none group-hover:text-[#C4733A] transition-colors">
-                  {num}
-                </span>
-                <Icon className="w-4 h-4 text-slate-400 flex-shrink-0 hidden sm:block" />
-                <div className="flex-1 min-w-0">
-                  <p className="text-base font-semibold text-[#1C1917] group-hover:text-[#1C1917]">
-                    {heading}
-                  </p>
-                  <p className="text-sm text-slate-500 mt-0.5">{description}</p>
+          <div ref={taskRef} className={`grid md:grid-cols-2 gap-px bg-[#E8E2D9] border border-[#E8E2D9] rounded-xl overflow-hidden ${taskVisible ? "stagger-visible" : ""}`}>
+            {SITUATIONS.map((s) => (
+              <div key={s.num} className="bg-[#FAFAF8] p-6 flex flex-col gap-4">
+                {/* Header */}
+                <div className="flex items-start gap-3">
+                  <span className="font-[family-name:var(--font-lora)] text-2xl font-medium text-[#D4C9BC] tabular-nums leading-none flex-shrink-0 mt-0.5">
+                    {s.num}
+                  </span>
+                  <div>
+                    <p className="text-base font-semibold text-[#1C1917] leading-snug">{s.label}</p>
+                    <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">{s.desc}</p>
+                  </div>
                 </div>
-                <span className="text-xs font-semibold text-[#35cdc4] flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
-                  Get started →
-                </span>
-              </Link>
+
+                {/* Guide links */}
+                <ul className="space-y-1.5 pl-9">
+                  {s.guides.map((g) => (
+                    <li key={g.href}>
+                      <Link
+                        href={g.href}
+                        className="group flex items-center gap-1.5 text-sm text-[#1C1917] hover:text-[#35cdc4] transition-colors"
+                      >
+                        <span className="text-[#D4C9BC] group-hover:text-[#35cdc4] transition-colors text-xs">→</span>
+                        {g.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Tool chip */}
+                <div className="pl-9">
+                  <Link
+                    href={s.tool.href}
+                    className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-[#35cdc4] border border-[#35cdc4]/30 bg-[#35cdc4]/5 hover:bg-[#35cdc4]/10 px-2.5 py-1 rounded-full transition-colors"
+                  >
+                    <ArrowRight className="w-3 h-3" />
+                    {s.tool.label}
+                  </Link>
+                </div>
+              </div>
             ))}
           </div>
         </div>
