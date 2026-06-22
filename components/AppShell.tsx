@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useMapNav } from "./MapNavContext";
 import Link from "next/link";
 import {
   Map,
@@ -15,7 +16,6 @@ import {
   MoreHorizontal,
 } from "lucide-react";
 import dynamic from "next/dynamic";
-import { MapNavContext } from "./MapNavContext";
 const FoodPanel = dynamic(() => import("./FoodPanel"), { ssr: false, loading: () => null });
 const HotelsPanel = dynamic(() => import("./HotelsPanel"), { ssr: false, loading: () => null });
 const ShoppingPanel = dynamic(() => import("./ShoppingPanel"), { ssr: false, loading: () => null });
@@ -290,19 +290,19 @@ function SectionTiles({
 // ── Main shell ────────────────────────────────────────────────────────────────
 
 export default function AppShell() {
+  const nav = useMapNav()!;
   const [mapMode, setMapMode] = useState<"illustrated" | "google">("illustrated");
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
   const [modalRegion, setModalRegion] = useState<string | null>(null);
   const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
-  const [selectedListing, setSelectedListing] = useState<EnrichedListing | null>(
-    null,
-  );
-  const [foodOpen, setFoodOpen] = useState(false);
-  const [shoppingOpen, setShoppingOpen] = useState(false);
-  const [hotelsOpen, setHotelsOpen] = useState(false);
-  const [schoolsOpen, setSchoolsOpen] = useState(false);
-  const [healthcareOpen, setHealthcareOpen] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [selectedListing, setSelectedListing] = useState<EnrichedListing | null>(null);
+
+  // Signal to the header that the map is active
+  useEffect(() => {
+    nav.activateMap();
+    return () => nav.deactivateMap();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (selectedRegion === null) {
@@ -330,79 +330,36 @@ export default function AppShell() {
 
   const mobileHandlers: Record<string, (() => void) | undefined> = {
     "New Developments": undefined,
-    Hotels: () => {
-      setHotelsOpen(true);
-      trackEvent("hotels_section_open");
-    },
-    Food: () => {
-      setFoodOpen(true);
-      trackEvent("food_section_open");
-    },
-    Shopping: () => {
-      setShoppingOpen(true);
-      trackEvent("shopping_section_open");
-    },
-    Schools: () => {
-      setSchoolsOpen(true);
-      trackEvent("schools_section_open");
-    },
-    Healthcare: () => {
-      setHealthcareOpen(true);
-      trackEvent("healthcare_section_open");
-    },
+    Hotels: nav.openHotels,
+    Food: nav.openFood,
+    Shopping: nav.openShopping,
+    Schools: nav.openSchools,
+    Healthcare: nav.openHealthcare,
   };
 
   return (
-    <MapNavContext.Provider value={{
-      onOpenFood: () => { setFoodOpen(true); trackEvent("food_section_open"); },
-      foodOpen,
-      onOpenHotels: () => { setHotelsOpen(true); trackEvent("hotels_section_open"); },
-      hotelsOpen,
-      onOpenShopping: () => { setShoppingOpen(true); trackEvent("shopping_section_open"); },
-      shoppingOpen,
-      onOpenSchools: () => { setSchoolsOpen(true); trackEvent("schools_section_open"); },
-      schoolsOpen,
-      onOpenHealthcare: () => { setHealthcareOpen(true); trackEvent("healthcare_section_open"); },
-      healthcareOpen,
-      onOpenMobileMenu: () => setMobileMenuOpen(true),
-    }}>
     <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? ""}>
     <main
       id="main"
       className={`relative w-full text-slate-900 ${mapMode === "google" ? "h-screen overflow-hidden bg-[#aadaff]" : "md:h-screen md:overflow-hidden bg-[#35cdc4]"}`}
     >
       <SectionTiles
-        foodOpen={foodOpen}
-        onOpenFood={() => {
-          setFoodOpen(true);
-          trackEvent("food_section_open");
-        }}
-        shoppingOpen={shoppingOpen}
-        onOpenShopping={() => {
-          setShoppingOpen(true);
-          trackEvent("shopping_section_open");
-        }}
-        hotelsOpen={hotelsOpen}
-        onOpenHotels={() => {
-          setHotelsOpen(true);
-          trackEvent("hotels_section_open");
-        }}
-        schoolsOpen={schoolsOpen}
-        onOpenSchools={() => {
-          setSchoolsOpen(true);
-          trackEvent("schools_section_open");
-        }}
-        healthcareOpen={healthcareOpen}
-        onOpenHealthcare={() => {
-          setHealthcareOpen(true);
-          trackEvent("healthcare_section_open");
-        }}
-        onOpenMobileMenu={() => setMobileMenuOpen(true)}
+        foodOpen={nav.foodOpen}
+        onOpenFood={nav.openFood}
+        shoppingOpen={nav.shoppingOpen}
+        onOpenShopping={nav.openShopping}
+        hotelsOpen={nav.hotelsOpen}
+        onOpenHotels={nav.openHotels}
+        schoolsOpen={nav.schoolsOpen}
+        onOpenSchools={nav.openSchools}
+        healthcareOpen={nav.healthcareOpen}
+        onOpenHealthcare={nav.openHealthcare}
+        onOpenMobileMenu={nav.openMobileMenu}
       />
 
       <MobileDrawer
-        open={mobileMenuOpen}
-        onClose={() => setMobileMenuOpen(false)}
+        open={nav.mobileMenuOpen}
+        onClose={nav.closeMobileMenu}
         handlers={mobileHandlers}
       />
 
@@ -555,46 +512,31 @@ export default function AppShell() {
       />
 
       <FoodPanel
-        open={foodOpen}
-        onClose={() => {
-          setFoodOpen(false);
-          trackEvent("food_section_close");
-        }}
+        open={nav.foodOpen}
+        onClose={nav.closeFood}
       />
 
       <ShoppingPanel
-        open={shoppingOpen}
-        onClose={() => {
-          setShoppingOpen(false);
-          trackEvent("shopping_section_close");
-        }}
+        open={nav.shoppingOpen}
+        onClose={nav.closeShopping}
       />
 
       <HotelsPanel
-        open={hotelsOpen}
-        onClose={() => {
-          setHotelsOpen(false);
-          trackEvent("hotels_section_close");
-        }}
+        open={nav.hotelsOpen}
+        onClose={nav.closeHotels}
       />
 
       <SchoolsPanel
-        open={schoolsOpen}
-        onClose={() => {
-          setSchoolsOpen(false);
-          trackEvent("schools_section_close");
-        }}
+        open={nav.schoolsOpen}
+        onClose={nav.closeSchools}
       />
 
       <HealthcarePanel
-        open={healthcareOpen}
-        onClose={() => {
-          setHealthcareOpen(false);
-          trackEvent("healthcare_section_close");
-        }}
+        open={nav.healthcareOpen}
+        onClose={nav.closeHealthcare}
       />
 
-      {!foodOpen && !shoppingOpen && !hotelsOpen && !schoolsOpen && !healthcareOpen && (
+      {!nav.foodOpen && !nav.shoppingOpen && !nav.hotelsOpen && !nav.schoolsOpen && !nav.healthcareOpen && (
         <div className="hidden md:flex absolute bottom-[60px] left-1/2 -translate-x-1/2 z-20 flex-col items-center gap-1.5 pointer-events-none animate-bounce">
           <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-white/60">
             Scroll
@@ -606,6 +548,5 @@ export default function AppShell() {
       )}
     </main>
     </APIProvider>
-    </MapNavContext.Provider>
   );
 }

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { CookieConsentManager } from "@/components/CookieConsentManager";
 import { EmailCapture } from "@/components/EmailCapture";
 import { SiteHeader } from "@/components/SiteHeader";
+import { MapNavProvider } from "@/components/MapNavContext";
 import { REGIONS } from "@/lib/regions";
 import { GUIDES } from "@/lib/guides";
 import { SECTIONS_INDEX } from "@/lib/sections-index";
@@ -282,8 +283,10 @@ export default function RootLayout({
         <a href="#main" className="skip-to-content">
           Skip to content
         </a>
-        <SiteHeader />
-        {children}
+        <MapNavProvider>
+          <SiteHeader />
+          {children}
+        </MapNavProvider>
         <SiteFooter />
         <CookieConsentManager gaId={GA_ID} pixelId={META_PIXEL_ID} />
       </body>

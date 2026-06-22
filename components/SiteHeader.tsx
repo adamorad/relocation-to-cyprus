@@ -3,7 +3,8 @@ import Link from "next/link";
 import { useMapNav } from "./MapNavContext";
 
 export function SiteHeader() {
-  const mapNav = useMapNav();
+  const nav = useMapNav();
+  const mapActive = nav?.mapActive ?? false;
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-slate-100">
@@ -15,7 +16,7 @@ export function SiteHeader() {
           RealCy.app
         </Link>
 
-        {mapNav ? (
+        {mapActive ? (
           /* ── Homepage: section tiles inline ──────────────────────── */
           <nav className="flex items-center gap-1 overflow-x-auto" aria-label="Site sections">
             <div
@@ -26,11 +27,11 @@ export function SiteHeader() {
             </div>
             {(
               [
-                { name: "Hotels",     handler: mapNav.onOpenHotels },
-                { name: "Food",       handler: mapNav.onOpenFood },
-                { name: "Shopping",   handler: mapNav.onOpenShopping },
-                { name: "Schools",    handler: mapNav.onOpenSchools },
-                { name: "Healthcare", handler: mapNav.onOpenHealthcare },
+                { name: "Hotels",     handler: nav!.openHotels },
+                { name: "Food",       handler: nav!.openFood },
+                { name: "Shopping",   handler: nav!.openShopping },
+                { name: "Schools",    handler: nav!.openSchools },
+                { name: "Healthcare", handler: nav!.openHealthcare },
               ] as const
             ).map(({ name, handler }) => (
               <button
