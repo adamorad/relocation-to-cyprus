@@ -20,9 +20,9 @@ const SITE_URL = "https://realcy.app";
 const FEATURED_GUIDE_SLUGS = [
   "taxes-for-expats",
   "residency-and-visas",
+  "best-areas-to-live-cyprus",
+  "retiring-in-cyprus",
   "cost-of-living",
-  "banking-in-cyprus",
-  "title-deed-status-guide",
   "digital-nomad-visa-guide",
 ];
 
