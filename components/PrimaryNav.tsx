@@ -1,12 +1,33 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { isActive, PRIMARY_NAV } from "@/lib/nav-links";
 
 export function PrimaryNav() {
 	const pathname = usePathname() ?? "/";
 	const [open, setOpen] = useState(false);
+	const triggerRef = useRef<HTMLButtonElement>(null);
+	const closeRef = useRef<HTMLButtonElement>(null);
+
+	// When the drawer is open: lock body scroll, move focus into the drawer,
+	// close on Escape, and restore focus to the hamburger on close.
+	useEffect(() => {
+		if (!open) return;
+		const trigger = triggerRef.current;
+		closeRef.current?.focus();
+		const onKeyDown = (e: KeyboardEvent) => {
+			if (e.key === "Escape") setOpen(false);
+		};
+		document.addEventListener("keydown", onKeyDown);
+		const prevOverflow = document.body.style.overflow;
+		document.body.style.overflow = "hidden";
+		return () => {
+			document.removeEventListener("keydown", onKeyDown);
+			document.body.style.overflow = prevOverflow;
+			trigger?.focus();
+		};
+	}, [open]);
 
 	return (
 		<>
@@ -47,6 +68,7 @@ export function PrimaryNav() {
 
 			{/* Mobile hamburger */}
 			<button
+				ref={triggerRef}
 				type="button"
 				className="md:hidden inline-flex items-center justify-center rounded-md p-2 text-slate-700 hover:bg-slate-100"
 				aria-label={open ? "Close menu" : "Open menu"}
@@ -92,6 +114,7 @@ export function PrimaryNav() {
 						aria-label="Primary mobile"
 					>
 						<button
+							ref={closeRef}
 							type="button"
 							className="self-end mb-4 rounded-md p-2 text-slate-700 hover:bg-slate-100"
 							aria-label="Close menu"

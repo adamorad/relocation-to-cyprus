@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import ToolsIndexClient from "./client";
 
 export const metadata: Metadata = {
@@ -34,16 +35,13 @@ export default function ToolsIndexPage() {
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
 			/>
 			<main id="main" className="max-w-4xl mx-auto px-6 py-10 md:py-16">
-				<nav className="text-xs text-slate-600 mb-6">
-					<Link href="/" className="hover:text-slate-900">
-						Home
-					</Link>{" "}
-					&rsaquo;{" "}
-					<Link href="/explore/" className="hover:text-slate-900">
-						Explore
-					</Link>{" "}
-					&rsaquo; <span className="text-slate-900">Tools</span>
-				</nav>
+				<Breadcrumbs
+					items={[
+						{ label: "Home", href: "/" },
+						{ label: "Explore", href: "/explore/" },
+						{ label: "Tools" },
+					]}
+				/>
 
 				<header className="mb-10">
 					<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
