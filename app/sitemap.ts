@@ -36,7 +36,6 @@ const TOOL_SLUGS = [
 	"school-finder",
 	"pet-import-checklist",
 	"drivers-licence-exchange",
-	"gesy-registration",
 	"rental-price-trends",
 ];
 

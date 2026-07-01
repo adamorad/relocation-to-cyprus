@@ -291,15 +291,6 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
 		category: "Visa & Residency",
 	},
 	{
-		href: "/tools/gesy-registration/",
-		title: "GeSY Registration Guide",
-		description:
-			"Step-by-step wizard for registering with Cyprus's General Healthcare System (GeSY). Covers prerequisites, online and in-person registration options, GP selection, co-payments table, family registration, and an interactive contribution calculator with all 2025 employment-status rates.",
-		tag: "Healthcare",
-		tagColor: "bg-red-100 text-red-800",
-		category: "Visa & Residency",
-	},
-	{
 		href: "/tools/rental-price-trends/",
 		title: "Cyprus Rental Price Trends",
 		description:
