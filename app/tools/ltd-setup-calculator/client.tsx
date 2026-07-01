@@ -286,9 +286,9 @@ export default function LtdSetupCalculatorClient() {
 				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
 					Business
 				</p>
-				<h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
+				<h2 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
 					Cyprus Ltd Setup Cost Calculator
-				</h1>
+				</h2>
 				<p className="mt-3 text-slate-600 text-sm leading-relaxed max-w-2xl">
 					Estimate the one-time registration costs and annual running costs of a
 					Cyprus limited company based on your specific situation.

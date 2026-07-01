@@ -262,9 +262,9 @@ export default function FreelancerVsCompanyPage() {
 				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold mb-2">
 					Tools
 				</p>
-				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+				<h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
 					Freelancer vs Cyprus Ltd
-				</h1>
+				</h2>
 				<p className="mt-3 text-lg text-slate-600 leading-relaxed">
 					Answer 6 questions to get a personalised recommendation: Sole Trader,
 					Cyprus Ltd, or a Holding Structure — with estimated tax rates.
