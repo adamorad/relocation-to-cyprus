@@ -32,7 +32,7 @@ const GUIDE_CATEGORY_TOOLS: Record<GuideCategory, Array<{ slug: string; title: s
     { slug: "visa-renewal-reminder", title: "Visa & Document Renewal Reminder" },
   ],
   tax: [
-    { slug: "tax-residency-planner", title: "60-Day Tax Residency Planner" },
+    { slug: "tax-residency-tracker", title: "60-Day Tax Residency Tracker" },
     { slug: "tax-filing-calendar", title: "Annual Tax Filing Calendar" },
     { slug: "double-tax-treaty-finder", title: "Double Tax Treaty Finder" },
     { slug: "freelancer-vs-company", title: "Freelancer vs Company Calculator" },
@@ -44,10 +44,10 @@ const GUIDE_CATEGORY_TOOLS: Record<GuideCategory, Array<{ slug: string; title: s
   ],
   property: [
     { slug: "rent-vs-buy-calculator", title: "Rent vs Buy Calculator" },
-    { slug: "neighborhood-comparison", title: "Neighbourhood Comparison" },
+    { slug: "city-comparison", title: "City Comparison" },
   ],
   family: [
-    { slug: "neighborhood-comparison", title: "Neighbourhood Comparison" },
+    { slug: "city-comparison", title: "City Comparison" },
     { slug: "health-insurance-comparison", title: "Health Insurance Comparison" },
   ],
   healthcare: [
@@ -56,14 +56,14 @@ const GUIDE_CATEGORY_TOOLS: Record<GuideCategory, Array<{ slug: string; title: s
   ],
   transport: [
     { slug: "flight-connectivity", title: "Flight Connectivity" },
-    { slug: "neighborhood-comparison", title: "Neighbourhood Comparison" },
+    { slug: "city-comparison", title: "City Comparison" },
   ],
   lifestyle: [
     { slug: "events-calendar", title: "Annual Events & Festivals" },
-    { slug: "neighborhood-comparison", title: "Neighbourhood Comparison" },
+    { slug: "city-comparison", title: "City Comparison" },
   ],
   environment: [
-    { slug: "neighborhood-comparison", title: "Neighbourhood Comparison" },
+    { slug: "city-comparison", title: "City Comparison" },
   ],
 };
 

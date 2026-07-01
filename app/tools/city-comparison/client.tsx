@@ -133,7 +133,7 @@ function getCellColor(
   return "bg-amber-50 text-amber-800";
 }
 
-export default function NeighborhoodComparisonPage() {
+export default function CityComparisonClient() {
   const [selected, setSelected] = useState<Set<City>>(
     new Set(["Limassol", "Paphos", "Larnaca"]),
   );
@@ -169,7 +169,7 @@ export default function NeighborhoodComparisonPage() {
           Tools
         </p>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900">
-          Neighborhood Comparison
+          City Comparison
         </h1>
         <p className="mt-2 text-slate-600 text-sm leading-relaxed">
           Compare key metrics across Cyprus cities side by side. Select 2–5

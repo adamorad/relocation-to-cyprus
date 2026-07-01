@@ -28,7 +28,7 @@ const PHASES: Phase[] = [
       {
         id: "p1_tax_rule",
         label: "Research the 60-day vs 183-day tax residency rule",
-        link: { href: "/tools/tax-residency-planner/", text: "Tax Residency Planner" },
+        link: { href: "/tools/tax-residency-tracker/", text: "Tax Residency Tracker" },
       },
       {
         id: "p1_treaty",
@@ -38,7 +38,7 @@ const PHASES: Phase[] = [
       {
         id: "p1_city",
         label: "Research which city suits your lifestyle",
-        link: { href: "/tools/neighborhood-comparison/", text: "Neighbourhood Comparison" },
+        link: { href: "/tools/city-comparison/", text: "City Comparison" },
       },
       {
         id: "p1_budget",
@@ -481,7 +481,7 @@ export default function RelocationTrackerClient() {
             Build your budget →
           </Link>
           <Link
-            href="/tools/neighborhood-comparison/"
+            href="/tools/city-comparison/"
             className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
           >
             Compare cities →

@@ -30,8 +30,8 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
 		category: "Property & Rent",
 	},
 	{
-		href: "/tools/neighborhood-comparison/",
-		title: "Neighbourhood Comparison",
+		href: "/tools/city-comparison/",
+		title: "City Comparison",
 		description:
 			"Side-by-side comparison of Limassol, Paphos, Larnaca, Nicosia, and Ayia Napa across 10 metrics including rent, property prices, schools, nightlife, and cost of living.",
 		tag: "Research",
@@ -57,7 +57,7 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
 		category: "Visa & Residency",
 	},
 	{
-		href: "/tools/tax-residency-planner/",
+		href: "/tools/tax-residency-tracker/",
 		title: "Cyprus 60-Day Tax Residency Planner",
 		description:
 			"Check whether you qualify for Cyprus tax residency under the 183-day rule or the 60-day rule. See which conditions pass or fail in real time.",
@@ -201,7 +201,7 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
 		category: "Property & Rent",
 	},
 	{
-		href: "/tools/relocation-tracker/",
+		href: "/tools/relocation-checklist/",
 		title: "Relocation Progress Tracker",
 		description:
 			"A 32-task checklist covering pre-move planning, arrival week, month one, and settling in. Persistent progress saved in your browser.",
@@ -237,7 +237,7 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
 		category: "Tax & Contributions",
 	},
 	{
-		href: "/tools/relocation-cost-estimator/",
+		href: "/tools/relocation-cost-calculator/",
 		title: "Relocation Cost Estimator",
 		description:
 			"Calculate your one-time moving costs to Cyprus — flights, shipping containers, car import, pet fees, rental deposits, furnishing, and legal fees. Get a full itemised breakdown with low/midpoint/high ranges and a 10% contingency buffer.",

@@ -380,10 +380,10 @@ export default function PriceBenchmarkerClient() {
             Rent vs Buy Calculator
           </Link>
           <Link
-            href="/tools/neighborhood-comparison/"
+            href="/tools/city-comparison/"
             className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
           >
-            Neighbourhood Comparison
+            City Comparison
           </Link>
         </div>
       </aside>

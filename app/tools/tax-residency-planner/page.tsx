@@ -1,35 +1,25 @@
-import type { Metadata } from "next";
-import TaxResidencyPlannerClient from "./client";
+import Link from "next/link";
 
-const SITE_URL = "https://realcy.app";
-const title = "Cyprus 60-Day Tax Residency Planner";
-const description = "Check if you qualify for Cyprus tax residency under the 60-day rule — track your days in Cyprus against the annual threshold.";
+const NEW_PATH = "/tools/tax-residency-tracker/";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/tools/tax-residency-planner/" },
-  openGraph: { title, description, url: `${SITE_URL}/tools/tax-residency-planner/`, type: "website" },
+export const metadata = {
+  title: "Moved",
+  robots: { index: false, follow: true },
+  alternates: { canonical: `https://realcy.app${NEW_PATH}` },
 };
 
-export default function TaxResidencyPlannerPage() {
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-      { "@type": "ListItem", position: 2, name: "Tools", item: `${SITE_URL}/tools/` },
-      { "@type": "ListItem", position: 3, name: title },
-    ],
-  };
+export default function MovedPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <TaxResidencyPlannerClient />
+      <meta httpEquiv="refresh" content={`0; url=${NEW_PATH}`} />
+      <main id="main" className="max-w-xl mx-auto px-6 py-16 text-center">
+        <p className="text-slate-700">
+          This tool has moved.{" "}
+          <Link href={NEW_PATH} className="text-[#35cdc4] font-semibold underline">
+            Continue to the new page →
+          </Link>
+        </p>
+      </main>
     </>
   );
 }

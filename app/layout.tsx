@@ -237,7 +237,7 @@ function SiteFooter() {
 					<ul className="mt-3 space-y-2">
 						{[
 							{ slug: "rent-vs-buy-calculator", label: "Rent vs Buy" },
-							{ slug: "tax-residency-planner", label: "Tax Residency" },
+							{ slug: "tax-residency-tracker", label: "Tax Residency" },
 							{ slug: "visa-pathway-finder", label: "Visa Finder" },
 							{ slug: "banking-fee-comparison", label: "Banking Fees" },
 						].map((t) => (

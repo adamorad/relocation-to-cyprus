@@ -129,10 +129,10 @@ const FEATURED_TOOLS = [
     href: "/tools/tax-savings-calculator/",
   },
   {
-    name: "Relocation Cost Estimator",
+    name: "Relocation Cost Calculator",
     description: "Full itemised moving budget",
     tag: "Finance",
-    href: "/tools/relocation-cost-estimator/",
+    href: "/tools/relocation-cost-calculator/",
   },
   {
     name: "Social Insurance Calculator",
