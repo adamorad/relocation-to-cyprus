@@ -311,6 +311,22 @@ function SiteFooter() {
 								Sitemap
 							</Link>
 						</li>
+						<li>
+							<Link
+								href="/my-shortlist/"
+								className="hover:text-white transition-colors"
+							>
+								Saved Shortlist
+							</Link>
+						</li>
+						<li>
+							<Link
+								href="/developers/"
+								className="hover:text-white transition-colors"
+							>
+								Developers
+							</Link>
+						</li>
 					</ul>
 				</nav>
 			</div>
