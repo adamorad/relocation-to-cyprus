@@ -60,7 +60,7 @@ export const metadata: Metadata = {
 		template: `%s · ${SITE_NAME}`,
 	},
 	description:
-		"RealCy.app — your portal for anything Cyprus. Browse new-build apartments and villas on an interactive map. 30+ service directories, 33 relocation tools, and 68 in-depth guides.",
+		"RealCy.app — your portal for anything Cyprus. Browse new-build apartments and villas on an interactive map. 30+ service directories, 31 relocation tools, and 68 in-depth guides.",
 	keywords: [
 		"Cyprus real estate",
 		"Cyprus new developments",
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
 		siteName: SITE_NAME,
 		title: `${SITE_NAME} - ${SITE_TAGLINE}`,
 		description:
-			"Your portal to Cyprus — new-build real estate, 30+ service directories, 33 relocation tools, and 68 in-depth guides.",
+			"Your portal to Cyprus — new-build real estate, 30+ service directories, 31 relocation tools, and 68 in-depth guides.",
 		images: [
 			{
 				url: "https://realcy.app/og-default.webp",
@@ -94,7 +94,7 @@ export const metadata: Metadata = {
 		card: "summary_large_image",
 		title: `${SITE_NAME} - ${SITE_TAGLINE}`,
 		description:
-			"Your portal to Cyprus — new-build real estate, 30+ service directories, 33 relocation tools, and 68 in-depth guides.",
+			"Your portal to Cyprus — new-build real estate, 30+ service directories, 31 relocation tools, and 68 in-depth guides.",
 		images: ["https://realcy.app/og-default.webp"],
 	},
 	robots: {
@@ -237,7 +237,7 @@ function SiteFooter() {
 					<ul className="mt-3 space-y-2">
 						{[
 							{ slug: "rent-vs-buy-calculator", label: "Rent vs Buy" },
-							{ slug: "tax-residency-planner", label: "Tax Residency" },
+							{ slug: "tax-residency-tracker", label: "Tax Residency" },
 							{ slug: "visa-pathway-finder", label: "Visa Finder" },
 							{ slug: "banking-fee-comparison", label: "Banking Fees" },
 						].map((t) => (

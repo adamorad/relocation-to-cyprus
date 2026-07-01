@@ -1,46 +1,28 @@
-import type { Metadata } from "next";
-import RelocationTrackerClient from "./client";
+import Link from "next/link";
 
-const SITE_URL = "https://realcy.app";
-const title = "Cyprus Relocation Progress Tracker — 32-Task Checklist";
-const description =
-  "Track your relocation journey from planning to settling in. Persistent checklist saved in your browser. Four phases: pre-move planning, arrival week, month one, and settling in.";
+const NEW_PATH = "/tools/relocation-checklist/";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/tools/relocation-tracker/" },
-  openGraph: {
-    title,
-    description,
-    url: `${SITE_URL}/tools/relocation-tracker/`,
-    type: "website",
-  },
+export const metadata = {
+	title: "Moved",
+	robots: { index: false, follow: true },
+	alternates: { canonical: `https://realcy.app${NEW_PATH}` },
 };
 
-export default function RelocationTrackerPage() {
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: `${SITE_URL}/tools/`,
-      },
-      { "@type": "ListItem", position: 3, name: title },
-    ],
-  };
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <RelocationTrackerClient />
-    </>
-  );
+export default function MovedPage() {
+	return (
+		<>
+			<meta httpEquiv="refresh" content={`0; url=${NEW_PATH}`} />
+			<main id="main" className="max-w-xl mx-auto px-6 py-16 text-center">
+				<p className="text-slate-700">
+					This tool has moved.{" "}
+					<Link
+						href={NEW_PATH}
+						className="text-[#35cdc4] font-semibold underline"
+					>
+						Continue to the new page →
+					</Link>
+				</p>
+			</main>
+		</>
+	);
 }

@@ -525,7 +525,7 @@ const PET_OPTIONS: { value: string; label: string }[] = [
   { value: "2", label: "2+ pets" },
 ];
 
-export default function RelocationCostEstimatorClient() {
+export default function RelocationCostCalculatorClient() {
   // inputs
   const [origin, setOrigin] = useState<OriginRegion>("Europe");
   const [adults, setAdults] = useState(2);

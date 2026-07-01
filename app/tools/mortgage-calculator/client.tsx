@@ -380,7 +380,7 @@ export default function MortgageCalculatorClient() {
             Browse the property map →
           </Link>
           <Link
-            href="/tools/tax-residency-planner/"
+            href="/tools/tax-residency-tracker/"
             className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
           >
             Tax Residency Planner →

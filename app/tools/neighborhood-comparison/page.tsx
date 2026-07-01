@@ -1,35 +1,28 @@
-import type { Metadata } from "next";
-import NeighborhoodComparisonClient from "./client";
+import Link from "next/link";
 
-const SITE_URL = "https://realcy.app";
-const title = "Cyprus Neighbourhood Comparison Tool";
-const description = "Compare all 5 Cyprus cities side by side — rent, property prices, international schools, beach access, expat community, and more.";
+const NEW_PATH = "/tools/city-comparison/";
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/tools/neighborhood-comparison/" },
-  openGraph: { title, description, url: `${SITE_URL}/tools/neighborhood-comparison/`, type: "website" },
+export const metadata = {
+	title: "Moved",
+	robots: { index: false, follow: true },
+	alternates: { canonical: `https://realcy.app${NEW_PATH}` },
 };
 
-export default function NeighborhoodComparisonPage() {
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-      { "@type": "ListItem", position: 2, name: "Tools", item: `${SITE_URL}/tools/` },
-      { "@type": "ListItem", position: 3, name: title },
-    ],
-  };
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <NeighborhoodComparisonClient />
-    </>
-  );
+export default function MovedPage() {
+	return (
+		<>
+			<meta httpEquiv="refresh" content={`0; url=${NEW_PATH}`} />
+			<main id="main" className="max-w-xl mx-auto px-6 py-16 text-center">
+				<p className="text-slate-700">
+					This tool has moved.{" "}
+					<Link
+						href={NEW_PATH}
+						className="text-[#35cdc4] font-semibold underline"
+					>
+						Continue to the new page →
+					</Link>
+				</p>
+			</main>
+		</>
+	);
 }

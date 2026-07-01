@@ -1,91 +1,104 @@
 import type { Metadata } from "next";
 import AppShell from "@/components/AppShell";
 import HomeHub from "@/components/HomeHub";
-import { LISTINGS } from "@/lib/listingsData";
 import { GUIDES } from "@/lib/guides";
+import { LISTINGS } from "@/lib/listingsData";
 import { SECTIONS_INDEX } from "@/lib/sections-index";
 
 export const metadata: Metadata = {
-  title: {
-    absolute:
-      "RealCy.app - Your Cyprus Portal | New Developments, Relocation & More",
-  },
-  description:
-    "RealCy.app — your portal for anything Cyprus. Browse 260+ new-build developments on an interactive map. 30+ service directories, 33 relocation tools, and 68 in-depth guides.",
-  alternates: { canonical: "/" },
+	title: {
+		absolute:
+			"RealCy.app - Your Cyprus Portal | New Developments, Relocation & More",
+	},
+	description:
+		"RealCy.app — your portal for anything Cyprus. Browse 260+ new-build developments on an interactive map. 30+ service directories, 31 relocation tools, and 68 in-depth guides.",
+	alternates: { canonical: "/" },
 };
 
 const SITE_URL = "https://realcy.app";
 
 const FEATURED_GUIDE_SLUGS = [
-  "taxes-for-expats",
-  "residency-and-visas",
-  "best-areas-to-live-cyprus",
-  "retiring-in-cyprus",
-  "cost-of-living",
-  "digital-nomad-visa-guide",
+	"taxes-for-expats",
+	"residency-and-visas",
+	"best-areas-to-live-cyprus",
+	"retiring-in-cyprus",
+	"cost-of-living",
+	"digital-nomad-visa-guide",
 ];
 
 export default function Home() {
-  const websiteJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "RealCy.app",
-    alternateName: "RealCy",
-    url: SITE_URL,
-    description:
-      "Your portal for anything Cyprus — new-build real estate, relocation guides, interactive tools, and curated service directories.",
-    publisher: { "@type": "Organization", name: "RealCy.app" },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: { "@type": "EntryPoint", urlTemplate: `${SITE_URL}/explore/?q={search_term_string}` },
-      "query-input": "required name=search_term_string",
-    },
-  };
-  const orgJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "RealCy.app",
-    url: SITE_URL,
-    logo: `${SITE_URL}/apple-touch-icon.png`,
-    description:
-      "Independent Cyprus relocation portal — new-build real estate, 30+ service directories, 33 relocation tools, and 68 in-depth guides.",
-    sameAs: [],
-  };
-  const itemList = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "Cyprus new developments",
-    numberOfItems: LISTINGS.length,
-    itemListElement: LISTINGS.slice(0, 50).map((l, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      url: `${SITE_URL}/listings/${l.slug}/`,
-      name: l.title,
-    })),
-  };
-  const featuredGuides = FEATURED_GUIDE_SLUGS.map((slug) => {
-    const g = GUIDES.find((g) => g.slug === slug);
-    return g ? { slug: g.slug, title: g.title, category: g.category, description: g.description } : null;
-  }).filter((g): g is NonNullable<typeof g> => g !== null);
+	const websiteJsonLd = {
+		"@context": "https://schema.org",
+		"@type": "WebSite",
+		name: "RealCy.app",
+		alternateName: "RealCy",
+		url: SITE_URL,
+		description:
+			"Your portal for anything Cyprus — new-build real estate, relocation guides, interactive tools, and curated service directories.",
+		publisher: { "@type": "Organization", name: "RealCy.app" },
+		potentialAction: {
+			"@type": "SearchAction",
+			target: {
+				"@type": "EntryPoint",
+				urlTemplate: `${SITE_URL}/explore/?q={search_term_string}`,
+			},
+			"query-input": "required name=search_term_string",
+		},
+	};
+	const orgJsonLd = {
+		"@context": "https://schema.org",
+		"@type": "Organization",
+		name: "RealCy.app",
+		url: SITE_URL,
+		logo: `${SITE_URL}/apple-touch-icon.png`,
+		description:
+			"Independent Cyprus relocation portal — new-build real estate, 30+ service directories, 31 relocation tools, and 68 in-depth guides.",
+		sameAs: [],
+	};
+	const itemList = {
+		"@context": "https://schema.org",
+		"@type": "ItemList",
+		name: "Cyprus new developments",
+		numberOfItems: LISTINGS.length,
+		itemListElement: LISTINGS.slice(0, 50).map((l, i) => ({
+			"@type": "ListItem",
+			position: i + 1,
+			url: `${SITE_URL}/listings/${l.slug}/`,
+			name: l.title,
+		})),
+	};
+	const featuredGuides = FEATURED_GUIDE_SLUGS.map((slug) => {
+		const g = GUIDES.find((g) => g.slug === slug);
+		return g
+			? {
+					slug: g.slug,
+					title: g.title,
+					category: g.category,
+					description: g.description,
+				}
+			: null;
+	}).filter((g): g is NonNullable<typeof g> => g !== null);
 
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([websiteJsonLd, orgJsonLd, itemList]),
-        }}
-      />
-      <AppShell />
-      <h1 className="sr-only">Cyprus New Developments, Relocation Guides and Non-Dom Tax Tools | RealCy.app</h1>
-      <HomeHub
-        totalListings={LISTINGS.length}
-        totalGuides={GUIDES.length}
-        totalSections={SECTIONS_INDEX.length}
-        featuredGuides={featuredGuides}
-      />
-    </>
-  );
+	return (
+		<>
+			<script
+				type="application/ld+json"
+				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify([websiteJsonLd, orgJsonLd, itemList]),
+				}}
+			/>
+			<AppShell />
+			<h1 className="sr-only">
+				Cyprus New Developments, Relocation Guides and Non-Dom Tax Tools |
+				RealCy.app
+			</h1>
+			<HomeHub
+				totalListings={LISTINGS.length}
+				totalGuides={GUIDES.length}
+				totalSections={SECTIONS_INDEX.length}
+				featuredGuides={featuredGuides}
+			/>
+		</>
+	);
 }

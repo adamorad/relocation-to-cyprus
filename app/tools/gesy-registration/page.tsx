@@ -1,45 +1,26 @@
-import type { Metadata } from "next";
-import GeSYClient from "./client";
+import Link from "next/link";
 
-const SITE_URL = "https://realcy.app";
-const title = "GeSY Registration Guide";
-const description =
-  "Step-by-step guide to registering with Cyprus's General Healthcare System (GeSY). Calculate your contributions, understand co-payments, and navigate the registration process.";
-
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/tools/gesy-registration/" },
-  openGraph: {
-    title,
-    description,
-    url: SITE_URL + "/tools/gesy-registration/",
-    type: "website",
-  },
+const NEW_PATH = "/guides/gesy-registration-guide/";
+export const metadata = {
+	title: "Moved",
+	robots: { index: false, follow: true },
+	alternates: { canonical: `https://realcy.app${NEW_PATH}` },
 };
-
-export default function GeSYPage() {
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL + "/" },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: SITE_URL + "/tools/",
-      },
-      { "@type": "ListItem", position: 3, name: title },
-    ],
-  };
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <GeSYClient />
-    </>
-  );
+export default function MovedPage() {
+	return (
+		<>
+			<meta httpEquiv="refresh" content={`0; url=${NEW_PATH}`} />
+			<main id="main" className="max-w-xl mx-auto px-6 py-16 text-center">
+				<p className="text-slate-700">
+					This has moved to our GeSY guide.{" "}
+					<Link
+						href={NEW_PATH}
+						className="text-[#35cdc4] font-semibold underline"
+					>
+						Read the guide →
+					</Link>
+				</p>
+			</main>
+		</>
+	);
 }

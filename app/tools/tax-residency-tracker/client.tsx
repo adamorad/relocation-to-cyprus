@@ -158,7 +158,7 @@ function YesNoField({
   );
 }
 
-export default function TaxResidencyPlannerPage() {
+export default function TaxResidencyPlannerClient() {
   const [daysInCyprus, setDaysInCyprus] = useState(75);
   const [daysInOtherCountry, setDaysInOtherCountry] = useState(120);
   const [hasPermanentHome, setHasPermanentHome] = useState(true);

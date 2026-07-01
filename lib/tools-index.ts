@@ -30,8 +30,8 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
 		category: "Property & Rent",
 	},
 	{
-		href: "/tools/neighborhood-comparison/",
-		title: "Neighbourhood Comparison",
+		href: "/tools/city-comparison/",
+		title: "City Comparison",
 		description:
 			"Side-by-side comparison of Limassol, Paphos, Larnaca, Nicosia, and Ayia Napa across 10 metrics including rent, property prices, schools, nightlife, and cost of living.",
 		tag: "Research",
@@ -57,7 +57,7 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
 		category: "Visa & Residency",
 	},
 	{
-		href: "/tools/tax-residency-planner/",
+		href: "/tools/tax-residency-tracker/",
 		title: "Cyprus 60-Day Tax Residency Planner",
 		description:
 			"Check whether you qualify for Cyprus tax residency under the 183-day rule or the 60-day rule. See which conditions pass or fail in real time.",
@@ -102,12 +102,12 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
 		category: "Tax & Contributions",
 	},
 	{
-		href: "/tools/freelancer-vs-company/",
-		title: "Freelancer vs Company Calculator",
+		href: "/tools/sole-trader-vs-ltd/",
+		title: "Sole Trader vs Ltd",
 		description:
-			"Compare operating as a self-employed freelancer versus a Cyprus limited company on take-home pay, tax obligations, and administrative burden.",
-		tag: "Finance",
-		tagColor: "bg-blue-100 text-blue-800",
+			"Compare take-home pay as a Cyprus sole trader versus a Cyprus Ltd, then estimate the one-time and annual costs of setting up and running a limited company — two tools in one.",
+		tag: "Business",
+		tagColor: "bg-orange-100 text-orange-800",
 		category: "Work & Business",
 	},
 	{
@@ -201,7 +201,7 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
 		category: "Property & Rent",
 	},
 	{
-		href: "/tools/relocation-tracker/",
+		href: "/tools/relocation-checklist/",
 		title: "Relocation Progress Tracker",
 		description:
 			"A 32-task checklist covering pre-move planning, arrival week, month one, and settling in. Persistent progress saved in your browser.",
@@ -237,22 +237,13 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
 		category: "Tax & Contributions",
 	},
 	{
-		href: "/tools/relocation-cost-estimator/",
+		href: "/tools/relocation-cost-calculator/",
 		title: "Relocation Cost Estimator",
 		description:
 			"Calculate your one-time moving costs to Cyprus — flights, shipping containers, car import, pet fees, rental deposits, furnishing, and legal fees. Get a full itemised breakdown with low/midpoint/high ranges and a 10% contingency buffer.",
 		tag: "Finance",
 		tagColor: "bg-blue-100 text-blue-800",
 		category: "Cost & Budget",
-	},
-	{
-		href: "/tools/ltd-setup-calculator/",
-		title: "Cyprus Ltd Setup Cost Calculator",
-		description:
-			"Estimate the one-time registration costs and annual running costs of a Cyprus limited company based on your specific situation — directors, residency, turnover, VAT, and business type.",
-		tag: "Business",
-		tagColor: "bg-orange-100 text-orange-800",
-		category: "Work & Business",
 	},
 	{
 		href: "/tools/neighbourhood-explorer/",
@@ -297,15 +288,6 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
 			"Find out if you can directly exchange your foreign driving licence in Cyprus or whether you need to take theory and practical tests. Includes costs, required documents, and step-by-step guidance.",
 		tag: "Bureaucracy",
 		tagColor: "bg-purple-100 text-purple-800",
-		category: "Visa & Residency",
-	},
-	{
-		href: "/tools/gesy-registration/",
-		title: "GeSY Registration Guide",
-		description:
-			"Step-by-step wizard for registering with Cyprus's General Healthcare System (GeSY). Covers prerequisites, online and in-person registration options, GP selection, co-payments table, family registration, and an interactive contribution calculator with all 2025 employment-status rates.",
-		tag: "Healthcare",
-		tagColor: "bg-red-100 text-red-800",
 		category: "Visa & Residency",
 	},
 	{
