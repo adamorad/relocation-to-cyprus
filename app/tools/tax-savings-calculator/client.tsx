@@ -824,10 +824,10 @@ export default function TaxSavingsCalculatorClient() {
             Double Tax Treaty Finder →
           </Link>
           <Link
-            href="/tools/freelancer-vs-company/"
+            href="/tools/sole-trader-vs-ltd/"
             className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
           >
-            Freelancer vs Company →
+            Sole Trader vs Ltd →
           </Link>
         </div>
       </aside>

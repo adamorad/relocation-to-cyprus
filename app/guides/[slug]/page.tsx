@@ -35,10 +35,10 @@ const GUIDE_CATEGORY_TOOLS: Record<GuideCategory, Array<{ slug: string; title: s
     { slug: "tax-residency-tracker", title: "60-Day Tax Residency Tracker" },
     { slug: "tax-filing-calendar", title: "Annual Tax Filing Calendar" },
     { slug: "double-tax-treaty-finder", title: "Double Tax Treaty Finder" },
-    { slug: "freelancer-vs-company", title: "Freelancer vs Company Calculator" },
+    { slug: "sole-trader-vs-ltd", title: "Sole Trader vs Ltd" },
   ],
   business: [
-    { slug: "freelancer-vs-company", title: "Freelancer vs Company Calculator" },
+    { slug: "sole-trader-vs-ltd", title: "Sole Trader vs Ltd" },
     { slug: "grants-finder", title: "Grants & Incentives Finder" },
     { slug: "banking-fee-comparison", title: "Banking Fee Comparison" },
   ],

@@ -1,35 +1,26 @@
-import type { Metadata } from "next";
-import FreelancerVsCompanyClient from "./client";
+import Link from "next/link";
 
-const SITE_URL = "https://realcy.app";
-const title = "Freelancer vs Cyprus Ltd Calculator";
-const description = "Compare after-tax take-home pay as a Cyprus sole trader vs a Cyprus Ltd — input your income and see a full breakdown.";
-
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/tools/freelancer-vs-company/" },
-  openGraph: { title, description, url: `${SITE_URL}/tools/freelancer-vs-company/`, type: "website" },
+const NEW_PATH = "/tools/sole-trader-vs-ltd/";
+export const metadata = {
+	title: "Moved",
+	robots: { index: false, follow: true },
+	alternates: { canonical: `https://realcy.app${NEW_PATH}` },
 };
-
-export default function FreelancerVsCompanyPage() {
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-      { "@type": "ListItem", position: 2, name: "Tools", item: `${SITE_URL}/tools/` },
-      { "@type": "ListItem", position: 3, name: title },
-    ],
-  };
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <FreelancerVsCompanyClient />
-    </>
-  );
+export default function MovedPage() {
+	return (
+		<>
+			<meta httpEquiv="refresh" content={`0; url=${NEW_PATH}`} />
+			<main id="main" className="max-w-xl mx-auto px-6 py-16 text-center">
+				<p className="text-slate-700">
+					This tool has moved.{" "}
+					<Link
+						href={NEW_PATH}
+						className="text-[#35cdc4] font-semibold underline"
+					>
+						Continue to the new page →
+					</Link>
+				</p>
+			</main>
+		</>
+	);
 }

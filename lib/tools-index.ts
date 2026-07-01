@@ -102,12 +102,12 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
 		category: "Tax & Contributions",
 	},
 	{
-		href: "/tools/freelancer-vs-company/",
-		title: "Freelancer vs Company Calculator",
+		href: "/tools/sole-trader-vs-ltd/",
+		title: "Sole Trader vs Ltd",
 		description:
-			"Compare operating as a self-employed freelancer versus a Cyprus limited company on take-home pay, tax obligations, and administrative burden.",
-		tag: "Finance",
-		tagColor: "bg-blue-100 text-blue-800",
+			"Compare take-home pay as a Cyprus sole trader versus a Cyprus Ltd, then estimate the one-time and annual costs of setting up and running a limited company — two tools in one.",
+		tag: "Business",
+		tagColor: "bg-orange-100 text-orange-800",
 		category: "Work & Business",
 	},
 	{
@@ -244,15 +244,6 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
 		tag: "Finance",
 		tagColor: "bg-blue-100 text-blue-800",
 		category: "Cost & Budget",
-	},
-	{
-		href: "/tools/ltd-setup-calculator/",
-		title: "Cyprus Ltd Setup Cost Calculator",
-		description:
-			"Estimate the one-time registration costs and annual running costs of a Cyprus limited company based on your specific situation — directors, residency, turnover, VAT, and business type.",
-		tag: "Business",
-		tagColor: "bg-orange-100 text-orange-800",
-		category: "Work & Business",
 	},
 	{
 		href: "/tools/neighbourhood-explorer/",
