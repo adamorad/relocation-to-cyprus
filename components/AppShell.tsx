@@ -322,69 +322,6 @@ function MobileDrawer({
 	);
 }
 
-// ── Desktop pill bar + mobile trigger ─────────────────────────────────────────
-
-function SectionTiles({
-	onOpenFood,
-	foodOpen,
-	onOpenShopping,
-	shoppingOpen,
-	onOpenHotels,
-	hotelsOpen,
-	onOpenSchools,
-	schoolsOpen,
-	onOpenHealthcare,
-	healthcareOpen,
-	onOpenMobileMenu,
-}: {
-	onOpenFood: () => void;
-	foodOpen: boolean;
-	onOpenShopping: () => void;
-	shoppingOpen: boolean;
-	onOpenHotels: () => void;
-	hotelsOpen: boolean;
-	onOpenSchools: () => void;
-	schoolsOpen: boolean;
-	onOpenHealthcare: () => void;
-	healthcareOpen: boolean;
-	onOpenMobileMenu: () => void;
-}) {
-	const handlers: Record<string, () => void> = {
-		Food: onOpenFood,
-		Shopping: onOpenShopping,
-		Hotels: onOpenHotels,
-		Schools: onOpenSchools,
-		Healthcare: onOpenHealthcare,
-	};
-	const expanded: Record<string, boolean> = {
-		Food: foodOpen,
-		Shopping: shoppingOpen,
-		Hotels: hotelsOpen,
-		Schools: schoolsOpen,
-		Healthcare: healthcareOpen,
-	};
-
-	return (
-		<>
-			{/* ── Category filter trigger (floating on the map, all sizes) ───────── */}
-			<div className="absolute top-3 left-3 z-30 bg-white/95 backdrop-blur-sm border border-slate-200 rounded-xl shadow-md">
-				<button
-					type="button"
-					onClick={onOpenMobileMenu}
-					className="flex items-center gap-2 px-4 py-2.5 text-xs font-bold text-slate-900"
-					aria-label="Open categories menu"
-					aria-haspopup="dialog"
-				>
-					<span className="text-sm leading-none" aria-hidden>
-						☰
-					</span>
-					<span>Categories</span>
-				</button>
-			</div>
-		</>
-	);
-}
-
 // ── Main shell ────────────────────────────────────────────────────────────────
 
 export default function AppShell() {
@@ -398,9 +335,20 @@ export default function AppShell() {
 	const [selectedListing, setSelectedListing] =
 		useState<EnrichedListing | null>(null);
 
-	// Signal to the header that the map is active
+	// Signal to the header that the map is active, and open a panel if the
+	// header navigated here with ?open=<category> from another page.
+	// biome-ignore lint/correctness/useExhaustiveDependencies: mount-only; nav handlers are stable useCallbacks
 	useEffect(() => {
 		nav.activateMap();
+		const openers: Record<string, () => void> = {
+			food: nav.openFood,
+			shopping: nav.openShopping,
+			healthcare: nav.openHealthcare,
+			hotels: nav.openHotels,
+			schools: nav.openSchools,
+		};
+		const requested = new URLSearchParams(window.location.search).get("open");
+		if (requested && openers[requested]) openers[requested]();
 		return () => nav.deactivateMap();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
@@ -444,20 +392,6 @@ export default function AppShell() {
 				id="main"
 				className={`relative w-full text-slate-900 ${mapMode === "google" ? "h-screen overflow-hidden bg-[#aadaff]" : "md:h-screen md:overflow-hidden bg-[#35cdc4]"}`}
 			>
-				<SectionTiles
-					foodOpen={nav.foodOpen}
-					onOpenFood={nav.openFood}
-					shoppingOpen={nav.shoppingOpen}
-					onOpenShopping={nav.openShopping}
-					hotelsOpen={nav.hotelsOpen}
-					onOpenHotels={nav.openHotels}
-					schoolsOpen={nav.schoolsOpen}
-					onOpenSchools={nav.openSchools}
-					healthcareOpen={nav.healthcareOpen}
-					onOpenHealthcare={nav.openHealthcare}
-					onOpenMobileMenu={nav.openMobileMenu}
-				/>
-
 				<MobileDrawer
 					open={nav.mobileMenuOpen}
 					onClose={nav.closeMobileMenu}
