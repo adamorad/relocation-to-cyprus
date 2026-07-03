@@ -599,7 +599,7 @@ export default function HomeHub({
 						</p>
 					</div>
 					<div className="bg-white/8 border border-white/10 rounded-xl p-6">
-						<EmailCapture source="homepage" />
+						<EmailCapture source="homepage" onDark />
 					</div>
 				</div>
 			</section>
