@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { useMapNav } from "./MapNavContext";
 
 type CatKey = "new" | "food" | "shopping" | "healthcare" | "hotels" | "schools";
@@ -162,81 +163,84 @@ export function PrimaryNav() {
 				</svg>
 			</button>
 
-			{/* Shared "More" drawer (all sizes) */}
-			{open && (
-				<div
-					role="dialog"
-					aria-modal="true"
-					aria-label="Menu"
-					className="fixed inset-0 z-50"
-				>
-					<button
-						type="button"
-						aria-label="Close menu"
-						className="absolute inset-0 bg-black/40 cursor-default"
-						onClick={() => setOpen(false)}
-					/>
-					<nav
-						className="absolute right-0 top-0 h-full w-72 max-w-[80%] bg-white shadow-xl p-6 flex flex-col gap-1 overflow-y-auto"
-						aria-label="All sections"
+			{/* Shared "More" drawer — portaled to <body> so the header's
+			    backdrop-filter doesn't trap the drawer's fixed positioning */}
+			{open &&
+				createPortal(
+					<div
+						role="dialog"
+						aria-modal="true"
+						aria-label="Menu"
+						className="fixed inset-0 z-50"
 					>
 						<button
-							ref={closeRef}
 							type="button"
-							className="self-end mb-2 rounded-md p-2 text-slate-700 hover:bg-slate-100"
 							aria-label="Close menu"
+							className="absolute inset-0 bg-black/40 cursor-default"
 							onClick={() => setOpen(false)}
+						/>
+						<nav
+							className="absolute right-0 top-0 h-full w-72 max-w-[80%] bg-white shadow-xl p-6 flex flex-col gap-1 overflow-y-auto"
+							aria-label="All sections"
 						>
-							<svg
-								width="20"
-								height="20"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								strokeWidth="2"
-								aria-hidden="true"
-							>
-								<path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
-							</svg>
-						</button>
-
-						<p className="px-3 text-[10px] font-bold uppercase tracking-wider text-slate-400">
-							On the map
-						</p>
-						{DRAWER_CATS.map((c) => (
 							<button
-								key={c.key}
+								ref={closeRef}
 								type="button"
-								onClick={() => selectCat(c.key)}
-								className="text-left rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+								className="self-end mb-2 rounded-md p-2 text-slate-700 hover:bg-slate-100"
+								aria-label="Close menu"
+								onClick={() => setOpen(false)}
 							>
-								{c.label}
+								<svg
+									width="20"
+									height="20"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									strokeWidth="2"
+									aria-hidden="true"
+								>
+									<path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
+								</svg>
 							</button>
-						))}
 
-						<p className="mt-3 px-3 text-[10px] font-bold uppercase tracking-wider text-slate-400">
-							Browse
-						</p>
-						{DRAWER_LINKS.map((l) => (
+							<p className="px-3 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+								On the map
+							</p>
+							{DRAWER_CATS.map((c) => (
+								<button
+									key={c.key}
+									type="button"
+									onClick={() => selectCat(c.key)}
+									className="text-left rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+								>
+									{c.label}
+								</button>
+							))}
+
+							<p className="mt-3 px-3 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+								Browse
+							</p>
+							{DRAWER_LINKS.map((l) => (
+								<Link
+									key={l.href}
+									href={l.href}
+									onClick={() => setOpen(false)}
+									className="rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+								>
+									{l.label}
+								</Link>
+							))}
 							<Link
-								key={l.href}
-								href={l.href}
+								href="/my-shortlist/"
 								onClick={() => setOpen(false)}
 								className="rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
 							>
-								{l.label}
+								Saved Shortlist
 							</Link>
-						))}
-						<Link
-							href="/my-shortlist/"
-							onClick={() => setOpen(false)}
-							className="rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
-						>
-							Saved Shortlist
-						</Link>
-					</nav>
-				</div>
-			)}
+						</nav>
+					</div>,
+					document.body,
+				)}
 		</>
 	);
 }
