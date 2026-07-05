@@ -90,10 +90,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		})),
 		...GUIDES.map((g) => ({
 			url: `${SITE_URL}/guides/${g.slug}/`,
-			lastModified: now,
+			lastModified: new Date(g.dateModified),
 			changeFrequency: "monthly" as const,
 			priority: 0.8,
 		})),
+		{
+			url: `${SITE_URL}/regions/`,
+			lastModified: now,
+			changeFrequency: "monthly" as const,
+			priority: 0.6,
+		},
+		{
+			url: `${SITE_URL}/listings/`,
+			lastModified: now,
+			changeFrequency: "monthly" as const,
+			priority: 0.6,
+		},
+		{
+			url: `${SITE_URL}/advertise/`,
+			lastModified: now,
+			changeFrequency: "monthly" as const,
+			priority: 0.6,
+		},
 		...allListings().map((l) => ({
 			url: `${SITE_URL}/listings/${l.slug}/`,
 			lastModified: now,

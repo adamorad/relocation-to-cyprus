@@ -12,6 +12,7 @@ import { SECTIONS_INDEX } from "@/lib/sections-index";
 import { TOOLS } from "@/lib/tools-index";
 
 const TOOL_COUNT = TOOLS.length;
+const GUIDE_COUNT = GUIDES.length;
 import "./globals.css";
 
 const lora = Lora({
@@ -59,8 +60,7 @@ export const metadata: Metadata = {
 		default: `${SITE_NAME} - ${SITE_TAGLINE}`,
 		template: `%s · ${SITE_NAME}`,
 	},
-	description:
-		"RealCy.app — your portal for anything Cyprus. Browse new-build apartments and villas on an interactive map. 30+ service directories, 31 relocation tools, and 68 in-depth guides.",
+	description: `RealCy.app — your portal for anything Cyprus. Browse new-build apartments and villas on an interactive map. 30+ service directories, 31 relocation tools, and ${GUIDE_COUNT} in-depth guides.`,
 	keywords: [
 		"Cyprus real estate",
 		"Cyprus new developments",
@@ -79,8 +79,7 @@ export const metadata: Metadata = {
 		locale: "en_GB",
 		siteName: SITE_NAME,
 		title: `${SITE_NAME} - ${SITE_TAGLINE}`,
-		description:
-			"Your portal to Cyprus — new-build real estate, 30+ service directories, 31 relocation tools, and 68 in-depth guides.",
+		description: `Your portal to Cyprus — new-build real estate, 30+ service directories, 31 relocation tools, and ${GUIDE_COUNT} in-depth guides.`,
 		images: [
 			{
 				url: "https://realcy.app/og-default.webp",
@@ -93,8 +92,7 @@ export const metadata: Metadata = {
 	twitter: {
 		card: "summary_large_image",
 		title: `${SITE_NAME} - ${SITE_TAGLINE}`,
-		description:
-			"Your portal to Cyprus — new-build real estate, 30+ service directories, 31 relocation tools, and 68 in-depth guides.",
+		description: `Your portal to Cyprus — new-build real estate, 30+ service directories, 31 relocation tools, and ${GUIDE_COUNT} in-depth guides.`,
 		images: ["https://realcy.app/og-default.webp"],
 	},
 	robots: {
