@@ -9,6 +9,7 @@
  */
 
 import { GUIDES_BATCH1 } from "./guides-batch1";
+import { GUIDES_BATCH2 } from "./guides-batch2";
 
 export type GuideCategory =
 	| "immigration"
@@ -2821,6 +2822,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		],
 	},
 	...GUIDES_BATCH1,
+	...GUIDES_BATCH2,
 ];
 
 export function guideBySlug(slug: string): GuideInfo | undefined {
