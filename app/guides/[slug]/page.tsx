@@ -285,7 +285,9 @@ export default async function GuidePage({
 				{g.sections.map((s) => (
 					<section key={s.heading} id={toId(s.heading)} className="mt-6">
 						<h2 className="text-xl font-bold mb-2">{s.heading}</h2>
-						<p className="text-slate-700 leading-relaxed">{s.body}</p>
+						<p className="text-slate-700 leading-relaxed whitespace-pre-line">
+							{s.body}
+						</p>
 					</section>
 				))}
 			</article>

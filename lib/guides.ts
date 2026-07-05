@@ -8,6 +8,8 @@
  * accountant or lawyer before acting.
  */
 
+import { GUIDES_BATCH1 } from "./guides-batch1";
+
 export type GuideCategory =
 	| "immigration"
 	| "tax"
@@ -2818,6 +2820,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 		],
 	},
+	...GUIDES_BATCH1,
 ];
 
 export function guideBySlug(slug: string): GuideInfo | undefined {
