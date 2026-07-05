@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import SoleTraderVsLtdClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -47,6 +48,13 @@ export default function SoleTraderVsLtdPage() {
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+			/>
+			<script
+				type="application/ld+json"
+				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(toolWebAppJsonLd("sole-trader-vs-ltd")),
+				}}
 			/>
 			<main id="main" className="max-w-4xl mx-auto px-6 py-10 md:py-16">
 				<Breadcrumbs
