@@ -1,47 +1,60 @@
 import type { Metadata } from "next";
+import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 import { CHILDCARE_TIPS } from "@/lib/childcare";
 import ChildcareNurseriesClient from "./client";
-import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
 
 const SITE_URL = "https://realcy.app";
 const title = "Childcare & Nurseries in Cyprus";
-const description = "Registered nurseries and pre-schools with English instruction across all districts.";
+const description =
+	"Childcare & nurseries in Cyprus for relocators — registered venues with English instruction across Limassol, Paphos, Larnaca & Nicosia.";
 
 export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/sections/childcare-nurseries/" },
-  openGraph: { title, description, url: `${SITE_URL}/sections/childcare-nurseries/`, type: "website" },
+	title,
+	description,
+	alternates: { canonical: "/sections/childcare-nurseries/" },
+	openGraph: {
+		title,
+		description,
+		url: `${SITE_URL}/sections/childcare-nurseries/`,
+		type: "website",
+	},
 };
 
 export default function ChildcareNurseriesPage() {
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: CHILDCARE_TIPS.map((t) => ({
-      "@type": "Question",
-      name: t.heading,
-      acceptedAnswer: { "@type": "Answer", text: t.body },
-    })),
-  };
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-      { "@type": "ListItem", position: 2, name: "Directories", item: `${SITE_URL}/sections/` },
-      { "@type": "ListItem", position: 3, name: title },
-    ],
-  };
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([faqJsonLd, breadcrumbJsonLd]) }}
-      />
-      <ChildcareNurseriesClient />
-      <SectionRelatedGuides sectionSlug="childcare-nurseries" />
-    </>
-  );
+	const faqJsonLd = {
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+		mainEntity: CHILDCARE_TIPS.map((t) => ({
+			"@type": "Question",
+			name: t.heading,
+			acceptedAnswer: { "@type": "Answer", text: t.body },
+		})),
+	};
+	const breadcrumbJsonLd = {
+		"@context": "https://schema.org",
+		"@type": "BreadcrumbList",
+		itemListElement: [
+			{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+			{
+				"@type": "ListItem",
+				position: 2,
+				name: "Directories",
+				item: `${SITE_URL}/sections/`,
+			},
+			{ "@type": "ListItem", position: 3, name: title },
+		],
+	};
+	return (
+		<>
+			<script
+				type="application/ld+json"
+				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify([faqJsonLd, breadcrumbJsonLd]),
+				}}
+			/>
+			<ChildcareNurseriesClient />
+			<SectionRelatedGuides sectionSlug="childcare-nurseries" />
+		</>
+	);
 }
