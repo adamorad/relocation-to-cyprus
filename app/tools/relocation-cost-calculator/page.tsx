@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import RelocationCostCalculatorClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -40,6 +41,15 @@ export default function RelocationCostCalculatorPage() {
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+			/>
+			<script
+				type="application/ld+json"
+				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(
+						toolWebAppJsonLd("relocation-cost-calculator"),
+					),
+				}}
 			/>
 			<RelocationCostCalculatorClient />
 		</>

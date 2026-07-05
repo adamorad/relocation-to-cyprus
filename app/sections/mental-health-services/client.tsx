@@ -151,7 +151,7 @@ export default function MentalHealthServicesPage() {
 					Mental Health Services in Cyprus
 					<br />
 					<span className="text-2xl md:text-3xl font-semibold text-slate-600">
-						English-Speaking Therapists
+						Private Clinics & English-Speaking Therapists
 					</span>
 				</h1>
 				<p className="mt-4 text-base text-slate-700 leading-relaxed max-w-2xl">

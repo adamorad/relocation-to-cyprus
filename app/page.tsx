@@ -5,13 +5,14 @@ import { GUIDES } from "@/lib/guides";
 import { LISTINGS } from "@/lib/listingsData";
 import { SECTIONS_INDEX } from "@/lib/sections-index";
 
+const GUIDE_COUNT = GUIDES.length;
+
 export const metadata: Metadata = {
 	title: {
 		absolute:
 			"RealCy.app - Your Cyprus Portal | New Developments, Relocation & More",
 	},
-	description:
-		"RealCy.app — your portal for anything Cyprus. Browse 260+ new-build developments on an interactive map. 30+ service directories, 31 relocation tools, and 68 in-depth guides.",
+	description: `RealCy.app — your portal for anything Cyprus. Browse 260+ new-build developments on an interactive map. 30+ service directories, 31 relocation tools, and ${GUIDE_COUNT} in-depth guides.`,
 	alternates: { canonical: "/" },
 };
 
@@ -51,8 +52,7 @@ export default function Home() {
 		name: "RealCy.app",
 		url: SITE_URL,
 		logo: `${SITE_URL}/apple-touch-icon.png`,
-		description:
-			"Independent Cyprus relocation portal — new-build real estate, 30+ service directories, 31 relocation tools, and 68 in-depth guides.",
+		description: `Independent Cyprus relocation portal — new-build real estate, 30+ service directories, 31 relocation tools, and ${GUIDE_COUNT} in-depth guides.`,
 		sameAs: [],
 	};
 	const itemList = {

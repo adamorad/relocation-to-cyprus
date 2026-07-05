@@ -1,46 +1,54 @@
 import type { Metadata } from "next";
+import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import RentalPriceTrendsClient from "./client";
 
 const SITE_URL = "https://realcy.app";
 const title = "Cyprus Rental Price Trends";
 const description =
-  "Track how apartment rents have changed across Limassol, Paphos, Larnaca, and Ayia Napa since 2021. Interactive charts for 1BR, 2BR, and 3BR units with year-on-year comparisons.";
+	"Track how apartment rents have changed across Limassol, Paphos, Larnaca, and Ayia Napa since 2021. Interactive charts for 1BR, 2BR, and 3BR units with year-on-year comparisons.";
 
 export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/tools/rental-price-trends/" },
-  openGraph: {
-    title,
-    description,
-    url: SITE_URL + "/tools/rental-price-trends/",
-    type: "website",
-  },
+	title,
+	description,
+	alternates: { canonical: "/tools/rental-price-trends/" },
+	openGraph: {
+		title,
+		description,
+		url: SITE_URL + "/tools/rental-price-trends/",
+		type: "website",
+	},
 };
 
 export default function RentalPriceTrendsPage() {
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL + "/" },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Tools",
-        item: SITE_URL + "/tools/",
-      },
-      { "@type": "ListItem", position: 3, name: title },
-    ],
-  };
+	const breadcrumbJsonLd = {
+		"@context": "https://schema.org",
+		"@type": "BreadcrumbList",
+		itemListElement: [
+			{ "@type": "ListItem", position: 1, name: "Home", item: SITE_URL + "/" },
+			{
+				"@type": "ListItem",
+				position: 2,
+				name: "Tools",
+				item: SITE_URL + "/tools/",
+			},
+			{ "@type": "ListItem", position: 3, name: title },
+		],
+	};
 
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <RentalPriceTrendsClient />
-    </>
-  );
+	return (
+		<>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+			/>
+			<script
+				type="application/ld+json"
+				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(toolWebAppJsonLd("rental-price-trends")),
+				}}
+			/>
+			<RentalPriceTrendsClient />
+		</>
+	);
 }
