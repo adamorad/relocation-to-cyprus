@@ -7,7 +7,7 @@
  * Run:  node scripts/gen-content-inventory.mjs
  * It re-reads the lib/ data files each time, so the inventory stays current.
  */
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
@@ -39,10 +39,12 @@ function records(text, anchorKey) {
 }
 
 // ── Guides (main + batches) ───────────────────────────────────────────────────
+// guides.ts + every lib/guides-batch*.ts (auto-discovered so new batches are never missed)
+const batchFiles = readdirSync(join(ROOT, "lib"))
+	.filter((f) => /^guides-batch.*\.ts$/.test(f))
+	.sort();
 const guideText =
-	read("lib/guides.ts") +
-	read("lib/guides-batch1.ts") +
-	read("lib/guides-batch2.ts");
+	read("lib/guides.ts") + batchFiles.map((f) => read(`lib/${f}`)).join("");
 const guides = records(guideText, "slug")
 	.filter((r) => /\btitle:/.test(r.block) && /\bcategory:/.test(r.block))
 	.map((r) => ({
