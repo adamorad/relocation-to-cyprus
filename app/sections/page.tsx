@@ -6,7 +6,7 @@ const DIR_COUNT = SECTIONS_INDEX.length;
 const DIR_DESC = `${DIR_COUNT} curated directories for Cyprus relocators — property lawyers, immigration specialists, accountants, coworking spaces, specialist doctors, expat communities, and more.`;
 
 export const metadata: Metadata = {
-	title: `Cyprus Relocation Directories — ${DIR_COUNT} Curated Service Guides | RealCy.app`,
+	title: `Cyprus Relocation Directories — ${DIR_COUNT} Curated Service Guides`,
 	description: DIR_DESC,
 	alternates: { canonical: "/sections/" },
 	openGraph: {

@@ -378,6 +378,11 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" className={`${lora.variable} ${dmSans.variable}`}>
+			<head>
+				{/* Warm up the Google Maps origins used by the homepage map */}
+				<link rel="preconnect" href="https://maps.googleapis.com" />
+				<link rel="preconnect" href="https://maps.gstatic.com" crossOrigin="" />
+			</head>
 			<body className="antialiased text-slate-900 font-[family-name:var(--font-dm-sans)]">
 				<a href="#main" className="skip-to-content">
 					Skip to content

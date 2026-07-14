@@ -471,7 +471,7 @@ export default function AppShell() {
 							onClick={() => setMapMode("google")}
 							className="absolute top-3 right-3 z-20 bg-white/70 backdrop-blur-xl border border-white/60 rounded-full px-3 py-1.5 text-xs font-semibold shadow-lg hover:bg-white/90 transition-colors pointer-events-auto"
 						>
-							🗺 Real map
+							<span aria-hidden>🗺</span> Real map
 						</button>
 					)}
 					{selectedRegion ? (

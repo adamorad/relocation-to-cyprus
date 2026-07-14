@@ -166,6 +166,12 @@ export default async function GuidePage({
 	).slice(0, 3);
 	const canonicalUrl = `${SITE_URL}/guides/${g.slug}/`;
 	const author = AUTHORS[CATEGORY_AUTHOR[g.category]] ?? AUTHORS.team;
+	const readingMinutes = Math.max(
+		1,
+		Math.round(
+			g.sections.reduce((n, s) => n + s.body.split(/\s+/).length, 0) / 200,
+		),
+	);
 
 	const articleJsonLd = {
 		"@context": "https://schema.org",
@@ -264,6 +270,8 @@ export default async function GuidePage({
 						year: "numeric",
 						timeZone: "UTC",
 					})}
+					{" · "}
+					{readingMinutes} min read
 				</p>
 			</header>
 
