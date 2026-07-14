@@ -18,13 +18,7 @@ export default function ToolsIndexPage() {
 		"@type": "BreadcrumbList",
 		itemListElement: [
 			{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Explore",
-				item: `${SITE_URL}/explore/`,
-			},
-			{ "@type": "ListItem", position: 3, name: "Tools" },
+			{ "@type": "ListItem", position: 2, name: "Tools" },
 		],
 	};
 	return (
@@ -36,11 +30,7 @@ export default function ToolsIndexPage() {
 			/>
 			<main id="main" className="max-w-4xl mx-auto px-6 py-10 md:py-16">
 				<Breadcrumbs
-					items={[
-						{ label: "Home", href: "/" },
-						{ label: "Explore", href: "/explore/" },
-						{ label: "Tools" },
-					]}
+					items={[{ label: "Home", href: "/" }, { label: "Tools" }]}
 				/>
 
 				<header className="mb-10">
