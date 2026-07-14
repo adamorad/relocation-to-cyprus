@@ -66,7 +66,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-22",
 		dateModified: "2026-07-05",
 		category: "immigration",
-		heroImage: "/images/guides/residency-and-visas.webp",
 		title: "Cyprus Residency Visas 2026: All Routes Compared",
 		description:
 			"Compare Cyprus visas: Golden Visa (€300K), Digital Nomad (€3.5K/mo), EU registration, Category F & EU Blue Card. Investor timelines, costs & eligibility.",
@@ -112,7 +111,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-22",
 		dateModified: "2026-07-05",
 		category: "lifestyle",
-		heroImage: "/images/guides/cost-of-living.webp",
 		title: "Cost of Living in Cyprus 2026: City Budgets",
 		description:
 			"Real monthly budgets for expats in Limassol, Paphos, Larnaca & Nicosia. Housing, utilities, schooling, healthcare costs + realistic family budgets by city.",
@@ -162,7 +160,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-22",
 		dateModified: "2026-07-05",
 		category: "tax",
-		heroImage: "/images/guides/taxes-for-expats.webp",
 		title: "Cyprus Expat Tax Guide 2026: Non-Dom Regime",
 		description:
 			"How Cyprus's tax system works for new residents — the famous non-domiciled rules, the tax-free income band, capital gains and crypto.",
@@ -208,7 +205,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "immigration",
-		heroImage: "/images/guides/arrival-checklist.webp",
 		title: "Moving to Cyprus: First-Month Checklist 2026",
 		description:
 			"The exact steps to take in weeks 1–4 after arriving in Cyprus — in the right order, with the dependency logic explained so you don't hit each bureaucratic wall by surprise.",
@@ -242,7 +238,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "lifestyle",
-		heroImage: "/images/guides/moving-to-cyprus-with-pets.webp",
 		title: "Moving to Cyprus With Pets: Import Rules 2026",
 		description:
 			"The exact requirements for bringing a dog or cat to Cyprus — covering EU passport holders, post-Brexit UK residents, and non-EU countries including Israel, the US and the UAE — with backwards-planning timelines so you don't miss a step.",
@@ -275,7 +270,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "business",
-		heroImage: "/images/guides/banking-in-cyprus.webp",
 		title: "Opening a Bank Account in Cyprus 2026",
 		description:
 			"Which banks take new residents, what documents you actually need, realistic timelines, and why Revolut is a bridge not a replacement.",
@@ -307,7 +301,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "property",
-		heroImage: "/images/guides/title-deed-status-guide.webp",
 		title: "Cyprus Title Deed Guide 2026: Full Overview",
 		description:
 			"Complete guide to Cyprus title deeds: how to search the Land Registry, understand mortgages, protect yourself with contract clauses, and transfer fees. 2026.",
@@ -344,7 +337,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "property",
-		heroImage: "/images/guides/off-plan-buying-guide.webp",
 		title: "Buying Off-Plan Property in Cyprus 2026",
 		description:
 			"Independent guide to buying off-plan in Cyprus: vet developers, protect your deposit, secure title deeds, understand payment schedules, and avoid common delays.",
@@ -380,7 +372,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "property",
-		heroImage: "/images/guides/rental-transition-guide.webp",
 		title: "Short-Term to Long-Term Rental in Cyprus",
 		description:
 			"Standard lease terms, typical deposit amounts, what landlords require from foreign tenants, furnished versus unfurnished market realities, breaking a lease, and rent increase rules.",
@@ -412,7 +403,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "immigration",
-		heroImage: "/images/guides/digital-nomad-visa-guide.webp",
 		title: "Cyprus Digital Nomad Visa 2026: Requirements",
 		description:
 			"Cyprus digital nomad visa: €3,500/mo income requirement, non-dom tax benefits, required documents, application process, and 3-year renewal. Updated 2026.",
@@ -449,7 +439,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "immigration",
-		heroImage: "/images/guides/family-reunification-guide.webp",
 		title: "Bringing Your Family to Cyprus: Reunification",
 		description:
 			"How the primary visa holder brings a spouse, children, and parents to Cyprus — documents by dependent type, income thresholds, processing timelines, and rights granted to dependents. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -481,7 +470,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "immigration",
-		heroImage: "/images/guides/permanent-residency-5year.webp",
 		title: "Cyprus Permanent Residency After 5 Years",
 		description:
 			"The qualifying residency period, points criteria, language requirements, application documents, timeline, and how PR rights compare to citizenship. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -514,7 +502,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "immigration",
-		heroImage: "/images/guides/company-formation-visa.webp",
 		title: "Cyprus Company Residency Permit: Full Guide",
 		description:
 			"Which visa categories require a Cyprus entity, minimum substance requirements, company formation steps, typical costs, and common pitfalls. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -546,7 +533,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "property",
-		heroImage: "/images/guides/new-development-buying-guide.webp",
 		title: "Buying a New Development in Cyprus 2026",
 		description:
 			"The reservation process, signing the contract of sale, VAT on new builds, the Land Registry deposit requirement, title deed transfer timelines, and the snagging process. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -578,7 +564,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "immigration",
-		heroImage: "/images/guides/work-permits-non-eu.webp",
 		title: "Work Permits for Non-EU Nationals in Cyprus",
 		description:
 			"How the Cyprus employer-sponsored work permit system operates — quota rules, required documents, the critical permit, fast-track tech scheme, and renewal. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -610,7 +595,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "immigration",
-		heroImage: "/images/guides/citizenship-naturalization.webp",
 		title: "Cyprus Citizenship by Naturalisation 2026",
 		description:
 			"The requirements, timeline, and practical realities of becoming a Cypriot citizen through the standard naturalization track — residency period, language test, and what dual nationality rules apply. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -642,7 +626,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "tax",
-		heroImage: "/images/guides/non-dom-status-guide.webp",
 		title: "Cyprus Non-Dom Tax Status 2026: 0% on Dividends",
 		description:
 			"0% tax on dividends & interest for 17 years, GESY contributions, qualification rules, the 2026 extension option, and common misconceptions explained.",
@@ -680,7 +663,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "tax",
-		heroImage: "/images/guides/ip-box-regime.webp",
 		title: "Cyprus IP Box Regime: 3% Effective Tax on IP",
 		description:
 			"How Cyprus's IP Box works, which types of IP qualify, how the nexus fraction determines the effective rate, practical structuring considerations, and a worked example. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -712,7 +694,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "tax",
-		heroImage: "/images/guides/vat-registration-guide.webp",
 		title: "VAT Registration in Cyprus: Thresholds & OSS",
 		description:
 			"When you must register for VAT in Cyprus, how to register via TaxisNet, quarterly filing obligations, the VAT rules for new property, and how the EU OSS scheme works for e-commerce sellers. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -744,7 +725,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "tax",
-		heroImage: "/images/guides/crypto-tax-cyprus.webp",
 		title: "Cryptocurrency Tax Treatment in Cyprus (2026)",
 		description:
 			"How Cyprus currently taxes cryptocurrency gains, where the investing-versus-trading line is drawn, VAT on crypto services, documentation best practices for non-dom filers, and what local accountants currently recommend.",
@@ -777,7 +757,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "business",
-		heroImage: "/images/guides/company-types-comparison.webp",
 		title: "Cyprus Ltd vs Sole Trader vs Partnership",
 		description:
 			"A frank comparison of the main business structures available in Cyprus — formation costs, tax treatment, liability exposure, audit requirements, and when each makes sense for a relocating founder.",
@@ -809,7 +788,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "business",
-		heroImage: "/images/guides/corporate-bank-account-guide.webp",
 		title: "Cyprus Corporate Bank Account: Foreign Director",
 		description:
 			"Which banks take foreign-director applications, what documents the KYC process actually requires, realistic timelines post-2022, and when an EMI is the right bridge or alternative.",
@@ -842,7 +820,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "business",
-		heroImage: "/images/guides/hiring-in-cyprus.webp",
 		title: "Hiring Employees in Cyprus 2026: Costs & Law",
 		description:
 			"What Cyprus employment law requires when you hire your first employee — contracts, minimum wage, social insurance, probation, and how to calculate redundancy. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -874,7 +851,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "immigration",
-		heroImage: "/images/guides/startup-visa-ict.webp",
 		title: "Cyprus Innovative Company Permit: Tech Founder",
 		description:
 			"How non-EU tech founders can get a 2-year Cyprus residence permit through the Innovative Company scheme — income requirements, the business plan evaluation, and what happens if you are rejected. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -906,7 +882,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "business",
-		heroImage: "/images/guides/ip-registration-cyprus.webp",
 		title: "Registering IP in Cyprus: Trademarks & Patents",
 		description:
 			"How to protect a brand, patent an invention, and understand software copyright in Cyprus — covering the Cyprus Trademark Registry, EUIPO, the European Patent Office, and the .cy domain registry. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -939,7 +914,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "business",
-		heroImage: "/images/guides/trade-licenses-cyprus.webp",
 		title: "Trade Licence Requirements in Cyprus 2026",
 		description:
 			"Which business activities require a license before trading in Cyprus, which authority issues each one, and what the typical costs and timelines look like. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -972,7 +946,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "family",
-		heroImage: "/images/guides/international-vs-public-school.webp",
 		title: "International vs Public Schools in Cyprus",
 		description:
 			"A frank look at what public and international schools in Cyprus actually deliver — language, curriculum, costs, university outcomes, and who each track works for.",
@@ -1004,7 +977,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "family",
-		heroImage: "/images/guides/universities-in-cyprus.webp",
 		title: "Universities in Cyprus: Guide for Students",
 		description:
 			"The public and private universities in Cyprus, fees for EU and non-EU students, English-medium programmes, degree recognition, and why some expat families factor university proximity into their relocation decision.",
@@ -1036,7 +1008,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "family",
-		heroImage: "/images/guides/child-registration-guide.webp",
 		title: "Registering Your Child in Cyprus: School & ARC",
 		description:
 			"The documents and steps to register a child born in Cyprus or arriving as part of a relocating family — birth registration, ARC for minors, school enrollment paperwork, and the GeSY children's healthcare card. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -1068,7 +1039,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "family",
-		heroImage: "/images/guides/sen-guide.webp",
 		title: "Special Educational Needs in Cyprus: SEN Guide",
 		description:
 			"What SEN provision actually looks like in Cyprus public and private schools, how to request an assessment, the role of the Educational Support and Evaluation Service, and where to find English-speaking therapists.",
@@ -1100,7 +1070,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "lifestyle",
-		heroImage: "/images/guides/family-neighborhoods-guide.webp",
 		title:
 			"Best Family-Friendly Neighborhoods in Cyprus — District by District",
 		description:
@@ -1133,7 +1102,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "family",
-		heroImage: "/images/guides/maternity-paternity-rights.webp",
 		title:
 			"Maternity and Paternity Rights in Cyprus — What Employed Parents Are Entitled To",
 		description:
@@ -1166,7 +1134,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-06-18",
 		category: "healthcare",
-		heroImage: "/images/guides/gesy-registration-guide.webp",
 		title: "GeSY Registration Guide 2026: Step-by-Step",
 		description:
 			"Register for GeSY at gesyportal.hio.org.cy — step-by-step walkthrough for Cyprus expats: documents needed, GP selection, 2026 contribution rates, and what the public healthcare system covers.",
@@ -1224,7 +1191,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "healthcare",
-		heroImage: "/images/guides/pharmacies-medication.webp",
 		title: "Pharmacies & Prescriptions in Cyprus 2026",
 		description:
 			"Cyprus pharmacies: 24-hour duty rota, GeSY €1 generic co-pay, how to transfer a foreign prescription, OTC access, and 90-day medication import rules.",
@@ -1278,7 +1244,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "healthcare",
-		heroImage: "/images/guides/dental-care-guide.webp",
 		title: "Dental Care in Cyprus 2026: Costs & GeSY Cover",
 		description:
 			"Private dental costs in Cyprus in 2026 — fillings from €80, implants from €800, crowns from €400. What GeSY actually covers (almost nothing for adults), how prices compare to UK and German rates, and how to find an English-speaking dentist.",
@@ -1332,7 +1297,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "healthcare",
-		heroImage: "/images/guides/emergency-services-guide.webp",
 		title: "Emergency Services in Cyprus: 112 & A&E Guide",
 		description:
 			"The single emergency number, which hospitals have 24-hour A&E, ambulance response times, what to bring, and the difference between public and private A&E for non-critical situations.",
@@ -1364,7 +1328,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "environment",
-		heroImage: "/images/guides/air-quality-allergens.webp",
 		title: "Air Quality & Allergens in Cyprus: Expat Guide",
 		description:
 			"Saharan dust events, pollen seasons, wildfire smoke, where to find AQI data, and practical steps for relocators who suffer from hay fever or respiratory conditions.",
@@ -1396,7 +1359,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "transport",
-		heroImage: "/images/guides/driving-licence-conversion.webp",
 		title: "Converting Your Driving Licence in Cyprus",
 		description:
 			"EU licences, reciprocal-agreement countries, non-reciprocal countries that require a test, documents required, Traffic Department offices, timeline, and cost. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -1428,7 +1390,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "transport",
-		heroImage: "/images/guides/car-import-registration.webp",
 		title: "Importing and Registering a Car in Cyprus",
 		description:
 			"What it actually costs to bring your car to Cyprus — customs duties, registration tax, KTEO roadworthiness testing, and an honest verdict on whether importing beats buying locally. Prices and rules change — verify with official Cyprus sources before acting.",
@@ -1460,7 +1421,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "transport",
-		heroImage: "/images/guides/car-rental-long-term.webp",
 		title: "Long-Term Car Rental in Cyprus: Rent vs Buy",
 		description:
 			"Monthly costs for renting a car for 3–12 months in Cyprus, a genuine break-even analysis against buying used, and which rental companies actually offer expat-friendly long-term deals.",
@@ -1492,7 +1452,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "transport",
-		heroImage: "/images/guides/airport-transfers-guide.webp",
 		title: "Cyprus Airport Transfers 2026: All Options",
 		description:
 			"Fixed taxi rates, intercity buses, shared transfer services, and Bolt availability from Larnaca and Paphos airports — with realistic journey time estimates for every major route.",
@@ -1524,7 +1483,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "transport",
-		heroImage: "/images/guides/cycling-guide.webp",
 		title: "Cycling in Cyprus: Best Routes & Infrastructure",
 		description:
 			"A city-by-city assessment of cycling conditions in Cyprus, the best routes for road and mountain bikers, honest notes on the challenges, and when to actually go.",
@@ -1556,7 +1514,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "transport",
-		heroImage: "/images/guides/ferry-routes-guide.webp",
 		title: "Cyprus Ferry Routes 2026: Greece, Egypt & Lebanon",
 		description:
 			"Grimaldi Lines runs Limassol–Piraeus via Crete (36 hrs) in 2026. Car shipping from €250. Egypt & Lebanon route status, cabin prices, and booking guide.",
@@ -1611,7 +1568,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "transport",
-		heroImage: "/images/guides/road-safety-driving.webp",
 		title: "Driving in Cyprus: Road Safety & Culture Guide",
 		description:
 			"Everything you need to know before driving in Cyprus — left-hand traffic, speed limits, camera locations, accident procedures, and an honest assessment of local driving culture.",
@@ -1643,7 +1599,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "lifestyle",
-		heroImage: "/images/guides/language-learning-cyprus.webp",
 		title: "Learning Greek in Cyprus: Schools & Resources",
 		description:
 			"A frank guide to Cypriot dialect vs Standard Modern Greek, which one to learn, how much you actually need day-to-day, and the best schools and apps for learning while living in Cyprus.",
@@ -1677,7 +1632,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "lifestyle",
-		heroImage: "/images/guides/cultural-etiquette-guide.webp",
 		title: "Cypriot Culture & Social Etiquette Guide",
 		description:
 			"Filoxenia, name days, Orthodox holidays, the kafeneion as a social institution, tipping norms, and the practical cultural knowledge that helps newcomers build real relationships in Cyprus.",
@@ -1709,7 +1663,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "lifestyle",
-		heroImage: "/images/guides/hiking-trails-guide.webp",
 		title: "Hiking in Cyprus: Troodos, Akamas & Coastal Trails",
 		description:
 			"A practical guide to the best hiking in Cyprus — from the Troodos mountain circuit trails to the Akamas Peninsula and coastal paths — with difficulty ratings, trailhead logistics, and seasonal advice.",
@@ -1742,7 +1695,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-05-29",
 		category: "lifestyle",
-		heroImage: "/images/guides/beach-guide-by-district.webp",
 		title: "Cyprus Beach Guide — Best Beaches by District",
 		description:
 			"A district-by-district guide to Cyprus's best beaches — from Limassol and Paphos to Larnaca, Ayia Napa, and Protaras — with crowd levels, facilities, Blue Flag status, and who each beach suits best.",
@@ -1776,7 +1728,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "lifestyle",
-		heroImage: "/images/guides/food-delivery-apps.webp",
 		title: "Food Delivery Cyprus 2026: Wolt, Bolt & Foody",
 		description:
 			"Wolt, Bolt Food & Foody compared for Cyprus 2026: city coverage, delivery fees, Bolt Pass/Wolt+ subscriptions, late-night options & grocery delivery.",
@@ -1834,7 +1785,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "lifestyle",
-		heroImage: "/images/guides/cypriot-cuisine-guide.webp",
 		title: "Cypriot Food Culture: Eating Like a Local",
 		description:
 			"What to order, how to eat it, where to find it, and the food customs that define Cypriot dining — from meze to kafeneion to seasonal produce.",
@@ -1866,7 +1816,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "lifestyle",
-		heroImage: "/images/guides/coffee-culture-guide.webp",
 		title: "Coffee Culture in Cyprus: Freddo & Third Wave",
 		description:
 			"From Cypriot mud coffee to iced freddo espresso to the specialty third-wave scene in Limassol and Nicosia — how coffee works in Cyprus and where to find the best cup.",
@@ -1899,7 +1848,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "lifestyle",
-		heroImage: "/images/guides/home-cooking-ingredients.webp",
 		title: "Finding International Ingredients in Cyprus",
 		description:
 			"Where to find international cooking ingredients in Cyprus — from Asian and Indian spices to Middle Eastern staples and online delivery — plus what is genuinely abundant and cheap locally.",
@@ -1931,7 +1879,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "lifestyle",
-		heroImage: "/images/guides/restaurant-reservations.webp",
 		title: "Booking Restaurants in Cyprus: How It Works",
 		description:
 			"How to book restaurants in Cyprus, when you actually need to book versus walk in, which platforms work, and the social customs around dining that new residents often get wrong.",
@@ -1963,7 +1910,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-06-18",
 		category: "lifestyle",
-		heroImage: "/images/guides/utilities-setup-guide.webp",
 		title: "Cyprus Utilities Setup 2026: Electricity & Water",
 		description:
 			"How to connect EAC electricity, water, broadband (Cyta, Cablenet, Epic, Primetel), and LPG gas after moving into a Cyprus home. Realistic timelines, 2026 costs, and the documents each utility requires.",
@@ -1996,7 +1942,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "environment",
-		heroImage: "/images/guides/solar-energy-guide.webp",
 		title: "Solar Panels in Cyprus: Net Metering & ROI",
 		description:
 			"Why Cyprus is one of the best countries in Europe for solar power, how the net metering scheme works, what a residential system costs, and how to navigate the EAC connection process.",
@@ -2028,7 +1973,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "environment",
-		heroImage: "/images/guides/water-quality-scarcity.webp",
 		title: "Water Quality & Scarcity in Cyprus: Key Facts",
 		description:
 			"Tap water safety, the desalination infrastructure that underpins Cyprus's water supply, seasonal pressure issues, filtration options, and practical conservation tips for households and gardens.",
@@ -2060,7 +2004,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "environment",
-		heroImage: "/images/guides/waste-recycling-guide.webp",
 		title: "Recycling in Cyprus: Guide for New Residents",
 		description:
 			"How to use the kerbside bins, where to drop off electronics, batteries, textiles and glass, and an honest assessment of Cyprus's recycling culture.",
@@ -2114,7 +2057,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "environment",
-		heroImage: "/images/guides/earthquake-preparedness.webp",
 		title: "Earthquake Risk in Cyprus: How to Prepare",
 		description:
 			"The seismic reality of living in Cyprus, how modern buildings are rated, what to do during and after a tremor, and how to register for Civil Emergency alerts.",
@@ -2146,7 +2088,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "environment",
-		heroImage: "/images/guides/wildfire-risk-guide.webp",
 		title: "Wildfire Risk in Cyprus: How to Prepare",
 		description:
 			"Which areas of Cyprus face genuine wildfire exposure, when the fire season runs, how to register for SMS alerts, and practical steps to prepare your property and evacuation routes.",
@@ -2178,7 +2119,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "environment",
-		heroImage: "/images/guides/environmental-impact-guide.webp",
 		title: "Sustainable Living in Cyprus: Expat Guide",
 		description:
 			"An honest assessment of Cyprus's environmental footprint, practical ways to reduce your impact, local biodiversity worth knowing, and the environmental organisations active on the island.",
@@ -2210,7 +2150,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "environment",
-		heroImage: "/images/guides/climate-zones-seasonal.webp",
 		title: "Cyprus Climate Month by Month: Seasonal Guide",
 		description:
 			"A practical month-by-month breakdown of what living in Cyprus actually feels like through the year — what to do, what to avoid, and how to budget your time and activity by season.",

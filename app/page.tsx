@@ -89,10 +89,10 @@ export default function Home() {
 				}}
 			/>
 			<AppShell />
-			<h1 className="sr-only">
+			<p className="sr-only">
 				Cyprus New Developments, Relocation Guides and Non-Dom Tax Tools |
 				RealCy.app
-			</h1>
+			</p>
 			<HomeHub
 				totalListings={LISTINGS.length}
 				totalGuides={GUIDES.length}

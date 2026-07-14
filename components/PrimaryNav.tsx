@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { isActive } from "@/lib/nav-links";
 import { useMapNav } from "./MapNavContext";
 
 type CatKey = "new" | "food" | "shopping" | "healthcare" | "hotels" | "schools";
@@ -123,6 +124,27 @@ export function PrimaryNav() {
 						>
 							{item.label}
 						</button>
+					);
+				})}
+				<span className="text-slate-300 select-none" aria-hidden>
+					·
+				</span>
+				{[
+					{ label: "Guides", href: "/guides/" },
+					{ label: "Tools", href: "/tools/" },
+				].map((item) => {
+					const active = isActive(pathname, item.href);
+					return (
+						<Link
+							key={item.href}
+							href={item.href}
+							aria-current={active ? "page" : undefined}
+							className={`transition-colors whitespace-nowrap px-2 py-1 ${
+								active ? "text-slate-900 font-semibold" : "hover:text-slate-900"
+							}`}
+						>
+							{item.label}
+						</Link>
 					);
 				})}
 				<button
