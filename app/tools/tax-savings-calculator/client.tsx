@@ -314,7 +314,7 @@ function calculate(input: CalcInput): Comparison {
 	if (employmentType === "company-owner") {
 		const salaryAmount = grossIncome * (salaryPct / 100);
 		const dividendAmount = grossIncome * (1 - salaryPct / 100);
-		const corporateTax = dividendAmount * 0.125; // 12.5% corporate tax on profit portion
+		const corporateTax = dividendAmount * 0.15; // 15% corporate tax on profit portion (2026)
 		const netDividend = dividendAmount - corporateTax;
 
 		cypStdIncomeTax = calcCyprusIncomeTax(salaryAmount);
@@ -344,7 +344,7 @@ function calculate(input: CalcInput): Comparison {
 	if (employmentType === "company-owner") {
 		const salaryAmount = grossIncome * (salaryPct / 100);
 		const dividendAmount = grossIncome * (1 - salaryPct / 100);
-		const corporateTax = dividendAmount * 0.125;
+		const corporateTax = dividendAmount * 0.15;
 		const netDividend = dividendAmount - corporateTax;
 
 		cypNdIncomeTax = calcCyprusIncomeTax(salaryAmount);
@@ -766,8 +766,8 @@ export default function TaxSavingsCalculatorClient() {
 							<span>100% salary</span>
 						</div>
 						<p className="text-[11px] text-slate-500 mt-1">
-							Cyprus corporate tax: 12.5% on profits. Non-dom: no SDC (17%) on
-							dividends.
+							Cyprus corporate tax: 15% on profits (2026). Non-dom: no SDC (17%)
+							on dividends.
 						</p>
 					</div>
 				)}
@@ -822,9 +822,10 @@ export default function TaxSavingsCalculatorClient() {
 					</li>
 					<li>
 						<span className="font-semibold text-teal-700">
-							12.5% corporate tax:
+							15% corporate tax:
 						</span>{" "}
-						One of the lowest in the EU. Companies pay 12.5% on net profits.
+						A competitive rate within the EU. Companies pay 15% on net profits
+						(raised from 12.5% in 2026).
 					</li>
 					<li>
 						<span className="font-semibold text-teal-700">
