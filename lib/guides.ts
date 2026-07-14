@@ -11,6 +11,7 @@
 import { GUIDES_BATCH1 } from "./guides-batch1";
 import { GUIDES_BATCH2 } from "./guides-batch2";
 import { GUIDES_BATCH3 } from "./guides-batch3";
+import { GUIDES_BATCH4 } from "./guides-batch4";
 
 export type GuideCategory =
 	| "immigration"
@@ -2764,6 +2765,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	...GUIDES_BATCH1,
 	...GUIDES_BATCH2,
 	...GUIDES_BATCH3,
+	...GUIDES_BATCH4,
 ];
 
 export function guideBySlug(slug: string): GuideInfo | undefined {
