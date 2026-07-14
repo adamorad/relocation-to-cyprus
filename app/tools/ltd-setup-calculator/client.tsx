@@ -571,7 +571,7 @@ export default function LtdSetupCalculatorClient() {
 					{[
 						{
 							icon: "💼",
-							text: "12.5% corporate tax — lowest in the EU",
+							text: "15% corporate tax — competitive within the EU",
 						},
 						{
 							icon: "💰",

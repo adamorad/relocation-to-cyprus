@@ -63,10 +63,10 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 	);
 
 	// --- Cyprus Ltd effective tax estimate ---
-	// 12.5% corporate tax on net profit
+	// 15% corporate tax on net profit (raised from 12.5% on 1 Jan 2026)
 	// Assuming 80% of income is taxable profit (20% expenses)
 	const estimatedProfit = annualIncome * 0.8;
-	const corporateTax = estimatedProfit * 0.125;
+	const corporateTax = estimatedProfit * 0.15;
 	// Dividend extraction: non-dom pays 0 on dividends; dom pays 17% SDC
 	const dividendTax = nonDomiciled ? 0 : estimatedProfit * 0.17;
 	const ltdTotalTax = corporateTax + dividendTax;
@@ -151,7 +151,7 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 		ltd: {
 			label: "Cyprus Ltd (Private Company)",
 			advantages: [
-				"12.5% flat corporate tax — one of the lowest in the EU",
+				"15% flat corporate tax — competitive within the EU",
 				nonDomiciled
 					? "As a non-dom, dividend extraction is 0% tax — highly efficient"
 					: "Dividends taxed at 17% SDC (domiciled); consider non-dom status",
@@ -223,7 +223,7 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 			primary === "sole-trader"
 				? `At €${annualIncome.toLocaleString()}/year with your profile, sole trader is the most practical starting point. Set up fast, keep compliance simple, and re-evaluate when income grows past €50–60K.`
 				: primary === "ltd"
-					? `A Cyprus Ltd makes strong sense at €${annualIncome.toLocaleString()}/year. The 12.5% corporate rate${nonDomiciled ? " plus 0% on dividends as a non-dom" : ""} gives you an estimated effective rate of ~${ltdEffectiveRate}% — materially lower than the sole trader rate of ~${soleTraderEffectiveRate}%.`
+					? `A Cyprus Ltd makes strong sense at €${annualIncome.toLocaleString()}/year. The 15% corporate rate${nonDomiciled ? " plus 0% on dividends as a non-dom" : ""} gives you an estimated effective rate of ~${ltdEffectiveRate}% — materially lower than the sole trader rate of ~${soleTraderEffectiveRate}%.`
 					: `At €${annualIncome.toLocaleString()}/year with passive income and your profile, a holding structure could reduce your effective rate to ~${holdingEffectiveRate}%. This requires specialist advice and real substance in Cyprus.`,
 	};
 }

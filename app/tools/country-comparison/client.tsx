@@ -21,7 +21,7 @@ interface CountryData {
 
 const DATA: Record<Country, CountryData> = {
 	Cyprus: {
-		corpTax: "12.5%",
+		corpTax: "15%",
 		topIncomeTax: "35%",
 		specialRegime: "Non-dom",
 		specialRegimeTax: "0% divs",
@@ -291,7 +291,7 @@ export default function CountryComparisonClient() {
 					Cyprus non-dom status grants{" "}
 					<strong>0% tax on dividends and interest</strong> for up to{" "}
 					<strong>17 years</strong> for qualifying individuals. Combined with
-					the 12.5% corporate tax rate, it is one of the most efficient
+					the 15% corporate tax rate, it remains one of the more efficient
 					structures available within the EU.
 				</p>
 			</aside>
