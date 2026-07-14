@@ -5,6 +5,7 @@ import { EmailCapture } from "@/components/EmailCapture";
 import { MetaPixelEvent } from "@/components/MetaPixelEvent";
 import { ShareBar } from "@/components/ShareBar";
 import { AUTHORS, CATEGORY_AUTHOR } from "@/lib/authors";
+import { GUIDE_REDIRECTS } from "@/lib/guide-redirects";
 import { GUIDES, type GuideCategory, guideBySlug } from "@/lib/guides";
 import { SECTIONS_INDEX } from "@/lib/sections-index";
 
@@ -113,7 +114,10 @@ const GUIDE_CATEGORY_TOOLS: Record<
 };
 
 export function generateStaticParams() {
-	return GUIDES.map((g) => ({ slug: g.slug }));
+	return [
+		...GUIDES.map((g) => ({ slug: g.slug })),
+		...Object.keys(GUIDE_REDIRECTS).map((slug) => ({ slug })),
+	];
 }
 
 export async function generateMetadata({
@@ -122,6 +126,14 @@ export async function generateMetadata({
 	params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
 	const { slug } = await params;
+	const redirectTarget = GUIDE_REDIRECTS[slug];
+	if (redirectTarget) {
+		return {
+			title: "Redirecting…",
+			alternates: { canonical: `/guides/${redirectTarget}/` },
+			robots: { index: false, follow: true },
+		};
+	}
 	const g = guideBySlug(slug);
 	if (!g) return {};
 	return {
@@ -153,6 +165,30 @@ export default async function GuidePage({
 	params: Promise<{ slug: string }>;
 }) {
 	const { slug } = await params;
+	const redirectTarget = GUIDE_REDIRECTS[slug];
+	if (redirectTarget) {
+		const url = `/guides/${redirectTarget}/`;
+		return (
+			<main id="main" className="max-w-xl mx-auto px-6 py-16 text-center">
+				<meta httpEquiv="refresh" content={`0; url=${url}`} />
+				<script
+					// biome-ignore lint/security/noDangerouslySetInnerHtml: static-export redirect
+					dangerouslySetInnerHTML={{
+						__html: `location.replace(${JSON.stringify(url)});`,
+					}}
+				/>
+				<p className="text-slate-600">
+					This guide has moved.{" "}
+					<Link
+						href={url}
+						className="text-[#35cdc4] font-medium hover:underline"
+					>
+						Continue to the current guide →
+					</Link>
+				</p>
+			</main>
+		);
+	}
 	const g = guideBySlug(slug);
 	if (!g) notFound();
 
