@@ -16,6 +16,31 @@ const toId = (h: string) =>
 		.replace(/[^a-z0-9]+/g, "-")
 		.replace(/^-|-$/g, "");
 
+/**
+ * Renders guide body text, turning in-prose /guides|tools|sections/{slug} paths
+ * into real clickable links. Splitting keeps the surrounding text (and its
+ * newlines, for whitespace-pre-line) intact.
+ */
+const BODY_LINK_RE = /(\/(?:guides|tools|sections)\/[a-z0-9-]+\/?)/g;
+function renderBody(text: string) {
+	return text.split(BODY_LINK_RE).map((part, i) => {
+		if (i % 2 === 1) {
+			const href = part.endsWith("/") ? part : `${part}/`;
+			return (
+				// biome-ignore lint/suspicious/noArrayIndexKey: split output is positional
+				<Link
+					key={i}
+					href={href}
+					className="text-[#35cdc4] font-medium hover:underline"
+				>
+					{part}
+				</Link>
+			);
+		}
+		return part;
+	});
+}
+
 const GUIDE_CATEGORY_SECTIONS: Record<GuideCategory, string[]> = {
 	immigration: ["immigration-lawyers", "expat-communities"],
 	tax: ["accountants"],
@@ -286,7 +311,7 @@ export default async function GuidePage({
 					<section key={s.heading} id={toId(s.heading)} className="mt-6">
 						<h2 className="text-xl font-bold mb-2">{s.heading}</h2>
 						<p className="text-slate-700 leading-relaxed whitespace-pre-line">
-							{s.body}
+							{renderBody(s.body)}
 						</p>
 					</section>
 				))}
@@ -354,19 +379,15 @@ export default async function GuidePage({
 				</aside>
 			)}
 
-			{(g.category === "immigration" ||
-				g.category === "tax" ||
-				g.category === "property") && (
-				<aside className="mt-6 p-5 bg-slate-900 rounded-xl text-white">
-					<p className="text-sm font-semibold mb-1">
-						Get the free Cyprus Relocation Checklist
-					</p>
-					<p className="text-xs text-slate-400">
-						Week-by-week guide for your first month. Free.
-					</p>
-					<EmailCapture compact />
-				</aside>
-			)}
+			<aside className="mt-6 p-5 bg-slate-900 rounded-xl text-white">
+				<p className="text-sm font-semibold mb-1">
+					Get the free Cyprus Relocation Checklist
+				</p>
+				<p className="text-xs text-slate-400">
+					Week-by-week guide for your first month. Free.
+				</p>
+				<EmailCapture compact />
+			</aside>
 
 			{g.faqs && g.faqs.length > 0 ? (
 				<section className="mt-10">
