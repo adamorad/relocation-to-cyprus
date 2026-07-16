@@ -248,13 +248,13 @@ function calcSourceSocial(
 	}
 }
 
-// Cyprus income tax bands
+// Cyprus income tax bands (2026 reform — raised tax-free threshold to €22,000)
 function calcCyprusIncomeTax(income: number): number {
 	const bands = [
-		{ upTo: 19_500, rate: 0 },
-		{ upTo: 28_000, rate: 0.2 },
-		{ upTo: 36_300, rate: 0.25 },
-		{ upTo: 60_000, rate: 0.3 },
+		{ upTo: 22_000, rate: 0 },
+		{ upTo: 32_000, rate: 0.2 },
+		{ upTo: 42_000, rate: 0.25 },
+		{ upTo: 72_000, rate: 0.3 },
 		{ upTo: Infinity, rate: 0.35 },
 	];
 	return applyBands(income, bands);
@@ -597,7 +597,11 @@ const COUNTRY_NOTES: Partial<Record<CountryKey, string>> = {
 	UAE: "UAE has no personal income tax.",
 };
 
-export default function TaxSavingsCalculatorClient() {
+export default function TaxSavingsCalculatorClient({
+	embedded = false,
+}: {
+	embedded?: boolean;
+} = {}) {
 	const [country, setCountry] = useState<CountryKey>("UK");
 	const [employmentType, setEmploymentType] =
 		useState<EmploymentType>("employed");
@@ -622,34 +626,47 @@ export default function TaxSavingsCalculatorClient() {
 
 	const savingNd = result.source.totalTax - result.cyprusNonDom.totalTax;
 
+	const Wrap = embedded ? "div" : "main";
 	return (
-		<main id="main" className="max-w-4xl mx-auto px-6 py-10 md:py-16">
-			{/* breadcrumb */}
-			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
-					Home
-				</Link>{" "}
-				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-slate-900">
-					Tools
-				</Link>{" "}
-				&rsaquo;{" "}
-				<span className="text-slate-900">Cyprus Tax Savings Calculator</span>
-			</nav>
+		<Wrap
+			{...(embedded ? {} : { id: "main" })}
+			className={
+				embedded ? "flex flex-col" : "max-w-4xl mx-auto px-6 py-10 md:py-16"
+			}
+		>
+			{!embedded && (
+				<>
+					{/* breadcrumb */}
+					<nav className="text-xs text-slate-600 mb-6">
+						<Link href="/" className="hover:text-slate-900">
+							Home
+						</Link>{" "}
+						&rsaquo;{" "}
+						<Link href="/tools/" className="hover:text-slate-900">
+							Tools
+						</Link>{" "}
+						&rsaquo;{" "}
+						<span className="text-slate-900">
+							Cyprus Tax Savings Calculator
+						</span>
+					</nav>
 
-			{/* header */}
-			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
-					Tax
-				</p>
-				<h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
-					Cyprus Tax Savings Calculator
-				</h1>
-				<p className="mt-3 text-slate-600 text-sm leading-relaxed max-w-2xl">
-					Compare your current country&apos;s tax burden against Cyprus Standard
-					and Non-Dom regimes. See your estimated annual saving at a glance.
-				</p>
-			</header>
+					{/* header */}
+					<header className="mb-8">
+						<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+							Tax
+						</p>
+						<h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
+							Cyprus Tax Savings Calculator
+						</h1>
+						<p className="mt-3 text-slate-600 text-sm leading-relaxed max-w-2xl">
+							Compare your current country&apos;s tax burden against Cyprus
+							Standard and Non-Dom regimes. See your estimated annual saving at
+							a glance.
+						</p>
+					</header>
+				</>
+			)}
 
 			{/* inputs */}
 			<section className="p-5 bg-slate-50 border border-slate-200 rounded-xl mb-8 flex flex-col gap-6">
@@ -865,44 +882,50 @@ export default function TaxSavingsCalculatorClient() {
 				</p>
 			</aside>
 
-			{/* Next steps */}
-			<aside className="mb-6 p-5 bg-slate-50 border border-slate-200 rounded-xl">
-				<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
-					Related tools
-				</p>
-				<div className="flex flex-wrap gap-3">
-					<Link
-						href="/tools/tax-residency-tracker/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
-					>
-						Tax Residency Planner →
-					</Link>
-					<Link
-						href="/tools/double-tax-treaty-finder/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
-					>
-						Double Tax Treaty Finder →
-					</Link>
-					<Link
-						href="/tools/sole-trader-vs-ltd/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
-					>
-						Sole Trader vs Ltd →
-					</Link>
-				</div>
-			</aside>
+			{!embedded && (
+				<>
+					{/* Next steps */}
+					<aside className="mb-6 p-5 bg-slate-50 border border-slate-200 rounded-xl">
+						<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
+							Related tools
+						</p>
+						<div className="flex flex-wrap gap-3">
+							<Link
+								href="/tools/tax-residency-tracker/"
+								className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+							>
+								Tax Residency Planner →
+							</Link>
+							<Link
+								href="/tools/double-tax-treaty-finder/"
+								className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+							>
+								Double Tax Treaty Finder →
+							</Link>
+							<Link
+								href="/tools/sole-trader-vs-ltd/"
+								className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+							>
+								Sole Trader vs Ltd →
+							</Link>
+						</div>
+					</aside>
 
-			{/* Disclaimer */}
-			<aside className="mt-6 p-5 bg-amber-50 border border-amber-200 rounded-xl text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">Disclaimer</p>
-				<p>General information only — not legal, tax, or financial advice.</p>
-			</aside>
+					{/* Disclaimer */}
+					<aside className="mt-6 p-5 bg-amber-50 border border-amber-200 rounded-xl text-sm text-slate-700">
+						<p className="font-semibold text-slate-900 mb-1">Disclaimer</p>
+						<p>
+							General information only — not legal, tax, or financial advice.
+						</p>
+					</aside>
 
-			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools/" className="underline hover:text-slate-900">
-					&larr; Back to Tools
-				</Link>
-			</p>
-		</main>
+					<p className="mt-8 text-xs text-slate-500">
+						<Link href="/tools/" className="underline hover:text-slate-900">
+							&larr; Back to Tools
+						</Link>
+					</p>
+				</>
+			)}
+		</Wrap>
 	);
 }
