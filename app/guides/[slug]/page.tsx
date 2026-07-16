@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Fragment } from "react";
+import { type ComponentType, Fragment } from "react";
+import MortgageCalculatorClient from "@/app/tools/mortgage-calculator/client";
+import RentVsBuyPage from "@/app/tools/rent-vs-buy-calculator/client";
+import SocialInsuranceCalculatorPage from "@/app/tools/social-insurance-calculator/client";
 import TaxSavingsCalculatorClient from "@/app/tools/tax-savings-calculator/client";
 import { EmailCapture } from "@/components/EmailCapture";
 import { EmbeddedTool } from "@/components/EmbeddedTool";
@@ -116,6 +119,58 @@ const GUIDE_CATEGORY_TOOLS: Record<
 	environment: [{ slug: "city-comparison", title: "City Comparison" }],
 };
 
+// Which interactive calculator to embed mid-guide, by slug (override) then category.
+type EmbedKey = "tax" | "rentbuy" | "social" | "mortgage";
+
+const GUIDE_EMBEDS: Record<
+	EmbedKey,
+	{
+		title: string;
+		subtitle: string;
+		href: string;
+		Comp: ComponentType<{ embedded?: boolean }>;
+	}
+> = {
+	tax: {
+		title: "Estimate your Cyprus tax saving",
+		subtitle:
+			"Compare your current country's tax burden against Cyprus Non-Dom — live, no sign-up.",
+		href: "/tools/tax-savings-calculator/",
+		Comp: TaxSavingsCalculatorClient,
+	},
+	rentbuy: {
+		title: "Should you rent or buy in Cyprus?",
+		subtitle:
+			"Compare the true long-run cost of renting versus buying over your time horizon.",
+		href: "/tools/rent-vs-buy-calculator/",
+		Comp: RentVsBuyPage,
+	},
+	social: {
+		title: "What will you actually take home?",
+		subtitle:
+			"Calculate your Social Insurance and GeSY deductions on any Cyprus salary.",
+		href: "/tools/social-insurance-calculator/",
+		Comp: SocialInsuranceCalculatorPage,
+	},
+	mortgage: {
+		title: "Estimate your Cyprus mortgage",
+		subtitle:
+			"Monthly repayment, total interest and amortisation for a Cyprus purchase.",
+		href: "/tools/mortgage-calculator/",
+		Comp: MortgageCalculatorClient,
+	},
+};
+
+const EMBED_BY_SLUG: Record<string, EmbedKey> = {
+	"cyprus-mortgage-foreigners": "mortgage",
+};
+
+const EMBED_BY_CATEGORY: Partial<Record<GuideCategory, EmbedKey>> = {
+	tax: "tax",
+	property: "rentbuy",
+	business: "social",
+};
+
 export function generateStaticParams() {
 	return [
 		...GUIDES.map((g) => ({ slug: g.slug })),
@@ -203,6 +258,9 @@ export default async function GuidePage({
 	const relatedGuides = GUIDES.filter(
 		(guide) => guide.category === g.category && guide.slug !== g.slug,
 	).slice(0, 3);
+	const embedKey = EMBED_BY_SLUG[g.slug] ?? EMBED_BY_CATEGORY[g.category];
+	const embed = embedKey ? GUIDE_EMBEDS[embedKey] : null;
+	const EmbedComp = embed?.Comp;
 	const canonicalUrl = `${SITE_URL}/guides/${g.slug}/`;
 	const author = AUTHORS[CATEGORY_AUTHOR[g.category]] ?? AUTHORS.team;
 	const readingMinutes = Math.max(
@@ -362,14 +420,14 @@ export default async function GuidePage({
 								{renderBody(s.body)}
 							</p>
 						</section>
-						{g.category === "tax" && i === 1 && (
+						{embed && EmbedComp && i === 1 && (
 							<EmbeddedTool
-								title="Estimate your Cyprus tax saving"
-								subtitle="Compare your current country's tax burden against Cyprus Non-Dom — live, no sign-up."
-								toolHref="/tools/tax-savings-calculator/"
+								title={embed.title}
+								subtitle={embed.subtitle}
+								toolHref={embed.href}
 								toolLabel="Open the full calculator"
 							>
-								<TaxSavingsCalculatorClient embedded />
+								<EmbedComp embedded />
 							</EmbeddedTool>
 						)}
 					</Fragment>

@@ -158,7 +158,11 @@ function StatCard({
 const TERM_OPTIONS = [10, 15, 20, 25] as const;
 type Term = (typeof TERM_OPTIONS)[number];
 
-export default function MortgageCalculatorClient() {
+export default function MortgageCalculatorClient({
+	embedded = false,
+}: {
+	embedded?: boolean;
+} = {}) {
 	const [price, setPrice] = useState(400_000);
 	const [downPct, setDownPct] = useState(30);
 	const [rate, setRate] = useState(4.5);
@@ -198,33 +202,43 @@ export default function MortgageCalculatorClient() {
 
 	const isShort = Array.isArray(tableRows);
 
+	const Wrap = embedded ? "div" : "main";
 	return (
-		<main id="main" className="max-w-3xl mx-auto px-6 py-10 md:py-16">
-			{/* breadcrumb */}
-			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
-					Home
-				</Link>{" "}
-				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-slate-900">
-					Tools
-				</Link>{" "}
-				&rsaquo; <span>Mortgage Calculator</span>
-			</nav>
+		<Wrap
+			{...(embedded ? {} : { id: "main" })}
+			className={
+				embedded ? "flex flex-col" : "max-w-3xl mx-auto px-6 py-10 md:py-16"
+			}
+		>
+			{!embedded && (
+				<>
+					{/* breadcrumb */}
+					<nav className="text-xs text-slate-600 mb-6">
+						<Link href="/" className="hover:text-slate-900">
+							Home
+						</Link>{" "}
+						&rsaquo;{" "}
+						<Link href="/tools/" className="hover:text-slate-900">
+							Tools
+						</Link>{" "}
+						&rsaquo; <span>Mortgage Calculator</span>
+					</nav>
 
-			{/* header */}
-			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
-					Finance
-				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-					Cyprus Mortgage Calculator
-				</h1>
-				<p className="mt-3 text-slate-600 text-sm leading-relaxed">
-					Estimate your monthly repayment, total interest, and amortization
-					schedule for a Cyprus property purchase.
-				</p>
-			</header>
+					{/* header */}
+					<header className="mb-8">
+						<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+							Finance
+						</p>
+						<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+							Cyprus Mortgage Calculator
+						</h1>
+						<p className="mt-3 text-slate-600 text-sm leading-relaxed">
+							Estimate your monthly repayment, total interest, and amortization
+							schedule for a Cyprus property purchase.
+						</p>
+					</header>
+				</>
+			)}
 
 			{/* Cyprus context box */}
 			<aside className="mb-8 p-4 bg-blue-50 border border-blue-200 rounded-xl text-xs text-slate-700 leading-relaxed">
@@ -414,10 +428,12 @@ export default function MortgageCalculatorClient() {
 				</p>
 			</aside>
 
-			<Link href="/tools/" className="underline hover:text-slate-900 text-xs">
-				← Back to Tools
-			</Link>
-		</main>
+			{!embedded && (
+				<Link href="/tools/" className="underline hover:text-slate-900 text-xs">
+					← Back to Tools
+				</Link>
+			)}
+		</Wrap>
 	);
 }
 

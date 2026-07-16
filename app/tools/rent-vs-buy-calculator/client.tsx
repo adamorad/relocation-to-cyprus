@@ -161,7 +161,11 @@ function NumInput({
 	);
 }
 
-export default function RentVsBuyPage() {
+export default function RentVsBuyPage({
+	embedded = false,
+}: {
+	embedded?: boolean;
+} = {}) {
 	const [inputs, setInputs] = useState<Inputs>({
 		monthlyRent: 1400,
 		purchasePrice: 300000,
@@ -183,31 +187,40 @@ export default function RentVsBuyPage() {
 
 	const lastRow = rows[rows.length - 1];
 
+	const Wrap = embedded ? "div" : "main";
 	return (
-		<main className="max-w-3xl mx-auto px-6 py-10">
-			<nav className="text-xs text-slate-500 mb-6 flex gap-3">
-				<Link href="/" className="hover:text-slate-900">
-					← Home
-				</Link>
-				<span className="text-slate-300">|</span>
-				<Link href="/tools" className="hover:text-slate-900">
-					← All Tools
-				</Link>
-			</nav>
+		<Wrap
+			{...(embedded ? {} : { id: "main" })}
+			className={embedded ? "flex flex-col" : "max-w-3xl mx-auto px-6 py-10"}
+		>
+			{!embedded && (
+				<>
+					<nav className="text-xs text-slate-500 mb-6 flex gap-3">
+						<Link href="/" className="hover:text-slate-900">
+							← Home
+						</Link>
+						<span className="text-slate-300">|</span>
+						<Link href="/tools" className="hover:text-slate-900">
+							← All Tools
+						</Link>
+					</nav>
 
-			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
-					Tools
-				</p>
-				<h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900">
-					Rent vs Buy Calculator
-				</h1>
-				<p className="mt-2 text-slate-600 text-sm leading-relaxed">
-					Compare the true cost of renting versus buying property in Cyprus over
-					your chosen time horizon, accounting for mortgage costs, investment
-					returns on your down payment, and property appreciation.
-				</p>
-			</header>
+					<header className="mb-8">
+						<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+							Tools
+						</p>
+						<h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900">
+							Rent vs Buy Calculator
+						</h1>
+						<p className="mt-2 text-slate-600 text-sm leading-relaxed">
+							Compare the true cost of renting versus buying property in Cyprus
+							over your chosen time horizon, accounting for mortgage costs,
+							investment returns on your down payment, and property
+							appreciation.
+						</p>
+					</header>
+				</>
+			)}
 
 			<section className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 p-5 bg-slate-50 rounded-xl border border-slate-200">
 				<h2 className="col-span-full text-sm font-bold text-slate-800 mb-1">
@@ -398,11 +411,13 @@ export default function RentVsBuyPage() {
 				</p>
 			</aside>
 
-			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools" className="underline hover:text-slate-900">
-					← All Tools
-				</Link>
-			</p>
+			{!embedded && (
+				<p className="mt-8 text-xs text-slate-500">
+					<Link href="/tools" className="underline hover:text-slate-900">
+						← All Tools
+					</Link>
+				</p>
+			)}
 
 			<aside className="mt-10 p-5 rounded-xl bg-slate-50 border border-slate-200">
 				<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
@@ -435,6 +450,6 @@ export default function RentVsBuyPage() {
 					</Link>
 				</div>
 			</aside>
-		</main>
+		</Wrap>
 	);
 }
