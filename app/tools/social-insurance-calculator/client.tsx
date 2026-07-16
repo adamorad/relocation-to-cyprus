@@ -145,7 +145,11 @@ function SummaryCard({
 	);
 }
 
-export default function SocialInsuranceCalculatorPage() {
+export default function SocialInsuranceCalculatorPage({
+	embedded = false,
+}: {
+	embedded?: boolean;
+} = {}) {
 	const [employmentType, setEmploymentType] =
 		useState<EmploymentType>("employed");
 	const [grossMonthly, setGrossMonthly] = useState(3500);
@@ -270,31 +274,43 @@ export default function SocialInsuranceCalculatorPage() {
 		employmentType === "self-employed" &&
 		annualSalary > SELF_EMPLOYED_MAX_ANNUAL;
 
+	const Wrap = embedded ? "div" : "main";
 	return (
-		<main id="main" className="max-w-3xl mx-auto px-6 py-10 md:py-16">
-			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
-					Home
-				</Link>{" "}
-				›{" "}
-				<Link href="/tools" className="hover:text-slate-900">
-					Tools
-				</Link>{" "}
-				› <span className="text-slate-900">Social Insurance Calculator</span>
-			</nav>
+		<Wrap
+			{...(embedded ? {} : { id: "main" })}
+			className={
+				embedded ? "flex flex-col" : "max-w-3xl mx-auto px-6 py-10 md:py-16"
+			}
+		>
+			{!embedded && (
+				<>
+					<nav className="text-xs text-slate-600 mb-6">
+						<Link href="/" className="hover:text-slate-900">
+							Home
+						</Link>{" "}
+						›{" "}
+						<Link href="/tools" className="hover:text-slate-900">
+							Tools
+						</Link>{" "}
+						›{" "}
+						<span className="text-slate-900">Social Insurance Calculator</span>
+					</nav>
 
-			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
-					Interactive Tool
-				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">
-					Cyprus Social Insurance Calculator
-				</h1>
-				<p className="mt-3 text-slate-600 leading-relaxed">
-					Calculate your Social Insurance and GeSY contributions based on 2025
-					rates. Adjust your salary and employment type to see a full breakdown.
-				</p>
-			</header>
+					<header className="mb-8">
+						<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+							Interactive Tool
+						</p>
+						<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">
+							Cyprus Social Insurance Calculator
+						</h1>
+						<p className="mt-3 text-slate-600 leading-relaxed">
+							Calculate your Social Insurance and GeSY contributions based on
+							2026 rates. Adjust your salary and employment type to see a full
+							breakdown.
+						</p>
+					</header>
+				</>
+			)}
 
 			{/* Inputs */}
 			<div className="bg-white border border-slate-200 rounded-xl p-6 mb-6 space-y-5">
@@ -466,11 +482,13 @@ export default function SocialInsuranceCalculatorPage() {
 				</p>
 			</aside>
 
-			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools" className="underline hover:text-slate-900">
-					← Back to Tools
-				</Link>
-			</p>
+			{!embedded && (
+				<p className="mt-8 text-xs text-slate-500">
+					<Link href="/tools" className="underline hover:text-slate-900">
+						← Back to Tools
+					</Link>
+				</p>
+			)}
 
 			<aside className="mt-10 p-5 rounded-xl bg-slate-50 border border-slate-200">
 				<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
@@ -491,6 +509,6 @@ export default function SocialInsuranceCalculatorPage() {
 					</Link>
 				</div>
 			</aside>
-		</main>
+		</Wrap>
 	);
 }
