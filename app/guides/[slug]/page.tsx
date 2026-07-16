@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Fragment } from "react";
+import TaxSavingsCalculatorClient from "@/app/tools/tax-savings-calculator/client";
 import { EmailCapture } from "@/components/EmailCapture";
+import { EmbeddedTool } from "@/components/EmbeddedTool";
 import { MetaPixelEvent } from "@/components/MetaPixelEvent";
 import { ShareBar } from "@/components/ShareBar";
 import { AUTHORS, CATEGORY_AUTHOR } from "@/lib/authors";
@@ -351,13 +354,25 @@ export default async function GuidePage({
 			)}
 
 			<article className="mt-8 prose prose-slate max-w-none">
-				{g.sections.map((s) => (
-					<section key={s.heading} id={toId(s.heading)} className="mt-6">
-						<h2 className="text-xl font-bold mb-2">{s.heading}</h2>
-						<p className="text-slate-700 leading-relaxed whitespace-pre-line">
-							{renderBody(s.body)}
-						</p>
-					</section>
+				{g.sections.map((s, i) => (
+					<Fragment key={s.heading}>
+						<section id={toId(s.heading)} className="mt-6">
+							<h2 className="text-xl font-bold mb-2">{s.heading}</h2>
+							<p className="text-slate-700 leading-relaxed whitespace-pre-line">
+								{renderBody(s.body)}
+							</p>
+						</section>
+						{g.category === "tax" && i === 1 && (
+							<EmbeddedTool
+								title="Estimate your Cyprus tax saving"
+								subtitle="Compare your current country's tax burden against Cyprus Non-Dom — live, no sign-up."
+								toolHref="/tools/tax-savings-calculator/"
+								toolLabel="Open the full calculator"
+							>
+								<TaxSavingsCalculatorClient embedded />
+							</EmbeddedTool>
+						)}
+					</Fragment>
 				))}
 			</article>
 
