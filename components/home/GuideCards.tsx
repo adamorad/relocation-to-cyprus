@@ -31,7 +31,7 @@ export function GuideCards() {
 							href={`/guides/${g.slug}/`}
 							className="grid w-full grid-cols-[88px_minmax(0,1fr)] overflow-hidden rounded-card border border-line bg-white text-ink shadow-rc transition-colors hover:border-primary md:flex md:flex-col"
 						>
-							<div className="flex h-full min-h-[104px] items-center justify-center bg-sky-strong text-primary md:h-auto md:min-h-[140px] md:flex-1">
+							<div className="flex h-full min-h-[104px] items-center justify-center bg-sky-strong text-primary md:h-[164px] md:min-h-0 md:shrink-0 desk:h-[176px]">
 								{cfg.photo ? (
 									<Image
 										src={cfg.photo}
@@ -47,7 +47,7 @@ export function GuideCards() {
 									</span>
 								)}
 							</div>
-							<div className="min-w-0 p-3.5 md:p-4">
+							<div className="min-w-0 p-3.5 md:flex-1 md:p-4">
 								<h3 className="text-base font-bold leading-snug">{g.title}</h3>
 								<p className="mt-1 line-clamp-2 text-base leading-normal text-muted md:line-clamp-3 md:leading-snug">
 									{g.description}
