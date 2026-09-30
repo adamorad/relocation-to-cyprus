@@ -63,3 +63,39 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* RealCy Living redesign tokens (Option 1 kit). Available as Tailwind
+   utilities, e.g. text-ink, bg-sky, border-line, rounded-card, shadow-rc. */
+@theme {
+  --color-ink: #0b2145;
+  --color-muted: #506580;
+  --color-primary: #087f98;
+  --color-primary-hover: #066d83;
+  --color-sky: #e8f8ff;
+  --color-sky-strong: #d8f3fc;
+  --color-line: #d9e5ef;
+  --color-focus: #075985;
+  --color-coral: #fa794d;
+  --radius-field: 12px;
+  --radius-card: 16px;
+  --radius-panel: 24px;
+  --shadow-rc: 0 8px 28px rgb(25 85 112 / 8%);
+  --container-rc: 1280px;
+}
+
+:root {
+  --rc-ink: #0b2145;
+  --rc-muted: #506580;
+  --rc-primary: #087f98;
+  --rc-primary-hover: #066d83;
+  --rc-sky: #e8f8ff;
+  --rc-sky-strong: #d8f3fc;
+  --rc-border: #d9e5ef;
+  --rc-focus: #075985;
+  --rc-coral: #fa794d;
+  --rc-r-field: 12px;
+  --rc-r-card: 16px;
+  --rc-r-panel: 24px;
+  --rc-shadow: 0 8px 28px rgb(25 85 112 / 8%);
+  --rc-max: 1280px;
+}
