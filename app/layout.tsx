@@ -34,7 +34,7 @@ export const viewport: Viewport = {
 	width: "device-width",
 	initialScale: 1,
 	maximumScale: 5,
-	themeColor: "#c8d5dc",
+	themeColor: "#ffffff",
 };
 
 const SITE_NAME = "RealCy.app";
@@ -106,7 +106,7 @@ function SiteFooter() {
 		(LISTINGS_BY_REGION[r.name] ?? []).slice(0, 4),
 	);
 	return (
-		<footer className="bg-slate-900 text-slate-300 mt-0">
+		<footer className="bg-ink text-slate-300 mt-0">
 			<div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-6 gap-8 text-sm">
 				<div className="col-span-2 md:col-span-2">
 					<p className="font-bold text-white text-lg">RealCy.app</p>
@@ -322,7 +322,7 @@ function SiteFooter() {
 					</ul>
 				</nav>
 			</div>
-			<div className="border-t border-slate-800">
+			<div className="border-t border-white/10">
 				<div className="max-w-6xl mx-auto px-6 py-6">
 					<p className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
 						Featured developments
@@ -344,7 +344,7 @@ function SiteFooter() {
 					</ul>
 				</div>
 			</div>
-			<div className="border-t border-slate-800">
+			<div className="border-t border-white/10">
 				<div className="max-w-6xl mx-auto px-6 py-6">
 					<p className="text-sm font-semibold text-white mb-1">
 						Get the free Cyprus Relocation Checklist
@@ -355,7 +355,7 @@ function SiteFooter() {
 					<EmailCapture compact />
 				</div>
 			</div>
-			<div className="border-t border-slate-800">
+			<div className="border-t border-white/10">
 				<div className="max-w-6xl mx-auto px-6 py-4 text-xs text-slate-500">
 					© {new Date().getFullYear()} RealCy.app, independent guide to living
 					in Cyprus.
