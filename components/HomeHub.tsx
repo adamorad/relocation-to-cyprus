@@ -274,7 +274,7 @@ export default function HomeHub({
 						<div className="md:w-1/2 md:pl-14 mt-8 md:mt-0 grid grid-cols-3 md:grid-cols-1 gap-6 md:gap-7">
 							{[
 								{ count: toolsCount, label: "Planning tools" },
-								{ count: guidesCount, label: "Relocation guides" },
+								{ count: guidesCount, label: "Practical guides" },
 								{ count: dirsCount, label: "Service directories" },
 							].map(({ count, label }) => (
 								<div key={label}>
@@ -591,11 +591,11 @@ export default function HomeHub({
 							Monthly update
 						</p>
 						<h2 className="font-[family-name:var(--font-lora)] text-2xl md:text-3xl font-medium text-white mt-2 leading-snug">
-							Get the monthly Cyprus relocation update
+							Get the monthly Cyprus update
 						</h2>
 						<p className="text-sm text-white/50 mt-3 leading-relaxed">
-							One email per month. New guides, regulatory changes, and tool
-							updates for people planning a Cyprus move.
+							One email per month. New guides, rule changes and tool updates
+							for people living in or moving to Cyprus.
 						</p>
 					</div>
 					<div className="bg-white/8 border border-white/10 rounded-xl p-6">
