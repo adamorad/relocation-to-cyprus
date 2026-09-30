@@ -139,7 +139,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Transport and the realistic monthly budget",
-				body: "Cyprus is a car culture. Public transport is functional within Limassol and Nicosia and almost non-existent everywhere else; outside the cities a car is essentially mandatory. Used cars are cheap by EU standards (a 2018 Toyota Yaris is €7,000–€9,000) but new cars carry significant registration tax. Petrol runs around €1.40 per litre. Putting it all together, a realistic monthly budget for a family of four living comfortably (two-bed apartment in a non-towering complex, one car, private school for one child, both adults working): Limassol €4,500–€6,000, Larnaca/Paphos/Nicosia €3,200–€4,500. A retired couple in Paphos or Larnaca living modestly can do well on €2,500–€3,000 per month. Add €500–€1,000 if you want to eat out frequently or run a second car.",
+				body: "Cyprus is a car culture. Public transport is functional within Limassol and Nicosia and almost non-existent everywhere else; outside the cities a car is essentially mandatory. Used cars are cheap by EU standards (a 2018 Toyota Yaris is €7,000–€9,000) but new cars carry significant registration tax. Petrol runs around €1.40 per litre. Putting it all together, a realistic monthly budget for a family of four living comfortably (two-bed apartment in a non-towering complex, one car, private school for one child, both adults working): Limassol €4,500–€6,000, Larnaca/Paphos/Nicosia €3,200–€4,500. A retired couple in Paphos or Larnaca living modestly can do well on €2,500–€3,000 per month. Add €500–€1,000 if you want to eat out frequently or run a second car. If you are not ready to buy, a [long-term car rental in Cyprus](/guides/long-term-car-rental-cyprus/) on a monthly contract is the usual bridge for the first months.",
 			},
 		],
 		faqs: [
@@ -226,7 +226,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Week 3–4: GeSY, utilities, and broadband",
-				body: "Register with GeSY (General Healthcare System) at hio.org.cy — you need your ARC or Yellow Slip number. Registration gives you access to free or subsidised primary care, GP referrals, and most hospital procedures with small co-payments. It's worth registering even if you also carry private health insurance, since it costs nothing and provides emergency coverage. Electricity (EAC) and water are set up through your landlord's transfer — your letting agent handles the paperwork, but you provide your passport and ARC/Yellow Slip. Plan ahead: EAC connections take 2–5 working days. Broadband: Cablenet, Primetel, Epic and Cyta all offer 300–1000 Mbps fibre for €40–60/month; order on your first day in the apartment since installation typically takes 5–10 working days. For the gap period, your mobile data SIM (from week one) and most landlords' existing WiFi get you through.",
+				body: "Register with GeSY (General Healthcare System) at hio.org.cy, you need your ARC or Yellow Slip number. Registration gives you access to free or subsidised primary care, GP referrals, and most hospital procedures with small co-payments. It's worth registering even if you also carry private health insurance, since it costs nothing and provides emergency coverage. Electricity (EAC) and water are set up through your landlord's transfer, your letting agent handles the paperwork, but you provide your passport and ARC/Yellow Slip. Plan ahead: EAC connections take 2–5 working days. Broadband: Cablenet, Primetel, Epic and Cyta all offer 300–1000 Mbps fibre for €40–60/month; order on your first day in the apartment since installation typically takes 5–10 working days. For the gap period, your mobile data SIM (from week one) and most landlords' existing WiFi get you through. If you have no car yet, a [monthly car rental](/guides/long-term-car-rental-cyprus/) covers the errands these first weeks involve (appointments, viewings, the supermarket run).",
 			},
 			{
 				heading:
@@ -403,7 +403,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "digital-nomad-visa-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-09-30",
 		category: "immigration",
 		title: "Cyprus Digital Nomad Visa 2026: Requirements",
 		description:
@@ -433,6 +433,44 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			{
 				heading: "Renewal, three-year maximum, and family rights",
 				body: "The DNV is initially issued for one year. It is renewable for up to a further two years (total three years), provided you continue to meet all eligibility criteria: income still meets the threshold, you are still working remotely for non-Cyprus employers or clients, your health insurance remains valid, and you maintain accommodation in Cyprus. Renewal applications should be submitted at least two months before expiry. After the three-year maximum, you must either leave, switch to a different permit type (Permanent Residency by Investment, employment permit, or EU long-term residence if you have accumulated five years of legal residence through different permit types), or re-apply for the DNV after a qualifying absence period. Family members (spouse and unmarried financially dependent children up to 18, or up to 25 if in full-time education) are granted dependent residency status under the primary applicant's DNV. Dependents receive their own ARCs and have the right to live in Cyprus, access education and healthcare through GeSY, but cannot take employment in Cyprus unless they hold a separate work permit.",
+			},
+			{
+				heading: "Visa, tax residency and the 60-day rule are separate things",
+				body: "Holding the Digital Nomad Visa gives you the right to live in Cyprus. It does not, by itself, make you a Cyprus tax resident, and it does not switch off tax residency somewhere else. Tax residency is decided by day-count and connection tests (the 183-day rule, or the 60-day rule with its own conditions), applied to the calendar year, and your home country will apply its own rules in parallel. Many applicants assume the visa settles their tax position and then discover it does not.\n\nBefore you plan around the non-dom benefits described above, work out three things separately: whether your home country will still treat you as tax resident, whether you will meet the Cyprus day-count conditions in your first calendar year, and how your income is structured (employment, freelance fees and company dividends are treated differently). The tax-residency-tracker tool at /tools/tax-residency-tracker lets you test your day count, and the non-dom-status-guide covers what non-dom status does and does not exempt. A Cyprus-registered accountant can confirm your position in one consultation, and that is cheaper than correcting a filing later.",
+			},
+			{
+				heading: "Why applications stall, and how to avoid it",
+				body: "Files tend to be delayed because of what is missing or inconsistent, not because the applicant is ineligible. The most common problems follow directly from the document list above.\n\nIncome evidence that does not match. Payslips, contracts and bank statements should tell the same story. If your income arrives through a company you own, or through several clients, include a short cover explanation and the agreements that link the deposits to the work.\n\nA client or employer with a Cyprus connection. The visa is for work done for employers and clients outside Cyprus. If a material part of your income comes from a Cyprus-based source, get advice before applying.\n\nHealth insurance bought late. The policy needs to be in place and valid for Cyprus at the time of application, and the certificate should show the level of cover CRMD asks for.\n\nDocuments not legalised. Criminal record certificates and civil-status documents need an apostille or legalisation route that matches the country of issue, and translations must be certified where required.\n\nNo confirmed accommodation. A signed rental agreement is stronger than a booking confirmation. If you are still choosing a city, read the best-areas-to-live-cyprus guide before you sign anything long term.",
+			},
+			{
+				heading: "Digital Nomad Visa or another route?",
+				body: "The DNV suits non-EU remote workers who want a first residence permit and do not intend to work for a Cyprus employer. It is the wrong tool in several common situations.\n\nIf you hold an EU passport, you register as an EU citizen instead. If a Cyprus company is offering you a job, the route is a work permit, covered in the work-permits-non-eu guide. If you are retired or living on passive income, compare Category F in the residency-and-visas guide. If your goal is a permanent status, the DNV is a temporary permit with a fixed maximum term, so compare the permanent-residency-5year and residency-and-visas guides before you commit. If you plan to run your own Cyprus company, see company-formation-visa.\n\nThe visa-pathway-finder at /tools/visa-pathway-finder asks two questions and points you to the route that fits your passport and situation.",
+			},
+			{
+				heading: "Check these details against official sources before you apply",
+				body: "Digital nomad rules have been adjusted since the scheme launched, and secondary sources, including this page, can lag behind the Civil Registry and Migration Department. Before you pay for translations or insurance, confirm the following directly on the official CRMD pages or with the department: the current minimum income and whether it is measured net or gross, the uplift for a spouse and for children, the minimum health insurance cover, the current application fee, whether any cap on the number of permits applies, the current processing target, and whether you may apply from inside Cyprus on your current entry status.\n\nIf a figure you find elsewhere differs from the figure on this page, trust the official source.",
+			},
+		],
+		faqs: [
+			{
+				q: "Do EU citizens need the Cyprus Digital Nomad Visa?",
+				a: "No. The Digital Nomad Visa is for non-EU nationals. EU citizens register their residence under the standard EU registration process, which does not require a visa.",
+			},
+			{
+				q: "Does the Digital Nomad Visa make me a Cyprus tax resident?",
+				a: "Not automatically. The visa gives you the right to live in Cyprus. Tax residency depends on day-count tests such as the 183-day rule or the 60-day rule, and your home country may also still treat you as its tax resident. Check both sides before assuming any tax benefit applies.",
+			},
+			{
+				q: "Can I work for a Cyprus company on the Digital Nomad Visa?",
+				a: "The visa is designed for people working remotely for employers or clients based outside Cyprus. Working for a Cyprus-based employer generally requires a separate work permit route, so get advice before mixing the two.",
+			},
+			{
+				q: "Can my family come with me on the Digital Nomad Visa?",
+				a: "Yes. A spouse and eligible dependent children can be included as dependants, and the income requirement is higher when family members are added. Dependants cannot take up employment in Cyprus without a separate work permit.",
+			},
+			{
+				q: "Does the Digital Nomad Visa lead to permanent residency?",
+				a: "It is a temporary permit with a fixed maximum term. Time on it does not automatically convert into permanent residency, so if permanence is your goal, compare the other routes before you apply.",
 			},
 		],
 	},
@@ -1193,10 +1231,14 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "healthcare",
-		title: "Pharmacies & Prescriptions in Cyprus 2026",
+		title: "Buy Medicine Over the Counter in Cyprus",
 		description:
-			"Cyprus pharmacies: 24-hour duty rota, GeSY €1 generic co-pay, how to transfer a foreign prescription, OTC access, and 90-day medication import rules.",
+			"What you can buy over the counter in Cyprus: paracetamol, ibuprofen, some codeine painkillers. Plus GeSY €1 generics and foreign prescription rules.",
 		sections: [
+			{
+				heading: "Quick answer: what you can buy over the counter in Cyprus",
+				body: "Paracetamol (Depon, Panadol) and ibuprofen (Brufen, Nurofen) are sold over the counter, from pharmacies only. Aspirin is the one common painkiller also sold in ordinary shops and kiosks.\n\nCodeine painkillers such as co-codamol can be supplied by Cypriot pharmacists without a prescription, but strength and status vary by product, so ask the pharmacist what is available before you rely on it. Eye antibiotics, some antifungals and oral contraceptives can be supplied after a brief pharmacist consultation. Oral antibiotics are not covered in this guide, so ask a pharmacist or doctor. Benzodiazepines and strong opioids need a controlled-drug prescription. Omeprazole usually needs a prescription, and a salbutamol inhaler is prescription in practice.\n\nThe full brand-by-brand table is in the section on home-country medicines below. Pharmacists have final discretion and status can change, so confirm anything you depend on.",
+			},
 			{
 				heading: "How the pharmacy system works",
 				body: "Cyprus has a dense network of pharmacies (farmakeio in Greek) identified by the standard green cross sign. In Limassol, Nicosia, Paphos, and Larnaca, there is typically a pharmacy within a 5–10 minute walk in any suburban area. Unlike supermarket pharmacy counters in the UK or US, Cypriot pharmacies are standalone businesses staffed by qualified pharmacists, and they are genuinely consultative — it is normal to describe symptoms and receive a recommendation without a GP visit for straightforward ailments. Pharmacy hours are generally 8:00–13:00 and 15:30–19:30 on weekdays, and 8:00–13:00 on Saturdays. Outside these hours, a rotating after-hours duty pharmacy (efimeria) is open in each district. The on-duty pharmacy is signposted on the door of any closed pharmacy in the area, and the list is published daily in the local newspapers and on the Cyprus Pharmaceutical Services website (phs.moh.gov.cy). In the main cities, at least one pharmacy in each area is typically on duty at any given evening or weekend.",
@@ -1391,7 +1433,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Traffic Department offices, timeline, and cost",
-				body: "Traffic Department offices that handle driving licence applications are located in all five district capitals: Nicosia (main office, Athalassa Avenue), Limassol (Omonia Avenue office), Larnaca (Artemidos Avenue), Paphos (Neofytou Nikolaidi Street), and Famagusta (Paralimni office serving the eastern district). Appointments can be booked online via the Cyprus e-Government portal (eservices.gov.cy) or by phone; walk-in availability exists but is limited in peak periods. For a reciprocal exchange, the processing time from application submission to receiving the Cyprus licence is typically 4–8 weeks — the licence is printed centrally and posted to your registered address. For the test route, add the testing period to this timeline. Cost breakdown for a reciprocal exchange: application fee approximately €50–€70 (fees are reviewed annually), plus document translation if needed. There is no additional fee for the physical licence card. Keep a copy of your application receipt — the Traffic Department receipt serves as temporary proof of an in-progress application if you are stopped by police before the new licence arrives.",
+				body: "Traffic Department offices that handle driving licence applications are located in all five district capitals: Nicosia (main office, Athalassa Avenue), Limassol (Omonia Avenue office), Larnaca (Artemidos Avenue), Paphos (Neofytou Nikolaidi Street), and Famagusta (Paralimni office serving the eastern district). Appointments can be booked online via the Cyprus e-Government portal (eservices.gov.cy) or by phone; walk-in availability exists but is limited in peak periods. For a reciprocal exchange, the processing time from application submission to receiving the Cyprus licence is typically 4–8 weeks, the licence is printed centrally and posted to your registered address. For the test route, add the testing period to this timeline. Cost breakdown for a reciprocal exchange: application fee approximately €50–€70 (fees are reviewed annually), plus document translation if needed. There is no additional fee for the physical licence card. Keep a copy of your application receipt, the Traffic Department receipt serves as temporary proof of an in-progress application if you are stopped by police before the new licence arrives. While the exchange is in progress, many newcomers arrange a [monthly car rental](/guides/long-term-car-rental-cyprus/); check the provider's licence requirements first, especially for stays over three months on a non-EU licence.",
 			},
 		],
 	},
@@ -1418,7 +1460,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Insurance and personalised plates",
-				body: "Third-party insurance is compulsory and must be in place before you can register the vehicle. An annual third-party insurance policy for a standard private car runs €200–€400 depending on the driver's age, no-claims history, and car value; comprehensive cover runs €500–€900. Insurance must be arranged through a Cyprus-licensed insurer — your home-country policy does not transfer. After registration, the vehicle receives standard Cyprus registration plates (format: three letters followed by three numbers). Personalised or 'cherished' plates are available through the Traffic Department in Nicosia; a set of personalised plates currently costs €2,000–€4,000 depending on the combination chosen. The process is bureaucratic but straightforward: fill in the application, pay the fee, wait 4–8 weeks for approval.",
+				body: "Third-party insurance is compulsory and must be in place before you can register the vehicle. An annual third-party insurance policy for a standard private car runs €200–€400 depending on the driver's age, no-claims history, and car value; comprehensive cover runs €500–€900. Insurance must be arranged through a Cyprus-licensed insurer, your home-country policy does not transfer. After registration, the vehicle receives standard Cyprus registration plates (format: three letters followed by three numbers). Personalised or 'cherished' plates are available through the Traffic Department in Nicosia; a set of personalised plates currently costs €2,000–€4,000 depending on the combination chosen. The process is bureaucratic but straightforward: fill in the application, pay the fee, wait 4–8 weeks for approval. If you are not sure importing is worth it, compare it with a [long-term car hire in Cyprus](/guides/long-term-car-rental-cyprus/) for your first months while you decide.",
 			},
 			{
 				heading: "Is importing worth it? The honest verdict",
@@ -1449,7 +1491,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Shared transfer services and the Bolt alternative",
-				body: "For the high-traffic Larnaca–Limassol and Larnaca–Nicosia corridors, shared transfer services are the best value option. KIKA Transfers and Cyprus Bus operate pre-booked shared minivan services that collect you from the arrivals hall, potentially pick up 2–3 other passengers heading the same direction, and drop you at your Limassol or Nicosia address. Pricing: approximately €15–€20 per person to Limassol, €18–€22 to Nicosia. Book in advance on their websites — arriving and hoping for a spot is risky during peak tourist season. Bolt operates across Cyprus (Limassol, Larnaca, Nicosia, Paphos) and is the default ride-hailing option for point-to-point journeys within cities. Prices are 30–50% lower than licensed taxis for city journeys. For airport-to-city journeys, Bolt works but requires pre-booking via the app as airport driver availability is inconsistent. For late-night arrivals at Larnaca (say, a 2 AM EasyJet flight), budget for a licensed taxi — Bolt and shared services wind down after midnight.",
+				body: "For the high-traffic Larnaca–Limassol and Larnaca–Nicosia corridors, shared transfer services are the best value option. KIKA Transfers and Cyprus Bus operate pre-booked shared minivan services that collect you from the arrivals hall, potentially pick up 2–3 other passengers heading the same direction, and drop you at your Limassol or Nicosia address. Pricing: approximately €15–€20 per person to Limassol, €18–€22 to Nicosia. Book in advance on their websites, arriving and hoping for a spot is risky during peak tourist season. Bolt operates across Cyprus (Limassol, Larnaca, Nicosia, Paphos) and is the default ride-hailing option for point-to-point journeys within cities. Prices are 30–50% lower than licensed taxis for city journeys. For airport-to-city journeys, Bolt works but requires pre-booking via the app as airport driver availability is inconsistent. For late-night arrivals at Larnaca (say, a 2 AM EasyJet flight), budget for a licensed taxi, Bolt and shared services wind down after midnight. If you would rather collect a car on arrival for your first weeks, see [long-term car rental in Cyprus](/guides/long-term-car-rental-cyprus/) for how monthly contracts work, and confirm airport pickup with the provider.",
 			},
 			{
 				heading: "Tips for smooth arrivals and late-night logistics",
@@ -1493,16 +1535,17 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "transport",
-		title: "Cyprus Ferry Routes 2026: Greece, Egypt & Lebanon",
+		title: "Cyprus Ferry Routes 2026: Piraeus, Crete & Egypt",
 		description:
-			"Grimaldi Lines runs Limassol–Piraeus via Crete (36 hrs) in 2026. Car shipping from €250. Egypt & Lebanon route status, cabin prices, and booking guide.",
+			"Limassol to Piraeus via Crete with Grimaldi Lines (36-40 hrs). Cyprus to Egypt and Haifa ferry status, car rates from €250 and how to book in 2026.",
 		sections: [
 			{
 				heading: "The state of Cyprus ferry services",
 				body: "Cyprus has no land borders — it is an island — and for most of its modern history passenger ferry services have been secondary to air travel for residents. The discontinuation of the Limassol-Haifa route (previously operated by Nissos Cyprus) and the suspension of some Mediterranean routes have reduced options over the years. As of 2026, the most reliable scheduled passenger service is the Grimaldi Lines service connecting Limassol with Piraeus (Athens's port), routing via Crete (Heraklion). This service operates roughly weekly during the high season (approximately April to October) with reduced frequency in winter. It is a cargo-passenger service — meaning the primary commercial purpose is freight, and the passenger capacity is secondary — which sets the tone: this is a comfortable but utilitarian voyage, not a luxury cruise experience. Seasonal cruise-style routes operated by Louis Cruises and other Mediterranean operators add additional options in summer.",
 			},
 			{
-				heading: "Grimaldi Lines Limassol to Piraeus: what to expect",
+				heading:
+					"Limassol to Piraeus and Crete with Grimaldi Lines: what to expect",
 				body: "The Grimaldi service from Limassol to Piraeus takes approximately 36–40 hours, with a stop in Heraklion adding several hours. Deck passage (reclining seat, access to public areas, no cabin) starts from approximately €80 per person each way. An interior cabin (no window) runs €120–€160 per person; a sea-view cabin is €200–€280. Cabins sleep 2–4 passengers. The ships are Italian-operated and well-maintained: there is a self-service restaurant, a bar, and adequate public seating. The crossing can be choppy between Crete and Piraeus during winter months — this is the Eastern Mediterranean, not the English Channel, but it is not always flat either. Booking is done through the Grimaldi Lines website (grimaldi-lines.com) or through local travel agents in Limassol; booking well in advance during summer is strongly recommended as the limited passenger capacity sells out. Check the current schedule directly with Grimaldi before planning, as sailing dates and routes change seasonally.",
 			},
 			{
@@ -1510,8 +1553,8 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 				body: "Transporting a vehicle from Cyprus to Greece (or vice versa) on the Grimaldi service is one of the most practical aspects of the route for relocators. Vehicle rates start from approximately €200–€350 for a standard car, depending on vehicle length and the specific sailing. A standard 4m car runs approximately €250. Motorhomes and campervans pay by length and run €400–€600. The vehicle is driven onto the ferry at Limassol and driven off at Heraklion or Piraeus; you cannot access your vehicle during the crossing for safety reasons — so pack what you need for the voyage in your hand luggage. This route is used by Cyprus residents transporting cars to Greece for sale or vice versa, by people moving households, and occasionally by tourists doing a longer road-trip itinerary (ferry Cyprus to Greece, drive north through Greece and the Balkans). Booking vehicle transport requires providing exact vehicle dimensions; do this accurately as weight and size restrictions apply.",
 			},
 			{
-				heading: "Seasonal routes, Lebanon, and Egypt services",
-				body: "Seasonal passenger services from Cyprus to Lebanon (Tripoli or Beirut) have existed historically but are subject to geopolitical disruption — the current availability depends on the political situation in Lebanon and should be verified directly with Limassol Port Authority (limassolport.com.cy) or local travel agents at the time of travel. Services to Egypt (Port Said or Alexandria) have operated intermittently; as of early 2026 there is no regular scheduled passenger service, though freight connections exist. The Latchi harbour in the Paphos district is relevant for boat hire and private yacht movement rather than commercial ferry services. It is a popular departure point for day trips to the Akamas peninsula sea caves and for private charters to Turkey (Kas or Antalya, roughly 90 nautical miles). Charter hire from Latchi for day trips runs €150–€350 depending on the boat size and duration.",
+				heading: "Cyprus to Egypt ferry, Haifa, Lebanon and seasonal routes",
+				body: "Seasonal passenger services from Cyprus to Lebanon (Tripoli or Beirut) have existed historically but are subject to geopolitical disruption, so current availability depends on the political situation in Lebanon and should be verified directly with Limassol Port Authority (limassolport.com.cy) or local travel agents at the time of travel. Services to Egypt (Port Said or Alexandria) have operated intermittently; as of early 2026 there is no regular scheduled passenger service, though freight connections exist, so there is no current timetable for Cyprus to Egypt or Egypt to Cyprus by ferry. The Limassol to Haifa passenger route (previously operated by Nissos Cyprus) was discontinued and is not part of the current Grimaldi service. The Latchi harbour in the Paphos district is relevant for boat hire and private yacht movement rather than commercial ferry services. It is a popular departure point for day trips to the Akamas peninsula sea caves and for private charters to Turkey (Kas or Antalya, roughly 90 nautical miles). Charter hire from Latchi for day trips runs €150–€350 depending on the boat size and duration.",
 			},
 			{
 				heading:
@@ -1569,7 +1612,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Road quality, hazards, and driving culture",
-				body: "Motorway and main A-road quality in Cyprus is good — well-surfaced, well-marked, and recently improved. Secondary roads (B-routes) and rural village roads vary considerably: some are excellent, others have patches of broken tarmac, loose gravel at bends, and poor line-marking. Hairpin mountain roads in the Troodos are narrow and occasionally dusty after dry periods — reduce speed before blind bends and use the horn as a warning. Three specific hazards worth knowing: stray cats crossing roads at night are common throughout Cyprus, particularly in residential areas; sudden dust storms (calima winds from the Sahara, occurring a few times per year) can reduce visibility to 50m on motorways — hazard lights on and slow down significantly; and unmarked speed bumps (rampe) appear frequently in villages with no warning signs, particularly at 50–80 km/h on rural main roads. Parking: the main cities have paid parking in central areas (1–2 hours free, then metered); in Limassol's tourist zones, free parking is genuinely scarce and a nearby paid car park is the practical solution.",
+				body: "Motorway and main A-road quality in Cyprus is good, well-surfaced, well-marked, and recently improved. Secondary roads (B-routes) and rural village roads vary considerably: some are excellent, others have patches of broken tarmac, loose gravel at bends, and poor line-marking. Hairpin mountain roads in the Troodos are narrow and occasionally dusty after dry periods, reduce speed before blind bends and use the horn as a warning. Three specific hazards worth knowing: stray cats crossing roads at night are common throughout Cyprus, particularly in residential areas; sudden dust storms (calima winds from the Sahara, occurring a few times per year) can reduce visibility to 50m on motorways, hazard lights on and slow down significantly; and unmarked speed bumps (rampe) appear frequently in villages with no warning signs, particularly at 50–80 km/h on rural main roads. Parking: the main cities have paid parking in central areas (1–2 hours free, then metered); in Limassol's tourist zones, free parking is genuinely scarce and a nearby paid car park is the practical solution. Newcomers who want to learn the roads before committing to a purchase often start with a [monthly car rental](/guides/long-term-car-rental-cyprus/).",
 			},
 		],
 	},
@@ -2409,19 +2452,25 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "long-term-car-rental-cyprus",
 		datePublished: "2026-06-18",
-		dateModified: "2026-07-05",
+		dateModified: "2026-09-30",
 		category: "lifestyle",
-		title: "Long-Term Car Rental Cyprus 2026: Monthly Rates",
+		title: "Long-Term Car Rental Cyprus 2026: Monthly Hire Rates",
 		description:
-			"Everything about renting a car for one month or more in Cyprus — which providers offer monthly rates, what €350–€900/month buys you, what is and isn't included in a long-term contract, and whether renting beats buying a used car for your first year.",
+			"Long-term car rental in Cyprus (monthly car hire): typical €300–€950/month rates, what is included, Limassol, Larnaca and Paphos options, and rent vs buy.",
 		sections: [
 			{
-				heading: "Monthly vs daily rentals — they are different products",
-				body: "Most car rental websites in Cyprus are built around 3–14 day holiday rentals. Long-term rental — typically defined as 28 days or more — is a different product with different pricing, different contracts, and usually handled by a different department or a specialist company. Do not expect to price a 60-day stay by multiplying the daily rate by 60. Monthly contracts are priced as a separate category, typically between 40–60% lower on a per-day basis than short-term rates, and they come with dedicated agreements covering mileage limits, maintenance responsibilities, and insurance terms. The main international chains (Hertz, Avis, Budget, Enterprise, Europcar) all have a long-term division in Cyprus and will quote monthly and multi-month rates on request or through their long-term portals. Limassol and Larnaca are the primary hubs; Paphos has fewer options but major chains are present. Local Cypriot operators — Auto Union, Christodoulou Rentals, Astra Car Rental, Thrifty Cyprus, and a handful of independent dealers — often undercut the international chains on monthly rates and are worth getting quotes from.",
+				heading:
+					"Monthly car rental vs daily hire: they are different products",
+				body: "Long-term car rental in Cyprus (also called monthly car rental or long-term car hire) means renting a car for 28 days or more. Most car rental websites in Cyprus are built around 3–14 day holiday rentals. Long-term rental, typically defined as 28 days or more, is a different product with different pricing, different contracts, and usually handled by a different department or a specialist company. Do not expect to price a 60-day stay by multiplying the daily rate by 60. Monthly contracts are priced as a separate category, typically between 40–60% lower on a per-day basis than short-term rates, and they come with dedicated agreements covering mileage limits, maintenance responsibilities, and insurance terms. The main international chains (Hertz, Avis, Budget, Enterprise, Europcar) all have a long-term division in Cyprus and will quote monthly and multi-month rates on request or through their long-term portals. Limassol and Larnaca are the primary hubs; Paphos has fewer options but major chains are present. Local Cypriot operators, Auto Union, Christodoulou Rentals, Astra Car Rental, Thrifty Cyprus, and a handful of independent dealers, often undercut the international chains on monthly rates and are worth getting quotes from.",
 			},
 			{
 				heading: "What to budget: monthly rates in 2026",
 				body: "Rates for monthly rentals in Cyprus in 2026 run roughly as follows (1–3 month contract, before any longer-term discount):\n\nEconomy (Fiat Panda, Toyota Aygo, Hyundai i10): €300–€450/month\nCompact (VW Polo, Toyota Yaris, Opel Corsa): €380–€550/month\nMid-size (VW Golf, Toyota Corolla, Seat Leon): €500–€750/month\nSUV / crossover (Toyota C-HR, Kia Sportage, Hyundai Tucson): €650–€950/month\nPremium / large SUV (Toyota RAV4, Volvo XC40, VW Tiguan): €900–€1,400/month\n\nOlder vehicles (3–5 years) from local operators can be materially cheaper — roughly €230–€380/month for a compact. These figures assume a contract of 1–3 months; rates fall further for 6-month and 12-month agreements, sometimes by 15–25% relative to the monthly rate. All major providers increase rates during peak summer months (June through September), when demand from the tourism market competes with long-term contracts. If your timing is flexible, signing a long-term agreement that starts in October or November gives you better rates and more vehicle choice.",
+			},
+			{
+				heading:
+					"Cheapest long-term car rental in Cyprus: how to lower the monthly rate",
+				body: "There is no single cheapest provider, because monthly quotes change with season, car age and contract length. The levers that consistently lower the price, based on the ranges above, are these:\n\nStart outside summer. Rates rise from June through September, so a contract starting in October or November is cheaper and has more cars available.\n\nChoose a smaller or older car. Economy cars start around €300/month, and 3–5 year old cars from local operators run roughly €230–€380/month for a compact.\n\nCommit for longer. Six and twelve month agreements are often 15–25% cheaper per month than a 1–3 month contract.\n\nGet quotes from local operators as well as the international chains. Local specialists commonly come out 15–30% cheaper for 1–3 month contracts.\n\nCompare the total, not the headline rate. A low monthly price with a 2,000 km cap, a high excess or no breakdown cover can cost more than a slightly higher all-in quote. Ask each provider for the same package (mileage, CDW excess, servicing, VAT) so the quotes are comparable.",
 			},
 			{
 				heading: "What is and is not included",
@@ -2430,6 +2479,22 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			{
 				heading: "The main providers",
 				body: "Hertz and Avis have the widest fleet variety and the most straightforward online long-term booking portals, but their rates are typically the highest among the options available in Cyprus. Enterprise and Europcar are competitive on price and strong on fleet condition. Budget and Sixt are present in Cyprus and worth getting quotes from. For competitive pricing, local specialists are worth approaching directly: Auto Union (Limassol), Astra Car Rental (Limassol and Larnaca), and Christodoulou Rentals (multiple locations) regularly come out 15–30% cheaper than international chains for 1–3 month contracts. Some local operators offer the option to rent older vehicles (3–5 years) at materially lower rates — typically €230–€380/month for a compact — which is worth considering if your primary need is reliable daily transport rather than a new vehicle. For stays over six months, full operational leasing from companies like Intercar, Autohellas, or Sunseeker (which has a fleet of managed rental vehicles via their property business) can be competitive. Whichever provider you choose, contact the long-term or fleet desk directly rather than booking the advertised online rate — the website prices are tourist daily rates and rarely reflect the monthly contract price.",
+			},
+			{
+				heading: "Long-term car rental in Limassol",
+				body: "Limassol is the main hub for monthly car rental on the island, and the base of several of the local operators named above (Auto Union and Astra Car Rental). It has no airport of its own: most people arrive via Larnaca (a licensed taxi is about 55–70 minutes) or Paphos (about 45–55 minutes), so ask providers whether they deliver the car to the airport or you collect it in the city. Limassol is also the city where you can most realistically live with one car or none (see [getting around Cyprus without a car](/guides/getting-around-cyprus-no-car/)), which makes a shorter or smaller rental a sensible choice. Free parking is scarce in the tourist zones, so check whether your building includes a parking space before you choose a larger car.",
+			},
+			{
+				heading: "Long-term car rental in Larnaca",
+				body: "Larnaca has the island's main international airport (LCA), which makes it the most convenient place to start a monthly contract: you can collect the car after landing and drive to wherever you settle. Astra Car Rental is listed above as operating in Larnaca, and the international chains are present at the airport. If you are arriving late at night, the airport guide on [Cyprus airport transfers](/guides/airport-transfers-guide/) explains what runs after midnight and what does not. Confirm the pickup hours in writing, since airport desks do not always match late flight arrivals.",
+			},
+			{
+				heading: "Long-term car rental in Paphos",
+				body: "Paphos has an international airport (PFO) and the major chains are present, but there are fewer local options than in Limassol and Larnaca, so it pays to request quotes early and from several providers. Paphos is the city where a car matters most: buses run less often outside peak tourist hours and Bolt supply can be patchy, so most residents plan on one car per driving adult. If you are still deciding between cities, the [best areas to live in Cyprus](/guides/best-areas-to-live-cyprus/) guide covers what each area is like day to day. Some providers allow one-way returns between cities, sometimes for a fee, which helps if you land in Larnaca and settle in Paphos; ask before booking.",
+			},
+			{
+				heading: "Long-term car leasing vs monthly rental",
+				body: "Monthly rental and car leasing are different products. A monthly rental is short and flexible, usually 1–12 months, with insurance and servicing bundled in. Operational leasing (the fleet-style arrangement mentioned above for stays over six months) runs on a longer fixed term, so it only suits you if you are sure to stay. Terms, deposits, early-termination charges and who pays for servicing vary by company, so read the contract carefully. If you expect to stay two years or more, compare leasing and monthly rental against [buying a used car](/guides/car-import-registration/) and registering it, and check that your licence is valid for the period (see [converting your driving licence](/guides/driving-licence-conversion/)).",
 			},
 			{
 				heading: "Long-term rental vs buying a used car — which makes sense",
@@ -2441,6 +2506,18 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 		],
 		faqs: [
+			{
+				q: "Can I rent a car monthly in Limassol, Larnaca or Paphos?",
+				a: "Yes. Monthly and long-term contracts are available in all three cities, from the international chains and from local operators. Limassol and Larnaca have the most options, and Larnaca airport is the easiest place to start a contract on arrival. Paphos has fewer local providers, so request quotes early. Ask each provider for the monthly or fleet rate directly, since online prices are usually tourist daily rates.",
+			},
+			{
+				q: "How do I find the cheapest long-term car rental in Cyprus?",
+				a: "Start the contract outside June to September, choose an economy or older compact car, commit to six or twelve months if you can, and get quotes from both local operators and the international chains. Compare the same package (mileage, excess, servicing, VAT) across quotes, because a low headline rate can hide a mileage cap or a high excess.",
+			},
+			{
+				q: "What is the difference between long-term car hire and car leasing in Cyprus?",
+				a: "Long-term car hire (monthly rental) is a flexible contract, usually one to twelve months, with insurance and servicing bundled in. Leasing is a longer fixed-term arrangement, generally suited to stays of a year or more. Check the early-termination terms before signing a lease.",
+			},
 			{
 				q: "What is a good monthly rental rate for a car in Cyprus in 2026?",
 				a: "Expect to pay €380–€550/month for a compact class car (VW Polo, Toyota Yaris) on a 1–3 month contract from a local provider. International chains typically run €450–€650 for the same class. Economy cars start around €300/month. Mid-size cars and SUVs run €600–€950/month. Rates are lower for 6-month or 12-month agreements and higher during peak summer months.",
@@ -2637,15 +2714,15 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "moving-to-cyprus-from-uk",
 		datePublished: "2026-06-22",
-		dateModified: "2026-07-05",
+		dateModified: "2026-09-30",
 		category: "immigration",
-		title: "Moving to Cyprus from the UK 2026: Full Guide",
+		title: "Moving to Cyprus from the UK After Brexit: 2026 Guide",
 		description:
 			"Practical guide for UK nationals relocating to Cyprus after Brexit — which visa route applies (Category F, Digital Nomad, or Permanent Residency), how UK pension and employment income is taxed in Cyprus, the UK-Cyprus double taxation treaty, and what UK buyers need to know about property purchase.",
 		sections: [
 			{
 				heading: "Post-Brexit: what changed for UK nationals in Cyprus",
-				body: "UK nationals lost free movement rights in the EU on 1 January 2021. For those already living in Cyprus before that date, the Cyprus Withdrawal Agreement Implementation Law gave the right to apply for permanent residency under a protected status process — this window has now closed. For UK nationals moving to Cyprus after 2020, the position is clear: you are a third-country national and need a formal residence permit to live in Cyprus long-term, in the same way as an American, Israeli, or Australian citizen. This is not as complicated as it sounds — Cyprus has an established and functional system for issuing residence permits to non-EU nationals, and the UK-Cyprus relationship (Commonwealth history, left-hand drive, shared legal tradition) means that practical life as a UK national in Cyprus is unusually smooth. English is effectively a working language in government offices, banks, and professional services. The UK passport gives visa-free entry to Cyprus for stays up to 90 days in any 180-day period under the EU Schengen rules — but Cyprus is not in Schengen, and UK nationals can enter Cyprus for 90 days without a visa under a bilateral arrangement. For stays beyond 90 days, a residence permit is required.",
+				body: "UK nationals lost free movement rights in the EU on 1 January 2021. For those already living in Cyprus before that date, the Cyprus Withdrawal Agreement Implementation Law gave the right to apply for permanent residency under a protected status process, this window has now closed. For UK nationals moving to Cyprus after 2020, the position is clear: you are a third-country national and need a formal residence permit to live in Cyprus long-term, in the same way as an American, Israeli, or Australian citizen. This is not as complicated as it sounds, Cyprus has an established and functional system for issuing residence permits to non-EU nationals, and the UK-Cyprus relationship (Commonwealth history, left-hand drive, shared legal tradition) means that practical life as a UK national in Cyprus is unusually smooth. English is effectively a working language in government offices, banks, and professional services. A UK passport gives visa-free entry to Cyprus for short stays (currently up to 90 days). Cyprus is not in the Schengen area, so Cyprus applies its own entry rules to those days. For stays beyond the visa-free limit, a residence permit is required. Check the current entry conditions on the official Cyprus government and UK Foreign Office travel pages before you book a one-way flight.",
 			},
 			{
 				heading: "Visa and residency routes for UK nationals",
@@ -2661,11 +2738,19 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Converting your UK driving licence",
-				body: "UK driving licences are valid in Cyprus for driving as a visitor. Once you establish residency — specifically, once you have a residency permit and a registered Cyprus address — you are required to exchange your UK licence for a Cyprus licence. The relevant authority is the Department of Road Transport (MCIT), and the exchange is handled at the Limassol, Larnaca, or Paphos district offices. The process: present your current UK driving licence (full, not provisional), your residency permit or registration certificate, a Cyprus identity document or passport, a medical certificate (a standard medical examination by a registered Cypriot doctor — costs approximately €30–€50), and proof of Cyprus address. The exchange fee is approximately €35–€55. Processing typically takes 2–6 weeks. Your UK licence categories transfer directly — if your UK licence covers car and motorcycle, your Cyprus licence will cover the same. There is no requirement to re-take a driving test for UK licence holders. Note: Cyprus drives on the left, which is the same as the UK — the transition is significantly easier than for continental European licence holders.",
+				body: "UK driving licences are valid in Cyprus for driving as a visitor. Once you establish residency, specifically, once you have a residency permit and a registered Cyprus address, you are required to exchange your UK licence for a Cyprus licence. The relevant authority is the Department of Road Transport (MCIT), and the exchange is handled at the Limassol, Larnaca, or Paphos district offices. The process: present your current UK driving licence (full, not provisional), your residency permit or registration certificate, a Cyprus identity document or passport, a medical certificate (a standard medical examination by a registered Cypriot doctor, costs approximately €30–€50), and proof of Cyprus address. The exchange fee is approximately €35–€55. Processing typically takes 2–6 weeks. Your UK licence categories transfer directly, if your UK licence covers car and motorcycle, your Cyprus licence will cover the same. There is no requirement to re-take a driving test for UK licence holders. Note: Cyprus drives on the left, which is the same as the UK, the transition is significantly easier than for continental European licence holders. That also makes a [long-term car rental in Cyprus](/guides/long-term-car-rental-cyprus/) straightforward for UK arrivals in their first months.",
 			},
 			{
 				heading: "From NHS to GeSY: healthcare transition for UK nationals",
 				body: "UK nationals in Cyprus lose NHS access once they establish permanent residency. The GHIC (Global Health Insurance Card, which replaced the EHIC for UK nationals) covers emergency treatment in Cyprus as a country that has maintained reciprocal arrangements, but it does not cover non-emergency care or give access to the full Cyprus health system. To access GeSY — the Cyprus public health system — you must register. Registration requires a Cyprus TIN (Tax Identification Number), proof of Cyprus address, and, for non-EU nationals, a valid residency permit. Once registered, you pay contributions at 2.65% of your income. The GHIC is useful for the transition period before you have GeSY registration; it should not be relied on as a long-term solution. The practical recommendation for UK nationals moving to Cyprus: purchase private international health insurance before leaving the UK and maintain it through the process of establishing GeSY registration. Private insurance provides a safety net for the transition period and, for many people, is kept alongside GeSY registration to ensure private specialist access. Dental care is not covered by GeSY and must be funded privately in Cyprus — budget accordingly.",
+			},
+			{
+				heading: "Which route fits which UK situation",
+				body: "Most UK movers fall into one of four situations, and the route follows from the situation rather than the other way round.\n\nRetired or living on pensions and savings: Category F is the route built for this, and it also decides how your pensions are taxed once you are resident. Read retiring-in-cyprus alongside this guide.\n\nWorking remotely for an employer or clients outside Cyprus: the Digital Nomad Visa. See digital-nomad-visa-guide for documents and timing. It is temporary, so think about what you will do at the end of the term.\n\nOffered a job by a Cyprus employer: a work permit, sponsored by the employer. See work-permits-non-eu.\n\nBuying property and wanting settled status: Permanent Residency by Investment, which is tied to a qualifying purchase. Read buying-process and property-lawyers-cyprus before you commit money, and do not let a developer or agent choose the route for you.\n\nIf you are unsure, the visa-pathway-finder at /tools/visa-pathway-finder narrows it down in two questions.",
+			},
+			{
+				heading: "Before you leave the UK: a sensible order of operations",
+				body: "The order matters because several steps depend on documents produced by an earlier one.\n\nFirst, choose the residency route and check its current requirements with the Civil Registry and Migration Department, since income thresholds and fees change. Second, start gathering documents that take time: an apostilled criminal record certificate, civil-status certificates, proof of income and proof of health insurance. Third, decide your tax exit. Tell HMRC you are leaving (the P85 route), understand how the UK Statutory Residence Test treats your days in each country, and decide what happens to UK property, pensions and savings. Fourth, line up accommodation in Cyprus, ideally a first short-term stay before a long lease. Fifth, arrange healthcare cover for the gap before you can register with GeSY.\n\nOnce you have arrived, follow the arrival-checklist guide, which sets out the first month in the order the offices require. For the budget side, see cost-of-living, and for choosing a city, best-areas-to-live-cyprus.\n\nThe HMRC and Statutory Residence Test steps are UK-side rules that change independently of anything in Cyprus. Confirm them on GOV.UK or with a UK adviser who handles emigration.",
 			},
 		],
 		faqs: [
@@ -2688,6 +2773,14 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			{
 				q: "Can I use my GHIC/EHIC in Cyprus?",
 				a: "The GHIC (UK's replacement for the EHIC) is valid in Cyprus for emergency and necessary medical treatment, as Cyprus has maintained reciprocal healthcare arrangements with the UK post-Brexit. However, it does not give access to the full GeSY system and should not be relied on for non-emergency care or long-term healthcare needs. Register with GeSY once you have Cyprus residency and a TIN.",
+			},
+			{
+				q: "Do I need to tell HMRC if I move to Cyprus?",
+				a: "Yes, you should notify HMRC that you are leaving the UK, and your UK tax residency is decided by the Statutory Residence Test rather than by where you say you live. Check the current process on GOV.UK. Keep evidence of your Cyprus tax residency, since you may be asked for it.",
+			},
+			{
+				q: "Which Cyprus route is best for a UK national after Brexit?",
+				a: "It depends on your situation. Retirees and people living on income usually look at Category F, remote workers at the Digital Nomad Visa, people with a Cyprus job offer at a work permit, and property buyers at Permanent Residency by Investment. The visa-pathway-finder tool on this site can narrow it down.",
 			},
 		],
 	},
