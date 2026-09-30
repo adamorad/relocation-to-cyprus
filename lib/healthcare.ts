@@ -1,5 +1,5 @@
 /**
- * Healthcare section content. Consumed by components/HealthcarePanel.tsx.
+ * Healthcare section content. Its former panel component is archived in archive/homepage-map/.
  *
  * Curation: venues selected for relevance to relocators — English-speaking
  * staff, GeSY participation, and suitability for expat healthcare needs.

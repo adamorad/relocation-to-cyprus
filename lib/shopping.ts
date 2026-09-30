@@ -1,5 +1,5 @@
 /**
- * Shopping section content. Consumed by components/ShoppingPanel.tsx.
+ * Shopping section content. Its former panel component is archived in archive/homepage-map/.
  *
  * Curation philosophy: chains and venues are verified against 2026 operating
  * information. Sunday closures, siesta hours, and online-shopping tips are
