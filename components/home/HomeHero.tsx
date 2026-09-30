@@ -6,10 +6,10 @@ export function HomeHero() {
 	return (
 		<section
 			aria-labelledby="home-title"
-			className="relative isolate overflow-hidden bg-sky"
+			className="relative isolate overflow-hidden bg-sky desk:min-h-[410px]"
 		>
 			<div className="mx-auto max-w-[1280px] px-5 md:px-8">
-				<div className="relative z-10 pb-4 pt-6 desk:w-[56%] desk:pb-12 desk:pt-12">
+				<div className="relative z-10 pb-4 pt-6 desk:w-[56%] desk:pb-14 desk:pt-14">
 					<h1
 						id="home-title"
 						className="max-w-[760px] text-balance text-[clamp(34px,9vw,40px)] font-extrabold leading-[1.12] tracking-[-0.035em] text-ink md:text-[clamp(40px,5vw,52px)] desk:text-[clamp(52px,4.6vw,64px)] desk:leading-[1.05]"
@@ -56,19 +56,19 @@ export function HomeHero() {
 				</div>
 			</div>
 			{/* Decorative artwork: below the copy on mobile, right side on desktop */}
-			<div className="relative h-[200px] w-full desk:absolute desk:inset-y-0 desk:right-0 desk:z-0 desk:h-auto desk:w-[58%]">
+			<div className="relative h-[200px] w-full desk:absolute desk:inset-y-0 desk:right-0 desk:z-0 desk:h-auto desk:w-[64%]">
 				<Image
 					src="/images/home/hero-neighborhood.webp"
 					alt=""
 					width={1774}
 					height={887}
 					priority
-					sizes="(min-width: 1100px) 58vw, 100vw"
-					className="h-full w-full object-cover object-[78%_50%]"
+					sizes="(min-width: 1100px) 64vw, 100vw"
+					className="h-full w-full object-cover object-[100%_50%]"
 				/>
 				<div
 					aria-hidden="true"
-					className="pointer-events-none absolute inset-y-0 left-0 hidden w-1/4 bg-gradient-to-r from-sky to-transparent desk:block"
+					className="pointer-events-none absolute inset-y-0 left-0 hidden w-2/5 bg-gradient-to-r from-sky to-transparent desk:block"
 				/>
 			</div>
 		</section>

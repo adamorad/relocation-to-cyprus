@@ -70,12 +70,8 @@ export default function Home() {
 			/>
 			<main id="main">
 				<HomeHero />
-				<p className="sr-only">
-					Living in Cyprus: Guides, Directories, New Developments and Tax Tools
-					| RealCy.app
-				</p>
 				<TopicGrid />
-				<div className="mx-auto grid max-w-[1280px] gap-8 px-5 py-8 md:px-8 md:py-10 desk:grid-cols-[minmax(0,7fr)_minmax(0,3fr)] desk:gap-6">
+				<div className="mx-auto grid max-w-[1280px] gap-8 px-5 py-8 md:px-8 md:py-10 desk:grid-cols-[minmax(0,7fr)_minmax(0,3fr)] desk:items-stretch desk:gap-6">
 					<GuideCards />
 					<AreaPanel />
 				</div>

@@ -21,7 +21,7 @@ export function TopicGrid() {
 							href={t.href}
 							className="flex w-full flex-col items-center rounded-card border border-line bg-white px-3 py-5 text-center text-ink shadow-rc transition-colors hover:border-primary"
 						>
-							<span className="flex h-14 w-14 items-center justify-center rounded-full bg-sky-strong text-primary">
+							<span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-strong text-primary">
 								<Icon name={t.icon} size={30} />
 							</span>
 							<span className="mt-3 text-base font-bold leading-snug">
