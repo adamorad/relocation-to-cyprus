@@ -24,16 +24,25 @@ export function MobileMenu() {
 	const panelRef = useRef<HTMLDivElement>(null);
 
 	const close = useCallback(() => setOpen(false), []);
+	// Set when a link click (navigation) closes the menu, so focus is not
+	// dragged back to the trigger on the new page.
+	const skipRestoreRef = useRef(false);
+	const closeForNav = useCallback(() => {
+		skipRestoreRef.current = true;
+		setOpen(false);
+	}, []);
 
 	// Close on route change (link taps).
 	// biome-ignore lint/correctness/useExhaustiveDependencies: close when pathname changes
 	useEffect(() => {
+		skipRestoreRef.current = true;
 		setOpen(false);
 	}, [pathname]);
 
 	useEffect(() => {
 		if (!open) return;
 		const trigger = triggerRef.current;
+		skipRestoreRef.current = false;
 		closeRef.current?.focus();
 
 		// Make the rest of the page inert while the dialog is open.
@@ -81,7 +90,7 @@ export function MobileMenu() {
 			mq.removeEventListener("change", onMq);
 			document.body.style.overflow = prevOverflow;
 			for (const el of inerted) el.removeAttribute("inert");
-			trigger?.focus();
+			if (!skipRestoreRef.current) trigger?.focus();
 		};
 	}, [open]);
 
@@ -93,7 +102,7 @@ export function MobileMenu() {
 				aria-label="Open menu"
 				aria-haspopup="dialog"
 				aria-expanded={open}
-				aria-controls={MENU_ID}
+				aria-controls={open ? MENU_ID : undefined}
 				onClick={() => setOpen(true)}
 				className="inline-flex h-11 w-11 items-center justify-center rounded-field border border-line text-ink hover:bg-sky md:hidden"
 			>
@@ -141,6 +150,7 @@ export function MobileMenu() {
 												<li key={item.href}>
 													<Link
 														href={item.href}
+														onClick={closeForNav}
 														aria-current={active ? "page" : undefined}
 														className={`${ROW} ${active ? "bg-sky" : ""}`}
 													>
@@ -152,6 +162,7 @@ export function MobileMenu() {
 										<li>
 											<Link
 												href="/my-shortlist/"
+												onClick={closeForNav}
 												aria-current={
 													pathname.startsWith("/my-shortlist")
 														? "page"
@@ -179,6 +190,7 @@ export function MobileMenu() {
 												<li key={item.href}>
 													<Link
 														href={item.href}
+														onClick={closeForNav}
 														aria-current={active ? "page" : undefined}
 														className={`flex min-h-11 items-center rounded-field px-4 text-base font-medium text-muted hover:bg-sky hover:text-ink ${
 															active ? "bg-sky text-ink" : ""
