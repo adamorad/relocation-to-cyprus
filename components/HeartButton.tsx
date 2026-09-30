@@ -2,7 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { Icon } from "@/components/icons/Icon";
-import { isInShortlist, SHORTLIST_EVENT, toggleShortlist } from "@/lib/shortlist";
+import {
+	isInShortlist,
+	SHORTLIST_EVENT,
+	toggleShortlist,
+} from "@/lib/shortlist";
 
 type Props = {
 	slug: string;
