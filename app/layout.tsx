@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, Lora } from "next/font/google";
+import { Manrope } from "next/font/google";
 import Link from "next/link";
 import { CookieConsentManager } from "@/components/CookieConsentManager";
 import { EmailCapture } from "@/components/EmailCapture";
@@ -15,17 +15,11 @@ const TOOL_COUNT = TOOLS.length;
 const GUIDE_COUNT = GUIDES.length;
 import "./globals.css";
 
-const lora = Lora({
+const manrope = Manrope({
 	subsets: ["latin"],
-	variable: "--font-lora",
+	variable: "--font-manrope",
 	display: "swap",
-	weight: ["400", "500", "600"],
-});
-const dmSans = DM_Sans({
-	subsets: ["latin"],
-	variable: "--font-dm-sans",
-	display: "swap",
-	weight: ["400", "500", "600"],
+	weight: ["500", "600", "700", "800"],
 });
 
 // Google Analytics 4 — measurement ID. Set via NEXT_PUBLIC_GA_ID at build
@@ -377,13 +371,13 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en" className={`${lora.variable} ${dmSans.variable}`}>
+		<html lang="en" className={manrope.variable}>
 			<head>
 				{/* Warm up the Google Maps origins used by the homepage map */}
 				<link rel="preconnect" href="https://maps.googleapis.com" />
 				<link rel="preconnect" href="https://maps.gstatic.com" crossOrigin="" />
 			</head>
-			<body className="antialiased text-slate-900 font-[family-name:var(--font-dm-sans)]">
+			<body className="antialiased text-ink font-[family-name:var(--font-manrope)]">
 				<a href="#main" className="skip-to-content">
 					Skip to content
 				</a>

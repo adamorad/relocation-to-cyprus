@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+/* Site-wide sans: Manrope (loaded in app/layout.tsx). Legacy font variables
+   that older components reference (Lora headings, DM Sans body) now resolve
+   to Manrope so the whole site switches without touching every component. */
+@theme inline {
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html {
+  --font-lora: var(--font-manrope);
+  --font-dm-sans: var(--font-manrope);
+}
+
 :focus-visible {
   outline: 2px solid #0ea5e9;
   outline-offset: 2px;
