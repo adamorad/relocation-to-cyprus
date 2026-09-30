@@ -256,6 +256,22 @@ function SiteFooter() {
 					<ul className="mt-3 space-y-2">
 						<li>
 							<Link
+								href="/moving-to-cyprus/"
+								className="hover:text-white transition-colors"
+							>
+								Moving to Cyprus
+							</Link>
+						</li>
+						<li>
+							<Link
+								href="/listings/"
+								className="hover:text-white transition-colors"
+							>
+								New developments
+							</Link>
+						</li>
+						<li>
+							<Link
 								href="/about/"
 								className="hover:text-white transition-colors"
 							>
