@@ -1193,10 +1193,14 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "healthcare",
-		title: "Pharmacies & Prescriptions in Cyprus 2026",
+		title: "Buy Medicine Over the Counter in Cyprus",
 		description:
-			"Cyprus pharmacies: 24-hour duty rota, GeSY €1 generic co-pay, how to transfer a foreign prescription, OTC access, and 90-day medication import rules.",
+			"What you can buy over the counter in Cyprus: paracetamol, ibuprofen, some codeine painkillers. Plus GeSY €1 generics and foreign prescription rules.",
 		sections: [
+			{
+				heading: "Quick answer: what you can buy over the counter in Cyprus",
+				body: "Paracetamol (Depon, Panadol) and ibuprofen (Brufen, Nurofen) are sold over the counter, from pharmacies only. Aspirin is the one common painkiller also sold in ordinary shops and kiosks.\n\nCodeine painkillers such as co-codamol can be supplied by Cypriot pharmacists without a prescription, but strength and status vary by product, so ask the pharmacist what is available before you rely on it. Eye antibiotics, some antifungals and oral contraceptives can be supplied after a brief pharmacist consultation. Oral antibiotics are not covered in this guide, so ask a pharmacist or doctor. Benzodiazepines and strong opioids need a controlled-drug prescription. Omeprazole usually needs a prescription, and a salbutamol inhaler is prescription in practice.\n\nThe full brand-by-brand table is in the section on home-country medicines below. Pharmacists have final discretion and status can change, so confirm anything you depend on.",
+			},
 			{
 				heading: "How the pharmacy system works",
 				body: "Cyprus has a dense network of pharmacies (farmakeio in Greek) identified by the standard green cross sign. In Limassol, Nicosia, Paphos, and Larnaca, there is typically a pharmacy within a 5–10 minute walk in any suburban area. Unlike supermarket pharmacy counters in the UK or US, Cypriot pharmacies are standalone businesses staffed by qualified pharmacists, and they are genuinely consultative — it is normal to describe symptoms and receive a recommendation without a GP visit for straightforward ailments. Pharmacy hours are generally 8:00–13:00 and 15:30–19:30 on weekdays, and 8:00–13:00 on Saturdays. Outside these hours, a rotating after-hours duty pharmacy (efimeria) is open in each district. The on-duty pharmacy is signposted on the door of any closed pharmacy in the area, and the list is published daily in the local newspapers and on the Cyprus Pharmaceutical Services website (phs.moh.gov.cy). In the main cities, at least one pharmacy in each area is typically on duty at any given evening or weekend.",
