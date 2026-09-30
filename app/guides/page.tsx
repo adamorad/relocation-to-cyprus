@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import GuidesClient from "./GuidesClient";
 
 const SITE_URL = "https://realcy.app";
-const title = "Cyprus Relocation Guides — RealCy.app";
-const description = "Practical relocation guides for moving to Cyprus — immigration, tax, property, family, healthcare, business setup, and lifestyle. Written for people deciding whether and how to move.";
+const title = "Cyprus Guides for Residents and Newcomers | RealCy.app";
+const description = "Practical Cyprus guides: healthcare, transport, food, everyday admin, plus visas, tax, property and business setup for people planning a move.";
 
 export const metadata: Metadata = {
   title,
