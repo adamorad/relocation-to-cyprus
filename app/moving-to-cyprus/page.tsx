@@ -9,11 +9,20 @@ const CATEGORIES: ReadonlyArray<GuideCategory> = [
 	"business",
 ];
 
+const title = "Moving to Cyprus: Visas, Tax and Property Guides";
+const description =
+	"Guides for planning a move to Cyprus: visas and residency, tax, buying property and setting up a business.";
+
 export const metadata: Metadata = {
-	title: "Moving to Cyprus: Visas, Tax and Property Guides",
-	description:
-		"Guides for planning a move to Cyprus: visas and residency, tax, buying property and setting up a business.",
+	title,
+	description,
 	alternates: { canonical: "/moving-to-cyprus/" },
+	openGraph: {
+		title,
+		description,
+		url: "https://realcy.app/moving-to-cyprus/",
+		type: "website",
+	},
 };
 
 export default function MovingToCyprusPage() {
@@ -22,7 +31,11 @@ export default function MovingToCyprusPage() {
 			<h1 className="text-3xl md:text-4xl font-bold">Moving to Cyprus</h1>
 			<p className="mt-3 text-slate-700 max-w-2xl">
 				Planning a move? Start with residency and tax, then property and
-				business. Already here? See the everyday guides on the homepage.
+				business. Already here? See the everyday guides on the{" "}
+				<Link href="/" className="text-[#0f6d67] hover:underline">
+					homepage
+				</Link>
+				.
 			</p>
 			{CATEGORIES.map((cat) => {
 				const guides = GUIDES.filter((g) => g.category === cat);

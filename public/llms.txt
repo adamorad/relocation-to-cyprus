@@ -2,7 +2,7 @@
 
 > Independent guide to living in Cyprus. Covers practical guides for residents (healthcare, transport, everyday admin, cost of living), curated service directories, interactive planning tools and calculators, and new-build real estate (260+ developments on an interactive map). Also serves people relocating to Cyprus, including expats, digital nomads and investors, with guides current for 2025-2026.
 
-RealCy.app is the most comprehensive English-language resource for Cyprus relocation. Content covers visas, taxes (including the non-dom regime), property buying, cost of living, healthcare, schools, transport, and lifestyle across all five districts: Limassol, Paphos, Larnaca, Nicosia, and Ayia Napa.
+Content covers healthcare, transport, everyday admin, cost of living, schools, visas, taxes (including the non-dom regime) and property, with new-build listings in Paphos, Limassol, Larnaca and Ayia Napa.
 
 ## Guides: Immigration & Visas
 
@@ -117,7 +117,7 @@ RealCy.app is the most comprehensive English-language resource for Cyprus reloca
 - [Expat Community Groups](https://realcy.app/sections/expat-communities/): Facebook groups, WhatsApp communities, Meetups by city and nationality
 - [International Grocery Stores](https://realcy.app/sections/international-grocery/): Asian, Middle Eastern, Eastern European food stores by city
 - [Fitness & Wellness Studios](https://realcy.app/sections/fitness-wellness/): Gyms, yoga, CrossFit, Pilates with pricing
-- [Long-Term Rentals](https://realcy.app/sections/long-term-rentals/): Rental listings across all five cities
+- [Long-Term Rentals](https://realcy.app/sections/long-term-rentals/): Rental listings across Cyprus
 - [All 28 Directories](https://realcy.app/sections/): Full index of curated Cyprus directories
 
 ## Regional Guides
@@ -125,7 +125,6 @@ RealCy.app is the most comprehensive English-language resource for Cyprus reloca
 - [Limassol](https://realcy.app/regions/limassol/): Business capital, highest expat density, luxury high-rises, 126 new developments
 - [Paphos](https://realcy.app/regions/paphos/): Retirees and families, UNESCO harbour, affordable, 50 new developments
 - [Larnaca](https://realcy.app/regions/larnaca/): Airport hub, mid-range pricing, underrated expat scene, 40 new developments
-- [Nicosia](https://realcy.app/regions/nicosia/): Inland capital, business district, non-touristy, academic community
 - [Ayia Napa](https://realcy.app/regions/ayia-napa/): Southeast coast, beach resort lifestyle, 11 new developments
 
 ## New Developments Map

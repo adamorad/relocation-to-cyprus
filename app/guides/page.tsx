@@ -6,7 +6,7 @@ const title = "Cyprus Guides for Residents and Newcomers | RealCy.app";
 const description = "Practical Cyprus guides: healthcare, transport, food, everyday admin, plus visas, tax, property and business setup for people planning a move.";
 
 export const metadata: Metadata = {
-  title,
+  title: { absolute: title },
   description,
   alternates: { canonical: "/guides/" },
   openGraph: { title, description, url: `${SITE_URL}/guides/`, type: "website" },

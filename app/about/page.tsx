@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const SITE_URL = "https://realcy.app";
 const title = "About RealCy.app";
-const description = "RealCy.app is a portal for anything Cyprus — starting with new-build real estate, expanding to rentals, hotels, food, shopping and more.";
+const description = "RealCy.app is an independent guide to living in Cyprus: practical guides, service directories, planning tools and new-build real estate.";
 
 export const metadata: Metadata = {
   title,

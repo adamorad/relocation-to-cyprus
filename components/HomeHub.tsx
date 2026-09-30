@@ -243,9 +243,15 @@ const LIVING_GROUPS: Situation[] = [
 	},
 ];
 
-function SituationCard({ s }: { s: Situation }) {
+function SituationCard({
+	s,
+	className = "",
+}: {
+	s: Situation;
+	className?: string;
+}) {
 	return (
-		<div className="bg-[#FAFAF8] p-6 flex flex-col gap-4">
+		<div className={`bg-[#FAFAF8] p-6 flex flex-col gap-4 ${className}`}>
 			{/* Header */}
 			<div className="flex items-start gap-3">
 				<span className="font-[family-name:var(--font-lora)] text-2xl font-medium text-[#D4C9BC] tabular-nums leading-none flex-shrink-0 mt-0.5">
@@ -457,8 +463,14 @@ export default function HomeHub({
 						ref={taskRef}
 						className={`grid md:grid-cols-2 gap-px bg-[#E8E2D9] border border-[#E8E2D9] rounded-xl overflow-hidden ${taskVisible ? "stagger-visible" : ""}`}
 					>
-						{LIVING_GROUPS.map((s) => (
-							<SituationCard key={s.num} s={s} />
+						{LIVING_GROUPS.map((s, i) => (
+							<SituationCard
+								key={s.num}
+								s={s}
+								className={
+									i === LIVING_GROUPS.length - 1 ? "md:col-span-2" : ""
+								}
+							/>
 						))}
 					</div>
 
@@ -469,6 +481,13 @@ export default function HomeHub({
 						<h2 className="text-2xl md:text-3xl font-[family-name:var(--font-lora)] text-[#1C1917] mt-1.5">
 							Moving to Cyprus?
 						</h2>
+						<Link
+							href="/moving-to-cyprus/"
+							className="group inline-flex items-center gap-1.5 mt-3 text-sm text-[#1C1917] hover:text-[#35cdc4] transition-colors"
+						>
+							All moving guides
+							<ArrowRight className="w-3.5 h-3.5" />
+						</Link>
 					</div>
 
 					<div className="grid md:grid-cols-2 gap-px bg-[#E8E2D9] border border-[#E8E2D9] rounded-xl overflow-hidden">
