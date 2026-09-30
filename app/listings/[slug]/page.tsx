@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import HeartButton from "@/components/HeartButton";
 import { MetaPixelEvent } from "@/components/MetaPixelEvent";
 import { RelatedContent } from "@/components/RelatedContent";
 import { allListings, listingBySlug } from "@/lib/listings";
@@ -193,9 +194,12 @@ export default async function ListingPage({
 				<p className="text-[10px] uppercase tracking-[0.2em] text-amber-700 font-semibold">
 					{l.regionCity} · {l.location ?? ""}
 				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold leading-tight">
-					{l.title}
-				</h1>
+				<div className="mt-2 flex items-start justify-between gap-4">
+					<h1 className="text-3xl md:text-4xl font-bold leading-tight">
+						{l.title}
+					</h1>
+					<HeartButton slug={l.slug} name={l.title} />
+				</div>
 				<p className="mt-3 text-lg text-slate-700">{l.priceRange ?? "—"}</p>
 			</header>
 
@@ -362,7 +366,7 @@ export default async function ListingPage({
 
 			<p className="mt-10 text-xs text-slate-600">
 				<Link href="/" className="underline hover:text-slate-900">
-					← Back to the map
+					← Back to home
 				</Link>
 			</p>
 		</main>
