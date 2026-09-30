@@ -11,11 +11,11 @@ export const PRIMARY_NAV: ReadonlyArray<NavLink> = [
 /** Saved shortlist (localStorage, new-build listings). No sign-in on this site. */
 export const SAVED_LINK: NavLink = { label: "Saved", href: "/my-shortlist/" };
 
-/** Secondary links, shown only inside the mobile menu. */
+/** Secondary links, shown in the mobile menu and the desktop More disclosure. */
 export const SECONDARY_NAV: ReadonlyArray<NavLink> = [
 	{ label: "Moving to Cyprus", href: "/moving-to-cyprus/" },
 	{ label: "New developments", href: "/listings/" },
-	{ label: "Explore and search", href: "/explore/" },
+	{ label: "Explore", href: "/explore/" },
 	{ label: "Advertise", href: "/advertise/" },
 ];
 

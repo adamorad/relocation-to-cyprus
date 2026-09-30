@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { isActive, PRIMARY_NAV } from "@/lib/nav-links";
 import { SavedLink } from "./HeaderParts";
+import { MoreMenu } from "./MoreMenu";
 
 /** Desktop header navigation (hidden below md; mobile uses MobileMenu). */
 export function PrimaryNav() {
@@ -29,6 +30,7 @@ export function PrimaryNav() {
 					</Link>
 				);
 			})}
+			<MoreMenu />
 			<SavedLink className="ml-2" />
 		</nav>
 	);
