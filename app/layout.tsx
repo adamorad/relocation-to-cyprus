@@ -1,13 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, Lora } from "next/font/google";
+import { Manrope } from "next/font/google";
 import Link from "next/link";
 import { CookieConsentManager } from "@/components/CookieConsentManager";
 import { EmailCapture } from "@/components/EmailCapture";
-import { MapNavProvider } from "@/components/MapNavContext";
 import { SiteHeader } from "@/components/SiteHeader";
 import { GUIDES } from "@/lib/guides";
 import { LISTINGS_BY_REGION } from "@/lib/listingsData";
-import { REGIONS } from "@/lib/regions";
+import { NAV_REGIONS } from "@/lib/regions";
 import { SECTIONS_INDEX } from "@/lib/sections-index";
 import { TOOLS } from "@/lib/tools-index";
 
@@ -15,17 +14,11 @@ const TOOL_COUNT = TOOLS.length;
 const GUIDE_COUNT = GUIDES.length;
 import "./globals.css";
 
-const lora = Lora({
+const manrope = Manrope({
 	subsets: ["latin"],
-	variable: "--font-lora",
+	variable: "--font-manrope",
 	display: "swap",
-	weight: ["400", "500", "600"],
-});
-const dmSans = DM_Sans({
-	subsets: ["latin"],
-	variable: "--font-dm-sans",
-	display: "swap",
-	weight: ["400", "500", "600"],
+	weight: ["500", "600", "700", "800"],
 });
 
 // Google Analytics 4 — measurement ID. Set via NEXT_PUBLIC_GA_ID at build
@@ -40,7 +33,7 @@ export const viewport: Viewport = {
 	width: "device-width",
 	initialScale: 1,
 	maximumScale: 5,
-	themeColor: "#c8d5dc",
+	themeColor: "#ffffff",
 };
 
 const SITE_NAME = "RealCy.app";
@@ -60,7 +53,7 @@ export const metadata: Metadata = {
 		default: `${SITE_NAME} - ${SITE_TAGLINE}`,
 		template: `%s · ${SITE_NAME}`,
 	},
-	description: `Practical help for life in Cyprus: guides, 30+ service directories, ${GUIDE_COUNT} in-depth guides, planning tools and new-build listings on an interactive map.`,
+	description: `Practical help for life in Cyprus: guides, 30+ service directories, ${GUIDE_COUNT} in-depth guides, planning tools and new-build listings.`,
 	keywords: [
 		"Cyprus real estate",
 		"Cyprus new developments",
@@ -108,11 +101,11 @@ export const metadata: Metadata = {
 };
 
 function SiteFooter() {
-	const featured = REGIONS.flatMap((r) =>
+	const featured = NAV_REGIONS.flatMap((r) =>
 		(LISTINGS_BY_REGION[r.name] ?? []).slice(0, 4),
 	);
 	return (
-		<footer className="bg-slate-900 text-slate-300 mt-0">
+		<footer className="bg-ink text-slate-300 mt-0">
 			<div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-6 gap-8 text-sm">
 				<div className="col-span-2 md:col-span-2">
 					<p className="font-bold text-white text-lg">RealCy.app</p>
@@ -152,7 +145,7 @@ function SiteFooter() {
 						Regions
 					</p>
 					<ul className="mt-3 space-y-2">
-						{REGIONS.map((r) => (
+						{NAV_REGIONS.map((r) => (
 							<li key={r.slug}>
 								<Link
 									href={`/regions/${r.slug}/`}
@@ -263,6 +256,22 @@ function SiteFooter() {
 					<ul className="mt-3 space-y-2">
 						<li>
 							<Link
+								href="/moving-to-cyprus/"
+								className="hover:text-white transition-colors"
+							>
+								Moving to Cyprus
+							</Link>
+						</li>
+						<li>
+							<Link
+								href="/listings/"
+								className="hover:text-white transition-colors"
+							>
+								New developments
+							</Link>
+						</li>
+						<li>
+							<Link
 								href="/about/"
 								className="hover:text-white transition-colors"
 							>
@@ -328,7 +337,7 @@ function SiteFooter() {
 					</ul>
 				</nav>
 			</div>
-			<div className="border-t border-slate-800">
+			<div className="border-t border-white/10">
 				<div className="max-w-6xl mx-auto px-6 py-6">
 					<p className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
 						Featured developments
@@ -350,7 +359,7 @@ function SiteFooter() {
 					</ul>
 				</div>
 			</div>
-			<div className="border-t border-slate-800">
+			<div className="border-t border-white/10">
 				<div className="max-w-6xl mx-auto px-6 py-6">
 					<p className="text-sm font-semibold text-white mb-1">
 						Get the free Cyprus Relocation Checklist
@@ -361,7 +370,7 @@ function SiteFooter() {
 					<EmailCapture compact />
 				</div>
 			</div>
-			<div className="border-t border-slate-800">
+			<div className="border-t border-white/10">
 				<div className="max-w-6xl mx-auto px-6 py-4 text-xs text-slate-500">
 					© {new Date().getFullYear()} RealCy.app, independent guide to living
 					in Cyprus.
@@ -377,20 +386,13 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en" className={`${lora.variable} ${dmSans.variable}`}>
-			<head>
-				{/* Warm up the Google Maps origins used by the homepage map */}
-				<link rel="preconnect" href="https://maps.googleapis.com" />
-				<link rel="preconnect" href="https://maps.gstatic.com" crossOrigin="" />
-			</head>
-			<body className="antialiased text-slate-900 font-[family-name:var(--font-dm-sans)]">
+		<html lang="en" className={manrope.variable}>
+			<body className="antialiased text-ink font-[family-name:var(--font-manrope)]">
 				<a href="#main" className="skip-to-content">
 					Skip to content
 				</a>
-				<MapNavProvider>
-					<SiteHeader />
-					{children}
-				</MapNavProvider>
+				<SiteHeader />
+				{children}
 				<SiteFooter />
 				<CookieConsentManager gaId={GA_ID} pixelId={META_PIXEL_ID} />
 			</body>

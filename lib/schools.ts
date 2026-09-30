@@ -1,5 +1,5 @@
 /**
- * Schools section content. Consumed by components/SchoolsPanel.tsx.
+ * Schools section content. Its former panel component is archived in archive/homepage-map/.
  *
  * Curation: international and private schools selected for relevance to
  * relocating families — curriculum, city coverage, language of instruction,

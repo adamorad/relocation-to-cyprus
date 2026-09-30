@@ -1,9 +1,28 @@
 @import "tailwindcss";
 
+/* Site-wide sans: Manrope (loaded in app/layout.tsx). Legacy font variables
+   that older components reference (Lora headings, DM Sans body) now resolve
+   to Manrope so the whole site switches without touching every component. */
+@theme inline {
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html {
+  --font-lora: var(--font-manrope);
+  --font-dm-sans: var(--font-manrope);
+}
+
 :focus-visible {
-  outline: 2px solid #0ea5e9;
+  outline: 2px solid #075985;
   outline-offset: 2px;
-  border-radius: 4px;
+}
+
+/* Dark surfaces (navy footer, scrims): light ring, 3:1+ against ink. */
+footer :focus-visible,
+.on-dark :focus-visible,
+.on-dark:focus-visible {
+  outline-color: #ffffff;
 }
 
 .skip-to-content {
@@ -62,4 +81,47 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* RealCy Living redesign tokens (Option 1 kit). Available as Tailwind
+   utilities, e.g. text-ink, bg-sky, border-line, rounded-card, shadow-rc. */
+@custom-variant desk (@media (min-width: 1100px));
+
+@theme {
+  --color-ink: #0b2145;
+  --color-muted: #506580;
+  --color-primary: #087f98;
+  --color-primary-hover: #066d83;
+  --color-sky: #e8f8ff;
+  --color-sky-strong: #d8f3fc;
+  --color-line: #d9e5ef;
+  --color-focus: #075985;
+  --color-coral: #fa794d;
+  --radius-field: 12px;
+  --radius-card: 16px;
+  --radius-panel: 24px;
+  --shadow-rc: 0 8px 28px rgb(25 85 112 / 8%);
+  --container-rc: 1280px;
+}
+
+:root {
+  --rc-ink: #0b2145;
+  --rc-muted: #506580;
+  --rc-primary: #087f98;
+  --rc-primary-hover: #066d83;
+  --rc-sky: #e8f8ff;
+  --rc-sky-strong: #d8f3fc;
+  --rc-border: #d9e5ef;
+  --rc-focus: #075985;
+  --rc-coral: #fa794d;
+  --rc-r-field: 12px;
+  --rc-r-card: 16px;
+  --rc-r-panel: 24px;
+  --rc-shadow: 0 8px 28px rgb(25 85 112 / 8%);
+  --rc-max: 1280px;
+}
+
+@keyframes rc-menu-in {
+  from { transform: translateX(24px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
 }

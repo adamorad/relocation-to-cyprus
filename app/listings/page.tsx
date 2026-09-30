@@ -6,7 +6,7 @@ import { allListings } from "@/lib/listings";
 export const metadata: Metadata = {
 	title: "New Developments — Cyprus Property Listings | RealCy",
 	description:
-		"Browse all new-build developments across Cyprus. Compare prices, locations and features in Paphos, Limassol, Larnaca, Nicosia and Ayia Napa.",
+		"Browse all new-build developments across Cyprus. Compare prices, locations and features in Paphos, Limassol, Larnaca and Ayia Napa.",
 	alternates: { canonical: "/listings/" },
 };
 

@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { REGIONS } from "@/lib/regions";
+import { NAV_REGIONS } from "@/lib/regions";
 
 export const metadata: Metadata = {
 	title: "Regions — Cyprus Relocation Guide | RealCy",
 	description:
-		"Explore every major region in Cyprus — Paphos, Limassol, Larnaca, Nicosia, and Ayia Napa. Compare lifestyle, property, schools, and healthcare before you relocate.",
+		"Explore every major region in Cyprus: Paphos, Limassol, Larnaca, and Ayia Napa. Compare lifestyle, property, schools, and healthcare before you relocate.",
 	alternates: { canonical: "/regions/" },
 };
 
@@ -27,7 +27,7 @@ export default function RegionsIndexPage() {
 			</p>
 
 			<div className="grid gap-4 sm:grid-cols-2">
-				{REGIONS.map((region) => (
+				{NAV_REGIONS.map((region) => (
 					<Link
 						key={region.slug}
 						href={`/regions/${region.slug}/`}

@@ -1,5 +1,5 @@
 /**
- * Hotels section content. Consumed by components/HotelsPanel.tsx.
+ * Hotels section content. Its former panel component is archived in archive/homepage-map/.
  *
  * Booking links run through bookingUrl() / hotelsComUrl() helpers so affiliate
  * IDs can be injected in one place when the affiliate programmes are activated.

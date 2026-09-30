@@ -305,10 +305,10 @@ export default function CityComparisonClient() {
 				</p>
 				<div className="flex flex-wrap gap-3">
 					<Link
-						href="/"
+						href="/listings/"
 						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
 					>
-						Browse new developments on the map →
+						Browse new developments →
 					</Link>
 					<Link
 						href="/sections/property-lawyers/"

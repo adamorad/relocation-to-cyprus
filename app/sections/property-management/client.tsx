@@ -186,7 +186,7 @@ export default function PropertyManagementPage() {
 
 			<p className="mt-12 text-xs text-slate-600">
 				<Link href="/" className="underline hover:text-slate-900">
-					← Back to the map
+					← Back to home
 				</Link>
 			</p>
 		</main>

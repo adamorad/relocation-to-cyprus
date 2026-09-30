@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Icon } from "@/components/icons/Icon";
 import type { EnrichedListing } from "@/lib/listingsData";
 import { LISTINGS } from "@/lib/listingsData";
 import { getShortlist, toggleShortlist } from "@/lib/shortlist";
@@ -48,18 +49,18 @@ export default function ShortlistClient() {
 
 			{saved.length === 0 ? (
 				<div className="rounded-xl border border-slate-200 bg-slate-50 p-8 text-center">
-					<p className="text-2xl mb-3">♡</p>
+					<Icon name="heart" size={32} className="mx-auto mb-3 text-muted" />
 					<p className="text-slate-700 font-medium mb-1">
 						No saved listings yet.
 					</p>
 					<p className="text-sm text-slate-500 mb-6">
-						Browse the map and tap ♡ to save developments.
+						Browse new developments and use the heart on a listing to save it.
 					</p>
 					<Link
-						href="/"
+						href="/listings/"
 						className="inline-block text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
 					>
-						Browse the map
+						Browse new developments
 					</Link>
 				</div>
 			) : (
@@ -76,7 +77,7 @@ export default function ShortlistClient() {
 
 			<div className="mt-10">
 				<Link href="/" className="underline hover:text-slate-900 text-sm">
-					← Back to map
+					← Back to home
 				</Link>
 			</div>
 		</main>

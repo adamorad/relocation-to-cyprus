@@ -1,5 +1,5 @@
 /**
- * Food section content. Consumed by components/FoodPanel.tsx.
+ * Food section content. Its former panel component is archived in archive/homepage-map/.
  *
  * Curation philosophy: places are sourced from local Cypriot food blogs
  * and press (cypruseats, artandthensome, mycyprustravel, Cyprus Mail

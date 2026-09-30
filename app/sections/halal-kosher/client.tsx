@@ -274,7 +274,7 @@ export default function HalalKosherPage() {
 					href="/"
 					className="underline hover:text-slate-900 transition-colors"
 				>
-					← Back to the map
+					← Back to home
 				</Link>
 			</p>
 		</main>

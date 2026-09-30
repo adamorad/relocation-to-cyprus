@@ -257,3 +257,14 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 export function regionBySlug(slug: string): RegionInfo | undefined {
   return REGIONS.find((r) => r.slug === slug);
 }
+
+/**
+ * Owner rule: this region is intentionally excluded from navigation and
+ * filters. Its page and sitemap entry are unaffected.
+ */
+export const UNLISTED_REGION_SLUGS: ReadonlyArray<string> = ["nicosia"];
+
+/** Regions surfaced in listings and navigation. */
+export const NAV_REGIONS: ReadonlyArray<RegionInfo> = REGIONS.filter(
+	(r) => !UNLISTED_REGION_SLUGS.includes(r.slug),
+);
