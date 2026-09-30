@@ -28,11 +28,17 @@ const toId = (h: string) =>
  * into real clickable links. Splitting keeps the surrounding text (and its
  * newlines, for whitespace-pre-line) intact.
  */
-const BODY_LINK_RE = /(\/(?:guides|tools|sections)\/[a-z0-9-]+\/?)/g;
+const BODY_LINK_RE =
+	/(\[[^\]]+\]\(\/(?:guides|tools|sections)\/[a-z0-9-]+\/?\)|\/(?:guides|tools|sections)\/[a-z0-9-]+\/?)/g;
+const MD_LINK_RE = /^\[([^\]]+)\]\((\/[^)]+)\)$/;
 function renderBody(text: string) {
 	return text.split(BODY_LINK_RE).map((part, i) => {
 		if (i % 2 === 1) {
-			const href = part.endsWith("/") ? part : `${part}/`;
+			// Supports [anchor text](/guides/slug/) as well as bare /guides/slug/ paths.
+			const md = MD_LINK_RE.exec(part);
+			const path = md ? md[2] : part;
+			const label = md ? md[1] : part;
+			const href = path.endsWith("/") ? path : `${path}/`;
 			return (
 				// biome-ignore lint/suspicious/noArrayIndexKey: split output is positional
 				<Link
@@ -40,7 +46,7 @@ function renderBody(text: string) {
 					href={href}
 					className="text-[#35cdc4] font-medium hover:underline"
 				>
-					{part}
+					{label}
 				</Link>
 			);
 		}
