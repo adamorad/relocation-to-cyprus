@@ -32,6 +32,7 @@ const DRAWER_LINKS: { label: string; href: string }[] = [
 	{ label: "Tools", href: "/tools/" },
 	{ label: "Directories", href: "/sections/" },
 	{ label: "Explore", href: "/explore/" },
+	{ label: "Moving to Cyprus", href: "/moving-to-cyprus/" },
 ];
 
 export function PrimaryNav() {

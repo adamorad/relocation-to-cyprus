@@ -82,6 +82,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			changeFrequency: "monthly",
 			priority: 0.7,
 		},
+		{
+			url: `${SITE_URL}/moving-to-cyprus/`,
+			lastModified: now,
+			changeFrequency: "monthly",
+			priority: 0.7,
+		},
 		...REGIONS.map((r) => ({
 			url: `${SITE_URL}/regions/${r.slug}/`,
 			lastModified: now,
