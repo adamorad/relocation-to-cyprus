@@ -9,8 +9,7 @@ const GUIDE_COUNT = GUIDES.length;
 
 export const metadata: Metadata = {
 	title: {
-		absolute:
-			"RealCy.app: Living in Cyprus, Guides, Tools & New Builds",
+		absolute: "RealCy.app: Living in Cyprus, Guides, Tools & New Builds",
 	},
 	description: `Practical help for life in Cyprus: pharmacies, ferries, car rental, GESY, recycling and more. Plus new-build listings, planning tools and ${GUIDE_COUNT} guides.`,
 	alternates: { canonical: "/" },

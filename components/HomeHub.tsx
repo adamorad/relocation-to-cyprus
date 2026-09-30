@@ -594,8 +594,8 @@ export default function HomeHub({
 							Get the monthly Cyprus update
 						</h2>
 						<p className="text-sm text-white/50 mt-3 leading-relaxed">
-							One email per month. New guides, rule changes and tool updates
-							for people living in or moving to Cyprus.
+							One email per month. New guides, rule changes and tool updates for
+							people living in or moving to Cyprus.
 						</p>
 					</div>
 					<div className="bg-white/8 border border-white/10 rounded-xl p-6">

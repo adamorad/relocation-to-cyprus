@@ -363,8 +363,8 @@ function SiteFooter() {
 			</div>
 			<div className="border-t border-slate-800">
 				<div className="max-w-6xl mx-auto px-6 py-4 text-xs text-slate-500">
-					© {new Date().getFullYear()} RealCy.app, independent guide to
-					living in Cyprus.
+					© {new Date().getFullYear()} RealCy.app, independent guide to living
+					in Cyprus.
 				</div>
 			</div>
 		</footer>
