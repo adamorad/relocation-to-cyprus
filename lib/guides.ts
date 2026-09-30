@@ -403,7 +403,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "digital-nomad-visa-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-09-30",
 		category: "immigration",
 		title: "Cyprus Digital Nomad Visa 2026: Requirements",
 		description:
@@ -433,6 +433,44 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			{
 				heading: "Renewal, three-year maximum, and family rights",
 				body: "The DNV is initially issued for one year. It is renewable for up to a further two years (total three years), provided you continue to meet all eligibility criteria: income still meets the threshold, you are still working remotely for non-Cyprus employers or clients, your health insurance remains valid, and you maintain accommodation in Cyprus. Renewal applications should be submitted at least two months before expiry. After the three-year maximum, you must either leave, switch to a different permit type (Permanent Residency by Investment, employment permit, or EU long-term residence if you have accumulated five years of legal residence through different permit types), or re-apply for the DNV after a qualifying absence period. Family members (spouse and unmarried financially dependent children up to 18, or up to 25 if in full-time education) are granted dependent residency status under the primary applicant's DNV. Dependents receive their own ARCs and have the right to live in Cyprus, access education and healthcare through GeSY, but cannot take employment in Cyprus unless they hold a separate work permit.",
+			},
+			{
+				heading: "Visa, tax residency and the 60-day rule are separate things",
+				body: "Holding the Digital Nomad Visa gives you the right to live in Cyprus. It does not, by itself, make you a Cyprus tax resident, and it does not switch off tax residency somewhere else. Tax residency is decided by day-count and connection tests (the 183-day rule, or the 60-day rule with its own conditions), applied to the calendar year, and your home country will apply its own rules in parallel. Many applicants assume the visa settles their tax position and then discover it does not.\n\nBefore you plan around the non-dom benefits described above, work out three things separately: whether your home country will still treat you as tax resident, whether you will meet the Cyprus day-count conditions in your first calendar year, and how your income is structured (employment, freelance fees and company dividends are treated differently). The tax-residency-tracker tool at /tools/tax-residency-tracker lets you test your day count, and the non-dom-status-guide covers what non-dom status does and does not exempt. A Cyprus-registered accountant can confirm your position in one consultation, and that is cheaper than correcting a filing later.",
+			},
+			{
+				heading: "Why applications stall, and how to avoid it",
+				body: "Files tend to be delayed because of what is missing or inconsistent, not because the applicant is ineligible. The most common problems follow directly from the document list above.\n\nIncome evidence that does not match. Payslips, contracts and bank statements should tell the same story. If your income arrives through a company you own, or through several clients, include a short cover explanation and the agreements that link the deposits to the work.\n\nA client or employer with a Cyprus connection. The visa is for work done for employers and clients outside Cyprus. If a material part of your income comes from a Cyprus-based source, get advice before applying.\n\nHealth insurance bought late. The policy needs to be in place and valid for Cyprus at the time of application, and the certificate should show the level of cover CRMD asks for.\n\nDocuments not legalised. Criminal record certificates and civil-status documents need an apostille or legalisation route that matches the country of issue, and translations must be certified where required.\n\nNo confirmed accommodation. A signed rental agreement is stronger than a booking confirmation. If you are still choosing a city, read the best-areas-to-live-cyprus guide before you sign anything long term.",
+			},
+			{
+				heading: "Digital Nomad Visa or another route?",
+				body: "The DNV suits non-EU remote workers who want a first residence permit and do not intend to work for a Cyprus employer. It is the wrong tool in several common situations.\n\nIf you hold an EU passport, you register as an EU citizen instead. If a Cyprus company is offering you a job, the route is a work permit, covered in the work-permits-non-eu guide. If you are retired or living on passive income, compare Category F in the residency-and-visas guide. If your goal is a permanent status, the DNV is a temporary permit with a fixed maximum term, so compare the permanent-residency-5year and residency-and-visas guides before you commit. If you plan to run your own Cyprus company, see company-formation-visa.\n\nThe visa-pathway-finder at /tools/visa-pathway-finder asks two questions and points you to the route that fits your passport and situation.",
+			},
+			{
+				heading: "Check these details against official sources before you apply",
+				body: "Digital nomad rules have been adjusted since the scheme launched, and secondary sources, including this page, can lag behind the Civil Registry and Migration Department. Before you pay for translations or insurance, confirm the following directly on the official CRMD pages or with the department: the current minimum income and whether it is measured net or gross, the uplift for a spouse and for children, the minimum health insurance cover, the current application fee, whether any cap on the number of permits applies, the current processing target, and whether you may apply from inside Cyprus on your current entry status.\n\nIf a figure you find elsewhere differs from the figure on this page, trust the official source.",
+			},
+		],
+		faqs: [
+			{
+				q: "Do EU citizens need the Cyprus Digital Nomad Visa?",
+				a: "No. The Digital Nomad Visa is for non-EU nationals. EU citizens register their residence under the standard EU registration process, which does not require a visa.",
+			},
+			{
+				q: "Does the Digital Nomad Visa make me a Cyprus tax resident?",
+				a: "Not automatically. The visa gives you the right to live in Cyprus. Tax residency depends on day-count tests such as the 183-day rule or the 60-day rule, and your home country may also still treat you as its tax resident. Check both sides before assuming any tax benefit applies.",
+			},
+			{
+				q: "Can I work for a Cyprus company on the Digital Nomad Visa?",
+				a: "The visa is designed for people working remotely for employers or clients based outside Cyprus. Working for a Cyprus-based employer generally requires a separate work permit route, so get advice before mixing the two.",
+			},
+			{
+				q: "Can my family come with me on the Digital Nomad Visa?",
+				a: "Yes. A spouse and eligible dependent children can be included as dependants, and the income requirement is higher when family members are added. Dependants cannot take up employment in Cyprus without a separate work permit.",
+			},
+			{
+				q: "Does the Digital Nomad Visa lead to permanent residency?",
+				a: "It is a temporary permit with a fixed maximum term. Time on it does not automatically convert into permanent residency, so if permanence is your goal, compare the other routes before you apply.",
 			},
 		],
 	},
@@ -2676,15 +2714,15 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "moving-to-cyprus-from-uk",
 		datePublished: "2026-06-22",
-		dateModified: "2026-07-05",
+		dateModified: "2026-09-30",
 		category: "immigration",
-		title: "Moving to Cyprus from the UK 2026: Full Guide",
+		title: "Moving to Cyprus from the UK After Brexit: 2026 Guide",
 		description:
 			"Practical guide for UK nationals relocating to Cyprus after Brexit — which visa route applies (Category F, Digital Nomad, or Permanent Residency), how UK pension and employment income is taxed in Cyprus, the UK-Cyprus double taxation treaty, and what UK buyers need to know about property purchase.",
 		sections: [
 			{
 				heading: "Post-Brexit: what changed for UK nationals in Cyprus",
-				body: "UK nationals lost free movement rights in the EU on 1 January 2021. For those already living in Cyprus before that date, the Cyprus Withdrawal Agreement Implementation Law gave the right to apply for permanent residency under a protected status process — this window has now closed. For UK nationals moving to Cyprus after 2020, the position is clear: you are a third-country national and need a formal residence permit to live in Cyprus long-term, in the same way as an American, Israeli, or Australian citizen. This is not as complicated as it sounds — Cyprus has an established and functional system for issuing residence permits to non-EU nationals, and the UK-Cyprus relationship (Commonwealth history, left-hand drive, shared legal tradition) means that practical life as a UK national in Cyprus is unusually smooth. English is effectively a working language in government offices, banks, and professional services. The UK passport gives visa-free entry to Cyprus for stays up to 90 days in any 180-day period under the EU Schengen rules — but Cyprus is not in Schengen, and UK nationals can enter Cyprus for 90 days without a visa under a bilateral arrangement. For stays beyond 90 days, a residence permit is required.",
+				body: "UK nationals lost free movement rights in the EU on 1 January 2021. For those already living in Cyprus before that date, the Cyprus Withdrawal Agreement Implementation Law gave the right to apply for permanent residency under a protected status process, this window has now closed. For UK nationals moving to Cyprus after 2020, the position is clear: you are a third-country national and need a formal residence permit to live in Cyprus long-term, in the same way as an American, Israeli, or Australian citizen. This is not as complicated as it sounds, Cyprus has an established and functional system for issuing residence permits to non-EU nationals, and the UK-Cyprus relationship (Commonwealth history, left-hand drive, shared legal tradition) means that practical life as a UK national in Cyprus is unusually smooth. English is effectively a working language in government offices, banks, and professional services. A UK passport gives visa-free entry to Cyprus for short stays (currently up to 90 days). Cyprus is not in the Schengen area, so Cyprus applies its own entry rules to those days. For stays beyond the visa-free limit, a residence permit is required. Check the current entry conditions on the official Cyprus government and UK Foreign Office travel pages before you book a one-way flight.",
 			},
 			{
 				heading: "Visa and residency routes for UK nationals",
@@ -2705,6 +2743,14 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			{
 				heading: "From NHS to GeSY: healthcare transition for UK nationals",
 				body: "UK nationals in Cyprus lose NHS access once they establish permanent residency. The GHIC (Global Health Insurance Card, which replaced the EHIC for UK nationals) covers emergency treatment in Cyprus as a country that has maintained reciprocal arrangements, but it does not cover non-emergency care or give access to the full Cyprus health system. To access GeSY — the Cyprus public health system — you must register. Registration requires a Cyprus TIN (Tax Identification Number), proof of Cyprus address, and, for non-EU nationals, a valid residency permit. Once registered, you pay contributions at 2.65% of your income. The GHIC is useful for the transition period before you have GeSY registration; it should not be relied on as a long-term solution. The practical recommendation for UK nationals moving to Cyprus: purchase private international health insurance before leaving the UK and maintain it through the process of establishing GeSY registration. Private insurance provides a safety net for the transition period and, for many people, is kept alongside GeSY registration to ensure private specialist access. Dental care is not covered by GeSY and must be funded privately in Cyprus — budget accordingly.",
+			},
+			{
+				heading: "Which route fits which UK situation",
+				body: "Most UK movers fall into one of four situations, and the route follows from the situation rather than the other way round.\n\nRetired or living on pensions and savings: Category F is the route built for this, and it also decides how your pensions are taxed once you are resident. Read retiring-in-cyprus alongside this guide.\n\nWorking remotely for an employer or clients outside Cyprus: the Digital Nomad Visa. See digital-nomad-visa-guide for documents and timing. It is temporary, so think about what you will do at the end of the term.\n\nOffered a job by a Cyprus employer: a work permit, sponsored by the employer. See work-permits-non-eu.\n\nBuying property and wanting settled status: Permanent Residency by Investment, which is tied to a qualifying purchase. Read buying-process and property-lawyers-cyprus before you commit money, and do not let a developer or agent choose the route for you.\n\nIf you are unsure, the visa-pathway-finder at /tools/visa-pathway-finder narrows it down in two questions.",
+			},
+			{
+				heading: "Before you leave the UK: a sensible order of operations",
+				body: "The order matters because several steps depend on documents produced by an earlier one.\n\nFirst, choose the residency route and check its current requirements with the Civil Registry and Migration Department, since income thresholds and fees change. Second, start gathering documents that take time: an apostilled criminal record certificate, civil-status certificates, proof of income and proof of health insurance. Third, decide your tax exit. Tell HMRC you are leaving (the P85 route), understand how the UK Statutory Residence Test treats your days in each country, and decide what happens to UK property, pensions and savings. Fourth, line up accommodation in Cyprus, ideally a first short-term stay before a long lease. Fifth, arrange healthcare cover for the gap before you can register with GeSY.\n\nOnce you have arrived, follow the arrival-checklist guide, which sets out the first month in the order the offices require. For the budget side, see cost-of-living, and for choosing a city, best-areas-to-live-cyprus.\n\nThe HMRC and Statutory Residence Test steps are UK-side rules that change independently of anything in Cyprus. Confirm them on GOV.UK or with a UK adviser who handles emigration.",
 			},
 		],
 		faqs: [
@@ -2727,6 +2773,14 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			{
 				q: "Can I use my GHIC/EHIC in Cyprus?",
 				a: "The GHIC (UK's replacement for the EHIC) is valid in Cyprus for emergency and necessary medical treatment, as Cyprus has maintained reciprocal healthcare arrangements with the UK post-Brexit. However, it does not give access to the full GeSY system and should not be relied on for non-emergency care or long-term healthcare needs. Register with GeSY once you have Cyprus residency and a TIN.",
+			},
+			{
+				q: "Do I need to tell HMRC if I move to Cyprus?",
+				a: "Yes, you should notify HMRC that you are leaving the UK, and your UK tax residency is decided by the Statutory Residence Test rather than by where you say you live. Check the current process on GOV.UK. Keep evidence of your Cyprus tax residency, since you may be asked for it.",
+			},
+			{
+				q: "Which Cyprus route is best for a UK national after Brexit?",
+				a: "It depends on your situation. Retirees and people living on income usually look at Category F, remote workers at the Digital Nomad Visa, people with a Cyprus job offer at a work permit, and property buyers at Permanent Residency by Investment. The visa-pathway-finder tool on this site can narrow it down.",
 			},
 		],
 	},
