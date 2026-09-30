@@ -5,6 +5,7 @@ export const PRIMARY_NAV: ReadonlyArray<NavLink> = [
 	{ label: "Tools", href: "/tools/" },
 	{ label: "Directories", href: "/sections/" },
 	{ label: "Explore", href: "/explore/" },
+	{ label: "Moving to Cyprus", href: "/moving-to-cyprus/" },
 ];
 
 /** True when the current pathname is within the nav item's section. */

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const SITE_URL = "https://realcy.app";
 const title = "About RealCy.app";
-const description = "RealCy.app is a portal for anything Cyprus — starting with new-build real estate, expanding to rentals, hotels, food, shopping and more.";
+const description = "RealCy.app is an independent guide to living in Cyprus: practical guides, service directories, planning tools and new-build real estate.";
 
 export const metadata: Metadata = {
   title,
@@ -28,10 +28,10 @@ export default function AboutPage() {
           Your Cyprus portal.
         </h1>
         <p className="mt-4 text-lg text-slate-700 leading-relaxed">
-          RealCy.app exists to make anything Cyprus easier to find, compare and
-          plan. We start with new-build real estate because that is the
-          decision people anchor a relocation around — and from there we
-          expand.
+          RealCy.app makes everyday life in Cyprus easier to find, compare and
+          plan. We started with new-build real estate and grew into practical
+          guides for people who already live here and for those planning the
+          move.
         </p>
       </header>
 
@@ -41,8 +41,8 @@ export default function AboutPage() {
           Browse new-build apartments, residences and villas across Paphos,
           Limassol, Larnaca and Ayia Napa. Filter by price, bedrooms,
           bathrooms, type, view, energy class, pool, accessibility and minimum
-          living area. Read region guides and step-by-step relocation guides
-          on residency, taxes and cost of living.
+          living area. Read region guides and practical guides on healthcare,
+          transport, residency, taxes and cost of living.
         </p>
 
         <h2 className="text-xl font-bold mt-8 mb-2">What is coming next</h2>

@@ -9,10 +9,9 @@ const GUIDE_COUNT = GUIDES.length;
 
 export const metadata: Metadata = {
 	title: {
-		absolute:
-			"RealCy.app - Your Cyprus Portal | New Developments, Relocation & More",
+		absolute: "RealCy.app: Living in Cyprus, Guides, Tools & New Builds",
 	},
-	description: `RealCy.app — your portal for anything Cyprus. Browse 260+ new-build developments on an interactive map. 30+ service directories, 31 relocation tools, and ${GUIDE_COUNT} in-depth guides.`,
+	description: `Practical help for life in Cyprus: pharmacies, ferries, car rental, GESY, recycling and more. Plus new-build listings, planning tools and ${GUIDE_COUNT} guides.`,
 	alternates: { canonical: "/" },
 };
 
@@ -35,7 +34,7 @@ export default function Home() {
 		alternateName: "RealCy",
 		url: SITE_URL,
 		description:
-			"Your portal for anything Cyprus — new-build real estate, relocation guides, interactive tools, and curated service directories.",
+			"Independent guide to everyday life in Cyprus: practical guides, service directories, new-build listings and planning tools.",
 		publisher: { "@type": "Organization", name: "RealCy.app" },
 		potentialAction: {
 			"@type": "SearchAction",
@@ -52,7 +51,7 @@ export default function Home() {
 		name: "RealCy.app",
 		url: SITE_URL,
 		logo: `${SITE_URL}/apple-touch-icon.png`,
-		description: `Independent Cyprus relocation portal — new-build real estate, 30+ service directories, 31 relocation tools, and ${GUIDE_COUNT} in-depth guides.`,
+		description: `Independent guide to living in Cyprus: new-build real estate, 30+ service directories, 31 planning tools, and ${GUIDE_COUNT} in-depth guides.`,
 		sameAs: [],
 	};
 	const itemList = {
@@ -90,7 +89,7 @@ export default function Home() {
 			/>
 			<AppShell />
 			<p className="sr-only">
-				Cyprus New Developments, Relocation Guides and Non-Dom Tax Tools |
+				Living in Cyprus: Guides, Directories, New Developments and Tax Tools |
 				RealCy.app
 			</p>
 			<HomeHub

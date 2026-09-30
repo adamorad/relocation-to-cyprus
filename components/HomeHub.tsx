@@ -74,10 +74,10 @@ type Situation = {
 	label: string;
 	desc: string;
 	guides: SituationGuide[];
-	tool: { label: string; href: string };
+	tool?: { label: string; href: string };
 };
 
-const SITUATIONS: Situation[] = [
+const MOVING_GROUPS: Situation[] = [
 	{
 		num: "01",
 		label: "Working remotely",
@@ -144,6 +144,161 @@ const SITUATIONS: Situation[] = [
 		tool: { label: "Visa Pathway Finder", href: "/tools/visa-pathway-finder/" },
 	},
 ];
+
+const LIVING_GROUPS: Situation[] = [
+	{
+		num: "01",
+		label: "Getting around",
+		desc: "Cars, ferries and airport transfers",
+		guides: [
+			{
+				label: "Long-Term Car Rental",
+				href: "/guides/long-term-car-rental-cyprus/",
+			},
+			{ label: "Ferry Routes Guide", href: "/guides/ferry-routes-guide/" },
+			{
+				label: "Airport Transfers Guide",
+				href: "/guides/airport-transfers-guide/",
+			},
+			{
+				label: "Getting Around Without a Car",
+				href: "/guides/getting-around-cyprus-no-car/",
+			},
+		],
+		tool: {
+			label: "Driving Licence Exchange",
+			href: "/tools/drivers-licence-exchange/",
+		},
+	},
+	{
+		num: "02",
+		label: "Health and medicine",
+		desc: "Pharmacies, GESY and care",
+		guides: [
+			{
+				label: "Pharmacies and Medication",
+				href: "/guides/pharmacies-medication/",
+			},
+			{
+				label: "GeSY Registration Guide",
+				href: "/guides/gesy-registration-guide/",
+			},
+			{ label: "Dental Care Guide", href: "/guides/dental-care-guide/" },
+			{
+				label: "Mental Health Services",
+				href: "/sections/mental-health-services/",
+			},
+		],
+		tool: {
+			label: "Health Insurance Comparison",
+			href: "/tools/health-insurance-comparison/",
+		},
+	},
+	{
+		num: "03",
+		label: "Food and community",
+		desc: "Halal, kosher and expat groups",
+		guides: [
+			{ label: "Halal and Kosher", href: "/sections/halal-kosher/" },
+			{ label: "Expat Communities", href: "/sections/expat-communities/" },
+			{ label: "Co-Living", href: "/sections/co-living/" },
+		],
+	},
+	{
+		num: "04",
+		label: "Home and property",
+		desc: "New builds, developers and renting",
+		guides: [
+			{ label: "New-Build Developers", href: "/developers/" },
+			{
+				label: "Best Areas to Live in Cyprus",
+				href: "/guides/best-areas-to-live-cyprus/",
+			},
+			{ label: "Buying Process Guide", href: "/guides/buying-process/" },
+		],
+		tool: {
+			label: "Rental Price Trends",
+			href: "/tools/rental-price-trends/",
+		},
+	},
+	{
+		num: "05",
+		label: "Everyday admin",
+		desc: "Recycling, safety and local rules",
+		guides: [
+			{
+				label: "Waste and Recycling Guide",
+				href: "/guides/waste-recycling-guide/",
+			},
+			{ label: "Wildfire Risk Guide", href: "/guides/wildfire-risk-guide/" },
+			{
+				label: "Maternity and Paternity Rights",
+				href: "/guides/maternity-paternity-rights/",
+			},
+		],
+		tool: {
+			label: "Tax Filing Calendar",
+			href: "/tools/tax-filing-calendar/",
+		},
+	},
+];
+
+function SituationCard({
+	s,
+	className = "",
+}: {
+	s: Situation;
+	className?: string;
+}) {
+	return (
+		<div className={`bg-[#FAFAF8] p-6 flex flex-col gap-4 ${className}`}>
+			{/* Header */}
+			<div className="flex items-start gap-3">
+				<span className="font-[family-name:var(--font-lora)] text-2xl font-medium text-[#D4C9BC] tabular-nums leading-none flex-shrink-0 mt-0.5">
+					{s.num}
+				</span>
+				<div>
+					<p className="text-base font-semibold text-[#1C1917] leading-snug">
+						{s.label}
+					</p>
+					<p className="text-xs text-slate-500 mt-0.5 leading-relaxed">
+						{s.desc}
+					</p>
+				</div>
+			</div>
+
+			{/* Guide links */}
+			<ul className="space-y-1.5 pl-9">
+				{s.guides.map((g) => (
+					<li key={g.href}>
+						<Link
+							href={g.href}
+							className="group flex items-center gap-1.5 text-sm text-[#1C1917] hover:text-[#35cdc4] transition-colors"
+						>
+							<span className="text-[#D4C9BC] group-hover:text-[#35cdc4] transition-colors text-xs">
+								→
+							</span>
+							{g.label}
+						</Link>
+					</li>
+				))}
+			</ul>
+
+			{/* Tool chip */}
+			{s.tool && (
+				<div className="pl-9">
+					<Link
+						href={s.tool.href}
+						className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-[#35cdc4] border border-[#35cdc4]/30 bg-[#35cdc4]/5 hover:bg-[#35cdc4]/10 px-2.5 py-1 rounded-full transition-colors"
+					>
+						<ArrowRight className="w-3 h-3" />
+						{s.tool.label}
+					</Link>
+				</div>
+			)}
+		</div>
+	);
+}
 
 const FEATURED_TOOLS = [
 	{
@@ -274,7 +429,7 @@ export default function HomeHub({
 						<div className="md:w-1/2 md:pl-14 mt-8 md:mt-0 grid grid-cols-3 md:grid-cols-1 gap-6 md:gap-7">
 							{[
 								{ count: toolsCount, label: "Planning tools" },
-								{ count: guidesCount, label: "Relocation guides" },
+								{ count: guidesCount, label: "Practical guides" },
 								{ count: dirsCount, label: "Service directories" },
 							].map(({ count, label }) => (
 								<div key={label}>
@@ -300,7 +455,7 @@ export default function HomeHub({
 							Where to start
 						</p>
 						<h2 className="text-2xl md:text-3xl font-[family-name:var(--font-lora)] text-[#1C1917] mt-1.5">
-							What kind of move are you planning?
+							What do you need help with?
 						</h2>
 					</div>
 
@@ -308,51 +463,36 @@ export default function HomeHub({
 						ref={taskRef}
 						className={`grid md:grid-cols-2 gap-px bg-[#E8E2D9] border border-[#E8E2D9] rounded-xl overflow-hidden ${taskVisible ? "stagger-visible" : ""}`}
 					>
-						{SITUATIONS.map((s) => (
-							<div key={s.num} className="bg-[#FAFAF8] p-6 flex flex-col gap-4">
-								{/* Header */}
-								<div className="flex items-start gap-3">
-									<span className="font-[family-name:var(--font-lora)] text-2xl font-medium text-[#D4C9BC] tabular-nums leading-none flex-shrink-0 mt-0.5">
-										{s.num}
-									</span>
-									<div>
-										<p className="text-base font-semibold text-[#1C1917] leading-snug">
-											{s.label}
-										</p>
-										<p className="text-xs text-slate-500 mt-0.5 leading-relaxed">
-											{s.desc}
-										</p>
-									</div>
-								</div>
+						{LIVING_GROUPS.map((s, i) => (
+							<SituationCard
+								key={s.num}
+								s={s}
+								className={
+									i === LIVING_GROUPS.length - 1 ? "md:col-span-2" : ""
+								}
+							/>
+						))}
+					</div>
 
-								{/* Guide links */}
-								<ul className="space-y-1.5 pl-9">
-									{s.guides.map((g) => (
-										<li key={g.href}>
-											<Link
-												href={g.href}
-												className="group flex items-center gap-1.5 text-sm text-[#1C1917] hover:text-[#35cdc4] transition-colors"
-											>
-												<span className="text-[#D4C9BC] group-hover:text-[#35cdc4] transition-colors text-xs">
-													→
-												</span>
-												{g.label}
-											</Link>
-										</li>
-									))}
-								</ul>
+					<div className="mt-14 mb-10">
+						<p className="text-[10px] uppercase tracking-[0.28em] text-[#C4733A] font-semibold">
+							Planning a move
+						</p>
+						<h2 className="text-2xl md:text-3xl font-[family-name:var(--font-lora)] text-[#1C1917] mt-1.5">
+							Moving to Cyprus?
+						</h2>
+						<Link
+							href="/moving-to-cyprus/"
+							className="group inline-flex items-center gap-1.5 mt-3 text-sm text-[#1C1917] hover:text-[#35cdc4] transition-colors"
+						>
+							All moving guides
+							<ArrowRight className="w-3.5 h-3.5" />
+						</Link>
+					</div>
 
-								{/* Tool chip */}
-								<div className="pl-9">
-									<Link
-										href={s.tool.href}
-										className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-[#35cdc4] border border-[#35cdc4]/30 bg-[#35cdc4]/5 hover:bg-[#35cdc4]/10 px-2.5 py-1 rounded-full transition-colors"
-									>
-										<ArrowRight className="w-3 h-3" />
-										{s.tool.label}
-									</Link>
-								</div>
-							</div>
+					<div className="grid md:grid-cols-2 gap-px bg-[#E8E2D9] border border-[#E8E2D9] rounded-xl overflow-hidden">
+						{MOVING_GROUPS.map((s) => (
+							<SituationCard key={s.num} s={s} />
 						))}
 					</div>
 				</div>
@@ -591,11 +731,11 @@ export default function HomeHub({
 							Monthly update
 						</p>
 						<h2 className="font-[family-name:var(--font-lora)] text-2xl md:text-3xl font-medium text-white mt-2 leading-snug">
-							Get the monthly Cyprus relocation update
+							Get the monthly Cyprus update
 						</h2>
 						<p className="text-sm text-white/50 mt-3 leading-relaxed">
-							One email per month. New guides, regulatory changes, and tool
-							updates for people planning a Cyprus move.
+							One email per month. New guides, rule changes and tool updates for
+							people living in or moving to Cyprus.
 						</p>
 					</div>
 					<div className="bg-white/8 border border-white/10 rounded-xl p-6">

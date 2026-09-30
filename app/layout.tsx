@@ -44,7 +44,7 @@ export const viewport: Viewport = {
 };
 
 const SITE_NAME = "RealCy.app";
-const SITE_TAGLINE = "Cyprus New Developments & Relocation Guide";
+const SITE_TAGLINE = "Living in Cyprus: Guides, Directories & New Builds";
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://realcy.app"),
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
 		default: `${SITE_NAME} - ${SITE_TAGLINE}`,
 		template: `%s · ${SITE_NAME}`,
 	},
-	description: `RealCy.app — your portal for anything Cyprus. Browse new-build apartments and villas on an interactive map. 30+ service directories, 31 relocation tools, and ${GUIDE_COUNT} in-depth guides.`,
+	description: `Practical help for life in Cyprus: guides, 30+ service directories, ${GUIDE_COUNT} in-depth guides, planning tools and new-build listings on an interactive map.`,
 	keywords: [
 		"Cyprus real estate",
 		"Cyprus new developments",
@@ -79,20 +79,20 @@ export const metadata: Metadata = {
 		locale: "en_GB",
 		siteName: SITE_NAME,
 		title: `${SITE_NAME} - ${SITE_TAGLINE}`,
-		description: `Your portal to Cyprus — new-build real estate, 30+ service directories, 31 relocation tools, and ${GUIDE_COUNT} in-depth guides.`,
+		description: `Your guide to living in Cyprus: practical guides, 30+ service directories, planning tools, and new-build real estate.`,
 		images: [
 			{
 				url: "https://realcy.app/og-default.webp",
 				width: 1200,
 				height: 630,
-				alt: "RealCy.app — Cyprus relocation portal",
+				alt: "RealCy.app: Living in Cyprus",
 			},
 		],
 	},
 	twitter: {
 		card: "summary_large_image",
 		title: `${SITE_NAME} - ${SITE_TAGLINE}`,
-		description: `Your portal to Cyprus — new-build real estate, 30+ service directories, 31 relocation tools, and ${GUIDE_COUNT} in-depth guides.`,
+		description: `Your guide to living in Cyprus: practical guides, 30+ service directories, planning tools, and new-build real estate.`,
 		images: ["https://realcy.app/og-default.webp"],
 	},
 	robots: {
@@ -117,8 +117,8 @@ function SiteFooter() {
 				<div className="col-span-2 md:col-span-2">
 					<p className="font-bold text-white text-lg">RealCy.app</p>
 					<p className="mt-2 text-slate-400 leading-relaxed text-xs">
-						Your portal for anything Cyprus — new-build real estate, relocation
-						guides, curated directories, and interactive tools.
+						Your guide to living in Cyprus: practical guides, curated
+						directories, interactive tools and new-build real estate.
 					</p>
 					<div className="mt-4 flex flex-wrap gap-2">
 						<Link
@@ -363,8 +363,8 @@ function SiteFooter() {
 			</div>
 			<div className="border-t border-slate-800">
 				<div className="max-w-6xl mx-auto px-6 py-4 text-xs text-slate-500">
-					© {new Date().getFullYear()} RealCy.app — independent Cyprus
-					relocation portal.
+					© {new Date().getFullYear()} RealCy.app, independent guide to living
+					in Cyprus.
 				</div>
 			</div>
 		</footer>
