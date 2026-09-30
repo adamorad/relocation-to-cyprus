@@ -233,7 +233,7 @@ export default function VolunteeringPage() {
 			{/* Back link */}
 			<p className="mt-12 text-xs text-slate-500">
 				<Link href="/" className="underline hover:text-slate-900">
-					← Back to the map
+					← Back to home
 				</Link>
 			</p>
 		</main>

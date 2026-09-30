@@ -265,7 +265,7 @@ export default function AfterSchoolActivitiesPage() {
 					href="/"
 					className="text-slate-500 underline hover:text-slate-800"
 				>
-					← Back to the map
+					← Back to home
 				</Link>
 			</p>
 		</main>

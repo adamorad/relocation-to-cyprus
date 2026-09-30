@@ -431,7 +431,7 @@ export default function ExploreClient() {
 
 			<p className="mt-10 text-xs text-slate-500">
 				<Link href="/" className="underline hover:text-slate-900">
-					&larr; Back to the map
+					&larr; Back to home
 				</Link>
 			</p>
 		</main>
