@@ -48,9 +48,7 @@ export function GuideCards() {
 								)}
 							</div>
 							<div className="min-w-0 p-3.5 md:p-4">
-								<h3 className="text-base font-bold leading-snug">
-									{g.title}
-								</h3>
+								<h3 className="text-base font-bold leading-snug">{g.title}</h3>
 								<p className="mt-1 line-clamp-2 text-base leading-normal text-muted md:line-clamp-3 md:leading-snug">
 									{g.description}
 								</p>

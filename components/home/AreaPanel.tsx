@@ -75,7 +75,9 @@ export function AreaPanel() {
 										className="h-full w-full object-cover"
 									/>
 								) : (
-									<span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/70"><Icon name="pin" size={24} /></span>
+									<span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/70">
+										<Icon name="pin" size={24} />
+									</span>
 								)}
 							</span>
 							<span className="flex min-h-11 items-center px-3 py-2 text-base font-bold leading-snug">
