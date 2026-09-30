@@ -7,7 +7,7 @@ import { MapNavProvider } from "@/components/MapNavContext";
 import { SiteHeader } from "@/components/SiteHeader";
 import { GUIDES } from "@/lib/guides";
 import { LISTINGS_BY_REGION } from "@/lib/listingsData";
-import { REGIONS } from "@/lib/regions";
+import { NAV_REGIONS } from "@/lib/regions";
 import { SECTIONS_INDEX } from "@/lib/sections-index";
 import { TOOLS } from "@/lib/tools-index";
 
@@ -102,7 +102,7 @@ export const metadata: Metadata = {
 };
 
 function SiteFooter() {
-	const featured = REGIONS.flatMap((r) =>
+	const featured = NAV_REGIONS.flatMap((r) =>
 		(LISTINGS_BY_REGION[r.name] ?? []).slice(0, 4),
 	);
 	return (
@@ -146,7 +146,7 @@ function SiteFooter() {
 						Regions
 					</p>
 					<ul className="mt-3 space-y-2">
-						{REGIONS.map((r) => (
+						{NAV_REGIONS.map((r) => (
 							<li key={r.slug}>
 								<Link
 									href={`/regions/${r.slug}/`}

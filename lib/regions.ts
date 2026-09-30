@@ -257,3 +257,8 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 export function regionBySlug(slug: string): RegionInfo | undefined {
   return REGIONS.find((r) => r.slug === slug);
 }
+
+/** Regions surfaced in listings and navigation (one region page is deliberately unlisted). */
+export const NAV_REGIONS: RegionInfo[] = REGIONS.filter(
+	(r) => r.slug !== "nicosia",
+);
