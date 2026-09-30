@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import AppShell from "@/components/AppShell";
-import HomeHub from "@/components/HomeHub";
+import { AreaPanel } from "@/components/home/AreaPanel";
+import { GuideCards } from "@/components/home/GuideCards";
+import { HomeHero } from "@/components/home/HomeHero";
+import { ToolsStrip } from "@/components/home/ToolsStrip";
+import { TopicGrid } from "@/components/home/TopicGrid";
 import { GUIDES } from "@/lib/guides";
 import { LISTINGS } from "@/lib/listingsData";
-import { SECTIONS_INDEX } from "@/lib/sections-index";
 
 const GUIDE_COUNT = GUIDES.length;
 
@@ -16,15 +18,6 @@ export const metadata: Metadata = {
 };
 
 const SITE_URL = "https://realcy.app";
-
-const FEATURED_GUIDE_SLUGS = [
-	"taxes-for-expats",
-	"residency-and-visas",
-	"best-areas-to-live-cyprus",
-	"retiring-in-cyprus",
-	"cost-of-living",
-	"digital-nomad-visa-guide",
-];
 
 export default function Home() {
 	const websiteJsonLd = {
@@ -66,18 +59,6 @@ export default function Home() {
 			name: l.title,
 		})),
 	};
-	const featuredGuides = FEATURED_GUIDE_SLUGS.map((slug) => {
-		const g = GUIDES.find((g) => g.slug === slug);
-		return g
-			? {
-					slug: g.slug,
-					title: g.title,
-					category: g.category,
-					description: g.description,
-				}
-			: null;
-	}).filter((g): g is NonNullable<typeof g> => g !== null);
-
 	return (
 		<>
 			<script
@@ -87,17 +68,19 @@ export default function Home() {
 					__html: JSON.stringify([websiteJsonLd, orgJsonLd, itemList]),
 				}}
 			/>
-			<AppShell />
-			<p className="sr-only">
-				Living in Cyprus: Guides, Directories, New Developments and Tax Tools |
-				RealCy.app
-			</p>
-			<HomeHub
-				totalListings={LISTINGS.length}
-				totalGuides={GUIDES.length}
-				totalSections={SECTIONS_INDEX.length}
-				featuredGuides={featuredGuides}
-			/>
+			<main id="main">
+				<HomeHero />
+				<p className="sr-only">
+					Living in Cyprus: Guides, Directories, New Developments and Tax Tools
+					| RealCy.app
+				</p>
+				<TopicGrid />
+				<div className="mx-auto grid max-w-[1280px] gap-8 px-5 py-8 md:px-8 md:py-10 min-[1100px]:grid-cols-[minmax(0,7fr)_minmax(0,3fr)] min-[1100px]:gap-6">
+					<GuideCards />
+					<AreaPanel />
+				</div>
+				<ToolsStrip />
+			</main>
 		</>
 	);
 }

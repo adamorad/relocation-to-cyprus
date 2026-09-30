@@ -3,7 +3,6 @@ import { Manrope } from "next/font/google";
 import Link from "next/link";
 import { CookieConsentManager } from "@/components/CookieConsentManager";
 import { EmailCapture } from "@/components/EmailCapture";
-import { MapNavProvider } from "@/components/MapNavContext";
 import { SiteHeader } from "@/components/SiteHeader";
 import { GUIDES } from "@/lib/guides";
 import { LISTINGS_BY_REGION } from "@/lib/listingsData";
@@ -54,7 +53,7 @@ export const metadata: Metadata = {
 		default: `${SITE_NAME} - ${SITE_TAGLINE}`,
 		template: `%s · ${SITE_NAME}`,
 	},
-	description: `Practical help for life in Cyprus: guides, 30+ service directories, ${GUIDE_COUNT} in-depth guides, planning tools and new-build listings on an interactive map.`,
+	description: `Practical help for life in Cyprus: guides, 30+ service directories, ${GUIDE_COUNT} in-depth guides, planning tools and new-build listings.`,
 	keywords: [
 		"Cyprus real estate",
 		"Cyprus new developments",
@@ -372,19 +371,12 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" className={manrope.variable}>
-			<head>
-				{/* Warm up the Google Maps origins used by the homepage map */}
-				<link rel="preconnect" href="https://maps.googleapis.com" />
-				<link rel="preconnect" href="https://maps.gstatic.com" crossOrigin="" />
-			</head>
 			<body className="antialiased text-ink font-[family-name:var(--font-manrope)]">
 				<a href="#main" className="skip-to-content">
 					Skip to content
 				</a>
-				<MapNavProvider>
-					<SiteHeader />
-					{children}
-				</MapNavProvider>
+				<SiteHeader />
+				{children}
 				<SiteFooter />
 				<CookieConsentManager gaId={GA_ID} pixelId={META_PIXEL_ID} />
 			</body>
