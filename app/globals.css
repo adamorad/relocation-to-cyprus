@@ -79,6 +79,8 @@ html {
 
 /* RealCy Living redesign tokens (Option 1 kit). Available as Tailwind
    utilities, e.g. text-ink, bg-sky, border-line, rounded-card, shadow-rc. */
+@custom-variant desk (@media (min-width: 1100px));
+
 @theme {
   --color-ink: #0b2145;
   --color-muted: #506580;

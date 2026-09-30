@@ -9,14 +9,14 @@ export function HomeHero() {
 			className="relative isolate overflow-hidden bg-sky"
 		>
 			<div className="mx-auto max-w-[1280px] px-5 md:px-8">
-				<div className="relative z-10 pb-4 pt-6 min-[1100px]:w-[56%] min-[1100px]:pb-12 min-[1100px]:pt-12">
+				<div className="relative z-10 pb-4 pt-6 desk:w-[56%] desk:pb-12 desk:pt-12">
 					<h1
 						id="home-title"
-						className="max-w-[760px] text-balance text-[clamp(34px,9vw,40px)] font-extrabold leading-[1.12] tracking-[-0.035em] text-ink md:text-[clamp(40px,5vw,52px)] min-[1100px]:text-[clamp(52px,4.6vw,64px)] min-[1100px]:leading-[1.05]"
+						className="max-w-[760px] text-balance text-[clamp(34px,9vw,40px)] font-extrabold leading-[1.12] tracking-[-0.035em] text-ink md:text-[clamp(40px,5vw,52px)] desk:text-[clamp(52px,4.6vw,64px)] desk:leading-[1.05]"
 					>
 						{HOME_HERO.headline}
 					</h1>
-					<p className="mt-3 text-lg leading-normal text-ink md:text-xl min-[1100px]:text-2xl">
+					<p className="mt-3 text-lg leading-normal text-ink md:text-xl desk:text-2xl">
 						{HOME_HERO.subtitle}
 					</p>
 					<search className="mt-6 block">
@@ -56,7 +56,7 @@ export function HomeHero() {
 				</div>
 			</div>
 			{/* Decorative artwork: below the copy on mobile, right side on desktop */}
-			<div className="relative h-[200px] w-full min-[1100px]:absolute min-[1100px]:inset-y-0 min-[1100px]:right-0 min-[1100px]:z-0 min-[1100px]:h-auto min-[1100px]:w-[58%]">
+			<div className="relative h-[200px] w-full desk:absolute desk:inset-y-0 desk:right-0 desk:z-0 desk:h-auto desk:w-[58%]">
 				<Image
 					src="/images/home/hero-neighborhood.webp"
 					alt=""
@@ -68,7 +68,7 @@ export function HomeHero() {
 				/>
 				<div
 					aria-hidden="true"
-					className="pointer-events-none absolute inset-y-0 left-0 hidden w-1/4 bg-gradient-to-r from-sky to-transparent min-[1100px]:block"
+					className="pointer-events-none absolute inset-y-0 left-0 hidden w-1/4 bg-gradient-to-r from-sky to-transparent desk:block"
 				/>
 			</div>
 		</section>

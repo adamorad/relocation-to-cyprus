@@ -12,7 +12,7 @@ export function ToolsStrip() {
 			aria-labelledby="tools-title"
 			className="mx-auto max-w-[1280px] px-5 pb-10 md:px-8"
 		>
-			<div className="rounded-panel bg-sky-strong p-5 md:p-6 min-[1100px]:grid min-[1100px]:grid-cols-[minmax(0,1fr)_minmax(0,3fr)] min-[1100px]:items-center min-[1100px]:gap-6">
+			<div className="rounded-panel bg-sky-strong p-5 md:p-6 desk:grid desk:grid-cols-[minmax(0,1fr)_minmax(0,3fr)] desk:items-center desk:gap-6">
 				<div>
 					<h2
 						id="tools-title"
@@ -24,7 +24,7 @@ export function ToolsStrip() {
 						{HOME_TOOLS_SUBTITLE}
 					</p>
 				</div>
-				<ul className="mt-5 grid gap-3 md:grid-cols-3 min-[1100px]:mt-0">
+				<ul className="mt-5 grid gap-3 md:grid-cols-3 desk:mt-0">
 					{HOME_TOOLS.map((t) => (
 						<li key={t.id} className="flex">
 							<Link

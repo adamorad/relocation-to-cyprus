@@ -75,7 +75,7 @@ export default function Home() {
 					| RealCy.app
 				</p>
 				<TopicGrid />
-				<div className="mx-auto grid max-w-[1280px] gap-8 px-5 py-8 md:px-8 md:py-10 min-[1100px]:grid-cols-[minmax(0,7fr)_minmax(0,3fr)] min-[1100px]:gap-6">
+				<div className="mx-auto grid max-w-[1280px] gap-8 px-5 py-8 md:px-8 md:py-10 desk:grid-cols-[minmax(0,7fr)_minmax(0,3fr)] desk:gap-6">
 					<GuideCards />
 					<AreaPanel />
 				</div>
