@@ -14,7 +14,7 @@ html {
 }
 
 :focus-visible {
-  outline: 2px solid #0ea5e9;
+  outline: 2px solid #075985;
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -111,4 +111,9 @@ html {
   --rc-r-panel: 24px;
   --rc-shadow: 0 8px 28px rgb(25 85 112 / 8%);
   --rc-max: 1280px;
+}
+
+@keyframes rc-menu-in {
+  from { transform: translateX(24px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
 }

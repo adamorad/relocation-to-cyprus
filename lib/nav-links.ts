@@ -1,11 +1,22 @@
 export type NavLink = { label: string; href: string };
 
+/** The four primary destinations shown in the header bar and mobile menu. */
 export const PRIMARY_NAV: ReadonlyArray<NavLink> = [
+	{ label: "Daily life", href: "/sections/" },
+	{ label: "Places", href: "/regions/" },
 	{ label: "Guides", href: "/guides/" },
 	{ label: "Tools", href: "/tools/" },
-	{ label: "Directories", href: "/sections/" },
-	{ label: "Explore", href: "/explore/" },
+];
+
+/** Saved shortlist (localStorage, new-build listings). No sign-in on this site. */
+export const SAVED_LINK: NavLink = { label: "Saved", href: "/my-shortlist/" };
+
+/** Secondary links, shown only inside the mobile menu. */
+export const SECONDARY_NAV: ReadonlyArray<NavLink> = [
 	{ label: "Moving to Cyprus", href: "/moving-to-cyprus/" },
+	{ label: "New developments", href: "/listings/" },
+	{ label: "Explore and search", href: "/explore/" },
+	{ label: "Advertise", href: "/advertise/" },
 ];
 
 /** True when the current pathname is within the nav item's section. */
