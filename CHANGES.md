@@ -2,6 +2,21 @@
 
 ## Unreleased
 
+- New site header: logo, Daily life, Places, Guides, Tools and Saved links, a desktop "More" menu and an accessible mobile menu. There is no sign-in because the site has no accounts.
+- Manrope is now the site-wide font. The legacy Lora and DM Sans CSS variables are remapped to it.
+- New "Living in Cyprus" homepage: hero search that goes to /explore/, six topic cards, guide cards, a "Your local area" panel for Limassol, Paphos, Larnaca and Ayia Napa, and a tools strip.
+- The old homepage map moved to `archive/homepage-map/`. `MapNavProvider` and the Google Maps preconnects were removed from the layout. See `docs/homepage-map-archive.md`.
+- Nicosia was left out of the nav, footer and the /regions/ list. Its page and sitemap entry are untouched.
+- The listing save heart moved from the archived map panel to the listing detail page. The "Back to the map" links are now "Back to home", and the shortlist empty state and city-comparison link point to /listings/.
+
+### Known gaps and follow-ups
+
+- Painted category and guide illustrations and real city and guide photos are missing. The photo slots are in `lib/home-content.ts`.
+- Interior pages (sections, tools, listings, regions) still use the old teal and slate palette and need a restyle phase.
+- The kit's "Useful contacts" tool does not exist. It is mapped to the emergency contacts guide.
+- Unused Google Maps dependencies should be removed: `@googlemaps/markerclusterer`, `@vis.gl/react-google-maps` and `@types/google.maps`.
+- A Safari 17+ and iOS smoke test is needed, because the mobile menu uses `inert`.
+
 ## 2026-06-10 — 10 new tools (PRs #71–81)
 
 - `school-finder`: International School Finder — filter by city, curriculum, and age group (#71)
