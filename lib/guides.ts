@@ -1493,16 +1493,17 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "transport",
-		title: "Cyprus Ferry Routes 2026: Greece, Egypt & Lebanon",
+		title: "Cyprus Ferry Routes 2026: Piraeus, Crete & Egypt",
 		description:
-			"Grimaldi Lines runs Limassol–Piraeus via Crete (36 hrs) in 2026. Car shipping from €250. Egypt & Lebanon route status, cabin prices, and booking guide.",
+			"Limassol to Piraeus via Crete with Grimaldi Lines (36-40 hrs). Cyprus to Egypt and Haifa ferry status, car rates from €250 and how to book in 2026.",
 		sections: [
 			{
 				heading: "The state of Cyprus ferry services",
 				body: "Cyprus has no land borders — it is an island — and for most of its modern history passenger ferry services have been secondary to air travel for residents. The discontinuation of the Limassol-Haifa route (previously operated by Nissos Cyprus) and the suspension of some Mediterranean routes have reduced options over the years. As of 2026, the most reliable scheduled passenger service is the Grimaldi Lines service connecting Limassol with Piraeus (Athens's port), routing via Crete (Heraklion). This service operates roughly weekly during the high season (approximately April to October) with reduced frequency in winter. It is a cargo-passenger service — meaning the primary commercial purpose is freight, and the passenger capacity is secondary — which sets the tone: this is a comfortable but utilitarian voyage, not a luxury cruise experience. Seasonal cruise-style routes operated by Louis Cruises and other Mediterranean operators add additional options in summer.",
 			},
 			{
-				heading: "Grimaldi Lines Limassol to Piraeus: what to expect",
+				heading:
+					"Limassol to Piraeus and Crete with Grimaldi Lines: what to expect",
 				body: "The Grimaldi service from Limassol to Piraeus takes approximately 36–40 hours, with a stop in Heraklion adding several hours. Deck passage (reclining seat, access to public areas, no cabin) starts from approximately €80 per person each way. An interior cabin (no window) runs €120–€160 per person; a sea-view cabin is €200–€280. Cabins sleep 2–4 passengers. The ships are Italian-operated and well-maintained: there is a self-service restaurant, a bar, and adequate public seating. The crossing can be choppy between Crete and Piraeus during winter months — this is the Eastern Mediterranean, not the English Channel, but it is not always flat either. Booking is done through the Grimaldi Lines website (grimaldi-lines.com) or through local travel agents in Limassol; booking well in advance during summer is strongly recommended as the limited passenger capacity sells out. Check the current schedule directly with Grimaldi before planning, as sailing dates and routes change seasonally.",
 			},
 			{
@@ -1510,8 +1511,8 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 				body: "Transporting a vehicle from Cyprus to Greece (or vice versa) on the Grimaldi service is one of the most practical aspects of the route for relocators. Vehicle rates start from approximately €200–€350 for a standard car, depending on vehicle length and the specific sailing. A standard 4m car runs approximately €250. Motorhomes and campervans pay by length and run €400–€600. The vehicle is driven onto the ferry at Limassol and driven off at Heraklion or Piraeus; you cannot access your vehicle during the crossing for safety reasons — so pack what you need for the voyage in your hand luggage. This route is used by Cyprus residents transporting cars to Greece for sale or vice versa, by people moving households, and occasionally by tourists doing a longer road-trip itinerary (ferry Cyprus to Greece, drive north through Greece and the Balkans). Booking vehicle transport requires providing exact vehicle dimensions; do this accurately as weight and size restrictions apply.",
 			},
 			{
-				heading: "Seasonal routes, Lebanon, and Egypt services",
-				body: "Seasonal passenger services from Cyprus to Lebanon (Tripoli or Beirut) have existed historically but are subject to geopolitical disruption — the current availability depends on the political situation in Lebanon and should be verified directly with Limassol Port Authority (limassolport.com.cy) or local travel agents at the time of travel. Services to Egypt (Port Said or Alexandria) have operated intermittently; as of early 2026 there is no regular scheduled passenger service, though freight connections exist. The Latchi harbour in the Paphos district is relevant for boat hire and private yacht movement rather than commercial ferry services. It is a popular departure point for day trips to the Akamas peninsula sea caves and for private charters to Turkey (Kas or Antalya, roughly 90 nautical miles). Charter hire from Latchi for day trips runs €150–€350 depending on the boat size and duration.",
+				heading: "Cyprus to Egypt ferry, Haifa, Lebanon and seasonal routes",
+				body: "Seasonal passenger services from Cyprus to Lebanon (Tripoli or Beirut) have existed historically but are subject to geopolitical disruption, so current availability depends on the political situation in Lebanon and should be verified directly with Limassol Port Authority (limassolport.com.cy) or local travel agents at the time of travel. Services to Egypt (Port Said or Alexandria) have operated intermittently; as of early 2026 there is no regular scheduled passenger service, though freight connections exist, so there is no current timetable for Cyprus to Egypt or Egypt to Cyprus by ferry. The Limassol to Haifa passenger route (previously operated by Nissos Cyprus) was discontinued and is not part of the current Grimaldi service. The Latchi harbour in the Paphos district is relevant for boat hire and private yacht movement rather than commercial ferry services. It is a popular departure point for day trips to the Akamas peninsula sea caves and for private charters to Turkey (Kas or Antalya, roughly 90 nautical miles). Charter hire from Latchi for day trips runs €150–€350 depending on the boat size and duration.",
 			},
 			{
 				heading:
