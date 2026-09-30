@@ -1,5 +1,8 @@
 const LS_KEY = "realcy_shortlist";
 
+/** Fired on window after every shortlist write so same-tab UI can refresh. */
+export const SHORTLIST_EVENT = "rc:shortlist";
+
 export function getShortlist(): string[] {
   if (typeof window === "undefined") return [];
   try {
@@ -24,6 +27,7 @@ export function toggleShortlist(slug: string): boolean {
       next = list.filter((s) => s !== slug);
     }
     localStorage.setItem(LS_KEY, JSON.stringify(next));
+    window.dispatchEvent(new CustomEvent(SHORTLIST_EVENT));
     return next.includes(slug);
   } catch {
     return false;

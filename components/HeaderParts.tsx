@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { getShortlist } from "@/lib/shortlist";
+import { getShortlist, SHORTLIST_EVENT } from "@/lib/shortlist";
 import { Icon } from "./icons/Icon";
 
 /** Saved-count, read after mount so server and first client render match. */
@@ -14,7 +14,11 @@ export function useSavedCount(): number {
 		setCount(getShortlist().length);
 		const onStorage = () => setCount(getShortlist().length);
 		window.addEventListener("storage", onStorage);
-		return () => window.removeEventListener("storage", onStorage);
+		window.addEventListener(SHORTLIST_EVENT, onStorage);
+		return () => {
+			window.removeEventListener("storage", onStorage);
+			window.removeEventListener(SHORTLIST_EVENT, onStorage);
+		};
 	}, [pathname]);
 	return count;
 }
@@ -49,7 +53,11 @@ export function SavedLink({ className = "" }: { className?: string }) {
 		<Link
 			href="/my-shortlist/"
 			aria-current={active ? "page" : undefined}
-			aria-label={count > 0 ? `Saved, ${count} listings` : "Saved"}
+			aria-label={
+				count > 0
+					? `Saved, ${count} ${count === 1 ? "listing" : "listings"}`
+					: "Saved"
+			}
 			className={`inline-flex min-h-11 items-center gap-2 rounded-field px-3 text-base font-semibold text-ink hover:bg-sky ${
 				active ? "bg-sky" : ""
 			} ${className}`}
