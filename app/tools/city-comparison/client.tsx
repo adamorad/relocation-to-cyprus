@@ -171,7 +171,7 @@ export default function CityComparisonClient() {
 				if (next.size <= 2) return prev; // keep minimum 2
 				next.delete(city);
 			} else {
-				if (next.size >= 5) return prev; // max 5
+				if (next.size >= 4) return prev; // max 4
 				next.add(city);
 			}
 			return next;
@@ -200,7 +200,7 @@ export default function CityComparisonClient() {
 					City Comparison
 				</h1>
 				<p className="mt-2 text-slate-600 text-sm leading-relaxed">
-					Compare key metrics across Cyprus cities side by side. Select 2–5
+					Compare key metrics across Cyprus cities side by side. Select 2–4
 					cities to compare. Color coding: green = best, amber = middle, red =
 					relative worst per row.
 				</p>
@@ -208,7 +208,7 @@ export default function CityComparisonClient() {
 
 			<section className="mb-6">
 				<p className="text-xs font-semibold text-slate-600 uppercase tracking-wide mb-3">
-					Select cities (2–5)
+					Select cities (2–4)
 				</p>
 				<div className="flex flex-wrap gap-2">
 					{ALL_CITIES.map((city) => {
