@@ -11,7 +11,8 @@ import {
 export function GuideCards() {
 	const items = HOME_GUIDE_SLUGS.flatMap((cfg) => {
 		const g = GUIDES.find((x) => x.slug === cfg.slug);
-		return g ? [{ cfg, g }] : [];
+		// The guide's own 16:9 hero (800w) when it has one.
+		return g ? [{ cfg, g, photo: cfg.photo ?? g.image?.srcSmall }] : [];
 	});
 	return (
 		<section aria-labelledby="guides-title" className="flex flex-col">
@@ -25,16 +26,16 @@ export function GuideCards() {
 				{HOME_GUIDES_SUBTITLE}
 			</p>
 			<ul className="grid gap-4 md:grid-cols-3 desk:flex-1">
-				{items.map(({ cfg, g }) => (
+				{items.map(({ cfg, g, photo }) => (
 					<li key={g.slug} className="flex">
 						<Link
 							href={`/guides/${g.slug}/`}
 							className="grid w-full grid-cols-[88px_minmax(0,1fr)] overflow-hidden rounded-card border border-line bg-white text-ink shadow-rc transition-colors hover:border-primary md:flex md:flex-col"
 						>
 							<div className="flex h-full min-h-[104px] items-center justify-center bg-sky-strong text-primary md:h-[164px] md:min-h-0 md:shrink-0 desk:h-[176px]">
-								{cfg.photo ? (
+								{photo ? (
 									<Image
-										src={cfg.photo}
+										src={photo}
 										alt=""
 										width={640}
 										height={360}
