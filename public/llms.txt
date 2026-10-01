@@ -1,133 +1,277 @@
 # RealCy.app
 
-> Independent guide to living in Cyprus. Covers practical guides for residents (healthcare, transport, everyday admin, cost of living), curated service directories, interactive planning tools and calculators, and new-build real estate (260+ developments on an interactive map). Also serves people relocating to Cyprus, including expats, digital nomads and investors, with guides current for 2025-2026.
+> Independent guide to everyday life in Cyprus: practical guides, local directories and planning tools for residents, organised into eight topics, plus city guides for Limassol, Paphos, Larnaca and Ayia Napa and new-build real estate listings. Also serves people planning a move to Cyprus.
 
-Content covers healthcare, transport, everyday admin, cost of living, schools, visas, taxes (including the non-dom regime) and property, with new-build listings in Paphos, Limassol, Larnaca and Ayia Napa.
+Every guide, directory and tool belongs to one primary topic. Each topic has a hub page listing its guides, directories and tools (some items also appear on a second topic's hub). Hubs accept `?city=limassol|paphos|larnaca|ayia-napa` to show directories with entries in that city.
 
-## Guides: Immigration & Visas
+## Topics
 
-- [Cyprus Residency and Visa Options](https://realcy.app/guides/residency-and-visas/): Overview of all pathways — PR by Investment, Digital Nomad Visa, EU registration
-- [Cyprus Digital Nomad Visa — Complete Guide](https://realcy.app/guides/digital-nomad-visa-guide/): Eligibility, income requirements (€3,500/mo net), application process, processing times
-- [Permanent Residency After 5 Years](https://realcy.app/guides/permanent-residency-5year/): Qualifying criteria, application process, rights vs citizenship
-- [Family Reunification in Cyprus](https://realcy.app/guides/family-reunification-guide/): Bringing dependents, document requirements, income thresholds
-- [Work Permits for Non-EU Nationals](https://realcy.app/guides/work-permits-non-eu/): Employer quotas, permit types, fast-track tech scheme
-- [Cyprus Citizenship by Naturalization](https://realcy.app/guides/citizenship-naturalization/): 7-year residency route, language requirements, timeline
-- [Company Formation for Visa Purposes](https://realcy.app/guides/company-formation-visa/): When a Cyprus company enables residency, substance requirements
-- [Startup Visa — Innovative Company Permit](https://realcy.app/guides/startup-visa-ict/): Non-EU tech founders, evaluation criteria, income requirements
+- [Health](https://realcy.app/health/): GeSY, doctors, pharmacies, insurance and what to do in an emergency.
+- [Getting around](https://realcy.app/getting-around/): Buses, driving, licences, car hire, airports and ferries across Cyprus.
+- [Home & bills](https://realcy.app/home-and-bills/): Renting a home, utilities, internet, recycling, water and solar.
+- [Money & paperwork](https://realcy.app/money-and-paperwork/): Banking, tax returns, social insurance, residence permits and running a business.
+- [Food & shopping](https://realcy.app/food-and-shopping/): Markets, international groceries, food delivery and eating like a local.
+- [Family & schools](https://realcy.app/family-and-schools/): Schools, nurseries, activities for children and family paperwork.
+- [Community & leisure](https://realcy.app/community-and-leisure/): Meeting people, sport, culture, the outdoors and learning Greek.
+- [Moving to Cyprus](https://realcy.app/moving-to-cyprus/): Visas, residency routes, tax status, buying property and planning the move.
 
-## Guides: Taxes & Finance
+## Health
 
-- [Taxes for Expats in Cyprus](https://realcy.app/guides/taxes-for-expats/): Non-dom regime, 60-day rule, capital gains, crypto treatment
-- [Cyprus Non-Dom Status — Full Explainer](https://realcy.app/guides/non-dom-status-guide/): SDC exemption on dividends and interest, 17-year clock, who qualifies
-- [Cyprus IP Box Regime](https://realcy.app/guides/ip-box-regime/): 2.5% effective tax on qualifying IP income, nexus approach
-- [VAT Registration in Cyprus](https://realcy.app/guides/vat-registration-guide/): €15,600 threshold, OSS for e-commerce, filing deadlines
-- [Cryptocurrency Tax in Cyprus](https://realcy.app/guides/crypto-tax-cyprus/): Current treatment, capital gains exemption, reporting obligations
-- [Opening a Bank Account in Cyprus](https://realcy.app/guides/banking-in-cyprus/): Which banks accept non-residents, KYC requirements, timelines, neo-bank alternatives
-- [Cyprus Company Types Comparison](https://realcy.app/guides/company-types-comparison/): Ltd vs Sole Trader vs Partnership — tax treatment, costs, liability
-- [Opening a Corporate Bank Account](https://realcy.app/guides/corporate-bank-account-guide/): Foreign director applications, required documents, typical rejections
+Hub: https://realcy.app/health/
 
-## Guides: Property
+### Guides
 
-- [Cyprus Title Deed Guide](https://realcy.app/guides/title-deed-status-guide/): The legacy backlog problem, how to verify status, contract protections
-- [Buying Off-Plan in Cyprus](https://realcy.app/guides/off-plan-buying-guide/): Developer vetting, escrow requirements, completion guarantees
-- [Buying a New Development in Cyprus](https://realcy.app/guides/new-development-buying-guide/): Reservation, contract of sale, VAT rates, Land Registry, title deed timeline
-- [Short-Term to Long-Term Rental Transition](https://realcy.app/guides/rental-transition-guide/): Lease terms, deposits, what landlords require from foreign tenants
+- [GeSY Registration Guide 2026: Step-by-Step](https://realcy.app/guides/gesy-registration-guide/): Register for GeSY at gesyportal.hio.org.cy: step-by-step walkthrough for Cyprus expats: documents needed, GP selection, 2026 contribution rates, and what the public healthcare system covers.
+- [Buy Medicine Over the Counter in Cyprus](https://realcy.app/guides/pharmacies-medication/): What you can buy over the counter in Cyprus: paracetamol, ibuprofen, some codeine painkillers. Plus GeSY €1 generics and foreign prescription rules.
+- [Dental Care in Cyprus 2026: Costs & GeSY Cover](https://realcy.app/guides/dental-care-guide/): Private dental costs in Cyprus in 2026: fillings from €80, implants from €800, crowns from €400. What GeSY actually covers (almost nothing for adults), how prices compare to UK and German rates, and how to find an English-speaking dentist.
+- [Emergency Services in Cyprus: 112 & A&E Guide](https://realcy.app/guides/emergency-services-guide/): The single emergency number, which hospitals have 24-hour A&E, ambulance response times, what to bring, and the difference between public and private A&E for non-critical situations.
+- [Air Quality & Allergens in Cyprus: Expat Guide](https://realcy.app/guides/air-quality-allergens/): Saharan dust events, pollen seasons, wildfire smoke, where to find AQI data, and practical steps for relocators who suffer from hay fever or respiratory conditions.
+- [Healthcare in Cyprus 2026: GeSY & Private Guide](https://realcy.app/guides/healthcare-in-cyprus/): How healthcare works in Cyprus in 2026: the national GeSY system, private hospitals, insurance, dental, mental health and emergencies.
+- [Private Health Insurance in Cyprus 2026](https://realcy.app/guides/private-health-insurance-cyprus/): What GeSY doesn't cover, the five gaps private insurance fills, residency requirements for non-EU applicants, and how to compare plans as a Cyprus expat.
 
-## Guides: Practical First Steps
+### Local directories
 
-- [Moving to Cyprus: Your First Month Checklist](https://realcy.app/guides/arrival-checklist/): Week-by-week steps — SIM, Civil Registry, bank account, GeSY, utilities, driving licence
-- [Cost of Living in Cyprus](https://realcy.app/guides/cost-of-living/): Regional breakdown — rent, utilities, food, schooling, healthcare, transport by city
-- [Setting Up Utilities in Cyprus](https://realcy.app/guides/utilities-setup-guide/): EAC electricity, water, broadband (Cablenet, Epic, Primetel, Cyta), setup process
+- [Specialist Doctors](https://realcy.app/sections/specialist-doctors/): English-speaking specialist consultants with GeSY status and private pricing.
+- [Mental Health Services](https://realcy.app/sections/mental-health-services/): English-speaking therapists, psychologists, and psychiatrists across Cyprus.
+- [Veterinary Services](https://realcy.app/sections/veterinary-services/): English-speaking vet clinics with emergency care and specialist referrals.
 
-## Guides: Business
+### Tools
 
-- [Hiring Employees in Cyprus](https://realcy.app/guides/hiring-in-cyprus/): Employment law, minimum wage (€1,000/mo), mandatory benefits, probation, termination
-- [Trade License Requirements in Cyprus](https://realcy.app/guides/trade-licenses-cyprus/): Which activities need a license, Municipal Authority process
-- [Registering IP in Cyprus](https://realcy.app/guides/ip-registration-cyprus/): Trademarks via Cyprus registry and EUIPO, software copyright, patents
+- [Cyprus Health Insurance Comparison](https://realcy.app/tools/health-insurance-comparison/): Compare private health insurance plans in Cyprus by coverage, premium, deductible, and network. Understand what GeSY covers versus what requires top-up insurance.
 
-## Guides: Family & Children
+## Getting around
 
-- [International vs Public Schools in Cyprus](https://realcy.app/guides/international-vs-public-school/): Honest comparison — cost, curriculum, language, university recognition
-- [Universities in Cyprus](https://realcy.app/guides/universities-in-cyprus/): Public and private universities, fees, EU recognition, English-medium programs
-- [Child Registration in Cyprus](https://realcy.app/guides/child-registration-guide/): ARC for minors, school enrollment, children's healthcare card
-- [Special Educational Needs in Cyprus](https://realcy.app/guides/sen-guide/): SEN support in schools, EDEK, English-speaking therapists
-- [Maternity and Paternity Rights in Cyprus](https://realcy.app/guides/maternity-paternity-rights/): Leave entitlements, social insurance benefit, parental leave
-- [Best Family-Friendly Neighborhoods in Cyprus](https://realcy.app/guides/family-neighborhoods-guide/): District-by-district guide — safety, schools, green space, community
+Hub: https://realcy.app/getting-around/
 
-## Guides: Healthcare
+### Guides
 
-- [How to Register with GeSY](https://realcy.app/guides/gesy-registration-guide/): Step-by-step registration for Cyprus public healthcare, choosing a GP
-- [Dental Care in Cyprus](https://realcy.app/guides/dental-care-guide/): Costs vs UK/Germany, GeSY coverage, finding English-speaking dentists
-- [Buy Medicine Over the Counter in Cyprus](https://realcy.app/guides/pharmacies-medication/): GeSY prescriptions, transferring foreign prescriptions, OTC availability
-- [Emergency Services in Cyprus](https://realcy.app/guides/emergency-services-guide/): 112, A&E hospitals by district, what to bring, private vs public
+- [Converting Your Driving Licence in Cyprus](https://realcy.app/guides/driving-licence-conversion/): EU licences, reciprocal-agreement countries, non-reciprocal countries that require a test, documents required, Traffic Department offices, timeline, and cost. Prices and rules change: verify with official Cyprus sources before acting.
+- [Importing and Registering a Car in Cyprus](https://realcy.app/guides/car-import-registration/): What it actually costs to bring your car to Cyprus, customs duties, registration tax, KTEO roadworthiness testing, and an honest verdict on whether importing beats buying locally. Prices and rules change, verify with official Cyprus sources before acting.
+- [Cyprus Airport Transfers 2026: All Options](https://realcy.app/guides/airport-transfers-guide/): Fixed taxi rates, intercity buses, shared transfer services, and Bolt availability from Larnaca and Paphos airports: with realistic journey time estimates for every major route.
+- [Cycling in Cyprus: Best Routes & Infrastructure](https://realcy.app/guides/cycling-guide/): A city-by-city assessment of cycling conditions in Cyprus, the best routes for road and mountain bikers, honest notes on the challenges, and when to actually go.
+- [Cyprus Ferry Routes 2026: Piraeus, Crete & Egypt](https://realcy.app/guides/ferry-routes-guide/): Limassol to Piraeus via Crete with Grimaldi Lines (36-40 hrs). Cyprus to Egypt and Haifa ferry status, car rates from €250 and how to book in 2026.
+- [Driving in Cyprus: Road Safety & Culture Guide](https://realcy.app/guides/road-safety-driving/): Everything you need to know before driving in Cyprus: left-hand traffic, speed limits, camera locations, accident procedures, and an honest assessment of local driving culture.
+- [Long-Term Car Rental Cyprus 2026: Monthly Hire Rates](https://realcy.app/guides/long-term-car-rental-cyprus/): Long-term car rental in Cyprus (monthly car hire): typical €300–€950/month rates, what is included, Limassol, Larnaca and Paphos options, and rent vs buy.
+- [Getting Around Cyprus Without a Car (2026)](https://realcy.app/guides/getting-around-cyprus-no-car/): Honest guide to Cyprus public transport for expats: intercity buses, city routes, Bolt, shared taxis, and which cities work without a car.
 
-## Guides: Transport
+### Local directories
 
-- [Converting Your Driving Licence in Cyprus](https://realcy.app/guides/driving-licence-conversion/): EU licences valid indefinitely; non-EU exchange process, reciprocal agreements
-- [Importing and Registering a Car in Cyprus](https://realcy.app/guides/car-import-registration/): Customs duty, KTEO roadworthiness test, registration tax
-- [Long-Term Car Rental Cyprus 2026: Monthly Hire Rates](https://realcy.app/guides/long-term-car-rental-cyprus/): Monthly hire rates, what to check in the contract, insurance and deposits
-- [Getting from Cyprus Airports](https://realcy.app/guides/airport-transfers-guide/): Larnaca and Paphos taxi rates, bus options, Bolt availability
-- [Road Safety and Driving Culture in Cyprus](https://realcy.app/guides/road-safety-driving/): Left-hand traffic, speed limits, accident procedure, insurance
+- [Public Transport](https://realcy.app/sections/public-transport/): Bus routes, Bolt availability, taxi apps, and monthly pass costs by city.
 
-## Guides: Lifestyle
+### Tools
 
-- [Moving to Cyprus with Pets](https://realcy.app/guides/moving-to-cyprus-with-pets/): EU passport, post-Brexit UK (21-day rule), non-EU countries including Israel — backwards-planning timelines
-- [Learning Greek in Cyprus](https://realcy.app/guides/language-learning-cyprus/): Cypriot dialect vs Standard Greek, apps, language schools, how much you need
-- [Cyprus Cultural Etiquette](https://realcy.app/guides/cultural-etiquette-guide/): Hospitality norms, religious observance, business culture, tipping
-- [Hiking in Cyprus](https://realcy.app/guides/hiking-trails-guide/): Troodos, Akamas, coastal trails — difficulty ratings, best months
-- [Cyprus Beach Guide by District](https://realcy.app/guides/beach-guide-by-district/): Best beaches per district — Blue Flag status, facilities, seasonal crowds
-- [Cypriot Cuisine Guide](https://realcy.app/guides/cypriot-cuisine-guide/): Meze culture, key dishes, food traditions
-- [Coffee Culture in Cyprus](https://realcy.app/guides/coffee-culture-guide/): Cypriot coffee, kafeneions, specialty coffee scene, freddo culture
+- [Cyprus Flight Connectivity](https://realcy.app/tools/flight-connectivity/): Explore 40+ direct routes from Larnaca (LCA) and Paphos (PFO) airports. Search by destination, filter by airport and season. See airlines, flight times, and frequency at a glance.
+- [Driver's Licence Exchange](https://realcy.app/tools/drivers-licence-exchange/): Find out if you can directly exchange your foreign driving licence in Cyprus or whether you need to take theory and practical tests. Includes costs, required documents, and step-by-step guidance.
 
-## Guides: Environment
+## Home & bills
 
-- [Solar Panels in Cyprus](https://realcy.app/guides/solar-energy-guide/): Net metering scheme, ROI, installation costs, government incentives
-- [Water Quality and Scarcity in Cyprus](https://realcy.app/guides/water-quality-scarcity/): Tap water safety, desalination, filtration options
-- [Earthquake Preparedness in Cyprus](https://realcy.app/guides/earthquake-preparedness/): Risk level, building codes, what to do
-- [Wildfire Risk in Cyprus](https://realcy.app/guides/wildfire-risk-guide/): High-risk areas, alert system, home preparation
-- [Cyprus Climate Guide — Month by Month](https://realcy.app/guides/climate-zones-seasonal/): Weather, UV, sea temperature, lifestyle by season
+Hub: https://realcy.app/home-and-bills/
 
-## Interactive Tools
+### Guides
 
-- [Rent vs Buy Calculator](https://realcy.app/tools/rent-vs-buy-calculator/): Compare total cost of renting vs buying in Cyprus over 1–10 years
-- [Neighbourhood Comparison Tool](https://realcy.app/tools/neighborhood-comparison/): Side-by-side comparison of all 5 Cyprus cities across 10 metrics
-- [MEU1 Registration Tracker](https://realcy.app/tools/meu1-tracker/): Interactive checklist for EU citizens registering residence in Cyprus
-- [Visa Pathway Finder](https://realcy.app/tools/visa-pathway-finder/): Answer 2 questions to find your recommended Cyprus visa route
-- [60-Day Tax Residency Planner](https://realcy.app/tools/tax-residency-planner/): Check whether you qualify for Cyprus tax residency
-- [Social Insurance Calculator](https://realcy.app/tools/social-insurance-calculator/): Calculate contributions for employed and self-employed
-- [Banking Fee Comparison](https://realcy.app/tools/banking-fee-comparison/): Compare Bank of Cyprus, Hellenic, AstroBank, Revolut, Wise
-- [Cyprus Tax Filing Calendar](https://realcy.app/tools/tax-filing-calendar/): All key annual deadlines colour-coded by urgency
-- [Double Tax Treaty Finder](https://realcy.app/tools/double-tax-treaty-finder/): Cyprus tax treaties with 65+ countries — withholding rates
-- [Freelancer vs Company Calculator](https://realcy.app/tools/freelancer-vs-company/): Sole trader vs Cyprus Ltd — take-home pay comparison
-- [Health Insurance Comparison](https://realcy.app/tools/health-insurance-comparison/): Compare AXA, Bupa, Cigna, Allianz for Cyprus residents
-- [Flight Connectivity Tracker](https://realcy.app/tools/flight-connectivity/): Direct routes from Larnaca (LCA) and Paphos (PFO) airports
-- [Annual Events & Festivals Calendar](https://realcy.app/tools/events-calendar/): 30+ Cyprus events in a 12-month filterable calendar
-- [ISP & Mobile Comparison](https://realcy.app/tools/isp-comparison/): Compare Cyta, Epic, Primetel, Cablenet broadband and mobile plans
-- [Visa Renewal Reminder](https://realcy.app/tools/visa-renewal-reminder/): Track ARC, passport, visa, driving licence expiry dates
-- [Cyprus Grants Finder](https://realcy.app/tools/grants-finder/): Available grants and subsidies for Cyprus businesses
+- [Short-Term to Long-Term Rental in Cyprus](https://realcy.app/guides/rental-transition-guide/): Standard lease terms, typical deposit amounts, what landlords require from foreign tenants, furnished versus unfurnished market realities, breaking a lease, and rent increase rules.
+- [Cyprus Utilities Setup 2026: Electricity & Water](https://realcy.app/guides/utilities-setup-guide/): How to connect EAC electricity, water, broadband (Cyta, Cablenet, Epic, Primetel), and LPG gas after moving into a Cyprus home. Realistic timelines, 2026 costs, and the documents each utility requires.
+- [Solar Panels in Cyprus: Net Metering & ROI](https://realcy.app/guides/solar-energy-guide/): Why Cyprus is one of the best countries in Europe for solar power, how the net metering scheme works, what a residential system costs, and how to navigate the EAC connection process.
+- [Water Quality & Scarcity in Cyprus: Key Facts](https://realcy.app/guides/water-quality-scarcity/): Tap water safety, the desalination infrastructure that underpins Cyprus's water supply, seasonal pressure issues, filtration options, and practical conservation tips for households and gardens.
+- [Recycling in Cyprus: Guide for New Residents](https://realcy.app/guides/waste-recycling-guide/): How to use the kerbside bins, where to drop off electronics, batteries, textiles and glass, and an honest assessment of Cyprus's recycling culture.
+- [Earthquake Risk in Cyprus: How to Prepare](https://realcy.app/guides/earthquake-preparedness/): The seismic reality of living in Cyprus, how modern buildings are rated, what to do during and after a tremor, and how to register for Civil Emergency alerts.
+- [Wildfire Risk in Cyprus: How to Prepare](https://realcy.app/guides/wildfire-risk-guide/): Which areas of Cyprus face genuine wildfire exposure, when the fire season runs, how to register for SMS alerts, and practical steps to prepare your property and evacuation routes.
+- [Sustainable Living in Cyprus: Expat Guide](https://realcy.app/guides/environmental-impact-guide/): An honest assessment of Cyprus's environmental footprint, practical ways to reduce your impact, local biodiversity worth knowing, and the environmental organisations active on the island.
 
-## Curated Directories
+### Local directories
 
-- [Property Lawyers in Cyprus](https://realcy.app/sections/property-lawyers/): Vetted conveyancing solicitors for foreign buyers
-- [Immigration Lawyers in Cyprus](https://realcy.app/sections/immigration-lawyers/): Specialists in digital nomad visas, PR by investment, work permits
-- [Accountants & Tax Advisors](https://realcy.app/sections/accountants/): ICPAC-registered accountants for expat non-dom filings
-- [Coworking Spaces in Cyprus](https://realcy.app/sections/coworking/): Prices, WiFi speeds, and amenities for 20+ venues
-- [Specialist Doctors in Cyprus](https://realcy.app/sections/specialist-doctors/): English-speaking consultants with GeSY status and private pricing
-- [Mental Health Services](https://realcy.app/sections/mental-health-services/): English-speaking therapists and psychologists
-- [Expat Community Groups](https://realcy.app/sections/expat-communities/): Facebook groups, WhatsApp communities, Meetups by city and nationality
-- [International Grocery Stores](https://realcy.app/sections/international-grocery/): Asian, Middle Eastern, Eastern European food stores by city
-- [Fitness & Wellness Studios](https://realcy.app/sections/fitness-wellness/): Gyms, yoga, CrossFit, Pilates with pricing
-- [Long-Term Rentals](https://realcy.app/sections/long-term-rentals/): Rental listings across Cyprus
-- [All 28 Directories](https://realcy.app/sections/): Full index of curated Cyprus directories
+- [Long-Term Rentals](https://realcy.app/sections/long-term-rentals/): Verified rental listings across all four cities: apartments, villas, and studios.
+- [Property Management](https://realcy.app/sections/property-management/): Licensed property managers for non-resident owners renting out their Cyprus property.
 
-## Regional Guides
+### Tools
 
-- [Limassol](https://realcy.app/regions/limassol/): Business capital, highest expat density, luxury high-rises, 126 new developments
-- [Paphos](https://realcy.app/regions/paphos/): Retirees and families, UNESCO harbour, affordable, 50 new developments
-- [Larnaca](https://realcy.app/regions/larnaca/): Airport hub, mid-range pricing, underrated expat scene, 40 new developments
-- [Ayia Napa](https://realcy.app/regions/ayia-napa/): Southeast coast, beach resort lifestyle, 11 new developments
+- [Internet & Mobile Provider Comparison](https://realcy.app/tools/isp-comparison/): Compare home broadband (Cyta, Epic, Primetel, Cablenet) and mobile carriers on speed, price, contract terms, eSIM, and city coverage.
+- [Neighbourhood Explorer](https://realcy.app/tools/neighbourhood-explorer/): Explore and compare neighbourhoods across Cyprus cities. Filter by vibe, beach access, expat density, schools, and value for money to find your ideal area.
+- [Cyprus Rental Price Trends](https://realcy.app/tools/rental-price-trends/): Track how apartment rents have changed across Limassol, Paphos, Larnaca, and Ayia Napa since 2021. Interactive SVG line chart for 1BR, 2BR, and 3BR units with city toggles, hover tooltips, and year-on-year comparison table.
 
-## New Developments Map
+## Money & paperwork
 
-- [Interactive Map](https://realcy.app/): Browse 260+ new-build apartments and villas across Cyprus on an illustrated map. Filter by region.
-- [Full Sitemap](https://realcy.app/sitemap.xml): All pages including 260+ individual development listings
+Hub: https://realcy.app/money-and-paperwork/
+
+### Guides
+
+- [Cost of Living in Cyprus 2026: City Budgets](https://realcy.app/guides/cost-of-living/): Real monthly budgets for expats in Limassol, Paphos & Larnaca. Housing, utilities, schooling, healthcare costs + realistic family budgets by city.
+- [Cyprus Expat Tax Guide 2026: Non-Dom Regime](https://realcy.app/guides/taxes-for-expats/): How Cyprus's tax system works for new residents: the famous non-domiciled rules, the tax-free income band, capital gains and crypto.
+- [Opening a Bank Account in Cyprus 2026](https://realcy.app/guides/banking-in-cyprus/): Which banks take new residents, what documents you actually need, realistic timelines, and why Revolut is a bridge not a replacement.
+- [Cyprus Permanent Residency After 5 Years](https://realcy.app/guides/permanent-residency-5year/): The qualifying residency period, points criteria, language requirements, application documents, timeline, and how PR rights compare to citizenship. Prices and rules change: verify with official Cyprus sources before acting.
+- [Cyprus Citizenship by Naturalisation 2026](https://realcy.app/guides/citizenship-naturalization/): The requirements, timeline, and practical realities of becoming a Cypriot citizen through the standard naturalization track, residency period, language test, and what dual nationality rules apply. Prices and rules change, verify with official Cyprus sources before acting.
+- [Cyprus IP Box Regime: 3% Effective Tax on IP](https://realcy.app/guides/ip-box-regime/): How Cyprus's IP Box works, which types of IP qualify, how the nexus fraction determines the effective rate, practical structuring considerations, and a worked example. Prices and rules change: verify with official Cyprus sources before acting.
+- [VAT Registration in Cyprus: Thresholds & OSS](https://realcy.app/guides/vat-registration-guide/): When you must register for VAT in Cyprus, how to register via TaxisNet, quarterly filing obligations, the VAT rules for new property, and how the EU OSS scheme works for e-commerce sellers. Prices and rules change: verify with official Cyprus sources before acting.
+- [Cryptocurrency Tax Treatment in Cyprus (2026)](https://realcy.app/guides/crypto-tax-cyprus/): How Cyprus currently taxes cryptocurrency gains, where the investing-versus-trading line is drawn, VAT on crypto services, documentation best practices for non-dom filers, and what local accountants currently recommend.
+- [Cyprus Ltd vs Sole Trader vs Partnership](https://realcy.app/guides/company-types-comparison/): A frank comparison of the main business structures available in Cyprus: formation costs, tax treatment, liability exposure, audit requirements, and when each makes sense for a relocating founder.
+- [Cyprus Corporate Bank Account: Foreign Director](https://realcy.app/guides/corporate-bank-account-guide/): Which banks take foreign-director applications, what documents the KYC process actually requires, realistic timelines post-2022, and when an EMI is the right bridge or alternative.
+- [Hiring Employees in Cyprus 2026: Costs & Law](https://realcy.app/guides/hiring-in-cyprus/): What Cyprus employment law requires when you hire your first employee, contracts, minimum wage, social insurance, probation, and how to calculate redundancy. Prices and rules change, verify with official Cyprus sources before acting.
+- [Registering IP in Cyprus: Trademarks & Patents](https://realcy.app/guides/ip-registration-cyprus/): How to protect a brand, patent an invention, and understand software copyright in Cyprus, covering the Cyprus Trademark Registry, EUIPO, the European Patent Office, and the .cy domain registry. Prices and rules change, verify with official Cyprus sources before acting.
+- [Trade Licence Requirements in Cyprus 2026](https://realcy.app/guides/trade-licenses-cyprus/): Which business activities require a license before trading in Cyprus, which authority issues each one, and what the typical costs and timelines look like. Prices and rules change: verify with official Cyprus sources before acting.
+- [Cyprus Property Taxes 2026: VAT & Transfer Fees](https://realcy.app/guides/property-taxes-2026/): Every tax on Cyprus property in 2026: VAT (19% or reduced 5%), transfer fees, capital gains, rental income, and municipal taxes (stamp duty on property contracts abolished January 2026).
+- [Cyprus Yellow Slip (MEU1): 2026 Complete Guide](https://realcy.app/guides/yellow-slip-meu1-guide/): Everything EU citizens need to register for the Cyprus yellow slip (MEU1) in 2026: documents, appointment booking, fees, and the UK biometric deadline.
+- [Cyprus Mortgages for Foreigners: 2026 Guide](https://realcy.app/guides/cyprus-mortgage-foreigners/): Can foreigners get a Cyprus mortgage? Yes: which banks lend to non-residents, deposit requirements, rate ranges, and the total buying costs to budget for.
+- [Self-Employed Tax in Cyprus: 2026 Guide](https://realcy.app/guides/self-employed-tax-cyprus/): Freelancer or sole trader in Cyprus? This 2026 guide covers social insurance, GHS, VAT, income tax bands, and TD1 filing deadlines in plain English.
+- [Airbnb & Short-Term Rentals in Cyprus 2026](https://realcy.app/guides/airbnb-short-term-rental-cyprus/): Cyprus Airbnb registration, tax, and short-term rental law for 2026: the Deputy Ministry licence, 9% VAT, the SDC abolition, and the penalties for skipping it.
+- [Buying vs Renting in Cyprus: 2026 Guide](https://realcy.app/guides/buying-vs-renting-cyprus/): Buy or rent in Cyprus? Our 2026 guide covers transaction costs, break-even timelines, rental yields, and city price data to help you decide.
+- [Cyprus Rental Income Tax 2026: Landlord Guide](https://realcy.app/guides/rental-income-tax-cyprus/): Cyprus landlord tax 2026: how rental income is taxed after SDC abolition, GHS obligations, non-resident rules and the new cashless-rent requirement.
+- [Cyprus Tax Return 2026: Filing Your TD1 Form](https://realcy.app/guides/cyprus-tax-return-filing/): How to file your Cyprus TD1 personal income tax return via TAXISnet: who must file, the 2026 deadline, non-dom relief, and the 50% expat exemption.
+- [Employee Rights in Cyprus (2026 Guide)](https://realcy.app/guides/working-in-cyprus-employee-rights/): Minimum wage, annual leave, notice periods, social insurance and the 13th salary: a plain-English guide to Cyprus employment law for expats.
+
+### Local directories
+
+- [Accountants & Tax Advisors](https://realcy.app/sections/accountants/): ICPAC-registered accountants with experience in expat non-dom filings and company tax.
+- [Startup Ecosystem](https://realcy.app/sections/startup-ecosystem/): Co-working spaces, incubators, accelerators, and tech hubs across Cyprus.
+- [Coworking Spaces](https://realcy.app/sections/coworking/): Day pass prices, WiFi speeds, and noise levels for 20+ coworking venues island-wide.
+
+### Tools
+
+- [Rent vs Buy Calculator](https://realcy.app/tools/rent-vs-buy-calculator/): Compare the true total cost of renting versus buying in Cyprus over your time horizon, accounting for mortgage payments, property appreciation, and the opportunity cost of your down payment.
+- [MEU1 Registration Tracker](https://realcy.app/tools/meu1-tracker/): An interactive step-by-step checklist for EU citizens registering their residence in Cyprus. Track your progress through all required documents and appointments.
+- [Cyprus 60-Day Tax Residency Planner](https://realcy.app/tools/tax-residency-tracker/): Check whether you qualify for Cyprus tax residency under the 183-day rule or the 60-day rule. See which conditions pass or fail in real time.
+- [Cyprus Social Insurance Calculator](https://realcy.app/tools/social-insurance-calculator/): Calculate your Social Insurance and GeSY contributions based on 2025 rates. Full breakdown for employed and self-employed, including employer contributions.
+- [Cyprus Banking Fee Comparison](https://realcy.app/tools/banking-fee-comparison/): Compare fees and features across Bank of Cyprus, Hellenic Bank, AstroBank, Revolut, and Wise. Highlights the best value in each category.
+- [Cyprus Annual Tax Filing Calendar](https://realcy.app/tools/tax-filing-calendar/): All key Cyprus tax deadlines in a monthly view. Colour-coded by urgency. Filter by individual or company. Current month highlighted.
+- [Double Tax Treaty Finder](https://realcy.app/tools/double-tax-treaty-finder/): Check whether Cyprus has a tax treaty with your home country and what it means for your income, dividends, interest, and capital gains.
+- [Sole Trader vs Ltd](https://realcy.app/tools/sole-trader-vs-ltd/): Compare take-home pay as a Cyprus sole trader versus a Cyprus Ltd, then estimate the one-time and annual costs of setting up and running a limited company: two tools in one.
+- [Cyprus Grants & Incentives Finder](https://realcy.app/tools/grants-finder/): Find available grants, subsidies, and incentives for businesses, startups, and individuals relocating or investing in Cyprus.
+- [Visa & Document Renewal Reminder](https://realcy.app/tools/visa-renewal-reminder/): Track expiry dates for your ARC, passport, visa, health insurance, and driving licence. Colour-coded alerts at 30 and 90 days. Stores data in your browser: nothing sent to a server.
+- [Mortgage Calculator](https://realcy.app/tools/mortgage-calculator/): Calculate monthly payments, total interest, and an amortization schedule for a Cyprus property purchase. Covers standard LTV limits for residents and non-residents.
+- [Monthly Budget Builder](https://realcy.app/tools/budget-builder/): Estimate your monthly living costs in Cyprus by city, household size, and lifestyle. Covers rent, groceries, dining, transport, utilities, and entertainment.
+- [Rental Yield Calculator](https://realcy.app/tools/rental-yield-calculator/): Calculate gross yield, net yield, annual cash flow, and total return for a Cyprus buy-to-let investment. Includes appreciation and expense modelling over up to 15 years.
+
+## Food & shopping
+
+Hub: https://realcy.app/food-and-shopping/
+
+### Guides
+
+- [Food Delivery Cyprus 2026: Wolt, Bolt & Foody](https://realcy.app/guides/food-delivery-apps/): Wolt, Bolt Food & Foody compared for Cyprus 2026: city coverage, delivery fees, Bolt Pass/Wolt+ subscriptions, late-night options & grocery delivery.
+- [Cypriot Food Culture: Eating Like a Local](https://realcy.app/guides/cypriot-cuisine-guide/): What to order, how to eat it, where to find it, and the food customs that define Cypriot dining: from meze to kafeneion to seasonal produce.
+- [Coffee Culture in Cyprus: Freddo & Third Wave](https://realcy.app/guides/coffee-culture-guide/): From Cypriot mud coffee to iced freddo espresso to the specialty third-wave scene in Limassol: how coffee works in Cyprus and where to find the best cup.
+- [Finding International Ingredients in Cyprus](https://realcy.app/guides/home-cooking-ingredients/): Where to find international cooking ingredients in Cyprus, from Asian and Indian spices to Middle Eastern staples and online delivery, plus what is genuinely abundant and cheap locally.
+- [Booking Restaurants in Cyprus: How It Works](https://realcy.app/guides/restaurant-reservations/): How to book restaurants in Cyprus, when you actually need to book versus walk in, which platforms work, and the social customs around dining that new residents often get wrong.
+
+### Local directories
+
+- [Farmers Markets](https://realcy.app/sections/farmers-markets/): Weekly markets and local produce stalls across all districts with operating days.
+- [International Grocery Stores](https://realcy.app/sections/international-grocery/): Supermarkets and specialty stores carrying Asian, Middle Eastern, and other international foods.
+- [Halal & Kosher Food](https://realcy.app/sections/halal-kosher/): Certified halal and kosher restaurants, butchers, and grocery suppliers.
+- [Where to Eat](https://realcy.app/sections/food/): Local-favourite cafés, tavernas, grills and sweet shops in four cities, by meal and price band.
+- [Supermarkets & Markets](https://realcy.app/sections/shopping/): Supermarket chains by budget, municipal markets with opening days, and each city's main mall.
+
+## Family & schools
+
+Hub: https://realcy.app/family-and-schools/
+
+### Guides
+
+- [International vs Public Schools in Cyprus](https://realcy.app/guides/international-vs-public-school/): A frank look at what public and international schools in Cyprus actually deliver: language, curriculum, costs, university outcomes, and who each track works for.
+- [Universities in Cyprus: Guide for Students](https://realcy.app/guides/universities-in-cyprus/): The public and private universities in Cyprus, fees for EU and non-EU students, English-medium programmes, degree recognition, and why some expat families factor university proximity into their relocation decision.
+- [Registering Your Child in Cyprus: School & ARC](https://realcy.app/guides/child-registration-guide/): The documents and steps to register a child born in Cyprus or arriving as part of a relocating family, birth registration, ARC for minors, school enrollment paperwork, and the GeSY children's healthcare card. Prices and rules change, verify with official Cyprus sources before acting.
+- [Special Educational Needs in Cyprus: SEN Guide](https://realcy.app/guides/sen-guide/): What SEN provision actually looks like in Cyprus public and private schools, how to request an assessment, the role of the Educational Support and Evaluation Service, and where to find English-speaking therapists.
+- [Best Family-Friendly Neighborhoods in Cyprus: District by District](https://realcy.app/guides/family-neighborhoods-guide/): Which specific neighborhoods in Limassol, Paphos, Larnaca, and Ayia Napa actually work for families: covering safety, green space, international school proximity, community character, and price ranges.
+- [Maternity and Paternity Rights in Cyprus: What Employed Parents Are Entitled To](https://realcy.app/guides/maternity-paternity-rights/): What employed and self-employed parents in Cyprus are actually entitled to, maternity leave duration, benefit rates, paternity leave, parental leave, and how Social Insurance calculates the payments. Prices and rules change, verify with official Cyprus sources before acting.
+- [International Schools in Cyprus: Full Guide 2026](https://realcy.app/guides/schools-in-cyprus/): Every major English-medium, American and IB school in Limassol, Paphos, Larnaca and the Famagusta area: fees, curricula, admissions.
+- [Getting Married in Cyprus (2026 Guide)](https://realcy.app/guides/getting-married-in-cyprus/): How to get married in Cyprus in 2026: civil ceremony steps, required documents, ordinary vs special licence, fees and same-sex civil partnerships.
+- [International School Fees in Cyprus (2026)](https://realcy.app/guides/international-school-fees-cyprus/): Annual tuition ranges, hidden extras and city-by-city costs for expat families choosing a private or international school in Cyprus in 2026.
+
+### Local directories
+
+- [Childcare & Nurseries](https://realcy.app/sections/childcare-nurseries/): Registered nurseries and pre-schools with English instruction across all districts.
+- [After-School Activities](https://realcy.app/sections/after-school-activities/): Sports clubs, music academies, language classes, and arts programs for children aged 4–18.
+- [Summer Camps](https://realcy.app/sections/summer-camps/): Residential and day camps for children: language immersion, sports, STEM, and arts.
+
+### Tools
+
+- [International School Finder](https://realcy.app/tools/school-finder/): Find and compare international schools in Cyprus. Filter by city, curriculum (British, IB, German, French, Waldorf, Montessori), and age group to shortlist the right options for your family.
+
+## Community & leisure
+
+Hub: https://realcy.app/community-and-leisure/
+
+### Guides
+
+- [Learning Greek in Cyprus: Schools & Resources](https://realcy.app/guides/language-learning-cyprus/): A frank guide to Cypriot dialect vs Standard Modern Greek, which one to learn, how much you actually need day-to-day, and the best schools and apps for learning while living in Cyprus.
+- [Cypriot Culture & Social Etiquette Guide](https://realcy.app/guides/cultural-etiquette-guide/): Filoxenia, name days, Orthodox holidays, the kafeneion as a social institution, tipping norms, and the practical cultural knowledge that helps newcomers build real relationships in Cyprus.
+- [Hiking in Cyprus: Troodos, Akamas & Coastal Trails](https://realcy.app/guides/hiking-trails-guide/): A practical guide to the best hiking in Cyprus, from the Troodos mountain circuit trails to the Akamas Peninsula and coastal paths, with difficulty ratings, trailhead logistics, and seasonal advice.
+- [Cyprus Beach Guide: Best Beaches by District](https://realcy.app/guides/beach-guide-by-district/): A district-by-district guide to Cyprus's best beaches, from Limassol and Paphos to Larnaca, Ayia Napa, and Protaras, with crowd levels, facilities, Blue Flag status, and who each beach suits best.
+- [Cyprus Climate Month by Month: Seasonal Guide](https://realcy.app/guides/climate-zones-seasonal/): A practical month-by-month breakdown of what living in Cyprus actually feels like through the year: what to do, what to avoid, and how to budget your time and activity by season.
+
+### Local directories
+
+- [Fitness & Wellness Studios](https://realcy.app/sections/fitness-wellness/): Gyms, yoga, CrossFit, Pilates, and wellness centres with pricing and language flags.
+- [Sports & Recreation Clubs](https://realcy.app/sections/sports-clubs/): Tennis, golf, sailing, padel, hiking groups, and more: with membership fees.
+- [Expat Community Groups](https://realcy.app/sections/expat-communities/): Active Facebook groups, WhatsApp communities, and Meetup events by city and nationality.
+- [Religious Services](https://realcy.app/sections/religious-services/): English-language churches, mosques, synagogues, and temples across all districts.
+- [Volunteering Opportunities](https://realcy.app/sections/volunteering/): NGOs, animal shelters, environmental groups, and community orgs welcoming expat volunteers.
+- [Art Galleries & Museums](https://realcy.app/sections/art-culture/): Galleries, museums, and cultural venues with English signage and exhibition schedules.
+- [Wineries & Wine Tourism](https://realcy.app/sections/wineries/): Wine-producing villages and tasting rooms across the Troodos foothills.
+
+### Tools
+
+- [Cyprus Annual Events & Festivals](https://realcy.app/tools/events-calendar/): 30+ annual festivals and cultural events across Cyprus in a 12-month calendar. Filter by type (carnival, wine, music, religious) or city. Highlights: Limassol Carnival, Kataklysmos, and Wine Festival.
+- [Cyprus Weather & Climate](https://realcy.app/tools/weather-climate/): Explore Cyprus weather month by month: temperatures, sea warmth, rain days, and UV index. Compare Cyprus climate against London, Amsterdam, Berlin, New York, Toronto, and more.
+
+## Moving to Cyprus
+
+Hub: https://realcy.app/moving-to-cyprus/
+
+### Guides
+
+- [Cyprus Residency Visas 2026: All Routes Compared](https://realcy.app/guides/residency-and-visas/): Compare Cyprus visas: Golden Visa (€300K), Digital Nomad (€3.5K/mo), EU registration, Category F & EU Blue Card. Investor timelines, costs & eligibility.
+- [Moving to Cyprus: First-Month Checklist 2026](https://realcy.app/guides/arrival-checklist/): The exact steps to take in weeks 1–4 after arriving in Cyprus: in the right order, with the dependency logic explained so you don't hit each bureaucratic wall by surprise.
+- [Moving to Cyprus With Pets: Import Rules 2026](https://realcy.app/guides/moving-to-cyprus-with-pets/): The exact requirements for bringing a dog or cat to Cyprus, covering EU passport holders, post-Brexit UK residents, and non-EU countries including Israel, the US and the UAE, with backwards-planning timelines so you don't miss a step.
+- [Cyprus Title Deed Guide 2026: Full Overview](https://realcy.app/guides/title-deed-status-guide/): Complete guide to Cyprus title deeds: how to search the Land Registry, understand mortgages, protect yourself with contract clauses, and transfer fees. 2026.
+- [Buying Off-Plan Property in Cyprus 2026](https://realcy.app/guides/off-plan-buying-guide/): Independent guide to buying off-plan in Cyprus: vet developers, protect your deposit, secure title deeds, understand payment schedules, and avoid common delays.
+- [Cyprus Digital Nomad Visa 2026: Requirements](https://realcy.app/guides/digital-nomad-visa-guide/): Cyprus digital nomad visa: €3,500/mo income requirement, non-dom tax benefits, required documents, application process, and 3-year renewal. Updated 2026.
+- [Bringing Your Family to Cyprus: Reunification](https://realcy.app/guides/family-reunification-guide/): How the primary visa holder brings a spouse, children, and parents to Cyprus, documents by dependent type, income thresholds, processing timelines, and rights granted to dependents. Prices and rules change, verify with official Cyprus sources before acting.
+- [Cyprus Company Residency Permit: Full Guide](https://realcy.app/guides/company-formation-visa/): Which visa categories require a Cyprus entity, minimum substance requirements, company formation steps, typical costs, and common pitfalls. Prices and rules change: verify with official Cyprus sources before acting.
+- [Buying a New Development in Cyprus 2026](https://realcy.app/guides/new-development-buying-guide/): The reservation process, signing the contract of sale, VAT on new builds, the Land Registry deposit requirement, title deed transfer timelines, and the snagging process. Prices and rules change: verify with official Cyprus sources before acting.
+- [Work Permits for Non-EU Nationals in Cyprus](https://realcy.app/guides/work-permits-non-eu/): How the Cyprus employer-sponsored work permit system operates, quota rules, required documents, the critical permit, fast-track tech scheme, and renewal. Prices and rules change, verify with official Cyprus sources before acting.
+- [Cyprus Non-Dom Tax Status 2026: 0% on Dividends](https://realcy.app/guides/non-dom-status-guide/): 0% tax on dividends & interest for 17 years, GESY contributions, qualification rules, the 2026 extension option, and common misconceptions explained.
+- [Cyprus Innovative Company Permit: Tech Founder](https://realcy.app/guides/startup-visa-ict/): How non-EU tech founders can get a 2-year Cyprus residence permit through the Innovative Company scheme, income requirements, the business plan evaluation, and what happens if you are rejected. Prices and rules change, verify with official Cyprus sources before acting.
+- [How to Buy Property in Cyprus 2026: Full Guide](https://realcy.app/guides/buying-process/): From the first viewing to the title deed in your name: reservation, lawyer, sales contract, deposits, completion and registration in Cyprus.
+- [Cyprus vs Portugal for Relocation 2026](https://realcy.app/guides/cyprus-vs-portugal/): Cyprus and Portugal are the two go-to EU relocation destinations for non-EU buyers. Compared head-to-head: visas, taxes, cost of living, climate, property markets, schools.
+- [Cyprus Relocation Checklist 2026: Action Plan](https://realcy.app/guides/relocation-checklist/): A practical week-by-week checklist for relocating to Cyprus: from the six-month planning window through your first 90 days on the island.
+- [Property Lawyers in Cyprus 2026: Fees & Guide](https://realcy.app/guides/property-lawyers-cyprus/): A practical guide to using a property lawyer when buying in Cyprus: what they do that your estate agent does not, what normal fees look like (1–2% or €1,500–€3,000 fixed), how to find a reputable one, and the red flags that cost buyers tens of thousands of euros.
+- [Best Places to Live in Cyprus 2026: City Guide](https://realcy.app/guides/best-areas-to-live-cyprus/): Which city to choose when moving to Cyprus: how Limassol, Paphos, Larnaca, and Ayia Napa differ on cost, pace of life, expat community, connectivity, and property availability. Including which city suits remote workers, families, retirees, and property investors.
+- [Retiring in Cyprus 2026: Full Expat Guide](https://realcy.app/guides/retiring-in-cyprus/): Everything retirees need to know about moving to Cyprus: how pension income is taxed (flat 5% after the first €3,420), which residency route applies, how GeSY public healthcare compares to private insurance, and what a comfortable retirement in Cyprus actually costs per month.
+- [Moving to Cyprus from the UK After Brexit: 2026 Guide](https://realcy.app/guides/moving-to-cyprus-from-uk/): Practical guide for UK nationals relocating to Cyprus after Brexit: which visa route applies (Category F, Digital Nomad, or Permanent Residency), how UK pension and employment income is taxed in Cyprus, the UK-Cyprus double taxation treaty, and what UK buyers need to know about property purchase.
+- [Cyprus Company Formation 2026: Ltd Registration](https://realcy.app/guides/cyprus-company-formation/): Step-by-step guide to forming a Cyprus private limited company: the registration process at the Registrar of Companies, typical costs (€1,500–€3,000 via a service provider), minimum requirements, tax registration, and when a Cyprus Ltd is and isn't worth the overhead.
+- [Is Cyprus in Schengen? 2026 Guide](https://realcy.app/guides/cyprus-schengen-guide/): Cyprus is an EU member but remains outside Schengen. What that means for non-EU expats, UK nationals, and your 90/180-day travel planning.
+- [Moving to Cyprus from Israel: 2026 Guide](https://realcy.app/guides/moving-to-cyprus-from-israel/): Practical guide for Israelis relocating to Cyprus: residency options, tax-exit realities, the Limassol community, pet import rules, and banking.
+- [Moving to Cyprus from Germany: 2026 Guide](https://realcy.app/guides/moving-to-cyprus-from-germany/): Complete 2026 guide for Germans moving to Cyprus: EU residency, the Wegzugsteuer exit tax, the Germany–Cyprus tax treaty, and non-dom benefits.
+
+### Local directories
+
+- [Property Lawyers](https://realcy.app/sections/property-lawyers/): Vetted conveyancing solicitors specialising in foreign buyer transactions.
+- [Immigration Lawyers](https://realcy.app/sections/immigration-lawyers/): Immigration specialists covering digital nomad visas, PR by investment, and work permits.
+
+### Tools
+
+- [City Comparison](https://realcy.app/tools/city-comparison/): Side-by-side comparison of Limassol, Paphos, Larnaca, and Ayia Napa across 10 metrics including rent, property prices, schools, nightlife, and cost of living.
+- [Visa Pathway Finder](https://realcy.app/tools/visa-pathway-finder/): Answer two questions to find your recommended Cyprus visa or registration route. Covers EU citizens, Digital Nomad Visa, Permanent Residency by Investment, work permits, and more.
+- [Country Comparison](https://realcy.app/tools/country-comparison/): Compare Cyprus against Portugal, Malta, Greece, Spain and Italy across corporate tax, income tax, special regimes, property prices, cost of living, and visa options.
+- [Relocation Progress Tracker](https://realcy.app/tools/relocation-checklist/): A 32-task checklist covering pre-move planning, arrival week, month one, and settling in. Persistent progress saved in your browser.
+- [Development Comparison](https://realcy.app/tools/development-comparison/): Select up to 3 Cyprus new-build developments and compare them side by side on price, location, specs, developer, and available bedrooms.
+- [Property Price Benchmarker](https://realcy.app/tools/price-benchmarker/): See how a property's asking price compares to other developments in the same Cyprus city: based on real listings data.
+- [Cyprus Tax Savings Calculator](https://realcy.app/tools/tax-savings-calculator/): Compare your current country's income tax burden against Cyprus Standard and Non-Dom regimes. Enter your income, employment type, and country to see your estimated annual tax saving at a glance.
+- [Relocation Cost Estimator](https://realcy.app/tools/relocation-cost-calculator/): Calculate your one-time moving costs to Cyprus: flights, shipping containers, car import, pet fees, rental deposits, furnishing, and legal fees. Get a full itemised breakdown with low/midpoint/high ranges and a 10% contingency buffer.
+- [Cyprus Pet Import Checklist](https://realcy.app/tools/pet-import-checklist/): Generate a personalised checklist for importing your dog, cat, bird, or other pet into Cyprus. Covers microchipping, rabies titre tests, health certificates, and arrival procedures based on your pet type and country of origin.
+
+## Cities
+
+- [Living in Paphos](https://realcy.app/regions/paphos/): Daily life in Paphos: areas, getting around, hospitals, international schools, beaches and a sample monthly budget for the quieter, openly international west coast.
+- [Living in Limassol](https://realcy.app/regions/limassol/): Daily life in Limassol: areas, traffic and transport, hospitals, international schools, beaches and a sample monthly budget for Cyprus's most dynamic and most expensive city.
+- [Living in Larnaca](https://realcy.app/regions/larnaca/): Daily life in Larnaca: areas, the airport and getting around, hospitals, schools, Finikoudes and the salt lake, and a sample monthly budget for Cyprus's cheapest major city.
+- [Living in Ayia Napa](https://realcy.app/regions/ayia-napa/): Daily life in Ayia Napa, Protaras and Paralimni: areas, getting to the airport, healthcare, schools, the island's best beaches and a sample monthly budget.
+
+## Indexes
+
+- [All guides](https://realcy.app/guides/): filter by topic with `?topic={topic-slug}`
+- [All local directories](https://realcy.app/sections/): filter by topic with `?topic={topic-slug}`
+- [All tools](https://realcy.app/tools/): filter by topic with `?topic={topic-slug}`
+- [New developments](https://realcy.app/listings/): new-build apartments and villas, filter by city with `?city=`
+- [Search](https://realcy.app/explore/): site search, accepts `?q=`
+- [Sitemap](https://realcy.app/sitemap.xml): every page, including each development listing
