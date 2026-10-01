@@ -76,12 +76,12 @@ export function TopicHubClient({
 				value={city}
 				onChange={onChange}
 			/>
-			{city !== "all" ? (
-				<p className="mt-3 text-sm text-muted" aria-live="polite">
-					Showing directories with entries in {CITY_NAME[city]}. Guides and
-					tools cover the whole island.
-				</p>
-			) : null}
+			{/* Always mounted so screen readers announce the text when it changes. */}
+			<p className="mt-3 text-sm text-muted empty:mt-0" aria-live="polite">
+				{city !== "all"
+					? `Showing directories with entries in ${CITY_NAME[city]}. Guides and tools cover the whole island.`
+					: null}
+			</p>
 
 			<div className="mt-8">
 				{g.length > 0 ? (
