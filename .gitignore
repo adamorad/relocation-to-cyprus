@@ -69,3 +69,6 @@ tsconfig.tsbuildinfo
 *.tsbuildinfo
 .superpowers/
 qa-reports/
+
+.vercel
+.env*
