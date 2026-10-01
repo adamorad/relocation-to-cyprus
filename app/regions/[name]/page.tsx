@@ -68,7 +68,13 @@ export default async function RegionPage({
 	};
 
 	return (
-		<main id="main" className="max-w-4xl mx-auto px-6 py-10">
+		<main
+			id="main"
+			data-pagefind-body
+			data-pagefind-filter="type[data-type]"
+			data-type="city"
+			className="max-w-4xl mx-auto px-6 py-10"
+		>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD

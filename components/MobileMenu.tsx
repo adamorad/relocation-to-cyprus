@@ -142,6 +142,29 @@ export function MobileMenu() {
 										<Icon name="close" size={24} />
 									</button>
 								</div>
+								<search className="mb-4 block">
+									<form action="/explore/" method="get" className="relative">
+										<label htmlFor="menu-search" className="sr-only">
+											Search guides, directories and tools
+										</label>
+										<Icon
+											name="search"
+											size={20}
+											className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-primary"
+										/>
+										<input
+											id="menu-search"
+											name="q"
+											type="search"
+											required
+											minLength={2}
+											autoComplete="off"
+											enterKeyHint="search"
+											placeholder="Search the site"
+											className="h-12 w-full min-w-0 rounded-field border border-line bg-white pl-11 pr-3 text-base text-ink placeholder:text-muted"
+										/>
+									</form>
+								</search>
 								<nav aria-label="Main menu">
 									<ul className="flex flex-col gap-1">
 										{PRIMARY_NAV.map((item) => {

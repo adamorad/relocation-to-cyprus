@@ -139,7 +139,13 @@ export default function SpecialistDoctorsPage() {
 	);
 
 	return (
-		<main id="main" className="max-w-5xl mx-auto px-4 md:px-6 py-10 md:py-16">
+		<main
+			id="main"
+			data-pagefind-body
+			data-pagefind-filter="type[data-type]"
+			data-type="directory"
+			className="max-w-5xl mx-auto px-4 md:px-6 py-10 md:py-16"
+		>
 			<Breadcrumbs
 				items={[
 					{ label: "Home", href: "/" },

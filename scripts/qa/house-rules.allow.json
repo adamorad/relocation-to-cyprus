@@ -1,0 +1,312 @@
+{
+	"emojiGlyphs": [
+		"©",
+		"↗",
+		"↔",
+		"↩",
+		"®",
+		"™"
+	],
+	"nicosia": [
+		{
+			"file": "app/sections/mental-health-services/client.tsx",
+			"context": ". In acute crisis go to Nicosia General Hospital or Limassol",
+			"count": 1
+		},
+		{
+			"file": "lib/art-culture.ts",
+			"context": "s Cyprus Tourism Organisation Nicosia Municipality",
+			"count": 1
+		},
+		{
+			"file": "lib/cyprusData.ts",
+			"context": "{ name \"Nicosia\" lon 33.36 lat 35.13 region [",
+			"count": 1
+		},
+		{
+			"file": "lib/cyprusData.ts",
+			"context": "* Owner rule Nicosia is intentionally excluded fro",
+			"count": 1
+		},
+		{
+			"file": "lib/cyprusData.ts",
+			"context": "// Owner rule Nicosia is intentionally excluded fro",
+			"count": 1
+		},
+		{
+			"file": "lib/cyprusData.ts",
+			"context": "as an internal classifier so Nicosia listings are",
+			"count": 1
+		},
+		{
+			"file": "lib/cyprusData.ts",
+			"context": "ata.ts so listings located in Nicosia are",
+			"count": 1
+		},
+		{
+			"file": "lib/cyprusData.ts",
+			"context": "name \"Nicosia\"",
+			"count": 1
+		},
+		{
+			"file": "lib/cyprusData.ts",
+			"context": "running E through Mesaoria + Nicosia ──────",
+			"count": 1
+		},
+		{
+			"file": "lib/guides-batch1.ts",
+			"context": "e additional verification the Nicosia office tends to be fastest.\"",
+			"count": 1
+		},
+		{
+			"file": "lib/guides-batch1.ts",
+			"context": "istrict offices across Cyprus Nicosia Limassol Larnaca Paphos and F",
+			"count": 1
+		},
+		{
+			"file": "lib/guides-batch1.ts",
+			"context": "MEU1 applicants attending the Nicosia office receipt on the same da",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "apable Apollonion Hospital in Nicosia and St. George's Hospital in",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "are University of Cyprus UCY Nicosia the flagship research univers",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "blic hospital A&E departments Nicosia General Hospital Λευκωσία Lim",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "children Makarios Hospital in Nicosia is the main pediatric facilit",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "e of definitive treatment the Nicosia General Hospital for central",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "evel. Frederick University in Nicosia and Limassol offers short cou",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "ffice Limassol Paphos Larnaca Nicosia Famagusta and an online porta",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "he British High Commission in Nicosia maintains an unofficial list",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "Hippocrateon Nicosia Aretaeio Nicosia Iasis Paphos and Larnaca Evan",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "ies and the dental schools in Nicosia have raised the overall stand",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "in all five district capitals Nicosia main office Athalassa Avenue",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "July near Mitsero village in Nicosia district the fire burned for",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "ner most students continue at Nicosia or Limassol universities or g",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "often referred to Limassol or Nicosia. Ayia Napa relies on Larnaca",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "ogrammes Frederick University Nicosia and Limassol European Univers",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "ol European University Cyprus Nicosia Neapolis University Paphos an",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "public hospitals are the New Nicosia General Hospital the country'",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "rectly into the University of Nicosia Frederick or UCLan Cyprus kee",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "sh UCLan Cyprus University of Nicosia Frederick University Neapolis",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "sity status are University of Nicosia UNIC largest with strong medi",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "ssociation. The University of Nicosia dental school has also raised",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "t office there are offices in Nicosia Limassol Larnaca Paphos and F",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "te degrees. The University of Nicosia Medical School gained LCME US",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "the immigration department in Nicosia is broadly responsive to well",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "tionally certified Apollonion Nicosia and Limassol locations Ygia P",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "Traffic Department offices in Nicosia and Limassol handle this book",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "ty of Cyprus or University of Nicosia keeps the family unit togethe",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "ugh the Traffic Department in Nicosia a set of personalised plates",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "within 15–20 minutes from the Nicosia base. Air ambulance is activa",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "xception is the University of Nicosia's medical programme which is",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "y of Cyprus and University of Nicosia.\"",
+			"count": 1
+		},
+		{
+			"file": "lib/guides.ts",
+			"context": "yclinic Limassol Hippocrateon Nicosia Aretaeio Nicosia Iasis Paphos",
+			"count": 1
+		},
+		{
+			"file": "lib/listingsData.ts",
+			"context": "* Owner rule Nicosia is intentionally excluded fro",
+			"count": 1
+		},
+		{
+			"file": "lib/mental-health.ts",
+			"context": "e you know is in acute crisis Nicosia General Hospital and Limassol",
+			"count": 1
+		},
+		{
+			"file": "lib/mental-health.ts",
+			"context": "lassa Psychiatric Hospital in Nicosia operates a 24/7 emergency uni",
+			"count": 1
+		},
+		{
+			"file": "lib/regions.ts",
+			"context": "fically to access Limassol or Nicosia specialists without GeSY refe",
+			"count": 1
+		},
+		{
+			"file": "lib/regions.ts",
+			"context": "major procedures Limassol or Nicosia are 45 minutes by car. Intern",
+			"count": 1
+		},
+		{
+			"file": "lib/regions.ts",
+			"context": "ncology referrals often go to Nicosia. Private healthcare has expan",
+			"count": 1
+		},
+		{
+			"file": "lib/regions.ts",
+			"context": "niversity of Cyprus campus in Nicosia or Cyprus University of Techn",
+			"count": 1
+		},
+		{
+			"file": "lib/regions.ts",
+			"context": "pus students typically attend Nicosia or Limassol institutions or g",
+			"count": 1
+		},
+		{
+			"file": "lib/regions.ts",
+			"context": "s specialised than the larger Nicosia or Limassol public hospitals",
+			"count": 1
+		},
+		{
+			"file": "lib/regions.ts",
+			"context": "spital in Limassol or the New Nicosia General. Pharmacies are every",
+			"count": 1
+		},
+		{
+			"file": "lib/regions.ts",
+			"context": "ts still drive to Limassol or Nicosia. Pharmacies are abundant Engl",
+			"count": 1
+		},
+		{
+			"file": "lib/regions.ts",
+			"context": "urgery is referred to Larnaca Nicosia or Limassol. Private clinics",
+			"count": 1
+		},
+		{
+			"file": "lib/regions.ts",
+			"context": "us people drive to Larnaca or Nicosia. International schooling exis",
+			"count": 1
+		},
+		{
+			"file": "lib/startup-ecosystem.ts",
+			"context": "* Sources MIIC Nicosia Inspire CoWork Limassol IDEA",
+			"count": 1
+		},
+		{
+			"file": "lib/startup-ecosystem.ts",
+			"context": "C at the University of Cyprus Nicosia is the most established publi",
+			"count": 1
+		},
+		{
+			"file": "lib/startup-ecosystem.ts",
+			"context": "ed to Frederick University in Nicosia specialises in navigating exa",
+			"count": 1
+		}
+	]
+}

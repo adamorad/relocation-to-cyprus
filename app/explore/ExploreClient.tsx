@@ -2,460 +2,500 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { GUIDE_CATEGORY_LABEL, GUIDES } from "@/lib/guides";
-import { SECTIONS_INDEX } from "@/lib/sections-index";
-import { TOOLS } from "@/lib/tools-index";
+import {
+	type FormEvent,
+	useCallback,
+	useEffect,
+	useRef,
+	useState,
+} from "react";
+import { Icon } from "@/components/icons/Icon";
 
-type ToolEntry = {
-	name: string;
-	slug: string;
-	tag: string;
-	description: string;
+/** Content types written to the index as data-type on each page's main element. */
+const TYPES = [
+	{ id: "guide", label: "Guides" },
+	{ id: "directory", label: "Directories" },
+	{ id: "tool", label: "Tools" },
+	{ id: "city", label: "Cities" },
+	{ id: "listing", label: "Listings" },
+	{ id: "developer", label: "Developers" },
+	{ id: "page", label: "Pages" },
+] as const;
+type TypeId = (typeof TYPES)[number]["id"];
+type Filter = "all" | TypeId;
+
+const PREVIEW_PER_TYPE = 5;
+const PAGE_SIZE = 20;
+const MIN_CHARS = 2;
+const PAGEFIND_URL = "/pagefind/pagefind.js";
+
+type PagefindData = {
+	url: string;
+	excerpt: string;
+	meta: { title?: string };
+	filters: Record<string, string[]>;
+};
+type PagefindHit = { id: string; data: () => Promise<PagefindData> };
+type PagefindApi = {
+	search: (
+		term: string,
+		opts?: { filters?: Record<string, string> },
+	) => Promise<{ results: PagefindHit[] }>;
 };
 
-const TOOLS_LIST: ToolEntry[] = TOOLS.map((t) => ({
-	name: t.title,
-	slug: t.href.replace(/^\/tools\//, "").replace(/\/$/, ""),
-	tag: t.tag,
-	description: t.description,
-}));
+type Item = {
+	url: string;
+	title: string;
+	excerpt: string;
+};
+type Group = {
+	type: TypeId;
+	total: number;
+	items: Item[];
+	hits: PagefindHit[];
+};
 
-type SectionItem = { name: string; href: string };
-type Category = { title: string; items: SectionItem[] };
+type State =
+	| { kind: "idle" }
+	| { kind: "loading" }
+	| { kind: "unavailable" }
+	| { kind: "error" }
+	| { kind: "results"; groups: Group[]; total: number };
 
-const CATEGORIES: Category[] = [
-	{
-		title: "Property & Housing",
-		items: [
-			{ name: "Long-Term Rentals", href: "/sections/long-term-rentals/" },
-			{ name: "Co-Living", href: "/sections/co-living/" },
-			{ name: "Property Management", href: "/sections/property-management/" },
-		],
-	},
-	{
-		title: "Legal & Professional",
-		items: [
-			{ name: "Property Lawyers", href: "/sections/property-lawyers/" },
-			{ name: "Immigration Lawyers", href: "/sections/immigration-lawyers/" },
-			{ name: "Accountants", href: "/sections/accountants/" },
-		],
-	},
-	{
-		title: "Business",
-		items: [
-			{ name: "Startup Ecosystem", href: "/sections/startup-ecosystem/" },
-			{ name: "Registered Address", href: "/sections/registered-address/" },
-			{ name: "Coworking", href: "/sections/coworking/" },
-		],
-	},
-	{
-		title: "Family & Education",
-		items: [
-			{ name: "Childcare & Nurseries", href: "/sections/childcare-nurseries/" },
-			{
-				name: "After-School Activities",
-				href: "/sections/after-school-activities/",
-			},
-			{ name: "Summer Camps", href: "/sections/summer-camps/" },
-		],
-	},
-	{
-		title: "Healthcare",
-		items: [
-			{ name: "Specialist Doctors", href: "/sections/specialist-doctors/" },
-			{
-				name: "Mental Health Services",
-				href: "/sections/mental-health-services/",
-			},
-			{ name: "Veterinary Services", href: "/sections/veterinary-services/" },
-		],
-	},
-	{
-		title: "Active Living",
-		items: [
-			{ name: "Fitness & Wellness", href: "/sections/fitness-wellness/" },
-			{ name: "Sports Clubs", href: "/sections/sports-clubs/" },
-			{ name: "EV Charging", href: "/sections/ev-charging/" },
-		],
-	},
-	{
-		title: "Getting Around",
-		items: [{ name: "Public Transport", href: "/sections/public-transport/" }],
-	},
-	{
-		title: "Community",
-		items: [
-			{ name: "Expat Communities", href: "/sections/expat-communities/" },
-			{ name: "Religious Services", href: "/sections/religious-services/" },
-			{ name: "Volunteering", href: "/sections/volunteering/" },
-		],
-	},
-	{
-		title: "Arts & Culture",
-		items: [
-			{ name: "Art & Culture", href: "/sections/art-culture/" },
-			{ name: "Wineries", href: "/sections/wineries/" },
-		],
-	},
-	{
-		title: "Food & Drink",
-		items: [
-			{ name: "Farmers Markets", href: "/sections/farmers-markets/" },
-			{
-				name: "International Grocery",
-				href: "/sections/international-grocery/",
-			},
-			{ name: "Halal & Kosher", href: "/sections/halal-kosher/" },
-			{ name: "Rooftop Bars", href: "/sections/rooftop-bars/" },
-		],
-	},
-	{
-		title: "Environment",
-		items: [
-			{ name: "Community Gardens", href: "/sections/community-gardens/" },
-		],
-	},
-	{
-		title: "Guides",
-		items: [{ name: "All Relocation Guides", href: "/guides/" }],
-	},
-	{
-		title: "Interactive Tools",
-		items: [{ name: "All Relocation Tools", href: "/tools/" }],
-	},
-	{
-		title: "Property Developers",
-		items: [{ name: "Developer Profiles", href: "/developers/" }],
-	},
-	{
-		title: "My Lists",
-		items: [{ name: "Saved Shortlist", href: "/my-shortlist/" }],
-	},
-];
-
-type SearchResult =
-	| {
-			kind: "guide";
-			title: string;
-			slug: string;
-			category: string;
-			description: string;
-	  }
-	| {
-			kind: "tool";
-			name: string;
-			slug: string;
-			tag: string;
-			description: string;
-	  }
-	| {
-			kind: "section";
-			name: string;
-			slug: string;
-			category: string;
-			description: string;
-	  };
-
-function stem(w: string): string {
-	if (w.length > 4 && w.endsWith("ies")) return `${w.slice(0, -3)}y`;
-	if (w.length > 4 && /(ss|x|z|ch|sh)es$/.test(w)) return w.slice(0, -2);
-	if (w.length > 3 && w.endsWith("s") && !w.endsWith("ss"))
-		return w.slice(0, -1);
-	if (w.length > 5 && w.endsWith("ing")) return w.slice(0, -3);
-	return w;
+let pagefindPromise: Promise<PagefindApi> | null = null;
+function loadPagefind(): Promise<PagefindApi> {
+	if (!pagefindPromise) {
+		pagefindPromise = import(
+			/* webpackIgnore: true */ /* turbopackIgnore: true */ PAGEFIND_URL
+		).catch((e) => {
+			pagefindPromise = null;
+			throw e;
+		});
+	}
+	return pagefindPromise;
 }
 
-/** Lower-case, strip accents and punctuation, split into raw words (no stemming). */
-function rawTokens(text: string): string[] {
-	return text
-		.normalize("NFD")
-		.replace(/[\u0300-\u036f]/g, "")
-		.toLowerCase()
-		.replace(/[^a-z0-9]+/g, " ")
-		.split(" ")
-		.filter(Boolean);
+async function toItems(hits: PagefindHit[]): Promise<Item[]> {
+	const data = await Promise.all(hits.map((h) => h.data()));
+	return data.map((d) => ({
+		url: d.url,
+		title: d.meta.title ?? d.url,
+		excerpt: d.excerpt,
+	}));
 }
+
+async function searchByType(
+	pf: PagefindApi,
+	term: string,
+): Promise<Record<TypeId, PagefindHit[]>> {
+	const searches = await Promise.all(
+		TYPES.map((t) => pf.search(term, { filters: { type: t.id } })),
+	);
+	return Object.fromEntries(
+		TYPES.map((t, i) => [t.id, searches[i].results]),
+	) as Record<TypeId, PagefindHit[]>;
+}
+
+const FALLBACK_BELOW = 3;
 
 /**
- * Every query word must match a word in one of the fields. A query word matches
- * as a substring of the raw word (so prefixes like "movi" find "Moving") or of
- * the stemmed word (so "pharmacies" finds "pharmacy").
+ * Searches every type. When the whole query finds fewer than three results and
+ * its last word has four or more letters, the word is probably a prefix that the
+ * index does not match ("movi"), so also search with the last letter dropped and
+ * merge by id.
  */
-function matches(words: string[], fields: string[]): boolean {
-	const hay = rawTokens(fields.join(" "));
-	const stemmed = hay.map(stem);
-	return words.every((w) => {
-		const sw = stem(w);
-		return (
-			hay.some((t) => t.includes(w) || t.includes(sw)) ||
-			stemmed.some((t) => t.includes(sw))
-		);
-	});
+async function searchAllTypes(
+	pf: PagefindApi,
+	term: string,
+): Promise<Record<TypeId, PagefindHit[]>> {
+	const base = await searchByType(pf, term);
+	const total = TYPES.reduce((n, t) => n + base[t.id].length, 0);
+	const lastWord = term.split(/\s+/).pop() ?? "";
+	if (total >= FALLBACK_BELOW || !/^\p{L}{4,}$/u.test(lastWord)) return base;
+	const extra = await searchByType(pf, term.slice(0, -1));
+	return Object.fromEntries(
+		TYPES.map((t) => {
+			const seen = new Set(base[t.id].map((h) => h.id));
+			return [
+				t.id,
+				[...base[t.id], ...extra[t.id].filter((h) => !seen.has(h.id))],
+			];
+		}),
+	) as Record<TypeId, PagefindHit[]>;
 }
 
 export default function ExploreClient() {
 	const searchParams = useSearchParams();
-	const [query, setQuery] = useState(searchParams.get("q") ?? "");
+	const initial = searchParams.get("q") ?? "";
+	const [input, setInput] = useState(initial);
+	const [query, setQuery] = useState(initial.trim());
+	const [filter, setFilter] = useState<Filter>("all");
+	const [state, setState] = useState<State>(
+		initial.trim().length >= MIN_CHARS ? { kind: "loading" } : { kind: "idle" },
+	);
+	const [shown, setShown] = useState(PAGE_SIZE);
+	const inputRef = useRef<HTMLInputElement>(null);
+	const runId = useRef(0);
+	const [attempt, setAttempt] = useState(0);
+	const focusGroup = useRef<TypeId | null>(null);
 
+	// The desktop header search is an icon link, so open ready to type.
+	// biome-ignore lint/correctness/useExhaustiveDependencies: runs once on mount
 	useEffect(() => {
-		const q = searchParams.get("q");
-		if (q) setQuery(q);
-	}, [searchParams]);
+		if (!initial) inputRef.current?.focus();
+	}, []);
 
-	const q = query.trim().toLowerCase();
-	const words = rawTokens(q);
+	// "See all" removes itself; move focus to the group's heading instead of
+	// dropping it on the page.
+	useEffect(() => {
+		if (state.kind === "results" && focusGroup.current) {
+			document.getElementById(`grp-${focusGroup.current}`)?.focus();
+			focusGroup.current = null;
+		}
+	}, [state]);
 
-	const results: SearchResult[] =
-		q.length < 2 || words.length === 0
-			? []
-			: [
-					...GUIDES.filter((g) =>
-						matches(words, [
-							g.title,
-							g.description,
-							g.slug,
-							GUIDE_CATEGORY_LABEL[g.category],
-						]),
-					).map(
-						(g): SearchResult => ({
-							kind: "guide",
-							title: g.title,
-							slug: g.slug,
-							category: GUIDE_CATEGORY_LABEL[g.category],
-							description: g.description,
-						}),
-					),
-					...TOOLS_LIST.filter((t) =>
-						matches(words, [t.name, t.description, t.tag]),
-					).map((t): SearchResult => ({ kind: "tool", ...t })),
-					...SECTIONS_INDEX.filter((s) =>
-						matches(words, [s.name, s.description, s.category, s.slug]),
-					).map((s): SearchResult => ({ kind: "section", ...s })),
-				];
+	// Follow ?q= changes (back/forward navigation).
+	const q = searchParams.get("q");
+	// biome-ignore lint/correctness/useExhaustiveDependencies: sync only when the URL param changes
+	useEffect(() => {
+		if (q !== null && q.trim() !== query) {
+			setInput(q);
+			setQuery(q.trim());
+			setFilter("all");
+		}
+	}, [q]);
 
-	const guideResults = results.filter((r) => r.kind === "guide") as Extract<
-		SearchResult,
-		{ kind: "guide" }
-	>[];
-	const toolResults = results.filter((r) => r.kind === "tool") as Extract<
-		SearchResult,
-		{ kind: "tool" }
-	>[];
-	const sectionResults = results.filter((r) => r.kind === "section") as Extract<
-		SearchResult,
-		{ kind: "section" }
-	>[];
+	// Debounce typing into the active query.
+	useEffect(() => {
+		const t = setTimeout(() => {
+			const next = input.trim();
+			if (next !== query) {
+				setQuery(next);
+				setFilter("all");
+			}
+		}, 250);
+		return () => clearTimeout(t);
+	}, [input, query]);
+
+	// Keep the address bar shareable without a navigation.
+	useEffect(() => {
+		const url = new URL(window.location.href);
+		if (query) url.searchParams.set("q", query);
+		else url.searchParams.delete("q");
+		if (url.href !== window.location.href) {
+			window.history.replaceState(null, "", url.href);
+		}
+	}, [query]);
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: shown resets with the query and filter
+	useEffect(() => {
+		setShown(PAGE_SIZE);
+	}, [query, filter]);
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: attempt re-runs the search after a failure
+	useEffect(() => {
+		if (query.length < MIN_CHARS) {
+			runId.current++;
+			setState({ kind: "idle" });
+			return;
+		}
+		const id = ++runId.current;
+		setState({ kind: "loading" });
+		(async () => {
+			let pf: PagefindApi;
+			try {
+				pf = await loadPagefind();
+			} catch {
+				if (id === runId.current) setState({ kind: "unavailable" });
+				return;
+			}
+			try {
+				// One filtered search per type: grouped results need each hit's
+				// type, and a single unfiltered search would force loading every
+				// hit's data (hundreds of fragments) to sort them into groups.
+				const byType = await searchAllTypes(pf, query);
+				const types =
+					filter === "all" ? TYPES : TYPES.filter((t) => t.id === filter);
+				const groups: Group[] = await Promise.all(
+					types.map(async (t) => {
+						const hits = byType[t.id];
+						const first = filter === "all" ? PREVIEW_PER_TYPE : PAGE_SIZE;
+						return {
+							type: t.id,
+							total: hits.length,
+							hits,
+							items: await toItems(hits.slice(0, first)),
+						};
+					}),
+				);
+				if (id !== runId.current) return;
+				const total = groups.reduce((n, g) => n + g.total, 0);
+				setState({ kind: "results", groups, total });
+			} catch {
+				if (id === runId.current) setState({ kind: "error" });
+			}
+		})();
+	}, [query, filter, attempt]);
+
+	// Counts for the type filter come from an "all" search; keep them while a filter is active.
+	const [counts, setCounts] = useState<Record<TypeId, number> | null>(null);
+	useEffect(() => {
+		if (state.kind === "results" && filter === "all") {
+			setCounts(
+				Object.fromEntries(
+					state.groups.map((g) => [g.type, g.total]),
+				) as Record<TypeId, number>,
+			);
+		}
+		if (state.kind === "idle") setCounts(null);
+	}, [state, filter]);
+
+	const showMore = useCallback(async () => {
+		if (state.kind !== "results" || filter === "all") return;
+		const g = state.groups[0];
+		const next = shown + PAGE_SIZE;
+		const more = await toItems(g.hits.slice(g.items.length, next));
+		setState((s) =>
+			s.kind === "results" && s.groups[0]
+				? {
+						...s,
+						groups: [
+							{ ...s.groups[0], items: [...s.groups[0].items, ...more] },
+						],
+					}
+				: s,
+		);
+		setShown(next);
+	}, [state, filter, shown]);
+
+	function onSubmit(e: FormEvent) {
+		e.preventDefault();
+		setQuery(input.trim());
+		setFilter("all");
+	}
+
+	const total = counts ? Object.values(counts).reduce((a, b) => a + b, 0) : 0;
+	const tooShort = input.trim().length > 0 && input.trim().length < MIN_CHARS;
+
+	let status = "";
+	if (state.kind === "loading") status = "Searching";
+	else if (state.kind === "results")
+		status =
+			state.total === 0
+				? `No results for ${query}`
+				: `${state.total} ${state.total === 1 ? "result" : "results"} for ${query}`;
+	else if (state.kind === "error") status = "Search failed";
+	else if (state.kind === "unavailable") status = "Search is not available";
 
 	return (
-		<main id="main" className="max-w-5xl mx-auto px-6 py-10 md:py-16">
-			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-ink">
-					Home
-				</Link>{" "}
-				&rsaquo; <span className="text-ink">Explore</span>
-			</nav>
-
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
-					Site Directory
-				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Explore RealCy.app
-				</h1>
-				<p className="mt-3 text-slate-700 leading-relaxed">
-					Everything you need to plan your move to Cyprus — organised by
-					category.
-				</p>
-			</header>
-
-			{/* Search */}
-			<div className="mb-8">
-				<div className="relative">
-					<svg
-						className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted"
-						fill="none"
-						stroke="currentColor"
-						strokeWidth="2"
-						viewBox="0 0 24 24"
-						aria-hidden="true"
-					>
-						<circle cx="11" cy="11" r="8" />
-						<path d="m21 21-4.35-4.35" />
-					</svg>
-					<input
-						type="search"
-						value={query}
-						onChange={(e) => setQuery(e.target.value)}
-						placeholder="Search guides, tools, sections…"
-						className="w-full pl-9 pr-4 min-h-11 border border-line rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-focus focus:border-transparent"
-						aria-label="Search all content"
+		<section aria-label="Site search">
+			<search>
+				<form onSubmit={onSubmit} className="relative">
+					<label htmlFor="explore-search" className="sr-only">
+						Search guides, directories, tools, cities and listings
+					</label>
+					<Icon
+						name="search"
+						size={20}
+						className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-primary"
 					/>
-					{query && (
+					<input
+						ref={inputRef}
+						id="explore-search"
+						type="search"
+						name="q"
+						value={input}
+						onChange={(e) => setInput(e.target.value)}
+						autoComplete="off"
+						enterKeyHint="search"
+						placeholder="Search guides, directories, tools..."
+						className="h-12 w-full min-w-0 rounded-xl border border-line bg-white pl-11 pr-12 text-base text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-focus"
+					/>
+					{input ? (
 						<button
 							type="button"
-							onClick={() => setQuery("")}
-							className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-slate-700 text-lg leading-none"
 							aria-label="Clear search"
+							onClick={() => {
+								setInput("");
+								setQuery("");
+								setFilter("all");
+								inputRef.current?.focus();
+							}}
+							className="absolute right-1.5 top-1/2 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-xl text-muted hover:bg-sky hover:text-ink"
 						>
-							×
+							<Icon name="close" size={20} />
 						</button>
-					)}
-				</div>
-			</div>
+					) : null}
+				</form>
+			</search>
 
-			{/* Search results */}
-			{q.length >= 2 ? (
-				results.length === 0 ? (
-					<div className="py-10 text-center">
-						<p className="text-slate-500 text-sm">
+			<p role="status" aria-live="polite" className="sr-only">
+				{status}
+			</p>
+
+			{tooShort ? (
+				<p className="mt-3 text-sm text-muted">
+					Type at least {MIN_CHARS} characters to search.
+				</p>
+			) : null}
+
+			{counts && total > 0 ? (
+				<fieldset className="m-0 mt-4 flex min-w-0 flex-wrap gap-2 border-0 p-0">
+					<legend className="sr-only">Filter results by type</legend>
+					<FilterChip
+						label={`All (${total})`}
+						active={filter === "all"}
+						onClick={() => setFilter("all")}
+					/>
+					{TYPES.filter((t) => (counts[t.id] ?? 0) > 0).map((t) => (
+						<FilterChip
+							key={t.id}
+							label={`${t.label} (${counts[t.id]})`}
+							active={filter === t.id}
+							onClick={() => setFilter(t.id)}
+						/>
+					))}
+				</fieldset>
+			) : null}
+
+			<div data-search-state={state.kind} className="mt-6">
+				{state.kind === "loading" ? (
+					<p className="text-sm text-muted">Searching...</p>
+				) : null}
+
+				{state.kind === "unavailable" ? (
+					<div className="rounded-2xl border border-line bg-sky p-5 text-sm text-ink">
+						<p className="font-semibold">Search is not available here yet.</p>
+						<p className="mt-1 text-muted">
+							The search index is created when the site is built. In
+							development, run <code>pnpm build</code> and serve the{" "}
+							<code>out</code> folder to try search. You can still browse by
+							category below.
+						</p>
+					</div>
+				) : null}
+
+				{state.kind === "error" ? (
+					<div className="rounded-2xl border border-line bg-white p-5 text-sm">
+						<p className="font-semibold text-ink">Search failed.</p>
+						<p className="mt-1 text-muted">
+							Please try again, or browse by category below.
+						</p>
+						<button
+							type="button"
+							onClick={() => {
+								pagefindPromise = null;
+								setAttempt((n) => n + 1);
+							}}
+							className="mt-3 inline-flex min-h-11 items-center rounded-field bg-primary px-4 text-sm font-semibold text-white hover:bg-primary-hover"
+						>
+							Try again
+						</button>
+					</div>
+				) : null}
+
+				{state.kind === "results" && state.total === 0 ? (
+					<div className="rounded-2xl border border-line bg-white p-5 text-sm">
+						<p className="font-semibold text-ink">
 							No results for &ldquo;{query}&rdquo;
 						</p>
-						<p className="text-muted text-xs mt-1">
-							Try a different term, or browse by category below.
+						<p className="mt-1 text-muted">
+							Check the spelling, try fewer or more general words, or browse by
+							category below.
 						</p>
-						<button
-							type="button"
-							onClick={() => setQuery("")}
-							className="mt-4 text-xs text-primary underline"
-						>
-							Clear search
-						</button>
 					</div>
-				) : (
-					<div className="space-y-8 mb-10">
-						{guideResults.length > 0 && (
-							<section>
-								<h2 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
-									Guides ({guideResults.length})
-								</h2>
-								<ul className="space-y-2">
-									{guideResults.map((r) => (
-										<li key={r.slug}>
-											<Link
-												href={`/guides/${r.slug}/`}
-												className="flex items-start gap-3 p-3 border border-line rounded-2xl hover:border-primary hover:shadow-sm transition-all group"
-											>
-												<span className="flex-shrink-0 inline-block text-xs font-semibold uppercase tracking-wider text-ink bg-sky-strong rounded-full px-2.5 py-0.5 mt-0.5">
-													{r.category}
-												</span>
-												<div className="min-w-0">
-													<p className="text-sm font-semibold text-ink group-hover:text-primary transition-colors leading-snug">
-														{r.title}
-													</p>
-													<p className="text-xs text-slate-500 mt-0.5 line-clamp-1">
-														{r.description}
-													</p>
-												</div>
-											</Link>
-										</li>
-									))}
-								</ul>
-							</section>
-						)}
+				) : null}
 
-						{toolResults.length > 0 && (
-							<section>
-								<h2 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
-									Tools ({toolResults.length})
-								</h2>
-								<ul className="space-y-2">
-									{toolResults.map((r) => (
-										<li key={r.slug}>
-											<Link
-												href={`/tools/${r.slug}/`}
-												className="flex items-start gap-3 p-3 border border-line rounded-2xl hover:border-primary hover:shadow-sm transition-all group"
-											>
-												<span className="flex-shrink-0 inline-block text-xs font-semibold uppercase tracking-wider text-ink bg-sky-strong rounded-full px-2.5 py-0.5 mt-0.5">
-													{r.tag}
-												</span>
-												<div className="min-w-0">
-													<p className="text-sm font-semibold text-ink group-hover:text-primary transition-colors leading-snug">
-														{r.name}
-													</p>
-													<p className="text-xs text-slate-500 mt-0.5 line-clamp-1">
-														{r.description}
-													</p>
-												</div>
-											</Link>
-										</li>
-									))}
-								</ul>
-							</section>
-						)}
-
-						{sectionResults.length > 0 && (
-							<section>
-								<h2 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
-									Directories ({sectionResults.length})
-								</h2>
-								<ul className="space-y-2">
-									{sectionResults.map((r) => (
-										<li key={r.slug}>
-											<Link
-												href={`/sections/${r.slug}/`}
-												className="flex items-start gap-3 p-3 border border-line rounded-2xl hover:border-primary hover:shadow-sm transition-all group"
-											>
-												<span className="flex-shrink-0 inline-block text-xs font-semibold uppercase tracking-wider text-ink bg-sky-strong rounded-full px-2.5 py-0.5 mt-0.5">
-													{r.category}
-												</span>
-												<div className="min-w-0">
-													<p className="text-sm font-semibold text-ink group-hover:text-primary transition-colors leading-snug">
-														{r.name}
-													</p>
-													<p className="text-xs text-slate-500 mt-0.5 line-clamp-1">
-														{r.description}
-													</p>
-												</div>
-											</Link>
-										</li>
-									))}
-								</ul>
-							</section>
-						)}
-
-						<button
-							type="button"
-							onClick={() => setQuery("")}
-							className="text-xs text-muted underline hover:text-slate-700"
-						>
-							Clear search — browse by category
-						</button>
-					</div>
-				)
-			) : (
-				/* Category grid — shown when no search query */
-				<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-					{CATEGORIES.map((category) => (
-						<div
-							key={category.title}
-							className="bg-white border border-line rounded-2xl p-5"
-						>
-							<h2 className="text-sm font-bold text-ink uppercase tracking-wide mb-3">
-								{category.title}
-							</h2>
-							<ul className="space-y-1.5">
-								{category.items.map((item) => (
-									<li key={item.href}>
-										<Link
-											href={item.href}
-											className="text-sm text-slate-700 hover:text-primary transition-colors flex items-center gap-1.5 group py-1"
+				{state.kind === "results" && state.total > 0 ? (
+					<div className="space-y-8">
+						{state.groups
+							.filter((g) => g.total > 0)
+							.map((g) => {
+								const meta = TYPES.find((t) => t.id === g.type);
+								return (
+									<section
+										key={g.type}
+										aria-labelledby={`grp-${g.type}`}
+										data-result-type={g.type}
+									>
+										<h2
+											id={`grp-${g.type}`}
+											tabIndex={-1}
+											className="mb-3 text-xs font-bold uppercase tracking-wider text-slate-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-focus"
 										>
-											{item.name}
-										</Link>
-									</li>
-								))}
-							</ul>
-						</div>
-					))}
-				</div>
-			)}
+											{meta?.label} ({g.total})
+										</h2>
+										<ul className="space-y-2">
+											{g.items.map((r) => (
+												<li key={r.url}>
+													<Link
+														href={r.url}
+														className="group block rounded-2xl border border-line p-3.5 transition-all hover:border-primary hover:shadow-sm"
+													>
+														<span className="block text-sm font-semibold leading-snug text-ink group-hover:text-primary">
+															{r.title}
+														</span>
+														<span
+															className="mt-1 block text-xs leading-relaxed text-slate-600 [&_mark]:rounded-sm [&_mark]:bg-sky-strong [&_mark]:px-0.5 [&_mark]:text-ink"
+															// biome-ignore lint/security/noDangerouslySetInnerHtml: Pagefind returns an escaped excerpt with <mark> highlights
+															dangerouslySetInnerHTML={{ __html: r.excerpt }}
+														/>
+													</Link>
+												</li>
+											))}
+										</ul>
+										{filter === "all" && g.total > g.items.length ? (
+											<button
+												type="button"
+												onClick={() => {
+													focusGroup.current = g.type;
+													setFilter(g.type);
+												}}
+												className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-primary underline underline-offset-4"
+											>
+												See all {g.total} {meta?.label.toLowerCase()}
+											</button>
+										) : null}
+										{filter !== "all" && g.total > g.items.length ? (
+											<button
+												type="button"
+												onClick={showMore}
+												className="mt-3 inline-flex min-h-11 items-center rounded-field border border-line px-4 text-sm font-semibold text-ink hover:bg-sky"
+											>
+												Show more ({g.total - g.items.length} left)
+											</button>
+										) : null}
+									</section>
+								);
+							})}
+					</div>
+				) : null}
+			</div>
+		</section>
+	);
+}
 
-			<p className="mt-10 text-xs text-slate-500">
-				<Link href="/" className="underline hover:text-ink">
-					Back to home
-				</Link>
-			</p>
-		</main>
+function FilterChip({
+	label,
+	active,
+	onClick,
+}: {
+	label: string;
+	active: boolean;
+	onClick: () => void;
+}) {
+	return (
+		<button
+			type="button"
+			aria-pressed={active}
+			onClick={onClick}
+			className={`inline-flex min-h-11 items-center rounded-full border px-4 text-sm font-semibold ${
+				active
+					? "border-primary bg-primary text-white"
+					: "border-line bg-white text-ink hover:bg-sky"
+			}`}
+		>
+			{label}
+		</button>
 	);
 }

@@ -460,7 +460,13 @@ export default function FlightConnectivityPage() {
 	}, [search, airportFilter, seasonFilter]);
 
 	return (
-		<main id="main" className="max-w-5xl mx-auto px-4 py-8 md:py-12">
+		<main
+			id="main"
+			data-pagefind-body
+			data-pagefind-filter="type[data-type]"
+			data-type="tool"
+			className="max-w-5xl mx-auto px-4 py-8 md:py-12"
+		>
 			<nav className="text-xs text-slate-500 mb-6">
 				<Link href="/tools/" className="hover:text-ink">
 					Tools

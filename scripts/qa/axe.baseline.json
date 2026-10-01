@@ -1,0 +1,4 @@
+{
+	"note": "Known serious/critical axe findings (url + rule). CI fails on anything not listed. Remove entries as they are fixed.",
+	"findings": []
+}

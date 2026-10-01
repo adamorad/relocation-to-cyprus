@@ -2,11 +2,16 @@
   "name": "relocation-to-cyprus",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.34.6",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && pagefind --site out",
     "start": "next start",
-    "lint": "biome check ."
+    "lint": "biome check .",
+    "qa:links": "node scripts/qa/check-links.mjs",
+    "qa:rules": "node scripts/qa/house-rules.mjs",
+    "qa:axe": "node scripts/qa/axe.mjs",
+    "qa": "pnpm build && pnpm qa:links && pnpm qa:rules && pnpm qa:axe"
   },
   "dependencies": {
     "@googlemaps/markerclusterer": "^2.6.2",
@@ -17,6 +22,7 @@
     "react-dom": "^19.2.6"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@biomejs/biome": "^2.4.15",
     "@google-analytics/data": "^6.1.0",
     "@tailwindcss/postcss": "^4.3.0",
@@ -24,6 +30,8 @@
     "@types/node": "25.9.1",
     "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
+    "pagefind": "^1.5.2",
+    "playwright": "^1.63.0",
     "tailwindcss": "^4.3.0",
     "typescript": "^6.0.3"
   },

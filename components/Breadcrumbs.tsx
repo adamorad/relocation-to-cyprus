@@ -4,7 +4,11 @@ export type Crumb = { label: string; href?: string };
 
 export function Breadcrumbs({ items }: { items: Crumb[] }) {
 	return (
-		<nav aria-label="Breadcrumb" className="text-xs text-muted mb-6">
+		<nav
+			data-pagefind-ignore
+			aria-label="Breadcrumb"
+			className="text-xs text-muted mb-6"
+		>
 			{items.map((item, i) => {
 				const last = i === items.length - 1;
 				return (

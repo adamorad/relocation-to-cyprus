@@ -26,7 +26,7 @@ export function ShareBar({ url, title, guideSlug }: ShareBarProps) {
   const encTitle = encodeURIComponent(title);
 
   return (
-    <div className="mt-4 flex items-center gap-2 flex-wrap">
+    <div data-pagefind-ignore className="mt-4 flex items-center gap-2 flex-wrap">
 			<span className="text-xs font-semibold text-muted uppercase tracking-wider mr-1">
         Share
       </span>

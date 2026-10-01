@@ -328,7 +328,13 @@ export default async function GuidePage({
 			: null;
 
 	return (
-		<main id="main" className="max-w-3xl mx-auto px-6 py-10">
+		<main
+			id="main"
+			data-pagefind-body
+			data-pagefind-filter="type[data-type]"
+			data-type="guide"
+			className="max-w-3xl mx-auto px-6 py-10"
+		>
 			<MetaPixelEvent
 				event="ViewContent"
 				params={{ content_name: g.title, content_category: "guide" }}
@@ -439,7 +445,10 @@ export default async function GuidePage({
 			</article>
 
 			{relatedTools.length > 0 && (
-				<aside className="mt-4 p-4 bg-sky border border-line rounded-2xl">
+				<aside
+					data-pagefind-ignore
+					className="mt-4 p-4 bg-sky border border-line rounded-2xl"
+				>
 					<p className="text-xs font-semibold text-primary uppercase tracking-wider mb-3">
 						Related tools
 					</p>
@@ -458,7 +467,10 @@ export default async function GuidePage({
 			)}
 
 			{relatedSections.length > 0 && (
-				<aside className="mt-4 p-4 bg-sky border border-line rounded-2xl">
+				<aside
+					data-pagefind-ignore
+					className="mt-4 p-4 bg-sky border border-line rounded-2xl"
+				>
 					<p className="text-xs font-semibold text-primary uppercase tracking-wider mb-3">
 						Related directories
 					</p>
@@ -477,7 +489,10 @@ export default async function GuidePage({
 			)}
 
 			{relatedGuides.length > 0 && (
-				<aside className="mt-4 p-4 bg-sky border border-line rounded-2xl">
+				<aside
+					data-pagefind-ignore
+					className="mt-4 p-4 bg-sky border border-line rounded-2xl"
+				>
 					<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
 						More guides in this category
 					</p>
@@ -497,7 +512,10 @@ export default async function GuidePage({
 				</aside>
 			)}
 
-			<aside className="mt-6 p-5 bg-ink rounded-2xl text-white">
+			<aside
+				data-pagefind-ignore
+				className="mt-6 p-5 bg-ink rounded-2xl text-white"
+			>
 				<p className="text-sm font-semibold mb-1">
 					Get the free Cyprus Relocation Checklist
 				</p>

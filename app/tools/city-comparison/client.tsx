@@ -181,7 +181,7 @@ export default function CityComparisonClient() {
 	const selectedCities = ALL_CITIES.filter((c) => selected.has(c));
 
 	return (
-		<main className="max-w-3xl mx-auto px-6 py-10">
+		<main id="main" data-pagefind-body data-pagefind-filter="type[data-type]" data-type="tool" className="max-w-3xl mx-auto px-6 py-10">
 			<nav className="text-xs text-slate-500 mb-6 flex gap-3">
 				<Link href="/" className="hover:text-ink">
 					← Home

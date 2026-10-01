@@ -13,7 +13,7 @@ export function SectionRelatedGuides({ sectionSlug }: { sectionSlug: string }) {
   if (guides.length === 0) return null;
 
   return (
-    <div className="max-w-5xl mx-auto px-4 md:px-6 pb-10">
+    <div data-pagefind-ignore className="max-w-5xl mx-auto px-4 md:px-6 pb-10">
       <aside className="p-5 bg-sky border border-line rounded-2xl">
 				<p className="text-xs font-semibold text-ink uppercase tracking-wider mb-3">
           Related guides

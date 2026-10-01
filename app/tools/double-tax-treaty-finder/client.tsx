@@ -620,7 +620,13 @@ export default function DoubleTaxTreatyFinderPage() {
 	}, [search, filterStatus]);
 
 	return (
-		<main id="main" className="max-w-4xl mx-auto px-4 sm:px-6 py-10 md:py-16">
+		<main
+			id="main"
+			data-pagefind-body
+			data-pagefind-filter="type[data-type]"
+			data-type="tool"
+			className="max-w-4xl mx-auto px-4 sm:px-6 py-10 md:py-16"
+		>
 			{/* Breadcrumb */}
 			<nav className="text-xs text-slate-500 mb-6">
 				<Link href="/" className="hover:text-ink">

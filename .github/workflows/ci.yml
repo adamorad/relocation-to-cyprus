@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Type check
+        run: pnpm exec tsc --noEmit
+      - name: Build (static export and Pagefind index)
+        id: build
+        run: pnpm build
+        env:
+          NODE_ENV: production
+          NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: ${{ secrets.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY }}
+      - name: Internal link check
+        if: ${{ !cancelled() && steps.build.conclusion == 'success' }}
+        run: pnpm qa:links
+      - name: House rules
+        if: ${{ !cancelled() && steps.build.conclusion == 'success' }}
+        run: pnpm qa:rules
+      - name: Playwright version
+        id: pw
+        run: echo "version=$(pnpm exec playwright --version | awk '{print $2}')" >> "$GITHUB_OUTPUT"
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.pw.outputs.version }}
+      - name: Install Chromium
+        if: ${{ !cancelled() && steps.build.conclusion == 'success' }}
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Accessibility (axe, WCAG 2 A and AA)
+        if: ${{ !cancelled() && steps.build.conclusion == 'success' }}
+        run: pnpm qa:axe
+      - name: Upload QA reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-reports
+          path: qa-reports/
+          if-no-files-found: ignore

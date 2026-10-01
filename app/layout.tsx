@@ -105,7 +105,7 @@ function SiteFooter() {
 		(LISTINGS_BY_REGION[r.name] ?? []).slice(0, 4),
 	);
 	return (
-		<footer className="bg-ink text-slate-300 mt-0">
+		<footer data-pagefind-ignore className="bg-ink text-slate-300 mt-0">
 			<div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-6 gap-8 text-sm">
 				<div className="col-span-2 md:col-span-2">
 					<p className="font-bold text-white text-lg">RealCy.app</p>

@@ -27,7 +27,13 @@ export const metadata: Metadata = {
 
 export default function MovingToCyprusPage() {
 	return (
-		<main id="main" className="max-w-5xl mx-auto px-6 py-12">
+		<main
+			id="main"
+			data-pagefind-body
+			data-pagefind-filter="type[data-type]"
+			data-type="page"
+			className="max-w-5xl mx-auto px-6 py-12"
+		>
 			<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">
 				Moving to Cyprus
 			</h1>
