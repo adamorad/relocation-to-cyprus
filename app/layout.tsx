@@ -164,9 +164,16 @@ function SiteFooter() {
 					<ul className="mt-3 space-y-2">
 						{FOOTER_SITE_LINKS.map((l) => (
 							<li key={l.href}>
-								<Link href={l.href} className={FOOTER_LINK}>
-									{l.label}
-								</Link>
+								{l.href.endsWith(".xml") ? (
+									// Plain link: next/link would prefetch /sitemap.xml as a route (404).
+									<a href={l.href} className={FOOTER_LINK}>
+										{l.label}
+									</a>
+								) : (
+									<Link href={l.href} className={FOOTER_LINK}>
+										{l.label}
+									</Link>
+								)}
 							</li>
 						))}
 					</ul>

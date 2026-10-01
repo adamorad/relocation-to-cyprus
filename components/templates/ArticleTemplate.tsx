@@ -70,8 +70,10 @@ export function ArticleTemplate({
 					<div className="min-w-0 lg:[grid-area:header]">
 						<PageHeader {...header} contained={false} />
 						{hero ? (
-							<div className="mt-6 overflow-hidden rounded-card">
-								{/* biome-ignore lint/performance/noImgElement: static export, hero is the LCP */}
+							// <picture> stops React emitting an image preload hint into the
+							// RSC payload, so prefetching this guide from another page does
+							// not download its hero there.
+							<picture className="mt-6 block overflow-hidden rounded-card">
 								<img
 									src={hero.src}
 									srcSet={
@@ -91,7 +93,7 @@ export function ArticleTemplate({
 									width={hero.width ?? 1200}
 									height={hero.height ?? 630}
 								/>
-							</div>
+							</picture>
 						) : null}
 						{share}
 					</div>

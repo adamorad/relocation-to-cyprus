@@ -42,24 +42,10 @@ export function HubTemplate({
 						actions={
 							<>
 								{header.actions}
-								<HeaderArt
-									image={headerImage}
-									className="w-48 sm:w-56 xl:hidden"
-								/>
+								<HeaderArt image={headerImage} />
 							</>
 						}
 					/>
-					<div
-						aria-hidden="true"
-						className="pointer-events-none absolute inset-0 hidden xl:block"
-					>
-						<Container width="wide" className="relative h-full">
-							<HeaderArt
-								image={headerImage}
-								className="absolute bottom-8 right-8 max-h-[calc(100%-3rem)] w-[280px]"
-							/>
-						</Container>
-					</div>
 				</div>
 			) : (
 				<PageHeader variant="band" {...header} width="wide" />
@@ -73,13 +59,14 @@ export function HubTemplate({
 	);
 }
 
-function HeaderArt({
-	image,
-	className,
-}: {
-	image: SiteImage;
-	className: string;
-}) {
+/**
+ * One <img>: under the intro below xl, then lifted to the band's bottom right
+ * (aligned with the 1280px container edge) from xl up. Lazy, so React emits
+ * no image preload hint: otherwise every next/link prefetch of a hub (footer,
+ * Topics menu, breadcrumbs) would download the illustration on the current
+ * page.
+ */
+function HeaderArt({ image }: { image: SiteImage }) {
 	return (
 		// biome-ignore lint/performance/noImgElement: static export, pre-sized WebP
 		<img
@@ -87,7 +74,9 @@ function HeaderArt({
 			alt=""
 			width={image.width / 2}
 			height={Math.round(image.height / 2)}
-			className={`h-auto object-contain ${className}`}
+			loading="lazy"
+			decoding="async"
+			className="pointer-events-none h-auto w-48 object-contain sm:w-56 xl:absolute xl:bottom-8 xl:right-[max(2rem,calc((100%_-_1280px)/2_+_2rem))] xl:max-h-[calc(100%_-_3rem)] xl:w-[280px]"
 		/>
 	);
 }

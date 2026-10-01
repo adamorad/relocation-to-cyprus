@@ -32,18 +32,22 @@ export function CityTemplate({
 			<PageHeader variant="band" {...header} width="wide" />
 			<Container width="wide" className="pt-6 md:pt-8">
 				{hero ? (
-					// biome-ignore lint/performance/noImgElement: static export, hero is the LCP
-					<img
-						src={hero.src}
-						srcSet={`${hero.srcSmall} 800w, ${hero.src} 1600w`}
-						sizes="(min-width: 832px) 768px, calc(100vw - 40px)"
-						width={hero.width}
-						height={hero.height}
-						alt={hero.alt ?? ""}
-						loading="eager"
-						fetchPriority="high"
-						className="mb-8 aspect-video h-auto w-full max-w-3xl rounded-2xl object-cover"
-					/>
+					// <picture> stops React emitting an image preload hint into the
+					// RSC payload, which next/link prefetches of this city would
+					// otherwise apply on the linking page (downloading the hero).
+					<picture className="block">
+						<img
+							src={hero.src}
+							srcSet={`${hero.srcSmall} 800w, ${hero.src} 1600w`}
+							sizes="(min-width: 832px) 768px, calc(100vw - 40px)"
+							width={hero.width}
+							height={hero.height}
+							alt={hero.alt ?? ""}
+							loading="eager"
+							fetchPriority="high"
+							className="mb-8 aspect-video h-auto w-full max-w-3xl rounded-2xl object-cover"
+						/>
+					</picture>
 				) : null}
 				{contents && contents.length > 0 ? (
 					<nav
