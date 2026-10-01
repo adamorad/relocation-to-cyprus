@@ -84,6 +84,46 @@ async function toItems(hits: PagefindHit[]): Promise<Item[]> {
 	}));
 }
 
+async function searchByType(
+	pf: PagefindApi,
+	term: string,
+): Promise<Record<TypeId, PagefindHit[]>> {
+	const searches = await Promise.all(
+		TYPES.map((t) => pf.search(term, { filters: { type: t.id } })),
+	);
+	return Object.fromEntries(
+		TYPES.map((t, i) => [t.id, searches[i].results]),
+	) as Record<TypeId, PagefindHit[]>;
+}
+
+const FALLBACK_BELOW = 3;
+
+/**
+ * Searches every type. When the whole query finds fewer than three results and
+ * its last word has four or more letters, the word is probably a prefix that the
+ * index does not match ("movi"), so also search with the last letter dropped and
+ * merge by id.
+ */
+async function searchAllTypes(
+	pf: PagefindApi,
+	term: string,
+): Promise<Record<TypeId, PagefindHit[]>> {
+	const base = await searchByType(pf, term);
+	const total = TYPES.reduce((n, t) => n + base[t.id].length, 0);
+	const lastWord = term.split(/\s+/).pop() ?? "";
+	if (total >= FALLBACK_BELOW || !/^\p{L}{4,}$/u.test(lastWord)) return base;
+	const extra = await searchByType(pf, term.slice(0, -1));
+	return Object.fromEntries(
+		TYPES.map((t) => {
+			const seen = new Set(base[t.id].map((h) => h.id));
+			return [
+				t.id,
+				[...base[t.id], ...extra[t.id].filter((h) => !seen.has(h.id))],
+			];
+		}),
+	) as Record<TypeId, PagefindHit[]>;
+}
+
 export default function ExploreClient() {
 	const searchParams = useSearchParams();
 	const initial = searchParams.get("q") ?? "";
@@ -97,6 +137,22 @@ export default function ExploreClient() {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const runId = useRef(0);
 	const [attempt, setAttempt] = useState(0);
+	const focusGroup = useRef<TypeId | null>(null);
+
+	// The desktop header search is an icon link, so open ready to type.
+	// biome-ignore lint/correctness/useExhaustiveDependencies: runs once on mount
+	useEffect(() => {
+		if (!initial) inputRef.current?.focus();
+	}, []);
+
+	// "See all" removes itself; move focus to the group's heading instead of
+	// dropping it on the page.
+	useEffect(() => {
+		if (state.kind === "results" && focusGroup.current) {
+			document.getElementById(`grp-${focusGroup.current}`)?.focus();
+			focusGroup.current = null;
+		}
+	}, [state]);
 
 	// Follow ?q= changes (back/forward navigation).
 	const q = searchParams.get("q");
@@ -154,14 +210,15 @@ export default function ExploreClient() {
 				return;
 			}
 			try {
+				// One filtered search per type: grouped results need each hit's
+				// type, and a single unfiltered search would force loading every
+				// hit's data (hundreds of fragments) to sort them into groups.
+				const byType = await searchAllTypes(pf, query);
 				const types =
 					filter === "all" ? TYPES : TYPES.filter((t) => t.id === filter);
-				const searches = await Promise.all(
-					types.map((t) => pf.search(query, { filters: { type: t.id } })),
-				);
 				const groups: Group[] = await Promise.all(
-					types.map(async (t, i) => {
-						const hits = searches[i].results;
+					types.map(async (t) => {
+						const hits = byType[t.id];
 						const first = filter === "all" ? PREVIEW_PER_TYPE : PAGE_SIZE;
 						return {
 							type: t.id,
@@ -363,7 +420,8 @@ export default function ExploreClient() {
 									>
 										<h2
 											id={`grp-${g.type}`}
-											className="mb-3 text-xs font-bold uppercase tracking-wider text-slate-600"
+											tabIndex={-1}
+											className="mb-3 text-xs font-bold uppercase tracking-wider text-slate-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-focus"
 										>
 											{meta?.label} ({g.total})
 										</h2>
@@ -389,7 +447,10 @@ export default function ExploreClient() {
 										{filter === "all" && g.total > g.items.length ? (
 											<button
 												type="button"
-												onClick={() => setFilter(g.type)}
+												onClick={() => {
+													focusGroup.current = g.type;
+													setFilter(g.type);
+												}}
 												className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-primary underline underline-offset-4"
 											>
 												See all {g.total} {meta?.label.toLowerCase()}
