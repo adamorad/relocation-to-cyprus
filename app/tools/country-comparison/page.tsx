@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
-import { topicCrumb } from "@/lib/topic-map";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import CountryComparisonClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -45,7 +45,7 @@ export default function CountryComparisonClientPage() {
 					topicCrumb("tool", "country-comparison"),
 					{ label: "Country Comparison" },
 				],
-				eyebrow: "Research",
+				eyebrow: getTopicForTool("country-comparison").name,
 				title: "Cyprus vs Europe",
 				intro:
 					"Compare Cyprus against Portugal, Malta, Greece, Spain and Italy across corporate tax, income tax, special regimes, property prices, cost of living, and visa options. All figures are indicative. Verify with a local advisor.",

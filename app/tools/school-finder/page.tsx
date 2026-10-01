@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
-import { topicCrumb } from "@/lib/topic-map";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import SchoolFinderClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -34,7 +34,7 @@ export default function SchoolFinderPage() {
 					topicCrumb("tool", "school-finder"),
 					{ label: "International School Finder" },
 				],
-				eyebrow: "Family",
+				eyebrow: getTopicForTool("school-finder").name,
 				title: "International School Finder",
 				intro:
 					"Find and compare international schools in Cyprus. Filter by city, curriculum, and age group to shortlist the right options for your family.",

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
-import { topicCrumb } from "@/lib/topic-map";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import SocialInsuranceCalculatorClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -42,7 +42,7 @@ export default function SocialInsuranceCalculatorPage() {
 					topicCrumb("tool", "social-insurance-calculator"),
 					{ label: "Social Insurance Calculator" },
 				],
-				eyebrow: "Interactive tool",
+				eyebrow: getTopicForTool("social-insurance-calculator").name,
 				title: "Cyprus Social Insurance Calculator",
 				intro:
 					"Calculate your Social Insurance and GeSY contributions based on 2026 rates. Adjust your salary and employment type to see a full breakdown.",

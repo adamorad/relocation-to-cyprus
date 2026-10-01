@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
-import { topicCrumb } from "@/lib/topic-map";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import RentVsBuyCalculatorClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -45,7 +45,7 @@ export default function RentVsBuyCalculatorPage() {
 					topicCrumb("tool", "rent-vs-buy-calculator"),
 					{ label: "Rent vs Buy Calculator" },
 				],
-				eyebrow: "Interactive tool",
+				eyebrow: getTopicForTool("rent-vs-buy-calculator").name,
 				title: "Rent vs Buy Calculator",
 				intro:
 					"Compare the true cost of renting versus buying property in Cyprus over your chosen time horizon, accounting for mortgage costs, investment returns on your down payment, and property appreciation.",

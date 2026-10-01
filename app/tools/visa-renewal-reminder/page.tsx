@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
-import { topicCrumb } from "@/lib/topic-map";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import VisaRenewalReminderClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -44,7 +44,7 @@ export default function VisaRenewalReminderPage() {
 					topicCrumb("tool", "visa-renewal-reminder"),
 					{ label: "Visa Renewal Reminder" },
 				],
-				eyebrow: "Interactive tool",
+				eyebrow: getTopicForTool("visa-renewal-reminder").name,
 				title: "Visa & Document Renewal Reminder",
 				intro:
 					"Track expiry dates for your important documents: visas, ARC, passport, insurance, and more. Colour-coded alerts so nothing sneaks up on you.",

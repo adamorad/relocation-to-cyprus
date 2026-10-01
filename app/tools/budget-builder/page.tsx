@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
-import { topicCrumb } from "@/lib/topic-map";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import BudgetBuilderClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -44,7 +44,7 @@ export default function BudgetBuilderPage() {
 					topicCrumb("tool", "budget-builder"),
 					{ label: "Monthly Budget Builder" },
 				],
-				eyebrow: "Interactive tool",
+				eyebrow: getTopicForTool("budget-builder").name,
 				title: "Cyprus Monthly Budget Builder",
 				intro:
 					"Estimate your monthly living costs in Cyprus. Adjust the options below and the budget updates instantly.",

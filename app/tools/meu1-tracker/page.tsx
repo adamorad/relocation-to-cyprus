@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
-import { topicCrumb } from "@/lib/topic-map";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import Meu1TrackerClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -44,7 +44,7 @@ export default function Meu1TrackerPage() {
 					topicCrumb("tool", "meu1-tracker"),
 					{ label: "MEU1 Registration Tracker" },
 				],
-				eyebrow: "Interactive tool",
+				eyebrow: getTopicForTool("meu1-tracker").name,
 				title: "MEU1 Registration Tracker",
 				intro:
 					"An interactive checklist for EU citizens registering their residence in Cyprus (MEU1 / EU Registration Certificate). Check off each step as you complete it. Progress is saved in your browser.",

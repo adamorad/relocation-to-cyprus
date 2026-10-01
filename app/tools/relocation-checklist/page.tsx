@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
-import { topicCrumb } from "@/lib/topic-map";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import RelocationTrackerClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -45,7 +45,7 @@ export default function RelocationChecklistPage() {
 					topicCrumb("tool", "relocation-checklist"),
 					{ label: "Relocation Progress Tracker" },
 				],
-				eyebrow: "Checklists",
+				eyebrow: getTopicForTool("relocation-checklist").name,
 				title: "Cyprus Relocation Progress Tracker",
 				intro:
 					"Track your relocation journey from planning to settling in. Check off each task as you complete it. Progress is saved in your browser.",

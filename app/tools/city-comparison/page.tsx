@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
-import { topicCrumb } from "@/lib/topic-map";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import CityComparisonClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -45,7 +45,7 @@ export default function CityComparisonClientPage() {
 					topicCrumb("tool", "city-comparison"),
 					{ label: "City Comparison" },
 				],
-				eyebrow: "Interactive tool",
+				eyebrow: getTopicForTool("city-comparison").name,
 				title: "City Comparison",
 				intro:
 					"Compare key metrics across Cyprus cities side by side. Select 2 to 4 cities to compare.",

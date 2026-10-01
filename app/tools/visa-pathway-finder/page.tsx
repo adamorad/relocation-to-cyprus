@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
-import { topicCrumb } from "@/lib/topic-map";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import VisaPathwayFinderClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -44,7 +44,7 @@ export default function VisaPathwayFinderPage() {
 					topicCrumb("tool", "visa-pathway-finder"),
 					{ label: "Visa Pathway Finder" },
 				],
-				eyebrow: "Interactive tool",
+				eyebrow: getTopicForTool("visa-pathway-finder").name,
 				title: "Cyprus Visa Pathway Finder",
 				intro:
 					"Answer two questions to find the recommended visa or registration route for your situation. Each result includes the key requirement, processing time, and a link to the relevant guide.",

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
-import { topicCrumb } from "@/lib/topic-map";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import SoleTraderVsLtdClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -47,7 +47,7 @@ export default function SoleTraderVsLtdPage() {
 					topicCrumb("tool", "sole-trader-vs-ltd"),
 					{ label: "Sole Trader vs Ltd" },
 				],
-				eyebrow: "Business",
+				eyebrow: getTopicForTool("sole-trader-vs-ltd").name,
 				title: "Sole Trader vs Ltd",
 				intro:
 					"Two tools in one: compare take-home pay as a sole trader versus a Cyprus Ltd, then estimate what it actually costs to set up and run a limited company.",

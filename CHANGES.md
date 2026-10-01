@@ -10,9 +10,9 @@
 - /guides/, /sections/ and /tools/ filter by topic (`?topic=`) instead of the old categories. The old category fields stay in the data.
 - The five de-listed directories (co-living, community gardens, EV charging, registered address, rooftop bars) have a topic for their own breadcrumb but stay out of hubs, indexes and the sitemap.
 
-- New site header: logo, Daily life, Places, Guides, Tools and Saved links, a desktop "More" menu and an accessible mobile menu. There is no sign-in because the site has no accounts.
+- New site header: logo, primary links and Saved, a desktop "More" menu and an accessible mobile menu. There is no sign-in because the site has no accounts.
 - Manrope is now the site-wide font. The legacy Lora and DM Sans CSS variables are remapped to it.
-- New "Living in Cyprus" homepage: hero search that goes to /explore/, six topic cards, guide cards, a "Your local area" panel for Limassol, Paphos, Larnaca and Ayia Napa, and a tools strip.
+- New "Living in Cyprus" homepage: hero search that goes to /explore/, topic cards, guide cards, a "Your local area" panel for Limassol, Paphos, Larnaca and Ayia Napa, and a tools strip.
 - The old homepage map moved to `archive/homepage-map/`. `MapNavProvider` and the Google Maps preconnects were removed from the layout. See `docs/homepage-map-archive.md`.
 - Nicosia was removed from the nav, footer and the /regions/ list. The 33 Nicosia new-build listings and the 9 developers that had only Nicosia listings are hidden from every page and the sitemap. The data stays in `lib/data/listings.json`.
 - /regions/nicosia/ is now a redirect to /regions/ (noindex).

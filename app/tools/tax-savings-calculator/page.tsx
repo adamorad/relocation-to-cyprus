@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
-import { topicCrumb } from "@/lib/topic-map";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import TaxSavingsCalculatorClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -45,7 +45,7 @@ export default function TaxSavingsCalculatorPage() {
 					topicCrumb("tool", "tax-savings-calculator"),
 					{ label: "Cyprus Tax Savings Calculator" },
 				],
-				eyebrow: "Tax",
+				eyebrow: getTopicForTool("tax-savings-calculator").name,
 				title: "Cyprus Tax Savings Calculator",
 				intro:
 					"Compare your current country's tax burden against Cyprus Standard and Non-Dom regimes. See your estimated annual saving at a glance.",

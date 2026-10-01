@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
-import { topicCrumb } from "@/lib/topic-map";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import RentalPriceTrendsClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -45,7 +45,7 @@ export default function RentalPriceTrendsPage() {
 					topicCrumb("tool", "rental-price-trends"),
 					{ label: "Cyprus Rental Price Trends" },
 				],
-				eyebrow: "Research",
+				eyebrow: getTopicForTool("rental-price-trends").name,
 				title: "Cyprus Rental Price Trends",
 				intro:
 					"Monthly asking rents across Limassol, Paphos, Larnaca, and Ayia Napa from 2021 to 2025. Select a bedroom type and toggle cities to explore the data.",

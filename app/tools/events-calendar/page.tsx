@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
-import { topicCrumb } from "@/lib/topic-map";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import EventsCalendarClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -41,7 +41,7 @@ export default function EventsCalendarClientPage() {
 					topicCrumb("tool", "events-calendar"),
 					{ label: "Events Calendar" },
 				],
-				eyebrow: "Interactive tool",
+				eyebrow: getTopicForTool("events-calendar").name,
 				title: "Cyprus Annual Events & Festivals",
 				intro:
 					"Discover festivals, cultural events, and celebrations across Cyprus. Browse by month, filter by type or city.",

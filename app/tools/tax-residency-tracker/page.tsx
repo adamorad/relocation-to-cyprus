@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
-import { topicCrumb } from "@/lib/topic-map";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import TaxResidencyPlannerClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -41,7 +41,7 @@ export default function TaxResidencyTrackerPage() {
 					topicCrumb("tool", "tax-residency-tracker"),
 					{ label: "Tax Residency Planner" },
 				],
-				eyebrow: "Interactive tool",
+				eyebrow: getTopicForTool("tax-residency-tracker").name,
 				title: "Cyprus 60-Day Tax Residency Planner",
 				intro:
 					"Adjust the sliders to see whether you qualify for Cyprus tax residency under the 183-day rule or the more complex 60-day rule. Results update instantly.",

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
-import { topicCrumb } from "@/lib/topic-map";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import WeatherClimateClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -41,7 +41,7 @@ export default function WeatherClimatePage() {
 					topicCrumb("tool", "weather-climate"),
 					{ label: "Cyprus Weather & Climate" },
 				],
-				eyebrow: "Lifestyle",
+				eyebrow: getTopicForTool("weather-climate").name,
 				title: "Cyprus Weather & Climate",
 				intro:
 					"340+ sunny days a year, warm summers, and mild winters. Explore Cyprus month by month and compare against cities you know.",

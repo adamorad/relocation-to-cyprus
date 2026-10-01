@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
-import { topicCrumb } from "@/lib/topic-map";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import GrantsFinderClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -41,7 +41,7 @@ export default function GrantsFinderClientPage() {
 					topicCrumb("tool", "grants-finder"),
 					{ label: "Business Grants Finder" },
 				],
-				eyebrow: "Business",
+				eyebrow: getTopicForTool("grants-finder").name,
 				title: "Cyprus Business Grants Finder",
 				intro:
 					"Browse active and recently active grant programmes for businesses in Cyprus. Filter by sector, company size, and status.",

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
-import { topicCrumb } from "@/lib/topic-map";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import DriversLicenceExchangeClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -36,7 +36,7 @@ export default function DriversLicenceExchangeClientPage() {
 					topicCrumb("tool", "drivers-licence-exchange"),
 					{ label: "Driver’s Licence Exchange" },
 				],
-				eyebrow: "Bureaucracy",
+				eyebrow: getTopicForTool("drivers-licence-exchange").name,
 				title: "Driver’s Licence Exchange",
 				intro:
 					"Find out whether you can directly exchange your foreign driving licence in Cyprus or need to take tests. Get a personalised checklist and cost estimate.",

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
-import { topicCrumb } from "@/lib/topic-map";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import RentalYieldCalculatorClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -45,7 +45,7 @@ export default function RentalYieldCalculatorPage() {
 					topicCrumb("tool", "rental-yield-calculator"),
 					{ label: "Rental Yield Calculator" },
 				],
-				eyebrow: "Finance tool",
+				eyebrow: getTopicForTool("rental-yield-calculator").name,
 				title: "Cyprus Rental Yield Calculator",
 				intro:
 					"Calculate gross yield, net yield, annual cash flow, and total return for a Cyprus buy-to-let investment. Models appreciation and expenses over up to 15 years.",

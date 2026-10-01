@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
-import { topicCrumb } from "@/lib/topic-map";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import BankingFeeComparisonClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -41,7 +41,7 @@ export default function BankingFeeComparisonClientPage() {
 					topicCrumb("tool", "banking-fee-comparison"),
 					{ label: "Banking Fee Comparison" },
 				],
-				eyebrow: "Interactive tool",
+				eyebrow: getTopicForTool("banking-fee-comparison").name,
 				title: "Cyprus Banking Fee Comparison",
 				intro:
 					"Compare fees and features across the main banks available to Cyprus residents.",
