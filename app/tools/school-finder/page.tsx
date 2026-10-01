@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
+import { SourcesNote } from "@/components/ui/SourcesNote";
+import { HEALTH_TRANSPORT_CHECKED, SRC } from "@/lib/facts/health-transport";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import SchoolFinderClient from "./client";
@@ -8,7 +10,7 @@ import SchoolFinderClient from "./client";
 const SITE_URL = "https://realcy.app";
 const title = "International School Finder: Cyprus";
 const description =
-	"Find and compare international schools in Cyprus. Filter by city, curriculum (British, IB, German, Waldorf, Montessori), and age group. Includes fees and key details for expat families.";
+	"Find and compare international schools in Cyprus. Filter by city, curriculum (British, IB), and age group. Includes fees and key details for expat families.";
 
 export const metadata: Metadata = {
 	title,
@@ -55,6 +57,16 @@ export default function SchoolFinderPage() {
 				}}
 			/>
 			<SchoolFinderClient />
+			<SourcesNote
+				lastChecked={HEALTH_TRANSPORT_CHECKED}
+				sources={[
+					SRC.schoolRegister,
+					SRC.heritageFees,
+					SRC.foleysFees,
+					SRC.grammarFees,
+					SRC.ispFees,
+				]}
+			/>
 		</ToolTemplate>
 	);
 }

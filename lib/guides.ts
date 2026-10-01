@@ -28,6 +28,28 @@ import {
 	VISITOR_PERMIT_MONTHLY_INCOME,
 	VISITOR_PERMIT_MONTHLY_INCOME_COUPLE,
 } from "./facts/tax";
+import {
+	AIRPORT_EXPRESS_FARE,
+	dayNight,
+	FEES_AMERICAN_ACADEMY_LARNACA,
+	FEES_FOLEYS,
+	FEES_GRAMMAR_LIMASSOL,
+	FEES_HERITAGE,
+	FEES_ISP,
+	feeRange,
+	GESY_AE_COPAY,
+	GESY_ANNUAL_CAP,
+	GESY_ANNUAL_CAP_REDUCED,
+	GESY_RX_ITEM_COPAY,
+	SRC as HT_SRC,
+	LARNACA_BUS,
+	LCA_TAXI,
+	LICENCE_FEE,
+	LICENCE_MEDICAL_AGE,
+	PAPHOS_BUS,
+	PFO_TAXI,
+	TAXI_NIGHT_HOURS,
+} from "./facts/health-transport";
 import { GUIDES_BATCH1 } from "./guides-batch1";
 import { GUIDES_BATCH2 } from "./guides-batch2";
 import { GUIDES_BATCH3 } from "./guides-batch3";
@@ -1294,7 +1316,14 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			alt: "Painting of a pharmacy with a green cross sign and open door on a sunny whitewashed street lined with potted olive trees",
 		},
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			HT_SRC.medicinesPriceList,
+			HT_SRC.nonPrescriptionRule,
+			HT_SRC.solpadeine,
+			HT_SRC.gesyCopay,
+		],
 		category: "healthcare",
 		title: "Buy Medicine Over the Counter in Cyprus",
 		description:
@@ -1302,7 +1331,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "Quick answer: what you can buy over the counter in Cyprus",
-				body: "Paracetamol (Depon, Panadol) and ibuprofen (Brufen, Nurofen) are sold over the counter, from pharmacies only. Aspirin is the one common painkiller also sold in ordinary shops and kiosks.\n\nCodeine painkillers such as co-codamol can be supplied by Cypriot pharmacists without a prescription, but strength and status vary by product, so ask the pharmacist what is available before you rely on it. Eye antibiotics, some antifungals and oral contraceptives can be supplied after a brief pharmacist consultation. Oral antibiotics are not covered in this guide, so ask a pharmacist or doctor. Benzodiazepines and strong opioids need a controlled-drug prescription. Omeprazole usually needs a prescription, and a salbutamol inhaler is prescription in practice.\n\nThe full brand-by-brand table is in the section on home-country medicines below. Pharmacists have final discretion and status can change, so confirm anything you depend on.",
+				body: "Paracetamol (Depon, Panadol) and ibuprofen (Brufen, Nurofen) are sold over the counter, from pharmacies only. Aspirin is the one common painkiller also sold in ordinary shops and kiosks.\n\nLow-dose codeine painkillers such as Solpadeine (8 mg codeine) are sold by pharmacists without a prescription. Co-codamol 30/500 is not sold in Cyprus. Antifungal creams and the morning-after pill are sold without a prescription. Oral contraceptives and antibiotic eye drops need a prescription. Oral antibiotics are not covered in this guide, so ask a pharmacist or doctor. Benzodiazepines and strong opioids need a controlled-drug prescription. Omeprazole usually needs a prescription, and a salbutamol inhaler is prescription in practice.\n\nThe full brand-by-brand table is in the section on home-country medicines below. Pharmacists have final discretion and status can change, so confirm anything you depend on.",
 			},
 			{
 				heading: "How the pharmacy system works",
@@ -1310,7 +1339,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "GeSY prescription coverage and co-payments",
-				body: "With a GeSY-registered personal doctor and a GeSY prescription, medications are dispensed at a co-payment of €1 for generic drugs. Branded medications that have a generic equivalent are dispensed at the generic price plus the difference if you specifically request the brand — pharmacists are required to offer the generic substitute and inform you of the price difference. Medications with no generic equivalent are covered at GeSY's reference price, which may be less than the pharmacist's retail price; the patient pays the gap. Chronic disease medications for conditions on the GeSY approved list (diabetes, hypertension, thyroid conditions, and others) are available with zero co-payment for GeSY beneficiaries. To use GeSY at a pharmacy, present your HIO card or beneficiary number; the pharmacist scans the prescription in the GeSY system directly. Pharmacies that accept GeSY display the GeSY logo — not all private pharmacies in Cyprus are contracted with GeSY, though the majority in urban areas are.",
+				body: `With a GeSY-registered personal doctor and a GeSY prescription, medications are dispensed at a co-payment of ${eur(GESY_RX_ITEM_COPAY)} per item for generic drugs. Branded medications that have a generic equivalent are dispensed at the generic price plus the difference if you specifically request the brand; pharmacists are required to offer the generic substitute and inform you of the price difference. Medications with no generic equivalent are covered at GeSY's reference price, which may be less than the pharmacist's retail price; the patient pays the gap. To use GeSY at a pharmacy, present your HIO card or beneficiary number; the pharmacist scans the prescription in the GeSY system directly. Pharmacies that accept GeSY display the GeSY logo. Not all private pharmacies in Cyprus are contracted with GeSY, though the majority in urban areas are.`,
 			},
 			{
 				heading: "Transferring a foreign prescription to Cyprus",
@@ -1318,11 +1347,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Medications available OTC in Cyprus",
-				body: "Cyprus is slightly more liberal than some northern EU countries in what is available over the counter. Strong codeine-combination painkillers (e.g. co-codamol 30/500) are available without prescription from pharmacists in Cyprus, whereas the same product requires a prescription in the UK and Germany. Several antifungal treatments, eye antibiotics, and oral contraceptives that require prescriptions elsewhere in the EU can be obtained from Cypriot pharmacists after a brief consultation. Pharmacists in Cyprus are trained and legally permitted to make these dispensing decisions under the Pharmacy and Poison Law. Conversely, benzodiazepines, strong opioids, and Schedule 1 controlled substances are tightly controlled and require a specific controlled-drug prescription form; the regulations here match or exceed EU norms. If you are accustomed to a medication being available OTC in your home country and it appears to be prescription-only in Cyprus, it is worth asking the pharmacist directly — the answer may be different from what you expect.",
+				body: "What you can buy over the counter in Cyprus differs from other EU countries in both directions. Low-dose codeine combinations, such as Solpadeine (8 mg codeine with paracetamol and caffeine), are sold by pharmacists without a prescription, for a maximum of three days' use. Stronger products such as co-codamol 30/500 are not sold in Cyprus, so bring a prescription and your own supply if you rely on them. Antifungal creams and the morning-after pill are sold without a prescription. Oral contraceptives and antibiotic eye drops need a prescription. At the other end, benzodiazepines, strong opioids, and Schedule 1 controlled substances are tightly controlled and require a specific controlled-drug prescription form; the regulations here match or exceed EU norms. If you are accustomed to a medication being available OTC in your home country and it appears to be prescription-only in Cyprus, it is worth asking the pharmacist directly, as the answer may be different from what you expect.",
 			},
 			{
 				heading: "Home-Country Medicines and Their Cyprus Equivalents",
-				body: "One of the first small frustrations of moving to Cyprus is standing in a pharmacy unable to find the brand you have used for years. The active ingredient is almost always here, just under a different name, and Cypriot pharmacies stock a lot of locally made generics from firms such as Medochemie and Remedica alongside the familiar international brands. Use the table below to translate what you know into what to ask for at the counter. Always learn the generic (active ingredient) name of anything you rely on, because that is what a Cyprus pharmacist will recognise instantly.\n\nActive ingredient — what you may know it as — Cyprus brand(s) to ask for — status:\n\nParacetamol (acetaminophen) — Panadol, Tylenol — Depon, Panadol, Calpol (for children) — OTC\nIbuprofen — Nurofen, Advil, Motrin — Brufen, Nurofen — OTC\nAspirin (acetylsalicylic acid) — Aspirin, Aspro — Aspirin, Aspro Clear — OTC (the one painkiller also sold outside pharmacies, in kiosks and shops)\nLoratadine (antihistamine) — Claritin, Clarityn — Clarityne, Ticevis — OTC\nCetirizine (antihistamine) — Zyrtec, Zirtec — Zyrtec, Temelin — OTC\nLoperamide (anti-diarrhoeal) — Imodium — Imodium, Vacontil, Loperium — OTC\nDiclofenac gel (topical anti-inflammatory) — Voltaren, Voltarol — Voltaren, Almiral gel — OTC\nHydrocortisone cream 1% (mild steroid for bites and rashes) — Cortizone-10 — generic hydrocortisone 1% — OTC\nAntacids and reflux relief — Tums, Gaviscon — Gaviscon, Rennie — OTC\nOmeprazole (stomach-acid PPI) — Prilosec, Losec — Losec, Medoprazole — usually needs a prescription, though a pharmacist may supply a short course at their discretion\nDecongestant — Sudafed, Afrin, Vicks Sinex — Otrivin and other xylometazoline nasal sprays — OTC (Cyprus favours nasal sprays; oral pseudoephedrine tablets are uncommon on the shelf)\nSalbutamol reliever inhaler — Ventolin, ProAir — Ventolin, Salamol — prescription in practice, so bring your own supply and documentation\nLow-dose codeine painkiller — Tylenol with codeine, co-codamol — Solpadeine — low-dose combinations are OTC; stronger codeine needs a prescription\n\nA few of these will surprise people coming from the UK or US, in both directions. Cyprus is often more relaxed than home about low-dose codeine painkillers, yet stricter about things you might expect to grab off a shelf, such as an asthma inhaler. Remember too that brand availability and prescription status change over time, and that a pharmacist always has final discretion. So treat this as a starting point rather than a guarantee: for anything you depend on, confirm its status before you travel, and once you arrive simply ask any Cyprus pharmacist, who can almost always suggest a local equivalent. Pharmacists here are exceptionally accessible, used to advising walk-in customers on minor ailments, and in the towns and tourist areas the vast majority speak fluent English.",
+				body: "One of the first small frustrations of moving to Cyprus is standing in a pharmacy unable to find the brand you have used for years. The active ingredient is almost always here, just under a different name, and Cypriot pharmacies stock a lot of locally made generics from firms such as Medochemie and Remedica alongside the familiar international brands. Use the table below to translate what you know into what to ask for at the counter. Always learn the generic (active ingredient) name of anything you rely on, because that is what a Cyprus pharmacist will recognise instantly.\n\nActive ingredient | what you may know it as | Cyprus brand(s) to ask for | status:\n\nParacetamol (acetaminophen) | Panadol, Tylenol | Depon, Panadol, Calpol (for children) | OTC\nIbuprofen | Nurofen, Advil, Motrin | Brufen, Nurofen | OTC\nAspirin (acetylsalicylic acid) | Aspirin, Aspro | Aspirin, Aspro Clear | OTC (the one painkiller also sold outside pharmacies, in kiosks and shops)\nLoratadine (antihistamine) | Claritin, Clarityn | Clarityne, Ticevis | OTC\nCetirizine (antihistamine) | Zyrtec, Zirtec | Zyrtec, Temelin | OTC\nLoperamide (anti-diarrhoeal) | Imodium | Imodium, Vacontil, Loperium | OTC\nDiclofenac gel (topical anti-inflammatory) | Voltaren, Voltarol | Voltaren, Almiral gel | OTC\nHydrocortisone cream 1% (mild steroid for bites and rashes) | Cortizone-10 | generic hydrocortisone 1% | OTC\nAntacids and reflux relief | Tums, Gaviscon | Gaviscon, Rennie | OTC\nOmeprazole (stomach-acid PPI) | Prilosec, Losec | Losec, Medoprazole | usually needs a prescription, though a pharmacist may supply a short course at their discretion\nDecongestant | Sudafed, Afrin, Vicks Sinex | Otrivin and other xylometazoline nasal sprays | OTC (Cyprus favours nasal sprays; oral pseudoephedrine tablets are uncommon on the shelf)\nSalbutamol reliever inhaler | Ventolin, ProAir | Ventolin, Salamol | prescription in practice, so bring your own supply and documentation\nLow-dose codeine painkiller | Tylenol with codeine, co-codamol | Solpadeine | Solpadeine (8 mg codeine) is sold by pharmacists without a prescription; higher-strength codeine products are not sold in Cyprus\n\nA few of these will surprise people coming from the UK or US, in both directions. Cyprus is often more relaxed than home about low-dose codeine painkillers, yet stricter about things you might expect to grab off a shelf, such as an asthma inhaler. Remember too that brand availability and prescription status change over time, and that a pharmacist always has final discretion. So treat this as a starting point rather than a guarantee: for anything you depend on, confirm its status before you travel, and once you arrive simply ask any Cyprus pharmacist, who can almost always suggest a local equivalent. Pharmacists here are exceptionally accessible, used to advising walk-in customers on minor ailments, and in the towns and tourist areas the vast majority speak fluent English.",
 			},
 			{
 				heading: "Bringing personal medication supply into Cyprus",
@@ -1340,7 +1369,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "How much does medication cost under GeSY in Cyprus?",
-				a: "With a GeSY prescription from your registered personal doctor, generic medications cost €1 per item. Branded medications cost more where no generic exists — you pay the gap between GeSY's reference price and the retail price. Chronic-disease medications (diabetes, hypertension, thyroid) are available at zero co-payment.",
+				a: `With a GeSY prescription from your registered personal doctor, generic medications cost ${eur(GESY_RX_ITEM_COPAY)} per item. Branded medications cost more where no generic exists: you pay the gap between GeSY's reference price and the retail price.`,
 			},
 			{
 				q: "Can I bring my own medication supply into Cyprus?",
@@ -1348,7 +1377,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "What medications are available over the counter in Cyprus?",
-				a: "Cyprus pharmacists can dispense some medications without a prescription that require one elsewhere in the EU, including stronger codeine-combination painkillers, certain antifungals, and some oral contraceptives. Ask the pharmacist directly for routine ailments — a brief consultation is standard practice.",
+				a: "Cyprus pharmacists can sell some medicines without a prescription that need one elsewhere, such as low-dose codeine painkillers (Solpadeine, 8 mg codeine) and many antifungal creams. Oral contraceptives and antibiotics, including eye drops, need a prescription. Ask the pharmacist directly for routine ailments: a brief consultation is standard practice.",
 			},
 			{
 				q: "Can I buy paracetamol and ibuprofen over the counter in Cyprus, and what are they called?",
@@ -1412,7 +1441,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "emergency-services-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [HT_SRC.gesyCopay],
 		category: "healthcare",
 		title: "Emergency Services in Cyprus: 112 & A&E Guide",
 		description:
@@ -1432,7 +1463,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "What to bring and what to expect",
-				body: "For any A&E visit in Cyprus, bring: your ARC or Yellow Slip, your GeSY HIO card or beneficiary number, any relevant private health insurance card or policy number, and a list of your current medications. Public A&E operates on triage — genuine emergencies are seen immediately, non-critical presentations wait. Public hospital A&E waiting times for non-critical cases can reach 3–5 hours on busy evenings and weekends, which is comparable to UK NHS experience. If you have GeSY coverage, the public A&E co-payment is €10–€15 for the visit. If you do not yet have GeSY (new arrivals in their first weeks), public A&E charges a flat fee that varies by treatment — typically €50–€150 for a non-admission A&E visit. The clinical standard at the major public hospitals has improved substantially since GeSY's introduction, which brought performance incentives. For children: Makarios Hospital in Nicosia is the main pediatric facility, with Limassol and Paphos General hospitals also having pediatric departments.",
+				body: `For any A&E visit in Cyprus, bring: your ARC or Yellow Slip, your GeSY HIO card or beneficiary number, any relevant private health insurance card or policy number, and a list of your current medications. Public A&E operates on triage: genuine emergencies are seen immediately, non-critical presentations wait. Public hospital A&E waiting times for non-critical cases can reach 3–5 hours on busy evenings and weekends, which is comparable to UK NHS experience. If you have GeSY coverage, the public A&E co-payment is ${eur(GESY_AE_COPAY)} per visit. If you do not yet have GeSY (new arrivals in their first weeks), public A&E charges a flat fee that varies by treatment, typically €50–€150 for a non-admission A&E visit. The clinical standard at the major public hospitals has improved substantially since GeSY's introduction, which brought performance incentives. For children: Makarios Hospital in Nicosia is the main pediatric facility, with Limassol and Paphos General hospitals also having pediatric departments.`,
 			},
 			{
 				heading: "Air ambulance and serious trauma",
@@ -1474,7 +1505,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "driving-licence-conversion",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [HT_SRC.licenceConversion],
 		category: "transport",
 		title: "Converting Your Driving Licence in Cyprus",
 		description:
@@ -1494,11 +1527,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Documents required for the exchange",
-				body: "For a reciprocal-agreement exchange, bring to the Traffic Department: your original foreign driving licence, your ARC (Alien Registration Certificate) or Yellow Slip, your passport, two recent passport-sized photographs (35mm x 45mm, white background), and a completed application form (available at the office). For the full test route (non-reciprocal countries), the same documents are required plus a medical certificate from a Cyprus GP confirming fitness to drive (a standard document that most GPs issue at a check-up visit for €20–€30). The medical certificate requirement applies to all applicants over 65 regardless of nationality. A certified translation of your foreign licence is required if it is not in Greek, English, or a Latin alphabet — translations cost €30–€50 at certified translation agencies; the Traffic Department maintains a list of approved translators. Do not arrive without all documents: the Traffic Department will not process partial applications and a second visit resets the queue.",
+				body: `For a reciprocal-agreement exchange, bring to the Traffic Department: your original foreign driving licence, your ARC (Alien Registration Certificate) or Yellow Slip, your passport, two recent passport-sized photographs (35mm x 45mm, white background), and a completed application form (available at the office). For the full test route (non-reciprocal countries), the same documents are required plus a medical certificate from a Cyprus GP confirming fitness to drive (a standard document that most GPs issue at a check-up visit for €20–€30). The medical certificate requirement applies to all applicants aged ${LICENCE_MEDICAL_AGE} or over, and to lorry and bus licences, regardless of nationality. A certified translation of your foreign licence is required if it is not in Greek, English, or a Latin alphabet; translations cost €30–€50 at certified translation agencies; the Traffic Department maintains a list of approved translators. Do not arrive without all documents: the Traffic Department will not process partial applications and a second visit resets the queue.`,
 			},
 			{
 				heading: "Traffic Department offices, timeline, and cost",
-				body: "Traffic Department offices that handle driving licence applications are located in all five district capitals: Nicosia (main office, Athalassa Avenue), Limassol (Omonia Avenue office), Larnaca (Artemidos Avenue), Paphos (Neofytou Nikolaidi Street), and Famagusta (Paralimni office serving the eastern district). Appointments can be booked online via the Cyprus e-Government portal (eservices.gov.cy) or by phone; walk-in availability exists but is limited in peak periods. For a reciprocal exchange, the processing time from application submission to receiving the Cyprus licence is typically 4–8 weeks, the licence is printed centrally and posted to your registered address. For the test route, add the testing period to this timeline. Cost breakdown for a reciprocal exchange: application fee approximately €50–€70 (fees are reviewed annually), plus document translation if needed. There is no additional fee for the physical licence card. Keep a copy of your application receipt, the Traffic Department receipt serves as temporary proof of an in-progress application if you are stopped by police before the new licence arrives. While the exchange is in progress, many newcomers arrange a [monthly car rental](/guides/long-term-car-rental-cyprus/); check the provider's licence requirements first, especially for stays over three months on a non-EU licence.",
+				body: `Traffic Department offices that handle driving licence applications are located in all five district capitals: Nicosia (main office, Athalassa Avenue), Limassol (Omonia Avenue office), Larnaca (Artemidos Avenue), Paphos (Neofytou Nikolaidi Street), and Famagusta (Paralimni office serving the eastern district). Appointments can be booked online via the Cyprus e-Government portal (eservices.gov.cy) or by phone; walk-in availability exists but is limited in peak periods. For a reciprocal exchange, the processing time from application submission to receiving the Cyprus licence is typically 4–8 weeks, the licence is printed centrally and posted to your registered address. For the test route, add the testing period to this timeline. Cost breakdown for a reciprocal exchange: the licence fee is ${eur(LICENCE_FEE)}, plus document translation if needed. There is no additional fee for the physical licence card. Keep a copy of your application receipt, the Traffic Department receipt serves as temporary proof of an in-progress application if you are stopped by police before the new licence arrives. While the exchange is in progress, many newcomers arrange a [monthly car rental](/guides/long-term-car-rental-cyprus/); check the provider's licence requirements first, especially for stays over three months on a non-EU licence.`,
 			},
 		],
 	},
@@ -1536,7 +1569,14 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "airport-transfers-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			HT_SRC.airportTaxiFares,
+			HT_SRC.larnacaBuses,
+			HT_SRC.paphosAirportBuses,
+			HT_SRC.airportExpress,
+		],
 		category: "transport",
 		title: "Cyprus Airport Transfers 2026: All Options",
 		description:
@@ -1544,15 +1584,15 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "Larnaca Airport: your options at a glance",
-				body: "Larnaca International Airport (LCA) is Cyprus's main hub and handles the majority of international arrivals. The taxi rank is immediately outside arrivals — licensed taxis have fixed rates for major routes, displayed at the rank and regulated by the government. Current published rates: Larnaca city centre €20, Ayia Napa €35–€40, Protaras €45, Limassol city €50–€60 (depending on exact destination), Paphos €100–€110. These are one-person rates; most drivers do not add supplements for luggage or late-night arrivals, but confirm before entering. Journey times: city centre 15–20 minutes, Ayia Napa 45 minutes, Limassol 55–70 minutes. For the Limassol route, shared taxi services (see below) offer the same journey at significantly lower cost. Bolt (the Uber equivalent in Cyprus) is available at Larnaca but has inconsistent coverage at the airport itself — it works well for rides from the city but airport pickups depend on driver availability.",
+				body: `Larnaca International Airport (LCA) is Cyprus's main hub and handles the majority of international arrivals. The taxi rank is immediately outside arrivals; licensed taxis have fixed rates for major routes, displayed at the rank and regulated by the government. Fixed rank fares (day / night, up to 4 passengers, luggage included): Larnaca centre ${dayNight(LCA_TAXI.larnacaCentre)}, Ayia Napa ${dayNight(LCA_TAXI.ayiaNapa)}, Protaras ${dayNight(LCA_TAXI.protaras)}, Limassol ${dayNight(LCA_TAXI.limassol)}, Paphos ${dayNight(LCA_TAXI.paphos)}. Night rates apply ${TAXI_NIGHT_HOURS}. Journey times: city centre 15–20 minutes, Ayia Napa 45 minutes, Limassol 55–70 minutes. For the Limassol route, shared taxi services (see below) offer the same journey at significantly lower cost. Bolt (the Uber equivalent in Cyprus) is available at Larnaca but has inconsistent coverage at the airport itself: it works well for rides from the city but airport pickups depend on driver availability.`,
 			},
 			{
 				heading: "Paphos Airport: taxis and connections",
-				body: "Paphos International Airport (PFO) serves Paphos, western Cyprus, and overflow tourist traffic from Limassol. The fixed taxi rates from Paphos airport are: Paphos city centre and tourist area €15–€20, Limassol €45–€55, Larnaca €100–€115. Journey times: Paphos centre 15–20 minutes, Limassol 45–55 minutes. Paphos is well served by local taxi drivers who know the international community and will quote reasonable rates; the official taxi rank outside arrivals has metered and fixed-rate options. Bolt does operate in Paphos city but airport coverage is limited — do not rely on it for an airport pickup with luggage, particularly in the evening. For the Limassol route, a local private transfer service called A2B Transfer and several Limassol-based operators offer pre-booked fixed-price transfers that are often cheaper than taxis for two or more passengers.",
+				body: `Paphos International Airport (PFO) serves Paphos, western Cyprus, and overflow tourist traffic from Limassol. The fixed taxi rates from Paphos airport are: Kato Paphos ${dayNight(PFO_TAXI.katoPaphos)}, Chloraka ${dayNight(PFO_TAXI.chloraka)}, Coral Bay ${dayNight(PFO_TAXI.coralBay)}, Limassol ${dayNight(PFO_TAXI.limassol)}, Larnaca ${dayNight(PFO_TAXI.larnaca)} (day / night, up to 4 passengers). Journey times: Paphos centre 15–20 minutes, Limassol 45–55 minutes. Paphos is well served by local taxi drivers who know the international community and will quote reasonable rates; airport rank fares are fixed by law. Bolt does operate in Paphos city but airport coverage is limited, so do not rely on it for an airport pickup with luggage, particularly in the evening. For the Limassol route, a local private transfer service called A2B Transfer and several Limassol-based operators offer pre-booked fixed-price transfers that are often cheaper than taxis for two or more passengers.`,
 			},
 			{
-				heading: "OSYPA intercity buses from airports",
-				body: "OSYPA (the Cyprus intercity bus operator) runs routes connecting Larnaca airport to Larnaca city centre and Limassol. The Larnaca airport to Limassol express bus runs several times daily on weekdays and costs approximately €4–€8; journey time is about 90 minutes, stopping in Larnaca first. OSYPA's schedules are available at intercitybuses.com — the timetable is broadly reliable but does not operate the same frequency as a train network, so check the last departure time before relying on it for a late-night flight. From Paphos airport, there is no direct intercity bus service to the airport terminal; the nearest bus stop is on the main road roughly 1km away, served by routes into Paphos town (€1.50). Most Paphos airport arrivals use taxis or pre-booked transfers. For arrivals with heavy luggage or late-night flights, the cost difference between a €6 bus and a €20 taxi is rarely worth the inconvenience.",
+				heading: "Buses from the airports",
+				body: `Route 425 (Cyprus Public Transport) links Larnaca airport with Larnaca town (${eur(LARNACA_BUS.singleCash)} cash, ${eur(LARNACA_BUS.singleCard)} by Motion card). For Limassol, the Limassol Airport Express runs from both Larnaca and Paphos airports for ${eur(AIRPORT_EXPRESS_FARE.adult)} (children ${eur(AIRPORT_EXPRESS_FARE.child)}). Check its timetable before a late flight. From Paphos airport, OSYPA routes 612 and 613 run to Paphos town for ${eur(PAPHOS_BUS.single)}. Most Paphos airport arrivals use taxis or pre-booked transfers. For arrivals with heavy luggage or late-night flights, the saving from taking the bus is rarely worth the inconvenience.`,
 			},
 			{
 				heading: "Shared transfer services and the Bolt alternative",
@@ -1560,7 +1600,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Tips for smooth arrivals and late-night logistics",
-				body: "Three practical notes from regular Cyprus travellers. First, have your destination address written down (not just 'the Limassol marina area') — taxi drivers know landmarks but not all know every building name, and the GPS on some older taxis is unreliable for new developments. Second, Cyprus taxis accept cash (euros) and most now accept cards — always confirm card payment before the journey begins, since a few older drivers still only take cash. Third, for group arrivals of three or more, a private transfer pre-booked online is almost always cheaper than splitting a licensed taxi: compare rates on Taxiplon, ICT Cyprus, and Paphos Taxis before booking. For the Larnaca to Ayia Napa route, Paralimni-based shared minivans run to the resort strip for under €15 per person and are worth investigating if you are arriving at a reasonable hour. The Larnaca to Larnaca city centre journey is so short — under 20 minutes — that a taxi for €20 is almost always the correct answer regardless of group size.",
+				body: `Three practical notes from regular Cyprus travellers. First, have your destination address written down (not just 'the Limassol marina area'): taxi drivers know landmarks but not all know every building name, and the GPS on some older taxis is unreliable for new developments. Second, Cyprus taxis accept cash (euros) and most now accept cards, but always confirm card payment before the journey begins, since a few older drivers still only take cash. Third, for group arrivals of three or more, a private transfer pre-booked online is almost always cheaper than splitting a licensed taxi: compare rates on Taxiplon, ICT Cyprus, and Paphos Taxis before booking. For the Larnaca to Ayia Napa route, Paralimni-based shared minivans run to the resort strip for under €15 per person and are worth investigating if you are arriving at a reasonable hour. The Larnaca to Larnaca city centre journey is so short (under 20 minutes) that a taxi for ${eur(LCA_TAXI.larnacaCentre.day)} is almost always the correct answer regardless of group size.`,
 			},
 		],
 	},
@@ -2369,7 +2409,15 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "schools-in-cyprus",
 		datePublished: "2026-06-09",
-		dateModified: "2026-10-01",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			HT_SRC.schoolRegister,
+			HT_SRC.heritageFees,
+			HT_SRC.foleysFees,
+			HT_SRC.grammarFees,
+			HT_SRC.ispFees,
+		],
 		category: "family",
 		title: "International Schools in Cyprus: Full Guide 2026",
 		description:
@@ -2385,15 +2433,15 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Limassol — the deepest international market",
-				body: "Limassol hosts the largest concentration of international schools in Cyprus. The Heritage Private School in Pyrgos is the most prestigious and most expensive — British curriculum from age 3 to 18, with IB Diploma at sixth form, fees from €8,000 (early years) to €14,000 (sixth form), and a waiting list for senior-year admissions of typically 6–12 months. Foley's Grammar School is the second flagship British-curriculum option, broadly comparable academically with slightly more accessible admissions and fees of €6,500–€11,000. The Grammar School Limassol covers ages 3 to 18 in British curriculum with strong A-level results, fees €6,000–€10,000. The American Academy Limassol covers American curriculum through AP level, fees €5,500–€9,500. For Russian-medium schooling, several private Russian schools operate in the city though enrolment has declined sharply since 2022. The City University Limassol and Cyprus University of Technology give Limassol the strongest secondary-to-tertiary pipeline on the island; many Limassol expat families specifically choose this for the option of children continuing at local university.",
+				body: `Limassol hosts the largest concentration of international schools in Cyprus. The Heritage Private School in Palodia is the most prestigious and most expensive: British curriculum from age 3 to 18, with IB Diploma at sixth form, fees from ${eur(FEES_HERITAGE.from)} (early years) to ${eur(FEES_HERITAGE.to)} (sixth form) in 2026-27, and a waiting list for senior-year admissions of typically 6–12 months. Foley's Grammar School is the second flagship British-curriculum option, broadly comparable academically with slightly more accessible admissions and fees of ${feeRange(FEES_FOLEYS)}. The Grammar School Limassol is a secondary school (ages 11 to 18) with strong A-level results; fees are ${feeRange(FEES_GRAMMAR_LIMASSOL)} for non-Cypriot pupils. The American Academy Limassol covers American curriculum through AP level, fees €5,500–€9,500. For Russian-medium schooling, several private Russian schools operate in the city though enrolment has declined sharply since 2022. The City University Limassol and Cyprus University of Technology give Limassol the strongest secondary-to-tertiary pipeline on the island; many Limassol expat families specifically choose this for the option of children continuing at local university.`,
 			},
 			{
 				heading: "Paphos and Larnaca — quality without scale",
-				body: "Paphos and Larnaca have smaller international school markets but with credible options. In Paphos, The International School of Paphos is the largest English-medium school, British curriculum from age 3 to 18, fees €5,800–€9,200. Aspire Private British School covers ages 4–18 with smaller class sizes (~14 per class) and fees €5,500–€8,500. Logos School of English Education is the older, more academic option with consistently strong A-level results. École Française de Paphos serves French-medium families at primary level. Neapolis University Paphos provides local tertiary education in psychology, law and business. In Larnaca, The American Academy Larnaca is the best-known English-medium school, US-style curriculum through to Grade 12 with SAT preparation, fees €5,500–€8,500. Pascal Private School operates a Larnaca campus alongside its Limassol location. The Med High School covers ages 12–18 with British curriculum. Several smaller British-curriculum primary schools serve the under-12 expat population. Larnaca's tertiary options are thinner — most students continue at Nicosia or Limassol universities or go abroad.",
+				body: `Paphos and Larnaca have smaller international school markets but with credible options. In Paphos, The International School of Paphos is the largest English-medium school, British curriculum from age 3 to 18, fees from ${eur(FEES_ISP.from)} (pre-reception and reception) to ${eur(FEES_ISP.to)} (sixth form) in 2026-27. Aspire Private British School covers ages 4–18 with smaller class sizes (~14 per class) and fees €5,500–€8,500. Neapolis University Paphos provides local tertiary education in psychology, law and business. In Larnaca, The American Academy Larnaca is the best-known English-medium school, US-style curriculum through to Grade 12 with SAT preparation, fees ${feeRange(FEES_AMERICAN_ACADEMY_LARNACA)} in 2026-27. Pascal Private School operates a Larnaca campus alongside its Limassol location. The Med High School covers ages 12–18 with British curriculum. Several smaller British-curriculum primary schools serve the under-12 expat population. Larnaca's tertiary options are thinner: most students continue at Nicosia or Limassol universities or go abroad.`,
 			},
 			{
 				heading: "The Famagusta-Ayia Napa area — the schooling challenge",
-				body: "The Famagusta free area has the thinnest school market of the four regions on this site, and schooling is the single most common reason families with secondary-age children choose Larnaca over Protaras or Ayia Napa despite preferring the SE beaches. The Heritage Private School Paralimni (distinct from the Limassol Heritage) is the main local British-curriculum option, well-regarded at the primary level with secondary years still being established. A small number of additional preschools and primaries serve the expat community. For secondary education (ages 12–18), most expat families in the SE either commute their children daily to The American Academy Larnaca (35–45 minutes each way) or to one of the Larnaca British schools. Public Greek-medium schools in Paralimni, Sotira and Frenaros are good and have absorbed meaningful numbers of expat primary children. The pragmatic recommendation for families with school-age children considering the SE: confirm your school plan before signing on the property, including a test of the daily commute.",
+				body: "The Famagusta free area has the thinnest school market of the four regions on this site, and schooling is the single most common reason families with secondary-age children choose Larnaca over Protaras or Ayia Napa despite preferring the SE beaches. The only registered English-language private school in the area is Xenion (with Xenion High School) in Paralimni. A small number of preschools also serve the expat community. For secondary education (ages 12–18), most expat families in the SE either commute their children daily to The American Academy Larnaca (35–45 minutes each way) or to one of the Larnaca British schools. Public Greek-medium schools in Paralimni, Sotira and Frenaros are good and have absorbed meaningful numbers of expat primary children. The pragmatic recommendation for families with school-age children considering the SE: confirm your school plan before signing on the property, including a test of the daily commute.",
 			},
 			{
 				heading: "Curricula and university outcomes",
@@ -2408,7 +2456,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "healthcare-in-cyprus",
 		datePublished: "2026-06-09",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [HT_SRC.gesyCopay, HT_SRC.medicinesPriceList],
 		category: "healthcare",
 		title: "Healthcare in Cyprus 2026: GeSY & Private Guide",
 		description:
@@ -2424,7 +2474,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "What GeSY covers",
-				body: "GeSY covers an extensive list of services with no out-of-pocket cost or with very small co-payments: visits to your Personal Doctor (free), visits to specialists by referral from your Personal Doctor (€6 per visit, capped at €150 per year per beneficiary), all prescription medications dispensed by GeSY-contracted pharmacies (€1 co-payment per prescription, also capped annually), most laboratory and imaging tests at GeSY-contracted facilities (€1 per test up to caps), inpatient hospitalisation including surgery at GeSY-contracted public and private hospitals, emergency room visits (€10 co-payment), childbirth (free), preventive care including vaccinations and screening tests (free), mental health services (free to €6 per visit). Dental care is included for children under 18 (free preventive and conservative care) and partially included for adults (some basic interventions). Major exclusions: cosmetic procedures, fertility treatments beyond a limited subsidised programme, most adult dental work beyond basics, optical (eye tests and glasses), and elective procedures with long-established alternative private routes. Co-payment annual caps protect against catastrophic costs — total out-of-pocket per beneficiary is capped at €300 per year for most categories, €75 for low-income earners and €0 for vulnerable groups.",
+				body: `GeSY covers an extensive list of services with no out-of-pocket cost or with very small co-payments: visits to your Personal Doctor (free), visits to specialists by referral from your Personal Doctor (€6 per visit, capped at €150 per year per beneficiary), all prescription medications dispensed by GeSY-contracted pharmacies (${eur(GESY_RX_ITEM_COPAY)} per item, counted towards the annual cap), most laboratory and imaging tests at GeSY-contracted facilities (€1 per test up to caps), inpatient hospitalisation including surgery at GeSY-contracted public and private hospitals, emergency room visits (${eur(GESY_AE_COPAY)} co-payment), childbirth (free), preventive care including vaccinations and screening tests (free), mental health services (free to €6 per visit). Dental care is included for children under 18 (free preventive and conservative care) and partially included for adults (some basic interventions). Major exclusions: cosmetic procedures, fertility treatments beyond a limited subsidised programme, most adult dental work beyond basics, optical (eye tests and glasses), and elective procedures with long-established alternative private routes. Co-payment annual caps protect against catastrophic costs. Co-payments are capped at ${eur(GESY_ANNUAL_CAP)} a year per person, or ${eur(GESY_ANNUAL_CAP_REDUCED)} for under-21s, minimum-income recipients and low-income pensioners.`,
 			},
 			{
 				heading: "Public versus private hospitals",
@@ -2440,7 +2490,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Emergencies, pharmacies and gotchas for new arrivals",
-				body: "For emergencies, the EU-wide 112 number works throughout Cyprus and gives you ambulance, fire and police. Response times in the major cities are good (typically under 10 minutes for ambulances); rural village response can be longer. Emergency room visits at public hospitals are free for GeSY beneficiaries (with a €10 co-payment per visit); private hospitals will admit emergencies and bill GeSY or your insurance afterwards. Pharmacies are abundant in every city — every Cypriot neighbourhood has at least one — and a 24-hour pharmacy rota means there is always one pharmacy open in each city overnight (published in local newspapers and online). Pharmacists in Cyprus are highly trained and can dispense many medications that would require a prescription in the UK or US (antibiotics, some antihypertensives) without one for established conditions, though GeSY-funded medications require a prescription. A few gotchas for new arrivals. (1) Make sure you transfer your medical records before moving — Cypriot doctors will not have your history and key documents (immunisation records, surgical history, medication lists) are useful to have. (2) Bring at least three months of any specialist medication on arrival; sourcing identical brands locally can take time and prescription refills cannot happen before GeSY registration. (3) For chronic conditions, identify and visit your specialist in Cyprus within the first 90 days of arrival to establish care continuity. (4) The Digital Nomad Visa requires private health insurance for the first year before GeSY registration becomes available — factor this into the early-year budget. (5) GeSY has a 100% transparent online portal — log in with your Cypriot government credentials (Ariadne portal) and you can see all your records, prescriptions, referrals and billing in one place.",
+				body: `For emergencies, the EU-wide 112 number works throughout Cyprus and gives you ambulance, fire and police. Response times in the major cities are good (typically under 10 minutes for ambulances); rural village response can be longer. A GeSY A&E visit costs ${eur(GESY_AE_COPAY)}; private hospitals will admit emergencies and bill GeSY or your insurance afterwards. Pharmacies are abundant in every city (every Cypriot neighbourhood has at least one), and a 24-hour pharmacy rota means there is always one pharmacy open in each city overnight (published in local newspapers and online). Pharmacists can advise on minor ailments and sell non-prescription medicines, but antibiotics and blood-pressure medicines need a prescription. A few gotchas for new arrivals. (1) Make sure you transfer your medical records before moving: Cypriot doctors will not have your history and key documents (immunisation records, surgical history, medication lists) are useful to have. (2) Bring at least three months of any specialist medication on arrival; sourcing identical brands locally can take time and prescription refills cannot happen before GeSY registration. (3) For chronic conditions, identify and visit your specialist in Cyprus within the first 90 days of arrival to establish care continuity. (4) The Digital Nomad Visa requires private health insurance for the first year before GeSY registration becomes available, so factor this into the early-year budget. (5) GeSY has a 100% transparent online portal: log in with your Cypriot government credentials (Ariadne portal) and you can see all your records, prescriptions, referrals and billing in one place.`,
 			},
 		],
 	},
@@ -2489,37 +2539,39 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "long-term-car-rental-cyprus",
 		datePublished: "2026-06-18",
-		dateModified: "2026-09-30",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [HT_SRC.astra, HT_SRC.autohellasCyprus],
 		category: "lifestyle",
 		title: "Long-Term Car Rental Cyprus 2026: Monthly Hire Rates",
 		description:
-			"Long-term car rental in Cyprus (monthly car hire): typical €300–€950/month rates, what is included, Limassol, Larnaca and Paphos options, and rent vs buy.",
+			"Long-term car rental in Cyprus (monthly car hire): rough monthly rates (€300–€950, a guide not a quote), what is included, Limassol, Larnaca and Paphos options, and rent vs buy.",
 		sections: [
 			{
 				heading:
 					"Monthly car rental vs daily hire: they are different products",
-				body: "Long-term car rental in Cyprus (also called monthly car rental or long-term car hire) means renting a car for 28 days or more. Most car rental websites in Cyprus are built around 3–14 day holiday rentals. Long-term rental, typically defined as 28 days or more, is a different product with different pricing, different contracts, and usually handled by a different department or a specialist company. Do not expect to price a 60-day stay by multiplying the daily rate by 60. Monthly contracts are priced as a separate category, typically between 40–60% lower on a per-day basis than short-term rates, and they come with dedicated agreements covering mileage limits, maintenance responsibilities, and insurance terms. The main international chains (Hertz, Avis, Budget, Enterprise, Europcar) all have a long-term division in Cyprus and will quote monthly and multi-month rates on request or through their long-term portals. Limassol and Larnaca are the primary hubs; Paphos has fewer options but major chains are present. Local Cypriot operators, Auto Union, Christodoulou Rentals, Astra Car Rental, Thrifty Cyprus, and a handful of independent dealers, often undercut the international chains on monthly rates and are worth getting quotes from.",
+				body: "Long-term car rental in Cyprus (also called monthly car rental or long-term car hire) means renting a car for 28 days or more. Most car rental websites in Cyprus are built around 3–14 day holiday rentals. Long-term rental, typically defined as 28 days or more, is a different product with different pricing, different contracts, and usually handled by a different department or a specialist company. Do not expect to price a 60-day stay by multiplying the daily rate by 60. Monthly contracts are priced as a separate category, typically between 40–60% lower on a per-day basis than short-term rates, and they come with dedicated agreements covering mileage limits, maintenance responsibilities, and insurance terms. The main international chains (Hertz, Avis, Budget, Enterprise, Europcar) all have a long-term division in Cyprus and will quote monthly and multi-month rates on request or through their long-term portals. Limassol and Larnaca are the primary hubs; Paphos has fewer options but major chains are present. Local operators such as Astra and Auto Union are worth asking for a quote alongside the international chains (Hertz, Avis, Budget, Europcar, Sixt).",
 			},
 			{
 				heading: "What to budget: monthly rates in 2026",
-				body: "Rates for monthly rentals in Cyprus in 2026 run roughly as follows (1–3 month contract, before any longer-term discount):\n\nEconomy (Fiat Panda, Toyota Aygo, Hyundai i10): €300–€450/month\nCompact (VW Polo, Toyota Yaris, Opel Corsa): €380–€550/month\nMid-size (VW Golf, Toyota Corolla, Seat Leon): €500–€750/month\nSUV / crossover (Toyota C-HR, Kia Sportage, Hyundai Tucson): €650–€950/month\nPremium / large SUV (Toyota RAV4, Volvo XC40, VW Tiguan): €900–€1,400/month\n\nOlder vehicles (3–5 years) from local operators can be materially cheaper — roughly €230–€380/month for a compact. These figures assume a contract of 1–3 months; rates fall further for 6-month and 12-month agreements, sometimes by 15–25% relative to the monthly rate. All major providers increase rates during peak summer months (June through September), when demand from the tourism market competes with long-term contracts. If your timing is flexible, signing a long-term agreement that starts in October or November gives you better rates and more vehicle choice.",
+				body: "The figures below are a rough guide, not quotes. No provider publishes monthly rates, so get written quotes from two or three providers before you decide. As a rough guide, monthly rentals in Cyprus in 2026 run as follows (1–3 month contract, before any longer-term discount):\n\nEconomy (Fiat Panda, Toyota Aygo, Hyundai i10): €300–€450/month\nCompact (VW Polo, Toyota Yaris, Opel Corsa): €380–€550/month\nMid-size (VW Golf, Toyota Corolla, Seat Leon): €500–€750/month\nSUV / crossover (Toyota C-HR, Kia Sportage, Hyundai Tucson): €650–€950/month\nPremium / large SUV (Toyota RAV4, Volvo XC40, VW Tiguan): €900–€1,400/month\n\nOlder vehicles (3–5 years) from local operators can be materially cheaper, roughly €230–€380/month for a compact. These figures assume a contract of 1–3 months; rates fall further for 6-month and 12-month agreements, sometimes by 15–25% relative to the monthly rate. All major providers increase rates during peak summer months (June through September), when demand from the tourism market competes with long-term contracts. If your timing is flexible, signing a long-term agreement that starts in October or November gives you better rates and more vehicle choice.",
 			},
 			{
 				heading:
 					"Cheapest long-term car rental in Cyprus: how to lower the monthly rate",
-				body: "There is no single cheapest provider, because monthly quotes change with season, car age and contract length. The levers that consistently lower the price, based on the ranges above, are these:\n\nStart outside summer. Rates rise from June through September, so a contract starting in October or November is cheaper and has more cars available.\n\nChoose a smaller or older car. Economy cars start around €300/month, and 3–5 year old cars from local operators run roughly €230–€380/month for a compact.\n\nCommit for longer. Six and twelve month agreements are often 15–25% cheaper per month than a 1–3 month contract.\n\nGet quotes from local operators as well as the international chains. Local specialists commonly come out 15–30% cheaper for 1–3 month contracts.\n\nCompare the total, not the headline rate. A low monthly price with a 2,000 km cap, a high excess or no breakdown cover can cost more than a slightly higher all-in quote. Ask each provider for the same package (mileage, CDW excess, servicing, VAT) so the quotes are comparable.",
+				body: "There is no single cheapest provider, because monthly quotes change with season, car age and contract length. The levers that consistently lower the price, based on the ranges above, are these:\n\nStart outside summer. Rates rise from June through September, so a contract starting in October or November is cheaper and has more cars available.\n\nChoose a smaller or older car. Economy cars start around €300/month, and 3–5 year old cars from local operators run roughly €230–€380/month for a compact.\n\nCommit for longer. Six and twelve month agreements are often 15–25% cheaper per month than a 1–3 month contract.\n\nGet quotes from local operators as well as the international chains. Local operators can be cheaper for monthly contracts, so ask both.\n\nCompare the total, not the headline rate. A low monthly price with a tight mileage cap, a high excess or no breakdown cover can cost more than a slightly higher all-in quote. Ask each provider for the same package (mileage, CDW excess, servicing, VAT) so the quotes are comparable.",
 			},
 			{
 				heading: "What is and is not included",
-				body: "A standard long-term rental in Cyprus typically includes: third-party liability insurance (legally required), Collision Damage Waiver (CDW) with a standard excess of €500–€2,000 depending on the provider and plan, breakdown assistance, routine servicing and tyres for contracts over three months, and road tax (if the vehicle is registered in Cyprus). What is usually not included: personal accident insurance (PAI), theft protection top-up to reduce or eliminate your excess, windscreen and tyre damage (this is almost always excluded from CDW), and fuel. Mileage allowances vary significantly — the most common structures for monthly contracts are 2,000 km/month included (with a per-km charge of €0.08–€0.15 for excess mileage) or unlimited mileage at a slight price premium. If you expect to drive more than 2,500 km per month, clarify the unlimited option upfront; excess mileage charges add up quickly. Many contracts for stays over three months include a vehicle swap or service interval clause — the provider swaps the car for a service if you exceed the manufacturer's service interval during your rental period.",
+				body: "A standard long-term rental in Cyprus typically includes: third-party liability insurance (legally required), Collision Damage Waiver (CDW) with an excess that depends on the provider and plan, breakdown assistance, routine servicing and tyres for contracts over three months, and road tax (if the vehicle is registered in Cyprus). What is usually not included: personal accident insurance (PAI), theft protection top-up to reduce or eliminate your excess, windscreen and tyre damage (this is almost always excluded from CDW), and fuel. Mileage allowances vary significantly: monthly contracts usually either include a set number of kilometres a month, with a per-km charge above it, or offer unlimited mileage at a slight price premium. Ask each provider for its allowance and excess-mileage charge, and if you expect to drive a lot, clarify the unlimited option upfront; excess mileage charges add up quickly. Many contracts for stays over three months include a vehicle swap or service interval clause: the provider swaps the car for a service if you exceed the manufacturer's service interval during your rental period.",
 			},
 			{
 				heading: "The main providers",
-				body: "Hertz and Avis have the widest fleet variety and the most straightforward online long-term booking portals, but their rates are typically the highest among the options available in Cyprus. Enterprise and Europcar are competitive on price and strong on fleet condition. Budget and Sixt are present in Cyprus and worth getting quotes from. For competitive pricing, local specialists are worth approaching directly: Auto Union (Limassol), Astra Car Rental (Limassol and Larnaca), and Christodoulou Rentals (multiple locations) regularly come out 15–30% cheaper than international chains for 1–3 month contracts. Some local operators offer the option to rent older vehicles (3–5 years) at materially lower rates — typically €230–€380/month for a compact — which is worth considering if your primary need is reliable daily transport rather than a new vehicle. For stays over six months, full operational leasing from companies like Intercar, Autohellas, or Sunseeker (which has a fleet of managed rental vehicles via their property business) can be competitive. Whichever provider you choose, contact the long-term or fleet desk directly rather than booking the advertised online rate — the website prices are tourist daily rates and rarely reflect the monthly contract price.",
+				body: "Hertz and Avis have the widest fleet variety and the most straightforward online long-term booking portals, but their rates are typically the highest among the options available in Cyprus. Enterprise and Europcar are competitive on price and strong on fleet condition. Budget and Sixt are present in Cyprus and worth getting quotes from. Local operators such as Astra (branches in all four cities and both airports) and Auto Union can be cheaper than the international chains for monthly contracts, so get quotes from both. Some local operators offer the option to rent older vehicles (3–5 years) at materially lower rates (roughly €230–€380/month for a compact, as a rough guide), which is worth considering if your primary need is reliable daily transport rather than a new vehicle. For stays over six months, ask about operational leasing; Hertz in Cyprus (run by Autohellas) offers it. Whichever provider you choose, contact the long-term or fleet desk directly rather than booking the advertised online rate, because the website prices are tourist daily rates and rarely reflect the monthly contract price.",
 			},
 			{
 				heading: "Long-term car rental in Limassol",
-				body: "Limassol is the main hub for monthly car rental on the island, and the base of several of the local operators named above (Auto Union and Astra Car Rental). It has no airport of its own: most people arrive via Larnaca (a licensed taxi is about 55–70 minutes) or Paphos (about 45–55 minutes), so ask providers whether they deliver the car to the airport or you collect it in the city. Limassol is also the city where you can most realistically live with one car or none (see [getting around Cyprus without a car](/guides/getting-around-cyprus-no-car/)), which makes a shorter or smaller rental a sensible choice. Free parking is scarce in the tourist zones, so check whether your building includes a parking space before you choose a larger car.",
+				body: "Limassol is the main hub for monthly car rental on the island. Astra and Auto Union both have Limassol branches. It has no airport of its own: most people arrive via Larnaca (a licensed taxi is about 55–70 minutes) or Paphos (about 45–55 minutes), so ask providers whether they deliver the car to the airport or you collect it in the city. Limassol is also the city where you can most realistically live with one car or none (see [getting around Cyprus without a car](/guides/getting-around-cyprus-no-car/)), which makes a shorter or smaller rental a sensible choice. Free parking is scarce in the tourist zones, so check whether your building includes a parking space before you choose a larger car.",
 			},
 			{
 				heading: "Long-term car rental in Larnaca",
@@ -2557,11 +2609,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "What is a good monthly rental rate for a car in Cyprus in 2026?",
-				a: "Expect to pay €380–€550/month for a compact class car (VW Polo, Toyota Yaris) on a 1–3 month contract from a local provider. International chains typically run €450–€650 for the same class. Economy cars start around €300/month. Mid-size cars and SUVs run €600–€950/month. Rates are lower for 6-month or 12-month agreements and higher during peak summer months.",
+				a: "As a rough guide, not a quote, expect to pay €380–€550/month for a compact class car (VW Polo, Toyota Yaris) on a 1–3 month contract from a local provider. International chains typically run €450–€650 for the same class. Economy cars start around €300/month. Mid-size cars and SUVs run €600–€950/month. Rates are lower for 6-month or 12-month agreements and higher during peak summer months. No provider publishes monthly rates, so get written quotes before you decide.",
 			},
 			{
 				q: "Which companies offer long-term monthly car rental in Cyprus?",
-				a: "All major international chains operate in Cyprus: Hertz, Avis, Budget, Enterprise, Europcar, and Sixt. Local Cypriot providers — Auto Union (Limassol), Astra Car Rental (Limassol and Larnaca), and Christodoulou Rentals — typically offer 15–30% lower rates on monthly contracts. For stays over six months, operational leasing from Intercar or Autohellas is also worth comparing.",
+				a: "All major international chains operate in Cyprus: Hertz, Avis, Budget, Enterprise, Europcar, and Sixt. Local providers such as Astra and Auto Union can be cheaper on monthly contracts. For stays over six months, Hertz Cyprus offers operational leasing.",
 			},
 			{
 				q: "Can I get a long-term car rental in Cyprus without a credit card?",
@@ -2580,11 +2632,13 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "property-lawyers-cyprus",
 		datePublished: "2026-06-18",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [HT_SRC.advocatesLaw],
 		category: "property",
 		title: "Property Lawyers in Cyprus 2026: Fees & Guide",
 		description:
-			"A practical guide to using a property lawyer when buying in Cyprus — what they do that your estate agent does not, what normal fees look like (1–2% or €1,500–€3,000 fixed), how to find a reputable one, and the red flags that cost buyers tens of thousands of euros.",
+			"A practical guide to using a property lawyer when buying in Cyprus: what they do that your estate agent does not, what fees typically look like (often 1% to 1.5% plus VAT), how to find a reputable one, and the red flags that cost buyers tens of thousands of euros.",
 		sections: [
 			{
 				heading: "Why a property lawyer is not optional in Cyprus",
@@ -2596,7 +2650,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "What normal fees look like",
-				body: "Cyprus property lawyer fees for a residential purchase follow one of two structures. The more common structure for straightforward transactions is a percentage of the purchase price: typically 1–1.5% for purchases under €500,000, sometimes with a minimum fee floor of €1,500. For a €250,000 apartment, this runs €2,500–€3,750. For complex transactions (off-plan with developer risk, international buyer with foreign currency complications, estates or divorce sales, company-owned property) or purchases over €1 million, fixed-fee structures of €3,000–€6,000 are more common. Both fee structures typically exclude VAT at 19%, the DLS contract deposit fee (€20–€50), and any title deed transfer fees — these are paid separately to the DLS and are not part of the lawyer's fee (stamp duty on property contracts was abolished from 1 January 2026). Disbursements (land registry search certificates, document translations, courier fees) add a further €200–€500 on average. Be cautious of quotes materially below these ranges — a property lawyer charging €500 flat for a €300,000 purchase is either billing their time at implausible rates or is not performing all the due diligence steps.",
+				body: "Fees have not been regulated since 2018, so quotes vary. Cyprus property lawyer fees for a residential purchase follow one of two structures. The more common structure for straightforward transactions is a percentage of the purchase price: often 1% to 1.5% plus VAT, sometimes with a minimum fee. For a €250,000 apartment, this runs €2,500–€3,750 plus VAT. For complex transactions (off-plan with developer risk, international buyer with foreign currency complications, estates or divorce sales, company-owned property) or purchases over €1 million, some lawyers quote a fixed fee instead. Both fee structures typically exclude VAT at 19%, the DLS contract deposit fee (€20–€50), and any title deed transfer fees; these are paid separately to the DLS and are not part of the lawyer's fee (stamp duty on property contracts was abolished from 1 January 2026). Disbursements (land registry search certificates, document translations, courier fees) add a further €200–€500 on average. Get two or three written quotes and agree the fee in writing before work starts. Be cautious of quotes materially below these ranges: a property lawyer charging €500 flat for a €300,000 purchase is either billing their time at implausible rates or is not performing all the due diligence steps.",
 			},
 			{
 				heading: "How to find a reputable property lawyer",
@@ -2614,7 +2668,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		faqs: [
 			{
 				q: "How much does a property lawyer cost in Cyprus?",
-				a: "For a standard residential purchase, expect 1–1.5% of the purchase price, with a minimum floor of around €1,500. On a €250,000 apartment this runs €2,500–€3,750 plus VAT at 19%. Fixed-fee structures of €3,000–€5,000 are common for complex transactions or purchases over €500,000. These figures exclude DLS fees, transfer fees, and disbursements (stamp duty on property contracts was abolished from 1 January 2026).",
+				a: "Fees have not been regulated since 2018, so quotes vary. For a standard residential purchase, expect around 1% to 1.5% of the purchase price plus VAT, often with a minimum fee. On a €250,000 apartment this runs €2,500–€3,750 plus VAT at 19%. Some lawyers quote a fixed fee for complex transactions, so get two or three written quotes. These figures exclude DLS fees, transfer fees, and disbursements (stamp duty on property contracts was abolished from 1 January 2026).",
 			},
 			{
 				q: "Can I buy property in Cyprus without using a lawyer?",
@@ -2637,7 +2691,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "best-areas-to-live-cyprus",
 		datePublished: "2026-06-22",
-		dateModified: "2026-10-01",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [HT_SRC.schoolRegister, HT_SRC.ispFees],
 		category: "lifestyle",
 		title: "Best Places to Live in Cyprus 2026: City Guide",
 		description:
@@ -2671,7 +2727,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		faqs: [
 			{
 				q: "What is the best city in Cyprus for families?",
-				a: "Limassol and Paphos are the strongest options for families with children, primarily because of international school availability. Limassol has the widest range (The Heritage Private School, American Academy, Falcon School, Pascal English School, among others). Paphos has several solid options including The Grammar School and Paphos Aspire Academy. Larnaca is improving but has fewer established international schools. Ayia Napa has very limited options.",
+				a: `Limassol and Paphos are the strongest options for families with children, primarily because of international school availability. Limassol has the widest range (The Heritage Private School, American Academy, Pascal, among others). In Paphos, The International School of Paphos (${feeRange(FEES_ISP)} a year) is the largest; Aspire, Lumio and TLC in Peyia are the other registered English-language schools. Larnaca is improving but has fewer established international schools. Near Ayia Napa, the only registered English-language private school is Xenion in Paralimni.`,
 			},
 			{
 				q: "What is the best city in Cyprus for remote workers?",
@@ -2784,6 +2840,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 				label: "Tax Department: Income Tax Law amendments 2026 (Greek, PDF)",
 				url: "https://www.gov.cy/media/sites/167/2026/03/2026-ΦορΜεταρρύθμιση-Φόρος-Εισοδήματος.pdf",
 			},
+			HT_SRC.licenceConversion,
 		],
 		category: "immigration",
 		title: "Moving to Cyprus from the UK After Brexit: 2026 Guide",
@@ -2808,7 +2865,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Converting your UK driving licence",
-				body: "UK driving licences are valid in Cyprus for driving as a visitor. Once you establish residency, specifically, once you have a residency permit and a registered Cyprus address, you are required to exchange your UK licence for a Cyprus licence. The relevant authority is the Department of Road Transport (MCIT), and the exchange is handled at the Limassol, Larnaca, or Paphos district offices. The process: present your current UK driving licence (full, not provisional), your residency permit or registration certificate, a Cyprus identity document or passport, a medical certificate (a standard medical examination by a registered Cypriot doctor, costs approximately €30–€50), and proof of Cyprus address. The exchange fee is approximately €35–€55. Processing typically takes 2–6 weeks. Your UK licence categories transfer directly, if your UK licence covers car and motorcycle, your Cyprus licence will cover the same. There is no requirement to re-take a driving test for UK licence holders. Note: Cyprus drives on the left, which is the same as the UK, the transition is significantly easier than for continental European licence holders. That also makes a [long-term car rental in Cyprus](/guides/long-term-car-rental-cyprus/) straightforward for UK arrivals in their first months.",
+				body: `UK driving licences are valid in Cyprus for driving as a visitor. Once you establish residency, specifically, once you have a residency permit and a registered Cyprus address, you are required to exchange your UK licence for a Cyprus licence. The relevant authority is the Department of Road Transport (MCIT), and the exchange is handled at the Limassol, Larnaca, or Paphos district offices. The process: present your current UK driving licence (full, not provisional), your residency permit or registration certificate, a Cyprus identity document or passport, and proof of Cyprus address. A medical certificate is needed only if you are ${LICENCE_MEDICAL_AGE} or over or hold lorry or bus categories. The fee is ${eur(LICENCE_FEE)}. Processing typically takes 2–6 weeks. Your UK licence categories transfer directly, if your UK licence covers car and motorcycle, your Cyprus licence will cover the same. There is no requirement to re-take a driving test for UK licence holders. Note: Cyprus drives on the left, which is the same as the UK, the transition is significantly easier than for continental European licence holders. That also makes a [long-term car rental in Cyprus](/guides/long-term-car-rental-cyprus/) straightforward for UK arrivals in their first months.`,
 			},
 			{
 				heading: "From NHS to GeSY: healthcare transition for UK nationals",
@@ -2838,7 +2895,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "How do I convert my UK driving licence in Cyprus?",
-				a: "Once you have Cyprus residency, you can exchange your UK licence directly at a MCIT district office (Limassol, Larnaca, or Paphos). Required documents: your UK licence, residency permit, passport, medical certificate (€30–€50), and proof of address. Fee approximately €35–€55; processing 2–6 weeks. No driving test required. UK licence categories transfer directly. Cyprus drives on the left, same as the UK.",
+				a: `Once you have Cyprus residency, you can exchange your UK licence directly at a MCIT district office (Limassol, Larnaca, or Paphos). Required documents: your UK licence, residency permit, passport and proof of address. A medical certificate is needed only if you are ${LICENCE_MEDICAL_AGE} or over or hold lorry or bus categories. The fee is ${eur(LICENCE_FEE)}; processing 2–6 weeks. No driving test required. UK licence categories transfer directly. Cyprus drives on the left, same as the UK.`,
 			},
 			{
 				q: "Can I use my GHIC/EHIC in Cyprus?",

@@ -6,6 +6,15 @@
  * facts here without a source (see the fact-check step in the rebuild plan).
  */
 
+import {
+	eur,
+	FEES_AMERICAN_ACADEMY_LARNACA,
+	FEES_FOLEYS,
+	FEES_GRAMMAR_LIMASSOL,
+	FEES_HERITAGE,
+	FEES_ISP,
+	feeRange,
+} from "./facts/health-transport";
 import type { SiteImage } from "./topics";
 
 /** One line of the sample monthly budget table. */
@@ -85,7 +94,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 			"Dental and optical care are private only and reasonably priced (a standard cleaning runs €40–€60). Call 112 in an emergency, as anywhere in the EU; ambulances are fast in central Paphos and occasionally slow in the inland villages.",
 		],
 		schools: [
-			"The International School of Paphos is the largest: British curriculum from age 3 to 18, fees from €5,800 (early years) to €9,200 (sixth form), and a waiting list at the upper end. Aspire Private British School (ages 4–18, ~14 per class, €5,500–€8,500) has a strong reputation among the British and Israeli communities. Logos School of English Education is older and more academic, with consistently strong A-level results. École Française de Paphos takes ages 3–11.",
+			`The International School of Paphos is the largest: British curriculum from age 3 to 18, fees from ${eur(FEES_ISP.from)} (pre-reception and reception) to ${eur(FEES_ISP.to)} (sixth form) in 2026-27, and a waiting list at the upper end. Aspire Private British School (ages 4–18, ~14 per class, €5,500–€8,500) has a strong reputation among the British and Israeli communities.`,
 			"Public Greek-medium schools are free, and the education ministry runs a Greek-as-a-second-language programme for newly-arrived expat children. For university, most Paphos teens commute to the University of Cyprus campus in Nicosia or Cyprus University of Technology in Limassol; Neapolis University in Paphos offers psychology, law and business (undergraduate and postgraduate).",
 		],
 		leisure: [
@@ -175,7 +184,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 			"GeSY registration is straightforward for legal residents and gives you a personal doctor and specialist referrals, mostly without out-of-pocket cost. Non-urgent specialist waits can run weeks, so many expats keep private cover: typically €80–€180 a month for an adult under 50. Dental care is private only: €40–€80 for a cleaning, €600–€1,200 for a single implant. English-fluent specialists are easy to find in almost any field; many physicians trained in the UK.",
 		],
 		schools: [
-			"Limassol has the strongest international schools in Cyprus, plus several Greek private schools and public schools that increasingly accommodate international children. The Heritage Private School (Pyrgos) is the most prestigious: British curriculum from 3 to 18, IB Diploma at sixth form, €8,000–€14,000, and up to a 12-month wait for senior years. Foley's Grammar School and The Grammar School Limassol have strong A-level outcomes and fees from €6,500 to €11,000. The American Academy Limassol teaches an American curriculum to AP level. Several private Russian schools remain, though enrolment has dropped sharply since 2022.",
+			`Limassol has the strongest international schools in Cyprus, plus several Greek private schools and public schools that increasingly accommodate international children. The Heritage Private School (Palodia) is the most prestigious: British curriculum from 3 to 18, IB Diploma at sixth form, ${feeRange(FEES_HERITAGE)} a year (2026-27), and up to a 12-month wait for senior years. Foley's (${feeRange(FEES_FOLEYS)}) and The Grammar School Limassol (secondary only, ${feeRange(FEES_GRAMMAR_LIMASSOL)} for non-Cypriot pupils) have strong A-level results. The American Academy Limassol teaches an American curriculum to AP level. Several private Russian schools remain, though enrolment has dropped sharply since 2022.`,
 			"Some new residential complexes have kindergartens on-site. The University of Limassol opened in 2022 as a private campus; Cyprus University of Technology (CUT) is the main public university.",
 		],
 		leisure: [
@@ -269,7 +278,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 			"Cardiac and orthopaedic specialists are well-represented locally; complex paediatrics, oncology and neurosurgery still tend to flow toward Mediterranean Hospital in Limassol or the New Nicosia General. Pharmacies are everywhere and reliable. Dental care is private only (€40–€60 cleaning, €700–€1,400 implant). Emergency response is good in the city; from inland villages the nearest A&E may be 20–30 minutes away. 112 works throughout the district.",
 		],
 		schools: [
-			"The international school market is smaller than in Limassol or Paphos but growing. The American Academy Larnaca (ages 4 to 18, American-style curriculum, SAT preparation, €5,500–€8,500) is the best known. Pascal Private School's Larnaca campus (British curriculum, same ages) is the standard pick for UK-bound students, and The Med High School (12–18) has a tighter academic focus. Several smaller British-curriculum primary schools serve under-12s, and the Junior School Larnaca (primary) is within commuting distance.",
+			`The international school market is smaller than in Limassol or Paphos but growing. The American Academy Larnaca (ages 4 to 18, American-style curriculum, SAT preparation, ${feeRange(FEES_AMERICAN_ACADEMY_LARNACA)} in 2026-27) is the best known. Pascal Private School's Larnaca campus (British curriculum, same ages) is the standard pick for UK-bound students, and The Med High School (12–18) has a tighter academic focus. Several smaller British-curriculum primary schools serve under-12s.`,
 			"Public Greek-medium schools are free, and the district education authority has been particularly responsive to international families: schools in Pervolia, Kiti and Aradippou increasingly have meaningful expat representation.",
 		],
 		leisure: [
@@ -362,7 +371,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 			"Families with chronic conditions sometimes drive to Larnaca or further three or four times a month. Emergency response is reasonable in the resort towns and can take 15–25 minutes in the inland villages (Liopetri, Frenaros, Sotira); 112 works throughout. Many full-time expats supplement GeSY with private insurance specifically to access Limassol or Nicosia specialists without GeSY referral delays.",
 		],
 		schools: [
-			"The area has the thinnest international-school market of the four cities: competent British-curriculum primary schools (notably Heritage Private School Paralimni, distinct from the Limassol Heritage) and a handful of preschools and kindergartens. Public Greek-medium schools in Paralimni and Sotira are good and have absorbed a meaningful number of expat children, particularly in primary.",
+			"The area has the thinnest international-school market of the four cities: the only registered English-language private school is Xenion in Paralimni, plus a handful of preschools and kindergartens. Public Greek-medium schools in Paralimni and Sotira are good and have absorbed a meaningful number of expat children, particularly in primary.",
 			"Secondary school is the genuine challenge: most families commute to The American Academy Larnaca (35–45 minutes each way) or one of the Larnaca British schools, or board. For families with several school-age children it is the most-cited reason for choosing Larnaca instead. The area lacks any local university campus; students typically attend Nicosia or Limassol institutions or go abroad.",
 		],
 		leisure: [

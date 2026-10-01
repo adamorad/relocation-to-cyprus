@@ -10,10 +10,8 @@
 /** Date the figures in this file were last checked. */
 export const TAX_FACTS_CHECKED = "2026-10-02";
 
-/** Formats a whole euro amount as "€5,000". */
-export function eur(n: number): string {
-	return `€${n.toLocaleString("en-GB")}`;
-}
+// One euro formatter for every facts file ("€5,000", or "€66.90" with cents).
+export { eur } from "./health-transport";
 
 /** Formats a rate (0.088) as "8.8%". */
 export function pct(rate: number): string {

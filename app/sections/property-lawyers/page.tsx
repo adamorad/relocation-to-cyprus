@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
+import { SourcesNote } from "@/components/ui/SourcesNote";
+import { HEALTH_TRANSPORT_CHECKED, SRC } from "@/lib/facts/health-transport";
 import { LAWYER_TIPS } from "@/lib/property-lawyers";
 import { topicCrumb } from "@/lib/topic-map";
 import PropertyLawyersClient from "./client";
@@ -64,6 +66,11 @@ export default function PropertyLawyersPage() {
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
 			/>
 			<PropertyLawyersClient />
+			<SourcesNote
+				className="mt-8"
+				lastChecked={HEALTH_TRANSPORT_CHECKED}
+				sources={[SRC.advocatesLaw]}
+			/>
 		</DirectoryTemplate>
 	);
 }

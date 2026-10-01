@@ -3,6 +3,13 @@ import {
 	FOREIGN_PENSION_THRESHOLD,
 	REDUCED_VAT_MAX_VALUE,
 } from "./facts/tax";
+import {
+	GESY_AE_COPAY,
+	GESY_ANNUAL_CAP,
+	GESY_ANNUAL_CAP_REDUCED,
+	GESY_RX_ITEM_COPAY,
+	SRC as HT_SRC,
+} from "./facts/health-transport";
 import type { GuideInfo } from "./guides";
 
 /**
@@ -79,7 +86,9 @@ export const GUIDES_BATCH3: GuideInfo[] = [
 	{
 		slug: "private-health-insurance-cyprus",
 		datePublished: "2026-07-06",
-		dateModified: "2026-07-06",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [HT_SRC.gesyCopay],
 		category: "healthcare",
 		title: "Private Health Insurance in Cyprus 2026",
 		description:
@@ -87,7 +96,7 @@ export const GUIDES_BATCH3: GuideInfo[] = [
 		sections: [
 			{
 				heading: "What GeSY covers — and what you still pay",
-				body: "GeSY (the General Health System) provides broad public healthcare funded through payroll contributions. Most residents — including employed non-EU nationals who have completed the residency process — can register and access the system for the bulk of their medical needs. For a full walkthrough of the enrolment process, see the gesy-registration-guide.\n\nWhen you see a GeSY-contracted personal doctor, the appointment is free. A referred specialist visit costs €6; without a referral the charge is higher. Each laboratory test carries a €1 fee, diagnostic imaging (X-ray, MRI, CT scan) costs around €10 per session, and prescription items are €1 each, capped per prescription. Accident and emergency carries a €10 charge, which is refunded if you are subsequently admitted. Hospital inpatient stays are free at the point of care.\n\nAn annual co-payment ceiling protects heavy users: once a general adult has reached €150 in co-payments within a calendar year, further eligible GeSY services are free for the remainder of that year. Vulnerable groups — including children, minimum-income recipients, and low-income pensioners — have a lower cap of €75.\n\nGeSY's contracted network is broad but not universal. Not every private hospital in Cyprus participates, and some specialist departments within participating hospitals may fall outside GeSY's scope. Routine specialist appointments typically carry a two-to-four-week wait; MRI and CT scan slots can run longer during peak summer months. These structural limitations drive most expats to top up with private cover, explored in the next section. For a broader overview of the system, see the healthcare-in-cyprus guide.",
+				body: `GeSY (the General Health System) provides broad public healthcare funded through payroll contributions. Most residents, including employed non-EU nationals who have completed the residency process, can register and access the system for the bulk of their medical needs. For a full walkthrough of the enrolment process, see the gesy-registration-guide.\n\nWhen you see a GeSY-contracted personal doctor, the appointment is free. A referred specialist visit costs €6; without a referral the charge is higher. Each laboratory test carries a €1 fee, diagnostic imaging (X-ray, MRI, CT scan) costs around €10 per session, and prescription items are ${eur(GESY_RX_ITEM_COPAY)} each. Accident and emergency carries a ${eur(GESY_AE_COPAY)} charge, and you do not pay co-payments for care while admitted. Hospital inpatient stays are free at the point of care.\n\nAn annual co-payment ceiling protects heavy users: once a general adult has reached ${eur(GESY_ANNUAL_CAP)} in co-payments within a calendar year, further eligible GeSY services are free for the remainder of that year. Vulnerable groups, including under-21s, minimum-income recipients, and low-income pensioners, have a lower cap of ${eur(GESY_ANNUAL_CAP_REDUCED)}.\n\nGeSY's contracted network is broad but not universal. Not every private hospital in Cyprus participates, and some specialist departments within participating hospitals may fall outside GeSY's scope. Routine specialist appointments typically carry a two-to-four-week wait; MRI and CT scan slots can run longer during peak summer months. These structural limitations drive most expats to top up with private cover, explored in the next section. For a broader overview of the system, see the healthcare-in-cyprus guide.`,
 			},
 			{
 				heading: "Five gaps private insurance fills",

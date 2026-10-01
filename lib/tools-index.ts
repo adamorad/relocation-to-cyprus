@@ -199,7 +199,7 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
 		href: "/tools/school-finder/",
 		title: "International School Finder",
 		description:
-			"Find and compare international schools in Cyprus. Filter by city, curriculum (British, IB, German, French, Waldorf, Montessori), and age group to shortlist the right options for your family.",
+			"Find and compare international schools in Cyprus. Filter by city, curriculum (British, IB), and age group to shortlist the right options for your family.",
 		category: "Location & Living",
 	},
 	{

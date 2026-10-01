@@ -3,6 +3,13 @@ import {
 	SI_MAX_INSURABLE_ANNUAL,
 	SI_MAX_INSURABLE_MONTHLY,
 } from "./facts/tax";
+import {
+	FEES_GRAMMAR_LIMASSOL,
+	FEES_GRAMMAR_LIMASSOL_CYPRIOT,
+	FEES_HERITAGE,
+	feeRange,
+	SRC as HT_SRC,
+} from "./facts/health-transport";
 import type { GuideInfo } from "./guides";
 
 /**
@@ -139,7 +146,15 @@ export const GUIDES_BATCH5: GuideInfo[] = [
 	{
 		slug: "international-school-fees-cyprus",
 		datePublished: "2026-07-14",
-		dateModified: "2026-07-14",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			HT_SRC.heritageFees,
+			HT_SRC.foleysFees,
+			HT_SRC.grammarFees,
+			HT_SRC.ispFees,
+			HT_SRC.aalFees,
+		],
 		category: "family",
 		title: "International School Fees in Cyprus (2026)",
 		description:
@@ -151,7 +166,7 @@ export const GUIDES_BATCH5: GuideInfo[] = [
 			},
 			{
 				heading: "Fees by City: Limassol, Larnaca and Paphos",
-				body: "Limassol has the island's densest cluster of English-medium private schools. Heritage Private School (Palodia) is indicatively €7,000–€13,500 depending on stage. Foley's (Agios Athanasios) sits broadly in the €7,500–€12,600 range. The Grammar School Limassol is approximately €7,500–€9,500. Logos School of English Education is among the more affordable options, broadly €3,000–€7,500. The Island Private School — a leading full IB Continuum school — charges significantly more, with senior fees rising to around €16,000–€19,000.\n\nIn Paphos, the International School of Paphos is the most established option, known for competitive fees relative to quality. Lumio Private School, which opened recently and holds IB authorisation, is indicatively €8,500–€14,000. TLC Private School (Peyia) is broadly €4,000–€8,500. In Larnaca, the American Academy and PASCAL serve the expat community. All figures above are approximate — contact each school directly for its current fee schedule.",
+				body: `Limassol has the island's densest cluster of English-medium private schools. Heritage Private School (Palodia) is ${feeRange(FEES_HERITAGE)} in 2026-27, depending on stage. Foley's (Agios Athanasios) sits broadly in the €7,500–€12,600 range. The Grammar School Limassol is ${feeRange(FEES_GRAMMAR_LIMASSOL)} for non-Cypriot pupils (${feeRange(FEES_GRAMMAR_LIMASSOL_CYPRIOT)} for Cypriot citizens). Logos School of English Education is among the more affordable options, broadly €3,000–€7,500. The Island Private School, a leading full IB Continuum school, charges significantly more, with senior fees rising to around €16,000–€19,000.\n\nIn Paphos, the International School of Paphos is the most established option, known for competitive fees relative to quality. Lumio Private School, which opened recently and holds IB authorisation, is indicatively €8,500–€14,000. TLC Private School (Peyia) is broadly €4,000–€8,500. In Larnaca, the American Academy and PASCAL serve the expat community. Other figures above are approximate: contact each school directly for its current fee schedule.`,
 			},
 			{
 				heading: "Beyond Tuition: The Hidden Extras",
