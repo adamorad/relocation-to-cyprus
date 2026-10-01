@@ -74,6 +74,11 @@ export default function ImmigrationLawyersPage() {
 									"Migration Department: Immigration permits for investors",
 								url: "https://www.gov.cy/mip-md/en/documents/companies-investors-permanent-residence-3/immigration-permits-for-investors/",
 							},
+							{
+								label:
+									"Migration Department: frequent questions (EU citizens' permanent residence, MEU3)",
+								url: "https://www.gov.cy/mip-md/en/documents/frequent-questions/",
+							},
 						]}
 					/>
 					<MoreOnTopic type="directory" slug="immigration-lawyers" cols={3} />

@@ -98,7 +98,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 			"The town runs on cars: local buses cover the coast but are rarely a serious commuting option. Pretty much every long-haul flight from Western Europe lands at Paphos International (PFO).",
 		],
 		healthcare: [
-			"Paphos General Hospital is the main public facility and part of GeSY, the national healthcare system that all legal residents can register with after immigration formalities. Contributions are deducted at source for employees and pensioners; private health insurance is still common but no longer essential.",
+			"Paphos General Hospital is the main public facility and part of GeSY, the national healthcare system that most legal residents can register with after immigration formalities (ask the Health Insurance Organisation on 17000 about your own eligibility). Contributions are deducted at source for employees and pensioners; private health insurance is still common but no longer essential.",
 			"Iasis Hospital and Evangelistria Medical Center cover most specialties privately, with shorter waits than GeSY for non-urgent referrals. For anything genuinely complex (major cardiac, oncology, neurosurgery) most expats still drive to Limassol or Nicosia. Pharmacies are abundant, English-speaking, and dispense most common UK and EU prescriptions without trouble.",
 			"Dental and optical care are private only and reasonably priced (a standard cleaning runs €40–€60). Call 112 in an emergency, as anywhere in the EU; ambulances are fast in central Paphos and occasionally slow in the inland villages.",
 		],
