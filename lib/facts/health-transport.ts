@@ -154,7 +154,7 @@ export function feeRange(range: FeeRange): string {
 export const SRC = {
 	gesyCopay: {
 		label: "KDP 36/2019, GeSY co-payment regulations (Official Gazette)",
-		url: "http://www.cylaw.org/KDP/data/2019_1_36.pdf",
+		url: "https://www.cylaw.org/KDP/data/2019_1_36.pdf",
 	},
 	medicinesPriceList: {
 		label: "Pharmaceutical Services, Ministry of Health: medicines price list",
@@ -162,7 +162,7 @@ export const SRC = {
 	},
 	nonPrescriptionRule: {
 		label: "KDP 98/2019, non-prescription medicines in the price list",
-		url: "http://www.cylaw.org/KDP/data/2019_1_98.pdf",
+		url: "https://www.cylaw.org/KDP/data/2019_1_98.pdf",
 	},
 	solpadeine: {
 		label: "Pharmaceutical Services product register: Solpadeine",
@@ -174,7 +174,7 @@ export const SRC = {
 	},
 	airportTaxiFares: {
 		label: "KDP 79/2021, airport taxi fixed fares (Official Gazette)",
-		url: "http://www.cylaw.org/KDP/data/2021_1_79.pdf",
+		url: "https://www.cylaw.org/KDP/data/2021_1_79.pdf",
 	},
 	larnacaBuses: {
 		label: "Cyprus Public Transport: ticket prices",
@@ -226,7 +226,7 @@ export const SRC = {
 	},
 	advocatesLaw: {
 		label: "Advocates Law, Cap. 2 (CyLaw)",
-		url: "http://www.cylaw.org/nomoi/enop/non-ind/0_2/full.html",
+		url: "https://www.cylaw.org/nomoi/enop/non-ind/0_2/full.html",
 	},
 	astra: {
 		label: "Astra Car Rentals",
