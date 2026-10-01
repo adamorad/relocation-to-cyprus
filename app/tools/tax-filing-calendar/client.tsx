@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
+import { Badge, type BadgeTone } from "@/components/ui/Badge";
+import { ChipGroup } from "@/components/ui/Chip";
 
 type TaxpayerType = "individual" | "company" | "both";
 
@@ -30,7 +31,7 @@ const DEADLINES: Deadline[] = [
 		id: "td1-self-assess",
 		month: 3,
 		day: 31,
-		title: "Self-Assessment — Income over €19,500",
+		title: "Self-Assessment: Income over €19,500",
 		formRef: "TD1",
 		description:
 			"For individuals whose annual income exceeded €19,500 in the previous year. Filed on paper by 31 March; electronic filing deadline is 31 July.",
@@ -50,7 +51,7 @@ const DEADLINES: Deadline[] = [
 		id: "td1-electronic",
 		month: 7,
 		day: 31,
-		title: "Individual Income Tax Return — Electronic",
+		title: "Individual Income Tax Return: Electronic",
 		formRef: "TD1",
 		description:
 			"Electronic filing deadline for individual income tax return (TD1) for the previous calendar year. This is the standard deadline for most employed and self-employed individuals.",
@@ -60,7 +61,7 @@ const DEADLINES: Deadline[] = [
 		id: "td4-provisional-1",
 		month: 7,
 		day: 31,
-		title: "Company Provisional Tax — 1st Instalment",
+		title: "Company Provisional Tax: 1st Instalment",
 		formRef: "TD4",
 		description:
 			"First instalment of provisional corporation tax for the current year. Based on your provisional tax return (TD6) estimate. Half of total provisional tax due.",
@@ -80,7 +81,7 @@ const DEADLINES: Deadline[] = [
 		id: "td4-final",
 		month: 12,
 		day: 31,
-		title: "Provisional Tax — 3rd Instalment",
+		title: "Provisional Tax: 3rd Instalment",
 		formRef: "–",
 		description:
 			"Final provisional tax instalment payment for the current year. Failure to pay at least 75% of the actual tax due results in an additional 10% charge.",
@@ -103,27 +104,18 @@ const MONTH_NAMES = [
 	"December",
 ];
 
-function getUrgencyClass(daysUntil: number): string {
-	if (daysUntil < 0) return "bg-slate-100 border-line text-muted";
-	if (daysUntil <= 30) return "bg-red-50 border-red-200 text-red-900";
-	if (daysUntil <= 60) return "bg-amber-50 border-amber-200 text-amber-900";
-	return "bg-emerald-50 border-emerald-200 text-emerald-900";
-}
+type Urgency = { row: string; tone: BadgeTone; text: string };
 
-function getUrgencyBadge(daysUntil: number): { text: string; class: string } {
-	if (daysUntil < 0) {
-		return { text: "Passed", class: "bg-slate-200 text-slate-700" };
-	}
-	if (daysUntil === 0) {
-		return { text: "Today", class: "bg-red-700 text-white" };
-	}
-	if (daysUntil <= 30) {
-		return { text: `${daysUntil}d`, class: "bg-red-700 text-white" };
-	}
-	if (daysUntil <= 60) {
-		return { text: `${daysUntil}d`, class: "bg-amber-700 text-white" };
-	}
-	return { text: `${daysUntil}d`, class: "bg-green-700 text-white" };
+function getUrgency(daysUntil: number): Urgency {
+	if (daysUntil < 0)
+		return { row: "border-line", tone: "neutral", text: "Passed" };
+	if (daysUntil === 0)
+		return { row: "border-red-700", tone: "danger", text: "Today" };
+	if (daysUntil <= 30)
+		return { row: "border-red-700", tone: "danger", text: `${daysUntil}d` };
+	if (daysUntil <= 60)
+		return { row: "border-amber-600", tone: "warning", text: `${daysUntil}d` };
+	return { row: "border-primary", tone: "neutral", text: `${daysUntil}d` };
 }
 
 function getDaysUntil(month: number, day: number, today: Date): number {
@@ -137,12 +129,6 @@ function taxpayerLabel(type: TaxpayerType): string {
 	if (type === "individual") return "Individual";
 	if (type === "company") return "Company";
 	return "Individual & Company";
-}
-
-function taxpayerBadgeClass(type: TaxpayerType): string {
-	if (type === "individual") return "bg-sky-strong text-ink";
-	if (type === "company") return "bg-sky text-ink border border-line";
-	return "bg-slate-100 text-ink";
 }
 
 export default function TaxFilingCalendarPage() {
@@ -166,205 +152,131 @@ export default function TaxFilingCalendarPage() {
 	const currentMonth = today.getMonth() + 1; // 1-indexed
 
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="tool"
-			className="max-w-3xl mx-auto px-6 py-10 md:py-16"
-		>
-			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-ink">
-					Home
-				</Link>{" "}
-				›{" "}
-				<Link href="/tools" className="hover:text-ink">
-					Tools
-				</Link>{" "}
-				› <span className="text-ink">Tax Filing Calendar</span>
-			</nav>
+		<div className="flex flex-col gap-6">
+			<ChipGroup
+				label="Show deadlines for"
+				options={[
+					{ value: "all" as const, label: "All deadlines" },
+					{ value: "individual" as const, label: "Individual" },
+					{ value: "company" as const, label: "Company" },
+				]}
+				value={filter}
+				onChange={setFilter}
+			/>
 
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
-					Interactive Tool
-				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">
-					Cyprus Annual Tax Filing Calendar
-				</h1>
-				<p className="mt-3 text-slate-600 leading-relaxed">
-					All key Cyprus tax deadlines for the current year. Current month is
-					highlighted. Deadlines are colour-coded by urgency.
-				</p>
-			</header>
-
-			{/* Legend */}
-			<div className="flex flex-wrap gap-3 mb-5 text-xs">
-				<span className="flex items-center gap-1.5">
-					<span className="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+			<ul
+				aria-label="Deadlines by urgency"
+				className="flex flex-wrap gap-x-5 gap-y-1 text-sm text-ink"
+			>
+				<li className="flex items-center gap-1.5">
+					<span
+						aria-hidden="true"
+						className="inline-block h-3 w-3 rounded-full bg-red-700"
+					/>
 					Within 30 days
-				</span>
-				<span className="flex items-center gap-1.5">
-					<span className="w-3 h-3 rounded-full bg-amber-700 inline-block"></span>
-					31–60 days
-				</span>
-				<span className="flex items-center gap-1.5">
-					<span className="w-3 h-3 rounded-full bg-green-700 inline-block"></span>
+				</li>
+				<li className="flex items-center gap-1.5">
+					<span
+						aria-hidden="true"
+						className="inline-block h-3 w-3 rounded-full bg-amber-600"
+					/>
+					31 to 60 days
+				</li>
+				<li className="flex items-center gap-1.5">
+					<span
+						aria-hidden="true"
+						className="inline-block h-3 w-3 rounded-full bg-primary"
+					/>
 					More than 60 days
-				</span>
-				<span className="flex items-center gap-1.5">
-					<span className="w-3 h-3 rounded-full bg-slate-300 inline-block"></span>
+				</li>
+				<li className="flex items-center gap-1.5">
+					<span
+						aria-hidden="true"
+						className="inline-block h-3 w-3 rounded-full bg-slate-400"
+					/>
 					Passed
-				</span>
-			</div>
+				</li>
+			</ul>
 
-			{/* Filter */}
-			<div className="flex gap-2 mb-6 flex-wrap">
-				{(["all", "individual", "company"] as const).map((f) => (
-					<button
-						key={f}
-						onClick={() => setFilter(f)}
-						className={`px-4 py-1.5 text-sm font-medium rounded-full border transition-colors capitalize ${
-							filter === f
-								? "bg-primary border-primary text-white"
-								: "bg-white border-line text-slate-600 hover:border-line"
-						}`}
-					>
-						{f === "all"
-							? "All deadlines"
-							: f === "individual"
-								? "Individual"
-								: "Company"}
-					</button>
-				))}
-			</div>
-
-			{/* Calendar */}
 			<div className="space-y-4">
 				{Object.entries(byMonth).map(([monthStr, deadlines]) => {
 					const month = Number(monthStr);
 					const isCurrentMonth = month === currentMonth;
 
 					return (
-						<div
+						<section
 							key={month}
-							className={`rounded-xl border overflow-hidden ${
+							aria-labelledby={`month-${month}`}
+							className={`overflow-hidden rounded-card border bg-white ${
 								isCurrentMonth
-									? "border-primary ring-2 ring-primary ring-offset-1"
+									? "border-primary ring-2 ring-primary"
 									: "border-line"
 							}`}
 						>
 							<div
-								className={`px-5 py-3 flex items-center gap-2 ${
-									isCurrentMonth ? "bg-primary text-white" : "bg-ink text-white"
+								className={`flex items-center gap-2 px-5 py-3 ${
+									isCurrentMonth ? "bg-primary text-white" : "bg-sky text-ink"
 								}`}
 							>
-								<h2 className="font-semibold text-sm">
+								<h2 id={`month-${month}`} className="text-lg font-bold">
 									{MONTH_NAMES[month - 1]}
 								</h2>
 								{isCurrentMonth && (
-									<span className="text-xs font-bold uppercase tracking-wider bg-white text-primary px-2 py-0.5 rounded-full">
+									<span className="rounded-full bg-white px-2 py-0.5 text-xs font-bold uppercase tracking-wider text-primary-hover">
 										Current
 									</span>
 								)}
 							</div>
-							<div className="divide-y divide-slate-100">
+							<ul className="divide-y divide-line">
 								{deadlines.map((deadline) => {
 									const daysUntil = getDaysUntil(
 										deadline.month,
 										deadline.day,
 										today,
 									);
-									const urgency = getUrgencyClass(daysUntil);
-									const badge = getUrgencyBadge(daysUntil);
+									const urgency = getUrgency(daysUntil);
 
 									return (
-										<div
+										<li
 											key={deadline.id}
-											className={`p-5 border-l-4 ${urgency}`}
+											className={`border-l-4 p-5 ${urgency.row}`}
 										>
 											<div className="flex items-start justify-between gap-3">
-												<div className="flex-1">
-													<div className="flex flex-wrap items-center gap-2 mb-1">
-														<span className="text-base font-bold">
+												<div className="min-w-0 flex-1">
+													<div className="mb-1 flex flex-wrap items-center gap-2">
+														<span className="text-base font-bold text-ink">
 															{deadline.day} {MONTH_NAMES[month - 1]}
 														</span>
 														{deadline.formRef !== "–" && (
-															<span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-ink text-white">
-																{deadline.formRef}
-															</span>
+															<Badge>{deadline.formRef}</Badge>
 														)}
-														<span
-															className={`text-xs font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${taxpayerBadgeClass(
-																deadline.taxpayer,
-															)}`}
-														>
-															{taxpayerLabel(deadline.taxpayer)}
-														</span>
+														<Badge>{taxpayerLabel(deadline.taxpayer)}</Badge>
 													</div>
-													<p className="font-semibold text-sm mb-1">
+													<p className="mb-1 text-base font-semibold text-ink">
 														{deadline.title}
 													</p>
-													<p className="text-xs leading-relaxed opacity-80">
+													<p className="text-base leading-relaxed text-muted">
 														{deadline.description}
 													</p>
 												</div>
-												<span
-													className={`flex-shrink-0 text-xs font-bold px-2 py-1 rounded-full ${badge.class}`}
-												>
-													{badge.text}
-												</span>
+												<Badge tone={urgency.tone} className="shrink-0">
+													{urgency.text}
+												</Badge>
 											</div>
-										</div>
+										</li>
 									);
 								})}
-							</div>
-						</div>
+							</ul>
+						</section>
 					);
 				})}
 			</div>
 
 			{filteredDeadlines.length === 0 && (
-				<div className="text-center py-12 text-slate-500">
+				<p className="py-12 text-center text-muted">
 					No deadlines found for this filter.
-				</div>
+				</p>
 			)}
-
-			<aside className="mt-8 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
-				<p className="font-semibold text-amber-900 mb-1">Important notice</p>
-				<p>
-					Deadlines change year to year and depend on your specific tax
-					situation. Verify all deadlines with a Cyprus accountant. Late filing
-					penalties apply — typically 5% of the tax due, with additional
-					interest. Dates shown apply to electronic submissions where
-					applicable; paper deadlines may differ.
-				</p>
-			</aside>
-
-			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools" className="underline hover:text-ink">
-					← Back to Tools
-				</Link>
-			</p>
-
-			<aside className="mt-10 p-5 rounded-2xl bg-slate-50 border border-line">
-				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-					Next steps
-				</p>
-				<div className="flex flex-wrap gap-3">
-					<Link
-						href="/guides/taxes-for-expats/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Read: Taxes for Expats in Cyprus
-					</Link>{" "}
-					<Link
-						href="/sections/accountants/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Find a tax advisor
-					</Link>
-				</div>
-			</aside>
-		</main>
+		</div>
 	);
 }

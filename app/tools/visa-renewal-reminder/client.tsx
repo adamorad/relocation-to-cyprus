@@ -1,7 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useId, useState } from "react";
+import { Badge, type BadgeTone } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
+import { Callout } from "@/components/ui/Callout";
 
 type DocumentType =
 	| "visa"
@@ -63,27 +65,31 @@ function getStatus(days: number): StatusBand {
 
 const STATUS_STYLES: Record<
 	StatusBand,
-	{ badge: string; row: string; label: string }
+	{ tone: BadgeTone; row: string; label: string; legend: string }
 > = {
 	expired: {
-		badge: "bg-red-600 text-white",
+		tone: "danger",
 		row: "border-red-300 bg-red-50",
-		label: "EXPIRED",
+		label: "Expired",
+		legend: "Expired",
 	},
 	urgent: {
-		badge: "bg-red-100 text-red-800",
+		tone: "danger",
 		row: "border-red-200 bg-red-50",
-		label: "URGENT: Renew now",
+		label: "Urgent: renew now",
+		legend: "30 days or less: urgent",
 	},
 	soon: {
-		badge: "bg-amber-50 text-amber-900",
+		tone: "warning",
 		row: "border-amber-200 bg-amber-50",
 		label: "Renew soon",
+		legend: "31 to 90 days: renew soon",
 	},
 	ok: {
-		badge: "bg-green-100 text-green-800",
+		tone: "success",
 		row: "border-line bg-white",
 		label: "OK",
+		legend: "More than 90 days: OK",
 	},
 };
 
@@ -99,6 +105,10 @@ function generateId(): string {
 }
 
 export default function VisaRenewalReminderPage() {
+	const nameId = useId();
+	const typeId = useId();
+	const expiryId = useId();
+	const notesId = useId();
 	const [docs, setDocs] = useState<Document[]>([]);
 	const [form, setForm] = useState<Omit<Document, "id">>(EMPTY_FORM);
 	const [showForm, setShowForm] = useState(false);
@@ -151,71 +161,38 @@ export default function VisaRenewalReminderPage() {
 		return da - db;
 	});
 
+	const fieldClass =
+		"min-h-11 w-full rounded-field border border-line bg-white px-4 text-base text-ink focus:outline-none focus:ring-2 focus:ring-focus";
+	const labelClass = "mb-1 block text-sm font-semibold text-ink";
+
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="tool"
-			className="max-w-3xl mx-auto px-4 py-8 md:py-12"
-		>
-			<nav className="text-xs text-slate-500 mb-6">
-				<Link href="/tools/" className="hover:text-ink">
-					Tools
-				</Link>{" "}
-				&rsaquo; <span className="text-ink">Visa Renewal Reminder</span>
-			</nav>
+		<div className="flex flex-col gap-6">
+			<Callout tone="info">
+				This tool stores data locally in your browser. It is not backed up to
+				any server.
+			</Callout>
 
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary mb-2">
-					Interactive Tool
-				</p>
-				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Visa & Document Renewal Reminder
-				</h1>
-				<p className="mt-3 text-slate-600 max-w-2xl">
-					Track expiry dates for your important documents — visas, ARC,
-					passport, insurance, and more. Color-coded alerts so nothing sneaks up
-					on you.
-				</p>
-				<div className="mt-3 p-3 bg-slate-100 border border-line rounded-xl text-xs text-slate-600">
-					This tool stores data locally in your browser. It is not backed up to
-					any server.
-				</div>
-			</header>
-
-			{/* Status legend */}
-			<div className="flex flex-wrap gap-2 mb-6">
+			<ul aria-label="Status legend" className="flex flex-wrap gap-2">
 				{(["expired", "urgent", "soon", "ok"] as StatusBand[]).map((s) => (
-					<span
-						key={s}
-						className={`text-xs px-3 py-1 rounded-full font-medium ${STATUS_STYLES[s].badge}`}
-					>
-						{s === "expired" && "Expired"}
-						{s === "urgent" && "≤ 30 days — Urgent"}
-						{s === "soon" && "31–90 days — Renew soon"}
-						{s === "ok" && "90+ days — OK"}
-					</span>
+					<li key={s}>
+						<Badge tone={STATUS_STYLES[s].tone}>
+							{STATUS_STYLES[s].legend}
+						</Badge>
+					</li>
 				))}
-			</div>
+			</ul>
 
-			{/* Document dashboard */}
 			{loaded && sortedDocs.length === 0 && !showForm && (
-				<div className="text-center py-12 border-2 border-dashed border-line rounded-xl">
-					<p className="text-slate-500 text-sm mb-4">
+				<div className="rounded-card border-2 border-dashed border-line p-8 text-center">
+					<p className="mb-4 text-base text-muted">
 						No documents yet. Add your first document to start tracking.
 					</p>
-					<button
-						onClick={() => setShowForm(true)}
-						className="px-5 py-2.5 bg-primary text-white rounded-xl font-medium text-sm hover:bg-primary-hover transition-colors"
-					>
-						+ Add document
-					</button>
+					<Button onClick={() => setShowForm(true)}>+ Add document</Button>
 				</div>
 			)}
 
 			{loaded && sortedDocs.length > 0 && (
-				<div className="space-y-3 mb-6">
+				<ul className="space-y-3">
 					{sortedDocs.map((doc) => {
 						const days = daysUntil(doc.expiryDate);
 						const status = getStatus(days);
@@ -227,20 +204,16 @@ export default function VisaRenewalReminderPage() {
 							year: "numeric",
 						});
 						return (
-							<div
+							<li
 								key={doc.id}
-								className={`border rounded-xl p-4 flex items-start justify-between gap-4 ${styles.row}`}
+								className={`flex items-start justify-between gap-4 rounded-card border p-4 ${styles.row}`}
 							>
-								<div className="flex-1 min-w-0">
-									<div className="flex items-center gap-2 flex-wrap">
-										<h3 className="font-bold text-ink">{doc.name}</h3>
-										<span
-											className={`text-xs px-2 py-0.5 rounded-full font-medium ${styles.badge}`}
-										>
-											{styles.label}
-										</span>
+								<div className="min-w-0 flex-1">
+									<div className="flex flex-wrap items-center gap-2">
+										<h2 className="text-base font-bold text-ink">{doc.name}</h2>
+										<Badge tone={styles.tone}>{styles.label}</Badge>
 									</div>
-									<p className="text-xs text-slate-500 mt-1">
+									<p className="mt-1 text-sm text-muted">
 										{DOC_TYPE_LABEL[doc.type]} &middot; Expires{" "}
 										{expiryFormatted}
 										{" · "}
@@ -251,63 +224,74 @@ export default function VisaRenewalReminderPage() {
 												: `${days} day${days !== 1 ? "s" : ""} remaining`}
 									</p>
 									{doc.notes && (
-										<p className="text-xs text-slate-600 mt-1 italic">
+										<p className="mt-1 text-sm italic text-muted">
 											{doc.notes}
 										</p>
 									)}
 								</div>
-								<button
+								<Button
+									variant="ghost"
 									onClick={() => deleteDocument(doc.id)}
-									className="text-muted hover:text-red-500 transition-colors text-xs font-medium flex-shrink-0 mt-0.5"
-									aria-label="Delete document"
+									aria-label={`Delete ${doc.name}`}
 								>
 									Delete
-								</button>
-							</div>
+								</Button>
+							</li>
 						);
 					})}
-
-					<button
-						onClick={() => setShowForm(true)}
-						className="w-full py-2.5 border-2 border-dashed border-line rounded-xl text-sm text-slate-500 hover:border-primary hover:text-primary transition-colors font-medium"
-					>
-						+ Add another document
-					</button>
-				</div>
+					<li>
+						<Button
+							variant="secondary"
+							fullWidth
+							onClick={() => setShowForm(true)}
+						>
+							+ Add another document
+						</Button>
+					</li>
+				</ul>
 			)}
 
-			{/* Add form */}
 			{showForm && (
-				<div className="bg-white border border-line rounded-xl p-5 mb-6 shadow-sm">
-					<h2 className="font-bold text-ink mb-4">Add document</h2>
+				<section
+					aria-labelledby="add-doc"
+					className="rounded-card border border-line bg-white p-5 shadow-rc"
+				>
+					<h2 id="add-doc" className="mb-4 text-lg font-bold text-ink">
+						Add document
+					</h2>
 
 					{formError && (
-						<div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl text-sm text-red-700">
+						<div
+							role="alert"
+							className="mb-4 rounded-field border border-red-200 bg-red-50 p-3 text-base text-red-800"
+						>
 							{formError}
 						</div>
 					)}
 
 					<div className="space-y-4">
 						<div>
-							<label className="block text-xs font-semibold text-slate-700 mb-1">
-								Document name <span className="text-red-500">*</span>
+							<label htmlFor={nameId} className={labelClass}>
+								Document name <span aria-hidden="true">*</span>
 							</label>
 							<input
+								id={nameId}
 								type="text"
 								placeholder="e.g. Cyprus ARC, UK Passport, GeSY Card"
 								value={form.name}
 								onChange={(e) =>
 									setForm((f) => ({ ...f, name: e.target.value }))
 								}
-								className="w-full border border-line rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-focus"
+								className={fieldClass}
 							/>
 						</div>
 
 						<div>
-							<label className="block text-xs font-semibold text-slate-700 mb-1">
-								Document type <span className="text-red-500">*</span>
+							<label htmlFor={typeId} className={labelClass}>
+								Document type <span aria-hidden="true">*</span>
 							</label>
 							<select
+								id={typeId}
 								value={form.type}
 								onChange={(e) =>
 									setForm((f) => ({
@@ -315,7 +299,7 @@ export default function VisaRenewalReminderPage() {
 										type: e.target.value as DocumentType,
 									}))
 								}
-								className="w-full border border-line rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-focus bg-white"
+								className={fieldClass}
 							>
 								{DOC_TYPE_OPTIONS.map((t) => (
 									<option key={t} value={t}>
@@ -326,117 +310,86 @@ export default function VisaRenewalReminderPage() {
 						</div>
 
 						<div>
-							<label className="block text-xs font-semibold text-slate-700 mb-1">
-								Expiry date <span className="text-red-500">*</span>
+							<label htmlFor={expiryId} className={labelClass}>
+								Expiry date <span aria-hidden="true">*</span>
 							</label>
 							<input
+								id={expiryId}
 								type="date"
 								value={form.expiryDate}
 								onChange={(e) =>
 									setForm((f) => ({ ...f, expiryDate: e.target.value }))
 								}
-								className="w-full border border-line rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-focus"
+								className={fieldClass}
 							/>
 						</div>
 
 						<div>
-							<label className="block text-xs font-semibold text-slate-700 mb-1">
+							<label htmlFor={notesId} className={labelClass}>
 								Notes (optional)
 							</label>
 							<input
+								id={notesId}
 								type="text"
 								placeholder="e.g. Renewal requires in-person appointment"
 								value={form.notes}
 								onChange={(e) =>
 									setForm((f) => ({ ...f, notes: e.target.value }))
 								}
-								className="w-full border border-line rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-focus"
+								className={fieldClass}
 							/>
 						</div>
 
 						<div className="flex gap-3 pt-2">
-							<button
-								onClick={addDocument}
-								className="px-5 py-2.5 bg-primary text-white rounded-xl font-medium text-sm hover:bg-primary-hover transition-colors"
-							>
-								Add document
-							</button>
-							<button
+							<Button onClick={addDocument}>Add document</Button>
+							<Button
+								variant="secondary"
 								onClick={() => {
 									setShowForm(false);
 									setForm(EMPTY_FORM);
 									setFormError(null);
 								}}
-								className="px-5 py-2.5 bg-white border border-line text-slate-700 rounded-xl font-medium text-sm hover:bg-sky transition-colors"
 							>
 								Cancel
-							</button>
+							</Button>
 						</div>
 					</div>
-				</div>
+				</section>
 			)}
 
-			{/* Quick reference */}
-			<div className="mt-8 bg-slate-50 border border-line rounded-xl p-5">
-				<h2 className="font-bold text-ink mb-3">
+			<section
+				aria-labelledby="doc-reference"
+				className="rounded-card border border-line bg-sky p-5"
+			>
+				<h2 id="doc-reference" className="mb-3 text-lg font-bold text-ink">
 					Documents to track for Cyprus relocation
 				</h2>
-				<ul className="space-y-2 text-sm text-slate-600">
+				<ul className="space-y-2 text-base text-ink">
 					<li>
-						<span className="font-medium text-slate-800">
-							ARC / Yellow Slip
-						</span>{" "}
-						— EU registration certificate (no expiry) or Alien Registration
+						<span className="font-semibold">ARC / Yellow Slip</span>: EU
+						registration certificate (no expiry) or Alien Registration
 						Certificate (period-limited)
 					</li>
 					<li>
-						<span className="font-medium text-slate-800">Passport</span> — Must
-						be valid throughout your residency period; banks and officials check
-						this frequently
+						<span className="font-semibold">Passport</span>: Must be valid
+						throughout your residency period; banks and officials check this
+						frequently
 					</li>
 					<li>
-						<span className="font-medium text-slate-800">
-							Visa / Digital Nomad Visa
-						</span>{" "}
-						— DNV is issued for 1 year, renewable up to 3 years
+						<span className="font-semibold">Visa / Digital Nomad Visa</span>:
+						DNV is issued for 1 year, renewable up to 3 years
 					</li>
 					<li>
-						<span className="font-medium text-slate-800">Health insurance</span>{" "}
-						— Required for residency applications; check annual renewal dates
+						<span className="font-semibold">Health insurance</span>: Required
+						for residency applications; check annual renewal dates
 					</li>
 					<li>
-						<span className="font-medium text-slate-800">Driving licence</span>{" "}
-						— Non-EU licences must be exchanged within 6 months of becoming a
-						Cyprus resident
+						<span className="font-semibold">Driving licence</span>: Non-EU
+						licences must be exchanged within 6 months of becoming a Cyprus
+						resident
 					</li>
 				</ul>
-			</div>
-
-			<p className="mt-6 text-sm">
-				<Link href="/tools/" className="text-primary hover:underline">
-					&larr; Back to tools
-				</Link>
-			</p>
-
-			<aside className="mt-10 p-5 rounded-2xl bg-slate-50 border border-line">
-				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-					Next steps
-				</p>
-				<div className="flex flex-wrap gap-3">
-					<Link
-						href="/guides/permanent-residency-5year/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Read: Permanent Residency After 5 Years
-					</Link>{" "}
-					<Link
-						href="/sections/immigration-lawyers/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Find an immigration lawyer
-					</Link>
-				</div>
-			</aside>
-		</main>
+			</section>
+		</div>
 	);
 }

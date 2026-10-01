@@ -1,7 +1,11 @@
 "use client";
 
-import Link from "next/link";
-import { useState } from "react";
+import { useId, useState } from "react";
+import { ToolPanel } from "@/components/templates/ToolTemplate";
+import { ButtonLink } from "@/components/ui/Button";
+import { Callout } from "@/components/ui/Callout";
+import { ChipGroup } from "@/components/ui/Chip";
+import { DataTable, StatCard } from "@/components/ui/DataTable";
 
 type EmploymentType = "employed" | "self-employed";
 
@@ -41,76 +45,35 @@ type BreakdownRow = {
 	monthly: number;
 	annual: number;
 	side: "employee" | "employer" | "self";
-	color?: string;
 };
 
 function BreakdownTable({
 	rows,
 	title,
-	colorClass,
 }: {
 	rows: BreakdownRow[];
 	title: string;
-	colorClass: string;
 }) {
 	const totalMonthly = rows.reduce((s, r) => s + r.monthly, 0);
 	const totalAnnual = rows.reduce((s, r) => s + r.annual, 0);
 
 	return (
-		<div className="bg-white border border-line rounded-xl overflow-hidden">
-			<div className={`px-5 py-3 ${colorClass}`}>
-				<h3 className="text-sm font-semibold">{title}</h3>
-			</div>
-			<div className="overflow-x-auto">
-				<table className="w-full text-sm">
-					<thead>
-						<tr className="border-b border-line bg-sky">
-							<th className="text-left px-5 py-2 font-medium text-slate-600 text-xs">
-								Contribution
-							</th>
-							<th className="text-right px-3 py-2 font-medium text-slate-600 text-xs">
-								Rate
-							</th>
-							<th className="text-right px-3 py-2 font-medium text-slate-600 text-xs">
-								Monthly
-							</th>
-							<th className="text-right px-5 py-2 font-medium text-slate-600 text-xs">
-								Annual
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						{rows.map((row) => (
-							<tr key={row.label} className="border-b border-line hover:bg-sky">
-								<td className="px-5 py-2.5 text-slate-700">{row.label}</td>
-								<td className="px-3 py-2.5 text-right text-muted">
-									{row.rate}
-								</td>
-								<td className="px-3 py-2.5 text-right font-medium text-ink">
-									{formatEur(row.monthly)}
-								</td>
-								<td className="px-5 py-2.5 text-right font-medium text-ink">
-									{formatEur(row.annual)}
-								</td>
-							</tr>
-						))}
-					</tbody>
-					<tfoot>
-						<tr className="bg-sky border-t border-line">
-							<td colSpan={2} className="px-5 py-3 font-bold text-ink text-sm">
-								Total
-							</td>
-							<td className="px-3 py-3 text-right font-bold text-ink">
-								{formatEur(totalMonthly)}
-							</td>
-							<td className="px-5 py-3 text-right font-bold text-ink">
-								{formatEur(totalAnnual)}
-							</td>
-						</tr>
-					</tfoot>
-				</table>
-			</div>
-		</div>
+		<DataTable
+			caption={title}
+			columns={[
+				{ header: "Contribution" },
+				{ header: "Rate", align: "right" },
+				{ header: "Monthly", align: "right" },
+				{ header: "Annual", align: "right" },
+			]}
+			rows={rows.map((row) => [
+				row.label,
+				row.rate,
+				formatEur(row.monthly),
+				formatEur(row.annual),
+			])}
+			footer={["Total", "", formatEur(totalMonthly), formatEur(totalAnnual)]}
+		/>
 	);
 }
 
@@ -118,26 +81,29 @@ function SummaryCard({
 	label,
 	monthly,
 	annual,
-	colorClass,
 }: {
 	label: string;
 	monthly: number;
 	annual: number;
-	colorClass: string;
 }) {
 	return (
-		<div className={`rounded-2xl p-5 border ${colorClass}`}>
-			<p className="text-xs font-semibold uppercase tracking-wider opacity-70 mb-1">
-				{label}
-			</p>
-			<p className="text-2xl font-bold">
-				{formatEur(monthly)}
-				<span className="text-sm font-normal opacity-70">/mo</span>
-			</p>
-			<p className="text-sm opacity-70 mt-0.5">{formatEur(annual)}/yr</p>
-		</div>
+		<StatCard
+			label={label}
+			value={
+				<>
+					{formatEur(monthly)}
+					<span className="text-base font-semibold text-muted">/mo</span>
+				</>
+			}
+			hint={`${formatEur(annual)}/yr`}
+		/>
 	);
 }
+
+const NEXT_STEPS = [
+	{ href: "/guides/hiring-in-cyprus/", label: "Read: Hiring in Cyprus" },
+	{ href: "/sections/accountants/", label: "Find an accountant" },
+];
 
 export default function SocialInsuranceCalculatorPage({
 	embedded = false,
@@ -268,148 +234,78 @@ export default function SocialInsuranceCalculatorPage({
 		employmentType === "self-employed" &&
 		annualSalary > SELF_EMPLOYED_MAX_ANNUAL;
 
-	const Wrap = embedded ? "div" : "main";
+	const sliderId = useId();
+
 	return (
-		<Wrap
-			{...(embedded
-				? {}
-				: {
-						id: "main",
-						"data-pagefind-body": "",
-						"data-pagefind-filter": "type[data-type]",
-						"data-type": "tool",
-					})}
-			className={
-				embedded ? "flex flex-col" : "max-w-3xl mx-auto px-6 py-10 md:py-16"
-			}
-		>
-			{!embedded && (
-				<>
-					<nav className="text-xs text-slate-600 mb-6">
-						<Link href="/" className="hover:text-primary">
-							Home
-						</Link>{" "}
-						›{" "}
-						<Link href="/tools" className="hover:text-primary">
-							Tools
-						</Link>{" "}
-						› <span className="text-ink">Social Insurance Calculator</span>
-					</nav>
+		<div className="flex flex-col gap-6">
+			<ToolPanel title="Your details">
+				<ChipGroup
+					label="Employment type"
+					options={[
+						{ value: "employed" as EmploymentType, label: "Employed" },
+						{
+							value: "self-employed" as EmploymentType,
+							label: "Self-employed",
+						},
+					]}
+					value={employmentType}
+					onChange={setEmploymentType}
+				/>
 
-					<header className="mb-8">
-						<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
-							Interactive Tool
-						</p>
-						<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">
-							Cyprus Social Insurance Calculator
-						</h1>
-						<p className="mt-3 text-slate-600 leading-relaxed">
-							Calculate your Social Insurance and GeSY contributions based on
-							2026 rates. Adjust your salary and employment type to see a full
-							breakdown.
-						</p>
-					</header>
-				</>
-			)}
-
-			{/* Inputs */}
-			<div className="bg-white border border-line rounded-2xl p-6 mb-6 space-y-5">
-				<h2 className="text-sm font-semibold text-ink uppercase tracking-wider">
-					Your Details
-				</h2>
-
-				{/* Employment type */}
-				<div>
-					<label className="text-sm font-medium text-slate-700 block mb-2">
-						Employment type
-					</label>
-					<div className="flex rounded-xl overflow-hidden border border-line w-fit">
-						{(["employed", "self-employed"] as EmploymentType[]).map((type) => (
-							<button
-								key={type}
-								onClick={() => setEmploymentType(type)}
-								className={`px-5 py-2 text-sm font-medium capitalize transition-colors ${
-									employmentType === type
-										? "bg-primary text-white"
-										: "bg-white text-slate-600 hover:bg-sky"
-								} ${type === "self-employed" ? "border-l border-line" : ""}`}
-							>
-								{type === "employed" ? "Employed" : "Self-Employed"}
-							</button>
-						))}
-					</div>
-				</div>
-
-				{/* Salary slider */}
 				<div className="space-y-2">
-					<div className="flex justify-between items-center">
-						<label className="text-sm font-medium text-slate-700">
+					<div className="flex items-center justify-between gap-3">
+						<label
+							htmlFor={sliderId}
+							className="text-sm font-semibold text-ink"
+						>
 							Gross monthly{" "}
 							{employmentType === "employed" ? "salary" : "income"}
 						</label>
-						<span className="text-sm font-bold text-ink">
+						<span className="text-base font-bold text-ink">
 							{formatEur(grossMonthly)}
-							<span className="text-muted font-normal">/mo</span>
+							<span className="font-normal text-muted">/mo</span>
 						</span>
 					</div>
 					<input
+						id={sliderId}
 						type="range"
 						min={0}
 						max={20000}
 						step={100}
 						value={grossMonthly}
 						onChange={(e) => setGrossMonthly(Number(e.target.value))}
-						className="w-full h-2 bg-sky-strong rounded-full appearance-none cursor-pointer accent-primary"
+						className="h-6 w-full cursor-pointer accent-primary"
 					/>
-					<div className="flex justify-between text-xs text-muted">
+					<div className="flex justify-between text-sm text-muted">
 						<span>€0</span>
 						<span>€20,000</span>
 					</div>
 				</div>
 
 				{isCapped && (
-					<div className="rounded-xl bg-amber-50 border border-amber-200 px-4 py-2.5 text-sm text-amber-900">
+					<Callout tone="info">
 						SI is capped at {formatEur(SELF_EMPLOYED_MAX_ANNUAL / 12)}/mo (
 						{formatEur(SELF_EMPLOYED_MAX_ANNUAL)}/yr insurable earnings). Income
 						above this cap is not subject to Social Insurance.
-					</div>
+					</Callout>
 				)}
 
-				{/* Cyprus-registered employer (employed only) */}
 				{employmentType === "employed" && (
-					<div className="flex items-center justify-between gap-4 pt-1">
-						<label className="text-sm font-medium text-slate-700 flex-1">
-							Is your employer Cyprus-registered?
-						</label>
-						<div className="flex rounded-xl overflow-hidden border border-line">
-							<button
-								onClick={() => setCyprusRegistered(true)}
-								className={`px-4 py-1.5 text-sm font-medium transition-colors ${
-									cyprusRegistered
-										? "bg-primary text-white"
-										: "bg-white text-slate-600 hover:bg-sky"
-								}`}
-							>
-								Yes
-							</button>
-							<button
-								onClick={() => setCyprusRegistered(false)}
-								className={`px-4 py-1.5 text-sm font-medium transition-colors border-l border-line ${
-									!cyprusRegistered
-										? "bg-primary text-white"
-										: "bg-white text-slate-600 hover:bg-sky"
-								}`}
-							>
-								No
-							</button>
-						</div>
-					</div>
+					<ChipGroup
+						label="Is your employer Cyprus-registered?"
+						options={[
+							{ value: "yes", label: "Yes" },
+							{ value: "no", label: "No" },
+						]}
+						value={cyprusRegistered ? "yes" : "no"}
+						onChange={(v) => setCyprusRegistered(v === "yes")}
+					/>
 				)}
-			</div>
+			</ToolPanel>
 
-			{/* Summary cards */}
-			<div
-				className={`grid gap-4 mb-6 ${employmentType === "employed" && cyprusRegistered ? "grid-cols-2" : "grid-cols-1"}`}
+			<section
+				aria-label="Contribution totals"
+				className={`grid grid-cols-1 gap-4 ${employmentType === "employed" && cyprusRegistered ? "sm:grid-cols-2" : ""}`}
 			>
 				{employmentType === "employed" ? (
 					<>
@@ -417,14 +313,12 @@ export default function SocialInsuranceCalculatorPage({
 							label="Your contributions (employee)"
 							monthly={employeeTotalMonthly}
 							annual={employeeTotalAnnual}
-							colorClass="bg-sky border-line text-ink"
 						/>
 						{cyprusRegistered && (
 							<SummaryCard
 								label="Employer contributions"
 								monthly={employerTotalMonthly}
 								annual={employerTotalAnnual}
-								colorClass="bg-sky border-line text-ink"
 							/>
 						)}
 					</>
@@ -433,82 +327,53 @@ export default function SocialInsuranceCalculatorPage({
 						label="Your total contributions (self-employed)"
 						monthly={selfTotalMonthly}
 						annual={selfTotalAnnual}
-						colorClass="bg-sky border-line text-ink"
 					/>
 				)}
-			</div>
+			</section>
 
-			{/* Breakdown tables */}
 			<div className="space-y-4">
 				{employmentType === "employed" ? (
 					<>
 						<BreakdownTable
 							rows={employeeRows}
-							title="Employee Contributions"
-							colorClass="bg-sky text-ink"
+							title="Employee contributions"
 						/>
 						{cyprusRegistered && employerRows.length > 0 && (
 							<BreakdownTable
 								rows={employerRows}
-								title="Employer Contributions (Cyprus-registered)"
-								colorClass="bg-sky text-slate-700"
+								title="Employer contributions (Cyprus-registered)"
 							/>
 						)}
 					</>
 				) : (
-					<BreakdownTable
-						rows={selfRows}
-						title="Self-Employed Contributions"
-						colorClass="bg-sky text-ink"
-					/>
+					<BreakdownTable rows={selfRows} title="Self-employed contributions" />
 				)}
 			</div>
 
-			<aside className="mt-8 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
-				<p className="font-semibold text-ink mb-1">Important notice</p>
-				<p>
-					Rates change annually. Verify current rates at{" "}
-					<a
-						href="https://www.socialinsurance.gov.cy"
-						target="_blank"
-						rel="noopener noreferrer"
-						className="text-amber-900 hover:text-amber-950 underline font-semibold"
-					>
-						socialinsurance.gov.cy
-					</a>{" "}
-					before filing. GeSY rates are set by the Health Insurance Organisation
-					and may differ from the figures shown. This tool provides general
-					information only and is not a substitute for professional advice.
-				</p>
-			</aside>
+			<Callout tone="legal" title="Important notice">
+				Rates change annually. Verify current rates at{" "}
+				<a
+					href="https://www.socialinsurance.gov.cy"
+					target="_blank"
+					rel="noopener noreferrer"
+					className="font-semibold underline"
+				>
+					socialinsurance.gov.cy
+				</a>{" "}
+				before filing. GeSY rates are set by the Health Insurance Organisation
+				and may differ from the figures shown. This tool provides general
+				information only and is not a substitute for professional advice.
+			</Callout>
 
-			{!embedded && (
-				<p className="mt-8 text-xs text-muted">
-					<Link href="/tools" className="underline hover:text-primary">
-						← Back to Tools
-					</Link>
-				</p>
-			)}
-
-			<aside className="mt-10 p-5 rounded-2xl bg-sky border border-line">
-				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-					Next steps
-				</p>
+			{embedded ? (
 				<div className="flex flex-wrap gap-3">
-					<Link
-						href="/guides/hiring-in-cyprus/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Read: Hiring in Cyprus
-					</Link>{" "}
-					<Link
-						href="/sections/accountants/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Find an accountant
-					</Link>
+					{NEXT_STEPS.map((s) => (
+						<ButtonLink key={s.href} href={s.href} variant="secondary">
+							{s.label}
+						</ButtonLink>
+					))}
 				</div>
-			</aside>
-		</Wrap>
+			) : null}
+		</div>
 	);
 }

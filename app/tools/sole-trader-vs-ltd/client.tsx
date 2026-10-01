@@ -3,6 +3,7 @@
 import { useState } from "react";
 import FreelancerVsCompanyPage from "@/app/tools/freelancer-vs-company/client";
 import LtdSetupCalculatorClient from "@/app/tools/ltd-setup-calculator/client";
+import { ChipGroup } from "@/components/ui/Chip";
 
 type Tab = "takehome" | "setup";
 
@@ -10,31 +11,16 @@ export default function SoleTraderVsLtdClient() {
 	const [tab, setTab] = useState<Tab>("takehome");
 
 	return (
-		<div>
-			<div className="flex flex-wrap gap-2 mb-8">
-				<button
-					type="button"
-					onClick={() => setTab("takehome")}
-					className={`rounded-full px-4 py-1.5 min-h-11 text-sm font-semibold border transition-colors ${
-						tab === "takehome"
-							? "bg-primary text-white border-primary"
-							: "bg-white text-ink border-line hover:bg-sky"
-					}`}
-				>
-					Take-home comparison
-				</button>
-				<button
-					type="button"
-					onClick={() => setTab("setup")}
-					className={`rounded-full px-4 py-1.5 min-h-11 text-sm font-semibold border transition-colors ${
-						tab === "setup"
-							? "bg-primary text-white border-primary"
-							: "bg-white text-ink border-line hover:bg-sky"
-					}`}
-				>
-					Ltd setup costs
-				</button>
-			</div>
+		<div className="flex flex-col gap-6">
+			<ChipGroup
+				label="Choose a tool"
+				options={[
+					{ value: "takehome" as Tab, label: "Take-home comparison" },
+					{ value: "setup" as Tab, label: "Ltd setup costs" },
+				]}
+				value={tab}
+				onChange={setTab}
+			/>
 
 			{tab === "takehome" ? (
 				<FreelancerVsCompanyPage />

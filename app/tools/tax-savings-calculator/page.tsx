@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import TaxSavingsCalculatorClient from "./client";
 
 const SITE_URL = "https://realcy.app";
-const title = "Cyprus Non-Dom Tax Calculator 2026 — See Your Annual Tax Saving";
+const title = "Cyprus Non-Dom Tax Calculator 2026: See Your Annual Tax Saving";
 const description =
 	"Enter your income and source country to calculate your exact tax saving under Cyprus's Non-Dom regime. Side-by-side comparison of income tax, dividend tax, and social insurance vs your current country.";
 
@@ -20,27 +21,37 @@ export const metadata: Metadata = {
 };
 
 export default function TaxSavingsCalculatorPage() {
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Home", item: SITE_URL + "/" },
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Tools",
-				item: SITE_URL + "/tools/",
-			},
-			{ "@type": "ListItem", position: 3, name: title },
-		],
-	};
-
 	return (
-		<>
-			<script
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-			/>
+		<ToolTemplate
+			pagefindType="tool"
+			width="reading"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Tools", href: "/tools/" },
+					{ label: "Cyprus Tax Savings Calculator" },
+				],
+				eyebrow: "Tax",
+				title: "Cyprus Tax Savings Calculator",
+				intro:
+					"Compare your current country's tax burden against Cyprus Standard and Non-Dom regimes. See your estimated annual saving at a glance.",
+			}}
+			nextSteps={[
+				{
+					href: "/tools/tax-residency-tracker/",
+					label: "Tax Residency Planner",
+				},
+				{
+					href: "/tools/double-tax-treaty-finder/",
+					label: "Double Tax Treaty Finder",
+				},
+				{ href: "/tools/sole-trader-vs-ltd/", label: "Sole Trader vs Ltd" },
+				{ href: "/tools/", label: "All tools" },
+			]}
+			disclaimer={
+				"General information only, not legal, tax, or financial advice."
+			}
+		>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
@@ -49,6 +60,6 @@ export default function TaxSavingsCalculatorPage() {
 				}}
 			/>
 			<TaxSavingsCalculatorClient />
-		</>
+		</ToolTemplate>
 	);
 }

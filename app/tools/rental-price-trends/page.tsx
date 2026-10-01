@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import RentalPriceTrendsClient from "./client";
 
@@ -20,27 +21,37 @@ export const metadata: Metadata = {
 };
 
 export default function RentalPriceTrendsPage() {
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Home", item: SITE_URL + "/" },
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Tools",
-				item: SITE_URL + "/tools/",
-			},
-			{ "@type": "ListItem", position: 3, name: title },
-		],
-	};
-
 	return (
-		<>
-			<script
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-			/>
+		<ToolTemplate
+			pagefindType="tool"
+			width="wide"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Tools", href: "/tools/" },
+					{ label: "Cyprus Rental Price Trends" },
+				],
+				eyebrow: "Research",
+				title: "Cyprus Rental Price Trends",
+				intro:
+					"Monthly asking rents across Limassol, Paphos, Larnaca, and Ayia Napa from 2021 to 2025. Select a bedroom type and toggle cities to explore the data.",
+			}}
+			nextSteps={[
+				{
+					href: "/tools/rent-vs-buy-calculator/",
+					label: "Rent vs Buy Calculator",
+				},
+				{
+					href: "/tools/rental-yield-calculator/",
+					label: "Rental Yield Calculator",
+				},
+				{ href: "/tools/mortgage-calculator/", label: "Mortgage Calculator" },
+				{ href: "/tools/", label: "All tools" },
+			]}
+			disclaimer={
+				"Figures are estimates based on aggregated public market data. Actual rents depend heavily on exact location, condition, furnishing, and negotiation. General information only, not legal, tax, or financial advice."
+			}
+		>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
@@ -49,6 +60,6 @@ export default function RentalPriceTrendsPage() {
 				}}
 			/>
 			<RentalPriceTrendsClient />
-		</>
+		</ToolTemplate>
 	);
 }
