@@ -27,13 +27,13 @@ export function ShareBar({ url, title, guideSlug }: ShareBarProps) {
 
   return (
     <div className="mt-4 flex items-center gap-2 flex-wrap">
-      <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mr-1">
+      <span className="text-[10px] font-semibold text-muted uppercase tracking-wider mr-1">
         Share
       </span>
       <button
         type="button"
         onClick={copyLink}
-        className="text-xs px-3 py-1.5 rounded-full border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 transition-colors"
+        className="text-xs px-3 py-1.5 rounded-full border border-line bg-white text-muted hover:bg-sky hover:text-ink transition-colors"
       >
         {copied ? "Copied!" : "Copy link"}
       </button>
@@ -42,7 +42,7 @@ export function ShareBar({ url, title, guideSlug }: ShareBarProps) {
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => track("twitter")}
-        className="text-xs px-3 py-1.5 rounded-full border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 transition-colors"
+        className="text-xs px-3 py-1.5 rounded-full border border-line bg-white text-muted hover:bg-sky hover:text-ink transition-colors"
       >
         X / Twitter
       </a>
@@ -51,7 +51,7 @@ export function ShareBar({ url, title, guideSlug }: ShareBarProps) {
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => track("whatsapp")}
-        className="text-xs px-3 py-1.5 rounded-full border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 transition-colors"
+        className="text-xs px-3 py-1.5 rounded-full border border-line bg-white text-muted hover:bg-sky hover:text-ink transition-colors"
       >
         WhatsApp
       </a>
@@ -60,7 +60,7 @@ export function ShareBar({ url, title, guideSlug }: ShareBarProps) {
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => track("reddit")}
-        className="text-xs px-3 py-1.5 rounded-full border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 transition-colors"
+        className="text-xs px-3 py-1.5 rounded-full border border-line bg-white text-muted hover:bg-sky hover:text-ink transition-colors"
       >
         Reddit
       </a>

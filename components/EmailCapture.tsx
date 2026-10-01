@@ -63,7 +63,9 @@ export function EmailCapture({
 
 	if (status === "success") {
 		return (
-			<p className="text-sm text-[#35cdc4] font-semibold py-2">
+			<p
+				className={`text-sm font-semibold py-2 ${compact || onDark ? "text-sky-strong" : "text-primary"}`}
+			>
 				✓ You're on the list — checklist coming your way.
 			</p>
 		);
@@ -78,11 +80,11 @@ export function EmailCapture({
 					onChange={(e) => setEmail(e.target.value)}
 					placeholder="your@email.com"
 					aria-label="Email address"
-					className="flex-1 text-xs px-3 py-2 rounded bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-[#35cdc4]"
+					className="flex-1 text-xs px-3 py-2 rounded bg-slate-800 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-white"
 				/>
 				<button
 					type="submit"
-					className="text-xs px-4 py-2 rounded bg-[#35cdc4] text-slate-900 font-semibold hover:bg-white transition-colors whitespace-nowrap"
+					className="text-xs px-4 py-2 rounded bg-white text-ink font-semibold hover:bg-sky-strong transition-colors whitespace-nowrap"
 				>
 					Get it free
 				</button>
@@ -93,13 +95,11 @@ export function EmailCapture({
 	return (
 		<form onSubmit={handleSubmit}>
 			<p
-				className={`text-sm font-semibold mb-1 ${onDark ? "text-white" : "text-slate-900"}`}
+				className={`text-sm font-semibold mb-1 ${onDark ? "text-white" : "text-ink"}`}
 			>
 				{headline}
 			</p>
-			<p
-				className={`text-xs mb-3 ${onDark ? "text-white/60" : "text-slate-500"}`}
-			>
+			<p className={`text-xs mb-3 ${onDark ? "text-white/70" : "text-muted"}`}>
 				Free Cyprus Relocation Checklist — visas, taxes, banking, and more.
 			</p>
 			<div className="flex flex-col sm:flex-row gap-2">
@@ -109,21 +109,25 @@ export function EmailCapture({
 					onChange={(e) => setEmail(e.target.value)}
 					placeholder="your@email.com"
 					aria-label="Email address"
-					className={`flex-1 text-sm px-4 py-2.5 rounded-lg focus:outline-none focus:border-[#35cdc4] focus:ring-1 focus:ring-[#35cdc4] ${
+					className={`flex-1 text-sm px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${
 						onDark
-							? "bg-white/10 border border-white/20 text-white placeholder-white/40"
-							: "border border-slate-300 text-slate-900 placeholder-slate-400"
+							? "bg-white/10 border border-white/30 text-white placeholder-white/60 focus:ring-white"
+							: "border border-line text-ink placeholder-slate-500 focus:ring-focus focus:border-focus"
 					}`}
 				/>
 				<button
 					type="submit"
-					className="text-sm px-5 py-2.5 rounded-lg bg-[#35cdc4] text-slate-900 font-semibold hover:bg-teal-400 transition-colors whitespace-nowrap"
+					className={`text-sm px-5 py-2.5 rounded-lg font-semibold transition-colors whitespace-nowrap ${
+						onDark
+							? "bg-white text-ink hover:bg-sky-strong"
+							: "bg-primary text-white hover:bg-primary-hover"
+					}`}
 				>
 					Get the checklist →
 				</button>
 			</div>
 			{status === "error" && (
-				<p className="text-xs text-red-500 mt-1">
+				<p className="text-xs text-red-600 mt-1">
 					Please enter a valid email address.
 				</p>
 			)}

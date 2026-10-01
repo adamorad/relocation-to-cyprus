@@ -24,21 +24,19 @@ export function RelatedContent({
 	emailRegion?: string;
 }) {
 	return (
-		<section className="mt-12 border-t border-slate-200 pt-8">
-			<h2 className="text-xl font-bold text-slate-900 mb-1">{heading}</h2>
-			{blurb ? <p className="text-sm text-slate-600 mb-5">{blurb}</p> : null}
+		<section className="mt-12 border-t border-line pt-8">
+			<h2 className="text-xl font-bold text-ink mb-1">{heading}</h2>
+			{blurb ? <p className="text-sm text-muted mb-5">{blurb}</p> : null}
 			<div className="grid gap-3 sm:grid-cols-2">
 				{guides.map((g) => (
 					<Link
 						key={g.href}
 						href={g.href}
-						className="block rounded-lg border border-slate-200 bg-white p-4 hover:border-[#35cdc4] hover:shadow-sm transition-all"
+						className="block rounded-2xl border border-line bg-white p-4 hover:border-primary hover:shadow-rc transition-all"
 					>
-						<div className="font-semibold text-sm text-slate-900">
-							{g.title}
-						</div>
+						<div className="font-semibold text-sm text-ink">{g.title}</div>
 						{g.desc ? (
-							<div className="text-xs text-slate-500 mt-0.5">{g.desc}</div>
+							<div className="text-xs text-muted mt-0.5">{g.desc}</div>
 						) : null}
 					</Link>
 				))}
@@ -49,7 +47,7 @@ export function RelatedContent({
 						<Link
 							key={t.href}
 							href={t.href}
-							className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-700 hover:border-[#35cdc4] hover:text-slate-900 transition-colors"
+							className="inline-flex items-center gap-1 rounded-full border border-line bg-sky px-3 py-1.5 text-xs font-medium text-ink hover:border-primary hover:bg-sky-strong transition-colors"
 						>
 							{t.title} →
 						</Link>

@@ -4,24 +4,27 @@ export type Crumb = { label: string; href?: string };
 
 export function Breadcrumbs({ items }: { items: Crumb[] }) {
 	return (
-		<nav aria-label="Breadcrumb" className="text-xs text-slate-600 mb-6">
+		<nav aria-label="Breadcrumb" className="text-xs text-muted mb-6">
 			{items.map((item, i) => {
 				const last = i === items.length - 1;
 				return (
 					<span key={item.label}>
 						{item.href && !last ? (
-							<Link href={item.href} className="hover:text-slate-900">
+							<Link
+								href={item.href}
+								className="hover:text-ink hover:underline rounded-sm"
+							>
 								{item.label}
 							</Link>
 						) : (
 							<span
-								className={last ? "text-slate-900" : undefined}
+								className={last ? "text-ink" : undefined}
 								aria-current={last ? "page" : undefined}
 							>
 								{item.label}
 							</span>
 						)}
-						{!last && <span aria-hidden="true">{" › "}</span>}
+						{!last && <span aria-hidden="true">{" / "}</span>}
 					</span>
 				);
 			})}
