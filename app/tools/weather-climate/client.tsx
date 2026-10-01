@@ -1,7 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useCallback, useRef, useState } from "react";
+import { Badge } from "@/components/ui/Badge";
+import { Chip } from "@/components/ui/Chip";
+import { StatCard } from "@/components/ui/DataTable";
+import { CHART_COLORS } from "@/lib/chart-colors";
 
 // ── data ──────────────────────────────────────────────────────────────────────
 
@@ -99,17 +102,10 @@ const CITY_DATA: Record<string, CityData> = {
 };
 
 const ALL_CITIES = Object.keys(CITY_DATA);
-const CITY_COLORS = ["#0b2145", "#fa794d"]; // ink, coral
-const CYPRUS_COLOR = "#087f98";
+const CITY_COLORS: string[] = [CHART_COLORS.ink, CHART_COLORS.coralFill];
+const CYPRUS_COLOR: string = CHART_COLORS.primary;
 
 // ── helpers ───────────────────────────────────────────────────────────────────
-
-function uvColor(uv: number): string {
-	if (uv <= 2) return "bg-green-100 text-green-800";
-	if (uv <= 5) return "bg-yellow-100 text-yellow-800";
-	if (uv <= 7) return "bg-amber-100 text-amber-900";
-	return "bg-red-100 text-red-800";
-}
 
 function uvLabel(uv: number): string {
 	if (uv <= 2) return "Low";
@@ -190,154 +186,154 @@ function WeatherChart({ selectedCities }: ChartProps) {
 			className="w-full overflow-x-auto"
 		>
 			<div className="relative" style={{ minWidth: 700 }}>
-			<svg
-				ref={svgRef}
-				viewBox={`0 0 ${W} ${H}`}
-				className="w-full"
-				onMouseMove={handleMouseMove}
-				onMouseLeave={handleMouseLeave}
-			>
-				{/* grid lines */}
-				{gridTemps.map((t) => (
-					<g key={t}>
-						<line
-							x1={PAD.left}
-							y1={yPos(t)}
-							x2={W - PAD.right}
-							y2={yPos(t)}
-							stroke="#d9e5ef"
-							strokeWidth="1"
-						/>
+				<svg
+					ref={svgRef}
+					viewBox={`0 0 ${W} ${H}`}
+					className="w-full"
+					onMouseMove={handleMouseMove}
+					onMouseLeave={handleMouseLeave}
+				>
+					{/* grid lines */}
+					{gridTemps.map((t) => (
+						<g key={t}>
+							<line
+								x1={PAD.left}
+								y1={yPos(t)}
+								x2={W - PAD.right}
+								y2={yPos(t)}
+								stroke="#d9e5ef"
+								strokeWidth="1"
+							/>
+							<text
+								x={PAD.left - 6}
+								y={yPos(t) + 4}
+								textAnchor="end"
+								fontSize="12"
+								fill="#506580"
+							>
+								{t}°
+							</text>
+						</g>
+					))}
+
+					{/* x-axis labels */}
+					{MONTHS.map((m, i) => (
 						<text
-							x={PAD.left - 6}
-							y={yPos(t) + 4}
-							textAnchor="end"
+							key={m}
+							x={xPos(i)}
+							y={H - 8}
+							textAnchor="middle"
 							fontSize="12"
 							fill="#506580"
 						>
-							{t}°
+							{m}
 						</text>
-					</g>
-				))}
+					))}
 
-				{/* x-axis labels */}
-				{MONTHS.map((m, i) => (
-					<text
-						key={m}
-						x={xPos(i)}
-						y={H - 8}
-						textAnchor="middle"
-						fontSize="12"
-						fill="#506580"
-					>
-						{m}
-					</text>
-				))}
-
-				{/* comparison city lines */}
-				{selectedCities.map((city, ci) => {
-					const data = CITY_DATA[city];
-					const color = CITY_COLORS[ci % CITY_COLORS.length];
-					return (
-						<g key={city}>
-							<polyline
-								points={pointsStr(data.highs)}
-								fill="none"
-								stroke={color}
-								strokeWidth="2"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-							/>
-							<polyline
-								points={pointsStr(data.lows)}
-								fill="none"
-								stroke={color}
-								strokeWidth="2"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeDasharray="5 3"
-							/>
-						</g>
-					);
-				})}
-
-				{/* Cyprus lines — always on top */}
-				<polyline
-					points={pointsStr(cyprusHighPts)}
-					fill="none"
-					stroke={CYPRUS_COLOR}
-					strokeWidth="3"
-					strokeLinecap="round"
-					strokeLinejoin="round"
-				/>
-				<polyline
-					points={pointsStr(cyprusLowPts)}
-					fill="none"
-					stroke={CYPRUS_COLOR}
-					strokeWidth="3"
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					strokeDasharray="6 3"
-				/>
-
-				{/* tooltip vertical line */}
-				{tooltip && (
-					<line
-						x1={tooltip.x}
-						y1={PAD.top}
-						x2={tooltip.x}
-						y2={H - PAD.bottom}
-						stroke="#506580"
-						strokeWidth="1"
-						strokeDasharray="4 2"
-					/>
-				)}
-			</svg>
-
-			{/* tooltip card */}
-			{tooltip &&
-				(() => {
-					const mi = tooltip.monthIdx;
-					const month = MONTHS[mi];
-					const cd = CYPRUS_DATA[month];
-					return (
-						<div
-							className="pointer-events-none absolute top-0 z-10 rounded-xl border border-line bg-white/95 p-3 shadow-sm text-xs"
-							style={{
-								left: `${Math.min(Math.max((tooltip.x / W) * 100, 10), 75)}%`,
-								transform: "translateX(-50%)",
-								minWidth: 160,
-							}}
-						>
-							<p className="font-bold text-ink mb-2">{month}</p>
-							<div className="flex items-center gap-1.5 mb-1">
-								<span
-									className="inline-block w-3 h-0.5 rounded"
-									style={{ background: CYPRUS_COLOR }}
+					{/* comparison city lines */}
+					{selectedCities.map((city, ci) => {
+						const data = CITY_DATA[city];
+						const color = CITY_COLORS[ci % CITY_COLORS.length];
+						return (
+							<g key={city}>
+								<polyline
+									points={pointsStr(data.highs)}
+									fill="none"
+									stroke={color}
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
 								/>
-								<span className="text-slate-700">
-									Cyprus: {cd.high}° / {cd.low}°
-								</span>
+								<polyline
+									points={pointsStr(data.lows)}
+									fill="none"
+									stroke={color}
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeDasharray="5 3"
+								/>
+							</g>
+						);
+					})}
+
+					{/* Cyprus lines, always on top */}
+					<polyline
+						points={pointsStr(cyprusHighPts)}
+						fill="none"
+						stroke={CYPRUS_COLOR}
+						strokeWidth="3"
+						strokeLinecap="round"
+						strokeLinejoin="round"
+					/>
+					<polyline
+						points={pointsStr(cyprusLowPts)}
+						fill="none"
+						stroke={CYPRUS_COLOR}
+						strokeWidth="3"
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						strokeDasharray="6 3"
+					/>
+
+					{/* tooltip vertical line */}
+					{tooltip && (
+						<line
+							x1={tooltip.x}
+							y1={PAD.top}
+							x2={tooltip.x}
+							y2={H - PAD.bottom}
+							stroke="#506580"
+							strokeWidth="1"
+							strokeDasharray="4 2"
+						/>
+					)}
+				</svg>
+
+				{/* tooltip card */}
+				{tooltip &&
+					(() => {
+						const mi = tooltip.monthIdx;
+						const month = MONTHS[mi];
+						const cd = CYPRUS_DATA[month];
+						return (
+							<div
+								className="pointer-events-none absolute top-0 z-10 rounded-xl border border-line bg-white/95 p-3 shadow-sm text-xs"
+								style={{
+									left: `${Math.min(Math.max((tooltip.x / W) * 100, 10), 75)}%`,
+									transform: "translateX(-50%)",
+									minWidth: 160,
+								}}
+							>
+								<p className="font-bold text-ink mb-2">{month}</p>
+								<div className="flex items-center gap-1.5 mb-1">
+									<span
+										className="inline-block w-3 h-0.5 rounded"
+										style={{ background: CYPRUS_COLOR }}
+									/>
+									<span className="text-slate-700">
+										Cyprus: {cd.high}° / {cd.low}°
+									</span>
+								</div>
+								{selectedCities.map((city, ci) => {
+									const data = CITY_DATA[city];
+									return (
+										<div key={city} className="flex items-center gap-1.5 mb-1">
+											<span
+												className="inline-block w-3 h-0.5 rounded"
+												style={{
+													background: CITY_COLORS[ci % CITY_COLORS.length],
+												}}
+											/>
+											<span className="text-slate-700">
+												{city}: {data.highs[mi]}° / {data.lows[mi]}°
+											</span>
+										</div>
+									);
+								})}
 							</div>
-							{selectedCities.map((city, ci) => {
-								const data = CITY_DATA[city];
-								return (
-									<div key={city} className="flex items-center gap-1.5 mb-1">
-										<span
-											className="inline-block w-3 h-0.5 rounded"
-											style={{
-												background: CITY_COLORS[ci % CITY_COLORS.length],
-											}}
-										/>
-										<span className="text-slate-700">
-											{city}: {data.highs[mi]}° / {data.lows[mi]}°
-										</span>
-									</div>
-								);
-							})}
-						</div>
-					);
-				})()}
+						);
+					})()}
 			</div>
 		</div>
 	);
@@ -360,26 +356,18 @@ function MonthCards() {
 				return (
 					<div
 						key={m}
-						className="snap-start flex-none w-28 rounded-xl border border-line bg-white p-3 text-center"
+						className="snap-start flex-none w-32 rounded-card border border-line bg-white p-3 text-center"
 					>
-						<p className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">
+						<p className="mb-1 text-sm font-bold uppercase tracking-wider text-muted">
 							{m}
 						</p>
 						<p className="text-2xl font-bold text-ink">{d.high}°</p>
-						<p className="text-xs text-slate-500">{d.low}° low</p>
-						<div className="mt-2 flex items-center justify-center gap-1 text-xs text-primary">
-							<span>🌊</span>
-							<span>{d.sea}°</span>
-						</div>
-						<div className="mt-1 flex items-center justify-center gap-1 text-xs text-slate-500">
-							<span>🌧</span>
-							<span>{d.rainDays}d</span>
-						</div>
-						<div
-							className={`mt-1.5 inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${uvColor(d.uv)}`}
-						>
+						<p className="text-sm text-muted">{d.low}° low</p>
+						<p className="mt-2 text-sm text-ink">Sea {d.sea}°</p>
+						<p className="mt-0.5 text-sm text-muted">Rain {d.rainDays}d</p>
+						<Badge className="mt-2">
 							UV {d.uv} · {uvLabel(d.uv)}
-						</div>
+						</Badge>
 					</div>
 				);
 			})}
@@ -407,145 +395,98 @@ export default function WeatherClimateClient() {
 	}
 
 	return (
-		<main id="main" data-pagefind-body data-pagefind-filter="type[data-type]" data-type="tool" className="max-w-4xl mx-auto px-6 py-10 md:py-16">
-			{/* breadcrumb */}
-			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-ink">
-					Home
-				</Link>{" "}
-				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-ink">
-					Tools
-				</Link>{" "}
-				&rsaquo; <span className="text-ink">Cyprus Weather &amp; Climate</span>
-			</nav>
-
-			{/* header */}
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
-					Lifestyle
-				</p>
-				<h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-ink">
-					Cyprus Weather &amp; Climate
-				</h1>
-				<p className="mt-3 text-slate-600 text-sm leading-relaxed max-w-2xl">
-					340+ sunny days a year, warm summers, and mild winters. Explore Cyprus
-					month by month and compare against cities you know.
-				</p>
-			</header>
-
-			{/* summary stats */}
-			<section className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
-				{[
-					{ label: "Annual sunshine", value: "3,280 hrs" },
-					{ label: "Beach season", value: "May – Oct" },
-					{ label: "Avg summer high", value: "33–36°C" },
-					{ label: "Avg winter high", value: "17–20°C" },
-				].map(({ label, value }) => (
-					<div
-						key={label}
-						className="rounded-2xl border border-line bg-white p-4 text-center"
-					>
-						<p className="text-xs text-slate-500 uppercase tracking-wide mb-1">
-							{label}
-						</p>
-						<p className="text-xl font-bold" style={{ color: CYPRUS_COLOR }}>
-							{value}
-						</p>
-					</div>
-				))}
+		<div className="flex flex-col gap-6">
+			<section
+				aria-label="Cyprus climate at a glance"
+				className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4"
+			>
+				<StatCard highlight label="Annual sunshine" value="3,280 hrs" />
+				<StatCard label="Beach season" value="May – Oct" />
+				<StatCard label="Avg summer high" value="33–36°C" />
+				<StatCard label="Avg winter high" value="17–20°C" />
 			</section>
 
-			{/* city selector */}
-			<section className="mb-6">
-				<p className="text-sm font-semibold text-slate-700 mb-3">
-					Compare Cyprus to:{" "}
-					<span className="text-xs font-normal text-slate-500">
+			<section aria-labelledby="compare-cities" className="space-y-3">
+				<h2 id="compare-cities" className="text-lg font-bold text-ink">
+					Compare Cyprus to{" "}
+					<span className="text-base font-normal text-muted">
 						(pick up to 2 cities)
 					</span>
-				</p>
+				</h2>
 				<div className="flex flex-wrap gap-2">
-					{ALL_CITIES.map((city, ci) => {
-						const isSelected = selectedCities.includes(city);
-						const colorIdx = selectedCities.indexOf(city);
-						const activeColor = isSelected
-							? CITY_COLORS[colorIdx % CITY_COLORS.length]
-							: undefined;
-						return (
-							<button
-								key={city}
-								type="button"
-								onClick={() => toggleCity(city)}
-								className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
-									isSelected
-										? "border-2 bg-sky text-ink"
-										: "bg-white border-line text-ink hover:bg-sky"
-								}`}
-								style={isSelected ? { borderColor: activeColor } : undefined}
-							>
-								{city}
-							</button>
-						);
-					})}
+					{ALL_CITIES.map((city) => (
+						<Chip
+							key={city}
+							selected={selectedCities.includes(city)}
+							onClick={() => toggleCity(city)}
+						>
+							{city}
+						</Chip>
+					))}
 				</div>
 			</section>
 
-			{/* chart */}
-			<section className="mb-4 rounded-2xl border border-line bg-white p-4">
-				<div className="flex flex-wrap gap-4 text-xs text-slate-600 mb-4">
-					<div className="flex items-center gap-1.5">
+			<section
+				aria-label="Temperature chart"
+				className="rounded-card border border-line bg-white p-4 shadow-rc"
+			>
+				<ul className="mb-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-ink">
+					<li className="flex items-center gap-1.5">
 						<span
-							className="inline-block w-6 h-0.5 rounded"
+							aria-hidden="true"
+							className="inline-block h-1 w-6 rounded"
 							style={{ background: CYPRUS_COLOR }}
 						/>
-						<span>Cyprus high</span>
-					</div>
-					<div className="flex items-center gap-1.5">
+						Cyprus high
+					</li>
+					<li className="flex items-center gap-1.5">
 						<span
-							className="inline-block w-6 rounded border-t-2 border-dashed"
+							aria-hidden="true"
+							className="inline-block w-6 border-t-4 border-dashed"
 							style={{ borderColor: CYPRUS_COLOR }}
 						/>
-						<span>Cyprus low</span>
-					</div>
+						Cyprus low
+					</li>
 					{selectedCities.map((city, ci) => (
-						<div key={city} className="flex items-center gap-1.5">
+						<li key={city} className="flex items-center gap-1.5">
 							<span
-								className="inline-block w-6 h-0.5 rounded"
+								aria-hidden="true"
+								className="inline-block h-1 w-6 rounded"
 								style={{ background: CITY_COLORS[ci % CITY_COLORS.length] }}
 							/>
-							<span>{city} high</span>
-						</div>
+							{city} high
+						</li>
 					))}
 					{selectedCities.map((city, ci) => (
-						<div key={city + "-low"} className="flex items-center gap-1.5">
+						<li key={`${city}-low`} className="flex items-center gap-1.5">
 							<span
-								className="inline-block w-6 rounded border-t-2 border-dashed"
+								aria-hidden="true"
+								className="inline-block w-6 border-t-4 border-dashed"
 								style={{ borderColor: CITY_COLORS[ci % CITY_COLORS.length] }}
 							/>
-							<span>{city} low</span>
-						</div>
+							{city} low
+						</li>
 					))}
-				</div>
+				</ul>
 				<WeatherChart selectedCities={selectedCities} />
 			</section>
 
-			{/* fun comparison */}
 			{selectedCities.length > 0 && (
-				<section className="mb-8 rounded-2xl border border-line bg-sky p-4">
-					<p className="text-xs font-semibold text-ink uppercase tracking-wider mb-2">
+				<section
+					aria-labelledby="compare-result"
+					className="rounded-card border border-line bg-sky p-5"
+				>
+					<h2 id="compare-result" className="mb-2 text-lg font-bold text-ink">
 						How does Cyprus compare?
-					</p>
+					</h2>
 					<div className="flex flex-col gap-1.5">
 						{selectedCities.map((city) => {
 							const n = warmerMonths(city);
 							return (
-								<p key={city} className="text-sm text-slate-700">
+								<p key={city} className="text-base text-ink">
 									Cyprus is warmer than{" "}
 									<span className="font-semibold">{city}</span> in{" "}
-									<span className="font-bold text-primary">
-										{n} out of 12 months
-									</span>
-									.
+									<span className="font-bold">{n} out of 12 months</span>.
 								</p>
 							);
 						})}
@@ -553,33 +494,19 @@ export default function WeatherClimateClient() {
 				</section>
 			)}
 
-			{/* monthly cards */}
-			<section className="mb-10">
-				<h2 className="text-sm font-bold text-slate-800 mb-3">
+			<section aria-labelledby="month-by-month" className="space-y-3">
+				<h2
+					id="month-by-month"
+					className="text-2xl font-bold tracking-tight text-ink"
+				>
 					Month-by-month in Cyprus
 				</h2>
 				<MonthCards />
-				<p className="mt-2 text-xs text-muted">
-					Scroll right to see all months. Sea temp · Rain days · UV index shown
-					per card.
+				<p className="text-sm text-muted">
+					Scroll right to see all months. Sea temperature, rain days and UV
+					index are shown on each card.
 				</p>
 			</section>
-
-			{/* disclaimer */}
-			<aside className="mt-10 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
-				<p className="font-semibold text-amber-900 mb-1">Disclaimer</p>
-				<p>
-					Climate data represents long-term historical averages and is for
-					general guidance only — not a forecast. Actual conditions vary by
-					year, elevation, and location within Cyprus.
-				</p>
-			</aside>
-
-			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools/" className="underline hover:text-ink">
-					&larr; Back to Tools
-				</Link>
-			</p>
-		</main>
+		</div>
 	);
 }

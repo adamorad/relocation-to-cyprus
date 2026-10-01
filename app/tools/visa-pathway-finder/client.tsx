@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
+import { Button, ButtonLink } from "@/components/ui/Button";
+import { ChipGroup } from "@/components/ui/Chip";
 
 type CitizenshipStatus = "eu" | "non-eu" | null;
 type EuPurpose =
@@ -31,7 +32,7 @@ interface Pathway {
 
 const EU_PATHWAYS: Record<NonNullable<EuPurpose>, Pathway> = {
 	employment: {
-		name: "EU Registration Certificate (MEU1) — Employed",
+		name: "EU Registration Certificate (MEU1): Employed",
 		description:
 			"EU citizens working in Cyprus do not need a visa. After 90 days, you must register your residence at the Civil Registry. As an employed person you present your employment contract.",
 		keyRequirement:
@@ -43,7 +44,7 @@ const EU_PATHWAYS: Record<NonNullable<EuPurpose>, Pathway> = {
 		officialLabel: "Book at crmd.moi.gov.cy",
 	},
 	"self-employed": {
-		name: "EU Registration Certificate (MEU1) — Self-Employed",
+		name: "EU Registration Certificate (MEU1): Self-Employed",
 		description:
 			"EU citizens running their own business in Cyprus register via the MEU1 process. You need to demonstrate genuine economic activity — typically via a company registration, tax registration (TIC), or freelance income evidence.",
 		keyRequirement:
@@ -55,7 +56,7 @@ const EU_PATHWAYS: Record<NonNullable<EuPurpose>, Pathway> = {
 		officialLabel: "Book at crmd.moi.gov.cy",
 	},
 	"self-sufficient": {
-		name: "EU Registration Certificate (MEU1) — Self-Sufficient",
+		name: "EU Registration Certificate (MEU1): Self-Sufficient",
 		description:
 			"EU citizens who are financially independent (not working in Cyprus) can register by proving sufficient funds to support themselves without recourse to Cyprus's social welfare system.",
 		keyRequirement:
@@ -67,7 +68,7 @@ const EU_PATHWAYS: Record<NonNullable<EuPurpose>, Pathway> = {
 		officialLabel: "Book at crmd.moi.gov.cy",
 	},
 	retired: {
-		name: "EU Registration Certificate (MEU1) — Retired",
+		name: "EU Registration Certificate (MEU1): Retired",
 		description:
 			"EU retired citizens follow the self-sufficient MEU1 route. Pension income qualifies as proof of sufficient funds. Cyprus has no minimum pension threshold for EU citizens, but €2,000–€3,000/month is typically sufficient in practice.",
 		keyRequirement:
@@ -160,224 +161,129 @@ export default function VisaPathwayFinderPage() {
 	}
 
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="tool"
-			className="max-w-3xl mx-auto px-6 py-10"
-		>
-			<nav className="text-xs text-slate-500 mb-6 flex gap-3">
-				<Link href="/" className="hover:text-ink">
-					← Home
-				</Link>
-				<span className="text-muted">|</span>
-				<Link href="/tools" className="hover:text-ink">
-					← All Tools
-				</Link>
-			</nav>
+		<div className="flex flex-col gap-6">
+			<section
+				aria-labelledby="visa-q1"
+				className="space-y-3 rounded-card border border-line bg-white p-5 shadow-rc"
+			>
+				<div className="flex items-center justify-between gap-3">
+					<h2 id="visa-q1" className="text-lg font-bold text-ink">
+						Q1. What is your citizenship status?
+					</h2>
+					{citizenship && (
+						<Button variant="ghost" onClick={reset}>
+							Reset
+						</Button>
+					)}
+				</div>
+				<ChipGroup
+					label="Citizenship status"
+					hideLabel
+					options={[
+						{ value: "eu", label: "EU citizen" },
+						{ value: "non-eu", label: "Non-EU citizen" },
+					]}
+					value={citizenship ?? ""}
+					onChange={(v) => {
+						setCitizenship(v as CitizenshipStatus);
+						setEuPurpose(null);
+						setNonEuPurpose(null);
+					}}
+				/>
+			</section>
 
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
-					Tools
-				</p>
-				<h1 className="mt-2 text-3xl font-bold tracking-tight text-ink">
-					Cyprus Visa Pathway Finder
-				</h1>
-				<p className="mt-2 text-slate-600 text-sm leading-relaxed">
-					Answer two questions to find the recommended visa or registration
-					route for your situation. Each result includes the key requirement,
-					processing time, and a link to the relevant guide.
-				</p>
-			</header>
+			{citizenship === "eu" && (
+				<section
+					aria-labelledby="visa-q2"
+					className="space-y-3 rounded-card border border-line bg-white p-5 shadow-rc"
+				>
+					<h2 id="visa-q2" className="text-lg font-bold text-ink">
+						Q2. What will you be doing in Cyprus?
+					</h2>
+					<ChipGroup
+						label="Purpose of stay"
+						hideLabel
+						options={[
+							{ value: "employment", label: "Employed" },
+							{ value: "self-employed", label: "Self-employed" },
+							{ value: "self-sufficient", label: "Self-sufficient" },
+							{ value: "retired", label: "Retired" },
+						]}
+						value={euPurpose ?? ""}
+						onChange={(v) => setEuPurpose(v as EuPurpose)}
+					/>
+				</section>
+			)}
 
-			<div className="space-y-6">
-				{/* Q1 */}
-				<div className="p-5 bg-slate-50 rounded-2xl border border-line">
-					<div className="flex items-center justify-between mb-3">
-						<p className="text-sm font-bold text-slate-800">
-							Q1 · What is your citizenship status?
-						</p>
-						{citizenship && (
-							<button
-								onClick={reset}
-								className="text-xs text-muted hover:text-slate-700 underline"
-							>
-								Reset
-							</button>
+			{citizenship === "non-eu" && (
+				<section
+					aria-labelledby="visa-q2"
+					className="space-y-3 rounded-card border border-line bg-white p-5 shadow-rc"
+				>
+					<h2 id="visa-q2" className="text-lg font-bold text-ink">
+						Q2. What will you do in Cyprus?
+					</h2>
+					<ChipGroup
+						label="Purpose of stay"
+						hideLabel
+						options={[
+							{
+								value: "remote-work",
+								label: "Remote work for foreign employer",
+							},
+							{ value: "cyprus-employer", label: "Work for Cyprus employer" },
+							{ value: "investment", label: "Investment / wealth" },
+							{ value: "retired", label: "Retired" },
+							{ value: "student", label: "Student" },
+						]}
+						value={nonEuPurpose ?? ""}
+						onChange={(v) => setNonEuPurpose(v as NonEuPurpose)}
+					/>
+				</section>
+			)}
+
+			{pathway && (
+				<section
+					aria-labelledby="visa-result"
+					className="rounded-card border-2 border-primary bg-white p-5 md:p-6"
+				>
+					<p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-hover">
+						Recommended pathway
+					</p>
+					<h2 id="visa-result" className="mb-3 mt-1 text-xl font-bold text-ink">
+						{pathway.name}
+					</h2>
+					<p className="mb-4 text-base leading-relaxed text-ink">
+						{pathway.description}
+					</p>
+					<dl className="mb-5 space-y-3">
+						<div>
+							<dt className="text-sm font-semibold text-muted">
+								Key requirement
+							</dt>
+							<dd className="text-base text-ink">{pathway.keyRequirement}</dd>
+						</div>
+						<div>
+							<dt className="text-sm font-semibold text-muted">
+								Processing time
+							</dt>
+							<dd className="text-base text-ink">{pathway.processingTime}</dd>
+						</div>
+					</dl>
+					<div className="flex flex-wrap gap-3">
+						{pathway.guideSlug && (
+							<ButtonLink href={`/guides/${pathway.guideSlug}/`}>
+								{pathway.guideLabel || "Read the guide"}
+							</ButtonLink>
+						)}
+						{pathway.officialLink && (
+							<ButtonLink href={pathway.officialLink} variant="secondary">
+								{pathway.officialLabel || "Official site"}
+							</ButtonLink>
 						)}
 					</div>
-					<div className="flex flex-col sm:flex-row gap-3">
-						{(["eu", "non-eu"] as CitizenshipStatus[]).map((opt) => (
-							<button
-								key={opt!}
-								onClick={() => {
-									setCitizenship(opt);
-									setEuPurpose(null);
-									setNonEuPurpose(null);
-								}}
-								className={`flex-1 py-3 px-4 rounded-xl border-2 text-sm font-semibold transition-colors ${
-									citizenship === opt
-										? "border-primary bg-primary text-white"
-										: "border-line bg-white text-ink hover:bg-sky"
-								}`}
-							>
-								{opt === "eu" ? "EU Citizen" : "Non-EU Citizen"}
-							</button>
-						))}
-					</div>
-				</div>
-
-				{/* Q2 — EU */}
-				{citizenship === "eu" && (
-					<div className="p-5 bg-slate-50 rounded-2xl border border-line">
-						<p className="text-sm font-bold text-slate-800 mb-3">
-							Q2 · What will you be doing in Cyprus?
-						</p>
-						<div className="grid grid-cols-2 gap-3">
-							{(
-								[
-									"employment",
-									"self-employed",
-									"self-sufficient",
-									"retired",
-								] as EuPurpose[]
-							).map((opt) => {
-								const labels: Record<NonNullable<EuPurpose>, string> = {
-									employment: "Employed",
-									"self-employed": "Self-employed",
-									"self-sufficient": "Self-sufficient",
-									retired: "Retired",
-								};
-								return (
-									<button
-										key={opt!}
-										onClick={() => setEuPurpose(opt)}
-										className={`py-3 px-4 rounded-xl border-2 text-sm font-semibold transition-colors text-center ${
-											euPurpose === opt
-												? "border-primary bg-primary text-white"
-												: "border-line bg-white text-ink hover:bg-sky"
-										}`}
-									>
-										{labels[opt!]}
-									</button>
-								);
-							})}
-						</div>
-					</div>
-				)}
-
-				{/* Q2 — Non-EU */}
-				{citizenship === "non-eu" && (
-					<div className="p-5 bg-slate-50 rounded-2xl border border-line">
-						<p className="text-sm font-bold text-slate-800 mb-3">
-							Q2 · What will you do in Cyprus?
-						</p>
-						<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-							{(
-								[
-									"remote-work",
-									"cyprus-employer",
-									"investment",
-									"retired",
-									"student",
-								] as NonEuPurpose[]
-							).map((opt) => {
-								const labels: Record<NonNullable<NonEuPurpose>, string> = {
-									"remote-work": "Remote work for foreign employer",
-									"cyprus-employer": "Work for Cyprus employer",
-									investment: "Investment / wealth",
-									retired: "Retired",
-									student: "Student",
-								};
-								return (
-									<button
-										key={opt!}
-										onClick={() => setNonEuPurpose(opt)}
-										className={`py-3 px-4 rounded-xl border-2 text-sm font-semibold transition-colors text-left ${
-											nonEuPurpose === opt
-												? "border-primary bg-primary text-white"
-												: "border-line bg-white text-ink hover:bg-sky"
-										}`}
-									>
-										{labels[opt!]}
-									</button>
-								);
-							})}
-						</div>
-					</div>
-				)}
-
-				{/* Result */}
-				{pathway && (
-					<div className="p-5 rounded-2xl border-2 border-primary bg-white">
-						<p
-							className="text-xs uppercase tracking-[0.2em] font-bold mb-1"
-							style={{ color: "var(--color-primary)" }}
-						>
-							Recommended pathway
-						</p>
-						<h2 className="text-lg font-bold text-ink mb-3">{pathway.name}</h2>
-						<p className="text-sm text-slate-700 leading-relaxed mb-4">
-							{pathway.description}
-						</p>
-						<dl className="space-y-3 mb-4">
-							<div>
-								<dt className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-0.5">
-									Key Requirement
-								</dt>
-								<dd className="text-sm text-slate-800">
-									{pathway.keyRequirement}
-								</dd>
-							</div>
-							<div>
-								<dt className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-0.5">
-									Processing Time
-								</dt>
-								<dd className="text-sm text-slate-800">
-									{pathway.processingTime}
-								</dd>
-							</div>
-						</dl>
-						<div className="flex flex-wrap gap-3">
-							{pathway.guideSlug && (
-								<Link
-									href={`/guides/${pathway.guideSlug}`}
-									className="inline-block text-sm font-semibold px-4 py-2 rounded-xl text-white bg-primary"
-								>
-									{pathway.guideLabel || "Read the guide"}
-								</Link>
-							)}
-							{pathway.officialLink && (
-								<a
-									href={pathway.officialLink}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="inline-block text-sm font-semibold px-4 py-2 rounded-xl border-2 border-line text-ink hover:bg-sky"
-								>
-									{pathway.officialLabel || "Official site"} ↗
-								</a>
-							)}
-						</div>
-					</div>
-				)}
-			</div>
-
-			<aside className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-xs text-amber-900 leading-relaxed">
-				<p className="font-semibold text-amber-900 mb-1">Not legal advice</p>
-				<p>
-					This tool provides general guidance only. Immigration rules change
-					frequently — always verify current requirements with the Cyprus Civil
-					Registry and Migration Department (crmd.moi.gov.cy) or a qualified
-					immigration lawyer before making decisions.
-				</p>
-			</aside>
-
-			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools" className="underline hover:text-ink">
-					← All Tools
-				</Link>
-			</p>
-		</main>
+				</section>
+			)}
+		</div>
 	);
 }

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
+import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import VisaPathwayFinderClient from "./client";
 
 const SITE_URL = "https://realcy.app";
-const title =
-	"Cyprus Visa Pathway Finder 2026 — Find Your Route in 2 Questions";
+const title = "Cyprus Visa Pathway Finder 2026: Find Your Route in 2 Questions";
 const description =
 	"Two questions to your Cyprus visa route: EU MEU1 registration, Digital Nomad Visa, Yellow Slip, or Permanent Residency by Investment. Updated 2026 income thresholds and requirements.";
 
@@ -21,27 +21,36 @@ export const metadata: Metadata = {
 };
 
 export default function VisaPathwayFinderPage() {
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Tools",
-				item: `${SITE_URL}/tools/`,
-			},
-			{ "@type": "ListItem", position: 3, name: title },
-		],
-	};
 	return (
-		<>
-			<script
-				type="application/ld+json"
-				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-			/>
+		<ToolTemplate
+			pagefindType="tool"
+			width="reading"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Tools", href: "/tools/" },
+					{ label: "Visa Pathway Finder" },
+				],
+				eyebrow: "Interactive tool",
+				title: "Cyprus Visa Pathway Finder",
+				intro:
+					"Answer two questions to find the recommended visa or registration route for your situation. Each result includes the key requirement, processing time, and a link to the relevant guide.",
+			}}
+			nextSteps={[
+				{
+					href: "/guides/residency-and-visas/",
+					label: "Residency and Visas guide",
+				},
+				{
+					href: "/sections/immigration-lawyers/",
+					label: "Find an immigration lawyer",
+				},
+				{ href: "/tools/", label: "All tools" },
+			]}
+			disclaimer={
+				"This tool provides general guidance only. Immigration rules change frequently. Always verify current requirements with the Cyprus Civil Registry and Migration Department (crmd.moi.gov.cy) or a qualified immigration lawyer before making decisions."
+			}
+		>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
@@ -50,6 +59,6 @@ export default function VisaPathwayFinderPage() {
 				}}
 			/>
 			<VisaPathwayFinderClient />
-		</>
+		</ToolTemplate>
 	);
 }

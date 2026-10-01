@@ -1,7 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import { useState } from "react";
+import { useId, useState } from "react";
+import { ToolPanel } from "@/components/templates/ToolTemplate";
+import { Badge } from "@/components/ui/Badge";
+import { Callout, type CalloutTone } from "@/components/ui/Callout";
+import { ChipGroup } from "@/components/ui/Chip";
 
 type Condition = {
 	label: string;
@@ -25,7 +28,7 @@ function getRecommendation(
 	if (daysInCyprus >= 183) {
 		return {
 			type: "183-day",
-			title: "183-Day Rule — Clear Qualification",
+			title: "183-Day Rule: Clear Qualification",
 			description:
 				"You have spent 183 or more days in Cyprus this year. You qualify as a Cyprus tax resident under the straightforward 183-day test. No further conditions apply. File your TD1 by 31 July of the following year.",
 		};
@@ -41,7 +44,7 @@ function getRecommendation(
 		if (conditionsMet) {
 			return {
 				type: "60-day-qualified",
-				title: "60-Day Rule — Qualified",
+				title: "60-Day Rule: Qualified",
 				description:
 					"You meet all four conditions for the 60-day tax residency rule. You are likely tax resident in Cyprus for this year. Maintain a detailed day diary and ensure all four conditions are documented. Consult a Cyprus tax accountant before filing.",
 			};
@@ -49,7 +52,7 @@ function getRecommendation(
 
 		return {
 			type: "60-day-marginal",
-			title: "60-Day Rule — Marginal: Seek Advice",
+			title: "60-Day Rule: Marginal, Seek Advice",
 			description:
 				"You meet the minimum 60 days in Cyprus but one or more supporting conditions are not met. Your tax residency status is not straightforward. You should consult a Cyprus tax accountant before making any residency claim.",
 		};
@@ -65,23 +68,15 @@ function getRecommendation(
 
 function CheckRow({ label, pass, detail }: Condition) {
 	return (
-		<div className="flex items-start gap-3 py-3 border-b border-slate-100 last:border-0">
-			<span
-				className={`mt-0.5 flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold ${
-					pass ? "bg-green-50 text-green-800" : "bg-red-100 text-red-700"
-				}`}
-			>
-				{pass ? "✓" : "✗"}
-			</span>
+		<li className="flex items-start gap-3 border-b border-line py-3 last:border-0">
+			<Badge tone={pass ? "success" : "danger"} className="mt-0.5 shrink-0">
+				{pass ? "Met" : "Not met"}
+			</Badge>
 			<div>
-				<p
-					className={`text-sm font-medium ${pass ? "text-slate-800" : "text-slate-500"}`}
-				>
-					{label}
-				</p>
-				<p className="text-xs text-slate-500 mt-0.5">{detail}</p>
+				<p className="text-base font-semibold text-ink">{label}</p>
+				<p className="mt-0.5 text-sm text-muted">{detail}</p>
 			</div>
-		</div>
+		</li>
 	);
 }
 
@@ -92,7 +87,6 @@ function SliderField({
 	max,
 	unit,
 	onChange,
-	highlight,
 }: {
 	label: string;
 	value: number;
@@ -100,25 +94,28 @@ function SliderField({
 	max: number;
 	unit: string;
 	onChange: (v: number) => void;
-	highlight?: string;
 }) {
+	const id = useId();
 	return (
 		<div className="space-y-2">
-			<div className="flex justify-between items-center">
-				<label className="text-sm font-medium text-slate-700">{label}</label>
-				<span className={`text-sm font-bold ${highlight ?? "text-ink"}`}>
+			<div className="flex items-center justify-between gap-3">
+				<label htmlFor={id} className="text-sm font-semibold text-ink">
+					{label}
+				</label>
+				<span className="shrink-0 text-base font-bold text-ink">
 					{value} {unit}
 				</span>
 			</div>
 			<input
+				id={id}
 				type="range"
 				min={min}
 				max={max}
 				value={value}
 				onChange={(e) => onChange(Number(e.target.value))}
-				className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-primary"
+				className="h-6 w-full cursor-pointer accent-primary"
 			/>
-			<div className="flex justify-between text-xs text-muted">
+			<div className="flex justify-between text-sm text-muted">
 				<span>{min}</span>
 				<span>{max}</span>
 			</div>
@@ -136,33 +133,15 @@ function YesNoField({
 	onChange: (v: boolean) => void;
 }) {
 	return (
-		<div className="flex items-center justify-between gap-4 py-2">
-			<label className="text-sm font-medium text-slate-700 flex-1">
-				{label}
-			</label>
-			<div className="flex rounded-lg overflow-hidden border border-line">
-				<button
-					onClick={() => onChange(true)}
-					className={`px-4 py-1.5 text-sm font-medium transition-colors ${
-						value
-							? "bg-primary text-white"
-							: "bg-white text-slate-600 hover:bg-slate-50"
-					}`}
-				>
-					Yes
-				</button>
-				<button
-					onClick={() => onChange(false)}
-					className={`px-4 py-1.5 text-sm font-medium transition-colors border-l border-line ${
-						!value
-							? "bg-primary text-white"
-							: "bg-white text-slate-600 hover:bg-slate-50"
-					}`}
-				>
-					No
-				</button>
-			</div>
-		</div>
+		<ChipGroup
+			label={label}
+			options={[
+				{ value: "yes", label: "Yes" },
+				{ value: "no", label: "No" },
+			]}
+			value={value ? "yes" : "no"}
+			onChange={(v) => onChange(v === "yes")}
+		/>
 	);
 }
 
@@ -216,205 +195,105 @@ export default function TaxResidencyPlannerClient() {
 		isTaxResidentElsewhere,
 	);
 
-	const recColors: Record<Recommendation, string> = {
-		"183-day": "bg-emerald-50 border-emerald-200 text-emerald-900",
-		"60-day-qualified": "bg-sky border-line text-ink",
-		"60-day-marginal": "bg-amber-50 border-amber-200 text-amber-900",
-		"not-qualifying": "bg-red-50 border-red-200 text-red-900",
+	const recTone: Record<Recommendation, CalloutTone> = {
+		"183-day": "info",
+		"60-day-qualified": "info",
+		"60-day-marginal": "warning",
+		"not-qualifying": "info",
 	};
 
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="tool"
-			className="max-w-3xl mx-auto px-6 py-10 md:py-16"
-		>
-			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-ink">
-					Home
-				</Link>{" "}
-				›{" "}
-				<Link href="/tools" className="hover:text-ink">
-					Tools
-				</Link>{" "}
-				› <span className="text-ink">Tax Residency Planner</span>
-			</nav>
+		<div className="flex flex-col gap-6">
+			<ToolPanel title="Your days">
+				<SliderField
+					label="Days spent in Cyprus this year"
+					value={daysInCyprus}
+					min={0}
+					max={365 - daysInOtherCountry}
+					unit="days"
+					onChange={setDaysInCyprus}
+				/>
+				<SliderField
+					label="Days in any single other country"
+					value={daysInOtherCountry}
+					min={0}
+					max={365 - daysInCyprus}
+					unit="days"
+					onChange={setDaysInOtherCountry}
+				/>
+				{daysInCyprus + daysInOtherCountry > 183 && (
+					<Callout tone="info">
+						Combined days in Cyprus and the other country:{" "}
+						{daysInCyprus + daysInOtherCountry}. The 183-day threshold is a key
+						test: spending more than 183 days in another country will disqualify
+						the 60-day rule.
+					</Callout>
+				)}
+			</ToolPanel>
 
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
-					Interactive Tool
-				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">
-					Cyprus 60-Day Tax Residency Planner
-				</h1>
-				<p className="mt-3 text-slate-600 leading-relaxed">
-					Adjust the sliders to see whether you qualify for Cyprus tax residency
-					under the 183-day rule or the more complex 60-day rule. Results update
-					instantly.
-				</p>
-			</header>
+			<ToolPanel title="Your situation">
+				<YesNoField
+					label="Do you have a permanent home in Cyprus?"
+					value={hasPermanentHome}
+					onChange={setHasPermanentHome}
+				/>
+				<YesNoField
+					label="Do you have business or employment in Cyprus?"
+					value={hasBusinessOrEmployment}
+					onChange={setHasBusinessOrEmployment}
+				/>
+				<YesNoField
+					label="Are you tax resident elsewhere this year?"
+					value={isTaxResidentElsewhere}
+					onChange={setIsTaxResidentElsewhere}
+				/>
+			</ToolPanel>
 
-			<div className="grid md:grid-cols-2 gap-8">
-				{/* Inputs */}
-				<section className="space-y-6">
-					<div className="bg-white border border-line rounded-xl p-6 space-y-6">
-						<h2 className="text-sm font-semibold text-ink uppercase tracking-wider">
-							Your Days
-						</h2>
-						<SliderField
-							label="Days spent in Cyprus this year"
-							value={daysInCyprus}
-							min={0}
-							max={365 - daysInOtherCountry}
-							unit="days"
-							highlight={
-								daysInCyprus >= 183
-									? "text-green-800"
-									: daysInCyprus >= 60
-										? "text-primary"
-										: "text-red-600"
-							}
-							onChange={setDaysInCyprus}
-						/>
-						<SliderField
-							label="Days in any single other country"
-							value={daysInOtherCountry}
-							min={0}
-							max={365 - daysInCyprus}
-							unit="days"
-							highlight={daysInOtherCountry > 183 ? "text-red-600" : "text-ink"}
-							onChange={setDaysInOtherCountry}
-						/>
-						{daysInCyprus + daysInOtherCountry > 183 && (
-							<p className="text-xs text-amber-900 bg-amber-50 border border-amber-200 rounded-xl px-3 py-2">
-								Combined days in Cyprus + other country:{" "}
-								{daysInCyprus + daysInOtherCountry}. The 183-day threshold is a
-								key test — spending more than 183 days in another country will
-								disqualify the 60-day rule.
-							</p>
-						)}
+			<section aria-labelledby="residency-results" className="space-y-4">
+				<h2
+					id="residency-results"
+					className="text-2xl font-bold tracking-tight text-ink"
+				>
+					Your result
+				</h2>
+
+				<Callout
+					tone={recTone[recommendation.type]}
+					title={recommendation.title}
+				>
+					{recommendation.description}
+				</Callout>
+
+				<div className="rounded-card border border-line bg-white p-5">
+					<div className="mb-1 flex items-center gap-2">
+						<h3 className="text-base font-bold text-ink">183-day rule</h3>
+						<Badge tone={qualifies183 ? "success" : "neutral"}>
+							{qualifies183 ? "Qualifies" : "Not yet"}
+						</Badge>
 					</div>
-
-					<div className="bg-white border border-line rounded-xl p-6 space-y-1">
-						<h2 className="text-sm font-semibold text-ink uppercase tracking-wider mb-3">
-							Your Situation
-						</h2>
-						<YesNoField
-							label="Do you have a permanent home in Cyprus?"
-							value={hasPermanentHome}
-							onChange={setHasPermanentHome}
-						/>
-						<YesNoField
-							label="Do you have business or employment in Cyprus?"
-							value={hasBusinessOrEmployment}
-							onChange={setHasBusinessOrEmployment}
-						/>
-						<YesNoField
-							label="Are you tax resident elsewhere this year?"
-							value={isTaxResidentElsewhere}
-							onChange={setIsTaxResidentElsewhere}
-						/>
-					</div>
-				</section>
-
-				{/* Results */}
-				<section className="space-y-4">
-					{/* 183-day result */}
-					<div className="bg-white border border-line rounded-xl p-5">
-						<div className="flex items-center gap-2 mb-1">
-							<span
-								className={`w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold ${
-									qualifies183
-										? "bg-green-50 text-green-800"
-										: "bg-slate-100 text-muted"
-								}`}
-							>
-								{qualifies183 ? "✓" : "✗"}
-							</span>
-							<h3 className="text-sm font-semibold text-ink">183-Day Rule</h3>
-						</div>
-						<p className="text-xs text-slate-500 pl-7">
-							{qualifies183
-								? `You have spent ${daysInCyprus} days in Cyprus — above the 183-day threshold. You qualify.`
-								: `You have spent ${daysInCyprus} days in Cyprus. You need ${183 - daysInCyprus} more days to qualify under this rule.`}
-						</p>
-					</div>
-
-					{/* 60-day checklist */}
-					<div className="bg-white border border-line rounded-xl p-5">
-						<div className="flex items-center gap-2 mb-3">
-							<span
-								className={`w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold ${
-									sixtyDayAllPass
-										? "bg-green-50 text-green-800"
-										: "bg-slate-100 text-muted"
-								}`}
-							>
-								{sixtyDayAllPass ? "✓" : "✗"}
-							</span>
-							<h3 className="text-sm font-semibold text-ink">
-								60-Day Rule Conditions
-							</h3>
-						</div>
-						<div>
-							{sixtyDayConditions.map((c) => (
-								<CheckRow key={c.label} {...c} />
-							))}
-						</div>
-					</div>
-
-					{/* Recommendation */}
-					<div
-						className={`border rounded-xl p-5 ${recColors[recommendation.type]}`}
-					>
-						<p className="text-xs font-bold uppercase tracking-wider opacity-70 mb-1">
-							Recommendation
-						</p>
-						<h3 className="font-bold text-base mb-2">{recommendation.title}</h3>
-						<p className="text-sm leading-relaxed">
-							{recommendation.description}
-						</p>
-					</div>
-				</section>
-			</div>
-
-			<aside className="mt-8 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
-				<p className="font-semibold text-amber-900 mb-1">Important notice</p>
-				<p>
-					Cyprus Tax Department has tightened audit on 60-day claims. Maintain a
-					day diary with proof of presence (boarding passes, hotel receipts,
-					card transactions). Consult a Cyprus tax accountant before filing.
-					This tool provides general information only and is not tax advice.
-				</p>
-			</aside>
-
-			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools" className="underline hover:text-ink">
-					← Back to Tools
-				</Link>
-			</p>
-
-			<aside className="mt-10 p-5 rounded-2xl bg-slate-50 border border-line">
-				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-					Next steps
-				</p>
-				<div className="flex flex-wrap gap-3">
-					<Link
-						href="/guides/taxes-for-expats/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Read: Taxes for Expats in Cyprus
-					</Link>{" "}
-					<Link
-						href="/sections/accountants/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Find a tax advisor
-					</Link>
+					<p className="text-base text-muted">
+						{qualifies183
+							? `You have spent ${daysInCyprus} days in Cyprus, above the 183-day threshold. You qualify.`
+							: `You have spent ${daysInCyprus} days in Cyprus. You need ${183 - daysInCyprus} more days to qualify under this rule.`}
+					</p>
 				</div>
-			</aside>
-		</main>
+
+				<div className="rounded-card border border-line bg-white p-5">
+					<div className="mb-2 flex items-center gap-2">
+						<h3 className="text-base font-bold text-ink">
+							60-day rule conditions
+						</h3>
+						<Badge tone={sixtyDayAllPass ? "success" : "neutral"}>
+							{sixtyDayAllPass ? "All met" : "Not all met"}
+						</Badge>
+					</div>
+					<ul>
+						{sixtyDayConditions.map((c) => (
+							<CheckRow key={c.label} {...c} />
+						))}
+					</ul>
+				</div>
+			</section>
+		</div>
 	);
 }

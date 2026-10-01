@@ -1,7 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useState } from "react";
+import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
+import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
+import { Chip, ChipGroup } from "@/components/ui/Chip";
 
 // ── data ──────────────────────────────────────────────────────────────────────
 
@@ -186,76 +189,49 @@ function ageRangeOverlaps(schoolRange: string, group: AgeGroup): boolean {
 	return true;
 }
 
-// ── city badge colour map ─────────────────────────────────────────────────────
-
-const CITY_COLOURS: Record<string, string> = {
-	Limassol: "bg-sky-strong text-ink",
-	Paphos: "bg-sky-strong text-ink",
-	Larnaca: "bg-sky-strong text-ink",
-	"Ayia Napa": "bg-sky-strong text-ink",
-};
-
 // ── sub-components ────────────────────────────────────────────────────────────
 
-function CurriculumPill({ label }: { label: string }) {
-	return (
-		<span className="inline-block px-2 py-0.5 rounded-full text-xs font-semibold bg-sky-strong text-ink border border-line">
-			{label}
-		</span>
-	);
-}
-
 function SchoolCard({ school }: { school: School }) {
-	const cityColour =
-		CITY_COLOURS[school.city] ?? "bg-sky-strong text-slate-700";
 	return (
-		<article className="p-5 bg-white border border-line rounded-2xl flex flex-col gap-3 hover:shadow-sm transition-shadow">
-			{/* name + badges */}
-			<div>
-				<h3 className="text-base font-bold text-ink leading-snug">
+		<Card
+			variant="text"
+			eyebrow={
+				<span className="flex flex-wrap gap-1.5">
+					<Badge>{school.city}</Badge>
+					<Badge>{school.type}</Badge>
+				</span>
+			}
+			title={
+				<>
 					{school.name}
 					{school.branch && (
-						<span className="font-normal text-muted text-sm">
+						<span className="text-sm font-normal text-muted">
 							{" "}
-							— {school.branch}
+							({school.branch})
 						</span>
 					)}
-				</h3>
-				<div className="flex flex-wrap gap-1.5 mt-1.5">
-					<span
-						className={`inline-block px-2 py-0.5 rounded-full text-xs font-semibold ${cityColour}`}
-					>
-						{school.city}
+				</>
+			}
+			meta={
+				<>
+					<span className="block">
+						<span className="font-semibold text-ink">Ages:</span>{" "}
+						{school.ageRange}
 					</span>
-					<span className="inline-block px-2 py-0.5 rounded-full text-xs font-semibold bg-sky-strong text-slate-600">
-						{school.type}
+					<span className="block">
+						<span className="font-semibold text-ink">Fees:</span> {school.fees}
 					</span>
-				</div>
-			</div>
-
-			{/* curriculum pills */}
-			<div className="flex flex-wrap gap-1">
-				{school.curricula.map((c) => (
-					<CurriculumPill key={c} label={c} />
-				))}
-			</div>
-
-			{/* age + fees */}
-			<div className="flex flex-wrap gap-4 text-xs text-slate-600">
-				<span>
-					<span className="font-semibold text-ink">Ages:</span>{" "}
-					{school.ageRange}
+				</>
+			}
+			text={school.notes}
+			footer={
+				<span className="flex flex-wrap gap-1.5 py-1">
+					{school.curricula.map((c) => (
+						<Badge key={c}>{c}</Badge>
+					))}
 				</span>
-				<span>
-					<span className="font-semibold text-ink">Fees:</span> {school.fees}
-				</span>
-			</div>
-
-			{/* notes */}
-			<p className="text-xs text-slate-600 leading-relaxed line-clamp-2">
-				{school.notes}
-			</p>
-		</article>
+			}
+		/>
 	);
 }
 
@@ -278,6 +254,12 @@ export default function SchoolFinderClient() {
 		});
 	}
 
+	function clearFilters() {
+		setCity("All");
+		setCurricula(new Set());
+		setAgeGroup("all");
+	}
+
 	const filtered = useMemo(() => {
 		return SCHOOLS.filter((s) => {
 			if (city !== "All" && s.city !== city) return false;
@@ -291,191 +273,87 @@ export default function SchoolFinderClient() {
 		});
 	}, [city, curricula, ageGroup]);
 
+	const hasFilters = city !== "All" || curricula.size > 0 || ageGroup !== "all";
+
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="tool"
-			className="max-w-4xl mx-auto px-6 py-10 md:py-16"
-		>
-			{/* breadcrumb */}
-			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-primary">
-					Home
-				</Link>{" "}
-				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-primary">
-					Tools
-				</Link>{" "}
-				&rsaquo; <span className="text-ink">International School Finder</span>
-			</nav>
+		<div className="flex flex-col gap-6">
+			<section
+				aria-label="Filters"
+				className="space-y-4 rounded-card border border-line bg-sky p-4 md:p-5"
+			>
+				<ChipGroup
+					label="City"
+					options={CITIES.map((c) => ({
+						value: c,
+						label: c === "All" ? "All cities" : c,
+					}))}
+					value={city}
+					onChange={setCity}
+				/>
 
-			{/* header */}
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
-					Family
-				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					International School Finder
-				</h1>
-				<p className="mt-3 text-slate-600 text-sm leading-relaxed max-w-2xl">
-					Find and compare international schools in Cyprus. Filter by city,
-					curriculum, and age group to shortlist the right options for your
-					family.
-				</p>
-			</header>
-
-			{/* filters */}
-			<section className="p-5 bg-sky border border-line rounded-2xl mb-6 flex flex-col gap-5">
-				<h2 className="text-xs font-bold text-slate-700 uppercase tracking-wider -mb-1">
-					Filters
-				</h2>
-
-				{/* city */}
-				<div>
-					<p className="text-xs font-semibold text-muted uppercase tracking-wide mb-2">
-						City
-					</p>
-					<div className="flex flex-wrap gap-2">
-						{CITIES.map((c) => (
-							<button
-								key={c}
-								type="button"
-								onClick={() => setCity(c)}
-								className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
-									city === c
-										? "bg-primary text-white"
-										: "bg-white border border-line text-slate-700 hover:border-primary"
-								}`}
-							>
-								{c}
-							</button>
-						))}
-					</div>
-				</div>
-
-				{/* curriculum */}
-				<div>
-					<p className="text-xs font-semibold text-muted uppercase tracking-wide mb-2">
+				<fieldset className="min-w-0">
+					<legend className="mb-2 text-sm font-semibold text-ink">
 						Curriculum{" "}
-						<span className="text-muted normal-case font-normal">
-							(select multiple)
-						</span>
-					</p>
+						<span className="font-normal text-muted">(select multiple)</span>
+					</legend>
 					<div className="flex flex-wrap gap-2">
 						{CURRICULA_OPTIONS.map((c) => (
-							<button
+							<Chip
 								key={c}
-								type="button"
+								selected={curricula.has(c)}
 								onClick={() => toggleCurriculum(c)}
-								className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
-									curricula.has(c)
-										? "bg-primary text-white"
-										: "bg-white border border-line text-slate-700 hover:border-primary"
-								}`}
 							>
 								{c}
-							</button>
+							</Chip>
 						))}
 					</div>
-				</div>
+				</fieldset>
 
-				{/* age group */}
-				<div>
-					<p className="text-xs font-semibold text-muted uppercase tracking-wide mb-2">
-						Age group
-					</p>
-					<div className="flex flex-wrap gap-2">
-						{AGE_GROUPS.map(({ label, value }) => (
-							<button
-								key={value}
-								type="button"
-								onClick={() => setAgeGroup(value)}
-								className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
-									ageGroup === value
-										? "bg-primary text-white"
-										: "bg-white border border-line text-slate-700 hover:border-primary"
-								}`}
-							>
-								{label}
-							</button>
-						))}
-					</div>
-				</div>
+				<ChipGroup
+					label="Age group"
+					options={AGE_GROUPS.map(({ label, value }) => ({ value, label }))}
+					value={ageGroup}
+					onChange={setAgeGroup}
+				/>
 
-				{/* clear filters */}
-				{(city !== "All" || curricula.size > 0 || ageGroup !== "all") && (
-					<button
-						type="button"
-						onClick={() => {
-							setCity("All");
-							setCurricula(new Set());
-							setAgeGroup("all");
-						}}
-						className="self-start text-xs text-muted underline hover:text-primary"
-					>
+				{hasFilters && (
+					<Button variant="ghost" onClick={clearFilters}>
 						Clear all filters
-					</button>
+					</Button>
 				)}
 			</section>
 
-			{/* result count */}
-			<p className="text-sm text-slate-600 mb-4">
-				Showing <span className="font-bold text-ink">{filtered.length}</span>{" "}
-				school{filtered.length !== 1 ? "s" : ""}
-			</p>
+			<h2
+				className="text-2xl font-bold tracking-tight text-ink"
+				aria-live="polite"
+			>
+				{filtered.length === 0
+					? "No schools match your filters"
+					: `${filtered.length} school${filtered.length !== 1 ? "s" : ""}`}
+			</h2>
 
-			{/* school grid */}
 			{filtered.length > 0 ? (
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+				<CardGrid>
 					{filtered.map((school) => (
-						<SchoolCard key={school.name} school={school} />
+						<CardGridItem key={school.name}>
+							<SchoolCard school={school} />
+						</CardGridItem>
 					))}
-				</div>
+				</CardGrid>
 			) : (
-				<div className="py-12 text-center text-muted text-sm bg-sky rounded-xl border border-line mb-8">
+				<div className="rounded-card border border-line bg-sky p-6 text-center text-base text-muted">
 					No schools match the current filters.{" "}
-					<button
-						type="button"
-						onClick={() => {
-							setCity("All");
-							setCurricula(new Set());
-							setAgeGroup("all");
-						}}
-						className="underline hover:text-primary"
-					>
+					<Button variant="ghost" onClick={clearFilters}>
 						Clear filters
-					</button>
+					</Button>
 				</div>
 			)}
 
-			{/* fees info box */}
-			<aside className="mb-6 p-4 bg-sky border border-line rounded-2xl text-xs text-slate-700 leading-relaxed">
-				<p className="font-semibold text-ink mb-1">About fees</p>
-				<p>
-					Fees are indicative for 2025. Contact schools directly for current fee
-					schedules and availability. Some schools charge registration and
-					capital levy fees on top of tuition.
-				</p>
-			</aside>
-
-			{/* disclaimer */}
-			<aside className="mt-4 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
-				<p className="font-semibold text-ink mb-1">Disclaimer</p>
-				<p>
-					General information only — not legal, tax, or financial advice. This
-					list is curated but not exhaustive. Several smaller and local private
-					schools are not included. Always verify details directly with each
-					school before making any decisions.
-				</p>
-			</aside>
-
-			<p className="mt-8 text-xs text-muted">
-				<Link href="/tools/" className="underline hover:text-primary">
-					&larr; Back to Tools
-				</Link>
+			<p className="text-base text-muted">
+				Fees are indicative for 2025. Contact schools directly for current fee
+				schedules and availability. Some schools charge registration and capital
+				levy fees on top of tuition.
 			</p>
-		</main>
+		</div>
 	);
 }
