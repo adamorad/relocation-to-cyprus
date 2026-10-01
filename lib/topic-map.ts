@@ -85,7 +85,7 @@ export const DIRECTORIES: ReadonlyArray<DirectoryEntry> = [
 ];
 
 // ---------------------------------------------------------------------------
-// Guides (87)
+// Guides (80)
 // ---------------------------------------------------------------------------
 
 export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
