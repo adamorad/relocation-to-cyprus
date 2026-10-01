@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
-import { SectionRelatedGuides } from "@/components/SectionRelatedGuides";
+import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
+import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
+import { Section } from "@/components/ui/Section";
 import { ACTIVITY_TIPS } from "@/lib/after-school";
+import { GUIDES } from "@/lib/guides";
+import { SECTION_RELATED_GUIDE_SLUGS } from "@/lib/section-related-guides";
 import AfterSchoolActivitiesClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -30,31 +34,62 @@ export default function AfterSchoolActivitiesPage() {
 			acceptedAnswer: { "@type": "Answer", text: t.body },
 		})),
 	};
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Directories",
-				item: `${SITE_URL}/sections/`,
-			},
-			{ "@type": "ListItem", position: 3, name: title },
-		],
-	};
+	const relatedGuides = (
+		SECTION_RELATED_GUIDE_SLUGS["after-school-activities"] ?? []
+	)
+		.map((slug) => GUIDES.find((g) => g.slug === slug))
+		.filter((g) => g !== undefined);
+
 	return (
-		<>
+		<DirectoryTemplate
+			pagefindType="directory"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Directories", href: "/sections/" },
+					{ label: "After-School Activities" },
+				],
+				eyebrow: "Family & Children",
+				title: title,
+				intro:
+					"Swimming, sports, music, dance, coding and more, with English or bilingual coaching across Limassol, Paphos and Larnaca.",
+			}}
+			info={ACTIVITY_TIPS.map((t) => ({ heading: t.heading, body: t.body }))}
+			infoTitle="Good to know"
+			notice={{
+				tone: "info",
+				content:
+					"Fees and schedules change seasonally, so always verify directly with the club or academy before enrolling. For competitive sports, look for affiliation with the Cyprus Sports Organisation (KOA) or the relevant national federation.",
+			}}
+			related={
+				relatedGuides.length > 0 ? (
+					<div data-pagefind-ignore>
+						<Section id="related" title="Related guides">
+							<CardGrid cols={2}>
+								{relatedGuides.map((g) => (
+									<CardGridItem key={g.slug}>
+										<Card
+											variant="text"
+											href={`/guides/${g.slug}/`}
+											title={g.title}
+											text={
+												<span className="line-clamp-2">{g.description}</span>
+											}
+										/>
+									</CardGridItem>
+								))}
+							</CardGrid>
+						</Section>
+					</div>
+				) : null
+			}
+		>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-				dangerouslySetInnerHTML={{
-					__html: JSON.stringify([faqJsonLd, breadcrumbJsonLd]),
-				}}
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
 			/>
 			<AfterSchoolActivitiesClient />
-			<SectionRelatedGuides sectionSlug="after-school-activities" />
-		</>
+		</DirectoryTemplate>
 	);
 }
