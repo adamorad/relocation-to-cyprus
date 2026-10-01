@@ -6,7 +6,10 @@
 - Manrope is now the site-wide font. The legacy Lora and DM Sans CSS variables are remapped to it.
 - New "Living in Cyprus" homepage: hero search that goes to /explore/, six topic cards, guide cards, a "Your local area" panel for Limassol, Paphos, Larnaca and Ayia Napa, and a tools strip.
 - The old homepage map moved to `archive/homepage-map/`. `MapNavProvider` and the Google Maps preconnects were removed from the layout. See `docs/homepage-map-archive.md`.
-- Nicosia was left out of the nav, footer and the /regions/ list. Its page and sitemap entry are untouched.
+- Nicosia was removed from the nav, footer and the /regions/ list. The 33 Nicosia new-build listings and the 9 developers that had only Nicosia listings are hidden from every page and the sitemap. The data stays in `lib/data/listings.json`.
+- /regions/nicosia/ is now a redirect to /regions/ (noindex).
+- About 127 Nicosia directory entries and Nicosia city blocks, filter chips and table rows were removed from the sections, tools (city comparison, events calendar, ISP comparison, price benchmarker) and guides. Four Nicosia-located events were removed from the events calendar.
+- Nicosia is kept only where it names a hospital, government office, embassy, university or district fact. Schools in Nicosia were removed from the guides.
 - The listing save heart moved from the archived map panel to the listing detail page. The "Back to the map" links are now "Back to home", and the shortlist empty state and city-comparison link point to /listings/.
 
 - Interior pages are restyled to the Living in Cyprus look: sections, tools, guides, listings, regions, developers, about, contact, privacy, advertise, explore, shortlist and the hub pages, including the shared components they use.
@@ -20,7 +23,8 @@
 ### Known gaps and follow-ups
 
 - Painted category and guide illustrations and real city and guide photos are missing. The photo slots are in `lib/home-content.ts`.
-- Existing content in directories, tools and guides still mentions Nicosia. A decision on that is pending.
+- Developer-written descriptions inside `lib/data/listings.json` still mention Nicosia (about 14 listing pages and 3 developer pages).
+- The bundled listings data still contains the hidden Nicosia listings. Removing them from the bundle is a follow-up.
 - The kit's "Useful contacts" tool does not exist. It is mapped to the emergency contacts guide.
 - Unused Google Maps dependencies should be removed: `@googlemaps/markerclusterer`, `@vis.gl/react-google-maps` and `@types/google.maps`.
 - A Safari 17+ and iOS smoke test is needed, because the mobile menu uses `inert`.
