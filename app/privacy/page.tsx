@@ -75,8 +75,16 @@ export default function PrivacyPage() {
 							3. Cookies and local storage
 						</h2>
 						<p className="text-slate-700 mb-3">We use the following storage:</p>
-						<div className="overflow-x-auto">
+						<section
+							aria-label="Cookies and local storage"
+							// biome-ignore lint/a11y/noNoninteractiveTabindex: scrollable region must be keyboard reachable
+							tabIndex={0}
+							className="overflow-x-auto"
+						>
 							<table className="w-full text-xs border-collapse">
+								<caption className="sr-only">
+									Cookies and local storage used by RealCy.app
+								</caption>
 								<thead>
 									<tr className="border-b border-slate-200">
 										<th className="text-left py-2 pr-4 font-semibold text-slate-700">
@@ -117,7 +125,7 @@ export default function PrivacyPage() {
 									</tr>
 								</tbody>
 							</table>
-						</div>
+						</section>
 					</div>
 
 					<div>
