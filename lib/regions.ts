@@ -14,6 +14,7 @@ import {
 	FEES_HERITAGE,
 	FEES_ISP,
 	feeRange,
+	INTERCITY_FARE,
 } from "./facts/health-transport";
 import {
 	RENT_AGREED_NOTE,
@@ -185,7 +186,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 			"If you move to Cyprus to work for a company, you almost certainly land here. Newcomers average 30 to 45 and are almost always working: Wargaming, Revolut, eToro, Exness, NEXTEN, JetBrains, the shipping firms and many forex brokers and crypto outfits have substantial Limassol headcount. The city is heavily Russian-speaking (a legacy of two decades of Russian investment), but the workforce is international: Greek, French, Israeli, Indian, South African. The social pace is genuinely European, with late dinners and busy bars on weekday evenings.",
 		],
 		gettingAround: [
-			"Limassol has no airport: most expats use Larnaca (40 minutes east, the main international gateway) or Paphos (60 minutes west). City buses are improving but most expats drive; public coaches to Larnaca and Paphos cost €4–€7 one way.",
+			`Limassol has no airport: most expats use Larnaca (40 minutes east, the main international gateway) or Paphos (60 minutes west). City buses are improving but most expats drive; InterCity coaches to Larnaca and Paphos cost ${eur(INTERCITY_FARE.limassolLarnaca)} one way.`,
 			"Traffic is the main complaint. The city sprawls along a thin coastal strip with one main road, and rush hour through Germasogeia and the Old Town can turn a 10-minute Google Maps trip into 30 minutes. Test regular drives at 8:30 AM and 6:00 PM; living within walking distance of the seafront promenade or your employer avoids 80% of that pain.",
 		],
 		healthcare: [

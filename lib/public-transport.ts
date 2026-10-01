@@ -95,7 +95,7 @@ export const TRANSPORT_INFO: Record<City, TransportInfo> = {
   Larnaca: {
     city: "Larnaca",
     intercityBus: `InterCity Buses: to Limassol ${eur(INTERCITY_FARE.limassolLarnaca)}, to Ayia Napa ${eur(INTERCITY_FARE.larnacaAyiaNapa)}. Terminal near the old port / seafront.`,
-    intraCityBus: "Cyprus Public Transport (intra-city): moderate network covering the city centre, Finikoudes area, airport, and main residential zones. Frequency: every 30–60 minutes. Service ends ~21:00.",
+    intraCityBus: "Cyprus Public Transport (intra-city): moderate network covering the city centre, Finikoudes area, airport, and main residential zones. Frequency: every 30–60 minutes. Check late-evening services with Cyprus Public Transport.",
     taxiApp: `Bolt is active in Larnaca. Licensed airport taxis charge fixed fares. Airport to Larnaca centre is ${dayNight(LCA_TAXI.larnacaCentre)}.`,
     boltAvailable: true,
     busMonthlyPass: LARNACA_BUS.monthlyPersonalised,
