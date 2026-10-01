@@ -4,10 +4,10 @@ export type ContainerWidth = "reading" | "wide";
 
 const WIDTH: Record<ContainerWidth, string> = {
 	reading: "max-w-3xl",
-	wide: "max-w-[1200px]",
+	wide: "max-w-[1280px]",
 };
 
-/** The only two page widths: `reading` (about 720px) and `wide` (1200px). */
+/** The only two page widths: `reading` (about 720px) and `wide` (1280px, aligned with the header and homepage). */
 export function Container({
 	width = "wide",
 	as: Tag = "div",
@@ -20,7 +20,7 @@ export function Container({
 	children: ReactNode;
 }) {
 	return (
-		<Tag className={`mx-auto w-full px-5 md:px-6 ${WIDTH[width]} ${className}`}>
+		<Tag className={`mx-auto w-full px-5 md:px-8 ${WIDTH[width]} ${className}`}>
 			{children}
 		</Tag>
 	);

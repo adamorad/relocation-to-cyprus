@@ -35,7 +35,7 @@ export function Section({
 								id={headingId}
 								className={
 									H === "h2"
-										? "text-2xl font-bold leading-tight tracking-tight text-ink"
+										? "text-[clamp(26px,2.4vw,32px)] font-extrabold leading-[1.15] tracking-[-0.025em] text-ink"
 										: "text-xl font-bold leading-snug text-ink"
 								}
 							>
