@@ -19,6 +19,10 @@ import {
 	SDC_DIVIDEND_RATE,
 	SDC_DIVIDEND_RATE_PRE_2026_PROFITS,
 	SDC_INTEREST_RATE,
+	SI_EMPLOYEE_RATE,
+	SI_EMPLOYER_RATE,
+	SI_MAX_INSURABLE_ANNUAL,
+	SI_SELF_EMPLOYED_RATE,
 	VISITOR_PERMIT_MONTHLY_INCOME,
 	VISITOR_PERMIT_MONTHLY_INCOME_COUPLE,
 } from "./facts/tax";
@@ -863,7 +867,15 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "company-types-comparison",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label:
+					"Business in Cyprus: Social insurance registration and contributions",
+				url: "https://www.businessincyprus.gov.cy/social-insurance-registration-and-contributions/",
+			},
+		],
 		category: "business",
 		title: "Cyprus Ltd vs Sole Trader vs Partnership",
 		description:
@@ -875,7 +887,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Cyprus Private Limited Company — the full picture",
-				body: "Incorporating a Cyprus Limited Company involves filing a Memorandum and Articles of Association with the Registrar of Companies, appointing at least one director and one shareholder, and registering a local registered office address. Incorporation costs through a registered agent run €1,500–€2,500 all-in, including Registrar fees (currently €105 for online incorporation) and agent fees. The company must have a local registered office address (a registered agent service costs €300–€600 per year if you do not have permanent Cyprus premises). Tax: the company pays 15% corporate tax on net profits. Salary paid to directors is deductible from corporate profit, reducing CT, but salary is subject to income tax and social insurance (8.3% employee + 8.8% employer for employees, different rates for directors depending on classification). After-tax profits distributed as dividends to a non-dom shareholder carry 0% SDC and 0% income tax — the dividend is simply exempt. Annual obligations: audited financial statements are mandatory for all Cyprus companies regardless of size (this is a common surprise for founders used to small-company audit exemptions in the UK or US — in Cyprus there is no exemption); audit costs run €1,000–€3,000 per year for a simple company. Annual return filing fee: currently €350.",
+				body: `Incorporating a Cyprus Limited Company involves filing a Memorandum and Articles of Association with the Registrar of Companies, appointing at least one director and one shareholder, and registering a local registered office address. Incorporation costs through a registered agent run €1,500–€2,500 all-in, including Registrar fees (currently €105 for online incorporation) and agent fees. The company must have a local registered office address (a registered agent service costs €300–€600 per year if you do not have permanent Cyprus premises). Tax: the company pays 15% corporate tax on net profits. Salary paid to directors is deductible from corporate profit, reducing CT, but salary is subject to income tax and social insurance (${pct(SI_EMPLOYEE_RATE)} employee + ${pct(SI_EMPLOYER_RATE)} employer for employees, different rates for directors depending on classification). After-tax profits distributed as dividends to a non-dom shareholder carry 0% SDC and 0% income tax — the dividend is simply exempt. Annual obligations: audited financial statements are mandatory for all Cyprus companies regardless of size (this is a common surprise for founders used to small-company audit exemptions in the UK or US — in Cyprus there is no exemption); audit costs run €1,000–€3,000 per year for a simple company. Annual return filing fee: currently €350.`,
 			},
 			{
 				heading: "Sole trader — when simpler is better",
@@ -894,7 +906,24 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "hiring-in-cyprus",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label:
+					"Business in Cyprus: Social insurance registration and contributions",
+				url: "https://www.businessincyprus.gov.cy/social-insurance-registration-and-contributions/",
+			},
+			{
+				label:
+					"Ministry of Labour: National minimum wage increase from 2026 (Greek)",
+				url: "https://www.gov.cy/ergasia-kai-koinonikes-asfaliseis/dilosi-tou-ypourgou-ergasias-kai-koinonikon-asfaliseon-gia-tin-afxisi-tou-ethnikou-katotatou-misthou/",
+			},
+			{
+				label: "Social Insurance Services: Basic insurable earnings 1981-2026",
+				url: "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/9AD159715525E49CC22584D90030E8FF?OpenDocument",
+			},
+		],
 		category: "business",
 		title: "Hiring Employees in Cyprus 2026: Costs & Law",
 		description:
@@ -906,11 +935,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Minimum wage and mandatory benefits",
-				body: "Cyprus introduced a statutory minimum wage in January 2023, set initially at €940 per month and increased to €1,000 per month from January 2024 for all employees who have completed six months of continuous employment with the same employer; new starters receive 80% of the minimum for the first six months. The minimum wage applies to nearly all employees regardless of sector, with exemptions for domestic workers and trainees. Mandatory benefits include 20 working days of paid annual leave per year (or 4 weeks, whichever is greater), paid sick leave after completion of probation (partially funded by the Social Insurance Fund), and public holiday pay. A 13th salary — typically paid in December — is not mandated by statute but is standard practice across most sectors; it should be specified or excluded explicitly in the contract to avoid disputes.",
+				body: "From 1 January 2026 the national minimum wage is €1,088 gross a month for full-time employees after six months' continuous employment with the same employer, and €979 for the first six months. The minimum wage applies to nearly all employees regardless of sector, with exemptions for domestic workers and trainees. Mandatory benefits include 20 working days of paid annual leave per year (or 4 weeks, whichever is greater), paid sick leave after completion of probation (partially funded by the Social Insurance Fund), and public holiday pay. A 13th salary — typically paid in December — is not mandated by statute but is standard practice across most sectors; it should be specified or excluded explicitly in the contract to avoid disputes.",
 			},
 			{
 				heading: "Employer social insurance and other payroll costs",
-				body: "The headline payroll cost beyond salary is the employer's contribution to the Social Insurance Fund: 8.3% of gross salary as of 2024, with a ceiling applied to the insurable earnings. Employers also contribute to the General Healthcare System (GeSY) at 2.90% of gross salary, to the Redundancy Fund at 1.2%, to the Human Resource Development Authority (HRDA) at 0.5%, and to the Social Cohesion Fund at 2%. In total, the employer-side social charges run to approximately 14.9% of gross salary for most full-time employees. For a €2,000/month employee, the total employer cost is roughly €2,298 per month before any benefits. Employees pay their own social insurance contribution (8.3%) and GeSY contribution (2.65%), which are deducted from gross salary before net pay is calculated.",
+				body: `The headline payroll cost beyond salary is the employer's contribution to the Social Insurance Fund: ${pct(SI_EMPLOYER_RATE)} of gross salary (since 2024), with a ceiling applied to the insurable earnings. Employers also contribute to the General Healthcare System (GeSY) at 2.90% of gross salary, to the Redundancy Fund at 1.2%, to the Human Resource Development Authority (HRDA) at 0.5%, and to the Social Cohesion Fund at 2%. In total, the employer-side social charges run to approximately 15.4% of gross salary for most full-time employees. For a €2,000/month employee, the total employer cost is roughly €2,308 per month before any benefits. Employees pay their own social insurance contribution (${pct(SI_EMPLOYEE_RATE)}) and GeSY contribution (2.65%), which are deducted from gross salary before net pay is calculated.`,
 			},
 			{
 				heading: "Probation, notice periods, and termination",
@@ -1113,7 +1142,19 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "maternity-paternity-rights",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Social Insurance Services: Basic insurable earnings 1981-2026",
+				url: "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/9AD159715525E49CC22584D90030E8FF?OpenDocument",
+			},
+			{
+				label:
+					"Business in Cyprus: Social insurance registration and contributions",
+				url: "https://www.businessincyprus.gov.cy/social-insurance-registration-and-contributions/",
+			},
+		],
 		category: "family",
 		title:
 			"Maternity and Paternity Rights in Cyprus — What Employed Parents Are Entitled To",
@@ -1126,7 +1167,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Maternity benefit calculation",
-				body: "The Social Insurance maternity benefit is calculated as 75% of the mother's average insurable earnings during the relevant contribution period — specifically the earnings in the contribution year two years prior to the benefit year. Cyprus Social Insurance uses 'insurable earnings' rather than gross salary, and insurable earnings are subject to an annual ceiling (approximately €54,864 per year as of recent rates). In practice, this means a mother earning €30,000 per year gross will receive approximately €433 per week during the Social Insurance-funded period (€30,000 ÷ 52 × 75%). A mother earning €60,000 per year — above the insurable ceiling — will receive the same capped amount as a mother earning at the ceiling. The benefit is paid directly by Social Insurance Services and is separate from any employer-paid salary continuation. To claim, you submit Form M1 to the Social Insurance Services office at least 3 months before the expected due date, along with your employer's certificate of employment.",
+				body: `The Social Insurance maternity benefit is calculated as 75% of the mother's average insurable earnings during the relevant contribution period — specifically the earnings in the contribution year two years prior to the benefit year. Cyprus Social Insurance uses 'insurable earnings' rather than gross salary, and insurable earnings are subject to an annual ceiling (${eur(SI_MAX_INSURABLE_ANNUAL)} a year for 2026, revised each January). In practice, this means a mother earning €30,000 per year gross will receive approximately €433 per week during the Social Insurance-funded period (€30,000 ÷ 52 × 75%). A mother earning €75,000 per year, above the insurable ceiling, will receive the same capped amount as a mother earning at the ceiling. The benefit is paid directly by Social Insurance Services and is separate from any employer-paid salary continuation. To claim, you submit Form M1 to the Social Insurance Services office at least 3 months before the expected due date, along with your employer's certificate of employment.`,
 			},
 			{
 				heading: "Paternity leave: the 2-week entitlement",
@@ -1138,14 +1179,21 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Self-employed maternity benefit",
-				body: "Self-employed mothers in Cyprus are entitled to maternity benefit from Social Insurance under the same 18-week framework, provided they have made sufficient Social Insurance contributions. The self-employed rate is calculated on the basis of declared insurable earnings rather than payslips — specifically, the self-employed person's insurable earnings from the contribution year two years prior. The practical implication: if you have under-declared insurable earnings (a common situation for self-employed people in Cyprus who want to minimize contributions), your maternity benefit will be proportionally reduced. The Social Insurance contribution for self-employed individuals is 15.6% of insurable earnings as of current rates, covering both the employee and employer portions. Self-employed mothers should request Form M1SE from Social Insurance and submit it at least 3 months before expected delivery. There is no employer top-up for self-employed mothers — the full 18 weeks of benefit, if any, comes from Social Insurance at the 75% rate, subject to the usual caps.",
+				body: `Self-employed mothers in Cyprus are entitled to maternity benefit from Social Insurance under the same 18-week framework, provided they have made sufficient Social Insurance contributions. The self-employed rate is calculated on the basis of declared insurable earnings rather than payslips — specifically, the self-employed person's insurable earnings from the contribution year two years prior. The practical implication: if you have under-declared insurable earnings (a common situation for self-employed people in Cyprus who want to minimize contributions), your maternity benefit will be proportionally reduced. The Social Insurance contribution for self-employed individuals is ${pct(SI_SELF_EMPLOYED_RATE)} of insurable earnings (the rate since 2024), covering both the employee and employer portions. Self-employed mothers should request Form M1SE from Social Insurance and submit it at least 3 months before expected delivery. There is no employer top-up for self-employed mothers — the full 18 weeks of benefit, if any, comes from Social Insurance at the 75% rate, subject to the usual caps.`,
 			},
 		],
 	},
 	{
 		slug: "gesy-registration-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-06-18",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Tax Department: Guide to the 2025 tax return (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/06/Guide-for-completion-of-tax-return-2025-EL.pdf",
+			},
+		],
 		category: "healthcare",
 		title: "GeSY Registration Guide 2026: Step-by-Step",
 		description:
@@ -1173,7 +1221,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "GeSY for self-employed and non-standard residents",
-				body: "Self-employed residents register under the 'self-employed' beneficiary category and pay 4.00% of declared insurable income rather than the employed rate. The minimum GeSY contribution for self-employed individuals is based on the statutory minimum insurable income, which means even if your declared income is very low, there is a floor contribution — currently approximately €180–€200 per year. For non-EU residents on a Digital Nomad Visa whose income is from foreign sources: you are still required to register for GeSY as a legal resident, and the contribution is treated as 4.00% of your declared income in Cyprus (which for a pure DNV holder may be zero — in that case, the HIO assesses contributions at minimum rates). If you hold both private health insurance and GeSY, you are still legally required to make GeSY contributions — opting out of the public system is not permitted. Most long-term residents keep both, using GeSY for routine care and private insurance for faster specialist access and private hospital admissions.",
+				body: "Self-employed residents register under the 'self-employed' beneficiary category and pay 4.00% of declared insurable income rather than the employed rate. If you hold a Digital Nomad Visa and all your income comes from abroad, ask the Health Insurance Organisation (gesy.org.cy, contact centre 17000) whether you are a GeSY beneficiary and what you would pay before you rely on it. If you hold both private health insurance and GeSY, you are still legally required to make GeSY contributions — opting out of the public system is not permitted. Most long-term residents keep both, using GeSY for routine care and private insurance for faster specialist access and private hospital admissions.",
 			},
 		],
 		faqs: [
@@ -1187,11 +1235,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "How much does GeSY cost in 2026?",
-				a: "For employees: 2.65% of gross salary (employee share), with the employer contributing a further 2.90%. For self-employed individuals: 4.00% of declared insurable income, with a minimum contribution floor of approximately €180–€200 per year. For pensioners: 2.65% of pension income. Contributions are deducted automatically for employees and paid via tax return for the self-employed.",
+				a: "For employees: 2.65% of gross salary (employee share), with the employer contributing a further 2.90%. For self-employed individuals: 4.00% of declared income, up to €180,000 a year. For pensioners: 2.65% of pension income. Contributions are deducted automatically for employees and paid via tax return for the self-employed.",
 			},
 			{
 				q: "Can I register for GeSY on a Digital Nomad Visa?",
-				a: "Yes. All legal residents of Cyprus — including Digital Nomad Visa holders — are required to register for GeSY. If your income is entirely foreign-sourced and you declare zero Cypriot income, the HIO applies minimum contribution rates (approximately €180–€200 per year). You register at gesyportal.hio.org.cy using your ARC number.",
+				a: "Check with the Health Insurance Organisation (gesy.org.cy, contact centre 17000) first. Whether a Digital Nomad Visa holder whose income is all from abroad counts as a GeSY beneficiary, and what they would pay, depends on HIO rules this guide has not been able to confirm. If you are eligible, you register at gesyportal.hio.org.cy using your ARC number.",
 			},
 			{
 				q: "What does GeSY cover?",

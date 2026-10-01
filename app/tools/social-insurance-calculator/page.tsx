@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
+import { SourcesNote } from "@/components/ui/SourcesNote";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import SocialInsuranceCalculatorClient from "./client";
@@ -28,12 +29,35 @@ export default function SocialInsuranceCalculatorPage() {
 		<ToolTemplate
 			pagefindType="tool"
 			related={
-				<MoreOnTopic
-					type="tool"
-					slug="social-insurance-calculator"
-					exclude={["/guides/hiring-in-cyprus/", "/sections/accountants/"]}
-					cols={2}
-				/>
+				<>
+					<SourcesNote
+						className="mb-12"
+						lastChecked="2026-10-02"
+						sources={[
+							{
+								label:
+									"Business in Cyprus: Social insurance registration and contributions",
+								url: "https://www.businessincyprus.gov.cy/social-insurance-registration-and-contributions/",
+							},
+							{
+								label:
+									"Social Insurance Services: Basic insurable earnings 1981-2026",
+								url: "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/9AD159715525E49CC22584D90030E8FF?OpenDocument",
+							},
+							{
+								label:
+									"Tax Department: Guide to the 2025 tax return (Greek, PDF)",
+								url: "https://www.gov.cy/media/sites/167/2026/06/Guide-for-completion-of-tax-return-2025-EL.pdf",
+							},
+						]}
+					/>
+					<MoreOnTopic
+						type="tool"
+						slug="social-insurance-calculator"
+						exclude={["/guides/hiring-in-cyprus/", "/sections/accountants/"]}
+						cols={2}
+					/>
+				</>
 			}
 			width="reading"
 			header={{
