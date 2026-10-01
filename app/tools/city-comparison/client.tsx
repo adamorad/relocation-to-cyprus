@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 
-type City = "Limassol" | "Paphos" | "Larnaca" | "Nicosia" | "Ayia Napa";
+type City = "Limassol" | "Paphos" | "Larnaca" | "Ayia Napa";
 
 interface CityData {
 	avgRent2bed: number;
@@ -55,18 +55,6 @@ const DATA: Record<City, CityData> = {
 		winterTemp: 13,
 		summerTemp: 33,
 	},
-	Nicosia: {
-		avgRent2bed: 1100,
-		propertyPriceM2: 2000,
-		internationalSchools: 6,
-		beachMinutes: 45,
-		airportMinutes: 35,
-		nightlifeRating: 3,
-		expatsRating: 3,
-		costOfLivingIndex: 78,
-		winterTemp: 11,
-		summerTemp: 36,
-	},
 	"Ayia Napa": {
 		avgRent2bed: 950,
 		propertyPriceM2: 1900,
@@ -85,7 +73,6 @@ const ALL_CITIES: City[] = [
 	"Limassol",
 	"Paphos",
 	"Larnaca",
-	"Nicosia",
 	"Ayia Napa",
 ];
 

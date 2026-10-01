@@ -15,7 +15,6 @@ type City =
 	| "Limassol"
 	| "Paphos"
 	| "Larnaca"
-	| "Nicosia"
 	| "Ayia Napa"
 	| "Island-wide";
 
@@ -89,16 +88,6 @@ const EVENTS: CyprusEvent[] = [
 		free: true,
 	},
 	// April
-	{
-		name: "Cyprus International Film Festival",
-		city: "Nicosia",
-		month: 4,
-		dateDescription: "April (week-long)",
-		type: "cultural",
-		description:
-			"An annual film festival showcasing international and local Cypriot cinema across multiple venues in Nicosia and occasionally Limassol. Screenings include features, documentaries, and short films from across Europe and the Middle East. Industry events and Q&As with directors are part of the programme.",
-		free: false,
-	},
 	{
 		name: "Orthodox Easter",
 		city: "Island-wide",
@@ -241,16 +230,6 @@ const EVENTS: CyprusEvent[] = [
 	},
 	// October
 	{
-		name: "Cyprus Rally",
-		city: "Nicosia",
-		month: 10,
-		dateDescription: "October",
-		type: "sports",
-		description:
-			"A major rally racing event held on the challenging mountain roads of Cyprus, forming part of the European Rally Championship. Spectator stages in the Troodos mountain region offer free vantage points. One of the few major motor sport events in the Eastern Mediterranean.",
-		free: true,
-	},
-	{
 		name: "Larnaca Jazz & World Music Festival",
 		city: "Larnaca",
 		month: 10,
@@ -261,36 +240,15 @@ const EVENTS: CyprusEvent[] = [
 		free: false,
 	},
 	// November
-	{
-		name: "Nicosia International Film Festival",
-		city: "Nicosia",
-		month: 11,
-		dateDescription: "November",
-		type: "cultural",
-		description:
-			"A film festival focused on international cinema, held in Nicosia with screenings at multiple venues across the city. The festival has developed a strong reputation for programming from underrepresented cinemas alongside mainstream European releases.",
-		free: false,
-	},
-	{
-		name: "Cyprus Beer Festival",
-		city: "Nicosia",
-		month: 11,
-		dateDescription: "November",
-		type: "food",
-		description:
-			"Annual beer festival celebrating local and international craft beers, held in Nicosia. Local microbreweries including Aphrodite Hills Brewery and Archangelos showcase their products alongside imported European craft beers. Live music, street food, and a growing craft beer scene make this event increasingly popular.",
-		free: false,
-		highlight: false,
-	},
 	// December
 	{
-		name: "Christmas Markets (Limassol & Nicosia)",
-		city: "Island-wide",
+		name: "Christmas Markets (Limassol)",
+		city: "Limassol",
 		month: 12,
 		dateDescription: "December",
 		type: "cultural",
 		description:
-			"Festive Christmas markets in Limassol Old Town and Nicosia's town square offer crafts, seasonal food, and mulled wine. Cyprus's warm winter climate makes these outdoor markets genuinely pleasant — typical December temperatures of 18-20°C mean outdoor events are comfortable without heavy coats.",
+			"Festive Christmas markets in Limassol Old Town offer crafts, seasonal food, and mulled wine. Cyprus's warm winter climate makes these outdoor markets genuinely pleasant: typical December temperatures of 18-20°C mean outdoor events are comfortable without heavy coats.",
 		free: true,
 	},
 	{
@@ -353,7 +311,6 @@ const ALL_CITIES: City[] = [
 	"Limassol",
 	"Paphos",
 	"Larnaca",
-	"Nicosia",
 	"Ayia Napa",
 	"Island-wide",
 ];
