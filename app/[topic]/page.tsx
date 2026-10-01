@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { TopicHub, topicCounts } from "@/components/templates/TopicHub";
-import { DAILY_TOPICS, hubHref, topicBySlug } from "@/lib/topics";
+import {
+	DAILY_TOPICS,
+	hubHref,
+	topicBySlug,
+	topicShareMetadata,
+} from "@/lib/topics";
 
 /**
  * Topic hubs at /{topic}/ for the seven everyday topics. Moving to Cyprus has
@@ -46,12 +51,11 @@ export async function generateMetadata({
 		title,
 		description,
 		alternates: { canonical: url },
-		openGraph: {
+		...topicShareMetadata(topic, {
 			title,
 			description,
 			url: `https://realcy.app${url}`,
-			type: "website",
-		},
+		}),
 	};
 }
 

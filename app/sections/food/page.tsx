@@ -3,6 +3,7 @@ import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { FOOD_PLACES } from "@/lib/food";
 import { topicCrumb } from "@/lib/topic-map";
+import { topicBySlug, topicShareMetadata } from "@/lib/topics";
 import FoodClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -14,12 +15,13 @@ export const metadata: Metadata = {
 	title,
 	description,
 	alternates: { canonical: "/sections/food/" },
-	openGraph: {
+	// Share image: the Food & shopping topic illustration.
+	// biome-ignore lint/style/noNonNullAssertion: the topic is defined in lib/topics.ts
+	...topicShareMetadata(topicBySlug("food-and-shopping")!, {
 		title,
 		description,
 		url: `${SITE_URL}/sections/food/`,
-		type: "website",
-	},
+	}),
 };
 
 export default function FoodPage() {

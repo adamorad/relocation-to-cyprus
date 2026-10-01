@@ -167,3 +167,48 @@ export const CITY_NAME: Record<CitySlug, string> = {
 export function isCitySlug(v: string | null | undefined): v is CitySlug {
 	return typeof v === "string" && Object.hasOwn(CITY_NAME, v);
 }
+
+/**
+ * Open Graph / Twitter share metadata using a topic's 1600w illustration
+ * (falls back to the site default). Page-level `openGraph` replaces the root
+ * one, so this also restores `siteName` and `locale`.
+ */
+export function topicShareMetadata(
+	topic: Topic,
+	{
+		title,
+		description,
+		url,
+	}: { title: string; description: string; url: string },
+) {
+	const image = topic.image
+		? {
+				url: `https://realcy.app${topic.image.src}`,
+				width: topic.image.width,
+				height: topic.image.height,
+				alt: `${topic.name} in Cyprus`,
+			}
+		: {
+				url: "https://realcy.app/og-default.webp",
+				width: 1200,
+				height: 630,
+				alt: "RealCy.app: Living in Cyprus",
+			};
+	return {
+		openGraph: {
+			type: "website" as const,
+			locale: "en_GB",
+			siteName: "RealCy.app",
+			title,
+			description,
+			url,
+			images: [image],
+		},
+		twitter: {
+			card: "summary_large_image" as const,
+			title,
+			description,
+			images: [image.url],
+		},
+	};
+}
