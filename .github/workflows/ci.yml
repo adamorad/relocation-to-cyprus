@@ -3,8 +3,7 @@ name: CI
 on:
   pull_request:
     branches: [main]
-  push:
-    branches-ignore: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -20,8 +19,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
-        with:
-          version: 10
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -34,8 +31,6 @@ jobs:
         run: pnpm build
         env:
           NODE_ENV: production
-          NEXT_PUBLIC_GA_ID: G-B0LWNF9WEG
-          NEXT_PUBLIC_META_PIXEL_ID: 1973755576021251
           NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: ${{ secrets.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY }}
       - name: Internal link check
         if: ${{ !cancelled() && steps.build.conclusion == 'success' }}
@@ -43,9 +38,17 @@ jobs:
       - name: House rules
         if: ${{ !cancelled() && steps.build.conclusion == 'success' }}
         run: pnpm qa:rules
+      - name: Playwright version
+        id: pw
+        run: echo "version=$(pnpm exec playwright --version | awk '{print $2}')" >> "$GITHUB_OUTPUT"
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.pw.outputs.version }}
       - name: Install Chromium
         if: ${{ !cancelled() && steps.build.conclusion == 'success' }}
-        run: npx playwright install --with-deps chromium
+        run: pnpm exec playwright install --with-deps chromium
       - name: Accessibility (axe, WCAG 2 A and AA)
         if: ${{ !cancelled() && steps.build.conclusion == 'success' }}
         run: pnpm qa:axe
