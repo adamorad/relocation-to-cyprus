@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup } from "@/components/ui/Chip";
 import { Section } from "@/components/ui/Section";
+import { eur } from "@/lib/facts/health-transport";
 import { ALL_CITIES, type City, TRANSPORT_INFO } from "@/lib/public-transport";
 
 /** City chips first, then one section per city. Header and tips live in page.tsx. */
@@ -41,7 +42,7 @@ export default function PublicTransportClient() {
 								<span className="flex flex-wrap gap-2">
 									{info.boltAvailable ? <Badge>Bolt available</Badge> : null}
 									{info.busMonthlyPass !== undefined ? (
-										<Badge>Bus pass €{info.busMonthlyPass}/mo</Badge>
+										<Badge>Bus pass {eur(info.busMonthlyPass)}/mo</Badge>
 									) : null}
 								</span>
 							}

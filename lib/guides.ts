@@ -9,6 +9,8 @@
  */
 
 import {
+	AIRPORT_EXPRESS_FARE,
+	dayNight,
 	eur,
 	FEES_AMERICAN_ACADEMY_LARNACA,
 	FEES_FOLEYS,
@@ -21,8 +23,13 @@ import {
 	GESY_ANNUAL_CAP_REDUCED,
 	GESY_RX_ITEM_COPAY,
 	SRC as HT_SRC,
+	LARNACA_BUS,
+	LCA_TAXI,
 	LICENCE_FEE,
 	LICENCE_MEDICAL_AGE,
+	PAPHOS_BUS,
+	PFO_TAXI,
+	TAXI_NIGHT_HOURS,
 } from "./facts/health-transport";
 import { GUIDES_BATCH1 } from "./guides-batch1";
 import { GUIDES_BATCH2 } from "./guides-batch2";
@@ -1374,7 +1381,14 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "airport-transfers-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			HT_SRC.airportTaxiFares,
+			HT_SRC.larnacaBuses,
+			HT_SRC.paphosAirportBuses,
+			HT_SRC.airportExpress,
+		],
 		category: "transport",
 		title: "Cyprus Airport Transfers 2026: All Options",
 		description:
@@ -1382,15 +1396,15 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "Larnaca Airport: your options at a glance",
-				body: "Larnaca International Airport (LCA) is Cyprus's main hub and handles the majority of international arrivals. The taxi rank is immediately outside arrivals — licensed taxis have fixed rates for major routes, displayed at the rank and regulated by the government. Current published rates: Larnaca city centre €20, Ayia Napa €35–€40, Protaras €45, Limassol city €50–€60 (depending on exact destination), Paphos €100–€110. These are one-person rates; most drivers do not add supplements for luggage or late-night arrivals, but confirm before entering. Journey times: city centre 15–20 minutes, Ayia Napa 45 minutes, Limassol 55–70 minutes. For the Limassol route, shared taxi services (see below) offer the same journey at significantly lower cost. Bolt (the Uber equivalent in Cyprus) is available at Larnaca but has inconsistent coverage at the airport itself — it works well for rides from the city but airport pickups depend on driver availability.",
+				body: `Larnaca International Airport (LCA) is Cyprus's main hub and handles the majority of international arrivals. The taxi rank is immediately outside arrivals; licensed taxis have fixed rates for major routes, displayed at the rank and regulated by the government. Fixed rank fares (day / night, up to 4 passengers, luggage included): Larnaca centre ${dayNight(LCA_TAXI.larnacaCentre)}, Ayia Napa ${dayNight(LCA_TAXI.ayiaNapa)}, Protaras ${dayNight(LCA_TAXI.protaras)}, Limassol ${dayNight(LCA_TAXI.limassol)}, Paphos ${dayNight(LCA_TAXI.paphos)}. Night rates apply ${TAXI_NIGHT_HOURS}. Journey times: city centre 15–20 minutes, Ayia Napa 45 minutes, Limassol 55–70 minutes. For the Limassol route, shared taxi services (see below) offer the same journey at significantly lower cost. Bolt (the Uber equivalent in Cyprus) is available at Larnaca but has inconsistent coverage at the airport itself: it works well for rides from the city but airport pickups depend on driver availability.`,
 			},
 			{
 				heading: "Paphos Airport: taxis and connections",
-				body: "Paphos International Airport (PFO) serves Paphos, western Cyprus, and overflow tourist traffic from Limassol. The fixed taxi rates from Paphos airport are: Paphos city centre and tourist area €15–€20, Limassol €45–€55, Larnaca €100–€115. Journey times: Paphos centre 15–20 minutes, Limassol 45–55 minutes. Paphos is well served by local taxi drivers who know the international community and will quote reasonable rates; the official taxi rank outside arrivals has metered and fixed-rate options. Bolt does operate in Paphos city but airport coverage is limited — do not rely on it for an airport pickup with luggage, particularly in the evening. For the Limassol route, a local private transfer service called A2B Transfer and several Limassol-based operators offer pre-booked fixed-price transfers that are often cheaper than taxis for two or more passengers.",
+				body: `Paphos International Airport (PFO) serves Paphos, western Cyprus, and overflow tourist traffic from Limassol. The fixed taxi rates from Paphos airport are: Kato Paphos ${dayNight(PFO_TAXI.katoPaphos)}, Chloraka ${dayNight(PFO_TAXI.chloraka)}, Coral Bay ${dayNight(PFO_TAXI.coralBay)}, Limassol ${dayNight(PFO_TAXI.limassol)}, Larnaca ${dayNight(PFO_TAXI.larnaca)} (day / night, up to 4 passengers). Journey times: Paphos centre 15–20 minutes, Limassol 45–55 minutes. Paphos is well served by local taxi drivers who know the international community and will quote reasonable rates; airport rank fares are fixed by law. Bolt does operate in Paphos city but airport coverage is limited, so do not rely on it for an airport pickup with luggage, particularly in the evening. For the Limassol route, a local private transfer service called A2B Transfer and several Limassol-based operators offer pre-booked fixed-price transfers that are often cheaper than taxis for two or more passengers.`,
 			},
 			{
-				heading: "OSYPA intercity buses from airports",
-				body: "OSYPA (the Cyprus intercity bus operator) runs routes connecting Larnaca airport to Larnaca city centre and Limassol. The Larnaca airport to Limassol express bus runs several times daily on weekdays and costs approximately €4–€8; journey time is about 90 minutes, stopping in Larnaca first. OSYPA's schedules are available at intercitybuses.com — the timetable is broadly reliable but does not operate the same frequency as a train network, so check the last departure time before relying on it for a late-night flight. From Paphos airport, there is no direct intercity bus service to the airport terminal; the nearest bus stop is on the main road roughly 1km away, served by routes into Paphos town (€1.50). Most Paphos airport arrivals use taxis or pre-booked transfers. For arrivals with heavy luggage or late-night flights, the cost difference between a €6 bus and a €20 taxi is rarely worth the inconvenience.",
+				heading: "Buses from the airports",
+				body: `Route 425 (Cyprus Public Transport) links Larnaca airport with Larnaca town (${eur(LARNACA_BUS.singleCash)} cash, ${eur(LARNACA_BUS.singleCard)} by Motion card). For Limassol, the Limassol Airport Express runs from both Larnaca and Paphos airports for ${eur(AIRPORT_EXPRESS_FARE.adult)} (children ${eur(AIRPORT_EXPRESS_FARE.child)}). Check its timetable before a late flight. From Paphos airport, OSYPA routes 612 and 613 run to Paphos town for ${eur(PAPHOS_BUS.single)}. Most Paphos airport arrivals use taxis or pre-booked transfers. For arrivals with heavy luggage or late-night flights, the saving from taking the bus is rarely worth the inconvenience.`,
 			},
 			{
 				heading: "Shared transfer services and the Bolt alternative",
@@ -1398,7 +1412,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Tips for smooth arrivals and late-night logistics",
-				body: "Three practical notes from regular Cyprus travellers. First, have your destination address written down (not just 'the Limassol marina area') — taxi drivers know landmarks but not all know every building name, and the GPS on some older taxis is unreliable for new developments. Second, Cyprus taxis accept cash (euros) and most now accept cards — always confirm card payment before the journey begins, since a few older drivers still only take cash. Third, for group arrivals of three or more, a private transfer pre-booked online is almost always cheaper than splitting a licensed taxi: compare rates on Taxiplon, ICT Cyprus, and Paphos Taxis before booking. For the Larnaca to Ayia Napa route, Paralimni-based shared minivans run to the resort strip for under €15 per person and are worth investigating if you are arriving at a reasonable hour. The Larnaca to Larnaca city centre journey is so short — under 20 minutes — that a taxi for €20 is almost always the correct answer regardless of group size.",
+				body: `Three practical notes from regular Cyprus travellers. First, have your destination address written down (not just 'the Limassol marina area'): taxi drivers know landmarks but not all know every building name, and the GPS on some older taxis is unreliable for new developments. Second, Cyprus taxis accept cash (euros) and most now accept cards, but always confirm card payment before the journey begins, since a few older drivers still only take cash. Third, for group arrivals of three or more, a private transfer pre-booked online is almost always cheaper than splitting a licensed taxi: compare rates on Taxiplon, ICT Cyprus, and Paphos Taxis before booking. For the Larnaca to Ayia Napa route, Paralimni-based shared minivans run to the resort strip for under €15 per person and are worth investigating if you are arriving at a reasonable hour. The Larnaca to Larnaca city centre journey is so short (under 20 minutes) that a taxi for ${eur(LCA_TAXI.larnacaCentre.day)} is almost always the correct answer regardless of group size.`,
 			},
 		],
 	},

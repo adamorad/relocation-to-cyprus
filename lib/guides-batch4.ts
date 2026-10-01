@@ -1,3 +1,11 @@
+import {
+	eur,
+	SRC as HT_SRC,
+	INTERCITY_FARE,
+	LARNACA_BUS,
+	LIMASSOL_BUS,
+	PAPHOS_BUS,
+} from "./facts/health-transport";
 import type { GuideInfo } from "./guides";
 
 /**
@@ -125,7 +133,15 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 			alt: "Painting of a turquoise city bus at a shaded seaside bus stop where two passengers wait",
 		},
 		datePublished: "2026-07-14",
-		dateModified: "2026-07-14",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			HT_SRC.intercity,
+			HT_SRC.larnacaBuses,
+			HT_SRC.limassolBuses,
+			HT_SRC.paphosBuses,
+			HT_SRC.paphosAirportBuses,
+		],
 		category: "transport",
 		title: "Getting Around Cyprus Without a Car (2026)",
 		description:
@@ -141,11 +157,11 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 			},
 			{
 				heading: "Intercity Buses and Shared Taxis",
-				body: "Getting between cities by public transport is far more practical than getting around within them. InterCity Buses operates the main coach network connecting Limassol, Larnaca, Paphos, and the Famagusta/Ayia Napa area, with comfortable air-conditioned coaches on fixed timetables. One-way fares between major cities are approximately €4 to €9 depending on the route. Timetables are published at intercity-buses.com — always check before travelling, as frequency drops significantly in the evenings and on Sundays.\n\nAlongside regular coaches, Cyprus has a traditional shared taxi service (sometimes called a service taxi), running 8-seater minibuses between the three main cities and both airports. These operate roughly Monday to Friday 06:00–18:00 and reduced hours at weekends. Fares start at around €11 per person, and the service picks up and drops off at or near your address along the route, giving door-to-door flexibility that regular buses cannot match.\n\nFor airport arrivals, public buses serve both Larnaca and Paphos airports. At Larnaca, Route 425 runs frequently into the city centre at a single daytime fare of around €2.40 (higher at night). Paphos airport is served by routes into the town area at a similar flat fare. See the airport-transfers-guide for a full comparison of bus, shared taxi, and private transfer options, and the ferry-routes-guide for sea connections onward to Greece or the eastern Mediterranean.",
+				body: `Getting between cities by public transport is far more practical than getting around within them. InterCity Buses operates the main coach network connecting Limassol, Larnaca, Paphos, and the Famagusta/Ayia Napa area, with comfortable air-conditioned coaches on fixed timetables. One-way fares between major cities are ${eur(INTERCITY_FARE.min)} to ${eur(INTERCITY_FARE.max)} depending on the route. Timetables are published at intercity-buses.com; always check before travelling, as frequency drops significantly in the evenings and on Sundays.\n\nAlongside regular coaches, Cyprus has a traditional shared taxi service (sometimes called a service taxi), running 8-seater minibuses between the three main cities and both airports. These operate roughly Monday to Friday 06:00–18:00 and reduced hours at weekends. Fares start at around €11 per person, and the service picks up and drops off at or near your address along the route, giving door-to-door flexibility that regular buses cannot match.\n\nFor airport arrivals, public buses serve both Larnaca and Paphos airports. At Larnaca, Route 425 runs frequently into the city centre at ${eur(LARNACA_BUS.singleCash)} cash or ${eur(LARNACA_BUS.singleCard)} by Motion card (${eur(LARNACA_BUS.nightCash)} cash after 21:00). Paphos airport is served by routes 612 and 613 (${eur(PAPHOS_BUS.single)}). See the airport-transfers-guide for a full comparison of bus, shared taxi, and private transfer options, and the ferry-routes-guide for sea connections onward to Greece or the eastern Mediterranean.`,
 			},
 			{
 				heading: "City Buses: Routes, Passes, and the Motion Bus Card",
-				body: "Each major city runs its own bus operator co-ordinated under the national Cyprus Public Transport umbrella. Routes and timetables are published centrally at publictransport.com.cy; the public-transport directory at /sections/public-transport lists each operator with direct links.\n\nUnder the updated ticketing policy from 2026, a single cash journey costs approximately €2.40 during the day, rising to around €4.20 for night services running after 21:00. For regular commuters, the Motion Bus Card brings the per-trip cost down considerably. Multi-trip bundles, weekly, and monthly options are available — a four-trip bundle is approximately €7.50 and a weekly pass approximately €41.70 at standard rates. Monthly passes for heavy users cost broadly the same as a few Bolt rides per week. Pricing differs slightly between card types and cities and has been revised more than once in recent years, so check the Fares and Cards section on publictransport.com.cy for current figures before buying.\n\nA practical caveat: most city bus routes stop running by 21:00–22:00, and Sunday frequency is markedly lower than on weekdays. If your social life regularly runs past 10 pm, budget for Bolt or taxis to fill the gap.",
+				body: `Each district has its own operator: EMEL in Limassol, OSYPA in Paphos, Cyprus Public Transport in Larnaca and OSEA around Ayia Napa. The Motion card works on all of them. Each operator publishes its own routes and timetables; the public-transport directory at /sections/public-transport lists each operator with direct links.\n\nA single costs ${eur(LIMASSOL_BUS.single)} in Limassol and Paphos and ${eur(LARNACA_BUS.singleCash)} cash (${eur(LARNACA_BUS.singleCard)} by card) in Larnaca. Night fares after 21:00 are ${eur(LIMASSOL_BUS.night)} in Limassol and Paphos and ${eur(LARNACA_BUS.nightCash)} cash in Larnaca. A 30-day pass costs ${eur(LIMASSOL_BUS.monthly)} in Limassol, ${eur(PAPHOS_BUS.monthlyPersonalised)} in Paphos and ${eur(LARNACA_BUS.monthlyPersonalised)} in Larnaca (personalised card). Monthly passes for heavy users cost broadly the same as a few Bolt rides per week. Pricing differs between card types and cities and has been revised more than once in recent years, so check each operator's ticket page for current figures before buying.\n\nA practical caveat: most city bus routes stop running by 21:00–22:00, and Sunday frequency is markedly lower than on weekdays. If your social life regularly runs past 10 pm, budget for Bolt or taxis to fill the gap.`,
 			},
 			{
 				heading: "Bolt, Taxi Apps, and When to Book Ahead",
@@ -167,15 +183,15 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 			},
 			{
 				q: "How much does a city bus cost in Cyprus?",
-				a: "A single cash journey on any city bus network costs approximately €2.40 during the day and around €4.20 after 21:00. Multi-trip Motion Bus Cards reduce the per-journey cost; a four-trip bundle is approximately €7.50 and a weekly pass approximately €41.70 at standard rates. Fares were revised in 2026 — check publictransport.com.cy for the current table before buying.",
+				a: `A single costs ${eur(LIMASSOL_BUS.single)} in Limassol and Paphos and ${eur(LARNACA_BUS.singleCash)} cash (${eur(LARNACA_BUS.singleCard)} by Motion card) in Larnaca. After 21:00, night fares are ${eur(LIMASSOL_BUS.night)} in Limassol and Paphos and ${eur(LARNACA_BUS.nightCash)} cash in Larnaca. A 30-day pass costs ${eur(LIMASSOL_BUS.monthly)} in Limassol, ${eur(PAPHOS_BUS.monthlyPersonalised)} in Paphos and ${eur(LARNACA_BUS.monthlyPersonalised)} in Larnaca (personalised card). Fares change, so check each operator's ticket page before buying.`,
 			},
 			{
 				q: "How do I get between cities without a car?",
-				a: "Two main options: InterCity Buses, which run air-conditioned coaches between Limassol, Larnaca, Paphos, and Ayia Napa on published timetables (fares approximately €4–9 one-way), and shared taxis, which run 8-seater minibuses with near-door-to-door pickup from around €11 per person. Check intercity-buses.com for current schedules.",
+				a: `Two main options: InterCity Buses, which run air-conditioned coaches between Limassol, Larnaca, Paphos, and Ayia Napa on published timetables (fares ${eur(INTERCITY_FARE.min)} to ${eur(INTERCITY_FARE.max)} one way), and shared taxis, which run 8-seater minibuses with near-door-to-door pickup from around €11 per person. Check intercity-buses.com for current schedules.`,
 			},
 			{
 				q: "Can I get a bus from Larnaca or Paphos airport?",
-				a: "Yes, from both. Larnaca Airport is served by Route 425 into the city centre at roughly €2.40, and Paphos Airport is served by town routes at a similar fare. Night services at both airports carry a surcharge. The airport-transfers-guide covers private shuttle and taxi options alongside the buses.",
+				a: `Yes, from both. Larnaca Airport is served by Route 425 into the city centre (${eur(LARNACA_BUS.singleCash)} cash, ${eur(LARNACA_BUS.singleCard)} by Motion card), and Paphos Airport by routes 612 and 613 (${eur(PAPHOS_BUS.single)}). Night services at both airports carry a surcharge. The airport-transfers-guide covers private shuttle and taxi options alongside the buses.`,
 			},
 		],
 	},
