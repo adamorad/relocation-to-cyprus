@@ -14,6 +14,7 @@ import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { Container } from "@/components/ui/Container";
 import { InfoCards } from "@/components/ui/InfoCards";
 import { Section } from "@/components/ui/Section";
+import { formatChecked, SourcesNote } from "@/components/ui/SourcesNote";
 import { AUTHORS, CATEGORY_AUTHOR } from "@/lib/authors";
 import { GUIDE_REDIRECTS } from "@/lib/guide-redirects";
 import { GUIDES, type GuideCategory, guideBySlug } from "@/lib/guides";
@@ -287,7 +288,10 @@ export default async function GuidePage({
 						By <span className="font-semibold text-ink">{author.name}</span>
 						{" · "}
 						{author.role}
-						{" · "}Last reviewed {lastReviewed}
+						{" · "}
+						{g.lastChecked
+							? `Last checked ${formatChecked(g.lastChecked)}`
+							: `Last reviewed ${lastReviewed}`}
 						{" · "}
 						{readingMinutes} min read
 					</>
@@ -309,18 +313,27 @@ export default async function GuidePage({
 			share={<ShareBar url={canonicalUrl} title={g.title} guideSlug={g.slug} />}
 			toc={toc}
 			afterBody={
-				g.faqs && g.faqs.length > 0 ? (
-					<Section
-						id="faq"
-						title="Frequently asked questions"
-						className="!mt-12"
-					>
-						<InfoCards
-							items={g.faqs.map((faq) => ({ heading: faq.q, body: faq.a }))}
-							columns={1}
+				<>
+					{g.faqs && g.faqs.length > 0 ? (
+						<Section
+							id="faq"
+							title="Frequently asked questions"
+							className="!mt-12"
+						>
+							<InfoCards
+								items={g.faqs.map((faq) => ({ heading: faq.q, body: faq.a }))}
+								columns={1}
+							/>
+						</Section>
+					) : null}
+					{g.lastChecked && g.sources ? (
+						<SourcesNote
+							lastChecked={g.lastChecked}
+							sources={g.sources}
+							className="mt-12"
 						/>
-					</Section>
-				) : null
+					) : null}
+				</>
 			}
 			related={<MoreOnTopic type="guide" slug={g.slug} />}
 			legal={

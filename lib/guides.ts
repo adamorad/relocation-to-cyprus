@@ -39,6 +39,10 @@ export type GuideInfo = {
 	datePublished: string;
 	dateModified: string;
 	faqs?: Array<{ q: string; a: string }>;
+	/** ISO date the facts were last checked against `sources`. */
+	lastChecked?: string;
+	/** Official or primary sources behind the guide's facts. */
+	sources?: ReadonlyArray<{ label: string; url: string }>;
 };
 
 export const GUIDES: ReadonlyArray<GuideInfo> = [
