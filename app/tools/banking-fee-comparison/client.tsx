@@ -263,7 +263,7 @@ export default function BankingFeeComparisonPage() {
 									key={bank.name}
 									className={
 										good
-											? "rounded bg-emerald-50 px-2 py-0.5 font-semibold text-emerald-900"
+											? "rounded bg-sky-strong px-2 py-0.5 font-semibold text-ink"
 											: "text-muted"
 									}
 								>

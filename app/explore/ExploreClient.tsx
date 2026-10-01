@@ -10,6 +10,7 @@ import {
 	useState,
 } from "react";
 import { Icon } from "@/components/icons/Icon";
+import { Chip } from "@/components/ui/Chip";
 
 /** Content types written to the index as data-type on each page's main element. */
 const TYPES = [
@@ -342,18 +343,22 @@ export default function ExploreClient() {
 			{counts && total > 0 ? (
 				<fieldset className="m-0 mt-4 flex min-w-0 flex-wrap gap-2 border-0 p-0">
 					<legend className="sr-only">Filter results by type</legend>
-					<FilterChip
-						label={`All (${total})`}
-						active={filter === "all"}
+					<Chip
+						count={total}
+						selected={filter === "all"}
 						onClick={() => setFilter("all")}
-					/>
+					>
+						All
+					</Chip>
 					{TYPES.filter((t) => (counts[t.id] ?? 0) > 0).map((t) => (
-						<FilterChip
+						<Chip
 							key={t.id}
-							label={`${t.label} (${counts[t.id]})`}
-							active={filter === t.id}
+							count={counts[t.id]}
+							selected={filter === t.id}
 							onClick={() => setFilter(t.id)}
-						/>
+						>
+							{t.label}
+						</Chip>
 					))}
 				</fieldset>
 			) : null}
@@ -472,30 +477,5 @@ export default function ExploreClient() {
 				) : null}
 			</div>
 		</section>
-	);
-}
-
-function FilterChip({
-	label,
-	active,
-	onClick,
-}: {
-	label: string;
-	active: boolean;
-	onClick: () => void;
-}) {
-	return (
-		<button
-			type="button"
-			aria-pressed={active}
-			onClick={onClick}
-			className={`inline-flex min-h-11 items-center rounded-full border px-4 text-sm font-semibold ${
-				active
-					? "border-primary bg-primary text-white"
-					: "border-line bg-white text-ink hover:bg-sky"
-			}`}
-		>
-			{label}
-		</button>
 	);
 }

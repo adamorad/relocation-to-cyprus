@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from "react";
 import { Badge } from "@/components/ui/Badge";
-import { ChipGroup } from "@/components/ui/Chip";
+import { Chip, ChipGroup } from "@/components/ui/Chip";
 import { DataTable } from "@/components/ui/DataTable";
 import { CHART_COLORS } from "@/lib/chart-colors";
 
@@ -361,24 +361,18 @@ export default function RentalPriceTrendsClient() {
 						{CITIES.map((city) => {
 							const active = activeCities.has(city);
 							return (
-								<button
+								<Chip
 									key={city}
-									type="button"
+									selected={active}
 									onClick={() => toggleCity(city)}
-									aria-pressed={active}
-									className={`inline-flex min-h-11 items-center gap-2 rounded-full border px-4 text-sm font-semibold transition-colors ${
-										active
-											? "border-primary bg-primary text-white hover:bg-primary-hover"
-											: "border-line bg-white text-ink hover:bg-sky"
-									}`}
 								>
 									<span
 										aria-hidden="true"
-										className="inline-block h-3 w-3 shrink-0 rounded-full border-2 border-white"
+										className="mr-2 inline-block h-3 w-3 shrink-0 rounded-full border-2 border-white"
 										style={{ background: CITY_COLOURS[city] }}
 									/>
 									{city}
-								</button>
+								</Chip>
 							);
 						})}
 					</div>
