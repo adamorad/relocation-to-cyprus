@@ -63,7 +63,14 @@ export const GUIDES_BATCH2: GuideInfo[] = [
 	{
 		slug: "self-employed-tax-cyprus",
 		datePublished: "2026-07-05",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Tax Department: Individual income tax return",
+				url: "https://www.gov.cy/mof-tax/en/documents/forologiki-dilosi-eisodimatos-atomoy/",
+			},
+		],
 		category: "tax",
 		title: "Self-Employed Tax in Cyprus: 2026 Guide",
 		description:
@@ -91,7 +98,7 @@ export const GUIDES_BATCH2: GuideInfo[] = [
 			},
 			{
 				heading: "Filing, Deadlines, and Penalties",
-				body: "Self-employed individuals who are not required to prepare audited financial statements — broadly, those with annual turnover at or below €70,000 — file their personal income tax return using Form TD1, submitted via the TAXISnet online platform. For the 2025 tax year, the standard statutory deadline is 31 July 2026. The Tax Department has in the past announced extensions (the 2024-year return was extended to 30 September 2025), and signalled in April 2026 that an extension might again follow, but you should not rely on one — check TAXISnet and confirm with your accountant before the deadline.\n\nSelf-employed persons with annual turnover above €70,000 whose accounts require an audit are subject to different, later deadlines; professional advice is recommended if this applies to you. Looking ahead, personal tax filing is transitioning from TAXISnet to the new Tax For All (TFA) system, so expect different procedures for the 2026 tax year onwards.\n\nPenalties for non-compliance are meaningful. Late filing of the TD1 attracts a fixed penalty of €100, plus €200 for each calendar month the return remains outstanding, up to a maximum of €17,000. Late payment of tax due attracts interest (recently 5% per annum) on the outstanding balance. Failure to register with the Tax Department or Social Insurance Services within the required window from commencing business results in retrospective contribution charges, accrued interest, and penalties.\n\nGiven the number of quarterly deadlines, the mid-year provisional tax payments, and the ongoing transition to TFA, engaging a Cyprus-qualified accountant from the outset is strongly recommended.",
+				body: "Self-employed individuals who are not required to prepare audited financial statements, broadly, those with annual turnover at or below €70,000, file their personal income tax return using Form TD1, submitted via the TAXISnet online platform. For the 2025 tax year, the Tax Department gives the deadline for submitting the return as 31 October 2026. Check TAXISnet and confirm with your accountant well before that date.\n\nSelf-employed persons with annual turnover above €70,000 whose accounts require an audit are subject to different, later deadlines; professional advice is recommended if this applies to you. Looking ahead, personal tax filing is transitioning from TAXISnet to the new Tax For All (TFA) system, so expect different procedures for the 2026 tax year onwards.\n\nPenalties for non-compliance are meaningful. Late filing of the TD1 attracts a fixed penalty of €100, plus €200 for each calendar month the return remains outstanding, up to a maximum of €17,000. Late payment of tax due attracts interest (recently 5% per annum) on the outstanding balance. Failure to register with the Tax Department or Social Insurance Services within the required window from commencing business results in retrospective contribution charges, accrued interest, and penalties.\n\nGiven the number of quarterly deadlines, the mid-year provisional tax payments, and the ongoing transition to TFA, engaging a Cyprus-qualified accountant from the outset is strongly recommended.",
 			},
 		],
 		faqs: [
