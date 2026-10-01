@@ -139,7 +139,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "taxes-for-expats",
 		datePublished: "2026-05-22",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-01",
 		category: "tax",
 		title: "Cyprus Expat Tax Guide 2026: Non-Dom Regime",
 		description:
@@ -156,6 +156,10 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			{
 				heading: "The non-dom regime in detail",
 				body: "Non-dom status is automatic for tax residents who have been domiciled outside Cyprus, which in practice means almost every relocator. Once you are a Cyprus tax resident and a non-dom, the following income types are completely exempt from Cyprus tax: dividends received from anywhere in the world, interest received from anywhere, rental income from properties outside Cyprus (though you still pay Cyprus's GeSY healthcare contribution on it — 2.65%), capital gains on shares and securities, and most types of capital gains on property outside Cyprus. The non-dom regime lasts for 17 of the 20 tax years following your relocation, so it is genuinely long-term. For employment income earned in Cyprus, you pay regular Cypriot income tax (0% on the first €22,000, scaling up progressively to 35% above €72,000), and for self-employment income earned in Cyprus the same. There is a special 50% income tax exemption for new residents earning more than €100,000 per year from Cypriot employment for the first 17 years.",
+			},
+			{
+				heading: "Non-dom status",
+				body: "Non-dom (non-domiciled) status is a designation within the Cyprus tax system. It is not a tax holiday, an investment visa or a residency permit. Its core job is to remove the Special Defence Contribution (SDC), the levy that otherwise applies to dividends (17% for domiciled residents) and interest (30%) received by Cyprus tax residents. SDC on rental income was abolished from 1 January 2026 for all Cyprus tax residents, so rent carries no SDC with or without non-dom. You can be a Cyprus tax resident without being non-dom (if you are long-term domiciled in Cyprus), and you can be non-dom without any special permit: an EU citizen registered with a Yellow Slip qualifies from the first day of tax residency.\n\nWhat non-dom does not cover: employment and self-employment income earned in Cyprus (taxed at the normal progressive rates up to 35%), income tax on rent from Cyprus property, and capital gains on Cypriot real estate, which fall under the Capital Gains Tax Law.\n\nWho qualifies and the 17-year clock: domicile follows an English common-law concept. Broadly, if you were not born to a Cypriot-domiciled parent and have not lived in Cyprus intending to stay permanently for most of your adult life, you are not domiciled in Cyprus. In practice almost every relocating foreign national qualifies automatically from the first day of tax residency. There is no application, certificate or fee: you declare non-dom status on your annual tax return (Form TD1). You lose it once you have been tax resident in Cyprus for 17 or more of the 20 tax years ending with the current year; someone who first became tax resident in 2015 would not lose it before 2032.\n\nThe 2026 extension option: a 2025 amendment, effective from January 2026, lets non-dom individuals who reach the 17-year limit apply to extend the status for up to two further periods of five years each, paying a flat €250,000 per extension period, for a maximum of 27 years. The extension is not automatic; the application must reach the Tax Department before the 17th year of residency ends. The same amendment clarified the 60-day rule's condition that you must not be tax resident in any other country, which makes that route slightly easier to defend. Implementation regulations were still being finalised in mid-2026, so confirm the current procedure with a Cyprus-registered accountant.\n\nGeSY on passive income: non-dom does not exempt dividends, interest or rents from the GeSY healthcare contribution. They pay 2.65% of the gross amount, capped at €4,770 a year per person (the cap is based on €180,000 of income). Someone receiving €500,000 in dividends a year pays no SDC (saving €85,000 at the domiciled rate) but still pays €4,770 in GeSY contributions.\n\nCommon misconceptions: non-dom does not mean no tax in Cyprus, because Cyprus employment, self-employment and Cyprus rental income are taxed as normal. Staying under 183 days does not protect non-dom either: below 183 days you are not a Cyprus tax resident at all unless you meet the 60-day rule, and non-dom exists only for tax residents. A salary from your own Cyprus company is employment income taxed at normal rates, while dividends from the same company are SDC-free under non-dom, so the director and shareholder structure matters. And non-dom is not permanent: if you plan a long-term base in Cyprus, model the 17-year expiry into your plans.",
 			},
 			{
 				heading: "Capital gains, property and crypto",
@@ -178,6 +182,18 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			{
 				q: "Does Cyprus tax foreign pension or employment income?",
 				a: "Foreign pension income remitted to Cyprus is taxed at a flat 5% rate above a €3,420 annual exemption (alternatively taxed at normal rates if lower). Foreign employment income earned for work performed outside Cyprus by a non-dom resident is exempt from Cyprus income tax. Cyprus has double-tax treaties with over 65 countries, which further reduce withholding taxes on cross-border income.",
+			},
+			{
+				q: "Do I need to apply for non-dom status in Cyprus?",
+				a: "No. There is no application, certificate or fee. If you are not domiciled in Cyprus, which applies to almost every relocating foreign national, you declare non-dom status on your annual tax return (Form TD1) from your first year of tax residency.",
+			},
+			{
+				q: "Does non-dom status exempt me from GeSY contributions?",
+				a: "No. Dividends, interest and rental income still pay the 2.65% GeSY contribution on the gross amount, capped at €4,770 a year per person. Non-dom removes the SDC on dividends and interest, not the healthcare contribution.",
+			},
+			{
+				q: "Can Cyprus non-dom status be extended beyond 17 years?",
+				a: "Under a 2025 amendment effective from January 2026, non-dom individuals reaching the 17-year limit can apply to extend the status for up to two further five-year periods, paying a flat €250,000 per period, for a maximum of 27 years. The application must be made before the 17th year of residency ends. Confirm the current procedure with a Cyprus-registered accountant, as the implementing rules were still being finalised in mid-2026.",
 			},
 		],
 	},
@@ -427,7 +443,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Visa, tax residency and the 60-day rule are separate things",
-				body: "Holding the Digital Nomad Visa gives you the right to live in Cyprus. It does not, by itself, make you a Cyprus tax resident, and it does not switch off tax residency somewhere else. Tax residency is decided by day-count and connection tests (the 183-day rule, or the 60-day rule with its own conditions), applied to the calendar year, and your home country will apply its own rules in parallel. Many applicants assume the visa settles their tax position and then discover it does not.\n\nBefore you plan around the non-dom benefits described above, work out three things separately: whether your home country will still treat you as tax resident, whether you will meet the Cyprus day-count conditions in your first calendar year, and how your income is structured (employment, freelance fees and company dividends are treated differently). The tax-residency-tracker tool at /tools/tax-residency-tracker lets you test your day count, and the non-dom-status-guide covers what non-dom status does and does not exempt. A Cyprus-registered accountant can confirm your position in one consultation, and that is cheaper than correcting a filing later.",
+				body: "Holding the Digital Nomad Visa gives you the right to live in Cyprus. It does not, by itself, make you a Cyprus tax resident, and it does not switch off tax residency somewhere else. Tax residency is decided by day-count and connection tests (the 183-day rule, or the 60-day rule with its own conditions), applied to the calendar year, and your home country will apply its own rules in parallel. Many applicants assume the visa settles their tax position and then discover it does not.\n\nBefore you plan around the non-dom benefits described above, work out three things separately: whether your home country will still treat you as tax resident, whether you will meet the Cyprus day-count conditions in your first calendar year, and how your income is structured (employment, freelance fees and company dividends are treated differently). The tax-residency-tracker tool at /tools/tax-residency-tracker lets you test your day count, and the /guides/taxes-for-expats/ guide covers what non-dom status does and does not exempt. A Cyprus-registered accountant can confirm your position in one consultation, and that is cheaper than correcting a filing later.",
 			},
 			{
 				heading: "Why applications stall, and how to avoid it",
@@ -650,43 +666,6 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			{
 				heading: "Timeline, dual nationality, and what citizenship gives you",
 				body: "Once a complete application is submitted, the processing time is officially 18–24 months but varies significantly; some applications complete in 15 months, others take 30 months if the committee requests additional evidence or the Interior Ministry's workload is high. There is no expedited track. On approval, the applicant is invited to take the Oath of Allegiance and is issued a Cypriot identity card and passport. Cyprus is an EU member state, so Cypriot citizenship gives you EU citizenship and the right to live and work freely across all 27 EU member states. On dual nationality: Cyprus permits it. The country you are naturalising from determines whether you can retain your existing citizenship — Cyprus itself raises no objection to dual or even triple citizenship, but your birth-country laws apply separately. UK, US, Israeli, Indian, and most EU citizenship rules allow dual nationality with Cyprus without restriction; check the rules of your existing citizenship before assuming.",
-			},
-		],
-	},
-	{
-		slug: "non-dom-status-guide",
-		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
-		category: "tax",
-		title: "Cyprus Non-Dom Tax Status 2026: 0% on Dividends",
-		description:
-			"0% tax on dividends & interest for 17 years, GESY contributions, qualification rules, the 2026 extension option, and common misconceptions explained.",
-		sections: [
-			{
-				heading: "What non-dom status is and is not",
-				body: "Non-dom (non-domiciled) status in Cyprus is a designation within the income tax system that exempts qualifying residents from the Special Defence Contribution (SDC) — a levy that applies to dividends and interest received by Cyprus tax residents (SDC on rental income was abolished from 1 January 2026). It is not a tax holiday, not an investment visa, and not a separate residency permit. You can be a Cyprus tax resident without being non-dom (if you are long-term domiciled in Cyprus), and you can be non-dom without holding any special residency permit (an EU citizen registered on a Yellow Slip qualifies on day one of tax residency). The confusion arises because the marketing around Cyprus relocation often conflates non-dom status with other features of the tax system — such as the 0% rate on the first €22,000 of income, or the capital gains exemption on shares — which exist independently of non-dom and apply to all Cyprus residents. Non-dom status specifically addresses SDC, and SDC specifically applies to investment and passive income.",
-			},
-			{
-				heading: "Income types exempt under non-dom — and those that are not",
-				body: "For a Cyprus tax resident with non-dom status, the following income categories carry zero SDC: dividends received from any company anywhere in the world (SDC rate for domiciled residents is 17%), and interest income from any source (SDC rate otherwise 30%). Note: SDC on rental income was abolished from 1 January 2026 for all Cyprus tax residents, so rental income carries no SDC regardless of non-dom status. This is the core non-dom benefit: a new resident receiving significant dividend income from a foreign company, or interest from a bond portfolio, pays zero SDC on that income. What non-dom does not exempt: employment income earned in Cyprus (which is subject to normal income tax at progressive rates up to 35%), self-employment income earned in Cyprus (same), rental income from Cyprus property (income tax and the 2.65% GeSY contribution apply; SDC on rental was abolished from 1 January 2026), and capital gains on Cypriot real estate (which falls under the Capital Gains Tax Law, not SDC). The practical test: if the income would otherwise attract SDC, non-dom removes it. If the income is subject to income tax only (not SDC), non-dom has no effect.",
-			},
-			{
-				heading: "Who gets non-dom status and the 17-year clock",
-				body: "Non-dom status is available to any individual who is not 'domiciled' in Cyprus for the purposes of the SDC law. Domicile is defined by Cypriot law using an English common-law concept: broadly, if you were not born to a Cypriot-domiciled parent and have not lived in Cyprus with the intention of remaining permanently for the majority of your adult life, you are not domiciled in Cyprus. In practice, virtually every relocating foreign national qualifies as non-dom automatically from their first day as a Cyprus tax resident — there is no application process, no certificate, and no fee. You simply declare your non-dom status on your annual tax return (Form TD1) by confirming that you are not domiciled in Cyprus. The clock matters: if you have been tax resident in Cyprus for 17 or more of the 20 consecutive tax years ending with the current year, you are deemed domicile-of-choice in Cyprus and lose non-dom status. This is a long runway — someone who first became Cyprus tax resident in 2015 would not lose non-dom status until 2032 at the earliest under the 17-of-20 rule.",
-			},
-			{
-				heading:
-					"The 2026 extension option and how long non-dom actually lasts",
-				body: "The standard non-dom period is 17 tax years of Cyprus residency — enough for most relocators who arrive in their 30s or 40s to comfortably plan around. But a 2025 amendment (effective January 2026) introduced an optional extension mechanism: non-dom individuals who have reached or are approaching the 17-year limit can apply to extend their non-dom status for two additional periods of five years each, by paying a one-time flat contribution of €250,000 per extension period. This means the maximum non-dom runway under the new rules is 27 years. The same amendment simplified the 60-day rule: the requirement that the individual must not be tax resident in any other country under that country's domestic rules was clarified and modestly relaxed, making the 60-day route slightly easier to defend for globally mobile individuals. The extension is not automatic — it requires an application to the Cyprus Tax Department before the 17th year of residency expires. Individuals who have been Cyprus tax resident since 2008 or earlier should check whether they are approaching the window. As with all Cyprus tax planning, verify current procedure and thresholds with a Cyprus-registered accountant, as the implementation regulations for the 2026 changes were still being finalised as of mid-2026. Prices and rules change — verify with official Cyprus sources before acting.",
-			},
-			{
-				heading:
-					"GESY contribution on passive income — the number everyone misses",
-				body: "Non-dom status does not exempt passive income from the General Health System (GESY) contribution. Since 2019, GESY contributions apply to all income received by Cyprus residents, including dividends, interest and rental income that are otherwise completely SDC-exempt. The GESY rate on passive income (dividends, interest, rents) is 2.65% of the gross amount, capped at a total annual contribution of €4,770 per year per individual (based on the €180,000 income cap). This is not a large figure in the context of significant investment income, but it is frequently omitted from non-dom planning discussions. A person receiving €500,000 in dividends annually pays zero SDC (saving €85,000 at the domiciled rate) but still pays €4,770 in GESY contributions — the cap means it does not scale beyond that. GESY contributions give you access to Cyprus's public healthcare system, which has real value, but the contribution is compulsory regardless of whether you use the system.",
-			},
-			{
-				heading: "Common misconceptions and planning pitfalls",
-				body: "Misconception one: 'non-dom means I pay no tax in Cyprus.' False. Non-dom specifically removes SDC on dividends and interest. Employment income, self-employment income, and Cypriot-source rental income are taxed as normal. Misconception two: 'I need to stay below 183 days to keep non-dom.' Wrong logic. Staying below 183 days means you are not a Cyprus tax resident at all — and non-dom is a status that exists only for Cyprus tax residents. The 60-day rule (which can make you a Cyprus tax resident with fewer than 183 days) is separate. Misconception three: 'I can receive a salary from my own Cyprus company and it will be tax-free.' Partially false. The salary is employment income subject to normal progressive income tax. However, if the same company pays you dividends rather than salary, the dividends are SDC-free under non-dom. The director/shareholder structure matters materially. Misconception four: 'Non-dom is permanent.' It lasts for up to 17 of 20 years of tax residency, which is long, but not infinite. Founders planning to use Cyprus as a long-term base should model the 17-year expiry into their long-term planning.",
 			},
 		],
 	},

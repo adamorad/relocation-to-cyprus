@@ -171,7 +171,7 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 	"taxes-for-expats": {
 		topic: "money-and-paperwork",
 		also: ["moving-here"],
-		why: "How tax works for residents day to day; the non-dom decision itself sits in Moving to Cyprus.",
+		why: "How tax works for residents day to day, including non-dom status; also a moving decision.",
 	},
 	"cyprus-tax-return-filing": { topic: "money-and-paperwork" },
 	"self-employed-tax-cyprus": { topic: "money-and-paperwork" },
@@ -310,11 +310,6 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 		also: ["family-and-schools"],
 	},
 	"cyprus-schengen-guide": { topic: "moving-here" },
-	"non-dom-status-guide": {
-		topic: "moving-here",
-		also: ["money-and-paperwork"],
-		why: "Non-dom is claimed when you become resident, so it is a moving decision.",
-	},
 	"cyprus-company-formation": {
 		topic: "moving-here",
 		also: ["money-and-paperwork"],

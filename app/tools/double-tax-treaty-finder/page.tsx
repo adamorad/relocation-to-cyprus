@@ -30,7 +30,7 @@ export default function DoubleTaxTreatyFinderClientPage() {
 				<MoreOnTopic
 					type="tool"
 					slug="double-tax-treaty-finder"
-					exclude={["/guides/non-dom-status-guide/", "/sections/accountants/"]}
+					exclude={["/guides/taxes-for-expats/", "/sections/accountants/"]}
 					cols={3}
 				/>
 			}
@@ -48,8 +48,8 @@ export default function DoubleTaxTreatyFinderClientPage() {
 			}}
 			nextSteps={[
 				{
-					href: "/guides/non-dom-status-guide/",
-					label: "Read: Non-Dom Status Guide",
+					href: "/guides/taxes-for-expats/#non-dom-status",
+					label: "Read: Non-dom status",
 				},
 				{ href: "/sections/accountants/", label: "Find a tax advisor" },
 				{ href: "/tools/", label: "All tools" },

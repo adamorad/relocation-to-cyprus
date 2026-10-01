@@ -13,12 +13,12 @@ Decisions were made on the owner's behalf in Phase 2A and are open for review. R
 | Health | `/health/` | 7 | 3 | 1 | 11 | 12 |
 | Getting around | `/getting-around/` | 8 | 2 | 2 | 12 | 11 |
 | Home & bills | `/home-and-bills/` | 8 | 3 | 3 | 14 | 19 |
-| Money & paperwork | `/money-and-paperwork/` | 22 | 4 | 13 | 39 | 60 |
+| Money & paperwork | `/money-and-paperwork/` | 22 | 4 | 13 | 39 | 59 |
 | Food & shopping | `/food-and-shopping/` | 5 | 5 | 0 | 10 | 11 |
 | Family & schools | `/family-and-schools/` | 9 | 3 | 1 | 13 | 14 |
 | Community & leisure | `/community-and-leisure/` | 5 | 9 | 2 | 16 | 21 |
-| Moving to Cyprus | `/moving-to-cyprus/` | 22 | 2 | 9 | 33 | 61 |
-| **All** | | 86 | 31 | 31 | 148 | |
+| Moving to Cyprus | `/moving-to-cyprus/` | 21 | 2 | 9 | 32 | 60 |
+| **All** | | 85 | 31 | 31 | 147 | |
 
 Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). They keep a topic for their own breadcrumb and "More on" block but are not shown on hubs, indexes, other pages or the sitemap.
 
@@ -66,7 +66,7 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Cyprus Property Taxes 2026: VAT & Transfer Fees](/guides/property-taxes-2026/) | Money & paperwork | Moving to Cyprus |  | Property taxes apply to owners every year; the Property area comes in Phase 4. |
 | [Cyprus Rental Income Tax 2026: Landlord Guide](/guides/rental-income-tax-cyprus/) | Money & paperwork |  |  | Landlord tax; Property area comes in Phase 4. |
 | [Self-Employed Tax in Cyprus: 2026 Guide](/guides/self-employed-tax-cyprus/) | Money & paperwork |  |  |  |
-| [Cyprus Expat Tax Guide 2026: Non-Dom Regime](/guides/taxes-for-expats/) | Money & paperwork | Moving to Cyprus |  | How tax works for residents day to day; the non-dom decision itself sits in Moving to Cyprus. |
+| [Cyprus Expat Tax Guide 2026: Non-Dom Regime](/guides/taxes-for-expats/) | Money & paperwork | Moving to Cyprus |  | How tax works for residents day to day, including non-dom status; also a moving decision. |
 | [Trade Licence Requirements in Cyprus 2026](/guides/trade-licenses-cyprus/) | Money & paperwork |  |  | Work and business admin sits in Money & paperwork. |
 | [VAT Registration in Cyprus: Thresholds & OSS](/guides/vat-registration-guide/) | Money & paperwork |  |  |  |
 | [Employee Rights in Cyprus (2026 Guide)](/guides/working-in-cyprus-employee-rights/) | Money & paperwork |  |  | Contracts, pay and leave for employees; no separate Work topic. |
@@ -104,7 +104,6 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Moving to Cyprus from the UK After Brexit: 2026 Guide](/guides/moving-to-cyprus-from-uk/) | Moving to Cyprus |  |  |  |
 | [Moving to Cyprus With Pets: Import Rules 2026](/guides/moving-to-cyprus-with-pets/) | Moving to Cyprus |  |  | Pet import rules apply once, at the move; vets are in Health. |
 | [Buying a New Development in Cyprus 2026](/guides/new-development-buying-guide/) | Moving to Cyprus | Money & paperwork |  | Property buying; parked in Moving to Cyprus until the Phase 4 Property area. |
-| [Cyprus Non-Dom Tax Status 2026: 0% on Dividends](/guides/non-dom-status-guide/) | Moving to Cyprus | Money & paperwork |  | Non-dom is claimed when you become resident, so it is a moving decision. |
 | [Buying Off-Plan Property in Cyprus 2026](/guides/off-plan-buying-guide/) | Moving to Cyprus | Money & paperwork |  | Property buying; parked in Moving to Cyprus until the Phase 4 Property area. |
 | [Property Lawyers in Cyprus 2026: Fees & Guide](/guides/property-lawyers-cyprus/) | Moving to Cyprus | Money & paperwork |  | Property buying; parked in Moving to Cyprus until the Phase 4 Property area. |
 | [Cyprus Residency Visas 2026: All Routes Compared](/guides/residency-and-visas/) | Moving to Cyprus |  |  |  |

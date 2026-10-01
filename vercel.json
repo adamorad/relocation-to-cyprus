@@ -85,6 +85,16 @@
       "source": "/guides/relocation-checklist",
       "destination": "/guides/arrival-checklist/",
       "permanent": true
+    },
+    {
+      "source": "/guides/non-dom-status-guide/",
+      "destination": "/guides/taxes-for-expats/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/non-dom-status-guide",
+      "destination": "/guides/taxes-for-expats/",
+      "permanent": true
     }
   ]
 }
