@@ -17,7 +17,7 @@ export default function MovedPage() {
 						href={NEW_PATH}
 						className="text-primary font-semibold underline"
 					>
-						Read the guide →
+						Read the guide
 					</Link>
 				</p>
 			</main>

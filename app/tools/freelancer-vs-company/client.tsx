@@ -246,23 +246,23 @@ export default function FreelancerVsCompanyPage() {
 	const structureColors: Record<Structure, string> = {
 		"sole-trader": "bg-blue-50 border-blue-200 text-blue-800",
 		ltd: "bg-primary/10 border-primary/40 text-ink",
-		"ltd-holding": "bg-purple-50 border-purple-200 text-purple-800",
+		"ltd-holding": "bg-sky border-line text-ink",
 	};
 
 	const badgeColors: Record<Structure, string> = {
 		"sole-trader": "bg-blue-100 text-blue-800",
 		ltd: "bg-primary/20 text-ink",
-		"ltd-holding": "bg-purple-100 text-purple-800",
+		"ltd-holding": "bg-sky-strong text-ink",
 	};
 
 	return (
 		<div className="max-w-4xl mx-auto px-4 sm:px-6 py-10 md:py-16">
 			{/* Header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold mb-2">
+				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-2">
 					Tools
 				</p>
-				<h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+				<h2 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Freelancer vs Cyprus Ltd
 				</h2>
 				<p className="mt-3 text-lg text-slate-600 leading-relaxed">
@@ -274,7 +274,7 @@ export default function FreelancerVsCompanyPage() {
 			<div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 				{/* --- Inputs --- */}
 				<div className="space-y-6">
-					<div className="bg-white border border-slate-200 rounded-xl p-5 space-y-6">
+					<div className="bg-white border border-line rounded-2xl p-5 space-y-6">
 						{/* Annual Income Slider */}
 						<div>
 							<div className="flex justify-between items-baseline mb-2">
@@ -357,20 +357,20 @@ export default function FreelancerVsCompanyPage() {
 								<div className="flex gap-2">
 									<button
 										onClick={() => setInputs({ ...inputs, [key]: true })}
-										className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
+										className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
 											(inputs[key] as boolean)
 												? "bg-primary text-white border-primary"
-												: "bg-white text-slate-500 border-slate-300 hover:border-primary"
+												: "bg-white text-slate-500 border-line hover:border-primary"
 										}`}
 									>
 										Yes
 									</button>
 									<button
 										onClick={() => setInputs({ ...inputs, [key]: false })}
-										className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
+										className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
 											!(inputs[key] as boolean)
-												? "bg-slate-700 text-white border-slate-700"
-												: "bg-white text-slate-500 border-slate-300 hover:border-slate-500"
+												? "bg-ink text-white border-slate-700"
+												: "bg-white text-slate-500 border-line hover:border-primary"
 										}`}
 									>
 										No
@@ -385,7 +385,7 @@ export default function FreelancerVsCompanyPage() {
 				<div className="space-y-5">
 					{/* Recommendation badge */}
 					<div
-						className={`rounded-xl border p-5 ${structureColors[result.primary]}`}
+						className={`rounded-2xl border p-5 ${structureColors[result.primary]}`}
 					>
 						<p className="text-xs uppercase tracking-wider font-bold mb-1 opacity-70">
 							Recommended structure
@@ -397,8 +397,8 @@ export default function FreelancerVsCompanyPage() {
 					</div>
 
 					{/* Effective rate comparison */}
-					<div className="bg-white border border-slate-200 rounded-xl p-5">
-						<h3 className="font-bold text-slate-800 mb-3 text-sm uppercase tracking-wide">
+					<div className="bg-white border border-line rounded-2xl p-5">
+						<h3 className="font-bold text-ink mb-3 text-sm uppercase tracking-wide">
 							Estimated Effective Tax Rate
 						</h3>
 						<div className="space-y-3">
@@ -448,8 +448,8 @@ export default function FreelancerVsCompanyPage() {
 					</div>
 
 					{/* Advantages */}
-					<div className="bg-white border border-slate-200 rounded-xl p-5">
-						<h3 className="font-bold text-slate-800 mb-3 text-sm">
+					<div className="bg-white border border-line rounded-2xl p-5">
+						<h3 className="font-bold text-ink mb-3 text-sm">
 							Key advantages for your profile
 						</h3>
 						<ul className="space-y-2">
@@ -463,14 +463,14 @@ export default function FreelancerVsCompanyPage() {
 					</div>
 
 					{/* Risks */}
-					<div className="bg-white border border-slate-200 rounded-xl p-5">
-						<h3 className="font-bold text-slate-800 mb-3 text-sm">
+					<div className="bg-white border border-line rounded-2xl p-5">
+						<h3 className="font-bold text-ink mb-3 text-sm">
 							Risks / complications
 						</h3>
 						<ul className="space-y-2">
 							{result.risks.map((r, i) => (
 								<li key={i} className="flex gap-2 text-sm text-slate-600">
-									<span className="text-amber-500 font-bold mt-0.5">!</span>
+									<span className="text-amber-700 font-bold mt-0.5">!</span>
 									<span>{r}</span>
 								</li>
 							))}
@@ -478,8 +478,8 @@ export default function FreelancerVsCompanyPage() {
 					</div>
 
 					{/* Next steps */}
-					<div className="bg-white border border-slate-200 rounded-xl p-5">
-						<h3 className="font-bold text-slate-800 mb-3 text-sm">
+					<div className="bg-white border border-line rounded-2xl p-5">
+						<h3 className="font-bold text-ink mb-3 text-sm">
 							Recommended next steps
 						</h3>
 						<ol className="space-y-2">
@@ -497,8 +497,8 @@ export default function FreelancerVsCompanyPage() {
 			</div>
 
 			{/* Disclaimer */}
-			<aside className="mt-10 p-4 bg-amber-50 border border-amber-200 rounded-xl text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">Disclaimer</p>
+			<aside className="mt-10 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
+				<p className="font-semibold text-ink mb-1">Disclaimer</p>
 				<p>
 					This tool provides a general orientation only. Tax rates shown are
 					estimates based on simplified assumptions. Your actual tax position
@@ -509,35 +509,35 @@ export default function FreelancerVsCompanyPage() {
 				</p>
 			</aside>
 
-			<aside className="mt-6 p-5 rounded-xl bg-slate-50 border border-slate-200">
-				<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
+			<aside className="mt-6 p-5 rounded-2xl bg-sky border border-line">
+				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
 					Related guides
 				</p>
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/guides/company-types-comparison/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Read: Company Types in Cyprus →
+						Read: Company Types in Cyprus
 					</Link>
 					<Link
 						href="/guides/taxes-for-expats/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Read: Taxes for Expats →
+						Read: Taxes for Expats
 					</Link>
 					<Link
 						href="/sections/accountants/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Find an accountant →
+						Find an accountant
 					</Link>
 				</div>
 			</aside>
 
 			{/* Back */}
 			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools" className="underline hover:text-slate-900">
+				<Link href="/tools" className="underline hover:text-ink">
 					← Back to Tools
 				</Link>
 			</p>

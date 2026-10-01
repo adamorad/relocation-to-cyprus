@@ -79,21 +79,21 @@ export default function DevelopmentComparisonClient() {
 	return (
 		<main id="main" className="max-w-3xl mx-auto px-6 py-10 md:py-16">
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-ink">
 					Home
 				</Link>{" "}
 				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-slate-900">
+				<Link href="/tools/" className="hover:text-ink">
 					Tools
 				</Link>{" "}
-				&rsaquo; <span className="text-slate-900">Development Comparison</span>
+				&rsaquo; <span className="text-ink">Development Comparison</span>
 			</nav>
 
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
 					Research
 				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Compare Cyprus Developments
 				</h1>
 				<p className="mt-3 text-base text-slate-600 leading-relaxed">
@@ -113,10 +113,10 @@ export default function DevelopmentComparisonClient() {
 							: "Search by name or location…"
 					}
 					disabled={selected.length >= MAX_SELECTED}
-					className="w-full border border-slate-300 rounded-lg px-4 py-3 text-sm placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-focus disabled:bg-slate-50 disabled:text-slate-400"
+					className="w-full border border-line rounded-xl px-4 py-3 text-sm placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-focus disabled:bg-slate-50 disabled:text-slate-400"
 				/>
 				{results.length > 0 && (
-					<ul className="absolute z-10 left-0 right-0 top-full mt-1 bg-white border border-slate-200 rounded-lg shadow-lg max-h-72 overflow-y-auto">
+					<ul className="absolute z-10 left-0 right-0 top-full mt-1 bg-white border border-line rounded-xl shadow-sm max-h-72 overflow-y-auto">
 						{results.map((l) => (
 							<li key={l.id}>
 								<button
@@ -124,7 +124,7 @@ export default function DevelopmentComparisonClient() {
 									onClick={() => addListing(l)}
 									className="w-full text-left px-4 py-2.5 text-sm hover:bg-slate-50 transition-colors"
 								>
-									<span className="font-medium text-slate-900">{l.title}</span>
+									<span className="font-medium text-ink">{l.title}</span>
 									<span className="ml-2 text-slate-500 text-xs">
 										{l.location ?? l.regionCity}
 									</span>
@@ -159,7 +159,7 @@ export default function DevelopmentComparisonClient() {
 
 			{/* Empty state */}
 			{selected.length === 0 && (
-				<div className="mt-10 text-center py-16 text-muted text-sm border border-dashed border-slate-200 rounded-xl">
+				<div className="mt-10 text-center py-16 text-muted text-sm border border-dashed border-line rounded-2xl">
 					Search and select up to 3 developments to compare
 				</div>
 			)}
@@ -178,7 +178,7 @@ export default function DevelopmentComparisonClient() {
 									{selected.map((l) => (
 										<th
 											key={l.id}
-											className="py-3 px-4 text-left text-slate-900 font-bold border-b-2 border-primary"
+											className="py-3 px-4 text-left text-ink font-bold border-b-2 border-primary"
 										>
 											<div className="leading-snug">{l.title}</div>
 											<div className="text-xs font-normal text-slate-500 mt-0.5">
@@ -198,10 +198,7 @@ export default function DevelopmentComparisonClient() {
 											{label}
 										</td>
 										{selected.map((l) => (
-											<td
-												key={l.id}
-												className="py-2.5 px-4 text-slate-800 text-sm"
-											>
+											<td key={l.id} className="py-2.5 px-4 text-ink text-sm">
 												{getCellValue(l, key)}
 											</td>
 										))}
@@ -216,9 +213,9 @@ export default function DevelopmentComparisonClient() {
 										<td key={l.id} className="py-3 px-4">
 											<Link
 												href={`/listings/${l.slug}/`}
-												className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors inline-block"
+												className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors inline-block"
 											>
-												More info &rarr;
+												More info
 											</Link>
 										</td>
 									))}
@@ -232,9 +229,9 @@ export default function DevelopmentComparisonClient() {
 						{selected.map((l) => (
 							<div
 								key={l.id}
-								className="border border-slate-200 rounded-xl overflow-hidden"
+								className="border border-line rounded-2xl overflow-hidden"
 							>
-								<div className="bg-slate-900 px-4 py-3">
+								<div className="bg-ink px-4 py-3">
 									<p className="text-white font-bold text-sm">{l.title}</p>
 									<p className="text-slate-400 text-xs mt-0.5">
 										{l.location ?? l.regionCity}
@@ -246,18 +243,18 @@ export default function DevelopmentComparisonClient() {
 											<dt className="text-xs font-semibold text-slate-500 uppercase tracking-wider w-32 flex-shrink-0 pt-0.5">
 												{label}
 											</dt>
-											<dd className="text-sm text-slate-800">
+											<dd className="text-sm text-ink">
 												{getCellValue(l, key)}
 											</dd>
 										</div>
 									))}
 								</dl>
-								<div className="px-4 py-3 bg-slate-50 border-t border-slate-200">
+								<div className="px-4 py-3 bg-slate-50 border-t border-line">
 									<Link
 										href={`/listings/${l.slug}/`}
-										className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors inline-block"
+										className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors inline-block"
 									>
-										More info &rarr;
+										More info
 									</Link>
 								</div>
 							</div>
@@ -268,20 +265,20 @@ export default function DevelopmentComparisonClient() {
 
 			{/* Next steps */}
 			{selected.length > 0 && (
-				<aside className="mt-10 bg-slate-50 border border-slate-200 rounded-xl p-5">
-					<p className="text-sm font-semibold text-slate-900 mb-3">
+				<aside className="mt-10 bg-sky border border-line rounded-2xl p-5">
+					<p className="text-sm font-semibold text-ink mb-3">
 						Ready to dig deeper?
 					</p>
 					<div className="flex flex-wrap gap-2">
 						<Link
 							href="/listings/"
-							className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+							className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 						>
 							Browse all listings
 						</Link>
 						<Link
 							href="/tools/rent-vs-buy-calculator/"
-							className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+							className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 						>
 							Rent vs Buy Calculator
 						</Link>
@@ -289,8 +286,8 @@ export default function DevelopmentComparisonClient() {
 				</aside>
 			)}
 
-			<aside className="mt-6 bg-amber-50 border border-amber-200 rounded-xl p-5 text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">Disclaimer</p>
+			<aside className="mt-6 bg-amber-50 border border-amber-200 rounded-2xl p-5 text-sm text-amber-900">
+				<p className="font-semibold text-ink mb-1">Disclaimer</p>
 				<p>
 					Development data is for general research only. Prices, specs, and
 					availability change frequently. Always verify directly with the
@@ -299,7 +296,7 @@ export default function DevelopmentComparisonClient() {
 			</aside>
 
 			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools/" className="underline hover:text-slate-900">
+				<Link href="/tools/" className="underline hover:text-ink">
 					&larr; Back to Tools
 				</Link>
 			</p>
