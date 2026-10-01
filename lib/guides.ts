@@ -2391,11 +2391,13 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "property-lawyers-cyprus",
 		datePublished: "2026-06-18",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [HT_SRC.advocatesLaw],
 		category: "property",
 		title: "Property Lawyers in Cyprus 2026: Fees & Guide",
 		description:
-			"A practical guide to using a property lawyer when buying in Cyprus — what they do that your estate agent does not, what normal fees look like (1–2% or €1,500–€3,000 fixed), how to find a reputable one, and the red flags that cost buyers tens of thousands of euros.",
+			"A practical guide to using a property lawyer when buying in Cyprus: what they do that your estate agent does not, what fees typically look like (often 1% to 1.5% plus VAT), how to find a reputable one, and the red flags that cost buyers tens of thousands of euros.",
 		sections: [
 			{
 				heading: "Why a property lawyer is not optional in Cyprus",
@@ -2407,7 +2409,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "What normal fees look like",
-				body: "Cyprus property lawyer fees for a residential purchase follow one of two structures. The more common structure for straightforward transactions is a percentage of the purchase price: typically 1–1.5% for purchases under €500,000, sometimes with a minimum fee floor of €1,500. For a €250,000 apartment, this runs €2,500–€3,750. For complex transactions (off-plan with developer risk, international buyer with foreign currency complications, estates or divorce sales, company-owned property) or purchases over €1 million, fixed-fee structures of €3,000–€6,000 are more common. Both fee structures typically exclude VAT at 19%, the DLS contract deposit fee (€20–€50), and any title deed transfer fees — these are paid separately to the DLS and are not part of the lawyer's fee (stamp duty on property contracts was abolished from 1 January 2026). Disbursements (land registry search certificates, document translations, courier fees) add a further €200–€500 on average. Be cautious of quotes materially below these ranges — a property lawyer charging €500 flat for a €300,000 purchase is either billing their time at implausible rates or is not performing all the due diligence steps.",
+				body: "Fees have not been regulated since 2018, so quotes vary. Cyprus property lawyer fees for a residential purchase follow one of two structures. The more common structure for straightforward transactions is a percentage of the purchase price: often 1% to 1.5% plus VAT, sometimes with a minimum fee. For a €250,000 apartment, this runs €2,500–€3,750 plus VAT. For complex transactions (off-plan with developer risk, international buyer with foreign currency complications, estates or divorce sales, company-owned property) or purchases over €1 million, some lawyers quote a fixed fee instead. Both fee structures typically exclude VAT at 19%, the DLS contract deposit fee (€20–€50), and any title deed transfer fees; these are paid separately to the DLS and are not part of the lawyer's fee (stamp duty on property contracts was abolished from 1 January 2026). Disbursements (land registry search certificates, document translations, courier fees) add a further €200–€500 on average. Get two or three written quotes and agree the fee in writing before work starts. Be cautious of quotes materially below these ranges: a property lawyer charging €500 flat for a €300,000 purchase is either billing their time at implausible rates or is not performing all the due diligence steps.",
 			},
 			{
 				heading: "How to find a reputable property lawyer",
@@ -2425,7 +2427,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		faqs: [
 			{
 				q: "How much does a property lawyer cost in Cyprus?",
-				a: "For a standard residential purchase, expect 1–1.5% of the purchase price, with a minimum floor of around €1,500. On a €250,000 apartment this runs €2,500–€3,750 plus VAT at 19%. Fixed-fee structures of €3,000–€5,000 are common for complex transactions or purchases over €500,000. These figures exclude DLS fees, transfer fees, and disbursements (stamp duty on property contracts was abolished from 1 January 2026).",
+				a: "Fees have not been regulated since 2018, so quotes vary. For a standard residential purchase, expect around 1% to 1.5% of the purchase price plus VAT, often with a minimum fee. On a €250,000 apartment this runs €2,500–€3,750 plus VAT at 19%. Some lawyers quote a fixed fee for complex transactions, so get two or three written quotes. These figures exclude DLS fees, transfer fees, and disbursements (stamp duty on property contracts was abolished from 1 January 2026).",
 			},
 			{
 				q: "Can I buy property in Cyprus without using a lawyer?",
