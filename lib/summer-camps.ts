@@ -163,18 +163,6 @@ export const SUMMER_CAMPS: ReadonlyArray<SummerCamp> = [
 
   // ── Larnaca ───────────────────────────────────────────────────────────────
   {
-    name: "Larnaca International School Summer Programme",
-    city: "Larnaca",
-    neighbourhood: "Drosia",
-    type: "day",
-    focusAreas: ["STEM", "arts", "sports", "swimming"],
-    ageFrom: 4,
-    ageTo: 14,
-    weeklyFeeApprox: 250,
-    languages: ["English"],
-    why: "English-medium summer programme run by the International School of Larnaca on its own campus. Structured STEM workshops alongside sports and creative activities. Highly regarded by the Larnaca expat community — one of the first choices for English-speaking families in the city.",
-  },
-  {
     name: "Sea & Sun Day Camp Larnaca",
     city: "Larnaca",
     neighbourhood: "Mackenzie Beach",
