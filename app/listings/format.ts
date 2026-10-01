@@ -9,6 +9,7 @@ const SMALL_WORDS = new Set(["and", "of", "the", "in", "at", "on"]);
 function titleToken(tok: string, first: boolean): string {
 	// Only touch fully upper-case tokens: mixed case is already a deliberate brand spelling.
 	if (!/[A-Z]/.test(tok) || /[a-z]/.test(tok)) return tok;
+	if (tok === "LTD") return "Ltd";
 	if (KEEP_UPPER.has(tok)) return tok;
 	// Single letters ("BLOCK A") and initials ("F.G", "K&P", "Z&C").
 	if (/^[A-Z]$/.test(tok) || /^[A-Z]([.&][A-Z])+\.?$/.test(tok)) return tok;
@@ -27,8 +28,7 @@ export function titleCaseName(name: string): string {
 	return name
 		.split(/(\s+)/)
 		.map((part, i) => (/^\s+$/.test(part) ? part : titleToken(part, i === 0)))
-		.join("")
-		.replace(/\bLtd\b/g, "Ltd");
+		.join("");
 }
 
 /** "€1.650.000 +VAT" -> "€1,650,000 + VAT"; ranges keep their en dash. */

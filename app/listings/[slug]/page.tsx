@@ -278,7 +278,7 @@ export default async function ListingPage({
 					</div>
 
 					{l.developer?.name ? (
-						<aside className="lg:sticky lg:top-24">
+						<aside className="order-first lg:order-none lg:sticky lg:top-24">
 							<DeveloperCTA
 								name={titleCaseName(l.developer.name)}
 								developerHref={dev ? `/developers/${dev.slug}/` : undefined}
