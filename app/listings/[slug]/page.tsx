@@ -177,25 +177,25 @@ export default async function ListingPage({
 			/>
 
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-ink">
 					Home
 				</Link>{" "}
 				›{" "}
 				<Link
 					href={`/regions/${l.regionCity.toLowerCase().replace(/\s+/g, "-")}/`}
-					className="hover:text-slate-900"
+					className="hover:text-ink"
 				>
 					{l.regionCity}
 				</Link>{" "}
-				› <span className="text-slate-900">{l.title}</span>
+				› <span className="text-ink">{l.title}</span>
 			</nav>
 
 			<header>
-				<p className="text-[10px] uppercase tracking-[0.2em] text-amber-700 font-semibold">
+				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
 					{l.regionCity} · {l.location ?? ""}
 				</p>
 				<div className="mt-2 flex items-start justify-between gap-4">
-					<h1 className="text-3xl md:text-4xl font-bold leading-tight">
+					<h1 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight text-ink">
 						{l.title}
 					</h1>
 					<HeartButton slug={l.slug} name={l.title} />
@@ -225,8 +225,8 @@ export default async function ListingPage({
 								alt={i === 0 ? heroAlt : `${l.title} — interior view ${i}`}
 								className={
 									i === 0
-										? "w-full rounded-lg col-span-1 md:col-span-2 aspect-[16/9] object-cover"
-										: "w-full rounded-lg aspect-[4/3] object-cover"
+										? "w-full rounded-2xl col-span-1 md:col-span-2 aspect-[16/9] object-cover"
+										: "w-full rounded-2xl aspect-[4/3] object-cover"
 								}
 								loading={i === 0 ? "eager" : "lazy"}
 								fetchPriority={i === 0 ? "high" : undefined}
@@ -238,7 +238,7 @@ export default async function ListingPage({
 
 			{l.description ? (
 				<section className="mt-8 prose prose-slate max-w-none">
-					<h2 className="text-xl font-bold mb-3">About this development</h2>
+					<h2 className="text-xl font-bold text-ink mb-3">About this development</h2>
 					<p className="whitespace-pre-line text-slate-700 leading-relaxed">
 						{l.description}
 					</p>
@@ -247,7 +247,7 @@ export default async function ListingPage({
 
 			{Object.keys(l.specs ?? {}).length > 0 ? (
 				<section className="mt-8">
-					<h2 className="text-xl font-bold mb-3">Specs</h2>
+					<h2 className="text-xl font-bold text-ink mb-3">Specs</h2>
 					<dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
 						{Object.entries(l.specs).map(([k, v]) => (
 							<div
@@ -255,7 +255,7 @@ export default async function ListingPage({
 								className="flex justify-between border-b border-slate-100 py-1"
 							>
 								<dt className="text-slate-600">{k}</dt>
-								<dd className="text-slate-900 font-medium">{v}</dd>
+								<dd className="text-ink font-medium">{v}</dd>
 							</div>
 						))}
 					</dl>
@@ -264,7 +264,7 @@ export default async function ListingPage({
 
 			{offers.length > 0 ? (
 				<section className="mt-8">
-					<h2 className="text-xl font-bold mb-3">
+					<h2 className="text-xl font-bold text-ink mb-3">
 						Available units ({offers.length})
 					</h2>
 					<div className="overflow-x-auto">
@@ -316,7 +316,7 @@ export default async function ListingPage({
 
 			{Object.keys(l.nearby ?? {}).length > 0 ? (
 				<section className="mt-8">
-					<h2 className="text-xl font-bold mb-3">Nearby</h2>
+					<h2 className="text-xl font-bold text-ink mb-3">Nearby</h2>
 					<dl className="grid grid-cols-2 gap-x-6 gap-y-1 text-sm">
 						{Object.entries(l.nearby).map(([k, v]) => (
 							<div
@@ -324,7 +324,7 @@ export default async function ListingPage({
 								className="flex justify-between border-b border-slate-100 py-1"
 							>
 								<dt className="text-slate-600">{k}</dt>
-								<dd className="text-slate-900 font-medium">{v}</dd>
+								<dd className="text-ink font-medium">{v}</dd>
 							</div>
 						))}
 					</dl>
@@ -365,8 +365,8 @@ export default async function ListingPage({
 			/>
 
 			<p className="mt-10 text-xs text-slate-600">
-				<Link href="/" className="underline hover:text-slate-900">
-					← Back to home
+				<Link href="/" className="underline hover:text-ink">
+					Back to home
 				</Link>
 			</p>
 		</main>

@@ -34,10 +34,10 @@ export default function ToolsIndexPage() {
 				/>
 
 				<header className="mb-10">
-					<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+					<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
 						Interactive Tools
 					</p>
-					<h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
+					<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 						Cyprus Relocation Tools
 					</h1>
 					<p className="mt-4 text-lg text-slate-700 leading-relaxed">
@@ -48,8 +48,8 @@ export default function ToolsIndexPage() {
 
 				<ToolsIndexClient />
 
-				<aside className="mt-10 p-5 bg-amber-50 border border-amber-200 rounded-xl text-sm text-slate-700">
-					<p className="font-semibold text-slate-900 mb-1">Disclaimer</p>
+				<aside className="mt-10 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
+					<p className="font-semibold text-amber-900 mb-1">Disclaimer</p>
 					<p>
 						These tools provide general information only and are not legal, tax,
 						or financial advice. Rates and rules change frequently — always
@@ -59,8 +59,8 @@ export default function ToolsIndexPage() {
 				</aside>
 
 				<p className="mt-8 text-xs text-slate-500">
-					<Link href="/" className="underline hover:text-slate-900">
-						&larr; Back to home
+					<Link href="/" className="underline hover:text-ink">
+						Back to home
 					</Link>
 				</p>
 			</main>

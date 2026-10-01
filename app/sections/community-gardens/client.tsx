@@ -32,8 +32,8 @@ function CityChip({
 			aria-pressed={selected}
 			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
 				selected
-					? "bg-slate-900 text-white border border-slate-900"
-					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
+					? "bg-ink text-white border border-ink"
+					: "bg-white text-ink border border-line hover:bg-sky"
 			}`}
 		>
 			{city}
@@ -63,8 +63,8 @@ function GardenTypeChip({
 			aria-pressed={selected}
 			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
 				selected
-					? "bg-[#35cdc4] text-white border border-[#35cdc4]"
-					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
+					? "bg-primary text-white border border-primary"
+					: "bg-white text-ink border border-line hover:bg-sky"
 			}`}
 		>
 			{label}
@@ -82,37 +82,37 @@ function GardenCard({
 	garden: (typeof COMMUNITY_GARDENS)[number];
 }) {
 	return (
-		<div className="rounded-lg border border-slate-200 bg-white p-4 text-sm flex flex-col gap-2">
+		<div className="rounded-2xl border border-line bg-white p-4 text-sm flex flex-col gap-2">
 			<div>
-				<p className="font-bold text-slate-900 leading-snug">{garden.name}</p>
-				<p className="text-[11px] text-slate-500 mt-0.5">
+				<p className="font-bold text-ink leading-snug">{garden.name}</p>
+				<p className="text-xs text-slate-500 mt-0.5">
 					{garden.city}
 					{garden.neighbourhood ? ` · ${garden.neighbourhood}` : ""}
 				</p>
 			</div>
 
 			<div className="flex flex-wrap gap-1.5">
-				<span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-slate-600">
+				<span className="rounded-full bg-sky-strong px-2 py-0.5 text-xs font-semibold text-ink">
 					{GARDEN_TYPE_LABEL[garden.type]}
 				</span>
 				{garden.openToNewMembers ? (
-					<span className="rounded-full bg-green-50 border border-green-200 px-2 py-0.5 text-[10px] font-semibold text-green-700">
+					<span className="rounded-full bg-green-50 border border-green-200 px-2 py-0.5 text-xs font-semibold text-green-800">
 						Open to new members
 					</span>
 				) : (
-					<span className="rounded-full bg-red-50 border border-red-200 px-2 py-0.5 text-[10px] font-semibold text-red-700">
+					<span className="rounded-full bg-red-50 border border-red-200 px-2 py-0.5 text-xs font-semibold text-red-800">
 						Currently closed
 					</span>
 				)}
 				{garden.annualFeeApprox !== undefined && (
-					<span className="rounded-full bg-amber-50 border border-amber-200 px-2 py-0.5 text-[10px] text-amber-700">
+					<span className="rounded-full bg-sky-strong px-2 py-0.5 text-xs text-ink">
 						~€{garden.annualFeeApprox}/yr
 					</span>
 				)}
 			</div>
 
 			{garden.produce.length > 0 && (
-				<p className="text-[11px] text-slate-500">
+				<p className="text-xs text-slate-500">
 					<span className="font-semibold text-slate-700">Grows: </span>
 					{garden.produce.join(", ")}
 				</p>
@@ -120,15 +120,15 @@ function GardenCard({
 
 			<p className="text-slate-700 leading-relaxed text-xs">{garden.why}</p>
 
-			<div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px] font-semibold mt-1">
+			<div className="flex flex-wrap gap-x-4 gap-y-1 text-xs font-semibold mt-1">
 				{garden.website && (
 					<a
 						href={garden.website}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="text-[#35cdc4] hover:text-teal-700"
+						className="text-primary hover:text-primary-hover"
 					>
-						Website ↗
+						Website
 					</a>
 				)}
 				{garden.contact && (
@@ -157,21 +157,21 @@ export default function CommunityGardensPage() {
 		<main id="main" className="max-w-5xl mx-auto px-4 py-8 md:py-14">
 			{/* Back nav */}
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
-					← Home
+				<Link href="/" className="hover:text-ink">
+					Home
 				</Link>
 				{" / "}
-				<Link href="/sections" className="hover:text-slate-900">
-					← Directories
+				<Link href="/sections" className="hover:text-ink">
+					Directories
 				</Link>
 			</nav>
 
 			{/* Header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
 					Cyprus Community
 				</p>
-				<h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Community Gardens &amp; Urban Farming in Cyprus
 				</h1>
 				<p className="mt-4 text-lg text-slate-600 leading-relaxed max-w-2xl">
@@ -179,7 +179,7 @@ export default function CommunityGardensPage() {
 					farms and rooftop growing projects across Cyprus — with honest notes
 					on availability and access.
 				</p>
-				<p className="mt-2 text-sm text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-4 py-2 inline-block">
+				<p className="mt-2 text-sm text-ink bg-sky border border-line rounded-xl px-4 py-2 inline-block">
 					This is a growing movement — many schemes are small, volunteer-run, or
 					municipality pilots. Verify details directly before visiting.
 				</p>
@@ -191,11 +191,9 @@ export default function CommunityGardensPage() {
 					{GARDEN_TIPS.map((tip) => (
 						<div
 							key={tip.heading}
-							className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-xs"
+							className="rounded-2xl border border-line bg-sky p-4 text-xs"
 						>
-							<p className="font-bold text-sm text-slate-900 mb-1.5">
-								{tip.heading}
-							</p>
+							<p className="font-bold text-sm text-ink mb-1.5">{tip.heading}</p>
 							<p className="text-slate-700 leading-relaxed">{tip.body}</p>
 						</div>
 					))}
@@ -228,7 +226,7 @@ export default function CommunityGardensPage() {
 
 			{/* Results */}
 			{filtered.length === 0 ? (
-				<p className="text-sm text-slate-500 bg-slate-50 rounded-lg border border-slate-100 px-4 py-6 text-center">
+				<p className="text-sm text-slate-500 bg-sky rounded-2xl border border-line px-4 py-6 text-center">
 					No gardens match the selected filters.
 				</p>
 			) : (

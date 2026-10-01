@@ -334,9 +334,9 @@ const EVENT_TYPE_COLOR: Record<EventType, string> = {
 	carnival: "bg-pink-100 text-pink-800",
 	wine: "bg-purple-100 text-purple-800",
 	music: "bg-blue-100 text-blue-800",
-	religious: "bg-amber-100 text-amber-800",
+	religious: "bg-slate-100 text-slate-800",
 	food: "bg-orange-100 text-orange-800",
-	cultural: "bg-teal-100 text-teal-800",
+	cultural: "bg-sky-strong text-ink",
 	sports: "bg-green-100 text-green-800",
 };
 
@@ -375,17 +375,17 @@ export default function EventsCalendarPage() {
 	return (
 		<main id="main" className="max-w-5xl mx-auto px-4 py-8 md:py-12">
 			<nav className="text-xs text-slate-500 mb-6">
-				<Link href="/tools/" className="hover:text-slate-900">
+				<Link href="/tools/" className="hover:text-ink">
 					Tools
 				</Link>{" "}
-				&rsaquo; <span className="text-slate-900">Events Calendar</span>
+				&rsaquo; <span className="text-ink">Events Calendar</span>
 			</nav>
 
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold mb-2">
+				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-2">
 					Interactive Tool
 				</p>
-				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Cyprus Annual Events & Festivals
 				</h1>
 				<p className="mt-3 text-slate-600 max-w-2xl">
@@ -393,13 +393,13 @@ export default function EventsCalendarPage() {
 					Browse by month, filter by type or city.
 				</p>
 				<div className="mt-4 flex flex-wrap gap-2">
-					<span className="text-xs bg-amber-50 border border-amber-200 text-amber-800 px-2 py-1 rounded font-medium">
+					<span className="text-xs bg-sky-strong text-ink px-3 py-1 rounded-full font-medium">
 						★ Limassol Carnival — February
 					</span>
-					<span className="text-xs bg-amber-50 border border-amber-200 text-amber-800 px-2 py-1 rounded font-medium">
+					<span className="text-xs bg-sky-strong text-ink px-3 py-1 rounded-full font-medium">
 						★ Kataklysmos — June
 					</span>
-					<span className="text-xs bg-amber-50 border border-amber-200 text-amber-800 px-2 py-1 rounded font-medium">
+					<span className="text-xs bg-sky-strong text-ink px-3 py-1 rounded-full font-medium">
 						★ Limassol Wine Festival — September
 					</span>
 				</div>
@@ -418,15 +418,15 @@ export default function EventsCalendarPage() {
 							<button
 								key={m}
 								onClick={() => setSelectedMonth(active ? null : i + 1)}
-								className={`rounded-lg py-2 px-1 text-xs font-medium border transition-colors flex flex-col items-center gap-0.5 ${
+								className={`rounded-xl py-2 px-1 text-xs font-medium border transition-colors flex flex-col items-center gap-0.5 ${
 									active
-										? "bg-[#35cdc4] text-white border-[#35cdc4]"
-										: "bg-white text-slate-700 border-slate-200 hover:border-slate-400"
+										? "bg-primary text-white border-primary"
+										: "bg-white text-slate-700 border-line hover:border-primary"
 								}`}
 							>
 								<span>{m.slice(0, 3)}</span>
 								<span
-									className={`text-[10px] ${active ? "text-white/80" : "text-slate-400"}`}
+									className={`text-xs ${active ? "text-white/80" : "text-muted"}`}
 								>
 									{count}
 								</span>
@@ -445,10 +445,10 @@ export default function EventsCalendarPage() {
 					<div className="flex flex-wrap gap-1.5">
 						<button
 							onClick={() => setTypeFilter(null)}
-							className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
+							className={`px-3 py-1.5 rounded-xl text-xs font-medium border transition-colors ${
 								typeFilter === null
-									? "bg-slate-900 text-white border-slate-900"
-									: "bg-white text-slate-700 border-slate-200 hover:border-slate-400"
+									? "bg-ink text-white border-ink"
+									: "bg-white text-slate-700 border-line hover:border-primary"
 							}`}
 						>
 							All types
@@ -457,10 +457,10 @@ export default function EventsCalendarPage() {
 							<button
 								key={t}
 								onClick={() => setTypeFilter(typeFilter === t ? null : t)}
-								className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
+								className={`px-3 py-1.5 rounded-xl text-xs font-medium border transition-colors ${
 									typeFilter === t
-										? "bg-slate-900 text-white border-slate-900"
-										: "bg-white text-slate-700 border-slate-200 hover:border-slate-400"
+										? "bg-ink text-white border-ink"
+										: "bg-white text-slate-700 border-line hover:border-primary"
 								}`}
 							>
 								{EVENT_TYPE_LABEL[t]}
@@ -475,10 +475,10 @@ export default function EventsCalendarPage() {
 					<div className="flex flex-wrap gap-1.5">
 						<button
 							onClick={() => setCityFilter(null)}
-							className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
+							className={`px-3 py-1.5 rounded-xl text-xs font-medium border transition-colors ${
 								cityFilter === null
-									? "bg-slate-900 text-white border-slate-900"
-									: "bg-white text-slate-700 border-slate-200 hover:border-slate-400"
+									? "bg-ink text-white border-ink"
+									: "bg-white text-slate-700 border-line hover:border-primary"
 							}`}
 						>
 							All cities
@@ -487,10 +487,10 @@ export default function EventsCalendarPage() {
 							<button
 								key={c}
 								onClick={() => setCityFilter(cityFilter === c ? null : c)}
-								className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
+								className={`px-3 py-1.5 rounded-xl text-xs font-medium border transition-colors ${
 									cityFilter === c
-										? "bg-slate-900 text-white border-slate-900"
-										: "bg-white text-slate-700 border-slate-200 hover:border-slate-400"
+										? "bg-ink text-white border-ink"
+										: "bg-white text-slate-700 border-line hover:border-primary"
 								}`}
 							>
 								{c}
@@ -519,9 +519,9 @@ export default function EventsCalendarPage() {
 						if (monthEvents.length === 0) return null;
 						return (
 							<section key={m}>
-								<h2 className="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+								<h2 className="text-lg font-bold text-ink mb-3 flex items-center gap-2">
 									{m}
-									<span className="text-sm font-normal text-slate-400">
+									<span className="text-sm font-normal text-muted">
 										{monthEvents.length} event
 										{monthEvents.length !== 1 ? "s" : ""}
 									</span>
@@ -544,27 +544,27 @@ export default function EventsCalendarPage() {
 			)}
 
 			<p className="mt-6 text-sm">
-				<Link href="/tools/" className="text-[#35cdc4] hover:underline">
+				<Link href="/tools/" className="text-primary hover:underline">
 					&larr; Back to tools
 				</Link>
 			</p>
 
-			<aside className="mt-10 p-5 rounded-xl bg-slate-50 border border-slate-200">
-				<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
+			<aside className="mt-10 p-5 rounded-2xl bg-sky border border-line">
+				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
 					Next steps
 				</p>
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/guides/cultural-etiquette-guide/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Read: Cultural Etiquette in Cyprus →
+						Read: Cultural Etiquette in Cyprus
 					</Link>{" "}
 					<Link
 						href="/guides/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Explore Cyprus guides →
+						Explore Cyprus guides
 					</Link>
 				</div>
 			</aside>
@@ -576,21 +576,21 @@ function EventCard({ event }: { event: CyprusEvent }) {
 	const [expanded, setExpanded] = useState(false);
 	return (
 		<div
-			className={`bg-white border rounded-xl p-4 transition-colors ${
+			className={`bg-white border rounded-2xl p-4 transition-colors ${
 				event.highlight
-					? "border-amber-300 bg-amber-50"
-					: "border-slate-200 hover:border-slate-400"
+					? "border-line bg-sky"
+					: "border-line hover:border-primary"
 			}`}
 		>
 			<div className="flex items-start justify-between gap-3">
 				<div className="flex-1 min-w-0">
 					<div className="flex items-center gap-2 flex-wrap">
 						{event.highlight && (
-							<span className="text-xs bg-amber-400 text-white px-2 py-0.5 rounded-full font-semibold">
+							<span className="text-xs bg-sky-strong text-ink px-2 py-0.5 rounded-full font-semibold">
 								Highlight
 							</span>
 						)}
-						<h3 className="font-bold text-slate-900">{event.name}</h3>
+						<h3 className="font-bold text-ink">{event.name}</h3>
 					</div>
 					<p className="text-xs text-slate-500 mt-0.5">
 						{event.city} &middot; {event.dateDescription}
@@ -618,7 +618,7 @@ function EventCard({ event }: { event: CyprusEvent }) {
 			<div className="mt-2 flex items-center gap-3">
 				<button
 					onClick={() => setExpanded(!expanded)}
-					className="text-xs text-[#35cdc4] hover:underline"
+					className="text-xs text-primary hover:underline"
 				>
 					{expanded ? "Show less" : "Read more"}
 				</button>
@@ -627,9 +627,9 @@ function EventCard({ event }: { event: CyprusEvent }) {
 						href={event.website}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="text-xs text-amber-700 hover:underline"
+						className="text-xs text-primary hover:underline"
 					>
-						Official website &rarr;
+						Official website
 					</a>
 				)}
 			</div>

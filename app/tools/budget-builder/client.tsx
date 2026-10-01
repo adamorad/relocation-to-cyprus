@@ -119,8 +119,8 @@ function PillGroup<T extends string>({
 						onClick={() => onChange(opt)}
 						className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-colors ${
 							value === opt
-								? "bg-[#35cdc4] text-slate-900 border-[#35cdc4]"
-								: "bg-white text-slate-600 border-slate-200 hover:border-[#35cdc4] hover:text-slate-900"
+								? "bg-primary text-white border-primary"
+								: "bg-white text-slate-600 border-line hover:border-primary hover:text-ink"
 						}`}
 					>
 						{labelMap?.[opt] ?? opt}
@@ -169,21 +169,21 @@ export default function BudgetBuilderClient() {
 	return (
 		<main id="main" className="max-w-3xl mx-auto px-6 py-10 md:py-16">
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-ink">
 					Home
 				</Link>{" "}
 				›{" "}
-				<Link href="/tools/" className="hover:text-slate-900">
+				<Link href="/tools/" className="hover:text-ink">
 					Tools
 				</Link>{" "}
-				› <span className="text-slate-900">Monthly Budget Builder</span>
+				› <span className="text-ink">Monthly Budget Builder</span>
 			</nav>
 
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
 					Interactive Tool
 				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Cyprus Monthly Budget Builder
 				</h1>
 				<p className="mt-3 text-slate-600 leading-relaxed">
@@ -193,8 +193,8 @@ export default function BudgetBuilderClient() {
 			</header>
 
 			{/* Inputs */}
-			<div className="bg-white border border-slate-200 rounded-xl p-6 mb-6 space-y-5">
-				<h2 className="text-sm font-semibold text-slate-900 uppercase tracking-wider">
+			<div className="bg-white border border-line rounded-2xl p-6 mb-6 space-y-5">
+				<h2 className="text-sm font-semibold text-ink uppercase tracking-wider">
 					Your Situation
 				</h2>
 
@@ -241,14 +241,14 @@ export default function BudgetBuilderClient() {
 			</div>
 
 			{/* City tip */}
-			<div className="mb-6 px-4 py-3 bg-amber-50 border border-amber-200 rounded-xl text-sm text-amber-900">
+			<div className="mb-6 px-4 py-3 bg-sky border border-line rounded-2xl text-sm text-ink">
 				<span className="font-semibold">{city}: </span>
 				{CITY_TIPS[city]}
 			</div>
 
 			{/* Budget table */}
-			<div className="bg-white border border-slate-200 rounded-xl overflow-hidden mb-6">
-				<div className="px-5 py-3 bg-slate-50 border-b border-slate-200">
+			<div className="bg-white border border-line rounded-2xl overflow-hidden mb-6">
+				<div className="px-5 py-3 bg-slate-50 border-b border-line">
 					<h2 className="text-sm font-semibold text-slate-700 uppercase tracking-wider">
 						Monthly Budget Breakdown
 					</h2>
@@ -271,18 +271,16 @@ export default function BudgetBuilderClient() {
 								className="border-b border-slate-50 hover:bg-slate-50 transition-colors"
 							>
 								<td className="px-5 py-3 text-slate-700">{row.label}</td>
-								<td className="px-5 py-3 text-right font-medium text-slate-800">
+								<td className="px-5 py-3 text-right font-medium text-ink">
 									{formatEur(row.amount)}
 								</td>
 							</tr>
 						))}
 					</tbody>
 					<tfoot>
-						<tr className="bg-[#35cdc4]/10 border-t-2 border-[#35cdc4]">
-							<td className="px-5 py-4 font-bold text-slate-900 text-base">
-								Total
-							</td>
-							<td className="px-5 py-4 text-right font-bold text-slate-900 text-base">
+						<tr className="bg-primary/10 border-t-2 border-primary">
+							<td className="px-5 py-4 font-bold text-ink text-base">Total</td>
+							<td className="px-5 py-4 text-right font-bold text-ink text-base">
 								{formatEur(total)}
 							</td>
 						</tr>
@@ -291,28 +289,28 @@ export default function BudgetBuilderClient() {
 			</div>
 
 			{/* Next steps */}
-			<aside className="mb-6 p-5 rounded-xl bg-slate-50 border border-slate-200">
-				<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
+			<aside className="mb-6 p-5 rounded-2xl bg-sky border border-line">
+				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
 					Next steps
 				</p>
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/tools/rent-vs-buy-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Rent vs Buy Calculator →
+						Rent vs Buy Calculator
 					</Link>
 					<Link
 						href="/guides/cost-of-living/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Cost of Living Guide →
+						Cost of Living Guide
 					</Link>
 				</div>
 			</aside>
 
-			<aside className="mb-8 p-5 bg-amber-50 border border-amber-200 rounded-xl text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">Disclaimer</p>
+			<aside className="mb-8 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
+				<p className="font-semibold text-ink mb-1">Disclaimer</p>
 				<p>
 					Figures are indicative estimates based on typical costs as of 2025.
 					Actual costs vary by neighbourhood, landlord, season, and personal
@@ -322,7 +320,7 @@ export default function BudgetBuilderClient() {
 			</aside>
 
 			<p className="mt-2 text-xs text-slate-500">
-				<Link href="/tools/" className="underline hover:text-slate-900">
+				<Link href="/tools/" className="underline hover:text-ink">
 					← Back to Tools
 				</Link>
 			</p>

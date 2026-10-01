@@ -29,8 +29,8 @@ function CityChip({
 			aria-pressed={selected}
 			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
 				selected
-					? "bg-slate-900 text-white border border-slate-900"
-					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
+					? "bg-ink text-white border border-ink"
+					: "bg-white text-ink border border-line hover:bg-sky"
 			}`}
 		>
 			{city}
@@ -55,8 +55,8 @@ function TypeChip({
 			aria-pressed={selected}
 			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
 				selected
-					? "bg-[#35cdc4] text-white border border-[#35cdc4]"
-					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
+					? "bg-primary text-white border border-primary"
+					: "bg-white text-ink border border-line hover:bg-sky"
 			}`}
 		>
 			{label}
@@ -77,26 +77,26 @@ const TYPE_ICON: Record<ActivityType, string> = {
 
 function ActivityCard({ activity }: { activity: AfterSchoolActivity }) {
 	return (
-		<article className="rounded-lg border border-slate-200 bg-white p-4 text-sm">
+		<article className="rounded-2xl border border-line bg-white p-4 text-sm">
 			<div className="flex items-start justify-between gap-2">
 				<div className="min-w-0">
 					<div className="flex items-center gap-1.5">
 						<span className="text-base" aria-hidden="true">
 							{TYPE_ICON[activity.type]}
 						</span>
-						<h3 className="font-bold text-slate-900">{activity.name}</h3>
+						<h3 className="font-bold text-ink">{activity.name}</h3>
 					</div>
-					<p className="text-[11px] text-slate-500 mt-0.5">
+					<p className="text-xs text-slate-500 mt-0.5">
 						{activity.city}
 						{activity.neighbourhood ? ` · ${activity.neighbourhood}` : ""}
 					</p>
 				</div>
-				<span className="flex-shrink-0 rounded-full bg-slate-100 text-slate-600 border border-slate-200 px-2.5 py-0.5 text-[10px] font-semibold">
+				<span className="flex-shrink-0 rounded-full bg-sky-strong text-ink border border-line px-2.5 py-0.5 text-xs font-semibold">
 					{ACTIVITY_TYPE_LABEL[activity.type]}
 				</span>
 			</div>
 
-			<div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-slate-600">
+			<div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-600">
 				<span>
 					<span className="font-semibold text-slate-700">Ages: </span>
 					{activity.ageRangeFrom}–{activity.ageRangeTo} yrs
@@ -122,9 +122,9 @@ function ActivityCard({ activity }: { activity: AfterSchoolActivity }) {
 					href={activity.website}
 					target="_blank"
 					rel="noopener noreferrer"
-					className="mt-2 inline-block text-[11px] font-semibold text-amber-700 hover:text-amber-900"
+					className="mt-2 inline-block text-xs font-semibold text-primary hover:text-primary-hover"
 				>
-					Website ↗
+					Website
 				</a>
 			)}
 		</article>
@@ -145,24 +145,21 @@ export default function AfterSchoolActivitiesPage() {
 		<main id="main" className="max-w-4xl mx-auto px-4 md:px-6 py-8 md:py-12">
 			{/* Back nav */}
 			<nav className="text-xs text-slate-500 mb-6">
-				<Link href="/" className="hover:text-slate-800 transition-colors">
-					← Home
+				<Link href="/" className="hover:text-ink transition-colors">
+					Home
 				</Link>
 				{" / "}
-				<Link
-					href="/sections"
-					className="hover:text-slate-800 transition-colors"
-				>
+				<Link href="/sections" className="hover:text-ink transition-colors">
 					Directories
 				</Link>
 			</nav>
 
 			{/* Header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
 					Family &amp; Children
 				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					After-School Activities for Children in Cyprus
 				</h1>
 				<p className="mt-3 text-base text-slate-600 leading-relaxed max-w-2xl">
@@ -173,16 +170,14 @@ export default function AfterSchoolActivitiesPage() {
 
 			{/* Tips */}
 			<section className="mb-8">
-				<h2 className="text-lg font-bold text-slate-900 mb-3">Good to know</h2>
+				<h2 className="text-lg font-bold text-ink mb-3">Good to know</h2>
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-3">
 					{ACTIVITY_TIPS.map((tip) => (
 						<div
 							key={tip.heading}
-							className="rounded-lg border border-slate-200 bg-slate-50 p-4"
+							className="rounded-2xl border border-line bg-sky p-4"
 						>
-							<p className="font-semibold text-sm text-slate-900">
-								{tip.heading}
-							</p>
+							<p className="font-semibold text-sm text-ink">{tip.heading}</p>
 							<p className="mt-1.5 text-xs text-slate-700 leading-relaxed">
 								{tip.body}
 							</p>
@@ -193,7 +188,7 @@ export default function AfterSchoolActivitiesPage() {
 
 			{/* City filter */}
 			<div className="mb-3">
-				<p className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold mb-2">
+				<p className="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-2">
 					City
 				</p>
 				<div className="flex flex-wrap gap-2">
@@ -210,7 +205,7 @@ export default function AfterSchoolActivitiesPage() {
 
 			{/* Type filter */}
 			<div className="mb-6">
-				<p className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold mb-2">
+				<p className="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-2">
 					Activity type
 				</p>
 				<div className="flex flex-wrap gap-2">
@@ -239,7 +234,7 @@ export default function AfterSchoolActivitiesPage() {
 
 			{/* Card grid */}
 			{visible.length === 0 ? (
-				<p className="text-sm text-slate-500 bg-slate-50 rounded-lg border border-slate-100 px-4 py-6 text-center">
+				<p className="text-sm text-slate-500 bg-sky rounded-2xl border border-line px-4 py-6 text-center">
 					No activities match your filters. Try a different city or type.
 				</p>
 			) : (
@@ -261,11 +256,8 @@ export default function AfterSchoolActivitiesPage() {
 			</p>
 
 			<p className="mt-6 text-xs">
-				<Link
-					href="/"
-					className="text-slate-500 underline hover:text-slate-800"
-				>
-					← Back to home
+				<Link href="/" className="text-slate-500 underline hover:text-ink">
+					Back to home
 				</Link>
 			</p>
 		</main>

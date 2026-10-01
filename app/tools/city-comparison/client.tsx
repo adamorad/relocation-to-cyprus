@@ -168,8 +168,8 @@ function getCellColor(cities: City[], metric: MetricDef, city: City): string {
 	}
 
 	if (isBest) return "bg-green-50 text-green-800 font-semibold";
-	if (isWorst) return "bg-red-50 text-red-700";
-	return "bg-amber-50 text-amber-800";
+	if (isWorst) return "bg-red-50 text-red-800";
+	return "bg-amber-50 text-amber-900";
 }
 
 export default function CityComparisonClient() {
@@ -196,20 +196,20 @@ export default function CityComparisonClient() {
 	return (
 		<main className="max-w-3xl mx-auto px-6 py-10">
 			<nav className="text-xs text-slate-500 mb-6 flex gap-3">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-ink">
 					← Home
 				</Link>
-				<span className="text-slate-300">|</span>
-				<Link href="/tools" className="hover:text-slate-900">
+				<span className="text-muted">|</span>
+				<Link href="/tools" className="hover:text-ink">
 					← All Tools
 				</Link>
 			</nav>
 
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
 					Tools
 				</p>
-				<h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					City Comparison
 				</h1>
 				<p className="mt-2 text-slate-600 text-sm leading-relaxed">
@@ -232,10 +232,9 @@ export default function CityComparisonClient() {
 								onClick={() => toggleCity(city)}
 								className={`px-4 py-2 rounded-full text-sm font-semibold border transition-colors ${
 									isSelected
-										? "border-[#35cdc4] text-white"
-										: "border-slate-200 text-slate-600 bg-white hover:border-slate-400"
+										? "border-primary bg-primary text-white"
+										: "border-line text-slate-600 bg-white hover:border-slate-400"
 								}`}
-								style={isSelected ? { backgroundColor: "#35cdc4" } : {}}
 							>
 								{city}
 							</button>
@@ -244,7 +243,7 @@ export default function CityComparisonClient() {
 				</div>
 			</section>
 
-			<section className="overflow-x-auto rounded-xl border border-slate-200">
+			<section className="overflow-x-auto rounded-2xl border border-line">
 				<table className="w-full text-xs">
 					<thead>
 						<tr className="bg-slate-50">
@@ -254,7 +253,7 @@ export default function CityComparisonClient() {
 							{selectedCities.map((city) => (
 								<th
 									key={city}
-									className="px-3 py-3 text-center font-bold text-slate-800"
+									className="px-3 py-3 text-center font-bold text-ink"
 								>
 									{city}
 								</th>
@@ -281,8 +280,8 @@ export default function CityComparisonClient() {
 				</table>
 			</section>
 
-			<aside className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-xl text-xs text-slate-700 leading-relaxed">
-				<p className="font-semibold text-slate-900 mb-1">About this data</p>
+			<aside className="mt-6 p-4 bg-sky border border-line rounded-2xl text-xs text-ink leading-relaxed">
+				<p className="font-semibold text-ink mb-1">About this data</p>
 				<p>
 					Values are approximate averages based on publicly available data and
 					local market research as of 2025–2026. Rental prices vary by exact
@@ -294,39 +293,39 @@ export default function CityComparisonClient() {
 			</aside>
 
 			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools" className="underline hover:text-slate-900">
+				<Link href="/tools" className="underline hover:text-ink">
 					← All Tools
 				</Link>
 			</p>
 
-			<aside className="mt-10 p-5 rounded-xl bg-slate-50 border border-slate-200">
-				<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
+			<aside className="mt-10 p-5 rounded-2xl bg-sky border border-line">
+				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
 					Next steps
 				</p>
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/listings/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Browse new developments →
+						Browse new developments
 					</Link>
 					<Link
 						href="/sections/property-lawyers/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Find a property lawyer →
+						Find a property lawyer
 					</Link>
 					<Link
 						href="/guides/family-neighborhoods-guide/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Read: Family Neighbourhoods Guide →
+						Read: Family Neighbourhoods Guide
 					</Link>
 					<Link
 						href="/guides/cost-of-living/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Read: Cost of Living by City →
+						Read: Cost of Living by City
 					</Link>
 				</div>
 			</aside>

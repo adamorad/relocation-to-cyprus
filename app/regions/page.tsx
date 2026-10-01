@@ -17,7 +17,7 @@ export default function RegionsIndexPage() {
 				items={[{ label: "Home", href: "/" }, { label: "Regions" }]}
 			/>
 
-			<h1 className="text-3xl font-bold text-slate-900 mb-2">
+			<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink mb-2">
 				Regions of Cyprus
 			</h1>
 			<p className="text-slate-600 mb-8 text-base leading-relaxed">
@@ -31,20 +31,17 @@ export default function RegionsIndexPage() {
 					<Link
 						key={region.slug}
 						href={`/regions/${region.slug}/`}
-						className="group block bg-white border border-slate-200 rounded-xl p-5 hover:border-[#35cdc4] hover:shadow-md transition-all"
+						className="group block bg-white border border-line rounded-2xl p-5 hover:border-primary hover:shadow-sm transition-all"
 					>
 						<div className="flex items-start justify-between gap-3">
 							<div className="flex-1 min-w-0">
-								<h2 className="text-base font-bold text-slate-900 group-hover:text-[#35cdc4] transition-colors leading-snug">
+								<h2 className="text-base font-bold text-ink group-hover:text-primary transition-colors leading-snug">
 									{region.name}
 								</h2>
 								<p className="mt-1.5 text-sm text-slate-600 leading-relaxed line-clamp-2">
 									{region.oneLiner}
 								</p>
 							</div>
-							<span className="flex-shrink-0 text-slate-300 group-hover:text-[#35cdc4] transition-colors text-xl mt-1">
-								&rarr;
-							</span>
 						</div>
 					</Link>
 				))}

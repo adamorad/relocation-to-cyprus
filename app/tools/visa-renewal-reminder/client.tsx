@@ -76,13 +76,13 @@ const STATUS_STYLES: Record<
 		label: "URGENT: Renew now",
 	},
 	soon: {
-		badge: "bg-amber-100 text-amber-800",
+		badge: "bg-amber-50 text-amber-900",
 		row: "border-amber-200 bg-amber-50",
 		label: "Renew soon",
 	},
 	ok: {
 		badge: "bg-green-100 text-green-800",
-		row: "border-slate-200 bg-white",
+		row: "border-line bg-white",
 		label: "OK",
 	},
 };
@@ -154,17 +154,17 @@ export default function VisaRenewalReminderPage() {
 	return (
 		<main className="max-w-3xl mx-auto px-4 py-8 md:py-12">
 			<nav className="text-xs text-slate-500 mb-6">
-				<Link href="/tools/" className="hover:text-slate-900">
+				<Link href="/tools/" className="hover:text-ink">
 					Tools
 				</Link>{" "}
-				&rsaquo; <span className="text-slate-900">Visa Renewal Reminder</span>
+				&rsaquo; <span className="text-ink">Visa Renewal Reminder</span>
 			</nav>
 
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold mb-2">
+				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary mb-2">
 					Interactive Tool
 				</p>
-				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Visa & Document Renewal Reminder
 				</h1>
 				<p className="mt-3 text-slate-600 max-w-2xl">
@@ -172,7 +172,7 @@ export default function VisaRenewalReminderPage() {
 					passport, insurance, and more. Color-coded alerts so nothing sneaks up
 					on you.
 				</p>
-				<div className="mt-3 p-3 bg-slate-100 border border-slate-200 rounded-lg text-xs text-slate-600">
+				<div className="mt-3 p-3 bg-slate-100 border border-line rounded-xl text-xs text-slate-600">
 					This tool stores data locally in your browser. It is not backed up to
 					any server.
 				</div>
@@ -195,13 +195,13 @@ export default function VisaRenewalReminderPage() {
 
 			{/* Document dashboard */}
 			{loaded && sortedDocs.length === 0 && !showForm && (
-				<div className="text-center py-12 border-2 border-dashed border-slate-200 rounded-xl">
+				<div className="text-center py-12 border-2 border-dashed border-line rounded-xl">
 					<p className="text-slate-500 text-sm mb-4">
 						No documents yet. Add your first document to start tracking.
 					</p>
 					<button
 						onClick={() => setShowForm(true)}
-						className="px-5 py-2.5 bg-[#35cdc4] text-white rounded-lg font-medium text-sm hover:bg-[#2ab5ac] transition-colors"
+						className="px-5 py-2.5 bg-primary text-white rounded-xl font-medium text-sm hover:bg-primary-hover transition-colors"
 					>
 						+ Add document
 					</button>
@@ -227,7 +227,7 @@ export default function VisaRenewalReminderPage() {
 							>
 								<div className="flex-1 min-w-0">
 									<div className="flex items-center gap-2 flex-wrap">
-										<h3 className="font-bold text-slate-900">{doc.name}</h3>
+										<h3 className="font-bold text-ink">{doc.name}</h3>
 										<span
 											className={`text-xs px-2 py-0.5 rounded-full font-medium ${styles.badge}`}
 										>
@@ -252,7 +252,7 @@ export default function VisaRenewalReminderPage() {
 								</div>
 								<button
 									onClick={() => deleteDocument(doc.id)}
-									className="text-slate-400 hover:text-red-500 transition-colors text-xs font-medium flex-shrink-0 mt-0.5"
+									className="text-muted hover:text-red-500 transition-colors text-xs font-medium flex-shrink-0 mt-0.5"
 									aria-label="Delete document"
 								>
 									Delete
@@ -263,7 +263,7 @@ export default function VisaRenewalReminderPage() {
 
 					<button
 						onClick={() => setShowForm(true)}
-						className="w-full py-2.5 border-2 border-dashed border-slate-300 rounded-xl text-sm text-slate-500 hover:border-[#35cdc4] hover:text-[#35cdc4] transition-colors font-medium"
+						className="w-full py-2.5 border-2 border-dashed border-line rounded-xl text-sm text-slate-500 hover:border-primary hover:text-primary transition-colors font-medium"
 					>
 						+ Add another document
 					</button>
@@ -272,11 +272,11 @@ export default function VisaRenewalReminderPage() {
 
 			{/* Add form */}
 			{showForm && (
-				<div className="bg-white border border-slate-200 rounded-xl p-5 mb-6 shadow-sm">
-					<h2 className="font-bold text-slate-900 mb-4">Add document</h2>
+				<div className="bg-white border border-line rounded-xl p-5 mb-6 shadow-sm">
+					<h2 className="font-bold text-ink mb-4">Add document</h2>
 
 					{formError && (
-						<div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700">
+						<div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl text-sm text-red-700">
 							{formError}
 						</div>
 					)}
@@ -293,7 +293,7 @@ export default function VisaRenewalReminderPage() {
 								onChange={(e) =>
 									setForm((f) => ({ ...f, name: e.target.value }))
 								}
-								className="w-full border border-slate-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#35cdc4]"
+								className="w-full border border-line rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-focus"
 							/>
 						</div>
 
@@ -309,7 +309,7 @@ export default function VisaRenewalReminderPage() {
 										type: e.target.value as DocumentType,
 									}))
 								}
-								className="w-full border border-slate-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#35cdc4] bg-white"
+								className="w-full border border-line rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-focus bg-white"
 							>
 								{DOC_TYPE_OPTIONS.map((t) => (
 									<option key={t} value={t}>
@@ -329,7 +329,7 @@ export default function VisaRenewalReminderPage() {
 								onChange={(e) =>
 									setForm((f) => ({ ...f, expiryDate: e.target.value }))
 								}
-								className="w-full border border-slate-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#35cdc4]"
+								className="w-full border border-line rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-focus"
 							/>
 						</div>
 
@@ -344,14 +344,14 @@ export default function VisaRenewalReminderPage() {
 								onChange={(e) =>
 									setForm((f) => ({ ...f, notes: e.target.value }))
 								}
-								className="w-full border border-slate-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#35cdc4]"
+								className="w-full border border-line rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-focus"
 							/>
 						</div>
 
 						<div className="flex gap-3 pt-2">
 							<button
 								onClick={addDocument}
-								className="px-5 py-2.5 bg-[#35cdc4] text-white rounded-lg font-medium text-sm hover:bg-[#2ab5ac] transition-colors"
+								className="px-5 py-2.5 bg-primary text-white rounded-xl font-medium text-sm hover:bg-primary-hover transition-colors"
 							>
 								Add document
 							</button>
@@ -361,7 +361,7 @@ export default function VisaRenewalReminderPage() {
 									setForm(EMPTY_FORM);
 									setFormError(null);
 								}}
-								className="px-5 py-2.5 bg-white border border-slate-300 text-slate-700 rounded-lg font-medium text-sm hover:border-slate-500 transition-colors"
+								className="px-5 py-2.5 bg-white border border-line text-slate-700 rounded-xl font-medium text-sm hover:bg-sky transition-colors"
 							>
 								Cancel
 							</button>
@@ -371,8 +371,8 @@ export default function VisaRenewalReminderPage() {
 			)}
 
 			{/* Quick reference */}
-			<div className="mt-8 bg-slate-50 border border-slate-200 rounded-xl p-5">
-				<h2 className="font-bold text-slate-900 mb-3">
+			<div className="mt-8 bg-slate-50 border border-line rounded-xl p-5">
+				<h2 className="font-bold text-ink mb-3">
 					Documents to track for Cyprus relocation
 				</h2>
 				<ul className="space-y-2 text-sm text-slate-600">
@@ -407,27 +407,27 @@ export default function VisaRenewalReminderPage() {
 			</div>
 
 			<p className="mt-6 text-sm">
-				<Link href="/tools/" className="text-[#35cdc4] hover:underline">
+				<Link href="/tools/" className="text-primary hover:underline">
 					&larr; Back to tools
 				</Link>
 			</p>
 
-			<aside className="mt-10 p-5 rounded-xl bg-slate-50 border border-slate-200">
-				<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
+			<aside className="mt-10 p-5 rounded-2xl bg-slate-50 border border-line">
+				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
 					Next steps
 				</p>
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/guides/permanent-residency-5year/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Read: Permanent Residency After 5 Years →
+						Read: Permanent Residency After 5 Years
 					</Link>{" "}
 					<Link
 						href="/sections/immigration-lawyers/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Find an immigration lawyer →
+						Find an immigration lawyer
 					</Link>
 				</div>
 			</aside>

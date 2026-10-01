@@ -309,7 +309,7 @@ function RatingDots({ value, max = 5 }: { value: number; max?: number }) {
 				<span
 					key={i}
 					className={`inline-block w-2 h-2 rounded-full ${
-						i < value ? "bg-[#35cdc4]" : "bg-slate-200"
+						i < value ? "bg-primary" : "bg-slate-200"
 					}`}
 				/>
 			))}
@@ -319,14 +319,14 @@ function RatingDots({ value, max = 5 }: { value: number; max?: number }) {
 
 function CityBadge({ city }: { city: string }) {
 	const colours: Record<string, string> = {
-		Limassol: "bg-teal-100 text-teal-800",
+		Limassol: "bg-sky-strong text-ink",
 		Paphos: "bg-blue-100 text-blue-800",
 		Larnaca: "bg-violet-100 text-violet-800",
 		"Ayia Napa": "bg-orange-100 text-orange-800",
 	};
 	return (
 		<span
-			className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${colours[city] ?? "bg-slate-100 text-slate-700"}`}
+			className={`text-xs font-semibold px-2 py-0.5 rounded-full ${colours[city] ?? "bg-slate-100 text-slate-700"}`}
 		>
 			{city}
 		</span>
@@ -335,7 +335,7 @@ function CityBadge({ city }: { city: string }) {
 
 function RentBadge({ rent }: { rent: string }) {
 	return (
-		<span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">
+		<span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-sky-strong text-ink">
 			{rent}
 		</span>
 	);
@@ -351,7 +351,7 @@ interface CardProps {
 function NeighbourhoodCard({ n, selected, onToggle, compareCount }: CardProps) {
 	const canAdd = selected || compareCount < 3;
 	return (
-		<article className="relative flex flex-col bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow">
+		<article className="relative flex flex-col bg-white border border-line rounded-2xl p-5 shadow-sm hover:shadow-sm transition-shadow">
 			{/* compare checkbox */}
 			<label className="absolute top-4 right-4 flex items-center gap-1.5 cursor-pointer select-none">
 				<input
@@ -359,14 +359,14 @@ function NeighbourhoodCard({ n, selected, onToggle, compareCount }: CardProps) {
 					checked={selected}
 					onChange={onToggle}
 					disabled={!canAdd}
-					className="w-3.5 h-3.5 accent-[#35cdc4] cursor-pointer disabled:cursor-not-allowed"
+					className="w-3.5 h-3.5 accent-primary cursor-pointer disabled:cursor-not-allowed"
 				/>
-				<span className="text-[10px] text-slate-500 font-medium">Compare</span>
+				<span className="text-xs text-slate-500 font-medium">Compare</span>
 			</label>
 
 			{/* header */}
 			<div className="pr-20 mb-3">
-				<h3 className="font-bold text-slate-900 text-base leading-tight mb-2">
+				<h3 className="font-bold text-ink text-base leading-tight mb-2">
 					{n.name}
 				</h3>
 				<div className="flex flex-wrap gap-1.5">
@@ -380,7 +380,7 @@ function NeighbourhoodCard({ n, selected, onToggle, compareCount }: CardProps) {
 				{n.vibe.map((v) => (
 					<span
 						key={v}
-						className="text-[10px] px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full"
+						className="text-xs px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full"
 					>
 						{v}
 					</span>
@@ -404,7 +404,7 @@ function NeighbourhoodCard({ n, selected, onToggle, compareCount }: CardProps) {
 					] as [string, number][]
 				).map(([label, val]) => (
 					<div key={label} className="flex flex-col gap-0.5">
-						<span className="text-[10px] text-slate-500">{label}</span>
+						<span className="text-xs text-slate-500">{label}</span>
 						<RatingDots value={val} />
 					</div>
 				))}
@@ -429,23 +429,23 @@ function CompareTable({ items }: { items: Neighbourhood[] }) {
 	];
 
 	return (
-		<section className="mt-10 border border-teal-200 rounded-2xl overflow-hidden">
-			<div className="bg-teal-50 px-5 py-3 border-b border-teal-200">
-				<h2 className="text-sm font-bold text-slate-800">
+		<section className="mt-10 border border-line rounded-2xl overflow-hidden">
+			<div className="bg-sky px-5 py-3 border-b border-line">
+				<h2 className="text-sm font-bold text-ink">
 					Comparing {items.length} neighbourhood{items.length > 1 ? "s" : ""}
 				</h2>
 			</div>
 			<div className="overflow-x-auto">
 				<table className="w-full text-xs">
 					<thead>
-						<tr className="bg-slate-50 border-b border-slate-200">
+						<tr className="bg-slate-50 border-b border-line">
 							<th className="px-4 py-3 text-left font-semibold text-slate-500 uppercase tracking-wide w-32">
 								Metric
 							</th>
 							{items.map((n) => (
 								<th
 									key={n.name}
-									className="px-4 py-3 text-left font-semibold text-slate-800"
+									className="px-4 py-3 text-left font-semibold text-ink"
 								>
 									<div>{n.name}</div>
 									<CityBadge city={n.city} />
@@ -455,7 +455,7 @@ function CompareTable({ items }: { items: Neighbourhood[] }) {
 					</thead>
 					<tbody>
 						{/* rent 1br */}
-						<tr className="border-b border-slate-100">
+						<tr className="border-b border-line">
 							<td className="px-4 py-3 text-slate-500 font-medium">1BR Rent</td>
 							{items.map((n) => (
 								<td
@@ -467,7 +467,7 @@ function CompareTable({ items }: { items: Neighbourhood[] }) {
 							))}
 						</tr>
 						{/* rent 2br */}
-						<tr className="border-b border-slate-100 bg-slate-50">
+						<tr className="border-b border-line bg-slate-50">
 							<td className="px-4 py-3 text-slate-500 font-medium">2BR Rent</td>
 							{items.map((n) => (
 								<td key={n.name} className="px-4 py-3 text-slate-700">
@@ -476,7 +476,7 @@ function CompareTable({ items }: { items: Neighbourhood[] }) {
 							))}
 						</tr>
 						{/* vibe */}
-						<tr className="border-b border-slate-100">
+						<tr className="border-b border-line">
 							<td className="px-4 py-3 text-slate-500 font-medium">Vibe</td>
 							{items.map((n) => (
 								<td key={n.name} className="px-4 py-3">
@@ -484,7 +484,7 @@ function CompareTable({ items }: { items: Neighbourhood[] }) {
 										{n.vibe.map((v) => (
 											<span
 												key={v}
-												className="text-[10px] px-1.5 py-0.5 bg-slate-100 text-slate-600 rounded-full"
+												className="text-xs px-1.5 py-0.5 bg-slate-100 text-slate-600 rounded-full"
 											>
 												{v}
 											</span>
@@ -494,7 +494,7 @@ function CompareTable({ items }: { items: Neighbourhood[] }) {
 							))}
 						</tr>
 						{/* beach */}
-						<tr className="border-b border-slate-100 bg-slate-50">
+						<tr className="border-b border-line bg-slate-50">
 							<td className="px-4 py-3 text-slate-500 font-medium">Beach</td>
 							{items.map((n) => (
 								<td key={n.name} className="px-4 py-3 text-slate-700">
@@ -506,7 +506,7 @@ function CompareTable({ items }: { items: Neighbourhood[] }) {
 						{RATING_ROWS.map(([label, key], idx) => (
 							<tr
 								key={label}
-								className={`border-b border-slate-100 ${idx % 2 === 0 ? "" : "bg-slate-50"}`}
+								className={`border-b border-line ${idx % 2 === 0 ? "" : "bg-slate-50"}`}
 							>
 								<td className="px-4 py-3 text-slate-500 font-medium">
 									{label}
@@ -573,22 +573,22 @@ export default function NeighbourhoodExplorerClient() {
 		<main id="main" className="max-w-5xl mx-auto px-6 py-10 md:py-16">
 			{/* breadcrumb */}
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-ink">
 					Home
 				</Link>{" "}
 				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-slate-900">
+				<Link href="/tools/" className="hover:text-ink">
 					Tools
 				</Link>{" "}
-				&rsaquo; <span className="text-slate-900">Neighbourhood Explorer</span>
+				&rsaquo; <span className="text-ink">Neighbourhood Explorer</span>
 			</nav>
 
 			{/* header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
 					Research
 				</p>
-				<h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Neighbourhood Explorer
 				</h1>
 				<p className="mt-3 text-slate-600 text-sm leading-relaxed max-w-2xl">
@@ -605,10 +605,10 @@ export default function NeighbourhoodExplorerClient() {
 						key={c}
 						type="button"
 						onClick={() => setCity(c)}
-						className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${
+						className={`px-4 py-2 rounded-xl text-sm font-semibold transition-colors ${
 							city === c
-								? "bg-[#35cdc4] text-slate-900"
-								: "bg-white border border-slate-200 text-slate-700 hover:border-[#35cdc4]"
+								? "bg-primary text-white"
+								: "bg-white border border-line text-slate-700 hover:border-primary"
 						}`}
 					>
 						{c}
@@ -625,7 +625,7 @@ export default function NeighbourhoodExplorerClient() {
 						onClick={() => toggleVibe(v)}
 						className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
 							vibeFilters.has(v)
-								? "bg-slate-800 text-white"
+								? "bg-ink text-white"
 								: "bg-slate-100 text-slate-700 hover:bg-slate-200"
 						}`}
 					>
@@ -636,7 +636,7 @@ export default function NeighbourhoodExplorerClient() {
 					<button
 						type="button"
 						onClick={() => setVibeFilters(new Set())}
-						className="px-3 py-1.5 rounded-full text-xs font-medium text-slate-500 hover:text-slate-800 underline"
+						className="px-3 py-1.5 rounded-full text-xs font-medium text-slate-500 hover:text-ink underline"
 					>
 						Clear filters
 					</button>
@@ -650,7 +650,7 @@ export default function NeighbourhoodExplorerClient() {
 					shown
 				</p>
 				{compareSet.size > 0 && (
-					<p className="text-xs text-teal-700 font-medium">
+					<p className="text-xs text-primary font-medium">
 						{compareSet.size} selected —{" "}
 						{compareSet.size < 3
 							? "select up to " + (3 - compareSet.size) + " more or "
@@ -672,7 +672,7 @@ export default function NeighbourhoodExplorerClient() {
 					No neighbourhoods match your current filters.{" "}
 					<button
 						type="button"
-						className="underline hover:text-slate-800"
+						className="underline hover:text-ink"
 						onClick={() => {
 							setCity("All");
 							setVibeFilters(new Set());
@@ -699,8 +699,8 @@ export default function NeighbourhoodExplorerClient() {
 			{compareItems.length >= 2 && <CompareTable items={compareItems} />}
 
 			{/* disclaimer */}
-			<aside className="mt-10 p-5 bg-amber-50 border border-amber-200 rounded-xl text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">Disclaimer</p>
+			<aside className="mt-10 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
+				<p className="font-semibold text-ink mb-1">Disclaimer</p>
 				<p>
 					Rent ranges and neighbourhood descriptions are indicative only, based
 					on general market knowledge as of early 2025. Actual rents vary by
@@ -710,7 +710,7 @@ export default function NeighbourhoodExplorerClient() {
 			</aside>
 
 			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools/" className="underline hover:text-slate-900">
+				<Link href="/tools/" className="underline hover:text-ink">
 					&larr; Back to Tools
 				</Link>
 			</p>

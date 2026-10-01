@@ -307,7 +307,7 @@ function SelectRow<T extends string>({
 			<select
 				value={value}
 				onChange={(e) => onChange(e.target.value as T)}
-				className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#35cdc4]"
+				className="rounded-xl border border-line bg-white px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-focus"
 			>
 				{options.map((o) => (
 					<option key={o.value} value={o.value}>
@@ -341,18 +341,18 @@ function StepperRow({
 				<button
 					type="button"
 					onClick={() => onChange(Math.max(min, value - 1))}
-					className="w-8 h-8 rounded-lg border border-slate-200 bg-white text-slate-700 font-bold hover:border-[#35cdc4] transition-colors text-lg leading-none"
+					className="w-11 h-11 rounded-xl border border-line bg-white text-slate-700 font-bold hover:border-primary transition-colors text-lg leading-none"
 					aria-label={`Decrease ${label}`}
 				>
 					−
 				</button>
-				<span className="w-6 text-center font-bold text-slate-900 text-sm">
+				<span className="w-6 text-center font-bold text-ink text-sm">
 					{value}
 				</span>
 				<button
 					type="button"
 					onClick={() => onChange(Math.min(max, value + 1))}
-					className="w-8 h-8 rounded-lg border border-slate-200 bg-white text-slate-700 font-bold hover:border-[#35cdc4] transition-colors text-lg leading-none"
+					className="w-11 h-11 rounded-xl border border-line bg-white text-slate-700 font-bold hover:border-primary transition-colors text-lg leading-none"
 					aria-label={`Increase ${label}`}
 				>
 					+
@@ -384,10 +384,10 @@ function ToggleRow({
 							key={opt}
 							type="button"
 							onClick={() => onChange(opt === "Yes")}
-							className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+							className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
 								active
-									? "bg-[#35cdc4] text-slate-900"
-									: "bg-white border border-slate-200 text-slate-600 hover:border-[#35cdc4]"
+									? "bg-primary text-white"
+									: "bg-white border border-line text-slate-600 hover:border-primary"
 							}`}
 						>
 							{opt}
@@ -417,18 +417,18 @@ function CostSection({
 	const catMid = Math.round((catLow + catHigh) / 2);
 
 	return (
-		<div className="border border-slate-200 rounded-xl overflow-hidden">
+		<div className="border border-line rounded-xl overflow-hidden">
 			<button
 				type="button"
 				onClick={onToggle}
-				className="w-full flex items-center justify-between px-4 py-3 bg-slate-50 hover:bg-slate-100 transition-colors text-left"
+				className="w-full flex items-center justify-between px-4 py-3 bg-sky hover:bg-sky-strong transition-colors text-left"
 			>
-				<span className="text-sm font-bold text-slate-800">{category}</span>
+				<span className="text-sm font-bold text-ink">{category}</span>
 				<div className="flex items-center gap-3">
-					<span className="text-xs text-slate-500">
+					<span className="text-xs text-muted">
 						{fmt(catLow)} – {fmt(catHigh)}
 					</span>
-					<span className="text-slate-400 text-sm" aria-hidden="true">
+					<span className="text-muted text-sm" aria-hidden="true">
 						{open ? "▲" : "▼"}
 					</span>
 				</div>
@@ -437,7 +437,7 @@ function CostSection({
 				<div className="overflow-x-auto">
 					<table className="w-full text-xs">
 						<thead>
-							<tr className="bg-white border-t border-slate-100 text-slate-400 uppercase tracking-wide">
+							<tr className="bg-white border-t border-line text-muted uppercase tracking-wide">
 								<th className="px-4 py-2 text-left font-semibold">Item</th>
 								<th className="px-4 py-2 text-right font-semibold">Low</th>
 								<th className="px-4 py-2 text-right font-semibold">Midpoint</th>
@@ -448,7 +448,7 @@ function CostSection({
 							{items.map((item) => (
 								<tr
 									key={item.label}
-									className="border-t border-slate-100 hover:bg-slate-50"
+									className="border-t border-line hover:bg-sky"
 								>
 									<td className="px-4 py-2 text-slate-700">{item.label}</td>
 									<td className="px-4 py-2 text-right text-slate-600">
@@ -456,7 +456,7 @@ function CostSection({
 									</td>
 									<td
 										className="px-4 py-2 text-right font-semibold"
-										style={{ color: "#35cdc4" }}
+										style={{ color: "#087f98" }}
 									>
 										{fmt(Math.round((item.low + item.high) / 2))}
 									</td>
@@ -465,7 +465,7 @@ function CostSection({
 									</td>
 								</tr>
 							))}
-							<tr className="border-t border-slate-200 bg-slate-50">
+							<tr className="border-t border-line bg-sky">
 								<td className="px-4 py-2 font-semibold text-slate-700">
 									Subtotal
 								</td>
@@ -474,7 +474,7 @@ function CostSection({
 								</td>
 								<td
 									className="px-4 py-2 text-right font-semibold"
-									style={{ color: "#35cdc4" }}
+									style={{ color: "#087f98" }}
 								>
 									{fmt(catMid)}
 								</td>
@@ -596,23 +596,22 @@ export default function RelocationCostCalculatorClient() {
 		<main id="main" className="max-w-4xl mx-auto px-6 py-10 md:py-16">
 			{/* breadcrumb */}
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-primary">
 					Home
 				</Link>{" "}
 				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-slate-900">
+				<Link href="/tools/" className="hover:text-primary">
 					Tools
 				</Link>{" "}
-				&rsaquo;{" "}
-				<span className="text-slate-900">Relocation Cost Estimator</span>
+				&rsaquo; <span className="text-ink">Relocation Cost Estimator</span>
 			</nav>
 
 			{/* header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
 					Finance
 				</p>
-				<h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Relocation Cost Estimator
 				</h1>
 				<p className="mt-3 text-slate-600 text-sm leading-relaxed max-w-2xl">
@@ -625,8 +624,8 @@ export default function RelocationCostCalculatorClient() {
 			<div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8">
 				{/* ── inputs panel ── */}
 				<aside>
-					<section className="p-5 bg-slate-50 border border-slate-200 rounded-xl flex flex-col gap-5 sticky top-6">
-						<h2 className="text-sm font-bold text-slate-800">Your situation</h2>
+					<section className="p-5 bg-sky border border-line rounded-2xl flex flex-col gap-5 sticky top-6">
+						<h2 className="text-sm font-bold text-ink">Your situation</h2>
 
 						<SelectRow
 							label="Origin region"
@@ -671,8 +670,8 @@ export default function RelocationCostCalculatorClient() {
 							onChange={(v) => setPets(v)}
 						/>
 
-						<div className="border-t border-slate-200 pt-4 flex flex-col gap-4">
-							<h3 className="text-xs font-bold text-slate-500 uppercase tracking-wide">
+						<div className="border-t border-line pt-4 flex flex-col gap-4">
+							<h3 className="text-xs font-bold text-muted uppercase tracking-wide">
 								Cyprus setup
 							</h3>
 
@@ -696,7 +695,7 @@ export default function RelocationCostCalculatorClient() {
 										onChange={(e) =>
 											setPropertyPrice(Math.max(50000, Number(e.target.value)))
 										}
-										className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#35cdc4]"
+										className="rounded-xl border border-line bg-white px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-focus"
 									/>
 								</div>
 							) : (
@@ -720,18 +719,18 @@ export default function RelocationCostCalculatorClient() {
 				{/* ── results panel ── */}
 				<section>
 					{/* grand total highlight */}
-					<div className="mb-6 p-5 rounded-xl border-2 border-[#35cdc4] bg-teal-50">
-						<p className="text-xs text-slate-500 uppercase tracking-wide mb-1">
+					<div className="mb-6 p-5 rounded-2xl border-2 border-primary bg-sky">
+						<p className="text-xs text-muted uppercase tracking-wide mb-1">
 							Estimated total (incl. 10% contingency)
 						</p>
 						<div className="flex flex-wrap items-end gap-x-6 gap-y-1">
 							<span
 								className="text-3xl md:text-4xl font-bold"
-								style={{ color: "#35cdc4" }}
+								style={{ color: "#087f98" }}
 							>
 								{fmt(grandMid)}
 							</span>
-							<span className="text-sm text-slate-500 pb-1">
+							<span className="text-sm text-muted pb-1">
 								Range: {fmt(grandLow)} – {fmt(grandHigh)}
 							</span>
 						</div>
@@ -755,7 +754,7 @@ export default function RelocationCostCalculatorClient() {
 						<div className="overflow-x-auto">
 							<table className="w-full text-sm">
 								<tbody>
-									<tr className="bg-slate-800 text-white">
+									<tr className="bg-ink text-white">
 										<td className="px-4 py-3 font-bold">
 											Grand Total (incl. contingency)
 										</td>
@@ -764,7 +763,7 @@ export default function RelocationCostCalculatorClient() {
 										</td>
 										<td
 											className="px-4 py-3 text-right font-bold text-lg"
-											style={{ color: "#35cdc4" }}
+											style={{ color: "#d8f3fc" }}
 										>
 											{fmt(grandMid)}
 										</td>
@@ -778,7 +777,7 @@ export default function RelocationCostCalculatorClient() {
 					</div>
 
 					{/* print note */}
-					<p className="mt-3 text-[10px] text-slate-400 italic print:text-slate-600">
+					<p className="mt-3 text-xs text-muted italic print:text-slate-600">
 						Costs shown are indicative estimates based on typical 2024–2025
 						market rates. Actual costs vary significantly.
 					</p>
@@ -787,7 +786,7 @@ export default function RelocationCostCalculatorClient() {
 					<button
 						type="button"
 						onClick={() => window.print()}
-						className="mt-4 px-4 py-2 rounded-lg border border-slate-200 bg-white text-xs font-semibold text-slate-700 hover:border-[#35cdc4] transition-colors print:hidden"
+						className="mt-4 px-4 py-2 rounded-xl border border-line bg-white text-xs font-semibold text-slate-700 hover:border-primary transition-colors print:hidden"
 					>
 						Print / Save as PDF
 					</button>
@@ -795,35 +794,35 @@ export default function RelocationCostCalculatorClient() {
 			</div>
 
 			{/* next steps */}
-			<aside className="mt-10 p-5 bg-slate-50 border border-slate-200 rounded-xl">
-				<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
+			<aside className="mt-10 p-5 bg-sky border border-line rounded-2xl">
+				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
 					Related tools
 				</p>
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/tools/budget-builder/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Monthly Budget Builder →
+						Monthly Budget Builder
 					</Link>
 					<Link
 						href="/tools/rent-vs-buy-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Rent vs Buy Calculator →
+						Rent vs Buy Calculator
 					</Link>
 					<Link
 						href="/tools/mortgage-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Mortgage Calculator →
+						Mortgage Calculator
 					</Link>
 				</div>
 			</aside>
 
 			{/* disclaimer */}
-			<aside className="mt-6 p-5 bg-amber-50 border border-amber-200 rounded-xl text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">Disclaimer</p>
+			<aside className="mt-6 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
+				<p className="font-semibold text-ink mb-1">Disclaimer</p>
 				<p>
 					General information only — not legal, tax, or financial advice. Cost
 					ranges are indicative and based on publicly available market data for
@@ -832,8 +831,8 @@ export default function RelocationCostCalculatorClient() {
 				</p>
 			</aside>
 
-			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools/" className="underline hover:text-slate-900">
+			<p className="mt-8 text-xs text-muted">
+				<Link href="/tools/" className="underline hover:text-primary">
 					&larr; Back to Tools
 				</Link>
 			</p>

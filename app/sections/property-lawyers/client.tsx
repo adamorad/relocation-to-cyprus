@@ -24,10 +24,10 @@ function CityChip({
 			type="button"
 			onClick={onClick}
 			aria-pressed={selected}
-			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
+			className={`rounded-full inline-flex min-h-11 items-center px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors md:min-h-0 ${
 				selected
-					? "bg-slate-900 text-white border border-slate-900"
-					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
+					? "bg-ink text-white border border-ink"
+					: "bg-white text-ink border border-line hover:bg-sky"
 			}`}
 		>
 			{city}
@@ -49,10 +49,10 @@ function SpecChip({
 			type="button"
 			onClick={onClick}
 			aria-pressed={selected}
-			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
+			className={`rounded-full inline-flex min-h-11 items-center px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors md:min-h-0 ${
 				selected
-					? "bg-amber-700 text-white border border-amber-700"
-					: "bg-amber-50 text-amber-800 border border-amber-200 hover:bg-amber-100"
+					? "bg-ink text-white border border-ink"
+					: "bg-sky-strong text-ink border border-line hover:bg-sky"
 			}`}
 		>
 			{label}
@@ -80,17 +80,17 @@ const ALL_SPECIALIZATIONS = [
 
 function LawyerCard({ lawyer }: { lawyer: PropertyLawyer }) {
 	return (
-		<div className="rounded-xl border border-slate-200 bg-white p-4 md:p-5 shadow-sm hover:shadow-md transition-shadow">
+		<div className="rounded-2xl border border-line bg-white p-4 md:p-5 shadow-sm">
 			<div className="flex items-start justify-between gap-3">
 				<div className="min-w-0">
-					<p className="font-bold text-slate-900 text-sm md:text-base leading-snug">
+					<p className="font-bold text-ink text-sm md:text-base leading-snug">
 						{lawyer.name}
 					</p>
 					<p className="text-xs text-slate-500 mt-0.5 font-medium">
 						{lawyer.firm}
 					</p>
 				</div>
-				<span className="flex-shrink-0 rounded-full bg-teal-50 border border-teal-200 text-[#35cdc4] text-[10px] font-bold px-2.5 py-1 uppercase tracking-wide">
+				<span className="flex-shrink-0 rounded-full bg-sky-strong text-primary text-xs font-bold px-2.5 py-1 uppercase tracking-wide">
 					{lawyer.city}
 				</span>
 			</div>
@@ -103,7 +103,7 @@ function LawyerCard({ lawyer }: { lawyer: PropertyLawyer }) {
 				{lawyer.specializations.map((s) => (
 					<span
 						key={s}
-						className="rounded-full bg-slate-100 text-slate-600 text-[10px] font-semibold px-2 py-0.5"
+						className="rounded-full bg-sky-strong text-slate-600 text-xs font-semibold px-2 py-0.5"
 					>
 						{s}
 					</span>
@@ -120,15 +120,15 @@ function LawyerCard({ lawyer }: { lawyer: PropertyLawyer }) {
 						href={lawyer.website}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="font-semibold text-amber-700 hover:text-amber-900"
+						className="font-semibold text-primary hover:text-primary-hover"
 					>
-						Website ↗
+						Website
 					</a>
 				)}
 				{lawyer.phone && (
 					<a
 						href={`tel:${lawyer.phone}`}
-						className="font-semibold text-slate-700 hover:text-slate-900"
+						className="font-semibold text-slate-700 hover:text-ink"
 					>
 						{lawyer.phone}
 					</a>
@@ -156,31 +156,28 @@ export default function PropertyLawyersPage() {
 		<main id="main" className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-14">
 			{/* Back nav */}
 			<nav className="text-xs text-slate-500 mb-6">
-				<Link href="/" className="hover:text-slate-800 transition-colors">
-					← Home
+				<Link href="/" className="hover:text-ink transition-colors">
+					Home
 				</Link>
 				{" / "}
-				<Link
-					href="/sections"
-					className="hover:text-slate-800 transition-colors"
-				>
+				<Link href="/sections" className="hover:text-ink transition-colors">
 					Directories
 				</Link>
 			</nav>
 
 			{/* Header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold mb-2">
+				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary mb-2">
 					Professional Services
 				</p>
-				<h1 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
+				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Property Lawyers in Cyprus — Vetted Directory
 				</h1>
 				<p className="mt-4 text-lg text-slate-600 leading-relaxed max-w-2xl">
 					Conveyancing solicitors experienced with foreign buyers, title deed
 					transfers, and new-build contracts across all Cyprus cities.
 				</p>
-				<p className="mt-2 text-xs text-slate-400">
+				<p className="mt-2 text-xs text-muted">
 					This is a directory, not legal advice. Always verify Bar Association
 					registration and fee structures directly with the firm.
 				</p>
@@ -188,16 +185,16 @@ export default function PropertyLawyersPage() {
 
 			{/* Tips */}
 			<section className="mb-8">
-				<h2 className="text-base font-bold text-slate-900 mb-3">
+				<h2 className="text-base font-bold text-ink mb-3">
 					Before you engage a property lawyer
 				</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-3">
 					{LAWYER_TIPS.map((tip) => (
 						<div
 							key={tip.heading}
-							className="rounded-lg border border-amber-100 bg-amber-50 p-4 text-sm"
+							className="rounded-2xl border border-line bg-sky p-4 text-sm"
 						>
-							<p className="font-bold text-slate-900 text-sm">{tip.heading}</p>
+							<p className="font-bold text-ink text-sm">{tip.heading}</p>
 							<p className="mt-1.5 text-slate-700 leading-relaxed text-xs">
 								{tip.body}
 							</p>
@@ -236,7 +233,7 @@ export default function PropertyLawyersPage() {
 			</div>
 
 			{/* Results count */}
-			<p className="text-xs text-slate-400 mb-4">
+			<p className="text-xs text-muted mb-4">
 				Showing {visible.length} lawyer{visible.length !== 1 ? "s" : ""}
 				{cityFilter !== "All" ? ` in ${cityFilter}` : ""}
 				{specFilter !== "All" ? ` · ${specFilter}` : ""}
@@ -244,7 +241,7 @@ export default function PropertyLawyersPage() {
 
 			{/* Card grid */}
 			{visible.length === 0 ? (
-				<div className="rounded-xl border border-slate-200 bg-slate-50 px-6 py-10 text-center text-sm text-slate-500">
+				<div className="rounded-xl border border-line bg-sky px-6 py-10 text-center text-sm text-slate-500">
 					No lawyers match the selected filters. Try removing a filter.
 				</div>
 			) : (

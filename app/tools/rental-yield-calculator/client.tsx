@@ -122,7 +122,7 @@ function SliderInput({
 				<label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
 					{label}
 				</label>
-				<span className="text-sm font-bold text-slate-900 tabular-nums">
+				<span className="text-sm font-bold text-ink tabular-nums">
 					{display}
 				</span>
 			</div>
@@ -133,9 +133,9 @@ function SliderInput({
 				step={step}
 				value={value}
 				onChange={(e) => onChange(Number(e.target.value))}
-				className="w-full accent-[#35cdc4]"
+				className="w-full accent-primary"
 			/>
-			<div className="flex justify-between text-[10px] text-slate-400">
+			<div className="flex justify-between text-xs text-muted">
 				<span>
 					{typeof min === "number" && min >= 1000
 						? "€" + min.toLocaleString("en-IE")
@@ -147,7 +147,7 @@ function SliderInput({
 						: max}
 				</span>
 			</div>
-			{note && <p className="text-[10px] text-slate-500 -mt-0.5">{note}</p>}
+			{note && <p className="text-xs text-muted -mt-0.5">{note}</p>}
 		</div>
 	);
 }
@@ -187,21 +187,21 @@ export default function RentalYieldCalculatorClient() {
 	return (
 		<main id="main" className="max-w-3xl mx-auto px-6 py-10 md:py-16">
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-primary">
 					Home
 				</Link>{" "}
 				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-slate-900">
+				<Link href="/tools/" className="hover:text-primary">
 					Tools
 				</Link>{" "}
 				&rsaquo; <span>Rental Yield Calculator</span>
 			</nav>
 
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
 					Finance Tools
 				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Cyprus Rental Yield Calculator
 				</h1>
 				<p className="mt-3 text-slate-600 text-sm leading-relaxed">
@@ -212,10 +212,8 @@ export default function RentalYieldCalculatorClient() {
 			</header>
 
 			{/* Inputs */}
-			<section className="p-5 bg-slate-50 rounded-xl border border-slate-200 mb-8">
-				<h2 className="text-sm font-bold text-slate-800 mb-5">
-					Property inputs
-				</h2>
+			<section className="p-5 bg-sky rounded-2xl border border-line mb-8">
+				<h2 className="text-sm font-bold text-ink mb-5">Property inputs</h2>
 				<div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 					<SliderInput
 						label="Purchase price"
@@ -259,11 +257,11 @@ export default function RentalYieldCalculatorClient() {
 							<label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
 								Property tax (IPT)
 							</label>
-							<span className="text-sm font-bold text-slate-900 tabular-nums">
+							<span className="text-sm font-bold text-ink tabular-nums">
 								{fmt(propertyTax)}/yr
 							</span>
 						</div>
-						<p className="text-[10px] text-slate-500">
+						<p className="text-xs text-muted">
 							0.1% of purchase price — calculated automatically
 						</p>
 					</div>
@@ -295,10 +293,10 @@ export default function RentalYieldCalculatorClient() {
 									key={h}
 									type="button"
 									onClick={() => set("horizon")(h)}
-									className={`flex-1 py-2 rounded-lg text-sm font-semibold border transition-colors ${
+									className={`flex-1 py-2 rounded-xl text-sm font-semibold border transition-colors ${
 										inputs.horizon === h
-											? "bg-[#35cdc4] text-slate-900 border-[#35cdc4]"
-											: "bg-white text-slate-600 border-slate-200 hover:border-[#35cdc4]"
+											? "bg-primary text-white border-primary"
+											: "bg-white text-slate-600 border-line hover:border-primary"
 									}`}
 								>
 									{h} yr
@@ -311,43 +309,41 @@ export default function RentalYieldCalculatorClient() {
 
 			{/* Summary card */}
 			<section className="mb-8">
-				<h2 className="text-sm font-bold text-slate-800 mb-4">
-					Results summary
-				</h2>
+				<h2 className="text-sm font-bold text-ink mb-4">Results summary</h2>
 				<div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
-					<div className="p-4 rounded-xl border border-slate-200 bg-white text-center">
-						<p className="text-[10px] text-slate-500 uppercase tracking-wide mb-1">
+					<div className="p-4 rounded-2xl border border-line bg-white text-center">
+						<p className="text-xs text-muted uppercase tracking-wide mb-1">
 							Gross yield
 						</p>
-						<p className="text-2xl font-bold" style={{ color: "#35cdc4" }}>
+						<p className="text-2xl font-bold" style={{ color: "#087f98" }}>
 							{fmtPct(grossYieldPct)}
 						</p>
 					</div>
-					<div className="p-4 rounded-xl border border-slate-200 bg-white text-center">
-						<p className="text-[10px] text-slate-500 uppercase tracking-wide mb-1">
+					<div className="p-4 rounded-2xl border border-line bg-white text-center">
+						<p className="text-xs text-muted uppercase tracking-wide mb-1">
 							Net yield
 						</p>
 						<p
-							className={`text-2xl font-bold ${netYieldPct >= 0 ? "text-slate-900" : "text-red-600"}`}
+							className={`text-2xl font-bold ${netYieldPct >= 0 ? "text-ink" : "text-red-600"}`}
 						>
 							{fmtPct(netYieldPct)}
 						</p>
 					</div>
-					<div className="p-4 rounded-xl border border-slate-200 bg-white text-center">
-						<p className="text-[10px] text-slate-500 uppercase tracking-wide mb-1">
+					<div className="p-4 rounded-2xl border border-line bg-white text-center">
+						<p className="text-xs text-muted uppercase tracking-wide mb-1">
 							Annual cash flow
 						</p>
 						<p
-							className={`text-2xl font-bold ${annualCashFlow >= 0 ? "text-slate-900" : "text-red-600"}`}
+							className={`text-2xl font-bold ${annualCashFlow >= 0 ? "text-ink" : "text-red-600"}`}
 						>
 							{fmt(annualCashFlow)}
 						</p>
 					</div>
-					<div className="p-4 rounded-xl border border-slate-200 bg-white text-center">
-						<p className="text-[10px] text-slate-500 uppercase tracking-wide mb-1">
+					<div className="p-4 rounded-2xl border border-line bg-white text-center">
+						<p className="text-xs text-muted uppercase tracking-wide mb-1">
 							Break-even
 						</p>
-						<p className="text-2xl font-bold text-amber-600">
+						<p className="text-2xl font-bold text-ink">
 							{breakEvenYears !== null
 								? breakEvenYears <= 99
 									? `${Math.ceil(breakEvenYears)} yr`
@@ -358,40 +354,38 @@ export default function RentalYieldCalculatorClient() {
 				</div>
 
 				<div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-					<div className="p-4 rounded-xl border border-slate-200 bg-white">
-						<p className="text-[10px] text-slate-500 uppercase tracking-wide mb-1">
+					<div className="p-4 rounded-2xl border border-line bg-white">
+						<p className="text-xs text-muted uppercase tracking-wide mb-1">
 							Annual expenses
 						</p>
-						<p className="text-xl font-bold text-slate-900">
-							{fmt(annualExpenses)}
-						</p>
-						<p className="text-[10px] text-slate-400 mt-1">
+						<p className="text-xl font-bold text-ink">{fmt(annualExpenses)}</p>
+						<p className="text-xs text-muted mt-1">
 							Management + maintenance + IPT + vacancy
 						</p>
 					</div>
-					<div className="p-4 rounded-xl border border-slate-200 bg-white">
-						<p className="text-[10px] text-slate-500 uppercase tracking-wide mb-1">
+					<div className="p-4 rounded-2xl border border-line bg-white">
+						<p className="text-xs text-muted uppercase tracking-wide mb-1">
 							Total return ({inputs.horizon} yr)
 						</p>
 						<p
-							className={`text-xl font-bold ${totalReturnAtHorizon >= 0 ? "text-slate-900" : "text-red-600"}`}
+							className={`text-xl font-bold ${totalReturnAtHorizon >= 0 ? "text-ink" : "text-red-600"}`}
 						>
 							{fmt(totalReturnAtHorizon)}
 						</p>
-						<p className="text-[10px] text-slate-400 mt-1">
+						<p className="text-xs text-muted mt-1">
 							Cash flow income + appreciation gain
 						</p>
 					</div>
-					<div className="p-4 rounded-xl border border-slate-200 bg-white">
-						<p className="text-[10px] text-slate-500 uppercase tracking-wide mb-1">
+					<div className="p-4 rounded-2xl border border-line bg-white">
+						<p className="text-xs text-muted uppercase tracking-wide mb-1">
 							Annualised return
 						</p>
 						<p
-							className={`text-xl font-bold ${annualisedReturnPct >= 0 ? "text-slate-900" : "text-red-600"}`}
+							className={`text-xl font-bold ${annualisedReturnPct >= 0 ? "text-ink" : "text-red-600"}`}
 						>
 							{fmtPct(annualisedReturnPct)}
 						</p>
-						<p className="text-[10px] text-slate-400 mt-1">
+						<p className="text-xs text-muted mt-1">
 							IRR approximation over {inputs.horizon} years
 						</p>
 					</div>
@@ -400,13 +394,13 @@ export default function RentalYieldCalculatorClient() {
 
 			{/* Year-by-year table */}
 			<section className="mb-8">
-				<h2 className="text-sm font-bold text-slate-800 mb-3">
+				<h2 className="text-sm font-bold text-ink mb-3">
 					Year-by-year projection
 				</h2>
-				<div className="overflow-x-auto rounded-xl border border-slate-200">
+				<div className="overflow-x-auto rounded-xl border border-line">
 					<table className="w-full text-xs">
 						<thead>
-							<tr className="bg-slate-50 text-slate-500 uppercase tracking-wide">
+							<tr className="bg-sky text-muted uppercase tracking-wide">
 								<th className="px-3 py-2.5 text-left font-semibold">Year</th>
 								<th className="px-3 py-2.5 text-right font-semibold">
 									Cum. rent income
@@ -423,7 +417,7 @@ export default function RentalYieldCalculatorClient() {
 							{rows.map((row) => (
 								<tr
 									key={row.year}
-									className="border-t border-slate-100 hover:bg-slate-50"
+									className="border-t border-line hover:bg-sky"
 								>
 									<td className="px-3 py-2 font-medium text-slate-700">
 										Year {row.year}
@@ -435,12 +429,12 @@ export default function RentalYieldCalculatorClient() {
 									</td>
 									<td
 										className="px-3 py-2 text-right tabular-nums"
-										style={{ color: "#35cdc4" }}
+										style={{ color: "#087f98" }}
 									>
 										{fmt(row.propertyValue)}
 									</td>
 									<td
-										className={`px-3 py-2 text-right tabular-nums font-semibold ${row.cumTotalGain >= 0 ? "text-slate-900" : "text-red-600"}`}
+										className={`px-3 py-2 text-right tabular-nums font-semibold ${row.cumTotalGain >= 0 ? "text-ink" : "text-red-600"}`}
 									>
 										{fmt(row.cumTotalGain)}
 									</td>
@@ -452,8 +446,8 @@ export default function RentalYieldCalculatorClient() {
 			</section>
 
 			{/* IPT context box */}
-			<aside className="mb-6 p-5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-700 leading-relaxed">
-				<p className="font-semibold text-slate-900 mb-2">
+			<aside className="mb-6 p-5 bg-sky border border-line rounded-2xl text-sm text-slate-700 leading-relaxed">
+				<p className="font-semibold text-ink mb-2">
 					Cyprus IPT &amp; rental tax notes
 				</p>
 				<p>
@@ -466,35 +460,35 @@ export default function RentalYieldCalculatorClient() {
 			</aside>
 
 			{/* Next steps */}
-			<aside className="mb-8 p-5 bg-slate-50 border border-slate-200 rounded-xl">
-				<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
+			<aside className="mb-8 p-5 bg-sky border border-line rounded-2xl">
+				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
 					Next steps
 				</p>
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/sections/property-management/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Find a property manager &rarr;
+						Find a property manager
 					</Link>
 					<Link
 						href="/guides/buying-process/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Read: Buying Process Guide &rarr;
+						Read: Buying Process Guide
 					</Link>
 					<Link
 						href="/tools/rent-vs-buy-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Rent vs Buy Calculator &rarr;
+						Rent vs Buy Calculator
 					</Link>
 				</div>
 			</aside>
 
 			{/* Disclaimer */}
-			<aside className="mb-8 p-5 bg-amber-50 border border-amber-200 rounded-xl text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">Disclaimer</p>
+			<aside className="mb-8 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
+				<p className="font-semibold text-ink mb-1">Disclaimer</p>
 				<p>
 					This calculator provides general estimates for illustrative purposes
 					only and does not constitute financial or tax advice. Yields,
@@ -505,7 +499,7 @@ export default function RentalYieldCalculatorClient() {
 				</p>
 			</aside>
 
-			<Link href="/tools/" className="underline hover:text-slate-900 text-sm">
+			<Link href="/tools/" className="underline hover:text-primary text-sm">
 				&larr; Back to Tools
 			</Link>
 		</main>

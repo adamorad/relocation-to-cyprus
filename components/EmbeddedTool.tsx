@@ -22,21 +22,21 @@ export function EmbeddedTool({
 	children: ReactNode;
 }) {
 	return (
-		<section className="not-prose my-10 rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
-			<div className="border-b border-slate-100 bg-slate-50 px-5 py-4">
-				<p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#35cdc4]">
+		<section className="not-prose my-10 rounded-2xl border border-line bg-white shadow-rc overflow-hidden">
+			<div className="border-b border-line bg-sky px-5 py-4">
+				<p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
 					{eyebrow}
 				</p>
-				<h2 className="mt-1 text-lg font-bold text-slate-900">{title}</h2>
+				<h2 className="mt-1 text-lg font-bold text-ink">{title}</h2>
 				{subtitle ? (
-					<p className="mt-1 text-sm text-slate-600">{subtitle}</p>
+					<p className="mt-1 text-sm text-muted">{subtitle}</p>
 				) : null}
 			</div>
 			<div className="px-4 py-5 sm:px-5">{children}</div>
-			<div className="border-t border-slate-100 px-5 py-3 text-right">
+			<div className="border-t border-line px-5 py-3 text-right">
 				<Link
 					href={toolHref}
-					className="text-xs font-semibold text-[#35cdc4] hover:underline"
+					className="text-xs font-semibold text-primary hover:text-primary-hover underline-offset-2 hover:underline"
 				>
 					{toolLabel} →
 				</Link>

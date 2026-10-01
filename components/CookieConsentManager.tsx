@@ -63,9 +63,9 @@ fbq('init','${pixelId}');fbq('track','PageView');`}
         </Script>
       )}
       {visible && (
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-slate-900 border-t border-slate-700 px-4 py-3 md:py-4">
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-ink border-t border-white/15 px-4 py-3 md:py-4">
           <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-3">
-            <p className="flex-1 text-xs text-slate-300 leading-relaxed">
+            <p className="flex-1 text-xs text-white/85 leading-relaxed">
               We use cookies for analytics (Google Analytics) and to measure ad performance (Meta Pixel).{" "}
               <Link href="/privacy/" className="underline hover:text-white">
                 Privacy Policy
@@ -75,14 +75,14 @@ fbq('init','${pixelId}');fbq('track','PageView');`}
               <button
                 type="button"
                 onClick={decline}
-                className="text-xs px-3 py-1.5 rounded border border-slate-600 text-slate-400 hover:text-white hover:border-slate-400 transition-colors"
+                className="text-xs px-3 py-1.5 rounded border border-white/40 text-white/85 hover:text-white hover:border-white transition-colors"
               >
                 Decline
               </button>
               <button
                 type="button"
                 onClick={accept}
-                className="text-xs px-4 py-1.5 rounded bg-[#35cdc4] text-slate-900 font-semibold hover:bg-white transition-colors"
+                className="text-xs px-4 py-1.5 rounded bg-white text-ink font-semibold hover:bg-sky-strong transition-colors"
               >
                 Accept
               </button>

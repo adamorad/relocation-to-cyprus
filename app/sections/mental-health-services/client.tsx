@@ -26,10 +26,10 @@ function CityChip({
 			type="button"
 			onClick={onClick}
 			aria-pressed={selected}
-			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
+			className={`rounded-full inline-flex min-h-11 items-center px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors md:min-h-0 ${
 				selected
-					? "bg-slate-900 text-white border border-slate-900"
-					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
+					? "bg-ink text-white border border-ink"
+					: "bg-white text-ink border border-line hover:bg-sky"
 			}`}
 		>
 			{city}
@@ -51,10 +51,10 @@ function TypeChip({
 			type="button"
 			onClick={onClick}
 			aria-pressed={selected}
-			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
+			className={`rounded-full inline-flex min-h-11 items-center px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors md:min-h-0 ${
 				selected
-					? "bg-teal-600 text-white border border-teal-600"
-					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
+					? "bg-primary text-white border border-primary"
+					: "bg-white text-ink border border-line hover:bg-sky"
 			}`}
 		>
 			{label}
@@ -68,38 +68,38 @@ function ProviderCard({
 	provider: (typeof MENTAL_HEALTH_PROVIDERS)[number];
 }) {
 	return (
-		<li className="rounded-xl border border-slate-200 bg-white p-4 text-sm flex flex-col gap-2">
+		<li className="rounded-2xl border border-line bg-white p-4 text-sm flex flex-col gap-2">
 			<div>
-				<p className="font-bold text-slate-900">{provider.name}</p>
+				<p className="font-bold text-ink">{provider.name}</p>
 				<p className="text-xs text-slate-500 mt-0.5">
 					{provider.title} · {provider.city}
 				</p>
 			</div>
 
 			<div className="flex flex-wrap gap-1.5">
-				<span className="rounded-full bg-teal-50 text-teal-800 border border-teal-200 px-2 py-0.5 text-[10px] font-semibold">
+				<span className="rounded-full bg-sky-strong text-ink px-2 py-0.5 text-xs font-semibold">
 					{PROVIDER_TYPE_LABEL[provider.type]}
 				</span>
 				{provider.onlineAvailable && (
-					<span className="rounded-full bg-blue-50 text-blue-800 border border-blue-200 px-2 py-0.5 text-[10px] font-semibold">
+					<span className="rounded-full bg-sky-strong text-ink px-2 py-0.5 text-xs font-semibold">
 						Online available
 					</span>
 				)}
 				{provider.sessionFrom && (
-					<span className="rounded-full bg-amber-50 text-amber-800 border border-amber-200 px-2 py-0.5 text-[10px] font-semibold">
+					<span className="rounded-full bg-sky-strong text-ink px-2 py-0.5 text-xs font-semibold">
 						From €{provider.sessionFrom}/session
 					</span>
 				)}
 			</div>
 
 			{provider.approaches.length > 0 && (
-				<p className="text-[10px] text-slate-500">
+				<p className="text-xs text-slate-500">
 					<span className="font-semibold">Approaches: </span>
 					{provider.approaches.join(" · ")}
 				</p>
 			)}
 
-			<p className="text-[10px] text-slate-500">
+			<p className="text-xs text-slate-500">
 				<span className="font-semibold">Languages: </span>
 				{provider.languages.join(", ")}
 			</p>
@@ -112,9 +112,9 @@ function ProviderCard({
 						href={provider.website}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="text-[10px] font-semibold text-teal-700 hover:text-teal-900"
+						className="text-xs font-semibold text-primary hover:text-primary-hover"
 					>
-						Website ↗
+						Website
 					</a>
 				</div>
 			)}
@@ -144,10 +144,10 @@ export default function MentalHealthServicesPage() {
 
 			{/* Header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
 					Healthcare
 				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Mental Health Services in Cyprus
 					<br />
 					<span className="text-2xl md:text-3xl font-semibold text-slate-600">
@@ -163,16 +163,14 @@ export default function MentalHealthServicesPage() {
 
 			{/* Tips */}
 			<section className="mb-10">
-				<h2 className="text-lg font-bold text-slate-900 mb-3">
-					What to know first
-				</h2>
+				<h2 className="text-lg font-bold text-ink mb-3">What to know first</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-3">
 					{MENTAL_HEALTH_TIPS.map((tip) => (
 						<div
 							key={tip.heading}
-							className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-xs"
+							className="rounded-2xl border border-line bg-sky p-4 text-xs"
 						>
-							<p className="font-bold text-sm text-slate-900">{tip.heading}</p>
+							<p className="font-bold text-sm text-ink">{tip.heading}</p>
 							<p className="mt-1.5 text-slate-700 leading-relaxed">
 								{tip.body}
 							</p>
@@ -183,7 +181,7 @@ export default function MentalHealthServicesPage() {
 
 			{/* City filter */}
 			<div className="mb-4">
-				<p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-2">
 					City
 				</p>
 				<div className="flex flex-wrap gap-1.5">
@@ -200,7 +198,7 @@ export default function MentalHealthServicesPage() {
 
 			{/* Type filter */}
 			<div className="mb-8">
-				<p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-2">
 					Provider type
 				</p>
 				<div className="flex flex-wrap gap-1.5">
@@ -229,7 +227,7 @@ export default function MentalHealthServicesPage() {
 
 			{/* Provider grid */}
 			{filtered.length === 0 ? (
-				<div className="rounded-xl border border-slate-200 bg-slate-50 px-6 py-8 text-center text-sm text-slate-500">
+				<div className="rounded-xl border border-line bg-sky px-6 py-8 text-center text-sm text-slate-500">
 					No providers match the current filters.
 				</div>
 			) : (
@@ -243,13 +241,11 @@ export default function MentalHealthServicesPage() {
 				</ul>
 			)}
 
-			<aside className="mt-10 rounded-lg border border-amber-200 bg-amber-50 p-4 text-xs text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">
-					Crisis support in Cyprus
-				</p>
+			<aside className="mt-10 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-xs text-amber-900">
+				<p className="font-semibold text-ink mb-1">Crisis support in Cyprus</p>
 				<p>
 					EAPN Cyprus crisis line:{" "}
-					<a href="tel:1480" className="font-semibold text-amber-800">
+					<a href="tel:1480" className="font-semibold text-amber-900 underline">
 						1480
 					</a>{" "}
 					(free, 24/7). Lifeline Cyprus:{" "}
@@ -257,9 +253,9 @@ export default function MentalHealthServicesPage() {
 						href="https://www.lifeline.org.cy"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="font-semibold text-amber-800"
+						className="font-semibold text-amber-900 underline"
 					>
-						lifeline.org.cy ↗
+						lifeline.org.cy
 					</a>
 					. In acute crisis, go to Nicosia General Hospital or Limassol General
 					Hospital psychiatric emergency.

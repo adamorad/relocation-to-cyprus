@@ -157,6 +157,43 @@ type SearchResult =
 			description: string;
 	  };
 
+function stem(w: string): string {
+	if (w.length > 4 && w.endsWith("ies")) return `${w.slice(0, -3)}y`;
+	if (w.length > 4 && /(ss|x|z|ch|sh)es$/.test(w)) return w.slice(0, -2);
+	if (w.length > 3 && w.endsWith("s") && !w.endsWith("ss"))
+		return w.slice(0, -1);
+	if (w.length > 5 && w.endsWith("ing")) return w.slice(0, -3);
+	return w;
+}
+
+/** Lower-case, strip accents and punctuation, split into raw words (no stemming). */
+function rawTokens(text: string): string[] {
+	return text
+		.normalize("NFD")
+		.replace(/[\u0300-\u036f]/g, "")
+		.toLowerCase()
+		.replace(/[^a-z0-9]+/g, " ")
+		.split(" ")
+		.filter(Boolean);
+}
+
+/**
+ * Every query word must match a word in one of the fields. A query word matches
+ * as a substring of the raw word (so prefixes like "movi" find "Moving") or of
+ * the stemmed word (so "pharmacies" finds "pharmacy").
+ */
+function matches(words: string[], fields: string[]): boolean {
+	const hay = rawTokens(fields.join(" "));
+	const stemmed = hay.map(stem);
+	return words.every((w) => {
+		const sw = stem(w);
+		return (
+			hay.some((t) => t.includes(w) || t.includes(sw)) ||
+			stemmed.some((t) => t.includes(sw))
+		);
+	});
+}
+
 export default function ExploreClient() {
 	const searchParams = useSearchParams();
 	const [query, setQuery] = useState(searchParams.get("q") ?? "");
@@ -167,16 +204,19 @@ export default function ExploreClient() {
 	}, [searchParams]);
 
 	const q = query.trim().toLowerCase();
+	const words = rawTokens(q);
 
 	const results: SearchResult[] =
-		q.length < 2
+		q.length < 2 || words.length === 0
 			? []
 			: [
-					...GUIDES.filter(
-						(g) =>
-							g.title.toLowerCase().includes(q) ||
-							g.description.toLowerCase().includes(q) ||
-							g.slug.includes(q),
+					...GUIDES.filter((g) =>
+						matches(words, [
+							g.title,
+							g.description,
+							g.slug,
+							GUIDE_CATEGORY_LABEL[g.category],
+						]),
 					).map(
 						(g): SearchResult => ({
 							kind: "guide",
@@ -186,17 +226,11 @@ export default function ExploreClient() {
 							description: g.description,
 						}),
 					),
-					...TOOLS_LIST.filter(
-						(t) =>
-							t.name.toLowerCase().includes(q) ||
-							t.description.toLowerCase().includes(q) ||
-							t.tag.toLowerCase().includes(q),
+					...TOOLS_LIST.filter((t) =>
+						matches(words, [t.name, t.description, t.tag]),
 					).map((t): SearchResult => ({ kind: "tool", ...t })),
-					...SECTIONS_INDEX.filter(
-						(s) =>
-							s.name.toLowerCase().includes(q) ||
-							s.description.toLowerCase().includes(q) ||
-							s.category.toLowerCase().includes(q),
+					...SECTIONS_INDEX.filter((s) =>
+						matches(words, [s.name, s.description, s.category, s.slug]),
 					).map((s): SearchResult => ({ kind: "section", ...s })),
 				];
 
@@ -216,17 +250,17 @@ export default function ExploreClient() {
 	return (
 		<main id="main" className="max-w-5xl mx-auto px-6 py-10 md:py-16">
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-ink">
 					Home
 				</Link>{" "}
-				&rsaquo; <span className="text-slate-900">Explore</span>
+				&rsaquo; <span className="text-ink">Explore</span>
 			</nav>
 
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
 					Site Directory
 				</p>
-				<h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Explore RealCy.app
 				</h1>
 				<p className="mt-3 text-slate-700 leading-relaxed">
@@ -239,7 +273,7 @@ export default function ExploreClient() {
 			<div className="mb-8">
 				<div className="relative">
 					<svg
-						className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"
+						className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted"
 						fill="none"
 						stroke="currentColor"
 						strokeWidth="2"
@@ -254,14 +288,14 @@ export default function ExploreClient() {
 						value={query}
 						onChange={(e) => setQuery(e.target.value)}
 						placeholder="Search guides, tools, sections…"
-						className="w-full pl-9 pr-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#35cdc4] focus:border-transparent"
+						className="w-full pl-9 pr-4 min-h-11 border border-line rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-focus focus:border-transparent"
 						aria-label="Search all content"
 					/>
 					{query && (
 						<button
 							type="button"
 							onClick={() => setQuery("")}
-							className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 text-lg leading-none"
+							className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-slate-700 text-lg leading-none"
 							aria-label="Clear search"
 						>
 							×
@@ -277,13 +311,13 @@ export default function ExploreClient() {
 						<p className="text-slate-500 text-sm">
 							No results for &ldquo;{query}&rdquo;
 						</p>
-						<p className="text-slate-400 text-xs mt-1">
+						<p className="text-muted text-xs mt-1">
 							Try a different term, or browse by category below.
 						</p>
 						<button
 							type="button"
 							onClick={() => setQuery("")}
-							className="mt-4 text-xs text-[#35cdc4] underline"
+							className="mt-4 text-xs text-primary underline"
 						>
 							Clear search
 						</button>
@@ -300,22 +334,19 @@ export default function ExploreClient() {
 										<li key={r.slug}>
 											<Link
 												href={`/guides/${r.slug}/`}
-												className="flex items-start gap-3 p-3 border border-slate-200 rounded-lg hover:border-[#35cdc4] hover:shadow-sm transition-all group"
+												className="flex items-start gap-3 p-3 border border-line rounded-2xl hover:border-primary hover:shadow-sm transition-all group"
 											>
-												<span className="flex-shrink-0 inline-block text-[10px] font-semibold uppercase tracking-wider text-amber-700 bg-amber-50 border border-amber-200 rounded-full px-2 py-0.5 mt-0.5">
+												<span className="flex-shrink-0 inline-block text-xs font-semibold uppercase tracking-wider text-ink bg-sky-strong rounded-full px-2.5 py-0.5 mt-0.5">
 													{r.category}
 												</span>
 												<div className="min-w-0">
-													<p className="text-sm font-semibold text-slate-900 group-hover:text-[#35cdc4] transition-colors leading-snug">
+													<p className="text-sm font-semibold text-ink group-hover:text-primary transition-colors leading-snug">
 														{r.title}
 													</p>
 													<p className="text-xs text-slate-500 mt-0.5 line-clamp-1">
 														{r.description}
 													</p>
 												</div>
-												<span className="flex-shrink-0 text-slate-300 group-hover:text-[#35cdc4] transition-colors">
-													→
-												</span>
 											</Link>
 										</li>
 									))}
@@ -333,22 +364,19 @@ export default function ExploreClient() {
 										<li key={r.slug}>
 											<Link
 												href={`/tools/${r.slug}/`}
-												className="flex items-start gap-3 p-3 border border-slate-200 rounded-lg hover:border-[#35cdc4] hover:shadow-sm transition-all group"
+												className="flex items-start gap-3 p-3 border border-line rounded-2xl hover:border-primary hover:shadow-sm transition-all group"
 											>
-												<span className="flex-shrink-0 inline-block text-[10px] font-semibold uppercase tracking-wider text-teal-700 bg-teal-50 border border-teal-200 rounded-full px-2 py-0.5 mt-0.5">
+												<span className="flex-shrink-0 inline-block text-xs font-semibold uppercase tracking-wider text-ink bg-sky-strong rounded-full px-2.5 py-0.5 mt-0.5">
 													{r.tag}
 												</span>
 												<div className="min-w-0">
-													<p className="text-sm font-semibold text-slate-900 group-hover:text-[#35cdc4] transition-colors leading-snug">
+													<p className="text-sm font-semibold text-ink group-hover:text-primary transition-colors leading-snug">
 														{r.name}
 													</p>
 													<p className="text-xs text-slate-500 mt-0.5 line-clamp-1">
 														{r.description}
 													</p>
 												</div>
-												<span className="flex-shrink-0 text-slate-300 group-hover:text-[#35cdc4] transition-colors">
-													→
-												</span>
 											</Link>
 										</li>
 									))}
@@ -366,22 +394,19 @@ export default function ExploreClient() {
 										<li key={r.slug}>
 											<Link
 												href={`/sections/${r.slug}/`}
-												className="flex items-start gap-3 p-3 border border-slate-200 rounded-lg hover:border-[#35cdc4] hover:shadow-sm transition-all group"
+												className="flex items-start gap-3 p-3 border border-line rounded-2xl hover:border-primary hover:shadow-sm transition-all group"
 											>
-												<span className="flex-shrink-0 inline-block text-[10px] font-semibold uppercase tracking-wider text-slate-600 bg-slate-100 border border-slate-200 rounded-full px-2 py-0.5 mt-0.5">
+												<span className="flex-shrink-0 inline-block text-xs font-semibold uppercase tracking-wider text-ink bg-sky-strong rounded-full px-2.5 py-0.5 mt-0.5">
 													{r.category}
 												</span>
 												<div className="min-w-0">
-													<p className="text-sm font-semibold text-slate-900 group-hover:text-[#35cdc4] transition-colors leading-snug">
+													<p className="text-sm font-semibold text-ink group-hover:text-primary transition-colors leading-snug">
 														{r.name}
 													</p>
 													<p className="text-xs text-slate-500 mt-0.5 line-clamp-1">
 														{r.description}
 													</p>
 												</div>
-												<span className="flex-shrink-0 text-slate-300 group-hover:text-[#35cdc4] transition-colors">
-													→
-												</span>
 											</Link>
 										</li>
 									))}
@@ -392,7 +417,7 @@ export default function ExploreClient() {
 						<button
 							type="button"
 							onClick={() => setQuery("")}
-							className="text-xs text-slate-400 underline hover:text-slate-700"
+							className="text-xs text-muted underline hover:text-slate-700"
 						>
 							Clear search — browse by category
 						</button>
@@ -404,9 +429,9 @@ export default function ExploreClient() {
 					{CATEGORIES.map((category) => (
 						<div
 							key={category.title}
-							className="bg-white border border-slate-200 rounded-xl p-5"
+							className="bg-white border border-line rounded-2xl p-5"
 						>
-							<h2 className="text-sm font-bold text-slate-900 uppercase tracking-wide mb-3">
+							<h2 className="text-sm font-bold text-ink uppercase tracking-wide mb-3">
 								{category.title}
 							</h2>
 							<ul className="space-y-1.5">
@@ -414,11 +439,8 @@ export default function ExploreClient() {
 									<li key={item.href}>
 										<Link
 											href={item.href}
-											className="text-sm text-slate-700 hover:text-[#35cdc4] transition-colors flex items-center gap-1.5 group"
+											className="text-sm text-slate-700 hover:text-primary transition-colors flex items-center gap-1.5 group py-1"
 										>
-											<span className="text-slate-300 group-hover:text-[#35cdc4] transition-colors text-xs">
-												→
-											</span>
 											{item.name}
 										</Link>
 									</li>
@@ -430,8 +452,8 @@ export default function ExploreClient() {
 			)}
 
 			<p className="mt-10 text-xs text-slate-500">
-				<Link href="/" className="underline hover:text-slate-900">
-					&larr; Back to home
+				<Link href="/" className="underline hover:text-ink">
+					Back to home
 				</Link>
 			</p>
 		</main>

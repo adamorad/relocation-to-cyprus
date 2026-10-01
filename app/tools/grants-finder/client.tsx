@@ -391,19 +391,19 @@ export default function GrantsFinderPage() {
 		<main id="main" className="max-w-4xl mx-auto px-4 sm:px-6 py-10 md:py-16">
 			{/* Breadcrumb */}
 			<nav className="text-xs text-slate-500 mb-6">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-ink">
 					Home
 				</Link>
 				{" › "}
-				<span className="text-slate-900">Cyprus Business Grants Finder</span>
+				<span className="text-ink">Cyprus Business Grants Finder</span>
 			</nav>
 
 			{/* Header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold mb-2">
+				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-2">
 					Tools
 				</p>
-				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Cyprus Business Grants Finder
 				</h1>
 				<p className="mt-3 text-lg text-slate-600 leading-relaxed">
@@ -422,10 +422,10 @@ export default function GrantsFinderPage() {
 					<div className="flex flex-wrap gap-2">
 						<button
 							onClick={() => setSelectedSector("all")}
-							className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
+							className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
 								selectedSector === "all"
-									? "bg-[#35cdc4] text-white border-[#35cdc4]"
-									: "bg-white text-slate-600 border-slate-300 hover:border-[#35cdc4]"
+									? "bg-primary text-white border-primary"
+									: "bg-white text-slate-600 border-line hover:border-primary"
 							}`}
 						>
 							All Sectors
@@ -434,10 +434,10 @@ export default function GrantsFinderPage() {
 							<button
 								key={s}
 								onClick={() => setSelectedSector(s)}
-								className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
+								className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
 									selectedSector === s
-										? "bg-[#35cdc4] text-white border-[#35cdc4]"
-										: "bg-white text-slate-600 border-slate-300 hover:border-[#35cdc4]"
+										? "bg-primary text-white border-primary"
+										: "bg-white text-slate-600 border-line hover:border-primary"
 								}`}
 							>
 								{SECTOR_LABELS[s]}
@@ -455,10 +455,10 @@ export default function GrantsFinderPage() {
 						<div className="flex gap-2">
 							<button
 								onClick={() => setSelectedSize("all")}
-								className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
+								className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
 									selectedSize === "all"
 										? "bg-slate-700 text-white border-slate-700"
-										: "bg-white text-slate-600 border-slate-300 hover:border-slate-500"
+										: "bg-white text-slate-600 border-line hover:border-slate-500"
 								}`}
 							>
 								Any size
@@ -467,10 +467,10 @@ export default function GrantsFinderPage() {
 								<button
 									key={s}
 									onClick={() => setSelectedSize(s)}
-									className={`px-3 py-1.5 rounded-lg text-xs font-semibold border capitalize transition-colors ${
+									className={`px-3 py-1.5 rounded-xl text-xs font-semibold border capitalize transition-colors ${
 										selectedSize === s
 											? "bg-slate-700 text-white border-slate-700"
-											: "bg-white text-slate-600 border-slate-300 hover:border-slate-500"
+											: "bg-white text-slate-600 border-line hover:border-slate-500"
 									}`}
 								>
 									{s === "micro" ? "Micro" : s === "sme" ? "SME" : "Large"}
@@ -488,10 +488,10 @@ export default function GrantsFinderPage() {
 								<button
 									key={s}
 									onClick={() => setSelectedStatus(s)}
-									className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
+									className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
 										selectedStatus === s
 											? "bg-slate-700 text-white border-slate-700"
-											: "bg-white text-slate-600 border-slate-300 hover:border-slate-500"
+											: "bg-white text-slate-600 border-line hover:border-slate-500"
 									}`}
 								>
 									{s === "all" ? "All" : s.charAt(0).toUpperCase() + s.slice(1)}
@@ -517,7 +517,7 @@ export default function GrantsFinderPage() {
 				{filtered.map((g) => (
 					<div
 						key={g.name}
-						className="bg-white border border-slate-200 rounded-xl p-5"
+						className="bg-white border border-line rounded-2xl p-5"
 					>
 						<div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
 							<div>
@@ -536,23 +536,23 @@ export default function GrantsFinderPage() {
 										</span>
 									))}
 								</div>
-								<h2 className="font-bold text-slate-900 text-base leading-snug">
+								<h2 className="font-bold text-ink text-base leading-snug">
 									{g.name}
 								</h2>
 								<p className="text-xs text-slate-500 mt-0.5">{g.adminBody}</p>
 							</div>
 							<div className="flex gap-4 shrink-0 text-right">
 								<div>
-									<p className="text-xs text-slate-400 uppercase tracking-wide">
+									<p className="text-xs text-muted uppercase tracking-wide">
 										Max Grant
 									</p>
-									<p className="font-bold text-[#35cdc4] text-lg">
+									<p className="font-bold text-primary text-lg">
 										{formatAmount(g.maxAmountEuros)}
 									</p>
 								</div>
 								{g.coveragePercent !== null && (
 									<div>
-										<p className="text-xs text-slate-400 uppercase tracking-wide">
+										<p className="text-xs text-muted uppercase tracking-wide">
 											Coverage
 										</p>
 										<p className="font-bold text-slate-700 text-lg">
@@ -567,9 +567,9 @@ export default function GrantsFinderPage() {
 							{g.description}
 						</p>
 
-						<div className="border-t border-slate-100 pt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+						<div className="border-t border-line pt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
 							<div>
-								<p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1">
+								<p className="text-xs font-semibold text-muted uppercase tracking-wide mb-1">
 									Eligibility
 								</p>
 								<p className="text-slate-600 text-xs leading-relaxed">
@@ -578,7 +578,7 @@ export default function GrantsFinderPage() {
 							</div>
 							<div>
 								<div className="mb-2">
-									<p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1">
+									<p className="text-xs font-semibold text-muted uppercase tracking-wide mb-1">
 										Deadline
 									</p>
 									<p className="text-slate-700 text-xs font-semibold">
@@ -588,7 +588,7 @@ export default function GrantsFinderPage() {
 									</p>
 								</div>
 								<div>
-									<p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1">
+									<p className="text-xs font-semibold text-muted uppercase tracking-wide mb-1">
 										Company sizes
 									</p>
 									<div className="flex gap-1 flex-wrap">
@@ -608,14 +608,14 @@ export default function GrantsFinderPage() {
 						</div>
 
 						{g.url && (
-							<div className="mt-3 pt-3 border-t border-slate-100">
+							<div className="mt-3 pt-3 border-t border-line">
 								<a
 									href={g.url}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="text-xs text-[#35cdc4] hover:text-[#2ba8a0] font-semibold underline"
+									className="text-xs text-primary hover:text-primary-hover font-semibold underline"
 								>
-									Official source →
+									Official source
 								</a>
 							</div>
 						)}
@@ -624,8 +624,8 @@ export default function GrantsFinderPage() {
 			</div>
 
 			{/* Disclaimer */}
-			<aside className="mt-10 p-4 bg-amber-50 border border-amber-200 rounded-xl text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">Important notice</p>
+			<aside className="mt-10 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
+				<p className="font-semibold text-ink mb-1">Important notice</p>
 				<p>
 					Grant programmes open and close frequently. Amounts, coverage
 					percentages and deadlines change. Always verify current status and
@@ -637,27 +637,27 @@ export default function GrantsFinderPage() {
 
 			{/* Back */}
 			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools" className="underline hover:text-slate-900">
+				<Link href="/tools" className="underline hover:text-ink">
 					← Back to Tools
 				</Link>
 			</p>
 
-			<aside className="mt-10 p-5 rounded-xl bg-slate-50 border border-slate-200">
-				<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
+			<aside className="mt-10 p-5 rounded-2xl bg-sky border border-line">
+				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
 					Next steps
 				</p>
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/guides/trade-licenses-cyprus/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Read: Trade Licences in Cyprus →
+						Read: Trade Licences in Cyprus
 					</Link>{" "}
 					<Link
 						href="/sections/accountants/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Find an accountant →
+						Find an accountant
 					</Link>
 				</div>
 			</aside>

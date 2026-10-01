@@ -64,20 +64,19 @@ const STATS = [
 export default function AdvertisePage() {
   return (
     <>
-      <main className="min-h-screen bg-[#FAFAF8]">
+      <main className="min-h-screen bg-white">
         {/* Hero */}
-        <section className="bg-[#1C1917] py-16 md:py-20">
+        <section className="on-dark bg-ink py-16 md:py-20">
           <div className="max-w-3xl mx-auto px-6 text-center">
-            <p className="text-[10px] uppercase tracking-[0.25em] text-[#35cdc4] font-semibold mb-3">
+            <p className="text-xs uppercase tracking-[0.2em] text-sky-strong font-semibold mb-3">
               Advertise with RealCy
             </p>
             <h1
-              className="text-3xl md:text-4xl font-medium text-white leading-tight"
-              style={{ fontFamily: "var(--font-lora)" }}
+              className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight"
             >
               Reach people actively planning a move to Cyprus
             </h1>
-            <p className="text-sm text-white/60 mt-4 leading-relaxed max-w-xl mx-auto">
+            <p className="text-sm text-white/80 mt-4 leading-relaxed max-w-xl mx-auto">
               RealCy.app is an independent portal for Cyprus relocation — guides, tools, and service
               directories used by people researching immigration, property, tax, and healthcare
               before they move.
@@ -86,18 +85,17 @@ export default function AdvertisePage() {
         </section>
 
         {/* Stats strip */}
-        <section className="border-b border-[#EBE8E3] bg-white">
+        <section className="border-b border-line bg-white">
           <div className="max-w-3xl mx-auto px-6 py-10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {STATS.map((s) => (
                 <div key={s.label} className="text-center">
                   <div
-                    className="text-2xl font-semibold text-[#1C1917]"
-                    style={{ fontFamily: "var(--font-lora)" }}
+                    className="text-2xl font-bold text-ink"
                   >
                     {s.value}
                   </div>
-                  <div className="text-[10px] uppercase tracking-[0.15em] text-slate-500 mt-1">
+                  <div className="text-xs uppercase tracking-[0.15em] text-muted mt-1">
                     {s.label}
                   </div>
                 </div>
@@ -107,14 +105,13 @@ export default function AdvertisePage() {
         </section>
 
         {/* Why it works */}
-        <section className="py-14">
+        <section className="py-14 bg-sky">
           <div className="max-w-3xl mx-auto px-6">
-            <p className="text-[10px] uppercase tracking-[0.25em] text-[#C4733A] font-semibold mb-2">
+            <p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-2">
               Why this audience
             </p>
             <h2
-              className="text-2xl font-medium text-[#1C1917]"
-              style={{ fontFamily: "var(--font-lora)" }}
+              className="text-2xl font-bold tracking-tight text-ink"
             >
               High intent. Nowhere else to go.
             </h2>
@@ -136,14 +133,13 @@ export default function AdvertisePage() {
         </section>
 
         {/* Tiers */}
-        <section className="py-14 bg-white border-t border-[#EBE8E3]">
+        <section className="py-14 bg-white">
           <div className="max-w-3xl mx-auto px-6">
-            <p className="text-[10px] uppercase tracking-[0.25em] text-slate-400 font-semibold mb-2">
+            <p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-2">
               Placement options
             </p>
             <h2
-              className="text-2xl font-medium text-[#1C1917]"
-              style={{ fontFamily: "var(--font-lora)" }}
+              className="text-2xl font-bold tracking-tight text-ink"
             >
               Three ways to be visible
             </h2>
@@ -152,27 +148,27 @@ export default function AdvertisePage() {
               {TIERS.map((tier, i) => (
                 <div
                   key={tier.name}
-                  className="border border-[#EBE8E3] rounded-xl p-6 bg-[#FAFAF8]"
+                  className="border border-line rounded-2xl p-6 bg-white"
                 >
                   <div className="flex items-start justify-between gap-4 flex-wrap">
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-[9px] font-bold uppercase tracking-wider bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full">
+                        <span className="text-xs font-bold uppercase tracking-wider bg-sky-strong text-ink px-2 py-0.5 rounded-full">
                           {String(i + 1).padStart(2, "0")}
                         </span>
-                        <h3 className="text-base font-semibold text-[#1C1917]">{tier.name}</h3>
+                        <h3 className="text-base font-semibold text-ink">{tier.name}</h3>
                       </div>
-                      <p className="text-xs text-slate-500 mt-1">{tier.ideal}</p>
+                      <p className="text-xs text-muted mt-1">{tier.ideal}</p>
                     </div>
-                    <span className="text-sm font-semibold text-[#35cdc4] whitespace-nowrap">
+                    <span className="text-sm font-semibold text-primary whitespace-nowrap">
                       {tier.price}
                     </span>
                   </div>
                   <p className="text-sm text-slate-600 mt-4 leading-relaxed">{tier.description}</p>
                   <ul className="mt-4 grid sm:grid-cols-2 gap-x-6 gap-y-1.5">
                     {tier.includes.map((item) => (
-                      <li key={item} className="text-xs text-slate-500 flex items-start gap-1.5">
-                        <span className="text-[#35cdc4] mt-0.5">&#10003;</span>
+                      <li key={item} className="text-xs text-muted flex items-start gap-1.5">
+                        <span className="text-primary mt-0.5">&#10003;</span>
                         {item}
                       </li>
                     ))}
@@ -184,25 +180,24 @@ export default function AdvertisePage() {
         </section>
 
         {/* CTA */}
-        <section className="py-14 bg-[#1C1917]">
+        <section className="on-dark py-14 bg-ink">
           <div className="max-w-3xl mx-auto px-6 text-center">
             <h2
-              className="text-2xl font-medium text-white"
-              style={{ fontFamily: "var(--font-lora)" }}
+              className="text-2xl font-bold tracking-tight text-white"
             >
               Get in touch
             </h2>
-            <p className="text-sm text-white/60 mt-3 max-w-md mx-auto leading-relaxed">
+            <p className="text-sm text-white/80 mt-3 max-w-md mx-auto leading-relaxed">
               Send us a short note about your firm and the placement you have in mind. We will share
               current traffic numbers for the relevant directory or guide and confirm availability.
             </p>
             <a
               href="mailto:hello@realcy.app"
-              className="inline-block mt-6 px-7 py-3 rounded-lg bg-[#35cdc4] text-slate-900 text-sm font-semibold hover:bg-teal-300 transition-colors"
+              className="inline-flex items-center min-h-11 mt-6 px-7 rounded-xl bg-primary text-white text-sm font-semibold hover:bg-primary-hover transition-colors"
             >
               hello@realcy.app
             </a>
-            <p className="text-[10px] text-white/30 mt-4">
+            <p className="text-xs text-white/70 mt-4">
               We typically respond within one business day.
             </p>
           </div>

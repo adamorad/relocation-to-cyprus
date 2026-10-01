@@ -331,21 +331,21 @@ export default function RelocationTrackerClient() {
 	return (
 		<main id="main" className="max-w-3xl mx-auto px-6 py-10 md:py-16">
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-ink">
 					Home
 				</Link>{" "}
 				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-slate-900">
+				<Link href="/tools/" className="hover:text-ink">
 					Tools
 				</Link>{" "}
 				&rsaquo; <span>Relocation Progress Tracker</span>
 			</nav>
 
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
 					Checklists
 				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Cyprus Relocation Progress Tracker
 				</h1>
 				<p className="mt-3 text-slate-600 leading-relaxed">
@@ -355,12 +355,12 @@ export default function RelocationTrackerClient() {
 			</header>
 
 			{/* Overall progress */}
-			<section className="mb-8 p-5 bg-white border border-slate-200 rounded-xl">
+			<section className="mb-8 p-5 bg-white border border-line rounded-2xl">
 				<div className="flex items-center justify-between mb-2">
 					<p className="text-sm font-semibold text-slate-700">
 						Overall progress
 					</p>
-					<span className="text-sm font-bold" style={{ color: "#35cdc4" }}>
+					<span className="text-sm font-bold" style={{ color: "#087f98" }}>
 						{mounted ? totalDone : 0} of {TOTAL_TASKS} tasks complete
 					</span>
 				</div>
@@ -369,7 +369,7 @@ export default function RelocationTrackerClient() {
 						className="h-full rounded-full transition-all duration-500"
 						style={{
 							width: `${mounted ? overallPct : 0}%`,
-							backgroundColor: "#35cdc4",
+							backgroundColor: "#087f98",
 						}}
 					/>
 				</div>
@@ -388,14 +388,14 @@ export default function RelocationTrackerClient() {
 							<button
 								type="button"
 								onClick={resetAll}
-								className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-red-100 text-red-700 hover:bg-red-200 transition-colors"
+								className="text-xs font-semibold px-3 py-1.5 rounded-xl bg-red-100 text-red-700 hover:bg-red-200 transition-colors"
 							>
 								Yes, reset
 							</button>
 							<button
 								type="button"
 								onClick={() => setConfirmReset(false)}
-								className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors"
+								className="text-xs font-semibold px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors"
 							>
 								Cancel
 							</button>
@@ -404,7 +404,7 @@ export default function RelocationTrackerClient() {
 						<button
 							type="button"
 							onClick={() => setConfirmReset(true)}
-							className="text-xs text-slate-400 hover:text-slate-600 underline transition-colors"
+							className="text-xs text-muted hover:text-slate-600 underline transition-colors"
 						>
 							Reset all
 						</button>
@@ -423,7 +423,7 @@ export default function RelocationTrackerClient() {
 					return (
 						<div
 							key={phase.id}
-							className="border border-slate-200 rounded-xl overflow-hidden"
+							className="border border-line rounded-2xl overflow-hidden"
 						>
 							{/* Phase header / toggle */}
 							<button
@@ -433,16 +433,14 @@ export default function RelocationTrackerClient() {
 							>
 								<div className="flex items-center justify-between gap-4">
 									<div className="flex-1 min-w-0">
-										<p className="text-sm font-bold text-slate-900">
-											{phase.title}
-										</p>
+										<p className="text-sm font-bold text-ink">{phase.title}</p>
 										<div className="mt-2 flex items-center gap-3">
 											<div className="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
 												<div
 													className="h-full rounded-full transition-all duration-500"
 													style={{
 														width: `${mounted ? phasePct : 0}%`,
-														backgroundColor: "#35cdc4",
+														backgroundColor: "#087f98",
 													}}
 												/>
 											</div>
@@ -452,7 +450,7 @@ export default function RelocationTrackerClient() {
 										</div>
 									</div>
 									<span
-										className={`flex-shrink-0 text-slate-400 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+										className={`flex-shrink-0 text-muted transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
 									>
 										<svg
 											className="w-4 h-4"
@@ -473,7 +471,7 @@ export default function RelocationTrackerClient() {
 
 							{/* Task list */}
 							{isOpen && (
-								<ul className="border-t border-slate-100 divide-y divide-slate-100">
+								<ul className="border-t border-line divide-y divide-slate-100">
 									{phase.tasks.map((task) => {
 										const isDone = mounted ? !!checked[task.id] : false;
 										return (
@@ -493,7 +491,7 @@ export default function RelocationTrackerClient() {
 														className={`mt-0.5 flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
 															isDone
 																? "border-green-500 bg-green-500"
-																: "border-slate-300 hover:border-[#35cdc4]"
+																: "border-line hover:border-primary"
 														}`}
 													>
 														{isDone && (
@@ -516,8 +514,8 @@ export default function RelocationTrackerClient() {
 														<p
 															className={`text-sm leading-snug ${
 																isDone
-																	? "text-slate-400 line-through decoration-slate-300"
-																	: "text-slate-800"
+																	? "text-muted line-through decoration-slate-300"
+																	: "text-ink"
 															}`}
 														>
 															{task.label}
@@ -525,10 +523,10 @@ export default function RelocationTrackerClient() {
 														{task.link && (
 															<Link
 																href={task.link.href}
-																className="mt-1 inline-block text-xs font-semibold text-[#35cdc4] hover:text-teal-600 underline underline-offset-2"
+																className="mt-1 inline-block text-xs font-semibold text-primary hover:text-primary-hover underline underline-offset-2"
 																onClick={(e) => e.stopPropagation()}
 															>
-																{task.link.text} →
+																{task.link.text}
 															</Link>
 														)}
 													</div>
@@ -543,34 +541,34 @@ export default function RelocationTrackerClient() {
 				})}
 			</div>
 
-			<aside className="mt-10 bg-slate-50 border border-slate-200 rounded-xl p-5">
-				<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
+			<aside className="mt-10 bg-sky border border-line rounded-2xl p-5">
+				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
 					Next steps
 				</p>
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/tools/visa-pathway-finder/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Find your visa route →
+						Find your visa route
 					</Link>
 					<Link
 						href="/tools/budget-builder/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Build your budget →
+						Build your budget
 					</Link>
 					<Link
 						href="/tools/city-comparison/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Compare cities →
+						Compare cities
 					</Link>
 				</div>
 			</aside>
 
-			<aside className="mt-6 bg-amber-50 border border-amber-200 rounded-xl p-5 text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">Disclaimer</p>
+			<aside className="mt-6 bg-amber-50 border border-amber-200 rounded-2xl p-5 text-sm text-amber-900">
+				<p className="font-semibold text-ink mb-1">Disclaimer</p>
 				<p>
 					This checklist provides general guidance only and is not legal, tax,
 					or financial advice. Requirements vary by nationality and residency
@@ -580,7 +578,7 @@ export default function RelocationTrackerClient() {
 			</aside>
 
 			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools/" className="underline hover:text-slate-900">
+				<Link href="/tools/" className="underline hover:text-ink">
 					&larr; Back to Tools
 				</Link>
 			</p>

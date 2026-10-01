@@ -420,8 +420,8 @@ const FREQUENCY_LABEL: Record<Frequency, string> = {
 };
 
 const FREQUENCY_COLOR: Record<Frequency, string> = {
-	daily: "bg-teal-100 text-teal-800",
-	"several/week": "bg-amber-100 text-amber-800",
+	daily: "bg-green-100 text-green-800",
+	"several/week": "bg-sky-strong text-ink",
 	seasonal: "bg-slate-100 text-slate-700",
 };
 
@@ -462,17 +462,17 @@ export default function FlightConnectivityPage() {
 	return (
 		<main id="main" className="max-w-5xl mx-auto px-4 py-8 md:py-12">
 			<nav className="text-xs text-slate-500 mb-6">
-				<Link href="/tools/" className="hover:text-slate-900">
+				<Link href="/tools/" className="hover:text-ink">
 					Tools
 				</Link>{" "}
-				&rsaquo; <span className="text-slate-900">Flight Connectivity</span>
+				&rsaquo; <span className="text-ink">Flight Connectivity</span>
 			</nav>
 
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold mb-2">
+				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-2">
 					Interactive Tool
 				</p>
-				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Cyprus Flight Connectivity
 				</h1>
 				<p className="mt-3 text-slate-600 max-w-2xl">
@@ -482,23 +482,23 @@ export default function FlightConnectivityPage() {
 			</header>
 
 			{/* Filters */}
-			<div className="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-6 flex flex-col sm:flex-row gap-3">
+			<div className="bg-sky border border-line rounded-2xl p-4 mb-6 flex flex-col sm:flex-row gap-3">
 				<input
 					type="text"
 					placeholder="Search city or country..."
 					value={search}
 					onChange={(e) => setSearch(e.target.value)}
-					className="flex-1 border border-slate-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#35cdc4]"
+					className="flex-1 border border-line rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-focus"
 				/>
 				<div className="flex gap-2 flex-wrap">
 					{(["all", "LCA", "PFO"] as AirportFilter[]).map((v) => (
 						<button
 							key={v}
 							onClick={() => setAirportFilter(v)}
-							className={`px-3 py-2 rounded-lg text-sm font-medium border transition-colors ${
+							className={`px-3 py-2 rounded-xl text-sm font-medium border transition-colors ${
 								airportFilter === v
-									? "bg-[#35cdc4] text-white border-[#35cdc4]"
-									: "bg-white text-slate-700 border-slate-300 hover:border-slate-500"
+									? "bg-primary text-white border-primary"
+									: "bg-white text-slate-700 border-line hover:border-primary"
 							}`}
 						>
 							{v === "all" ? "All airports" : v}
@@ -510,10 +510,10 @@ export default function FlightConnectivityPage() {
 						<button
 							key={v}
 							onClick={() => setSeasonFilter(v)}
-							className={`px-3 py-2 rounded-lg text-sm font-medium border transition-colors ${
+							className={`px-3 py-2 rounded-xl text-sm font-medium border transition-colors ${
 								seasonFilter === v
-									? "bg-amber-500 text-white border-amber-500"
-									: "bg-white text-slate-700 border-slate-300 hover:border-slate-500"
+									? "bg-primary text-white border-primary"
+									: "bg-white text-slate-700 border-line hover:border-primary"
 							}`}
 						>
 							{v === "all"
@@ -533,11 +533,11 @@ export default function FlightConnectivityPage() {
 				{filtered.map((r) => (
 					<div
 						key={`${r.destination}-${r.airportTo}`}
-						className="bg-white border border-slate-200 rounded-xl p-4 hover:border-slate-400 transition-colors"
+						className="bg-white border border-line rounded-2xl p-4 hover:border-primary transition-colors"
 					>
 						<div className="flex items-start justify-between mb-2">
 							<div>
-								<h2 className="font-bold text-slate-900 text-base leading-tight">
+								<h2 className="font-bold text-ink text-base leading-tight">
 									{r.destination}
 								</h2>
 								<p className="text-xs text-slate-500 mt-0.5">
@@ -556,18 +556,18 @@ export default function FlightConnectivityPage() {
 								<span className="text-slate-500 text-xs block">
 									Flight time
 								</span>
-								<span className="font-semibold text-slate-900">
+								<span className="font-semibold text-ink">
 									{formatFlightTime(r.flightTimeMinutes)}
 								</span>
 							</div>
 							<div className="flex gap-1 ml-auto">
 								{r.fromLCA && (
-									<span className="bg-slate-900 text-white text-xs px-2 py-0.5 rounded font-medium">
+									<span className="bg-ink text-white text-xs px-2 py-0.5 rounded font-medium">
 										LCA
 									</span>
 								)}
 								{r.fromPFO && (
-									<span className="bg-slate-700 text-white text-xs px-2 py-0.5 rounded font-medium">
+									<span className="bg-ink text-white text-xs px-2 py-0.5 rounded font-medium">
 										PFO
 									</span>
 								)}
@@ -599,33 +599,33 @@ export default function FlightConnectivityPage() {
 				</div>
 			)}
 
-			<p className="mt-8 text-xs text-slate-400 text-center">
+			<p className="mt-8 text-xs text-muted text-center">
 				Route data is indicative. Schedules, carriers and frequencies change
 				seasonally. Verify on airline websites before booking.
 			</p>
 
 			<p className="mt-6 text-sm">
-				<Link href="/tools/" className="text-[#35cdc4] hover:underline">
+				<Link href="/tools/" className="text-primary hover:underline">
 					&larr; Back to tools
 				</Link>
 			</p>
 
-			<aside className="mt-10 p-5 rounded-xl bg-slate-50 border border-slate-200">
-				<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
+			<aside className="mt-10 p-5 rounded-2xl bg-sky border border-line">
+				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
 					Next steps
 				</p>
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/guides/airport-transfers-guide/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Read: Getting Around Cyprus →
+						Read: Getting Around Cyprus
 					</Link>{" "}
 					<Link
 						href="/explore/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Explore Cyprus by region →
+						Explore Cyprus by region
 					</Link>
 				</div>
 			</aside>

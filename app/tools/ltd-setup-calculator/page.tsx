@@ -15,9 +15,9 @@ export default function MovedPage() {
 					This tool has moved.{" "}
 					<Link
 						href={NEW_PATH}
-						className="text-[#35cdc4] font-semibold underline"
+						className="text-primary font-semibold underline"
 					>
-						Continue to the new page →
+						Continue to the new page
 					</Link>
 				</p>
 			</main>

@@ -27,10 +27,10 @@ function CityChip({
 			type="button"
 			onClick={onClick}
 			aria-pressed={selected}
-			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
+			className={`rounded-full inline-flex min-h-11 items-center px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors md:min-h-0 ${
 				selected
-					? "bg-slate-900 text-white border border-slate-900"
-					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
+					? "bg-ink text-white border border-ink"
+					: "bg-white text-ink border border-line hover:bg-sky"
 			}`}
 		>
 			{city}
@@ -53,17 +53,17 @@ export default function RegisteredAddressPage() {
 		<main id="main" className="max-w-5xl mx-auto px-4 md:px-6 py-10 md:py-14">
 			{/* Back nav */}
 			<nav className="text-xs text-slate-500 mb-6">
-				<Link href="/sections" className="hover:text-slate-800">
-					← Directories
+				<Link href="/sections" className="hover:text-ink">
+					Directories
 				</Link>
 			</nav>
 
 			{/* Header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
 					Business Setup
 				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Registered Address Providers in Cyprus
 				</h1>
 				<p className="mt-3 text-base text-slate-600 leading-relaxed max-w-2xl">
@@ -78,11 +78,9 @@ export default function RegisteredAddressPage() {
 				{REGISTERED_ADDRESS_TIPS.map((tip) => (
 					<div
 						key={tip.heading}
-						className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-xs"
+						className="rounded-2xl border border-line bg-sky p-4 text-xs"
 					>
-						<p className="font-bold text-sm text-slate-900 mb-1.5">
-							{tip.heading}
-						</p>
+						<p className="font-bold text-sm text-ink mb-1.5">{tip.heading}</p>
 						<p className="text-slate-700 leading-relaxed">{tip.body}</p>
 					</div>
 				))}
@@ -113,20 +111,18 @@ export default function RegisteredAddressPage() {
 					{visible.map((provider) => (
 						<li
 							key={provider.name}
-							className="rounded-xl border border-slate-200 bg-white p-4 flex flex-col gap-2 shadow-sm hover:shadow-md transition-shadow"
+							className="rounded-2xl border border-line bg-white p-4 flex flex-col gap-2 shadow-sm"
 						>
 							<div>
-								<p className="font-bold text-sm text-slate-900">
-									{provider.name}
-								</p>
-								<p className="text-[11px] text-slate-500 mt-0.5">
+								<p className="font-bold text-sm text-ink">{provider.name}</p>
+								<p className="text-xs text-slate-500 mt-0.5">
 									{provider.city}
 									{provider.neighbourhood ? ` · ${provider.neighbourhood}` : ""}
 								</p>
 							</div>
 
 							{provider.pricePerYear != null && (
-								<p className="text-xs font-semibold text-teal-700">
+								<p className="text-xs font-semibold text-primary">
 									€{provider.pricePerYear} / year
 								</p>
 							)}
@@ -140,9 +136,9 @@ export default function RegisteredAddressPage() {
 								{provider.includes.map((item) => (
 									<li
 										key={item}
-										className="flex items-start gap-1.5 text-[11px] text-slate-600"
+										className="flex items-start gap-1.5 text-xs text-slate-600"
 									>
-										<span className="text-teal-500 mt-0.5 flex-shrink-0">
+										<span className="text-green-700 mt-0.5 flex-shrink-0">
 											✓
 										</span>
 										{item}
@@ -155,9 +151,9 @@ export default function RegisteredAddressPage() {
 									href={provider.website}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="mt-1 text-[11px] font-semibold text-amber-700 hover:text-amber-900"
+									className="mt-1 text-xs font-semibold text-primary hover:text-primary-hover"
 								>
-									Website ↗
+									Website
 								</a>
 							)}
 						</li>
@@ -165,8 +161,8 @@ export default function RegisteredAddressPage() {
 				</ul>
 			)}
 
-			<aside className="mt-10 p-4 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-600 max-w-2xl">
-				<p className="font-semibold text-slate-800 mb-1">Disclaimer</p>
+			<aside className="mt-10 p-4 bg-sky border border-line rounded-2xl text-xs text-slate-600 max-w-2xl">
+				<p className="font-semibold text-ink mb-1">Disclaimer</p>
 				<p className="leading-relaxed">
 					This is a general directory, not legal advice. Prices and service
 					inclusions change frequently. Always verify directly with the provider
@@ -176,8 +172,8 @@ export default function RegisteredAddressPage() {
 			</aside>
 
 			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/" className="underline hover:text-slate-900">
-					← Back to Explore
+				<Link href="/" className="underline hover:text-ink">
+					Back to Explore
 				</Link>
 			</p>
 		</main>
