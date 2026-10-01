@@ -182,7 +182,6 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 		also: ["moving-here"],
 		why: "Work and business admin sits in Money & paperwork (there is no Work topic).",
 	},
-	"corporate-bank-account-guide": { topic: "money-and-paperwork" },
 	"hiring-in-cyprus": {
 		topic: "money-and-paperwork",
 		why: "Work and business admin sits in Money & paperwork.",

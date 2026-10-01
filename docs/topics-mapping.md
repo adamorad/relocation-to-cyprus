@@ -13,12 +13,12 @@ Decisions were made on the owner's behalf in Phase 2A and are open for review. R
 | Health | `/health/` | 7 | 3 | 1 | 11 | 12 |
 | Getting around | `/getting-around/` | 8 | 2 | 2 | 12 | 11 |
 | Home & bills | `/home-and-bills/` | 7 | 3 | 3 | 13 | 17 |
-| Money & paperwork | `/money-and-paperwork/` | 22 | 4 | 13 | 39 | 59 |
+| Money & paperwork | `/money-and-paperwork/` | 21 | 4 | 13 | 38 | 58 |
 | Food & shopping | `/food-and-shopping/` | 5 | 5 | 0 | 10 | 11 |
 | Family & schools | `/family-and-schools/` | 7 | 3 | 1 | 11 | 13 |
 | Community & leisure | `/community-and-leisure/` | 5 | 9 | 2 | 16 | 21 |
 | Moving to Cyprus | `/moving-to-cyprus/` | 21 | 2 | 9 | 32 | 59 |
-| **All** | | 82 | 31 | 31 | 144 | |
+| **All** | | 81 | 31 | 31 | 143 | |
 
 Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). They keep a topic for their own breadcrumb and "More on" block but are not shown on hubs, indexes, other pages or the sitemap.
 
@@ -53,7 +53,6 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Buying vs Renting in Cyprus: 2026 Guide](/guides/buying-vs-renting-cyprus/) | Money & paperwork | Home & bills, Moving to Cyprus |  | A money decision about the home; Property area comes in Phase 4. |
 | [Cyprus Citizenship by Naturalisation 2026](/guides/citizenship-naturalization/) | Money & paperwork | Moving to Cyprus |  | Applied for after years of residence, so it is resident paperwork. |
 | [Cyprus Ltd vs Sole Trader vs Partnership](/guides/company-types-comparison/) | Money & paperwork | Moving to Cyprus |  | Work and business admin sits in Money & paperwork (there is no Work topic). |
-| [Cyprus Corporate Bank Account: Foreign Director](/guides/corporate-bank-account-guide/) | Money & paperwork |  |  |  |
 | [Cost of Living in Cyprus 2026: City Budgets](/guides/cost-of-living/) | Money & paperwork | Moving to Cyprus |  | Monthly household budgets are useful to residents; also listed for movers. |
 | [Cryptocurrency Tax Treatment in Cyprus (2026)](/guides/crypto-tax-cyprus/) | Money & paperwork |  |  |  |
 | [Cyprus Mortgages for Foreigners: 2026 Guide](/guides/cyprus-mortgage-foreigners/) | Money & paperwork | Moving to Cyprus |  | Mortgage is a money question; Property area comes in Phase 4. |

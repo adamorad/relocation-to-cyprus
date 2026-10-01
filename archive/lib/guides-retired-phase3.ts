@@ -177,4 +177,37 @@ export const RETIRED_GUIDES = [
 			},
 		],
 	},
+	// corporate-bank-account-guide -> /guides/banking-in-cyprus/
+	{
+		slug: "corporate-bank-account-guide",
+		datePublished: "2026-05-29",
+		dateModified: "2026-07-05",
+		category: "business",
+		title: "Cyprus Corporate Bank Account: Foreign Director",
+		description:
+			"Which banks take foreign-director applications, what documents the KYC process actually requires, realistic timelines post-2022, and when an EMI is the right bridge or alternative.",
+		sections: [
+			{
+				heading: "The reality of corporate banking in Cyprus post-2022",
+				body: "Opening a corporate bank account in Cyprus has become materially harder since 2021–2022. The combined effect of the Central Bank of Cyprus's de-risking directives following the 2022 sanctions environment, the aftermath of the FinCEN files scrutiny, and Hellenic Bank's aggressive clean-up of its corporate book has left the Cypriot corporate banking sector with a smaller but more cautious set of providers. For a company with a Cypriot director physically resident in Cyprus, a clear business model, and locally-sourced income, account opening is still achievable in 4–8 weeks. For a company with a foreign-only director, offshore-facing income, or complex ownership structures, expect resistance, longer timelines, and possible outright decline from the main banks. The realistic path starts with understanding that banks are making commercial decisions based on their compliance cost and risk appetite — there is no regulatory entitlement to a bank account, and the banks know it.",
+			},
+			{
+				heading: "Which banks accept foreign-director applications",
+				body: "Bank of Cyprus remains the largest retail and corporate bank and accepts foreign-director applications, but the process is the most document-intensive of the three main options. Hellenic Bank accepts corporate accounts but has significantly tightened its criteria post-2022; the Limassol Makarios Avenue branch has the most experienced team for international corporate applications. AstroBank has historically been the most accommodating for companies with non-EU ownership, MENA or CIS-connected structures, or non-standard source-of-funds profiles — it has a smaller branch network but meaningfully higher acceptance rates for profiles that the larger banks decline. The Alpha Bank Cyprus corporate team (part of Greece's Alpha Bank) is a less-frequently-mentioned option that handles regional Eastern European and Israeli-connected corporate structures with more flexibility than Bank of Cyprus's standard compliance process. Cooperative banks and smaller regional institutions are generally not equipped for foreign-director corporate applications and are not worth pursuing in parallel.",
+			},
+			{
+				heading: "Required documents — what the KYC process actually needs",
+				body: "All three banks will require, as a minimum: certified copies of passports for all directors and beneficial owners (UBOs), a copy of the Certificate of Incorporation, Certificate of Directors and Secretary, and Certificate of Shareholders (all issued by the Cyprus Registrar of Companies, and must be recent — typically within the last three months), the company's Memorandum and Articles of Association (certified), a corporate bank account application form specific to each bank, a source of funds declaration for the company explaining where the initial capital came from and where ongoing revenues will come from, a business plan or activity description (a two-page document covering what the company does, who its customers are, and the expected transaction volumes), bank statements from any existing company accounts (typically 6–12 months) to evidence trading history, and professional reference letters (optional but helpful). For beneficial owners who are non-EU nationals from higher-risk jurisdictions under EU AML classifications, the bank will additionally request enhanced due diligence documentation: evidence of the person's tax status in their home country, previous corporate history, and sometimes source-of-wealth evidence at a personal level.",
+			},
+			{
+				heading: "Typical timeline and what slows it down",
+				body: "From submitting a complete initial document pack to having a functioning account with online banking access, the realistic timeline at all three major banks is 4–8 weeks. The most common causes of delays: incomplete initial documents (a missing certificate, an expired document, or a certification that the bank's compliance team deems insufficient) — this resets the clock by 2–3 weeks each time it happens; compliance queries that require additional information beyond the initial pack (common for companies with multi-jurisdiction structures or historical companies with ownership changes); and internal credit committee reviews for companies planning high transaction volumes or complex currency arrangements. Submitting a complete, pre-organised document bundle — ideally with a covering letter summarising the business, ownership structure, and expected account usage — cuts the average timeline meaningfully. Some business introducers and law firms in Limassol offer bank-introduction services (€500–€1,500) that pre-screen applications and handle the initial bank liaison; for complex profiles, this is often worth the cost.",
+			},
+			{
+				heading:
+					"EMI alternatives: Revolut Business, Wise Business, and when they make sense",
+				body: "Electronic Money Institutions (EMIs) are not banks, but for many corporate use cases they function as a practical alternative or bridge. Revolut Business (Lithuania-licensed) and Wise Business (Belgium-licensed) both open accounts for Cyprus companies with foreign directors in 1–5 business days with entirely online processes; the KYC is stricter than the consumer versions but far lighter than a traditional bank. Both provide IBAN accounts, SEPA and SWIFT transfers, multi-currency wallets, debit cards, and API integrations. Revolut Business's fees are subscription-based (€0–€100/month depending on plan and features); Wise Business charges per-transfer with no subscription. Limitations: neither provides a CY-prefix IBAN, which means some Cypriot counterparties (utility providers, landlords, certain government payment systems) will not accept them for direct debits or payments. Neither is a regulated bank under the Cyprus Banking Law, meaning they cannot provide loans, guarantees, or letters of credit. The practical recommendation for most new Cyprus companies: open a Revolut Business or Wise Business account immediately for operational spending and incoming payments, and pursue a traditional bank account in parallel. Use the EMI as your working account for months 1–6 while the bank account processes; do not rely on it indefinitely, as both platforms have been known to freeze accounts of companies whose activity pattern changes unexpectedly.",
+			},
+		],
+	},
 ];

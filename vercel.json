@@ -125,6 +125,16 @@
       "source": "/guides/environmental-impact-guide",
       "destination": "/guides/waste-recycling-guide/",
       "permanent": true
+    },
+    {
+      "source": "/guides/corporate-bank-account-guide/",
+      "destination": "/guides/banking-in-cyprus/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/corporate-bank-account-guide",
+      "destination": "/guides/banking-in-cyprus/",
+      "permanent": true
     }
   ]
 }
