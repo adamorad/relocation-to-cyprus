@@ -67,7 +67,7 @@ export function EmailCapture({
 				data-pagefind-ignore
 				className={`text-sm font-semibold py-2 ${compact || onDark ? "text-sky-strong" : "text-primary"}`}
 			>
-				✓ You're on the list — checklist coming your way.
+				✓ You're on the list, checklist coming your way.
 			</p>
 		);
 	}
@@ -105,7 +105,7 @@ export function EmailCapture({
 				{headline}
 			</p>
 			<p className={`text-xs mb-3 ${onDark ? "text-white/70" : "text-muted"}`}>
-				Free Cyprus Relocation Checklist — visas, taxes, banking, and more.
+				Free Cyprus Relocation Checklist: visas, taxes, banking, and more.
 			</p>
 			<div className="flex flex-col sm:flex-row gap-2">
 				<input
@@ -114,21 +114,21 @@ export function EmailCapture({
 					onChange={(e) => setEmail(e.target.value)}
 					placeholder="your@email.com"
 					aria-label="Email address"
-					className={`flex-1 text-sm px-4 py-2.5 rounded-lg focus:outline-none focus:ring-2 ${
+					className={`flex-1 min-h-11 text-base px-4 rounded-field focus:outline-none focus:ring-2 ${
 						onDark
 							? "bg-white/10 border border-white/30 text-white placeholder-white/60 focus:ring-white"
-							: "border border-line text-ink placeholder-slate-500 focus:ring-focus focus:border-focus"
+							: "border border-line bg-white text-ink placeholder-slate-500 focus:ring-focus focus:border-focus"
 					}`}
 				/>
 				<button
 					type="submit"
-					className={`text-sm px-5 py-2.5 rounded-lg font-semibold transition-colors whitespace-nowrap ${
+					className={`min-h-11 text-sm px-5 rounded-xl font-semibold transition-colors whitespace-nowrap ${
 						onDark
 							? "bg-white text-ink hover:bg-sky-strong"
 							: "bg-primary text-white hover:bg-primary-hover"
 					}`}
 				>
-					Get the checklist →
+					Get the checklist
 				</button>
 			</div>
 			{status === "error" && (
