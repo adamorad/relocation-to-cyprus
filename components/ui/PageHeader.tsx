@@ -17,6 +17,8 @@ export type PageHeaderProps = {
 	breadcrumbJsonLd?: boolean;
 	/** Render the title as a div instead of an H1 (showcase previews only). */
 	titleAs?: "h1" | "div";
+	/** Wrap in Container (default). Templates with their own grid pass false. */
+	contained?: boolean;
 };
 
 /** Breadcrumb, eyebrow, H1, intro and actions with the same top spacing everywhere. */
@@ -31,8 +33,10 @@ export function PageHeader({
 	width = "wide",
 	breadcrumbJsonLd = true,
 	titleAs: TitleTag = "h1",
+	contained = true,
 }: PageHeaderProps) {
 	const band = variant === "band";
+	const Wrap = contained ? Container : Bare;
 	return (
 		<header
 			className={
@@ -41,7 +45,7 @@ export function PageHeader({
 					: "pt-6 md:pt-8"
 			}
 		>
-			<Container width={width}>
+			<Wrap width={width}>
 				<Breadcrumbs items={breadcrumbs} jsonLd={breadcrumbJsonLd} />
 				<div className="mt-6 max-w-3xl">
 					{eyebrow ? (
@@ -62,7 +66,11 @@ export function PageHeader({
 						<div className="mt-5 flex flex-wrap gap-3">{actions}</div>
 					) : null}
 				</div>
-			</Container>
+			</Wrap>
 		</header>
 	);
+}
+
+function Bare({ children }: { width?: ContainerWidth; children: ReactNode }) {
+	return <>{children}</>;
 }

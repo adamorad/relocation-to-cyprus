@@ -138,12 +138,13 @@ export function Card({
 			break;
 		default:
 			layout = "flex flex-col p-5";
+			// Text cards are used for directory entries: location line under the title.
 			inner = (
 				<>
 					{eyebrowEl}
 					{heading}
+					{meta ? <div className="mt-1 text-sm text-muted">{meta}</div> : null}
 					{body}
-					{metaEl}
 				</>
 			);
 	}
@@ -162,8 +163,8 @@ export function Card({
 		<article className={`${BASE} ${layout} h-full w-full ${className}`}>
 			{inner}
 			{footer ? (
-				<div className="mt-auto w-full border-t border-line pt-3 text-sm">
-					{footer}
+				<div className="mt-auto w-full pt-4">
+					<div className="border-t border-line pt-2 text-sm">{footer}</div>
 				</div>
 			) : null}
 		</article>
