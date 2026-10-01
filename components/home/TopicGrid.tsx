@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Icon } from "@/components/icons/Icon";
 import { HOME_TOPICS, HOME_TOPICS_HEADING } from "@/lib/home-content";
+import { topicBySlug } from "@/lib/topics";
 
 export function TopicGrid() {
 	return (
@@ -15,24 +16,40 @@ export function TopicGrid() {
 				{HOME_TOPICS_HEADING}
 			</h2>
 			<ul className="grid grid-cols-2 gap-3 max-[359px]:grid-cols-1 md:grid-cols-4">
-				{HOME_TOPICS.map((t) => (
-					<li key={t.id} className="flex">
-						<Link
-							href={t.href}
-							className="flex w-full flex-col items-center rounded-card border border-line bg-white px-3 py-5 text-center text-ink shadow-rc transition-colors hover:border-primary"
-						>
-							<span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-strong text-primary">
-								<Icon name={t.icon} size={30} />
-							</span>
-							<span className="mt-3 text-base font-bold leading-snug">
-								{t.title}
-							</span>
-							<span className="mt-1 text-base leading-snug text-muted">
-								{t.description}
-							</span>
-						</Link>
-					</li>
-				))}
+				{HOME_TOPICS.map((t) => {
+					const img = topicBySlug(t.id)?.image;
+					return (
+						<li key={t.id} className="flex">
+							<Link
+								href={t.href}
+								className="flex w-full flex-col items-center rounded-card border border-line bg-white px-3 py-5 text-center text-ink shadow-rc transition-colors hover:border-primary"
+							>
+								{img ? (
+									// biome-ignore lint/performance/noImgElement: static export, pre-sized WebP
+									<img
+										src={img.srcSmall}
+										alt=""
+										width={img.width / 2}
+										height={Math.round(img.height / 2)}
+										loading="lazy"
+										decoding="async"
+										className="h-24 w-auto max-w-full object-contain md:h-28"
+									/>
+								) : (
+									<span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-strong text-primary">
+										<Icon name={t.icon} size={30} />
+									</span>
+								)}
+								<span className="mt-3 text-base font-bold leading-snug">
+									{t.title}
+								</span>
+								<span className="mt-1 text-base leading-snug text-muted">
+									{t.description}
+								</span>
+							</Link>
+						</li>
+					);
+				})}
 			</ul>
 		</section>
 	);

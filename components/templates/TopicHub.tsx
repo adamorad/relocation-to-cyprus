@@ -47,6 +47,7 @@ export function TopicHub({
 	return (
 		<HubTemplate
 			pagefindType="topic"
+			headerImage={topic.image}
 			header={{
 				breadcrumbs: [{ label: "Home", href: "/" }, { label: topic.name }],
 				eyebrow: "Topic",

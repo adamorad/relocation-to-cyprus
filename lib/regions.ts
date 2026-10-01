@@ -6,6 +6,8 @@
  * facts here without a source (see the fact-check step in the rebuild plan).
  */
 
+import type { SiteImage } from "./topics";
+
 /** One line of the sample monthly budget table. */
 export type CostRow = { item: string; amount: string };
 
@@ -14,6 +16,8 @@ export type RegionInfo = {
 	name: string;
 	/** Hex string used in the map texture + UI accents. */
 	color: string;
+	/** Painted seafront scene: city page hero, city cards and OG image. */
+	image?: SiteImage;
 	/** Short line for the /regions/ hub cards and the homepage hover preview. */
 	oneLiner: string;
 	/** One sentence for the meta description and JSON-LD. */
@@ -54,6 +58,13 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 		slug: "paphos",
 		name: "Paphos",
 		color: "#E2F1AF",
+		image: {
+			src: "/images/cities/paphos-1600.webp",
+			srcSmall: "/images/cities/paphos-800.webp",
+			width: 1600,
+			height: 901,
+			alt: "Painting of Paphos harbour with the medieval castle, moored fishing boats and clear turquoise water",
+		},
 		oneLiner:
 			"UNESCO-listed harbour town and the western coast, popular with retirees and lifestyle relocators.",
 		summary:
@@ -138,6 +149,13 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 		slug: "limassol",
 		name: "Limassol",
 		color: "#F49D6E",
+		image: {
+			src: "/images/cities/limassol-1600.webp",
+			srcSmall: "/images/cities/limassol-800.webp",
+			width: 1600,
+			height: 901,
+			alt: "Painting of the Limassol seafront promenade with palm trees, the marina and high-rise towers below the mountains",
+		},
 		oneLiner:
 			"The business capital and biggest new-build market: high-rise coastal living and a young international workforce.",
 		summary:
@@ -225,6 +243,13 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 		slug: "larnaca",
 		name: "Larnaca",
 		color: "#F5D6BA",
+		image: {
+			src: "/images/cities/larnaca-1600.webp",
+			srcSmall: "/images/cities/larnaca-800.webp",
+			width: 1600,
+			height: 901,
+			alt: "Painting of the palm-lined Larnaca promenade with seafront cafes beside a sandy beach",
+		},
 		oneLiner:
 			"The country's main airport hub: relaxed coastal living at noticeably lower prices than Limassol.",
 		summary:
@@ -312,6 +337,13 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 		slug: "ayia-napa",
 		name: "Ayia Napa",
 		color: "#E4B7E5",
+		image: {
+			src: "/images/cities/ayia-napa-1600.webp",
+			srcSmall: "/images/cities/ayia-napa-800.webp",
+			width: 1600,
+			height: 901,
+			alt: "Painting of Ayia Napa harbour with blue and white fishing boats, nets on the quay and whitewashed buildings",
+		},
 		oneLiner:
 			"The far south-east: beach resorts, family-friendly coves and a quieter year-round expat scene.",
 		summary:

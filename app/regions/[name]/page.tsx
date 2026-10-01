@@ -45,6 +45,14 @@ export async function generateMetadata({
 	const { name } = await params;
 	const r = regionBySlug(name);
 	if (!r) return {};
+	const ogImage = r.image
+		? {
+				url: `${SITE_URL}${r.image.src}`,
+				width: r.image.width,
+				height: r.image.height,
+				alt: r.image.alt ?? `Living in ${r.name}`,
+			}
+		: { url: "https://realcy.app/og-default.webp", width: 1200, height: 630 };
 	return {
 		title: pageTitle(r),
 		description: r.summary,
@@ -54,9 +62,13 @@ export async function generateMetadata({
 			description: r.summary,
 			url: `${SITE_URL}/regions/${r.slug}/`,
 			type: "website",
-			images: [
-				{ url: "https://realcy.app/og-default.webp", width: 1200, height: 630 },
-			],
+			images: [ogImage],
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: `Living in ${r.name}, Cyprus`,
+			description: r.summary,
+			images: [ogImage.url],
 		},
 	};
 }
@@ -90,6 +102,7 @@ export default async function RegionPage({
 		author: { "@type": "Organization", name: "RealCy.app" },
 		publisher: { "@type": "Organization", name: "RealCy.app" },
 		datePublished: "2026-05-22",
+		...(r.image && { image: `${SITE_URL}${r.image.src}` }),
 		mainEntityOfPage: {
 			"@type": "WebPage",
 			"@id": `${SITE_URL}/regions/${r.slug}/`,
@@ -126,6 +139,7 @@ export default async function RegionPage({
 	return (
 		<CityTemplate
 			pagefindType="city"
+			hero={r.image}
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },

@@ -13,6 +13,7 @@ import { GUIDES_BATCH2 } from "./guides-batch2";
 import { GUIDES_BATCH3 } from "./guides-batch3";
 import { GUIDES_BATCH4 } from "./guides-batch4";
 import { GUIDES_BATCH5 } from "./guides-batch5";
+import type { SiteImage } from "./topics";
 
 export type GuideCategory =
 	| "immigration"
@@ -54,6 +55,8 @@ export type GuideInfo = {
 	title: string;
 	category: GuideCategory;
 	heroImage?: string;
+	/** Painted 16:9 hero (800w and 1600w); also the page's Open Graph image. */
+	image?: SiteImage;
 	/** URL: /guides/{slug}. */
 	description: string;
 	sections: Array<{ heading: string; body: string }>;
@@ -447,7 +450,8 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 				body: "The DNV suits non-EU remote workers who want a first residence permit and do not intend to work for a Cyprus employer. It is the wrong tool in several common situations.\n\nIf you hold an EU passport, you register as an EU citizen instead. If a Cyprus company is offering you a job, the route is a work permit, covered in the work-permits-non-eu guide. If you are retired or living on passive income, compare Category F in the residency-and-visas guide. If your goal is a permanent status, the DNV is a temporary permit with a fixed maximum term, so compare the permanent-residency-5year and residency-and-visas guides before you commit. If you plan to run your own Cyprus company, see company-formation-visa.\n\nThe visa-pathway-finder at /tools/visa-pathway-finder asks two questions and points you to the route that fits your passport and situation.",
 			},
 			{
-				heading: "Check these details against official sources before you apply",
+				heading:
+					"Check these details against official sources before you apply",
 				body: "Digital nomad rules have been adjusted since the scheme launched, and secondary sources, including this page, can lag behind the Civil Registry and Migration Department. Before you pay for translations or insurance, confirm the following directly on the official CRMD pages or with the department: the current minimum income and whether it is measured net or gross, the uplift for a spouse and for children, the minimum health insurance cover, the current application fee, whether any cap on the number of permits applies, the current processing target, and whether you may apply from inside Cyprus on your current entry status.\n\nIf a figure you find elsewhere differs from the figure on this page, trust the official source.",
 			},
 		],
@@ -1224,6 +1228,13 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	},
 	{
 		slug: "pharmacies-medication",
+		image: {
+			src: "/images/guides/pharmacies-medication-1600.webp",
+			srcSmall: "/images/guides/pharmacies-medication-800.webp",
+			width: 1600,
+			height: 901,
+			alt: "Painting of a pharmacy with a green cross sign and open door on a sunny whitewashed street lined with potted olive trees",
+		},
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "healthcare",
@@ -1925,6 +1936,13 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	},
 	{
 		slug: "utilities-setup-guide",
+		image: {
+			src: "/images/guides/utilities-setup-guide-1600.webp",
+			srcSmall: "/images/guides/utilities-setup-guide-800.webp",
+			width: 1600,
+			height: 901,
+			alt: "Painting of a desk by a window with a Wi-Fi router, a carafe of water, a lamp and paperwork, looking out over a coastal town",
+		},
 		datePublished: "2026-05-29",
 		dateModified: "2026-06-18",
 		category: "lifestyle",

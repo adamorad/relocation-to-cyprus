@@ -34,9 +34,14 @@ export default function RegionsIndexPage() {
 				{REGIONS.map((region) => (
 					<CardGridItem key={region.slug}>
 						<Card
-							variant="icon"
+							variant="photo"
 							headingLevel="h2"
 							icon="pin"
+							image={
+								region.image
+									? { src: region.image.srcSmall, alt: "" }
+									: undefined
+							}
 							href={`/regions/${region.slug}/`}
 							title={region.name}
 							text={region.oneLiner}
