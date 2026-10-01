@@ -5,6 +5,7 @@ import { ToolPanel } from "@/components/templates/ToolTemplate";
 import { Callout } from "@/components/ui/Callout";
 import { ChipGroup } from "@/components/ui/Chip";
 import { DataTable, StatCard } from "@/components/ui/DataTable";
+import { IP_BOX_EFFECTIVE_RATE, pct, SDC_DIVIDEND_RATE } from "@/lib/facts/tax";
 
 // ── types ────────────────────────────────────────────────────────────────────
 
@@ -451,8 +452,14 @@ export default function LtdSetupCalculatorClient() {
 				</h3>
 				<ul className="list-disc space-y-2 pl-5 text-sm text-ink">
 					<li>15% corporate tax: competitive within the EU</li>
-					<li>0% dividend tax for non-dom shareholders (17% SDC exemption)</li>
-					<li>IP Box: 2.5% effective rate on qualifying IP income</li>
+					<li>
+						0% SDC on dividends for non-dom shareholders (domiciled residents
+						pay {pct(SDC_DIVIDEND_RATE)})
+					</li>
+					<li>
+						IP Box: {pct(IP_BOX_EFFECTIVE_RATE)} effective rate on qualifying IP
+						profit
+					</li>
 					<li>0% capital gains tax (except Cyprus immovable property)</li>
 					<li>EU-compliant with a full double-tax treaty network</li>
 				</ul>

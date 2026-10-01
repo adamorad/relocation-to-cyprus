@@ -1,3 +1,9 @@
+import {
+	eur,
+	FIRST_EMPLOYMENT_50PCT_THRESHOLD,
+	pct,
+	SDC_DIVIDEND_RATE,
+} from "./facts/tax";
 import type { GuideInfo } from "./guides";
 
 /**
@@ -61,7 +67,27 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 	{
 		slug: "cyprus-tax-return-filing",
 		datePublished: "2026-07-14",
-		dateModified: "2026-07-14",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Tax Department: Individual income tax return",
+				url: "https://www.gov.cy/mof-tax/en/documents/forologiki-dilosi-eisodimatos-atomoy/",
+			},
+			{
+				label: "Tax Department: Form T.D.59 2026 notes (PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/02/IR59_2026_English__.pdf",
+			},
+			{
+				label:
+					"Tax Department: Special Defence Contribution reform 2026 (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/03/EEA-ΦΚΚ-ΜΕΤΑΡΡΥΘΜΙΣΗ-06032026.pdf",
+			},
+			{
+				label: "Tax Department: Income Tax Law amendments 2026 (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/03/2026-ΦορΜεταρρύθμιση-Φόρος-Εισοδήματος.pdf",
+			},
+		],
 		category: "tax",
 		title: "Cyprus Tax Return 2026: Filing Your TD1 Form",
 		description:
@@ -69,7 +95,7 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 		sections: [
 			{
 				heading: "Who Must File — and the Deadline for Tax Year 2025",
-				body: "For the 2025 tax year, you are required to submit a TD1 personal income tax return if your gross income from all sources exceeded €19,500. This covers employment income, self-employment profits, rental income, foreign pensions, and investment income. Company directors must file regardless of their income level. Employees whose only income comes from a single Cyprus employer operating payroll — and whose total gross income is below the threshold — are generally not required to file, though specific circumstances can change this. Seek advice if you are at all unsure.\n\nThe statutory deadline for the 2025 TD1 is 31 July 2026. A decree published in mid-2026 extended this to 31 October 2026 for individuals who are neither self-employed nor required to prepare audited or reviewed financial statements. Crucially, the extension covers both the submission of the return and the payment of any tax due — no penalties or interest apply if you file and settle in full by the extended date. Always verify the current deadline at taxisnet.mof.gov.cy, as the Tax Department may issue further updates.\n\nFrom the 2026 tax year onward, Cyprus's tax reform introduces a significant change: all Cyprus tax residents aged 25 to 70 will be required to file an annual return regardless of income level. That return will be submitted through the new Tax For All platform in 2027.\n\nTrack your upcoming filing obligations with the tax-filing-calendar tool at /tools/tax-filing-calendar.",
+				body: "For the 2025 tax year, you are required to submit a TD1 personal income tax return if your gross income from all sources exceeded €19,500. This covers employment income, self-employment profits, rental income, foreign pensions, and investment income. Employees whose only income comes from a single Cyprus employer operating payroll, and whose total gross income is below the threshold, are generally not required to file, though specific circumstances can change this. Seek advice if you are at all unsure.\n\nThe statutory deadline for the 2025 TD1 is 31 July 2026. A decree published in mid-2026 extended this to 31 October 2026 for the individual return (TD1 without accounts). Crucially, the extension covers both the submission of the return and the payment of any tax due: no penalties or interest apply if you file and settle in full by the extended date. Always verify the current deadline at taxisnet.mof.gov.cy, as the Tax Department may issue further updates.\n\nFrom tax year 2026, every Cyprus tax resident with income must file, and so must every resident aged 25 to 70 even with no income. Returns for 2026 onwards are filed through Tax For All.\n\nTrack your upcoming filing obligations with the tax-filing-calendar tool at /tools/tax-filing-calendar.",
 			},
 			{
 				heading: "TAXISnet Registration and the Tax For All Transition",
@@ -81,7 +107,7 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 			},
 			{
 				heading: "Non-Dom Status and the 50% Employment Exemption",
-				body: "Non-domicile (non-dom) status is the most widely used expat tax advantage in Cyprus. Broadly, a Cyprus tax resident who was not born domiciled in Cyprus and who has not established a permanent home here qualifies. Non-dom status exempts you from Special Defence Contribution (SDC) on worldwide dividends and passive interest income for up to 17 years. For the 2025 tax year, SDC on dividends stood at 17 per cent for domiciled residents, making the non-dom exemption a substantial saving for those holding investment income. For full eligibility details, see the non-dom section of /guides/taxes-for-expats/.\n\nTo claim the SDC exemption on your TD1, you must have previously submitted form TD38 to the Tax Department, typically at the point you first receive income that would otherwise attract SDC. Once on record, the exemption carries into subsequent TD1 returns automatically. If you have not yet submitted your TD38, do so before or alongside your current TD1. Non-dom status does not exempt employment, rental, or self-employment income from standard income tax.\n\nThe 50 per cent employment income exemption is entirely separate from non-dom status and cannot be combined with it. To qualify, broadly you must not have been a Cyprus tax resident for a defined run of years immediately before your first Cyprus employment, your first employment in Cyprus must have begun on or after 1 January 2022, and your annual remuneration must exceed the qualifying threshold (in the region of €55,000). The exemption runs for up to 17 tax years and is claimed in the employment income section of the TD1. Retain your employment contract and evidence of the look-back period, as these may be requested during an audit. Verify your residency position using the tax-residency-tracker tool at /tools/tax-residency-tracker.",
+				body: `Non-domicile (non-dom) status is the most widely used expat tax advantage in Cyprus. Broadly, a Cyprus tax resident who was not born domiciled in Cyprus and who has not established a permanent home here qualifies. Non-dom status exempts you from Special Defence Contribution (SDC) on worldwide dividends and passive interest income for up to 17 years. For the 2025 tax year, SDC on dividends stood at 17 per cent for domiciled residents, making the non-dom exemption a substantial saving for those holding investment income. From 2026 the rate is ${pct(SDC_DIVIDEND_RATE)} on dividends paid out of 2026 and later profits. For full eligibility details, see the non-dom section of /guides/taxes-for-expats/.\n\nTo claim the SDC exemption on your TD1, you must have previously submitted form TD38 to the Tax Department, typically at the point you first receive income that would otherwise attract SDC. Once on record, the exemption carries into subsequent TD1 returns automatically. If you have not yet submitted your TD38, do so before or alongside your current TD1. Non-dom status does not exempt employment, rental, or self-employment income from standard income tax.\n\nThe 50 per cent employment income exemption is a separate income tax relief from non-dom status. To qualify, broadly you must not have been a Cyprus tax resident for a defined run of years immediately before your first Cyprus employment, your first employment in Cyprus must have begun on or after 1 January 2022, and your annual remuneration must exceed the qualifying threshold (more than ${eur(FIRST_EMPLOYMENT_50PCT_THRESHOLD)} a year). The exemption runs for up to 17 tax years and is claimed in the employment income section of the TD1. Retain your employment contract and evidence of the look-back period, as these may be requested during an audit. Verify your residency position using the tax-residency-tracker tool at /tools/tax-residency-tracker.`,
 			},
 			{
 				heading: "Provisional Tax: Advance Payments",
@@ -95,11 +121,11 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 		faqs: [
 			{
 				q: "Do I need to file a TD1 if my income is below €19,500?",
-				a: "For the 2025 tax year, the general threshold for mandatory filing is gross income above €19,500. However, company directors, individuals with rental property, and those with certain types of foreign-source income may be required to file regardless of total income. From the 2026 tax year, all Cyprus tax residents aged 25 to 70 must file regardless of income level. If in doubt, seek advice — filing an unnecessary return costs little, while a missed filing can trigger penalties.",
+				a: "For the 2025 tax year, the general threshold for mandatory filing is gross income above €19,500. However, individuals with rental property and those with certain types of foreign-source income may be required to file regardless of total income. From the 2026 tax year, every Cyprus tax resident with income must file, and so must every resident aged 25 to 70 even with no income. If in doubt, seek advice. Filing an unnecessary return costs little, while a missed filing can trigger penalties.",
 			},
 			{
 				q: "Is the filing deadline 31 July 2026 or 31 October 2026?",
-				a: "The statutory deadline is 31 July 2026, but a decree published in mid-2026 extended it to 31 October 2026 for individuals not required to prepare audited accounts. Both the return submission and any associated tax payment are covered by the extension. Always verify the current deadline at taxisnet.mof.gov.cy, as the Tax Department may issue further updates.",
+				a: "The statutory deadline is 31 July 2026, but a decree published in mid-2026 extended it to 31 October 2026 for the individual return (TD1 without accounts). Both the return submission and any associated tax payment are covered by the extension. Always verify the current deadline at taxisnet.mof.gov.cy, as the Tax Department may issue further updates.",
 			},
 			{
 				q: "Do I file the 2025 return on TAXISnet or Tax For All (TFA)?",

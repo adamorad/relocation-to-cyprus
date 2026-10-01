@@ -6,17 +6,24 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Callout } from "@/components/ui/Callout";
 import { ChipGroup } from "@/components/ui/Chip";
 import { DataTable, StatCard } from "@/components/ui/DataTable";
+import {
+	GESY_SELF_EMPLOYED_RATE,
+	pct,
+	SI_EMPLOYEE_RATE,
+	SI_EMPLOYER_RATE,
+	SI_MAX_INSURABLE_ANNUAL,
+} from "@/lib/facts/tax";
 
 type EmploymentType = "employed" | "self-employed";
 
-// 2025 Cyprus Social Insurance rates
+// 2026 Cyprus Social Insurance rates (lib/facts/tax.ts)
 const EMPLOYED_RATES = {
 	employee: {
-		socialInsurance: 0.083,
+		socialInsurance: SI_EMPLOYEE_RATE,
 		gesy: 0.0265,
 	},
 	employer: {
-		socialInsurance: 0.083,
+		socialInsurance: SI_EMPLOYER_RATE,
 		redundancyFund: 0.012,
 		holidayFund: 0.08,
 		industrialTraining: 0.005,
@@ -25,10 +32,10 @@ const EMPLOYED_RATES = {
 	},
 };
 
-// Self-employed: 16.6% SI on insurable earnings, capped at €54,864/yr (2025 rate)
+// Self-employed: 16.6% SI on insurable earnings, capped at €68,904/yr (2026)
 const SELF_EMPLOYED_SI_RATE = 0.166;
-const SELF_EMPLOYED_GESY_RATE = 0.0265;
-const SELF_EMPLOYED_MAX_ANNUAL = 54864;
+const SELF_EMPLOYED_GESY_RATE = GESY_SELF_EMPLOYED_RATE;
+const SELF_EMPLOYED_MAX_ANNUAL = SI_MAX_INSURABLE_ANNUAL;
 
 function formatEur(value: number): string {
 	return new Intl.NumberFormat("en-IE", {
@@ -128,7 +135,7 @@ export default function SocialInsuranceCalculatorPage({
 		employeeRows = [
 			{
 				label: "Social Insurance (SI)",
-				rate: "8.3%",
+				rate: pct(SI_EMPLOYEE_RATE),
 				monthly: eSI,
 				annual: eSI * 12,
 				side: "employee",
@@ -155,7 +162,7 @@ export default function SocialInsuranceCalculatorPage({
 			employerRows = [
 				{
 					label: "Social Insurance (SI)",
-					rate: "8.3%",
+					rate: pct(SI_EMPLOYER_RATE),
 					monthly: erSI,
 					annual: erSI * 12,
 					side: "employer",
@@ -215,7 +222,7 @@ export default function SocialInsuranceCalculatorPage({
 			},
 			{
 				label: "GeSY (General Healthcare)",
-				rate: "2.65%",
+				rate: pct(SELF_EMPLOYED_GESY_RATE),
 				monthly: gesyMonthly,
 				annual: gesyMonthly * 12,
 				side: "self",

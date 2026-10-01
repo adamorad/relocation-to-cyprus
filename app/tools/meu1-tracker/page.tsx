@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
+import { SourcesNote } from "@/components/ui/SourcesNote";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import Meu1TrackerClient from "./client";
@@ -27,15 +28,32 @@ export default function Meu1TrackerPage() {
 		<ToolTemplate
 			pagefindType="tool"
 			related={
-				<MoreOnTopic
-					type="tool"
-					slug="meu1-tracker"
-					exclude={[
-						"/guides/residency-and-visas/",
-						"/sections/immigration-lawyers/",
-					]}
-					cols={2}
-				/>
+				<>
+					<SourcesNote
+						className="mb-12"
+						lastChecked="2026-10-02"
+						sources={[
+							{
+								label:
+									"Migration Department: Registration of EU citizens (MEU1)",
+								url: "https://www.gov.cy/mip-md/en/documents/e-u-e-e-a-citizens-and-family-members-2/e-u-e-e-a-citizens-family-member/registration-of-e-u-citizens-and-members-of-their-families-who-are-also-e-u-e-e-a-citizens-meu1/",
+							},
+							{
+								label: "Migration Department (gov.cy)",
+								url: "https://www.gov.cy/mip-md/en/",
+							},
+						]}
+					/>
+					<MoreOnTopic
+						type="tool"
+						slug="meu1-tracker"
+						exclude={[
+							"/guides/residency-and-visas/",
+							"/sections/immigration-lawyers/",
+						]}
+						cols={2}
+					/>
+				</>
 			}
 			width="reading"
 			header={{

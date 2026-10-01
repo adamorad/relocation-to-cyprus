@@ -8,6 +8,26 @@
  * accountant or lawyer before acting.
  */
 
+import {
+	eur,
+	FIRST_EMPLOYMENT_20PCT_CAP,
+	FIRST_EMPLOYMENT_50PCT_THRESHOLD,
+	FOREIGN_PENSION_THRESHOLD,
+	FOREIGN_PENSION_THRESHOLD_2025,
+	NON_DOM_EXTENSION_FEE,
+	pct,
+	REDUCED_VAT_MAX_VALUE,
+	REDUCED_VAT_VALUE_CAP,
+	SDC_DIVIDEND_RATE,
+	SDC_DIVIDEND_RATE_PRE_2026_PROFITS,
+	SDC_INTEREST_RATE,
+	SI_EMPLOYEE_RATE,
+	SI_EMPLOYER_RATE,
+	SI_MAX_INSURABLE_ANNUAL,
+	SI_SELF_EMPLOYED_RATE,
+	VISITOR_PERMIT_MONTHLY_INCOME,
+	VISITOR_PERMIT_MONTHLY_INCOME_COUPLE,
+} from "./facts/tax";
 import { GUIDES_BATCH1 } from "./guides-batch1";
 import { GUIDES_BATCH2 } from "./guides-batch2";
 import { GUIDES_BATCH3 } from "./guides-batch3";
@@ -49,11 +69,30 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "residency-and-visas",
 		datePublished: "2026-05-22",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Migration Department: Immigration permits for investors",
+				url: "https://www.gov.cy/mip-md/en/documents/companies-investors-permanent-residence-3/immigration-permits-for-investors/",
+			},
+			{
+				label: "Migration Department: Digital nomads and family members",
+				url: "https://www.gov.cy/mip-md/en/documents/digital-nomads-and-family-members/",
+			},
+			{
+				label: "Migration Department: Registration of EU citizens (MEU1)",
+				url: "https://www.gov.cy/mip-md/en/documents/e-u-e-e-a-citizens-and-family-members-2/e-u-e-e-a-citizens-family-member/registration-of-e-u-citizens-and-members-of-their-families-who-are-also-e-u-e-e-a-citizens-meu1/",
+			},
+			{
+				label: "Migration Department: Frequent questions",
+				url: "https://www.gov.cy/mip-md/en/documents/frequent-questions/",
+			},
+		],
 		category: "immigration",
 		title: "Cyprus Residency Visas 2026: All Routes Compared",
 		description:
-			"Compare Cyprus visas: Golden Visa (€300K), Digital Nomad (€3.5K/mo), EU registration, Category F & EU Blue Card. Investor timelines, costs & eligibility.",
+			"Compare Cyprus visas: permanent residence by investment (€300K), Digital Nomad (€3.5K/mo), EU registration, Category F & EU Blue Card. Investor timelines, costs & eligibility.",
 		sections: [
 			{
 				heading: "Why Cyprus has multiple paths",
@@ -61,33 +100,33 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Permanent Residency by Investment (the property route)",
-				body: "The most common path for non-EU buyers is the Permanent Residency by Investment programme — historically called Category F, currently regulated under Regulation 6(2) of the Aliens and Immigration Regulations. The headline requirement is a real-estate purchase of at least €300,000 (excluding VAT) in a newly-built residential property, paid via bank transfer from a Cypriot account. You also need to demonstrate annual income of at least €50,000 from sources outside Cyprus, plus an additional €15,000 for a spouse and €10,000 per dependent child. There is no minimum stay requirement once granted — you only need to visit Cyprus once every two years to keep the permit alive — which is what makes it popular with families who plan to keep one foot somewhere else for tax or schooling reasons. The permit covers spouse and unmarried children up to 25 if financially dependent, and it does not directly lead to citizenship: that's a separate naturalisation track that requires seven years of legal residence with most of the time physically spent in Cyprus.",
+				body: "The most common path for non-EU buyers is the Permanent Residency by Investment programme, an expedited immigration permit under Regulation 6(2) of the Aliens and Immigration Regulations. The headline requirement is at least €300,000 plus VAT for a new home bought from a developer, paid with funds transferred to Cyprus from abroad, from your own (or your spouse's) bank account. You also need to demonstrate annual income of at least €50,000 from sources outside Cyprus, plus an additional €15,000 for a spouse and €10,000 per dependent child. There is no minimum stay requirement once granted (you only need to visit Cyprus once every two years to keep the permit alive), which is what makes it popular with families who plan to keep one foot somewhere else for tax or schooling reasons. The permit covers spouse and unmarried children up to 25 if financially dependent, and it does not directly lead to citizenship: that's a separate naturalisation track that requires seven years of legal residence with most of the time physically spent in Cyprus.",
 			},
 			{
 				heading: "Digital Nomad Visa",
-				body: "Cyprus introduced its Digital Nomad Visa in late 2021 and significantly expanded it in 2024. It targets non-EU nationals who work remotely for foreign employers or as freelancers serving non-Cyprus clients. The minimum income requirement is €3,500 per month net (after tax, social contributions and any other deductions), increased by 20% for a spouse and 15% per dependent child. The visa is issued for one year, renewable for up to three years, and gives you full residency rights including the ability to bring family members. Crucially, after 183 days in Cyprus during a tax year, you become a Cyprus tax resident — which can be either an advantage (Cyprus has favourable tax treatment for foreign-sourced income and a tax-free dividend regime for non-domiciled residents) or a disadvantage (you may have new filing obligations in Cyprus), depending on your home country's tax treaty and your specific situation. The application is processed through the Civil Registry and Migration Department; expect about 5–8 weeks if your documents are clean.",
+				body: "Cyprus introduced its Digital Nomad Visa in late 2021 and raised the cap to 500 permits in 2022. It targets non-EU nationals who work remotely for foreign employers or as freelancers serving non-Cyprus clients. The minimum income requirement is €3,500 per month net (after tax, social contributions and any other deductions), increased by 20% for a spouse and 15% per dependent child. The permit is issued for one year and can be renewed once for up to two more years, and it gives you full residency rights including the ability to bring family members. Crucially, after 183 days in Cyprus during a tax year, you become a Cyprus tax resident, which can be either an advantage (Cyprus has favourable tax treatment for foreign-sourced income and a tax-free dividend regime for non-domiciled residents) or a disadvantage (you may have new filing obligations in Cyprus), depending on your home country's tax treaty and your specific situation. The application is processed by the Migration Department, whose stated examination time is 5 to 7 weeks for a complete application.",
 			},
 			{
 				heading: "EU citizens and family members",
-				body: "If you hold an EU passport, you do not need a visa to live in Cyprus. After 90 days of continuous presence, you must register your residence with the Civil Registry — they issue a Registration Certificate (often called an MEU1 or yellow slip, though the slip itself is now blue). The requirements are minimal: proof of accommodation (a rental contract or property deed), proof of health insurance or registration with the General Healthcare System (GeSY), and either proof of employment or proof of sufficient funds (typically the same €30,000–€40,000 per year as a self-supporting resident). EU registration is permanent — there is no expiry date — and after five years of continuous legal residence you qualify for the Long-term Residence permit, which carries near-identical rights to citizenship.",
+				body: "If you hold an EU passport, you do not need a visa to live in Cyprus. After 90 days of continuous presence, you must register your residence with the Civil Registry, which issues a Registration Certificate (often called an MEU1 or yellow slip, though the slip itself is now blue). The requirements are minimal: proof of accommodation (a rental contract or property deed), proof of health insurance or registration with the General Healthcare System (GeSY), and either proof of employment or self-employment, or proof that you have enough money to support yourself and your family without relying on social assistance, plus comprehensive health cover. No fixed amount is published. EU registration is permanent (there is no expiry date), and after five years of continuous legal residence you can apply for a Permanent Residence certificate (form MEU3). It confirms a permanent right to live in Cyprus but is not citizenship.",
 			},
 			{
 				heading: "Practical advice",
-				body: "Three pieces of advice that come up consistently in expat forums. First, do not rely on a tourist entry to scout property and then formalise the residency later — both the PR and digital nomad visas require you to apply from outside Cyprus or via a specific in-country procedure, and people get bounced back to their home country surprisingly often if they apply wrong. Second, work with a local lawyer for any property-based application — fees of €1,500–€3,000 are normal, the paperwork is genuinely intricate, and a botched application can delay things by a year. Third, keep originals of every document you used in the application. Cyprus immigration is paper-heavy and a request to re-prove your income from three years ago is not unusual at renewal.",
+				body: "Three pieces of advice that come up consistently in expat forums. First, do not rely on a tourist entry to scout property and then formalise the residency later: the two routes work differently: a Digital Nomad application is made at the Migration Department within three months of arriving in Cyprus, while a permanent residence application can be lodged in person or through an authorised representative, and lodging it does not give you a right to stay while it is examined. Second, work with a local lawyer for any property-based application: fees of €1,500–€3,000 are normal, the paperwork is genuinely intricate, and a botched application can delay things by a year. Third, keep originals of every document you used in the application. Cyprus immigration is paper-heavy and a request to re-prove your income from three years ago is not unusual at renewal.",
 			},
 		],
 		faqs: [
 			{
 				q: "Can I get Cyprus residency by buying property?",
-				a: "Yes. The standard route is the Category F permanent residency permit, which requires purchasing property worth at least €300,000 (VAT included) and proving a secured annual income from abroad of at least €30,000. The permit is granted within 2–3 months and grants permanent residency — not citizenship — to the buyer and immediate family.",
+				a: "Yes. Non-EU buyers can apply for a permanent residence (immigration) permit under Regulation 6(2) by buying a new home from a developer for at least €300,000 plus VAT and showing a secured annual income from abroad of at least €50,000 (plus €15,000 for a spouse and €10,000 per dependent child). The Migration Department estimates about two months to examine a complete application. The permit gives residence, not citizenship.",
 			},
 			{
 				q: "How long does the Cyprus Digital Nomad Visa take to process?",
-				a: "The Digital Nomad Visa (MEU1 temporary residency) typically takes 4–8 weeks to process once a complete application is submitted to the Civil Registry and Migration Department. You must apply from within Cyprus on a valid tourist entry, and your income must be at least €3,500/month net from clients outside Cyprus.",
+				a: "The Migration Department states an examination time of 5 to 7 weeks for a Digital Nomad temporary residence permit once a complete application is submitted. You enter Cyprus (on a visa if your nationality needs one) and apply within three months of arrival at the Department's central offices. Your net income must be at least €3,500 a month from an employer or clients outside Cyprus.",
 			},
 			{
 				q: "Do I need to physically live in Cyprus to keep my residency?",
-				a: "For permanent residency under Category F, you must visit Cyprus at least once every two years to avoid the permit being considered abandoned. EU citizens under the MEU1 system must not be absent for more than 12 consecutive months. Digital Nomad Visa holders must maintain active residency during their permit period.",
+				a: "For permanent residence by investment (Regulation 6(2)), you must visit Cyprus at least once every two years to avoid the permit being considered abandoned. EU citizens under the MEU1 system must not be absent for more than 12 consecutive months. Digital Nomad Visa holders must maintain active residency during their permit period.",
 			},
 		],
 	},
@@ -143,7 +182,31 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "taxes-for-expats",
 		datePublished: "2026-05-22",
-		dateModified: "2026-10-01",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label:
+					"Tax Department: Special Defence Contribution reform 2026 (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/03/EEA-ΦΚΚ-ΜΕΤΑΡΡΥΘΜΙΣΗ-06032026.pdf",
+			},
+			{
+				label: "Tax Department: Income Tax Law amendments 2026 (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/03/2026-ΦορΜεταρρύθμιση-Φόρος-Εισοδήματος.pdf",
+			},
+			{
+				label: "Tax Department: Form T.D.59 2026 notes (PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/02/IR59_2026_English__.pdf",
+			},
+			{
+				label: "Tax Department: Guide to the 2025 tax return (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/06/Guide-for-completion-of-tax-return-2025-EL.pdf",
+			},
+			{
+				label: "Tax Department: Tax Reform 2026",
+				url: "https://www.gov.cy/mof-tax/en/documents/forologiki-metarrythmisi-2026/",
+			},
+		],
 		category: "tax",
 		title: "Cyprus Expat Tax Guide 2026: Non-Dom Regime",
 		description:
@@ -155,15 +218,15 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Becoming a Cyprus tax resident",
-				body: "There are two ways to qualify as a Cyprus tax resident. The classic test is the 183-day rule: if you spend more than 183 days in Cyprus during a calendar year, you are tax resident for that year. The second is the 60-day rule introduced in 2017, designed specifically to attract high earners who travel: you can be tax resident with only 60 days in Cyprus provided you (a) do not spend more than 183 days in any other country in the same year, (b) are not tax resident anywhere else, (c) have a permanent residence in Cyprus (rented or owned), and (d) carry on business or employment in Cyprus, including holding an office in a Cyprus-resident company. The 60-day rule is what makes Cyprus genuinely attractive to globally mobile entrepreneurs, but it is also where most tax-residency disputes happen — the Cyprus Tax Department has tightened audit on the 60-day applications, and you need real substance to defend it.",
+				body: "There are two ways to qualify as a Cyprus tax resident. The classic test is the 183-day rule: if you spend more than 183 days in Cyprus during a calendar year, you are tax resident for that year. The second is the 60-day rule introduced in 2017, designed specifically to attract high earners who travel: you can be tax resident with only 60 days in Cyprus provided you (a) do not spend more than 183 days in any other country in the same year, (b) have a permanent residence in Cyprus (rented or owned), and (c) carry on business or employment in Cyprus, including holding an office in a Cyprus-resident company. Until the end of 2025 you also had to show you were not tax resident anywhere else; that condition was removed from 1 January 2026. The 60-day rule is what makes Cyprus genuinely attractive to globally mobile entrepreneurs, but it is also where most tax-residency disputes happen: the Cyprus Tax Department has tightened audit on the 60-day applications, and you need real substance to defend it.",
 			},
 			{
 				heading: "The non-dom regime in detail",
-				body: "Non-dom status is automatic for tax residents who have been domiciled outside Cyprus, which in practice means almost every relocator. Once you are a Cyprus tax resident and a non-dom, the following income types are completely exempt from Cyprus tax: dividends received from anywhere in the world, interest received from anywhere, rental income from properties outside Cyprus (though you still pay Cyprus's GeSY healthcare contribution on it — 2.65%), capital gains on shares and securities, and most types of capital gains on property outside Cyprus. The non-dom regime lasts for 17 of the 20 tax years following your relocation, so it is genuinely long-term. For employment income earned in Cyprus, you pay regular Cypriot income tax (0% on the first €22,000, scaling up progressively to 35% above €72,000), and for self-employment income earned in Cyprus the same. There is a special 50% income tax exemption for new residents earning more than €100,000 per year from Cypriot employment for the first 17 years.",
+				body: `Non-dom status is automatic for tax residents who have been domiciled outside Cyprus, which in practice means almost every relocator. Once you are a Cyprus tax resident and a non-dom, the following income types are completely exempt from Cyprus tax: dividends received from anywhere in the world, interest received from anywhere, rental income from properties outside Cyprus (though you still pay Cyprus's GeSY healthcare contribution on it, at 2.65%), capital gains on shares and securities, and most types of capital gains on property outside Cyprus. The non-dom regime lasts for 17 of the 20 tax years following your relocation, so it is genuinely long-term. For employment income earned in Cyprus, you pay regular Cypriot income tax (0% on the first €22,000, scaling up progressively to 35% above €72,000), and for self-employment income earned in Cyprus the same. There are also income tax exemptions for people taking up their first employment in Cyprus: 50% of salary for those earning more than ${eur(FIRST_EMPLOYMENT_50PCT_THRESHOLD)} a year, or 20% of salary (capped at ${eur(FIRST_EMPLOYMENT_20PCT_CAP)} a year) for others, subject to conditions.`,
 			},
 			{
 				heading: "Non-dom status",
-				body: "Non-dom (non-domiciled) status is a designation within the Cyprus tax system. It is not a tax holiday, an investment visa or a residency permit. Its core job is to remove the Special Defence Contribution (SDC), the levy that otherwise applies to dividends (17% for domiciled residents) and interest (30%) received by Cyprus tax residents. SDC on rental income was abolished from 1 January 2026 for all Cyprus tax residents, so rent carries no SDC with or without non-dom. You can be a Cyprus tax resident without being non-dom (if you are long-term domiciled in Cyprus), and you can be non-dom without any special permit: an EU citizen registered with a Yellow Slip qualifies from the first day of tax residency.\n\nWhat non-dom does not cover: employment and self-employment income earned in Cyprus (taxed at the normal progressive rates up to 35%), income tax on rent from Cyprus property, and capital gains on Cypriot real estate, which fall under the Capital Gains Tax Law.\n\nWho qualifies and the 17-year clock: domicile follows an English common-law concept. Broadly, if you were not born to a Cypriot-domiciled parent and have not lived in Cyprus intending to stay permanently for most of your adult life, you are not domiciled in Cyprus. In practice almost every relocating foreign national qualifies automatically from the first day of tax residency. There is no application, certificate or fee: you declare non-dom status on your annual tax return (Form TD1). You lose it once you have been tax resident in Cyprus for 17 or more of the 20 tax years ending with the current year; someone who first became tax resident in 2015 would not lose it before 2032.\n\nThe 2026 extension option: a 2025 amendment, effective from January 2026, lets non-dom individuals who reach the 17-year limit apply to extend the status for up to two further periods of five years each, paying a flat €250,000 per extension period, for a maximum of 27 years. The extension is not automatic; the application must reach the Tax Department before the 17th year of residency ends. The same amendment clarified the 60-day rule's condition that you must not be tax resident in any other country, which makes that route slightly easier to defend. Implementation regulations were still being finalised in mid-2026, so confirm the current procedure with a Cyprus-registered accountant.\n\nGeSY on passive income: non-dom does not exempt dividends, interest or rents from the GeSY healthcare contribution. They pay 2.65% of the gross amount, capped at €4,770 a year per person (the cap is based on €180,000 of income). Someone receiving €500,000 in dividends a year pays no SDC (saving €85,000 at the domiciled rate) but still pays €4,770 in GeSY contributions.\n\nCommon misconceptions: non-dom does not mean no tax in Cyprus, because Cyprus employment, self-employment and Cyprus rental income are taxed as normal. Staying under 183 days does not protect non-dom either: below 183 days you are not a Cyprus tax resident at all unless you meet the 60-day rule, and non-dom exists only for tax residents. A salary from your own Cyprus company is employment income taxed at normal rates, while dividends from the same company are SDC-free under non-dom, so the director and shareholder structure matters. And non-dom is not permanent: if you plan a long-term base in Cyprus, model the 17-year expiry into your plans.",
+				body: `Non-dom (non-domiciled) status is a designation within the Cyprus tax system. It is not a tax holiday, an investment visa or a residency permit. Its core job is to remove the Special Defence Contribution (SDC), the levy that otherwise applies to dividends and interest received by Cyprus tax residents (SDC for domiciled residents is ${pct(SDC_DIVIDEND_RATE)} on dividends from 2026 profits, ${pct(SDC_DIVIDEND_RATE_PRE_2026_PROFITS)} on dividends from earlier profits, and ${pct(SDC_INTEREST_RATE)} on interest). SDC on rental income was abolished from 1 January 2026 for all Cyprus tax residents, so rent carries no SDC with or without non-dom. You can be a Cyprus tax resident without being non-dom (if you are long-term domiciled in Cyprus), and you can be non-dom without any special permit: an EU citizen registered with a Yellow Slip qualifies from the first day of tax residency.\n\nWhat non-dom does not cover: employment and self-employment income earned in Cyprus (taxed at the normal progressive rates up to 35%), income tax on rent from Cyprus property, and capital gains on Cypriot real estate, which fall under the Capital Gains Tax Law.\n\nWho qualifies and the 17-year clock: domicile follows an English common-law concept. Broadly, if you were not born to a Cypriot-domiciled parent and have not lived in Cyprus intending to stay permanently for most of your adult life, you are not domiciled in Cyprus. In practice almost every relocating foreign national qualifies automatically from the first day of tax residency. There is no application, certificate or fee: you declare non-dom status on your annual tax return (Form TD1). You lose it once you have been tax resident in Cyprus for 17 or more of the 20 tax years ending with the current year; someone who first became tax resident in 2015 would not lose it before 2032.\n\nThe 2026 extension option: a 2025 amendment, effective from January 2026, lets non-dom individuals who reach the 17-year limit apply to extend the status for up to two further periods of five years each, paying a flat €250,000 per extension period, for a maximum of 27 years. The extension is not automatic: you apply to the Tax Commissioner by 30 June of the first year of each five-year period, and the ${eur(NON_DOM_EXTENSION_FEE)} is due by the end of the month after approval. The choice is irrevocable and the payment is not refundable. Separately, the 60-day rule's condition that you must not be tax resident in any other country was removed from 1 January 2026; the other 60-day conditions still apply. Implementation regulations were still being finalised in mid-2026, so confirm the current procedure with a Cyprus-registered accountant.\n\nGeSY on passive income: non-dom does not exempt dividends, interest or rents from the GeSY healthcare contribution. They pay 2.65% of the gross amount, capped at €4,770 a year per person (the cap is based on €180,000 of income). Someone receiving €500,000 in dividends a year pays no SDC (saving €25,000 at the 5% domiciled rate on dividends from 2026 profits) but still pays €4,770 in GeSY contributions.\n\nCommon misconceptions: non-dom does not mean no tax in Cyprus, because Cyprus employment, self-employment and Cyprus rental income are taxed as normal. Staying under 183 days does not protect non-dom either: below 183 days you are not a Cyprus tax resident at all unless you meet the 60-day rule, and non-dom exists only for tax residents. A salary from your own Cyprus company is employment income taxed at normal rates, while dividends from the same company are SDC-free under non-dom, so the director and shareholder structure matters. And non-dom is not permanent: if you plan a long-term base in Cyprus, model the 17-year expiry into your plans.`,
 			},
 			{
 				heading: "Capital gains, property and crypto",
@@ -177,7 +240,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		faqs: [
 			{
 				q: "What is the Cyprus non-dom regime?",
-				a: "The non-domiciled (non-dom) resident status exempts qualifying individuals from the Special Defence Contribution (SDC) — a 17% tax on dividends and 30% tax on interest — for 17 years from becoming a Cyprus tax resident. To qualify you must become a Cyprus tax resident and must not have been a Cyprus tax resident for 20 or more of the preceding 25 years. Effectively, foreign-source dividends and interest are received entirely tax-free.",
+				a: `Non-domiciled (non-dom) status exempts Cyprus tax residents from the Special Defence Contribution (SDC): ${pct(SDC_DIVIDEND_RATE)} on dividends paid out of profits from 2026 onwards (${pct(SDC_DIVIDEND_RATE_PRE_2026_PROFITS)} on dividends from earlier profits) and ${pct(SDC_INTEREST_RATE)} on interest. To qualify you must be Cyprus tax resident with a domicile of origin outside Cyprus. After 17 of the last 20 years as a tax resident you are treated as domiciled. You can keep non-dom treatment for up to two further five-year periods by paying ${eur(NON_DOM_EXTENSION_FEE)} per period (see the non-dom section of this guide). The 2.65% GeSY contribution still applies to dividends and interest.`,
 			},
 			{
 				q: "How do I become a Cyprus tax resident?",
@@ -185,7 +248,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "Does Cyprus tax foreign pension or employment income?",
-				a: "Foreign pension income remitted to Cyprus is taxed at a flat 5% rate above a €3,420 annual exemption (alternatively taxed at normal rates if lower). Foreign employment income earned for work performed outside Cyprus by a non-dom resident is exempt from Cyprus income tax. Cyprus has double-tax treaties with over 65 countries, which further reduce withholding taxes on cross-border income.",
+				a: `Foreign pension income remitted to Cyprus can be taxed at a flat 5% rate on the amount above ${eur(FOREIGN_PENSION_THRESHOLD)} a year (from tax year 2026; ${eur(FOREIGN_PENSION_THRESHOLD_2025)} for 2025 and earlier), or at normal rates if lower. Foreign employment income earned for work performed outside Cyprus by a non-dom resident is exempt from Cyprus income tax. Cyprus has double-tax treaties with over 65 countries, which further reduce withholding taxes on cross-border income.`,
 			},
 			{
 				q: "Do I need to apply for non-dom status in Cyprus?",
@@ -197,14 +260,21 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "Can Cyprus non-dom status be extended beyond 17 years?",
-				a: "Under a 2025 amendment effective from January 2026, non-dom individuals reaching the 17-year limit can apply to extend the status for up to two further five-year periods, paying a flat €250,000 per period, for a maximum of 27 years. The application must be made before the 17th year of residency ends. Confirm the current procedure with a Cyprus-registered accountant, as the implementing rules were still being finalised in mid-2026.",
+				a: "Under a 2025 amendment effective from January 2026, non-dom individuals reaching the 17-year limit can apply to extend the status for up to two further five-year periods, paying a flat €250,000 per period, for a maximum of 27 years. You apply to the Tax Commissioner by 30 June of the first year of each five-year period; the choice is irrevocable and the payment is not refundable. Confirm the current procedure with a Cyprus-registered accountant, as the implementing rules were still being finalised in mid-2026.",
 			},
 		],
 	},
 	{
 		slug: "arrival-checklist",
 		datePublished: "2026-05-29",
-		dateModified: "2026-10-01",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Migration Department (gov.cy)",
+				url: "https://www.gov.cy/mip-md/en/",
+			},
+		],
 		category: "immigration",
 		title: "Moving to Cyprus: First-Month Checklist 2026",
 		description:
@@ -217,7 +287,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			{
 				heading:
 					"Week 1: SIM card, temporary address, and booking your registration appointment",
-				body: "The moment you land, buy a Cypriot SIM from the airport arrivals hall — Epic and Cyta both have desks there, and €15 gets you a 30-day unlimited data plan. You need a local number for almost every next step. Your temporary address — a hotel, serviced apartment, or a friend's address — matters too: it's the address on your first official documents, and several later steps require a document sent there. Book your Civil Registry appointment immediately. EU citizens need this for the MEU1 registration (the Yellow Slip); non-EU citizens need it to start the Alien Registration Certificate (ARC) process. Appointment slots at crmd.moi.gov.cy typically fill 2–3 weeks out, so booking on day one means you won't lose three weeks waiting. You can book before you arrive.",
+				body: "The moment you land, buy a Cypriot SIM from the airport arrivals hall: Epic and Cyta both have desks there, and €15 gets you a 30-day unlimited data plan. You need a local number for almost every next step. Your temporary address (a hotel, serviced apartment, or a friend's address) matters too: it's the address on your first official documents, and several later steps require a document sent there. Book your Civil Registry appointment immediately. EU citizens need this for the MEU1 registration (the Yellow Slip); non-EU citizens need it to start the Alien Registration Certificate (ARC) process. Appointment slots with the Migration Department (gov.cy/mip-md) typically fill 2–3 weeks out, so booking on day one means you won't lose three weeks waiting. You can book before you arrive.",
 			},
 			{
 				heading: "Week 1–2: Opening your bank account",
@@ -316,7 +386,18 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "title-deed-status-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Department of Lands and Surveys: Rights and fees (PDF)",
+				url: "https://portal.dls.moi.gov.cy/wp-content/uploads/2022/07/Rights-and-Fees_EN.pdf",
+			},
+			{
+				label: "gov.cy: Calculation of real estate transfer fees",
+				url: "https://www.gov.cy/en/service/calculation-of-real-estates-transfer-fees/",
+			},
+		],
 		category: "property",
 		title: "Cyprus Title Deed Guide 2026: Full Overview",
 		description:
@@ -345,7 +426,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "The immovable property transfer process",
-				body: "Once the individual title deed exists and the purchase price is paid, the formal transfer takes place at the DLS. Both buyer and seller (or their lawyers under power of attorney) attend. Transfer fees are levied on the current market value of the property at rates of 3% on the first €85,000, 5% on the next €85,001–€170,000, and 8% on amounts above €170,000, though reduced rates apply for purchases of new build properties from developers (50% discount on transfer fees has historically applied, and VAT-registered new builds may transfer fee-free in certain circumstances). Stamp duty on property purchase contracts was abolished from 1 January 2026. Title deed transfer typically takes 1–4 weeks once the application is lodged and all documents are in order. After transfer, you receive a title deed in your name from the DLS — this is the document that confirms you are the legal registered owner. Store it securely; lost title deeds require a court process to replace.",
+				body: "Once the individual title deed exists and the purchase price is paid, the formal transfer takes place at the DLS. Both buyer and seller (or their lawyers under power of attorney) attend. Transfer fees are levied on the current market value of the property at rates of 3% on the first €85,000, 5% on the next €85,001–€170,000, and 8% on amounts above €170,000, and a 50% reduction applies to these fees. No transfer fees are due where the purchase was subject to VAT. Stamp duty on property purchase contracts was abolished from 1 January 2026. Title deed transfer typically takes 1–4 weeks once the application is lodged and all documents are in order. After transfer, you receive a title deed in your name from the DLS; this is the document that confirms you are the legal registered owner. Store it securely; lost title deeds require a court process to replace.",
 			},
 		],
 	},
@@ -383,7 +464,22 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "digital-nomad-visa-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-09-30",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Migration Department: Digital nomads and family members",
+				url: "https://www.gov.cy/mip-md/en/documents/digital-nomads-and-family-members/",
+			},
+			{
+				label: "Tax Department: Income Tax Law amendments 2026 (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/03/2026-ΦορΜεταρρύθμιση-Φόρος-Εισοδήματος.pdf",
+			},
+			{
+				label: "Migration Department (gov.cy)",
+				url: "https://www.gov.cy/mip-md/en/",
+			},
+		],
 		category: "immigration",
 		title: "Cyprus Digital Nomad Visa 2026: Requirements",
 		description:
@@ -395,20 +491,20 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Required documents",
-				body: "The DNV application requires the following documents, all in English or accompanied by certified translations: a completed application form (available on crmd.moi.gov.cy); a valid passport with at least 12 months remaining validity; two recent passport-size photographs; proof of remote income — for employees, an employment contract and the last three months of payslips and bank statements; for freelancers, service agreements or contracts with foreign clients and three to six months of bank statements showing consistent income deposits; a clean criminal record certificate from your home country (apostilled or legalised for Cyprus); health insurance valid in Cyprus with at least €30,000 coverage (public GeSY registration does not satisfy this — you need a private policy in place before the application); proof of accommodation in Cyprus (signed rental agreement or property purchase documentation); and a cover letter explaining your work arrangement and why you qualify. For family members, add marriage certificate (apostilled), birth certificates for children, and proof that the primary applicant's income meets the family threshold. All personal status documents require apostille or legalisation; check the requirements for your country of issue.",
+				body: "The DNV application requires the following documents, all in English or accompanied by certified translations: a completed application form (available on the Migration Department's pages on gov.cy); a valid passport with at least 12 months remaining validity; two recent passport-size photographs; proof of remote income: for employees, an employment contract and the last three months of payslips and bank statements; for freelancers, service agreements or contracts with foreign clients and three to six months of bank statements showing consistent income deposits; a clean criminal record certificate from your home country (apostilled or legalised for Cyprus); health insurance valid in Cyprus with at least €30,000 coverage (public GeSY registration does not satisfy this; you need a private policy in place before the application); proof of accommodation in Cyprus (signed rental agreement or property purchase documentation); and a cover letter explaining your work arrangement and why you qualify. For family members, add marriage certificate (apostilled), birth certificates for children, and proof that the primary applicant's income meets the family threshold. All personal status documents require apostille or legalisation; check the requirements for your country of issue.",
 			},
 			{
 				heading:
 					"Tax benefits and non-dom status for Digital Nomad Visa holders",
-				body: "Cyprus's non-domiciled (non-dom) tax regime is the single most important financial advantage of the Cyprus DNV compared to alternatives like Portugal or Spain. Once you become a Cyprus tax resident — which the 60-day rule enables — you qualify for non-dom status if you have not been a Cyprus tax resident for 17 of the preceding 20 years. Non-dom status exempts you from the Special Defence Contribution (SDC) on foreign-sourced dividends and interest for up to 17 years (note: SDC on rental income was abolished from 1 January 2026 for all residents). In practical terms: if your income is structured as dividends from a foreign company, you pay 0% Cypriot SDC on those dividends for 17 years. The 60-day tax residency rule requires you to spend at least 60 days in Cyprus within the tax year, not be tax resident in any other single country for more than 183 days, and not be tax resident in any other country under that country's rules. Capital gains: Cyprus has no general capital gains tax. Gains from selling foreign shares, cryptocurrency, and most investment assets are exempt — the exception is real property in Cyprus and shares in companies where more than 50% of value derives from Cypriot real estate. Employment income and Cyprus-sourced income is taxed under the standard progressive scale (0% up to €22,000, then 20%, 25%, 30%, up to 35% above €72,000). Non-dom status does not exempt employment income from income tax. One common trap: the GeSY healthcare contribution (2.65% for employees, 4% for self-employed) applies regardless of non-dom status. Verify your specific situation with a Cyprus-registered tax adviser before making residency decisions based on tax planning. Prices and rules change — verify with official Cyprus sources before acting.",
+				body: "Cyprus's non-domiciled (non-dom) tax regime is the single most important financial advantage of the Cyprus DNV compared to alternatives like Portugal or Spain. Once you become a Cyprus tax resident (which the 60-day rule enables), you qualify for non-dom status if you have not been a Cyprus tax resident for 17 of the preceding 20 years. Non-dom status exempts you from the Special Defence Contribution (SDC) on foreign-sourced dividends and interest for up to 17 years (note: SDC on rental income was abolished from 1 January 2026 for all residents). In practical terms: if your income is structured as dividends from a foreign company, you pay 0% Cypriot SDC on those dividends for 17 years. The 60-day tax residency rule requires you to spend at least 60 days in Cyprus within the tax year, not be tax resident in any other single country for more than 183 days, and meet the home and business conditions. The condition that you must not be tax resident in any other country was removed from 1 January 2026. Capital gains: Cyprus has no general capital gains tax. Gains from selling foreign shares, cryptocurrency, and most investment assets are exempt; the exception is real property in Cyprus and shares in companies where more than 50% of value derives from Cypriot real estate. Employment income and Cyprus-sourced income is taxed under the standard progressive scale (0% up to €22,000, then 20%, 25%, 30%, up to 35% above €72,000). Non-dom status does not exempt employment income from income tax. One common trap: the GeSY healthcare contribution (2.65% for employees, 4% for self-employed) applies regardless of non-dom status. Verify your specific situation with a Cyprus-registered tax adviser before making residency decisions based on tax planning. Prices and rules change: verify with official Cyprus sources before acting.",
 			},
 			{
-				heading: "Applying via the CRMD portal",
-				body: "Applications are submitted through the Civil Registry and Migration Department (CRMD) portal at crmd.moi.gov.cy. The process: create an account on the portal, select 'Visitor/Temporary Residence — Digital Nomad Visa', complete the online form, and upload all supporting documents. Applications can also be submitted in person at a CRMD district office — there are offices in Nicosia, Limassol, Larnaca, Paphos and Famagusta. In-person submission is recommended for first-time applicants as the officer can flag missing documents on the spot, preventing the need for a back-and-forth by post. The application fee as of 2025 is approximately €70 per adult applicant, payable at the CRMD office or through the portal. Submit from outside Cyprus if you have not yet entered, or within Cyprus on a valid visa (tourist entry is acceptable for initial application, but confirm current procedure with CRMD as this has changed previously).",
+				heading: "Applying at the Migration Department",
+				body: "Applications are submitted at the Migration Department's central offices, in person or through an authorised representative, within three months of arrival. Check on gov.cy whether an appointment is needed. The fee is €70, plus €70 for first registration in the Aliens' Register. You apply after you arrive, not from abroad. If your nationality needs a visa to enter Cyprus, enter on that visa.",
 			},
 			{
 				heading: "Processing time and what to expect",
-				body: "The official CRMD processing target for DNV applications is 5–8 weeks from submission of a complete file. In practice, 6–10 weeks is more realistic, with applications submitted in peak periods (September–November, when many families plan relocations for the start of the school year) sometimes taking 12 weeks or more. Incomplete applications — the most common cause of delay — are returned or suspended with a request for additional documents, resetting the clock. Once approved, you are notified by email and attend a CRMD office appointment to be biometrically enrolled (fingerprints and photo). The ARC (Alien Registration Certificate) is then produced — typically 2–4 weeks after biometric enrollment. During the wait between approval and ARC issuance, CRMD issues a certificate of application that serves as interim documentation. If your application is refused, you receive a written decision explaining the grounds, and you have the right to appeal or reapply with additional documentation.",
+				body: "The Migration Department's stated examination time is 5 to 7 weeks from submission of a complete file. Incomplete applications, the most common cause of delay, are returned or suspended with a request for additional documents, resetting the clock. Once approved, you are notified by email and attend a Migration Department appointment to be biometrically enrolled (fingerprints and photo). The ARC (Alien Registration Certificate) is then produced, typically 2–4 weeks after biometric enrollment. During the wait between approval and ARC issuance, the Migration Department issues a certificate of application that serves as interim documentation. If your application is refused, you receive a written decision explaining the grounds, and you have the right to appeal or reapply with additional documentation.",
 			},
 			{
 				heading: "Renewal, three-year maximum, and family rights",
@@ -420,16 +516,16 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Why applications stall, and how to avoid it",
-				body: "Files tend to be delayed because of what is missing or inconsistent, not because the applicant is ineligible. The most common problems follow directly from the document list above.\n\nIncome evidence that does not match. Payslips, contracts and bank statements should tell the same story. If your income arrives through a company you own, or through several clients, include a short cover explanation and the agreements that link the deposits to the work.\n\nA client or employer with a Cyprus connection. The visa is for work done for employers and clients outside Cyprus. If a material part of your income comes from a Cyprus-based source, get advice before applying.\n\nHealth insurance bought late. The policy needs to be in place and valid for Cyprus at the time of application, and the certificate should show the level of cover CRMD asks for.\n\nDocuments not legalised. Criminal record certificates and civil-status documents need an apostille or legalisation route that matches the country of issue, and translations must be certified where required.\n\nNo confirmed accommodation. A signed rental agreement is stronger than a booking confirmation. If you are still choosing a city, read the best-areas-to-live-cyprus guide before you sign anything long term.",
+				body: "Files tend to be delayed because of what is missing or inconsistent, not because the applicant is ineligible. The most common problems follow directly from the document list above.\n\nIncome evidence that does not match. Payslips, contracts and bank statements should tell the same story. If your income arrives through a company you own, or through several clients, include a short cover explanation and the agreements that link the deposits to the work.\n\nA client or employer with a Cyprus connection. The visa is for work done for employers and clients outside Cyprus. If a material part of your income comes from a Cyprus-based source, get advice before applying.\n\nHealth insurance bought late. The policy needs to be in place and valid for Cyprus at the time of application, and the certificate should show the level of cover the Migration Department asks for.\n\nDocuments not legalised. Criminal record certificates and civil-status documents need an apostille or legalisation route that matches the country of issue, and translations must be certified where required.\n\nNo confirmed accommodation. A signed rental agreement is stronger than a booking confirmation. If you are still choosing a city, read the best-areas-to-live-cyprus guide before you sign anything long term.",
 			},
 			{
 				heading: "Digital Nomad Visa or another route?",
-				body: "The DNV suits non-EU remote workers who want a first residence permit and do not intend to work for a Cyprus employer. It is the wrong tool in several common situations.\n\nIf you hold an EU passport, you register as an EU citizen instead. If a Cyprus company is offering you a job, the route is a work permit, covered in the work-permits-non-eu guide. If you are retired or living on passive income, compare Category F in the residency-and-visas guide. If your goal is a permanent status, the DNV is a temporary permit with a fixed maximum term, so compare the permanent-residency-5year and residency-and-visas guides before you commit. If you plan to run your own Cyprus company, see company-formation-visa.\n\nThe visa-pathway-finder at /tools/visa-pathway-finder asks two questions and points you to the route that fits your passport and situation.",
+				body: "The DNV suits non-EU remote workers who want a first residence permit and do not intend to work for a Cyprus employer. It is the wrong tool in several common situations.\n\nIf you hold an EU passport, you register as an EU citizen instead. If a Cyprus company is offering you a job, the route is a work permit, covered in the work-permits-non-eu guide. If you are retired or living on passive income, compare the Visitor residence permit in the retiring-in-cyprus guide. If your goal is a permanent status, the DNV is a temporary permit with a fixed maximum term, so compare the permanent-residency-5year and residency-and-visas guides before you commit. If you plan to run your own Cyprus company, see company-formation-visa.\n\nThe visa-pathway-finder at /tools/visa-pathway-finder asks two questions and points you to the route that fits your passport and situation.",
 			},
 			{
 				heading:
 					"Check these details against official sources before you apply",
-				body: "Digital nomad rules have been adjusted since the scheme launched, and secondary sources, including this page, can lag behind the Civil Registry and Migration Department. Before you pay for translations or insurance, confirm the following directly on the official CRMD pages or with the department: the current minimum income and whether it is measured net or gross, the uplift for a spouse and for children, the minimum health insurance cover, the current application fee, whether any cap on the number of permits applies, the current processing target, and whether you may apply from inside Cyprus on your current entry status.\n\nIf a figure you find elsewhere differs from the figure on this page, trust the official source.",
+				body: "Digital nomad rules have been adjusted since the scheme launched, and secondary sources, including this page, can lag behind the Migration Department. Before you pay for translations or insurance, confirm the following directly on the Migration Department's pages on gov.cy or with the department: the current minimum income and whether it is measured net or gross, the uplift for a spouse and for children, the minimum health insurance cover, the current application fee, whether any cap on the number of permits applies, the current processing target, and whether you may apply from inside Cyprus on your current entry status.\n\nIf a figure you find elsewhere differs from the figure on this page, trust the official source.",
 			},
 		],
 		faqs: [
@@ -489,7 +585,18 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "permanent-residency-5year",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Migration Department: Immigration permits for investors",
+				url: "https://www.gov.cy/mip-md/en/documents/companies-investors-permanent-residence-3/immigration-permits-for-investors/",
+			},
+			{
+				label: "Migration Department: Immigration permits (categories A to F)",
+				url: "https://www.gov.cy/mip-md/en/documents/companies-investors-permanent-residence-3/immigration-permits/",
+			},
+		],
 		category: "immigration",
 		title: "Cyprus Permanent Residency After 5 Years",
 		description:
@@ -497,7 +604,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "Two routes to permanent residency",
-				body: "It is important to distinguish between two different types of 'permanent residency' in Cyprus. The first is the Permanent Residency by Investment (sometimes called the Category F or Regulation 6(2) permit), which is available to non-EU nationals who make a qualifying property investment of at least €300,000 and does not require any prior period of residence. The second — the subject of this guide — is the Long-Term Resident permit acquired through five years of continuous legal residence, available under EU Directive 2003/109/EC as implemented by the Aliens and Immigration Law of Cyprus. The two are legally distinct documents with different rights, different application processes, and different costs. This guide covers the five-year route. If you hold the investment-based PR, the contents of this guide still apply to you if you later want to convert to the long-term resident status that accrues from physical presence.",
+				body: "It is important to distinguish between two different types of 'permanent residency' in Cyprus. The first is the Permanent Residency by Investment (the Regulation 6(2) immigration permit), which is available to non-EU nationals who make a qualifying property investment of at least €300,000 and does not require any prior period of residence. The second, the subject of this guide, is the Long-Term Resident permit acquired through five years of continuous legal residence, available under EU Directive 2003/109/EC as implemented by the Aliens and Immigration Law of Cyprus. The two are legally distinct documents with different rights, different application processes, and different costs. This guide covers the five-year route. If you hold the investment-based PR, the contents of this guide still apply to you if you later want to convert to the long-term resident status that accrues from physical presence.",
 			},
 			{
 				heading: "The qualifying residency requirement",
@@ -521,7 +628,14 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "company-formation-visa",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Migration Department: Immigration permits for investors",
+				url: "https://www.gov.cy/mip-md/en/documents/companies-investors-permanent-residence-3/immigration-permits-for-investors/",
+			},
+		],
 		category: "immigration",
 		title: "Cyprus Company Residency Permit: Full Guide",
 		description:
@@ -529,7 +643,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "Which visa categories require a Cyprus company",
-				body: "Not all residency routes require a Cyprus-registered company — the Digital Nomad Visa, for example, is explicitly designed for people who work for foreign entities and requires the absence of Cypriot employment. However, several other residency categories do require or strongly benefit from a Cyprus company. The most common: the Category F (Permanent Residency by Investment) sometimes requires a Cyprus company for applicants whose income comes from their own business, as the qualifying income must be demonstrably foreign-sourced and a Cyprus holding company can structure that cleanly; the employment permit (Category E), where a non-EU national employed by a Cyprus-registered company applies for a work permit tied to that entity; the self-employed permit, where an individual establishes a Cyprus company in which they hold a director or executive role; and the 60-day tax residency rule, which requires the applicant to 'carry on business or hold an office in a Cyprus-resident company'. The last is perhaps the most common reason entrepreneurs form a Cyprus company: to qualify as a Cyprus tax resident under the 60-day test while spending only a portion of each year physically in Cyprus.",
+				body: "Not all residency routes require a Cyprus-registered company: the Digital Nomad Visa, for example, is explicitly designed for people who work for foreign entities and requires the absence of Cypriot employment. However, several other residency categories do require or strongly benefit from a Cyprus company. The most common: Permanent Residency by Investment (Regulation 6(2)) sometimes requires a Cyprus company for applicants whose income comes from their own business, as the qualifying income must be demonstrably foreign-sourced and a Cyprus holding company can structure that cleanly; the employment permit (Category E), where a non-EU national employed by a Cyprus-registered company applies for a work permit tied to that entity; the self-employed permit, where an individual establishes a Cyprus company in which they hold a director or executive role; and the 60-day tax residency rule, which requires the applicant to 'carry on business or hold an office in a Cyprus-resident company'. The last is perhaps the most common reason entrepreneurs form a Cyprus company: to qualify as a Cyprus tax resident under the 60-day test while spending only a portion of each year physically in Cyprus.",
 			},
 			{
 				heading: "Minimum substance requirements",
@@ -552,7 +666,23 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "new-development-buying-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-10-01",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label:
+					"Tax Department: Circular ΕΕ 11/2023 on 5% VAT for a primary residence (PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/01/%CE%95%CE%95-11_2023.pdf",
+			},
+			{
+				label: "Department of Lands and Surveys: Rights and fees (PDF)",
+				url: "https://portal.dls.moi.gov.cy/wp-content/uploads/2022/07/Rights-and-Fees_EN.pdf",
+			},
+			{
+				label: "gov.cy: Calculation of real estate transfer fees",
+				url: "https://www.gov.cy/en/service/calculation-of-real-estates-transfer-fees/",
+			},
+		],
 		category: "property",
 		title: "Buying a New Development in Cyprus 2026",
 		description:
@@ -568,11 +698,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "VAT on new developments",
-				body: "VAT applies to the first sale of new residential properties in Cyprus. The standard rate is 19%, but a reduced rate of 5% applies to buyers who qualify under the primary residence scheme. To qualify for the 5% rate, you must be an individual (not a company), the property must be your primary and permanent residence in Cyprus, the property must not exceed 200 square metres of covered area (with the reduced rate applying to the first 130 square metres and the standard 19% rate applying above that within the same property), you must not have used the 5% scheme for another property in Cyprus in the preceding 10 years, and you must declare your intention to use the property as a primary residence and actually do so for at least 10 years after completion. The 5% eligibility must be confirmed and applied for before or at contract signing — it cannot be applied retrospectively after you have been charged 19%. If you purchase through a company, or you are not eligible for the reduced rate for any reason, VAT at 19% applies to the full purchase price. VAT-registered property purchases can also sometimes result in a VAT refund for the developer, which they may or may not pass through to buyers; clarify this in the contract.",
+				body: `VAT applies to the first sale of new residential properties in Cyprus. The standard rate is 19%, but a reduced rate of 5% applies to buyers who qualify under the primary residence scheme. To qualify for the 5% rate, you must be an individual (not a company), the property must be your primary and permanent residence in Cyprus, the home's buildable area must not exceed 190 square metres and its value must not exceed ${eur(REDUCED_VAT_MAX_VALUE)} (the 5% rate applies to the first 130 square metres and the first ${eur(REDUCED_VAT_VALUE_CAP)}), you must not have used the 5% scheme for another property in Cyprus in the preceding 10 years, and you must declare your intention to use the property as a primary residence and actually do so for at least 10 years after completion. The 5% eligibility must be confirmed and applied for before or at contract signing; it cannot be applied retrospectively after you have been charged 19%. If you purchase through a company, or you are not eligible for the reduced rate for any reason, VAT at 19% applies to the full purchase price. VAT-registered property purchases can also sometimes result in a VAT refund for the developer, which they may or may not pass through to buyers; clarify this in the contract.`,
 			},
 			{
 				heading: "Land Registry deposit and transfer fees",
-				body: "After the Contract of Sale is signed, it must be deposited at the DLS within 60 days (stamp duty on property purchase contracts was abolished from 1 January 2026). The deposit registers your interest against the title and is the buyer's primary protection from double-selling or developer encumbrance. At the time of title deed transfer, transfer fees are calculated on the DLS's assessed market value (not necessarily the contract price, though the two are typically close for new builds). Transfer fee rates: 3% on the first €85,000 of value, 5% on €85,001–€170,000, 8% above €170,000. A 50% discount on transfer fees has historically applied to transfers directly from developers; confirm the current discount with your lawyer as this has been modified by legislation several times. For VAT-registered new build purchases, no transfer fees are payable — VAT and transfer fees are mutually exclusive in Cyprus tax law. Budget carefully: on a €400,000 property, transfer fees at full rate would be approximately €18,450; at the 50% discount, approximately €9,225.",
+				body: "After the Contract of Sale is signed, it must be deposited at the DLS within 60 days (stamp duty on property purchase contracts was abolished from 1 January 2026). The deposit registers your interest against the title and is the buyer's primary protection from double-selling or developer encumbrance. At the time of title deed transfer, transfer fees are calculated on the DLS's assessed market value (not necessarily the contract price, though the two are typically close for new builds). Transfer fee rates: 3% on the first €85,000 of value, 5% on €85,001–€170,000, 8% above €170,000. A 50% reduction applies to all sales where VAT is not charged. For VAT-registered new build purchases, no transfer fees are payable: VAT and transfer fees are mutually exclusive in Cyprus tax law. Budget carefully: on a €400,000 property, transfer fees at the full scale would be €25,200; after the 50% reduction, €12,600.",
 			},
 			{
 				heading: "Title deed timeline and snagging",
@@ -665,7 +795,14 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "ip-box-regime",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Tax Department: Income Tax Law amendments 2026 (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/03/2026-ΦορΜεταρρύθμιση-Φόρος-Εισοδήματος.pdf",
+			},
+		],
 		category: "tax",
 		title: "Cyprus IP Box Regime: 3% Effective Tax on IP",
 		description:
@@ -673,7 +810,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "What the IP Box is and why Cyprus built it",
-				body: "Cyprus's IP Box (formally the Intellectual Property scheme under Section 9(1)(l) of the Income Tax Law as amended) is an 80% income tax exemption applied to qualifying profits derived from qualifying intellectual property. Since Cyprus's standard corporate tax rate is 15% (raised from 12.5% on 1 January 2026), an 80% exemption leaves an effective rate of 3% on IP-derived income. Cyprus introduced its first IP Box in 2012, revised it in 2016 to comply with the OECD's BEPS Action 5 'nexus approach', and the current version is a fully BEPS-compliant 'modified nexus' regime. What this means in practice: the benefit is not unlimited. It applies in proportion to the ratio of qualifying R&D expenditure the company (or its related parties) incurred to create the IP, relative to total acquisition and development costs. The regime is designed for companies that genuinely create IP in Cyprus, not purely for holding companies that acquire IP from related parties abroad.",
+				body: "Cyprus's IP Box (formally the Intellectual Property scheme under section 9 of the Income Tax Law as amended) is an 80% income tax exemption applied to qualifying profits derived from qualifying intellectual property. Since Cyprus's standard corporate tax rate is 15% (raised from 12.5% on 1 January 2026), an 80% exemption leaves an effective rate of 3% on IP-derived income. Cyprus introduced its first IP Box in 2012, revised it in 2016 to comply with the OECD's BEPS Action 5 'nexus approach', and the current version is a fully BEPS-compliant 'modified nexus' regime. What this means in practice: the benefit is not unlimited. It applies in proportion to the ratio of qualifying R&D expenditure the company (or its related parties) incurred to create the IP, relative to total acquisition and development costs. The regime is designed for companies that genuinely create IP in Cyprus, not purely for holding companies that acquire IP from related parties abroad.",
 			},
 			{
 				heading: "Qualifying and non-qualifying IP",
@@ -696,7 +833,15 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "vat-registration-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label:
+					"Tax Department: Circular ΕΕ 11/2023 on 5% VAT for a primary residence (PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/01/%CE%95%CE%95-11_2023.pdf",
+			},
+		],
 		category: "tax",
 		title: "VAT Registration in Cyprus: Thresholds & OSS",
 		description:
@@ -720,7 +865,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "VAT on new property — the 5% reduced rate conditions",
-				body: "The 5% reduced VAT rate on new residential property purchases is one of the more significant practical features of Cyprus's VAT system and directly affects relocators buying homes. The conditions for the 5% rate: the property must be new (first transfer — second-hand properties are not subject to VAT at all, only transfer tax), the buyer must be an individual (not a company) purchasing for use as their primary and permanent place of residence, the buyer must not have previously used the 5% rate on another Cyprus property, and the reduced rate applies to the first 200 square metres of buildable area (above 200 sqm, the excess is taxed at 19%). Before 2023, the threshold was 130 sqm; it was expanded to 200 sqm as part of housing affordability measures. The buyer must sign a statutory declaration confirming their intent to use the property as a primary residence for at least 10 years; transferring or letting the property within 10 years triggers a VAT clawback obligation of the difference between the 5% and 19% rates on the full purchase price.",
+				body: `The 5% reduced VAT rate on new residential property purchases is one of the more significant practical features of Cyprus's VAT system and directly affects relocators buying homes. The conditions for the 5% rate: the property must be new (first transfer; second-hand properties are not subject to VAT at all, only transfer tax), the buyer must be an individual (not a company) purchasing for use as their primary and permanent place of residence, the buyer must not have previously used the 5% rate on another Cyprus property, and the reduced rate applies to the first 130 square metres of buildable area and the first ${eur(REDUCED_VAT_VALUE_CAP)} of value, and only if the home is no larger than 190 square metres and worth no more than ${eur(REDUCED_VAT_MAX_VALUE)}. These limits have applied since 16 June 2023. The buyer must sign a statutory declaration confirming their intent to use the property as a primary residence for at least 10 years; transferring or letting the property within 10 years triggers a VAT clawback obligation of the difference between the 5% and 19% rates on the full purchase price.`,
 			},
 		],
 	},
@@ -759,7 +904,15 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "company-types-comparison",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label:
+					"Business in Cyprus: Social insurance registration and contributions",
+				url: "https://www.businessincyprus.gov.cy/social-insurance-registration-and-contributions/",
+			},
+		],
 		category: "business",
 		title: "Cyprus Ltd vs Sole Trader vs Partnership",
 		description:
@@ -771,7 +924,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Cyprus Private Limited Company — the full picture",
-				body: "Incorporating a Cyprus Limited Company involves filing a Memorandum and Articles of Association with the Registrar of Companies, appointing at least one director and one shareholder, and registering a local registered office address. Incorporation costs through a registered agent run €1,500–€2,500 all-in, including Registrar fees (currently €105 for online incorporation) and agent fees. The company must have a local registered office address (a registered agent service costs €300–€600 per year if you do not have permanent Cyprus premises). Tax: the company pays 15% corporate tax on net profits. Salary paid to directors is deductible from corporate profit, reducing CT, but salary is subject to income tax and social insurance (8.3% employee + 8.8% employer for employees, different rates for directors depending on classification). After-tax profits distributed as dividends to a non-dom shareholder carry 0% SDC and 0% income tax — the dividend is simply exempt. Annual obligations: audited financial statements are mandatory for all Cyprus companies regardless of size (this is a common surprise for founders used to small-company audit exemptions in the UK or US — in Cyprus there is no exemption); audit costs run €1,000–€3,000 per year for a simple company. Annual return filing fee: currently €350.",
+				body: `Incorporating a Cyprus Limited Company involves filing a Memorandum and Articles of Association with the Registrar of Companies, appointing at least one director and one shareholder, and registering a local registered office address. Incorporation costs through a registered agent run €1,500–€2,500 all-in, including Registrar fees (currently €105 for online incorporation) and agent fees. The company must have a local registered office address (a registered agent service costs €300–€600 per year if you do not have permanent Cyprus premises). Tax: the company pays 15% corporate tax on net profits. Salary paid to directors is deductible from corporate profit, reducing CT, but salary is subject to income tax and social insurance (${pct(SI_EMPLOYEE_RATE)} employee + ${pct(SI_EMPLOYER_RATE)} employer for employees, different rates for directors depending on classification). After-tax profits distributed as dividends to a non-dom shareholder carry 0% SDC and 0% income tax: the dividend is simply exempt. Annual obligations: audited financial statements are mandatory for all Cyprus companies regardless of size (this is a common surprise for founders used to small-company audit exemptions in the UK or US; in Cyprus there is no exemption); audit costs run €1,000–€3,000 per year for a simple company. Annual return filing fee: currently €350.`,
 			},
 			{
 				heading: "Sole trader — when simpler is better",
@@ -790,7 +943,24 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "hiring-in-cyprus",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label:
+					"Business in Cyprus: Social insurance registration and contributions",
+				url: "https://www.businessincyprus.gov.cy/social-insurance-registration-and-contributions/",
+			},
+			{
+				label:
+					"Ministry of Labour: National minimum wage increase from 2026 (Greek)",
+				url: "https://www.gov.cy/ergasia-kai-koinonikes-asfaliseis/dilosi-tou-ypourgou-ergasias-kai-koinonikon-asfaliseon-gia-tin-afxisi-tou-ethnikou-katotatou-misthou/",
+			},
+			{
+				label: "Social Insurance Services: Basic insurable earnings 1981-2026",
+				url: "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/9AD159715525E49CC22584D90030E8FF?OpenDocument",
+			},
+		],
 		category: "business",
 		title: "Hiring Employees in Cyprus 2026: Costs & Law",
 		description:
@@ -802,11 +972,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Minimum wage and mandatory benefits",
-				body: "Cyprus introduced a statutory minimum wage in January 2023, set initially at €940 per month and increased to €1,000 per month from January 2024 for all employees who have completed six months of continuous employment with the same employer; new starters receive 80% of the minimum for the first six months. The minimum wage applies to nearly all employees regardless of sector, with exemptions for domestic workers and trainees. Mandatory benefits include 20 working days of paid annual leave per year (or 4 weeks, whichever is greater), paid sick leave after completion of probation (partially funded by the Social Insurance Fund), and public holiday pay. A 13th salary — typically paid in December — is not mandated by statute but is standard practice across most sectors; it should be specified or excluded explicitly in the contract to avoid disputes.",
+				body: "From 1 January 2026 the national minimum wage is €1,088 gross a month for full-time employees after six months' continuous employment with the same employer, and €979 for the first six months. The minimum wage applies to nearly all employees regardless of sector, with exemptions for domestic workers and trainees. Mandatory benefits include 20 working days of paid annual leave per year (or 4 weeks, whichever is greater), paid sick leave after completion of probation (partially funded by the Social Insurance Fund), and public holiday pay. A 13th salary, typically paid in December, is not mandated by statute but is standard practice across most sectors; it should be specified or excluded explicitly in the contract to avoid disputes.",
 			},
 			{
 				heading: "Employer social insurance and other payroll costs",
-				body: "The headline payroll cost beyond salary is the employer's contribution to the Social Insurance Fund: 8.3% of gross salary as of 2024, with a ceiling applied to the insurable earnings. Employers also contribute to the General Healthcare System (GeSY) at 2.90% of gross salary, to the Redundancy Fund at 1.2%, to the Human Resource Development Authority (HRDA) at 0.5%, and to the Social Cohesion Fund at 2%. In total, the employer-side social charges run to approximately 14.9% of gross salary for most full-time employees. For a €2,000/month employee, the total employer cost is roughly €2,298 per month before any benefits. Employees pay their own social insurance contribution (8.3%) and GeSY contribution (2.65%), which are deducted from gross salary before net pay is calculated.",
+				body: `The headline payroll cost beyond salary is the employer's contribution to the Social Insurance Fund: ${pct(SI_EMPLOYER_RATE)} of gross salary (since 2024), with a ceiling applied to the insurable earnings. Employers also contribute to the General Healthcare System (GeSY) at 2.90% of gross salary, to the Redundancy Fund at 1.2%, to the Human Resource Development Authority (HRDA) at 0.5%, and to the Social Cohesion Fund at 2%. In total, the employer-side social charges run to approximately 15.4% of gross salary for most full-time employees. For a €2,000/month employee, the total employer cost is roughly €2,308 per month before any benefits. Employees pay their own social insurance contribution (${pct(SI_EMPLOYEE_RATE)}) and GeSY contribution (2.65%), which are deducted from gross salary before net pay is calculated.`,
 			},
 			{
 				heading: "Probation, notice periods, and termination",
@@ -1009,7 +1179,19 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "maternity-paternity-rights",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Social Insurance Services: Basic insurable earnings 1981-2026",
+				url: "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/9AD159715525E49CC22584D90030E8FF?OpenDocument",
+			},
+			{
+				label:
+					"Business in Cyprus: Social insurance registration and contributions",
+				url: "https://www.businessincyprus.gov.cy/social-insurance-registration-and-contributions/",
+			},
+		],
 		category: "family",
 		title:
 			"Maternity and Paternity Rights in Cyprus — What Employed Parents Are Entitled To",
@@ -1022,7 +1204,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Maternity benefit calculation",
-				body: "The Social Insurance maternity benefit is calculated as 75% of the mother's average insurable earnings during the relevant contribution period — specifically the earnings in the contribution year two years prior to the benefit year. Cyprus Social Insurance uses 'insurable earnings' rather than gross salary, and insurable earnings are subject to an annual ceiling (approximately €54,864 per year as of recent rates). In practice, this means a mother earning €30,000 per year gross will receive approximately €433 per week during the Social Insurance-funded period (€30,000 ÷ 52 × 75%). A mother earning €60,000 per year — above the insurable ceiling — will receive the same capped amount as a mother earning at the ceiling. The benefit is paid directly by Social Insurance Services and is separate from any employer-paid salary continuation. To claim, you submit Form M1 to the Social Insurance Services office at least 3 months before the expected due date, along with your employer's certificate of employment.",
+				body: `The Social Insurance maternity benefit is calculated as 75% of the mother's average insurable earnings during the relevant contribution period, specifically the earnings in the contribution year two years prior to the benefit year. Cyprus Social Insurance uses 'insurable earnings' rather than gross salary, and insurable earnings are subject to an annual ceiling (${eur(SI_MAX_INSURABLE_ANNUAL)} a year for 2026, revised each January). In practice, this means a mother earning €30,000 per year gross will receive approximately €433 per week during the Social Insurance-funded period (€30,000 ÷ 52 × 75%). A mother earning €75,000 per year, above the insurable ceiling, will receive the same capped amount as a mother earning at the ceiling. The benefit is paid directly by Social Insurance Services and is separate from any employer-paid salary continuation. To claim, you submit Form M1 to the Social Insurance Services office at least 3 months before the expected due date, along with your employer's certificate of employment.`,
 			},
 			{
 				heading: "Paternity leave: the 2-week entitlement",
@@ -1034,14 +1216,21 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Self-employed maternity benefit",
-				body: "Self-employed mothers in Cyprus are entitled to maternity benefit from Social Insurance under the same 18-week framework, provided they have made sufficient Social Insurance contributions. The self-employed rate is calculated on the basis of declared insurable earnings rather than payslips — specifically, the self-employed person's insurable earnings from the contribution year two years prior. The practical implication: if you have under-declared insurable earnings (a common situation for self-employed people in Cyprus who want to minimize contributions), your maternity benefit will be proportionally reduced. The Social Insurance contribution for self-employed individuals is 15.6% of insurable earnings as of current rates, covering both the employee and employer portions. Self-employed mothers should request Form M1SE from Social Insurance and submit it at least 3 months before expected delivery. There is no employer top-up for self-employed mothers — the full 18 weeks of benefit, if any, comes from Social Insurance at the 75% rate, subject to the usual caps.",
+				body: `Self-employed mothers in Cyprus are entitled to maternity benefit from Social Insurance under the same 18-week framework, provided they have made sufficient Social Insurance contributions. The self-employed rate is calculated on the basis of declared insurable earnings rather than payslips: specifically, the self-employed person's insurable earnings from the contribution year two years prior. The practical implication: if you have under-declared insurable earnings (a common situation for self-employed people in Cyprus who want to minimize contributions), your maternity benefit will be proportionally reduced. The Social Insurance contribution for self-employed individuals is ${pct(SI_SELF_EMPLOYED_RATE)} of insurable earnings (the rate since 2024), covering both the employee and employer portions. Self-employed mothers should request Form M1SE from Social Insurance and submit it at least 3 months before expected delivery. There is no employer top-up for self-employed mothers: the full 18 weeks of benefit, if any, comes from Social Insurance at the 75% rate, subject to the usual caps.`,
 			},
 		],
 	},
 	{
 		slug: "gesy-registration-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-06-18",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Tax Department: Guide to the 2025 tax return (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/06/Guide-for-completion-of-tax-return-2025-EL.pdf",
+			},
+		],
 		category: "healthcare",
 		title: "GeSY Registration Guide 2026: Step-by-Step",
 		description:
@@ -1069,7 +1258,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "GeSY for self-employed and non-standard residents",
-				body: "Self-employed residents register under the 'self-employed' beneficiary category and pay 4.00% of declared insurable income rather than the employed rate. The minimum GeSY contribution for self-employed individuals is based on the statutory minimum insurable income, which means even if your declared income is very low, there is a floor contribution — currently approximately €180–€200 per year. For non-EU residents on a Digital Nomad Visa whose income is from foreign sources: you are still required to register for GeSY as a legal resident, and the contribution is treated as 4.00% of your declared income in Cyprus (which for a pure DNV holder may be zero — in that case, the HIO assesses contributions at minimum rates). If you hold both private health insurance and GeSY, you are still legally required to make GeSY contributions — opting out of the public system is not permitted. Most long-term residents keep both, using GeSY for routine care and private insurance for faster specialist access and private hospital admissions.",
+				body: "Self-employed residents register under the 'self-employed' beneficiary category and pay 4.00% of declared insurable income rather than the employed rate. If you hold a Digital Nomad Visa and all your income comes from abroad, ask the Health Insurance Organisation (gesy.org.cy, contact centre 17000) whether you are a GeSY beneficiary and what you would pay before you rely on it. If you hold both private health insurance and GeSY, you are still legally required to make GeSY contributions; opting out of the public system is not permitted. Most long-term residents keep both, using GeSY for routine care and private insurance for faster specialist access and private hospital admissions.",
 			},
 		],
 		faqs: [
@@ -1083,11 +1272,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "How much does GeSY cost in 2026?",
-				a: "For employees: 2.65% of gross salary (employee share), with the employer contributing a further 2.90%. For self-employed individuals: 4.00% of declared insurable income, with a minimum contribution floor of approximately €180–€200 per year. For pensioners: 2.65% of pension income. Contributions are deducted automatically for employees and paid via tax return for the self-employed.",
+				a: "For employees: 2.65% of gross salary (employee share), with the employer contributing a further 2.90%. For self-employed individuals: 4.00% of declared income, up to €180,000 a year. For pensioners: 2.65% of pension income. Contributions are deducted automatically for employees and paid via tax return for the self-employed.",
 			},
 			{
 				q: "Can I register for GeSY on a Digital Nomad Visa?",
-				a: "Yes. All legal residents of Cyprus — including Digital Nomad Visa holders — are required to register for GeSY. If your income is entirely foreign-sourced and you declare zero Cypriot income, the HIO applies minimum contribution rates (approximately €180–€200 per year). You register at gesyportal.hio.org.cy using your ARC number.",
+				a: "Check with the Health Insurance Organisation (gesy.org.cy, contact centre 17000) first. Whether a Digital Nomad Visa holder whose income is all from abroad counts as a GeSY beneficiary, and what they would pay, depends on HIO rules this guide has not been able to confirm. If you are eligible, you register at gesyportal.hio.org.cy using your ARC number.",
 			},
 			{
 				q: "What does GeSY cover?",
@@ -2065,7 +2254,19 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "buying-process",
 		datePublished: "2026-06-09",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label:
+					"Tax Department: Circular ΕΕ 11/2023 on 5% VAT for a primary residence (PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/01/%CE%95%CE%95-11_2023.pdf",
+			},
+			{
+				label: "Department of Lands and Surveys: Rights and fees (PDF)",
+				url: "https://portal.dls.moi.gov.cy/wp-content/uploads/2022/07/Rights-and-Fees_EN.pdf",
+			},
+		],
 		category: "property",
 		title: "How to Buy Property in Cyprus 2026: Full Guide",
 		description:
@@ -2073,7 +2274,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "Before you start: deciding what and where",
-				body: "Buying property in Cyprus follows a roughly predictable path that takes between two and twelve months depending on whether you are buying off-plan (an apartment that isn't built yet) or completed (an already-existing flat or house). Before signing anything, three preliminary decisions matter more than any other. First, region — Limassol, Paphos, Larnaca and Ayia Napa have very different price brackets, lifestyles, schooling options and rental yields; spend a week in your shortlisted region in low season (November–February) and high season (July–August) before committing. Second, new versus resale — new builds carry 19% VAT (or 5% reduced VAT on a first primary residence under specific conditions, capped at 130 m² for properties up to €350,000), while resales pay transfer fees instead, typically 1.5–4% of the price after exemptions. Third, financing — Cyprus banks (Bank of Cyprus, Hellenic Bank, Eurobank, Astrobank, Alpha Bank Cyprus) lend to non-residents at 30–50% deposit and a fixed-or-variable rate currently in the 3.5–5.5% range, but the documentation requirements are heavy and most buyers complete the purchase before approaching a bank for refinancing. Cash buyers complete much faster.",
+				body: `Buying property in Cyprus follows a roughly predictable path that takes between two and twelve months depending on whether you are buying off-plan (an apartment that isn't built yet) or completed (an already-existing flat or house). Before signing anything, three preliminary decisions matter more than any other. First, region: Limassol, Paphos, Larnaca and Ayia Napa have very different price brackets, lifestyles, schooling options and rental yields; spend a week in your shortlisted region in low season (November–February) and high season (July–August) before committing. Second, new versus resale: new builds carry 19% VAT (or 5% reduced VAT on a first primary residence under specific conditions, on the first 130 m² and first ${eur(REDUCED_VAT_VALUE_CAP)}, for homes up to 190 m² and ${eur(REDUCED_VAT_MAX_VALUE)}), while resales pay transfer fees instead, typically 1.5–4% of the price after exemptions. Third, financing: Cyprus banks (Bank of Cyprus, Hellenic Bank, Eurobank, Astrobank, Alpha Bank Cyprus) lend to non-residents at 30–50% deposit and a fixed-or-variable rate currently in the 3.5–5.5% range, but the documentation requirements are heavy and most buyers complete the purchase before approaching a bank for refinancing. Cash buyers complete much faster.`,
 			},
 			{
 				heading: "Step 1: Reservation agreement",
@@ -2109,7 +2310,23 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "property-taxes-2026",
 		datePublished: "2026-06-09",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label:
+					"Tax Department: Circular ΕΕ 11/2023 on 5% VAT for a primary residence (PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/01/%CE%95%CE%95-11_2023.pdf",
+			},
+			{
+				label: "Department of Lands and Surveys: Rights and fees (PDF)",
+				url: "https://portal.dls.moi.gov.cy/wp-content/uploads/2022/07/Rights-and-Fees_EN.pdf",
+			},
+			{
+				label: "gov.cy: Calculation of real estate transfer fees",
+				url: "https://www.gov.cy/en/service/calculation-of-real-estates-transfer-fees/",
+			},
+		],
 		category: "tax",
 		title: "Cyprus Property Taxes 2026: VAT & Transfer Fees",
 		description:
@@ -2121,11 +2338,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "VAT on new-build property",
-				body: "Cyprus charges 19% VAT on new-build residential property — the standard EU rate. For first-time buyers using the property as their primary residence, a reduced rate of 5% VAT applies to the first 130 m² of buildable area (130 m² of building, not plot), provided the total transaction value does not exceed €350,000 and the buyable area does not exceed 190 m². The reduced rate is the single biggest tax saving available to Cyprus property buyers: on a €300,000 apartment, the difference between 19% and 5% VAT is €42,000. To qualify, the buyer must (a) be 18 or older, (b) not have benefited from the reduced VAT rate on a previous property in Cyprus, (c) use the property as their main residence for at least ten years (if you sell or rent out the property within ten years, you must repay the difference between 5% and 19% pro-rata for the years remaining), and (d) be a Cyprus tax resident or planning to become one. Non-EU buyers can qualify for the reduced rate, but should plan for the ten-year primary-residence requirement carefully. The application is made by your lawyer to the Cyprus Tax Department and typically processed within 6–12 weeks; the refund of the VAT difference is paid back into your account.",
+				body: `Cyprus charges 19% VAT on new-build residential property, the standard EU rate. For first-time buyers using the property as their primary residence, a reduced rate of 5% VAT applies to the first 130 m² of buildable area (130 m² of building, not plot), on value up to ${eur(REDUCED_VAT_VALUE_CAP)}, provided the home's total buildable area does not exceed 190 m² and its total value does not exceed ${eur(REDUCED_VAT_MAX_VALUE)} (above ${eur(REDUCED_VAT_VALUE_CAP)}, only the first ${eur(REDUCED_VAT_VALUE_CAP)} gets the 5% rate). The reduced rate is the single biggest tax saving available to Cyprus property buyers: on a €300,000 apartment, the difference between 19% and 5% VAT is €42,000. To qualify, the buyer must (a) be 18 or older, (b) not have benefited from the reduced VAT rate on a previous property in Cyprus, (c) use the property as their main residence for at least ten years (if you sell or rent out the property within ten years, you must repay the difference between 5% and 19% pro-rata for the years remaining), and (d) be a Cyprus tax resident or planning to become one. Non-EU buyers can qualify for the reduced rate, but should plan for the ten-year primary-residence requirement carefully. The application is made by your lawyer to the Cyprus Tax Department and typically processed within 6–12 weeks; the refund of the VAT difference is paid back into your account.`,
 			},
 			{
 				heading: "Transfer fees on resale property",
-				body: "Resale properties do not carry VAT; instead, the buyer pays transfer fees to the Land Registry. The rates are: 1.5% on the first €85,000, 2.5% on the portion from €85,000 to €170,000, and 4% on anything above €170,000. So a €300,000 resale property would carry €1,275 + €2,125 + €5,200 = €8,600 in transfer fees. Cyprus has, however, applied a 50% reduction on transfer fees since 2012, and that 50% reduction has been extended every year since — making the effective rate currently 0.75% / 1.25% / 2.0%. The €300,000 resale example becomes €4,300 in effective transfer fees. The 50% reduction does not apply to gifts or inheritance, only to arm's-length sales. Note that resale property where VAT was originally paid by the first buyer is exempt from transfer fees entirely — so if you're buying a 2018 apartment from its first owner who paid VAT in 2018, you pay no transfer fees. This is a meaningful saving and worth confirming in writing through your lawyer.",
+				body: "Resale properties do not carry VAT; instead, the buyer pays transfer fees to the Land Registry. The scale is 3% on the first €85,000, 5% on €85,001 to €170,000 and 8% above that, and a 50% reduction applies, giving effective rates of 1.5%, 2.5% and 4%. A €300,000 resale therefore carries €8,600 in transfer fees. The 50% reduction does not apply to gifts or inheritance, only to arm's-length sales. The exemption applies only when your own purchase is subject to VAT, such as buying new from a developer. Buying a resale home pays transfer fees even if the first owner paid VAT.",
 			},
 			{
 				heading: "Miscellaneous fees (stamp duty abolished)",
@@ -2230,7 +2447,14 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "cyprus-vs-portugal",
 		datePublished: "2026-06-09",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Tax Department: Form T.D.59 2026 notes (PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/02/IR59_2026_English__.pdf",
+			},
+		],
 		category: "lifestyle",
 		title: "Cyprus vs Portugal for Relocation 2026",
 		description:
@@ -2246,7 +2470,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Taxes — non-dom vs NHR",
-				body: "Tax is where most relocators do the maths. Cyprus's non-dom regime: 0% tax on dividends, interest and most foreign-sourced passive income for 17 of the next 20 tax years; 0% income tax on the first €22,000 of Cypriot employment; 50% income tax exemption on Cypriot employment income above €100,000 for the first 17 years; flat 15% corporate tax; 20% capital gains tax only on Cypriot real estate (everything else exempt). Portugal's Non-Habitual Resident (NHR) regime was sharply curtailed in 2024 — the new version (now called IFICI for new applicants from 2024+) applies only to specific high-value-added professions and offers a narrower set of benefits than the previous NHR, with a 20% flat rate on covered Portuguese income for 10 years and varying treatment of foreign income. Pre-2024 NHR applicants remain on the old regime: 10-year preferential treatment with 10% on foreign-source pensions and various exemptions on foreign income. Verdict: Cyprus has the more generous and longer-lasting tax position for new applicants in 2026, particularly for individuals whose income is primarily dividends, interest or business profits. Portugal still has appeal for specific professional categories under the new IFICI regime, and for buyers prioritising lifestyle over tax.",
+				body: `Tax is where most relocators do the maths. Cyprus's non-dom regime: 0% tax on dividends, interest and most foreign-sourced passive income for 17 of the next 20 tax years; 0% income tax on the first €22,000 of Cypriot employment; 50% income tax exemption on Cypriot employment income for new residents earning over ${eur(FIRST_EMPLOYMENT_50PCT_THRESHOLD)} (conditions apply); flat 15% corporate tax; 20% capital gains tax only on Cypriot real estate (everything else exempt). Portugal's Non-Habitual Resident (NHR) regime was sharply curtailed in 2024: the new version (now called IFICI for new applicants from 2024+) applies only to specific high-value-added professions and offers a narrower set of benefits than the previous NHR, with a 20% flat rate on covered Portuguese income for 10 years and varying treatment of foreign income. Pre-2024 NHR applicants remain on the old regime: 10-year preferential treatment with 10% on foreign-source pensions and various exemptions on foreign income. Verdict: Cyprus has the more generous and longer-lasting tax position for new applicants in 2026, particularly for individuals whose income is primarily dividends, interest or business profits. Portugal still has appeal for specific professional categories under the new IFICI regime, and for buyers prioritising lifestyle over tax.`,
 			},
 			{
 				heading: "Cost of living and property",
@@ -2470,11 +2694,25 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "retiring-in-cyprus",
 		datePublished: "2026-06-22",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Migration Department: Visitors and family members",
+				url: "https://www.gov.cy/mip-md/en/documents/visitors-and-family-members/",
+			},
+			{
+				label: "Migration Department: Immigration permits (categories A to F)",
+				url: "https://www.gov.cy/mip-md/en/documents/companies-investors-permanent-residence-3/immigration-permits/",
+			},
+			{
+				label: "Tax Department: Income Tax Law amendments 2026 (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/03/2026-ΦορΜεταρρύθμιση-Φόρος-Εισοδήματος.pdf",
+			},
+		],
 		category: "lifestyle",
 		title: "Retiring in Cyprus 2026: Full Expat Guide",
-		description:
-			"Everything retirees need to know about moving to Cyprus — how pension income is taxed (flat 5% after the first €3,420), which residency route applies, how GeSY public healthcare compares to private insurance, and what a comfortable retirement in Cyprus actually costs per month.",
+		description: `Everything retirees need to know about moving to Cyprus: how pension income is taxed (flat 5% after the first ${eur(FOREIGN_PENSION_THRESHOLD)}), which residency route applies, how GeSY public healthcare compares to private insurance, and what a comfortable retirement in Cyprus actually costs per month.`,
 		sections: [
 			{
 				heading: "Why Cyprus works for retirees",
@@ -2482,11 +2720,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Residency options for retirees",
-				body: "The residency route depends on your citizenship. EU citizens have the simplest path: the MEU1 registration (a declaration of residence, not a permit) filed at the Civil Registry and Migration Department, supported by proof of sufficient income (no fixed threshold for EU citizens, but €1,000–€1,500/month is the practical expectation), comprehensive health insurance (or proof of GeSY registration), and a local address. This gives indefinite right of residence in Cyprus. Non-EU citizens — UK nationals, Israelis, Americans, Australians — need a formal permit. The most relevant for retirees is the Category F residence permit, which is specifically designed for people living in Cyprus on a pension or other passive income without working. Requirements: provable income of at least €2,500/month for an individual (€3,500/month for a couple), comprehensive health insurance, a clean criminal record, and a local address (rented or owned). The permit is initially issued for one year and renewed annually; after five years of continuous residence, permanent residency can be applied for. The Permanent Residency by Investment route (minimum €300,000 property purchase) is an alternative that bypasses the annual renewal cycle and grants permanent residency immediately, but requires a larger capital commitment.",
+				body: `The residency route depends on your citizenship. EU citizens have the simplest path: the MEU1 registration (a declaration of residence, not a permit) filed with the Migration Department, supported by proof that you can support yourself without social assistance (no fixed amount is published), comprehensive health insurance (or proof of GeSY registration), and a local address. This gives indefinite right of residence in Cyprus. Non-EU citizens (UK nationals, Israelis, Americans, Australians) need a formal permit. The most relevant for retirees is the Visitor temporary residence permit, for people living on a pension or other passive income without working. Requirements: regular transfers from abroad of at least ${eur(VISITOR_PERMIT_MONTHLY_INCOME)} a month for one person (${eur(VISITOR_PERMIT_MONTHLY_INCOME_COUPLE)} for a couple, plus 15% per child), a 10-year bank guarantee, health insurance, a clean criminal record, and a local address. The permit is issued for one year and renewed. A separate route, the Category F immigration permit, gives permanent residence on a secured income from abroad. The Permanent Residency by Investment route (minimum €300,000 property purchase) is an alternative that bypasses the annual renewal cycle and grants permanent residency immediately, but requires a larger capital commitment.`,
 			},
 			{
 				heading: "How pension income is taxed in Cyprus",
-				body: "Cyprus offers two tax treatment options for foreign-source pension income, and retirees can elect which applies. The default is progressive income tax rates (0% on income up to €22,000/year, 20% on the next €10,000, 25% on the next €10,000, 30% on the next €30,000, 35% above €72,000). The alternative — available by election — is a flat 5% tax on foreign pension income exceeding €3,420 per year. The first €3,420 is tax-free under this election. For a retiree receiving €2,000/month (€24,000/year) in pension income, the 5% flat rate produces a tax liability of €1,029 per year; under the 2026 progressive bands, the same income produces approximately €400 per year — making the progressive rate the better choice at this income level. For higher pension income (above approximately €28,000/year), the flat rate becomes more advantageous: at €36,000/year, the flat rate is approximately €1,629 versus €3,000 under the progressive scale. The election is made annually and is irrevocable for the year in question. To qualify for the 5% rate, you must be a Cyprus tax resident (183+ days in Cyprus per year, or 60 days under the new rules if you are not a tax resident elsewhere and meet certain conditions). Cyprus has double taxation agreements with the UK, Germany, France, and most countries from which retirees come — in most cases, pension income is taxable only in Cyprus under these agreements, eliminating the risk of double taxation.",
+				body: `Cyprus offers two tax treatment options for foreign-source pension income, and retirees can elect which applies. The default is progressive income tax rates (0% on income up to €22,000/year, 20% on the next €10,000, 25% on the next €10,000, 30% on the next €30,000, 35% above €72,000). The alternative, available by election, is a flat 5% tax on foreign pension income above ${eur(FOREIGN_PENSION_THRESHOLD)} a year (from tax year 2026). The first ${eur(FOREIGN_PENSION_THRESHOLD)} is tax-free under this election. For a retiree receiving €24,000 a year, the 5% option costs €950, while the 2026 progressive bands give about €400, so progressive is better at this level. Above roughly €27,700 a year the flat rate wins: at €36,000 it is €1,550 against €3,000. The election is made annually and is irrevocable for the year in question. To qualify for the 5% rate, you must be a Cyprus tax resident (183+ days in Cyprus per year, or at least 60 days if you meet the 60-day rule's conditions). Cyprus has double taxation agreements with the UK, Germany, France, and most countries from which retirees come; in most cases, pension income is taxable only in Cyprus under these agreements, eliminating the risk of double taxation.`,
 			},
 			{
 				heading: "Healthcare: GeSY versus private insurance",
@@ -2498,17 +2736,17 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Practical steps: how the move actually works",
-				body: "The practical sequence for a retiree moving to Cyprus runs as follows. Before leaving: arrange comprehensive health insurance (required for the residence permit application and essential from day one); open a bank account if possible (easier from abroad for some non-EU banks); research areas and do at least one scouting trip of 2–3 weeks; begin the document gathering process (birth certificates, marriage certificate if applicable, criminal record certificate, pension statements — most need apostille endorsement). On arrival: rent initially rather than buying — the rental market allows you to experience different areas and neighbourhoods before committing. First month: register your address at the local municipality (required for the residence permit), open a Cypriot bank account (Bank of Cyprus and Hellenic Bank are the main retail banks; expect a 2–4 week account opening process requiring in-person visit), register with GeSY at a local GP surgery, apply for your Tax Identification Number (TIN) at the Tax Department (required for almost all financial transactions in Cyprus). Within three months: file your residence permit application at the Migration Department (Category F) or MEU1 (EU citizens); obtain a Cypriot driver's licence if staying long-term (required after establishing residency). Year one: establish your tax residency position by consulting a local accountant, file your first Cyprus tax return (due 31 July for income earned in the prior year for individuals), and if eligible, elect the 5% flat rate on foreign pension income.",
+				body: "The practical sequence for a retiree moving to Cyprus runs as follows. Before leaving: arrange comprehensive health insurance (required for the residence permit application and essential from day one); open a bank account if possible (easier from abroad for some non-EU banks); research areas and do at least one scouting trip of 2–3 weeks; begin the document gathering process (birth certificates, marriage certificate if applicable, criminal record certificate, pension statements; most need apostille endorsement). On arrival: rent initially rather than buying, as the rental market allows you to experience different areas and neighbourhoods before committing. First month: register your address at the local municipality (required for the residence permit), open a Cypriot bank account (Bank of Cyprus and Hellenic Bank are the main retail banks; expect a 2–4 week account opening process requiring in-person visit), register with GeSY at a local GP surgery, apply for your Tax Identification Number (TIN) at the Tax Department (required for almost all financial transactions in Cyprus). Within three months: file your residence permit application at the Migration Department (Visitor permit) or MEU1 (EU citizens); obtain a Cypriot driver's licence if staying long-term (required after establishing residency). Year one: establish your tax residency position by consulting a local accountant, file your first Cyprus tax return (due 31 July for income earned in the prior year for individuals), and if eligible, elect the 5% flat rate on foreign pension income.",
 			},
 		],
 		faqs: [
 			{
 				q: "How is pension income taxed in Cyprus?",
-				a: "You can elect a flat 5% tax rate on foreign pension income above €3,420/year. The first €3,420 is tax-free. On a pension of €24,000/year, this produces a tax bill of approximately €1,029. The alternative is progressive rates (0–35%), which is worse for most retirees with meaningful pension income. The election is made annually when you file your Cyprus tax return.",
+				a: `You can elect a flat 5% tax rate on foreign pension income above ${eur(FOREIGN_PENSION_THRESHOLD)} a year (from tax year 2026). On a pension of €24,000 a year this costs €950, while progressive rates give about €400, so the flat rate only pays off above roughly €27,700 a year. You choose each year when you file.`,
 			},
 			{
 				q: "Can a non-EU citizen retire in Cyprus?",
-				a: "Yes. The Category F residence permit is designed for non-EU retirees living in Cyprus on pension or passive income. It requires provable income of at least €2,500/month for an individual, comprehensive health insurance, a clean criminal record, and a local address. The permit is renewed annually; permanent residency can be applied for after five years of continuous residence. Alternatively, a minimum €300,000 property purchase qualifies for immediate Permanent Residency by Investment.",
+				a: `Yes. The Visitor temporary residence permit is the usual route for non-EU retirees living in Cyprus on a pension or passive income. It requires regular transfers from abroad of at least ${eur(VISITOR_PERMIT_MONTHLY_INCOME)} a month for one person (${eur(VISITOR_PERMIT_MONTHLY_INCOME_COUPLE)} for a couple), a 10-year bank guarantee, health insurance, a clean criminal record, and a local address. It is issued for one year and renewed. Ask the Migration Department whether time on this permit counts towards long-term residence. Alternatively, a minimum €300,000 property purchase qualifies for immediate Permanent Residency by Investment.`,
 			},
 			{
 				q: "Is GeSY good enough for retirees in Cyprus?",
@@ -2520,18 +2758,37 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "How much money do I need to retire in Cyprus?",
-				a: "A comfortable retirement for a couple costs approximately €2,800–€4,500/month depending on city, lifestyle, and whether you rent or own. For a single retiree, the range is €1,800–€3,000/month. The Category F residence permit requires a minimum provable income of €2,500/month for a single person (€3,500/month for a couple), which happens to roughly align with the lower end of a comfortable retirement budget. More is better — the minimum income thresholds are for permit eligibility, not for a quality lifestyle.",
+				a: `A comfortable retirement for a couple costs approximately €2,800–€4,500/month depending on city, lifestyle, and whether you rent or own. For a single retiree, the range is €1,800–€3,000/month. The Visitor residence permit requires transfers from abroad of at least ${eur(VISITOR_PERMIT_MONTHLY_INCOME)} a month for a single person (${eur(VISITOR_PERMIT_MONTHLY_INCOME_COUPLE)} for a couple), which sits below a comfortable retirement budget. More is better: the minimum income thresholds are for permit eligibility, not for a quality lifestyle.`,
 			},
 		],
 	},
 	{
 		slug: "moving-to-cyprus-from-uk",
 		datePublished: "2026-06-22",
-		dateModified: "2026-09-30",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Migration Department: Visitors and family members",
+				url: "https://www.gov.cy/mip-md/en/documents/visitors-and-family-members/",
+			},
+			{
+				label: "Migration Department: Digital nomads and family members",
+				url: "https://www.gov.cy/mip-md/en/documents/digital-nomads-and-family-members/",
+			},
+			{
+				label: "Migration Department: Immigration permits for investors",
+				url: "https://www.gov.cy/mip-md/en/documents/companies-investors-permanent-residence-3/immigration-permits-for-investors/",
+			},
+			{
+				label: "Tax Department: Income Tax Law amendments 2026 (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/03/2026-ΦορΜεταρρύθμιση-Φόρος-Εισοδήματος.pdf",
+			},
+		],
 		category: "immigration",
 		title: "Moving to Cyprus from the UK After Brexit: 2026 Guide",
 		description:
-			"Practical guide for UK nationals relocating to Cyprus after Brexit — which visa route applies (Category F, Digital Nomad, or Permanent Residency), how UK pension and employment income is taxed in Cyprus, the UK-Cyprus double taxation treaty, and what UK buyers need to know about property purchase.",
+			"Practical guide for UK nationals relocating to Cyprus after Brexit: which visa route applies (Visitor permit, Digital Nomad, or Permanent Residency), how UK pension and employment income is taxed in Cyprus, the UK-Cyprus double taxation treaty, and what UK buyers need to know about property purchase.",
 		sections: [
 			{
 				heading: "Post-Brexit: what changed for UK nationals in Cyprus",
@@ -2539,11 +2796,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Visa and residency routes for UK nationals",
-				body: "There are four main routes. Category F residence permit: the standard route for retirees and those living on pension or passive income. Requires provable income of €2,500/month (individual) or €3,500/month (couple), comprehensive health insurance, a clean criminal record certificate (from UK — apostilled), and a local address. Issued for one year, renewable annually; permanent residency after five years. Digital Nomad Visa: for UK nationals working remotely for a non-Cyprus employer or running a non-Cyprus business. Requires a minimum monthly income of €3,500 (gross), proof of remote work arrangement, and comprehensive health insurance. Initially valid for one year, extendable for two more; does not lead directly to permanent residency. Employed in Cyprus: if you have a job offer from a Cyprus employer, the employer sponsors your work permit through the Civil Registry and Migration Department. This is processed as a work permit application and takes 4–8 weeks. Permanent Residency by Investment: a minimum purchase of a new development property at €300,000 + VAT from a qualifying developer. Grants permanent residency immediately, without the annual renewal cycle. Family members can be included. No right to work is attached to the PR permit. There is no general skilled worker visa for self-employed UK nationals operating a business in Cyprus — company formation and corporate tax residency are handled separately from personal residency.",
+				body: `There are four main routes. Visitor temporary residence permit: the usual route for retirees and others living on pension or passive income without working. You need regular transfers from abroad of at least ${eur(VISITOR_PERMIT_MONTHLY_INCOME)} a month (€24,000 a year), plus 20% for a spouse and 15% per child, a 10-year bank guarantee, health insurance, a clean criminal record certificate (from the UK, apostilled) and a local address. It is issued for one year and renewed. Ask the Migration Department whether time on this permit counts towards long-term residence. Digital Nomad Visa: for UK nationals working remotely for a non-Cyprus employer or running a non-Cyprus business. Requires a minimum net monthly income of €3,500 (after tax and contributions), proof of remote work arrangement, and comprehensive health insurance. Initially valid for one year, extendable for two more; does not lead directly to permanent residency. Employed in Cyprus: if you have a job offer from a Cyprus employer, the employer sponsors your work permit through the Civil Registry and Migration Department. This is processed as a work permit application and takes 4–8 weeks. Permanent Residency by Investment: a minimum purchase of a new development property at €300,000 + VAT from a qualifying developer. Grants permanent residency immediately, without the annual renewal cycle. Family members can be included. No right to work is attached to the PR permit. There is no general skilled worker visa for self-employed UK nationals operating a business in Cyprus; company formation and corporate tax residency are handled separately from personal residency.`,
 			},
 			{
 				heading: "Tax: the UK-Cyprus double taxation treaty",
-				body: "The UK and Cyprus have a Double Taxation Agreement (DTA), signed in 1974 and updated subsequently. Under the DTA, most income is taxable only in the country where you are tax resident — so if you establish Cyprus tax residency (183+ days in Cyprus, or 60 days under the non-domicile rules), most of your income is taxable in Cyprus rather than the UK. Key points for UK nationals. UK state pension: under the DTA, UK government pensions (civil service, NHS, teaching, military) remain taxable in the UK regardless of where you live. Private pensions and personal pensions (ISAs, SIPPs, private employer pensions) are taxable in Cyprus as your country of residence — and you can elect the 5% flat rate on foreign pension income over €3,420/year. Employment income from a UK employer, if you work remotely from Cyprus, is taxable in Cyprus after you establish Cyprus tax residency (some nuance applies if you spend time in both countries). UK rental income from UK property remains taxable in the UK regardless. Dividends from UK companies: taxable in Cyprus as your country of residence under the DTA. Capital gains on UK property remain taxable in the UK. The practical implication: a UK national with a private pension and no UK property to rent out can move to Cyprus and pay 5% flat tax on their pension income — a dramatic reduction from UK income tax rates. Establish this properly: register with the Cyprus Tax Department, file Cyprus tax returns, and get a certificate of Cyprus tax residency to present to HMRC when you de-register from UK tax.",
+				body: `The UK and Cyprus have a Double Taxation Agreement (DTA), signed in 1974 and updated subsequently. Under the DTA, most income is taxable only in the country where you are tax resident, so if you establish Cyprus tax residency (183+ days in Cyprus, or 60 days under the non-domicile rules), most of your income is taxable in Cyprus rather than the UK. Key points for UK nationals. UK state pension: under the DTA, UK government pensions (civil service, NHS, teaching, military) remain taxable in the UK regardless of where you live. Private pensions and personal pensions (ISAs, SIPPs, private employer pensions) are taxable in Cyprus as your country of residence, and you can elect the 5% flat rate on foreign pension income over ${eur(FOREIGN_PENSION_THRESHOLD)} a year (from tax year 2026). Employment income from a UK employer, if you work remotely from Cyprus, is taxable in Cyprus after you establish Cyprus tax residency (some nuance applies if you spend time in both countries). UK rental income from UK property remains taxable in the UK regardless. Dividends from UK companies: taxable in Cyprus as your country of residence under the DTA. Capital gains on UK property remain taxable in the UK. The practical implication: a UK national with a private pension and no UK property to rent out can move to Cyprus and pay 5% flat tax on their pension income, a dramatic reduction from UK income tax rates. Establish this properly: register with the Cyprus Tax Department, file Cyprus tax returns, and get a certificate of Cyprus tax residency to present to HMRC when you de-register from UK tax.`,
 			},
 			{
 				heading: "Buying property in Cyprus as a UK national",
@@ -2559,7 +2816,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Which route fits which UK situation",
-				body: "Most UK movers fall into one of four situations, and the route follows from the situation rather than the other way round.\n\nRetired or living on pensions and savings: Category F is the route built for this, and it also decides how your pensions are taxed once you are resident. Read retiring-in-cyprus alongside this guide.\n\nWorking remotely for an employer or clients outside Cyprus: the Digital Nomad Visa. See digital-nomad-visa-guide for documents and timing. It is temporary, so think about what you will do at the end of the term.\n\nOffered a job by a Cyprus employer: a work permit, sponsored by the employer. See work-permits-non-eu.\n\nBuying property and wanting settled status: Permanent Residency by Investment, which is tied to a qualifying purchase. Read buying-process and property-lawyers-cyprus before you commit money, and do not let a developer or agent choose the route for you.\n\nIf you are unsure, the visa-pathway-finder at /tools/visa-pathway-finder narrows it down in two questions.",
+				body: "Most UK movers fall into one of four situations, and the route follows from the situation rather than the other way round.\n\nRetired or living on pensions and savings: the Visitor residence permit is the usual route, and it also decides how your pensions are taxed once you are resident. Read retiring-in-cyprus alongside this guide.\n\nWorking remotely for an employer or clients outside Cyprus: the Digital Nomad Visa. See digital-nomad-visa-guide for documents and timing. It is temporary, so think about what you will do at the end of the term.\n\nOffered a job by a Cyprus employer: a work permit, sponsored by the employer. See work-permits-non-eu.\n\nBuying property and wanting settled status: Permanent Residency by Investment, which is tied to a qualifying purchase. Read buying-process and property-lawyers-cyprus before you commit money, and do not let a developer or agent choose the route for you.\n\nIf you are unsure, the visa-pathway-finder at /tools/visa-pathway-finder narrows it down in two questions.",
 			},
 			{
 				heading: "Before you leave the UK: a sensible order of operations",
@@ -2569,11 +2826,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		faqs: [
 			{
 				q: "Do UK citizens need a visa to live in Cyprus?",
-				a: "Yes, for stays beyond 90 days. UK nationals can enter Cyprus without a visa for up to 90 days under a bilateral agreement (Cyprus is not in Schengen). For longer stays, you need a formal residence permit: Category F (living on income/pension), Digital Nomad Visa (remote workers), work permit (employed by a Cyprus employer), or Permanent Residency by Investment (€300k+ property purchase).",
+				a: "Yes, for stays beyond 90 days. UK nationals can enter Cyprus without a visa for up to 90 days under a bilateral agreement (Cyprus is not in Schengen). For longer stays, you need a formal residence permit: a Visitor permit (living on income/pension), Digital Nomad Visa (remote workers), work permit (employed by a Cyprus employer), or Permanent Residency by Investment (€300k+ property purchase).",
 			},
 			{
 				q: "Is Cyprus pension tax-free for UK expats?",
-				a: "Private pensions and personal pensions (SIPPs, personal pension plans) are taxable in Cyprus as your country of residence — you can elect a flat 5% rate on the amount above €3,420/year, which is very low compared to UK income tax. UK government pensions (civil service, NHS, military, teaching) remain taxable in the UK under the UK-Cyprus DTA, regardless of where you live. So the answer depends on your pension type.",
+				a: `Private pensions and personal pensions (SIPPs, personal pension plans) are taxable in Cyprus as your country of residence: you can elect a flat 5% rate on the amount above ${eur(FOREIGN_PENSION_THRESHOLD)} a year (from tax year 2026), which is very low compared to UK income tax. UK government pensions (civil service, NHS, military, teaching) remain taxable in the UK under the UK-Cyprus DTA, regardless of where you live. So the answer depends on your pension type.`,
 			},
 			{
 				q: "Can UK nationals buy property in Cyprus after Brexit?",
@@ -2593,7 +2850,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "Which Cyprus route is best for a UK national after Brexit?",
-				a: "It depends on your situation. Retirees and people living on income usually look at Category F, remote workers at the Digital Nomad Visa, people with a Cyprus job offer at a work permit, and property buyers at Permanent Residency by Investment. The visa-pathway-finder tool on this site can narrow it down.",
+				a: "It depends on your situation. Retirees and people living on income usually look at the Visitor residence permit, remote workers at the Digital Nomad Visa, people with a Cyprus job offer at a work permit, and property buyers at Permanent Residency by Investment. The visa-pathway-finder tool on this site can narrow it down.",
 			},
 		],
 	},

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
+import { SourcesNote } from "@/components/ui/SourcesNote";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import VisaPathwayFinderClient from "./client";
@@ -27,15 +28,42 @@ export default function VisaPathwayFinderPage() {
 		<ToolTemplate
 			pagefindType="tool"
 			related={
-				<MoreOnTopic
-					type="tool"
-					slug="visa-pathway-finder"
-					exclude={[
-						"/guides/residency-and-visas/",
-						"/sections/immigration-lawyers/",
-					]}
-					cols={2}
-				/>
+				<>
+					<SourcesNote
+						className="mb-12"
+						lastChecked="2026-10-02"
+						sources={[
+							{
+								label:
+									"Migration Department: Immigration permits for investors",
+								url: "https://www.gov.cy/mip-md/en/documents/companies-investors-permanent-residence-3/immigration-permits-for-investors/",
+							},
+							{
+								label:
+									"Migration Department: Digital nomads and family members",
+								url: "https://www.gov.cy/mip-md/en/documents/digital-nomads-and-family-members/",
+							},
+							{
+								label: "Migration Department: Visitors and family members",
+								url: "https://www.gov.cy/mip-md/en/documents/visitors-and-family-members/",
+							},
+							{
+								label:
+									"Migration Department: Registration of EU citizens (MEU1)",
+								url: "https://www.gov.cy/mip-md/en/documents/e-u-e-e-a-citizens-and-family-members-2/e-u-e-e-a-citizens-family-member/registration-of-e-u-citizens-and-members-of-their-families-who-are-also-e-u-e-e-a-citizens-meu1/",
+							},
+						]}
+					/>
+					<MoreOnTopic
+						type="tool"
+						slug="visa-pathway-finder"
+						exclude={[
+							"/guides/residency-and-visas/",
+							"/sections/immigration-lawyers/",
+						]}
+						cols={2}
+					/>
+				</>
 			}
 			width="reading"
 			header={{
@@ -61,7 +89,7 @@ export default function VisaPathwayFinderPage() {
 				{ href: "/tools/", label: "All tools" },
 			]}
 			disclaimer={
-				"This tool provides general guidance only. Immigration rules change frequently. Always verify current requirements with the Cyprus Civil Registry and Migration Department (crmd.moi.gov.cy) or a qualified immigration lawyer before making decisions."
+				"This tool provides general guidance only. Immigration rules change frequently. Always verify current requirements with the Migration Department (gov.cy/mip-md) or a qualified immigration lawyer before making decisions."
 			}
 		>
 			<script

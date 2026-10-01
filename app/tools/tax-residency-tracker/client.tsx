@@ -23,7 +23,6 @@ function getRecommendation(
 	daysInOtherCountry: number,
 	hasPermanentHome: boolean,
 	hasBusinessOrEmployment: boolean,
-	isTaxResidentElsewhere: boolean,
 ): { type: Recommendation; title: string; description: string } {
 	if (daysInCyprus >= 183) {
 		return {
@@ -36,17 +35,14 @@ function getRecommendation(
 
 	if (daysInCyprus >= 60) {
 		const conditionsMet =
-			daysInOtherCountry <= 183 &&
-			hasPermanentHome &&
-			hasBusinessOrEmployment &&
-			!isTaxResidentElsewhere;
+			daysInOtherCountry <= 183 && hasPermanentHome && hasBusinessOrEmployment;
 
 		if (conditionsMet) {
 			return {
 				type: "60-day-qualified",
 				title: "60-Day Rule: Qualified",
 				description:
-					"You meet all four conditions for the 60-day tax residency rule. You are likely tax resident in Cyprus for this year. Maintain a detailed day diary and ensure all four conditions are documented. Consult a Cyprus tax accountant before filing.",
+					"You meet the conditions for the 60-day tax residency rule. You are likely tax resident in Cyprus for this year. Maintain a detailed day diary and keep evidence of each condition. Consult a Cyprus tax accountant before filing.",
 			};
 		}
 
@@ -150,7 +146,6 @@ export default function TaxResidencyPlannerClient() {
 	const [daysInOtherCountry, setDaysInOtherCountry] = useState(120);
 	const [hasPermanentHome, setHasPermanentHome] = useState(true);
 	const [hasBusinessOrEmployment, setHasBusinessOrEmployment] = useState(true);
-	const [isTaxResidentElsewhere, setIsTaxResidentElsewhere] = useState(false);
 
 	const qualifies183 = daysInCyprus >= 183;
 
@@ -177,12 +172,6 @@ export default function TaxResidencyPlannerClient() {
 			detail:
 				"You must carry on business, hold employment, or hold an office in a Cyprus-resident entity.",
 		},
-		{
-			label: "Not tax resident in any other country this year",
-			pass: !isTaxResidentElsewhere,
-			detail:
-				"You must not be a tax resident in any other jurisdiction during the same calendar year.",
-		},
 	];
 
 	const sixtyDayAllPass = sixtyDayConditions.every((c) => c.pass);
@@ -192,7 +181,6 @@ export default function TaxResidencyPlannerClient() {
 		daysInOtherCountry,
 		hasPermanentHome,
 		hasBusinessOrEmployment,
-		isTaxResidentElsewhere,
 	);
 
 	const recTone: Record<Recommendation, CalloutTone> = {
@@ -242,11 +230,10 @@ export default function TaxResidencyPlannerClient() {
 					value={hasBusinessOrEmployment}
 					onChange={setHasBusinessOrEmployment}
 				/>
-				<YesNoField
-					label="Are you tax resident elsewhere this year?"
-					value={isTaxResidentElsewhere}
-					onChange={setIsTaxResidentElsewhere}
-				/>
+				<p className="text-sm text-muted">
+					From 1 January 2026, being tax resident in another country no longer
+					rules out the 60-day rule; the other conditions still apply.
+				</p>
 			</ToolPanel>
 
 			<section aria-labelledby="residency-results" className="space-y-4">
