@@ -63,7 +63,7 @@ export const IMMIGRATION_SPEC_LABEL: Record<ImmigrationSpecialization, string> =
 export const IMMIGRATION_LAWYER_TIPS: ReadonlyArray<ImmigrationLawyerTip> = [
   {
     heading: "Apply within three months of arriving in Cyprus",
-    body: "A Digital Nomad application is made at the Migration Department in Nicosia within three months of arriving in Cyprus, entering on a visa only if your nationality needs one. A permanent residence (PR by Investment) application can be lodged in person or through an authorised representative, and lodging it does not give you a right to stay while it is examined.",
+    body: "A Digital Nomad application is made at the Migration Department's central offices within three months of arriving in Cyprus, entering on a visa only if your nationality needs one. A permanent residence (PR by Investment) application can be lodged in person or through an authorised representative, and lodging it does not give you a right to stay while it is examined.",
   },
   {
     heading: "DNV income must be verifiable and stable",
@@ -71,7 +71,7 @@ export const IMMIGRATION_LAWYER_TIPS: ReadonlyArray<ImmigrationLawyerTip> = [
   },
   {
     heading: "PR by Investment requires a clean source-of-funds trail",
-    body: "The Permanent Residency by Investment (Reg. 6(2)) requires you to demonstrate that the €300,000+ purchase price came from declared sources and was transferred to Cyprus from abroad, from your own (or your spouse's) bank account. A lawyer who is experienced in this process will guide you through the source-of-funds declaration early — assembling it after the fact is significantly harder.",
+    body: "The Permanent Residency by Investment (Reg. 6(2)) requires you to demonstrate that the €300,000+ purchase price came from declared sources and was transferred to Cyprus from abroad, from your own (or your spouse's) bank account. A lawyer who is experienced in this process will guide you through the source-of-funds declaration early, because assembling it after the fact is significantly harder.",
   },
   {
     heading: "60-day tax residency requires genuine substance",
