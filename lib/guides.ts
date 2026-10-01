@@ -16,6 +16,8 @@ import {
 	FOREIGN_PENSION_THRESHOLD_2025,
 	NON_DOM_EXTENSION_FEE,
 	pct,
+	REDUCED_VAT_MAX_VALUE,
+	REDUCED_VAT_VALUE_CAP,
 	SDC_DIVIDEND_RATE,
 	SDC_DIVIDEND_RATE_PRE_2026_PROFITS,
 	SDC_INTEREST_RATE,
@@ -384,7 +386,18 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "title-deed-status-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Department of Lands and Surveys: Rights and fees (PDF)",
+				url: "https://portal.dls.moi.gov.cy/wp-content/uploads/2022/07/Rights-and-Fees_EN.pdf",
+			},
+			{
+				label: "gov.cy: Calculation of real estate transfer fees",
+				url: "https://www.gov.cy/en/service/calculation-of-real-estates-transfer-fees/",
+			},
+		],
 		category: "property",
 		title: "Cyprus Title Deed Guide 2026: Full Overview",
 		description:
@@ -413,7 +426,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "The immovable property transfer process",
-				body: "Once the individual title deed exists and the purchase price is paid, the formal transfer takes place at the DLS. Both buyer and seller (or their lawyers under power of attorney) attend. Transfer fees are levied on the current market value of the property at rates of 3% on the first €85,000, 5% on the next €85,001–€170,000, and 8% on amounts above €170,000, though reduced rates apply for purchases of new build properties from developers (50% discount on transfer fees has historically applied, and VAT-registered new builds may transfer fee-free in certain circumstances). Stamp duty on property purchase contracts was abolished from 1 January 2026. Title deed transfer typically takes 1–4 weeks once the application is lodged and all documents are in order. After transfer, you receive a title deed in your name from the DLS — this is the document that confirms you are the legal registered owner. Store it securely; lost title deeds require a court process to replace.",
+				body: "Once the individual title deed exists and the purchase price is paid, the formal transfer takes place at the DLS. Both buyer and seller (or their lawyers under power of attorney) attend. Transfer fees are levied on the current market value of the property at rates of 3% on the first €85,000, 5% on the next €85,001–€170,000, and 8% on amounts above €170,000, and a 50% reduction applies to these fees. No transfer fees are due where the purchase was subject to VAT. Stamp duty on property purchase contracts was abolished from 1 January 2026. Title deed transfer typically takes 1–4 weeks once the application is lodged and all documents are in order. After transfer, you receive a title deed in your name from the DLS — this is the document that confirms you are the legal registered owner. Store it securely; lost title deeds require a court process to replace.",
 			},
 		],
 	},
@@ -653,7 +666,23 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "new-development-buying-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-10-01",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label:
+					"Tax Department: Circular ΕΕ 11/2023 on 5% VAT for a primary residence (PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/01/%CE%95%CE%95-11_2023.pdf",
+			},
+			{
+				label: "Department of Lands and Surveys: Rights and fees (PDF)",
+				url: "https://portal.dls.moi.gov.cy/wp-content/uploads/2022/07/Rights-and-Fees_EN.pdf",
+			},
+			{
+				label: "gov.cy: Calculation of real estate transfer fees",
+				url: "https://www.gov.cy/en/service/calculation-of-real-estates-transfer-fees/",
+			},
+		],
 		category: "property",
 		title: "Buying a New Development in Cyprus 2026",
 		description:
@@ -669,11 +698,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "VAT on new developments",
-				body: "VAT applies to the first sale of new residential properties in Cyprus. The standard rate is 19%, but a reduced rate of 5% applies to buyers who qualify under the primary residence scheme. To qualify for the 5% rate, you must be an individual (not a company), the property must be your primary and permanent residence in Cyprus, the property must not exceed 200 square metres of covered area (with the reduced rate applying to the first 130 square metres and the standard 19% rate applying above that within the same property), you must not have used the 5% scheme for another property in Cyprus in the preceding 10 years, and you must declare your intention to use the property as a primary residence and actually do so for at least 10 years after completion. The 5% eligibility must be confirmed and applied for before or at contract signing — it cannot be applied retrospectively after you have been charged 19%. If you purchase through a company, or you are not eligible for the reduced rate for any reason, VAT at 19% applies to the full purchase price. VAT-registered property purchases can also sometimes result in a VAT refund for the developer, which they may or may not pass through to buyers; clarify this in the contract.",
+				body: `VAT applies to the first sale of new residential properties in Cyprus. The standard rate is 19%, but a reduced rate of 5% applies to buyers who qualify under the primary residence scheme. To qualify for the 5% rate, you must be an individual (not a company), the property must be your primary and permanent residence in Cyprus, the home's buildable area must not exceed 190 square metres and its value must not exceed ${eur(REDUCED_VAT_MAX_VALUE)} (the 5% rate applies to the first 130 square metres and the first ${eur(REDUCED_VAT_VALUE_CAP)}), you must not have used the 5% scheme for another property in Cyprus in the preceding 10 years, and you must declare your intention to use the property as a primary residence and actually do so for at least 10 years after completion. The 5% eligibility must be confirmed and applied for before or at contract signing — it cannot be applied retrospectively after you have been charged 19%. If you purchase through a company, or you are not eligible for the reduced rate for any reason, VAT at 19% applies to the full purchase price. VAT-registered property purchases can also sometimes result in a VAT refund for the developer, which they may or may not pass through to buyers; clarify this in the contract.`,
 			},
 			{
 				heading: "Land Registry deposit and transfer fees",
-				body: "After the Contract of Sale is signed, it must be deposited at the DLS within 60 days (stamp duty on property purchase contracts was abolished from 1 January 2026). The deposit registers your interest against the title and is the buyer's primary protection from double-selling or developer encumbrance. At the time of title deed transfer, transfer fees are calculated on the DLS's assessed market value (not necessarily the contract price, though the two are typically close for new builds). Transfer fee rates: 3% on the first €85,000 of value, 5% on €85,001–€170,000, 8% above €170,000. A 50% discount on transfer fees has historically applied to transfers directly from developers; confirm the current discount with your lawyer as this has been modified by legislation several times. For VAT-registered new build purchases, no transfer fees are payable — VAT and transfer fees are mutually exclusive in Cyprus tax law. Budget carefully: on a €400,000 property, transfer fees at full rate would be approximately €18,450; at the 50% discount, approximately €9,225.",
+				body: "After the Contract of Sale is signed, it must be deposited at the DLS within 60 days (stamp duty on property purchase contracts was abolished from 1 January 2026). The deposit registers your interest against the title and is the buyer's primary protection from double-selling or developer encumbrance. At the time of title deed transfer, transfer fees are calculated on the DLS's assessed market value (not necessarily the contract price, though the two are typically close for new builds). Transfer fee rates: 3% on the first €85,000 of value, 5% on €85,001–€170,000, 8% above €170,000. A 50% reduction applies to all sales where VAT is not charged. For VAT-registered new build purchases, no transfer fees are payable — VAT and transfer fees are mutually exclusive in Cyprus tax law. Budget carefully: on a €400,000 property, transfer fees at the full scale would be €25,200; after the 50% reduction, €12,600.",
 			},
 			{
 				heading: "Title deed timeline and snagging",
@@ -804,7 +833,15 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "vat-registration-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label:
+					"Tax Department: Circular ΕΕ 11/2023 on 5% VAT for a primary residence (PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/01/%CE%95%CE%95-11_2023.pdf",
+			},
+		],
 		category: "tax",
 		title: "VAT Registration in Cyprus: Thresholds & OSS",
 		description:
@@ -828,7 +865,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "VAT on new property — the 5% reduced rate conditions",
-				body: "The 5% reduced VAT rate on new residential property purchases is one of the more significant practical features of Cyprus's VAT system and directly affects relocators buying homes. The conditions for the 5% rate: the property must be new (first transfer — second-hand properties are not subject to VAT at all, only transfer tax), the buyer must be an individual (not a company) purchasing for use as their primary and permanent place of residence, the buyer must not have previously used the 5% rate on another Cyprus property, and the reduced rate applies to the first 200 square metres of buildable area (above 200 sqm, the excess is taxed at 19%). Before 2023, the threshold was 130 sqm; it was expanded to 200 sqm as part of housing affordability measures. The buyer must sign a statutory declaration confirming their intent to use the property as a primary residence for at least 10 years; transferring or letting the property within 10 years triggers a VAT clawback obligation of the difference between the 5% and 19% rates on the full purchase price.",
+				body: `The 5% reduced VAT rate on new residential property purchases is one of the more significant practical features of Cyprus's VAT system and directly affects relocators buying homes. The conditions for the 5% rate: the property must be new (first transfer — second-hand properties are not subject to VAT at all, only transfer tax), the buyer must be an individual (not a company) purchasing for use as their primary and permanent place of residence, the buyer must not have previously used the 5% rate on another Cyprus property, and the reduced rate applies to the first 130 square metres of buildable area and the first ${eur(REDUCED_VAT_VALUE_CAP)} of value, and only if the home is no larger than 190 square metres and worth no more than ${eur(REDUCED_VAT_MAX_VALUE)}. These limits have applied since 16 June 2023. The buyer must sign a statutory declaration confirming their intent to use the property as a primary residence for at least 10 years; transferring or letting the property within 10 years triggers a VAT clawback obligation of the difference between the 5% and 19% rates on the full purchase price.`,
 			},
 		],
 	},
@@ -2217,7 +2254,19 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "buying-process",
 		datePublished: "2026-06-09",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label:
+					"Tax Department: Circular ΕΕ 11/2023 on 5% VAT for a primary residence (PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/01/%CE%95%CE%95-11_2023.pdf",
+			},
+			{
+				label: "Department of Lands and Surveys: Rights and fees (PDF)",
+				url: "https://portal.dls.moi.gov.cy/wp-content/uploads/2022/07/Rights-and-Fees_EN.pdf",
+			},
+		],
 		category: "property",
 		title: "How to Buy Property in Cyprus 2026: Full Guide",
 		description:
@@ -2225,7 +2274,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "Before you start: deciding what and where",
-				body: "Buying property in Cyprus follows a roughly predictable path that takes between two and twelve months depending on whether you are buying off-plan (an apartment that isn't built yet) or completed (an already-existing flat or house). Before signing anything, three preliminary decisions matter more than any other. First, region — Limassol, Paphos, Larnaca and Ayia Napa have very different price brackets, lifestyles, schooling options and rental yields; spend a week in your shortlisted region in low season (November–February) and high season (July–August) before committing. Second, new versus resale — new builds carry 19% VAT (or 5% reduced VAT on a first primary residence under specific conditions, capped at 130 m² for properties up to €350,000), while resales pay transfer fees instead, typically 1.5–4% of the price after exemptions. Third, financing — Cyprus banks (Bank of Cyprus, Hellenic Bank, Eurobank, Astrobank, Alpha Bank Cyprus) lend to non-residents at 30–50% deposit and a fixed-or-variable rate currently in the 3.5–5.5% range, but the documentation requirements are heavy and most buyers complete the purchase before approaching a bank for refinancing. Cash buyers complete much faster.",
+				body: `Buying property in Cyprus follows a roughly predictable path that takes between two and twelve months depending on whether you are buying off-plan (an apartment that isn't built yet) or completed (an already-existing flat or house). Before signing anything, three preliminary decisions matter more than any other. First, region — Limassol, Paphos, Larnaca and Ayia Napa have very different price brackets, lifestyles, schooling options and rental yields; spend a week in your shortlisted region in low season (November–February) and high season (July–August) before committing. Second, new versus resale — new builds carry 19% VAT (or 5% reduced VAT on a first primary residence under specific conditions, on the first 130 m² and first ${eur(REDUCED_VAT_VALUE_CAP)}, for homes up to 190 m² and ${eur(REDUCED_VAT_MAX_VALUE)}), while resales pay transfer fees instead, typically 1.5–4% of the price after exemptions. Third, financing — Cyprus banks (Bank of Cyprus, Hellenic Bank, Eurobank, Astrobank, Alpha Bank Cyprus) lend to non-residents at 30–50% deposit and a fixed-or-variable rate currently in the 3.5–5.5% range, but the documentation requirements are heavy and most buyers complete the purchase before approaching a bank for refinancing. Cash buyers complete much faster.`,
 			},
 			{
 				heading: "Step 1: Reservation agreement",
@@ -2261,7 +2310,23 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "property-taxes-2026",
 		datePublished: "2026-06-09",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label:
+					"Tax Department: Circular ΕΕ 11/2023 on 5% VAT for a primary residence (PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/01/%CE%95%CE%95-11_2023.pdf",
+			},
+			{
+				label: "Department of Lands and Surveys: Rights and fees (PDF)",
+				url: "https://portal.dls.moi.gov.cy/wp-content/uploads/2022/07/Rights-and-Fees_EN.pdf",
+			},
+			{
+				label: "gov.cy: Calculation of real estate transfer fees",
+				url: "https://www.gov.cy/en/service/calculation-of-real-estates-transfer-fees/",
+			},
+		],
 		category: "tax",
 		title: "Cyprus Property Taxes 2026: VAT & Transfer Fees",
 		description:
@@ -2273,11 +2338,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "VAT on new-build property",
-				body: "Cyprus charges 19% VAT on new-build residential property — the standard EU rate. For first-time buyers using the property as their primary residence, a reduced rate of 5% VAT applies to the first 130 m² of buildable area (130 m² of building, not plot), provided the total transaction value does not exceed €350,000 and the buyable area does not exceed 190 m². The reduced rate is the single biggest tax saving available to Cyprus property buyers: on a €300,000 apartment, the difference between 19% and 5% VAT is €42,000. To qualify, the buyer must (a) be 18 or older, (b) not have benefited from the reduced VAT rate on a previous property in Cyprus, (c) use the property as their main residence for at least ten years (if you sell or rent out the property within ten years, you must repay the difference between 5% and 19% pro-rata for the years remaining), and (d) be a Cyprus tax resident or planning to become one. Non-EU buyers can qualify for the reduced rate, but should plan for the ten-year primary-residence requirement carefully. The application is made by your lawyer to the Cyprus Tax Department and typically processed within 6–12 weeks; the refund of the VAT difference is paid back into your account.",
+				body: `Cyprus charges 19% VAT on new-build residential property — the standard EU rate. For first-time buyers using the property as their primary residence, a reduced rate of 5% VAT applies to the first 130 m² of buildable area (130 m² of building, not plot), on value up to ${eur(REDUCED_VAT_VALUE_CAP)}, provided the home's total buildable area does not exceed 190 m² and its total value does not exceed ${eur(REDUCED_VAT_MAX_VALUE)} (above ${eur(REDUCED_VAT_VALUE_CAP)}, only the first ${eur(REDUCED_VAT_VALUE_CAP)} gets the 5% rate). The reduced rate is the single biggest tax saving available to Cyprus property buyers: on a €300,000 apartment, the difference between 19% and 5% VAT is €42,000. To qualify, the buyer must (a) be 18 or older, (b) not have benefited from the reduced VAT rate on a previous property in Cyprus, (c) use the property as their main residence for at least ten years (if you sell or rent out the property within ten years, you must repay the difference between 5% and 19% pro-rata for the years remaining), and (d) be a Cyprus tax resident or planning to become one. Non-EU buyers can qualify for the reduced rate, but should plan for the ten-year primary-residence requirement carefully. The application is made by your lawyer to the Cyprus Tax Department and typically processed within 6–12 weeks; the refund of the VAT difference is paid back into your account.`,
 			},
 			{
 				heading: "Transfer fees on resale property",
-				body: "Resale properties do not carry VAT; instead, the buyer pays transfer fees to the Land Registry. The rates are: 1.5% on the first €85,000, 2.5% on the portion from €85,000 to €170,000, and 4% on anything above €170,000. So a €300,000 resale property would carry €1,275 + €2,125 + €5,200 = €8,600 in transfer fees. Cyprus has, however, applied a 50% reduction on transfer fees since 2012, and that 50% reduction has been extended every year since — making the effective rate currently 0.75% / 1.25% / 2.0%. The €300,000 resale example becomes €4,300 in effective transfer fees. The 50% reduction does not apply to gifts or inheritance, only to arm's-length sales. Note that resale property where VAT was originally paid by the first buyer is exempt from transfer fees entirely — so if you're buying a 2018 apartment from its first owner who paid VAT in 2018, you pay no transfer fees. This is a meaningful saving and worth confirming in writing through your lawyer.",
+				body: "Resale properties do not carry VAT; instead, the buyer pays transfer fees to the Land Registry. The scale is 3% on the first €85,000, 5% on €85,001 to €170,000 and 8% above that, and a 50% reduction applies, giving effective rates of 1.5%, 2.5% and 4%. A €300,000 resale therefore carries €8,600 in transfer fees. The 50% reduction does not apply to gifts or inheritance, only to arm's-length sales. The exemption applies only when your own purchase is subject to VAT, such as buying new from a developer. Buying a resale home pays transfer fees even if the first owner paid VAT.",
 			},
 			{
 				heading: "Miscellaneous fees (stamp duty abolished)",

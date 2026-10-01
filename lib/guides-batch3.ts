@@ -1,4 +1,8 @@
-import { eur, FOREIGN_PENSION_THRESHOLD } from "./facts/tax";
+import {
+	eur,
+	FOREIGN_PENSION_THRESHOLD,
+	REDUCED_VAT_MAX_VALUE,
+} from "./facts/tax";
 import type { GuideInfo } from "./guides";
 
 /**
@@ -10,7 +14,19 @@ export const GUIDES_BATCH3: GuideInfo[] = [
 	{
 		slug: "buying-vs-renting-cyprus",
 		datePublished: "2026-07-06",
-		dateModified: "2026-07-06",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label:
+					"Tax Department: Circular ΕΕ 11/2023 on 5% VAT for a primary residence (PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/01/%CE%95%CE%95-11_2023.pdf",
+			},
+			{
+				label: "Department of Lands and Surveys: Rights and fees (PDF)",
+				url: "https://portal.dls.moi.gov.cy/wp-content/uploads/2022/07/Rights-and-Fees_EN.pdf",
+			},
+		],
 		category: "property",
 		title: "Buying vs Renting in Cyprus: 2026 Guide",
 		description:
@@ -18,7 +34,7 @@ export const GUIDES_BATCH3: GuideInfo[] = [
 		sections: [
 			{
 				heading: "The Real Cost of Buying in Cyprus",
-				body: "Buying property anywhere involves transaction costs that most promotional materials understate. In Cyprus the headline items are transfer fees, VAT on new builds, and legal fees. The good news: stamp duty was fully abolished from 1 January 2026, removing one cost that previously added up to several thousand euros on a typical purchase.\n\nTransfer fees are levied by the Land Registry on resale properties at a tiered rate: 3% on the first €85,000 of purchase price, 5% on €85,001–€170,000, and 8% on everything above. A statutory 50% reduction applies to all resale purchases, cutting the effective rates to 1.5%, 2.5%, and 4% respectively. On new-build properties where the developer has already paid VAT, transfer fees are waived altogether.\n\nVAT applies to new builds at the standard rate of 19%. A reduced rate of 5% is available if the property will be your primary residence, subject to detailed conditions on area and value (broadly, the 5% rate applies only to the first 130 m² of a home up to 190 m², with a value cap; you must also occupy it as a primary residence or proportional VAT becomes repayable). Verify your eligibility with your solicitor before factoring this rate into your budget.\n\nLegal fees for a reputable Cypriot firm typically run 1–2% of the purchase price, covering title searches, contract review, and Land Registry registration. Independent legal representation is not optional — title-deed issues remain a known risk in the Cypriot market.\n\nAdding buying-side costs together on a typical resale property, the total sits at roughly 4–6% of the purchase price. Add agent commission of 3–5% (plus 19% VAT on the commission) and legal fees of around 1% on the sale side, and the full round-trip cost of buying and later selling a Cyprus property comes to approximately 8–12%. That is the hurdle your capital appreciation must clear before buying becomes superior to renting. The rent-vs-buy calculator at /tools/rent-vs-buy-calculator quantifies this for your own figures.",
+				body: `Buying property anywhere involves transaction costs that most promotional materials understate. In Cyprus the headline items are transfer fees, VAT on new builds, and legal fees. The good news: stamp duty was fully abolished from 1 January 2026, removing one cost that previously added up to several thousand euros on a typical purchase.\n\nTransfer fees are levied by the Land Registry on resale properties at a tiered rate: 3% on the first €85,000 of purchase price, 5% on €85,001–€170,000, and 8% on everything above. A statutory 50% reduction applies to all resale purchases, cutting the effective rates to 1.5%, 2.5%, and 4% respectively. On new-build properties where the developer has already paid VAT, transfer fees are waived altogether.\n\nVAT applies to new builds at the standard rate of 19%. A reduced rate of 5% is available if the property will be your primary residence, subject to detailed conditions on area and value (broadly, the 5% rate applies only to the first 130 m² of a home up to 190 m², with a value cap of ${eur(REDUCED_VAT_MAX_VALUE)}; you must also occupy it as a primary residence or proportional VAT becomes repayable). Verify your eligibility with your solicitor before factoring this rate into your budget.\n\nLegal fees for a reputable Cypriot firm typically run 1–2% of the purchase price, covering title searches, contract review, and Land Registry registration. Independent legal representation is not optional — title-deed issues remain a known risk in the Cypriot market.\n\nAdding buying-side costs together on a typical resale property, the total sits at roughly 4–6% of the purchase price. Add agent commission of 3–5% (plus 19% VAT on the commission) and legal fees of around 1% on the sale side, and the full round-trip cost of buying and later selling a Cyprus property comes to approximately 8–12%. That is the hurdle your capital appreciation must clear before buying becomes superior to renting. The rent-vs-buy calculator at /tools/rent-vs-buy-calculator quantifies this for your own figures.`,
 			},
 			{
 				heading: "The Break-Even Holding Period",
