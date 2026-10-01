@@ -68,3 +68,4 @@ out/
 tsconfig.tsbuildinfo
 *.tsbuildinfo
 .superpowers/
+qa-reports/

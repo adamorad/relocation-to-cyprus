@@ -1,0 +1,193 @@
+{
+	"emojiGlyphs": ["©"],
+	"nicosia": [
+		{
+			"file": "app/sections/mental-health-services/client.tsx",
+			"text": ". In acute crisis, go to Nicosia General Hospital or Limassol General"
+		},
+		{
+			"file": "lib/art-culture.ts",
+			"text": "* Research sources: Cyprus Tourism Organisation, Nicosia Municipality,"
+		},
+		{
+			"file": "lib/cyprusData.ts",
+			"text": "{ name: \"Nicosia\",   lon: 33.36, lat: 35.13,                region: [88, 103, 176] },"
+		},
+		{
+			"file": "lib/cyprusData.ts",
+			"text": "* fallback in lib/listingsData.ts) so listings located in Nicosia are"
+		},
+		{
+			"file": "lib/cyprusData.ts",
+			"text": "* Owner rule: Nicosia is intentionally excluded from RealCy.app. This entry is"
+		},
+		{
+			"file": "lib/cyprusData.ts",
+			"text": "// ── Buffer zone (Green Line) running E through Mesaoria + Nicosia ──────"
+		},
+		{
+			"file": "lib/cyprusData.ts",
+			"text": "// Owner rule: Nicosia is intentionally excluded from RealCy.app. This"
+		},
+		{
+			"file": "lib/cyprusData.ts",
+			"text": "// polygon is kept ONLY as an internal classifier so Nicosia listings are"
+		},
+		{
+			"file": "lib/cyprusData.ts",
+			"text": "name: \"Nicosia\","
+		},
+		{
+			"file": "lib/guides-batch1.ts",
+			"text": "a: \"For MEU1 (EU citizen) applications, processing at district offices can be as fast as the same day, and is typically completed within a few weeks. Allow up to a month in busier periods or if any of your documents require additional verification — the Nicosia office tends to be fastest.\","
+		},
+		{
+			"file": "lib/guides-batch1.ts",
+			"text": "body: \"MEU1 applications are submitted in person at one of five Civil Registry and Migration Department (CRMD) district offices across Cyprus: Nicosia, Limassol, Larnaca, Paphos, and Famagusta/Paralimni. Appointment requirements vary by district — some offices have accepted walk-ins for certain application categories, while others require advance booking — so contact your local office directly before making the trip. As a general rule, booking three to four weeks ahead is sensible, and during busy periods slots can fill faster. The CRMD headquarters can be reached by email at migration@crmd.moi.gov.cy; phone numbers and any updated online booking details for each district are listed on the gov.cy immigration portal. Lawyers and immigration advisers may attend to assist, but the applicant must be physically present — the application cannot be submitted by a representative on your behalf. Bring originals and photocopies of every document on your checklist: offices have been known to turn applicants away for a single missing item, and it is a long way to travel twice. For MEU1 applicants attending the Nicosia office, receipt on the same day is possible in many cases; in other districts, turnaround is typically within a few weeks.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "a: \"Limassol has the widest range of private specialists, private hospitals (Limassol General, Mediterranean Hospital, Apollonion), and GeSY-registered GPs. Larnaca has solid public and private options including Larnaca General Hospital and several private clinics. Paphos is adequately served but has fewer specialist options — complex cases are often referred to Limassol or Nicosia. Ayia Napa relies on Larnaca for anything beyond basic care.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "a: \"Yes, the standard of dentistry in Cyprus is generally high. The majority of Cypriot dentists trained at European universities — commonly in Greece, the UK, Italy, or Germany — and are registered with the Cyprus Dental Association. The University of Nicosia dental school has also raised the overall standard on the island in recent years. English is effectively the default language for non-Greek-speaking patients at most clinics in the four main cities.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "body: \"A recurring pattern among expat families in Cyprus is that secondary school choices are made with an eye on domestic university options. Families who enrol children in the IB programme at a Cyprus school can feed directly into the University of Nicosia, Frederick, or UCLan Cyprus, keeping the family in Cyprus without the gap year logistics and tuition expense of UK university. This matters more than it might seem: a child in secondary school in Limassol from age 14 and then continuing at University of Cyprus or University of Nicosia keeps the family unit together and avoids the €30,000–£45,000/year UK university cost. Some families explicitly structure their relocation horizon around this: arrive when children are 12–14, settle into international school, consider a Cyprus university for undergraduate, and then the child can choose Europe, UK, or US for postgraduate. It is a financially rational strategy that several hundred expat families appear to be following deliberately.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "body: \"Applications are submitted through the Civil Registry and Migration Department (CRMD) portal at crmd.moi.gov.cy. The process: create an account on the portal, select 'Visitor/Temporary Residence — Digital Nomad Visa', complete the online form, and upload all supporting documents. Applications can also be submitted in person at a CRMD district office — there are offices in Nicosia, Limassol, Larnaca, Paphos and Famagusta. In-person submission is recommended for first-time applicants as the officer can flag missing documents on the spot, preventing the need for a back-and-forth by post. The application fee as of 2025 is approximately €70 per adult applicant, payable at the CRMD office or through the portal. Submit from outside Cyprus if you have not yet entered, or within Cyprus on a valid visa (tourist entry is acceptable for initial application, but confirm current procedure with CRMD as this has changed previously).\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "body: \"Cyprus has a mix of public hospitals (run by the state but accessed via GeSY) and private hospitals (most of which are also GeSY-contracted for many services, though some operate purely privately). The major public hospitals are the New Nicosia General Hospital (the country's main referral hospital — major trauma, complex surgery, the Bank of Cyprus Oncology Centre), Limassol General, Larnaca General, Paphos General, and Paralimni General. Public hospitals via GeSY are competent for most procedures but waits for non-emergency surgery can run weeks to months. The major private hospitals include Mediterranean Hospital of Cyprus (Limassol — the largest and most internationally certified), Apollonion (Nicosia and Limassol locations), Ygia Polyclinic (Limassol), Hippocrateon (Nicosia), Aretaeio (Nicosia), Iasis (Paphos and Larnaca), Evangelistria (Paphos), ECO Medical Center (Larnaca), and the German Oncology Center (Limassol). Most private hospitals contract with GeSY for many services, so you can use them with GeSY coverage; the gap is closing rapidly. Choice of hospital for elective procedures often defaults to whichever has the shortest wait and the best specialist for your specific need rather than public vs private.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "body: \"Cyprus has a relatively large higher education sector for a country of its size, split between public universities (state-funded, with regulated fees) and private universities (independently funded, with market-rate fees). The public universities are: University of Cyprus (UCY, Nicosia — the flagship research university), Cyprus University of Technology (CUT, Limassol — strong in engineering and applied sciences), and the Open University of Cyprus (distance learning). The main private universities with full university status are: University of Nicosia (UNIC — largest, with strong medical and law programmes), Frederick University (Nicosia and Limassol), European University Cyprus (Nicosia), Neapolis University Paphos, and UCLan Cyprus (Pyla, Larnaca — a campus of the University of Central Lancashire). Each university is accredited by the Cyprus Agency of Quality Assurance and Accreditation in Higher Education (DIPAE), and degrees from all accredited institutions are recognised within the EU.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "body: \"Cyprus is meaningfully cheaper than western Europe for private dental work. Typical costs across Limassol, Paphos, and Larnaca: professional clean and scale (€60–€80), dental X-rays (€20–€40 for a full set of 4), composite filling (€80–€120 depending on size and surface), root canal treatment (€300–€500 per tooth), ceramic crown (€400–€600), dental implant including crown (€800–€1,200 for standard cases), Invisalign clear aligners (€2,500–€4,000 for a full course), and porcelain veneers (€400–€600 per tooth). These prices are 40–60% below comparable UK private rates and 30–50% below German rates. Quality is generally high — Cyprus has several hundred registered dentists trained in European universities, and the dental schools in Nicosia have raised the overall standard in recent years. Prices at tourist-area clinics (Ayia Napa, tourist strip in Paphos) can be 20–30% higher than equivalent care in residential areas.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "body: \"Cyprus offers an unusually wide spread of residency options because it has tried hard, for the last decade, to attract residents in three distinct buckets: wealthy non-EU buyers (the Permanent Residency by Investment route), remote workers and freelancers (the Digital Nomad Visa), and EU citizens moving for work or lifestyle (which technically isn't a visa at all, just a registration). Each route has its own minimum thresholds and trade-offs, and the right one depends almost entirely on your passport and what you intend to do with your days. The good news: Cyprus is one of the easier EU member states to relocate to legally, and the immigration department in Nicosia is broadly responsive to well-prepared applications.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "body: \"Degrees from all DIPAE-accredited Cyprus universities are EU degrees, recognised across the EU for employment and further study. For professional qualifications — medicine, law, engineering, architecture — the relevant professional body in the receiving country determines recognition, but Cyprus degrees in these fields are generally on par with other EU member state degrees. The University of Nicosia Medical School gained LCME (US) accreditation in addition to EU recognition, which makes its medical degree valid for US residency applications — this has driven significant American student enrolment. UCLan Cyprus degrees are awarded by the University of Central Lancashire and carry the same recognition as degrees from UCLan's main Preston campus. For families considering Cyprus partly for their children's university access, the combination of English-medium programmes, EU degree status, and lower living costs makes Cyprus meaningfully competitive with UK, Irish, and Dutch universities as a destination.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "body: \"Each major district has at least one 24-hour A&E, and the coverage between public and private hospitals overlaps in most areas. Public hospital A&E departments: Nicosia General Hospital (Λευκωσία), Limassol General Hospital (Limassol city), Larnaca General Hospital (Larnaca city), Paphos General Hospital (Paphos town), and Famagusta General Hospital (Paralimni — serving the eastern Famagusta district). Private hospitals with 24-hour A&E capability include Mediterranean Hospital in Limassol (the largest private hospital in Cyprus, trauma-capable), Apollonion Hospital in Nicosia, and St. George's Hospital in Larnaca. The private hospitals have shorter waiting times for non-critical A&E presentations but charge significantly more — expect €150–€300 for an A&E attendance fee alone at a private hospital before treatment costs. For genuine emergencies, go to the nearest A&E regardless of public or private; for non-critical urgent care that is not appropriate for a GP, private A&E or an urgent-care clinic is typically faster and more comfortable.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "body: \"EKAB (Emergency Medical Service) operates Cyprus's ambulance service with a fleet covering all districts. In urban areas — Limassol city, Paphos town, and Larnaca city — average response times run 8–12 minutes for Priority 1 (life-threatening) calls. In rural and semi-rural areas, response times extend to 15–25 minutes, and in remote mountain villages (Troodos area, Marathasa valley) response can take 30–45 minutes. Every ambulance carries defibrillators, basic resuscitation equipment, and paramedic-level drug packs. For cardiac arrest, trauma, and stroke, Cyprus's protocol is to stabilize and transport directly to the nearest A&E capable of definitive treatment — the Nicosia General Hospital for central cases, Mediterranean Hospital or Limassol General for Limassol cases. If you live in a rural area, it is worth knowing where your nearest A&E is and having the address ready to give to the 112 operator, who can direct the ambulance rather than having it navigate independently.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "body: \"EU licence holders: your EU driving licence is valid in Cyprus indefinitely — no exchange needed, though you may want to record it with the Traffic Department eventually. Non-EU licence holders must exchange within 6 months of becoming a Cyprus resident. The Traffic Department offices in Nicosia and Limassol handle this; book the appointment alongside your Civil Registry appointment since both have similar wait times. Your Tax Identification Number (TIC) can be obtained at any Tax Department district office; bring your passport and ARC/Yellow Slip. You'll need it for employment, self-employment, and for filing as a non-dom resident. Separately: if you're bringing a car from abroad, the import process involves the Customs Department and Vehicle Registration Office and typically takes 3–8 weeks — budget this into your timeline if you're shipping a vehicle rather than buying locally.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "body: \"For any A&E visit in Cyprus, bring: your ARC or Yellow Slip, your GeSY HIO card or beneficiary number, any relevant private health insurance card or policy number, and a list of your current medications. Public A&E operates on triage — genuine emergencies are seen immediately, non-critical presentations wait. Public hospital A&E waiting times for non-critical cases can reach 3–5 hours on busy evenings and weekends, which is comparable to UK NHS experience. If you have GeSY coverage, the public A&E co-payment is €10–€15 for the visit. If you do not yet have GeSY (new arrivals in their first weeks), public A&E charges a flat fee that varies by treatment — typically €50–€150 for a non-admission A&E visit. The clinical standard at the major public hospitals has improved substantially since GeSY's introduction, which brought performance incentives. For children: Makarios Hospital in Nicosia is the main pediatric facility, with Limassol and Paphos General hospitals also having pediatric departments.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "body: \"For life-threatening trauma — major road accidents, serious falls, severe cardiac events in rural areas — Cyprus operates an air ambulance service coordinated through the Joint Rescue Coordination Centre (JRCC). The helicopter fleet, operated in conjunction with the Cyprus Police Air Wing, can reach most parts of the island within 15–20 minutes from the Nicosia base. Air ambulance is activated by the 112 dispatcher for appropriate cases; it is not user-initiated. For international medical evacuation — if a patient requires treatment that is not available in Cyprus (specialized neurosurgery, severe burns requiring a specialist unit) — the standard destination is Athens or Tel Aviv (both under 1.5 hours by air), and the coordination goes through the GeSY emergency services or private medical evacuation insurance. Private medical evacuation insurance covering repatriation to your home country is sold by most Cyprus insurance brokers for €200–€400 per year per person and is worth considering if you have a pre-existing condition that might require specialist care not available in Cyprus.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "body: \"Paphos and Larnaca have smaller international school markets but with credible options. In Paphos, The International School of Paphos is the largest English-medium school, British curriculum from age 3 to 18, fees €5,800–€9,200. Aspire Private British School covers ages 4–18 with smaller class sizes (~14 per class) and fees €5,500–€8,500. Logos School of English Education is the older, more academic option with consistently strong A-level results. École Française de Paphos serves French-medium families at primary level. Neapolis University Paphos provides local tertiary education in psychology, law and business. In Larnaca, The American Academy Larnaca is the best-known English-medium school, US-style curriculum through to Grade 12 with SAT preparation, fees €5,500–€8,500. Pascal Private School operates a Larnaca campus alongside its Limassol location. The Med High School covers ages 12–18 with British curriculum. Several smaller British-curriculum primary schools serve the under-12 expat population. Larnaca's tertiary options are thinner — most students continue at Nicosia or Limassol universities or go abroad.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "body: \"Public university fees for EU students are subsidised by the Cyprus government and are very low by European standards: the University of Cyprus charges approximately €3,400 per year for EU students in most programmes. For non-EU international students, public university fees range from €6,800 to €9,500 per year depending on the programme. Private universities charge market rates: €6,000 to €9,500 per year for undergraduate programmes for EU students, and €8,000 to €12,000 for non-EU students. The exception is the University of Nicosia's medical programme, which is significantly more expensive (and in high demand from non-EU students) due to its EU accreditation and clinical placement access. Living costs as a student in Cyprus are lower than in UK, German, or Dutch university cities — a student sharing an apartment in Larnaca can live on €700–€1,000 per month including rent, food, and transport.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "body: \"Several accredited institutions offer Greek as a foreign language courses in Cyprus. The Cyprus Institute of Language and Computing (CyILE), affiliated with the University of Cyprus, runs intensive and regular-pace Greek language courses at various levels from beginner to advanced; courses are offered in Limassol and Larnaca, with term durations of 8–16 weeks and approximate costs of €300–€600 per level. Frederick University in Nicosia and Limassol offers short courses in Greek as part of its continuing education programme; these are worth checking for summer intensive formats. The ΙΝΕΚ (Institute of Adult Education) runs subsidised evening Greek courses at community centres in major cities — these are informal and cheap (€30–€60 for a term), oriented at integrating foreign residents, and a social environment as much as a language class. Private tuition from qualified Greek teachers runs €25–€45 per hour in Limassol; online platforms like Italki and Preply both have listings for Cyprus-based Greek tutors who can provide Cypriot-specific context.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "body: \"The Cyprus Bar Association (cyprusbar.org) publishes a register of licensed advocates. This is the starting point for verifying that a lawyer is properly licensed and not under any disciplinary proceedings. Beyond verification, the most reliable sources for individual recommendations are: expat community forums (Cyprus Expats on Facebook, r/cyprus on Reddit, Internations Cyprus) where people report specific positive experiences with named lawyers; referrals from independent financial advisors or tax consultants you are already working with in Cyprus (they work with property lawyers regularly and know whose due diligence holds up); and the Limassol, Paphos, and Larnaca expat Facebook groups, where specific lawyer names surface repeatedly in property threads. Look specifically for recommendations that mention DLS due diligence, title deed searches, and deposited contract — these are the procedural markers that distinguish a competent property lawyer from one who mainly reviews contracts and rubber-stamps deals. For UK buyers, the British High Commission in Nicosia maintains an unofficial list of English-speaking Cypriot lawyers — available on request.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "body: \"The Cyprus Department of Lands and Surveys (DLS) maintains the authoritative register of all immovable property. You or your lawyer can search the registry in person at any district DLS office (Limassol, Paphos, Larnaca, Nicosia, Famagusta), and an online portal (dls.moi.gov.cy) provides limited property information for registered users. For a complete search, your lawyer requests an official certificate of registration (Certificate of Encumbrances), which states the current registered owner, any mortgages, any charges, any restrictions, and whether the title deed is an individual title or still a plot title shared with other units. The certificate costs approximately €20–€50 and is issued within a few working days. Critically, confirm that the title being sold matches the physical unit — plot boundaries and apartment numbers on the title must correspond to the unit on the ground. Discrepancies are more common than buyers expect, particularly in older complexes.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "body: \"The Cyprus fire season runs from approximately late June through October, peaking in July and August when vegetation moisture content is at its lowest, temperatures exceed 35–40°C, and the desiccating north-west Leste wind can accelerate fire spread dramatically. The July 2021 Mitsero fire remains the modern reference event for scale and impact in Cyprus: starting on 3 July near Mitsero village in Nicosia district, the fire burned for three days across approximately 55 square kilometres of forest and agricultural land. Five Egyptian workers were killed in their van when the fire overtook them. Whole villages were evacuated; hundreds of properties were damaged. The fire was started accidentally (an electricity pole fault) but spread at a rate that overwhelmed initial suppression efforts. It remains the deadliest wildfire in Cypriot recorded history and was a significant turning point in how Cyprus approaches fire preparedness — both in terms of aerial firefighting capacity and public alert systems.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "body: \"The dominant curriculum across Cypriot international schools is British — IGCSE at age 16, A-level or BTEC at 18 — followed by American curriculum (Grade 12 high school diploma, with SAT or ACT for university applications) and the International Baccalaureate Diploma (offered at Heritage Limassol and a few others). Choosing a curriculum should follow the likely university destination: A-levels are well-recognised for UK, Ireland and most European universities; American curriculum + SAT is best for US universities; IB Diploma is the most universal and well-respected at top European and US universities but is more academically intensive. For students likely to attend Cypriot or Greek universities, public Greek-medium schooling can actually be a better preparation route, since Cyprus and Greek universities give admission preference to Greek-medium graduates. University outcomes from the top Cypriot international schools are strong — Heritage routinely sends graduates to Oxbridge, Imperial, UCL, LSE and top US schools; mid-tier private schools place strongly into UK and Greek universities; the public system produces the bulk of graduates at the University of Cyprus and University of Nicosia.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "body: \"Third-party insurance is compulsory and must be in place before you can register the vehicle. An annual third-party insurance policy for a standard private car runs €200–€400 depending on the driver's age, no-claims history, and car value; comprehensive cover runs €500–€900. Insurance must be arranged through a Cyprus-licensed insurer, your home-country policy does not transfer. After registration, the vehicle receives standard Cyprus registration plates (format: three letters followed by three numbers). Personalised or 'cherished' plates are available through the Traffic Department in Nicosia; a set of personalised plates currently costs €2,000–€4,000 depending on the combination chosen. The process is bureaucratic but straightforward: fill in the application, pay the fee, wait 4–8 weeks for approval. If you are not sure importing is worth it, compare it with a [long-term car hire in Cyprus](/guides/long-term-car-rental-cyprus/) for your first months while you decide.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "body: \"This is a significant selling point of the Cyprus university system for internationally mobile families. Almost all private universities offer the majority of their programmes entirely in English — UCLan Cyprus, University of Nicosia, Frederick University, Neapolis, and European University Cyprus all teach primarily in English. The public universities (UCY and CUT) teach most undergraduate programmes in Greek, but both offer a growing range of English-medium postgraduate and doctoral programmes, and UCY has English-medium undergraduate programmes in specific departments. For expat families whose children attended English-medium international schools in Cyprus and want to continue at university in Cyprus, the private university route in English is seamless. For students targeting the University of Cyprus (which is the academically strongest public institution), Greek language proficiency is required for most undergraduate admissions.\","
+		},
+		{
+			"file": "lib/guides.ts",
+			"text": "body: \"Traffic Department offices that handle driving licence applications are located in all five district capitals: Nicosia (main office, Athalassa Avenue), Limassol (Omonia Avenue office), Larnaca (Artemidos Avenue), Paphos (Neofytou Nikolaidi Street), and Famagusta (Paralimni office serving the eastern district). Appointments can be booked online via the Cyprus e-Government portal (eservices.gov.cy) or by phone; walk-in availability exists but is limited in peak periods. For a reciprocal exchange, the processing time from application submission to receiving the Cyprus licence is typically 4–8 weeks, the licence is printed centrally and posted to your registered address. For the test route, add the testing period to this timeline. Cost breakdown for a reciprocal exchange: application fee approximately €50–€70 (fees are reviewed annually), plus document translation if needed. There is no additional fee for the physical licence card. Keep a copy of your application receipt, the Traffic Department receipt serves as temporary proof of an in-progress application if you are stopped by police before the new licence arrives. While the exchange is in progress, many newcomers arrange a [monthly car rental](/guides/long-term-car-rental-cyprus/); check the provider's licence requirements first, especially for stays over three months on a non-EU licence.\","
+		},
+		{
+			"file": "lib/listingsData.ts",
+			"text": "* Owner rule: Nicosia is intentionally excluded from RealCy.app. Listings"
+		},
+		{
+			"file": "lib/mental-health.ts",
+			"text": "body: \"EAPN Cyprus (the European Anti-Poverty Network Cyprus) operates the island's main mental health support line: 1480 (free, 24/7). For English-language crisis support, Lifeline Cyprus (lifeline.org.cy) offers counselling by phone and email, staffed by trained volunteers. If you or someone you know is in acute crisis, Nicosia General Hospital and Limassol General Hospital both have psychiatric emergency departments. The Athalassa Psychiatric Hospital in Nicosia operates a 24/7 emergency unit.\","
+		},
+		{
+			"file": "lib/regions.ts",
+			"text": "body: \"Larnaca General Hospital is the main public facility, fully integrated with GeSY. It is functional but less specialised than the larger Nicosia or Limassol public hospitals — for major surgeries and oncology, referrals often go to Nicosia. Private healthcare has expanded fast: ECO Medical Center, Iasis-Larnaca and Apollonion Larnaca cover most outpatient specialties with English-speaking staff and shorter waits than GeSY. Cardiac and orthopaedic specialists are well-represented locally; complex paediatrics, oncology and neurosurgery still tend to flow toward Mediterranean Hospital in Limassol or the New Nicosia General. Pharmacies are everywhere and reliable. Dental care is private only and reasonably priced (€40–€60 cleaning, €700–€1,400 implant). For emergencies, response times in the city are good; in the inland villages, the nearest A&E may be 20–30 minutes away. The 112 EU emergency number works throughout the district.\","
+		},
+		{
+			"file": "lib/regions.ts",
+			"text": "body: \"Paphos General Hospital, in the city, is the main public facility and is part of GeSY — the national healthcare system that all legal residents are automatically eligible to register with after immigration formalities. GeSY contributions are deducted at source for employed residents and pensioners; private health insurance is still common but no longer essential. For private care, Iasis Hospital and Evangelistria Medical Center cover most specialties with shorter waits than GeSY for non-urgent referrals. Dental and optical care are private only and reasonably priced versus Western Europe (a standard cleaning runs €40–€60). For anything genuinely complex — major cardiac, oncology, neurosurgery — most expats still drive to Limassol or Nicosia. Pharmacies are abundant, English-speaking, and most common UK and EU prescriptions are dispensed without trouble. The 112 emergency number works the same way as anywhere in the EU; ambulance response in central Paphos is fast, in the inland villages occasionally slow.\","
+		},
+		{
+			"file": "lib/regions.ts",
+			"text": "body: \"Paphos has a small but quality-focused international school market. The International School of Paphos is the largest, accredited British-curriculum from age 3 to 18, with annual fees from €5,800 (early years) to €9,200 (sixth form) and a waiting list at the upper end of the school. Aspire Private British School covers ages 4–18 with smaller class sizes (~14 per class) and fees in the €5,500–€8,500 range; it has a strong reputation among the local British and Israeli communities. Logos School of English Education is the older, more academic option with consistently strong A-level results and a slightly more traditional culture. École Française de Paphos handles ages 3–11 for French-medium families. Public Greek-medium schools are free and the Cypriot education ministry now runs a Greek-as-a-second-language programme designed specifically for newly-arrived expat children. For university, most Paphos teens commute to the University of Cyprus campus in Nicosia or Cyprus University of Technology in Limassol; Neapolis University in Paphos itself offers psychology, law and business at undergraduate and postgraduate level.\","
+		},
+		{
+			"file": "lib/regions.ts",
+			"text": "body: \"Paralimni General Hospital is the public facility serving the entire Famagusta free area. It is functional for common emergencies and routine care, and integrated with GeSY, but its specialty depth is the thinnest of any major hospital on the island — anything complex (cardiac surgery, oncology, neurosurgery) is referred to Larnaca, Nicosia or Limassol. Private clinics are limited but growing: ECO Larnaca has a Paralimni satellite, and a handful of private GPs and dentists serve the resort towns year-round. The bigger practical consideration is access to specialists: families with chronic conditions sometimes find themselves driving to Larnaca or further three or four times a month. For acute emergencies, response times in the resort towns are reasonable; in the inland villages (Liopetri, Frenaros, Sotira) they can be 15–25 minutes. The 112 EU emergency line works throughout the region. Many full-time expats supplement GeSY with private insurance specifically to access Limassol or Nicosia specialists without GeSY referral delays.\","
+		},
+		{
+			"file": "lib/regions.ts",
+			"text": "body: \"The airport is the city's biggest practical advantage — almost every major European airline flies into Larnaca, often more cheaply than Paphos. Public transport within the city is unremarkable but the airport bus connections are reliable. Healthcare runs through Larnaca General Hospital plus a handful of private clinics; for major procedures Limassol or Nicosia are 45 minutes by car. International schooling is thinner than in Limassol or Paphos but improving: The American Academy Larnaca and several British curriculum primary schools serve the expat population. The other quiet advantage of Larnaca is climate: it sits on a slightly cooler coastal stretch than Paphos, so summers are more bearable, and the salt lake brings flamingos every winter — a small ritual that locals are extremely proud of.\","
+		},
+		{
+			"file": "lib/regions.ts",
+			"text": "body: \"The Famagusta free area has the thinnest international-school market of the four regions covered here. There are competent British-curriculum primary schools (notably Heritage Private School Paralimni, distinct from the Limassol Heritage but well-regarded) and a small handful of preschools and kindergartens serving the expat community. Secondary-age children are the genuine challenge: most families either commute their children to The American Academy Larnaca (35–45 minutes each way) or one of the Larnaca British schools. Public Greek-medium schools in Paralimni and Sotira are good and have absorbed a meaningful number of expat children, particularly at the primary level. For families with multiple school-age children, the schooling calculus is the single most-cited reason for choosing Larnaca over the SE coast despite preferring the SE's beaches. For tertiary education, the area lacks any local university campus; students typically attend Nicosia or Limassol institutions or go abroad.\","
+		},
+		{
+			"file": "lib/regions.ts",
+			"text": "body: \"The Famagusta free area is the most remote part of the Republic of Cyprus, in the sense that it is furthest from both major airports — Larnaca is 45 minutes away, Paphos 2 hours. The healthcare infrastructure is the thinnest of the four regions: there is a Paralimni General Hospital, but for anything serious people drive to Larnaca or Nicosia. International schooling exists but is small-scale: a couple of British-curriculum primary schools, and most secondary-age children either commute to Larnaca or board. Internet, water and power are reliable. The big advantage is climate and beaches: the south-east coast has the warmest sea on the island (typically 27–28 °C in summer, well into October) and the highest concentration of Blue Flag beaches anywhere in the country. It is, by a wide margin, the most beach-defined region in this guide.\","
+		},
+		{
+			"file": "lib/startup-ecosystem.ts",
+			"text": "* Sources: MIIC (Nicosia), Inspire CoWork (Limassol), IDEA Innovation Centre"
+		},
+		{
+			"file": "lib/startup-ecosystem.ts",
+			"text": "body: \"As an EU member state, Cyprus companies can apply for Horizon Europe grants, ERDF-funded incubator programmes, and the Cyprus Research and Innovation Foundation (RTDI) funding. The ecosystem is small enough that a well-prepared application from a foreign-born founder stands out. IDEA Innovation Centre (linked to Frederick University in Nicosia) specialises in navigating exactly these routes for early-stage companies.\","
+		},
+		{
+			"file": "lib/startup-ecosystem.ts",
+			"text": "body: \"The Multimodal Information and Interaction Centre (MIIC) at the University of Cyprus (Nicosia) is the most established public-sector tech hub on the island. It hosts spin-offs, research commercialisation projects, and EU-funded startup programmes. If you are a deep-tech or research-driven founder, start here before anywhere else — they have the densest network into Cyprus's academic and public funding ecosystem.\","
+		}
+	]
+}
