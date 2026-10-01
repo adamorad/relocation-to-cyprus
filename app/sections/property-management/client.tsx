@@ -59,8 +59,8 @@ export default function PropertyManagementPage() {
 					Property Management in Cyprus
 				</h1>
 				<p className="mt-4 text-lg text-slate-700 leading-relaxed max-w-2xl">
-					Licensed property managers across Limassol, Paphos, Larnaca, and
-					Nicosia — for non-resident owners who need trusted local management of
+					Licensed property managers across Limassol, Paphos, and
+					Larnaca — for non-resident owners who need trusted local management of
 					their Cyprus investment.
 				</p>
 			</header>

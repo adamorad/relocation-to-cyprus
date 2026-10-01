@@ -6,7 +6,7 @@ import LongTermRentalsClient from "./client";
 const SITE_URL = "https://realcy.app";
 const title = "Long-Term Rentals in Cyprus";
 const description =
-	"Long-term rentals in Cyprus for relocators — verified apartments, villas & studios across Limassol, Paphos, Larnaca & Nicosia. Honest city-by-city pricing.";
+	"Long-term rentals in Cyprus for relocators — verified apartments, villas & studios across Limassol, Paphos & Larnaca. Honest city-by-city pricing.";
 
 export const metadata: Metadata = {
 	title,

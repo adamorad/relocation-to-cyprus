@@ -6,7 +6,7 @@ import AccountantsClient from "./client";
 const SITE_URL = "https://realcy.app";
 const title = "Accountants & Tax Advisors in Cyprus";
 const description =
-	"Accountants & tax advisors in Cyprus for relocators — ICPAC-registered firms across Limassol, Paphos, Larnaca & Nicosia. Non-dom filings & company tax.";
+	"Accountants & tax advisors in Cyprus for relocators — ICPAC-registered firms across Limassol, Paphos & Larnaca. Non-dom filings & company tax.";
 
 export const metadata: Metadata = {
 	title,

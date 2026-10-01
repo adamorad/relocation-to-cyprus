@@ -68,7 +68,7 @@ export default function SportsClubsPage() {
 				</h1>
 				<p className="mt-3 text-base text-slate-600 leading-relaxed max-w-2xl">
 					Tennis, padel, golf, sailing, running, rugby and more — across all
-					five cities. Most clubs have strong expat memberships and
+					four cities. Most clubs have strong expat memberships and
 					English-speaking coaches.
 				</p>
 			</header>

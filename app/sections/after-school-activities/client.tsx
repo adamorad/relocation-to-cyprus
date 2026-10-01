@@ -164,7 +164,7 @@ export default function AfterSchoolActivitiesPage() {
 				</h1>
 				<p className="mt-3 text-base text-slate-600 leading-relaxed max-w-2xl">
 					Swimming, sports, music, dance, coding and more — with English or
-					bilingual coaching across Limassol, Paphos, Larnaca and Nicosia.
+					bilingual coaching across Limassol, Paphos and Larnaca.
 				</p>
 			</header>
 

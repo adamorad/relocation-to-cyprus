@@ -181,7 +181,7 @@ export default function RooftopBarsPage() {
 				<p className="mt-4 text-lg text-slate-600 leading-relaxed max-w-2xl">
 					The best elevated and waterfront bars across Cyprus — for sundowners,
 					cocktail evenings, and getting a feel for the city from above.{" "}
-					{VIEW_BARS.length} venues across all five cities.
+					{VIEW_BARS.length} venues across all four cities.
 				</p>
 			</header>
 

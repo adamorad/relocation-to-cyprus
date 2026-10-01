@@ -6,7 +6,7 @@ import ChildcareNurseriesClient from "./client";
 const SITE_URL = "https://realcy.app";
 const title = "Childcare & Nurseries in Cyprus";
 const description =
-	"Childcare & nurseries in Cyprus for relocators — registered venues with English instruction across Limassol, Paphos, Larnaca & Nicosia.";
+	"Childcare & nurseries in Cyprus for relocators — registered venues with English instruction across Limassol, Paphos & Larnaca.";
 
 export const metadata: Metadata = {
 	title,

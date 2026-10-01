@@ -107,7 +107,7 @@ export default function LongTermRentalsPage() {
 					Long-Term Rentals in Cyprus
 				</h1>
 				<p className="mt-4 text-lg text-slate-700 leading-relaxed max-w-2xl">
-					Monthly furnished and unfurnished rentals across all five cities —
+					Monthly furnished and unfurnished rentals across all four cities —
 					from city-centre studios to seafront villas. Real areas, real price
 					ranges, and links to the main Cypriot rental portals.
 				</p>

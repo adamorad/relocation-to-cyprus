@@ -6,7 +6,7 @@ import RegisteredAddressClient from "./client";
 const SITE_URL = "https://realcy.app";
 const title = "Registered Address Providers in Cyprus";
 const description =
-	"Registered address & virtual office providers in Cyprus — vetted services for Cyprus-incorporated companies across Limassol, Paphos & Nicosia.";
+	"Registered address & virtual office providers in Cyprus — vetted services for Cyprus-incorporated companies across Limassol & Paphos.";
 
 export const metadata: Metadata = {
 	title,
