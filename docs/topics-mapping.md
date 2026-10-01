@@ -12,13 +12,13 @@ Decisions were made on the owner's behalf in Phase 2A and are open for review. R
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
 | Health | `/health/` | 7 | 3 | 1 | 11 | 12 |
 | Getting around | `/getting-around/` | 8 | 2 | 2 | 12 | 11 |
-| Home & bills | `/home-and-bills/` | 8 | 3 | 3 | 14 | 18 |
+| Home & bills | `/home-and-bills/` | 7 | 3 | 3 | 13 | 17 |
 | Money & paperwork | `/money-and-paperwork/` | 22 | 4 | 13 | 39 | 59 |
 | Food & shopping | `/food-and-shopping/` | 5 | 5 | 0 | 10 | 11 |
 | Family & schools | `/family-and-schools/` | 7 | 3 | 1 | 11 | 13 |
 | Community & leisure | `/community-and-leisure/` | 5 | 9 | 2 | 16 | 21 |
 | Moving to Cyprus | `/moving-to-cyprus/` | 21 | 2 | 9 | 32 | 59 |
-| **All** | | 83 | 31 | 31 | 145 | |
+| **All** | | 82 | 31 | 31 | 144 | |
 
 Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). They keep a topic for their own breadcrumb and "More on" block but are not shown on hubs, indexes, other pages or the sitemap.
 
@@ -42,11 +42,10 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Long-Term Car Rental Cyprus 2026: Monthly Hire Rates](/guides/long-term-car-rental-cyprus/) | Getting around |  |  | Old category Lifestyle; it is about getting a car for daily use. |
 | [Driving in Cyprus: Road Safety & Culture Guide](/guides/road-safety-driving/) | Getting around |  |  |  |
 | [Earthquake Risk in Cyprus: How to Prepare](/guides/earthquake-preparedness/) | Home & bills |  |  | Old category Environment; preparing the home and household. |
-| [Sustainable Living in Cyprus: Expat Guide](/guides/environmental-impact-guide/) | Home & bills | Community & leisure |  | Sustainable living is mostly household habits (energy, water, waste). |
 | [Short-Term to Long-Term Rental in Cyprus](/guides/rental-transition-guide/) | Home & bills | Moving to Cyprus |  | Old category Property; it is about renting a home, not buying. |
 | [Solar Panels in Cyprus: Net Metering & ROI](/guides/solar-energy-guide/) | Home & bills |  |  | Old category Environment; it is about cutting the electricity bill. |
 | [Cyprus Utilities Setup 2026: Electricity & Water](/guides/utilities-setup-guide/) | Home & bills |  |  |  |
-| [Recycling in Cyprus: Guide for New Residents](/guides/waste-recycling-guide/) | Home & bills |  |  | Old category Environment; bins and collections are a household chore. |
+| [Recycling in Cyprus: Guide for New Residents](/guides/waste-recycling-guide/) | Home & bills | Community & leisure |  | Bins and collections are a household chore; also covers sustainable living (Beyond the bins). |
 | [Water Quality & Scarcity in Cyprus: Key Facts](/guides/water-quality-scarcity/) | Home & bills |  |  | Old category Environment; tap water, filters and supply at home. |
 | [Wildfire Risk in Cyprus: How to Prepare](/guides/wildfire-risk-guide/) | Home & bills |  |  | Old category Environment; preparing the home, alerts and insurance. |
 | [Airbnb & Short-Term Rentals in Cyprus 2026](/guides/airbnb-short-term-rental-cyprus/) | Money & paperwork |  |  | Licence, VAT and tax for owners letting short term; Property area comes in Phase 4. |

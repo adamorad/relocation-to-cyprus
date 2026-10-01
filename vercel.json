@@ -115,6 +115,16 @@
       "source": "/guides/family-neighborhoods-guide",
       "destination": "/guides/best-areas-to-live-cyprus/",
       "permanent": true
+    },
+    {
+      "source": "/guides/environmental-impact-guide/",
+      "destination": "/guides/waste-recycling-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/environmental-impact-guide",
+      "destination": "/guides/waste-recycling-guide/",
+      "permanent": true
     }
   ]
 }

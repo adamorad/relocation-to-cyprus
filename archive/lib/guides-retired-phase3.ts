@@ -145,4 +145,36 @@ export const RETIRED_GUIDES = [
 			},
 		],
 	},
+	// environmental-impact-guide -> /guides/waste-recycling-guide/
+	{
+		slug: "environmental-impact-guide",
+		datePublished: "2026-05-29",
+		dateModified: "2026-07-05",
+		category: "environment",
+		title: "Sustainable Living in Cyprus: Expat Guide",
+		description:
+			"An honest assessment of Cyprus's environmental footprint, practical ways to reduce your impact, local biodiversity worth knowing, and the environmental organisations active on the island.",
+		sections: [
+			{
+				heading: "Cyprus's environmental context",
+				body: "Cyprus has one of the higher per-capita carbon footprints in the EU — approximately 6.5–7.5 tonnes of CO2 equivalent per person per year, compared to an EU average of around 7.5 tonnes but with a different composition. Two structural factors drive this upward: electricity generation is still heavily dependent on heavy fuel oil and diesel at the Vasilikos power station (Cyprus has no pipeline gas connections and no nuclear power), and personal car dependency is among the highest in the EU — the island has minimal public transport outside city centres, and car ownership rates reflect this. Desalination also adds to electricity demand, as discussed in the water guide. Against this, Cyprus's small land area and population (around 1.2 million) means its absolute contribution to global emissions is tiny — the relevance for relocators is not guilt but understanding the local context and where personal choices make the most difference.",
+			},
+			{
+				heading: "Practical ways to reduce your household impact",
+				body: "The three highest-impact personal choices for a Cyprus resident are transport, electricity, and diet. For transport: if your daily routine permits it, an electric vehicle reduces your per-kilometre emissions by 60–80% in Cyprus even on the current (mostly oil-powered) grid, and by significantly more as the grid greens over time. The EV charging network is growing — Charge Up Cyprus operates the main public network, and most new apartment developments include dedicated EV charging points. Cycling is a realistic option in flat coastal city areas (Larnaca and parts of Paphos have some protected cycling infrastructure) but unsuitable for hilly areas or in summer heat. For electricity: solar panels (see the solar guide) are the most financially and environmentally compelling choice in Cyprus. Reducing AC usage is the single biggest energy-saving action; an inverter AC set to 26°C instead of 22°C in summer can cut AC electricity consumption by 30–40%. For diet: Cypriot produce is grown locally with relatively short supply chains. Buying from local markets and choosing seasonal vegetables over imported out-of-season produce is both cheaper and lower-impact.",
+			},
+			{
+				heading: "Plastic pollution and beaches",
+				body: "Plastic pollution on Cyprus beaches is a genuine problem, particularly after winter storms and at beaches adjacent to fishing harbours and boat anchorages. The island's beach cleanup community is active: the Keep Cyprus Tidy NGO (keepcyprus.org) organises regular coastal and urban cleanup events throughout the year, and the international Surfrider Foundation has a Cyprus chapter that focuses specifically on coastal plastic. These are not token events — organised cleanups regularly collect hundreds of kilograms of plastic from individual beach sections. If you want to engage with the environmental community quickly after arriving, a beach cleanup is an easy entry point with no bureaucracy or language barrier. On plastic use: the EU single-use plastics directive has been transposed into Cyprus law, banning single-use plastic plates, cutlery, straws, and cotton bud sticks. Enforcement of the ban is inconsistent in practice, particularly at tourist-facing businesses in peak season, but the legal framework exists.",
+			},
+			{
+				heading: "Biodiversity: what Cyprus has worth protecting",
+				body: "Cyprus has genuinely distinctive biodiversity for an island of its size and location. Lara Bay on the Akamas Peninsula is one of the most important loggerhead sea turtle (Caretta caretta) nesting beaches in the Mediterranean; the Cyprus Wildlife Society (cypriotwildlife.org) runs a volunteer monitoring and protection programme during nesting season (June–September). The Akamas Peninsula is also the habitat for the Cyprus mouflon (Ovis gmelini ophion), a wild sheep endemic to Cyprus and one of the rarest wild sheep in the world — numbers have recovered from near-extinction to around 2,000–3,000 individuals. The Troodos mountains contain several endemic plant and bird species, including the Cyprus warbler (Curruca melanothorax) and the Cyprus scops owl. The seagrass meadows (Posidonia oceanica) around Cyprus's coastline are an important carbon sink and fish nursery; anchoring on seagrass is illegal under Cyprus marine environment law. Understanding what makes Cyprus environmentally distinct is the first step to not inadvertently damaging it.",
+			},
+			{
+				heading: "Environmental organisations and honest assessment",
+				body: "The main environmental NGOs active in Cyprus are: Terra Cypria (terracypria.org), the National Trust for Cyprus and the umbrella environmental organisation on the island; Friends of the Earth Cyprus (foe.org.cy); and the Cyprus Ornithological Society (birdlifecyprus.org.cy) affiliated with BirdLife International. For eco-tourism, the Troodos and Akamas areas have mapped trail networks; the Cyprus Tourism Organisation publishes a network of nature trails with difficulty ratings at visitcyprus.com. The honest assessment of whether Cyprus is a good choice for an environmentally conscious relocator: it is complicated. The island's structural environmental challenges (car dependency, fuel oil electricity, water stress, high beach plastic) are real and unlikely to be resolved quickly. But the climate makes solar energy and sustainable gardening easier than most of Europe, the local food system is genuinely shorter-chain, and the biodiversity is worth engaging with rather than ignoring. Whether the positive and negative factors balance depends on what you are comparing Cyprus to, and what trade-offs you are making in the rest of your lifestyle.",
+			},
+		],
+	},
 ];

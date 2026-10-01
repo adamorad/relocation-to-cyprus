@@ -73,10 +73,9 @@ Hub: https://realcy.app/home-and-bills/
 - [Cyprus Utilities Setup 2026: Electricity & Water](https://realcy.app/guides/utilities-setup-guide/): How to connect EAC electricity, water, broadband (Cyta, Cablenet, Epic, Primetel), and LPG gas after moving into a Cyprus home. Realistic timelines, 2026 costs, and the documents each utility requires.
 - [Solar Panels in Cyprus: Net Metering & ROI](https://realcy.app/guides/solar-energy-guide/): Why Cyprus is one of the best countries in Europe for solar power, how the net metering scheme works, what a residential system costs, and how to navigate the EAC connection process.
 - [Water Quality & Scarcity in Cyprus: Key Facts](https://realcy.app/guides/water-quality-scarcity/): Tap water safety, the desalination infrastructure that underpins Cyprus's water supply, seasonal pressure issues, filtration options, and practical conservation tips for households and gardens.
-- [Recycling in Cyprus: Guide for New Residents](https://realcy.app/guides/waste-recycling-guide/): How to use the kerbside bins, where to drop off electronics, batteries, textiles and glass, and an honest assessment of Cyprus's recycling culture.
+- [Recycling in Cyprus: Guide for New Residents](https://realcy.app/guides/waste-recycling-guide/): How to use the kerbside bins, where to drop off electronics, batteries, textiles and glass, an honest assessment of Cyprus's recycling culture, and how to live more sustainably beyond the bins.
 - [Earthquake Risk in Cyprus: How to Prepare](https://realcy.app/guides/earthquake-preparedness/): The seismic reality of living in Cyprus, how modern buildings are rated, what to do during and after a tremor, and how to register for Civil Emergency alerts.
 - [Wildfire Risk in Cyprus: How to Prepare](https://realcy.app/guides/wildfire-risk-guide/): Which areas of Cyprus face genuine wildfire exposure, when the fire season runs, how to register for SMS alerts, and practical steps to prepare your property and evacuation routes.
-- [Sustainable Living in Cyprus: Expat Guide](https://realcy.app/guides/environmental-impact-guide/): An honest assessment of Cyprus's environmental footprint, practical ways to reduce your impact, local biodiversity worth knowing, and the environmental organisations active on the island.
 
 ### Local directories
 

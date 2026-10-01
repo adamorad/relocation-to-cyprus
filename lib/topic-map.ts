@@ -145,7 +145,8 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 	},
 	"waste-recycling-guide": {
 		topic: "home-and-bills",
-		why: "Old category Environment; bins and collections are a household chore.",
+		also: ["community-and-leisure"],
+		why: "Bins and collections are a household chore; also covers sustainable living (Beyond the bins).",
 	},
 	"earthquake-preparedness": {
 		topic: "home-and-bills",
@@ -154,11 +155,6 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 	"wildfire-risk-guide": {
 		topic: "home-and-bills",
 		why: "Old category Environment; preparing the home, alerts and insurance.",
-	},
-	"environmental-impact-guide": {
-		topic: "home-and-bills",
-		also: ["community-and-leisure"],
-		why: "Sustainable living is mostly household habits (energy, water, waste).",
 	},
 	"rental-transition-guide": {
 		topic: "home-and-bills",
