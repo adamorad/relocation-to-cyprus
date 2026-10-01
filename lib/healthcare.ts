@@ -199,6 +199,16 @@ export const HEALTHCARE_VENUES: ReadonlyArray<HealthcareVenue> = [
 
   // ── Specialist ───────────────────────────────────────────────────────────
   {
+    name: "German Oncology Centre",
+    city: "Limassol",
+    type: "specialist",
+    specialty: "Oncology",
+    gesyAccepted: false,
+    englishSpoken: true,
+    why: "Cyprus's leading private oncology centre, affiliated with German Cancer Research Center protocols. Attracts patients from across the region. Important for expats with cancer history or ongoing treatment needs.",
+    website: "https://www.germanoncology.com.cy",
+  },
+  {
     name: "Heart Institute",
     city: "Limassol",
     type: "specialist",
