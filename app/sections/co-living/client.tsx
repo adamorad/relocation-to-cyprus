@@ -42,7 +42,13 @@ export default function CoLivingPage() {
 	);
 
 	return (
-		<main id="main" className="max-w-5xl mx-auto px-6 py-10 md:py-16">
+		<main
+			id="main"
+			data-pagefind-body
+			data-pagefind-filter="type[data-type]"
+			data-type="directory"
+			className="max-w-5xl mx-auto px-6 py-10 md:py-16"
+		>
 			{/* Back nav */}
 			<nav className="text-xs text-slate-600 mb-6">
 				<Link href="/sections" className="hover:text-ink">

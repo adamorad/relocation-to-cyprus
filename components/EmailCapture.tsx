@@ -64,6 +64,7 @@ export function EmailCapture({
 	if (status === "success") {
 		return (
 			<p
+				data-pagefind-ignore
 				className={`text-sm font-semibold py-2 ${compact || onDark ? "text-sky-strong" : "text-primary"}`}
 			>
 				✓ You're on the list — checklist coming your way.
@@ -73,7 +74,11 @@ export function EmailCapture({
 
 	if (compact) {
 		return (
-			<form onSubmit={handleSubmit} className="flex gap-2 mt-3 max-w-sm">
+			<form
+				data-pagefind-ignore
+				onSubmit={handleSubmit}
+				className="flex gap-2 mt-3 max-w-sm"
+			>
 				<input
 					type="email"
 					value={email}
@@ -93,7 +98,7 @@ export function EmailCapture({
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<form data-pagefind-ignore onSubmit={handleSubmit}>
 			<p
 				className={`text-sm font-semibold mb-1 ${onDark ? "text-white" : "text-ink"}`}
 			>

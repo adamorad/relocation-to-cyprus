@@ -190,7 +190,14 @@ export default function RentVsBuyPage({
 	const Wrap = embedded ? "div" : "main";
 	return (
 		<Wrap
-			{...(embedded ? {} : { id: "main" })}
+			{...(embedded
+				? {}
+				: {
+						id: "main",
+						"data-pagefind-body": "",
+						"data-pagefind-filter": "type[data-type]",
+						"data-type": "tool",
+					})}
 			className={embedded ? "flex flex-col" : "max-w-3xl mx-auto px-6 py-10"}
 		>
 			{!embedded && (

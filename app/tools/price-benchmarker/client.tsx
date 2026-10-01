@@ -167,7 +167,13 @@ export default function PriceBenchmarkerClient() {
 		pctRank !== null ? Math.min(Math.max(pctRank, 0), 98) : null;
 
 	return (
-		<main id="main" className="max-w-3xl mx-auto px-6 py-10 md:py-16">
+		<main
+			id="main"
+			data-pagefind-body
+			data-pagefind-filter="type[data-type]"
+			data-type="tool"
+			className="max-w-3xl mx-auto px-6 py-10 md:py-16"
+		>
 			{/* Breadcrumb */}
 			<nav className="text-xs text-slate-600 mb-6">
 				<Link href="/" className="hover:text-ink">

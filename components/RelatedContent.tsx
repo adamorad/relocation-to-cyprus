@@ -24,7 +24,7 @@ export function RelatedContent({
 	emailRegion?: string;
 }) {
 	return (
-		<section className="mt-12 border-t border-line pt-8">
+		<section data-pagefind-ignore className="mt-12 border-t border-line pt-8">
 			<h2 className="text-xl font-bold text-ink mb-1">{heading}</h2>
 			{blurb ? <p className="text-sm text-muted mb-5">{blurb}</p> : null}
 			<div className="grid gap-3 sm:grid-cols-2">

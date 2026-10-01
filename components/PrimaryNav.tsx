@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { isActive, PRIMARY_NAV } from "@/lib/nav-links";
 import { SavedLink } from "./HeaderParts";
+import { Icon } from "./icons/Icon";
 import { MoreMenu } from "./MoreMenu";
 
 /** Desktop header navigation (hidden below md; mobile uses MobileMenu). */
@@ -20,7 +21,7 @@ export function PrimaryNav() {
 						key={item.href}
 						href={item.href}
 						aria-current={active ? "page" : undefined}
-						className={`inline-flex min-h-11 items-center whitespace-nowrap rounded-field px-3 text-base font-semibold hover:bg-sky hover:text-ink ${
+						className={`inline-flex min-h-11 items-center whitespace-nowrap rounded-field px-2.5 text-base lg:px-3 font-semibold hover:bg-sky hover:text-ink ${
 							active
 								? "bg-sky text-ink underline decoration-primary decoration-2 underline-offset-8"
 								: "text-muted"
@@ -31,7 +32,17 @@ export function PrimaryNav() {
 				);
 			})}
 			<MoreMenu />
-			<SavedLink className="ml-2" />
+			<Link
+				href="/explore/"
+				aria-label="Search the site"
+				aria-current={isActive(pathname, "/explore/") ? "page" : undefined}
+				className={`inline-flex h-11 w-11 items-center justify-center rounded-field text-ink hover:bg-sky ${
+					isActive(pathname, "/explore/") ? "bg-sky" : ""
+				}`}
+			>
+				<Icon name="search" size={22} />
+			</Link>
+			<SavedLink className="ml-1" />
 		</nav>
 	);
 }

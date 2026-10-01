@@ -88,7 +88,13 @@ export default function HalalKosherPage() {
 	});
 
 	return (
-		<main id="main" className="max-w-5xl mx-auto px-4 py-8 md:py-12">
+		<main
+			id="main"
+			data-pagefind-body
+			data-pagefind-filter="type[data-type]"
+			data-type="directory"
+			className="max-w-5xl mx-auto px-4 py-8 md:py-12"
+		>
 			<Breadcrumbs
 				items={[
 					{ label: "Home", href: "/" },

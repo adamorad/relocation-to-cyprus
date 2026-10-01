@@ -42,7 +42,13 @@ export default function PublicTransportPage() {
 		cityFilter === "All" ? ALL_CITIES : ([cityFilter] as City[]);
 
 	return (
-		<main id="main" className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-14">
+		<main
+			id="main"
+			data-pagefind-body
+			data-pagefind-filter="type[data-type]"
+			data-type="directory"
+			className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-14"
+		>
 			<Breadcrumbs
 				items={[
 					{ label: "Home", href: "/" },

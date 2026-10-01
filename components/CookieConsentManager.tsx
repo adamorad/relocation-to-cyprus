@@ -63,7 +63,7 @@ fbq('init','${pixelId}');fbq('track','PageView');`}
         </Script>
       )}
       {visible && (
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-ink border-t border-white/15 px-4 py-3 md:py-4">
+        <div data-pagefind-ignore className="fixed bottom-0 left-0 right-0 z-50 bg-ink border-t border-white/15 px-4 py-3 md:py-4">
           <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-3">
             <p className="flex-1 text-xs text-white/85 leading-relaxed">
               We use cookies for analytics (Google Analytics) and to measure ad performance (Meta Pixel).{" "}

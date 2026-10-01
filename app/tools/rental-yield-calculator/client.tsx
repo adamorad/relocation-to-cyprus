@@ -185,7 +185,13 @@ export default function RentalYieldCalculatorClient() {
 	const horizonOptions: Array<5 | 10 | 15> = [5, 10, 15];
 
 	return (
-		<main id="main" className="max-w-3xl mx-auto px-6 py-10 md:py-16">
+		<main
+			id="main"
+			data-pagefind-body
+			data-pagefind-filter="type[data-type]"
+			data-type="tool"
+			className="max-w-3xl mx-auto px-6 py-10 md:py-16"
+		>
 			<nav className="text-xs text-slate-600 mb-6">
 				<Link href="/" className="hover:text-primary">
 					Home
