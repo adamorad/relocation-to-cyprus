@@ -5,7 +5,7 @@ import { HubTemplate } from "@/components/templates/HubTemplate";
 import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
 import { Callout } from "@/components/ui/Callout";
-import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
+import { Card, CardGrid, CardGridItem, LogoTile } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { allDeveloperSlugs, developerBySlug } from "@/lib/developers";
 
@@ -94,13 +94,10 @@ export default async function DeveloperPage({
 				<Section title={`About ${name}`} className="mb-10">
 					<div className="flex items-start gap-4">
 						{dev.logo ? (
-							// biome-ignore lint/performance/noImgElement: static export
-							<img
-								src={dev.logo}
-								alt={`${name} logo`}
-								width={64}
-								height={64}
-								className="h-16 w-16 shrink-0 rounded-xl border border-line bg-sky object-contain"
+							<LogoTile
+								logo={{ src: dev.logo, alt: `${name} logo` }}
+								size="md"
+								eager
 							/>
 						) : null}
 						{dev.description ? (

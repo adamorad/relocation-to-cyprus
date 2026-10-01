@@ -9,7 +9,13 @@ export type PageHeaderProps = {
 	intro?: ReactNode;
 	/** Extra line under the intro (byline, counts). */
 	meta?: ReactNode;
+	/** Buttons row under the intro (primary page actions). */
 	actions?: ReactNode;
+	/**
+	 * Compact control beside the H1 (e.g. a save/heart icon button). Sits on
+	 * the title's first line at every width, never on a row of its own.
+	 */
+	titleAction?: ReactNode;
 	/** `band` = full-bleed sky background. */
 	variant?: "plain" | "band";
 	width?: ContainerWidth;
@@ -21,6 +27,9 @@ export type PageHeaderProps = {
 	contained?: boolean;
 };
 
+const TITLE =
+	"min-w-0 text-3xl font-extrabold leading-tight tracking-tight text-ink md:text-4xl";
+
 /** Breadcrumb, eyebrow, H1, intro and actions with the same top spacing everywhere. */
 export function PageHeader({
 	breadcrumbs,
@@ -29,6 +38,7 @@ export function PageHeader({
 	intro,
 	meta,
 	actions,
+	titleAction,
 	variant = "plain",
 	width = "wide",
 	breadcrumbJsonLd = true,
@@ -53,11 +63,18 @@ export function PageHeader({
 							{eyebrow}
 						</p>
 					) : null}
-					<TitleTag
-						className={`text-3xl font-extrabold leading-tight tracking-tight text-ink md:text-4xl ${eyebrow ? "mt-2" : ""}`}
-					>
-						{title}
-					</TitleTag>
+					{titleAction ? (
+						<div
+							className={`flex items-start justify-between gap-3 ${eyebrow ? "mt-2" : ""}`}
+						>
+							<TitleTag className={TITLE}>{title}</TitleTag>
+							<div className="shrink-0">{titleAction}</div>
+						</div>
+					) : (
+						<TitleTag className={`${TITLE} ${eyebrow ? "mt-2" : ""}`}>
+							{title}
+						</TitleTag>
+					)}
 					{intro ? (
 						<p className="mt-3 text-lg leading-normal text-muted">{intro}</p>
 					) : null}

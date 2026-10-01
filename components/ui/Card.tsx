@@ -14,6 +14,12 @@ export type CardProps = {
 	icon?: IconName;
 	/** Small label above the title (text, photo and row variants). */
 	eyebrow?: ReactNode;
+	/**
+	 * Logo tile (text and row variants), e.g. a developer logo. `alt` defaults
+	 * to "" because the card title already names the brand; without `src` the
+	 * tile shows `initial`.
+	 */
+	logo?: CardLogo;
 	/** Top image for `photo`; alt is required ("" when decorative). */
 	image?: { src: string; alt: string };
 	/** Extra line under the text (city, price, count). */
@@ -23,6 +29,55 @@ export type CardProps = {
 	headingLevel?: "h2" | "h3" | "h4";
 	className?: string;
 };
+
+export type CardLogo = {
+	src?: string | null;
+	alt?: string;
+	/** Fallback letter when there is no image. */
+	initial?: string;
+};
+
+const LOGO_SIZE = { sm: 48, md: 64 } as const;
+
+/**
+ * Square logo tile with a consistent size, border and sky background.
+ * Lazy-loaded plain img (static export, logos are small and pre-sized).
+ */
+export function LogoTile({
+	logo,
+	size = "sm",
+	eager = false,
+}: {
+	logo: CardLogo;
+	size?: keyof typeof LOGO_SIZE;
+	eager?: boolean;
+}) {
+	const px = LOGO_SIZE[size];
+	const box = size === "sm" ? "h-12 w-12" : "h-16 w-16";
+	if (logo.src) {
+		return (
+			// biome-ignore lint/performance/noImgElement: static export, small pre-sized logos
+			<img
+				src={logo.src}
+				alt={logo.alt ?? ""}
+				width={px}
+				height={px}
+				loading={eager ? "eager" : "lazy"}
+				decoding="async"
+				className={`${box} shrink-0 rounded-xl border border-line bg-white object-contain p-1`}
+			/>
+		);
+	}
+	if (!logo.initial) return null;
+	return (
+		<span
+			aria-hidden="true"
+			className={`${box} flex shrink-0 items-center justify-center rounded-xl bg-sky-strong text-lg font-bold text-primary`}
+		>
+			{logo.initial.charAt(0).toUpperCase()}
+		</span>
+	);
+}
 
 const BASE =
 	"rounded-card border border-line bg-white text-ink shadow-rc transition-colors";
@@ -56,6 +111,7 @@ export function Card({
 	text,
 	href,
 	icon,
+	logo,
 	eyebrow,
 	image,
 	meta,
@@ -124,7 +180,11 @@ export function Card({
 			layout = "flex min-h-11 items-center gap-4 p-4";
 			inner = (
 				<>
-					{icon ? <IconTile name={icon} size="sm" /> : null}
+					{logo ? (
+						<LogoTile logo={logo} />
+					) : icon ? (
+						<IconTile name={icon} size="sm" />
+					) : null}
 					<div className="min-w-0 flex-1">
 						{eyebrowEl}
 						{heading}
@@ -141,6 +201,11 @@ export function Card({
 			// Text cards are used for directory entries: location line under the title.
 			inner = (
 				<>
+					{logo ? (
+						<div className="mb-3">
+							<LogoTile logo={logo} />
+						</div>
+					) : null}
 					{eyebrowEl}
 					{heading}
 					{meta ? <div className="mt-1 text-sm text-muted">{meta}</div> : null}

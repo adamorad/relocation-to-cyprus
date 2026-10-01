@@ -236,6 +236,17 @@ export default function DesignSystemPage() {
 										headingLevel="h4"
 									/>
 								</CardGridItem>
+								<CardGridItem>
+									<Card
+										variant="text"
+										href="/developers/"
+										logo={{ initial: "Developer" }}
+										title="Logo card"
+										meta="12 projects"
+										text="Logo tile (image, or an initial as fallback) above the title."
+										headingLevel="h4"
+									/>
+								</CardGridItem>
 							</CardGrid>
 						</Section>
 

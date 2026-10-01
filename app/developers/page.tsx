@@ -43,26 +43,7 @@ export default function DevelopersIndexPage() {
 							<Card
 								variant="text"
 								href={`/developers/${dev.slug}/`}
-								eyebrow={
-									dev.logo ? (
-										// biome-ignore lint/performance/noImgElement: static export
-										<img
-											src={dev.logo}
-											alt=""
-											width={48}
-											height={48}
-											loading="lazy"
-											className="h-12 w-12 rounded-xl border border-line bg-sky object-contain"
-										/>
-									) : (
-										<span
-											aria-hidden="true"
-											className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-strong text-lg font-bold text-primary"
-										>
-											{name.charAt(0)}
-										</span>
-									)
-								}
+								logo={{ src: dev.logo, initial: name }}
 								title={name}
 								meta={`${dev.listings.length} ${dev.listings.length === 1 ? "project" : "projects"}`}
 								text={regions.join(", ")}

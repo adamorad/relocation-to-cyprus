@@ -198,7 +198,7 @@ export default async function ListingPage({
 				eyebrow={l.location ?? l.regionCity}
 				title={name}
 				intro={price ?? "Price on request"}
-				actions={<HeartButton slug={l.slug} name={name} />}
+				titleAction={<HeartButton slug={l.slug} name={name} />}
 			/>
 
 			<Container width="wide" className="pt-8 md:pt-10">
