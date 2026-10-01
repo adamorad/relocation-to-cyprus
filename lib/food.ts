@@ -385,7 +385,7 @@ export const PLACES: Record<City, Record<Category, Place[]>> = {
       {
         name: "The Shopkeeper & Co.",
         neighbourhood: "Old Town / Saripolou",
-        why: "Concept space in a restored shop. Brunch leans creative-healthy — coconut chia, Sticky Fingers bowl.",
+        why: "Concept space in a restored shop. Brunch leans creative-healthy: coconut chia, Sticky Fingers bowl.",
         price: 2,
         instagram: "theshopkeeperandco",
       },
@@ -539,7 +539,7 @@ export const PLACES: Record<City, Record<Category, Place[]>> = {
       {
         name: "Souvlakia Lakis",
         neighbourhood: "Larnaca centre",
-        why: "Locals stop in at 2–3pm off-peak — the dead-giveaway that the kalamaki is the real thing.",
+        why: "Locals stop in at 2–3pm off-peak, the dead-giveaway that the kalamaki is the real thing.",
         price: 1,
       },
       {
@@ -573,7 +573,7 @@ export const PLACES: Record<City, Record<Category, Place[]>> = {
       {
         name: "ALMAR Seafood Bar",
         neighbourhood: "Mackenzie Beach",
-        why: "Modern seafood — ceviche, grilled octopus, on the water. The local date-night pick.",
+        why: "Modern seafood: ceviche, grilled octopus, on the water. The local date-night pick.",
         price: 3,
       },
     ],
@@ -689,3 +689,22 @@ export const CATEGORY_LABEL: Record<Category, string> = {
   dinner: "Dinner",
   sweets: "Sweets & desserts",
 };
+
+/** Price band labels for the 1–4 `price` field (see `Place`). */
+export const PRICE_LABEL: Record<Place["price"], string> = {
+  1: "€",
+  2: "€€",
+  3: "€€€",
+  4: "€€€€",
+};
+
+/** One place with its city and meal category, for the /sections/food/ directory. */
+export type FoodPlace = Place & { city: City; category: Category };
+
+/** PLACES flattened in city, then category order. */
+export const FOOD_PLACES: ReadonlyArray<FoodPlace> = ALL_CITIES.flatMap(
+  (city) =>
+    ALL_CATEGORIES.flatMap((category) =>
+      PLACES[city][category].map((p) => ({ ...p, city, category })),
+    ),
+);

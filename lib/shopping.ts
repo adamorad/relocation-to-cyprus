@@ -7,7 +7,7 @@
  * this is editorial guidance, not a directory.
  */
 
-import type { City } from "@/lib/food";
+import { ALL_CITIES, type City } from "@/lib/food";
 
 export type { City } from "@/lib/food";
 export { ALL_CITIES } from "@/lib/food";
@@ -59,7 +59,7 @@ export type ShoppingTip = {
 export const SHOPPING_TIPS: ReadonlyArray<ShoppingTip> = [
   {
     heading: "Sunday closures",
-    body: "Almost all retail — including supermarkets — is closed on Sundays. Petrol stations and some convenience kiosks stay open. Plan your weekly shop for Friday or Saturday.",
+    body: "Almost all retail, including supermarkets, is closed on Sundays. Petrol stations and some convenience kiosks stay open. Plan your weekly shop for Friday or Saturday.",
   },
   {
     heading: "Siesta hours",
@@ -71,7 +71,7 @@ export const SHOPPING_TIPS: ReadonlyArray<ShoppingTip> = [
   },
   {
     heading: "Price expectations",
-    body: "Everyday groceries — bread, dairy, local produce — are cheaper than Northern Europe. Imported goods, electronics, and clothing are roughly on par with the UK, or 10–20% above German prices.",
+    body: "Everyday groceries (bread, dairy, local produce) are cheaper than Northern Europe. Imported goods, electronics, and clothing are roughly on par with the UK, or 10–20% above German prices.",
   },
   {
     heading: "Tipping at shops",
@@ -79,12 +79,12 @@ export const SHOPPING_TIPS: ReadonlyArray<ShoppingTip> = [
   },
   {
     heading: "VAT (ΦΠΑ) receipts",
-    body: "Cyprus VAT is 19% (standard) / 9% (food and hotels). Always ask for a receipt ('Μπορώ να πάρω απόδειξη;') — receipts are required by law and help you track spending while you settle in.",
+    body: "Cyprus VAT is 19% (standard) / 9% (food and hotels). Always ask for a receipt ('Μπορώ να πάρω απόδειξη;'). Receipts are required by law and help you track spending while you settle in.",
   },
 ];
 
 // ---------------------------------------------------------------------------
-// Supermarkets — Record<City, Store[]> because chains appear in all cities
+// Supermarkets: Record<City, Store[]> because chains appear in all cities
 // ---------------------------------------------------------------------------
 
 export const SUPERMARKETS: Record<City, Store[]> = {
@@ -92,7 +92,7 @@ export const SUPERMARKETS: Record<City, Store[]> = {
     {
       name: "Alphamega Hypermarket",
       neighbourhood: "Polemidia / Germasogeia / Ayios Athanasios",
-      why: "The premium Cypriot chain. Widest selection on the island — imported cheeses, gluten-free range, sushi counter, in-store bakery. The go-to for relocators who want familiar Western brands.",
+      why: "The premium Cypriot chain. Widest selection on the island: imported cheeses, gluten-free range, sushi counter, in-store bakery. The go-to for relocators who want familiar Western brands.",
       tier: 3,
       website: "https://www.alphamega.com.cy",
     },
@@ -118,7 +118,7 @@ export const SUPERMARKETS: Record<City, Store[]> = {
     {
       name: "Metro Cash & Carry",
       neighbourhood: "Limassol industrial area",
-      why: "Wholesale / bulk. Membership required but easy to obtain. Useful for bulk non-perishables, catering quantities, and cleaning supplies — not for a regular weekly shop.",
+      why: "Wholesale / bulk. Membership required but easy to obtain. Useful for bulk non-perishables, catering quantities, and cleaning supplies, not for a regular weekly shop.",
       tier: 2,
     },
   ],
@@ -133,7 +133,7 @@ export const SUPERMARKETS: Record<City, Store[]> = {
     {
       name: "Lidl Cyprus",
       neighbourhood: "Multiple Paphos locations",
-      why: "Best-value chain in Paphos for everyday items. Check the weekly non-food specials — kitchenware, tools, and seasonal goods appear often.",
+      why: "Best-value chain in Paphos for everyday items. Check the weekly non-food specials: kitchenware, tools, and seasonal goods appear often.",
       tier: 1,
       website: "https://www.lidl.com.cy",
     },
@@ -191,7 +191,7 @@ export const SUPERMARKETS: Record<City, Store[]> = {
 };
 
 // ---------------------------------------------------------------------------
-// Malls — flat array with city field for filter; single-location venues
+// Malls: flat array with city field for filter; single-location venues
 // ---------------------------------------------------------------------------
 
 export const MALLS: ReadonlyArray<Mall> = [
@@ -222,7 +222,7 @@ export const MALLS: ReadonlyArray<Mall> = [
 ];
 
 // ---------------------------------------------------------------------------
-// Markets — flat array with city field for filter
+// Markets: flat array with city field for filter
 // ---------------------------------------------------------------------------
 
 export const MARKETS: ReadonlyArray<Market> = [
@@ -255,7 +255,7 @@ export const MARKETS: ReadonlyArray<Market> = [
     city: "Paphos",
     neighbourhood: "Agoras Street, Paphos centre",
     when: "Mon–Sat 06:30–14:00",
-    what: "Local produce, halloumi, olives, herbs. Compact but authentically local. Avoid tourist souvenir stalls near the entrance — the real market is inside.",
+    what: "Local produce, halloumi, olives, herbs. Compact but authentically local. Avoid tourist souvenir stalls near the entrance; the real market is inside.",
     mapsQuery: "Paphos Municipal Market Cyprus",
   },
   {
@@ -310,3 +310,48 @@ export const ONLINE_RESOURCES: ReadonlyArray<OnlineResource> = [
     tip: "Search for EU or UK sellers specifically. Delivery from UK sellers to Cyprus typically 5–10 days. Good for brand-name electronics and hard-to-find items. Avoid US sellers — shipping is disproportionately expensive.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Flat list for the /sections/shopping/ directory
+// ---------------------------------------------------------------------------
+
+export type ShopKind = "supermarket" | "market" | "mall";
+
+export const ALL_SHOP_KINDS: ReadonlyArray<ShopKind> = [
+  "supermarket",
+  "market",
+  "mall",
+];
+
+export const SHOP_KIND_LABEL: Record<ShopKind, string> = {
+  supermarket: "Supermarkets",
+  market: "Markets",
+  mall: "Malls",
+};
+
+/** Budget band labels for the 1–3 `tier` field (see `Store`). */
+export const TIER_LABEL: Record<Store["tier"], string> = {
+  1: "€ budget",
+  2: "€€ mid-range",
+  3: "€€€ premium",
+};
+
+export type ShopEntry =
+  | ({ kind: "supermarket"; city: City } & Store)
+  | ({ kind: "market" } & Market)
+  | ({ kind: "mall" } & Mall);
+
+/** Supermarkets (per city), markets and malls in one list, by city. */
+export const SHOP_ENTRIES: ReadonlyArray<ShopEntry> = ALL_CITIES.flatMap(
+  (city): ShopEntry[] => [
+    ...SUPERMARKETS[city].map(
+      (s): ShopEntry => ({ kind: "supermarket", city, ...s }),
+    ),
+    ...MARKETS.filter((m) => m.city === city).map(
+      (m): ShopEntry => ({ kind: "market", ...m }),
+    ),
+    ...MALLS.filter((m) => m.city === city).map(
+      (m): ShopEntry => ({ kind: "mall", ...m }),
+    ),
+  ],
+);
