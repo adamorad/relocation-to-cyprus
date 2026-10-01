@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
-import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
-import { Section } from "@/components/ui/Section";
-import { GUIDES } from "@/lib/guides";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { VIEW_BAR_TIPS, VIEW_BARS } from "@/lib/rooftop-bars";
-import { SECTION_RELATED_GUIDE_SLUGS } from "@/lib/section-related-guides";
+import { topicCrumb } from "@/lib/topic-map";
 import RooftopBarsClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -34,9 +32,6 @@ export default function RooftopBarsPage() {
 			acceptedAnswer: { "@type": "Answer", text: t.body },
 		})),
 	};
-	const relatedGuides = (SECTION_RELATED_GUIDE_SLUGS["rooftop-bars"] ?? [])
-		.map((slug) => GUIDES.find((g) => g.slug === slug))
-		.filter((g) => g !== undefined);
 
 	return (
 		<DirectoryTemplate
@@ -44,7 +39,7 @@ export default function RooftopBarsPage() {
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Directories", href: "/sections/" },
+					topicCrumb("directory", "rooftop-bars"),
 					{ label: "Rooftop & Sea View Bars" },
 				],
 				eyebrow: "Cyprus Lifestyle",
@@ -64,28 +59,7 @@ export default function RooftopBarsPage() {
 				content:
 					"Prices and reservation policies change seasonally. Always verify directly with the venue before visiting.",
 			}}
-			related={
-				<div className="space-y-8" data-pagefind-ignore>
-					{relatedGuides.length > 0 ? (
-						<Section id="related" title="Related guides">
-							<CardGrid cols={2}>
-								{relatedGuides.map((g) => (
-									<CardGridItem key={g.slug}>
-										<Card
-											variant="text"
-											href={`/guides/${g.slug}/`}
-											title={g.title}
-											text={
-												<span className="line-clamp-2">{g.description}</span>
-											}
-										/>
-									</CardGridItem>
-								))}
-							</CardGrid>
-						</Section>
-					) : null}
-				</div>
-			}
+			related={<MoreOnTopic type="directory" slug="rooftop-bars" cols={3} />}
 		>
 			<script
 				type="application/ld+json"

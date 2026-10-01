@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { topicCrumb } from "@/lib/topic-map";
 import CityComparisonClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,11 +26,23 @@ export default function CityComparisonClientPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic
+					type="tool"
+					slug="city-comparison"
+					exclude={[
+						"/sections/property-lawyers/",
+						"/guides/family-neighborhoods-guide/",
+						"/guides/cost-of-living/",
+					]}
+					cols={3}
+				/>
+			}
 			width="wide"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "city-comparison"),
 					{ label: "City Comparison" },
 				],
 				eyebrow: "Interactive tool",

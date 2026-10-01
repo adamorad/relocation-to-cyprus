@@ -10,21 +10,14 @@ import { EmbeddedTool } from "@/components/EmbeddedTool";
 import { MetaPixelEvent } from "@/components/MetaPixelEvent";
 import { ShareBar } from "@/components/ShareBar";
 import { ArticleTemplate } from "@/components/templates/ArticleTemplate";
-import { Badge } from "@/components/ui/Badge";
-import { ButtonLink } from "@/components/ui/Button";
-import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { Container } from "@/components/ui/Container";
 import { InfoCards } from "@/components/ui/InfoCards";
 import { Section } from "@/components/ui/Section";
 import { AUTHORS, CATEGORY_AUTHOR } from "@/lib/authors";
 import { GUIDE_REDIRECTS } from "@/lib/guide-redirects";
-import {
-	GUIDE_CATEGORY_LABEL,
-	GUIDES,
-	type GuideCategory,
-	guideBySlug,
-} from "@/lib/guides";
-import { SECTIONS_INDEX } from "@/lib/sections-index";
+import { GUIDES, type GuideCategory, guideBySlug } from "@/lib/guides";
+import { getTopicForGuide, topicCrumb } from "@/lib/topic-map";
 
 const SITE_URL = "https://realcy.app";
 
@@ -64,77 +57,6 @@ function renderBody(text: string) {
 		return part;
 	});
 }
-
-const GUIDE_CATEGORY_SECTIONS: Record<GuideCategory, string[]> = {
-	immigration: ["immigration-lawyers", "expat-communities"],
-	tax: ["accountants"],
-	business: ["accountants", "coworking", "startup-ecosystem"],
-	property: ["property-lawyers", "long-term-rentals", "property-management"],
-	family: [
-		"childcare-nurseries",
-		"after-school-activities",
-		"expat-communities",
-	],
-	healthcare: ["specialist-doctors", "mental-health-services"],
-	transport: ["public-transport"],
-	lifestyle: ["expat-communities", "fitness-wellness", "sports-clubs"],
-	environment: [],
-};
-
-const GUIDE_CATEGORY_TOOLS: Record<
-	GuideCategory,
-	Array<{ slug: string; title: string }>
-> = {
-	immigration: [
-		{ slug: "visa-pathway-finder", title: "Visa Pathway Finder" },
-		{ slug: "meu1-tracker", title: "MEU1 Registration Tracker" },
-		{
-			slug: "visa-renewal-reminder",
-			title: "Visa & Document Renewal Reminder",
-		},
-	],
-	tax: [
-		{ slug: "tax-residency-tracker", title: "60-Day Tax Residency Tracker" },
-		{ slug: "tax-filing-calendar", title: "Annual Tax Filing Calendar" },
-		{ slug: "double-tax-treaty-finder", title: "Double Tax Treaty Finder" },
-		{ slug: "sole-trader-vs-ltd", title: "Sole Trader vs Ltd" },
-	],
-	business: [
-		{ slug: "sole-trader-vs-ltd", title: "Sole Trader vs Ltd" },
-		{ slug: "grants-finder", title: "Grants & Incentives Finder" },
-		{ slug: "banking-fee-comparison", title: "Banking Fee Comparison" },
-	],
-	property: [
-		{ slug: "rent-vs-buy-calculator", title: "Rent vs Buy Calculator" },
-		{ slug: "city-comparison", title: "City Comparison" },
-	],
-	family: [
-		{ slug: "city-comparison", title: "City Comparison" },
-		{
-			slug: "health-insurance-comparison",
-			title: "Health Insurance Comparison",
-		},
-	],
-	healthcare: [
-		{
-			slug: "health-insurance-comparison",
-			title: "Health Insurance Comparison",
-		},
-		{
-			slug: "social-insurance-calculator",
-			title: "Social Insurance Calculator",
-		},
-	],
-	transport: [
-		{ slug: "flight-connectivity", title: "Flight Connectivity" },
-		{ slug: "city-comparison", title: "City Comparison" },
-	],
-	lifestyle: [
-		{ slug: "events-calendar", title: "Annual Events & Festivals" },
-		{ slug: "city-comparison", title: "City Comparison" },
-	],
-	environment: [{ slug: "city-comparison", title: "City Comparison" }],
-};
 
 // Which interactive calculator to embed mid-guide, by slug (override) then category.
 type EmbedKey = "tax" | "rentbuy" | "social" | "mortgage";
@@ -269,14 +191,6 @@ export default async function GuidePage({
 	const g = guideBySlug(slug);
 	if (!g) notFound();
 
-	const relatedTools = GUIDE_CATEGORY_TOOLS[g.category] ?? [];
-	const relatedSectionSlugs = GUIDE_CATEGORY_SECTIONS[g.category] ?? [];
-	const relatedSections = relatedSectionSlugs
-		.map((slug) => SECTIONS_INDEX.find((s) => s.slug === slug))
-		.filter((s) => s !== undefined);
-	const relatedGuides = GUIDES.filter(
-		(guide) => guide.category === g.category && guide.slug !== g.slug,
-	).slice(0, 3);
 	const embedKey = EMBED_BY_SLUG[g.slug] ?? EMBED_BY_CATEGORY[g.category];
 	const embed = embedKey ? GUIDE_EMBEDS[embedKey] : null;
 	const EmbedComp = embed?.Comp;
@@ -337,32 +251,7 @@ export default async function GuidePage({
 		g.sections.length > 2
 			? g.sections.map((s) => ({ id: toId(s.heading), label: s.heading }))
 			: undefined;
-	const relatedCards = [
-		...relatedGuides.map((guide) => ({
-			key: `g-${guide.slug}`,
-			href: `/guides/${guide.slug}/`,
-			title: guide.title,
-			text: guide.description,
-			kind: "Guide",
-			icon: undefined,
-		})),
-		...relatedTools.map((t) => ({
-			key: `t-${t.slug}`,
-			href: `/tools/${t.slug}/`,
-			title: t.title,
-			text: undefined,
-			kind: "Tool",
-			icon: "budget" as const,
-		})),
-		...relatedSections.map((sec) => ({
-			key: `s-${sec.slug}`,
-			href: `/sections/${sec.slug}/`,
-			title: sec.name,
-			text: undefined,
-			kind: "Directory",
-			icon: "pin" as const,
-		})),
-	];
+	const topic = getTopicForGuide(g.slug);
 
 	return (
 		<ArticleTemplate
@@ -370,10 +259,10 @@ export default async function GuidePage({
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Guides", href: "/guides/" },
+					topicCrumb("guide", g.slug),
 					{ label: g.title },
 				],
-				eyebrow: GUIDE_CATEGORY_LABEL[g.category],
+				eyebrow: topic.name,
 				title: g.title,
 				intro: g.description,
 				meta: (
@@ -404,48 +293,7 @@ export default async function GuidePage({
 					</Section>
 				) : null
 			}
-			related={
-				relatedCards.length > 0 ? (
-					<div data-pagefind-ignore>
-						<Section id="related" title="Related reading and tools">
-							{(["text", "row"] as const).map((v) => {
-								const cards = relatedCards.filter((c) =>
-									v === "text" ? !c.icon : !!c.icon,
-								);
-								return cards.length > 0 ? (
-									<CardGrid
-										key={v}
-										cols={2}
-										className={v === "row" ? "mt-4" : ""}
-									>
-										{cards.map((c) => (
-											<CardGridItem key={c.key}>
-												<Card
-													variant={v}
-													href={c.href}
-													icon={c.icon}
-													eyebrow={<Badge>{c.kind}</Badge>}
-													title={c.title}
-													text={
-														c.text ? (
-															<span className="line-clamp-2">{c.text}</span>
-														) : undefined
-													}
-												/>
-											</CardGridItem>
-										))}
-									</CardGrid>
-								) : null;
-							})}
-						</Section>
-						<p className="mt-6">
-							<ButtonLink href="/guides/" variant="secondary">
-								All guides
-							</ButtonLink>
-						</p>
-					</div>
-				) : null
-			}
+			related={<MoreOnTopic type="guide" slug={g.slug} />}
 			legal={
 				<>
 					This is general information, not legal or tax advice. Cyprus rules

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { topicCrumb } from "@/lib/topic-map";
 import SocialInsuranceCalculatorClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -25,11 +27,19 @@ export default function SocialInsuranceCalculatorPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic
+					type="tool"
+					slug="social-insurance-calculator"
+					exclude={["/guides/hiring-in-cyprus/", "/sections/accountants/"]}
+					cols={2}
+				/>
+			}
 			width="reading"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "social-insurance-calculator"),
 					{ label: "Social Insurance Calculator" },
 				],
 				eyebrow: "Interactive tool",

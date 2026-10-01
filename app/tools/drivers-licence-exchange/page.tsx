@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { topicCrumb } from "@/lib/topic-map";
 import DriversLicenceExchangeClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,11 +26,14 @@ export default function DriversLicenceExchangeClientPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic type="tool" slug="drivers-licence-exchange" cols={2} />
+			}
 			width="reading"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "drivers-licence-exchange"),
 					{ label: "Driver’s Licence Exchange" },
 				],
 				eyebrow: "Bureaucracy",

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { topicCrumb } from "@/lib/topic-map";
 import RentVsBuyCalculatorClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,11 +26,23 @@ export default function RentVsBuyCalculatorPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic
+					type="tool"
+					slug="rent-vs-buy-calculator"
+					exclude={[
+						"/sections/property-lawyers/",
+						"/guides/buying-process/",
+						"/guides/rental-transition-guide/",
+					]}
+					cols={2}
+				/>
+			}
 			width="reading"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "rent-vs-buy-calculator"),
 					{ label: "Rent vs Buy Calculator" },
 				],
 				eyebrow: "Interactive tool",

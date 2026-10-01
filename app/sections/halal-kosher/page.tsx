@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
-import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
-import { Section } from "@/components/ui/Section";
-import { GUIDES } from "@/lib/guides";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { DIETARY_TIPS } from "@/lib/halal-kosher";
-import { SECTION_RELATED_GUIDE_SLUGS } from "@/lib/section-related-guides";
+import { topicCrumb } from "@/lib/topic-map";
 import HalalKosherClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -34,9 +32,6 @@ export default function HalalKosherPage() {
 			acceptedAnswer: { "@type": "Answer", text: t.body },
 		})),
 	};
-	const relatedGuides = (SECTION_RELATED_GUIDE_SLUGS["halal-kosher"] ?? [])
-		.map((slug) => GUIDES.find((g) => g.slug === slug))
-		.filter((g) => g !== undefined);
 
 	return (
 		<DirectoryTemplate
@@ -44,7 +39,7 @@ export default function HalalKosherPage() {
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Directories", href: "/sections/" },
+					topicCrumb("directory", "halal-kosher"),
 					{ label: "Halal & Kosher Food" },
 				],
 				eyebrow: "Food & Dining",
@@ -59,28 +54,7 @@ export default function HalalKosherPage() {
 				content:
 					"Always verify current certification directly with the venue before relying on it for religious requirements. Certifications can change.",
 			}}
-			related={
-				relatedGuides.length > 0 ? (
-					<div data-pagefind-ignore>
-						<Section id="related" title="Related guides">
-							<CardGrid cols={2}>
-								{relatedGuides.map((g) => (
-									<CardGridItem key={g.slug}>
-										<Card
-											variant="text"
-											href={`/guides/${g.slug}/`}
-											title={g.title}
-											text={
-												<span className="line-clamp-2">{g.description}</span>
-											}
-										/>
-									</CardGridItem>
-								))}
-							</CardGrid>
-						</Section>
-					</div>
-				) : null
-			}
+			related={<MoreOnTopic type="directory" slug="halal-kosher" cols={3} />}
 		>
 			<script
 				type="application/ld+json"

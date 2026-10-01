@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { topicCrumb } from "@/lib/topic-map";
 import BankingFeeComparisonClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,11 +26,19 @@ export default function BankingFeeComparisonClientPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic
+					type="tool"
+					slug="banking-fee-comparison"
+					exclude={["/guides/banking-in-cyprus/", "/sections/accountants/"]}
+					cols={3}
+				/>
+			}
 			width="wide"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "banking-fee-comparison"),
 					{ label: "Banking Fee Comparison" },
 				],
 				eyebrow: "Interactive tool",

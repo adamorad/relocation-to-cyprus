@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { topicCrumb } from "@/lib/topic-map";
 import RentalPriceTrendsClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,11 +26,23 @@ export default function RentalPriceTrendsPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic
+					type="tool"
+					slug="rental-price-trends"
+					exclude={[
+						"/tools/rent-vs-buy-calculator/",
+						"/tools/rental-yield-calculator/",
+						"/tools/mortgage-calculator/",
+					]}
+					cols={3}
+				/>
+			}
 			width="wide"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "rental-price-trends"),
 					{ label: "Cyprus Rental Price Trends" },
 				],
 				eyebrow: "Research",

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { topicCrumb } from "@/lib/topic-map";
 import BudgetBuilderClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,11 +26,22 @@ export default function BudgetBuilderPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic
+					type="tool"
+					slug="budget-builder"
+					exclude={[
+						"/tools/rent-vs-buy-calculator/",
+						"/guides/cost-of-living/",
+					]}
+					cols={2}
+				/>
+			}
 			width="reading"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "budget-builder"),
 					{ label: "Monthly Budget Builder" },
 				],
 				eyebrow: "Interactive tool",

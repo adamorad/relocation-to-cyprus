@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { topicCrumb } from "@/lib/topic-map";
 import GrantsFinderClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,11 +26,19 @@ export default function GrantsFinderClientPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic
+					type="tool"
+					slug="grants-finder"
+					exclude={["/guides/trade-licenses-cyprus/", "/sections/accountants/"]}
+					cols={3}
+				/>
+			}
 			width="wide"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "grants-finder"),
 					{ label: "Business Grants Finder" },
 				],
 				eyebrow: "Business",

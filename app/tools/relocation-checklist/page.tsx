@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { topicCrumb } from "@/lib/topic-map";
 import RelocationTrackerClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,11 +26,23 @@ export default function RelocationChecklistPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic
+					type="tool"
+					slug="relocation-checklist"
+					exclude={[
+						"/tools/visa-pathway-finder/",
+						"/tools/budget-builder/",
+						"/tools/city-comparison/",
+					]}
+					cols={2}
+				/>
+			}
 			width="reading"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "relocation-checklist"),
 					{ label: "Relocation Progress Tracker" },
 				],
 				eyebrow: "Checklists",

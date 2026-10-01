@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { topicCrumb } from "@/lib/topic-map";
 import IspComparisonClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -25,11 +27,19 @@ export default function IspComparisonPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic
+					type="tool"
+					slug="isp-comparison"
+					exclude={["/guides/utilities-setup-guide/"]}
+					cols={3}
+				/>
+			}
 			width="wide"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "isp-comparison"),
 					{ label: "ISP Comparison" },
 				],
 				eyebrow: "Interactive tool",

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { topicCrumb } from "@/lib/topic-map";
 import RentalYieldCalculatorClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,11 +26,23 @@ export default function RentalYieldCalculatorPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic
+					type="tool"
+					slug="rental-yield-calculator"
+					exclude={[
+						"/sections/property-management/",
+						"/guides/buying-process/",
+						"/tools/rent-vs-buy-calculator/",
+					]}
+					cols={2}
+				/>
+			}
 			width="reading"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "rental-yield-calculator"),
 					{ label: "Rental Yield Calculator" },
 				],
 				eyebrow: "Finance tool",

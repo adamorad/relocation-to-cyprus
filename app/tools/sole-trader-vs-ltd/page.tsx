@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { topicCrumb } from "@/lib/topic-map";
 import SoleTraderVsLtdClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,11 +26,25 @@ export default function SoleTraderVsLtdPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic
+					type="tool"
+					slug="sole-trader-vs-ltd"
+					exclude={[
+						"/sections/accountants/",
+						"/guides/company-types-comparison/",
+						"/guides/taxes-for-expats/",
+						"/tools/social-insurance-calculator/",
+						"/tools/tax-residency-tracker/",
+					]}
+					cols={3}
+				/>
+			}
 			width="wide"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "sole-trader-vs-ltd"),
 					{ label: "Sole Trader vs Ltd" },
 				],
 				eyebrow: "Business",

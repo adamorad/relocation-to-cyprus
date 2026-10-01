@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
-import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
-import { Section } from "@/components/ui/Section";
-import { GUIDES } from "@/lib/guides";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { REGISTERED_ADDRESS_TIPS } from "@/lib/registered-address";
-import { SECTION_RELATED_GUIDE_SLUGS } from "@/lib/section-related-guides";
+import { topicCrumb } from "@/lib/topic-map";
 import RegisteredAddressClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -34,11 +32,6 @@ export default function RegisteredAddressPage() {
 			acceptedAnswer: { "@type": "Answer", text: t.body },
 		})),
 	};
-	const relatedGuides = (
-		SECTION_RELATED_GUIDE_SLUGS["registered-address"] ?? []
-	)
-		.map((slug) => GUIDES.find((g) => g.slug === slug))
-		.filter((g) => g !== undefined);
 
 	return (
 		<DirectoryTemplate
@@ -46,7 +39,7 @@ export default function RegisteredAddressPage() {
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Directories", href: "/sections/" },
+					topicCrumb("directory", "registered-address"),
 					{ label: "Registered Address Providers" },
 				],
 				eyebrow: "Business Setup",
@@ -66,26 +59,7 @@ export default function RegisteredAddressPage() {
 					"This is a general directory, not legal advice. Prices and service inclusions change frequently. Always verify directly with the provider before signing. For company formation or ongoing compliance, consult a Cyprus-licensed advocate or accountant.",
 			}}
 			related={
-				<div className="space-y-8" data-pagefind-ignore>
-					{relatedGuides.length > 0 ? (
-						<Section id="related" title="Related guides">
-							<CardGrid cols={2}>
-								{relatedGuides.map((g) => (
-									<CardGridItem key={g.slug}>
-										<Card
-											variant="text"
-											href={`/guides/${g.slug}/`}
-											title={g.title}
-											text={
-												<span className="line-clamp-2">{g.description}</span>
-											}
-										/>
-									</CardGridItem>
-								))}
-							</CardGrid>
-						</Section>
-					) : null}
-				</div>
+				<MoreOnTopic type="directory" slug="registered-address" cols={3} />
 			}
 		>
 			<script

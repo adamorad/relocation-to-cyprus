@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { topicCrumb } from "@/lib/topic-map";
 import DoubleTaxTreatyFinderClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,11 +26,19 @@ export default function DoubleTaxTreatyFinderClientPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic
+					type="tool"
+					slug="double-tax-treaty-finder"
+					exclude={["/guides/non-dom-status-guide/", "/sections/accountants/"]}
+					cols={3}
+				/>
+			}
 			width="wide"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "double-tax-treaty-finder"),
 					{ label: "Double Tax Treaty Finder" },
 				],
 				eyebrow: "Tax",

@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
-import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
-import { Section } from "@/components/ui/Section";
-import { GUIDES } from "@/lib/guides";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { TRANSPORT_TIPS } from "@/lib/public-transport";
-import { SECTION_RELATED_GUIDE_SLUGS } from "@/lib/section-related-guides";
+import { topicCrumb } from "@/lib/topic-map";
 import PublicTransportClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -34,9 +32,6 @@ export default function PublicTransportPage() {
 			acceptedAnswer: { "@type": "Answer", text: t.body },
 		})),
 	};
-	const relatedGuides = (SECTION_RELATED_GUIDE_SLUGS["public-transport"] ?? [])
-		.map((slug) => GUIDES.find((g) => g.slug === slug))
-		.filter((g) => g !== undefined);
 
 	return (
 		<DirectoryTemplate
@@ -44,7 +39,7 @@ export default function PublicTransportPage() {
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Directories", href: "/sections/" },
+					topicCrumb("directory", "public-transport"),
 					{ label: "Public Transport" },
 				],
 				eyebrow: "Getting Around",
@@ -55,26 +50,7 @@ export default function PublicTransportPage() {
 			info={TRANSPORT_TIPS.map((t) => ({ heading: t.heading, body: t.body }))}
 			infoTitle="What to know before you arrive"
 			related={
-				<div className="space-y-8" data-pagefind-ignore>
-					{relatedGuides.length > 0 ? (
-						<Section id="related" title="Related guides">
-							<CardGrid cols={2}>
-								{relatedGuides.map((g) => (
-									<CardGridItem key={g.slug}>
-										<Card
-											variant="text"
-											href={`/guides/${g.slug}/`}
-											title={g.title}
-											text={
-												<span className="line-clamp-2">{g.description}</span>
-											}
-										/>
-									</CardGridItem>
-								))}
-							</CardGrid>
-						</Section>
-					) : null}
-				</div>
+				<MoreOnTopic type="directory" slug="public-transport" cols={3} />
 			}
 		>
 			<script

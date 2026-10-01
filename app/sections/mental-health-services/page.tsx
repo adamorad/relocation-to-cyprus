@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { Callout } from "@/components/ui/Callout";
-import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
-import { Section } from "@/components/ui/Section";
-import { GUIDES } from "@/lib/guides";
 import { MENTAL_HEALTH_TIPS } from "@/lib/mental-health";
-import { SECTION_RELATED_GUIDE_SLUGS } from "@/lib/section-related-guides";
+import { topicCrumb } from "@/lib/topic-map";
 import MentalHealthServicesClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -35,11 +33,6 @@ export default function MentalHealthServicesPage() {
 			acceptedAnswer: { "@type": "Answer", text: t.body },
 		})),
 	};
-	const relatedGuides = (
-		SECTION_RELATED_GUIDE_SLUGS["mental-health-services"] ?? []
-	)
-		.map((slug) => GUIDES.find((g) => g.slug === slug))
-		.filter((g) => g !== undefined);
 
 	return (
 		<DirectoryTemplate
@@ -47,7 +40,7 @@ export default function MentalHealthServicesPage() {
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Directories", href: "/sections/" },
+					topicCrumb("directory", "mental-health-services"),
 					{ label: "Mental Health Services" },
 				],
 				eyebrow: "Healthcare",
@@ -67,24 +60,11 @@ export default function MentalHealthServicesPage() {
 							"This directory is general information. Always verify availability, session fees, and provider credentials directly. For medical emergencies call 112."
 						}
 					</Callout>
-					{relatedGuides.length > 0 ? (
-						<Section id="related" title="Related guides">
-							<CardGrid cols={2}>
-								{relatedGuides.map((g) => (
-									<CardGridItem key={g.slug}>
-										<Card
-											variant="text"
-											href={`/guides/${g.slug}/`}
-											title={g.title}
-											text={
-												<span className="line-clamp-2">{g.description}</span>
-											}
-										/>
-									</CardGridItem>
-								))}
-							</CardGrid>
-						</Section>
-					) : null}
+					<MoreOnTopic
+						type="directory"
+						slug="mental-health-services"
+						cols={3}
+					/>
 				</div>
 			}
 		>

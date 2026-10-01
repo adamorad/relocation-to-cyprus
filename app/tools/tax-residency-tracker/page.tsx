@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { topicCrumb } from "@/lib/topic-map";
 import TaxResidencyPlannerClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,11 +26,19 @@ export default function TaxResidencyTrackerPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic
+					type="tool"
+					slug="tax-residency-tracker"
+					exclude={["/guides/taxes-for-expats/", "/sections/accountants/"]}
+					cols={2}
+				/>
+			}
 			width="reading"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "tax-residency-tracker"),
 					{ label: "Tax Residency Planner" },
 				],
 				eyebrow: "Interactive tool",

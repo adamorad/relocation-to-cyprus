@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { topicCrumb } from "@/lib/topic-map";
 import TaxSavingsCalculatorClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,11 +26,23 @@ export default function TaxSavingsCalculatorPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic
+					type="tool"
+					slug="tax-savings-calculator"
+					exclude={[
+						"/tools/tax-residency-tracker/",
+						"/tools/double-tax-treaty-finder/",
+						"/tools/sole-trader-vs-ltd/",
+					]}
+					cols={2}
+				/>
+			}
 			width="reading"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "tax-savings-calculator"),
 					{ label: "Cyprus Tax Savings Calculator" },
 				],
 				eyebrow: "Tax",

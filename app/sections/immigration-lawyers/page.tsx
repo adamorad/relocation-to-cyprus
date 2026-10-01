@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
-import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
-import { Section } from "@/components/ui/Section";
-import { GUIDES } from "@/lib/guides";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { IMMIGRATION_LAWYER_TIPS } from "@/lib/immigration-lawyers";
-import { SECTION_RELATED_GUIDE_SLUGS } from "@/lib/section-related-guides";
+import { topicCrumb } from "@/lib/topic-map";
 import ImmigrationLawyersClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -34,11 +32,6 @@ export default function ImmigrationLawyersPage() {
 			acceptedAnswer: { "@type": "Answer", text: t.body },
 		})),
 	};
-	const relatedGuides = (
-		SECTION_RELATED_GUIDE_SLUGS["immigration-lawyers"] ?? []
-	)
-		.map((slug) => GUIDES.find((g) => g.slug === slug))
-		.filter((g) => g !== undefined);
 
 	return (
 		<DirectoryTemplate
@@ -46,7 +39,7 @@ export default function ImmigrationLawyersPage() {
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Directories", href: "/sections/" },
+					topicCrumb("directory", "immigration-lawyers"),
 					{ label: "Immigration Lawyers" },
 				],
 				eyebrow: "Professional Services",
@@ -65,26 +58,7 @@ export default function ImmigrationLawyersPage() {
 					"This is a directory, not legal advice. Always verify Bar Association registration and fee structures directly with the firm.",
 			}}
 			related={
-				relatedGuides.length > 0 ? (
-					<div data-pagefind-ignore>
-						<Section id="related" title="Related guides">
-							<CardGrid cols={2}>
-								{relatedGuides.map((g) => (
-									<CardGridItem key={g.slug}>
-										<Card
-											variant="text"
-											href={`/guides/${g.slug}/`}
-											title={g.title}
-											text={
-												<span className="line-clamp-2">{g.description}</span>
-											}
-										/>
-									</CardGridItem>
-								))}
-							</CardGrid>
-						</Section>
-					</div>
-				) : null
+				<MoreOnTopic type="directory" slug="immigration-lawyers" cols={3} />
 			}
 		>
 			<script

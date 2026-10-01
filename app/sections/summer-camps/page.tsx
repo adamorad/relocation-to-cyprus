@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
-import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
-import { Section } from "@/components/ui/Section";
-import { GUIDES } from "@/lib/guides";
-import { SECTION_RELATED_GUIDE_SLUGS } from "@/lib/section-related-guides";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { SUMMER_CAMP_TIPS } from "@/lib/summer-camps";
+import { topicCrumb } from "@/lib/topic-map";
 import SummerCampsClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -34,9 +32,6 @@ export default function SummerCampsPage() {
 			acceptedAnswer: { "@type": "Answer", text: t.body },
 		})),
 	};
-	const relatedGuides = (SECTION_RELATED_GUIDE_SLUGS["summer-camps"] ?? [])
-		.map((slug) => GUIDES.find((g) => g.slug === slug))
-		.filter((g) => g !== undefined);
 
 	return (
 		<DirectoryTemplate
@@ -44,7 +39,7 @@ export default function SummerCampsPage() {
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Directories", href: "/sections/" },
+					topicCrumb("directory", "summer-camps"),
 					{ label: "Summer Camps" },
 				],
 				eyebrow: "Family & Children",
@@ -59,28 +54,7 @@ export default function SummerCampsPage() {
 				content:
 					"Prices, dates and availability change each year, so always verify directly with the camp before booking. Cyprus temperatures in July and August regularly exceed 38°C; check each camp's heat management policy before enrolling young children.",
 			}}
-			related={
-				<div className="space-y-8" data-pagefind-ignore>
-					{relatedGuides.length > 0 ? (
-						<Section id="related" title="Related guides">
-							<CardGrid cols={2}>
-								{relatedGuides.map((g) => (
-									<CardGridItem key={g.slug}>
-										<Card
-											variant="text"
-											href={`/guides/${g.slug}/`}
-											title={g.title}
-											text={
-												<span className="line-clamp-2">{g.description}</span>
-											}
-										/>
-									</CardGridItem>
-								))}
-							</CardGrid>
-						</Section>
-					) : null}
-				</div>
-			}
+			related={<MoreOnTopic type="directory" slug="summer-camps" cols={3} />}
 		>
 			<script
 				type="application/ld+json"

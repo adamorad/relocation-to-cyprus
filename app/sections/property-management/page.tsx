@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
-import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
-import { Section } from "@/components/ui/Section";
-import { GUIDES } from "@/lib/guides";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { PROPERTY_MANAGEMENT_TIPS } from "@/lib/property-management";
-import { SECTION_RELATED_GUIDE_SLUGS } from "@/lib/section-related-guides";
+import { topicCrumb } from "@/lib/topic-map";
 import PropertyManagementClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -34,11 +32,6 @@ export default function PropertyManagementPage() {
 			acceptedAnswer: { "@type": "Answer", text: t.body },
 		})),
 	};
-	const relatedGuides = (
-		SECTION_RELATED_GUIDE_SLUGS["property-management"] ?? []
-	)
-		.map((slug) => GUIDES.find((g) => g.slug === slug))
-		.filter((g) => g !== undefined);
 
 	return (
 		<DirectoryTemplate
@@ -46,7 +39,7 @@ export default function PropertyManagementPage() {
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Directories", href: "/sections/" },
+					topicCrumb("directory", "property-management"),
 					{ label: "Property Management" },
 				],
 				eyebrow: "Property Management",
@@ -80,26 +73,7 @@ export default function PropertyManagementPage() {
 				),
 			}}
 			related={
-				<div className="space-y-8" data-pagefind-ignore>
-					{relatedGuides.length > 0 ? (
-						<Section id="related" title="Related guides">
-							<CardGrid cols={2}>
-								{relatedGuides.map((g) => (
-									<CardGridItem key={g.slug}>
-										<Card
-											variant="text"
-											href={`/guides/${g.slug}/`}
-											title={g.title}
-											text={
-												<span className="line-clamp-2">{g.description}</span>
-											}
-										/>
-									</CardGridItem>
-								))}
-							</CardGrid>
-						</Section>
-					) : null}
-				</div>
+				<MoreOnTopic type="directory" slug="property-management" cols={3} />
 			}
 		>
 			<script

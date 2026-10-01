@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { topicCrumb } from "@/lib/topic-map";
 import NeighbourhoodExplorerClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,11 +26,14 @@ export default function NeighbourhoodExplorerPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic type="tool" slug="neighbourhood-explorer" cols={3} />
+			}
 			width="wide"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "neighbourhood-explorer"),
 					{ label: "Neighbourhood Explorer" },
 				],
 				eyebrow: "Research",
