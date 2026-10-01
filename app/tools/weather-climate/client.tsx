@@ -181,17 +181,19 @@ function WeatherChart({ selectedCities }: ChartProps) {
 	const gridTemps = [-10, 0, 10, 20, 30, 40];
 
 	return (
+		// biome-ignore lint/a11y/useSemanticElements: keyboard access for scrollable regions (axe scrollable-region-focusable)
 		<div
+			// biome-ignore lint/a11y/noNoninteractiveTabindex: keyboard access for scrollable regions (axe scrollable-region-focusable)
 			tabIndex={0}
 			role="region"
 			aria-label="Climate chart"
-			className="relative w-full overflow-x-auto"
+			className="w-full overflow-x-auto"
 		>
+			<div className="relative" style={{ minWidth: 700 }}>
 			<svg
 				ref={svgRef}
 				viewBox={`0 0 ${W} ${H}`}
 				className="w-full"
-				style={{ minWidth: 600 }}
 				onMouseMove={handleMouseMove}
 				onMouseLeave={handleMouseLeave}
 			>
@@ -336,6 +338,7 @@ function WeatherChart({ selectedCities }: ChartProps) {
 						</div>
 					);
 				})()}
+			</div>
 		</div>
 	);
 }
@@ -344,7 +347,9 @@ function WeatherChart({ selectedCities }: ChartProps) {
 
 function MonthCards() {
 	return (
+		// biome-ignore lint/a11y/useSemanticElements: keyboard access for scrollable regions (axe scrollable-region-focusable)
 		<div
+			// biome-ignore lint/a11y/noNoninteractiveTabindex: keyboard access for scrollable regions (axe scrollable-region-focusable)
 			tabIndex={0}
 			role="region"
 			aria-label="Monthly climate cards"

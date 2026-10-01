@@ -20,7 +20,7 @@ type City = (typeof CITIES)[number];
 const CITY_COLOURS: Record<City, string> = {
 	Limassol: "#087f98",
 	Paphos: "#fa794d",
-	Larnaca: "#3b82f6",
+	Larnaca: "#6d4ab3",
 	"Ayia Napa": "#0b2145",
 };
 
@@ -139,7 +139,9 @@ function LineChart({
 	const isEstimate = (i: number) => i === nPeriods - 1;
 
 	return (
+		// biome-ignore lint/a11y/useSemanticElements: keyboard access for scrollable regions (axe scrollable-region-focusable)
 		<div
+			// biome-ignore lint/a11y/noNoninteractiveTabindex: keyboard access for scrollable regions (axe scrollable-region-focusable)
 			tabIndex={0}
 			role="region"
 			aria-label="Rental price chart"
@@ -428,7 +430,9 @@ export default function RentalPriceTrendsClient() {
 				<h2 className="text-sm font-bold text-ink mb-3">
 					Summary — {brType} apartments (2025 H2 estimate)
 				</h2>
+				{/* biome-ignore lint/a11y/useSemanticElements: keyboard access for scrollable regions (axe scrollable-region-focusable) */}
 				<div
+					// biome-ignore lint/a11y/noNoninteractiveTabindex: keyboard access for scrollable regions (axe scrollable-region-focusable)
 					tabIndex={0}
 					role="region"
 					aria-label="Rental price table"

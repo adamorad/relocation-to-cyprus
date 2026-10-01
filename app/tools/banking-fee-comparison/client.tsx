@@ -265,7 +265,9 @@ export default function BankingFeeComparisonPage() {
 			</div>
 
 			{/* Comparison table */}
+			{/* biome-ignore lint/a11y/useSemanticElements: keyboard access for scrollable regions (axe scrollable-region-focusable) */}
 			<div
+				// biome-ignore lint/a11y/noNoninteractiveTabindex: keyboard access for scrollable regions (axe scrollable-region-focusable)
 				tabIndex={0}
 				role="region"
 				aria-label="Bank fee comparison table"
