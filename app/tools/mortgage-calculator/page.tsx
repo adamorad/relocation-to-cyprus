@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import MortgageCalculatorClient from "./client";
 
@@ -20,27 +21,35 @@ export const metadata: Metadata = {
 };
 
 export default function MortgageCalculatorPage() {
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Tools",
-				item: `${SITE_URL}/tools/`,
-			},
-			{ "@type": "ListItem", position: 3, name: title },
-		],
-	};
 	return (
-		<>
-			<script
-				type="application/ld+json"
-				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-			/>
+		<ToolTemplate
+			pagefindType="tool"
+			width="reading"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Tools", href: "/tools/" },
+					{ label: "Mortgage Calculator" },
+				],
+				eyebrow: "Finance",
+				title: "Cyprus Mortgage Calculator",
+				intro:
+					"Estimate your monthly repayment, total interest, and amortization schedule for a Cyprus property purchase.",
+			}}
+			nextSteps={[
+				{
+					href: "/tools/rent-vs-buy-calculator/",
+					label: "Rent vs Buy Calculator",
+				},
+				{ href: "/", label: "Browse the property map" },
+				{
+					href: "/tools/tax-residency-tracker/",
+					label: "Tax Residency Planner",
+				},
+				{ href: "/tools/", label: "All tools" },
+			]}
+			disclaimer="This calculator is for illustrative purposes only and does not constitute financial advice. Actual mortgage rates, LTV limits, fees, and eligibility criteria vary by bank and applicant profile. Always consult a licensed mortgage adviser and your chosen bank before making financial decisions."
+		>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
@@ -49,6 +58,6 @@ export default function MortgageCalculatorPage() {
 				}}
 			/>
 			<MortgageCalculatorClient />
-		</>
+		</ToolTemplate>
 	);
 }

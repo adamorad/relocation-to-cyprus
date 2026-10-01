@@ -1,7 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useState } from "react";
+import { ToolPanel } from "@/components/templates/ToolTemplate";
+import { Callout } from "@/components/ui/Callout";
+import { DataTable, StatCard } from "@/components/ui/DataTable";
+import { CHART_COLORS } from "@/lib/chart-colors";
 import { LISTINGS } from "@/lib/listingsData";
 
 // ---------------------------------------------------------------------------
@@ -11,7 +14,7 @@ import { LISTINGS } from "@/lib/listingsData";
 /**
  * Parse a priceRange string such as:
  *   "€460,000 +VAT"
- *   "€390,000 – €405,000 +VAT"
+ *   "€390,000 to €405,000 +VAT"
  *   "From €320,000"
  * Returns the lower-bound numeric value, or null if unparseable.
  */
@@ -69,11 +72,11 @@ const MIN_DATA_POINTS = 5;
 
 const CITY_NOTES: Record<string, string> = {
 	Limassol:
-		"Limassol has the widest price range in Cyprus — from affordable inland to ultra-luxury seafront.",
+		"Limassol has the widest price range in Cyprus, from affordable inland to ultra-luxury seafront.",
 	Paphos:
 		"Paphos offers strong value. Most developments are in the comfortable mid-range.",
 	Larnaca:
-		"Larnaca is the most affordable coastal city — significant growth potential.",
+		"Larnaca is the most affordable coastal city, with significant growth potential.",
 	"Ayia Napa":
 		"Ayia Napa prices are driven by luxury resort demand. Mid-range options are limited.",
 };
@@ -166,48 +169,17 @@ export default function PriceBenchmarkerClient() {
 	const markerLeft =
 		pctRank !== null ? Math.min(Math.max(pctRank, 0), 98) : null;
 
+	const field =
+		"min-h-11 w-full rounded-xl border border-line bg-white px-3 text-base text-ink focus:outline-none focus:ring-2 focus:ring-focus";
+
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="tool"
-			className="max-w-3xl mx-auto px-6 py-10 md:py-16"
-		>
-			{/* Breadcrumb */}
-			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-ink">
-					Home
-				</Link>{" "}
-				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-ink">
-					Tools
-				</Link>{" "}
-				&rsaquo; <span>Property Price Benchmarker</span>
-			</nav>
-
-			{/* Header */}
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
-					Research
-				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Cyprus Property Price Benchmarker
-				</h1>
-				<p className="mt-3 text-base text-slate-600 leading-relaxed">
-					See how your property&apos;s asking price compares to similar
-					developments in the same region.
-				</p>
-			</header>
-
-			{/* Inputs */}
-			<section className="bg-white border border-line rounded-2xl p-6 mb-6">
+		<>
+			<ToolPanel title="Your property">
 				<div className="grid gap-5 sm:grid-cols-2">
-					{/* City selector */}
 					<div>
 						<label
 							htmlFor="city-select"
-							className="block text-sm font-semibold text-ink mb-1.5"
+							className="mb-1.5 block text-sm font-semibold text-ink"
 						>
 							City / Region
 						</label>
@@ -215,7 +187,7 @@ export default function PriceBenchmarkerClient() {
 							id="city-select"
 							value={selectedCity}
 							onChange={(e) => setSelectedCity(e.target.value)}
-							className="w-full border border-line rounded-xl px-3 py-2 text-sm text-ink bg-white focus:outline-none focus:ring-2 focus:ring-focus"
+							className={field}
 						>
 							{availableCities.map((city) => (
 								<option key={city} value={city}>
@@ -225,11 +197,10 @@ export default function PriceBenchmarkerClient() {
 						</select>
 					</div>
 
-					{/* Price input */}
 					<div>
 						<label
 							htmlFor="price-input"
-							className="block text-sm font-semibold text-ink mb-1.5"
+							className="mb-1.5 block text-sm font-semibold text-ink"
 						>
 							Your property price (€)
 						</label>
@@ -240,180 +211,118 @@ export default function PriceBenchmarkerClient() {
 							placeholder="e.g. 450000"
 							value={priceInput}
 							onChange={(e) => setPriceInput(e.target.value)}
-							className="w-full border border-line rounded-xl px-3 py-2 text-sm text-ink bg-white focus:outline-none focus:ring-2 focus:ring-focus"
+							className={field}
 						/>
 					</div>
 				</div>
-			</section>
+			</ToolPanel>
 
-			{/* Results — only shown when stats available */}
 			{stats && (
 				<>
-					{/* Percentile result */}
 					{userPrice !== null && pctRank !== null ? (
-						<section className="mb-6">
-							<div className="bg-ink text-white rounded-2xl p-6">
-								<p className="text-base leading-relaxed">
-									Your price of{" "}
-									<span className="font-bold text-sky-strong">
-										{fmt(userPrice)}
-									</span>{" "}
-									is above{" "}
-									<span className="font-bold text-sky-strong">{pctRank}%</span>{" "}
-									of the <span className="font-semibold">{stats.count}</span>{" "}
-									developments in{" "}
-									<span className="font-semibold">{selectedCity}</span> in our
-									database.
-								</p>
+						<section
+							aria-label="Your price compared"
+							className="rounded-card border border-line bg-white p-5 shadow-rc md:p-6"
+						>
+							<p className="text-base leading-relaxed text-ink">
+								Your price of{" "}
+								<span className="font-bold">{fmt(userPrice)}</span> is above{" "}
+								<span className="font-bold">{pctRank}%</span> of the{" "}
+								<span className="font-semibold">{stats.count}</span>{" "}
+								developments in{" "}
+								<span className="font-semibold">{selectedCity}</span> in our
+								database.
+							</p>
 
-								{/* Percentile bar */}
-								<div className="mt-5">
-									<div className="flex justify-between text-xs text-slate-400 mb-1">
-										<span>Cheapest</span>
-										<span>Most expensive</span>
-									</div>
-									<div className="relative h-3 bg-slate-700 rounded-full overflow-visible">
-										{/* Gradient fill up to marker */}
-										<div
-											className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-sky-strong to-primary"
-											style={{ width: `${markerLeft}%` }}
-										/>
-										{/* Marker pin */}
-										<div
-											className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white border-2 border-primary shadow-sm"
-											style={{ left: `${markerLeft}%` }}
-										/>
-									</div>
-									<div className="flex justify-between text-xs text-slate-400 mt-1">
-										<span>{fmt(stats.min)}</span>
-										<span>{fmt(stats.max)}</span>
-									</div>
+							<div className="mt-5">
+								<div className="mb-1 flex justify-between text-sm text-muted">
+									<span>Cheapest</span>
+									<span>Most expensive</span>
 								</div>
-
-								{/* Position label */}
-								<p className="mt-4 text-sm text-slate-300">
-									{pctRank >= 75
-										? "Your price is in the top quarter — premium or luxury segment for this city."
-										: pctRank >= 50
-											? "Your price is above the median — upper mid-range for this city."
-											: pctRank >= 25
-												? "Your price is below the median — competitive mid-range for this city."
-												: "Your price is in the bottom quarter — among the most affordable options in this city."}
-								</p>
+								<div
+									role="img"
+									aria-label={`Your price is above ${pctRank}% of listed developments`}
+									className="relative h-3 overflow-visible rounded-full bg-sky-strong"
+								>
+									<div
+										className="absolute inset-y-0 left-0 rounded-full"
+										style={{
+											width: `${markerLeft}%`,
+											backgroundColor: CHART_COLORS.primary,
+										}}
+									/>
+									<div
+										className="absolute top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 bg-white shadow-sm"
+										style={{
+											left: `${markerLeft}%`,
+											borderColor: CHART_COLORS.ink,
+										}}
+									/>
+								</div>
+								<div className="mt-1 flex justify-between text-sm text-muted">
+									<span>{fmt(stats.min)}</span>
+									<span>{fmt(stats.max)}</span>
+								</div>
 							</div>
+
+							<p className="mt-4 text-sm text-muted">
+								{pctRank >= 75
+									? "Your price is in the top quarter: premium or luxury segment for this city."
+									: pctRank >= 50
+										? "Your price is above the median: upper mid-range for this city."
+										: pctRank >= 25
+											? "Your price is below the median: competitive mid-range for this city."
+											: "Your price is in the bottom quarter: among the most affordable options in this city."}
+							</p>
 						</section>
 					) : (
-						<section className="mb-6">
-							<div className="bg-sky border border-line rounded-2xl p-5 text-sm text-slate-600">
-								Enter a price above to see where it sits in the distribution.
-							</div>
-						</section>
+						<Callout tone="info">
+							Enter a price above to see where it sits in the distribution.
+						</Callout>
 					)}
 
-					{/* Stats table */}
-					<section className="mb-6">
-						<h2 className="text-sm font-bold text-ink uppercase tracking-wider mb-3">
-							{selectedCity} — Price Distribution
+					<section aria-labelledby="dist-heading" className="space-y-4">
+						<h2
+							id="dist-heading"
+							className="text-2xl font-bold tracking-tight text-ink"
+						>
+							{selectedCity}: price distribution
 						</h2>
-						<div className="overflow-x-auto">
-							<table className="w-full text-sm border-collapse">
-								<thead>
-									<tr className="bg-slate-100 text-slate-700">
-										<th className="text-left font-semibold px-4 py-2.5 rounded-tl-lg">
-											Metric
-										</th>
-										<th className="text-right font-semibold px-4 py-2.5 rounded-tr-lg">
-											Price
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									{[
-										{ label: "Min (lowest listed)", value: stats.min },
-										{ label: "25th percentile", value: stats.p25 },
-										{ label: "Median (50th percentile)", value: stats.median },
-										{ label: "Average", value: stats.average },
-										{ label: "75th percentile", value: stats.p75 },
-										{ label: "Max (highest listed)", value: stats.max },
-									].map((row, i) => (
-										<tr
-											key={row.label}
-											className={
-												i % 2 === 0
-													? "bg-white border-b border-line"
-													: "bg-slate-50 border-b border-line"
-											}
-										>
-											<td className="px-4 py-2.5 text-slate-700">
-												{row.label}
-											</td>
-											<td className="px-4 py-2.5 text-right font-mono font-semibold text-ink">
-												{fmt(row.value)}
-											</td>
-										</tr>
-									))}
-								</tbody>
-							</table>
-						</div>
-
-						<p className="mt-3 text-xs text-slate-500">
+						<StatCard
+							label="Median (50th percentile)"
+							value={fmt(stats.median)}
+							hint={`Based on ${stats.count} listed developments`}
+						/>
+						<DataTable
+							caption={`Price distribution in ${selectedCity}`}
+							hideCaption
+							zebra
+							columns={[
+								{ header: "Metric" },
+								{ header: "Price", align: "right" },
+							]}
+							rows={[
+								["Min (lowest listed)", fmt(stats.min)],
+								["25th percentile", fmt(stats.p25)],
+								["Median (50th percentile)", fmt(stats.median)],
+								["Average", fmt(stats.average)],
+								["75th percentile", fmt(stats.p75)],
+								["Max (highest listed)", fmt(stats.max)],
+							]}
+						/>
+						<p className="text-sm text-muted">
 							Based on {stats.count} listed developments in our database.
 							Excludes unlisted or off-market properties.
 						</p>
 					</section>
 
-					{/* City note */}
 					{CITY_NOTES[selectedCity] && (
-						<section className="mb-6">
-							<div className="bg-sky border border-line rounded-2xl p-4 text-sm text-slate-700">
-								<span className="font-semibold text-ink">
-									About {selectedCity}:{" "}
-								</span>
-								{CITY_NOTES[selectedCity]}
-							</div>
-						</section>
+						<Callout tone="info" title={`About ${selectedCity}`}>
+							{CITY_NOTES[selectedCity]}
+						</Callout>
 					)}
 				</>
 			)}
-
-			{/* Next steps */}
-			<aside className="bg-sky border border-line rounded-2xl p-5 mb-6">
-				<p className="text-sm font-semibold text-ink mb-2">Next steps</p>
-				<p className="text-sm text-slate-600 mb-4">
-					Use the benchmarker alongside the rent vs buy calculator and
-					neighbourhood comparison to build a complete picture.
-				</p>
-				<div className="flex flex-wrap gap-2">
-					<Link
-						href="/tools/rent-vs-buy-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Rent vs Buy Calculator
-					</Link>
-					<Link
-						href="/tools/city-comparison/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						City Comparison
-					</Link>
-				</div>
-			</aside>
-
-			{/* Disclaimer */}
-			<aside className="bg-amber-50 border border-amber-200 rounded-2xl p-5 mb-6 text-sm text-amber-900">
-				<p className="font-semibold text-ink mb-1">Disclaimer</p>
-				<p>
-					Prices are extracted from publicly listed development data and are
-					indicative only. Prices vary by unit, floor, and negotiation. This
-					tool does not constitute financial or investment advice. Always verify
-					directly with the developer or agent.
-				</p>
-			</aside>
-
-			{/* Back link */}
-			<Link href="/tools/" className="underline hover:text-ink text-sm">
-				&larr; Back to Tools
-			</Link>
-		</main>
+		</>
 	);
 }

@@ -1,7 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import { useMemo, useState } from "react";
+import { type ReactNode, useId, useMemo, useState } from "react";
+import { ToolPanel } from "@/components/templates/ToolTemplate";
+import { Button } from "@/components/ui/Button";
+import { ChipGroup } from "@/components/ui/Chip";
+import { DataTable, StatCard } from "@/components/ui/DataTable";
 
 // ── types ────────────────────────────────────────────────────────────────────
 
@@ -196,7 +199,7 @@ function calcCosts(inputs: {
 		});
 	}
 
-	// Cyprus arrival — rent vs buy
+	// Cyprus arrival: rent vs buy
 	if (buying) {
 		const solicitorsLow = Math.round(propertyPrice * 0.015);
 		items.push({
@@ -288,6 +291,9 @@ function calcCosts(inputs: {
 
 // ── select component ───────────────────────────────────────────────────────────
 
+const FIELD =
+	"min-h-11 w-full rounded-xl border border-line bg-white px-3 text-base text-ink focus:outline-none focus:ring-2 focus:ring-focus";
+
 function SelectRow<T extends string>({
 	label,
 	value,
@@ -299,15 +305,17 @@ function SelectRow<T extends string>({
 	options: { value: T; label: string }[];
 	onChange: (v: T) => void;
 }) {
+	const id = useId();
 	return (
-		<div className="flex flex-col gap-1">
-			<label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
+		<div className="flex flex-col gap-1.5">
+			<label htmlFor={id} className="text-sm font-semibold text-ink">
 				{label}
 			</label>
 			<select
+				id={id}
 				value={value}
 				onChange={(e) => onChange(e.target.value as T)}
-				className="rounded-xl border border-line bg-white px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-focus"
+				className={FIELD}
 			>
 				{options.map((o) => (
 					<option key={o.value} value={o.value}>
@@ -332,33 +340,39 @@ function StepperRow({
 	max: number;
 	onChange: (v: number) => void;
 }) {
+	const id = useId();
 	return (
-		<div className="flex items-center justify-between gap-2">
-			<label className="text-xs font-semibold text-slate-600 uppercase tracking-wide flex-1">
+		<fieldset className="flex min-w-0 items-center justify-between gap-2 border-0 p-0">
+			<legend className="sr-only">{label}</legend>
+			<span
+				id={id}
+				aria-hidden="true"
+				className="flex-1 text-sm font-semibold text-ink"
+			>
 				{label}
-			</label>
+			</span>
 			<div className="flex items-center gap-2">
 				<button
 					type="button"
 					onClick={() => onChange(Math.max(min, value - 1))}
-					className="w-11 h-11 rounded-xl border border-line bg-white text-slate-700 font-bold hover:border-primary transition-colors text-lg leading-none"
+					className="h-11 w-11 rounded-xl border border-line bg-white text-lg font-bold leading-none text-ink transition-colors hover:border-primary hover:bg-sky"
 					aria-label={`Decrease ${label}`}
 				>
 					−
 				</button>
-				<span className="w-6 text-center font-bold text-ink text-sm">
+				<span className="w-6 text-center text-sm font-bold text-ink">
 					{value}
 				</span>
 				<button
 					type="button"
 					onClick={() => onChange(Math.min(max, value + 1))}
-					className="w-11 h-11 rounded-xl border border-line bg-white text-slate-700 font-bold hover:border-primary transition-colors text-lg leading-none"
+					className="h-11 w-11 rounded-xl border border-line bg-white text-lg font-bold leading-none text-ink transition-colors hover:border-primary hover:bg-sky"
 					aria-label={`Increase ${label}`}
 				>
 					+
 				</button>
 			</div>
-		</div>
+		</fieldset>
 	);
 }
 
@@ -372,30 +386,15 @@ function ToggleRow({
 	onChange: (v: boolean) => void;
 }) {
 	return (
-		<div className="flex items-center justify-between gap-2">
-			<label className="text-xs font-semibold text-slate-600 uppercase tracking-wide flex-1">
-				{label}
-			</label>
-			<div className="flex gap-1">
-				{(["Yes", "No"] as const).map((opt) => {
-					const active = opt === "Yes" ? value : !value;
-					return (
-						<button
-							key={opt}
-							type="button"
-							onClick={() => onChange(opt === "Yes")}
-							className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
-								active
-									? "bg-primary text-white"
-									: "bg-white border border-line text-slate-600 hover:border-primary"
-							}`}
-						>
-							{opt}
-						</button>
-					);
-				})}
-			</div>
-		</div>
+		<ChipGroup
+			label={label}
+			options={[
+				{ value: "Yes", label: "Yes" },
+				{ value: "No", label: "No" },
+			]}
+			value={value ? "Yes" : "No"}
+			onChange={(v) => onChange(v === "Yes")}
+		/>
 	);
 }
 
@@ -412,78 +411,65 @@ function CostSection({
 	open: boolean;
 	onToggle: () => void;
 }) {
+	const id = useId();
 	const catLow = items.reduce((s, i) => s + i.low, 0);
 	const catHigh = items.reduce((s, i) => s + i.high, 0);
 	const catMid = Math.round((catLow + catHigh) / 2);
 
 	return (
-		<div className="border border-line rounded-xl overflow-hidden">
-			<button
-				type="button"
-				onClick={onToggle}
-				className="w-full flex items-center justify-between px-4 py-3 bg-sky hover:bg-sky-strong transition-colors text-left"
-			>
-				<span className="text-sm font-bold text-ink">{category}</span>
-				<div className="flex items-center gap-3">
-					<span className="text-xs text-muted">
-						{fmt(catLow)} – {fmt(catHigh)}
+		<div className="overflow-hidden rounded-xl border border-line bg-white">
+			<h3 className="m-0">
+				<button
+					type="button"
+					onClick={onToggle}
+					aria-expanded={open}
+					aria-controls={id}
+					className="flex min-h-11 w-full items-center justify-between gap-3 bg-sky px-4 py-3 text-left transition-colors hover:bg-sky-strong"
+				>
+					<span className="text-base font-bold text-ink">{category}</span>
+					<span className="flex items-center gap-3">
+						<span className="text-sm text-muted">
+							{fmt(catLow)} to {fmt(catHigh)}
+						</span>
+						<svg
+							aria-hidden="true"
+							className={`h-4 w-4 text-muted transition-transform ${open ? "rotate-180" : ""}`}
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+							strokeWidth={2}
+						>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								d="M19 9l-7 7-7-7"
+							/>
+						</svg>
 					</span>
-					<span className="text-muted text-sm" aria-hidden="true">
-						{open ? "▲" : "▼"}
-					</span>
-				</div>
-			</button>
+				</button>
+			</h3>
 			{open && (
-				<div className="overflow-x-auto">
-					<table className="w-full text-xs">
-						<thead>
-							<tr className="bg-white border-t border-line text-muted uppercase tracking-wide">
-								<th className="px-4 py-2 text-left font-semibold">Item</th>
-								<th className="px-4 py-2 text-right font-semibold">Low</th>
-								<th className="px-4 py-2 text-right font-semibold">Midpoint</th>
-								<th className="px-4 py-2 text-right font-semibold">High</th>
-							</tr>
-						</thead>
-						<tbody>
-							{items.map((item) => (
-								<tr
-									key={item.label}
-									className="border-t border-line hover:bg-sky"
-								>
-									<td className="px-4 py-2 text-slate-700">{item.label}</td>
-									<td className="px-4 py-2 text-right text-slate-600">
-										{fmt(item.low)}
-									</td>
-									<td
-										className="px-4 py-2 text-right font-semibold"
-										style={{ color: "#087f98" }}
-									>
-										{fmt(Math.round((item.low + item.high) / 2))}
-									</td>
-									<td className="px-4 py-2 text-right text-slate-600">
-										{fmt(item.high)}
-									</td>
-								</tr>
-							))}
-							<tr className="border-t border-line bg-sky">
-								<td className="px-4 py-2 font-semibold text-slate-700">
-									Subtotal
-								</td>
-								<td className="px-4 py-2 text-right font-semibold text-slate-700">
-									{fmt(catLow)}
-								</td>
-								<td
-									className="px-4 py-2 text-right font-semibold"
-									style={{ color: "#087f98" }}
-								>
-									{fmt(catMid)}
-								</td>
-								<td className="px-4 py-2 text-right font-semibold text-slate-700">
-									{fmt(catHigh)}
-								</td>
-							</tr>
-						</tbody>
-					</table>
+				<div id={id}>
+					<DataTable
+						caption={`${category} costs`}
+						hideCaption
+						className="rounded-none border-0 border-t"
+						columns={[
+							{ header: "Item" },
+							{ header: "Low", align: "right" },
+							{ header: "Midpoint", align: "right" },
+							{ header: "High", align: "right" },
+						]}
+						rows={items.map((item): ReactNode[] => [
+							item.label,
+							fmt(item.low),
+							<span key="m" className="font-semibold text-primary-hover">
+								{fmt(Math.round((item.low + item.high) / 2))}
+							</span>,
+							fmt(item.high),
+						])}
+						footer={["Subtotal", fmt(catLow), fmt(catMid), fmt(catHigh)]}
+					/>
 				</div>
 			)}
 		</div>
@@ -509,8 +495,8 @@ const SHIPPING_OPTIONS: { value: ShippingVolume; label: string }[] = [
 
 const RENT_BUDGET_OPTIONS: { value: RentBudget; label: string }[] = [
 	{ value: "Under 800", label: "Under €800 / month" },
-	{ value: "800-1500", label: "€800 – €1,500 / month" },
-	{ value: "1500-2500", label: "€1,500 – €2,500 / month" },
+	{ value: "800-1500", label: "€800 to €1,500 / month" },
+	{ value: "1500-2500", label: "€1,500 to €2,500 / month" },
 	{ value: "2500+", label: "€2,500+ / month" },
 ];
 
@@ -593,255 +579,170 @@ export default function RelocationCostCalculatorClient() {
 	const grandMid = Math.round((grandLow + grandHigh) / 2);
 
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="tool"
-			className="max-w-4xl mx-auto px-6 py-10 md:py-16"
-		>
-			{/* breadcrumb */}
-			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-primary">
-					Home
-				</Link>{" "}
-				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-primary">
-					Tools
-				</Link>{" "}
-				&rsaquo; <span className="text-ink">Relocation Cost Estimator</span>
-			</nav>
+		<div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_2fr]">
+			<ToolPanel
+				title="Your situation"
+				className="lg:sticky lg:top-24 lg:self-start"
+			>
+				<SelectRow
+					label="Origin region"
+					value={origin}
+					options={ORIGIN_OPTIONS}
+					onChange={setOrigin}
+				/>
 
-			{/* header */}
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
-					Finance
-				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Relocation Cost Estimator
-				</h1>
-				<p className="mt-3 text-slate-600 text-sm leading-relaxed max-w-2xl">
-					Estimate your total one-time moving costs to Cyprus — from flights and
-					shipping to deposits, furniture, and legal fees. Adjust the inputs and
-					see a full itemised breakdown instantly.
-				</p>
-			</header>
+				<StepperRow
+					label="Adults"
+					value={adults}
+					min={1}
+					max={5}
+					onChange={setAdults}
+				/>
 
-			<div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8">
-				{/* ── inputs panel ── */}
-				<aside>
-					<section className="p-5 bg-sky border border-line rounded-2xl flex flex-col gap-5 sticky top-6">
-						<h2 className="text-sm font-bold text-ink">Your situation</h2>
+				<StepperRow
+					label="Children"
+					value={children}
+					min={0}
+					max={5}
+					onChange={setChildren}
+				/>
 
+				<SelectRow
+					label="Shipping volume"
+					value={shipping}
+					options={SHIPPING_OPTIONS}
+					onChange={setShipping}
+				/>
+
+				<ToggleRow
+					label="Bringing a car"
+					value={bringCar}
+					onChange={setBringCar}
+				/>
+
+				<SelectRow
+					label="Pets"
+					value={pets}
+					options={PET_OPTIONS}
+					onChange={(v) => setPets(v)}
+				/>
+
+				<div className="flex flex-col gap-4 border-t border-line pt-4">
+					<h3 className="text-sm font-bold text-ink">Cyprus setup</h3>
+
+					<ToggleRow
+						label="Buying (not renting)"
+						value={buying}
+						onChange={setBuying}
+					/>
+
+					{buying ? (
+						<PropertyPriceField
+							value={propertyPrice}
+							onChange={setPropertyPrice}
+						/>
+					) : (
 						<SelectRow
-							label="Origin region"
-							value={origin}
-							options={ORIGIN_OPTIONS}
-							onChange={setOrigin}
+							label="Monthly rent budget"
+							value={rentBudget}
+							options={RENT_BUDGET_OPTIONS}
+							onChange={setRentBudget}
 						/>
+					)}
 
-						<StepperRow
-							label="Adults"
-							value={adults}
-							min={1}
-							max={5}
-							onChange={setAdults}
-						/>
-
-						<StepperRow
-							label="Children"
-							value={children}
-							min={0}
-							max={5}
-							onChange={setChildren}
-						/>
-
-						<SelectRow
-							label="Shipping volume"
-							value={shipping}
-							options={SHIPPING_OPTIONS}
-							onChange={setShipping}
-						/>
-
-						<ToggleRow
-							label="Bringing a car"
-							value={bringCar}
-							onChange={setBringCar}
-						/>
-
-						<SelectRow
-							label="Pets"
-							value={pets}
-							options={PET_OPTIONS}
-							onChange={(v) => setPets(v)}
-						/>
-
-						<div className="border-t border-line pt-4 flex flex-col gap-4">
-							<h3 className="text-xs font-bold text-muted uppercase tracking-wide">
-								Cyprus setup
-							</h3>
-
-							<ToggleRow
-								label="Buying (not renting)"
-								value={buying}
-								onChange={setBuying}
-							/>
-
-							{buying ? (
-								<div className="flex flex-col gap-1">
-									<label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
-										Property price (€)
-									</label>
-									<input
-										type="number"
-										min={50000}
-										max={5000000}
-										step={10000}
-										value={propertyPrice}
-										onChange={(e) =>
-											setPropertyPrice(Math.max(50000, Number(e.target.value)))
-										}
-										className="rounded-xl border border-line bg-white px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-focus"
-									/>
-								</div>
-							) : (
-								<SelectRow
-									label="Monthly rent budget"
-									value={rentBudget}
-									options={RENT_BUDGET_OPTIONS}
-									onChange={setRentBudget}
-								/>
-							)}
-
-							<ToggleRow
-								label="Using relocation agent"
-								value={useAgent}
-								onChange={setUseAgent}
-							/>
-						</div>
-					</section>
-				</aside>
-
-				{/* ── results panel ── */}
-				<section>
-					{/* grand total highlight */}
-					<div className="mb-6 p-5 rounded-2xl border-2 border-primary bg-sky">
-						<p className="text-xs text-muted uppercase tracking-wide mb-1">
-							Estimated total (incl. 10% contingency)
-						</p>
-						<div className="flex flex-wrap items-end gap-x-6 gap-y-1">
-							<span
-								className="text-3xl md:text-4xl font-bold"
-								style={{ color: "#087f98" }}
-							>
-								{fmt(grandMid)}
-							</span>
-							<span className="text-sm text-muted pb-1">
-								Range: {fmt(grandLow)} – {fmt(grandHigh)}
-							</span>
-						</div>
-					</div>
-
-					{/* collapsible cost sections */}
-					<div className="flex flex-col gap-3">
-						{Array.from(categories.entries()).map(([cat, items]) => (
-							<CostSection
-								key={cat}
-								category={cat}
-								items={items}
-								open={openSections[cat] ?? true}
-								onToggle={() => toggleSection(cat)}
-							/>
-						))}
-					</div>
-
-					{/* grand total table row */}
-					<div className="mt-4 border-2 border-slate-300 rounded-xl overflow-hidden">
-						<div className="overflow-x-auto">
-							<table className="w-full text-sm">
-								<tbody>
-									<tr className="bg-ink text-white">
-										<td className="px-4 py-3 font-bold">
-											Grand Total (incl. contingency)
-										</td>
-										<td className="px-4 py-3 text-right font-bold">
-											{fmt(grandLow)}
-										</td>
-										<td
-											className="px-4 py-3 text-right font-bold text-lg"
-											style={{ color: "#d8f3fc" }}
-										>
-											{fmt(grandMid)}
-										</td>
-										<td className="px-4 py-3 text-right font-bold">
-											{fmt(grandHigh)}
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-
-					{/* print note */}
-					<p className="mt-3 text-xs text-muted italic print:text-slate-600">
-						Costs shown are indicative estimates based on typical 2024–2025
-						market rates. Actual costs vary significantly.
-					</p>
-
-					{/* print button */}
-					<button
-						type="button"
-						onClick={() => window.print()}
-						className="mt-4 px-4 py-2 rounded-xl border border-line bg-white text-xs font-semibold text-slate-700 hover:border-primary transition-colors print:hidden"
-					>
-						Print / Save as PDF
-					</button>
-				</section>
-			</div>
-
-			{/* next steps */}
-			<aside className="mt-10 p-5 bg-sky border border-line rounded-2xl">
-				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-					Related tools
-				</p>
-				<div className="flex flex-wrap gap-3">
-					<Link
-						href="/tools/budget-builder/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Monthly Budget Builder
-					</Link>
-					<Link
-						href="/tools/rent-vs-buy-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Rent vs Buy Calculator
-					</Link>
-					<Link
-						href="/tools/mortgage-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Mortgage Calculator
-					</Link>
+					<ToggleRow
+						label="Using relocation agent"
+						value={useAgent}
+						onChange={setUseAgent}
+					/>
 				</div>
-			</aside>
+			</ToolPanel>
 
-			{/* disclaimer */}
-			<aside className="mt-6 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
-				<p className="font-semibold text-ink mb-1">Disclaimer</p>
-				<p>
-					General information only — not legal, tax, or financial advice. Cost
-					ranges are indicative and based on publicly available market data for
-					2024–2025. Always obtain multiple quotes and consult qualified
-					professionals before making financial decisions.
+			<section aria-labelledby="cost-results" className="min-w-0 space-y-4">
+				<h2
+					id="cost-results"
+					className="text-2xl font-bold tracking-tight text-ink"
+				>
+					Itemised costs
+				</h2>
+				<StatCard
+					highlight
+					label="Estimated total (incl. 10% contingency)"
+					value={fmt(grandMid)}
+					hint={`Range: ${fmt(grandLow)} to ${fmt(grandHigh)}`}
+				/>
+
+				<div className="flex flex-col gap-3">
+					{Array.from(categories.entries()).map(([cat, items]) => (
+						<CostSection
+							key={cat}
+							category={cat}
+							items={items}
+							open={openSections[cat] ?? true}
+							onToggle={() => toggleSection(cat)}
+						/>
+					))}
+				</div>
+
+				<DataTable
+					caption="Grand total"
+					hideCaption
+					columns={[
+						{ header: "Total" },
+						{ header: "Low", align: "right" },
+						{ header: "Midpoint", align: "right" },
+						{ header: "High", align: "right" },
+					]}
+					rows={[]}
+					footer={[
+						"Grand total (incl. contingency)",
+						fmt(grandLow),
+						fmt(grandMid),
+						fmt(grandHigh),
+					]}
+				/>
+
+				<p className="text-sm text-muted print:text-slate-600">
+					Costs shown are indicative estimates based on typical 2024-2025 market
+					rates. Actual costs vary significantly.
 				</p>
-			</aside>
 
-			<p className="mt-8 text-xs text-muted">
-				<Link href="/tools/" className="underline hover:text-primary">
-					&larr; Back to Tools
-				</Link>
-			</p>
-		</main>
+				<Button
+					type="button"
+					variant="secondary"
+					className="print:hidden"
+					onClick={() => window.print()}
+				>
+					Print / Save as PDF
+				</Button>
+			</section>
+		</div>
+	);
+}
+
+function PropertyPriceField({
+	value,
+	onChange,
+}: {
+	value: number;
+	onChange: (v: number) => void;
+}) {
+	const id = useId();
+	return (
+		<div className="flex flex-col gap-1.5">
+			<label htmlFor={id} className="text-sm font-semibold text-ink">
+				Property price (€)
+			</label>
+			<input
+				id={id}
+				type="number"
+				min={50000}
+				max={5000000}
+				step={10000}
+				value={value}
+				onChange={(e) => onChange(Math.max(50000, Number(e.target.value)))}
+				className={FIELD}
+			/>
+		</div>
 	);
 }

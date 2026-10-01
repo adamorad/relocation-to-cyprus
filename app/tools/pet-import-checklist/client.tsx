@@ -1,7 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
+import { ToolPanel } from "@/components/templates/ToolTemplate";
+import { Badge, type BadgeTone } from "@/components/ui/Badge";
+import { Callout } from "@/components/ui/Callout";
+import { ChipGroup } from "@/components/ui/Chip";
+import { CHART_COLORS } from "@/lib/chart-colors";
 
 // ── types ────────────────────────────────────────────────────────────────────
 
@@ -26,7 +30,7 @@ function getChecklist(pet: PetType, origin: OriginRegion): ChecklistItem[] {
 				text: "Obtain CITES permit (required for most parrots and protected species)",
 				timing: "now",
 				critical: true,
-				note: "Most parrot species are CITES Appendix II — check before purchasing or travelling.",
+				note: "Most parrot species are CITES Appendix II: check before purchasing or travelling.",
 			},
 			{
 				id: "bird-import-permit",
@@ -37,7 +41,7 @@ function getChecklist(pet: PetType, origin: OriginRegion): ChecklistItem[] {
 			},
 			{
 				id: "bird-ai-test",
-				text: "Avian influenza (H5N1) test — must be negative within 10 days before travel",
+				text: "Avian influenza (H5N1) test: must be negative within 10 days before travel",
 				timing: "days",
 			},
 			{
@@ -50,7 +54,7 @@ function getChecklist(pet: PetType, origin: OriginRegion): ChecklistItem[] {
 				text: "Arrange minimum 30-day quarantine in an approved facility on arrival (at your expense)",
 				timing: "arrival",
 				critical: true,
-				note: "Book in advance — approved facilities are limited.",
+				note: "Book in advance: approved facilities are limited.",
 			},
 			{
 				id: "bird-border",
@@ -95,7 +99,7 @@ function getDogCatChecklist(origin: OriginRegion): ChecklistItem[] {
 		return [
 			{
 				id: "eu-microchip",
-				text: "ISO 15-digit microchip — must be implanted BEFORE or on the same day as the first rabies vaccine",
+				text: "ISO 15-digit microchip: must be implanted BEFORE or on the same day as the first rabies vaccine",
 				timing: "now",
 			},
 			{
@@ -110,7 +114,7 @@ function getDogCatChecklist(origin: OriginRegion): ChecklistItem[] {
 			},
 			{
 				id: "eu-tapeworm",
-				text: "Tapeworm (Praziquantel) treatment by vet — required 24–120 hours before entering Cyprus",
+				text: "Tapeworm (Praziquantel) treatment by vet: required 24 to 120 hours before entering Cyprus",
 				timing: "days",
 				note: "Dogs only. Treatment must be recorded in the pet passport / AHC.",
 			},
@@ -121,7 +125,7 @@ function getDogCatChecklist(origin: OriginRegion): ChecklistItem[] {
 			},
 			{
 				id: "eu-declaration",
-				text: "Notify Cyprus Veterinary Services on arrival — complete declaration form",
+				text: "Notify Cyprus Veterinary Services on arrival: complete declaration form",
 				timing: "arrival",
 			},
 		];
@@ -131,7 +135,7 @@ function getDogCatChecklist(origin: OriginRegion): ChecklistItem[] {
 		return [
 			{
 				id: "l2-microchip",
-				text: "ISO 15-digit microchip — must be implanted FIRST, before any vaccines",
+				text: "ISO 15-digit microchip: must be implanted FIRST, before any vaccines",
 				timing: "now",
 				critical: true,
 				note: "If microchip is implanted after a rabies vaccine, that vaccine does not count.",
@@ -143,7 +147,7 @@ function getDogCatChecklist(origin: OriginRegion): ChecklistItem[] {
 			},
 			{
 				id: "l2-titre-test",
-				text: "Rabies Neutralising Antibody Titre Test (RNATT) — done 30+ days after primary vaccination at an EU-approved lab; titre must be ≥ 0.5 IU/ml",
+				text: "Rabies Neutralising Antibody Titre Test (RNATT): done 30+ days after primary vaccination at an EU-approved lab; titre must be ≥ 0.5 IU/ml",
 				timing: "now",
 				critical: true,
 				note: "If the titre fails, you must give a booster and wait 30+ days, then retest. Book an EU-approved lab in advance.",
@@ -157,12 +161,12 @@ function getDogCatChecklist(origin: OriginRegion): ChecklistItem[] {
 			},
 			{
 				id: "l2-health-cert",
-				text: "Veterinary health certificate issued within 10 days of travel, endorsed by official authority (APHIS — USA; CFIA — Canada; AQIS — Australia)",
+				text: "Veterinary health certificate issued within 10 days of travel, endorsed by official authority (APHIS: USA; CFIA: Canada; AQIS: Australia)",
 				timing: "days",
 			},
 			{
 				id: "l2-tapeworm",
-				text: "Tapeworm (Praziquantel) treatment by vet — 24–120 hours before entry (dogs only)",
+				text: "Tapeworm (Praziquantel) treatment by vet: 24 to 120 hours before entry (dogs only)",
 				timing: "days",
 				note: "Must be recorded in the health certificate.",
 			},
@@ -173,7 +177,7 @@ function getDogCatChecklist(origin: OriginRegion): ChecklistItem[] {
 			},
 			{
 				id: "l2-declaration",
-				text: "Notify Cyprus Veterinary Services on arrival — complete declaration form",
+				text: "Notify Cyprus Veterinary Services on arrival: complete declaration form",
 				timing: "arrival",
 			},
 		];
@@ -183,7 +187,7 @@ function getDogCatChecklist(origin: OriginRegion): ChecklistItem[] {
 	return [
 		{
 			id: "ul-microchip",
-			text: "ISO 15-digit microchip — must be implanted FIRST, before any vaccines",
+			text: "ISO 15-digit microchip: must be implanted FIRST, before any vaccines",
 			timing: "now",
 			critical: true,
 			note: "If microchip is implanted after a rabies vaccine, that vaccine does not count.",
@@ -195,7 +199,7 @@ function getDogCatChecklist(origin: OriginRegion): ChecklistItem[] {
 		},
 		{
 			id: "ul-titre-test",
-			text: "Rabies Neutralising Antibody Titre Test (RNATT) — done 30+ days after primary vaccination at an EU-approved lab; titre must be ≥ 0.5 IU/ml",
+			text: "Rabies Neutralising Antibody Titre Test (RNATT): done 30+ days after primary vaccination at an EU-approved lab; titre must be ≥ 0.5 IU/ml",
 			timing: "now",
 			critical: true,
 			note: "If the titre fails, you must give a booster and wait 30+ days, then retest.",
@@ -221,13 +225,13 @@ function getDogCatChecklist(origin: OriginRegion): ChecklistItem[] {
 		},
 		{
 			id: "ul-tapeworm",
-			text: "Tapeworm (Praziquantel) treatment by vet — 24–120 hours before entry (dogs only)",
+			text: "Tapeworm (Praziquantel) treatment by vet: 24 to 120 hours before entry (dogs only)",
 			timing: "days",
 			note: "Must be recorded in the health certificate.",
 		},
 		{
 			id: "ul-quarantine",
-			text: "Be prepared for possible isolation or quarantine on arrival at your expense — confirm with Cyprus Veterinary Services",
+			text: "Be prepared for possible isolation or quarantine on arrival at your expense: confirm with Cyprus Veterinary Services",
 			timing: "arrival",
 			critical: true,
 		},
@@ -238,7 +242,7 @@ function getDogCatChecklist(origin: OriginRegion): ChecklistItem[] {
 		},
 		{
 			id: "ul-declaration",
-			text: "Notify Cyprus Veterinary Services on arrival — complete declaration form",
+			text: "Notify Cyprus Veterinary Services on arrival: complete declaration form",
 			timing: "arrival",
 		},
 	];
@@ -247,27 +251,35 @@ function getDogCatChecklist(origin: OriginRegion): ChecklistItem[] {
 // ── timeline data (Part 2 countries) ─────────────────────────────────────────
 
 const TIMELINE_STEPS = [
-	{ label: "Microchip", sub: "Day 0", color: "bg-ink" },
-	{ label: "Rabies vaccine", sub: "Day 0+", color: "bg-blue-600" },
-	{ label: "Titre test", sub: "30+ days after vaccine", color: "bg-coral" },
+	{ label: "Microchip", sub: "Day 0", color: CHART_COLORS.ink },
+	{ label: "Rabies vaccine", sub: "Day 0+", color: CHART_COLORS.blue },
+	{
+		label: "Titre test",
+		sub: "30+ days after vaccine",
+		color: CHART_COLORS.coralFill,
+	},
 	{
 		label: "3-month wait",
 		sub: "Starts from blood draw",
-		color: "bg-rose-500",
+		color: CHART_COLORS.coral,
 	},
-	{ label: "Health cert", sub: "10 days before travel", color: "bg-primary" },
-	{ label: "Travel day", sub: "Tapeworm (dogs)", color: "bg-slate-400" },
-	{ label: "Cyprus", sub: "Declare at border", color: "bg-primary" },
+	{
+		label: "Health cert",
+		sub: "10 days before travel",
+		color: CHART_COLORS.primary,
+	},
+	{ label: "Travel day", sub: "Tapeworm (dogs)", color: CHART_COLORS.neutral },
+	{ label: "Cyprus", sub: "Declare at border", color: CHART_COLORS.primary },
 ];
 
 // ── constants ─────────────────────────────────────────────────────────────────
 
-const PET_OPTIONS: { id: PetType; label: string; emoji: string }[] = [
-	{ id: "dog", label: "Dog", emoji: "🐕" },
-	{ id: "cat", label: "Cat", emoji: "🐈" },
-	{ id: "ferret", label: "Ferret", emoji: "🐾" },
-	{ id: "bird", label: "Bird / Parrot", emoji: "🦜" },
-	{ id: "rabbit", label: "Rabbit / Small animal", emoji: "🐇" },
+const PET_OPTIONS: { value: PetType; label: string }[] = [
+	{ value: "dog", label: "Dog" },
+	{ value: "cat", label: "Cat" },
+	{ value: "ferret", label: "Ferret" },
+	{ value: "bird", label: "Bird / Parrot" },
+	{ value: "rabbit", label: "Rabbit / Small animal" },
 ];
 
 const ORIGIN_OPTIONS: {
@@ -275,63 +287,41 @@ const ORIGIN_OPTIONS: {
 	label: string;
 	sub: string;
 	badge: string;
-	badgeColor: string;
+	badgeTone: BadgeTone;
 }[] = [
 	{
 		id: "eu",
 		label: "EU / EEA / Switzerland / UK",
-		sub: "Easiest route — Listed Part 1",
+		sub: "Easiest route: Listed Part 1",
 		badge: "Straightforward",
-		badgeColor: "bg-green-100 text-green-800",
+		badgeTone: "success",
 	},
 	{
 		id: "listed2",
 		label:
 			"USA, Canada, Australia, UAE, Israel, Japan, Singapore, NZ, South Korea, Chile…",
-		sub: "Listed Part 2 — months-long process, start immediately",
+		sub: "Listed Part 2: months-long process, start immediately",
 		badge: "Plan months ahead",
-		badgeColor: "bg-amber-100 text-amber-800",
+		badgeTone: "warning",
 	},
 	{
 		id: "unlisted",
 		label:
 			"All other countries (Russia, China, India, Brazil, most of Africa, etc.)",
-		sub: "Unlisted / high-risk — strictest rules, possible quarantine",
+		sub: "Unlisted / high-risk: strictest rules, possible quarantine",
 		badge: "Most complex",
-		badgeColor: "bg-rose-100 text-rose-800",
+		badgeTone: "danger",
 	},
 ];
 
 const TIMING_GROUPS: {
 	key: "now" | "weeks" | "days" | "arrival";
 	label: string;
-	color: string;
-	badgeBg: string;
 }[] = [
-	{
-		key: "now",
-		label: "Start now",
-		color: "border-rose-300",
-		badgeBg: "bg-rose-100 text-rose-800",
-	},
-	{
-		key: "weeks",
-		label: "Weeks before travel",
-		color: "border-amber-300",
-		badgeBg: "bg-amber-100 text-amber-800",
-	},
-	{
-		key: "days",
-		label: "Days before travel (within 10 days)",
-		color: "border-blue-300",
-		badgeBg: "bg-blue-100 text-blue-800",
-	},
-	{
-		key: "arrival",
-		label: "On arrival in Cyprus",
-		color: "border-line",
-		badgeBg: "bg-sky-strong text-ink",
-	},
+	{ key: "now", label: "Start now" },
+	{ key: "weeks", label: "Weeks before travel" },
+	{ key: "days", label: "Days before travel (within 10 days)" },
+	{ key: "arrival", label: "On arrival in Cyprus" },
 ];
 
 // ── main component ────────────────────────────────────────────────────────────
@@ -347,8 +337,6 @@ export default function PetImportChecklistClient() {
 
 	const checklist = pet && origin ? getChecklist(pet, origin) : [];
 
-	const hasCritical = checklist.some((i) => i.critical);
-
 	function toggleItem(id: string) {
 		setChecked((prev) => ({ ...prev, [id]: !prev[id] }));
 	}
@@ -357,161 +345,106 @@ export default function PetImportChecklistClient() {
 	const totalItems = checklist.length;
 
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="tool"
-			className="max-w-4xl mx-auto px-6 py-10 md:py-16"
-		>
-			{/* breadcrumb */}
-			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-ink">
-					Home
-				</Link>{" "}
-				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-ink">
-					Tools
-				</Link>{" "}
-				&rsaquo; <span className="text-ink">Cyprus Pet Import Checklist</span>
-			</nav>
+		<>
+			<ToolPanel title="Step 1: What type of pet?">
+				<ChipGroup
+					label="Pet type"
+					hideLabel
+					options={PET_OPTIONS}
+					value={(pet ?? "") as PetType}
+					onChange={(v) => {
+						setPet(v);
+						setChecked({});
+					}}
+				/>
+			</ToolPanel>
 
-			{/* header */}
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
-					Lifestyle
-				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Cyprus Pet Import Checklist
-				</h1>
-				<p className="mt-3 text-slate-600 text-sm leading-relaxed max-w-2xl">
-					Answer two questions and get a personalised checklist of every step
-					required to bring your pet into Cyprus — with timing guidance so
-					nothing catches you off guard.
-				</p>
-			</header>
-
-			{/* Step 1 — pet type */}
-			<section className="mb-8">
-				<h2 className="text-sm font-bold text-ink mb-3 uppercase tracking-wide">
-					Step 1 — What type of pet?
-				</h2>
-				<div className="flex flex-wrap gap-3">
-					{PET_OPTIONS.map((opt) => (
-						<button
-							key={opt.id}
-							type="button"
-							onClick={() => {
-								setPet(opt.id);
-								setChecked({});
-							}}
-							className={`flex flex-col items-center gap-1 px-5 py-4 rounded-xl border text-sm font-semibold transition-colors ${
-								pet === opt.id
-									? "bg-primary border-primary text-white shadow-sm"
-									: "bg-white border-line text-slate-700 hover:border-primary"
-							}`}
-						>
-							<span className="text-2xl">{opt.emoji}</span>
-							<span>{opt.label}</span>
-						</button>
-					))}
-				</div>
-			</section>
-
-			{/* Step 2 — origin */}
-			<section className="mb-8">
-				<h2 className="text-sm font-bold text-ink mb-3 uppercase tracking-wide">
-					Step 2 — Where are you travelling from?
-				</h2>
+			<ToolPanel title="Step 2: Where are you travelling from?">
 				<div className="flex flex-col gap-3">
 					{ORIGIN_OPTIONS.map((opt) => (
 						<button
 							key={opt.id}
 							type="button"
+							aria-pressed={origin === opt.id}
 							onClick={() => {
 								setOrigin(opt.id);
 								setChecked({});
 							}}
-							className={`text-left p-4 rounded-xl border transition-colors ${
+							className={`min-h-11 rounded-xl border p-4 text-left transition-colors ${
 								origin === opt.id
-									? "bg-primary/10 border-primary shadow-sm"
-									: "bg-white border-line hover:border-primary"
+									? "border-primary bg-sky"
+									: "border-line bg-white hover:border-primary"
 							}`}
 						>
-							<div className="flex items-start justify-between gap-3 flex-wrap">
+							<div className="flex flex-wrap items-start justify-between gap-3">
 								<div>
 									<p className="text-sm font-semibold text-ink">{opt.label}</p>
-									<p className="text-xs text-slate-500 mt-0.5">{opt.sub}</p>
+									<p className="mt-0.5 text-sm text-muted">{opt.sub}</p>
 								</div>
-								<span
-									className={`text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap ${opt.badgeColor}`}
-								>
+								<Badge tone={opt.badgeTone} className="whitespace-nowrap">
 									{opt.badge}
-								</span>
+								</Badge>
 							</div>
 						</button>
 					))}
 				</div>
-			</section>
+			</ToolPanel>
 
-			{/* Results */}
 			{pet && origin && checklist.length > 0 && (
 				<>
-					{/* Critical warning banner */}
 					{origin === "listed2" &&
 						(pet === "dog" || pet === "cat" || pet === "ferret") && (
-							<div className="mb-6 p-4 bg-amber-50 border border-amber-300 rounded-2xl">
-								<p className="text-sm font-bold text-amber-900 mb-1">
-									Months-long process — start planning immediately
-								</p>
-								<p className="text-xs text-amber-800 leading-relaxed">
-									The titre test + mandatory 3-month wait means the minimum time
-									from starting preparations to arriving in Cyprus is
-									approximately 5–6 months. Begin as soon as possible.
-								</p>
-							</div>
+							<Callout
+								tone="warning"
+								title="Months-long process: start planning immediately"
+							>
+								The titre test + mandatory 3-month wait means the minimum time
+								from starting preparations to arriving in Cyprus is
+								approximately 5 to 6 months. Begin as soon as possible.
+							</Callout>
 						)}
 
 					{origin === "unlisted" && (
-						<div className="mb-6 p-4 bg-rose-50 border border-rose-300 rounded-2xl">
-							<p className="text-sm font-bold text-rose-900 mb-1">
-								High-risk / unlisted country — contact Cyprus Veterinary
-								Services first
-							</p>
-							<p className="text-xs text-rose-800 leading-relaxed">
-								Requirements for unlisted countries include all Part 2 steps
-								plus possible quarantine on arrival. Confirm the current rules
-								for your specific country directly with the Cyprus Veterinary
-								Services (Ktiniatrikí Ypiresia) before making any arrangements.
-							</p>
-						</div>
+						<Callout
+							tone="warning"
+							title="High-risk / unlisted country: contact Cyprus Veterinary Services first"
+						>
+							Requirements for unlisted countries include all Part 2 steps plus
+							possible quarantine on arrival. Confirm the current rules for your
+							specific country directly with the Cyprus Veterinary Services
+							(Ktiniatrikí Ypiresia) before making any arrangements.
+						</Callout>
 					)}
 
 					{pet === "bird" && (
-						<div className="mb-6 p-4 bg-amber-50 border border-amber-300 rounded-2xl">
-							<p className="text-sm font-bold text-amber-900 mb-1">
-								Birds face significant import restrictions
-							</p>
-							<p className="text-xs text-amber-800 leading-relaxed">
-								Very few exotic birds can enter Cyprus without substantial
-								paperwork. A mandatory 30-day quarantine applies to all birds on
-								arrival. Begin the import permit application at least 60 days in
-								advance.
-							</p>
-						</div>
+						<Callout
+							tone="warning"
+							title="Birds face significant import restrictions"
+						>
+							Very few exotic birds can enter Cyprus without substantial
+							paperwork. A mandatory 30-day quarantine applies to all birds on
+							arrival. Begin the import permit application at least 60 days in
+							advance.
+						</Callout>
 					)}
 
-					{/* Progress bar */}
-					<div className="mb-6">
-						<div className="flex items-center justify-between mb-1">
-							<p className="text-xs font-semibold text-slate-600">Progress</p>
-							<p className="text-xs text-slate-500">
+					<section aria-label="Progress">
+						<div className="mb-1 flex items-center justify-between">
+							<p className="text-sm font-semibold text-ink">Progress</p>
+							<p className="text-sm text-muted">
 								{totalDone} / {totalItems} complete
 							</p>
 						</div>
-						<div className="h-2 bg-slate-200 rounded-full overflow-hidden">
+						<div
+							role="progressbar"
+							aria-valuenow={totalDone}
+							aria-valuemin={0}
+							aria-valuemax={totalItems}
+							aria-label="Checklist progress"
+							className="h-2 overflow-hidden rounded-full bg-sky-strong"
+						>
 							<div
-								className="h-full bg-primary rounded-full transition-all duration-300"
+								className="h-full rounded-full bg-primary transition-all duration-300"
 								style={{
 									width:
 										totalItems > 0
@@ -520,30 +453,36 @@ export default function PetImportChecklistClient() {
 								}}
 							/>
 						</div>
-					</div>
+					</section>
 
-					{/* Timeline visualiser (Part 2 only) */}
 					{showTimeline && (
-						<section className="mb-8 p-5 bg-sky border border-line rounded-2xl overflow-x-auto">
-							<h2 className="text-xs font-bold text-slate-700 uppercase tracking-wide mb-4">
+						<section
+							aria-labelledby="timeline-heading"
+							className="overflow-x-auto rounded-card border border-line bg-sky p-5"
+						>
+							<h2
+								id="timeline-heading"
+								className="mb-4 text-sm font-bold text-ink"
+							>
 								Timeline overview (Listed Part 2)
 							</h2>
-							<div className="flex items-start min-w-[600px]">
+							<div className="flex min-w-[600px] items-start">
 								{TIMELINE_STEPS.map((step, i) => (
-									<div key={i} className="flex items-start flex-1">
-										<div className="flex flex-col items-center flex-1">
+									<div key={step.label} className="flex flex-1 items-start">
+										<div className="flex flex-1 flex-col items-center">
 											<div
-												className={`w-3 h-3 rounded-full flex-shrink-0 mt-1 ${step.color}`}
+												className="mt-1 h-3 w-3 shrink-0 rounded-full"
+												style={{ backgroundColor: step.color }}
 											/>
-											<p className="text-xs font-semibold text-ink text-center mt-1 leading-tight">
+											<p className="mt-1 text-center text-xs font-semibold leading-tight text-ink">
 												{step.label}
 											</p>
-											<p className="text-[9px] text-slate-500 text-center mt-0.5 leading-tight">
+											<p className="mt-0.5 text-center text-xs leading-tight text-muted">
 												{step.sub}
 											</p>
 										</div>
 										{i < TIMELINE_STEPS.length - 1 && (
-											<div className="flex-1 h-px bg-slate-300 mt-2 mx-1 min-w-[16px]" />
+											<div className="mx-1 mt-2 h-px min-w-[16px] flex-1 bg-slate-400" />
 										)}
 									</div>
 								))}
@@ -551,10 +490,12 @@ export default function PetImportChecklistClient() {
 						</section>
 					)}
 
-					{/* Checklist grouped by timing */}
-					<section className="mb-8">
-						<h2 className="text-sm font-bold text-ink mb-4 uppercase tracking-wide">
-							Step 3 — Your checklist
+					<section aria-labelledby="checklist-heading">
+						<h2
+							id="checklist-heading"
+							className="mb-4 text-2xl font-bold tracking-tight text-ink"
+						>
+							Step 3: Your checklist
 						</h2>
 						<div className="flex flex-col gap-6">
 							{TIMING_GROUPS.map((group) => {
@@ -562,15 +503,9 @@ export default function PetImportChecklistClient() {
 								if (items.length === 0) return null;
 								return (
 									<div key={group.key}>
-										<div
-											className={`flex items-center gap-2 mb-3 pb-2 border-b-2 ${group.color}`}
-										>
-											<span
-												className={`text-xs font-bold px-2 py-0.5 rounded-full ${group.badgeBg}`}
-											>
-												{group.label}
-											</span>
-										</div>
+										<h3 className="mb-3 border-b-2 border-line pb-2 text-base font-bold text-ink">
+											{group.label}
+										</h3>
 										<div className="flex flex-col gap-2">
 											{items.map((item) => (
 												<ChecklistItemRow
@@ -578,8 +513,6 @@ export default function PetImportChecklistClient() {
 													item={item}
 													checked={!!checked[item.id]}
 													onToggle={() => toggleItem(item.id)}
-													badgeBg={group.badgeBg}
-													badgeLabel={group.label}
 												/>
 											))}
 										</div>
@@ -589,44 +522,22 @@ export default function PetImportChecklistClient() {
 						</div>
 					</section>
 
-					{/* Verification footer */}
-					<div className="mb-8 p-4 bg-sky border border-line rounded-2xl text-xs text-slate-700 leading-relaxed">
-						<p className="font-semibold text-ink mb-1">Approved entry points</p>
-						<p>
-							Pets may only enter Cyprus via{" "}
-							<strong>Larnaca International Airport</strong> or{" "}
-							<strong>Limassol Port</strong>. Entry via any other crossing is
-							not permitted.
-						</p>
-					</div>
+					<Callout tone="info" title="Approved entry points">
+						Pets may only enter Cyprus via{" "}
+						<strong>Larnaca International Airport</strong> or{" "}
+						<strong>Limassol Port</strong>. Entry via any other crossing is not
+						permitted.
+					</Callout>
 				</>
 			)}
 
-			{/* Empty state */}
 			{(!pet || !origin) && (
-				<div className="py-12 text-center text-muted text-sm border-2 border-dashed border-line rounded-xl">
+				<div className="rounded-xl border-2 border-dashed border-line py-12 text-center text-sm text-muted">
 					Select your pet type and origin above to generate your personalised
 					checklist.
 				</div>
 			)}
-
-			{/* Disclaimer */}
-			<aside className="mt-10 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
-				<p className="font-semibold text-ink mb-1">Disclaimer</p>
-				<p>
-					General information only — not veterinary or legal advice. Always
-					verify current requirements with{" "}
-					<strong>Cyprus Veterinary Services (Ktiniatrikí Ypiresia)</strong>{" "}
-					before travelling. Import rules can change without notice.
-				</p>
-			</aside>
-
-			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools/" className="underline hover:text-ink">
-					&larr; Back to Tools
-				</Link>
-			</p>
-		</main>
+		</>
 	);
 }
 
@@ -636,72 +547,67 @@ function ChecklistItemRow({
 	item,
 	checked,
 	onToggle,
-	badgeBg,
-	badgeLabel,
 }: {
 	item: ChecklistItem;
 	checked: boolean;
 	onToggle: () => void;
-	badgeBg: string;
-	badgeLabel: string;
 }) {
 	return (
 		<div
-			className={`p-4 rounded-2xl border transition-colors ${
+			className={`rounded-2xl border p-3 transition-colors ${
 				item.critical ? "border-amber-300 bg-amber-50" : "border-line bg-white"
-			} ${checked ? "opacity-60" : ""}`}
+			} ${checked ? "opacity-70" : ""}`}
 		>
-			<div className="flex items-start gap-3">
+			<div className="flex items-start gap-1">
 				<button
 					type="button"
 					onClick={onToggle}
-					aria-label={checked ? "Mark as incomplete" : "Mark as complete"}
-					className={`flex-shrink-0 mt-0.5 w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
-						checked
-							? "bg-primary border-primary"
-							: "border-line hover:border-primary"
-					}`}
+					aria-pressed={checked}
+					aria-label={`${checked ? "Mark incomplete" : "Mark complete"}: ${item.text}`}
+					className="flex min-h-11 min-w-11 shrink-0 items-center justify-center"
 				>
-					{checked && (
-						<svg
-							className="w-3 h-3 text-white"
-							viewBox="0 0 12 12"
-							fill="none"
-							stroke="currentColor"
-							strokeWidth="2"
-						>
-							<path
-								d="M2 6l3 3 5-5"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-							/>
-						</svg>
-					)}
+					<span
+						className={`flex h-5 w-5 items-center justify-center rounded border-2 transition-colors ${
+							checked ? "border-primary bg-primary" : "border-slate-500"
+						}`}
+					>
+						{checked && (
+							<svg
+								aria-hidden="true"
+								className="h-3 w-3 text-white"
+								viewBox="0 0 12 12"
+								fill="none"
+								stroke="currentColor"
+								strokeWidth="2"
+							>
+								<path
+									d="M2 6l3 3 5-5"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
+							</svg>
+						)}
+					</span>
 				</button>
-				<div className="flex-1 min-w-0">
+				<div className="min-w-0 flex-1 pt-2.5">
 					<p
 						className={`text-sm font-medium leading-snug ${
-							checked ? "line-through text-muted" : "text-ink"
+							checked ? "text-muted line-through" : "text-ink"
 						}`}
 					>
 						{item.critical && (
-							<span className="inline-block mr-1.5 text-amber-800 font-bold">
+							<span className="mr-1.5 inline-block font-bold text-amber-900">
 								!
 							</span>
 						)}
 						{item.text}
 					</p>
 					{item.note && (
-						<p className="mt-1 text-xs text-slate-500 leading-relaxed">
+						<p className="mt-1 text-sm leading-relaxed text-muted">
 							{item.note}
 						</p>
 					)}
 				</div>
-				<span
-					className={`flex-shrink-0 text-[9px] font-bold px-1.5 py-0.5 rounded-full whitespace-nowrap ${badgeBg}`}
-				>
-					{badgeLabel}
-				</span>
 			</div>
 		</div>
 	);

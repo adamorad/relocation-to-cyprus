@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import PriceBenchmarkerClient from "./client";
 
@@ -20,27 +21,31 @@ export const metadata: Metadata = {
 };
 
 export default function PriceBenchmarkerPage() {
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Tools",
-				item: `${SITE_URL}/tools/`,
-			},
-			{ "@type": "ListItem", position: 3, name: title },
-		],
-	};
 	return (
-		<>
-			<script
-				type="application/ld+json"
-				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-			/>
+		<ToolTemplate
+			pagefindType="tool"
+			width="reading"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Tools", href: "/tools/" },
+					{ label: "Property Price Benchmarker" },
+				],
+				eyebrow: "Research",
+				title: "Cyprus Property Price Benchmarker",
+				intro:
+					"See how your property's asking price compares to similar developments in the same region.",
+			}}
+			nextSteps={[
+				{
+					href: "/tools/rent-vs-buy-calculator/",
+					label: "Rent vs Buy Calculator",
+				},
+				{ href: "/tools/city-comparison/", label: "City Comparison" },
+				{ href: "/tools/", label: "All tools" },
+			]}
+			disclaimer="Prices are extracted from publicly listed development data and are indicative only. Prices vary by unit, floor, and negotiation. This tool does not constitute financial or investment advice. Always verify directly with the developer or agent."
+		>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
@@ -49,6 +54,6 @@ export default function PriceBenchmarkerPage() {
 				}}
 			/>
 			<PriceBenchmarkerClient />
-		</>
+		</ToolTemplate>
 	);
 }

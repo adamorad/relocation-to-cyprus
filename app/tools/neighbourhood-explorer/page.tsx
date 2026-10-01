@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import NeighbourhoodExplorerClient from "./client";
 
@@ -14,33 +15,30 @@ export const metadata: Metadata = {
 	openGraph: {
 		title,
 		description,
-		url: SITE_URL + "/tools/neighbourhood-explorer/",
+		url: `${SITE_URL}/tools/neighbourhood-explorer/`,
 		type: "website",
 	},
 };
 
 export default function NeighbourhoodExplorerPage() {
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Home", item: SITE_URL + "/" },
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Tools",
-				item: SITE_URL + "/tools/",
-			},
-			{ "@type": "ListItem", position: 3, name: title },
-		],
-	};
-
 	return (
-		<>
-			<script
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-			/>
+		<ToolTemplate
+			pagefindType="tool"
+			width="wide"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Tools", href: "/tools/" },
+					{ label: "Neighbourhood Explorer" },
+				],
+				eyebrow: "Research",
+				title: "Neighbourhood Explorer",
+				intro:
+					"Browse neighbourhoods across Cyprus and find the area that fits your lifestyle. Filter by city and vibe, then compare up to 3 areas side by side.",
+			}}
+			nextSteps={[{ href: "/tools/", label: "All tools" }]}
+			disclaimer="Rent ranges and neighbourhood descriptions are indicative only, based on general market knowledge as of early 2025. Actual rents vary by property type, condition, and season. This is not real-estate or financial advice: always verify with local agents."
+		>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
@@ -49,6 +47,6 @@ export default function NeighbourhoodExplorerPage() {
 				}}
 			/>
 			<NeighbourhoodExplorerClient />
-		</>
+		</ToolTemplate>
 	);
 }

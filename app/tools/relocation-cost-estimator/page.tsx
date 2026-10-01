@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Container } from "@/components/ui/Container";
 
 const NEW_PATH = "/tools/relocation-cost-calculator/";
 
@@ -12,16 +13,18 @@ export default function MovedPage() {
 	return (
 		<>
 			<meta httpEquiv="refresh" content={`0; url=${NEW_PATH}`} />
-			<main id="main" className="max-w-xl mx-auto px-6 py-16 text-center">
-				<p className="text-slate-700">
-					This tool has moved.{" "}
-					<Link
-						href={NEW_PATH}
-						className="text-primary font-semibold underline"
-					>
-						Continue to the new page
-					</Link>
-				</p>
+			<main id="main">
+				<Container width="reading" className="py-16 text-center">
+					<p className="text-muted">
+						This tool has moved.{" "}
+						<Link
+							href={NEW_PATH}
+							className="text-primary font-medium underline underline-offset-2 hover:text-primary-hover"
+						>
+							Continue to the new page
+						</Link>
+					</p>
+				</Container>
 			</main>
 		</>
 	);
