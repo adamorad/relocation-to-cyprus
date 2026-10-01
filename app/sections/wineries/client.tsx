@@ -1,33 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { ALL_CITIES, type City, WINE_TIPS, WINERIES } from "@/lib/wineries";
-
-function CityChip({
-	label,
-	selected,
-	onClick,
-}: {
-	label: string;
-	selected: boolean;
-	onClick: () => void;
-}) {
-	return (
-		<button
-			type="button"
-			onClick={onClick}
-			aria-pressed={selected}
-			className={`rounded-full inline-flex min-h-11 items-center px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors md:min-h-0 ${
-				selected
-					? "bg-ink text-white border border-ink"
-					: "bg-white text-ink border border-line hover:bg-sky"
-			}`}
-		>
-			{label}
-		</button>
-	);
-}
+import { Badge } from "@/components/ui/Badge";
+import { Callout } from "@/components/ui/Callout";
+import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
+import { Chip, ChipGroup } from "@/components/ui/Chip";
+import { ALL_CITIES, type City, WINERIES } from "@/lib/wineries";
 
 const PRICE_LABEL: Record<1 | 2 | 3, string> = {
 	1: "€ Budget",
@@ -35,7 +13,8 @@ const PRICE_LABEL: Record<1 | 2 | 3, string> = {
 	3: "€€€ Premium",
 };
 
-export default function WineriesPage() {
+/** Filters first, then the winery cards. Header and tips live in page.tsx. */
+export default function WineriesClient() {
 	const [cityFilter, setCityFilter] = useState<City | "All">("All");
 	const [tastingFilter, setTastingFilter] = useState<boolean | "All">("All");
 	const [restaurantFilter, setRestaurantFilter] = useState<boolean | "All">(
@@ -53,160 +32,99 @@ export default function WineriesPage() {
 	});
 
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="directory"
-			className="max-w-5xl mx-auto px-4 py-8 md:py-12"
-		>
-			<Breadcrumbs
-				items={[
-					{ label: "Home", href: "/" },
-					{ label: "Directories", href: "/sections/" },
-					{ label: "Wineries & Wine Tourism" },
-				]}
-			/>
-
-			{/* Header */}
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
-					Wine Tourism
-				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Wineries & Wine Tourism in Cyprus — From Commandaria Country
-				</h1>
-				<p className="mt-3 text-base text-slate-600 leading-relaxed max-w-2xl">
-					The Troodos foothills produce some of the Mediterranean's most
-					distinctive wines. Indigenous varieties, ancient traditions, and a
-					wine route through some of Cyprus's most beautiful villages.
-				</p>
-			</header>
-
-			{/* Tips */}
-			<section className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-3">
-				{WINE_TIPS.map((tip) => (
-					<div
-						key={tip.heading}
-						className="rounded-2xl border border-line bg-sky p-4 text-sm"
-					>
-						<p className="font-bold text-ink">{tip.heading}</p>
-						<p className="mt-1.5 text-slate-700 leading-relaxed">{tip.body}</p>
+		<>
+			<div className="space-y-4 rounded-card border border-line bg-sky p-4 md:p-5">
+				<ChipGroup
+					label="District"
+					value={cityFilter}
+					onChange={setCityFilter}
+					options={[
+						{ value: "All", label: "All districts" },
+						...ALL_CITIES.map((c) => ({ value: c, label: c })),
+					]}
+				/>
+				<fieldset className="min-w-0">
+					<legend className="mb-2 text-sm font-semibold text-ink">
+						Experience
+					</legend>
+					<div className="flex flex-wrap gap-2">
+						<Chip
+							selected={tastingFilter === "All"}
+							onClick={() => setTastingFilter("All")}
+						>
+							All wineries
+						</Chip>
+						<Chip
+							selected={tastingFilter === true}
+							onClick={() => setTastingFilter(true)}
+						>
+							Tasting available
+						</Chip>
+						<Chip
+							selected={restaurantFilter === true}
+							onClick={() =>
+								setRestaurantFilter(restaurantFilter === true ? "All" : true)
+							}
+						>
+							Restaurant on site
+						</Chip>
 					</div>
-				))}
-			</section>
-
-			{/* City filter */}
-			<div className="mb-3 flex flex-wrap gap-1.5">
-				{(["All", ...ALL_CITIES] as const).map((c) => (
-					<CityChip
-						key={c}
-						label={c}
-						selected={cityFilter === c}
-						onClick={() => setCityFilter(c)}
-					/>
-				))}
+				</fieldset>
 			</div>
 
-			{/* Tasting filter */}
-			<div className="mb-8 flex flex-wrap gap-1.5">
-				<CityChip
-					label="All wineries"
-					selected={tastingFilter === "All"}
-					onClick={() => setTastingFilter("All")}
-				/>
-				<CityChip
-					label="Tasting available"
-					selected={tastingFilter === true}
-					onClick={() => setTastingFilter(true)}
-				/>
-				<CityChip
-					label="Restaurant on site"
-					selected={restaurantFilter === true}
-					onClick={() =>
-						setRestaurantFilter(restaurantFilter === true ? "All" : true)
-					}
-				/>
-			</div>
-
-			{/* Results count */}
-			<p className="text-xs text-slate-500 mb-4">
+			<h2
+				className="mt-8 text-2xl font-bold tracking-tight text-ink"
+				aria-live="polite"
+			>
 				{filtered.length} {filtered.length !== 1 ? "wineries" : "winery"} shown
 				{cityFilter !== "All" ? ` in ${cityFilter} district` : ""}
 				{tastingFilter === true ? " · tastings available" : ""}
-			</p>
+			</h2>
 
-			{/* Cards */}
 			{filtered.length === 0 ? (
-				<p className="text-sm text-slate-500 bg-sky border border-line rounded-2xl px-5 py-4">
+				<Callout tone="info" className="mt-5">
 					No wineries found for the selected filters.
-				</p>
+				</Callout>
 			) : (
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+				<CardGrid className="mt-5">
 					{filtered.map((winery) => (
-						<article
-							key={`${winery.name}-${winery.city}`}
-							className="rounded-2xl border border-line bg-white p-4 flex flex-col gap-2"
-						>
-							<div>
-								<p className="font-bold text-ink text-sm leading-snug">
-									{winery.name}
-								</p>
-								<p className="text-xs text-slate-500 mt-0.5">
-									{winery.city} district
-									{winery.village ? (
-										<>
-											<span className="mx-1 text-muted">·</span>
-											{winery.village}
-										</>
-									) : null}
-								</p>
-							</div>
-
-							<div className="flex flex-wrap gap-1.5">
-								<span className="rounded-full px-2 py-0.5 text-xs font-semibold bg-sky-strong text-ink">
-									{PRICE_LABEL[winery.priceRange]}
-								</span>
-								{winery.tastingAvailable && (
-									<span className="rounded-full px-2 py-0.5 text-xs font-semibold bg-primary/10 text-ink">
-										Tastings
+						<CardGridItem key={`${winery.name}-${winery.city}`}>
+							<Card
+								variant="text"
+								eyebrow={
+									<span className="flex flex-wrap gap-1.5">
+										<Badge>{PRICE_LABEL[winery.priceRange]}</Badge>
+										{winery.tastingAvailable ? <Badge>Tastings</Badge> : null}
+										{winery.tourAvailable ? <Badge>Tours</Badge> : null}
+										{winery.restaurantOnSite ? <Badge>Restaurant</Badge> : null}
 									</span>
-								)}
-								{winery.tourAvailable && (
-									<span className="rounded-full px-2 py-0.5 text-xs font-semibold bg-sky-strong text-ink">
-										Tours
-									</span>
-								)}
-								{winery.restaurantOnSite && (
-									<span className="rounded-full px-2 py-0.5 text-xs font-semibold bg-green-50 text-green-800">
-										Restaurant
-									</span>
-								)}
-							</div>
-
-							<p className="text-xs text-slate-600 leading-relaxed">
-								<span className="font-medium">Grapes: </span>
-								{winery.grapeVarieties.join(", ")}
-							</p>
-
-							<p className="text-xs text-slate-700 leading-relaxed flex-1">
-								{winery.why}
-							</p>
-
-							{winery.website && (
-								<a
-									href={winery.website}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="text-xs font-semibold text-primary hover:text-primary-hover mt-auto"
-								>
-									Website
-								</a>
-							)}
-						</article>
+								}
+								title={winery.name}
+								meta={`${winery.city} district${winery.village ? ` · ${winery.village}` : ""}`}
+								text={winery.why}
+								footer={
+									<>
+										<p className="text-muted">
+											<span className="font-semibold text-ink">Grapes: </span>
+											{winery.grapeVarieties.join(", ")}
+										</p>
+										{winery.website ? (
+											<a
+												href={winery.website}
+												target="_blank"
+												rel="noopener noreferrer"
+												className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
+											>
+												Website
+											</a>
+										) : null}
+									</>
+								}
+							/>
+						</CardGridItem>
 					))}
-				</div>
+				</CardGrid>
 			)}
-		</main>
+		</>
 	);
 }
