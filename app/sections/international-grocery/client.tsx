@@ -34,8 +34,8 @@ function CityChip({
 			aria-pressed={selected}
 			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
 				selected
-					? "bg-slate-900 text-white border border-slate-900"
-					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
+					? "bg-ink text-white border border-ink"
+					: "bg-white text-ink border border-line hover:bg-sky"
 			}`}
 		>
 			{label}
@@ -60,7 +60,7 @@ function SpecialtyChip({
 			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
 				selected
 					? "bg-primary text-white border border-primary"
-					: "bg-teal-50 text-teal-800 border border-teal-200 hover:bg-teal-100"
+					: "bg-sky text-ink border border-line hover:bg-sky-strong"
 			}`}
 		>
 			{label}
@@ -94,10 +94,10 @@ export default function InternationalGroceryPage() {
 
 			{/* Header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold mb-2">
+				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-2">
 					Food &amp; Dining
 				</p>
-				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-3">
+				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink mb-3">
 					International &amp; Specialty Food Stores in Cyprus
 				</h1>
 				<p className="text-slate-600 text-base leading-relaxed max-w-2xl">
@@ -109,14 +109,14 @@ export default function InternationalGroceryPage() {
 
 			{/* Tips */}
 			<section className="mb-8">
-				<h2 className="text-lg font-bold text-slate-900 mb-3">Shopping tips</h2>
+				<h2 className="text-lg font-bold text-ink mb-3">Shopping tips</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-3">
 					{GROCERY_TIPS.map((tip) => (
 						<div
 							key={tip.heading}
-							className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-sm"
+							className="rounded-2xl border border-line bg-sky p-4 text-sm"
 						>
-							<p className="font-bold text-slate-900 mb-1">{tip.heading}</p>
+							<p className="font-bold text-ink mb-1">{tip.heading}</p>
 							<p className="text-slate-700 leading-relaxed">{tip.body}</p>
 						</div>
 					))}
@@ -126,7 +126,7 @@ export default function InternationalGroceryPage() {
 			{/* Filters */}
 			<section className="mb-6 space-y-3">
 				<div>
-					<p className="text-[10px] uppercase tracking-widest text-slate-500 font-semibold mb-2">
+					<p className="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-2">
 						City
 					</p>
 					<div className="flex flex-wrap gap-2">
@@ -147,7 +147,7 @@ export default function InternationalGroceryPage() {
 				</div>
 
 				<div>
-					<p className="text-[10px] uppercase tracking-widest text-slate-500 font-semibold mb-2">
+					<p className="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-2">
 						Specialty
 					</p>
 					<div className="flex flex-wrap gap-2">
@@ -181,18 +181,18 @@ export default function InternationalGroceryPage() {
 					{visible.map((store) => (
 						<article
 							key={`${store.name}-${store.city}`}
-							className="rounded-xl border border-slate-200 bg-white p-4 flex flex-col gap-2"
+							className="rounded-2xl border border-line bg-white p-4 flex flex-col gap-2"
 						>
 							<div>
 								<div className="flex items-start justify-between gap-2">
-									<h3 className="font-bold text-slate-900 text-sm leading-snug">
+									<h3 className="font-bold text-ink text-sm leading-snug">
 										{store.name}
 									</h3>
 									<span className="text-xs text-slate-500 font-semibold shrink-0">
 										{PRICE_LABEL[store.priceLevel]}
 									</span>
 								</div>
-								<p className="text-[11px] text-slate-500 mt-0.5">
+								<p className="text-xs text-slate-500 mt-0.5">
 									{store.city}
 									{store.neighbourhood ? ` · ${store.neighbourhood}` : ""}
 								</p>
@@ -207,14 +207,14 @@ export default function InternationalGroceryPage() {
 								{store.specializes.map((spec) => (
 									<span
 										key={spec}
-										className="rounded-full bg-teal-50 border border-teal-200 text-teal-800 text-[10px] px-2 py-0.5 font-medium"
+										className="rounded-full bg-sky-strong border border-line text-ink text-xs px-2 py-0.5 font-medium"
 									>
 										{spec}
 									</span>
 								))}
 							</div>
 
-							<div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-slate-500 border-t border-slate-100 pt-2 mt-1">
+							<div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500 border-t border-line pt-2 mt-1">
 								{store.openingHours && (
 									<span>
 										<span className="font-semibold text-slate-600">Hours:</span>{" "}
@@ -226,9 +226,9 @@ export default function InternationalGroceryPage() {
 										href={store.website}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="text-amber-700 hover:text-amber-900 font-semibold"
+										className="text-primary hover:text-primary-hover font-semibold"
 									>
-										Website ↗
+										Website
 									</a>
 								)}
 							</div>
@@ -239,11 +239,8 @@ export default function InternationalGroceryPage() {
 
 			{/* Footer nav */}
 			<p className="mt-12 text-xs text-slate-500">
-				<Link
-					href="/"
-					className="underline hover:text-slate-900 transition-colors"
-				>
-					← Back to home
+				<Link href="/" className="underline hover:text-ink transition-colors">
+					Back to home
 				</Link>
 			</p>
 		</main>

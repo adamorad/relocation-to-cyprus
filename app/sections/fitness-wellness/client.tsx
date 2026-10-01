@@ -29,8 +29,8 @@ function CityChip({
 			aria-pressed={selected}
 			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
 				selected
-					? "bg-slate-900 text-white border border-slate-900"
-					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
+					? "bg-ink text-white border border-ink"
+					: "bg-white text-ink border border-line hover:bg-sky"
 			}`}
 		>
 			{city}
@@ -54,8 +54,8 @@ function TypeChip({
 			aria-pressed={selected}
 			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
 				selected
-					? "bg-slate-900 text-white border border-slate-900"
-					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
+					? "bg-ink text-white border border-ink"
+					: "bg-white text-ink border border-line hover:bg-sky"
 			}`}
 		>
 			{label}
@@ -85,10 +85,10 @@ export default function FitnessWellnessPage() {
 
 			{/* Header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
 					Fitness &amp; Wellness
 				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Gyms, Fitness Studios &amp; Wellness in Cyprus
 				</h1>
 				<p className="mt-3 text-base text-slate-600 max-w-2xl leading-relaxed">
@@ -100,16 +100,16 @@ export default function FitnessWellnessPage() {
 
 			{/* Tips */}
 			<section className="mb-8">
-				<h2 className="text-sm font-bold text-slate-700 uppercase tracking-wider mb-3">
+				<h2 className="text-sm font-bold text-ink uppercase tracking-wider mb-3">
 					Fitness in Cyprus — what to know
 				</h2>
 				<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
 					{FITNESS_TIPS.map((tip) => (
 						<div
 							key={tip.heading}
-							className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-sm"
+							className="rounded-2xl border border-line bg-sky p-4 text-sm"
 						>
-							<p className="font-bold text-slate-900">{tip.heading}</p>
+							<p className="font-bold text-ink">{tip.heading}</p>
 							<p className="mt-1.5 text-slate-600 leading-relaxed text-xs">
 								{tip.body}
 							</p>
@@ -121,7 +121,7 @@ export default function FitnessWellnessPage() {
 			{/* Filters */}
 			<section className="mb-6 space-y-3">
 				<div>
-					<p className="text-[10px] uppercase tracking-widest text-slate-500 font-semibold mb-2">
+					<p className="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-2">
 						City
 					</p>
 					<div className="flex flex-wrap gap-1.5">
@@ -141,7 +141,7 @@ export default function FitnessWellnessPage() {
 					</div>
 				</div>
 				<div>
-					<p className="text-[10px] uppercase tracking-widest text-slate-500 font-semibold mb-2">
+					<p className="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-2">
 						Type
 					</p>
 					<div className="flex flex-wrap gap-1.5">
@@ -175,17 +175,17 @@ export default function FitnessWellnessPage() {
 					{filtered.map((venue) => (
 						<li
 							key={`${venue.name}-${venue.city}`}
-							className="rounded-xl border border-slate-200 bg-white p-4 flex flex-col gap-2 shadow-sm hover:shadow-md transition-shadow"
+							className="rounded-2xl border border-line bg-white p-4 flex flex-col gap-2 shadow-sm hover:shadow-sm transition-shadow"
 						>
 							<div>
-								<p className="font-bold text-slate-900 text-sm leading-snug">
+								<p className="font-bold text-ink text-sm leading-snug">
 									{venue.name}
 								</p>
-								<p className="text-[10px] text-slate-500 mt-0.5">
+								<p className="text-xs text-slate-500 mt-0.5">
 									{venue.city}
 									{venue.neighbourhood ? ` · ${venue.neighbourhood}` : ""}
 									{" · "}
-									<span className="text-teal-600 font-semibold">
+									<span className="text-primary font-semibold">
 										{FITNESS_TYPE_LABEL[venue.type]}
 									</span>
 								</p>
@@ -195,7 +195,7 @@ export default function FitnessWellnessPage() {
 								{venue.why}
 							</p>
 
-							<div className="flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-slate-500">
+							<div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-slate-500">
 								{venue.monthlyFrom !== undefined && (
 									<span>
 										Monthly from{" "}
@@ -213,7 +213,7 @@ export default function FitnessWellnessPage() {
 									</span>
 								)}
 								{venue.englishSpoken && (
-									<span className="text-teal-600 font-semibold">
+									<span className="text-primary font-semibold">
 										English spoken
 									</span>
 								)}
@@ -224,9 +224,9 @@ export default function FitnessWellnessPage() {
 									href={venue.website}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="text-[10px] font-semibold text-amber-700 hover:text-amber-900"
+									className="text-xs font-semibold text-primary hover:text-primary-hover"
 								>
-									Website ↗
+									Website
 								</a>
 							)}
 						</li>
@@ -236,8 +236,8 @@ export default function FitnessWellnessPage() {
 
 			{/* Footer nav */}
 			<p className="mt-12 text-xs text-slate-500">
-				<Link href="/" className="underline hover:text-slate-900">
-					← Back to home
+				<Link href="/" className="underline hover:text-ink">
+					Back to home
 				</Link>
 			</p>
 		</main>

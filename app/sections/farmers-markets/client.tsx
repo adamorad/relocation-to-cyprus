@@ -28,8 +28,8 @@ function CityChip({
 			aria-pressed={selected}
 			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
 				selected
-					? "bg-slate-900 text-white border border-slate-900"
-					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
+					? "bg-ink text-white border border-ink"
+					: "bg-white text-ink border border-line hover:bg-sky"
 			}`}
 		>
 			{label}
@@ -53,8 +53,8 @@ function DayChip({
 			aria-pressed={selected}
 			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
 				selected
-					? "bg-amber-700 text-white border border-amber-700"
-					: "bg-amber-50 text-amber-800 border border-amber-200 hover:bg-amber-100"
+					? "bg-primary text-white border border-primary"
+					: "bg-sky text-ink border border-line hover:bg-sky-strong"
 			}`}
 		>
 			{label}
@@ -84,10 +84,10 @@ export default function FarmersMarketsPage() {
 
 			{/* Header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold mb-2">
+				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-2">
 					Food &amp; Dining
 				</p>
-				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-3">
+				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink mb-3">
 					Farmers Markets &amp; Local Produce in Cyprus
 				</h1>
 				<p className="text-slate-600 text-base leading-relaxed max-w-2xl">
@@ -100,14 +100,14 @@ export default function FarmersMarketsPage() {
 
 			{/* Tips */}
 			<section className="mb-8">
-				<h2 className="text-lg font-bold text-slate-900 mb-3">Market tips</h2>
+				<h2 className="text-lg font-bold text-ink mb-3">Market tips</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-3">
 					{MARKET_TIPS.map((tip) => (
 						<div
 							key={tip.heading}
-							className="rounded-lg border border-amber-100 bg-amber-50 p-4 text-sm"
+							className="rounded-2xl border border-line bg-sky p-4 text-sm"
 						>
-							<p className="font-bold text-slate-900 mb-1">{tip.heading}</p>
+							<p className="font-bold text-ink mb-1">{tip.heading}</p>
 							<p className="text-slate-700 leading-relaxed">{tip.body}</p>
 						</div>
 					))}
@@ -117,7 +117,7 @@ export default function FarmersMarketsPage() {
 			{/* Filters */}
 			<section className="mb-6 space-y-3">
 				<div>
-					<p className="text-[10px] uppercase tracking-widest text-slate-500 font-semibold mb-2">
+					<p className="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-2">
 						City
 					</p>
 					<div className="flex flex-wrap gap-2">
@@ -138,7 +138,7 @@ export default function FarmersMarketsPage() {
 				</div>
 
 				<div>
-					<p className="text-[10px] uppercase tracking-widest text-slate-500 font-semibold mb-2">
+					<p className="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-2">
 						Day of the week
 					</p>
 					<div className="flex flex-wrap gap-2">
@@ -172,16 +172,16 @@ export default function FarmersMarketsPage() {
 					{visible.map((market) => (
 						<article
 							key={`${market.name}-${market.city}`}
-							className="rounded-xl border border-slate-200 bg-white p-4 flex flex-col gap-2"
+							className="rounded-2xl border border-line bg-white p-4 flex flex-col gap-2"
 						>
 							<div>
-								<h3 className="font-bold text-slate-900 text-sm leading-snug">
+								<h3 className="font-bold text-ink text-sm leading-snug">
 									{market.name}
 								</h3>
-								<p className="text-[11px] text-slate-500 mt-0.5">
+								<p className="text-xs text-slate-500 mt-0.5">
 									{market.city}
 									{" · "}
-									<span className="text-amber-700 font-semibold">
+									<span className="text-primary font-semibold">
 										{market.dayOfWeek}
 									</span>
 									{" · "}
@@ -202,7 +202,7 @@ export default function FarmersMarketsPage() {
 								{market.produces.map((item) => (
 									<span
 										key={item}
-										className="rounded-full bg-green-50 border border-green-200 text-green-800 text-[10px] px-2 py-0.5 font-medium"
+										className="rounded-full bg-green-50 border border-green-200 text-green-800 text-xs px-2 py-0.5 font-medium"
 									>
 										{item}
 									</span>
@@ -210,7 +210,7 @@ export default function FarmersMarketsPage() {
 							</div>
 
 							{market.parkingNotes && (
-								<p className="text-[11px] text-slate-500 border-t border-slate-100 pt-2 mt-1 leading-relaxed">
+								<p className="text-xs text-slate-500 border-t border-line pt-2 mt-1 leading-relaxed">
 									<span className="font-semibold text-slate-600">Parking:</span>{" "}
 									{market.parkingNotes}
 								</p>
@@ -222,11 +222,8 @@ export default function FarmersMarketsPage() {
 
 			{/* Footer nav */}
 			<p className="mt-12 text-xs text-slate-500">
-				<Link
-					href="/"
-					className="underline hover:text-slate-900 transition-colors"
-				>
-					← Back to home
+				<Link href="/" className="underline hover:text-ink transition-colors">
+					Back to home
 				</Link>
 			</p>
 		</main>
