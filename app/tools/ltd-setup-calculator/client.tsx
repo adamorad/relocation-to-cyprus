@@ -2,7 +2,6 @@
 
 import { type ReactNode, useMemo, useState } from "react";
 import { ToolPanel } from "@/components/templates/ToolTemplate";
-import { ButtonLink } from "@/components/ui/Button";
 import { Callout } from "@/components/ui/Callout";
 import { ChipGroup } from "@/components/ui/Chip";
 import { DataTable, StatCard } from "@/components/ui/DataTable";
@@ -86,6 +85,11 @@ function costCells(
 
 // ── main component ────────────────────────────────────────────────────────────
 
+/**
+ * Embedded body for /tools/sole-trader-vs-ltd/ (the standalone route is a
+ * redirect stub). No header, width wrapper, disclaimer or related links here:
+ * the host page renders those once.
+ */
 export default function LtdSetupCalculatorClient() {
 	const [directors, setDirectors] = useState<Directors>("1");
 	const [residentDirector, setResidentDirector] =
@@ -270,15 +274,10 @@ export default function LtdSetupCalculatorClient() {
 
 	return (
 		<div className="space-y-6">
-			<div>
-				<h2 className="text-2xl font-bold tracking-tight text-ink">
-					Cyprus Ltd Setup Cost Calculator
-				</h2>
-				<p className="mt-2 text-base leading-relaxed text-muted">
-					Estimate the one-time registration costs and annual running costs of a
-					Cyprus limited company based on your specific situation.
-				</p>
-			</div>
+			<p className="text-lg leading-relaxed text-muted">
+				Estimate the one-time registration costs and annual running costs of a
+				Cyprus limited company based on your specific situation.
+			</p>
 
 			<ToolPanel title="Your company profile">
 				<ChipGroup<Directors>
@@ -469,30 +468,6 @@ export default function LtdSetupCalculatorClient() {
 				Not included above. Typical options: Bank of Cyprus / Hellenic Bank (€0
 				to €100/mo account fees) or Revolut Business (from €0/mo). Opening a
 				traditional bank account can take 2 to 6 months for new companies.
-			</Callout>
-
-			<div>
-				<p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted">
-					Related tools
-				</p>
-				<div className="flex flex-wrap gap-3">
-					<ButtonLink href="/tools/tax-residency-tracker/" variant="secondary">
-						Tax Residency Planner
-					</ButtonLink>
-					<ButtonLink
-						href="/tools/social-insurance-calculator/"
-						variant="secondary"
-					>
-						Social Insurance Calculator
-					</ButtonLink>
-				</div>
-			</div>
-
-			<Callout tone="legal" title="Disclaimer">
-				Fees are market estimates for 2025 and are provided for illustrative
-				purposes only, not legal, tax, or financial advice. Actual costs vary by
-				service provider, company complexity, and circumstances. Request quotes
-				from 2 to 3 licensed fiduciaries before making decisions.
 			</Callout>
 		</div>
 	);

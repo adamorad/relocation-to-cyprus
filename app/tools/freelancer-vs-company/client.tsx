@@ -3,8 +3,6 @@
 import { useId, useMemo, useState } from "react";
 import { ToolPanel } from "@/components/templates/ToolTemplate";
 import { Badge } from "@/components/ui/Badge";
-import { ButtonLink } from "@/components/ui/Button";
-import { Callout } from "@/components/ui/Callout";
 import { ChipGroup } from "@/components/ui/Chip";
 import { Section } from "@/components/ui/Section";
 
@@ -236,6 +234,11 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 const INCOME_MIN = 20000;
 const INCOME_MAX = 500000;
 
+/**
+ * Embedded body for /tools/sole-trader-vs-ltd/ (the standalone route is a
+ * redirect stub). No header, width wrapper, disclaimer or related links here:
+ * the host page renders those once.
+ */
 export default function FreelancerVsCompanyPage() {
 	const [inputs, setInputs] = useState<Inputs>({
 		annualIncome: 80000,
@@ -456,32 +459,6 @@ export default function FreelancerVsCompanyPage() {
 					</div>
 				</div>
 			</div>
-
-			<Callout tone="legal" title="Disclaimer">
-				This tool provides a general orientation only. Tax rates shown are
-				estimates based on simplified assumptions. Your actual tax position
-				depends on your specific income mix, deductions, residency status,
-				home-country obligations and the structure of your business. Tax
-				optimization should always be confirmed with a qualified Cyprus
-				accountant and, where relevant, a tax adviser in your home country.
-			</Callout>
-
-			<Section title="Related guides" headingLevel="h3">
-				<div className="flex flex-wrap gap-3">
-					<ButtonLink
-						href="/guides/company-types-comparison/"
-						variant="secondary"
-					>
-						Read: Company Types in Cyprus
-					</ButtonLink>
-					<ButtonLink href="/guides/taxes-for-expats/" variant="secondary">
-						Read: Taxes for Expats
-					</ButtonLink>
-					<ButtonLink href="/sections/accountants/" variant="secondary">
-						Find an accountant
-					</ButtonLink>
-				</div>
-			</Section>
 		</div>
 	);
 }

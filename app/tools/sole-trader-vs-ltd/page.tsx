@@ -38,8 +38,33 @@ export default function SoleTraderVsLtdPage() {
 			}}
 			nextSteps={[
 				{ href: "/sections/accountants/", label: "Find an accountant" },
+				{
+					href: "/guides/company-types-comparison/",
+					label: "Company types in Cyprus",
+				},
+				{ href: "/guides/taxes-for-expats/", label: "Taxes for expats" },
+				{
+					href: "/tools/social-insurance-calculator/",
+					label: "Social insurance calculator",
+				},
+				{
+					href: "/tools/tax-residency-tracker/",
+					label: "Tax residency planner",
+				},
 				{ href: "/tools/", label: "All tools" },
 			]}
+			disclaimer={
+				<>
+					This page provides a general orientation only, not legal, tax or
+					financial advice. Tax rates shown are estimates based on simplified
+					assumptions, and setup fees are market estimates for 2025. Your actual
+					position depends on your income mix, deductions, residency status,
+					home-country obligations and the structure of your business, and costs
+					vary by service provider. Confirm with a qualified Cyprus accountant
+					(and, where relevant, a tax adviser in your home country), and request
+					quotes from 2 to 3 licensed fiduciaries before making decisions.
+				</>
+			}
 		>
 			<script
 				type="application/ld+json"
