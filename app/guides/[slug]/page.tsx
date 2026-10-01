@@ -13,6 +13,7 @@ import { ArticleTemplate } from "@/components/templates/ArticleTemplate";
 import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
+import { Container } from "@/components/ui/Container";
 import { InfoCards } from "@/components/ui/InfoCards";
 import { Section } from "@/components/ui/Section";
 import { AUTHORS, CATEGORY_AUTHOR } from "@/lib/authors";
@@ -243,23 +244,25 @@ export default async function GuidePage({
 	if (redirectTarget) {
 		const url = `/guides/${redirectTarget}/`;
 		return (
-			<main id="main" className="max-w-xl mx-auto px-6 py-16 text-center">
-				<meta httpEquiv="refresh" content={`0; url=${url}`} />
-				<script
-					// biome-ignore lint/security/noDangerouslySetInnerHtml: static-export redirect
-					dangerouslySetInnerHTML={{
-						__html: `location.replace(${JSON.stringify(url)});`,
-					}}
-				/>
-				<p className="text-slate-600">
-					This guide has moved.{" "}
-					<Link
-						href={url}
-						className="text-primary font-medium underline underline-offset-2 hover:text-primary-hover"
-					>
-						Continue to the current guide
-					</Link>
-				</p>
+			<main id="main">
+				<Container width="reading" className="py-16 text-center">
+					<meta httpEquiv="refresh" content={`0; url=${url}`} />
+					<script
+						// biome-ignore lint/security/noDangerouslySetInnerHtml: static-export redirect
+						dangerouslySetInnerHTML={{
+							__html: `location.replace(${JSON.stringify(url)});`,
+						}}
+					/>
+					<p className="text-muted">
+						This guide has moved.{" "}
+						<Link
+							href={url}
+							className="text-primary font-medium underline underline-offset-2 hover:text-primary-hover"
+						>
+							Continue to the current guide
+						</Link>
+					</p>
+				</Container>
 			</main>
 		);
 	}
