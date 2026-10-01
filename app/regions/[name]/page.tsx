@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import type { IconName } from "@/components/icons/Icon";
 import { CityTemplate } from "@/components/templates/CityTemplate";
 import { ButtonLink } from "@/components/ui/Button";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
@@ -8,27 +7,9 @@ import { DataTable } from "@/components/ui/DataTable";
 import { InfoCards } from "@/components/ui/InfoCards";
 import { Section } from "@/components/ui/Section";
 import { REGIONS, type RegionInfo, regionBySlug } from "@/lib/regions";
+import { DAILY_TOPICS, hubHref } from "@/lib/topics";
 
 const SITE_URL = "https://realcy.app";
-
-/** Topic hubs, each filtered to the city with `?city={slug}`. */
-const TOPICS: { path: string; label: string; icon: IconName }[] = [
-	{ path: "/health/", label: "Health", icon: "healthcare" },
-	{ path: "/getting-around/", label: "Getting around", icon: "transport" },
-	{ path: "/home-and-bills/", label: "Home and bills", icon: "home" },
-	{
-		path: "/money-and-paperwork/",
-		label: "Money and paperwork",
-		icon: "paperwork",
-	},
-	{ path: "/food-and-shopping/", label: "Food and shopping", icon: "shopping" },
-	{ path: "/family-and-schools/", label: "Family and schools", icon: "heart" },
-	{
-		path: "/community-and-leisure/",
-		label: "Community and leisure",
-		icon: "community",
-	},
-];
 
 const pageTitle = (r: RegionInfo) =>
 	`Living in ${r.name}: areas, healthcare, schools and costs`;
@@ -130,7 +111,7 @@ export default async function RegionPage({
 			show: r.leisure.length > 0,
 		},
 		{ id: "costs", label: "Monthly costs", show: r.costs.rows.length > 0 },
-		{ id: "faq", label: "Questions", show: r.faqs.length > 0 },
+		{ id: "faq", label: "Frequently asked questions", show: r.faqs.length > 0 },
 		{ id: "practical", label: "Practical notes", show: r.practical.length > 0 },
 		{ id: "topics", label: "Explore by topic", show: true },
 	];
@@ -161,13 +142,13 @@ export default async function RegionPage({
 				>
 					<div data-pagefind-ignore>
 						<CardGrid cols={4}>
-							{TOPICS.map((t) => (
-								<CardGridItem key={t.path}>
+							{DAILY_TOPICS.map((t) => (
+								<CardGridItem key={t.slug}>
 									<Card
 										variant="icon"
 										icon={t.icon}
-										href={`${t.path}?city=${r.slug}`}
-										title={t.label}
+										href={`${hubHref(t)}?city=${r.slug}`}
+										title={t.name}
 									/>
 								</CardGridItem>
 							))}
