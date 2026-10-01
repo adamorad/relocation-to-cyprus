@@ -420,7 +420,7 @@ export default async function GuidePage({
 			<article className="guide-body mt-8 prose prose-slate max-w-none">
 				{g.sections.map((s, i) => (
 					<Fragment key={s.heading}>
-						<section id={toId(s.heading)} className="mt-6">
+						<section id={toId(s.heading)}>
 							<h2>{s.heading}</h2>
 							<p className="whitespace-pre-line">{renderBody(s.body)}</p>
 						</section>
