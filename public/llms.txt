@@ -154,7 +154,7 @@ Hub: https://realcy.app/food-and-shopping/
 
 - [Farmers Markets](https://realcy.app/sections/farmers-markets/): Municipal and weekly produce markets in Limassol, Larnaca and Paphos, with operating days.
 - [International Grocery Stores](https://realcy.app/sections/international-grocery/): Supermarkets and specialty stores carrying Asian, Middle Eastern, and other international foods.
-- [Halal & Kosher Food](https://realcy.app/sections/halal-kosher/): Certified halal and kosher restaurants, butchers, and grocery suppliers.
+- [Halal & Kosher Food](https://realcy.app/sections/halal-kosher/): How to find halal and kosher food in Cyprus, with the kosher outlets confirmed in Limassol.
 - [Where to Eat](https://realcy.app/sections/food/): Local-favourite cafés, tavernas, grills and sweet shops in four cities, by meal and price band.
 - [Supermarkets & Markets](https://realcy.app/sections/shopping/): Supermarket chains by budget, municipal markets with opening days, and each city's main mall.
 

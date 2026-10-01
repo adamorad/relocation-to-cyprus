@@ -191,7 +191,7 @@ export const SECTIONS_INDEX: ReadonlyArray<SectionEntry> = [
 		slug: "halal-kosher",
 		category: "Food & Drink",
 		description:
-			"Certified halal and kosher restaurants, butchers, and grocery suppliers.",
+			"How to find halal and kosher food in Cyprus, with the kosher outlets confirmed in Limassol.",
 	},
 	{
 		name: "Where to Eat",

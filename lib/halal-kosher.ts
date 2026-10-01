@@ -72,16 +72,16 @@ export const CERTIFICATION_LABEL: Record<Certification, string> = {
 
 export const DIETARY_TIPS: ReadonlyArray<DietaryTip> = [
   {
-    heading: "Halal availability is strongest in Larnaca",
-    body: "Larnaca has one of the largest Muslim and Arab expat communities in Cyprus, which means a wide selection of halal restaurants, halal butchers, and halal grocery stores. Larnaca in particular has a concentrated area near the marina with multiple Arabic and halal dining options.",
+    heading: "Ask locally for halal butchers and restaurants",
+    body: "We have not yet confirmed any halal venue in a public business listing, so none are listed here. Ask at your local mosque or community group for current halal butchers, grocers and restaurants, and check certification with each one before you rely on it.",
   },
   {
     heading: "Kosher options are concentrated around Limassol's Jewish community",
     body: "Cyprus has an established Jewish community centred mainly in Limassol, supported by Chabad of Cyprus. Certified kosher restaurants and food products are available in Limassol, with the Chabad house providing information on current kosher availability.",
   },
   {
-    heading: "EU labelling laws apply — look for the certified symbols",
-    body: "Cyprus follows EU food labelling standards. Kosher products carry the Rabbinate or Chabad certification symbol. Halal products typically display one of the recognised European halal certification marks. In supermarkets, the kosher and halal sections are growing as demand from expat communities increases.",
+    heading: "EU labelling laws apply: look for the certified symbols",
+    body: "Cyprus follows EU food labelling standards. Kosher products carry the Rabbinate or Chabad certification symbol. Halal products typically display one of the recognised European halal certification marks. Supermarket ranges vary by branch, so check the label rather than relying on a dedicated section.",
   },
   {
     heading: "Online kosher delivery services available",
