@@ -1031,7 +1031,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "maternity-paternity-rights",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
 		category: "family",
 		title:
 			"Maternity and Paternity Rights in Cyprus — What Employed Parents Are Entitled To",
@@ -1052,7 +1052,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Parental leave: 18 weeks per parent",
-				body: "In addition to maternity and paternity leave, each parent is entitled to 18 weeks of parental leave per child (the same 18 weeks cannot be shared — each parent has their own 18-week entitlement). Parental leave in Cyprus is currently unpaid — unlike the maternity benefit, there is no Social Insurance payment during parental leave. It can be taken at any point until the child's 8th birthday, and it can be taken all at once or in separate blocks. The employer cannot refuse the request but can ask for it to be scheduled in a way that does not disrupt operations — they can defer it by up to a month in certain circumstances. For families where one partner earns significantly more than the other, the practical use of parental leave tends to fall to the lower earner since there is no income replacement. Calls to make parental leave paid (following EU Parental Leave Directive requirements) have been discussed in Cypriot parliament; the position as of 2025 is unpaid, but this is worth verifying if you are planning leave more than 12 months out.",
+				body: "In addition to maternity and paternity leave, each parent is entitled to 18 weeks of parental leave per child (the same 18 weeks cannot be shared: each parent has their own 18-week entitlement). Parental leave in Cyprus was unpaid in 2025: unlike the maternity benefit, there was no Social Insurance payment during parental leave. It can be taken at any point until the child's 8th birthday, and it can be taken all at once or in separate blocks. The employer cannot refuse the request but can ask for it to be scheduled in a way that does not disrupt operations; they can defer it by up to a month in certain circumstances. For families where one partner earns significantly more than the other, the practical use of parental leave tends to fall to the lower earner since there is no income replacement. Calls to make parental leave paid (following EU Parental Leave Directive requirements) have been discussed in Cypriot parliament; in 2025 parental leave was unpaid, but this is worth verifying if you are planning leave more than 12 months out.",
 			},
 			{
 				heading: "Self-employed maternity benefit",
