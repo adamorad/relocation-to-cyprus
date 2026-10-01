@@ -141,7 +141,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 		oneLiner:
 			"The business capital and biggest new-build market: high-rise coastal living and a young international workforce.",
 		summary:
-			"Daily life in Limassol: areas, traffic and transport, hospitals, international schools, beaches and a sample monthly budget for Cyprus's busiest, most expensive city.",
+			"Daily life in Limassol: areas, traffic and transport, hospitals, international schools, beaches and a sample monthly budget for Cyprus's most dynamic and most expensive city.",
 		intro:
 			"Limassol is the second largest city in Cyprus and, by a wide margin, the most dynamic. Strung along about fifteen kilometres of southern seafront, it is home to the shipping industry, most of the tech and fintech employers, and the island's largest concentration of international families.",
 		areas: [
