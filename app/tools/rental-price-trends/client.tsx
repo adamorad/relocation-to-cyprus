@@ -8,7 +8,6 @@ import { CHART_COLORS } from "@/lib/chart-colors";
 import {
 	eur,
 	RENT_CITATION_GENERAL,
-	RENT_DISTRICT,
 	RENT_MONTH_LABEL,
 	RENTS,
 } from "@/lib/facts/rents";
@@ -346,10 +345,10 @@ export default function RentalPriceTrendsClient() {
 			<DataTable
 				caption={`Median asking rent, ${brType} apartments, ${RENT_MONTH_LABEL}`}
 				columns={[
-					{ header: "City (district)" },
-					{ header: "Median", align: "right" },
+					{ header: "District" },
+					{ header: "Median a month", align: "right" },
 					{ header: "Middle half", align: "right" },
-					{ header: "Listings", align: "right" },
+					{ header: "Listings (n)", align: "right" },
 				]}
 				rows={CITIES.map((city) => {
 					const cell = RENTS[city][beds];
@@ -362,14 +361,16 @@ export default function RentalPriceTrendsClient() {
 							/>
 							<span>
 								{city}
-								<span className="block text-xs text-muted">
-									{RENT_DISTRICT[city]}
-								</span>
+								{city === "Ayia Napa" ? (
+									<span className="block text-xs text-muted">
+										Famagusta free area
+									</span>
+								) : null}
 							</span>
 						</span>,
 						cell.reliable ? (
 							<span key="a" className="font-bold">
-								{eur(cell.median)}/mo
+								{eur(cell.median)}
 							</span>
 						) : (
 							<span key="a" className="text-muted">
