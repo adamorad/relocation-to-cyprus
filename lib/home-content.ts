@@ -65,7 +65,6 @@ export const HOME_GUIDE_SLUGS: ReadonlyArray<{
 export const HOME_AREA = {
 	heading: "Your local area",
 	subtitle: "Explore practical information for your city.",
-	selectLabel: "Choose your city",
 } as const;
 
 export type HomeCity = {

@@ -9,19 +9,46 @@ export type Sponsor = {
 	logo?: { src: string; alt: string };
 };
 
-/** Native sponsor unit sold on /advertise/. Renders nothing without data. */
-export function SponsorSlot({ sponsor }: { sponsor?: Sponsor | null }) {
+const SLOT_CLASS =
+	"flex items-center gap-4 rounded-card border border-line bg-white p-4 text-ink shadow-rc";
+
+/**
+ * Native sponsor unit sold on /advertise/. Renders nothing without data.
+ * `preview` renders a non-link mock-up (used on /advertise/ to show the unit).
+ */
+export function SponsorSlot({
+	sponsor,
+	preview = false,
+}: {
+	sponsor?: Sponsor | null;
+	preview?: boolean;
+}) {
 	if (!sponsor) return null;
 	const label =
 		sponsor.kind === "featured" ? "Featured" : `Sponsored by ${sponsor.name}`;
+	if (preview) {
+		return (
+			<div data-pagefind-ignore className={SLOT_CLASS}>
+				<SlotBody sponsor={sponsor} label={label} />
+			</div>
+		);
+	}
 	return (
 		<a
 			href={sponsor.href}
 			target="_blank"
 			rel="sponsored noopener noreferrer"
 			data-pagefind-ignore
-			className="flex items-center gap-4 rounded-card border border-line bg-white p-4 text-ink shadow-rc transition-colors hover:border-primary"
+			className={`${SLOT_CLASS} transition-colors hover:border-primary`}
 		>
+			<SlotBody sponsor={sponsor} label={label} />
+		</a>
+	);
+}
+
+function SlotBody({ sponsor, label }: { sponsor: Sponsor; label: string }) {
+	return (
+		<>
 			{sponsor.logo ? (
 				<Image
 					src={sponsor.logo.src}
@@ -42,6 +69,6 @@ export function SponsorSlot({ sponsor }: { sponsor?: Sponsor | null }) {
 					</span>
 				) : null}
 			</span>
-		</a>
+		</>
 	);
 }
