@@ -42,7 +42,7 @@ export const SECTIONS_INDEX: ReadonlyArray<SectionEntry> = [
 		slug: "accountants",
 		category: "Legal & Professional",
 		description:
-			"ICPAC-registered accountants with experience in expat non-dom filings and company tax.",
+			"ICPAC-registered accountants with experience in expat non-dom filings and company tax, plus registered office providers.",
 	},
 
 	// Business

@@ -13,12 +13,12 @@ Decisions were made on the owner's behalf in Phase 2A and are open for review. R
 | Health | `/health/` | 7 | 3 | 1 | 11 | 12 |
 | Getting around | `/getting-around/` | 8 | 2 | 2 | 12 | 11 |
 | Home & bills | `/home-and-bills/` | 7 | 3 | 3 | 13 | 17 |
-| Money & paperwork | `/money-and-paperwork/` | 21 | 4 | 13 | 38 | 57 |
+| Money & paperwork | `/money-and-paperwork/` | 21 | 3 | 13 | 37 | 57 |
 | Food & shopping | `/food-and-shopping/` | 5 | 5 | 0 | 10 | 11 |
 | Family & schools | `/family-and-schools/` | 7 | 3 | 1 | 11 | 13 |
 | Community & leisure | `/community-and-leisure/` | 5 | 9 | 2 | 16 | 21 |
 | Moving to Cyprus | `/moving-to-cyprus/` | 20 | 2 | 9 | 31 | 58 |
-| **All** | | 80 | 31 | 31 | 142 | |
+| **All** | | 80 | 30 | 31 | 141 | |
 
 Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). They keep a topic for their own breadcrumb and "More on" block but are not shown on hubs, indexes, other pages or the sitemap.
 
@@ -121,7 +121,6 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Property Management](/sections/property-management/) | Home & bills | Money & paperwork |  | Managing a home you own; Property area comes in Phase 4. |
 | [Accountants & Tax Advisors](/sections/accountants/) | Money & paperwork |  |  |  |
 | [Coworking Spaces](/sections/coworking/) | Money & paperwork | Community & leisure |  | Work sits in Money & paperwork (no Work topic); also a place to meet people. |
-| [Registered Address Providers](/sections/registered-address/) *(not listed)* | Money & paperwork |  |  | Company admin service. |
 | [Startup Ecosystem](/sections/startup-ecosystem/) | Money & paperwork | Moving to Cyprus |  | Business support for founders; no Work topic. |
 | [Farmers Markets](/sections/farmers-markets/) | Food & shopping |  |  |  |
 | [Where to Eat](/sections/food/) | Food & shopping |  | limassol, paphos, larnaca, ayia-napa | Restored from the archived homepage Food panel. |

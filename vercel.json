@@ -145,6 +145,16 @@
       "source": "/guides/off-plan-buying-guide",
       "destination": "/guides/new-development-buying-guide/",
       "permanent": true
+    },
+    {
+      "source": "/sections/registered-address/",
+      "destination": "/sections/accountants/",
+      "permanent": true
+    },
+    {
+      "source": "/sections/registered-address",
+      "destination": "/sections/accountants/",
+      "permanent": true
     }
   ]
 }

@@ -34,7 +34,7 @@ export type TopicAssignment = {
 };
 
 // ---------------------------------------------------------------------------
-// Directories: SECTIONS_INDEX plus the five routes de-listed in Phase 3C
+// Directories: SECTIONS_INDEX plus the routes de-listed in Phase 3C
 // (b0899d2). The de-listed ones keep a topic (breadcrumb and "More on" on
 // their own page) but stay out of hubs, indexes, other pages' cross-links and
 // the sitemap, as before.
@@ -65,12 +65,6 @@ const UNLISTED_DIRECTORIES: ReadonlyArray<Omit<DirectoryEntry, "listed">> = [
 		name: "EV Charging Stations",
 		description:
 			"Public EV charging points by city with charger type and operator details.",
-	},
-	{
-		slug: "registered-address",
-		name: "Registered Address Providers",
-		description:
-			"Registered address and virtual office providers for Cyprus-incorporated companies.",
 	},
 	{
 		slug: "rooftop-bars",
@@ -379,10 +373,6 @@ export const DIRECTORY_TOPICS: Record<string, TopicAssignment> = {
 	},
 
 	accountants: { topic: "money-and-paperwork" },
-	"registered-address": {
-		topic: "money-and-paperwork",
-		why: "Company admin service.",
-	},
 	coworking: {
 		topic: "money-and-paperwork",
 		also: ["community-and-leisure"],

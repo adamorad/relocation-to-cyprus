@@ -118,7 +118,7 @@ Hub: https://realcy.app/money-and-paperwork/
 
 ### Local directories
 
-- [Accountants & Tax Advisors](https://realcy.app/sections/accountants/): ICPAC-registered accountants with experience in expat non-dom filings and company tax.
+- [Accountants & Tax Advisors](https://realcy.app/sections/accountants/): ICPAC-registered accountants with experience in expat non-dom filings and company tax, plus registered office providers.
 - [Startup Ecosystem](https://realcy.app/sections/startup-ecosystem/): Co-working spaces, incubators, accelerators, and tech hubs across Cyprus.
 - [Coworking Spaces](https://realcy.app/sections/coworking/): Day pass prices, WiFi speeds, and noise levels for 20+ coworking venues island-wide.
 

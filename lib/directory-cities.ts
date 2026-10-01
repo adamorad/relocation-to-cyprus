@@ -8,7 +8,7 @@
  * Server only: imports every directory dataset. Pass the result as props.
  */
 
-import { ACCOUNTANTS } from "./accountants";
+import { ACCOUNTANTS, REGISTERED_OFFICE_PROVIDERS } from "./accountants";
 import { AFTER_SCHOOL_ACTIVITIES } from "./after-school";
 import { CULTURAL_VENUES } from "./art-culture";
 import { NURSERIES } from "./childcare";
@@ -28,7 +28,6 @@ import { MENTAL_HEALTH_PROVIDERS } from "./mental-health";
 import { PROPERTY_LAWYERS } from "./property-lawyers";
 import { PROPERTY_MANAGERS } from "./property-management";
 import { TRANSPORT_INFO } from "./public-transport";
-import { REGISTERED_ADDRESS_PROVIDERS } from "./registered-address";
 import { RELIGIOUS_SERVICES } from "./religious-services";
 import { VIEW_BARS } from "./rooftop-bars";
 import { SHOP_ENTRIES } from "./shopping";
@@ -44,7 +43,7 @@ import { WINERIES } from "./wineries";
 type Entry = { city?: string; cities?: ReadonlyArray<string> };
 
 const DATA: Record<string, ReadonlyArray<Entry>> = {
-	accountants: ACCOUNTANTS,
+	accountants: [...ACCOUNTANTS, ...REGISTERED_OFFICE_PROVIDERS],
 	"after-school-activities": AFTER_SCHOOL_ACTIVITIES,
 	"art-culture": CULTURAL_VENUES,
 	"childcare-nurseries": NURSERIES,
@@ -64,7 +63,6 @@ const DATA: Record<string, ReadonlyArray<Entry>> = {
 	"property-lawyers": PROPERTY_LAWYERS,
 	"property-management": PROPERTY_MANAGERS,
 	"public-transport": Object.keys(TRANSPORT_INFO).map((city) => ({ city })),
-	"registered-address": REGISTERED_ADDRESS_PROVIDERS,
 	"religious-services": RELIGIOUS_SERVICES,
 	"rooftop-bars": VIEW_BARS,
 	shopping: SHOP_ENTRIES,

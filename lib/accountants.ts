@@ -19,6 +19,27 @@ export type AccountantSpecialization =
   | "expat-individual"
   | "crypto";
 
+/** Filter values on the page: the five specializations plus registered office providers. */
+export type AccountantFilter = AccountantSpecialization | "registered-office";
+
+/**
+ * Registered office and company secretary providers. Merged in from the
+ * retired /sections/registered-address/ directory (Phase 3A). Every Cyprus
+ * company must have a registered office in Cyprus (Companies Law, Cap. 113).
+ * Prices are annual fees as of early 2026; verify directly with each provider.
+ */
+export type RegisteredOfficeProvider = {
+  name: string;
+  city: City;
+  neighbourhood?: string;
+  /** Annual fee in EUR, if publicly listed. */
+  pricePerYear?: number;
+  /** What is included in the package. */
+  includes: string[];
+  why: string;
+  website?: string;
+};
+
 export type Accountant = {
   name: string;
   firm: string;
@@ -41,14 +62,14 @@ export type AccountantTip = {
 export const ALL_ACCOUNTANT_SPECIALIZATIONS: ReadonlyArray<AccountantSpecialization> =
   ["non-dom", "vat", "corporate", "expat-individual", "crypto"];
 
-export const ACCOUNTANT_SPEC_LABEL: Record<AccountantSpecialization, string> =
-  {
-    "non-dom": "Non-Dom",
-    vat: "VAT",
-    corporate: "Corporate",
-    "expat-individual": "Expat Individual",
-    crypto: "Crypto",
-  };
+export const ACCOUNTANT_SPEC_LABEL: Record<AccountantFilter, string> = {
+  "non-dom": "Non-Dom",
+  vat: "VAT",
+  corporate: "Corporate",
+  "expat-individual": "Expat Individual",
+  crypto: "Crypto",
+  "registered-office": "Registered office",
+};
 
 // ---------------------------------------------------------------------------
 // Tips
@@ -70,6 +91,15 @@ export const ACCOUNTANT_TIPS: ReadonlyArray<AccountantTip> = [
   {
     heading: "Register for GeSY and social contributions correctly",
     body: "Cypriot tax residents pay GeSY (healthcare) contributions of 2.65% on most income types including dividends and rental income. Many relocators, advised only on income tax, miss the GeSY registration — and discover a backlog of unpaid contributions at renewal time. Confirm your accountant covers GeSY calculations and registration explicitly.",
+  },
+  // Registered office (merged from the retired registered-address directory).
+  {
+    heading: "Registered address is a legal requirement for every Cyprus Ltd",
+    body: "Under the Cyprus Companies Law (Cap. 113), every Cyprus-registered company must have a registered office in Cyprus at all times. This is not optional: it is the address recorded at the Registrar of Companies, where official correspondence and legal notices are served. Failure to maintain a valid registered address can lead to the company being struck off. A virtual office or registered address provider satisfies this requirement fully.",
+  },
+  {
+    heading: "Not all providers include mail forwarding: check before signing",
+    body: "Many providers include the registered address only (collecting mail for inspection or forwarding is a separate, often paid-extra service). If your company will regularly receive physical correspondence from banks, the tax department or government agencies, confirm that mail scanning and forwarding is included, and ask how quickly mail is forwarded. Some low-cost providers scan and email; others courier a bundle monthly.",
   },
 ];
 
@@ -167,3 +197,109 @@ export const ACCOUNTANTS: ReadonlyArray<Accountant> = [
     why: "One of the few qualified ICPAC accountants based in Ayia Napa, which avoids the need for east-coast residents to travel to Larnaca for routine filings. Handles non-dom individual returns, VAT registration for short-term rental operators, and standard expat compliance for the Famagusta district.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Registered office providers (merged from /sections/registered-address/)
+// ---------------------------------------------------------------------------
+
+export const REGISTERED_OFFICE_PROVIDERS: ReadonlyArray<RegisteredOfficeProvider> =
+  [
+    // ── Limassol ───────────────────────────────────────────────────────────
+    {
+      name: "Totalserve Management Ltd",
+      city: "Limassol",
+      neighbourhood: "Limassol business district",
+      pricePerYear: 350,
+      includes: [
+        "Registered office address",
+        "Mail receipt and forwarding",
+        "Company secretary",
+        "Director services available",
+      ],
+      why: "One of Cyprus's most established corporate service providers, with a full range of company formation, registered office and ongoing compliance services. Well-recognised address for international counterparties.",
+      website: "https://www.totalserve.eu",
+    },
+    {
+      name: "Cyfield Corporate Services",
+      city: "Limassol",
+      neighbourhood: "Limassol Marina area",
+      pricePerYear: 300,
+      includes: [
+        "Registered office address",
+        "Mail scanning and forwarding",
+        "Registrar of Companies filings",
+      ],
+      why: "Boutique corporate services firm focused on company formation and ongoing compliance. Transparent annual pricing and responsive email support: good fit for solo founders and small international teams.",
+      website: "https://www.cyfield.com.cy",
+    },
+    {
+      name: "Elias Neocleous & Co LLC",
+      city: "Limassol",
+      neighbourhood: "Limassol seafront",
+      pricePerYear: 500,
+      includes: [
+        "Registered office address",
+        "Full secretarial services",
+        "Legal and tax advisory access",
+        "Mail and courier handling",
+      ],
+      why: "One of Cyprus's largest law and corporate services firms. Their registered office service comes with integrated access to legal, tax and banking introduction services, worth the premium for complex structures.",
+      website: "https://www.neocleous.com",
+    },
+    {
+      name: "Papafides Business Advisors",
+      city: "Limassol",
+      neighbourhood: "Limassol city centre",
+      pricePerYear: 280,
+      includes: [
+        "Registered office address",
+        "Mail receipt and forwarding",
+        "Annual return filing",
+      ],
+      why: "Mid-range corporate services provider with a clean track record. Includes annual return filing in the package, which removes one common admin task from founders managing their own compliance.",
+      website: "https://www.papafides.com",
+    },
+    {
+      name: "BDO Cyprus",
+      city: "Limassol",
+      neighbourhood: "Limassol centre",
+      pricePerYear: 450,
+      includes: [
+        "Registered office address",
+        "Company secretary",
+        "Accounting and audit available",
+        "Tax compliance advisory",
+      ],
+      why: "Global Big Four-adjacent firm (BDO network). Suitable for companies that want accounting, audit and registered office under one roof. Premium pricing reflects full professional services access.",
+      website: "https://www.bdo.com.cy",
+    },
+
+
+    // ── Paphos ─────────────────────────────────────────────────────────────
+    {
+      name: "Paphos Corporate Services",
+      city: "Paphos",
+      neighbourhood: "Paphos town",
+      pricePerYear: 220,
+      includes: [
+        "Registered office address",
+        "Mail forwarding",
+        "Company filing assistance",
+      ],
+      why: "Reliable registered address provider in Paphos, suitable for companies whose founders are based in the Paphos area and prefer a locally managed service. Smaller client base means faster personal response.",
+    },
+
+    // ── Larnaca ────────────────────────────────────────────────────────────
+    {
+      name: "LCA Business Services",
+      city: "Larnaca",
+      neighbourhood: "Larnaca city centre",
+      pricePerYear: 200,
+      includes: [
+        "Registered office address",
+        "Mail receipt and forwarding",
+        "VAT registration assistance",
+      ],
+      why: "Larnaca-based corporate services firm with competitive pricing. Useful for companies tied to Larnaca Airport, logistics, or shipping sectors. Includes VAT registration assistance, which is often a separate fee elsewhere.",
+    },
+  ];
