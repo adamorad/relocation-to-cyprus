@@ -21,6 +21,26 @@ export const TOPIC_SLUGS = [
 
 export type TopicSlug = (typeof TOPIC_SLUGS)[number];
 
+/**
+ * A responsive image in two widths (800w for cards, 1600w for heroes).
+ * `alt` is omitted for decorative images (topic illustrations).
+ */
+export type SiteImage = {
+	src: string;
+	srcSmall: string;
+	width: number;
+	height: number;
+	alt?: string;
+};
+
+/** Topic spot illustration (transparent WebP) at /images/topics/{slug}-{w}.webp. */
+const topicImage = (slug: string, height: number): SiteImage => ({
+	src: `/images/topics/${slug}-1600.webp`,
+	srcSmall: `/images/topics/${slug}-800.webp`,
+	width: 1600,
+	height,
+});
+
 export type Topic = {
 	slug: TopicSlug;
 	name: string;
@@ -29,6 +49,8 @@ export type Topic = {
 	/** One plain sentence, used as the hub intro and card text. */
 	description: string;
 	icon: IconName;
+	/** Spot illustration shown on the hub header and homepage card. */
+	image?: SiteImage;
 };
 
 export const TOPICS: ReadonlyArray<Topic> = [
@@ -39,6 +61,7 @@ export const TOPICS: ReadonlyArray<Topic> = [
 		description:
 			"GeSY, doctors, pharmacies, insurance and what to do in an emergency.",
 		icon: "healthcare",
+		image: topicImage("health", 1067),
 	},
 	{
 		slug: "getting-around",
@@ -47,6 +70,7 @@ export const TOPICS: ReadonlyArray<Topic> = [
 		description:
 			"Buses, driving, licences, car hire, airports and ferries across Cyprus.",
 		icon: "transport",
+		image: topicImage("getting-around", 901),
 	},
 	{
 		slug: "home-and-bills",
@@ -55,6 +79,7 @@ export const TOPICS: ReadonlyArray<Topic> = [
 		description:
 			"Renting a home, utilities, internet, recycling, water and solar.",
 		icon: "home",
+		image: topicImage("home-and-bills", 1067),
 	},
 	{
 		slug: "money-and-paperwork",
@@ -63,6 +88,7 @@ export const TOPICS: ReadonlyArray<Topic> = [
 		description:
 			"Banking, tax returns, social insurance, residence permits and running a business.",
 		icon: "paperwork",
+		image: topicImage("money-and-paperwork", 1067),
 	},
 	{
 		slug: "food-and-shopping",
@@ -71,6 +97,7 @@ export const TOPICS: ReadonlyArray<Topic> = [
 		description:
 			"Markets, international groceries, food delivery and eating like a local.",
 		icon: "shopping",
+		image: topicImage("food-and-shopping", 1067),
 	},
 	{
 		slug: "family-and-schools",
@@ -79,6 +106,7 @@ export const TOPICS: ReadonlyArray<Topic> = [
 		description:
 			"Schools, nurseries, activities for children and family paperwork.",
 		icon: "school",
+		image: topicImage("family-and-schools", 1067),
 	},
 	{
 		slug: "community-and-leisure",
@@ -87,6 +115,7 @@ export const TOPICS: ReadonlyArray<Topic> = [
 		description:
 			"Meeting people, sport, culture, the outdoors and learning Greek.",
 		icon: "community",
+		image: topicImage("community-and-leisure", 1067),
 	},
 	{
 		slug: "moving-here",
@@ -95,6 +124,7 @@ export const TOPICS: ReadonlyArray<Topic> = [
 		description:
 			"Visas, residency routes, tax status, buying property and planning the move.",
 		icon: "suitcase",
+		image: topicImage("moving-here", 1067),
 	},
 ];
 
