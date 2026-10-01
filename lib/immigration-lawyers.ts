@@ -181,7 +181,7 @@ export const IMMIGRATION_LAWYERS: ReadonlyArray<ImmigrationLawyer> = [
       "digital-nomad-visa",
     ],
     languages: ["English", "Greek", "Italian"],
-    why: "Serves a strong Italian and Southern European client base relocating to Larnaca. Particular experience with EU citizens navigating the MEU1 registration process and the subsequent transition to Long-term Residence after five years.",
+    why: "Serves a strong Italian and Southern European client base relocating to Larnaca. Particular experience with EU citizens navigating the MEU1 registration process and the Permanent Residence certificate (MEU3) they can apply for after five years.",
     website: "https://www.papadakilegal.cy",
   },
 

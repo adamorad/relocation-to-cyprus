@@ -12,7 +12,7 @@ export const SECTIONS_INDEX: ReadonlyArray<SectionEntry> = [
 		slug: "long-term-rentals",
 		category: "Property & Housing",
 		description:
-			"Verified rental listings across all four cities: apartments, villas, and studios.",
+			"Rental areas across all four cities, with district asking rents for apartments and links to the main portals.",
 	},
 	{
 		name: "Property Management",
@@ -191,7 +191,7 @@ export const SECTIONS_INDEX: ReadonlyArray<SectionEntry> = [
 		slug: "halal-kosher",
 		category: "Food & Drink",
 		description:
-			"Certified halal and kosher restaurants, butchers, and grocery suppliers.",
+			"How to find halal and kosher food in Cyprus, with the kosher outlets confirmed in Limassol.",
 	},
 	{
 		name: "Where to Eat",
