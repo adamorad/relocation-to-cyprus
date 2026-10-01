@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import DevelopmentComparisonClient from "./client";
 
@@ -19,28 +20,32 @@ export const metadata: Metadata = {
 	},
 };
 
-export default function DevelopmentComparisonPage() {
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Tools",
-				item: `${SITE_URL}/tools/`,
-			},
-			{ "@type": "ListItem", position: 3, name: title },
-		],
-	};
+export default function DevelopmentComparisonClientPage() {
 	return (
-		<>
-			<script
-				type="application/ld+json"
-				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-			/>
+		<ToolTemplate
+			pagefindType="tool"
+			width="wide"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Tools", href: "/tools/" },
+					{ label: "Development Comparison" },
+				],
+				eyebrow: "Research",
+				title: "Compare Cyprus Developments",
+				intro:
+					"Select up to 3 new-build developments and compare them side by side.",
+			}}
+			nextSteps={[
+				{ href: "/listings/", label: "Browse all listings" },
+				{
+					href: "/tools/rent-vs-buy-calculator/",
+					label: "Rent vs Buy Calculator",
+				},
+				{ href: "/tools/", label: "All tools" },
+			]}
+			disclaimer="Development data is for general research only. Prices, specs, and availability change frequently. Always verify directly with the developer or agent before making any decisions."
+		>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
@@ -49,6 +54,6 @@ export default function DevelopmentComparisonPage() {
 				}}
 			/>
 			<DevelopmentComparisonClient />
-		</>
+		</ToolTemplate>
 	);
 }

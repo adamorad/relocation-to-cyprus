@@ -1,23 +1,36 @@
 #!/usr/bin/env node
 // Accessibility gate. Serves out/ with an in-process static server, opens a
 // fixed sample of pages at 390 and 1440 px with Playwright and runs axe-core
-// (wcag2a + wcag2aa). Fails on moderate, serious or critical violations that are not in
+// (wcag2a + wcag2aa, plus the best-practice rule heading-order). Fails on moderate, serious or critical violations that are not in
 // scripts/qa/axe.baseline.json.
 //
 // Usage:
 //   node scripts/qa/axe.mjs                    run the gate
 //   node scripts/qa/axe.mjs --update-baseline  record current moderate/serious/critical findings
 //   node scripts/qa/axe.mjs --urls /a/,/b/     override the sample (debugging)
+//   node scripts/qa/axe.mjs --all              full-site audit (not used in CI):
+//     every HTML page in out/ at 390 (redirect stubs skipped), axe at 1440 on
+//     the default sample plus every 10th page; also checks every page at both
+//     widths for horizontal overflow, exactly one main#main, one h1 and at
+//     most one email input. Writes qa-reports/axe-all.json.
 import {
 	createReadStream,
 	existsSync,
 	mkdirSync,
+	readdirSync,
 	readFileSync,
 	statSync,
 	writeFileSync,
 } from "node:fs";
 import { createServer } from "node:http";
-import { dirname, extname, join, normalize, resolve } from "node:path";
+import {
+	dirname,
+	extname,
+	join,
+	normalize,
+	relative,
+	resolve,
+} from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
@@ -58,11 +71,61 @@ const BLOCKING = new Set(["moderate", "serious", "critical"]);
 const argv = process.argv.slice(2);
 const updateBaseline = argv.includes("--update-baseline");
 const urlsArg = argv.indexOf("--urls");
+const all = argv.includes("--all");
 const urls = urlsArg >= 0 ? argv[urlsArg + 1].split(",") : SAMPLE;
 
 if (!existsSync(OUT)) {
 	console.error("out/ not found. Run `pnpm build` first.");
 	process.exit(2);
+}
+
+/** Every page in out/ as a URL (dir/index.html -> /dir/), redirect stubs excluded. */
+function allPages() {
+	const pages = [];
+	const stubs = [];
+	const walk = (dir) => {
+		for (const e of readdirSync(dir, { withFileTypes: true })) {
+			const p = join(dir, e.name);
+			if (e.isDirectory()) {
+				if (e.name.startsWith("_") || e.name === "pagefind") continue;
+				walk(p);
+			} else if (e.name.endsWith(".html")) {
+				const rel = relative(OUT, p).split("\\").join("/");
+				const url =
+					rel === "index.html"
+						? "/"
+						: rel.endsWith("/index.html")
+							? `/${rel.slice(0, -"index.html".length)}`
+							: `/${rel}`;
+				const html = readFileSync(p, "utf8");
+				if (/http-equiv=["']?refresh/i.test(html)) stubs.push(url);
+				else pages.push(url);
+			}
+		}
+	};
+	walk(OUT);
+	return { pages: pages.sort(), stubs: stubs.sort() };
+}
+
+/** Per width: pages to load, and the subset that also gets an axe scan. */
+let plan;
+let skippedStubs = [];
+if (all) {
+	const { pages, stubs } = allPages();
+	skippedStubs = stubs;
+	const wideSample = new Set([
+		...SAMPLE,
+		...pages.filter((_, i) => i % 10 === 0),
+	]);
+	const loadAll = [...pages, "/explore/?q=tax"];
+	plan = {
+		390: { load: loadAll, axe: new Set(loadAll) },
+		1440: { load: loadAll, axe: wideSample },
+	};
+} else {
+	plan = Object.fromEntries(
+		WIDTHS.map((w) => [w, { load: urls, axe: new Set(urls) }]),
+	);
 }
 
 const MIME = {
@@ -128,6 +191,8 @@ const { default: AxeBuilder } = await import("@axe-core/playwright");
 const browser = await chromium.launch();
 const findings = []; // {url,width,rule,impact,nodes,help}
 const errors = [];
+const structure = []; // --all only: per page and width
+const CONCURRENCY = all ? 6 : 1;
 for (const width of WIDTHS) {
 	const ctx = await browser.newContext({
 		viewport: { width, height: width < 800 ? 844 : 900 },
@@ -137,37 +202,60 @@ for (const width of WIDTHS) {
 		(u) => !u.href.startsWith(base),
 		(r) => r.abort(),
 	);
-	for (const url of urls) {
-		const page = await ctx.newPage();
-		try {
-			const resp = await page.goto(base + url, { waitUntil: "load" });
-			if (!resp || resp.status() >= 400)
-				errors.push(`${url} @${width}: HTTP ${resp?.status()}`);
-			await page.waitForTimeout(600);
-			if (url.startsWith("/explore/?q="))
-				await page.waitForSelector(
-					"[data-search-state]:not([data-search-state='loading'])",
-					{ timeout: 10000 },
-				);
-			const result = await new AxeBuilder({ page })
-				.withTags(["wcag2a", "wcag2aa"])
-				.analyze();
-			for (const v of result.violations)
-				findings.push({
-					url,
-					width,
-					rule: v.id,
-					impact: v.impact,
-					nodes: v.nodes.length,
-					help: v.help,
-					sample: v.nodes[0]?.target?.join(" ") ?? "",
-				});
-		} catch (e) {
-			errors.push(`${url} @${width}: ${e.message.split("\n")[0]}`);
-		} finally {
-			await page.close();
+	const { load, axe } = plan[width];
+	let next = 0;
+	const worker = async () => {
+		while (next < load.length) {
+			const url = load[next++];
+			const page = await ctx.newPage();
+			try {
+				const resp = await page.goto(base + url, { waitUntil: "load" });
+				const expected404 = url === "/404.html";
+				if (!resp || (resp.status() >= 400 && !expected404))
+					errors.push(`${url} @${width}: HTTP ${resp?.status()}`);
+				await page.waitForTimeout(all ? 300 : 600);
+				if (url.startsWith("/explore/?q="))
+					await page.waitForSelector(
+						"[data-search-state]:not([data-search-state='loading'])",
+						{ timeout: 10000 },
+					);
+				if (all)
+					structure.push({
+						url,
+						width,
+						...(await page.evaluate(() => ({
+							overflow:
+								document.documentElement.scrollWidth - window.innerWidth,
+							mains: document.querySelectorAll("main").length,
+							mainId: document.querySelectorAll("main#main").length,
+							h1: document.querySelectorAll("h1").length,
+							emails: document.querySelectorAll('input[type="email"]').length,
+						}))),
+					});
+				if (axe.has(url)) {
+					const result = await new AxeBuilder({ page })
+						.withTags(["wcag2a", "wcag2aa"])
+						.withRules(["heading-order"])
+						.analyze();
+					for (const v of result.violations)
+						findings.push({
+							url,
+							width,
+							rule: v.id,
+							impact: v.impact,
+							nodes: v.nodes.length,
+							help: v.help,
+							sample: v.nodes[0]?.target?.join(" ") ?? "",
+						});
+				}
+			} catch (e) {
+				errors.push(`${url} @${width}: ${e.message.split("\n")[0]}`);
+			} finally {
+				await page.close();
+			}
 		}
-	}
+	};
+	await Promise.all(Array.from({ length: CONCURRENCY }, worker));
 	await ctx.close();
 }
 await browser.close();
@@ -199,9 +287,14 @@ const baseline = new Set(
 );
 const fresh = blocking.filter((f) => !baseline.has(key(f)));
 
-console.log(
-	`Axe: ${urls.length} URLs x ${WIDTHS.length} widths (wcag2a, wcag2aa).`,
-);
+if (all)
+	console.log(
+		`Axe --all: ${plan[390].axe.size} URLs at 390, ${plan[1440].axe.size} at 1440 (wcag2a, wcag2aa); ${skippedStubs.length} redirect stubs skipped.`,
+	);
+else
+	console.log(
+		`Axe: ${urls.length} URLs x ${WIDTHS.length} widths (wcag2a, wcag2aa).`,
+	);
 const pad = (s, n) => String(s).padEnd(n);
 if (findings.length) {
 	console.log(
@@ -228,12 +321,34 @@ if (errors.length) {
 	console.log("\nPage errors:");
 	for (const e of errors) console.log(`  ${e}`);
 }
+// The component showcase demos EmailBox next to the footer form on purpose.
+const EMAIL_DEMO_PAGES = new Set(["/design-system/"]);
+let structFail = [];
+if (all) {
+	structFail = structure.filter(
+		(r) =>
+			r.overflow > 0 ||
+			r.mains !== 1 ||
+			r.mainId !== 1 ||
+			r.h1 !== 1 ||
+			(r.emails > 1 && !EMAIL_DEMO_PAGES.has(r.url)),
+	);
+	const by = (w) => structure.filter((r) => r.width === w).length;
+	console.log(
+		`\nStructure: ${by(390)} pages at 390, ${by(1440)} at 1440. Overflowing: ${structure.filter((r) => r.overflow > 0).length}. Not exactly one main#main/h1 or more than one email input: ${structFail.filter((r) => r.overflow <= 0).length}.`,
+	);
+	for (const r of structFail.sort((a, b) => a.url.localeCompare(b.url)))
+		console.log(
+			`  ${pad(r.url, 50)} @${r.width} overflow ${r.overflow} main ${r.mains} main#main ${r.mainId} h1 ${r.h1} email ${r.emails}`,
+		);
+}
 mkdirSync(REPORT_DIR, { recursive: true });
 writeFileSync(
-	join(REPORT_DIR, "axe.json"),
-	`${JSON.stringify({ findings, errors }, null, 2)}\n`,
+	join(REPORT_DIR, all ? "axe-all.json" : "axe.json"),
+	`${JSON.stringify({ findings, errors, ...(all ? { structure, skippedStubs } : {}) }, null, 2)}\n`,
 );
-if (fresh.length || errors.length) {
+const anyBlocking = all ? blocking : fresh;
+if (anyBlocking.length || errors.length || structFail.length) {
 	console.log("\nFAIL");
 	process.exit(1);
 }

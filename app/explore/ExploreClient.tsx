@@ -10,6 +10,7 @@ import {
 	useState,
 } from "react";
 import { Icon } from "@/components/icons/Icon";
+import { Chip } from "@/components/ui/Chip";
 
 /** Content types written to the index as data-type on each page's main element. */
 const TYPES = [
@@ -342,18 +343,22 @@ export default function ExploreClient() {
 			{counts && total > 0 ? (
 				<fieldset className="m-0 mt-4 flex min-w-0 flex-wrap gap-2 border-0 p-0">
 					<legend className="sr-only">Filter results by type</legend>
-					<FilterChip
-						label={`All (${total})`}
-						active={filter === "all"}
+					<Chip
+						count={total}
+						selected={filter === "all"}
 						onClick={() => setFilter("all")}
-					/>
+					>
+						All
+					</Chip>
 					{TYPES.filter((t) => (counts[t.id] ?? 0) > 0).map((t) => (
-						<FilterChip
+						<Chip
 							key={t.id}
-							label={`${t.label} (${counts[t.id]})`}
-							active={filter === t.id}
+							count={counts[t.id]}
+							selected={filter === t.id}
 							onClick={() => setFilter(t.id)}
-						/>
+						>
+							{t.label}
+						</Chip>
 					))}
 				</fieldset>
 			) : null}
@@ -430,13 +435,13 @@ export default function ExploreClient() {
 												<li key={r.url}>
 													<Link
 														href={r.url}
-														className="group block rounded-2xl border border-line p-3.5 transition-all hover:border-primary hover:shadow-sm"
+														className="group block rounded-card border border-line bg-white p-4 shadow-rc transition-colors hover:border-primary"
 													>
-														<span className="block text-sm font-semibold leading-snug text-ink group-hover:text-primary">
+														<span className="block text-base font-bold leading-snug text-ink group-hover:text-primary">
 															{r.title}
 														</span>
 														<span
-															className="mt-1 block text-xs leading-relaxed text-slate-600 [&_mark]:rounded-sm [&_mark]:bg-sky-strong [&_mark]:px-0.5 [&_mark]:text-ink"
+															className="mt-1 block text-sm leading-normal text-muted [overflow-wrap:anywhere] [&_mark]:rounded-sm [&_mark]:bg-sky-strong [&_mark]:px-0.5 [&_mark]:text-ink"
 															// biome-ignore lint/security/noDangerouslySetInnerHtml: Pagefind returns an escaped excerpt with <mark> highlights
 															dangerouslySetInnerHTML={{ __html: r.excerpt }}
 														/>
@@ -472,30 +477,5 @@ export default function ExploreClient() {
 				) : null}
 			</div>
 		</section>
-	);
-}
-
-function FilterChip({
-	label,
-	active,
-	onClick,
-}: {
-	label: string;
-	active: boolean;
-	onClick: () => void;
-}) {
-	return (
-		<button
-			type="button"
-			aria-pressed={active}
-			onClick={onClick}
-			className={`inline-flex min-h-11 items-center rounded-full border px-4 text-sm font-semibold ${
-				active
-					? "border-primary bg-primary text-white"
-					: "border-line bg-white text-ink hover:bg-sky"
-			}`}
-		>
-			{label}
-		</button>
 	);
 }

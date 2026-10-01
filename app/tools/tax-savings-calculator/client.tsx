@@ -1,7 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useId, useMemo, useState } from "react";
+import { ToolPanel } from "@/components/templates/ToolTemplate";
+import { Callout } from "@/components/ui/Callout";
+import { ChipGroup } from "@/components/ui/Chip";
+import { DataTable, StatCard } from "@/components/ui/DataTable";
 
 // ── types ────────────────────────────────────────────────────────────────────
 
@@ -402,30 +405,35 @@ function SliderRow({
 	display: string;
 	onChange: (v: number) => void;
 }) {
+	const id = useId();
 	return (
 		<div className="flex flex-col gap-1.5">
-			<div className="flex items-center justify-between">
-				<label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
+			<div className="flex items-center justify-between gap-3">
+				<label htmlFor={id} className="text-sm font-semibold text-ink">
 					{label}
 				</label>
-				<span className="text-sm font-bold text-ink">{display}</span>
+				<span className="shrink-0 text-base font-bold text-ink">{display}</span>
 			</div>
 			<input
+				id={id}
 				type="range"
 				min={min}
 				max={max}
 				step={step}
 				value={value}
 				onChange={(e) => onChange(Number(e.target.value))}
-				aria-label={label}
-				className="w-full accent-primary"
+				className="h-6 w-full accent-primary"
 			/>
-			<div className="flex justify-between text-xs text-muted">
+			<div className="flex justify-between text-sm text-muted">
 				<span>{min.toLocaleString("en-IE")}</span>
 				<span>{max.toLocaleString("en-IE")}</span>
 			</div>
 		</div>
 	);
+}
+
+function savingText(n: number): string {
+	return `${n > 0 ? "+" : ""}${fmtEur(n)}`;
 }
 
 function ComparisonTable({
@@ -442,137 +450,67 @@ function ComparisonTable({
 	const savingStd = result.source.totalTax - result.cyprusStandard.totalTax;
 	const savingNd = result.source.totalTax - result.cyprusNonDom.totalTax;
 
-	const rows: Array<{
-		label: string;
-		source: string;
-		std: string;
-		nd: string;
-		highlight?: "source" | "std" | "nd";
-	}> = [
-		{
-			label: "Gross income",
-			source: fmtEur(grossIncome),
-			std: fmtEur(grossIncome),
-			nd: fmtEur(grossIncome),
-		},
-		{
-			label: "Income tax",
-			source: fmtEur(result.source.incomeTax),
-			std: fmtEur(result.cyprusStandard.incomeTax),
-			nd: fmtEur(result.cyprusNonDom.incomeTax),
-		},
-		{
-			label: "Social / health",
-			source: fmtEur(result.source.socialHealth),
-			std: fmtEur(result.cyprusStandard.socialHealth),
-			nd: fmtEur(result.cyprusNonDom.socialHealth),
-		},
+	const rows: string[][] = [
+		[
+			"Gross income",
+			fmtEur(grossIncome),
+			fmtEur(grossIncome),
+			fmtEur(grossIncome),
+		],
+		[
+			"Income tax",
+			fmtEur(result.source.incomeTax),
+			fmtEur(result.cyprusStandard.incomeTax),
+			fmtEur(result.cyprusNonDom.incomeTax),
+		],
+		[
+			"Social / health",
+			fmtEur(result.source.socialHealth),
+			fmtEur(result.cyprusStandard.socialHealth),
+			fmtEur(result.cyprusNonDom.socialHealth),
+		],
 		...(showDividends
 			? [
-					{
-						label: "Dividend / corp tax",
-						source: fmtEur(result.source.dividendTax),
-						std: fmtEur(result.cyprusStandard.dividendTax),
-						nd: fmtEur(result.cyprusNonDom.dividendTax),
-					},
+					[
+						"Dividend / corp tax",
+						fmtEur(result.source.dividendTax),
+						fmtEur(result.cyprusStandard.dividendTax),
+						fmtEur(result.cyprusNonDom.dividendTax),
+					],
 				]
 			: []),
-		{
-			label: "Total tax",
-			source: fmtEur(result.source.totalTax),
-			std: fmtEur(result.cyprusStandard.totalTax),
-			nd: fmtEur(result.cyprusNonDom.totalTax),
-		},
-		{
-			label: "Effective rate",
-			source: fmtPct(result.source.effectiveRate),
-			std: fmtPct(result.cyprusStandard.effectiveRate),
-			nd: fmtPct(result.cyprusNonDom.effectiveRate),
-		},
+		[
+			"Total tax",
+			fmtEur(result.source.totalTax),
+			fmtEur(result.cyprusStandard.totalTax),
+			fmtEur(result.cyprusNonDom.totalTax),
+		],
+		[
+			"Effective rate",
+			fmtPct(result.source.effectiveRate),
+			fmtPct(result.cyprusStandard.effectiveRate),
+			fmtPct(result.cyprusNonDom.effectiveRate),
+		],
 	];
 
 	return (
-		// biome-ignore lint/a11y/useSemanticElements: keyboard access for scrollable regions (axe scrollable-region-focusable)
-		<div
-			// biome-ignore lint/a11y/noNoninteractiveTabindex: keyboard access for scrollable regions (axe scrollable-region-focusable)
-			tabIndex={0}
-			role="region"
-			aria-label="Tax comparison table"
-			className="overflow-x-auto rounded-xl border border-line"
-		>
-			<table className="w-full text-xs min-w-[480px]">
-				<thead>
-					<tr className="bg-slate-50 text-muted uppercase tracking-wide text-xs">
-						<th className="px-3 py-3 text-left font-semibold w-36"></th>
-						<th className="px-3 py-3 text-right font-semibold">
-							{sourceLabel}
-						</th>
-						<th className="px-3 py-3 text-right font-semibold bg-sky text-primary">
-							Cyprus Standard
-						</th>
-						<th className="px-3 py-3 text-right font-semibold bg-sky text-primary">
-							Cyprus Non-Dom
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					{rows.map((row) => (
-						<tr
-							key={row.label}
-							className="border-t border-slate-100 hover:bg-slate-50"
-						>
-							<td className="px-3 py-2.5 font-medium text-slate-600">
-								{row.label}
-							</td>
-							<td className="px-3 py-2.5 text-right text-slate-700">
-								{row.source}
-							</td>
-							<td className="px-3 py-2.5 text-right text-slate-700 bg-sky/60">
-								{row.std}
-							</td>
-							<td className="px-3 py-2.5 text-right text-slate-700 bg-sky/60">
-								{row.nd}
-							</td>
-						</tr>
-					))}
-					{/* Saving row */}
-					<tr className="border-t-2 border-line bg-slate-50 font-semibold">
-						<td className="px-3 py-3 text-slate-700 text-xs">
-							Est. annual saving
-						</td>
-						<td className="px-3 py-3 text-right text-muted text-xs">&#8212;</td>
-						<td className="px-3 py-3 text-right text-xs">
-							<span
-								className={
-									savingStd > 0
-										? "text-primary font-bold"
-										: savingStd < 0
-											? "text-red-500 font-bold"
-											: "text-slate-500"
-								}
-							>
-								{savingStd > 0 ? "+" : ""}
-								{fmtEur(savingStd)}
-							</span>
-						</td>
-						<td className="px-3 py-3 text-right text-xs">
-							<span
-								className={
-									savingNd > 0
-										? "text-primary font-bold"
-										: savingNd < 0
-											? "text-red-500 font-bold"
-											: "text-slate-500"
-								}
-							>
-								{savingNd > 0 ? "+" : ""}
-								{fmtEur(savingNd)}
-							</span>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+		<DataTable
+			caption="Tax comparison"
+			hideCaption
+			columns={[
+				{ header: "Item" },
+				{ header: sourceLabel, align: "right" },
+				{ header: "Cyprus Standard", align: "right" },
+				{ header: "Cyprus Non-Dom", align: "right" },
+			]}
+			rows={rows}
+			footer={[
+				"Est. annual saving",
+				"n/a",
+				savingText(savingStd),
+				savingText(savingNd),
+			]}
+		/>
 	);
 }
 
@@ -634,67 +572,21 @@ export default function TaxSavingsCalculatorClient({
 
 	const savingNd = result.source.totalTax - result.cyprusNonDom.totalTax;
 
-	const Wrap = embedded ? "div" : "main";
 	return (
-		<Wrap
-			{...(embedded
-				? {}
-				: {
-						id: "main",
-						"data-pagefind-body": "",
-						"data-pagefind-filter": "type[data-type]",
-						"data-type": "tool",
-					})}
-			className={
-				embedded ? "flex flex-col" : "max-w-4xl mx-auto px-6 py-10 md:py-16"
-			}
-		>
-			{!embedded && (
-				<>
-					{/* breadcrumb */}
-					<nav className="text-xs text-slate-600 mb-6">
-						<Link href="/" className="hover:text-ink">
-							Home
-						</Link>{" "}
-						&rsaquo;{" "}
-						<Link href="/tools/" className="hover:text-ink">
-							Tools
-						</Link>{" "}
-						&rsaquo;{" "}
-						<span className="text-ink">Cyprus Tax Savings Calculator</span>
-					</nav>
-
-					{/* header */}
-					<header className="mb-8">
-						<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
-							Tax
-						</p>
-						<h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-ink">
-							Cyprus Tax Savings Calculator
-						</h1>
-						<p className="mt-3 text-slate-600 text-sm leading-relaxed max-w-2xl">
-							Compare your current country&apos;s tax burden against Cyprus
-							Standard and Non-Dom regimes. See your estimated annual saving at
-							a glance.
-						</p>
-					</header>
-				</>
-			)}
-
-			{/* inputs */}
-			<section className="p-5 bg-slate-50 border border-line rounded-2xl mb-8 flex flex-col gap-6">
-				<h2 className="text-sm font-bold text-slate-800 -mb-2">Your details</h2>
-
-				{/* Country */}
+		<div className="flex flex-col gap-6">
+			<ToolPanel title="Your details">
 				<div className="flex flex-col gap-1.5">
-					<label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
+					<label
+						htmlFor="tax-country"
+						className="text-sm font-semibold text-ink"
+					>
 						Current country of residence
 					</label>
 					<select
-						aria-label="Current country of residence"
+						id="tax-country"
 						value={country}
 						onChange={(e) => setCountry(e.target.value as CountryKey)}
-						className="w-full rounded-xl border border-line bg-white px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-focus"
+						className="min-h-11 w-full rounded-field border border-line bg-white px-3 text-base text-ink focus:outline-none focus:ring-2 focus:ring-focus"
 					>
 						{COUNTRIES.map((c) => (
 							<option key={c} value={c}>
@@ -702,66 +594,54 @@ export default function TaxSavingsCalculatorClient({
 							</option>
 						))}
 					</select>
-					{countryNote && (
-						<p className="text-xs text-slate-500 italic">{countryNote}</p>
-					)}
+					{countryNote && <p className="text-sm text-muted">{countryNote}</p>}
 				</div>
 
-				{/* Manual rate for "Other" */}
 				{country === "Other" && (
 					<div className="flex flex-col gap-1.5">
-						<label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
+						<label
+							htmlFor="tax-manual-rate"
+							className="text-sm font-semibold text-ink"
+						>
 							Your effective income tax rate (%)
 						</label>
 						<div className="flex items-center gap-3">
 							<input
+								id="tax-manual-rate"
 								type="number"
 								min={0}
 								max={70}
 								step={0.5}
 								value={manualRate}
 								onChange={(e) => setManualRate(Number(e.target.value))}
-								className="w-28 rounded-xl border border-line bg-white px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-focus"
+								className="min-h-11 w-28 rounded-field border border-line bg-white px-3 text-base text-ink focus:outline-none focus:ring-2 focus:ring-focus"
 							/>
-							<span className="text-sm text-slate-600">% effective rate</span>
+							<span className="text-base text-muted">% effective rate</span>
 						</div>
-						<p className="text-xs text-slate-500 italic">
-							Social contributions not included for &quot;Other&quot; — enter
+						<p className="text-sm text-muted">
+							Social contributions not included for &quot;Other&quot;. Enter
 							your combined effective rate if preferred.
 						</p>
 					</div>
 				)}
 
-				{/* Employment type */}
-				<div className="flex flex-col gap-1.5">
-					<label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
-						Employment type
-					</label>
-					<div className="flex gap-2 flex-wrap">
-						{(
-							[
-								{ value: "employed", label: "Employed" },
-								{ value: "self-employed", label: "Self-employed" },
-								{ value: "company-owner", label: "Company owner (dividends)" },
-							] as Array<{ value: EmploymentType; label: string }>
-						).map(({ value, label }) => (
-							<button
-								key={value}
-								type="button"
-								onClick={() => setEmploymentType(value)}
-								className={`px-4 py-2 rounded-xl text-xs font-semibold transition-colors ${
-									employmentType === value
-										? "bg-primary text-white"
-										: "bg-white border border-line text-slate-700 hover:border-primary"
-								}`}
-							>
-								{label}
-							</button>
-						))}
-					</div>
-				</div>
+				<ChipGroup
+					label="Employment type"
+					options={[
+						{ value: "employed" as EmploymentType, label: "Employed" },
+						{
+							value: "self-employed" as EmploymentType,
+							label: "Self-employed",
+						},
+						{
+							value: "company-owner" as EmploymentType,
+							label: "Company owner (dividends)",
+						},
+					]}
+					value={employmentType}
+					onChange={setEmploymentType}
+				/>
 
-				{/* Income slider */}
 				<SliderRow
 					label="Annual gross income (EUR)"
 					value={grossIncome}
@@ -772,67 +652,48 @@ export default function TaxSavingsCalculatorClient({
 					onChange={setGrossIncome}
 				/>
 
-				{/* Salary vs dividend split (company owner only) */}
 				{showDividends && (
-					<div className="flex flex-col gap-1.5 p-4 bg-white border border-line rounded-2xl">
-						<div className="flex items-center justify-between">
-							<label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
-								Income split: salary vs dividends
-							</label>
-							<span className="text-sm font-bold text-ink">
-								{salaryPct}% salary / {100 - salaryPct}% dividends
-							</span>
-						</div>
-						<input
-							type="range"
+					<div className="flex flex-col gap-1.5 rounded-card border border-line bg-sky p-4">
+						<SliderRow
+							label="Income split: salary vs dividends"
+							value={salaryPct}
 							min={0}
 							max={100}
 							step={5}
-							value={salaryPct}
-							onChange={(e) => setSalaryPct(Number(e.target.value))}
-							aria-label="Income split: salary vs dividends"
-							className="w-full accent-primary"
+							display={`${salaryPct}% salary / ${100 - salaryPct}% dividends`}
+							onChange={setSalaryPct}
 						/>
-						<div className="flex justify-between text-xs text-muted">
+						<div className="flex justify-between text-sm text-muted">
 							<span>0% salary (all dividends)</span>
 							<span>100% salary</span>
 						</div>
-						<p className="text-xs text-slate-500 mt-1">
+						<p className="mt-1 text-sm text-muted">
 							Cyprus corporate tax: 15% on profits (2026). Non-dom: no SDC (17%)
 							on dividends.
 						</p>
 					</div>
 				)}
-			</section>
+			</ToolPanel>
 
-			{/* Highlight saving callout */}
-			{savingNd > 0 && (
-				<div className="mb-6 p-4 bg-sky border border-line rounded-2xl flex items-center gap-4">
-					<div className="text-3xl font-bold text-primary">
-						{fmtEur(savingNd)}
-					</div>
-					<div>
-						<p className="text-sm font-semibold text-ink">
-							estimated annual tax saving with Cyprus Non-Dom
-						</p>
-						<p className="text-xs text-slate-600">
-							vs. {country} — at {fmtEur(grossIncome)} gross income
-						</p>
-					</div>
-				</div>
-			)}
-			{savingNd <= 0 && (
-				<div className="mb-6 p-4 bg-slate-50 border border-line rounded-2xl">
-					<p className="text-sm text-slate-600">
-						At this income level, Cyprus may not offer a lower tax burden than{" "}
-						{country}. Try adjusting the income or employment type.
-					</p>
-				</div>
+			{savingNd > 0 ? (
+				<StatCard
+					highlight
+					label={`Estimated annual tax saving with Cyprus Non-Dom vs ${country}`}
+					value={fmtEur(savingNd)}
+					hint={`At ${fmtEur(grossIncome)} gross income`}
+				/>
+			) : (
+				<Callout tone="info">
+					At this income level, Cyprus may not offer a lower tax burden than{" "}
+					{country}. Try adjusting the income or employment type.
+				</Callout>
 			)}
 
-			{/* Comparison table */}
-			<section className="mb-8">
-				<h2 className="text-sm font-bold text-slate-800 mb-3">
+			<section aria-labelledby="tax-comparison" className="space-y-3">
+				<h2
+					id="tax-comparison"
+					className="text-2xl font-bold tracking-tight text-ink"
+				>
 					Tax comparison
 				</h2>
 				<ComparisonTable
@@ -843,104 +704,43 @@ export default function TaxSavingsCalculatorClient({
 				/>
 			</section>
 
-			{/* Why Cyprus info box */}
-			<aside className="mb-8 p-5 bg-sky border border-line rounded-2xl text-sm text-slate-700">
-				<p className="font-semibold text-ink mb-2">Why Cyprus?</p>
-				<ul className="space-y-1.5 text-xs leading-relaxed">
+			<Callout title="Why Cyprus?">
+				<ul className="space-y-2 text-base leading-relaxed">
 					<li>
-						<span className="font-semibold text-primary">Non-Dom regime:</span>{" "}
-						Exempt from Special Defence Contribution (SDC) — 17% dividend tax
-						and 30% interest tax — for 17 years after obtaining non-dom status.
+						<span className="font-semibold">Non-Dom regime:</span> Exempt from
+						Special Defence Contribution (SDC), 17% dividend tax and 30%
+						interest tax, for 17 years after obtaining non-dom status.
 					</li>
 					<li>
-						<span className="font-semibold text-primary">
-							15% corporate tax:
-						</span>{" "}
-						A competitive rate within the EU. Companies pay 15% on net profits
+						<span className="font-semibold">15% corporate tax:</span> A
+						competitive rate within the EU. Companies pay 15% on net profits
 						(raised from 12.5% in 2026).
 					</li>
 					<li>
-						<span className="font-semibold text-primary">
-							No inheritance tax:
-						</span>{" "}
-						Cyprus abolished inheritance tax in 2000.
+						<span className="font-semibold">No inheritance tax:</span> Cyprus
+						abolished inheritance tax in 2000.
 					</li>
 					<li>
-						<span className="font-semibold text-primary">
-							No capital gains tax
-						</span>{" "}
-						on disposal of securities (shares, bonds, etc.). CGT applies only to
+						<span className="font-semibold">No capital gains tax</span> on
+						disposal of securities (shares, bonds, etc.). CGT applies only to
 						immovable property in Cyprus.
 					</li>
 					<li>
-						<span className="font-semibold text-primary">
-							Income tax relief:
-						</span>{" "}
-						New residents with foreign-source employment income may qualify for
-						a 50% income tax exemption on earnings above €100,000 (five-year new
+						<span className="font-semibold">Income tax relief:</span> New
+						residents with foreign-source employment income may qualify for a
+						50% income tax exemption on earnings above €100,000 (five-year new
 						resident relief).
 					</li>
 				</ul>
-			</aside>
+			</Callout>
 
-			{/* Illustrative note */}
-			<aside className="mb-8 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-xs text-amber-900">
-				<p className="font-semibold text-amber-900 mb-1">
-					Simplified illustration
-				</p>
-				<p>
-					This tool uses approximate effective tax rates for illustration
-					purposes. Actual tax liability depends on your personal circumstances,
-					deductions, tax treaties, residency status, and applicable law. Always
-					consult a Cyprus-qualified accountant and legal adviser before making
-					relocation decisions.
-				</p>
-			</aside>
-
-			{!embedded && (
-				<>
-					{/* Next steps */}
-					<aside className="mb-6 p-5 bg-slate-50 border border-line rounded-2xl">
-						<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-							Related tools
-						</p>
-						<div className="flex flex-wrap gap-3">
-							<Link
-								href="/tools/tax-residency-tracker/"
-								className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-							>
-								Tax Residency Planner
-							</Link>
-							<Link
-								href="/tools/double-tax-treaty-finder/"
-								className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-							>
-								Double Tax Treaty Finder
-							</Link>
-							<Link
-								href="/tools/sole-trader-vs-ltd/"
-								className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-							>
-								Sole Trader vs Ltd
-							</Link>
-						</div>
-					</aside>
-
-					{/* Disclaimer */}
-					<aside className="mt-6 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
-						<p className="font-semibold text-amber-900 mb-1">Disclaimer</p>
-						<p>
-							General information only — not legal, tax, or financial advice.
-						</p>
-					</aside>
-
-					<p className="mt-8 text-xs text-slate-500">
-						<Link href="/tools/" className="underline hover:text-ink">
-							&larr; Back to Tools
-						</Link>
-					</p>
-				</>
-			)}
-		</Wrap>
+			<Callout tone="legal" title="Simplified illustration">
+				This tool uses approximate effective tax rates for illustration
+				purposes. Actual tax liability depends on your personal circumstances,
+				deductions, tax treaties, residency status, and applicable law. Always
+				consult a Cyprus-qualified accountant and legal adviser before making
+				relocation decisions.
+			</Callout>
+		</div>
 	);
 }

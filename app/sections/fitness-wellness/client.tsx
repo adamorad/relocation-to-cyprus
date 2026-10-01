@@ -1,69 +1,20 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Badge } from "@/components/ui/Badge";
+import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
+import { ChipGroup } from "@/components/ui/Chip";
 import {
 	ALL_CITIES,
 	ALL_FITNESS_TYPES,
 	type City,
-	FITNESS_TIPS,
 	FITNESS_TYPE_LABEL,
 	FITNESS_VENUES,
 	type FitnessType,
 } from "@/lib/fitness-wellness";
 
-function CityChip({
-	city,
-	selected,
-	onClick,
-}: {
-	city: City | "All";
-	selected: boolean;
-	onClick: () => void;
-}) {
-	return (
-		<button
-			type="button"
-			onClick={onClick}
-			aria-pressed={selected}
-			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
-				selected
-					? "bg-ink text-white border border-ink"
-					: "bg-white text-ink border border-line hover:bg-sky"
-			}`}
-		>
-			{city}
-		</button>
-	);
-}
-
-function TypeChip({
-	label,
-	selected,
-	onClick,
-}: {
-	label: string;
-	selected: boolean;
-	onClick: () => void;
-}) {
-	return (
-		<button
-			type="button"
-			onClick={onClick}
-			aria-pressed={selected}
-			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
-				selected
-					? "bg-ink text-white border border-ink"
-					: "bg-white text-ink border border-line hover:bg-sky"
-			}`}
-		>
-			{label}
-		</button>
-	);
-}
-
-export default function FitnessWellnessPage() {
+/** Filters first, then the venue cards. Header and info live in page.tsx. */
+export default function FitnessWellnessClient() {
 	const [cityFilter, setCityFilter] = useState<City | "All">("All");
 	const [typeFilter, setTypeFilter] = useState<FitnessType | "All">("All");
 
@@ -74,178 +25,98 @@ export default function FitnessWellnessPage() {
 	);
 
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="directory"
-			className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-14"
-		>
-			<Breadcrumbs
-				items={[
-					{ label: "Home", href: "/" },
-					{ label: "Directories", href: "/sections/" },
-					{ label: "Fitness & Wellness Studios" },
-				]}
-			/>
+		<>
+			<div className="space-y-4 rounded-card border border-line bg-sky p-4 md:p-5">
+				<ChipGroup
+					label="City"
+					value={cityFilter}
+					onChange={setCityFilter}
+					options={[
+						{ value: "All", label: "All cities" },
+						...ALL_CITIES.map((c) => ({ value: c, label: c })),
+					]}
+				/>
+				<ChipGroup
+					label="Type"
+					value={typeFilter}
+					onChange={setTypeFilter}
+					options={[
+						{ value: "All", label: "All types" },
+						...ALL_FITNESS_TYPES.map((t) => ({
+							value: t,
+							label: FITNESS_TYPE_LABEL[t],
+						})),
+					]}
+				/>
+			</div>
 
-			{/* Header */}
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
-					Fitness &amp; Wellness
-				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Gyms, Fitness Studios &amp; Wellness in Cyprus
-				</h1>
-				<p className="mt-3 text-base text-slate-600 max-w-2xl leading-relaxed">
-					From CrossFit boxes to yoga studios, padel clubs, and hotel spas — a
-					curated directory of fitness and wellness venues for relocators across
-					all four cities.
-				</p>
-			</header>
-
-			{/* Tips */}
-			<section className="mb-8">
-				<h2 className="text-sm font-bold text-ink uppercase tracking-wider mb-3">
-					Fitness in Cyprus — what to know
-				</h2>
-				<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-					{FITNESS_TIPS.map((tip) => (
-						<div
-							key={tip.heading}
-							className="rounded-2xl border border-line bg-sky p-4 text-sm"
-						>
-							<p className="font-bold text-ink">{tip.heading}</p>
-							<p className="mt-1.5 text-slate-600 leading-relaxed text-xs">
-								{tip.body}
-							</p>
-						</div>
-					))}
-				</div>
-			</section>
-
-			{/* Filters */}
-			<section className="mb-6 space-y-3">
-				<div>
-					<p className="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-2">
-						City
-					</p>
-					<div className="flex flex-wrap gap-1.5">
-						<CityChip
-							city="All"
-							selected={cityFilter === "All"}
-							onClick={() => setCityFilter("All")}
-						/>
-						{ALL_CITIES.map((c) => (
-							<CityChip
-								key={c}
-								city={c}
-								selected={cityFilter === c}
-								onClick={() => setCityFilter(c)}
-							/>
-						))}
-					</div>
-				</div>
-				<div>
-					<p className="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-2">
-						Type
-					</p>
-					<div className="flex flex-wrap gap-1.5">
-						<TypeChip
-							label="All types"
-							selected={typeFilter === "All"}
-							onClick={() => setTypeFilter("All")}
-						/>
-						{ALL_FITNESS_TYPES.map((t) => (
-							<TypeChip
-								key={t}
-								label={FITNESS_TYPE_LABEL[t]}
-								selected={typeFilter === t}
-								onClick={() => setTypeFilter(t)}
-							/>
-						))}
-					</div>
-				</div>
-			</section>
-
-			{/* Results count */}
-			<p className="text-xs text-slate-500 mb-4">
+			<h2
+				className="mt-8 text-2xl font-bold tracking-tight text-ink"
+				aria-live="polite"
+			>
 				{filtered.length === 0
-					? "No venues match the current filters."
+					? "No venues match the current filters"
 					: `${filtered.length} venue${filtered.length === 1 ? "" : "s"}`}
-			</p>
+			</h2>
 
-			{/* Card grid */}
-			{filtered.length > 0 && (
-				<ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+			{filtered.length > 0 ? (
+				<CardGrid className="mt-5">
 					{filtered.map((venue) => (
-						<li
-							key={`${venue.name}-${venue.city}`}
-							className="rounded-2xl border border-line bg-white p-4 flex flex-col gap-2 shadow-sm hover:shadow-sm transition-shadow"
-						>
-							<div>
-								<p className="font-bold text-ink text-sm leading-snug">
-									{venue.name}
-								</p>
-								<p className="text-xs text-slate-500 mt-0.5">
-									{venue.city}
-									{venue.neighbourhood ? ` · ${venue.neighbourhood}` : ""}
-									{" · "}
-									<span className="text-primary font-semibold">
-										{FITNESS_TYPE_LABEL[venue.type]}
+						<CardGridItem key={`${venue.name}-${venue.city}`}>
+							<Card
+								variant="text"
+								eyebrow={
+									<span className="flex flex-wrap gap-1.5">
+										<Badge>{FITNESS_TYPE_LABEL[venue.type]}</Badge>
+										{venue.englishSpoken ? <Badge>English spoken</Badge> : null}
 									</span>
-								</p>
-							</div>
-
-							<p className="text-xs text-slate-600 leading-relaxed flex-1">
-								{venue.why}
-							</p>
-
-							<div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-slate-500">
-								{venue.monthlyFrom !== undefined && (
-									<span>
-										Monthly from{" "}
-										<span className="font-semibold text-slate-700">
-											€{venue.monthlyFrom}
-										</span>
-									</span>
-								)}
-								{venue.dropInFrom !== undefined && (
-									<span>
-										Drop-in from{" "}
-										<span className="font-semibold text-slate-700">
-											€{venue.dropInFrom}
-										</span>
-									</span>
-								)}
-								{venue.englishSpoken && (
-									<span className="text-primary font-semibold">
-										English spoken
-									</span>
-								)}
-							</div>
-
-							{venue.website && (
-								<a
-									href={venue.website}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="text-xs font-semibold text-primary hover:text-primary-hover"
-								>
-									Website
-								</a>
-							)}
-						</li>
+								}
+								title={venue.name}
+								meta={
+									<>
+										{venue.city}
+										{venue.neighbourhood ? ` · ${venue.neighbourhood}` : ""}
+										{venue.monthlyFrom !== undefined ||
+										venue.dropInFrom !== undefined ? (
+											<span className="mt-1 flex flex-wrap gap-x-3">
+												{venue.monthlyFrom !== undefined ? (
+													<span>
+														Monthly from{" "}
+														<span className="font-semibold text-ink">
+															€{venue.monthlyFrom}
+														</span>
+													</span>
+												) : null}
+												{venue.dropInFrom !== undefined ? (
+													<span>
+														Drop-in from{" "}
+														<span className="font-semibold text-ink">
+															€{venue.dropInFrom}
+														</span>
+													</span>
+												) : null}
+											</span>
+										) : null}
+									</>
+								}
+								text={venue.why}
+								footer={
+									venue.website ? (
+										<a
+											href={venue.website}
+											target="_blank"
+											rel="noopener noreferrer"
+											className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
+										>
+											Website
+										</a>
+									) : undefined
+								}
+							/>
+						</CardGridItem>
 					))}
-				</ul>
-			)}
-
-			{/* Footer nav */}
-			<p className="mt-12 text-xs text-slate-500">
-				<Link href="/" className="underline hover:text-ink">
-					Back to home
-				</Link>
-			</p>
-		</main>
+				</CardGrid>
+			) : null}
+		</>
 	);
 }

@@ -1,210 +1,145 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { DEVELOPERS, developerBySlug, allDeveloperSlugs } from "@/lib/developers";
+import { formatPrice, titleCaseName } from "@/app/listings/format";
+import { HubTemplate } from "@/components/templates/HubTemplate";
+import { Badge } from "@/components/ui/Badge";
+import { ButtonLink } from "@/components/ui/Button";
+import { Callout } from "@/components/ui/Callout";
+import { Card, CardGrid, CardGridItem, LogoTile } from "@/components/ui/Card";
+import { Section } from "@/components/ui/Section";
+import { allDeveloperSlugs, developerBySlug } from "@/lib/developers";
 
 const SITE_URL = "https://realcy.app";
 
 export function generateStaticParams() {
-  return allDeveloperSlugs().map((slug) => ({ slug }));
+	return allDeveloperSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
-  params,
+	params,
 }: {
-  params: Promise<{ slug: string }>;
+	params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
-  const dev = developerBySlug(slug);
-  if (!dev) return {};
-  const desc =
-    dev.description?.slice(0, 160) ??
-    `${dev.name} — Cyprus property developer with ${dev.listings.length} new-build projects.`;
-  return {
-    title: `${dev.name} — Cyprus New Developments`,
-    description: desc,
-    alternates: { canonical: `/developers/${dev.slug}/` },
-    openGraph: {
-      title: `${dev.name} — Cyprus New Developments`,
-      description: desc,
-      url: `${SITE_URL}/developers/${dev.slug}/`,
-      type: "website",
-    },
-  };
+	const { slug } = await params;
+	const dev = developerBySlug(slug);
+	if (!dev) return {};
+	const name = titleCaseName(dev.name);
+	const desc =
+		dev.description?.slice(0, 160) ??
+		`${name}: Cyprus property developer with ${dev.listings.length} new-build projects.`;
+	return {
+		title: `${name}: Cyprus new developments`,
+		description: desc,
+		alternates: { canonical: `/developers/${dev.slug}/` },
+		openGraph: {
+			title: `${name}: Cyprus new developments`,
+			description: desc,
+			url: `${SITE_URL}/developers/${dev.slug}/`,
+			type: "website",
+		},
+	};
 }
 
 export default async function DeveloperPage({
-  params,
+	params,
 }: {
-  params: Promise<{ slug: string }>;
+	params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
-  const dev = developerBySlug(slug);
-  if (!dev) notFound();
+	const { slug } = await params;
+	const dev = developerBySlug(slug);
+	if (!dev) notFound();
 
-  const regions = Array.from(
-    new Set(dev.listings.map((l) => l.regionCity)),
-  ).sort();
+	const name = titleCaseName(dev.name);
+	const regions = Array.from(
+		new Set(dev.listings.map((l) => l.regionCity)),
+	).sort();
 
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Developers",
-        item: `${SITE_URL}/developers/`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: dev.name,
-        item: `${SITE_URL}/developers/${dev.slug}/`,
-      },
-    ],
-  };
+	return (
+		<HubTemplate
+			pagefindType="developer"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Developers", href: "/developers/" },
+					{ label: name },
+				],
+				eyebrow: "Property developer",
+				title: name,
+				intro: `${dev.listings.length} new-build ${dev.listings.length === 1 ? "project" : "projects"}${regions.length ? ` in ${regions.join(", ")}` : ""}.`,
+			}}
+			after={
+				<div className="space-y-6">
+					<Section
+						title="Next steps"
+						description="Browse all developers or explore new developments by city."
+					>
+						<div className="flex flex-wrap gap-3">
+							<ButtonLink href="/developers/" variant="secondary">
+								All developers
+							</ButtonLink>
+							<ButtonLink href="/listings/">
+								Browse all new developments
+							</ButtonLink>
+						</div>
+					</Section>
+					<Callout tone="legal">
+						<strong>Disclaimer:</strong> Developer information and project
+						details are sourced from publicly available listings. Always verify
+						directly with the developer before making any purchase decisions.
+					</Callout>
+				</div>
+			}
+		>
+			{dev.description || dev.logo ? (
+				<Section title={`About ${name}`} className="mb-10">
+					<div className="flex items-start gap-4">
+						{dev.logo ? (
+							<LogoTile
+								logo={{ src: dev.logo, alt: `${name} logo` }}
+								size="md"
+								eager
+							/>
+						) : null}
+						{dev.description ? (
+							<p className="whitespace-pre-line text-base leading-relaxed text-muted">
+								{dev.description}
+							</p>
+						) : null}
+					</div>
+				</Section>
+			) : null}
 
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <main id="main" data-pagefind-body data-pagefind-filter="type[data-type]" data-type="developer" className="max-w-3xl mx-auto px-6 py-10 md:py-16">
-        <nav className="text-xs text-slate-600 mb-6">
-          <Link href="/" className="hover:text-ink">
-            Home
-          </Link>{" "}
-          ›{" "}
-          <Link href="/developers/" className="hover:text-ink">
-            Developers
-          </Link>{" "}
-          › <span>{dev.name}</span>
-        </nav>
-
-        <header className="mb-8">
-          <div className="flex items-start gap-4 mb-4">
-            {dev.logo ? (
-              // biome-ignore lint/performance/noImgElement: static export
-              <img
-                src={dev.logo}
-                alt={`${dev.name} logo`}
-                className="h-16 w-16 rounded-xl object-contain bg-sky border border-line shrink-0"
-              />
-            ) : null}
-            <div>
-              <p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary mb-1">
-                Property developer
-              </p>
-              <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">
-                {dev.name}
-              </h1>
-            </div>
-          </div>
-
-          {dev.description ? (
-            <p className="text-slate-700 leading-relaxed mt-3">
-              {dev.description}
-            </p>
-          ) : null}
-        </header>
-
-        {regions.length > 0 && (
-          <section className="mb-8">
-            <h2 className="text-xs uppercase tracking-[0.2em] font-semibold text-primary mb-3">
-              Active regions
-            </h2>
-            <div className="flex flex-wrap gap-2">
-              {regions.map((r) => (
-                <span
-                  key={r}
-                  className="text-sm bg-sky-strong text-ink rounded-full px-3 py-1"
-                >
-                  {r}
-                </span>
-              ))}
-            </div>
-          </section>
-        )}
-
-        <section>
-          <h2 className="text-xl font-bold text-ink mb-4">
-            Projects ({dev.listings.length})
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {dev.listings.map((l) => (
-              <Link
-                key={l.slug}
-                href={`/listings/${l.slug}/`}
-                className="block rounded-2xl border border-line bg-white hover:border-primary hover:shadow-sm transition-all overflow-hidden"
-              >
-                {l.images?.[0] ? (
-                  <div className="aspect-[16/9] bg-sky overflow-hidden">
-                    {/* biome-ignore lint/performance/noImgElement: static export */}
-                    <img
-                      src={l.images[0]}
-                      alt={l.title}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                ) : null}
-                <div className="p-3">
-                  <div className="font-semibold text-sm text-ink line-clamp-2">
-                    {l.title}
-                  </div>
-                  <div className="text-xs text-muted mt-0.5 truncate">
-                    {l.location ?? l.regionCity}
-                  </div>
-                  <div className="text-primary text-sm font-semibold mt-1.5">
-                    {l.priceRange ?? "—"}
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <aside className="mt-10 bg-sky border border-line rounded-2xl p-5">
-          <p className="text-sm font-semibold text-ink mb-2">
-            Next steps
-          </p>
-          <p className="text-sm text-slate-600 mb-4">
-            Browse all developers or explore listings by region.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            <Link
-              href="/developers/"
-              className="text-xs font-semibold px-4 py-3 min-h-11 inline-flex items-center rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-            >
-              All developers
-            </Link>
-            <Link
-              href="/listings/"
-              className="text-xs font-semibold px-4 py-3 min-h-11 inline-flex items-center rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-            >
-              Browse all listings
-            </Link>
-          </div>
-        </aside>
-
-        <aside className="mt-6 bg-amber-50 border border-amber-200 rounded-2xl p-5">
-          <p className="text-xs text-amber-900">
-            <strong>Disclaimer:</strong> Developer information and project
-            details are sourced from publicly available listings. Always verify
-            directly with the developer before making any purchase decisions.
-          </p>
-        </aside>
-
-        <div className="mt-6">
-          <Link href="/developers/" className="underline hover:text-ink">
-            Back to Developers
-          </Link>
-        </div>
-      </main>
-    </>
-  );
+			<Section title={`Projects (${dev.listings.length})`}>
+				<CardGrid>
+					{dev.listings.map((l) => {
+						const lname = titleCaseName(l.title);
+						const price = formatPrice(l.priceRange);
+						return (
+							<CardGridItem key={l.slug}>
+								<Card
+									variant="photo"
+									href={`/listings/${l.slug}/`}
+									image={
+										l.images?.[0]
+											? {
+													src: l.images[0],
+													alt: `${lname}, ${l.location ?? l.regionCity}`,
+												}
+											: undefined
+									}
+									eyebrow={<Badge>{l.location ?? l.regionCity}</Badge>}
+									title={lname}
+									meta={
+										price ? (
+											<span className="font-semibold text-ink">{price}</span>
+										) : undefined
+									}
+								/>
+							</CardGridItem>
+						);
+					})}
+				</CardGrid>
+			</Section>
+		</HubTemplate>
+	);
 }

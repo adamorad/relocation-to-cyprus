@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import TaxResidencyPlannerClient from "./client";
 
 const SITE_URL = "https://realcy.app";
 const title = "Cyprus 60-Day Tax Residency Planner";
 const description =
-	"Check if you qualify for Cyprus tax residency under the 60-day rule — track your days in Cyprus against the annual threshold.";
+	"Check if you qualify for Cyprus tax residency under the 60-day rule, track your days in Cyprus against the annual threshold.";
 
 export const metadata: Metadata = {
 	title,
@@ -20,27 +21,33 @@ export const metadata: Metadata = {
 };
 
 export default function TaxResidencyTrackerPage() {
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Tools",
-				item: `${SITE_URL}/tools/`,
-			},
-			{ "@type": "ListItem", position: 3, name: title },
-		],
-	};
 	return (
-		<>
-			<script
-				type="application/ld+json"
-				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-			/>
+		<ToolTemplate
+			pagefindType="tool"
+			width="reading"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Tools", href: "/tools/" },
+					{ label: "Tax Residency Planner" },
+				],
+				eyebrow: "Interactive tool",
+				title: "Cyprus 60-Day Tax Residency Planner",
+				intro:
+					"Adjust the sliders to see whether you qualify for Cyprus tax residency under the 183-day rule or the more complex 60-day rule. Results update instantly.",
+			}}
+			nextSteps={[
+				{
+					href: "/guides/taxes-for-expats/",
+					label: "Read: Taxes for Expats in Cyprus",
+				},
+				{ href: "/sections/accountants/", label: "Find a tax advisor" },
+				{ href: "/tools/", label: "All tools" },
+			]}
+			disclaimer={
+				"Cyprus Tax Department has tightened audit on 60-day claims. Maintain a day diary with proof of presence (boarding passes, hotel receipts, card transactions). Consult a Cyprus tax accountant before filing. This tool provides general information only and is not tax advice."
+			}
+		>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
@@ -49,6 +56,6 @@ export default function TaxResidencyTrackerPage() {
 				}}
 			/>
 			<TaxResidencyPlannerClient />
-		</>
+		</ToolTemplate>
 	);
 }

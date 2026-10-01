@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import HeartButton from "@/components/HeartButton";
 import { MetaPixelEvent } from "@/components/MetaPixelEvent";
 import { RelatedContent } from "@/components/RelatedContent";
+import { TemplateMain } from "@/components/templates/TemplateMain";
+import { Container } from "@/components/ui/Container";
+import { DataTable } from "@/components/ui/DataTable";
+import { PageHeader } from "@/components/ui/PageHeader";
+import { Section } from "@/components/ui/Section";
+import { DEVELOPERS } from "@/lib/developers";
 import { allListings, listingBySlug } from "@/lib/listings";
+import { formatPrice, titleCaseName } from "../format";
 import DeveloperCTA from "./DeveloperCTA";
 
 const SITE_URL = "https://realcy.app";
@@ -22,15 +28,16 @@ export async function generateMetadata({
 	const l = listingBySlug(slug);
 	if (!l) return {};
 	const heroImage = l.images?.[0] ? `${SITE_URL}${l.images[0]}` : undefined;
+	const name = titleCaseName(l.title);
 	const desc =
 		l.description?.slice(0, 160) ??
-		`${l.title} — new-build development in ${l.location ?? l.regionCity}, Cyprus. ${l.priceRange ?? "Price on request"}.`;
+		`${name}: new-build development in ${l.location ?? l.regionCity}, Cyprus. ${formatPrice(l.priceRange) ?? "Price on request"}.`;
 	return {
-		title: `${l.title} — ${l.location ?? l.regionCity}`,
+		title: `${name}: ${l.location ?? l.regionCity}`,
 		description: desc,
 		alternates: { canonical: `/listings/${l.slug}/` },
 		openGraph: {
-			title: l.title,
+			title: name,
 			description: desc,
 			images: heroImage ? [heroImage] : undefined,
 			type: "website",
@@ -65,6 +72,11 @@ export default async function ListingPage({
 		),
 	);
 	const lowPrice = priceNumber(l.priceRange);
+	const name = titleCaseName(l.title);
+	const price = formatPrice(l.priceRange);
+	const dev = l.developer?.name
+		? DEVELOPERS.find((d) => d.name === l.developer?.name)
+		: undefined;
 
 	const livingAreas = offers
 		.map((o) => {
@@ -89,7 +101,7 @@ export default async function ListingPage({
 	const productJsonLd = {
 		"@context": "https://schema.org",
 		"@type": ["Product", "Residence"],
-		name: l.title,
+		name: name,
 		description: l.description,
 		url: `${SITE_URL}/listings/${l.slug}/`,
 		image: (l.images ?? []).map((u) => `${SITE_URL}${u}`),
@@ -147,228 +159,173 @@ export default async function ListingPage({
 		],
 	};
 
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Map", item: `${SITE_URL}/` },
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: l.regionCity,
-				item: `${SITE_URL}/regions/${l.regionCity.toLowerCase().replace(/\s+/g, "-")}/`,
-			},
-			{ "@type": "ListItem", position: 3, name: l.title },
-		],
+	const cell = (v: unknown) => {
+		const t = v === null || v === undefined ? "" : String(v).trim();
+		return t === "" ? "n/a" : t;
 	};
-
-	const jsonLd = [productJsonLd, breadcrumbJsonLd];
+	const specRows = Object.entries(l.specs ?? {}).map(([k, v]) => [k, v]);
+	const nearbyRows = Object.entries(l.nearby ?? {}).map(([k, v]) => [k, v]);
+	const unitRows = offers.map((o) => {
+		const f = o.features ?? {};
+		return [
+			cell(o.unit ?? o.title),
+			cell(o.bedrooms ?? f.bedrooms),
+			cell(o.bathrooms ?? f.bathrooms),
+			cell(o["living area"] ?? f.living_area),
+			cell(o.floor ?? f.floor),
+			cell(formatPrice(o.price)),
+		];
+	});
 
 	return (
-		<main id="main" data-pagefind-body data-pagefind-filter="type[data-type]" data-type="listing" className="max-w-4xl mx-auto px-6 py-10">
+		<TemplateMain pagefindType="listing">
 			<MetaPixelEvent
 				event="ViewContent"
-				params={{ content_name: l.title, content_category: "listing" }}
+				params={{ content_name: name, content_category: "listing" }}
 			/>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
 			/>
 
-			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-ink">
-					Home
-				</Link>{" "}
-				›{" "}
-				<Link
-					href={`/regions/${l.regionCity.toLowerCase().replace(/\s+/g, "-")}/`}
-					className="hover:text-ink"
-				>
-					{l.regionCity}
-				</Link>{" "}
-				› <span className="text-ink">{l.title}</span>
-			</nav>
+			<PageHeader
+				breadcrumbs={[
+					{ label: "Home", href: "/" },
+					{ label: "New developments", href: "/listings/" },
+					{ label: name },
+				]}
+				eyebrow={l.location ?? l.regionCity}
+				title={name}
+				intro={price ?? "Price on request"}
+				titleAction={<HeartButton slug={l.slug} name={name} />}
+			/>
 
-			<header>
-				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
-					{l.regionCity} · {l.location ?? ""}
-				</p>
-				<div className="mt-2 flex items-start justify-between gap-4">
-					<h1 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight text-ink">
-						{l.title}
-					</h1>
-					<HeartButton slug={l.slug} name={l.title} />
-				</div>
-				<p className="mt-3 text-lg text-slate-700">{l.priceRange ?? "—"}</p>
-			</header>
-
-			{l.developer?.name ? (
-				<DeveloperCTA
-					name={l.developer.name}
-					searchHref={`https://www.google.com/search?q=${encodeURIComponent(
-						`${l.developer.name} Cyprus real estate`,
-					)}`}
-					slug={l.slug}
-				/>
-			) : null}
-
-			{l.images && l.images.length > 0 ? (
-				<div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-2">
-					{l.images.slice(0, 6).map((src, i) => {
-						const heroAlt = `${l.title} — ${beds.length ? `${Math.max(...beds)}-bedroom ` : ""}new-build in ${l.regionCity}, Cyprus`;
-						return (
-							<img
-								// biome-ignore lint/performance/noImgElement: static export
-								key={src}
-								src={src}
-								alt={i === 0 ? heroAlt : `${l.title} — interior view ${i}`}
-								className={
-									i === 0
-										? "w-full rounded-2xl col-span-1 md:col-span-2 aspect-[16/9] object-cover"
-										: "w-full rounded-2xl aspect-[4/3] object-cover"
-								}
-								loading={i === 0 ? "eager" : "lazy"}
-								fetchPriority={i === 0 ? "high" : undefined}
-							/>
-						);
-					})}
-				</div>
-			) : null}
-
-			{l.description ? (
-				<section className="mt-8 prose prose-slate max-w-none">
-					<h2 className="text-xl font-bold text-ink mb-3">About this development</h2>
-					<p className="whitespace-pre-line text-slate-700 leading-relaxed">
-						{l.description}
-					</p>
-				</section>
-			) : null}
-
-			{Object.keys(l.specs ?? {}).length > 0 ? (
-				<section className="mt-8">
-					<h2 className="text-xl font-bold text-ink mb-3">Specs</h2>
-					<dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
-						{Object.entries(l.specs).map(([k, v]) => (
-							<div
-								key={k}
-								className="flex justify-between border-b border-slate-100 py-1"
-							>
-								<dt className="text-slate-600">{k}</dt>
-								<dd className="text-ink font-medium">{v}</dd>
-							</div>
-						))}
-					</dl>
-				</section>
-			) : null}
-
-			{offers.length > 0 ? (
-				<section className="mt-8">
-					<h2 className="text-xl font-bold text-ink mb-3">
-						Available units ({offers.length})
-					</h2>
-					<div className="overflow-x-auto">
-						<table className="w-full text-sm">
-							<thead>
-								<tr className="text-left border-b border-slate-200 text-xs uppercase tracking-wider text-slate-600">
-									<th className="py-2 pr-3">Unit</th>
-									<th className="py-2 pr-3">Beds</th>
-									<th className="py-2 pr-3">Baths</th>
-									<th className="py-2 pr-3">Living</th>
-									<th className="py-2 pr-3">Floor</th>
-									<th className="py-2 pr-3 text-right">Price</th>
-								</tr>
-							</thead>
-							<tbody>
-								{offers.map((o, idx) => {
-									const f = o.features ?? {};
+			<Container width="wide" className="pt-8 md:pt-10">
+				<div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start">
+					<div className="min-w-0">
+						{l.images && l.images.length > 0 ? (
+							<div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+								{l.images.slice(0, 6).map((src, i) => {
+									const heroAlt = `${name}: ${beds.length ? `${Math.max(...beds)}-bedroom ` : ""}new-build in ${l.regionCity}, Cyprus`;
 									return (
-										<tr
-											key={`${o.unit ?? o.title ?? "u"}-${idx}`}
-											className="border-b border-slate-100"
-										>
-											<td className="py-2 pr-3 font-medium">
-												{o.unit ?? o.title ?? "—"}
-											</td>
-											<td className="py-2 pr-3">
-												{String(o.bedrooms ?? f.bedrooms ?? "—")}
-											</td>
-											<td className="py-2 pr-3">
-												{String(o.bathrooms ?? f.bathrooms ?? "—")}
-											</td>
-											<td className="py-2 pr-3">
-												{String(o["living area"] ?? f.living_area ?? "—")}
-											</td>
-											<td className="py-2 pr-3">
-												{String(o.floor ?? f.floor ?? "—")}
-											</td>
-											<td className="py-2 pr-3 text-right font-semibold">
-												{o.price ?? "—"}
-											</td>
-										</tr>
+										// biome-ignore lint/performance/noImgElement: static export
+										<img
+											key={src}
+											src={src}
+											alt={i === 0 ? heroAlt : `${name}: view ${i + 1}`}
+											className={
+												i === 0
+													? "col-span-1 aspect-[16/9] w-full rounded-2xl object-cover md:col-span-2"
+													: "aspect-[4/3] w-full rounded-2xl object-cover"
+											}
+											loading={i === 0 ? "eager" : "lazy"}
+											fetchPriority={i === 0 ? "high" : undefined}
+										/>
 									);
 								})}
-							</tbody>
-						</table>
-					</div>
-				</section>
-			) : null}
-
-			{Object.keys(l.nearby ?? {}).length > 0 ? (
-				<section className="mt-8">
-					<h2 className="text-xl font-bold text-ink mb-3">Nearby</h2>
-					<dl className="grid grid-cols-2 gap-x-6 gap-y-1 text-sm">
-						{Object.entries(l.nearby).map(([k, v]) => (
-							<div
-								key={k}
-								className="flex justify-between border-b border-slate-100 py-1"
-							>
-								<dt className="text-slate-600">{k}</dt>
-								<dd className="text-ink font-medium">{v}</dd>
 							</div>
-						))}
-					</dl>
-				</section>
-			) : null}
+						) : null}
 
-			<RelatedContent
-				heading="Buying a new-build in Cyprus? Start here"
-				blurb="The essentials before you enquire — process, financing, taxes and title."
-				guides={[
-					{
-						href: "/guides/new-development-buying-guide/",
-						title: "How to buy a new-build",
-						desc: "The step-by-step purchase process",
-					},
-					{
-						href: "/guides/cyprus-mortgage-foreigners/",
-						title: "Mortgages for foreign buyers",
-						desc: "Deposits, rates and eligibility",
-					},
-					{
-						href: "/guides/property-taxes-2026/",
-						title: "Property taxes & fees (2026)",
-						desc: "Transfer fees, VAT and annual costs",
-					},
-					{
-						href: "/guides/title-deed-status-guide/",
-						title: "Title deeds explained",
-						desc: "What to check before you buy",
-					},
-				]}
-				tools={[
-					{ href: "/tools/mortgage-calculator/", title: "Mortgage calculator" },
-					{ href: "/tools/rent-vs-buy-calculator/", title: "Rent vs buy" },
-					{ href: "/tools/rental-yield-calculator/", title: "Rental yield" },
-				]}
-				emailSource="listing"
-			/>
+						{l.description ? (
+							<Section title="About this development" className="mt-10">
+								<p className="whitespace-pre-line text-base leading-relaxed text-muted">
+									{l.description}
+								</p>
+							</Section>
+						) : null}
 
-			<p className="mt-10 text-xs text-slate-600">
-				<Link href="/" className="underline hover:text-ink">
-					Back to home
-				</Link>
-			</p>
-		</main>
+						{unitRows.length > 0 ? (
+							<Section title={`Available units (${unitRows.length})`}>
+								<DataTable
+									caption={`Available units at ${name}`}
+									hideCaption
+									zebra
+									columns={[
+										{ header: "Unit" },
+										{ header: "Beds" },
+										{ header: "Baths" },
+										{ header: "Living area" },
+										{ header: "Floor" },
+										{ header: "Price", align: "right" },
+									]}
+									rows={unitRows}
+								/>
+							</Section>
+						) : null}
+
+						{specRows.length > 0 ? (
+							<Section title="Specs">
+								<DataTable
+									caption={`Specifications of ${name}`}
+									hideCaption
+									columns={[{ header: "Feature" }, { header: "Detail" }]}
+									rows={specRows}
+								/>
+							</Section>
+						) : null}
+
+						{nearbyRows.length > 0 ? (
+							<Section title="Nearby">
+								<DataTable
+									caption={`Distances from ${name}`}
+									hideCaption
+									columns={[{ header: "Place" }, { header: "Distance" }]}
+									rows={nearbyRows}
+								/>
+							</Section>
+						) : null}
+					</div>
+
+					{l.developer?.name ? (
+						<aside className="order-first lg:order-none lg:sticky lg:top-24">
+							<DeveloperCTA
+								name={titleCaseName(l.developer.name)}
+								developerHref={dev ? `/developers/${dev.slug}/` : undefined}
+								searchHref={`https://www.google.com/search?q=${encodeURIComponent(
+									`${l.developer.name} Cyprus real estate`,
+								)}`}
+								slug={l.slug}
+							/>
+						</aside>
+					) : null}
+				</div>
+
+				<RelatedContent
+					heading="Buying a new-build in Cyprus? Start here"
+					blurb="The essentials before you enquire: process, financing, taxes and title."
+					guides={[
+						{
+							href: "/guides/new-development-buying-guide/",
+							title: "How to buy a new-build",
+							desc: "The step-by-step purchase process",
+						},
+						{
+							href: "/guides/cyprus-mortgage-foreigners/",
+							title: "Mortgages for foreign buyers",
+							desc: "Deposits, rates and eligibility",
+						},
+						{
+							href: "/guides/property-taxes-2026/",
+							title: "Property taxes & fees (2026)",
+							desc: "Transfer fees, VAT and annual costs",
+						},
+						{
+							href: "/guides/title-deed-status-guide/",
+							title: "Title deeds explained",
+							desc: "What to check before you buy",
+						},
+					]}
+					tools={[
+						{
+							href: "/tools/mortgage-calculator/",
+							title: "Mortgage calculator",
+						},
+						{ href: "/tools/rent-vs-buy-calculator/", title: "Rent vs buy" },
+						{ href: "/tools/rental-yield-calculator/", title: "Rental yield" },
+					]}
+				/>
+			</Container>
+		</TemplateMain>
 	);
 }

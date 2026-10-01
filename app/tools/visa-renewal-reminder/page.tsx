@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import VisaRenewalReminderClient from "./client";
 
 const SITE_URL = "https://realcy.app";
-const title = "Visa & Document Renewal Reminder — Cyprus";
+const title = "Visa & Document Renewal Reminder: Cyprus";
 const description =
-	"Track ARC card, passport, Cyprus visa, and driving licence expiry dates — see what needs renewing and when.";
+	"Track ARC card, passport, Cyprus visa, and driving licence expiry dates, see what needs renewing and when.";
 
 export const metadata: Metadata = {
 	title,
@@ -20,27 +21,33 @@ export const metadata: Metadata = {
 };
 
 export default function VisaRenewalReminderPage() {
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Tools",
-				item: `${SITE_URL}/tools/`,
-			},
-			{ "@type": "ListItem", position: 3, name: title },
-		],
-	};
 	return (
-		<>
-			<script
-				type="application/ld+json"
-				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-			/>
+		<ToolTemplate
+			pagefindType="tool"
+			width="reading"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Tools", href: "/tools/" },
+					{ label: "Visa Renewal Reminder" },
+				],
+				eyebrow: "Interactive tool",
+				title: "Visa & Document Renewal Reminder",
+				intro:
+					"Track expiry dates for your important documents: visas, ARC, passport, insurance, and more. Colour-coded alerts so nothing sneaks up on you.",
+			}}
+			nextSteps={[
+				{
+					href: "/guides/permanent-residency-5year/",
+					label: "Read: Permanent Residency After 5 Years",
+				},
+				{
+					href: "/sections/immigration-lawyers/",
+					label: "Find an immigration lawyer",
+				},
+				{ href: "/tools/", label: "All tools" },
+			]}
+		>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
@@ -49,6 +56,6 @@ export default function VisaRenewalReminderPage() {
 				}}
 			/>
 			<VisaRenewalReminderClient />
-		</>
+		</ToolTemplate>
 	);
 }

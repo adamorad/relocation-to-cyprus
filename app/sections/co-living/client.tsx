@@ -1,40 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
-import {
-	ALL_CITIES,
-	type City,
-	CO_LIVING_LISTINGS,
-	CO_LIVING_TIPS,
-} from "@/lib/co-living";
+import { Badge } from "@/components/ui/Badge";
+import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
+import { ChipGroup } from "@/components/ui/Chip";
+import { ALL_CITIES, type City, CO_LIVING_LISTINGS } from "@/lib/co-living";
 
-function CityChip({
-	city,
-	selected,
-	onClick,
-}: {
-	city: City | "All";
-	selected: boolean;
-	onClick: () => void;
-}) {
-	return (
-		<button
-			type="button"
-			onClick={onClick}
-			aria-pressed={selected}
-			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
-				selected
-					? "bg-ink text-white border border-ink"
-					: "bg-white text-ink border border-line hover:bg-sky"
-			}`}
-		>
-			{city}
-		</button>
-	);
-}
-
-export default function CoLivingPage() {
+/** Filters first, then the space cards. Header and info live in page.tsx. */
+export default function CoLivingClient() {
 	const [cityFilter, setCityFilter] = useState<City | "All">("All");
 
 	const filtered = CO_LIVING_LISTINGS.filter(
@@ -42,154 +15,87 @@ export default function CoLivingPage() {
 	);
 
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="directory"
-			className="max-w-5xl mx-auto px-6 py-10 md:py-16"
-		>
-			{/* Back nav */}
-			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/sections" className="hover:text-ink">
-					Directories
-				</Link>
-			</nav>
+		<>
+			<div className="rounded-card border border-line bg-sky p-4 md:p-5">
+				<ChipGroup
+					label="City"
+					value={cityFilter}
+					onChange={setCityFilter}
+					options={[
+						{ value: "All", label: "All cities" },
+						...ALL_CITIES.map((c) => ({ value: c, label: c })),
+					]}
+				/>
+			</div>
 
-			{/* Header */}
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
-					Co-Living
-				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Co-Living &amp; Serviced Apartments in Cyprus
-				</h1>
-				<p className="mt-4 text-lg text-slate-700 leading-relaxed max-w-2xl">
-					Month-to-month furnished spaces with utilities and WiFi included — for
-					digital nomads, relocators, and professionals who want flexibility
-					before committing to a long-term lease.
-				</p>
-			</header>
+			<h2
+				className="mt-8 text-2xl font-bold tracking-tight text-ink"
+				aria-live="polite"
+			>
+				{filtered.length === 0
+					? `No co-living spaces listed for ${cityFilter} yet`
+					: `${filtered.length} space${filtered.length === 1 ? "" : "s"}${
+							cityFilter !== "All" ? ` in ${cityFilter}` : " across all cities"
+						}`}
+			</h2>
 
-			{/* Tips section */}
-			<section className="mb-10">
-				<h2 className="text-xl font-bold mb-4 text-ink">
-					Co-living vs renting
-				</h2>
-				<div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-					{CO_LIVING_TIPS.map((tip) => (
-						<div
-							key={tip.heading}
-							className="rounded-2xl border border-line bg-sky p-4 text-xs"
-						>
-							<p className="font-bold text-sm text-ink">{tip.heading}</p>
-							<p className="mt-1.5 text-slate-700 leading-relaxed">
-								{tip.body}
-							</p>
-						</div>
-					))}
-				</div>
-			</section>
-
-			{/* City filter */}
-			<section className="mb-8">
-				<p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">
-					City
-				</p>
-				<div className="flex flex-wrap gap-1.5">
-					<CityChip
-						city="All"
-						selected={cityFilter === "All"}
-						onClick={() => setCityFilter("All")}
-					/>
-					{ALL_CITIES.map((c) => (
-						<CityChip
-							key={c}
-							city={c}
-							selected={cityFilter === c}
-							onClick={() => setCityFilter(c)}
-						/>
-					))}
-				</div>
-			</section>
-
-			{/* Results count */}
-			<p className="text-xs text-slate-500 mb-4">
-				{filtered.length} space{filtered.length !== 1 ? "s" : ""}
-				{cityFilter !== "All" ? ` in ${cityFilter}` : " across all cities"}
-			</p>
-
-			{/* Card grid */}
-			{filtered.length === 0 ? (
-				<div className="rounded-2xl border border-line bg-sky px-6 py-8 text-center text-sm text-slate-500">
-					No co-living spaces listed for {cityFilter} yet. Check back soon.
-				</div>
-			) : (
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+			{filtered.length > 0 ? (
+				<CardGrid className="mt-5">
 					{filtered.map((space) => (
-						<article
-							key={`${space.name}-${space.city}`}
-							className="rounded-2xl border border-line bg-white p-4 flex flex-col text-xs"
-						>
-							<div className="flex-1">
-								<p className="font-bold text-sm text-ink">{space.name}</p>
-								<p className="text-xs text-slate-500 mt-0.5">
-									{space.city}
-									{space.neighbourhood ? ` · ${space.neighbourhood}` : ""}
-								</p>
-								<p className="mt-3 text-slate-700 leading-relaxed">
-									{space.why}
-								</p>
-								{space.includes.length > 0 && (
-									<div className="mt-3">
-										<p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5">
-											Included
-										</p>
-										<div className="flex flex-wrap gap-1">
-											{space.includes.map((item) => (
-												<span
-													key={item}
-													className="rounded-full bg-sky-strong border border-line px-2 py-0.5 text-xs text-ink"
-												>
-													{item}
+						<CardGridItem key={`${space.name}-${space.city}`}>
+							<Card
+								variant="text"
+								title={space.name}
+								meta={
+									<>
+										{space.city}
+										{space.neighbourhood ? ` · ${space.neighbourhood}` : ""}
+									</>
+								}
+								text={space.why}
+								footer={
+									<div className="space-y-2">
+										{space.includes.length > 0 ? (
+											<div>
+												<p className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-muted">
+													Included
+												</p>
+												<div className="flex flex-wrap gap-1.5">
+													{space.includes.map((item) => (
+														<Badge key={item}>{item}</Badge>
+													))}
+												</div>
+											</div>
+										) : null}
+										<div className="flex items-center justify-between gap-3">
+											<p className="font-bold text-ink">
+												€{space.monthlyFrom.toLocaleString()}
+												{space.monthlyTo !== space.monthlyFrom
+													? `–€${space.monthlyTo.toLocaleString()}`
+													: ""}
+												<span className="text-sm font-normal text-muted">
+													{" "}
+													/ month
 												</span>
-											))}
+											</p>
+											{space.website ? (
+												<a
+													href={space.website}
+													target="_blank"
+													rel="noopener noreferrer"
+													className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
+												>
+													View
+												</a>
+											) : null}
 										</div>
 									</div>
-								)}
-							</div>
-							<div className="mt-3 pt-3 border-t border-line flex items-center justify-between">
-								<p className="font-bold text-sm text-ink">
-									€{space.monthlyFrom.toLocaleString()}
-									{space.monthlyTo !== space.monthlyFrom
-										? `–€${space.monthlyTo.toLocaleString()}`
-										: ""}
-									<span className="font-normal text-slate-500 text-xs">
-										{" "}
-										/ month
-									</span>
-								</p>
-								{space.website && (
-									<a
-										href={space.website}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="text-xs font-semibold text-primary hover:text-primary-hover"
-									>
-										View
-									</a>
-								)}
-							</div>
-						</article>
+								}
+							/>
+						</CardGridItem>
 					))}
-				</div>
-			)}
-
-			<p className="mt-12 text-xs text-slate-600">
-				<Link href="/" className="underline hover:text-ink">
-					Back to home
-				</Link>
-			</p>
-		</main>
+				</CardGrid>
+			) : null}
+		</>
 	);
 }

@@ -1,7 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useState } from "react";
+import { Badge } from "@/components/ui/Badge";
+import { Callout } from "@/components/ui/Callout";
+import { ChipGroup } from "@/components/ui/Chip";
+import { DataTable } from "@/components/ui/DataTable";
+import { Section } from "@/components/ui/Section";
 
 type ProviderType = "local" | "international" | "public";
 
@@ -33,7 +37,7 @@ const PROVIDERS: ReadonlyArray<InsuranceProvider> = [
 		gesyCompatible: true,
 		directBillingCyprusHospitals: true,
 		keyNote:
-			"Universal public health system. Free at point of care for all legal residents. Excellent baseline — covers GP, specialists, most hospital care. No dental or vision. Wait times for non-emergency specialist appointments can be 4–8 weeks. Most relocators use GeSY + supplemental private insurance.",
+			"Universal public health system. Free at point of care for all legal residents. Excellent baseline, covers GP, specialists, most hospital care. No dental or vision. Wait times for non-emergency specialist appointments can be 4–8 weeks. Most relocators use GeSY + supplemental private insurance.",
 		website: "https://www.gesy.org.cy",
 	},
 	{
@@ -63,7 +67,7 @@ const PROVIDERS: ReadonlyArray<InsuranceProvider> = [
 		gesyCompatible: true,
 		directBillingCyprusHospitals: true,
 		keyNote:
-			"Premium international insurer with a strong reputation for claim handling. 24/7 English-speaking helpline. Dental included in comprehensive plans. Maternity cover after 12 months. USA coverage available as add-on — important for frequent travellers. Higher premiums but reliable for complex medical situations.",
+			"Premium international insurer with a strong reputation for claim handling. 24/7 English-speaking helpline. Dental included in comprehensive plans. Maternity cover after 12 months. USA coverage available as add-on, important for frequent travellers. Higher premiums but reliable for complex medical situations.",
 		website: "https://www.bupaglobal.com",
 	},
 	{
@@ -78,7 +82,7 @@ const PROVIDERS: ReadonlyArray<InsuranceProvider> = [
 		gesyCompatible: true,
 		directBillingCyprusHospitals: true,
 		keyNote:
-			"Highly customisable modular plan — start with core cover and add dental, maternity, and mental health separately. Competitive for under-40s. Good online portal and claims app. USA cover included on Silver/Gold/Platinum tiers. Strong choice for tech workers relocating from the US or serving US clients.",
+			"Highly customisable modular plan, start with core cover and add dental, maternity, and mental health separately. Competitive for under-40s. Good online portal and claims app. USA cover included on Silver/Gold/Platinum tiers. Strong choice for tech workers relocating from the US or serving US clients.",
 		website: "https://www.cignahealthbenefits.com",
 	},
 	{
@@ -93,7 +97,7 @@ const PROVIDERS: ReadonlyArray<InsuranceProvider> = [
 		gesyCompatible: true,
 		directBillingCyprusHospitals: true,
 		keyNote:
-			"Part of Allianz Global group. Solid worldwide cover with competitive family premiums. Maternity cover from day one on some plans (after 10-month waiting period on others — confirm at quote stage). Mental health cover included. Good for families. Dental available as optional add-on on standard plan.",
+			"Part of Allianz Global group. Solid worldwide cover with competitive family premiums. Maternity cover from day one on some plans (after 10-month waiting period on others, confirm at quote stage). Mental health cover included. Good for families. Dental available as optional add-on on standard plan.",
 		website: "https://www.allianzcare.com",
 	},
 	{
@@ -183,12 +187,6 @@ export default function HealthInsuranceComparisonPage() {
 		});
 	}, [filters]);
 
-	const typeColors: Record<ProviderType, string> = {
-		public: "bg-slate-100 text-slate-600",
-		local: "bg-blue-100 text-blue-700",
-		international: "bg-primary/20 text-ink",
-	};
-
 	const typeLabels: Record<ProviderType, string> = {
 		public: "Public",
 		local: "Local",
@@ -196,364 +194,208 @@ export default function HealthInsuranceComparisonPage() {
 	};
 
 	function premiumDisplay(amount: number | null): string {
-		if (amount === null) return "—";
+		if (amount === null) return "n/a";
 		if (amount === 0) return "Free";
 		return `€${amount.toLocaleString()}/yr`;
 	}
 
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="tool"
-			className="max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-16"
-		>
-			{/* Breadcrumb */}
-			<nav className="text-xs text-slate-500 mb-6">
-				<Link href="/" className="hover:text-ink">
-					Home
-				</Link>
-				{" › "}
-				<span className="text-ink">Health Insurance Comparison</span>
-			</nav>
-
-			{/* Header */}
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-2">
-					Tools
-				</p>
-				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Private Health Insurance for Cyprus
-				</h1>
-				<p className="mt-3 text-lg text-slate-600 leading-relaxed">
-					Compare 8 insurance providers including GeSY as a baseline. Filter by
-					your needs, then get a personal quote from your shortlist.
-				</p>
-			</header>
-
-			{/* GeSY highlight box */}
-			<div className="mb-6 p-4 bg-sky border border-line rounded-2xl text-sm text-slate-700">
-				<p className="font-semibold text-ink mb-1">How GeSY fits in</p>
-				<p>
-					All legal residents in Cyprus are eligible for GeSY (the public
-					General Healthcare System). It costs nothing extra — contributions
-					come from employer/employee taxes. For most relocators, GeSY handles
-					everyday healthcare and emergencies, while a private policy speeds up
-					specialist access and adds dental/maternity cover. You don&apos;t have
-					to choose one or the other.
-				</p>
-			</div>
+		<>
+			<Callout tone="info" title="How GeSY fits in">
+				All legal residents in Cyprus are eligible for GeSY (the public General
+				Healthcare System). It costs nothing extra: contributions come from
+				employer/employee taxes. For most relocators, GeSY handles everyday
+				healthcare and emergencies, while a private policy speeds up specialist
+				access and adds dental/maternity cover. You don&apos;t have to choose
+				one or the other.
+			</Callout>
 
 			{/* Filters */}
-			<div className="bg-white border border-line rounded-2xl p-5 mb-6">
-				<h2 className="font-semibold text-slate-700 text-sm mb-4">
-					Filter providers
-				</h2>
-				<div className="flex flex-wrap gap-6">
-					{/* Coverage type */}
-					<div>
-						<p className="text-xs text-slate-500 uppercase tracking-wide font-semibold mb-2">
-							Coverage for
-						</p>
-						<div className="flex gap-2">
-							{(["all", "individual", "family"] as const).map((t) => (
-								<button
-									key={t}
-									onClick={() => setFilters({ ...filters, coverageType: t })}
-									className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
-										filters.coverageType === t
-											? "bg-primary text-white border-primary"
-											: "bg-white text-slate-600 border-line hover:border-primary"
-									}`}
-								>
-									{t === "all" ? "All" : t.charAt(0).toUpperCase() + t.slice(1)}
-								</button>
-							))}
-						</div>
-					</div>
-
-					{/* Provider type */}
-					<div>
-						<p className="text-xs text-slate-500 uppercase tracking-wide font-semibold mb-2">
-							Provider type
-						</p>
-						<div className="flex gap-2">
-							{(["all", "public", "local", "international"] as const).map(
-								(t) => (
-									<button
-										key={t}
-										onClick={() => setFilters({ ...filters, providerType: t })}
-										className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
-											filters.providerType === t
-												? "bg-slate-700 text-white border-slate-700"
-												: "bg-white text-slate-600 border-line hover:border-slate-500"
-										}`}
-									>
-										{t.charAt(0).toUpperCase() + t.slice(1)}
-									</button>
-								),
-							)}
-						</div>
-					</div>
-
-					{/* Maternity */}
-					<div>
-						<p className="text-xs text-slate-500 uppercase tracking-wide font-semibold mb-2">
-							Maternity cover
-						</p>
-						<div className="flex gap-2">
-							<button
-								onClick={() => setFilters({ ...filters, maternity: null })}
-								className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
-									filters.maternity === null
-										? "bg-slate-700 text-white border-slate-700"
-										: "bg-white text-slate-600 border-line hover:border-slate-500"
-								}`}
-							>
-								Any
-							</button>
-							<button
-								onClick={() => setFilters({ ...filters, maternity: true })}
-								className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
-									filters.maternity === true
-										? "bg-primary text-white border-primary"
-										: "bg-white text-slate-600 border-line hover:border-primary"
-								}`}
-							>
-								Required
-							</button>
-						</div>
-					</div>
-
-					{/* Pre-existing */}
-					<div>
-						<p className="text-xs text-slate-500 uppercase tracking-wide font-semibold mb-2">
-							Pre-existing conditions
-						</p>
-						<div className="flex gap-2">
-							<button
-								onClick={() => setFilters({ ...filters, preExisting: null })}
-								className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
-									filters.preExisting === null
-										? "bg-slate-700 text-white border-slate-700"
-										: "bg-white text-slate-600 border-line hover:border-slate-500"
-								}`}
-							>
-								Any
-							</button>
-							<button
-								onClick={() => setFilters({ ...filters, preExisting: true })}
-								className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
-									filters.preExisting === true
-										? "bg-primary text-white border-primary"
-										: "bg-white text-slate-600 border-line hover:border-primary"
-								}`}
-							>
-								Covered
-							</button>
-						</div>
-					</div>
+			<div className="space-y-5 rounded-card border border-line bg-sky p-4 md:p-5">
+				<h2 className="text-lg font-bold text-ink">Filter providers</h2>
+				<div className="grid gap-5 sm:grid-cols-2">
+					<ChipGroup
+						label="Coverage for"
+						value={filters.coverageType}
+						onChange={(v) => setFilters({ ...filters, coverageType: v })}
+						options={[
+							{ value: "all", label: "All" },
+							{ value: "individual", label: "Individual" },
+							{ value: "family", label: "Family" },
+						]}
+					/>
+					<ChipGroup
+						label="Provider type"
+						value={filters.providerType}
+						onChange={(v) => setFilters({ ...filters, providerType: v })}
+						options={(["all", "public", "local", "international"] as const).map(
+							(t) => ({
+								value: t,
+								label: t.charAt(0).toUpperCase() + t.slice(1),
+							}),
+						)}
+					/>
+					<ChipGroup
+						label="Maternity cover"
+						value={filters.maternity === true ? "required" : "any"}
+						onChange={(v) =>
+							setFilters({
+								...filters,
+								maternity: v === "required" ? true : null,
+							})
+						}
+						options={[
+							{ value: "any", label: "Any" },
+							{ value: "required", label: "Required" },
+						]}
+					/>
+					<ChipGroup
+						label="Pre-existing conditions"
+						value={filters.preExisting === true ? "covered" : "any"}
+						onChange={(v) =>
+							setFilters({
+								...filters,
+								preExisting: v === "covered" ? true : null,
+							})
+						}
+						options={[
+							{ value: "any", label: "Any" },
+							{ value: "covered", label: "Covered" },
+						]}
+					/>
 				</div>
 			</div>
 
 			{/* Result count */}
-			<p className="text-xs text-slate-500 mb-5">
+			<h2
+				className="text-2xl font-bold tracking-tight text-ink"
+				aria-live="polite"
+			>
 				Showing {filtered.length} of {PROVIDERS.length} providers
-			</p>
+			</h2>
 
-			{/* Comparison table — desktop */}
-			<div className="hidden md:block overflow-x-auto rounded-2xl border border-line mb-6">
-				<table className="w-full text-sm">
-					<thead>
-						<tr className="bg-slate-50 border-b border-line">
-							<th className="text-left px-4 py-3 font-semibold text-slate-600 text-xs uppercase tracking-wide">
-								Provider
-							</th>
-							<th className="text-left px-4 py-3 font-semibold text-slate-600 text-xs uppercase tracking-wide">
-								Coverage
-							</th>
-							<th className="text-right px-4 py-3 font-semibold text-slate-600 text-xs uppercase tracking-wide">
-								Single (30yo)
-							</th>
-							<th className="text-right px-4 py-3 font-semibold text-slate-600 text-xs uppercase tracking-wide">
-								Family (4)
-							</th>
-							{FEATURE_KEYS.map((f) => (
-								<th
-									key={f.key}
-									className="text-center px-3 py-3 font-semibold text-slate-600 text-xs uppercase tracking-wide"
-								>
-									{f.label}
-								</th>
-							))}
-						</tr>
-					</thead>
-					<tbody>
-						{filtered.map((p, i) => (
-							<tr
-								key={p.name}
-								className={`border-b border-line ${i % 2 === 0 ? "bg-white" : "bg-slate-50/50"}`}
-							>
-								<td className="px-4 py-3">
-									<div>
-										<p className="font-semibold text-ink">{p.name}</p>
-										<span
-											className={`text-xs font-semibold px-1.5 py-0.5 rounded-full ${typeColors[p.type]}`}
-										>
-											{typeLabels[p.type]}
-										</span>
-									</div>
-								</td>
-								<td className="px-4 py-3 text-xs text-slate-500">
-									{p.coverageRegion}
-								</td>
-								<td className="px-4 py-3 text-right font-bold text-primary">
-									{premiumDisplay(p.annualPremiumSingle30yo)}
-								</td>
-								<td className="px-4 py-3 text-right font-bold text-slate-700">
-									{premiumDisplay(p.annualPremiumFamily4)}
-								</td>
-								{FEATURE_KEYS.map((f) => (
-									<td key={f.key} className="px-3 py-3 text-center">
-										{(p[f.key] as boolean) ? (
-											<span className="text-emerald-500 text-base">✓</span>
-										) : (
-											<span className="text-muted text-base">&#8212;</span>
-										)}
-									</td>
-								))}
-							</tr>
-						))}
-					</tbody>
-				</table>
+			{/* Comparison table, desktop */}
+			<div className="hidden md:block">
+				<DataTable
+					caption="Health insurance provider comparison"
+					hideCaption
+					zebra
+					columns={[
+						{ header: "Provider" },
+						{ header: "Coverage" },
+						{ header: "Single (30yo)", align: "right" },
+						{ header: "Family (4)", align: "right" },
+						...FEATURE_KEYS.map((f) => ({ header: f.label })),
+					]}
+					rows={filtered.map((p) => [
+						<>
+							<span className="block font-semibold">{p.name}</span>
+							<Badge className="mt-1">{typeLabels[p.type]}</Badge>
+						</>,
+						<span key="c" className="text-muted">
+							{p.coverageRegion}
+						</span>,
+						<span key="s" className="font-bold text-primary">
+							{premiumDisplay(p.annualPremiumSingle30yo)}
+						</span>,
+						<span key="f" className="font-bold">
+							{premiumDisplay(p.annualPremiumFamily4)}
+						</span>,
+						...FEATURE_KEYS.map((f) =>
+							(p[f.key] as boolean) ? (
+								<span key={f.key} className="font-semibold text-ink">
+									Yes
+								</span>
+							) : (
+								<span key={f.key} className="text-muted">
+									No
+								</span>
+							),
+						),
+					])}
+				/>
 			</div>
 
 			{/* Mobile cards */}
-			<div className="md:hidden space-y-4 mb-6">
+			<ul className="space-y-4 md:hidden">
 				{filtered.map((p) => (
-					<div
+					<li
 						key={p.name}
-						className="bg-white border border-line rounded-2xl p-4"
+						className="rounded-card border border-line bg-white p-4"
 					>
-						<div className="flex items-start justify-between mb-3">
+						<div className="mb-3 flex items-start justify-between gap-3">
 							<div>
-								<h2 className="font-bold text-ink">{p.name}</h2>
-								<span
-									className={`text-xs font-semibold px-1.5 py-0.5 rounded-full ${typeColors[p.type]}`}
-								>
-									{typeLabels[p.type]}
-								</span>
+								<h3 className="font-bold text-ink">{p.name}</h3>
+								<Badge className="mt-1">{typeLabels[p.type]}</Badge>
 							</div>
 							<div className="text-right">
-								<p className="text-xs text-muted">Single/yr</p>
+								<p className="text-sm text-muted">Single/yr</p>
 								<p className="font-bold text-primary">
 									{premiumDisplay(p.annualPremiumSingle30yo)}
 								</p>
 							</div>
 						</div>
-						<p className="text-xs text-slate-500 mb-3">{p.coverageRegion}</p>
-						<div className="flex flex-wrap gap-2 mb-3">
+						<p className="mb-3 text-sm text-muted">{p.coverageRegion}</p>
+						<div className="mb-3 flex flex-wrap gap-2">
 							{FEATURE_KEYS.map((f) => (
 								<span
 									key={f.key}
-									className={`text-xs px-2 py-0.5 rounded-full font-semibold ${
+									className={`rounded-full px-2 py-0.5 text-xs font-semibold ${
 										(p[f.key] as boolean)
-											? "bg-emerald-100 text-emerald-700"
-											: "bg-slate-100 text-muted"
+											? "bg-sky-strong text-ink"
+											: "bg-sky text-muted line-through"
 									}`}
 								>
 									{f.label}
+									<span className="sr-only">
+										{(p[f.key] as boolean) ? " (included)" : " (not included)"}
+									</span>
 								</span>
 							))}
 						</div>
-						<p className="text-xs text-slate-600 leading-relaxed">
-							{p.keyNote}
-						</p>
+						<p className="text-sm leading-relaxed text-ink">{p.keyNote}</p>
 						{p.website && (
 							<a
 								href={p.website}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="mt-2 inline-block text-xs text-primary hover:text-primary-hover font-semibold underline"
+								className="mt-1 inline-flex min-h-11 items-center text-sm font-semibold text-primary underline hover:text-primary-hover"
 							>
 								Visit website
 							</a>
 						)}
-					</div>
+					</li>
 				))}
-			</div>
+			</ul>
 
-			{/* Detail notes — desktop only (shown below table) */}
-			<div className="hidden md:block space-y-3 mb-8">
-				<h2 className="font-bold text-ink text-sm uppercase tracking-wide">
-					Provider notes
-				</h2>
-				{filtered.map((p) => (
-					<div
-						key={`note-${p.name}`}
-						className="bg-white border border-line rounded-xl p-4"
-					>
-						<div className="flex items-center gap-2 mb-1">
-							<span className="font-semibold text-ink text-sm">{p.name}</span>
-							{p.website && (
-								<a
-									href={p.website}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="text-xs text-primary hover:text-primary-hover font-semibold underline"
-								>
-									Website
-								</a>
-							)}
-						</div>
-						<p className="text-sm text-slate-600 leading-relaxed">
-							{p.keyNote}
-						</p>
+			{/* Detail notes, desktop only (shown below table) */}
+			<div className="hidden md:block">
+				<Section id="provider-notes" title="Provider notes">
+					<div className="space-y-3">
+						{filtered.map((p) => (
+							<div
+								key={`note-${p.name}`}
+								className="rounded-card border border-line bg-white p-4"
+							>
+								<div className="mb-1 flex items-center gap-3">
+									<h3 className="text-base font-semibold text-ink">{p.name}</h3>
+									{p.website && (
+										<a
+											href={p.website}
+											target="_blank"
+											rel="noopener noreferrer"
+											className="inline-flex min-h-11 items-center text-sm font-semibold text-primary underline hover:text-primary-hover"
+										>
+											Website
+										</a>
+									)}
+								</div>
+								<p className="text-sm leading-relaxed text-ink">{p.keyNote}</p>
+							</div>
+						))}
 					</div>
-				))}
+				</Section>
 			</div>
-
-			{/* Disclaimer */}
-			<aside className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
-				<p className="font-semibold text-ink mb-1">Disclaimer</p>
-				<p>
-					Premiums shown are approximate 2025 estimates for a healthy non-smoker
-					at indicated age brackets. Actual premiums depend on age, health
-					history, chosen deductible, optional riders, and the specific plan
-					tier. Waiting periods, exclusions and benefit limits vary
-					significantly between plans. Always obtain a personal quote and read
-					the policy terms before purchasing. We are not insurance brokers and
-					do not receive commission from any provider listed here.
-				</p>
-			</aside>
-
-			{/* Back */}
-			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools" className="underline hover:text-ink">
-					← Back to Tools
-				</Link>
-			</p>
-
-			<aside className="mt-10 p-5 rounded-2xl bg-sky border border-line">
-				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-					Next steps
-				</p>
-				<div className="flex flex-wrap gap-3">
-					<Link
-						href="/guides/gesy-registration-guide/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Read: GeSY Registration Guide
-					</Link>{" "}
-					<Link
-						href="/sections/specialist-doctors/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Find a specialist doctor
-					</Link>
-				</div>
-			</aside>
-		</main>
+		</>
 	);
 }

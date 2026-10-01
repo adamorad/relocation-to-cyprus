@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import RelocationTrackerClient from "./client";
 
 const SITE_URL = "https://realcy.app";
-const title = "Cyprus Relocation Progress Tracker — 32-Task Checklist";
+const title = "Cyprus Relocation Progress Tracker: 32-Task Checklist";
 const description =
 	"Track your relocation journey from planning to settling in. Persistent checklist saved in your browser. Four phases: pre-move planning, arrival week, month one, and settling in.";
 
@@ -20,27 +21,29 @@ export const metadata: Metadata = {
 };
 
 export default function RelocationChecklistPage() {
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Tools",
-				item: `${SITE_URL}/tools/`,
-			},
-			{ "@type": "ListItem", position: 3, name: title },
-		],
-	};
 	return (
-		<>
-			<script
-				type="application/ld+json"
-				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-			/>
+		<ToolTemplate
+			pagefindType="tool"
+			width="reading"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Tools", href: "/tools/" },
+					{ label: "Relocation Progress Tracker" },
+				],
+				eyebrow: "Checklists",
+				title: "Cyprus Relocation Progress Tracker",
+				intro:
+					"Track your relocation journey from planning to settling in. Check off each task as you complete it. Progress is saved in your browser.",
+			}}
+			nextSteps={[
+				{ href: "/tools/visa-pathway-finder/", label: "Find your visa route" },
+				{ href: "/tools/budget-builder/", label: "Build your budget" },
+				{ href: "/tools/city-comparison/", label: "Compare cities" },
+				{ href: "/tools/", label: "All tools" },
+			]}
+			disclaimer="This checklist provides general guidance only and is not legal, tax, or financial advice. Requirements vary by nationality and residency route. Always verify with the Cyprus Tax Department, Civil Registry, and a qualified local adviser before making decisions."
+		>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
@@ -49,6 +52,6 @@ export default function RelocationChecklistPage() {
 				}}
 			/>
 			<RelocationTrackerClient />
-		</>
+		</ToolTemplate>
 	);
 }

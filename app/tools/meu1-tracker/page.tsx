@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import Meu1TrackerClient from "./client";
 
 const SITE_URL = "https://realcy.app";
-const title = "MEU1 Registration Tracker — Cyprus EU Residency Checklist";
+const title = "MEU1 Registration Tracker: Cyprus EU Residency Checklist";
 const description =
 	"Interactive checklist for EU citizens registering their residence in Cyprus (MEU1). Track required documents and steps to completion.";
 
@@ -20,27 +21,33 @@ export const metadata: Metadata = {
 };
 
 export default function Meu1TrackerPage() {
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Tools",
-				item: `${SITE_URL}/tools/`,
-			},
-			{ "@type": "ListItem", position: 3, name: title },
-		],
-	};
 	return (
-		<>
-			<script
-				type="application/ld+json"
-				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-			/>
+		<ToolTemplate
+			pagefindType="tool"
+			width="reading"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Tools", href: "/tools/" },
+					{ label: "MEU1 Registration Tracker" },
+				],
+				eyebrow: "Interactive tool",
+				title: "MEU1 Registration Tracker",
+				intro:
+					"An interactive checklist for EU citizens registering their residence in Cyprus (MEU1 / EU Registration Certificate). Check off each step as you complete it. Progress is saved in your browser.",
+			}}
+			nextSteps={[
+				{
+					href: "/guides/residency-and-visas/",
+					label: "Cyprus Residency & Visas Guide",
+				},
+				{
+					href: "/sections/immigration-lawyers/",
+					label: "Find an immigration lawyer",
+				},
+				{ href: "/tools/", label: "All tools" },
+			]}
+		>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
@@ -49,6 +56,6 @@ export default function Meu1TrackerPage() {
 				}}
 			/>
 			<Meu1TrackerClient />
-		</>
+		</ToolTemplate>
 	);
 }

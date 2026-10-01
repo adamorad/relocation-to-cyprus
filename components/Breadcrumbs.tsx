@@ -1,37 +1,16 @@
-import Link from "next/link";
+import { Breadcrumbs as UiBreadcrumbs } from "@/components/ui/Breadcrumbs";
 
-export type Crumb = { label: string; href?: string };
+export type { Crumb } from "@/components/ui/Breadcrumbs";
 
-export function Breadcrumbs({ items }: { items: Crumb[] }) {
-	return (
-		<nav
-			data-pagefind-ignore
-			aria-label="Breadcrumb"
-			className="text-xs text-muted mb-6"
-		>
-			{items.map((item, i) => {
-				const last = i === items.length - 1;
-				return (
-					<span key={item.label}>
-						{item.href && !last ? (
-							<Link
-								href={item.href}
-								className="hover:text-ink hover:underline rounded-sm"
-							>
-								{item.label}
-							</Link>
-						) : (
-							<span
-								className={last ? "text-ink" : undefined}
-								aria-current={last ? "page" : undefined}
-							>
-								{item.label}
-							</span>
-						)}
-						{!last && <span aria-hidden="true">{" / "}</span>}
-					</span>
-				);
-			})}
-		</nav>
-	);
+/**
+ * Legacy entry point kept for pages not yet on a template. Renders the shared
+ * breadcrumb without JSON-LD, because these pages still hand-write their
+ * BreadcrumbList. Migrated pages use PageHeader (or ui/Breadcrumbs) instead.
+ */
+export function Breadcrumbs({
+	items,
+}: {
+	items: { label: string; href?: string }[];
+}) {
+	return <UiBreadcrumbs items={items} jsonLd={false} className="mb-6" />;
 }

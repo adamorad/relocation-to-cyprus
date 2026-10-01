@@ -106,7 +106,7 @@ function SiteFooter() {
 	);
 	return (
 		<footer data-pagefind-ignore className="bg-ink text-slate-300 mt-0">
-			<div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-6 gap-8 text-sm">
+			<div className="mx-auto max-w-[1280px] px-5 md:px-8 py-12 grid grid-cols-2 md:grid-cols-6 gap-8 text-sm">
 				<div className="col-span-2 md:col-span-2">
 					<p className="font-bold text-white text-lg">RealCy.app</p>
 					<p className="mt-2 text-slate-400 leading-relaxed text-xs">
@@ -338,7 +338,7 @@ function SiteFooter() {
 				</nav>
 			</div>
 			<div className="border-t border-white/10">
-				<div className="max-w-6xl mx-auto px-6 py-6">
+				<div className="mx-auto max-w-[1280px] px-5 md:px-8 py-6">
 					<p className="text-xs uppercase tracking-wider text-slate-400 font-semibold">
 						Featured developments
 					</p>
@@ -360,7 +360,7 @@ function SiteFooter() {
 				</div>
 			</div>
 			<div className="border-t border-white/10">
-				<div className="max-w-6xl mx-auto px-6 py-6">
+				<div className="mx-auto max-w-[1280px] px-5 md:px-8 py-6">
 					<p className="text-sm font-semibold text-white mb-1">
 						Get the free Cyprus Relocation Checklist
 					</p>
@@ -371,7 +371,7 @@ function SiteFooter() {
 				</div>
 			</div>
 			<div className="border-t border-white/10">
-				<div className="max-w-6xl mx-auto px-6 py-4 text-xs text-slate-400">
+				<div className="mx-auto max-w-[1280px] px-5 md:px-8 py-4 text-xs text-slate-400">
 					© {new Date().getFullYear()} RealCy.app, independent guide to living
 					in Cyprus.
 				</div>

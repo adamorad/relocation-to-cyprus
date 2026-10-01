@@ -11,7 +11,9 @@
 - About 127 Nicosia directory entries and Nicosia city blocks, filter chips and table rows were removed from the sections, tools (city comparison, events calendar, ISP comparison, price benchmarker) and guides. Four Nicosia-located events were removed from the events calendar.
 - Nicosia is kept only where it names a hospital, government office, embassy, university or district fact. Schools in Nicosia were removed from the guides.
 - The listing save heart moved from the archived map panel to the listing detail page. The "Back to the map" links are now "Back to home", and the shortlist empty state and city-comparison link point to /listings/.
-
+- Listing and developer names that were stored in ALL CAPS are now shown in title case (for example "Lemonmaria Developers"). Known acronyms such as HKCY, MAWJ, CHYC and GPA, initials and names with numbers keep their capitals.
+- Listing prices now show as `€1,650,000 + VAT` instead of `€1.650.000 +VAT`. The data files are unchanged.
+- Hub titles were renamed to "Cities", "Practical tools" and "Local directories".
 - Quality gates run on every pull request (`.github/workflows/ci.yml`): type check, build, an internal link check over `out/`, a house-rules scan and an axe accessibility run on a sample of 22 pages at 390 and 1440 px. See `docs/qa.md`.
 - The house-rules scan (em dash, emoji, Nicosia, "Relocation guide", hard-coded hex colours in classes) compares against a committed baseline, so only new violations fail. Existing violations are counted per rule in `scripts/qa/house-rules.baseline.json` for later clean-up.
 - Site search now uses a Pagefind index built from the exported site (`pnpm build` runs `pagefind --site out`). /explore/ became the search results page with results grouped and filterable by type (guides, directories, tools, cities, listings, developers), and still accepts `?q=`. The category browse list stays below the search.
@@ -25,6 +27,21 @@
 - The weather chart keeps a 700 unit minimum width so its labels stay at least 12px on phones, and its tooltip follows the scrolled chart.
 - /explore/ search now matches word stems and prefixes, so "pharmacy" finds the pharmacy guide and "movi" finds "Moving".
 - An accessibility pass took automated colour-contrast violations from 1484 to 0 across 31 pages.
+
+- Phase 1 design system: shared components in `components/ui/` (Container, PageHeader, Breadcrumbs, Section, Card with icon, text, photo, row and logo options, Badge, Chip and ChipGroup, Button and ButtonLink, Callout, DataTable, StatCard, InfoCards, EmailBox, SponsorSlot) and page templates in `components/templates/` (Hub, Article, Directory, Tool and City). See `docs/design-system.md`.
+- Every page family now uses the templates: guides, directories, tools, cities, listings, developers, hubs, About, Advertise, Contact, Privacy, search, the shortlist and the 404 page.
+- Pages use only two widths: reading (about 720px) and wide (1280px, aligned with the header, homepage and footer).
+- There is one breadcrumb style (Home › Section › Page) with matching BreadcrumbList data, and the scattered "Back to" links are gone.
+- Each page has at most one email form. Guides rely on the footer form instead of an in-article one.
+- /listings/ has a city filter that can be linked with `?city=` and a "Show more" button. City pages link to their filtered list.
+- Listing pages link to the developer's page, and the save heart sits next to the listing title. The developers index shows each developer's logo.
+- The About page was rewritten to describe only what the site offers today.
+- The Advertise page counts guides, tools and directories from the site data, so they always match.
+- Page titles no longer repeat the RealCy.app brand.
+- Guides show their category as the label above the title instead of "Relocation guide".
+- Filter chips, buttons, cards and comparison highlights use one style across the site, with no traffic-light colours for neutral comparisons.
+- /tools/sole-trader-vs-ltd/ has one header, one disclaimer and one set of next steps for both of its tools.
+- `node scripts/qa/axe.mjs --all` runs a full-site accessibility audit plus overflow and page-structure checks (not part of CI).
 
 ### Known gaps and follow-ups
 

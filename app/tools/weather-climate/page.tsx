@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import WeatherClimateClient from "./client";
 
 const SITE_URL = "https://realcy.app";
 const title = "Cyprus Weather & Climate";
 const description =
-	"Explore Cyprus weather month by month — temperatures, sea warmth, rain days, and UV index. Compare Cyprus climate against London, Amsterdam, Berlin, New York, Toronto, and more.";
+	"Explore Cyprus weather month by month, temperatures, sea warmth, rain days, and UV index. Compare Cyprus climate against London, Amsterdam, Berlin, New York, Toronto, and more.";
 
 export const metadata: Metadata = {
 	title,
@@ -20,27 +21,29 @@ export const metadata: Metadata = {
 };
 
 export default function WeatherClimatePage() {
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Home", item: SITE_URL + "/" },
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Tools",
-				item: SITE_URL + "/tools/",
-			},
-			{ "@type": "ListItem", position: 3, name: title },
-		],
-	};
-
 	return (
-		<>
-			<script
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-			/>
+		<ToolTemplate
+			pagefindType="tool"
+			width="wide"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Tools", href: "/tools/" },
+					{ label: "Cyprus Weather & Climate" },
+				],
+				eyebrow: "Lifestyle",
+				title: "Cyprus Weather & Climate",
+				intro:
+					"340+ sunny days a year, warm summers, and mild winters. Explore Cyprus month by month and compare against cities you know.",
+			}}
+			nextSteps={[
+				{ href: "/guides/cost-of-living/", label: "Cost of Living Guide" },
+				{ href: "/tools/", label: "All tools" },
+			]}
+			disclaimer={
+				"Climate data represents long-term historical averages and is for general guidance only, not a forecast. Actual conditions vary by year, elevation, and location within Cyprus."
+			}
+		>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
@@ -49,6 +52,6 @@ export default function WeatherClimatePage() {
 				}}
 			/>
 			<WeatherClimateClient />
-		</>
+		</ToolTemplate>
 	);
 }

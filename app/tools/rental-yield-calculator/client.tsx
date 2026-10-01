@@ -1,7 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useId, useMemo, useState } from "react";
+import { ToolPanel } from "@/components/templates/ToolTemplate";
+import { Callout } from "@/components/ui/Callout";
+import { ChipGroup } from "@/components/ui/Chip";
+import { DataTable, StatCard } from "@/components/ui/DataTable";
 
 interface Inputs {
 	purchasePrice: number;
@@ -116,26 +119,28 @@ function SliderInput({
 	display: string;
 	note?: string;
 }) {
+	const id = useId();
 	return (
 		<div className="flex flex-col gap-1.5">
 			<div className="flex items-baseline justify-between gap-2">
-				<label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
+				<label htmlFor={id} className="text-sm font-semibold text-ink">
 					{label}
 				</label>
-				<span className="text-sm font-bold text-ink tabular-nums">
+				<span className="text-base font-bold tabular-nums text-ink">
 					{display}
 				</span>
 			</div>
 			<input
+				id={id}
 				type="range"
 				min={min}
 				max={max}
 				step={step}
 				value={value}
 				onChange={(e) => onChange(Number(e.target.value))}
-				className="w-full accent-primary"
+				className="h-6 w-full accent-primary"
 			/>
-			<div className="flex justify-between text-xs text-muted">
+			<div className="flex justify-between text-sm text-muted">
 				<span>
 					{typeof min === "number" && min >= 1000
 						? "€" + min.toLocaleString("en-IE")
@@ -147,7 +152,7 @@ function SliderInput({
 						: max}
 				</span>
 			</div>
-			{note && <p className="text-xs text-muted -mt-0.5">{note}</p>}
+			{note && <p className="text-sm text-muted">{note}</p>}
 		</div>
 	);
 }
@@ -182,45 +187,10 @@ export default function RentalYieldCalculatorClient() {
 		propertyTax,
 	} = results;
 
-	const horizonOptions: Array<5 | 10 | 15> = [5, 10, 15];
-
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="tool"
-			className="max-w-3xl mx-auto px-6 py-10 md:py-16"
-		>
-			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-primary">
-					Home
-				</Link>{" "}
-				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-primary">
-					Tools
-				</Link>{" "}
-				&rsaquo; <span>Rental Yield Calculator</span>
-			</nav>
-
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
-					Finance Tools
-				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Cyprus Rental Yield Calculator
-				</h1>
-				<p className="mt-3 text-slate-600 text-sm leading-relaxed">
-					Calculate gross yield, net yield, annual cash flow, and total return
-					for a Cyprus buy-to-let investment. Models appreciation and expenses
-					over up to 15 years.
-				</p>
-			</header>
-
-			{/* Inputs */}
-			<section className="p-5 bg-sky rounded-2xl border border-line mb-8">
-				<h2 className="text-sm font-bold text-ink mb-5">Property inputs</h2>
-				<div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+		<div className="flex flex-col gap-6">
+			<ToolPanel title="Property inputs">
+				<div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
 					<SliderInput
 						label="Purchase price"
 						value={inputs.purchasePrice}
@@ -260,15 +230,15 @@ export default function RentalYieldCalculatorClient() {
 					/>
 					<div className="flex flex-col gap-1.5">
 						<div className="flex items-baseline justify-between gap-2">
-							<label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
+							<p className="text-sm font-semibold text-ink">
 								Property tax (IPT)
-							</label>
-							<span className="text-sm font-bold text-ink tabular-nums">
+							</p>
+							<span className="text-base font-bold tabular-nums text-ink">
 								{fmt(propertyTax)}/yr
 							</span>
 						</div>
-						<p className="text-xs text-muted">
-							0.1% of purchase price — calculated automatically
+						<p className="text-sm text-muted">
+							0.1% of purchase price, calculated automatically
 						</p>
 					</div>
 					<SliderInput
@@ -289,225 +259,87 @@ export default function RentalYieldCalculatorClient() {
 						step={0.5}
 						display={fmtPct(inputs.appreciationPct)}
 					/>
-					<div className="flex flex-col gap-1.5">
-						<label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
-							Investment horizon
-						</label>
-						<div className="flex gap-2">
-							{horizonOptions.map((h) => (
-								<button
-									key={h}
-									type="button"
-									onClick={() => set("horizon")(h)}
-									className={`flex-1 py-2 rounded-xl text-sm font-semibold border transition-colors ${
-										inputs.horizon === h
-											? "bg-primary text-white border-primary"
-											: "bg-white text-slate-600 border-line hover:border-primary"
-									}`}
-								>
-									{h} yr
-								</button>
-							))}
-						</div>
-					</div>
+					<ChipGroup
+						label="Investment horizon"
+						options={([5, 10, 15] as const).map((h) => ({
+							value: String(h),
+							label: `${h} yr`,
+						}))}
+						value={String(inputs.horizon)}
+						onChange={(v) => set("horizon")(Number(v) as 5 | 10 | 15)}
+					/>
 				</div>
-			</section>
+			</ToolPanel>
 
-			{/* Summary card */}
-			<section className="mb-8">
-				<h2 className="text-sm font-bold text-ink mb-4">Results summary</h2>
-				<div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
-					<div className="p-4 rounded-2xl border border-line bg-white text-center">
-						<p className="text-xs text-muted uppercase tracking-wide mb-1">
-							Gross yield
-						</p>
-						<p className="text-2xl font-bold" style={{ color: "#087f98" }}>
-							{fmtPct(grossYieldPct)}
-						</p>
-					</div>
-					<div className="p-4 rounded-2xl border border-line bg-white text-center">
-						<p className="text-xs text-muted uppercase tracking-wide mb-1">
-							Net yield
-						</p>
-						<p
-							className={`text-2xl font-bold ${netYieldPct >= 0 ? "text-ink" : "text-red-600"}`}
-						>
-							{fmtPct(netYieldPct)}
-						</p>
-					</div>
-					<div className="p-4 rounded-2xl border border-line bg-white text-center">
-						<p className="text-xs text-muted uppercase tracking-wide mb-1">
-							Annual cash flow
-						</p>
-						<p
-							className={`text-2xl font-bold ${annualCashFlow >= 0 ? "text-ink" : "text-red-600"}`}
-						>
-							{fmt(annualCashFlow)}
-						</p>
-					</div>
-					<div className="p-4 rounded-2xl border border-line bg-white text-center">
-						<p className="text-xs text-muted uppercase tracking-wide mb-1">
-							Break-even
-						</p>
-						<p className="text-2xl font-bold text-ink">
-							{breakEvenYears !== null
+			<section aria-labelledby="yield-results" className="space-y-4">
+				<h2
+					id="yield-results"
+					className="text-2xl font-bold tracking-tight text-ink"
+				>
+					Results summary
+				</h2>
+				<div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+					<StatCard
+						highlight
+						label="Gross yield"
+						value={fmtPct(grossYieldPct)}
+					/>
+					<StatCard label="Net yield" value={fmtPct(netYieldPct)} />
+					<StatCard label="Annual cash flow" value={fmt(annualCashFlow)} />
+					<StatCard
+						label="Break-even"
+						value={
+							breakEvenYears !== null
 								? breakEvenYears <= 99
 									? `${Math.ceil(breakEvenYears)} yr`
 									: "100+ yr"
-								: "N/A"}
-						</p>
-					</div>
+								: "N/A"
+						}
+					/>
 				</div>
-
-				<div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-					<div className="p-4 rounded-2xl border border-line bg-white">
-						<p className="text-xs text-muted uppercase tracking-wide mb-1">
-							Annual expenses
-						</p>
-						<p className="text-xl font-bold text-ink">{fmt(annualExpenses)}</p>
-						<p className="text-xs text-muted mt-1">
-							Management + maintenance + IPT + vacancy
-						</p>
-					</div>
-					<div className="p-4 rounded-2xl border border-line bg-white">
-						<p className="text-xs text-muted uppercase tracking-wide mb-1">
-							Total return ({inputs.horizon} yr)
-						</p>
-						<p
-							className={`text-xl font-bold ${totalReturnAtHorizon >= 0 ? "text-ink" : "text-red-600"}`}
-						>
-							{fmt(totalReturnAtHorizon)}
-						</p>
-						<p className="text-xs text-muted mt-1">
-							Cash flow income + appreciation gain
-						</p>
-					</div>
-					<div className="p-4 rounded-2xl border border-line bg-white">
-						<p className="text-xs text-muted uppercase tracking-wide mb-1">
-							Annualised return
-						</p>
-						<p
-							className={`text-xl font-bold ${annualisedReturnPct >= 0 ? "text-ink" : "text-red-600"}`}
-						>
-							{fmtPct(annualisedReturnPct)}
-						</p>
-						<p className="text-xs text-muted mt-1">
-							IRR approximation over {inputs.horizon} years
-						</p>
-					</div>
+				<div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+					<StatCard
+						label="Annual expenses"
+						value={fmt(annualExpenses)}
+						hint="Management + maintenance + IPT + vacancy"
+					/>
+					<StatCard
+						label={`Total return (${inputs.horizon} yr)`}
+						value={fmt(totalReturnAtHorizon)}
+						hint="Cash flow income + appreciation gain"
+					/>
+					<StatCard
+						label="Annualised return"
+						value={fmtPct(annualisedReturnPct)}
+						hint={`IRR approximation over ${inputs.horizon} years`}
+					/>
 				</div>
 			</section>
 
-			{/* Year-by-year table */}
-			<section className="mb-8">
-				<h2 className="text-sm font-bold text-ink mb-3">
-					Year-by-year projection
-				</h2>
-				<div className="overflow-x-auto rounded-xl border border-line">
-					<table className="w-full text-xs">
-						<thead>
-							<tr className="bg-sky text-muted uppercase tracking-wide">
-								<th className="px-3 py-2.5 text-left font-semibold">Year</th>
-								<th className="px-3 py-2.5 text-right font-semibold">
-									Cum. rent income
-								</th>
-								<th className="px-3 py-2.5 text-right font-semibold">
-									Property value
-								</th>
-								<th className="px-3 py-2.5 text-right font-semibold">
-									Cum. total gain
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							{rows.map((row) => (
-								<tr
-									key={row.year}
-									className="border-t border-line hover:bg-sky"
-								>
-									<td className="px-3 py-2 font-medium text-slate-700">
-										Year {row.year}
-									</td>
-									<td
-										className={`px-3 py-2 text-right tabular-nums ${row.cumRentIncome >= 0 ? "text-slate-700" : "text-red-600"}`}
-									>
-										{fmt(row.cumRentIncome)}
-									</td>
-									<td
-										className="px-3 py-2 text-right tabular-nums"
-										style={{ color: "#087f98" }}
-									>
-										{fmt(row.propertyValue)}
-									</td>
-									<td
-										className={`px-3 py-2 text-right tabular-nums font-semibold ${row.cumTotalGain >= 0 ? "text-ink" : "text-red-600"}`}
-									>
-										{fmt(row.cumTotalGain)}
-									</td>
-								</tr>
-							))}
-						</tbody>
-					</table>
-				</div>
-			</section>
+			<DataTable
+				caption="Year-by-year projection"
+				columns={[
+					{ header: "Year" },
+					{ header: "Cum. rent income", align: "right" },
+					{ header: "Property value", align: "right" },
+					{ header: "Cum. total gain", align: "right" },
+				]}
+				rows={rows.map((row) => [
+					`Year ${row.year}`,
+					fmt(row.cumRentIncome),
+					fmt(row.propertyValue),
+					fmt(row.cumTotalGain),
+				])}
+				zebra
+			/>
 
-			{/* IPT context box */}
-			<aside className="mb-6 p-5 bg-sky border border-line rounded-2xl text-sm text-slate-700 leading-relaxed">
-				<p className="font-semibold text-ink mb-2">
-					Cyprus IPT &amp; rental tax notes
-				</p>
-				<p>
-					Cyprus IPT (Immovable Property Tax) is assessed by local
-					municipalities and is typically 0.1–0.2% of the government-assessed
-					value, which is usually below market price. Non-resident landlords pay
-					income tax on rental income at progressive rates. Verify current rates
-					with a Cyprus accountant.
-				</p>
-			</aside>
-
-			{/* Next steps */}
-			<aside className="mb-8 p-5 bg-sky border border-line rounded-2xl">
-				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-					Next steps
-				</p>
-				<div className="flex flex-wrap gap-3">
-					<Link
-						href="/sections/property-management/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Find a property manager
-					</Link>
-					<Link
-						href="/guides/buying-process/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Read: Buying Process Guide
-					</Link>
-					<Link
-						href="/tools/rent-vs-buy-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Rent vs Buy Calculator
-					</Link>
-				</div>
-			</aside>
-
-			{/* Disclaimer */}
-			<aside className="mb-8 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
-				<p className="font-semibold text-ink mb-1">Disclaimer</p>
-				<p>
-					This calculator provides general estimates for illustrative purposes
-					only and does not constitute financial or tax advice. Yields,
-					expenses, and appreciation rates vary significantly by location and
-					property type. Always verify IPT rates, rental income tax obligations,
-					and market conditions with a qualified Cyprus accountant before making
-					investment decisions.
-				</p>
-			</aside>
-
-			<Link href="/tools/" className="underline hover:text-primary text-sm">
-				&larr; Back to Tools
-			</Link>
-		</main>
+			<Callout title="Cyprus IPT and rental tax notes">
+				Cyprus IPT (Immovable Property Tax) is assessed by local municipalities
+				and is typically 0.1–0.2% of the government-assessed value, which is
+				usually below market price. Non-resident landlords pay income tax on
+				rental income at progressive rates. Verify current rates with a Cyprus
+				accountant.
+			</Callout>
+		</div>
 	);
 }

@@ -1,7 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useCallback, useState } from "react";
+import { Badge } from "@/components/ui/Badge";
+import { Chip, ChipGroup } from "@/components/ui/Chip";
+import { DataTable } from "@/components/ui/DataTable";
+import { CHART_COLORS } from "@/lib/chart-colors";
 
 // ── data ─────────────────────────────────────────────────────────────────────
 
@@ -18,10 +21,10 @@ const CITIES = ["Limassol", "Paphos", "Larnaca", "Ayia Napa"] as const;
 type City = (typeof CITIES)[number];
 
 const CITY_COLOURS: Record<City, string> = {
-	Limassol: "#087f98",
-	Paphos: "#fa794d",
-	Larnaca: "#6d4ab3",
-	"Ayia Napa": "#0b2145",
+	Limassol: CHART_COLORS.primary,
+	Paphos: CHART_COLORS.coralFill,
+	Larnaca: CHART_COLORS.blue,
+	"Ayia Napa": CHART_COLORS.ink,
 };
 
 type DataSet = {
@@ -73,17 +76,9 @@ const CHART_H = VB_H - PAD.top - PAD.bottom;
 // ── helpers ───────────────────────────────────────────────────────────────────
 
 function pct(val: number, base: number) {
-	if (base === 0) return "—";
+	if (base === 0) return "n/a";
 	const p = Math.round(((val - base) / base) * 100);
 	return (p >= 0 ? "+" : "") + p + "%";
-}
-
-function changeColour(val: number, base: number): string {
-	if (base === 0) return "";
-	const p = ((val - base) / base) * 100;
-	if (p < 20) return "bg-green-100 text-green-800";
-	if (p <= 60) return "bg-amber-100 text-amber-900";
-	return "bg-red-100 text-red-800";
 }
 
 // ── SVG Line Chart ────────────────────────────────────────────────────────────
@@ -343,166 +338,94 @@ export default function RentalPriceTrendsClient() {
 	const idx2023 = 2;
 
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="tool"
-			className="max-w-4xl mx-auto px-6 py-10 md:py-16"
-		>
-			{/* breadcrumb */}
-			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-primary">
-					Home
-				</Link>{" "}
-				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-primary">
-					Tools
-				</Link>{" "}
-				&rsaquo; <span className="text-ink">Cyprus Rental Price Trends</span>
-			</nav>
+		<div className="flex flex-col gap-6">
+			<section
+				aria-label="Chart options"
+				className="space-y-5 rounded-card border border-line bg-white p-5 shadow-rc md:p-6"
+			>
+				<ChipGroup
+					label="Bedrooms"
+					options={(["1BR", "2BR", "3BR"] as BRType[]).map((t) => ({
+						value: t,
+						label: t,
+					}))}
+					value={brType}
+					onChange={setBrType}
+				/>
 
-			{/* header */}
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
-					Research
-				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Cyprus Rental Price Trends
-				</h1>
-				<p className="mt-3 text-slate-600 text-sm leading-relaxed max-w-2xl">
-					Monthly asking rents across Limassol, Paphos, Larnaca, and Ayia Napa
-					from 2021 to 2025. Select a bedroom type and toggle cities to explore
-					the data.
-				</p>
-			</header>
+				<fieldset className="min-w-0">
+					<legend className="mb-2 text-sm font-semibold text-ink">
+						Cities shown
+					</legend>
+					<div className="flex flex-wrap gap-2">
+						{CITIES.map((city) => {
+							const active = activeCities.has(city);
+							return (
+								<Chip
+									key={city}
+									selected={active}
+									onClick={() => toggleCity(city)}
+								>
+									<span
+										aria-hidden="true"
+										className="mr-2 inline-block h-3 w-3 shrink-0 rounded-full border-2 border-white"
+										style={{ background: CITY_COLOURS[city] }}
+									/>
+									{city}
+								</Chip>
+							);
+						})}
+					</div>
+				</fieldset>
+			</section>
 
-			{/* bedroom type toggle */}
-			<div className="flex gap-2 mb-5">
-				{(["1BR", "2BR", "3BR"] as BRType[]).map((t) => (
-					<button
-						key={t}
-						type="button"
-						onClick={() => setBrType(t)}
-						className={`px-5 py-2 rounded-xl text-sm font-semibold transition-colors ${
-							brType === t
-								? "bg-primary text-white"
-								: "bg-white border border-line text-slate-700 hover:border-primary"
-						}`}
-					>
-						{t}
-					</button>
-				))}
-			</div>
-
-			{/* city toggles */}
-			<div className="flex flex-wrap gap-2 mb-6">
-				{CITIES.map((city) => {
-					const active = activeCities.has(city);
-					return (
-						<button
-							key={city}
-							type="button"
-							onClick={() => toggleCity(city)}
-							className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold border transition-all ${
-								active
-									? "border-2 bg-sky text-ink"
-									: "bg-white border-line text-muted"
-							}`}
-							style={active ? { borderColor: CITY_COLOURS[city] } : {}}
-						>
-							<span
-								className="w-2 h-2 rounded-full inline-block"
-								style={{
-									background: CITY_COLOURS[city],
-								}}
-							/>
-							{city}
-						</button>
-					);
-				})}
-			</div>
-
-			{/* chart */}
-			<section className="p-4 bg-white border border-line rounded-2xl mb-8 overflow-hidden">
-				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-					Average monthly asking rent (EUR) — {brType} apartments
-				</p>
+			<section
+				aria-label="Rental price chart"
+				className="rounded-card border border-line bg-white p-4 shadow-rc"
+			>
+				<h2 className="mb-3 text-base font-bold text-ink">
+					Average monthly asking rent (EUR), {brType} apartments
+				</h2>
 				<LineChart data={data} activeCities={activeCities} />
 			</section>
 
-			{/* summary stats table */}
-			<section className="mb-8">
-				<h2 className="text-sm font-bold text-ink mb-3">
-					Summary — {brType} apartments (2025 H2 estimate)
-				</h2>
-				{/* biome-ignore lint/a11y/useSemanticElements: keyboard access for scrollable regions (axe scrollable-region-focusable) */}
-				<div
-					// biome-ignore lint/a11y/noNoninteractiveTabindex: keyboard access for scrollable regions (axe scrollable-region-focusable)
-					tabIndex={0}
-					role="region"
-					aria-label="Rental price table"
-					className="overflow-x-auto rounded-xl border border-line"
-				>
-					<table className="w-full text-xs">
-						<thead>
-							<tr className="bg-sky text-muted uppercase tracking-wide text-xs">
-								<th className="px-4 py-2.5 text-left font-semibold">City</th>
-								<th className="px-4 py-2.5 text-right font-semibold">
-									Current avg
-								</th>
-								<th className="px-4 py-2.5 text-right font-semibold">
-									vs 2021
-								</th>
-								<th className="px-4 py-2.5 text-right font-semibold">
-									vs 2023
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							{CITIES.map((city) => {
-								const cur = data[city][lastIdx];
-								const base2021 = data[city][idx2021];
-								const base2023 = data[city][idx2023];
-								return (
-									<tr key={city} className="border-t border-line hover:bg-sky">
-										<td className="px-4 py-2.5">
-											<span className="flex items-center gap-2 font-semibold text-ink">
-												<span
-													className="w-2.5 h-2.5 rounded-full inline-block flex-shrink-0"
-													style={{ background: CITY_COLOURS[city] }}
-												/>
-												{city}
-											</span>
-										</td>
-										<td className="px-4 py-2.5 text-right font-bold text-ink">
-											€{cur.toLocaleString()}/mo
-										</td>
-										<td className="px-4 py-2.5 text-right">
-											<span
-												className={`px-2 py-0.5 rounded-full font-semibold ${changeColour(cur, base2021)}`}
-											>
-												{pct(cur, base2021)}
-											</span>
-										</td>
-										<td className="px-4 py-2.5 text-right">
-											<span
-												className={`px-2 py-0.5 rounded-full font-semibold ${changeColour(cur, base2023)}`}
-											>
-												{pct(cur, base2023)}
-											</span>
-										</td>
-									</tr>
-								);
-							})}
-						</tbody>
-					</table>
-				</div>
-			</section>
+			<DataTable
+				caption={`Summary for ${brType} apartments (2025 H2 estimate)`}
+				columns={[
+					{ header: "City" },
+					{ header: "Current avg", align: "right" },
+					{ header: "vs 2021", align: "right" },
+					{ header: "vs 2023", align: "right" },
+				]}
+				rows={CITIES.map((city) => {
+					const cur = data[city][lastIdx];
+					const base2021 = data[city][idx2021];
+					const base2023 = data[city][idx2023];
+					return [
+						<span key="c" className="inline-flex items-center gap-2">
+							<span
+								aria-hidden="true"
+								className="inline-block h-3 w-3 shrink-0 rounded-full"
+								style={{ background: CITY_COLOURS[city] }}
+							/>
+							{city}
+						</span>,
+						<span key="a" className="font-bold">
+							€{cur.toLocaleString()}/mo
+						</span>,
+						<Badge key="b">{pct(cur, base2021)}</Badge>,
+						<Badge key="d">{pct(cur, base2023)}</Badge>,
+					];
+				})}
+			/>
 
-			{/* context callout */}
-			<aside className="mb-8 p-5 bg-sky border border-line rounded-2xl text-sm text-slate-700 leading-relaxed">
-				<p className="font-semibold text-ink mb-2">What is driving rents up?</p>
+			<section
+				aria-labelledby="rent-drivers"
+				className="rounded-card border border-line bg-sky p-5 text-base leading-relaxed text-ink"
+			>
+				<h2 id="rent-drivers" className="mb-2 text-lg font-bold">
+					What is driving rents up?
+				</h2>
 				<p>
 					Cyprus rents have risen 60&ndash;85% since 2021. The main drivers:
 					arrival of tens of thousands of tech workers (primarily from Russia,
@@ -510,51 +433,7 @@ export default function RentalPriceTrendsClient() {
 					construction costs. Limassol has seen the steepest increases; Larnaca
 					remains the most affordable major city.
 				</p>
-			</aside>
-
-			{/* related tools */}
-			<aside className="mb-8 p-5 bg-sky border border-line rounded-2xl">
-				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-					Related tools
-				</p>
-				<div className="flex flex-wrap gap-3">
-					<Link
-						href="/tools/rent-vs-buy-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Rent vs Buy Calculator
-					</Link>
-					<Link
-						href="/tools/rental-yield-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Rental Yield Calculator
-					</Link>
-					<Link
-						href="/tools/mortgage-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Mortgage Calculator
-					</Link>
-				</div>
-			</aside>
-
-			{/* data disclaimer */}
-			<aside className="mt-4 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
-				<p className="font-semibold text-ink mb-1">Data disclaimer</p>
-				<p>
-					Figures are estimates based on aggregated public market data. Actual
-					rents depend heavily on exact location, condition, furnishing, and
-					negotiation. General information only &mdash; not legal, tax, or
-					financial advice.
-				</p>
-			</aside>
-
-			<p className="mt-8 text-xs text-muted">
-				<Link href="/tools/" className="underline hover:text-primary">
-					&larr; Back to Tools
-				</Link>
-			</p>
-		</main>
+			</section>
+		</div>
 	);
 }

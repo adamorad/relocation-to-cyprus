@@ -6,13 +6,24 @@ import MortgageCalculatorClient from "@/app/tools/mortgage-calculator/client";
 import RentVsBuyPage from "@/app/tools/rent-vs-buy-calculator/client";
 import SocialInsuranceCalculatorPage from "@/app/tools/social-insurance-calculator/client";
 import TaxSavingsCalculatorClient from "@/app/tools/tax-savings-calculator/client";
-import { EmailCapture } from "@/components/EmailCapture";
 import { EmbeddedTool } from "@/components/EmbeddedTool";
 import { MetaPixelEvent } from "@/components/MetaPixelEvent";
 import { ShareBar } from "@/components/ShareBar";
+import { ArticleTemplate } from "@/components/templates/ArticleTemplate";
+import { Badge } from "@/components/ui/Badge";
+import { ButtonLink } from "@/components/ui/Button";
+import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
+import { Container } from "@/components/ui/Container";
+import { InfoCards } from "@/components/ui/InfoCards";
+import { Section } from "@/components/ui/Section";
 import { AUTHORS, CATEGORY_AUTHOR } from "@/lib/authors";
 import { GUIDE_REDIRECTS } from "@/lib/guide-redirects";
-import { GUIDES, type GuideCategory, guideBySlug } from "@/lib/guides";
+import {
+	GUIDE_CATEGORY_LABEL,
+	GUIDES,
+	type GuideCategory,
+	guideBySlug,
+} from "@/lib/guides";
 import { SECTIONS_INDEX } from "@/lib/sections-index";
 
 const SITE_URL = "https://realcy.app";
@@ -140,7 +151,7 @@ const GUIDE_EMBEDS: Record<
 	tax: {
 		title: "Estimate your Cyprus tax saving",
 		subtitle:
-			"Compare your current country's tax burden against Cyprus Non-Dom — live, no sign-up.",
+			"Compare your current country's tax burden against Cyprus Non-Dom. Live, no sign-up.",
 		href: "/tools/tax-savings-calculator/",
 		Comp: TaxSavingsCalculatorClient,
 	},
@@ -233,23 +244,25 @@ export default async function GuidePage({
 	if (redirectTarget) {
 		const url = `/guides/${redirectTarget}/`;
 		return (
-			<main id="main" className="max-w-xl mx-auto px-6 py-16 text-center">
-				<meta httpEquiv="refresh" content={`0; url=${url}`} />
-				<script
-					// biome-ignore lint/security/noDangerouslySetInnerHtml: static-export redirect
-					dangerouslySetInnerHTML={{
-						__html: `location.replace(${JSON.stringify(url)});`,
-					}}
-				/>
-				<p className="text-slate-600">
-					This guide has moved.{" "}
-					<Link
-						href={url}
-						className="text-primary font-medium underline underline-offset-2 hover:text-primary-hover"
-					>
-						Continue to the current guide
-					</Link>
-				</p>
+			<main id="main">
+				<Container width="reading" className="py-16 text-center">
+					<meta httpEquiv="refresh" content={`0; url=${url}`} />
+					<script
+						// biome-ignore lint/security/noDangerouslySetInnerHtml: static-export redirect
+						dangerouslySetInnerHTML={{
+							__html: `location.replace(${JSON.stringify(url)});`,
+						}}
+					/>
+					<p className="text-muted">
+						This guide has moved.{" "}
+						<Link
+							href={url}
+							className="text-primary font-medium underline underline-offset-2 hover:text-primary-hover"
+						>
+							Continue to the current guide
+						</Link>
+					</p>
+				</Container>
 			</main>
 		);
 	}
@@ -300,20 +313,6 @@ export default async function GuidePage({
 			"@id": `${SITE_URL}/guides/${g.slug}/`,
 		},
 	};
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Map", item: `${SITE_URL}/` },
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Guides",
-				item: `${SITE_URL}/guides/`,
-			},
-			{ "@type": "ListItem", position: 3, name: g.title },
-		],
-	};
 	const faqJsonLd =
 		g.faqs && g.faqs.length > 0
 			? {
@@ -327,13 +326,133 @@ export default async function GuidePage({
 				}
 			: null;
 
+	const lastReviewed = new Date(
+		`${g.dateModified}T00:00:00Z`,
+	).toLocaleDateString("en-GB", {
+		month: "long",
+		year: "numeric",
+		timeZone: "UTC",
+	});
+	const toc =
+		g.sections.length > 2
+			? g.sections.map((s) => ({ id: toId(s.heading), label: s.heading }))
+			: undefined;
+	const relatedCards = [
+		...relatedGuides.map((guide) => ({
+			key: `g-${guide.slug}`,
+			href: `/guides/${guide.slug}/`,
+			title: guide.title,
+			text: guide.description,
+			kind: "Guide",
+			icon: undefined,
+		})),
+		...relatedTools.map((t) => ({
+			key: `t-${t.slug}`,
+			href: `/tools/${t.slug}/`,
+			title: t.title,
+			text: undefined,
+			kind: "Tool",
+			icon: "budget" as const,
+		})),
+		...relatedSections.map((sec) => ({
+			key: `s-${sec.slug}`,
+			href: `/sections/${sec.slug}/`,
+			title: sec.name,
+			text: undefined,
+			kind: "Directory",
+			icon: "pin" as const,
+		})),
+	];
+
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="guide"
-			className="max-w-3xl mx-auto px-6 py-10"
+		<ArticleTemplate
+			pagefindType="guide"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Guides", href: "/guides/" },
+					{ label: g.title },
+				],
+				eyebrow: GUIDE_CATEGORY_LABEL[g.category],
+				title: g.title,
+				intro: g.description,
+				meta: (
+					<>
+						By <span className="font-semibold text-ink">{author.name}</span>
+						{" · "}
+						{author.role}
+						{" · "}Last reviewed {lastReviewed}
+						{" · "}
+						{readingMinutes} min read
+					</>
+				),
+			}}
+			hero={g.heroImage ? { src: g.heroImage, alt: g.title } : undefined}
+			share={<ShareBar url={canonicalUrl} title={g.title} guideSlug={g.slug} />}
+			toc={toc}
+			afterBody={
+				g.faqs && g.faqs.length > 0 ? (
+					<Section
+						id="faq"
+						title="Frequently asked questions"
+						className="!mt-12"
+					>
+						<InfoCards
+							items={g.faqs.map((faq) => ({ heading: faq.q, body: faq.a }))}
+							columns={1}
+						/>
+					</Section>
+				) : null
+			}
+			related={
+				relatedCards.length > 0 ? (
+					<div data-pagefind-ignore>
+						<Section id="related" title="Related reading and tools">
+							{(["text", "row"] as const).map((v) => {
+								const cards = relatedCards.filter((c) =>
+									v === "text" ? !c.icon : !!c.icon,
+								);
+								return cards.length > 0 ? (
+									<CardGrid
+										key={v}
+										cols={2}
+										className={v === "row" ? "mt-4" : ""}
+									>
+										{cards.map((c) => (
+											<CardGridItem key={c.key}>
+												<Card
+													variant={v}
+													href={c.href}
+													icon={c.icon}
+													eyebrow={<Badge>{c.kind}</Badge>}
+													title={c.title}
+													text={
+														c.text ? (
+															<span className="line-clamp-2">{c.text}</span>
+														) : undefined
+													}
+												/>
+											</CardGridItem>
+										))}
+									</CardGrid>
+								) : null;
+							})}
+						</Section>
+						<p className="mt-6">
+							<ButtonLink href="/guides/" variant="secondary">
+								All guides
+							</ButtonLink>
+						</p>
+					</div>
+				) : null
+			}
+			legal={
+				<>
+					This is general information, not legal or tax advice. Cyprus rules
+					change frequently, so verify with the relevant Cypriot government
+					department and a local advisor before acting.
+				</>
+			}
 		>
 			<MetaPixelEvent
 				event="ViewContent"
@@ -345,223 +464,28 @@ export default async function GuidePage({
 				dangerouslySetInnerHTML={{
 					__html: JSON.stringify([
 						articleJsonLd,
-						breadcrumbJsonLd,
 						...(faqJsonLd ? [faqJsonLd] : []),
 					]),
 				}}
 			/>
-			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-ink">
-					Home
-				</Link>{" "}
-				›{" "}
-				<Link href="/guides/" className="hover:text-ink">
-					Guides
-				</Link>{" "}
-				› <span className="text-ink">{g.title}</span>
-			</nav>
-
-			<header>
-				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
-					Relocation guide
-				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight leading-tight text-ink">
-					{g.title}
-				</h1>
-				<p className="mt-3 text-base text-slate-600">{g.description}</p>
-				<p className="mt-3 text-xs text-muted">
-					By <span className="font-semibold text-slate-600">{author.name}</span>
-					{" · "}
-					{author.role}
-					{" · "}Last reviewed{" "}
-					{new Date(g.dateModified + "T00:00:00Z").toLocaleDateString("en-GB", {
-						month: "long",
-						year: "numeric",
-						timeZone: "UTC",
-					})}
-					{" · "}
-					{readingMinutes} min read
-				</p>
-			</header>
-
-			{g.heroImage && (
-				<div className="mt-6 rounded-2xl overflow-hidden">
-					<img
-						src={g.heroImage}
-						alt={g.title}
-						className="w-full aspect-[2/1] object-cover"
-						loading="eager"
-						fetchPriority="high"
-						width={1200}
-						height={630}
-					/>
-				</div>
-			)}
-
-			<ShareBar url={canonicalUrl} title={g.title} guideSlug={g.slug} />
-
-			{g.sections.length > 2 && (
-				<nav
-					aria-label="In this guide"
-					className="mt-6 mb-2 p-4 bg-sky border border-line rounded-2xl text-sm"
-				>
-					<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-2">
-						In this guide
-					</p>
-					<ol className="space-y-1 list-decimal list-inside">
-						{g.sections.map((s) => (
-							<li key={s.heading}>
-								<a
-									href={`#${toId(s.heading)}`}
-									className="text-primary hover:text-primary-hover underline"
-								>
-									{s.heading}
-								</a>
-							</li>
-						))}
-					</ol>
-				</nav>
-			)}
-
-			<article className="guide-body mt-8 prose prose-slate max-w-none">
-				{g.sections.map((s, i) => (
-					<Fragment key={s.heading}>
-						<section id={toId(s.heading)}>
-							<h2>{s.heading}</h2>
-							<p className="whitespace-pre-line">{renderBody(s.body)}</p>
-						</section>
-						{embed && EmbedComp && i === 1 && (
-							<EmbeddedTool
-								title={embed.title}
-								subtitle={embed.subtitle}
-								toolHref={embed.href}
-								toolLabel="Open the full calculator"
-							>
-								<EmbedComp embedded />
-							</EmbeddedTool>
-						)}
-					</Fragment>
-				))}
-			</article>
-
-			{relatedTools.length > 0 && (
-				<aside
-					data-pagefind-ignore
-					className="mt-4 p-4 bg-sky border border-line rounded-2xl"
-				>
-					<p className="text-xs font-semibold text-primary uppercase tracking-wider mb-3">
-						Related tools
-					</p>
-					<div className="flex flex-wrap gap-2">
-						{relatedTools.map((t) => (
-							<Link
-								key={t.slug}
-								href={`/tools/${t.slug}/`}
-								className="text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-line text-ink hover:bg-primary hover:border-primary hover:text-white min-h-11 inline-flex items-center transition-colors"
-							>
-								{t.title}
-							</Link>
-						))}
-					</div>
-				</aside>
-			)}
-
-			{relatedSections.length > 0 && (
-				<aside
-					data-pagefind-ignore
-					className="mt-4 p-4 bg-sky border border-line rounded-2xl"
-				>
-					<p className="text-xs font-semibold text-primary uppercase tracking-wider mb-3">
-						Related directories
-					</p>
-					<div className="flex flex-wrap gap-2">
-						{relatedSections.map((s) => (
-							<Link
-								key={s.slug}
-								href={`/sections/${s.slug}/`}
-								className="text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-line text-ink hover:bg-primary hover:border-primary hover:text-white min-h-11 inline-flex items-center transition-colors"
-							>
-								{s.name}
-							</Link>
-						))}
-					</div>
-				</aside>
-			)}
-
-			{relatedGuides.length > 0 && (
-				<aside
-					data-pagefind-ignore
-					className="mt-4 p-4 bg-sky border border-line rounded-2xl"
-				>
-					<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-						More guides in this category
-					</p>
-					<div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-						{relatedGuides.map((guide) => (
-							<Link
-								key={guide.slug}
-								href={`/guides/${guide.slug}/`}
-								className="flex items-start gap-2 p-3 bg-white border border-line rounded-2xl hover:border-primary hover:bg-sky transition-colors group"
-							>
-								<span className="flex-1 text-xs font-semibold text-ink group-hover:text-primary line-clamp-2">
-									{guide.title}
-								</span>
-							</Link>
-						))}
-					</div>
-				</aside>
-			)}
-
-			<aside
-				data-pagefind-ignore
-				className="mt-6 p-5 bg-ink rounded-2xl text-white"
-			>
-				<p className="text-sm font-semibold mb-1">
-					Get the free Cyprus Relocation Checklist
-				</p>
-				<p className="text-xs text-white/80">
-					Week-by-week guide for your first month. Free.
-				</p>
-				<EmailCapture compact />
-			</aside>
-
-			{g.faqs && g.faqs.length > 0 ? (
-				<section className="mt-10">
-					<h2 className="text-xl font-bold text-ink mb-4">
-						Frequently asked questions
-					</h2>
-					<div className="space-y-4">
-						{g.faqs.map((faq) => (
-							<details
-								key={faq.q}
-								className="group border border-line rounded-2xl"
-							>
-								<summary className="flex items-center justify-between px-4 py-3 cursor-pointer font-semibold text-sm text-ink list-none hover:bg-sky">
-									{faq.q}
-									<span className="ml-3 text-muted group-open:rotate-180 transition-transform">
-										▾
-									</span>
-								</summary>
-								<div className="px-4 pb-4 pt-1 text-sm text-slate-700 leading-relaxed">
-									{faq.a}
-								</div>
-							</details>
-						))}
-					</div>
-				</section>
-			) : null}
-
-			<aside className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-xs text-amber-900">
-				This is general information, not legal or tax advice. Cyprus rules
-				change frequently — verify with the relevant Cypriot government
-				department and a local advisor before acting.
-			</aside>
-
-			<p className="mt-10 text-xs text-slate-600">
-				<Link href="/guides/" className="underline hover:text-ink">
-					All guides
-				</Link>
-			</p>
-		</main>
+			{g.sections.map((s, i) => (
+				<Fragment key={s.heading}>
+					<section id={toId(s.heading)}>
+						<h2>{s.heading}</h2>
+						<p className="whitespace-pre-line">{renderBody(s.body)}</p>
+					</section>
+					{embed && EmbedComp && i === 1 && (
+						<EmbeddedTool
+							title={embed.title}
+							subtitle={embed.subtitle}
+							toolHref={embed.href}
+							toolLabel="Open the full calculator"
+						>
+							<EmbedComp embedded />
+						</EmbeddedTool>
+					)}
+				</Fragment>
+			))}
+		</ArticleTemplate>
 	);
 }

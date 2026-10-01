@@ -1,62 +1,51 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { HubTemplate } from "@/components/templates/HubTemplate";
 import { allListings } from "@/lib/listings";
+import { citySlugFor, formatPrice, titleCaseName } from "./format";
+import ListingsClient, { type ListingCardData } from "./ListingsClient";
+
+const SITE_URL = "https://realcy.app";
+const title = "New developments in Cyprus";
+const description =
+	"Browse new-build developments across Cyprus. Compare prices, locations and features in Paphos, Limassol, Larnaca and Ayia Napa.";
 
 export const metadata: Metadata = {
-	title: "New Developments — Cyprus Property Listings | RealCy",
-	description:
-		"Browse all new-build developments across Cyprus. Compare prices, locations and features in Paphos, Limassol, Larnaca and Ayia Napa.",
+	title,
+	description,
 	alternates: { canonical: "/listings/" },
+	openGraph: {
+		title,
+		description,
+		url: `${SITE_URL}/listings/`,
+		type: "website",
+	},
 };
 
 export default function ListingsIndexPage() {
 	const listings = allListings();
+	const cards: ListingCardData[] = listings.map((l) => ({
+		slug: l.slug,
+		name: titleCaseName(l.title),
+		city: citySlugFor(l.regionCity),
+		location: l.location ?? l.regionCity,
+		price: formatPrice(l.priceRange),
+		image: l.images?.[0] ?? null,
+	}));
 
 	return (
-		<main id="main" className="max-w-4xl mx-auto px-6 py-10 md:py-16">
-			<Breadcrumbs
-				items={[{ label: "Home", href: "/" }, { label: "Listings" }]}
-			/>
-
-			<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink mb-2">
-				New Developments in Cyprus
-			</h1>
-			<p className="text-slate-600 mb-8 text-base leading-relaxed">
-				{listings.length} new-build developments across Cyprus. Browse by
-				project to compare prices, locations and unit types.
-			</p>
-
-			<div className="grid gap-4 sm:grid-cols-2">
-				{listings.map((listing) => (
-					<Link
-						key={listing.slug}
-						href={`/listings/${listing.slug}/`}
-						className="group block bg-white border border-line rounded-2xl p-5 hover:border-primary hover:shadow-sm transition-all"
-					>
-						<div className="flex items-start justify-between gap-3">
-							<div className="flex-1 min-w-0">
-								<span className="inline-block text-xs font-semibold uppercase tracking-wider text-ink bg-sky-strong rounded-full px-2.5 py-0.5 mb-2">
-									{listing.location ?? listing.regionCity}
-								</span>
-								<h2 className="text-base font-bold text-ink group-hover:text-primary transition-colors leading-snug">
-									{listing.title}
-								</h2>
-								{listing.priceRange && (
-									<p className="mt-1 text-sm font-medium text-slate-700">
-										{listing.priceRange}
-									</p>
-								)}
-								{listing.description && (
-									<p className="mt-1.5 text-sm text-slate-600 leading-relaxed line-clamp-2">
-										{listing.description}
-									</p>
-								)}
-							</div>
-						</div>
-					</Link>
-				))}
-			</div>
-		</main>
+		<HubTemplate
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "New developments" },
+				],
+				eyebrow: `${listings.length} developments`,
+				title,
+				intro:
+					"New-build projects across Cyprus. Filter by city, then open a project to compare prices, locations and unit types.",
+			}}
+		>
+			<ListingsClient listings={cards} />
+		</HubTemplate>
 	);
 }

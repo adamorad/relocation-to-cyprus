@@ -1,7 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
+import { Callout } from "@/components/ui/Callout";
+import { ChipGroup } from "@/components/ui/Chip";
+import { DataTable } from "@/components/ui/DataTable";
+import { Section } from "@/components/ui/Section";
 
 type Bank = {
 	name: string;
@@ -116,13 +119,13 @@ const METRICS: Metric[] = [
 	},
 	{
 		key: "outboundWireEU",
-		label: "Outbound wire — EU (€)",
+		label: "Outbound wire: EU (€)",
 		format: (v) => `€${v as number}`,
 		lowerIsBetter: true,
 	},
 	{
 		key: "outboundWireNonEU",
-		label: "Outbound wire — Non-EU (€)",
+		label: "Outbound wire: Non-EU (€)",
 		format: (v) => `€${v as number}`,
 		lowerIsBetter: true,
 	},
@@ -174,7 +177,7 @@ const SCENARIOS = [
 	{
 		need: "A CY-prefix IBAN for your landlord and utilities",
 		use: "Bank of Cyprus, Hellenic Bank, or AstroBank",
-		note: "Revolut/Wise use LT/BE IBANs — often rejected by landlords.",
+		note: "Revolut/Wise use LT/BE IBANs: often rejected by landlords.",
 	},
 	{
 		need: "The fastest account opening (arriving this week)",
@@ -192,7 +195,7 @@ const SCENARIOS = [
 		note: "Historically more accommodating for MENA, CIS, and South Asian profiles.",
 	},
 	{
-		need: "Travelling frequently — zero ATM fees, no FX markup",
+		need: "Travelling frequently: zero ATM fees, no FX markup",
 		use: "Revolut (Standard plan)",
 		note: "5 free ATM withdrawals/mo, real exchange rate, instant freeze/unfreeze.",
 	},
@@ -218,183 +221,91 @@ export default function BankingFeeComparisonPage() {
 		filter === "all" ? BANKS : BANKS.filter((b) => b.type === filter);
 
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="tool"
-			className="max-w-5xl mx-auto px-6 py-10 md:py-16"
-		>
-			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-ink">
-					Home
-				</Link>{" "}
-				&rsaquo;{" "}
-				<Link href="/tools" className="hover:text-ink">
-					Tools
-				</Link>{" "}
-				&rsaquo; <span className="text-ink">Banking Fee Comparison</span>
-			</nav>
+		<>
+			<ChipGroup
+				label="Bank type"
+				value={filter}
+				onChange={setFilter}
+				options={[
+					{ value: "all", label: "All banks" },
+					{ value: "traditional", label: "Traditional" },
+					{ value: "digital", label: "Digital / Neo" },
+				]}
+			/>
 
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
-					Interactive Tool
-				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Cyprus Banking Fee Comparison
-				</h1>
-				<p className="mt-3 text-slate-600 leading-relaxed">
-					Compare fees and features across the main banks available to Cyprus
-					residents. Green cells highlight the best value in each row.
-				</p>
-			</header>
-
-			{/* Filter */}
-			<div className="flex gap-2 mb-5">
-				{(["all", "traditional", "digital"] as const).map((f) => (
-					<button
-						key={f}
-						onClick={() => setFilter(f)}
-						className={`px-4 py-1.5 text-sm font-medium rounded-full border transition-colors capitalize ${
-							filter === f
-								? "bg-primary border-primary text-white"
-								: "bg-white border-line text-slate-600 hover:border-line"
-						}`}
-					>
-						{f === "all"
-							? "All banks"
-							: f === "traditional"
-								? "Traditional"
-								: "Digital / Neo"}
-					</button>
-				))}
-			</div>
-
-			{/* Comparison table */}
-			{/* biome-ignore lint/a11y/useSemanticElements: keyboard access for scrollable regions (axe scrollable-region-focusable) */}
-			<div
-				// biome-ignore lint/a11y/noNoninteractiveTabindex: keyboard access for scrollable regions (axe scrollable-region-focusable)
-				tabIndex={0}
-				role="region"
-				aria-label="Bank fee comparison table"
-				className="overflow-x-auto rounded-2xl border border-line mb-8"
-			>
-				<table className="w-full text-sm">
-					<thead>
-						<tr className="bg-ink text-white">
-							<th className="text-left px-5 py-3 font-medium text-slate-300 w-52">
-								Metric
-							</th>
-							{filteredBanks.map((bank) => (
-								<th
-									key={bank.name}
-									className="text-center px-4 py-3 font-semibold min-w-[120px]"
-								>
-									<span className="block">{bank.name}</span>
-									<span className="text-xs font-normal text-slate-400 capitalize">
-										{bank.type}
-									</span>
-								</th>
-							))}
-						</tr>
-					</thead>
-					<tbody>
-						{METRICS.map((metric, i) => {
-							const best = getBestValue(metric, filteredBanks);
+			<DataTable
+				caption="Bank fee comparison table"
+				hideCaption
+				zebra
+				columns={[
+					{ header: "Metric" },
+					...filteredBanks.map((bank) => ({
+						align: "right" as const,
+						header: (
+							<>
+								<span className="block">{bank.name}</span>
+								<span className="text-xs font-normal capitalize text-muted">
+									{bank.type}
+								</span>
+							</>
+						),
+					})),
+				]}
+				rows={METRICS.map((metric) => {
+					const best = getBestValue(metric, filteredBanks);
+					return [
+						metric.label,
+						...filteredBanks.map((bank) => {
+							const val = bank[metric.key];
+							const good = isBest(metric, bank, best);
 							return (
-								<tr
-									key={metric.key}
-									className={i % 2 === 0 ? "bg-white" : "bg-slate-50"}
+								<span
+									key={bank.name}
+									className={
+										good
+											? "rounded bg-sky-strong px-2 py-0.5 font-semibold text-ink"
+											: "text-muted"
+									}
 								>
-									<td className="px-5 py-3 text-slate-600 font-medium text-xs">
-										{metric.label}
-									</td>
-									{filteredBanks.map((bank) => {
-										const val = bank[metric.key];
-										const good = isBest(metric, bank, best);
-										const isNo = metric.booleanMetric && val === false;
-										return (
-											<td
-												key={bank.name}
-												className={`text-center px-4 py-3 font-medium ${
-													good
-														? "text-green-800 bg-green-50"
-														: isNo
-															? "text-red-700"
-															: "text-slate-700"
-												}`}
-											>
-												{metric.format(val)}
-											</td>
-										);
-									})}
-								</tr>
+									{metric.format(val)}
+								</span>
 							);
-						})}
-					</tbody>
-				</table>
-			</div>
-
-			{/* Decision guide */}
-			<section className="bg-white border border-line rounded-2xl overflow-hidden mb-8">
-				<div className="bg-ink px-5 py-3">
-					<h2 className="text-sm font-semibold text-white">
-						Decision Guide — "If you need..."
-					</h2>
-				</div>
-				<div className="divide-y divide-slate-100">
-					{SCENARIOS.map((s) => (
-						<div key={s.need} className="px-5 py-4">
-							<div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4">
-								<div className="sm:w-72 flex-shrink-0">
-									<p className="text-sm font-medium text-ink">{s.need}</p>
-								</div>
-								<div>
-									<p className="text-sm font-semibold text-primary">{s.use}</p>
-									<p className="text-xs text-slate-500 mt-0.5">{s.note}</p>
-								</div>
-							</div>
-						</div>
-					))}
-				</div>
-			</section>
-
-			<aside className="p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
-				<p className="font-semibold text-ink mb-1">Important notice</p>
-				<p>
-					Fees shown are approximate 2025 values for standard retail accounts
-					and change without notice. Digital banks (Revolut, Wise) do not
-					provide a Cyprus-registered IBAN — this matters for landlord deposits,
-					utility direct debits, and certain tax filings. Always verify current
-					fee schedules directly with each bank before opening an account.
-				</p>
-			</aside>
-
-			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools" className="underline hover:text-ink">
-					← Back to Tools
-				</Link>
+						}),
+					];
+				})}
+			/>
+			<p className="text-sm text-muted">
+				Highlighted cells show the best value in each row.
 			</p>
 
-			<aside className="mt-10 p-5 rounded-2xl bg-sky border border-line">
-				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-					Next steps
-				</p>
-				<div className="flex flex-wrap gap-3">
-					<Link
-						href="/guides/banking-in-cyprus/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Read: Banking in Cyprus Guide
-					</Link>{" "}
-					<Link
-						href="/sections/accountants/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Find an accountant
-					</Link>
-				</div>
-			</aside>
-		</main>
+			<Section id="decision-guide" title="Decision guide: if you need...">
+				<DataTable
+					caption="Which bank suits which need"
+					hideCaption
+					columns={[
+						{ header: "If you need" },
+						{ header: "Use" },
+						{ header: "Why" },
+					]}
+					rows={SCENARIOS.map((s) => [
+						s.need,
+						<span key="u" className="font-semibold text-primary">
+							{s.use}
+						</span>,
+						<span key="n" className="text-muted">
+							{s.note}
+						</span>,
+					])}
+				/>
+			</Section>
+
+			<Callout tone="warning" title="Important notice">
+				Fees shown are approximate 2025 values for standard retail accounts and
+				change without notice. Digital banks (Revolut, Wise) do not provide a
+				Cyprus-registered IBAN, which matters for landlord deposits, utility
+				direct debits, and certain tax filings. Always verify current fee
+				schedules directly with each bank before opening an account.
+			</Callout>
+		</>
 	);
 }

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import RentVsBuyCalculatorClient from "./client";
 
 const SITE_URL = "https://realcy.app";
-const title = "Rent vs Buy Calculator — Cyprus";
+const title = "Rent vs Buy Calculator: Cyprus";
 const description =
 	"Should you rent or buy in Cyprus? Compare total cost over 1–10 years including mortgage, appreciation, and opportunity cost of your deposit.";
 
@@ -20,27 +21,38 @@ export const metadata: Metadata = {
 };
 
 export default function RentVsBuyCalculatorPage() {
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Tools",
-				item: `${SITE_URL}/tools/`,
-			},
-			{ "@type": "ListItem", position: 3, name: title },
-		],
-	};
 	return (
-		<>
-			<script
-				type="application/ld+json"
-				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-			/>
+		<ToolTemplate
+			pagefindType="tool"
+			width="reading"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Tools", href: "/tools/" },
+					{ label: "Rent vs Buy Calculator" },
+				],
+				eyebrow: "Interactive tool",
+				title: "Rent vs Buy Calculator",
+				intro:
+					"Compare the true cost of renting versus buying property in Cyprus over your chosen time horizon, accounting for mortgage costs, investment returns on your down payment, and property appreciation.",
+			}}
+			nextSteps={[
+				{ href: "/", label: "Browse the property map" },
+				{
+					href: "/sections/property-lawyers/",
+					label: "Find a property lawyer",
+				},
+				{
+					href: "/guides/buying-process/",
+					label: "Read: Buying Process Guide",
+				},
+				{
+					href: "/guides/rental-transition-guide/",
+					label: "Read: Short-Term to Long-Term Rental",
+				},
+				{ href: "/tools/", label: "All tools" },
+			]}
+		>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
@@ -49,6 +61,6 @@ export default function RentVsBuyCalculatorPage() {
 				}}
 			/>
 			<RentVsBuyCalculatorClient />
-		</>
+		</ToolTemplate>
 	);
 }

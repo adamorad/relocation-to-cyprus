@@ -1,7 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import { useMemo, useState } from "react";
+import { type ReactNode, useMemo, useState } from "react";
+import { ToolPanel } from "@/components/templates/ToolTemplate";
+import { Callout } from "@/components/ui/Callout";
+import { ChipGroup } from "@/components/ui/Chip";
+import { DataTable, StatCard } from "@/components/ui/DataTable";
 
 // ── types ────────────────────────────────────────────────────────────────────
 
@@ -49,130 +52,44 @@ function fmtRange(low: number, high: number): string {
 	return (
 		"€" +
 		Math.round(low).toLocaleString("en-IE") +
-		" – €" +
+		" to €" +
 		Math.round(high).toLocaleString("en-IE")
 	);
 }
 
 // ── sub-components ────────────────────────────────────────────────────────────
 
-function RadioGroup<T extends string>({
-	label,
-	options,
-	value,
-	onChange,
-}: {
-	label: string;
-	options: { value: T; label: string }[];
-	value: T;
-	onChange: (v: T) => void;
-}) {
-	return (
-		<div className="flex flex-col gap-2">
-			<p className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
-				{label}
-			</p>
-			<div className="flex flex-wrap gap-2">
-				{options.map((opt) => (
-					<button
-						key={opt.value}
-						type="button"
-						onClick={() => onChange(opt.value)}
-						className={`px-4 py-2 rounded-xl text-sm font-semibold transition-colors border ${
-							value === opt.value
-								? "bg-primary text-white border-primary"
-								: "bg-white border-line text-slate-700 hover:border-primary"
-						}`}
-					>
-						{opt.label}
-					</button>
-				))}
-			</div>
-		</div>
-	);
+function eur(n: number): string {
+	return `€${Math.round(n).toLocaleString("en-IE")}`;
 }
 
-function CostRow({
-	label,
-	low,
-	high,
-	note,
-	highlight,
-}: {
-	label: string;
-	low: number;
-	high: number;
-	note?: string;
-	highlight?: boolean;
-}) {
-	return (
-		<tr
-			className={`border-t border-line ${highlight ? "bg-sky" : "hover:bg-slate-50"}`}
-		>
-			<td className="px-3 py-2.5 text-slate-700">
-				{label}
-				{note && <span className="ml-1 text-xs text-muted italic">{note}</span>}
-			</td>
-			<td className="px-3 py-2.5 text-right text-slate-600 font-mono text-xs">
-				€{Math.round(low).toLocaleString("en-IE")}
-			</td>
-			<td className="px-3 py-2.5 text-right text-ink font-mono text-xs font-semibold">
-				€{Math.round(high).toLocaleString("en-IE")}
-			</td>
-		</tr>
-	);
-}
-
-function TotalRow({
-	label,
-	low,
-	high,
-}: {
-	label: string;
-	low: number;
-	high: number;
-}) {
-	return (
-		<tr className="border-t-2 border-line bg-slate-50">
-			<td className="px-3 py-3 font-bold text-ink">{label}</td>
-			<td className="px-3 py-3 text-right font-bold text-slate-700 font-mono text-xs">
-				€{Math.round(low).toLocaleString("en-IE")}
-			</td>
-			<td className="px-3 py-3 text-right font-bold text-ink font-mono text-xs">
-				€{Math.round(high).toLocaleString("en-IE")}
-			</td>
-		</tr>
-	);
-}
-
-function StatCard({
-	label,
-	value,
-	sub,
-	accent,
-}: {
-	label: string;
-	value: string;
-	sub?: string;
-	accent?: boolean;
-}) {
-	return (
-		<div className="p-4 rounded-2xl border border-line bg-white text-center">
-			<p className="text-xs text-slate-500 uppercase tracking-wide mb-1">
-				{label}
-			</p>
-			<p
-				className={`text-lg font-bold leading-tight ${accent ? "text-primary" : "text-ink"}`}
-			>
-				{value}
-			</p>
-			{sub && <p className="text-xs text-muted mt-1">{sub}</p>}
-		</div>
-	);
+function costCells(
+	label: string,
+	low: number,
+	high: number,
+	note?: string,
+): ReactNode[] {
+	return [
+		<>
+			{label}
+			{note && (
+				<span className="ml-1 text-sm font-normal italic text-muted">
+					{note}
+				</span>
+			)}
+		</>,
+		eur(low),
+		eur(high),
+	];
 }
 
 // ── main component ────────────────────────────────────────────────────────────
 
+/**
+ * Embedded body for /tools/sole-trader-vs-ltd/ (the standalone route is a
+ * redirect stub). No header, width wrapper, disclaimer or related links here:
+ * the host page renders those once.
+ */
 export default function LtdSetupCalculatorClient() {
 	const [directors, setDirectors] = useState<Directors>("1");
 	const [residentDirector, setResidentDirector] =
@@ -277,29 +194,93 @@ export default function LtdSetupCalculatorClient() {
 		return null;
 	}, [vatNeed, turnover]);
 
+	const setupRows: ReactNode[][] = [
+		costCells("CIPA registration + stamp duty", 700, 900, "one-time"),
+		costCells(
+			"Legal / corporate lawyer",
+			800,
+			1500,
+			"M&A drafting, registration",
+		),
+		...(includeSeal
+			? [
+					costCells(
+						"Company seal",
+						COMPANY_SEAL.low,
+						COMPANY_SEAL.high,
+						"one-time",
+					),
+				]
+			: []),
+	];
+
+	const annualRows: ReactNode[][] = [
+		...(registeredAddress === "yes"
+			? [
+					costCells(
+						"Registered address service",
+						REGISTERED_ADDRESS_ANNUAL.low,
+						REGISTERED_ADDRESS_ANNUAL.high,
+						"per year",
+					),
+				]
+			: []),
+		costCells(
+			"Bookkeeping / accounting",
+			costs.bookkeepingAnnual.low,
+			costs.bookkeepingAnnual.high,
+			`€${costs.bookkeepingMonthly.low} to €${costs.bookkeepingMonthly.high}/mo x 12`,
+		),
+		costCells(
+			"Statutory audit (mandatory)",
+			costs.audit.low,
+			costs.audit.high,
+			"required for all CY companies",
+		),
+		costCells(
+			"Annual return to Registrar",
+			ANNUAL_RETURN.low,
+			ANNUAL_RETURN.high,
+			"per year",
+		),
+		costCells("CIPA annual levy", CIPA_LEVY.low, CIPA_LEVY.high, "per year"),
+		...(residentDirector === "no"
+			? [
+					costCells(
+						"Nominee director service",
+						NOMINEE_DIRECTOR.low,
+						NOMINEE_DIRECTOR.high,
+						"non-resident only",
+					),
+				]
+			: []),
+		...(includePayroll
+			? [
+					costCells(
+						"Payroll service",
+						costs.payrollAnnual.low,
+						costs.payrollAnnual.high,
+						"€50 to €100/mo x 12",
+					),
+				]
+			: []),
+	];
+
+	const costColumns = [
+		{ header: "Cost item" },
+		{ header: "Low (€)", align: "right" as const },
+		{ header: "High (€)", align: "right" as const },
+	];
+
 	return (
-		<div className="max-w-4xl mx-auto px-6 py-10 md:py-16">
-			{/* header */}
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
-					Business
-				</p>
-				<h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Cyprus Ltd Setup Cost Calculator
-				</h2>
-				<p className="mt-3 text-slate-600 text-sm leading-relaxed max-w-2xl">
-					Estimate the one-time registration costs and annual running costs of a
-					Cyprus limited company based on your specific situation.
-				</p>
-			</header>
+		<div className="space-y-6">
+			<p className="text-lg leading-relaxed text-muted">
+				Estimate the one-time registration costs and annual running costs of a
+				Cyprus limited company based on your specific situation.
+			</p>
 
-			{/* inputs */}
-			<section className="p-5 bg-sky border border-line rounded-2xl mb-8 flex flex-col gap-6">
-				<h2 className="text-sm font-bold text-ink -mb-2">
-					Your company profile
-				</h2>
-
-				<RadioGroup<Directors>
+			<ToolPanel title="Your company profile">
+				<ChipGroup<Directors>
 					label="Number of directors"
 					options={[
 						{ value: "1", label: "1 director" },
@@ -310,17 +291,17 @@ export default function LtdSetupCalculatorClient() {
 					onChange={setDirectors}
 				/>
 
-				<RadioGroup<ResidentDirector>
+				<ChipGroup<ResidentDirector>
 					label="Will you be a resident director in Cyprus?"
 					options={[
-						{ value: "yes", label: "Yes — I live / will live in Cyprus" },
-						{ value: "no", label: "No — need a nominee director" },
+						{ value: "yes", label: "Yes: I live / will live in Cyprus" },
+						{ value: "no", label: "No: need a nominee director" },
 					]}
 					value={residentDirector}
 					onChange={setResidentDirector}
 				/>
 
-				<RadioGroup<RegisteredAddress>
+				<ChipGroup<RegisteredAddress>
 					label="Need a registered address service?"
 					options={[
 						{ value: "yes", label: "Yes" },
@@ -330,19 +311,19 @@ export default function LtdSetupCalculatorClient() {
 					onChange={setRegisteredAddress}
 				/>
 
-				<RadioGroup<Turnover>
+				<ChipGroup<Turnover>
 					label="Expected annual company turnover"
 					options={[
 						{ value: "under50k", label: "Under €50k" },
-						{ value: "50k-200k", label: "€50k – €200k" },
-						{ value: "200k-500k", label: "€200k – €500k" },
+						{ value: "50k-200k", label: "€50k to €200k" },
+						{ value: "200k-500k", label: "€200k to €500k" },
 						{ value: "500k+", label: "€500k+" },
 					]}
 					value={turnover}
 					onChange={setTurnover}
 				/>
 
-				<RadioGroup<VatNeed>
+				<ChipGroup<VatNeed>
 					label="Need VAT registration?"
 					options={[
 						{ value: "yes", label: "Yes" },
@@ -353,7 +334,7 @@ export default function LtdSetupCalculatorClient() {
 					onChange={setVatNeed}
 				/>
 
-				<RadioGroup<BusinessType>
+				<ChipGroup<BusinessType>
 					label="Business type (affects accounting complexity)"
 					options={[
 						{ value: "tech", label: "Tech / IT / Software" },
@@ -365,59 +346,58 @@ export default function LtdSetupCalculatorClient() {
 					onChange={setBusinessType}
 				/>
 
-				{/* optional toggles */}
-				<div>
-					<p className="text-xs font-semibold text-slate-600 uppercase tracking-wide mb-2">
+				<fieldset className="min-w-0">
+					<legend className="mb-2 text-sm font-semibold text-ink">
 						Optional extras
-					</p>
-					<div className="flex flex-col gap-2">
-						<label className="flex items-center gap-3 cursor-pointer select-none">
+					</legend>
+					<div className="flex flex-col">
+						<label className="flex min-h-11 cursor-pointer select-none items-center gap-3">
 							<input
 								type="checkbox"
 								checked={includePayroll}
 								onChange={(e) => setIncludePayroll(e.target.checked)}
-								className="w-4 h-4 accent-primary"
+								className="h-4 w-4 accent-primary"
 							/>
-							<span className="text-sm text-slate-700">
-								Include payroll service (€50–100/mo extra) — if paying yourself
-								a salary
+							<span className="text-sm text-ink">
+								Include payroll service (€50 to €100/mo extra), if paying
+								yourself a salary
 							</span>
 						</label>
-						<label className="flex items-center gap-3 cursor-pointer select-none">
+						<label className="flex min-h-11 cursor-pointer select-none items-center gap-3">
 							<input
 								type="checkbox"
 								checked={includeSeal}
 								onChange={(e) => setIncludeSeal(e.target.checked)}
-								className="w-4 h-4 accent-primary"
+								className="h-4 w-4 accent-primary"
 							/>
-							<span className="text-sm text-slate-700">
-								Include company seal (€30–50 one-time)
+							<span className="text-sm text-ink">
+								Include company seal (€30 to €50 one-time)
 							</span>
 						</label>
 					</div>
-				</div>
-			</section>
+				</fieldset>
+			</ToolPanel>
 
-			{/* VAT note */}
 			{vatNote && (
-				<aside className="mb-6 p-4 bg-sky border border-line rounded-2xl text-xs text-slate-700">
-					<span className="font-semibold text-ink">VAT note: </span>
+				<Callout tone="info" title="VAT note">
 					{vatNote}
-				</aside>
+				</Callout>
 			)}
 
-			{/* summary stat cards */}
-			<section className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
+			<section
+				aria-label="Summary"
+				className="grid grid-cols-1 gap-3 sm:grid-cols-3"
+			>
 				<StatCard
+					highlight
 					label="Year 1 total"
 					value={fmtRange(costs.year1Total.low, costs.year1Total.high)}
-					sub="setup + first year running costs"
-					accent
+					hint="setup + first year running costs"
 				/>
 				<StatCard
 					label="Year 2+ annual"
 					value={fmtRange(costs.annualTotal.low, costs.annualTotal.high)}
-					sub="ongoing running costs per year"
+					hint="ongoing running costs per year"
 				/>
 				<StatCard
 					label="Monthly equivalent"
@@ -425,245 +405,70 @@ export default function LtdSetupCalculatorClient() {
 						costs.monthlyEquivalent.low,
 						costs.monthlyEquivalent.high,
 					)}
-					sub="year 2+ annual ÷ 12"
+					hint="year 2+ annual / 12"
 				/>
 			</section>
 
-			{/* cost breakdown table */}
-			<section className="mb-8">
-				<h2 className="text-sm font-bold text-ink mb-3">
+			<section aria-labelledby="ltd-breakdown" className="space-y-4">
+				<h3 id="ltd-breakdown" className="text-xl font-bold text-ink">
 					Detailed cost breakdown
-				</h2>
-
-				<div className="overflow-x-auto rounded-2xl border border-line">
-					<table className="w-full text-xs">
-						<thead>
-							<tr className="bg-slate-50 text-slate-500 uppercase tracking-wide">
-								<th className="px-3 py-2 text-left font-semibold">Cost item</th>
-								<th className="px-3 py-2 text-right font-semibold">Low (€)</th>
-								<th className="px-3 py-2 text-right font-semibold">High (€)</th>
-							</tr>
-						</thead>
-						<tbody>
-							{/* one-time */}
-							<tr className="bg-sky">
-								<td
-									colSpan={3}
-									className="px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-primary"
-								>
-									One-Time Setup Costs
-								</td>
-							</tr>
-							<CostRow
-								label="CIPA registration + stamp duty"
-								low={700}
-								high={900}
-								note="one-time"
-							/>
-							<CostRow
-								label="Legal / corporate lawyer"
-								low={800}
-								high={1500}
-								note="M&A drafting, registration"
-							/>
-							{includeSeal && (
-								<CostRow
-									label="Company seal"
-									low={COMPANY_SEAL.low}
-									high={COMPANY_SEAL.high}
-									note="one-time"
-								/>
-							)}
-							<TotalRow
-								label="Total setup"
-								low={costs.setup.low}
-								high={costs.setup.high}
-							/>
-
-							{/* annual */}
-							<tr className="bg-sky">
-								<td
-									colSpan={3}
-									className="px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-primary"
-								>
-									Annual Ongoing Costs
-								</td>
-							</tr>
-							{registeredAddress === "yes" && (
-								<CostRow
-									label="Registered address service"
-									low={REGISTERED_ADDRESS_ANNUAL.low}
-									high={REGISTERED_ADDRESS_ANNUAL.high}
-									note="per year"
-								/>
-							)}
-							<CostRow
-								label="Bookkeeping / accounting"
-								low={costs.bookkeepingAnnual.low}
-								high={costs.bookkeepingAnnual.high}
-								note={`€${costs.bookkeepingMonthly.low}–${costs.bookkeepingMonthly.high}/mo × 12`}
-							/>
-							<CostRow
-								label="Statutory audit (mandatory)"
-								low={costs.audit.low}
-								high={costs.audit.high}
-								note="required for all CY companies"
-							/>
-							<CostRow
-								label="Annual return to Registrar"
-								low={ANNUAL_RETURN.low}
-								high={ANNUAL_RETURN.high}
-								note="per year"
-							/>
-							<CostRow
-								label="CIPA annual levy"
-								low={CIPA_LEVY.low}
-								high={CIPA_LEVY.high}
-								note="per year"
-							/>
-							{residentDirector === "no" && (
-								<CostRow
-									label="Nominee director service"
-									low={NOMINEE_DIRECTOR.low}
-									high={NOMINEE_DIRECTOR.high}
-									note="non-resident only"
-								/>
-							)}
-							{includePayroll && (
-								<CostRow
-									label="Payroll service"
-									low={costs.payrollAnnual.low}
-									high={costs.payrollAnnual.high}
-									note="€50–100/mo × 12"
-								/>
-							)}
-							<TotalRow
-								label="Annual total (year 2+)"
-								low={costs.annualTotal.low}
-								high={costs.annualTotal.high}
-							/>
-
-							{/* year 1 grand total */}
-							<tr className="border-t-2 border-primary bg-sky-strong">
-								<td className="px-3 py-3 font-bold text-ink">
-									Year 1 Grand Total
-								</td>
-								<td className="px-3 py-3 text-right font-bold text-ink font-mono text-xs">
-									€{Math.round(costs.year1Total.low).toLocaleString("en-IE")}
-								</td>
-								<td className="px-3 py-3 text-right font-bold text-ink font-mono text-xs">
-									€{Math.round(costs.year1Total.high).toLocaleString("en-IE")}
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+				</h3>
+				<DataTable
+					caption="One-time setup costs"
+					columns={costColumns}
+					rows={setupRows}
+					footer={["Total setup", eur(costs.setup.low), eur(costs.setup.high)]}
+				/>
+				<DataTable
+					caption="Annual ongoing costs"
+					columns={costColumns}
+					rows={annualRows}
+					footer={[
+						"Annual total (year 2+)",
+						eur(costs.annualTotal.low),
+						eur(costs.annualTotal.high),
+					]}
+				/>
+				<DataTable
+					caption="Year 1 grand total"
+					hideCaption
+					columns={costColumns}
+					rows={[]}
+					footer={[
+						"Year 1 Grand Total",
+						eur(costs.year1Total.low),
+						eur(costs.year1Total.high),
+					]}
+				/>
 			</section>
 
-			{/* Cyprus tax advantages */}
-			<aside className="mb-6 p-5 bg-sky border border-line rounded-2xl">
-				<p className="text-xs font-bold uppercase tracking-wider text-primary mb-3">
-					Why Cyprus? Key Tax Advantages
-				</p>
-				<ul className="flex flex-col gap-2">
-					{[
-						{
-							icon: "💼",
-							text: "15% corporate tax — competitive within the EU",
-						},
-						{
-							icon: "💰",
-							text: "0% dividend tax for non-dom shareholders (17% SDC exemption)",
-						},
-						{
-							icon: "🔬",
-							text: "IP Box: 2.5% effective rate on qualifying IP income",
-						},
-						{
-							icon: "📈",
-							text: "0% capital gains tax (except Cyprus immovable property)",
-						},
-						{
-							icon: "🌍",
-							text: "EU-compliant with a full double-tax treaty network",
-						},
-					].map((item) => (
-						<li
-							key={item.text}
-							className="flex items-start gap-2 text-sm text-slate-700"
-						>
-							<span className="mt-0.5 shrink-0">{item.icon}</span>
-							<span>{item.text}</span>
-						</li>
-					))}
+			<section
+				aria-labelledby="ltd-why"
+				className="rounded-card border border-line bg-sky p-5"
+			>
+				<h3 id="ltd-why" className="mb-3 text-base font-bold text-ink">
+					Why Cyprus? Key tax advantages
+				</h3>
+				<ul className="list-disc space-y-2 pl-5 text-sm text-ink">
+					<li>15% corporate tax: competitive within the EU</li>
+					<li>0% dividend tax for non-dom shareholders (17% SDC exemption)</li>
+					<li>IP Box: 2.5% effective rate on qualifying IP income</li>
+					<li>0% capital gains tax (except Cyprus immovable property)</li>
+					<li>EU-compliant with a full double-tax treaty network</li>
 				</ul>
-			</aside>
+			</section>
 
-			{/* breakeven note */}
-			<aside className="mb-6 p-4 bg-sky border border-line rounded-2xl text-sm text-ink">
-				<p className="font-semibold text-ink mb-1">Breakeven note</p>
-				<p>
-					A Cyprus Ltd typically becomes cost-efficient for annual profits above
-					approximately <strong>€35,000–50,000</strong> after all fees. Below
-					this threshold, the compliance overhead may outweigh the tax savings.
-				</p>
-			</aside>
+			<Callout tone="info" title="Breakeven note">
+				A Cyprus Ltd typically becomes cost-efficient for annual profits above
+				approximately <strong>€35,000 to €50,000</strong> after all fees. Below
+				this threshold, the compliance overhead may outweigh the tax savings.
+			</Callout>
 
-			{/* optional banking info */}
-			<aside className="mb-6 p-4 bg-sky border border-line rounded-2xl text-xs text-slate-700">
-				<p className="font-semibold text-ink mb-1">
-					Optional: Corporate Banking
-				</p>
-				<p>
-					Not included above. Typical options: Bank of Cyprus / Hellenic Bank
-					(€0–100/mo account fees) or Revolut Business (from €0/mo). Opening a
-					traditional bank account can take 2–6 months for new companies.
-				</p>
-			</aside>
-
-			{/* next steps */}
-			<aside className="mb-6 p-5 bg-sky border border-line rounded-2xl">
-				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-					Related tools
-				</p>
-				<div className="flex flex-wrap gap-3">
-					<Link
-						href="/tools/sole-trader-vs-ltd/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Sole Trader vs Ltd
-					</Link>
-					<Link
-						href="/tools/tax-residency-tracker/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Tax Residency Planner
-					</Link>
-					<Link
-						href="/tools/social-insurance-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Social Insurance Calculator
-					</Link>
-				</div>
-			</aside>
-
-			{/* disclaimer */}
-			<aside className="mt-4 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
-				<p className="font-semibold text-ink mb-1">Disclaimer</p>
-				<p>
-					Fees are market estimates for 2025 and are provided for illustrative
-					purposes only — not legal, tax, or financial advice. Actual costs vary
-					by service provider, company complexity, and circumstances. Request
-					quotes from 2–3 licensed fiduciaries before making decisions.
-				</p>
-			</aside>
-
-			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools/" className="underline hover:text-ink">
-					&larr; Back to Tools
-				</Link>
-			</p>
+			<Callout tone="info" title="Optional: Corporate Banking">
+				Not included above. Typical options: Bank of Cyprus / Hellenic Bank (€0
+				to €100/mo account fees) or Revolut Business (from €0/mo). Opening a
+				traditional bank account can take 2 to 6 months for new companies.
+			</Callout>
 		</div>
 	);
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import PetImportChecklistClient from "./client";
 
@@ -14,33 +15,37 @@ export const metadata: Metadata = {
 	openGraph: {
 		title,
 		description,
-		url: SITE_URL + "/tools/pet-import-checklist/",
+		url: `${SITE_URL}/tools/pet-import-checklist/`,
 		type: "website",
 	},
 };
 
 export default function PetImportChecklistPage() {
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Home", item: SITE_URL + "/" },
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Tools",
-				item: SITE_URL + "/tools/",
-			},
-			{ "@type": "ListItem", position: 3, name: title },
-		],
-	};
-
 	return (
-		<>
-			<script
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-			/>
+		<ToolTemplate
+			pagefindType="tool"
+			width="reading"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Tools", href: "/tools/" },
+					{ label: "Cyprus Pet Import Checklist" },
+				],
+				eyebrow: "Lifestyle",
+				title: "Cyprus Pet Import Checklist",
+				intro:
+					"Answer two questions and get a personalised checklist of every step required to bring your pet into Cyprus, with timing guidance so nothing catches you off guard.",
+			}}
+			nextSteps={[{ href: "/tools/", label: "All tools" }]}
+			disclaimer={
+				<>
+					General information only, not veterinary or legal advice. Always
+					verify current requirements with{" "}
+					<strong>Cyprus Veterinary Services (Ktiniatrikí Ypiresia)</strong>{" "}
+					before travelling. Import rules can change without notice.
+				</>
+			}
+		>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
@@ -49,6 +54,6 @@ export default function PetImportChecklistPage() {
 				}}
 			/>
 			<PetImportChecklistClient />
-		</>
+		</ToolTemplate>
 	);
 }

@@ -8,6 +8,16 @@ const PATHS = {
 			<path d="M8 6h8M8 10h2m4 0h2m-8 4h2m4 0h2m-8 4h2m4 0h2" />
 		</>
 	),
+	chevronDown: (
+		<>
+			<path d="m6 9 6 6 6-6" />
+		</>
+	),
+	building: (
+		<>
+			<path d="M4 21V5l8-3v19M12 8h8v13M2 21h20M7 8h2m-2 4h2m-2 4h2m6-4h2m-2 4h2" />
+		</>
+	),
 	checklist: (
 		<>
 			<rect x="4" y="4" width="16" height="18" rx="2" />
@@ -39,6 +49,17 @@ const PATHS = {
 	home: (
 		<>
 			<path d="m3 10 9-7 9 7M5 9v12h5v-7h4v7h5V9" />
+		</>
+	),
+	info: (
+		<>
+			<circle cx="12" cy="12" r="9" />
+			<path d="M12 11v6M12 7.5h.01" />
+		</>
+	),
+	legal: (
+		<>
+			<path d="M12 3v18M5 21h14M4 7h16M7 7l-3 7a3 3 0 0 0 6 0Zm10 0-3 7a3 3 0 0 0 6 0Z" />
 		</>
 	),
 	map: (
@@ -76,6 +97,12 @@ const PATHS = {
 	shopping: (
 		<>
 			<path d="M4 8h16l-2 13H6ZM8 8V6a4 4 0 0 1 8 0v2M9 12v5m6-5v5" />
+		</>
+	),
+	warning: (
+		<>
+			<path d="M10.3 3.9 2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" />
+			<path d="M12 9v4M12 17h.01" />
 		</>
 	),
 	transport: (

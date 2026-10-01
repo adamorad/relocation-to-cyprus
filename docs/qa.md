@@ -53,8 +53,13 @@ Starts a static server on `out/`, opens a fixed sample of 22 URLs at 390 and 144
 ```sh
 node scripts/qa/axe.mjs --update-baseline   # record current moderate/serious/critical findings
 node scripts/qa/axe.mjs --urls /about/,/    # check specific URLs
+node scripts/qa/axe.mjs --all               # full-site audit (manual, not CI)
 ```
 
 ## Site search (Pagefind)
 
 `pnpm build` runs `next build && pagefind --site out`, which writes the index to `out/pagefind/`. Only pages with `data-pagefind-body` on their main element are indexed (guides, directories, tools, city pages, listings, developers and Moving to Cyprus). The element also carries `data-type` (`guide`, `directory`, `tool`, `city`, `listing`, `developer`, `page`) exposed as the `type` filter. Headers, footers, the cookie banner, breadcrumbs, share bars, email forms and related-content blocks use `data-pagefind-ignore`. The `/explore/` page loads `/pagefind/pagefind.js` at runtime; in `next dev` the index does not exist and the page says so.
+
+### Full-site audit (`--all`)
+
+`--all` scans every HTML page in `out/` at 390 px (redirect stubs with a meta refresh are skipped) and the default sample plus every 10th page at 1440 px. It also loads every page at both widths and fails when a page scrolls horizontally, does not have exactly one `main#main` and one `h1`, or has more than one email input (the `/design-system/` showcase is allowed two). Results go to `qa-reports/axe-all.json`. It takes a few minutes, so it is not part of CI; run it after layout changes.

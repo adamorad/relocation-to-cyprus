@@ -1,76 +1,21 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
+import { Badge } from "@/components/ui/Badge";
+import { Callout } from "@/components/ui/Callout";
+import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
+import { ChipGroup } from "@/components/ui/Chip";
 import {
 	ALL_CITIES,
 	ALL_STARTUP_VENUE_TYPES,
 	type City,
-	STARTUP_TIPS,
 	STARTUP_VENUE_TYPE_LABEL,
 	STARTUP_VENUES,
 	type StartupVenueType,
 } from "@/lib/startup-ecosystem";
 
-// ---------------------------------------------------------------------------
-// Chip helpers
-// ---------------------------------------------------------------------------
-
-function CityChip({
-	city,
-	selected,
-	onClick,
-}: {
-	city: City | "All";
-	selected: boolean;
-	onClick: () => void;
-}) {
-	return (
-		<button
-			type="button"
-			onClick={onClick}
-			aria-pressed={selected}
-			className={`rounded-full inline-flex min-h-11 items-center px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors md:min-h-0 ${
-				selected
-					? "bg-ink text-white border border-ink"
-					: "bg-white text-ink border border-line hover:bg-sky"
-			}`}
-		>
-			{city}
-		</button>
-	);
-}
-
-function TypeChip({
-	label,
-	selected,
-	onClick,
-}: {
-	label: string;
-	selected: boolean;
-	onClick: () => void;
-}) {
-	return (
-		<button
-			type="button"
-			onClick={onClick}
-			aria-pressed={selected}
-			className={`rounded-full inline-flex min-h-11 items-center px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors md:min-h-0 ${
-				selected
-					? "bg-primary text-white border border-primary"
-					: "bg-white text-ink border border-line hover:bg-sky"
-			}`}
-		>
-			{label}
-		</button>
-	);
-}
-
-// ---------------------------------------------------------------------------
-// Page
-// ---------------------------------------------------------------------------
-
-export default function StartupEcosystemPage() {
+/** Filters first, then the venue cards. Header and tips live in page.tsx. */
+export default function StartupEcosystemClient() {
 	const [cityFilter, setCityFilter] = useState<City | "All">("All");
 	const [typeFilter, setTypeFilter] = useState<StartupVenueType | "All">("All");
 
@@ -81,151 +26,92 @@ export default function StartupEcosystemPage() {
 	);
 
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="directory"
-			className="max-w-5xl mx-auto px-4 md:px-6 py-10 md:py-14"
-		>
-			{/* Back nav */}
-			<nav className="text-xs text-slate-500 mb-6">
-				<Link href="/sections" className="hover:text-ink">
-					Directories
-				</Link>
-			</nav>
-
-			{/* Header */}
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
-					Startup Ecosystem
-				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Cyprus Startup Ecosystem
-				</h1>
-				<p className="mt-3 text-base text-slate-600 leading-relaxed max-w-2xl">
-					Coworking spaces, incubators, accelerators and tech hubs across Cyprus
-					— with focus areas and membership pricing.
-				</p>
-			</header>
-
-			{/* Tips */}
-			<section className="mb-8 grid grid-cols-1 md:grid-cols-3 gap-3">
-				{STARTUP_TIPS.map((tip) => (
-					<div
-						key={tip.heading}
-						className="rounded-2xl border border-line bg-sky p-4 text-xs"
-					>
-						<p className="font-bold text-sm text-ink mb-1.5">{tip.heading}</p>
-						<p className="text-slate-700 leading-relaxed">{tip.body}</p>
-					</div>
-				))}
-			</section>
-
-			{/* City filter */}
-			<div className="flex flex-wrap gap-1.5 mb-3">
-				{(["All", ...ALL_CITIES] as const).map((c) => (
-					<CityChip
-						key={c}
-						city={c}
-						selected={cityFilter === c}
-						onClick={() => setCityFilter(c)}
-					/>
-				))}
-			</div>
-
-			{/* Type filter */}
-			<div className="flex flex-wrap gap-1.5 mb-6">
-				<TypeChip
-					label="All types"
-					selected={typeFilter === "All"}
-					onClick={() => setTypeFilter("All")}
+		<>
+			<div className="space-y-4 rounded-card border border-line bg-sky p-4 md:p-5">
+				<ChipGroup
+					label="City"
+					value={cityFilter}
+					onChange={setCityFilter}
+					options={[
+						{ value: "All", label: "All cities" },
+						...ALL_CITIES.map((c) => ({ value: c, label: c })),
+					]}
 				/>
-				{ALL_STARTUP_VENUE_TYPES.map((t) => (
-					<TypeChip
-						key={t}
-						label={STARTUP_VENUE_TYPE_LABEL[t]}
-						selected={typeFilter === t}
-						onClick={() => setTypeFilter(t)}
-					/>
-				))}
+				<ChipGroup
+					label="Type"
+					value={typeFilter}
+					onChange={setTypeFilter}
+					options={[
+						{ value: "All", label: "All types" },
+						...ALL_STARTUP_VENUE_TYPES.map((t) => ({
+							value: t,
+							label: STARTUP_VENUE_TYPE_LABEL[t],
+						})),
+					]}
+				/>
 			</div>
 
-			{/* Results count */}
-			<p className="text-xs text-slate-500 mb-4">
+			<h2
+				className="mt-8 text-2xl font-bold tracking-tight text-ink"
+				aria-live="polite"
+			>
 				{visible.length === 0
-					? "No venues match these filters."
+					? "No venues match these filters"
 					: `${visible.length} venue${visible.length === 1 ? "" : "s"}`}
-			</p>
+			</h2>
 
-			{/* Card grid */}
-			{visible.length > 0 && (
-				<ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+			{visible.length === 0 ? (
+				<Callout tone="info" className="mt-5">
+					No venues match these filters.
+				</Callout>
+			) : (
+				<CardGrid className="mt-5">
 					{visible.map((venue) => (
-						<li
-							key={venue.name}
-							className="rounded-2xl border border-line bg-white p-4 flex flex-col gap-2 shadow-sm"
-						>
-							<div>
-								<span className="inline-block text-xs uppercase tracking-wider font-bold text-primary bg-sky-strong rounded-full px-1.5 py-0.5 mb-1">
-									{STARTUP_VENUE_TYPE_LABEL[venue.type]}
-								</span>
-								<p className="font-bold text-sm text-ink">{venue.name}</p>
-								<p className="text-xs text-slate-500 mt-0.5">
-									{venue.city}
-									{venue.neighbourhood ? ` · ${venue.neighbourhood}` : ""}
-								</p>
-							</div>
-
-							{venue.focusAreas.length > 0 && (
-								<div className="flex flex-wrap gap-1">
-									{venue.focusAreas.map((area) => (
-										<span
-											key={area}
-											className="text-xs bg-sky-strong text-slate-600 rounded px-1.5 py-0.5"
-										>
-											{area}
-										</span>
-									))}
-								</div>
-							)}
-
-							<p className="text-xs text-slate-700 leading-relaxed flex-1">
-								{venue.why}
-							</p>
-
-							<div className="flex items-center justify-between mt-1">
-								{venue.membershipFrom != null ? (
-									<p className="text-xs text-slate-500">
-										From{" "}
-										<span className="font-semibold text-ink">
-											€{venue.membershipFrom}/mo
-										</span>
-									</p>
-								) : (
-									<span />
-								)}
-								{venue.website && (
-									<a
-										href={venue.website}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="text-xs font-semibold text-primary hover:text-primary-hover"
-									>
-										Website
-									</a>
-								)}
-							</div>
-						</li>
+						<CardGridItem key={venue.name}>
+							<Card
+								variant="text"
+								eyebrow={<Badge>{STARTUP_VENUE_TYPE_LABEL[venue.type]}</Badge>}
+								title={venue.name}
+								meta={`${venue.city}${venue.neighbourhood ? ` · ${venue.neighbourhood}` : ""}`}
+								text={venue.why}
+								footer={
+									<>
+										{venue.focusAreas.length > 0 ? (
+											<p className="flex flex-wrap gap-1.5 pb-2">
+												{venue.focusAreas.map((area) => (
+													<Badge key={area}>{area}</Badge>
+												))}
+											</p>
+										) : null}
+										<div className="flex flex-wrap items-center justify-between gap-x-5">
+											{venue.membershipFrom != null ? (
+												<p className="text-muted">
+													From{" "}
+													<span className="font-semibold text-ink">
+														€{venue.membershipFrom}/mo
+													</span>
+												</p>
+											) : (
+												<span />
+											)}
+											{venue.website ? (
+												<a
+													href={venue.website}
+													target="_blank"
+													rel="noopener noreferrer"
+													className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
+												>
+													Website
+												</a>
+											) : null}
+										</div>
+									</>
+								}
+							/>
+						</CardGridItem>
 					))}
-				</ul>
+				</CardGrid>
 			)}
-
-			<p className="mt-12 text-xs text-slate-500">
-				<Link href="/" className="underline hover:text-ink">
-					Back to Explore
-				</Link>
-			</p>
-		</main>
+		</>
 	);
 }

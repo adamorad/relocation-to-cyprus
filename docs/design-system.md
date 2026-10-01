@@ -1,0 +1,50 @@
+# Design system
+
+Every page on RealCy.app is built from the shared components in `components/ui/` and one of the page templates in `components/templates/`. The homepage (`components/home/*`) is the visual reference: white cards with a 16px radius and a 1px `border-line`, icon tiles on sky backgrounds, navy (`text-ink`) headings, primary `#087f98` buttons with white text, sky panels and the Manrope font.
+
+A live showcase of every component and template is at `/design-system/` (noindex, not in the sitemap or search). Check it after changing a component.
+
+## Building a new page
+
+1. Pick the template that matches the page type (see below). The template renders the page's only `<main id="main">`, the PageHeader and the width.
+2. Keep `page.tsx` a server component: metadata, JSON-LD and the template call live there. Put only the interactive part (filters, calculator state) in a `client.tsx`.
+3. Pass `header={{ breadcrumbs, eyebrow, title, intro }}`. Breadcrumbs always start with `{ label: "Home", href: "/" }`, then the hub, then the page (no href on the last item). The component also emits the BreadcrumbList JSON-LD, so never hand-write one.
+4. Build the body from `Section`, `Card`/`CardGrid`, `DataTable`, `StatCard`, `Callout` and `ButtonLink`. Do not add page-specific colours, widths or chip and button styles.
+5. Set the title without the brand: the layout template appends " · RealCy.app". Pages that must show a different OG title use `title: { absolute }`.
+6. Run the gates (`docs/qa.md`): `pnpm build`, `pnpm qa:links`, `pnpm qa:rules`, `pnpm qa:axe`, and `node scripts/qa/axe.mjs --all` after layout changes.
+
+## Templates (`components/templates/`)
+
+| Template | Use for | Width | Notes |
+| --- | --- | --- | --- |
+| `HubTemplate` | Index pages (guides, tools, directories, cities, listings, developers) | wide | Band header, optional `filters` (ChipGroup), card grid as children. |
+| `ArticleTemplate` | Guides, long text pages | reading body | Optional `toc` (right rail on wide screens, block on mobile), `related`, `legal`, `share`. No inline email form unless `showInlineEmail`. |
+| `DirectoryTemplate` | Directories under /sections/ | wide | Filters first (client component), entries as text Cards, `info` tips as collapsible cards, `notice` Callout, `related`. |
+| `ToolTemplate` | Calculators, checklists, comparisons | reading (calculators) or wide (tables, two-column tools) | Inputs in `ToolPanel`, results as StatCard/DataTable, `nextSteps` buttons, `disclaimer` (legal Callout). One disclaimer and one next-steps block per page. |
+| `CityTemplate` | /regions/{city}/ | wide | Band header, `contents` nav, Sections, a `cta` linking to `/listings/?city={slug}`. |
+
+`TemplateMain` is the shared `<main>` wrapper (`pagefindType` adds the Pagefind body and type filter). Redirect stubs, the homepage and the `/design-system/` page are the only pages that do not use PageHeader.
+
+## Components (`components/ui/`)
+
+- `Container`: `width="reading"` (max-w-3xl) or `"wide"` (1280px), padding `px-5 md:px-8`. These are the only two page widths; never add a page-level `max-w-*` wrapper.
+- `PageHeader`: breadcrumbs, eyebrow (small uppercase primary label), H1, intro, `meta` line, `actions` (button row under the intro) and `titleAction` (a compact control such as the save heart, beside the H1 on every width). `variant="band"` gives the full-width sky background used on hubs.
+- `Breadcrumbs`: `›` separator, last item `aria-current="page"`, absolute https://realcy.app URLs in the JSON-LD. `components/Breadcrumbs.tsx` re-exports it for old imports.
+- `Section`: H2, optional description and action, consistent spacing and anchor offset.
+- `Card` with `CardGrid`/`CardGridItem`: variants `icon`, `text`, `photo` (16:9 lazy image) and `row`. Optional `logo` (`{ src, alt, initial }`) shows a 48px logo tile, with the initial as fallback; `LogoTile` is exported for logos outside cards. With `href` the whole card is one link; without it, it is an `<article>` and may have a `footer` with contact links. Never nest links or buttons in a linked card.
+- `Badge`: neutral by default; `success`, `warning` and `danger` only for real states (open/closed, deadlines).
+- `Chip` and `ChipGroup`: the one filter-chip style (selected `bg-primary text-white`, unselected white with `border-line`), 44px tall, `aria-pressed`, labelled group. Use `Chip` directly for multi-select.
+- `Button` and `ButtonLink`: `primary`, `secondary`, `ghost`; sizes `md` and `lg`; `fullWidth`. External links open in a new tab.
+- `Callout`: `info`, `warning`, `legal` (disclaimers).
+- `DataTable` and `StatCard`: tables sit in a focusable, labelled scroll region so phones never scroll the page sideways.
+- `InfoCards`: collapsible `<details>` cards for tips and FAQs.
+- `EmailBox`: the single email form design. One email form per page; the footer already has one, so pages add an EmailBox only when they replace that need.
+- `SponsorSlot`: renders nothing without data; uses `rel="sponsored"`.
+- Icons come from `components/icons/Icon.tsx`.
+
+## Rules
+
+- Two widths only (`Container`), one breadcrumb style, one `<main id="main">` and one H1 per page, headings in order.
+- Colours come from the theme tokens and `lib/chart-colors.ts` for charts. No traffic-light red, amber or green for neutral comparisons; highlight a best value with `bg-sky-strong text-ink`. Semantic colours are for real good or bad states (deadlines, completed checklist items, warnings, form errors).
+- 44px minimum touch targets, visible focus, AA contrast.
+- No em dashes or emojis in new copy, no "Relocation guide" label, never add Nicosia, and no URL or slug changes. `pnpm qa:rules` enforces the text rules against a baseline.
