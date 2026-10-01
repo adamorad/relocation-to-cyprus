@@ -5,6 +5,7 @@ import { CookieConsentManager } from "@/components/CookieConsentManager";
 import { EmailCapture } from "@/components/EmailCapture";
 import { SiteHeader } from "@/components/SiteHeader";
 import { GUIDES } from "@/lib/guides";
+import { NEWSLETTER_ENABLED } from "@/lib/newsletter";
 import { REGIONS } from "@/lib/regions";
 import { hubHref, TOPICS } from "@/lib/topics";
 
@@ -167,13 +168,15 @@ function SiteFooter() {
 						Everyday life in Cyprus, made easier. Practical guides, local
 						directories and tools for {CITY_LIST}.
 					</p>
-					<div className="mt-8 max-w-sm rounded-2xl border border-white/10 bg-white/5 p-5">
-						<p className="font-semibold text-white">New to Cyprus?</p>
-						<p className="mt-1 mb-4 text-slate-400">
-							Get the free week-by-week checklist for your first month.
-						</p>
-						<EmailCapture compact source="footer" />
-					</div>
+					{NEWSLETTER_ENABLED ? (
+						<div className="mt-8 max-w-sm rounded-2xl border border-white/10 bg-white/5 p-5">
+							<p className="font-semibold text-white">New to Cyprus?</p>
+							<p className="mt-1 mb-4 text-slate-400">
+								Get the free week-by-week checklist for your first month.
+							</p>
+							<EmailCapture compact source="footer" />
+						</div>
+					) : null}
 				</div>
 				<div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:col-span-7 lg:col-span-7 lg:col-start-6">
 					<nav aria-label="Topics" className="col-span-2 sm:col-span-1">
