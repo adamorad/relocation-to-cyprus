@@ -1,31 +1,81 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { TemplateMain } from "@/components/templates/TemplateMain";
+import { ButtonLink } from "@/components/ui/Button";
+import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
+import { Container } from "@/components/ui/Container";
+import { PageHeader } from "@/components/ui/PageHeader";
+import { Section } from "@/components/ui/Section";
 
 export const metadata: Metadata = {
 	title: "Page not found",
 	robots: { index: false },
 };
 
+const LINKS = [
+	{
+		href: "/guides/",
+		icon: "paperwork",
+		title: "Guides",
+		text: "Practical guides for living in Cyprus.",
+	},
+	{
+		href: "/sections/",
+		icon: "community",
+		title: "Local directories",
+		text: "Curated services and communities.",
+	},
+	{
+		href: "/tools/",
+		icon: "checklist",
+		title: "Practical tools",
+		text: "Calculators, planners and trackers.",
+	},
+	{
+		href: "/regions/",
+		icon: "pin",
+		title: "Cities",
+		text: "Paphos, Limassol, Larnaca and Ayia Napa.",
+	},
+] as const;
+
 export default function NotFound() {
 	return (
-		<main id="main" className="max-w-3xl mx-auto px-6 py-16 md:py-24">
-			<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
-				404
-			</p>
-			<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
-				This page could not be found.
-			</h1>
-			<p className="mt-4 text-lg text-slate-700 leading-relaxed">
-				The link may be out of date. Try the{" "}
-				<Link href="/" className="underline hover:text-ink">
-					home page
-				</Link>{" "}
-				or{" "}
-				<Link href="/explore/" className="underline hover:text-ink">
-					search the site
-				</Link>
-				.
-			</p>
-		</main>
+		<TemplateMain>
+			<PageHeader
+				variant="band"
+				breadcrumbs={[
+					{ label: "Home", href: "/" },
+					{ label: "Page not found" },
+				]}
+				eyebrow="404"
+				title="This page could not be found."
+				intro="The link may be out of date. Try the home page, search the site, or pick a section below."
+				actions={
+					<>
+						<ButtonLink href="/">Home page</ButtonLink>
+						<ButtonLink href="/explore/" variant="secondary">
+							Search the site
+						</ButtonLink>
+					</>
+				}
+			/>
+			<Container width="wide" className="pt-8 md:pt-10">
+				<Section title="Popular places to start">
+					<CardGrid cols={4}>
+						{LINKS.map((l) => (
+							<CardGridItem key={l.href}>
+								<Card
+									variant="icon"
+									icon={l.icon}
+									href={l.href}
+									title={l.title}
+									text={l.text}
+								/>
+							</CardGridItem>
+						))}
+					</CardGrid>
+				</Section>
+			</Container>
+		</TemplateMain>
 	);
 }

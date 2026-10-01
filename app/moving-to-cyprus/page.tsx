@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import type { IconName } from "@/components/icons/Icon";
+import { HubTemplate } from "@/components/templates/HubTemplate";
+import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
+import { Section } from "@/components/ui/Section";
 import { GUIDE_CATEGORY_LABEL, GUIDES, type GuideCategory } from "@/lib/guides";
 
 const CATEGORIES: ReadonlyArray<GuideCategory> = [
@@ -25,52 +29,65 @@ export const metadata: Metadata = {
 	},
 };
 
+const CATEGORY_ICON: Record<string, IconName> = {
+	immigration: "paperwork",
+	tax: "legal",
+	property: "home",
+	business: "building",
+};
+
 export default function MovingToCyprusPage() {
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="page"
-			className="max-w-5xl mx-auto px-6 py-12"
+		<HubTemplate
+			pagefindType="page"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Moving to Cyprus" },
+				],
+				eyebrow: "Planning a move",
+				title: "Moving to Cyprus",
+				intro: (
+					<>
+						Planning a move? Start with residency and tax, then property and
+						business. Already here? See the everyday guides on the{" "}
+						<Link
+							href="/"
+							className="text-primary-hover underline hover:text-ink"
+						>
+							homepage
+						</Link>
+						.
+					</>
+				),
+			}}
 		>
-			<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">
-				Moving to Cyprus
-			</h1>
-			<p className="mt-3 text-slate-700 max-w-2xl">
-				Planning a move? Start with residency and tax, then property and
-				business. Already here? See the everyday guides on the{" "}
-				<Link
-					href="/"
-					className="text-primary underline hover:text-primary-hover"
-				>
-					homepage
-				</Link>
-				.
-			</p>
 			{CATEGORIES.map((cat) => {
 				const guides = GUIDES.filter((g) => g.category === cat);
 				if (guides.length === 0) return null;
 				return (
-					<section key={cat} className="mt-10">
-						<h2 className="text-xl font-semibold text-ink">
-							{GUIDE_CATEGORY_LABEL[cat]}
-						</h2>
-						<ul className="mt-3 grid md:grid-cols-2 gap-x-8 gap-y-2">
+					<Section
+						key={cat}
+						id={cat}
+						title={GUIDE_CATEGORY_LABEL[cat]}
+						description={`${guides.length} guides`}
+					>
+						<CardGrid>
 							{guides.map((g) => (
-								<li key={g.slug}>
-									<Link
+								<CardGridItem key={g.slug}>
+									<Card
+										variant="icon"
+										icon={CATEGORY_ICON[cat] ?? "paperwork"}
 										href={`/guides/${g.slug}/`}
-										className="text-primary hover:underline"
-									>
-										{g.title}
-									</Link>
-								</li>
+										title={g.title}
+										text={<span className="line-clamp-3">{g.description}</span>}
+									/>
+								</CardGridItem>
 							))}
-						</ul>
-					</section>
+						</CardGrid>
+					</Section>
 				);
 			})}
-		</main>
+		</HubTemplate>
 	);
 }
