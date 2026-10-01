@@ -146,7 +146,7 @@ const TYPE_LABEL = {
 };
 
 const TYPE_COLOR = {
-	fibre: "bg-teal-100 text-teal-800",
+	fibre: "bg-sky-strong text-ink",
 	cable: "bg-blue-100 text-blue-800",
 };
 
@@ -166,17 +166,17 @@ export default function ISPComparisonPage() {
 	return (
 		<main className="max-w-5xl mx-auto px-4 py-8 md:py-12">
 			<nav className="text-xs text-slate-500 mb-6">
-				<Link href="/tools/" className="hover:text-slate-900">
+				<Link href="/tools/" className="hover:text-ink">
 					Tools
 				</Link>{" "}
-				&rsaquo; <span className="text-slate-900">ISP Comparison</span>
+				&rsaquo; <span className="text-ink">ISP Comparison</span>
 			</nav>
 
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold mb-2">
+				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-2">
 					Interactive Tool
 				</p>
-				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Internet & Mobile Providers in Cyprus
 				</h1>
 				<p className="mt-3 text-slate-600 max-w-2xl">
@@ -189,20 +189,20 @@ export default function ISPComparisonPage() {
 			<div className="flex gap-2 mb-6">
 				<button
 					onClick={() => setTab("broadband")}
-					className={`px-5 py-2.5 rounded-lg font-medium text-sm border transition-colors ${
+					className={`px-5 py-2.5 rounded-xl font-medium text-sm border transition-colors ${
 						tab === "broadband"
-							? "bg-slate-900 text-white border-slate-900"
-							: "bg-white text-slate-700 border-slate-300 hover:border-slate-500"
+							? "bg-ink text-white border-ink"
+							: "bg-white text-slate-700 border-line hover:border-slate-500"
 					}`}
 				>
 					Home Broadband
 				</button>
 				<button
 					onClick={() => setTab("mobile")}
-					className={`px-5 py-2.5 rounded-lg font-medium text-sm border transition-colors ${
+					className={`px-5 py-2.5 rounded-xl font-medium text-sm border transition-colors ${
 						tab === "mobile"
-							? "bg-slate-900 text-white border-slate-900"
-							: "bg-white text-slate-700 border-slate-300 hover:border-slate-500"
+							? "bg-ink text-white border-ink"
+							: "bg-white text-slate-700 border-line hover:border-slate-500"
 					}`}
 				>
 					Mobile
@@ -219,10 +219,10 @@ export default function ISPComparisonPage() {
 						<div className="flex flex-wrap gap-2">
 							<button
 								onClick={() => setCityFilter(null)}
-								className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
+								className={`px-3 py-1.5 rounded-xl text-xs font-medium border transition-colors ${
 									cityFilter === null
 										? "bg-primary text-white border-primary"
-										: "bg-white text-slate-700 border-slate-200 hover:border-slate-400"
+										: "bg-white text-slate-700 border-line hover:border-slate-400"
 								}`}
 							>
 								All areas
@@ -231,10 +231,10 @@ export default function ISPComparisonPage() {
 								<button
 									key={c}
 									onClick={() => setCityFilter(cityFilter === c ? null : c)}
-									className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
+									className={`px-3 py-1.5 rounded-xl text-xs font-medium border transition-colors ${
 										cityFilter === c
 											? "bg-primary text-white border-primary"
-											: "bg-white text-slate-700 border-slate-200 hover:border-slate-400"
+											: "bg-white text-slate-700 border-line hover:border-slate-400"
 									}`}
 								>
 									{c}
@@ -244,10 +244,10 @@ export default function ISPComparisonPage() {
 					</div>
 
 					{/* Broadband table */}
-					<div className="overflow-x-auto rounded-xl border border-slate-200">
+					<div className="overflow-x-auto rounded-2xl border border-line">
 						<table className="w-full text-sm">
 							<thead>
-								<tr className="bg-slate-50 border-b border-slate-200">
+								<tr className="bg-slate-50 border-b border-line">
 									<th className="text-left px-4 py-3 font-semibold text-slate-700">
 										Provider
 									</th>
@@ -278,14 +278,14 @@ export default function ISPComparisonPage() {
 								{filteredBroadband.map((isp, i) => (
 									<tr
 										key={isp.name}
-										className={`border-b border-slate-100 ${i % 2 === 0 ? "bg-white" : "bg-slate-50/50"}`}
+										className={`border-b border-line ${i % 2 === 0 ? "bg-white" : "bg-slate-50/50"}`}
 									>
 										<td className="px-4 py-3">
 											<a
 												href={isp.website}
 												target="_blank"
 												rel="noopener noreferrer"
-												className="font-bold text-slate-900 hover:text-primary"
+												className="font-bold text-ink hover:text-primary"
 											>
 												{isp.name}
 											</a>
@@ -300,7 +300,7 @@ export default function ISPComparisonPage() {
 												{TYPE_LABEL[isp.type]}
 											</span>
 										</td>
-										<td className="px-4 py-3 text-right font-semibold text-slate-900">
+										<td className="px-4 py-3 text-right font-semibold text-ink">
 											{isp.maxSpeedDown} Mbps
 										</td>
 										<td className="px-4 py-3 text-right text-slate-700">
@@ -329,9 +329,9 @@ export default function ISPComparisonPage() {
 						{filteredBroadband.map((isp) => (
 							<div
 								key={isp.name}
-								className="bg-white border border-slate-200 rounded-xl p-4"
+								className="bg-white border border-line rounded-2xl p-4"
 							>
-								<p className="font-semibold text-slate-900 mb-1">{isp.name}</p>
+								<p className="font-semibold text-ink mb-1">{isp.name}</p>
 								<p className="text-sm text-slate-600 leading-relaxed">
 									{isp.notes}
 								</p>
@@ -344,10 +344,10 @@ export default function ISPComparisonPage() {
 			{tab === "mobile" && (
 				<>
 					{/* Mobile table */}
-					<div className="overflow-x-auto rounded-xl border border-slate-200">
+					<div className="overflow-x-auto rounded-2xl border border-line">
 						<table className="w-full text-sm">
 							<thead>
-								<tr className="bg-slate-50 border-b border-slate-200">
+								<tr className="bg-slate-50 border-b border-line">
 									<th className="text-left px-4 py-3 font-semibold text-slate-700">
 										Carrier
 									</th>
@@ -372,14 +372,14 @@ export default function ISPComparisonPage() {
 								{MOBILE.map((carrier, i) => (
 									<tr
 										key={carrier.name}
-										className={`border-b border-slate-100 ${i % 2 === 0 ? "bg-white" : "bg-slate-50/50"}`}
+										className={`border-b border-line ${i % 2 === 0 ? "bg-white" : "bg-slate-50/50"}`}
 									>
 										<td className="px-4 py-3">
 											<a
 												href={carrier.website}
 												target="_blank"
 												rel="noopener noreferrer"
-												className="font-bold text-slate-900 hover:text-primary"
+												className="font-bold text-ink hover:text-primary"
 											>
 												{carrier.name}
 											</a>
@@ -390,7 +390,7 @@ export default function ISPComparisonPage() {
 										<td className="px-4 py-3 text-right text-slate-700">
 											€{carrier.prepay10GBCost}
 										</td>
-										<td className="px-4 py-3 text-right font-semibold text-slate-900">
+										<td className="px-4 py-3 text-right font-semibold text-ink">
 											{carrier.coverage}%
 										</td>
 										<td className="px-4 py-3 text-center">
@@ -410,11 +410,9 @@ export default function ISPComparisonPage() {
 						{MOBILE.map((carrier) => (
 							<div
 								key={carrier.name}
-								className="bg-white border border-slate-200 rounded-xl p-4"
+								className="bg-white border border-line rounded-2xl p-4"
 							>
-								<p className="font-semibold text-slate-900 mb-1">
-									{carrier.name}
-								</p>
+								<p className="font-semibold text-ink mb-1">{carrier.name}</p>
 								<p className="text-sm text-slate-600 leading-relaxed">
 									{carrier.notes}
 								</p>
@@ -425,8 +423,8 @@ export default function ISPComparisonPage() {
 			)}
 
 			{/* Disclaimer */}
-			<div className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-xl text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">Disclaimer</p>
+			<div className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
+				<p className="font-semibold text-ink mb-1">Disclaimer</p>
 				<p>
 					Plans and prices change frequently. Verify at provider websites before
 					signing. Prices shown are indicative for 2025 entry-level packages at
@@ -441,22 +439,22 @@ export default function ISPComparisonPage() {
 				</Link>
 			</p>
 
-			<aside className="mt-10 p-5 rounded-xl bg-slate-50 border border-slate-200">
-				<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
+			<aside className="mt-10 p-5 rounded-2xl bg-sky border border-line">
+				<p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
 					Next steps
 				</p>
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/guides/utilities-setup-guide/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Read: Setting Up Utilities in Cyprus →
+						Read: Setting Up Utilities in Cyprus
 					</Link>{" "}
 					<Link
 						href="/guides/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Explore Cyprus guides →
+						Explore Cyprus guides
 					</Link>
 				</div>
 			</aside>

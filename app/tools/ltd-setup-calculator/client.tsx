@@ -78,10 +78,10 @@ function RadioGroup<T extends string>({
 						key={opt.value}
 						type="button"
 						onClick={() => onChange(opt.value)}
-						className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors border ${
+						className={`px-4 py-2 rounded-xl text-sm font-semibold transition-colors border ${
 							value === opt.value
 								? "bg-primary text-white border-primary"
-								: "bg-white border-slate-200 text-slate-700 hover:border-primary"
+								: "bg-white border-line text-slate-700 hover:border-primary"
 						}`}
 					>
 						{opt.label}
@@ -107,18 +107,16 @@ function CostRow({
 }) {
 	return (
 		<tr
-			className={`border-t border-slate-100 ${highlight ? "bg-amber-50" : "hover:bg-slate-50"}`}
+			className={`border-t border-line ${highlight ? "bg-sky" : "hover:bg-slate-50"}`}
 		>
 			<td className="px-3 py-2.5 text-slate-700">
 				{label}
-				{note && (
-					<span className="ml-1 text-[10px] text-muted italic">{note}</span>
-				)}
+				{note && <span className="ml-1 text-xs text-muted italic">{note}</span>}
 			</td>
 			<td className="px-3 py-2.5 text-right text-slate-600 font-mono text-xs">
 				€{Math.round(low).toLocaleString("en-IE")}
 			</td>
-			<td className="px-3 py-2.5 text-right text-slate-800 font-mono text-xs font-semibold">
+			<td className="px-3 py-2.5 text-right text-ink font-mono text-xs font-semibold">
 				€{Math.round(high).toLocaleString("en-IE")}
 			</td>
 		</tr>
@@ -135,12 +133,12 @@ function TotalRow({
 	high: number;
 }) {
 	return (
-		<tr className="border-t-2 border-slate-300 bg-slate-50">
-			<td className="px-3 py-3 font-bold text-slate-900">{label}</td>
+		<tr className="border-t-2 border-line bg-slate-50">
+			<td className="px-3 py-3 font-bold text-ink">{label}</td>
 			<td className="px-3 py-3 text-right font-bold text-slate-700 font-mono text-xs">
 				€{Math.round(low).toLocaleString("en-IE")}
 			</td>
-			<td className="px-3 py-3 text-right font-bold text-slate-900 font-mono text-xs">
+			<td className="px-3 py-3 text-right font-bold text-ink font-mono text-xs">
 				€{Math.round(high).toLocaleString("en-IE")}
 			</td>
 		</tr>
@@ -159,16 +157,16 @@ function StatCard({
 	accent?: boolean;
 }) {
 	return (
-		<div className="p-4 rounded-xl border border-slate-200 bg-white text-center">
+		<div className="p-4 rounded-2xl border border-line bg-white text-center">
 			<p className="text-xs text-slate-500 uppercase tracking-wide mb-1">
 				{label}
 			</p>
 			<p
-				className={`text-lg font-bold leading-tight ${accent ? "text-primary" : "text-slate-900"}`}
+				className={`text-lg font-bold leading-tight ${accent ? "text-primary" : "text-ink"}`}
 			>
 				{value}
 			</p>
-			{sub && <p className="text-[10px] text-muted mt-1">{sub}</p>}
+			{sub && <p className="text-xs text-muted mt-1">{sub}</p>}
 		</div>
 	);
 }
@@ -283,10 +281,10 @@ export default function LtdSetupCalculatorClient() {
 		<div className="max-w-4xl mx-auto px-6 py-10 md:py-16">
 			{/* header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
 					Business
 				</p>
-				<h2 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
+				<h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Cyprus Ltd Setup Cost Calculator
 				</h2>
 				<p className="mt-3 text-slate-600 text-sm leading-relaxed max-w-2xl">
@@ -296,8 +294,8 @@ export default function LtdSetupCalculatorClient() {
 			</header>
 
 			{/* inputs */}
-			<section className="p-5 bg-slate-50 border border-slate-200 rounded-xl mb-8 flex flex-col gap-6">
-				<h2 className="text-sm font-bold text-slate-800 -mb-2">
+			<section className="p-5 bg-sky border border-line rounded-2xl mb-8 flex flex-col gap-6">
+				<h2 className="text-sm font-bold text-ink -mb-2">
 					Your company profile
 				</h2>
 
@@ -402,8 +400,8 @@ export default function LtdSetupCalculatorClient() {
 
 			{/* VAT note */}
 			{vatNote && (
-				<aside className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-xl text-xs text-slate-700">
-					<span className="font-semibold text-slate-900">VAT note: </span>
+				<aside className="mb-6 p-4 bg-sky border border-line rounded-2xl text-xs text-slate-700">
+					<span className="font-semibold text-ink">VAT note: </span>
 					{vatNote}
 				</aside>
 			)}
@@ -433,11 +431,11 @@ export default function LtdSetupCalculatorClient() {
 
 			{/* cost breakdown table */}
 			<section className="mb-8">
-				<h2 className="text-sm font-bold text-slate-800 mb-3">
+				<h2 className="text-sm font-bold text-ink mb-3">
 					Detailed cost breakdown
 				</h2>
 
-				<div className="overflow-x-auto rounded-xl border border-slate-200">
+				<div className="overflow-x-auto rounded-2xl border border-line">
 					<table className="w-full text-xs">
 						<thead>
 							<tr className="bg-slate-50 text-slate-500 uppercase tracking-wide">
@@ -448,10 +446,10 @@ export default function LtdSetupCalculatorClient() {
 						</thead>
 						<tbody>
 							{/* one-time */}
-							<tr className="bg-orange-50">
+							<tr className="bg-sky">
 								<td
 									colSpan={3}
-									className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-orange-700"
+									className="px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-primary"
 								>
 									One-Time Setup Costs
 								</td>
@@ -483,10 +481,10 @@ export default function LtdSetupCalculatorClient() {
 							/>
 
 							{/* annual */}
-							<tr className="bg-teal-50">
+							<tr className="bg-sky">
 								<td
 									colSpan={3}
-									className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-teal-700"
+									className="px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-primary"
 								>
 									Annual Ongoing Costs
 								</td>
@@ -546,14 +544,14 @@ export default function LtdSetupCalculatorClient() {
 							/>
 
 							{/* year 1 grand total */}
-							<tr className="border-t-2 border-orange-300 bg-orange-50">
-								<td className="px-3 py-3 font-bold text-orange-900">
+							<tr className="border-t-2 border-primary bg-sky-strong">
+								<td className="px-3 py-3 font-bold text-ink">
 									Year 1 Grand Total
 								</td>
-								<td className="px-3 py-3 text-right font-bold text-orange-800 font-mono text-xs">
+								<td className="px-3 py-3 text-right font-bold text-ink font-mono text-xs">
 									€{Math.round(costs.year1Total.low).toLocaleString("en-IE")}
 								</td>
-								<td className="px-3 py-3 text-right font-bold text-orange-900 font-mono text-xs">
+								<td className="px-3 py-3 text-right font-bold text-ink font-mono text-xs">
 									€{Math.round(costs.year1Total.high).toLocaleString("en-IE")}
 								</td>
 							</tr>
@@ -563,8 +561,8 @@ export default function LtdSetupCalculatorClient() {
 			</section>
 
 			{/* Cyprus tax advantages */}
-			<aside className="mb-6 p-5 bg-teal-50 border border-teal-200 rounded-xl">
-				<p className="text-[10px] font-bold uppercase tracking-wider text-teal-700 mb-3">
+			<aside className="mb-6 p-5 bg-sky border border-line rounded-2xl">
+				<p className="text-xs font-bold uppercase tracking-wider text-primary mb-3">
 					Why Cyprus? Key Tax Advantages
 				</p>
 				<ul className="flex flex-col gap-2">
@@ -602,8 +600,8 @@ export default function LtdSetupCalculatorClient() {
 			</aside>
 
 			{/* breakeven note */}
-			<aside className="mb-6 p-4 bg-slate-100 border border-slate-200 rounded-xl text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">Breakeven note</p>
+			<aside className="mb-6 p-4 bg-sky border border-line rounded-2xl text-sm text-ink">
+				<p className="font-semibold text-ink mb-1">Breakeven note</p>
 				<p>
 					A Cyprus Ltd typically becomes cost-efficient for annual profits above
 					approximately <strong>€35,000–50,000</strong> after all fees. Below
@@ -612,8 +610,8 @@ export default function LtdSetupCalculatorClient() {
 			</aside>
 
 			{/* optional banking info */}
-			<aside className="mb-6 p-4 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">
+			<aside className="mb-6 p-4 bg-sky border border-line rounded-2xl text-xs text-slate-700">
+				<p className="font-semibold text-ink mb-1">
 					Optional: Corporate Banking
 				</p>
 				<p>
@@ -624,35 +622,35 @@ export default function LtdSetupCalculatorClient() {
 			</aside>
 
 			{/* next steps */}
-			<aside className="mb-6 p-5 bg-slate-50 border border-slate-200 rounded-xl">
-				<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
+			<aside className="mb-6 p-5 bg-sky border border-line rounded-2xl">
+				<p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
 					Related tools
 				</p>
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/tools/sole-trader-vs-ltd/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Sole Trader vs Ltd →
+						Sole Trader vs Ltd
 					</Link>
 					<Link
 						href="/tools/tax-residency-tracker/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Tax Residency Planner →
+						Tax Residency Planner
 					</Link>
 					<Link
 						href="/tools/social-insurance-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Social Insurance Calculator →
+						Social Insurance Calculator
 					</Link>
 				</div>
 			</aside>
 
 			{/* disclaimer */}
-			<aside className="mt-4 p-5 bg-amber-50 border border-amber-200 rounded-xl text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">Disclaimer</p>
+			<aside className="mt-4 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
+				<p className="font-semibold text-ink mb-1">Disclaimer</p>
 				<p>
 					Fees are market estimates for 2025 and are provided for illustrative
 					purposes only — not legal, tax, or financial advice. Actual costs vary
@@ -662,7 +660,7 @@ export default function LtdSetupCalculatorClient() {
 			</aside>
 
 			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools/" className="underline hover:text-slate-900">
+				<Link href="/tools/" className="underline hover:text-ink">
 					&larr; Back to Tools
 				</Link>
 			</p>
