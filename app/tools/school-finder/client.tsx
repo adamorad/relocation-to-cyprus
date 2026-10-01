@@ -189,32 +189,33 @@ function ageRangeOverlaps(schoolRange: string, group: AgeGroup): boolean {
 // ── city badge colour map ─────────────────────────────────────────────────────
 
 const CITY_COLOURS: Record<string, string> = {
-	Limassol: "bg-blue-100 text-blue-800",
-	Paphos: "bg-purple-100 text-purple-800",
-	Larnaca: "bg-orange-100 text-orange-800",
-	"Ayia Napa": "bg-green-100 text-green-800",
+	Limassol: "bg-sky-strong text-ink",
+	Paphos: "bg-sky-strong text-ink",
+	Larnaca: "bg-sky-strong text-ink",
+	"Ayia Napa": "bg-sky-strong text-ink",
 };
 
 // ── sub-components ────────────────────────────────────────────────────────────
 
 function CurriculumPill({ label }: { label: string }) {
 	return (
-		<span className="inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold bg-teal-50 text-teal-700 border border-teal-200">
+		<span className="inline-block px-2 py-0.5 rounded-full text-xs font-semibold bg-sky-strong text-ink border border-line">
 			{label}
 		</span>
 	);
 }
 
 function SchoolCard({ school }: { school: School }) {
-	const cityColour = CITY_COLOURS[school.city] ?? "bg-slate-100 text-slate-700";
+	const cityColour =
+		CITY_COLOURS[school.city] ?? "bg-sky-strong text-slate-700";
 	return (
-		<article className="p-5 bg-white border border-slate-200 rounded-xl flex flex-col gap-3 hover:shadow-md transition-shadow">
+		<article className="p-5 bg-white border border-line rounded-2xl flex flex-col gap-3 hover:shadow-sm transition-shadow">
 			{/* name + badges */}
 			<div>
-				<h3 className="text-base font-bold text-slate-900 leading-snug">
+				<h3 className="text-base font-bold text-ink leading-snug">
 					{school.name}
 					{school.branch && (
-						<span className="font-normal text-slate-500 text-sm">
+						<span className="font-normal text-muted text-sm">
 							{" "}
 							— {school.branch}
 						</span>
@@ -222,11 +223,11 @@ function SchoolCard({ school }: { school: School }) {
 				</h3>
 				<div className="flex flex-wrap gap-1.5 mt-1.5">
 					<span
-						className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold ${cityColour}`}
+						className={`inline-block px-2 py-0.5 rounded-full text-xs font-semibold ${cityColour}`}
 					>
 						{school.city}
 					</span>
-					<span className="inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold bg-slate-100 text-slate-600">
+					<span className="inline-block px-2 py-0.5 rounded-full text-xs font-semibold bg-sky-strong text-slate-600">
 						{school.type}
 					</span>
 				</div>
@@ -242,12 +243,11 @@ function SchoolCard({ school }: { school: School }) {
 			{/* age + fees */}
 			<div className="flex flex-wrap gap-4 text-xs text-slate-600">
 				<span>
-					<span className="font-semibold text-slate-800">Ages:</span>{" "}
+					<span className="font-semibold text-ink">Ages:</span>{" "}
 					{school.ageRange}
 				</span>
 				<span>
-					<span className="font-semibold text-slate-800">Fees:</span>{" "}
-					{school.fees}
+					<span className="font-semibold text-ink">Fees:</span> {school.fees}
 				</span>
 			</div>
 
@@ -295,23 +295,22 @@ export default function SchoolFinderClient() {
 		<main id="main" className="max-w-4xl mx-auto px-6 py-10 md:py-16">
 			{/* breadcrumb */}
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-primary">
 					Home
 				</Link>{" "}
 				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-slate-900">
+				<Link href="/tools/" className="hover:text-primary">
 					Tools
 				</Link>{" "}
-				&rsaquo;{" "}
-				<span className="text-slate-900">International School Finder</span>
+				&rsaquo; <span className="text-ink">International School Finder</span>
 			</nav>
 
 			{/* header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
 					Family
 				</p>
-				<h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					International School Finder
 				</h1>
 				<p className="mt-3 text-slate-600 text-sm leading-relaxed max-w-2xl">
@@ -322,14 +321,14 @@ export default function SchoolFinderClient() {
 			</header>
 
 			{/* filters */}
-			<section className="p-5 bg-slate-50 border border-slate-200 rounded-xl mb-6 flex flex-col gap-5">
+			<section className="p-5 bg-sky border border-line rounded-2xl mb-6 flex flex-col gap-5">
 				<h2 className="text-xs font-bold text-slate-700 uppercase tracking-wider -mb-1">
 					Filters
 				</h2>
 
 				{/* city */}
 				<div>
-					<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wide mb-2">
+					<p className="text-xs font-semibold text-muted uppercase tracking-wide mb-2">
 						City
 					</p>
 					<div className="flex flex-wrap gap-2">
@@ -338,10 +337,10 @@ export default function SchoolFinderClient() {
 								key={c}
 								type="button"
 								onClick={() => setCity(c)}
-								className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+								className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
 									city === c
 										? "bg-primary text-white"
-										: "bg-white border border-slate-200 text-slate-700 hover:border-primary"
+										: "bg-white border border-line text-slate-700 hover:border-primary"
 								}`}
 							>
 								{c}
@@ -352,7 +351,7 @@ export default function SchoolFinderClient() {
 
 				{/* curriculum */}
 				<div>
-					<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wide mb-2">
+					<p className="text-xs font-semibold text-muted uppercase tracking-wide mb-2">
 						Curriculum{" "}
 						<span className="text-muted normal-case font-normal">
 							(select multiple)
@@ -364,10 +363,10 @@ export default function SchoolFinderClient() {
 								key={c}
 								type="button"
 								onClick={() => toggleCurriculum(c)}
-								className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+								className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
 									curricula.has(c)
 										? "bg-primary text-white"
-										: "bg-white border border-slate-200 text-slate-700 hover:border-teal-400"
+										: "bg-white border border-line text-slate-700 hover:border-primary"
 								}`}
 							>
 								{c}
@@ -378,7 +377,7 @@ export default function SchoolFinderClient() {
 
 				{/* age group */}
 				<div>
-					<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wide mb-2">
+					<p className="text-xs font-semibold text-muted uppercase tracking-wide mb-2">
 						Age group
 					</p>
 					<div className="flex flex-wrap gap-2">
@@ -387,10 +386,10 @@ export default function SchoolFinderClient() {
 								key={value}
 								type="button"
 								onClick={() => setAgeGroup(value)}
-								className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+								className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
 									ageGroup === value
 										? "bg-primary text-white"
-										: "bg-white border border-slate-200 text-slate-700 hover:border-primary"
+										: "bg-white border border-line text-slate-700 hover:border-primary"
 								}`}
 							>
 								{label}
@@ -408,7 +407,7 @@ export default function SchoolFinderClient() {
 							setCurricula(new Set());
 							setAgeGroup("all");
 						}}
-						className="self-start text-xs text-slate-500 underline hover:text-slate-900"
+						className="self-start text-xs text-muted underline hover:text-primary"
 					>
 						Clear all filters
 					</button>
@@ -417,8 +416,7 @@ export default function SchoolFinderClient() {
 
 			{/* result count */}
 			<p className="text-sm text-slate-600 mb-4">
-				Showing{" "}
-				<span className="font-bold text-slate-900">{filtered.length}</span>{" "}
+				Showing <span className="font-bold text-ink">{filtered.length}</span>{" "}
 				school{filtered.length !== 1 ? "s" : ""}
 			</p>
 
@@ -430,7 +428,7 @@ export default function SchoolFinderClient() {
 					))}
 				</div>
 			) : (
-				<div className="py-12 text-center text-slate-500 text-sm bg-slate-50 rounded-xl border border-slate-200 mb-8">
+				<div className="py-12 text-center text-muted text-sm bg-sky rounded-xl border border-line mb-8">
 					No schools match the current filters.{" "}
 					<button
 						type="button"
@@ -439,7 +437,7 @@ export default function SchoolFinderClient() {
 							setCurricula(new Set());
 							setAgeGroup("all");
 						}}
-						className="underline hover:text-slate-900"
+						className="underline hover:text-primary"
 					>
 						Clear filters
 					</button>
@@ -447,8 +445,8 @@ export default function SchoolFinderClient() {
 			)}
 
 			{/* fees info box */}
-			<aside className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-xl text-xs text-slate-700 leading-relaxed">
-				<p className="font-semibold text-slate-900 mb-1">About fees</p>
+			<aside className="mb-6 p-4 bg-sky border border-line rounded-2xl text-xs text-slate-700 leading-relaxed">
+				<p className="font-semibold text-ink mb-1">About fees</p>
 				<p>
 					Fees are indicative for 2025. Contact schools directly for current fee
 					schedules and availability. Some schools charge registration and
@@ -457,8 +455,8 @@ export default function SchoolFinderClient() {
 			</aside>
 
 			{/* disclaimer */}
-			<aside className="mt-4 p-5 bg-amber-50 border border-amber-200 rounded-xl text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">Disclaimer</p>
+			<aside className="mt-4 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
+				<p className="font-semibold text-ink mb-1">Disclaimer</p>
 				<p>
 					General information only — not legal, tax, or financial advice. This
 					list is curated but not exhaustive. Several smaller and local private
@@ -467,8 +465,8 @@ export default function SchoolFinderClient() {
 				</p>
 			</aside>
 
-			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools/" className="underline hover:text-slate-900">
+			<p className="mt-8 text-xs text-muted">
+				<Link href="/tools/" className="underline hover:text-primary">
 					&larr; Back to Tools
 				</Link>
 			</p>
