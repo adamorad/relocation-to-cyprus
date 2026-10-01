@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 // Writes docs/topics-mapping.md from lib/topic-map.ts (the single source).
 // Run after changing the mapping:  node scripts/gen-topics-mapping.mjs
+// Check only (no write; fails if anything is unmapped or the doc is stale):
+//   node scripts/gen-topics-mapping.mjs --check   (pnpm qa:topics)
 // Uses Node's built-in TypeScript type stripping plus a small resolver for the
 // project's extensionless and "@/" imports (Node 22.15+ / 24).
-import { existsSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { registerHooks } from "node:module";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -47,7 +49,11 @@ if (problems.length > 0) {
 const name = Object.fromEntries(TOPICS.map((t) => [t.slug, t.name]));
 const items = map.allTopicItems();
 const KIND = { guide: "Guides", directory: "Directories", tool: "Tools" };
-const esc = (s) => String(s).replace(/\|/g, "\\|");
+// Titles are shown as-is except em dashes (house rule), which become colons.
+const esc = (s) =>
+	String(s)
+		.replace(/\s*\u2014\s*/g, ": ")
+		.replace(/\|/g, "\\|");
 
 const lines = [];
 lines.push("# Topic mapping");
@@ -114,5 +120,18 @@ for (const type of ["guide", "directory", "tool"]) {
 lines.push("");
 
 const out = join(ROOT, "docs", "topics-mapping.md");
+if (process.argv.includes("--check")) {
+	const current = existsSync(out) ? readFileSync(out, "utf8") : "";
+	if (current !== lines.join("\n")) {
+		console.error(
+			"docs/topics-mapping.md is out of date: run node scripts/gen-topics-mapping.mjs",
+		);
+		process.exit(1);
+	}
+	console.log(
+		`Topic mapping OK: ${items.length} items mapped, doc up to date.`,
+	);
+	process.exit(0);
+}
 writeFileSync(out, lines.join("\n"));
 console.log(`Wrote ${out} (${items.length} items)`);

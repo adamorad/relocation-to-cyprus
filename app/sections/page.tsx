@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { HubTemplate } from "@/components/templates/HubTemplate";
 import { TopicIndexClient } from "@/components/templates/TopicIndexClient";
 import { SECTIONS_INDEX } from "@/lib/sections-index";
-import { getAssignment } from "@/lib/topic-map";
+import { primaryTopic } from "@/lib/topic-map";
 
 const DIR_COUNT = SECTIONS_INDEX.length;
 const title = "Local directories";
@@ -42,8 +42,7 @@ export default function SectionsIndexPage() {
 					href: `/sections/${s.slug}/`,
 					title: s.name,
 					description: s.description,
-					// biome-ignore lint/style/noNonNullAssertion: completeness is asserted at build
-					topic: getAssignment("directory", s.slug)!.topic,
+					topic: primaryTopic("directory", s.slug),
 				}))}
 			/>
 		</HubTemplate>

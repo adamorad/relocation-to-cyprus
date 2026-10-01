@@ -589,9 +589,16 @@ export function getAssignment(
 function topicOf(type: ItemType, slug: string): Topic {
 	const a = MAPS[type][slug];
 	const t = a ? topicBySlug(a.topic) : undefined;
-	if (!t) throw new Error(`No topic mapped for ${type} "${slug}"`);
+	if (!t)
+		throw new Error(
+			`No topic mapped for ${type} "${slug}": add it to lib/topic-map.ts`,
+		);
 	return t;
 }
+
+/** Primary topic slug of an item; throws a clear error when unmapped. */
+export const primaryTopic = (type: ItemType, slug: string): TopicSlug =>
+	topicOf(type, slug).slug;
 
 export const getTopicForGuide = (slug: string) => topicOf("guide", slug);
 export const getTopicForSection = (slug: string) => topicOf("directory", slug);
@@ -626,7 +633,10 @@ function toItem(
 	listed = true,
 ): TopicItem {
 	const a = MAPS[type][slug];
-	if (!a) throw new Error(`No topic mapped for ${type} "${slug}"`);
+	if (!a)
+		throw new Error(
+			`No topic mapped for ${type} "${slug}": add it to lib/topic-map.ts`,
+		);
 	return {
 		type,
 		slug,

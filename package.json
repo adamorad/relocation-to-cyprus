@@ -11,6 +11,7 @@
     "qa:links": "node scripts/qa/check-links.mjs",
     "qa:rules": "node scripts/qa/house-rules.mjs",
     "qa:axe": "node scripts/qa/axe.mjs",
+    "qa:topics": "node --no-warnings scripts/gen-topics-mapping.mjs --check",
     "qa": "pnpm build && pnpm qa:links && pnpm qa:rules && pnpm qa:axe"
   },
   "dependencies": {

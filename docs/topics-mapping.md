@@ -77,15 +77,15 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Finding International Ingredients in Cyprus](/guides/home-cooking-ingredients/) | Food & shopping |  |  |  |
 | [Booking Restaurants in Cyprus: How It Works](/guides/restaurant-reservations/) | Food & shopping | Community & leisure |  |  |
 | [Registering Your Child in Cyprus: School & ARC](/guides/child-registration-guide/) | Family & schools | Money & paperwork |  |  |
-| [Best Family-Friendly Neighborhoods in Cyprus — District by District](/guides/family-neighborhoods-guide/) | Family & schools | Home & bills, Moving to Cyprus |  | Old category Lifestyle; written for families choosing an area. |
+| [Best Family-Friendly Neighborhoods in Cyprus: District by District](/guides/family-neighborhoods-guide/) | Family & schools | Home & bills, Moving to Cyprus |  | Old category Lifestyle; written for families choosing an area. |
 | [Getting Married in Cyprus (2026 Guide)](/guides/getting-married-in-cyprus/) | Family & schools | Money & paperwork |  | Family life event; the steps are civil paperwork. |
 | [International School Fees in Cyprus (2026)](/guides/international-school-fees-cyprus/) | Family & schools |  |  |  |
 | [International vs Public Schools in Cyprus](/guides/international-vs-public-school/) | Family & schools |  |  |  |
-| [Maternity and Paternity Rights in Cyprus — What Employed Parents Are Entitled To](/guides/maternity-paternity-rights/) | Family & schools | Money & paperwork |  |  |
+| [Maternity and Paternity Rights in Cyprus: What Employed Parents Are Entitled To](/guides/maternity-paternity-rights/) | Family & schools | Money & paperwork |  |  |
 | [International Schools in Cyprus: Full Guide 2026](/guides/schools-in-cyprus/) | Family & schools |  |  |  |
 | [Special Educational Needs in Cyprus: SEN Guide](/guides/sen-guide/) | Family & schools |  |  |  |
 | [Universities in Cyprus: Guide for Students](/guides/universities-in-cyprus/) | Family & schools |  |  |  |
-| [Cyprus Beach Guide — Best Beaches by District](/guides/beach-guide-by-district/) | Community & leisure |  |  |  |
+| [Cyprus Beach Guide: Best Beaches by District](/guides/beach-guide-by-district/) | Community & leisure |  |  |  |
 | [Cyprus Climate Month by Month: Seasonal Guide](/guides/climate-zones-seasonal/) | Community & leisure | Moving to Cyprus |  | Old category Environment; month-by-month living and what to do, so leisure first. |
 | [Cypriot Culture & Social Etiquette Guide](/guides/cultural-etiquette-guide/) | Community & leisure |  |  |  |
 | [Hiking in Cyprus: Troodos, Akamas & Coastal Trails](/guides/hiking-trails-guide/) | Community & leisure |  |  |  |

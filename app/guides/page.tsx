@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { HubTemplate } from "@/components/templates/HubTemplate";
 import { TopicIndexClient } from "@/components/templates/TopicIndexClient";
 import { GUIDES } from "@/lib/guides";
-import { getAssignment } from "@/lib/topic-map";
+import { primaryTopic } from "@/lib/topic-map";
 
 const SITE_URL = "https://realcy.app";
 const title = "Guides for living in Cyprus";
@@ -39,8 +39,7 @@ export default function GuidesPage() {
 					href: `/guides/${g.slug}/`,
 					title: g.title,
 					description: g.description,
-					// biome-ignore lint/style/noNonNullAssertion: completeness is asserted at build
-					topic: getAssignment("guide", g.slug)!.topic,
+					topic: primaryTopic("guide", g.slug),
 				}))}
 			/>
 		</HubTemplate>
