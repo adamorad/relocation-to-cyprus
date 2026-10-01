@@ -127,61 +127,6 @@ export const FARMERS_MARKETS: ReadonlyArray<FarmersMarket> = [
     parkingNotes: "Free parking in the park car park; fills up by 09:30 on busy Saturdays.",
   },
 
-  // ── Nicosia ───────────────────────────────────────────────────────────────
-  {
-    name: "Nicosia Municipal Market",
-    city: "Nicosia",
-    location: "Diocletian Street, Nicosia Old City (inside the Venetian walls)",
-    dayOfWeek: "Monday",
-    hours: "06:00–14:00",
-    produces: [
-      "vegetables",
-      "fruit",
-      "halloumi",
-      "fresh herbs",
-      "village sausages",
-      "olives",
-    ],
-    why: "The most historic covered market in Cyprus, built in the 1930s under British administration. Inside the Venetian walls of Nicosia, it has a permanent arcade of stalls. Best range of village-made products (loukanika sausages, fresh anari cheese) in the capital.",
-    parkingNotes:
-      "Parking within the old city is limited; use the Eleftheria Square car park and walk.",
-  },
-  {
-    name: "Nicosia Laiki Agora — Engomi",
-    city: "Nicosia",
-    location: "Engomi, west Nicosia",
-    dayOfWeek: "Wednesday",
-    hours: "06:00–13:00",
-    produces: ["seasonal produce", "citrus", "potatoes", "onions", "greens"],
-    why: "The most convenient weekly market for residents of Engomi and Strovolos. A no-frills street market with competitive prices from small producers. Good source for bulk citrus in winter months.",
-    parkingNotes: "Street parking available early; limited after 08:00.",
-  },
-  {
-    name: "Nicosia Laiki Agora — Latsia",
-    city: "Nicosia",
-    location: "Latsia, south-east Nicosia",
-    dayOfWeek: "Friday",
-    hours: "06:00–13:00",
-    produces: ["vegetables", "fruit", "eggs", "dried herbs", "legumes"],
-    why: "Serving the southern Nicosia suburbs. Particularly strong for dried goods — lentils, chickpeas, dried herbs — and seasonal vegetables. A reliable source for local farm eggs.",
-    parkingNotes: "Adequate street and off-street parking near the market.",
-  },
-  {
-    name: "Nicosia Farmers Market — Strovolos",
-    city: "Nicosia",
-    location: "Strovolos Municipal Park, Nicosia",
-    dayOfWeek: "Saturday",
-    hours: "07:00–13:00",
-    produces: [
-      "organic produce",
-      "honey",
-      "village bread",
-      "local wine",
-      "carob syrup",
-    ],
-    why: "A weekend farmers market popular with young Nicosia families. Vendors include small-scale organic growers, artisan food producers, and beekeepers. The carob products (syrup, flour, chocolate) are a Cyprus specialty worth discovering here.",
-    parkingNotes: "Strovolos Municipal Park has its own car park.",
-  },
 
   // ── Larnaca ───────────────────────────────────────────────────────────────
   {

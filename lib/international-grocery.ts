@@ -51,8 +51,8 @@ export type Specialty = (typeof ALL_SPECIALTIES)[number];
 
 export const GROCERY_TIPS: ReadonlyArray<GroceryTip> = [
   {
-    heading: "Larnaca and Nicosia for Middle Eastern products",
-    body: "Larnaca and Nicosia have the strongest selection of Middle Eastern and Arabic food products, driven by their large Arab expat and Lebanese-Cypriot communities. Lebanese, Syrian, and Egyptian pantry staples — tahini, pomegranate molasses, freekeh, dried limes, halal spices — are most reliably stocked here.",
+    heading: "Larnaca for Middle Eastern products",
+    body: "Larnaca has the strongest selection of Middle Eastern and Arabic food products, driven by its large Arab expat and Lebanese-Cypriot communities. Lebanese, Syrian, and Egyptian pantry staples (tahini, pomegranate molasses, freekeh, dried limes, halal spices) are most reliably stocked here.",
   },
   {
     heading: "Limassol has the best Asian range",
@@ -138,43 +138,6 @@ export const INTERNATIONAL_STORES: ReadonlyArray<InternationalStore> = [
     openingHours: "Mon–Sat 09:00–18:00",
   },
 
-  // ── Nicosia ───────────────────────────────────────────────────────────────
-  {
-    name: "Beirut Food Market",
-    city: "Nicosia",
-    neighbourhood: "Strovolos, Nicosia",
-    specializes: ["Middle Eastern"],
-    priceLevel: 2,
-    why: "The best-stocked Middle Eastern grocery store in Nicosia, catering to the city's substantial Lebanese and Arab community. Excellent range of Lebanese pantry staples, fresh pita bread, imported cheeses, and halal meat. The hummus and falafel mix selections are particularly good.",
-    openingHours: "Mon–Sat 08:30–20:00, Sun 10:00–16:00",
-  },
-  {
-    name: "Asia Town Supermarket",
-    city: "Nicosia",
-    neighbourhood: "Pallouriotissa, Nicosia",
-    specializes: ["Asian"],
-    priceLevel: 2,
-    why: "Nicosia's most established Asian grocery, stocking Chinese, Filipino, and Southeast Asian food products. Particularly strong for frozen dim sum, Asian noodles, and a wide range of soy and oyster sauce brands. Serves a growing Filipino community in the capital.",
-    openingHours: "Mon–Sat 09:00–19:00",
-  },
-  {
-    name: "Spice Route",
-    city: "Nicosia",
-    neighbourhood: "Engomi, Nicosia",
-    specializes: ["Indian & South Asian"],
-    priceLevel: 2,
-    why: "An Indian and South Asian grocery with a strong spice selection. The best Nicosia source for fresh curry leaves, whole spices in bulk, Indian branded snacks, and specialist flours (besan, atta). Also carries Sri Lankan and Bangladeshi products.",
-    openingHours: "Mon–Sat 10:00–18:30",
-  },
-  {
-    name: "African Food Store Nicosia",
-    city: "Nicosia",
-    neighbourhood: "Pallouriotissa, Nicosia",
-    specializes: ["African"],
-    priceLevel: 2,
-    why: "Serving Nicosia's Nigerian and broader West/East African community. Stocks plantain, cassava flour, palm oil, dried crayfish, African yams, and various imported African condiments and sauces not available elsewhere in Cyprus.",
-    openingHours: "Mon–Sat 09:30–18:30",
-  },
 
   // ── Larnaca ───────────────────────────────────────────────────────────────
   {
@@ -239,7 +202,7 @@ export const INTERNATIONAL_STORES: ReadonlyArray<InternationalStore> = [
     neighbourhood: "Paphos town centre",
     specializes: ["Middle Eastern"],
     priceLevel: 2,
-    why: "A Middle Eastern and halal grocery covering Lebanese, Syrian, and Egyptian products for Paphos's Arab expat community. Stocks Arabic flatbreads baked fresh, imported olive oils, and halal meats. Smaller selection than Larnaca or Nicosia equivalents but convenient for Paphos residents.",
+    why: "A Middle Eastern and halal grocery covering Lebanese, Syrian, and Egyptian products for Paphos's Arab expat community. Stocks Arabic flatbreads baked fresh, imported olive oils, and halal meats. Smaller selection than Larnaca equivalents but convenient for Paphos residents.",
     openingHours: "Mon–Sat 09:00–19:30",
   },
 ];

@@ -71,12 +71,12 @@ export const CERTIFICATION_LABEL: Record<Certification, string> = {
 
 export const DIETARY_TIPS: ReadonlyArray<DietaryTip> = [
   {
-    heading: "Halal availability is strongest in Larnaca and Nicosia",
-    body: "Larnaca and Nicosia have the largest Muslim and Arab expat communities in Cyprus, which means the widest selection of halal restaurants, halal butchers, and halal grocery stores. Larnaca in particular has a concentrated area near the marina with multiple Arabic and halal dining options.",
+    heading: "Halal availability is strongest in Larnaca",
+    body: "Larnaca has one of the largest Muslim and Arab expat communities in Cyprus, which means a wide selection of halal restaurants, halal butchers, and halal grocery stores. Larnaca in particular has a concentrated area near the marina with multiple Arabic and halal dining options.",
   },
   {
     heading: "Kosher options are concentrated around Limassol's Jewish community",
-    body: "Cyprus has an established Jewish community centred mainly in Limassol, supported by Chabad of Cyprus. Certified kosher restaurants and food products are available in Limassol, with the Chabad house providing information on current kosher availability. The Jewish community in Nicosia also supports some kosher options.",
+    body: "Cyprus has an established Jewish community centred mainly in Limassol, supported by Chabad of Cyprus. Certified kosher restaurants and food products are available in Limassol, with the Chabad house providing information on current kosher availability.",
   },
   {
     heading: "EU labelling laws apply — look for the certified symbols",
@@ -105,15 +105,6 @@ export const HALAL_KOSHER_VENUES: ReadonlyArray<HalalKosherVenue> = [
     phone: "+357 24 650 600",
   },
   {
-    name: "Istanbul Restaurant",
-    city: "Nicosia",
-    neighbourhood: "Strovolos, Nicosia",
-    type: "restaurant",
-    certification: "halal",
-    cuisine: "Turkish",
-    why: "An authentic Turkish restaurant in Nicosia with a fully halal kitchen. Serves doner, kebabs, pide, and Turkish breakfast. Popular with the Turkish Cypriot community who live south of the buffer zone and with Muslim residents of Nicosia.",
-  },
-  {
     name: "Babylon Shawarma",
     city: "Limassol",
     neighbourhood: "Agios Nikolaos, central Limassol",
@@ -121,15 +112,6 @@ export const HALAL_KOSHER_VENUES: ReadonlyArray<HalalKosherVenue> = [
     certification: "halal",
     cuisine: "Middle Eastern",
     why: "A fast-casual shawarma and falafel spot in Limassol with a certified halal kitchen. Popular with the city's Arab and Muslim expat community for quick lunches. Chicken shawarma and falafel wraps are particularly good.",
-  },
-  {
-    name: "Arabesque",
-    city: "Nicosia",
-    neighbourhood: "Engomi, Nicosia",
-    type: "restaurant",
-    certification: "halal",
-    cuisine: "Arabic",
-    why: "A sit-down Arabic restaurant in Nicosia's expat-heavy Engomi neighbourhood. Full mezze menu, grilled meat platters, and traditional Arabic sweets. One of the few halal restaurants in Nicosia where the full menu — not just selected dishes — is certified halal.",
   },
   {
     name: "Taste of Pakistan",
@@ -182,14 +164,6 @@ export const HALAL_KOSHER_VENUES: ReadonlyArray<HalalKosherVenue> = [
     phone: "+357 24 625 400",
   },
   {
-    name: "Al-Razi Halal Butcher",
-    city: "Nicosia",
-    neighbourhood: "Pallouriotissa, Nicosia",
-    type: "butcher",
-    certification: "halal",
-    why: "A long-established halal butcher in Nicosia serving the capital's Muslim community. Certified halal beef, lamb, goat, and chicken. Stocks whole carcasses for community events and can source specific cuts on order.",
-  },
-  {
     name: "Halal Butcher Limassol",
     city: "Limassol",
     neighbourhood: "Omonia area, Limassol",
@@ -219,15 +193,6 @@ export const HALAL_KOSHER_VENUES: ReadonlyArray<HalalKosherVenue> = [
     cuisine: "Arabic",
     why: "A traditional Arabic bakery in Larnaca baking fresh Arabic flatbreads, ka'ak biscuits, and Arabic pastries daily. All products halal. The fresh pita bread is baked multiple times a day and is significantly better than supermarket alternatives.",
   },
-  {
-    name: "Middle East Bakery",
-    city: "Nicosia",
-    neighbourhood: "Strovolos, Nicosia",
-    type: "bakery",
-    certification: "halal",
-    cuisine: "Middle Eastern",
-    why: "A Nicosia bakery specialising in Lebanese and Arabic baked goods — man'oushe, lahmajoun, sesame rolls, and ma'amoul cookies. Halal operation. Popular for weekend breakfasts with the Arab community.",
-  },
 
   // ── Halal Grocery Stores ──────────────────────────────────────────────────
   {
@@ -238,14 +203,6 @@ export const HALAL_KOSHER_VENUES: ReadonlyArray<HalalKosherVenue> = [
     certification: "halal",
     why: "A comprehensive halal supermarket in Larnaca stocking halal packaged goods, frozen halal meats, Arabic pantry staples, and imported halal-certified products. One of the most complete halal grocery options in Cyprus for stocking a household pantry.",
     openingHours: "Mon–Sun 08:00–21:00",
-  },
-  {
-    name: "Islamic Food Store",
-    city: "Nicosia",
-    neighbourhood: "Pallouriotissa, Nicosia",
-    type: "grocery",
-    certification: "halal",
-    why: "A grocery store focused on halal-certified packaged goods, grains, and pantry items for Nicosia's Muslim community. Good selection of halal canned goods, halal instant noodles, and cooking ingredients. Doubles as a community gathering point.",
   },
 
   // ── Kosher Grocery Stores ─────────────────────────────────────────────────

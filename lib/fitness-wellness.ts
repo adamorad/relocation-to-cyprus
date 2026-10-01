@@ -200,72 +200,6 @@ export const FITNESS_VENUES: ReadonlyArray<FitnessVenue> = [
     website: "https://www.straphael.com/spa",
   },
 
-  // ── Nicosia — Gyms ────────────────────────────────────────────────────────
-  {
-    name: "Holmes Place Nicosia",
-    city: "Nicosia",
-    neighbourhood: "Engomi",
-    type: "gym",
-    monthlyFrom: 75,
-    dropInFrom: 12,
-    englishSpoken: true,
-    why: "Premium gym chain with Nicosia's most complete facility — 25m pool, sauna, group fitness studio, climbing wall section, and full weights floor. Expensive relative to local independents but the most comprehensive setup in the capital.",
-    website: "https://www.holmesplace.com.cy",
-  },
-  {
-    name: "Training Lab Nicosia",
-    city: "Nicosia",
-    neighbourhood: "City centre",
-    type: "gym",
-    monthlyFrom: 50,
-    dropInFrom: 8,
-    englishSpoken: true,
-    why: "Serious independent gym popular with the Nicosia office crowd. Good powerlifting setup, coaching optional, and flexible short-term memberships. Quieter than the hotel-adjacent gyms.",
-  },
-  // ── Nicosia — CrossFit ────────────────────────────────────────────────────
-  {
-    name: "CrossFit Nicosia",
-    city: "Nicosia",
-    neighbourhood: "Strovolos",
-    type: "crossfit",
-    monthlyFrom: 105,
-    dropInFrom: 18,
-    englishSpoken: true,
-    why: "Long-established affiliate with a large member base. Classes run from early morning through evening. Bilingual coaching. Part of the Cyprus CrossFit competition circuit.",
-    website: "https://www.crossfitnicosia.com",
-  },
-  // ── Nicosia — Yoga ────────────────────────────────────────────────────────
-  {
-    name: "The Yoga Room Nicosia",
-    city: "Nicosia",
-    neighbourhood: "Makedonitissa",
-    type: "yoga",
-    monthlyFrom: 70,
-    dropInFrom: 12,
-    englishSpoken: true,
-    why: "Established studio in the north of the city. A wide class schedule (ashtanga, restorative, kids yoga) taught in English and Greek. Friendly to newcomers and expats without a car — accessible by bus from the city centre.",
-  },
-  // ── Nicosia — Swimming ────────────────────────────────────────────────────
-  {
-    name: "Eleftheria Municipal Pool",
-    city: "Nicosia",
-    neighbourhood: "City centre",
-    type: "swimming",
-    monthlyFrom: 30,
-    dropInFrom: 4,
-    englishSpoken: false,
-    why: "The main public pool in Nicosia. Inexpensive, 50m lanes, and open most of the year. Busy at peak times but the best value swimming option in the capital. Some English spoken at reception.",
-  },
-  // ── Nicosia — Padel ───────────────────────────────────────────────────────
-  {
-    name: "Padel Nicosia Club",
-    city: "Nicosia",
-    neighbourhood: "Aglandjia",
-    type: "padel",
-    dropInFrom: 12,
-    englishSpoken: true,
-    why: "Purpose-built padel complex with eight courts, a coaching team, and a small social bar area. Active leagues and open play sessions. One of the most active padel communities on the island.",
-  },
 
   // ── Paphos — Gyms ─────────────────────────────────────────────────────────
   {
@@ -342,7 +276,7 @@ export const FITNESS_VENUES: ReadonlyArray<FitnessVenue> = [
     monthlyFrom: 95,
     dropInFrom: 15,
     englishSpoken: true,
-    why: "The main CrossFit affiliate serving Larnaca. Friendly box culture, English-language coaching, and regular community events. Smaller than the Limassol or Nicosia boxes but well-run.",
+    why: "The main CrossFit affiliate serving Larnaca. Friendly box culture, English-language coaching, and regular community events. Smaller than the Limassol boxes but well-run.",
   },
   // ── Larnaca — Pilates ─────────────────────────────────────────────────────
   {

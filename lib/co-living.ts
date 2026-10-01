@@ -126,26 +126,6 @@ export const CO_LIVING_LISTINGS: ReadonlyArray<CoLiving> = [
     website: "https://www.spitogatos.cy/en/rent/apartment/larnaca/",
   },
 
-  // ── Nicosia ──────────────────────────────────────────────────────────────
-  {
-    name: "Nicosia Professional Coliving",
-    city: "Nicosia",
-    neighbourhood: "Engomi",
-    monthlyFrom: 950,
-    monthlyTo: 1500,
-    includes: ["WiFi (gigabit)", "utilities", "weekly cleaning", "dedicated desk", "meeting room access"],
-    why: "Purpose-built coliving for corporate relocators and professionals in Nicosia's Engomi district. Private rooms with work desks, fast internet, and meeting rooms. Steps from key embassy and business district addresses. Best fit for those with Nicosia work commitments.",
-  },
-  {
-    name: "The Milestone Residences Nicosia",
-    city: "Nicosia",
-    neighbourhood: "City centre",
-    monthlyFrom: 1600,
-    monthlyTo: 2500,
-    includes: ["WiFi", "utilities", "weekly housekeeping", "concierge", "breakfast available", "gym"],
-    why: "The boutique hotel arm of The Milestone Hotel operates extended-stay suites. Fully serviced, heritage building, restaurant on-site. The most premium serviced apartment option in the capital — suited to executives or those needing a Nicosia base during longer relocation processes.",
-    website: "https://www.themilestonehotel.com.cy",
-  },
 
   // ── Ayia Napa ─────────────────────────────────────────────────────────────
   {

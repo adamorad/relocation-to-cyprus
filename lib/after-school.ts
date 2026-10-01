@@ -163,18 +163,6 @@ export const AFTER_SCHOOL_ACTIVITIES: ReadonlyArray<AfterSchoolActivity> = [
     why: "Tennis coaching at the Coral Bay club, run by a certified LTA-level coach. Individual and group lessons. Good for beginners; more advanced players can access the club's tournament calendar and national federation pathway.",
   },
   {
-    name: "Nicosia Rugby Club Juniors",
-    city: "Nicosia",
-    neighbourhood: "GSP Stadium area",
-    type: "sport",
-    ageRangeFrom: 5,
-    ageRangeTo: 16,
-    languagesOffered: ["English"],
-    weeklyFeeApprox: 15,
-    why: "The main junior rugby programme in Cyprus, run almost entirely in English and popular with the British expat community in Nicosia. Mixed nationality groups; sessions focus on fun and fundamentals at younger ages.",
-    website: "https://www.nicosiarugby.com",
-  },
-  {
     name: "Larnaca Cycling Club — Youth Programme",
     city: "Larnaca",
     neighbourhood: "Larnaca Salt Lake area",
@@ -208,17 +196,6 @@ export const AFTER_SCHOOL_ACTIVITIES: ReadonlyArray<AfterSchoolActivity> = [
     languagesOffered: ["English", "Greek"],
     weeklyFeeApprox: 16,
     why: "IJF-affiliated judo academy covering juniors in Paphos. Small class sizes, qualified dan-grade instructors, and national competition participation for those who want it. Good confidence and discipline focus for younger children.",
-  },
-  {
-    name: "Nicosia Taekwondo Centre",
-    city: "Nicosia",
-    neighbourhood: "Strovolos",
-    type: "martial-arts",
-    ageRangeFrom: 4,
-    ageRangeTo: 17,
-    languagesOffered: ["Greek", "English"],
-    weeklyFeeApprox: 14,
-    why: "World Taekwondo-affiliated centre in Nicosia. Structured belt system, national and international competition pathway, and flexible scheduling. One of the most active martial arts clubs in the capital.",
   },
 
   // ── Dance ─────────────────────────────────────────────────────────────────
@@ -259,17 +236,6 @@ export const AFTER_SCHOOL_ACTIVITIES: ReadonlyArray<AfterSchoolActivity> = [
     why: "State-affiliated music school offering piano, guitar, violin, drums and voice. ABRSM-compatible examinations available. One of the most structured music education environments in Cyprus. Waiting list for the most popular instruments.",
   },
   {
-    name: "Nicosia Conservatoire — Junior Programme",
-    city: "Nicosia",
-    neighbourhood: "Engomi",
-    type: "music",
-    ageRangeFrom: 5,
-    ageRangeTo: 18,
-    languagesOffered: ["Greek", "English"],
-    weeklyFeeApprox: 28,
-    why: "The most academically rigorous music education in Cyprus for children. Individual instrument tuition plus music theory. ABRSM and Trinity examinations. Recommended for families where a child shows genuine musical aptitude.",
-  },
-  {
     name: "Larnaca Music & Arts Centre",
     city: "Larnaca",
     neighbourhood: "Larnaca town",
@@ -306,17 +272,6 @@ export const AFTER_SCHOOL_ACTIVITIES: ReadonlyArray<AfterSchoolActivity> = [
     weeklyFeeApprox: 22,
     why: "Coding and STEM academy with a structured curriculum (Scratch, Python, robotics). English-medium instruction. Well-reviewed by expat parents for keeping up with international coding curricula. Weekend and after-school slots available.",
     website: "https://www.codeisland.com.cy",
-  },
-  {
-    name: "Mindlab Nicosia",
-    city: "Nicosia",
-    neighbourhood: "Engomi",
-    type: "stem",
-    ageRangeFrom: 6,
-    ageRangeTo: 15,
-    languagesOffered: ["Greek", "English"],
-    weeklyFeeApprox: 20,
-    why: "STEM-focused programme covering robotics, logic, and basic programming. Nicosia's most established coding club for children. Groups are kept small to ensure individual attention. Summer intensive programme also available.",
   },
 
   // ── Languages ─────────────────────────────────────────────────────────────

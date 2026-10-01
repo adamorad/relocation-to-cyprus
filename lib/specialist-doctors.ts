@@ -112,18 +112,6 @@ export const SPECIALIST_DOCTORS: ReadonlyArray<SpecialistDoctor> = [
     website: "https://www.aretaeio.com",
   },
   {
-    name: "Dr Andreas Panteli",
-    title: "Cardiologist & Electrophysiologist",
-    city: "Nicosia",
-    specialty: "cardiology",
-    hospital: "Iasis Hospital Nicosia",
-    gesyAccepted: false,
-    englishSpoken: true,
-    consultationFrom: 120,
-    why: "Specialises in cardiac arrhythmia, pacemaker implantation, and catheter ablation. Private practice at Iasis Hospital. Trained in Greece and the UK; fluent English and a strong communicator with international patients.",
-    website: "https://www.iasishospital.com",
-  },
-  {
     name: "Dr Elena Stylianou",
     title: "Cardiologist",
     city: "Paphos",
@@ -135,30 +123,6 @@ export const SPECIALIST_DOCTORS: ReadonlyArray<SpecialistDoctor> = [
     why: "One of the most accessible English-speaking cardiologists in Paphos for non-urgent assessments, stress tests, and echocardiograms. Accepts GeSY referrals and runs a private clinic on Wednesday afternoons.",
   },
   // ── Oncology ─────────────────────────────────────────────────────────────
-  {
-    name: "Dr Nikos Stavrides",
-    title: "Medical Oncologist",
-    city: "Nicosia",
-    specialty: "oncology",
-    hospital: "Bank of Cyprus Oncology Centre",
-    gesyAccepted: true,
-    englishSpoken: true,
-    consultationFrom: 150,
-    why: "Works at the Bank of Cyprus Oncology Centre — the island's leading dedicated cancer facility. Specialises in breast, lung, and colon cancers. Trained at the Royal Marsden (London); preferred by many UK expats for oncology second opinions.",
-    website: "https://www.bococ.org.cy",
-  },
-  {
-    name: "Dr Maria Ioannidou",
-    title: "Radiation Oncologist",
-    city: "Nicosia",
-    specialty: "oncology",
-    hospital: "Bank of Cyprus Oncology Centre",
-    gesyAccepted: true,
-    englishSpoken: true,
-    consultationFrom: 150,
-    why: "Radiation oncologist at the BOC Oncology Centre with sub-speciality expertise in gynaecological and gastrointestinal cancers. Collaborates with oncologists across Greece and the UK for complex cases requiring cross-border consultation.",
-    website: "https://www.bococ.org.cy",
-  },
   // ── Orthopaedics ─────────────────────────────────────────────────────────
   {
     name: "Dr Petros Katsaros",
@@ -172,18 +136,6 @@ export const SPECIALIST_DOCTORS: ReadonlyArray<SpecialistDoctor> = [
     why: "Sports medicine and knee/shoulder specialist. Fellow of the British Orthopaedic Association. Widely recommended in the expat community for ligament reconstruction, arthroscopy, and joint replacements. Typically 3–5 day wait for private consultation.",
     website: "https://www.evangelismos.com.cy",
   },
-  {
-    name: "Dr Stavros Hadjigeorgiou",
-    title: "Orthopaedic & Spine Surgeon",
-    city: "Nicosia",
-    specialty: "orthopaedics",
-    hospital: "Nicosia General Hospital (GeSY) / American Medical Centre",
-    gesyAccepted: true,
-    englishSpoken: true,
-    consultationFrom: 100,
-    why: "Spine surgery and disc pathology specialist. Accepts GeSY referrals for non-urgent spinal assessments. Private consultations available at the American Medical Centre with faster access. Strong reputation among Israeli and British expats in Nicosia.",
-    website: "https://www.americanmedical.com.cy",
-  },
   // ── Dermatology ──────────────────────────────────────────────────────────
   {
     name: "Dr Irene Kypri",
@@ -195,17 +147,6 @@ export const SPECIALIST_DOCTORS: ReadonlyArray<SpecialistDoctor> = [
     englishSpoken: true,
     consultationFrom: 80,
     why: "One of the most recommended dermatologists in Limassol for both medical and cosmetic dermatology. Trained in Athens and London. Strong GeSY list — expect 1–2 week wait on referral; private appointment typically available within 3 days.",
-  },
-  {
-    name: "Dr Christos Nicolaou",
-    title: "Dermatologist & Venereologist",
-    city: "Nicosia",
-    specialty: "dermatology",
-    hospital: "Nicosia New General Hospital / Private",
-    gesyAccepted: true,
-    englishSpoken: true,
-    consultationFrom: 85,
-    why: "Covers medical dermatology, skin cancer screening, and STI testing. Active GeSY provider and private practice. Fluent English and patient with complex case histories. Well-reviewed by the international community in Nicosia.",
   },
   {
     name: "Dr Sofia Andreou",
@@ -231,18 +172,6 @@ export const SPECIALIST_DOCTORS: ReadonlyArray<SpecialistDoctor> = [
     why: "Specialist in headache disorders, epilepsy, and multiple sclerosis. One of the few neurologists on the island with dedicated MS patient cohorts. Accepts GeSY referrals. Private patients seen at Evangelismos Hospital.",
     website: "https://www.evangelismos.com.cy",
   },
-  {
-    name: "Dr Chara Stylianou",
-    title: "Neurologist",
-    city: "Nicosia",
-    specialty: "neurology",
-    hospital: "Iasis Hospital Nicosia",
-    gesyAccepted: false,
-    englishSpoken: true,
-    consultationFrom: 130,
-    why: "Specialist in Parkinson's disease, movement disorders, and neuromuscular conditions. Trained in Athens and the UK. Private practice at Iasis. Particularly valued by older expats managing neurological conditions after relocation.",
-    website: "https://www.iasishospital.com",
-  },
   // ── Fertility ─────────────────────────────────────────────────────────────
   {
     name: "Dr Alexia Papadopoulou",
@@ -255,18 +184,6 @@ export const SPECIALIST_DOCTORS: ReadonlyArray<SpecialistDoctor> = [
     consultationFrom: 150,
     why: "IVF, egg freezing, and donor programmes. Cyprus is a well-established IVF destination — costs are roughly 40–60% lower than UK private rates for the same protocols. Dr Papadopoulou works with international patients and handles all coordination in English.",
   },
-  {
-    name: "Dr Demetris Floros",
-    title: "Gynaecologist & Fertility Specialist",
-    city: "Nicosia",
-    specialty: "fertility",
-    hospital: "Aretaeio Hospital Nicosia",
-    gesyAccepted: false,
-    englishSpoken: true,
-    consultationFrom: 140,
-    why: "Covers IVF, ICSI, surrogacy coordination, and gynaecological surgery. Aretaeio is one of the island's top private hospitals. Works with patients from Israel, the UK, and Eastern Europe who choose Cyprus for fertility treatment.",
-    website: "https://www.aretaeio.com",
-  },
   // ── Paediatrics ───────────────────────────────────────────────────────────
   {
     name: "Dr Natasa Economidou",
@@ -278,18 +195,6 @@ export const SPECIALIST_DOCTORS: ReadonlyArray<SpecialistDoctor> = [
     englishSpoken: true,
     consultationFrom: 80,
     why: "Highly rated paediatrician in Limassol's expat community. Covers neonatal to adolescent health, childhood vaccinations, and developmental assessments. Patient, thorough, and fluent in English. GeSY registered and private appointments available.",
-  },
-  {
-    name: "Dr Pavlos Kypros",
-    title: "Paediatric Neurologist",
-    city: "Nicosia",
-    specialty: "paediatrics",
-    hospital: "Makarios Hospital (public) / American Medical Centre",
-    gesyAccepted: true,
-    englishSpoken: true,
-    consultationFrom: 110,
-    why: "Sub-specialist in paediatric neurology — epilepsy, ADHD, autism-spectrum assessment, and developmental delay. Accepts GeSY referrals at Makarios Hospital and sees private patients. One of the few paediatric neurologists in Cyprus.",
-    website: "https://www.americanmedical.com.cy",
   },
   {
     name: "Dr Eleni Papageorgiou",
@@ -315,18 +220,6 @@ export const SPECIALIST_DOCTORS: ReadonlyArray<SpecialistDoctor> = [
     why: "Specialist in cataract surgery, glaucoma management, and laser correction (LASIK/LASEK). Cyprus is a growing medical tourism destination for eye surgery — costs are 30–50% below UK private rates. English consultations standard.",
   },
   // ── Gastroenterology ──────────────────────────────────────────────────────
-  {
-    name: "Dr Nikos Ioannou",
-    title: "Consultant Gastroenterologist",
-    city: "Nicosia",
-    specialty: "gastroenterology",
-    hospital: "Aretaeio Hospital Nicosia",
-    gesyAccepted: false,
-    englishSpoken: true,
-    consultationFrom: 120,
-    why: "Covers IBD, coeliac disease, liver disease, and endoscopy. Trained in Athens and the UK. Private practice at Aretaeio. The main referral destination for complex GI cases from other Cyprus hospitals.",
-    website: "https://www.aretaeio.com",
-  },
   // ── Urology ───────────────────────────────────────────────────────────────
   {
     name: "Dr Marios Constantinou",
@@ -349,6 +242,6 @@ export const SPECIALIST_DOCTORS: ReadonlyArray<SpecialistDoctor> = [
     gesyAccepted: true,
     englishSpoken: true,
     consultationFrom: 90,
-    why: "Covers kidney stones, urinary tract conditions, and prostate health. One of the few English-speaking urologists in Larnaca. GeSY referrals accepted; private appointments within 3–5 days. Good choice for Larnaca-based expats who want to avoid the drive to Nicosia.",
+    why: "Covers kidney stones, urinary tract conditions, and prostate health. One of the few English-speaking urologists in Larnaca. GeSY referrals accepted; private appointments within 3–5 days. Good choice for Larnaca-based expats.",
   },
 ];

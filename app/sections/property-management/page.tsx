@@ -6,7 +6,7 @@ import PropertyManagementClient from "./client";
 const SITE_URL = "https://realcy.app";
 const title = "Property Management in Cyprus — Vetted Companies & Services";
 const description =
-	"Property management service in Cyprus for landlords — vetted companies across Limassol, Paphos, Larnaca & Nicosia. English-speaking managers.";
+	"Property management service in Cyprus for landlords: vetted companies across Limassol, Paphos & Larnaca. English-speaking managers.";
 
 export const metadata: Metadata = {
 	title,

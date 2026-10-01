@@ -92,7 +92,7 @@ export default function EvChargingPage() {
 					EV Charging Stations in Cyprus — Directory
 				</h1>
 				<p className="mt-3 text-base text-slate-600 max-w-2xl leading-relaxed">
-					Public charge points across all five cities. Operators, speeds, costs,
+					Public charge points across all four cities. Operators, speeds, costs,
 					and practical notes for EV drivers relocating to Cyprus.
 				</p>
 			</header>

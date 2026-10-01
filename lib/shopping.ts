@@ -166,34 +166,6 @@ export const SUPERMARKETS: Record<City, Store[]> = {
       tier: 2,
     },
   ],
-  Nicosia: [
-    {
-      name: "Alphamega Hypermarket",
-      neighbourhood: "Strovolos / Latsia / Nicosia Mall",
-      why: "Multiple large branches in the capital. Best for premium imports and hard-to-find brands. The Nicosia Mall branch has a large food hall.",
-      tier: 3,
-      website: "https://www.alphamega.com.cy",
-    },
-    {
-      name: "Lidl Cyprus",
-      neighbourhood: "Multiple Nicosia locations",
-      why: "Budget-focused. Nicosia branches tend to be well-stocked for a capital-city Lidl.",
-      tier: 1,
-      website: "https://www.lidl.com.cy",
-    },
-    {
-      name: "Sklavenitis",
-      neighbourhood: "Strovolos / Engomi",
-      why: "Greek-import chain. Strong bakery section and a wider Greek-brand range than Alphamega.",
-      tier: 2,
-    },
-    {
-      name: "Papantoniou",
-      neighbourhood: "Multiple Nicosia locations",
-      why: "Cypriot family chain well-represented in the capital. Good for local produce and Cypriot dairy.",
-      tier: 2,
-    },
-  ],
   "Ayia Napa": [
     {
       name: "Alphamega Hypermarket",
@@ -230,14 +202,6 @@ export const MALLS: ReadonlyArray<Mall> = [
     anchors: "H&M, Zara, Pull&Bear, MediaMarkt, 8-screen cinema, 20+ food-court options",
     why: "Limassol's main shopping destination. Two floors, fully climate-controlled. The MediaMarkt is the best electronics store in the city. The cinema makes it a full-evening outing.",
     mapsQuery: "My Mall Limassol Cyprus",
-  },
-  {
-    name: "The Mall of Cyprus",
-    city: "Nicosia",
-    neighbourhood: "Strovolos",
-    anchors: "Marks & Spencer, Zara, Mango, Next, H&M, Foot Locker, MediaMarkt, Carrefour, 8-screen cinema",
-    why: "Largest mall on the island — 130+ stores. The only Marks & Spencer food hall in Cyprus is here. If you can only visit one mall, this is it. Ample parking, full day out.",
-    mapsQuery: "The Mall of Cyprus Nicosia",
   },
   {
     name: "Kings Avenue Mall",
@@ -279,19 +243,11 @@ export const MARKETS: ReadonlyArray<Market> = [
     mapsQuery: "Limassol Saturday Farmers Market Cyprus",
   },
   {
-    name: "Nicosia Municipal Market",
-    city: "Nicosia",
-    neighbourhood: "Old city, near Omeriye Mosque",
-    when: "Mon–Sat 06:00–14:00",
-    what: "Produce, meat, fish, spices. The old-city atmosphere is part of the visit. Go early (before 09:00) for the freshest fish.",
-    mapsQuery: "Nicosia Municipal Market Old Town Cyprus",
-  },
-  {
     name: "Larnaca Laiki Agora",
     city: "Larnaca",
     neighbourhood: "Ermou Street, Larnaca centre",
     when: "Tue, Thu, Sat 06:00–13:00",
-    what: "Vegetables, fruit, herbs, dairy. Smaller than Limassol or Nicosia markets but convenient for daily fresh produce without driving to a large supermarket.",
+    what: "Vegetables, fruit, herbs, dairy. Smaller than the Limassol markets but convenient for daily fresh produce without driving to a large supermarket.",
     mapsQuery: "Larnaca Laiki Agora Market Cyprus",
   },
   {
@@ -345,7 +301,7 @@ export const ONLINE_RESOURCES: ReadonlyArray<OnlineResource> = [
     name: "Facebook Marketplace (Cyprus)",
     url: "https://www.facebook.com/marketplace",
     category: "classifieds",
-    tip: "Active in Cyprus, especially Limassol and Nicosia. Good for second-hand furniture and electronics from expats leaving. Search in both English and Greek for wider results. Meet in public for transactions.",
+    tip: "Active in Cyprus, especially Limassol. Good for second-hand furniture and electronics from expats leaving. Search in both English and Greek for wider results. Meet in public for transactions.",
   },
   {
     name: "eBay (UK/EU sellers)",

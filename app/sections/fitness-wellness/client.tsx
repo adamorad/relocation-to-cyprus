@@ -94,7 +94,7 @@ export default function FitnessWellnessPage() {
 				<p className="mt-3 text-base text-slate-600 max-w-2xl leading-relaxed">
 					From CrossFit boxes to yoga studios, padel clubs, and hotel spas — a
 					curated directory of fitness and wellness venues for relocators across
-					all five cities.
+					all four cities.
 				</p>
 			</header>
 
