@@ -9,7 +9,6 @@ import {
 	SECONDARY_NAV,
 	TOPIC_NAV,
 } from "@/lib/nav-links";
-import { useSavedCount } from "./HeaderParts";
 import { Icon } from "./icons/Icon";
 
 const MENU_ID = "site-menu";
@@ -22,7 +21,6 @@ const ROW =
 /** Mobile header menu button + full-height dialog. Hidden from md up. */
 export function MobileMenu() {
 	const pathname = usePathname() ?? "/";
-	const savedCount = useSavedCount();
 	const [open, setOpen] = useState(false);
 	const triggerRef = useRef<HTMLButtonElement>(null);
 	const closeRef = useRef<HTMLButtonElement>(null);
@@ -219,28 +217,6 @@ export function MobileMenu() {
 												</li>
 											);
 										})}
-										<li>
-											<Link
-												href="/my-shortlist/"
-												onClick={closeForNav}
-												aria-current={
-													pathname.startsWith("/my-shortlist")
-														? "page"
-														: undefined
-												}
-												className={`${ROW} ${
-													pathname.startsWith("/my-shortlist") ? "bg-sky" : ""
-												}`}
-											>
-												<Icon name="heart" size={22} />
-												Saved
-												{savedCount > 0 ? (
-													<span className="rounded-full bg-primary px-2 text-sm font-bold leading-6 text-white">
-														{savedCount}
-													</span>
-												) : null}
-											</Link>
-										</li>
 									</ul>
 									<hr className="my-4 border-line" />
 									<ul className="flex flex-col gap-1">

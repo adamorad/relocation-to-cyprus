@@ -2,13 +2,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { isActive, PRIMARY_NAV } from "@/lib/nav-links";
-import { SavedLink } from "./HeaderParts";
 import { Icon } from "./icons/Icon";
 import { MoreMenu, TopicsMenu } from "./MoreMenu";
 
 /**
  * Desktop header navigation (hidden below md; mobile uses MobileMenu):
- * Topics menu, Cities, Guides, Tools, search, Saved, More.
+ * Topics menu, Cities, Guides, Tools, search, More.
  */
 export function PrimaryNav() {
 	const pathname = usePathname() ?? "/";
@@ -45,7 +44,6 @@ export function PrimaryNav() {
 			>
 				<Icon name="search" size={22} />
 			</Link>
-			<SavedLink compact />
 			<MoreMenu />
 		</nav>
 	);

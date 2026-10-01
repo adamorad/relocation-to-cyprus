@@ -58,7 +58,6 @@ const BROWSE: BrowseGroup[] = [
 			{ name: "All local directories", href: "/sections/" },
 			{ name: "Cities", href: "/regions/" },
 			{ name: "New developments", href: "/listings/" },
-			{ name: "Saved shortlist", href: "/my-shortlist/" },
 		],
 	},
 ];
