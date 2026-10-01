@@ -324,7 +324,6 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 		topic: "moving-here",
 		also: ["money-and-paperwork"],
 	},
-	"relocation-checklist": { topic: "moving-here" },
 	"cyprus-vs-portugal": { topic: "moving-here" },
 	"best-areas-to-live-cyprus": {
 		topic: "moving-here",

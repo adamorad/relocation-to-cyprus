@@ -17,8 +17,8 @@ Decisions were made on the owner's behalf in Phase 2A and are open for review. R
 | Food & shopping | `/food-and-shopping/` | 5 | 5 | 0 | 10 | 11 |
 | Family & schools | `/family-and-schools/` | 9 | 3 | 1 | 13 | 14 |
 | Community & leisure | `/community-and-leisure/` | 5 | 9 | 2 | 16 | 21 |
-| Moving to Cyprus | `/moving-to-cyprus/` | 23 | 2 | 9 | 34 | 62 |
-| **All** | | 87 | 31 | 31 | 149 | |
+| Moving to Cyprus | `/moving-to-cyprus/` | 22 | 2 | 9 | 33 | 61 |
+| **All** | | 86 | 31 | 31 | 148 | |
 
 Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). They keep a topic for their own breadcrumb and "More on" block but are not shown on hubs, indexes, other pages or the sitemap.
 
@@ -107,7 +107,6 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Cyprus Non-Dom Tax Status 2026: 0% on Dividends](/guides/non-dom-status-guide/) | Moving to Cyprus | Money & paperwork |  | Non-dom is claimed when you become resident, so it is a moving decision. |
 | [Buying Off-Plan Property in Cyprus 2026](/guides/off-plan-buying-guide/) | Moving to Cyprus | Money & paperwork |  | Property buying; parked in Moving to Cyprus until the Phase 4 Property area. |
 | [Property Lawyers in Cyprus 2026: Fees & Guide](/guides/property-lawyers-cyprus/) | Moving to Cyprus | Money & paperwork |  | Property buying; parked in Moving to Cyprus until the Phase 4 Property area. |
-| [Cyprus Relocation Checklist 2026: Action Plan](/guides/relocation-checklist/) | Moving to Cyprus |  |  |  |
 | [Cyprus Residency Visas 2026: All Routes Compared](/guides/residency-and-visas/) | Moving to Cyprus |  |  |  |
 | [Retiring in Cyprus 2026: Full Expat Guide](/guides/retiring-in-cyprus/) | Moving to Cyprus |  |  |  |
 | [Cyprus Innovative Company Permit: Tech Founder](/guides/startup-visa-ict/) | Moving to Cyprus |  |  |  |

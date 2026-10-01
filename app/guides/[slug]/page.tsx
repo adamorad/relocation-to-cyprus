@@ -29,11 +29,11 @@ const toId = (h: string) =>
 
 /**
  * Renders guide body text, turning in-prose /guides|tools|sections/{slug} paths
- * into real clickable links. Splitting keeps the surrounding text (and its
+ * into real clickable links (plus [text](/moving-to-cyprus/) hub links). Splitting keeps the surrounding text (and its
  * newlines, for whitespace-pre-line) intact.
  */
 const BODY_LINK_RE =
-	/(\[[^\]]+\]\(\/(?:guides|tools|sections)\/[a-z0-9-]+\/?\)|\/(?:guides|tools|sections)\/[a-z0-9-]+\/?)/g;
+	/(\[[^\]]+\]\(\/(?:(?:guides|tools|sections)\/[a-z0-9-]+|moving-to-cyprus)\/?\)|\/(?:guides|tools|sections)\/[a-z0-9-]+\/?)/g;
 const MD_LINK_RE = /^\[([^\]]+)\]\((\/[^)]+)\)$/;
 function renderBody(text: string) {
 	return text.split(BODY_LINK_RE).map((part, i) => {

@@ -75,6 +75,16 @@
       "source": "/tools/tax-residency-planner",
       "destination": "/tools/tax-residency-tracker/",
       "permanent": true
+    },
+    {
+      "source": "/guides/relocation-checklist/",
+      "destination": "/guides/arrival-checklist/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/relocation-checklist",
+      "destination": "/guides/arrival-checklist/",
+      "permanent": true
     }
   ]
 }
