@@ -126,15 +126,6 @@ const SCHOOLS: School[] = [
 			"Holistic Waldorf education. Small, community-oriented. Bilingual Greek/English.",
 	},
 	{
-		name: "Lycee Francais de Nicosie",
-		city: "Paphos",
-		curricula: ["French"],
-		ageRange: "4-18",
-		fees: "EUR 5,000–11,000/yr",
-		type: "Private day",
-		notes: "French curriculum. Accredited by the French Ministry of Education.",
-	},
-	{
 		name: "Larnaca English School",
 		city: "Larnaca",
 		curricula: ["British", "GCSE"],
@@ -165,7 +156,6 @@ const CURRICULA_OPTIONS = [
 	"British",
 	"IB",
 	"German",
-	"French",
 	"Russian",
 	"Waldorf",
 	"Montessori",

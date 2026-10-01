@@ -8,7 +8,7 @@ import SchoolFinderClient from "./client";
 const SITE_URL = "https://realcy.app";
 const title = "International School Finder: Cyprus";
 const description =
-	"Find and compare international schools in Cyprus. Filter by city, curriculum (British, IB, German, French, Waldorf, Montessori), and age group. Includes fees and key details for expat families.";
+	"Find and compare international schools in Cyprus. Filter by city, curriculum (British, IB, German, Waldorf, Montessori), and age group. Includes fees and key details for expat families.";
 
 export const metadata: Metadata = {
 	title,
