@@ -14,11 +14,11 @@ Decisions were made on the owner's behalf in Phase 2A and are open for review. R
 | Getting around | `/getting-around/` | 8 | 2 | 2 | 12 | 11 |
 | Home & bills | `/home-and-bills/` | 8 | 3 | 3 | 14 | 19 |
 | Money & paperwork | `/money-and-paperwork/` | 22 | 4 | 13 | 39 | 60 |
-| Food & shopping | `/food-and-shopping/` | 5 | 3 | 0 | 8 | 9 |
+| Food & shopping | `/food-and-shopping/` | 5 | 5 | 0 | 10 | 11 |
 | Family & schools | `/family-and-schools/` | 9 | 3 | 1 | 13 | 14 |
 | Community & leisure | `/community-and-leisure/` | 5 | 9 | 2 | 16 | 21 |
 | Moving to Cyprus | `/moving-to-cyprus/` | 23 | 2 | 9 | 34 | 62 |
-| **All** | | 87 | 29 | 31 | 147 | |
+| **All** | | 87 | 31 | 31 | 149 | |
 
 Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). They keep a topic for their own breadcrumb and "More on" block but are not shown on hubs, indexes, other pages or the sitemap.
 
@@ -131,8 +131,10 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Registered Address Providers](/sections/registered-address/) *(not listed)* | Money & paperwork |  |  | Company admin service. |
 | [Startup Ecosystem](/sections/startup-ecosystem/) | Money & paperwork | Moving to Cyprus |  | Business support for founders; no Work topic. |
 | [Farmers Markets](/sections/farmers-markets/) | Food & shopping |  |  |  |
+| [Where to Eat](/sections/food/) | Food & shopping |  | limassol, paphos, larnaca, ayia-napa | Restored from the archived homepage Food panel. |
 | [Halal & Kosher Food](/sections/halal-kosher/) | Food & shopping |  |  |  |
 | [International Grocery Stores](/sections/international-grocery/) | Food & shopping |  |  |  |
+| [Supermarkets & Markets](/sections/shopping/) | Food & shopping |  | limassol, paphos, larnaca, ayia-napa | Restored from the archived homepage Shopping panel. |
 | [After-School Activities](/sections/after-school-activities/) | Family & schools | Community & leisure |  |  |
 | [Childcare & Nurseries](/sections/childcare-nurseries/) | Family & schools |  |  |  |
 | [Summer Camps](/sections/summer-camps/) | Family & schools |  |  |  |

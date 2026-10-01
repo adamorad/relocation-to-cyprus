@@ -19,6 +19,7 @@ import { EV_CHARGERS } from "./ev-charging";
 import { EXPAT_COMMUNITIES } from "./expat-communities";
 import { FARMERS_MARKETS } from "./farmers-markets";
 import { FITNESS_VENUES } from "./fitness-wellness";
+import { FOOD_PLACES } from "./food";
 import { HALAL_KOSHER_VENUES } from "./halal-kosher";
 import { IMMIGRATION_LAWYERS } from "./immigration-lawyers";
 import { INTERNATIONAL_STORES } from "./international-grocery";
@@ -30,6 +31,7 @@ import { TRANSPORT_INFO } from "./public-transport";
 import { REGISTERED_ADDRESS_PROVIDERS } from "./registered-address";
 import { RELIGIOUS_SERVICES } from "./religious-services";
 import { VIEW_BARS } from "./rooftop-bars";
+import { SHOP_ENTRIES } from "./shopping";
 import { SPECIALIST_DOCTORS } from "./specialist-doctors";
 import { SPORTS_CLUBS } from "./sports-clubs";
 import { STARTUP_VENUES } from "./startup-ecosystem";
@@ -53,6 +55,7 @@ const DATA: Record<string, ReadonlyArray<Entry>> = {
 	"expat-communities": EXPAT_COMMUNITIES,
 	"farmers-markets": FARMERS_MARKETS,
 	"fitness-wellness": FITNESS_VENUES,
+	food: FOOD_PLACES,
 	"halal-kosher": HALAL_KOSHER_VENUES,
 	"immigration-lawyers": IMMIGRATION_LAWYERS,
 	"international-grocery": INTERNATIONAL_STORES,
@@ -64,6 +67,7 @@ const DATA: Record<string, ReadonlyArray<Entry>> = {
 	"registered-address": REGISTERED_ADDRESS_PROVIDERS,
 	"religious-services": RELIGIOUS_SERVICES,
 	"rooftop-bars": VIEW_BARS,
+	shopping: SHOP_ENTRIES,
 	"specialist-doctors": SPECIALIST_DOCTORS,
 	"sports-clubs": SPORTS_CLUBS,
 	"startup-ecosystem": STARTUP_VENUES,

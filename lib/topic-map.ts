@@ -418,6 +418,16 @@ export const DIRECTORY_TOPICS: Record<string, TopicAssignment> = {
 	"farmers-markets": { topic: "food-and-shopping" },
 	"international-grocery": { topic: "food-and-shopping" },
 	"halal-kosher": { topic: "food-and-shopping" },
+	food: {
+		topic: "food-and-shopping",
+		cities: ["limassol", "paphos", "larnaca", "ayia-napa"],
+		why: "Restored from the archived homepage Food panel.",
+	},
+	shopping: {
+		topic: "food-and-shopping",
+		cities: ["limassol", "paphos", "larnaca", "ayia-napa"],
+		why: "Restored from the archived homepage Shopping panel.",
+	},
 
 	"childcare-nurseries": { topic: "family-and-schools" },
 	"after-school-activities": {
