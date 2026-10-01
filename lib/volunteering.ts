@@ -84,8 +84,8 @@ export const VOLUNTEER_TIPS: ReadonlyArray<VolunteerTip> = [
     body: "Unlike some countries where volunteering requires long-term commitments and formal onboarding, many Cyprus NGOs and community organisations actively welcome one-off help — for beach clean-ups, event days, fundraising drives, and seasonal shelter work. If your schedule is irregular as you settle in, 'ad-hoc' volunteering is a perfectly valid entry point. Regular weekly roles are available but not mandatory.",
   },
   {
-    heading: "Limassol and Nicosia have the most organised programmes",
-    body: "The most structured volunteering infrastructure is concentrated in Limassol and Nicosia. Limassol has a large and active NGO sector, partly driven by its international population. Nicosia hosts the main refugee and asylum seeker support organisations and most arts-sector voluntary bodies. Paphos has strong environmental and animal welfare volunteering. Larnaca has a growing community of animal-rescue volunteers and beach conservation groups.",
+    heading: "Limassol has the most organised programmes",
+    body: "The most structured volunteering infrastructure is concentrated in Limassol. Limassol has a large and active NGO sector, partly driven by its international population. Paphos has strong environmental and animal welfare volunteering. Larnaca has a growing community of animal-rescue volunteers and beach conservation groups.",
   },
 ];
 
@@ -122,15 +122,6 @@ export const VOLUNTEER_ORGS: ReadonlyArray<VolunteerOrg> = [
     website: "https://www.pawspafos.org",
   },
   {
-    name: "SPCA Cyprus",
-    city: "Nicosia",
-    focus: "animals",
-    languages: ["Greek", "English"],
-    timeCommitment: "weekly",
-    why: "The Society for the Prevention of Cruelty to Animals — one of Cyprus's oldest animal welfare bodies. Operates the main shelter in Nicosia, vaccination drives in rural areas, and community education programmes. Volunteer roles range from shelter support to driving for transport of animals.",
-    website: "https://www.spcacyprus.org",
-  },
-  {
     name: "Larnaca Animal Welfare (LAW)",
     city: "Larnaca",
     focus: "animals",
@@ -159,15 +150,6 @@ export const VOLUNTEER_ORGS: ReadonlyArray<VolunteerOrg> = [
     website: "https://www.akti.org.cy",
   },
   {
-    name: "Friends of the Earth Cyprus",
-    city: "Nicosia",
-    focus: "environment",
-    languages: ["Greek", "English"],
-    timeCommitment: "monthly",
-    why: "Cyprus's chapter of Friends of the Earth campaigns on energy, biodiversity, and sustainable development. Volunteer roles include research, advocacy support, event organisation, and community outreach. Good for expats with professional skills in sustainability or law.",
-    website: "https://www.foe.org.cy",
-  },
-  {
     name: "Sea Turtle Protection of Cyprus (STPC)",
     city: "Paphos",
     focus: "environment",
@@ -178,15 +160,6 @@ export const VOLUNTEER_ORGS: ReadonlyArray<VolunteerOrg> = [
   },
 
   // ── Children & Youth ─────────────────────────────────────────────────────
-  {
-    name: "Make-A-Wish Cyprus",
-    city: "Nicosia",
-    focus: "children",
-    languages: ["Greek", "English"],
-    timeCommitment: "monthly",
-    why: "The Cyprus chapter of Make-A-Wish grants wishes for children with critical illnesses. Volunteers help with fundraising events, awareness campaigns, and administrative support. English speakers welcome for international donor communications.",
-    website: "https://www.makeawish.org.cy",
-  },
   {
     name: "SOS Children's Villages Cyprus",
     city: "Limassol",
@@ -215,34 +188,8 @@ export const VOLUNTEER_ORGS: ReadonlyArray<VolunteerOrg> = [
     why: "Supports elderly expats and local Cypriots in Paphos. Services include friendly visiting, transport assistance, information and advice. Volunteers help with everything from companionship visits to driving elderly residents to medical appointments. Particularly meaningful for expats without nearby family.",
     website: "https://www.ageconcerncyprus.org",
   },
-  {
-    name: "Elderly Care Network Nicosia",
-    city: "Nicosia",
-    focus: "elderly",
-    languages: ["Greek", "English"],
-    timeCommitment: "monthly",
-    why: "Community network coordinating support for isolated elderly residents in Nicosia. Volunteer visitors, grocery helpers, and social programme assistants. Ad-hoc commitments available alongside regular visits.",
-  },
 
   // ── Refugees & Asylum ────────────────────────────────────────────────────
-  {
-    name: "KISA — Action for Equality, Support, Antiracism",
-    city: "Nicosia",
-    focus: "refugees",
-    languages: ["Greek", "English", "Arabic", "French"],
-    timeCommitment: "weekly",
-    why: "Cyprus's leading migration and anti-discrimination NGO. Works with asylum seekers, refugees, and migrants on legal support, integration, and advocacy. Volunteers assist with language support, legal document translation, community outreach, and programme delivery. Multilingual volunteers particularly valued.",
-    website: "https://www.kisa.org.cy",
-  },
-  {
-    name: "Future Worlds Center",
-    city: "Nicosia",
-    focus: "refugees",
-    languages: ["English", "Greek", "Arabic"],
-    timeCommitment: "weekly",
-    why: "NGO focused on social innovation and migrant integration in Cyprus. Runs language classes, digital skills workshops, and community integration programmes. Volunteers with teaching, IT, or facilitation skills can contribute directly to programme delivery.",
-    website: "https://www.futureworldscenter.org",
-  },
 
   // ── Arts & Culture ───────────────────────────────────────────────────────
   {

@@ -230,16 +230,6 @@ export const HOTELS: ReadonlyArray<Hotel> = [
     website: "https://www.15boutiquehotel.com",
   },
   {
-    name: "The Milestone Hotel",
-    city: "Nicosia",
-    category: "boutique",
-    neighbourhood: "Nicosia city centre",
-    stars: 5,
-    why: "The capital's most characterful hotel — housed in a restored 1920s building with contemporary interiors. Only 20 suites. Restaurant highly regarded. Best option for a long stay in Nicosia.",
-    bookingCom: "https://www.booking.com/hotel/cy/the-milestone.html",
-    website: "https://www.themilestonehotel.com.cy",
-  },
-  {
     name: "Curium Palace Hotel",
     city: "Limassol",
     category: "boutique",
@@ -282,16 +272,6 @@ export const HOTELS: ReadonlyArray<Hotel> = [
     website: "https://www.parklanecyprus.com",
   },
   {
-    name: "Hilton Nicosia",
-    city: "Nicosia",
-    category: "luxury",
-    neighbourhood: "Engomi, west Nicosia",
-    stars: 5,
-    why: "The benchmark business and luxury hotel in the capital. Large pool, well-equipped gym, multiple restaurants. A reliable base for those with frequent Nicosia meetings during the relocation process.",
-    bookingCom: "https://www.booking.com/hotel/cy/hilton-cyprus.html",
-    website: "https://www.hilton.com/en/hotels/lcanihi-hilton-nicosia",
-  },
-  {
     name: "Amathus Beach Hotel",
     city: "Limassol",
     category: "luxury",
@@ -330,15 +310,6 @@ export const HOTELS: ReadonlyArray<Hotel> = [
     why: "Good-value beachfront option north of Larnaca. Bungalow accommodation suits longer stays. Short drive to Larnaca Airport — convenient for arrivals who need a base while flat-hunting. Often heavily discounted in low season.",
     bookingCom: "https://www.booking.com/hotel/cy/palm-beach.html",
     website: "https://www.palmbeachhotel.com.cy",
-  },
-  {
-    name: "Centrum Hotel",
-    city: "Nicosia",
-    category: "budget",
-    neighbourhood: "Nicosia old city",
-    stars: 3,
-    why: "No-frills, centrally located hotel in Nicosia's old city. Clean rooms, breakfast included, walking distance to all government offices — useful for visa and registration appointments. Best budget choice in the capital.",
-    bookingCom: "https://www.booking.com/hotel/cy/centrum.html",
   },
 
   // ── Beach Resorts ─────────────────────────────────────────────────────────

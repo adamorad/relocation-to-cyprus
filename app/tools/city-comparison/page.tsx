@@ -5,7 +5,7 @@ import CityComparisonClient from "./client";
 const SITE_URL = "https://realcy.app";
 const title = "Cyprus City Comparison Tool";
 const description =
-	"Compare all 5 Cyprus cities side by side — rent, property prices, international schools, beach access, expat community, and more.";
+	"Compare all 4 Cyprus cities side by side — rent, property prices, international schools, beach access, expat community, and more.";
 
 export const metadata: Metadata = {
 	title,

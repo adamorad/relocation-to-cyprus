@@ -1,6 +1,6 @@
 /**
  * Long-term rental listings for Cyprus. Covers the main rental platforms
- * and residential areas across all five cities.
+ * and residential areas across all four cities.
  *
  * Price ranges are indicative as of 2026; verify current rates on
  * bazaraki.com, spitogatos.cy, and prime-property.com.cy before quoting.
@@ -194,49 +194,6 @@ export const RENTAL_LISTINGS: ReadonlyArray<RentalListing> = [
     website: "https://www.spitogatos.cy/en/rent/apartment/larnaca/mackenzie/",
   },
 
-  // ── Nicosia ──────────────────────────────────────────────────────────────
-  {
-    name: "Engomi Apartment",
-    city: "Nicosia",
-    neighbourhood: "Engomi",
-    type: "apartment",
-    bedroomsFrom: 2,
-    bedroomsTo: 3,
-    monthlyFrom: 900,
-    monthlyTo: 1500,
-    furnished: "both",
-    petFriendly: true,
-    why: "Engomi is Nicosia's most established upscale residential area — tree-lined streets, proximity to embassies, good schools, and the Hilton. Popular with corporate relocators and diplomats. Solid long-term rental supply.",
-    website: "https://www.bazaraki.com/real-estate/nicosia/engomi/",
-  },
-  {
-    name: "Strovolos Modern Apartment",
-    city: "Nicosia",
-    neighbourhood: "Strovolos",
-    type: "apartment",
-    bedroomsFrom: 2,
-    bedroomsTo: 3,
-    monthlyFrom: 800,
-    monthlyTo: 1300,
-    furnished: "both",
-    petFriendly: true,
-    why: "Strovolos is Nicosia's largest suburb — excellent schools, supermarkets, and business parks. New-build complexes with modern finishes and parking at lower rates than Engomi. Best value family apartment area in the capital.",
-    website: "https://www.spitogatos.cy/en/rent/apartment/nicosia/strovolos/",
-  },
-  {
-    name: "Nicosia Old Town Studio",
-    city: "Nicosia",
-    neighbourhood: "Old Walled City",
-    type: "studio",
-    bedroomsFrom: 0,
-    bedroomsTo: 1,
-    monthlyFrom: 550,
-    monthlyTo: 900,
-    furnished: "furnished",
-    petFriendly: false,
-    why: "Renovated heritage studios within the old walled city walls. Characterful, walkable, and the cheapest furnished option in any Cyprus city. Good WiFi, walking distance to government offices — ideal for solo relocators on a budget.",
-    website: "https://www.bazaraki.com/real-estate/nicosia/old-city/",
-  },
 
   // ── Ayia Napa ─────────────────────────────────────────────────────────────
   {

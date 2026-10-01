@@ -60,7 +60,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
       },
       {
         heading: "Practical relocation notes",
-        body: "Paphos has a hospital (Paphos General) and a growing roster of private clinics, but for anything specialist most expats still drive to Limassol. International schooling is good and competitively priced relative to other Mediterranean destinations. The town runs on cars — there is local bus coverage along the coast but it is rarely a serious commuting option. Internet is universally fast (1 Gbps fibre is available across the urban area) which makes Paphos particularly attractive to remote workers, and many new developments now ship with dedicated home-office floor plans. Climate-wise, Paphos is consistently a few degrees warmer in winter than Nicosia or Larnaca and has noticeably more sunshine hours, which is the single most-cited reason buyers give for choosing it over the rest of the island.",
+        body: "Paphos has a hospital (Paphos General) and a growing roster of private clinics, but for anything specialist most expats still drive to Limassol. International schooling is good and competitively priced relative to other Mediterranean destinations. The town runs on cars — there is local bus coverage along the coast but it is rarely a serious commuting option. Internet is universally fast (1 Gbps fibre is available across the urban area) which makes Paphos particularly attractive to remote workers, and many new developments now ship with dedicated home-office floor plans. Climate-wise, Paphos is consistently a few degrees warmer in winter than Larnaca and has noticeably more sunshine hours, which is the single most-cited reason buyers give for choosing it over the rest of the island.",
       },
     ],
   },
@@ -103,7 +103,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
       },
       {
         heading: "Frequently asked questions",
-        body: "Is Limassol a good base for remote work? Yes — Limassol has by far the strongest tech ecosystem, plenty of coworking spaces (TechIsland, Cyprus Inc, The Place), and the largest English-speaking professional network on the island. How safe is Limassol? Very — Cyprus has lower violent-crime rates than most EU capitals, and Limassol specifically is comfortable to walk at any hour. What about earthquakes and the recent geopolitical tension? Cyprus is in a moderate seismic zone with strict modern building codes; the most recent significant earthquake (2022) was Mw 6.6, with no injuries. Tensions in the wider region are real but Cyprus has not experienced direct disruption since 1974. Is there public transport worth using? Within Limassol, the bus network is improving but most expats still drive. Inter-city, public coaches connect Limassol to Nicosia, Larnaca and Paphos for €4–€7 one way. Is there a property tax? Cyprus abolished annual property tax in 2017; you pay municipal taxes and a small immovable property fee, total under €300 a year for most apartments.",
+        body: "Is Limassol a good base for remote work? Yes — Limassol has by far the strongest tech ecosystem, plenty of coworking spaces (TechIsland, Cyprus Inc, The Place), and the largest English-speaking professional network on the island. How safe is Limassol? Very — Cyprus has lower violent-crime rates than most EU capitals, and Limassol specifically is comfortable to walk at any hour. What about earthquakes and the recent geopolitical tension? Cyprus is in a moderate seismic zone with strict modern building codes; the most recent significant earthquake (2022) was Mw 6.6, with no injuries. Tensions in the wider region are real but Cyprus has not experienced direct disruption since 1974. Is there public transport worth using? Within Limassol, the bus network is improving but most expats still drive. Inter-city, public coaches connect Limassol to Larnaca and Paphos for €4–€7 one way. Is there a property tax? Cyprus abolished annual property tax in 2017; you pay municipal taxes and a small immovable property fee, total under €300 a year for most apartments.",
       },
       {
         heading: "Practical relocation notes",
@@ -130,7 +130,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
       },
       {
         heading: "Schools and education",
-        body: "Larnaca's international school market is smaller than Limassol or Paphos but growing in step with the inbound expat flow. The American Academy Larnaca is the best-known English-medium school, covering ages 4 to 18 with American-style curriculum and SAT preparation; fees run €5,500–€8,500. Pascal Private School has a Larnaca campus serving the same age range with British curriculum and is the standard pick for UK-bound students. The Med High School covers ages 12–18 with a tighter academic focus. Several smaller British-curriculum primary schools serve the under-12 expat population. For families willing to drive, the Junior School Larnaca (primary) and the American International School (Nicosia, 45 minutes) are both within commuting distance. Public Greek-medium schools are free, and the Larnaca district education authority has been particularly responsive to international family integration — the public schools in Pervolia, Kiti and Aradippou increasingly have meaningful expat representation.",
+        body: "Larnaca's international school market is smaller than Limassol or Paphos but growing in step with the inbound expat flow. The American Academy Larnaca is the best-known English-medium school, covering ages 4 to 18 with American-style curriculum and SAT preparation; fees run €5,500–€8,500. Pascal Private School has a Larnaca campus serving the same age range with British curriculum and is the standard pick for UK-bound students. The Med High School covers ages 12–18 with a tighter academic focus. Several smaller British-curriculum primary schools serve the under-12 expat population. For families willing to drive, the Junior School Larnaca (primary) is within commuting distance. Public Greek-medium schools are free, and the Larnaca district education authority has been particularly responsive to international family integration — the public schools in Pervolia, Kiti and Aradippou increasingly have meaningful expat representation.",
       },
       {
         heading: "Healthcare in Larnaca",
@@ -159,53 +159,6 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
     ],
   },
   {
-    slug: "nicosia",
-    name: "Nicosia",
-    color: "#82DDF0",
-    oneLiner:
-      "The capital — Cyprus's political, financial and academic centre, inland and decidedly non-touristy.",
-    intro:
-      "Nicosia is the only landlocked capital in the European Union and, by extension, the only major city in Cyprus that doesn't revolve around tourism or the sea. It is the seat of government, the country's banks and the headquarters of most domestic corporates, the home of two major public universities (University of Cyprus, Cyprus University of Technology's Nicosia campus) and the medical school. Half of the city sits within the Republic of Cyprus; the other half is in the Turkish-administered north, separated by the United Nations buffer zone that runs straight through the old walled centre. The southern half — the part this map and this site cover — is a busy, slightly chaotic, decidedly Cypriot city.",
-    sections: [
-      {
-        heading: "Who moves to Nicosia",
-        body: "Nicosia is the least international of the major Cypriot cities by relocator share, but the most international by long-term residents. It hosts the country's diplomatic corps, the bulk of the academic faculty, and the senior management of most Cypriot companies. The expat population is older and more rooted than in Limassol — diplomats, university professors, multi-decade business families. A growing population of younger Greeks and Bulgarians is moving to Nicosia for university and software jobs at the local engineering employers. Tourism is essentially absent: in mid-July when Limassol is overrun, Nicosia's old town is so quiet you can hear the call to prayer drifting across the buffer zone from the Turkish side.",
-      },
-      {
-        heading: "What new developments here look like",
-        body: "Nicosia's new-build market is concentrated in the suburbs — Strovolos, Aglantzia, Lakatamia, Engomi, Latsia — rather than the historic centre. The product is overwhelmingly mid-rise apartment blocks, three to seven storeys, oriented around family living rather than rental yield. A two-bedroom new apartment in Strovolos or Aglantzia sits between €220,000 and €380,000. Detached and semi-detached houses in the same suburbs (often grouped into small gated communities of six to twelve units) run from €450,000 to €900,000. Nicosia pricing is roughly in line with Larnaca and consistently below Limassol; the trade-off is that you live an hour from any beach.",
-      },
-      {
-        heading: "Schools and education",
-        body: "Nicosia has the deepest school market on the island. The English School Nicosia, founded 1900 by the British colonial administration, is the oldest and most prestigious — selective entry, strong A-level outcomes, fees around €6,000–€9,000. The American International School (AIS) Cyprus offers a US-style curriculum with IB Diploma; the school is on a single shared campus in Engomi and serves the diplomatic community as well as international families. The Junior School and The Falcon School cover early-years through to secondary in British curriculum. The Pascal Schools and The Grammar School Nicosia (sister of the Limassol institution) round out the English-medium options. For Greek-medium private education, Manessis School and the Grammar are the established names. The University of Cyprus (the country's flagship public university) and the University of Nicosia (the largest private university and home of the medical school) make Nicosia a serious tertiary destination — many expat families choose Nicosia specifically because their children will continue on to local university.",
-      },
-      {
-        heading: "Healthcare in Nicosia",
-        body: "Nicosia has the country's strongest healthcare infrastructure. The New Nicosia General Hospital opened in 2021 as the country's main referral hospital — major trauma, complex cardiac, the bulk of public oncology, paediatric subspecialties — and is fully integrated with GeSY. The Bank of Cyprus Oncology Centre is the country's flagship cancer facility. Private hospitals — Apollonion, Aretaeio, Hippocrateon, Evangelistria — cover all major specialties. The country's medical school (at the University of Nicosia) produces the next generation of physicians and is internationally accredited. Practically, this means Nicosia residents have the shortest waits, the best specialist density, and the broadest dental/ophthalmology/aesthetics market on the island. English-speaking specialists are abundant. The downside is that the central suburbs are car-dependent; ambulance response in central Nicosia is fast, in the outer Lakatamia or Geri areas occasionally slower.",
-      },
-      {
-        heading: "Beaches, lifestyle and what there is to do",
-        body: "Nicosia's principal handicap is the absence of beaches — the nearest swimming sea is Larnaca, 50 minutes by car, or Limassol, an hour. Many Nicosia families own or rent a summer apartment on the coast for July and August. To compensate, Nicosia has by some distance the strongest cultural scene on the island: the old walled city (the Venetian fortifications still ring the historic centre), the Cyprus Museum, the Leventis Museum, the State Gallery of Contemporary Art, and a constant rotation of theatre, classical music and contemporary performance at the Strovolos and Nicosia Municipal Theatres. The historic centre — particularly Ledra Street, Faneromeni Square and the Laiki Geitonia area — has the country's best concentration of independent cafés, bookshops, galleries and small bars. The Cyprus University of Technology campus and the University of Cyprus bring a real student-quarter energy to the Aglantzia and Strovolos areas. For weekends, the Troodos mountains are 40 minutes away — skiing in winter (yes, on Cyprus), hiking and wine-village tours the rest of the year.",
-      },
-      {
-        heading: "Sample monthly budget for a couple",
-        body: "Nicosia sits in the middle of the Cypriot cost spectrum. For a couple owning a two-bedroom apartment outright in a central suburb (Strovolos, Aglantzia, Engomi): utilities €180–€280 (Nicosia's continental climate means higher heating bills in winter and higher aircon in summer); common charges €100–€180; municipal €25–€45; groceries €440–€590; restaurants 3 times a week €240–€380 (Nicosia has cheaper dining than the coast but a denser fine-dining scene at the higher end); one car €180–€280; private health top-up €70–€130 per person. Total: roughly €1,440–€2,090 per month. For renters, a two-bedroom in Strovolos or Aglantzia is €750–€1,300 unfurnished and €950–€1,600 furnished. The Nicosia premium is exclusively in commercial property (offices, retail) — residential pricing is consistently below Limassol and roughly even with Larnaca. The hidden cost is that most Nicosia families maintain summer-coastal access, either through ownership or repeated short-term rentals.",
-      },
-      {
-        heading: "Common buyer mistakes",
-        body: "First-time Nicosia buyers most often underestimate the summer heat. Nicosia regularly reads 38–42 °C in July and August (compared to 30–34 °C on the coast); aircon costs are real, and the orientation of your apartment matters enormously. Insist on cross-ventilation, eastern or northern exposure for bedrooms, and high-spec insulation in any new build. Second, buyers tend to pick suburbs based on a quick weekend visit without testing the commute — Nicosia's road network funnels every suburb through a few main arteries (Athalassa Avenue, Limassol Avenue) and 8:30 AM to 9:00 AM is the city's pain point. Third, the proximity of the buffer zone produces small but real considerations: certain streets in the old town and some suburbs (notably parts of Latsia, Anthoupoli, Strovolos) have unusual title-deed history due to displacement after 1974. A locally experienced lawyer is non-negotiable. Fourth, distance from the beach is the trade-off most often regretted; if you've never lived inland in a hot-climate country before, do an honest gut-check before committing.",
-      },
-      {
-        heading: "Frequently asked questions",
-        body: "Is the buffer zone a safety concern? No — the UN-monitored buffer zone has been stable and demilitarised in its current form for over fifty years; daily crossings (foot and car) between the two halves of the city are routine. Can you cross to the Turkish-administered north as an expat resident? Yes, daily, with a passport, at several crossing points within and around the city. Can you buy property in the north? Legally and practically very risky — most expats avoid it; this site only covers the Republic. Is Nicosia walkable? The historic centre is excellent for walking; the suburbs are firmly car-dependent. What's the best Nicosia suburb for families with young children? Strovolos and Aglantzia consistently top the list — strong schools, parks, paediatricians, and 15 minutes to the city centre. Is winter genuinely cold? Cold by Mediterranean standards, yes: 3–10 °C overnight in January, occasional sleet, snow on the mountain villages 30 km away. Central heating is essential; many new builds have underfloor heating included as standard.",
-      },
-      {
-        heading: "Practical relocation notes",
-        body: "Nicosia has the strongest public healthcare on the island (the New Nicosia General Hospital is the country's main referral hospital) and the broadest selection of public, semi-private and private schools, including The English School Nicosia and the American International School. The city is hot in summer — landlocked and on a high plain, it consistently reads 4–8 °C warmer than the coast — and surprisingly cold in winter, with occasional snow on the higher elevations. Traffic is bad by Cypriot standards (think 30-minute commutes, not 30-second ones) but trivial by any European capital's. The expat community is small enough that almost everyone knows everyone within a year of arrival. Nicosia is rarely the first choice for retirees; it is consistently the choice for relocators who want to work in policy, academia, medicine or domestic business.",
-      },
-    ],
-  },
-  {
     slug: "ayia-napa",
     name: "Ayia Napa",
     color: "#E4B7E5",
@@ -224,7 +177,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
       },
       {
         heading: "Schools and education",
-        body: "The Famagusta free area has the thinnest international-school market of the five regions covered here. There are competent British-curriculum primary schools (notably Heritage Private School Paralimni, distinct from the Limassol Heritage but well-regarded) and a small handful of preschools and kindergartens serving the expat community. Secondary-age children are the genuine challenge: most families either commute their children to The American Academy Larnaca (35–45 minutes each way) or one of the Larnaca British schools, or — for a small minority — board in Nicosia. Public Greek-medium schools in Paralimni and Sotira are good and have absorbed a meaningful number of expat children, particularly at the primary level. For families with multiple school-age children, the schooling calculus is the single most-cited reason for choosing Larnaca over the SE coast despite preferring the SE's beaches. For tertiary education, the area lacks any local university campus; students typically attend Nicosia or Limassol institutions or go abroad.",
+        body: "The Famagusta free area has the thinnest international-school market of the four regions covered here. There are competent British-curriculum primary schools (notably Heritage Private School Paralimni, distinct from the Limassol Heritage but well-regarded) and a small handful of preschools and kindergartens serving the expat community. Secondary-age children are the genuine challenge: most families either commute their children to The American Academy Larnaca (35–45 minutes each way) or one of the Larnaca British schools. Public Greek-medium schools in Paralimni and Sotira are good and have absorbed a meaningful number of expat children, particularly at the primary level. For families with multiple school-age children, the schooling calculus is the single most-cited reason for choosing Larnaca over the SE coast despite preferring the SE's beaches. For tertiary education, the area lacks any local university campus; students typically attend Nicosia or Limassol institutions or go abroad.",
       },
       {
         heading: "Healthcare in the SE",
@@ -248,7 +201,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
       },
       {
         heading: "Practical relocation notes",
-        body: "The Famagusta free area is the most remote part of the Republic of Cyprus, in the sense that it is furthest from both major airports — Larnaca is 45 minutes away, Paphos 2 hours. The healthcare infrastructure is the thinnest of the five regions: there is a Paralimni General Hospital, but for anything serious people drive to Larnaca or Nicosia. International schooling exists but is small-scale: a couple of British-curriculum primary schools, and most secondary-age children either commute to Larnaca or board. Internet, water and power are reliable. The big advantage is climate and beaches: the south-east coast has the warmest sea on the island (typically 27–28 °C in summer, well into October) and the highest concentration of Blue Flag beaches anywhere in the country. It is, by a wide margin, the most beach-defined region in this guide.",
+        body: "The Famagusta free area is the most remote part of the Republic of Cyprus, in the sense that it is furthest from both major airports — Larnaca is 45 minutes away, Paphos 2 hours. The healthcare infrastructure is the thinnest of the four regions: there is a Paralimni General Hospital, but for anything serious people drive to Larnaca or Nicosia. International schooling exists but is small-scale: a couple of British-curriculum primary schools, and most secondary-age children either commute to Larnaca or board. Internet, water and power are reliable. The big advantage is climate and beaches: the south-east coast has the warmest sea on the island (typically 27–28 °C in summer, well into October) and the highest concentration of Blue Flag beaches anywhere in the country. It is, by a wide margin, the most beach-defined region in this guide.",
       },
     ],
   },
@@ -257,14 +210,3 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 export function regionBySlug(slug: string): RegionInfo | undefined {
   return REGIONS.find((r) => r.slug === slug);
 }
-
-/**
- * Owner rule: this region is intentionally excluded from navigation and
- * filters. Its page and sitemap entry are unaffected.
- */
-export const UNLISTED_REGION_SLUGS: ReadonlyArray<string> = ["nicosia"];
-
-/** Regions surfaced in listings and navigation. */
-export const NAV_REGIONS: ReadonlyArray<RegionInfo> = REGIONS.filter(
-	(r) => !UNLISTED_REGION_SLUGS.includes(r.slug),
-);

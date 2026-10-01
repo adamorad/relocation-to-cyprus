@@ -205,58 +205,6 @@ export const COWORK_SPACES: ReadonlyArray<CoworkSpace> = [
     verifiedDate: "2026-01-15",
   },
 
-  // ── Nicosia ───────────────────────────────────────────────────────────────
-  {
-    name: "WeSpace Nicosia",
-    city: "Nicosia",
-    neighbourhood: "Nicosia business district",
-    type: "coworking",
-    dayPassEuros: 18,
-    monthlyHotDesk: 110,
-    monthlyDedicatedDesk: 190,
-    wifiMbps: 300,
-    noiseLevel: "moderate",
-    amenities: [
-      "Phone booths",
-      "Meeting rooms",
-      "Kitchen",
-      "Printing",
-      "24/7 access",
-    ],
-    why: "Best value coworking in Nicosia. Well-maintained space with a mixed community of local professionals and international founders. Consistently fast WiFi and good phone booth availability. The 24/7 access card is worth it for late-evening sprints.",
-    verifiedDate: "2026-01-18",
-  },
-  {
-    name: "The Nest Nicosia",
-    city: "Nicosia",
-    neighbourhood: "Engomi",
-    type: "coworking",
-    dayPassEuros: 20,
-    monthlyHotDesk: 120,
-    monthlyDedicatedDesk: 200,
-    wifiMbps: 250,
-    noiseLevel: "quiet",
-    amenities: [
-      "Meeting rooms",
-      "Kitchen",
-      "Printing",
-      "Locker storage",
-      "Bike parking",
-    ],
-    why: "Quiet, residential-feel coworking in Engomi — the professional suburb of Nicosia. Suits heads-down solo work better than networking. Strong overlap with the digital agency and freelance community in the capital.",
-    verifiedDate: "2026-01-12",
-  },
-  {
-    name: "Coffeeholic Nicosia",
-    city: "Nicosia",
-    neighbourhood: "Stasikratous Street",
-    type: "cafe-friendly",
-    wifiMbps: 60,
-    noiseLevel: "moderate",
-    amenities: ["Power outlets", "WiFi", "Specialty coffee", "Light food"],
-    why: "One of Nicosia's best specialty coffee shops and a reliable laptop-work venue. Stasikratous Street is the centre of Nicosia's young professional scene. Best for half-day sessions; genuinely good coffee.",
-    verifiedDate: "2026-01-20",
-  },
 
   // ── Paphos ────────────────────────────────────────────────────────────────
   {

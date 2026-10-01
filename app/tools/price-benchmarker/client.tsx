@@ -76,8 +76,6 @@ const CITY_NOTES: Record<string, string> = {
 		"Larnaca is the most affordable coastal city — significant growth potential.",
 	"Ayia Napa":
 		"Ayia Napa prices are driven by luxury resort demand. Mid-range options are limited.",
-	Nicosia:
-		"Nicosia is the capital — land-locked but affordable. Primarily a local buyer market.",
 };
 
 function buildCityStats(): Record<string, CityStats> {

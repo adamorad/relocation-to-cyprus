@@ -41,7 +41,6 @@ def main() -> int:
         "Paphos":     (520, 460),
         "Limassol":   (760, 540),
         "Larnaca":    (960, 480),
-        "Nicosia":    (820, 420),
         "Protaras":   (1130, 430),
         "Ayia Napa":  (1090, 470),
     }

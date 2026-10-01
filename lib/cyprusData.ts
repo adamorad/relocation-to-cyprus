@@ -62,7 +62,6 @@ export type City = {
   name: string;
   lon: number;
   lat: number;
-  capital?: boolean;
   /** RGB triplet for this city's district color in the procedural texture. */
   region: readonly [number, number, number];
   /** Label nudge in scene-x / scene-z units; used to separate overlapping cities. */
@@ -73,11 +72,21 @@ export const CITIES: ReadonlyArray<City> = [
   // Illustrated travel-poster palette inspired by reference image —
   // soft pale sea, warm orange west, deep indigo centre, vivid greens
   // and bright teal on the south/east coast.
-  { name: "Nicosia",   lon: 33.36, lat: 35.13, capital: true, region: [88, 103, 176] },   // #5867b0 indigo
   { name: "Limassol",  lon: 33.04, lat: 34.71,                region: [45, 157, 78]  },   // #2d9d4e vivid green
   { name: "Larnaca",   lon: 33.62, lat: 34.93,                region: [46, 187, 193] },   // #2ebbc1 teal
   { name: "Paphos",    lon: 32.42, lat: 34.80,                region: [233, 112, 49] },   // #e97031 sunset orange
   { name: "Ayia Napa", lon: 34.00, lat: 34.99,                region: [69, 168, 71]  },   // #45a847 kelly green
+];
+
+/**
+ * Owner rule: Nicosia is intentionally excluded from RealCy.app. This entry is
+ * NOT a public city: it is used only as an internal classifier (nearest-city
+ * fallback in lib/listingsData.ts) so listings located in Nicosia are
+ * recognised and hidden, instead of being misassigned to a neighbouring city.
+ * Never render it, list it or link to it.
+ */
+export const HIDDEN_CLASSIFIER_CITIES: ReadonlyArray<City> = [
+  { name: "Nicosia",   lon: 33.36, lat: 35.13,                region: [88, 103, 176] },
 ];
 
 export const CYPRUS_CENTER = { lon: 33.4, lat: 35.15 };
@@ -162,6 +171,10 @@ export const DISTRICTS: ReadonlyArray<District> = [
       [33.22, 34.70],
     ],
   },
+  // Owner rule: Nicosia is intentionally excluded from RealCy.app. This
+  // polygon is kept ONLY as an internal classifier so Nicosia listings are
+  // recognised (and hidden by isHiddenListing in lib/listingsData.ts) rather
+  // than misassigned to Limassol or Larnaca. Never render or list it.
   {
     name: "Nicosia",
     outline: [

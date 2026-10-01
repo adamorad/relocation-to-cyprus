@@ -55,11 +55,11 @@ export const GARDEN_TIPS: ReadonlyArray<GardenTip> = [
   },
   {
     heading: "Municipality pilot programmes are the entry point",
-    body: "Several Cyprus municipalities — particularly Nicosia, Limassol and Larnaca — have launched urban growing pilots in the last few years, often on underused public land. These are usually the easiest way to access an allotment plot as a new resident: fees are subsidised, waiting lists are shorter than private schemes, and the municipality provides basic infrastructure. Check directly with your municipality's environment or green-spaces department for current availability.",
+    body: "Several Cyprus municipalities (particularly Limassol and Larnaca) have launched urban growing pilots in the last few years, often on underused public land. These are usually the easiest way to access an allotment plot as a new resident: fees are subsidised, waiting lists are shorter than private schemes, and the municipality provides basic infrastructure. Check directly with your municipality's environment or green-spaces department for current availability.",
   },
   {
     heading: "Vertical gardens and balcony growing are increasingly common",
-    body: "Given the shortage of horizontal growing space in urban Cyprus, vertical gardens on apartment balconies and building facades have become a practical alternative. Growing bags, wall planters, and compact raised beds on balconies are well-suited to the climate. The Nicosia and Limassol urban farming communities have active online groups (Facebook and Instagram) where residents share balcony growing advice specifically calibrated for the Cypriot climate.",
+    body: "Given the shortage of horizontal growing space in urban Cyprus, vertical gardens on apartment balconies and building facades have become a practical alternative. Growing bags, wall planters, and compact raised beds on balconies are well-suited to the climate. The Limassol urban farming community has active online groups (Facebook and Instagram) where residents share balcony growing advice specifically calibrated for the Cypriot climate.",
   },
 ];
 
@@ -86,44 +86,6 @@ export const GARDEN_TYPE_LABEL: Record<GardenType, string> = {
 // ---------------------------------------------------------------------------
 
 export const COMMUNITY_GARDENS: ReadonlyArray<CommunityGarden> = [
-  // ── Nicosia ───────────────────────────────────────────────────────────────
-  {
-    name: "Nicosia Municipality Community Garden (Engomi)",
-    city: "Nicosia",
-    neighbourhood: "Engomi",
-    type: "allotment",
-    openToNewMembers: true,
-    annualFeeApprox: 80,
-    produce: ["tomatoes", "peppers", "courgettes", "herbs", "leafy greens"],
-    why: "One of Nicosia Municipality's urban greening pilot projects. Small allotment plots on public land with shared water access. Fees are subsidised and the scheme is open to city residents. Contact the municipality's green-spaces office for the current waiting list — availability fluctuates.",
-    contact: "Nicosia Municipality — environment / green spaces department",
-    website: "https://www.nicosia.org.cy",
-  },
-  {
-    name: "The Nicosia Urban Farm (Strovolos)",
-    city: "Nicosia",
-    neighbourhood: "Strovolos",
-    type: "urban-farm",
-    openToNewMembers: false,
-    produce: [
-      "microgreens",
-      "herbs",
-      "salad leaves",
-      "seasonal vegetables",
-    ],
-    why: "Small private urban farm in Strovolos that grows microgreens and seasonal produce for local restaurants and a weekly box scheme. Not a public allotment, but they have periodically offered volunteer days and growing workshops — search @nicosiaorganicfarm on Instagram for current programmes. Membership slots are limited.",
-    contact: "Search @nicosiaorganicfarm on Instagram",
-  },
-  {
-    name: "Pedieos River Linear Park Growing Plots",
-    city: "Nicosia",
-    neighbourhood: "Pedieos River Park",
-    type: "community-garden",
-    openToNewMembers: true,
-    annualFeeApprox: 50,
-    produce: ["herbs", "flowers", "seasonal vegetables"],
-    why: "A small community garden initiative along the Pedieos River park. Primarily volunteer-run. Growing plots are informal and community-managed rather than formally allocated. Good entry point for connecting with Nicosia's growing expat gardening community.",
-  },
 
   // ── Limassol ──────────────────────────────────────────────────────────────
   {

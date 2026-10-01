@@ -1,6 +1,6 @@
 /**
  * Property management companies in Cyprus.
- * Covers licensed managers across Limassol, Paphos, Larnaca, and Nicosia.
+ * Covers licensed managers across Limassol, Paphos, and Larnaca.
  *
  * Always verify RICS/RERA licence status directly with the company and with
  * the Cyprus Real Estate Agents Registration Council (RERA) at
@@ -70,14 +70,14 @@ export const PROPERTY_MANAGERS: ReadonlyArray<PropertyManager> = [
   },
   {
     name: "Ledra Estates",
-    cities: ["Limassol", "Nicosia"],
-    why: "Long-established agency with offices in both Limassol and Nicosia. Full management services including lease preparation, tenant vetting, utility transfers, and maintenance contractor network. Useful for owners who divide properties between the two cities.",
+    cities: ["Limassol"],
+    why: "Long-established agency based in Limassol. Full management services including lease preparation, tenant vetting, utility transfers, and maintenance contractor network.",
     licensedByRERA: true,
     website: "https://www.ledraestates.com",
   },
   {
     name: "Remax Cyprus — Property Management Division",
-    cities: ["Limassol", "Paphos", "Larnaca", "Nicosia"],
+    cities: ["Limassol", "Paphos", "Larnaca"],
     why: "Remax Cyprus operates property management services across all major cities through its franchise network. Standardised processes, international brand standards, and broad coverage. Good option for owners who want the consistency of a franchise structure over an independent agent.",
     licensedByRERA: true,
     website: "https://www.remax.com.cy",
@@ -122,25 +122,18 @@ export const PROPERTY_MANAGERS: ReadonlyArray<PropertyManager> = [
     website: "https://www.century21.com.cy",
   },
 
-  // ── Nicosia ──────────────────────────────────────────────────────────────
   {
     name: "Cyfield Property Management",
-    cities: ["Nicosia", "Limassol"],
-    why: "Nicosia-headquartered property management company operating across the capital and Limassol. Specialises in commercial and mixed-use residential portfolios. Strong with corporate relocators and investors who hold multiple units. ISO-certified management processes.",
+    cities: ["Limassol"],
+    why: "Property management company operating in Limassol. Specialises in commercial and mixed-use residential portfolios. Strong with corporate relocators and investors who hold multiple units. ISO-certified management processes.",
     licensedByRERA: true,
     website: "https://www.cyfield.com.cy",
-  },
-  {
-    name: "Nicosia Property Management Group",
-    cities: ["Nicosia"],
-    why: "Nicosia specialist covering the Engomi, Strovolos, and Aglandjia residential areas. Handles tenant sourcing, rent collection, maintenance, and annual property condition reports. Good option for owners of apartment buildings rather than single units — block management rates available.",
-    licensedByRERA: true,
   },
 
   // ── Island-wide / multi-city ──────────────────────────────────────────────
   {
     name: "Danos — Property & Facilities Management",
-    cities: ["Limassol", "Nicosia", "Larnaca", "Paphos"],
+    cities: ["Limassol", "Larnaca", "Paphos"],
     why: "One of Cyprus's largest and oldest real estate consultancies, with a dedicated property and facilities management division. RICS-regulated, island-wide presence, and experience with institutional, commercial, and high-end residential portfolios. Best choice for investors with multi-city holdings.",
     licensedByRERA: true,
     website: "https://www.danos.com.cy",

@@ -12,7 +12,7 @@ export const SECTIONS_INDEX: ReadonlyArray<SectionEntry> = [
 		slug: "long-term-rentals",
 		category: "Property & Housing",
 		description:
-			"Verified rental listings across all five cities — apartments, villas, and studios.",
+			"Verified rental listings across all four cities: apartments, villas, and studios.",
 	},
 	{
 		name: "Property Management",

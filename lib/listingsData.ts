@@ -1,5 +1,10 @@
 import rawListings from "./data/listings.json";
-import { CITIES, districtForLonLat, project } from "./cyprusData";
+import {
+  CITIES,
+  districtForLonLat,
+  HIDDEN_CLASSIFIER_CITIES,
+  project,
+} from "./cyprusData";
 
 export type Offer = {
   unit?: string;
@@ -69,7 +74,10 @@ export type EnrichedListing = Listing & {
   scenePos: readonly [number, number];
 };
 
-const CITY_SCENE_POSITIONS = CITIES.map((c) => {
+// Classifier positions include the hidden (non-public) cities so that listings
+// near them are classified correctly and then hidden, never misassigned.
+// Order matches the original city list (hidden entry first).
+const CITY_SCENE_POSITIONS = [...HIDDEN_CLASSIFIER_CITIES, ...CITIES].map((c) => {
   const [px, py] = project(c.lon, c.lat);
   return { name: c.name, x: px, z: -py };
 });
@@ -91,6 +99,22 @@ function nearestCity(x: number, z: number): string {
 
 const all = rawListings as unknown as Listing[];
 
+/**
+ * Owner rule: Nicosia is intentionally excluded from RealCy.app. Listings
+ * classified into a hidden classifier city (lib/cyprusData.ts
+ * HIDDEN_CLASSIFIER_CITIES) are kept in lib/data/listings.json (reversible)
+ * but hidden from every page. This is the single place listings are hidden:
+ * LISTINGS, LISTINGS_BY_REGION, developers, the sitemap, static params and
+ * every tool all derive from the filtered LISTINGS below.
+ */
+const HIDDEN_REGION_CITIES: ReadonlySet<string> = new Set(
+  HIDDEN_CLASSIFIER_CITIES.map((c) => c.name),
+);
+
+export function isHiddenListing(l: Pick<EnrichedListing, "regionCity">): boolean {
+  return HIDDEN_REGION_CITIES.has(l.regionCity);
+}
+
 export const LISTINGS: EnrichedListing[] = all
   .filter((l) => typeof l.lat === "number" && typeof l.lng === "number")
   .map((l) => {
@@ -101,7 +125,8 @@ export const LISTINGS: EnrichedListing[] = all
     // every district polygon (e.g., coastal listings near a boundary).
     const region = districtForLonLat(l.lng, l.lat) ?? nearestCity(x, z);
     return { ...l, scenePos: [x, z] as const, regionCity: region };
-  });
+  })
+  .filter((l) => !isHiddenListing(l));
 
 export const LISTINGS_BY_REGION: Record<string, EnrichedListing[]> = (() => {
   const m: Record<string, EnrichedListing[]> = {};

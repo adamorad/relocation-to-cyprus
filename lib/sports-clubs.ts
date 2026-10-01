@@ -89,16 +89,6 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     website: "https://www.limassolsportingclub.com",
   },
   {
-    name: "Nicosia Tennis Club",
-    city: "Nicosia",
-    sport: "Tennis",
-    level: "all",
-    englishWelcome: true,
-    annualFeeApprox: 550,
-    why: "The oldest tennis club in Cyprus, founded in 1925. Well-maintained clay and hard courts in the centre of Nicosia. Hosts national tournaments and has strong social tennis on weekends.",
-    website: "https://www.nicosiatennisclub.com",
-  },
-  {
     name: "Aphrodite Hills Tennis Academy",
     city: "Paphos",
     sport: "Tennis",
@@ -115,7 +105,7 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     level: "recreational",
     englishWelcome: true,
     annualFeeApprox: 480,
-    why: "Central Larnaca club with clay courts, coaching, and a welcoming social atmosphere. Smaller than the Limassol or Nicosia clubs but easier to integrate into — strong expat membership.",
+    why: "Central Larnaca club with clay courts, coaching, and a welcoming social atmosphere. Smaller than the Limassol clubs but easier to integrate into. Strong expat membership.",
   },
   {
     name: "Paphos Tennis Club",
@@ -145,15 +135,6 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     englishWelcome: true,
     annualFeeApprox: 380,
     why: "Leading padel facility in the Paphos area. Modern courts, regular social sessions, and organised beginner programmes. The Paphos expat community has made this a natural social hub.",
-  },
-  {
-    name: "SmashPadel Nicosia",
-    city: "Nicosia",
-    sport: "Padel",
-    level: "all",
-    englishWelcome: true,
-    annualFeeApprox: 420,
-    why: "Modern padel centre in Nicosia with coaching from certified instructors. Popular with the business community for after-work games. Court booking available via app.",
   },
   // ── Golf ──────────────────────────────────────────────────────────────────
   {
@@ -244,14 +225,6 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     englishWelcome: true,
     why: "Monthly social hashing runs (running and orienteering combined with beer and socialising) across the island. One of the oldest expat social clubs in Cyprus. Runs in different locations each month — check the Facebook group.",
   },
-  {
-    name: "Nicosia Running Club",
-    city: "Nicosia",
-    sport: "Running",
-    level: "all",
-    englishWelcome: true,
-    why: "Active running community in Nicosia with regular morning and evening group runs. Regular participation in the Cyprus Marathon and other island races. Free to join via Facebook group.",
-  },
   // ── Rugby ─────────────────────────────────────────────────────────────────
   {
     name: "Limassol RFC",
@@ -263,15 +236,6 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     why: "The main rugby union club in Limassol and one of the strongest in Cyprus. Competes in the national league. Predominantly expat membership — English is the working language of training. Touch rugby sessions for those returning to the sport.",
     website: "https://www.limassolrfc.com",
   },
-  {
-    name: "Nicosia RFC",
-    city: "Nicosia",
-    sport: "Rugby",
-    level: "competitive",
-    englishWelcome: true,
-    annualFeeApprox: 350,
-    why: "Capital city rugby club with an expat-heavy playing membership. Trains twice weekly in the winter league season. Social events and touring history make this a good entry point for the Nicosia expat community.",
-  },
   // ── Football ──────────────────────────────────────────────────────────────
   {
     name: "Limassol Expat Football League",
@@ -280,14 +244,6 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     level: "recreational",
     englishWelcome: true,
     why: "Informal 5-a-side and 7-a-side league organised by the expat community. Multiple age and ability groups. Matches on weekday evenings and Saturday mornings at public pitches across Limassol.",
-  },
-  {
-    name: "Nicosia International FC",
-    city: "Nicosia",
-    sport: "Football",
-    level: "recreational",
-    englishWelcome: true,
-    why: "Mixed expat and local recreational football club in Nicosia. Sunday league format, multiple skill levels, social events after games. Welcoming to new arrivals — contact via Facebook.",
   },
   // ── Triathlon & Cycling ───────────────────────────────────────────────────
   {
@@ -298,15 +254,6 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     englishWelcome: true,
     annualFeeApprox: 250,
     why: "Active triathlon club covering swim, bike and run training across the Limassol area. Strong participation in the annual Limassol Triathlon. Open water swim sessions at Dasoudi Beach in summer.",
-  },
-  {
-    name: "Cyprus Cycling Federation (Nicosia)",
-    city: "Nicosia",
-    sport: "Cycling",
-    level: "competitive",
-    englishWelcome: true,
-    why: "The national cycling federation runs group rides and organises road races across Cyprus. The Troodos mountains provide excellent training ground. Affiliated clubs in all major cities.",
-    website: "https://www.cycling.org.cy",
   },
   // ── Cricket ───────────────────────────────────────────────────────────────
   {
