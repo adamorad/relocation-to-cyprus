@@ -26,6 +26,10 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - name: Type check
         run: pnpm exec tsc --noEmit
+      # docs/topics-mapping.md must match lib/topic-map.ts (needs Node 22.15+;
+      # node-version 22 resolves to the latest 22.x).
+      - name: Topic mapping doc up to date
+        run: pnpm qa:topics
       - name: Build (static export and Pagefind index)
         id: build
         run: pnpm build
