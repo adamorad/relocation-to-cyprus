@@ -1,4 +1,5 @@
 import type { IconName } from "@/components/icons/Icon";
+import { hubHref, TOPICS, type TopicSlug } from "./topics";
 
 /**
  * Homepage copy and routes. Derived from the Living Option 1 kit
@@ -24,50 +25,26 @@ export type HomeTopic = {
 
 export const HOME_TOPICS_HEADING = "What are you looking for?";
 
-export const HOME_TOPICS: ReadonlyArray<HomeTopic> = [
-	{
-		id: "healthcare",
-		title: "Healthcare",
-		description: "Doctors, clinics and health services.",
-		icon: "healthcare",
-		href: "/sections/specialist-doctors/",
-	},
-	{
-		id: "transport",
-		title: "Getting around",
-		description: "Buses, driving and transport tips.",
-		icon: "transport",
-		href: "/sections/public-transport/",
-	},
-	{
-		id: "home",
-		title: "Home & bills",
-		description: "Utilities, internet and everyday services.",
-		icon: "home",
-		href: "/guides/utilities-setup-guide/",
-	},
-	{
-		id: "paperwork",
-		title: "Money & paperwork",
-		description: "Banking, residency and official processes.",
-		icon: "paperwork",
-		href: "/guides/residency-and-visas/",
-	},
-	{
-		id: "shopping",
-		title: "Food & shopping",
-		description: "Supermarkets, local food and daily essentials.",
-		icon: "shopping",
-		href: "/sections/international-grocery/",
-	},
-	{
-		id: "community",
-		title: "Community",
-		description: "Meet people, events and local life.",
-		icon: "community",
-		href: "/sections/expat-communities/",
-	},
-];
+/** Short homepage blurbs per topic; name, icon and hub link come from lib/topics. */
+const HOME_TOPIC_BLURB: Record<TopicSlug, string> = {
+	health: "Doctors, clinics and health services.",
+	"getting-around": "Buses, driving and transport tips.",
+	"home-and-bills": "Utilities, internet and everyday services.",
+	"money-and-paperwork": "Banking, tax and official processes.",
+	"food-and-shopping": "Supermarkets, local food and daily essentials.",
+	"family-and-schools": "Schools, nurseries and activities for children.",
+	"community-and-leisure": "Meet people, sport and local life.",
+	"moving-here": "Visas, residency and planning the move.",
+};
+
+/** The eight topic cards, each linking to its hub. */
+export const HOME_TOPICS: ReadonlyArray<HomeTopic> = TOPICS.map((t) => ({
+	id: t.slug,
+	title: t.name,
+	description: HOME_TOPIC_BLURB[t.slug],
+	icon: t.icon,
+	href: hubHref(t),
+}));
 
 export const HOME_GUIDES_HEADING = "Useful for everyday life";
 export const HOME_GUIDES_SUBTITLE =

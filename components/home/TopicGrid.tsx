@@ -14,7 +14,7 @@ export function TopicGrid() {
 			>
 				{HOME_TOPICS_HEADING}
 			</h2>
-			<ul className="grid grid-cols-2 gap-3 max-[359px]:grid-cols-1 md:grid-cols-3 desk:grid-cols-6">
+			<ul className="grid grid-cols-2 gap-3 max-[359px]:grid-cols-1 md:grid-cols-4">
 				{HOME_TOPICS.map((t) => (
 					<li key={t.id} className="flex">
 						<Link

@@ -9,6 +9,7 @@ import { LISTINGS_BY_REGION } from "@/lib/listingsData";
 import { REGIONS } from "@/lib/regions";
 import { SECTIONS_INDEX } from "@/lib/sections-index";
 import { TOOLS } from "@/lib/tools-index";
+import { hubHref, TOPICS } from "@/lib/topics";
 
 const TOOL_COUNT = TOOLS.length;
 const GUIDE_COUNT = GUIDES.length;
@@ -100,240 +101,74 @@ export const metadata: Metadata = {
 	},
 };
 
+const FOOTER_SITE_LINKS: ReadonlyArray<{ label: string; href: string }> = [
+	{ label: "Guides", href: "/guides/" },
+	{ label: "Tools", href: "/tools/" },
+	{ label: "Local directories", href: "/sections/" },
+	{ label: "New developments", href: "/listings/" },
+	{ label: "About", href: "/about/" },
+	{ label: "Advertise", href: "/advertise/" },
+	{ label: "Contact", href: "/contact/" },
+	{ label: "Privacy", href: "/privacy/" },
+	{ label: "Sitemap", href: "/sitemap.xml" },
+];
+
+const FOOTER_HEADING =
+	"text-xs uppercase tracking-wider text-slate-400 font-semibold";
+const FOOTER_LINK = "hover:text-white transition-colors";
+
 function SiteFooter() {
 	const featured = REGIONS.flatMap((r) =>
 		(LISTINGS_BY_REGION[r.name] ?? []).slice(0, 4),
 	);
 	return (
 		<footer data-pagefind-ignore className="bg-ink text-slate-300 mt-0">
-			<div className="mx-auto max-w-[1280px] px-5 md:px-8 py-12 grid grid-cols-2 md:grid-cols-6 gap-8 text-sm">
+			<div className="mx-auto max-w-[1280px] px-5 md:px-8 py-12 grid grid-cols-2 md:grid-cols-5 gap-8 text-sm">
 				<div className="col-span-2 md:col-span-2">
 					<p className="font-bold text-white text-lg">RealCy.app</p>
 					<p className="mt-2 text-slate-400 leading-relaxed text-xs">
 						Your guide to living in Cyprus: practical guides, curated
 						directories, interactive tools and new-build real estate.
 					</p>
-					<div className="mt-4 flex flex-wrap gap-2">
-						<Link
-							href="/explore/"
-							className="text-xs text-[#35cdc4] hover:text-white transition-colors font-semibold"
-						>
-							Explore all →
-						</Link>
-						<Link
-							href="/guides/"
-							className="text-xs text-slate-400 hover:text-white transition-colors"
-						>
-							{GUIDES.length} guides
-						</Link>
-						<Link
-							href="/sections/"
-							className="text-xs text-slate-400 hover:text-white transition-colors"
-						>
-							{SECTIONS_INDEX.length} directories
-						</Link>
-						<Link
-							href="/tools/"
-							className="text-xs text-slate-400 hover:text-white transition-colors"
-						>
-							{TOOL_COUNT} tools
-						</Link>
-					</div>
-				</div>
-				<nav aria-label="Regions">
-					<p className="text-xs uppercase tracking-wider text-slate-400 font-semibold">
-						Regions
+					<p className="mt-4 text-xs text-slate-400">
+						{GUIDE_COUNT} guides · {SECTIONS_INDEX.length} directories ·{" "}
+						{TOOL_COUNT} tools
 					</p>
+				</div>
+				<nav aria-label="Topics">
+					<p className={FOOTER_HEADING}>Topics</p>
+					<ul className="mt-3 space-y-2">
+						{TOPICS.map((t) => (
+							<li key={t.slug}>
+								<Link href={hubHref(t)} className={FOOTER_LINK}>
+									{t.name}
+								</Link>
+							</li>
+						))}
+					</ul>
+				</nav>
+				<nav aria-label="Cities">
+					<p className={FOOTER_HEADING}>Cities</p>
 					<ul className="mt-3 space-y-2">
 						{REGIONS.map((r) => (
 							<li key={r.slug}>
-								<Link
-									href={`/regions/${r.slug}/`}
-									className="hover:text-white transition-colors"
-								>
+								<Link href={`/regions/${r.slug}/`} className={FOOTER_LINK}>
 									{r.name}
 								</Link>
 							</li>
 						))}
 					</ul>
 				</nav>
-				<nav aria-label="Popular guides">
-					<p className="text-xs uppercase tracking-wider text-slate-400 font-semibold">
-						Guides
-					</p>
+				<nav aria-label="Site">
+					<p className={FOOTER_HEADING}>Site</p>
 					<ul className="mt-3 space-y-2">
-						{[
-							{ slug: "residency-and-visas", label: "Residency & Visas" },
-							{ slug: "taxes-for-expats", label: "Taxes for Expats" },
-							{ slug: "cost-of-living", label: "Cost of Living" },
-							{ slug: "arrival-checklist", label: "First Month Checklist" },
-							{ slug: "banking-in-cyprus", label: "Banking in Cyprus" },
-							{ slug: "gesy-registration-guide", label: "GeSY Registration" },
-						].map((g) => (
-							<li key={g.slug}>
-								<Link
-									href={`/guides/${g.slug}/`}
-									className="hover:text-white transition-colors"
-								>
-									{g.label}
+						{FOOTER_SITE_LINKS.map((l) => (
+							<li key={l.href}>
+								<Link href={l.href} className={FOOTER_LINK}>
+									{l.label}
 								</Link>
 							</li>
 						))}
-						<li>
-							<Link
-								href="/guides/"
-								className="text-[#35cdc4] hover:text-white transition-colors text-xs"
-							>
-								All {GUIDES.length} guides →
-							</Link>
-						</li>
-					</ul>
-				</nav>
-				<nav aria-label="Directories">
-					<p className="text-xs uppercase tracking-wider text-slate-400 font-semibold">
-						Directories
-					</p>
-					<ul className="mt-3 space-y-2">
-						{[
-							{ slug: "property-lawyers", label: "Property Lawyers" },
-							{ slug: "immigration-lawyers", label: "Immigration Lawyers" },
-							{ slug: "accountants", label: "Accountants" },
-							{ slug: "specialist-doctors", label: "Specialist Doctors" },
-							{ slug: "coworking", label: "Coworking Spaces" },
-							{ slug: "expat-communities", label: "Expat Communities" },
-						].map((s) => (
-							<li key={s.slug}>
-								<Link
-									href={`/sections/${s.slug}/`}
-									className="hover:text-white transition-colors"
-								>
-									{s.label}
-								</Link>
-							</li>
-						))}
-						<li>
-							<Link
-								href="/sections/"
-								className="text-[#35cdc4] hover:text-white transition-colors text-xs"
-							>
-								All {SECTIONS_INDEX.length} directories →
-							</Link>
-						</li>
-					</ul>
-				</nav>
-				<nav aria-label="Tools and company">
-					<p className="text-xs uppercase tracking-wider text-slate-400 font-semibold">
-						Tools
-					</p>
-					<ul className="mt-3 space-y-2">
-						{[
-							{ slug: "rent-vs-buy-calculator", label: "Rent vs Buy" },
-							{ slug: "tax-residency-tracker", label: "Tax Residency" },
-							{ slug: "visa-pathway-finder", label: "Visa Finder" },
-							{ slug: "banking-fee-comparison", label: "Banking Fees" },
-						].map((t) => (
-							<li key={t.slug}>
-								<Link
-									href={`/tools/${t.slug}/`}
-									className="hover:text-white transition-colors"
-								>
-									{t.label}
-								</Link>
-							</li>
-						))}
-						<li>
-							<Link
-								href="/tools/"
-								className="text-[#35cdc4] hover:text-white transition-colors text-xs"
-							>
-								All {TOOL_COUNT} tools →
-							</Link>
-						</li>
-					</ul>
-					<p className="mt-6 text-xs uppercase tracking-wider text-slate-400 font-semibold">
-						RealCy.app
-					</p>
-					<ul className="mt-3 space-y-2">
-						<li>
-							<Link
-								href="/moving-to-cyprus/"
-								className="hover:text-white transition-colors"
-							>
-								Moving to Cyprus
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/listings/"
-								className="hover:text-white transition-colors"
-							>
-								New developments
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/about/"
-								className="hover:text-white transition-colors"
-							>
-								About
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/advertise/"
-								className="hover:text-white transition-colors"
-							>
-								Advertise
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/contact/"
-								className="hover:text-white transition-colors"
-							>
-								Contact
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/explore/"
-								className="hover:text-white transition-colors"
-							>
-								Explore
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/privacy/"
-								className="hover:text-white transition-colors"
-							>
-								Privacy
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/sitemap.xml"
-								className="hover:text-white transition-colors"
-							>
-								Sitemap
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/my-shortlist/"
-								className="hover:text-white transition-colors"
-							>
-								Saved Shortlist
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/developers/"
-								className="hover:text-white transition-colors"
-							>
-								Developers
-							</Link>
-						</li>
 					</ul>
 				</nav>
 			</div>
