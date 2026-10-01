@@ -216,17 +216,17 @@ export default function ExploreClient() {
 	return (
 		<main id="main" className="max-w-5xl mx-auto px-6 py-10 md:py-16">
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-ink">
 					Home
 				</Link>{" "}
-				&rsaquo; <span className="text-slate-900">Explore</span>
+				&rsaquo; <span className="text-ink">Explore</span>
 			</nav>
 
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
 					Site Directory
 				</p>
-				<h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Explore RealCy.app
 				</h1>
 				<p className="mt-3 text-slate-700 leading-relaxed">
@@ -254,7 +254,7 @@ export default function ExploreClient() {
 						value={query}
 						onChange={(e) => setQuery(e.target.value)}
 						placeholder="Search guides, tools, sections…"
-						className="w-full pl-9 pr-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-focus focus:border-transparent"
+						className="w-full pl-9 pr-4 min-h-11 border border-line rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-focus focus:border-transparent"
 						aria-label="Search all content"
 					/>
 					{query && (
@@ -300,22 +300,19 @@ export default function ExploreClient() {
 										<li key={r.slug}>
 											<Link
 												href={`/guides/${r.slug}/`}
-												className="flex items-start gap-3 p-3 border border-slate-200 rounded-lg hover:border-primary hover:shadow-sm transition-all group"
+												className="flex items-start gap-3 p-3 border border-line rounded-2xl hover:border-primary hover:shadow-sm transition-all group"
 											>
-												<span className="flex-shrink-0 inline-block text-[10px] font-semibold uppercase tracking-wider text-amber-700 bg-amber-50 border border-amber-200 rounded-full px-2 py-0.5 mt-0.5">
+												<span className="flex-shrink-0 inline-block text-xs font-semibold uppercase tracking-wider text-ink bg-sky-strong rounded-full px-2.5 py-0.5 mt-0.5">
 													{r.category}
 												</span>
 												<div className="min-w-0">
-													<p className="text-sm font-semibold text-slate-900 group-hover:text-primary transition-colors leading-snug">
+													<p className="text-sm font-semibold text-ink group-hover:text-primary transition-colors leading-snug">
 														{r.title}
 													</p>
 													<p className="text-xs text-slate-500 mt-0.5 line-clamp-1">
 														{r.description}
 													</p>
 												</div>
-												<span className="flex-shrink-0 text-muted group-hover:text-primary transition-colors">
-													→
-												</span>
 											</Link>
 										</li>
 									))}
@@ -333,22 +330,19 @@ export default function ExploreClient() {
 										<li key={r.slug}>
 											<Link
 												href={`/tools/${r.slug}/`}
-												className="flex items-start gap-3 p-3 border border-slate-200 rounded-lg hover:border-primary hover:shadow-sm transition-all group"
+												className="flex items-start gap-3 p-3 border border-line rounded-2xl hover:border-primary hover:shadow-sm transition-all group"
 											>
-												<span className="flex-shrink-0 inline-block text-[10px] font-semibold uppercase tracking-wider text-teal-700 bg-teal-50 border border-teal-200 rounded-full px-2 py-0.5 mt-0.5">
+												<span className="flex-shrink-0 inline-block text-xs font-semibold uppercase tracking-wider text-ink bg-sky-strong rounded-full px-2.5 py-0.5 mt-0.5">
 													{r.tag}
 												</span>
 												<div className="min-w-0">
-													<p className="text-sm font-semibold text-slate-900 group-hover:text-primary transition-colors leading-snug">
+													<p className="text-sm font-semibold text-ink group-hover:text-primary transition-colors leading-snug">
 														{r.name}
 													</p>
 													<p className="text-xs text-slate-500 mt-0.5 line-clamp-1">
 														{r.description}
 													</p>
 												</div>
-												<span className="flex-shrink-0 text-muted group-hover:text-primary transition-colors">
-													→
-												</span>
 											</Link>
 										</li>
 									))}
@@ -366,22 +360,19 @@ export default function ExploreClient() {
 										<li key={r.slug}>
 											<Link
 												href={`/sections/${r.slug}/`}
-												className="flex items-start gap-3 p-3 border border-slate-200 rounded-lg hover:border-primary hover:shadow-sm transition-all group"
+												className="flex items-start gap-3 p-3 border border-line rounded-2xl hover:border-primary hover:shadow-sm transition-all group"
 											>
-												<span className="flex-shrink-0 inline-block text-[10px] font-semibold uppercase tracking-wider text-slate-600 bg-slate-100 border border-slate-200 rounded-full px-2 py-0.5 mt-0.5">
+												<span className="flex-shrink-0 inline-block text-xs font-semibold uppercase tracking-wider text-ink bg-sky-strong rounded-full px-2.5 py-0.5 mt-0.5">
 													{r.category}
 												</span>
 												<div className="min-w-0">
-													<p className="text-sm font-semibold text-slate-900 group-hover:text-primary transition-colors leading-snug">
+													<p className="text-sm font-semibold text-ink group-hover:text-primary transition-colors leading-snug">
 														{r.name}
 													</p>
 													<p className="text-xs text-slate-500 mt-0.5 line-clamp-1">
 														{r.description}
 													</p>
 												</div>
-												<span className="flex-shrink-0 text-muted group-hover:text-primary transition-colors">
-													→
-												</span>
 											</Link>
 										</li>
 									))}
@@ -404,9 +395,9 @@ export default function ExploreClient() {
 					{CATEGORIES.map((category) => (
 						<div
 							key={category.title}
-							className="bg-white border border-slate-200 rounded-xl p-5"
+							className="bg-white border border-line rounded-2xl p-5"
 						>
-							<h2 className="text-sm font-bold text-slate-900 uppercase tracking-wide mb-3">
+							<h2 className="text-sm font-bold text-ink uppercase tracking-wide mb-3">
 								{category.title}
 							</h2>
 							<ul className="space-y-1.5">
@@ -414,11 +405,8 @@ export default function ExploreClient() {
 									<li key={item.href}>
 										<Link
 											href={item.href}
-											className="text-sm text-slate-700 hover:text-primary transition-colors flex items-center gap-1.5 group"
+											className="text-sm text-slate-700 hover:text-primary transition-colors flex items-center gap-1.5 group py-1"
 										>
-											<span className="text-muted group-hover:text-primary transition-colors text-xs">
-												→
-											</span>
 											{item.name}
 										</Link>
 									</li>
@@ -430,8 +418,8 @@ export default function ExploreClient() {
 			)}
 
 			<p className="mt-10 text-xs text-slate-500">
-				<Link href="/" className="underline hover:text-slate-900">
-					&larr; Back to home
+				<Link href="/" className="underline hover:text-ink">
+					Back to home
 				</Link>
 			</p>
 		</main>
