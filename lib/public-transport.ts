@@ -51,7 +51,7 @@ export const TRANSPORT_INFO: Record<City, TransportInfo> = {
       "OSYPA Intercity — Limassol to Paphos (hourly, 1h)",
       "OSYPA Intercity — Limassol to Larnaca (hourly, 1h)",
     ],
-    verdict: "The most functional public transport network in Cyprus. The seafront corridor is well-served; suburbs and inland areas less so. Bolt is genuinely reliable in the city. A car is still needed for schools, shopping centres, and coastal villages.",
+    verdict: "The most functional public transport network of the cities covered here. The seafront corridor is well-served; suburbs and inland areas less so. Bolt is genuinely reliable in the city. A car is still needed for schools, shopping centres, and coastal villages.",
     tips: [
       "The EMEL app (or Google Maps) shows real-time bus positions for Limassol routes.",
       "Monthly passes are loaded onto a smart card — buy from the EMEL office near the old port.",
@@ -83,7 +83,7 @@ export const TRANSPORT_INFO: Record<City, TransportInfo> = {
 
   Larnaca: {
     city: "Larnaca",
-    intercityBus: "OSYPA (intercity): frequent services to Limassol (hourly, €4, ~1h). Terminal near the old port / seafront.",
+    intercityBus: "OSYPA (intercity): hourly services to Limassol (€4, ~1h). Terminal near the old port / seafront.",
     intraCityBus: "ZINONAS (intra-city): moderate network covering the city centre, Finikoudes area, airport, and main residential zones. Frequency: every 30–60 minutes. Service ends ~21:00.",
     taxiApp: "Bolt is active in Larnaca. Licensed airport taxis use fixed-rate zones. Airport to Larnaca centre is approximately €15–€20.",
     boltAvailable: true,
@@ -148,6 +148,6 @@ export const TRANSPORT_TIPS: ReadonlyArray<TransportTip> = [
   },
   {
     heading: "The intercity bus network is good value",
-    body: "OSYPA intercity coaches are clean, air-conditioned, punctual on the main routes, and cheap at €3–€6 per trip. The Limassol–Paphos and Limassol–Larnaca corridors are frequent and convenient for occasional trips. Download the publictransport.com.cy app for live timetables.",
+    body: "OSYPA intercity coaches are clean, air-conditioned, punctual on the main routes, and cheap at €3–€6 per trip. The Limassol–Paphos corridor is frequent and convenient for occasional trips. Download the publictransport.com.cy app for live timetables.",
   },
 ];
