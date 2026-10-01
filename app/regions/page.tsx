@@ -35,6 +35,7 @@ export default function RegionsIndexPage() {
 					<CardGridItem key={region.slug}>
 						<Card
 							variant="icon"
+							headingLevel="h2"
 							icon="pin"
 							href={`/regions/${region.slug}/`}
 							title={region.name}

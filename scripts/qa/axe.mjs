@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Accessibility gate. Serves out/ with an in-process static server, opens a
 // fixed sample of pages at 390 and 1440 px with Playwright and runs axe-core
-// (wcag2a + wcag2aa). Fails on moderate, serious or critical violations that are not in
+// (wcag2a + wcag2aa, plus the best-practice rule heading-order). Fails on moderate, serious or critical violations that are not in
 // scripts/qa/axe.baseline.json.
 //
 // Usage:
@@ -235,6 +235,7 @@ for (const width of WIDTHS) {
 				if (axe.has(url)) {
 					const result = await new AxeBuilder({ page })
 						.withTags(["wcag2a", "wcag2aa"])
+						.withRules(["heading-order"])
 						.analyze();
 					for (const v of result.violations)
 						findings.push({

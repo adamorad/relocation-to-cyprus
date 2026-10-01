@@ -350,7 +350,7 @@ export default function DesignSystemPage() {
 												href="/guides/"
 												title={`Card ${t}`}
 												text="Card text."
-												headingLevel="h4"
+												headingLevel="h3"
 											/>
 										</CardGridItem>
 									))}

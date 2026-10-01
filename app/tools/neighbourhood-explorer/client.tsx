@@ -343,7 +343,7 @@ function NeighbourhoodCard({ n, selected, onToggle, compareCount }: CardProps) {
 	return (
 		<article className="relative flex flex-col rounded-card border border-line bg-white p-5">
 			<div className="mb-3 flex items-start justify-between gap-3">
-				<h3 className="text-base font-bold leading-tight text-ink">{n.name}</h3>
+				<h2 className="text-base font-bold leading-tight text-ink">{n.name}</h2>
 				<label className="-my-2 -mr-2 flex min-h-11 shrink-0 cursor-pointer select-none items-center gap-1.5 px-2">
 					<input
 						type="checkbox"
