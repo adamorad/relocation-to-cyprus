@@ -24,10 +24,10 @@ function CityChip({
 			type="button"
 			onClick={onClick}
 			aria-pressed={selected}
-			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
+			className={`rounded-full inline-flex min-h-11 items-center px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors md:min-h-0 ${
 				selected
-					? "bg-slate-900 text-white border border-slate-900"
-					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
+					? "bg-ink text-white border border-ink"
+					: "bg-white text-ink border border-line hover:bg-sky"
 			}`}
 		>
 			{city}
@@ -53,10 +53,10 @@ export default function PublicTransportPage() {
 
 			{/* Header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
 					Getting Around
 				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Getting Around Cyprus — Public Transport Guide
 				</h1>
 				<p className="mt-3 text-base text-slate-600 max-w-2xl leading-relaxed">
@@ -68,16 +68,16 @@ export default function PublicTransportPage() {
 
 			{/* Tips */}
 			<section className="mb-8">
-				<h2 className="text-sm font-bold text-slate-700 uppercase tracking-wider mb-3">
+				<h2 className="text-sm font-bold text-ink uppercase tracking-wider mb-3">
 					What to know before you arrive
 				</h2>
 				<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
 					{TRANSPORT_TIPS.map((tip) => (
 						<div
 							key={tip.heading}
-							className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-sm"
+							className="rounded-2xl border border-line bg-sky p-4 text-sm"
 						>
-							<p className="font-bold text-slate-900">{tip.heading}</p>
+							<p className="font-bold text-ink">{tip.heading}</p>
 							<p className="mt-1.5 text-slate-600 leading-relaxed text-xs">
 								{tip.body}
 							</p>
@@ -88,7 +88,7 @@ export default function PublicTransportPage() {
 
 			{/* City filter */}
 			<section className="mb-6">
-				<p className="text-[10px] uppercase tracking-widest text-slate-500 font-semibold mb-2">
+				<p className="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-2">
 					City
 				</p>
 				<div className="flex flex-wrap gap-1.5">
@@ -115,20 +115,20 @@ export default function PublicTransportPage() {
 					return (
 						<section
 							key={city}
-							className="rounded-xl border border-slate-200 bg-white overflow-hidden shadow-sm"
+							className="rounded-2xl border border-line bg-white overflow-hidden shadow-sm"
 						>
 							{/* City header */}
-							<div className="px-5 py-4 border-b border-slate-100 bg-slate-50">
+							<div className="px-5 py-4 border-b border-line bg-sky">
 								<div className="flex items-center justify-between gap-3 flex-wrap">
-									<h2 className="text-lg font-bold text-slate-900">{city}</h2>
+									<h2 className="text-lg font-bold text-ink">{city}</h2>
 									<div className="flex items-center gap-2">
 										{info.boltAvailable && (
-											<span className="rounded-full bg-[#34d186]/10 text-[#1a9b58] border border-[#34d186]/30 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide">
+											<span className="rounded-full bg-green-50 text-green-800 border border-green-200 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide">
 												Bolt available
 											</span>
 										)}
 										{info.busMonthlyPass !== undefined && (
-											<span className="rounded-full bg-amber-50 text-amber-700 border border-amber-200 px-2.5 py-0.5 text-[10px] font-bold">
+											<span className="rounded-full bg-sky-strong text-ink px-2.5 py-0.5 text-xs font-bold">
 												Bus pass €{info.busMonthlyPass}/mo
 											</span>
 										)}
@@ -143,7 +143,7 @@ export default function PublicTransportPage() {
 								{/* Left column */}
 								<div className="space-y-4">
 									<div>
-										<p className="text-[10px] uppercase tracking-widest text-muted font-semibold mb-1">
+										<p className="text-xs uppercase tracking-widest text-muted font-semibold mb-1">
 											Intercity bus
 										</p>
 										<p className="text-xs text-slate-700 leading-relaxed">
@@ -151,7 +151,7 @@ export default function PublicTransportPage() {
 										</p>
 									</div>
 									<div>
-										<p className="text-[10px] uppercase tracking-widest text-muted font-semibold mb-1">
+										<p className="text-xs uppercase tracking-widest text-muted font-semibold mb-1">
 											Intra-city bus
 										</p>
 										<p className="text-xs text-slate-700 leading-relaxed">
@@ -159,7 +159,7 @@ export default function PublicTransportPage() {
 										</p>
 									</div>
 									<div>
-										<p className="text-[10px] uppercase tracking-widest text-muted font-semibold mb-1">
+										<p className="text-xs uppercase tracking-widest text-muted font-semibold mb-1">
 											Taxis &amp; ride-hailing
 										</p>
 										<p className="text-xs text-slate-700 leading-relaxed">
@@ -171,7 +171,7 @@ export default function PublicTransportPage() {
 								{/* Right column */}
 								<div className="space-y-4">
 									<div>
-										<p className="text-[10px] uppercase tracking-widest text-muted font-semibold mb-2">
+										<p className="text-xs uppercase tracking-widest text-muted font-semibold mb-2">
 											Key routes
 										</p>
 										<ul className="space-y-1">
@@ -180,8 +180,8 @@ export default function PublicTransportPage() {
 													key={route}
 													className="text-xs text-slate-700 flex items-start gap-1.5"
 												>
-													<span className="text-teal-500 mt-0.5 shrink-0">
-														→
+													<span className="text-primary mt-0.5 shrink-0">
+														·
 													</span>
 													{route}
 												</li>
@@ -189,7 +189,7 @@ export default function PublicTransportPage() {
 										</ul>
 									</div>
 									<div>
-										<p className="text-[10px] uppercase tracking-widest text-muted font-semibold mb-2">
+										<p className="text-xs uppercase tracking-widest text-muted font-semibold mb-2">
 											Practical tips
 										</p>
 										<ul className="space-y-1">
@@ -198,7 +198,7 @@ export default function PublicTransportPage() {
 													key={tip}
 													className="text-xs text-slate-600 flex items-start gap-1.5"
 												>
-													<span className="text-amber-500 mt-0.5 shrink-0">
+													<span className="text-primary mt-0.5 shrink-0">
 														·
 													</span>
 													{tip}
@@ -215,8 +215,8 @@ export default function PublicTransportPage() {
 
 			{/* Footer nav */}
 			<p className="mt-12 text-xs text-slate-500">
-				<Link href="/" className="underline hover:text-slate-900">
-					← Back to home
+				<Link href="/" className="underline hover:text-ink">
+					Back to home
 				</Link>
 			</p>
 		</main>

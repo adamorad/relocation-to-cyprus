@@ -26,10 +26,10 @@ function CityChip({
 			type="button"
 			onClick={onClick}
 			aria-pressed={selected}
-			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
+			className={`rounded-full inline-flex min-h-11 items-center px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors md:min-h-0 ${
 				selected
-					? "bg-slate-900 text-white border border-slate-900"
-					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
+					? "bg-ink text-white border border-ink"
+					: "bg-white text-ink border border-line hover:bg-sky"
 			}`}
 		>
 			{city}
@@ -51,10 +51,10 @@ function ServiceChip({
 			type="button"
 			onClick={onClick}
 			aria-pressed={selected}
-			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
+			className={`rounded-full inline-flex min-h-11 items-center px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors md:min-h-0 ${
 				selected
 					? "bg-primary text-white border border-primary"
-					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
+					: "bg-white text-ink border border-line hover:bg-sky"
 			}`}
 		>
 			{label}
@@ -64,9 +64,9 @@ function ServiceChip({
 
 function ClinicCard({ clinic }: { clinic: (typeof VET_CLINICS)[number] }) {
 	return (
-		<li className="rounded-xl border border-slate-200 bg-white p-4 text-sm flex flex-col gap-2">
+		<li className="rounded-2xl border border-line bg-white p-4 text-sm flex flex-col gap-2">
 			<div>
-				<p className="font-bold text-slate-900">{clinic.name}</p>
+				<p className="font-bold text-ink">{clinic.name}</p>
 				<p className="text-xs text-slate-500 mt-0.5">
 					{clinic.city}
 					{clinic.neighbourhood ? ` · ${clinic.neighbourhood}` : ""}
@@ -75,19 +75,19 @@ function ClinicCard({ clinic }: { clinic: (typeof VET_CLINICS)[number] }) {
 
 			<div className="flex flex-wrap gap-1.5">
 				{clinic.emergency24h && (
-					<span className="rounded-full bg-red-50 text-red-800 border border-red-200 px-2 py-0.5 text-[10px] font-semibold">
+					<span className="rounded-full bg-red-50 text-red-800 border border-red-200 px-2 py-0.5 text-xs font-semibold">
 						24h emergency
 					</span>
 				)}
 				{clinic.englishSpoken && (
-					<span className="rounded-full bg-blue-50 text-blue-800 border border-blue-200 px-2 py-0.5 text-[10px] font-semibold">
+					<span className="rounded-full bg-sky-strong text-ink px-2 py-0.5 text-xs font-semibold">
 						English spoken
 					</span>
 				)}
 				{clinic.services.map((s) => (
 					<span
 						key={s}
-						className="rounded-full bg-teal-50 text-teal-800 border border-teal-200 px-2 py-0.5 text-[10px] font-semibold"
+						className="rounded-full bg-sky-strong text-ink px-2 py-0.5 text-xs font-semibold"
 					>
 						{VET_SERVICE_LABEL[s]}
 					</span>
@@ -96,11 +96,11 @@ function ClinicCard({ clinic }: { clinic: (typeof VET_CLINICS)[number] }) {
 
 			<p className="text-slate-700 leading-relaxed text-xs">{clinic.why}</p>
 
-			<div className="flex flex-wrap gap-x-4 gap-y-1 text-[10px] font-semibold mt-1">
+			<div className="flex flex-wrap gap-x-4 gap-y-1 text-xs font-semibold mt-1">
 				{clinic.phone && (
 					<a
 						href={`tel:${clinic.phone.replace(/\s/g, "")}`}
-						className="text-slate-700 hover:text-slate-900"
+						className="text-slate-700 hover:text-ink"
 					>
 						{clinic.phone}
 					</a>
@@ -110,9 +110,9 @@ function ClinicCard({ clinic }: { clinic: (typeof VET_CLINICS)[number] }) {
 						href={clinic.website}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="text-teal-700 hover:text-teal-900"
+						className="text-primary hover:text-primary-hover"
 					>
-						Website ↗
+						Website
 					</a>
 				)}
 			</div>
@@ -142,10 +142,10 @@ export default function VeterinaryServicesPage() {
 
 			{/* Header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
 					Services
 				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Veterinary Services in Cyprus
 					<br />
 					<span className="text-2xl md:text-3xl font-semibold text-slate-600">
@@ -161,16 +161,14 @@ export default function VeterinaryServicesPage() {
 
 			{/* Tips */}
 			<section className="mb-10">
-				<h2 className="text-lg font-bold text-slate-900 mb-3">
-					What to know first
-				</h2>
+				<h2 className="text-lg font-bold text-ink mb-3">What to know first</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-3">
 					{VET_TIPS.map((tip) => (
 						<div
 							key={tip.heading}
-							className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-xs"
+							className="rounded-2xl border border-line bg-sky p-4 text-xs"
 						>
-							<p className="font-bold text-sm text-slate-900">{tip.heading}</p>
+							<p className="font-bold text-sm text-ink">{tip.heading}</p>
 							<p className="mt-1.5 text-slate-700 leading-relaxed">
 								{tip.body}
 							</p>
@@ -229,7 +227,7 @@ export default function VeterinaryServicesPage() {
 
 			{/* Clinic grid */}
 			{filtered.length === 0 ? (
-				<div className="rounded-xl border border-slate-200 bg-slate-50 px-6 py-8 text-center text-sm text-slate-500">
+				<div className="rounded-xl border border-line bg-sky px-6 py-8 text-center text-sm text-slate-500">
 					No clinics match the current filters.
 				</div>
 			) : (

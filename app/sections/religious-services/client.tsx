@@ -27,10 +27,10 @@ function CityChip({
 			type="button"
 			onClick={onClick}
 			aria-pressed={selected}
-			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
+			className={`rounded-full inline-flex min-h-11 items-center px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors md:min-h-0 ${
 				selected
-					? "bg-slate-900 text-white border border-slate-900"
-					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
+					? "bg-ink text-white border border-ink"
+					: "bg-white text-ink border border-line hover:bg-sky"
 			}`}
 		>
 			{label}
@@ -42,48 +42,48 @@ const FAITH_COLOR: Record<Faith, { bg: string; text: string; border: string }> =
 	{
 		Anglican: {
 			bg: "bg-blue-50",
-			text: "text-blue-700",
+			text: "text-blue-800",
 			border: "border-blue-200",
 		},
 		Catholic: {
 			bg: "bg-yellow-50",
-			text: "text-yellow-700",
+			text: "text-yellow-800",
 			border: "border-yellow-200",
 		},
 		Orthodox: {
-			bg: "bg-amber-50",
-			text: "text-amber-700",
-			border: "border-amber-200",
+			bg: "bg-sky-strong",
+			text: "text-ink",
+			border: "border-line",
 		},
 		Protestant: {
 			bg: "bg-green-50",
-			text: "text-green-700",
+			text: "text-green-800",
 			border: "border-green-200",
 		},
 		Jewish: {
 			bg: "bg-indigo-50",
-			text: "text-indigo-700",
+			text: "text-indigo-800",
 			border: "border-indigo-200",
 		},
 		Muslim: {
-			bg: "bg-teal-50",
-			text: "text-teal-700",
-			border: "border-teal-200",
+			bg: "bg-sky-strong",
+			text: "text-ink",
+			border: "border-line",
 		},
 		Hindu: {
 			bg: "bg-orange-50",
-			text: "text-orange-700",
+			text: "text-orange-800",
 			border: "border-orange-200",
 		},
 		Buddhist: {
 			bg: "bg-rose-50",
-			text: "text-rose-700",
+			text: "text-rose-800",
 			border: "border-rose-200",
 		},
 		"Non-denominational": {
-			bg: "bg-slate-100",
+			bg: "bg-sky-strong",
 			text: "text-slate-700",
-			border: "border-slate-200",
+			border: "border-line",
 		},
 	};
 
@@ -109,10 +109,10 @@ export default function ReligiousServicesPage() {
 
 			{/* Header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold mb-2">
+				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary mb-2">
 					Community
 				</p>
-				<h1 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-900 leading-tight">
+				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink leading-tight">
 					Religious Services in Cyprus
 				</h1>
 				<p className="mt-4 text-lg text-slate-600 leading-relaxed max-w-2xl">
@@ -126,11 +126,9 @@ export default function ReligiousServicesPage() {
 				{RELIGIOUS_TIPS.map((tip) => (
 					<div
 						key={tip.heading}
-						className="rounded-xl border border-amber-200 bg-amber-50 p-4"
+						className="rounded-2xl border border-line bg-sky p-4"
 					>
-						<p className="text-sm font-semibold text-slate-900 mb-1">
-							{tip.heading}
-						</p>
+						<p className="text-sm font-semibold text-ink mb-1">{tip.heading}</p>
 						<p className="text-sm text-slate-600 leading-relaxed">{tip.body}</p>
 					</div>
 				))}
@@ -192,11 +190,11 @@ export default function ReligiousServicesPage() {
 					return (
 						<article
 							key={service.name}
-							className="rounded-xl border border-slate-200 bg-white p-5 flex flex-col gap-3 hover:shadow-md transition-shadow"
+							className="rounded-2xl border border-line bg-white p-5 flex flex-col gap-3"
 						>
 							<div className="flex items-start justify-between gap-2">
 								<div className="min-w-0">
-									<h2 className="font-bold text-slate-900 text-sm leading-snug">
+									<h2 className="font-bold text-ink text-sm leading-snug">
 										{service.name}
 									</h2>
 									<p className="text-xs text-slate-500 mt-0.5">
@@ -211,7 +209,7 @@ export default function ReligiousServicesPage() {
 							</div>
 
 							<div className="flex flex-wrap gap-1.5">
-								<span className="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-600">
+								<span className="inline-flex items-center rounded-full bg-sky-strong px-2.5 py-0.5 text-xs font-medium text-slate-600">
 									{service.serviceFrequency}
 								</span>
 							</div>
@@ -221,7 +219,7 @@ export default function ReligiousServicesPage() {
 									{service.languagesOffered.map((lang) => (
 										<span
 											key={lang}
-											className="inline-flex items-center rounded-full bg-teal-50 px-2 py-0.5 text-xs text-teal-700 border border-teal-200"
+											className="inline-flex items-center rounded-full bg-sky-strong px-2 py-0.5 text-xs text-ink"
 										>
 											{lang}
 										</span>
@@ -246,7 +244,7 @@ export default function ReligiousServicesPage() {
 									rel="noopener noreferrer"
 									className="mt-auto inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
 								>
-									Visit website →
+									Visit website
 								</a>
 							)}
 						</article>
@@ -267,8 +265,8 @@ export default function ReligiousServicesPage() {
 
 			{/* Back link */}
 			<p className="mt-12 text-xs text-slate-500">
-				<Link href="/" className="underline hover:text-slate-900">
-					← Back to home
+				<Link href="/" className="underline hover:text-ink">
+					Back to home
 				</Link>
 			</p>
 		</main>
