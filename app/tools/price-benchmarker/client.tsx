@@ -211,7 +211,7 @@ export default function PriceBenchmarkerClient() {
 							id="city-select"
 							value={selectedCity}
 							onChange={(e) => setSelectedCity(e.target.value)}
-							className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-[#35cdc4]"
+							className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-focus"
 						>
 							{availableCities.map((city) => (
 								<option key={city} value={city}>
@@ -236,7 +236,7 @@ export default function PriceBenchmarkerClient() {
 							placeholder="e.g. 450000"
 							value={priceInput}
 							onChange={(e) => setPriceInput(e.target.value)}
-							className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-[#35cdc4]"
+							className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-focus"
 						/>
 					</div>
 				</div>
@@ -251,11 +251,11 @@ export default function PriceBenchmarkerClient() {
 							<div className="bg-slate-900 text-white rounded-xl p-6">
 								<p className="text-base leading-relaxed">
 									Your price of{" "}
-									<span className="font-bold text-[#35cdc4]">
+									<span className="font-bold text-sky-strong">
 										{fmt(userPrice)}
 									</span>{" "}
 									is above{" "}
-									<span className="font-bold text-[#35cdc4]">{pctRank}%</span>{" "}
+									<span className="font-bold text-sky-strong">{pctRank}%</span>{" "}
 									of the <span className="font-semibold">{stats.count}</span>{" "}
 									developments in{" "}
 									<span className="font-semibold">{selectedCity}</span> in our
@@ -271,12 +271,12 @@ export default function PriceBenchmarkerClient() {
 									<div className="relative h-3 bg-slate-700 rounded-full overflow-visible">
 										{/* Gradient fill up to marker */}
 										<div
-											className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-teal-400 to-[#35cdc4]"
+											className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-teal-400 to-primary"
 											style={{ width: `${markerLeft}%` }}
 										/>
 										{/* Marker pin */}
 										<div
-											className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white border-2 border-[#35cdc4] shadow-md"
+											className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white border-2 border-primary shadow-md"
 											style={{ left: `${markerLeft}%` }}
 										/>
 									</div>
@@ -382,13 +382,13 @@ export default function PriceBenchmarkerClient() {
 				<div className="flex flex-wrap gap-2">
 					<Link
 						href="/tools/rent-vs-buy-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Rent vs Buy Calculator
 					</Link>
 					<Link
 						href="/tools/city-comparison/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						City Comparison
 					</Link>

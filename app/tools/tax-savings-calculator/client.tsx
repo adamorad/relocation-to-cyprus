@@ -417,7 +417,7 @@ function SliderRow({
 				step={step}
 				value={value}
 				onChange={(e) => onChange(Number(e.target.value))}
-				className="w-full accent-[#35cdc4]"
+				className="w-full accent-primary"
 			/>
 			<div className="flex justify-between text-[10px] text-slate-400">
 				<span>{min.toLocaleString("en-IE")}</span>
@@ -680,7 +680,7 @@ export default function TaxSavingsCalculatorClient({
 					<select
 						value={country}
 						onChange={(e) => setCountry(e.target.value as CountryKey)}
-						className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#35cdc4]"
+						className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-focus"
 					>
 						{COUNTRIES.map((c) => (
 							<option key={c} value={c}>
@@ -707,7 +707,7 @@ export default function TaxSavingsCalculatorClient({
 								step={0.5}
 								value={manualRate}
 								onChange={(e) => setManualRate(Number(e.target.value))}
-								className="w-28 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#35cdc4]"
+								className="w-28 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-focus"
 							/>
 							<span className="text-sm text-slate-600">% effective rate</span>
 						</div>
@@ -737,8 +737,8 @@ export default function TaxSavingsCalculatorClient({
 								onClick={() => setEmploymentType(value)}
 								className={`px-4 py-2 rounded-lg text-xs font-semibold transition-colors ${
 									employmentType === value
-										? "bg-[#35cdc4] text-slate-900"
-										: "bg-white border border-slate-200 text-slate-700 hover:border-[#35cdc4]"
+										? "bg-primary text-white"
+										: "bg-white border border-slate-200 text-slate-700 hover:border-primary"
 								}`}
 							>
 								{label}
@@ -776,7 +776,7 @@ export default function TaxSavingsCalculatorClient({
 							step={5}
 							value={salaryPct}
 							onChange={(e) => setSalaryPct(Number(e.target.value))}
-							className="w-full accent-[#35cdc4]"
+							className="w-full accent-primary"
 						/>
 						<div className="flex justify-between text-[10px] text-slate-400">
 							<span>0% salary (all dividends)</span>
@@ -892,19 +892,19 @@ export default function TaxSavingsCalculatorClient({
 						<div className="flex flex-wrap gap-3">
 							<Link
 								href="/tools/tax-residency-tracker/"
-								className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+								className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 							>
 								Tax Residency Planner →
 							</Link>
 							<Link
 								href="/tools/double-tax-treaty-finder/"
-								className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+								className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 							>
 								Double Tax Treaty Finder →
 							</Link>
 							<Link
 								href="/tools/sole-trader-vs-ltd/"
-								className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+								className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 							>
 								Sole Trader vs Ltd →
 							</Link>

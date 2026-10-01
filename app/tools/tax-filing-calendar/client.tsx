@@ -219,7 +219,7 @@ export default function TaxFilingCalendarPage() {
 						onClick={() => setFilter(f)}
 						className={`px-4 py-1.5 text-sm font-medium rounded-full border transition-colors capitalize ${
 							filter === f
-								? "bg-teal-500 border-teal-500 text-white"
+								? "bg-primary border-primary text-white"
 								: "bg-white border-slate-200 text-slate-600 hover:border-slate-300"
 						}`}
 					>
@@ -250,7 +250,7 @@ export default function TaxFilingCalendarPage() {
 							<div
 								className={`px-5 py-3 flex items-center gap-2 ${
 									isCurrentMonth
-										? "bg-teal-500 text-white"
+										? "bg-primary text-white"
 										: "bg-slate-900 text-white"
 								}`}
 							>
@@ -349,13 +349,13 @@ export default function TaxFilingCalendarPage() {
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/guides/taxes-for-expats/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Read: Taxes for Expats in Cyprus →
 					</Link>{" "}
 					<Link
 						href="/sections/accountants/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Find a tax advisor →
 					</Link>

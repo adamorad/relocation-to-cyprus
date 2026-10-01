@@ -210,7 +210,7 @@ export default function VolunteeringPage() {
 								href={org.website}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="mt-auto inline-flex items-center gap-1 text-xs font-semibold text-[#35cdc4] hover:underline"
+								className="mt-auto inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
 							>
 								Visit website →
 							</a>

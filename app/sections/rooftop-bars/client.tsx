@@ -70,7 +70,7 @@ function ViewTypeChip({
 			aria-pressed={selected}
 			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
 				selected
-					? "bg-[#35cdc4] text-white border border-[#35cdc4]"
+					? "bg-primary text-white border border-primary"
 					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
 			}`}
 		>
@@ -123,7 +123,7 @@ function ViewBarCard({ bar }: { bar: (typeof VIEW_BARS)[number] }) {
 						href={bar.website}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="text-[#35cdc4] hover:text-teal-700"
+						className="text-primary hover:text-primary-hover"
 					>
 						Website ↗
 					</a>

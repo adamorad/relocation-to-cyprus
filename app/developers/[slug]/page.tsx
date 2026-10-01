@@ -178,13 +178,13 @@ export default async function DeveloperPage({
           <div className="flex flex-wrap gap-2">
             <Link
               href="/developers/"
-              className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+              className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
             >
               All developers
             </Link>
             <Link
               href="/listings/"
-              className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+              className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
             >
               Browse all listings
             </Link>

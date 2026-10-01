@@ -330,7 +330,7 @@ export default function SocialInsuranceCalculatorPage({
 								onClick={() => setEmploymentType(type)}
 								className={`px-5 py-2 text-sm font-medium capitalize transition-colors ${
 									employmentType === type
-										? "bg-teal-500 text-white"
+										? "bg-primary text-white"
 										: "bg-white text-slate-600 hover:bg-slate-50"
 								} ${type === "self-employed" ? "border-l border-slate-200" : ""}`}
 							>
@@ -386,7 +386,7 @@ export default function SocialInsuranceCalculatorPage({
 								onClick={() => setCyprusRegistered(true)}
 								className={`px-4 py-1.5 text-sm font-medium transition-colors ${
 									cyprusRegistered
-										? "bg-teal-500 text-white"
+										? "bg-primary text-white"
 										: "bg-white text-slate-600 hover:bg-slate-50"
 								}`}
 							>
@@ -396,7 +396,7 @@ export default function SocialInsuranceCalculatorPage({
 								onClick={() => setCyprusRegistered(false)}
 								className={`px-4 py-1.5 text-sm font-medium transition-colors border-l border-slate-200 ${
 									!cyprusRegistered
-										? "bg-teal-500 text-white"
+										? "bg-primary text-white"
 										: "bg-white text-slate-600 hover:bg-slate-50"
 								}`}
 							>
@@ -497,13 +497,13 @@ export default function SocialInsuranceCalculatorPage({
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/guides/hiring-in-cyprus/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Read: Hiring in Cyprus →
 					</Link>{" "}
 					<Link
 						href="/sections/accountants/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Find an accountant →
 					</Link>

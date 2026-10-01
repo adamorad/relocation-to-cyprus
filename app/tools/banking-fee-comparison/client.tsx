@@ -251,7 +251,7 @@ export default function BankingFeeComparisonPage() {
 						onClick={() => setFilter(f)}
 						className={`px-4 py-1.5 text-sm font-medium rounded-full border transition-colors capitalize ${
 							filter === f
-								? "bg-teal-500 border-teal-500 text-white"
+								? "bg-primary border-primary text-white"
 								: "bg-white border-slate-200 text-slate-600 hover:border-slate-300"
 						}`}
 					>
@@ -370,13 +370,13 @@ export default function BankingFeeComparisonPage() {
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/guides/banking-in-cyprus/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Read: Banking in Cyprus Guide →
 					</Link>{" "}
 					<Link
 						href="/sections/accountants/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Find an accountant →
 					</Link>

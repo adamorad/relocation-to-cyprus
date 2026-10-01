@@ -245,13 +245,13 @@ export default function FreelancerVsCompanyPage() {
 
 	const structureColors: Record<Structure, string> = {
 		"sole-trader": "bg-blue-50 border-blue-200 text-blue-800",
-		ltd: "bg-[#35cdc4]/10 border-[#35cdc4]/40 text-[#1a8f88]",
+		ltd: "bg-primary/10 border-primary/40 text-ink",
 		"ltd-holding": "bg-purple-50 border-purple-200 text-purple-800",
 	};
 
 	const badgeColors: Record<Structure, string> = {
 		"sole-trader": "bg-blue-100 text-blue-800",
-		ltd: "bg-[#35cdc4]/20 text-[#1a8f88]",
+		ltd: "bg-primary/20 text-ink",
 		"ltd-holding": "bg-purple-100 text-purple-800",
 	};
 
@@ -281,7 +281,7 @@ export default function FreelancerVsCompanyPage() {
 								<label className="text-sm font-semibold text-slate-700">
 									Annual net income
 								</label>
-								<span className="text-lg font-bold text-[#35cdc4]">
+								<span className="text-lg font-bold text-primary">
 									€{inputs.annualIncome.toLocaleString()}
 								</span>
 							</div>
@@ -294,7 +294,7 @@ export default function FreelancerVsCompanyPage() {
 								onChange={(e) =>
 									setInputs({ ...inputs, annualIncome: Number(e.target.value) })
 								}
-								className="w-full accent-[#35cdc4]"
+								className="w-full accent-primary"
 							/>
 							<div className="flex justify-between text-xs text-slate-400 mt-1">
 								<span>€20K</span>
@@ -308,7 +308,7 @@ export default function FreelancerVsCompanyPage() {
 								<label className="text-sm font-semibold text-slate-700">
 									Income from outside Cyprus
 								</label>
-								<span className="text-lg font-bold text-[#35cdc4]">
+								<span className="text-lg font-bold text-primary">
 									{inputs.foreignIncomePercent}%
 								</span>
 							</div>
@@ -324,7 +324,7 @@ export default function FreelancerVsCompanyPage() {
 										foreignIncomePercent: Number(e.target.value),
 									})
 								}
-								className="w-full accent-[#35cdc4]"
+								className="w-full accent-primary"
 							/>
 							<div className="flex justify-between text-xs text-slate-400 mt-1">
 								<span>0% (all Cyprus)</span>
@@ -359,8 +359,8 @@ export default function FreelancerVsCompanyPage() {
 										onClick={() => setInputs({ ...inputs, [key]: true })}
 										className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
 											(inputs[key] as boolean)
-												? "bg-[#35cdc4] text-white border-[#35cdc4]"
-												: "bg-white text-slate-500 border-slate-300 hover:border-[#35cdc4]"
+												? "bg-primary text-white border-primary"
+												: "bg-white text-slate-500 border-slate-300 hover:border-primary"
 										}`}
 									>
 										Yes
@@ -431,7 +431,7 @@ export default function FreelancerVsCompanyPage() {
 									</span>
 									<div className="flex-1 bg-slate-100 rounded-full h-2">
 										<div
-											className="h-2 rounded-full bg-[#35cdc4] transition-all duration-500"
+											className="h-2 rounded-full bg-primary transition-all duration-500"
 											style={{ width: `${Math.min(rate, 40) * 2.5}%` }}
 										/>
 									</div>
@@ -455,7 +455,7 @@ export default function FreelancerVsCompanyPage() {
 						<ul className="space-y-2">
 							{result.advantages.filter(Boolean).map((a, i) => (
 								<li key={i} className="flex gap-2 text-sm text-slate-600">
-									<span className="text-[#35cdc4] font-bold mt-0.5">✓</span>
+									<span className="text-primary font-bold mt-0.5">✓</span>
 									<span>{a}</span>
 								</li>
 							))}
@@ -516,19 +516,19 @@ export default function FreelancerVsCompanyPage() {
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/guides/company-types-comparison/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Read: Company Types in Cyprus →
 					</Link>
 					<Link
 						href="/guides/taxes-for-expats/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Read: Taxes for Expats →
 					</Link>
 					<Link
 						href="/sections/accountants/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Find an accountant →
 					</Link>

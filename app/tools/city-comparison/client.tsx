@@ -232,10 +232,10 @@ export default function CityComparisonClient() {
 								onClick={() => toggleCity(city)}
 								className={`px-4 py-2 rounded-full text-sm font-semibold border transition-colors ${
 									isSelected
-										? "border-[#35cdc4] text-white"
+										? "border-primary text-white"
 										: "border-slate-200 text-slate-600 bg-white hover:border-slate-400"
 								}`}
-								style={isSelected ? { backgroundColor: "#35cdc4" } : {}}
+								style={isSelected ? { backgroundColor: "#087f98" } : {}}
 							>
 								{city}
 							</button>
@@ -306,25 +306,25 @@ export default function CityComparisonClient() {
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/listings/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Browse new developments →
 					</Link>
 					<Link
 						href="/sections/property-lawyers/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Find a property lawyer →
 					</Link>
 					<Link
 						href="/guides/family-neighborhoods-guide/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Read: Family Neighbourhoods Guide →
 					</Link>
 					<Link
 						href="/guides/cost-of-living/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Read: Cost of Living by City →
 					</Link>

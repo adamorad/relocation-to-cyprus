@@ -117,14 +117,14 @@ export default function Meu1TrackerPage() {
 					<p className="text-sm font-semibold text-slate-700">
 						Progress: {doneCount} of {total} steps complete
 					</p>
-					<span className="text-sm font-bold" style={{ color: "#35cdc4" }}>
+					<span className="text-sm font-bold" style={{ color: "#087f98" }}>
 						{pct}%
 					</span>
 				</div>
 				<div className="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
 					<div
 						className="h-full rounded-full transition-all duration-500"
-						style={{ width: `${pct}%`, backgroundColor: "#35cdc4" }}
+						style={{ width: `${pct}%`, backgroundColor: "#087f98" }}
 					/>
 				</div>
 				{pct === 100 && (
@@ -237,13 +237,13 @@ export default function Meu1TrackerPage() {
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/guides/residency-and-visas/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Read: Cyprus Residency & Visas Guide →
 					</Link>{" "}
 					<Link
 						href="/sections/immigration-lawyers/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Find an immigration lawyer →
 					</Link>

@@ -340,8 +340,8 @@ export default function SchoolFinderClient() {
 								onClick={() => setCity(c)}
 								className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
 									city === c
-										? "bg-[#35cdc4] text-slate-900"
-										: "bg-white border border-slate-200 text-slate-700 hover:border-[#35cdc4]"
+										? "bg-primary text-white"
+										: "bg-white border border-slate-200 text-slate-700 hover:border-primary"
 								}`}
 							>
 								{c}
@@ -366,7 +366,7 @@ export default function SchoolFinderClient() {
 								onClick={() => toggleCurriculum(c)}
 								className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
 									curricula.has(c)
-										? "bg-teal-600 text-white"
+										? "bg-primary text-white"
 										: "bg-white border border-slate-200 text-slate-700 hover:border-teal-400"
 								}`}
 							>
@@ -389,8 +389,8 @@ export default function SchoolFinderClient() {
 								onClick={() => setAgeGroup(value)}
 								className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
 									ageGroup === value
-										? "bg-[#35cdc4] text-slate-900"
-										: "bg-white border border-slate-200 text-slate-700 hover:border-[#35cdc4]"
+										? "bg-primary text-white"
+										: "bg-white border border-slate-200 text-slate-700 hover:border-primary"
 								}`}
 							>
 								{label}

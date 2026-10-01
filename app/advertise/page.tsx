@@ -68,7 +68,7 @@ export default function AdvertisePage() {
         {/* Hero */}
         <section className="bg-[#1C1917] py-16 md:py-20">
           <div className="max-w-3xl mx-auto px-6 text-center">
-            <p className="text-[10px] uppercase tracking-[0.25em] text-[#35cdc4] font-semibold mb-3">
+            <p className="text-[10px] uppercase tracking-[0.25em] text-sky-strong font-semibold mb-3">
               Advertise with RealCy
             </p>
             <h1
@@ -164,7 +164,7 @@ export default function AdvertisePage() {
                       </div>
                       <p className="text-xs text-slate-500 mt-1">{tier.ideal}</p>
                     </div>
-                    <span className="text-sm font-semibold text-[#35cdc4] whitespace-nowrap">
+                    <span className="text-sm font-semibold text-primary whitespace-nowrap">
                       {tier.price}
                     </span>
                   </div>
@@ -172,7 +172,7 @@ export default function AdvertisePage() {
                   <ul className="mt-4 grid sm:grid-cols-2 gap-x-6 gap-y-1.5">
                     {tier.includes.map((item) => (
                       <li key={item} className="text-xs text-slate-500 flex items-start gap-1.5">
-                        <span className="text-[#35cdc4] mt-0.5">&#10003;</span>
+                        <span className="text-primary mt-0.5">&#10003;</span>
                         {item}
                       </li>
                     ))}
@@ -198,7 +198,7 @@ export default function AdvertisePage() {
             </p>
             <a
               href="mailto:hello@realcy.app"
-              className="inline-block mt-6 px-7 py-3 rounded-lg bg-[#35cdc4] text-slate-900 text-sm font-semibold hover:bg-teal-300 transition-colors"
+              className="inline-block mt-6 px-7 py-3 rounded-lg bg-primary text-white text-sm font-semibold hover:bg-primary-hover transition-colors"
             >
               hello@realcy.app
             </a>

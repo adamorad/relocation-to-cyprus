@@ -53,7 +53,7 @@ function TypeChip({
 			aria-pressed={selected}
 			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
 				selected
-					? "bg-[#35cdc4] text-white border border-[#35cdc4]"
+					? "bg-primary text-white border border-primary"
 					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
 			}`}
 		>

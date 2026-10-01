@@ -488,7 +488,7 @@ export default function FlightConnectivityPage() {
 					placeholder="Search city or country..."
 					value={search}
 					onChange={(e) => setSearch(e.target.value)}
-					className="flex-1 border border-slate-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#35cdc4]"
+					className="flex-1 border border-slate-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-focus"
 				/>
 				<div className="flex gap-2 flex-wrap">
 					{(["all", "LCA", "PFO"] as AirportFilter[]).map((v) => (
@@ -497,7 +497,7 @@ export default function FlightConnectivityPage() {
 							onClick={() => setAirportFilter(v)}
 							className={`px-3 py-2 rounded-lg text-sm font-medium border transition-colors ${
 								airportFilter === v
-									? "bg-[#35cdc4] text-white border-[#35cdc4]"
+									? "bg-primary text-white border-primary"
 									: "bg-white text-slate-700 border-slate-300 hover:border-slate-500"
 							}`}
 						>
@@ -605,7 +605,7 @@ export default function FlightConnectivityPage() {
 			</p>
 
 			<p className="mt-6 text-sm">
-				<Link href="/tools/" className="text-[#35cdc4] hover:underline">
+				<Link href="/tools/" className="text-primary hover:underline">
 					&larr; Back to tools
 				</Link>
 			</p>
@@ -617,13 +617,13 @@ export default function FlightConnectivityPage() {
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/guides/airport-transfers-guide/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Read: Getting Around Cyprus →
 					</Link>{" "}
 					<Link
 						href="/explore/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Explore Cyprus by region →
 					</Link>

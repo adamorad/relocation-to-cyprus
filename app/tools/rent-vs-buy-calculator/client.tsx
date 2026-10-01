@@ -143,7 +143,7 @@ function NumInput({
 			<label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
 				{label}
 			</label>
-			<div className="flex items-center gap-2 border border-slate-200 rounded-lg px-3 py-2 bg-white focus-within:border-[#35cdc4]">
+			<div className="flex items-center gap-2 border border-slate-200 rounded-lg px-3 py-2 bg-white focus-within:border-focus">
 				<input
 					type="number"
 					value={value}
@@ -303,7 +303,7 @@ export default function RentVsBuyPage({
 					<p className="text-xs text-slate-500 uppercase tracking-wide mb-1">
 						Break-even Year
 					</p>
-					<p className="text-2xl font-bold" style={{ color: "#35cdc4" }}>
+					<p className="text-2xl font-bold" style={{ color: "#087f98" }}>
 						{breakEvenYear ? `Year ${breakEvenYear}` : "Not within horizon"}
 					</p>
 					<p className="text-xs text-slate-500 mt-1">
@@ -374,7 +374,7 @@ export default function RentVsBuyPage({
 										</td>
 										<td
 											className="px-3 py-2 text-right"
-											style={{ color: "#35cdc4" }}
+											style={{ color: "#087f98" }}
 										>
 											{fmt(row.homeEquity)}
 										</td>
@@ -426,25 +426,25 @@ export default function RentVsBuyPage({
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Browse the property map →
 					</Link>
 					<Link
 						href="/sections/property-lawyers/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Find a property lawyer →
 					</Link>
 					<Link
 						href="/guides/buying-process/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Read: Buying Process Guide →
 					</Link>
 					<Link
 						href="/guides/rental-transition-guide/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Read: Short-Term to Long-Term Rental →
 					</Link>

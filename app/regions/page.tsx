@@ -31,18 +31,18 @@ export default function RegionsIndexPage() {
 					<Link
 						key={region.slug}
 						href={`/regions/${region.slug}/`}
-						className="group block bg-white border border-slate-200 rounded-xl p-5 hover:border-[#35cdc4] hover:shadow-md transition-all"
+						className="group block bg-white border border-slate-200 rounded-xl p-5 hover:border-primary hover:shadow-md transition-all"
 					>
 						<div className="flex items-start justify-between gap-3">
 							<div className="flex-1 min-w-0">
-								<h2 className="text-base font-bold text-slate-900 group-hover:text-[#35cdc4] transition-colors leading-snug">
+								<h2 className="text-base font-bold text-slate-900 group-hover:text-primary transition-colors leading-snug">
 									{region.name}
 								</h2>
 								<p className="mt-1.5 text-sm text-slate-600 leading-relaxed line-clamp-2">
 									{region.oneLiner}
 								</p>
 							</div>
-							<span className="flex-shrink-0 text-slate-300 group-hover:text-[#35cdc4] transition-colors text-xl mt-1">
+							<span className="flex-shrink-0 text-slate-300 group-hover:text-primary transition-colors text-xl mt-1">
 								&rarr;
 							</span>
 						</div>

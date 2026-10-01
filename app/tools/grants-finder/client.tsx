@@ -424,8 +424,8 @@ export default function GrantsFinderPage() {
 							onClick={() => setSelectedSector("all")}
 							className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
 								selectedSector === "all"
-									? "bg-[#35cdc4] text-white border-[#35cdc4]"
-									: "bg-white text-slate-600 border-slate-300 hover:border-[#35cdc4]"
+									? "bg-primary text-white border-primary"
+									: "bg-white text-slate-600 border-slate-300 hover:border-primary"
 							}`}
 						>
 							All Sectors
@@ -436,8 +436,8 @@ export default function GrantsFinderPage() {
 								onClick={() => setSelectedSector(s)}
 								className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
 									selectedSector === s
-										? "bg-[#35cdc4] text-white border-[#35cdc4]"
-										: "bg-white text-slate-600 border-slate-300 hover:border-[#35cdc4]"
+										? "bg-primary text-white border-primary"
+										: "bg-white text-slate-600 border-slate-300 hover:border-primary"
 								}`}
 							>
 								{SECTOR_LABELS[s]}
@@ -546,7 +546,7 @@ export default function GrantsFinderPage() {
 									<p className="text-xs text-slate-400 uppercase tracking-wide">
 										Max Grant
 									</p>
-									<p className="font-bold text-[#35cdc4] text-lg">
+									<p className="font-bold text-primary text-lg">
 										{formatAmount(g.maxAmountEuros)}
 									</p>
 								</div>
@@ -613,7 +613,7 @@ export default function GrantsFinderPage() {
 									href={g.url}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="text-xs text-[#35cdc4] hover:text-[#2ba8a0] font-semibold underline"
+									className="text-xs text-primary hover:text-primary-hover font-semibold underline"
 								>
 									Official source →
 								</a>
@@ -649,13 +649,13 @@ export default function GrantsFinderPage() {
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/guides/trade-licenses-cyprus/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Read: Trade Licences in Cyprus →
 					</Link>{" "}
 					<Link
 						href="/sections/accountants/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Find an accountant →
 					</Link>

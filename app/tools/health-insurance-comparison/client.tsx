@@ -186,7 +186,7 @@ export default function HealthInsuranceComparisonPage() {
 	const typeColors: Record<ProviderType, string> = {
 		public: "bg-slate-100 text-slate-600",
 		local: "bg-blue-100 text-blue-700",
-		international: "bg-[#35cdc4]/20 text-[#1a8f88]",
+		international: "bg-primary/20 text-ink",
 	};
 
 	const typeLabels: Record<ProviderType, string> = {
@@ -227,7 +227,7 @@ export default function HealthInsuranceComparisonPage() {
 			</header>
 
 			{/* GeSY highlight box */}
-			<div className="mb-6 p-4 bg-[#35cdc4]/10 border border-[#35cdc4]/30 rounded-xl text-sm text-slate-700">
+			<div className="mb-6 p-4 bg-primary/10 border border-primary/30 rounded-xl text-sm text-slate-700">
 				<p className="font-semibold text-slate-900 mb-1">How GeSY fits in</p>
 				<p>
 					All legal residents in Cyprus are eligible for GeSY (the public
@@ -257,8 +257,8 @@ export default function HealthInsuranceComparisonPage() {
 									onClick={() => setFilters({ ...filters, coverageType: t })}
 									className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
 										filters.coverageType === t
-											? "bg-[#35cdc4] text-white border-[#35cdc4]"
-											: "bg-white text-slate-600 border-slate-300 hover:border-[#35cdc4]"
+											? "bg-primary text-white border-primary"
+											: "bg-white text-slate-600 border-slate-300 hover:border-primary"
 									}`}
 								>
 									{t === "all" ? "All" : t.charAt(0).toUpperCase() + t.slice(1)}
@@ -311,8 +311,8 @@ export default function HealthInsuranceComparisonPage() {
 								onClick={() => setFilters({ ...filters, maternity: true })}
 								className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
 									filters.maternity === true
-										? "bg-[#35cdc4] text-white border-[#35cdc4]"
-										: "bg-white text-slate-600 border-slate-300 hover:border-[#35cdc4]"
+										? "bg-primary text-white border-primary"
+										: "bg-white text-slate-600 border-slate-300 hover:border-primary"
 								}`}
 							>
 								Required
@@ -340,8 +340,8 @@ export default function HealthInsuranceComparisonPage() {
 								onClick={() => setFilters({ ...filters, preExisting: true })}
 								className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
 									filters.preExisting === true
-										? "bg-[#35cdc4] text-white border-[#35cdc4]"
-										: "bg-white text-slate-600 border-slate-300 hover:border-[#35cdc4]"
+										? "bg-primary text-white border-primary"
+										: "bg-white text-slate-600 border-slate-300 hover:border-primary"
 								}`}
 							>
 								Covered
@@ -402,7 +402,7 @@ export default function HealthInsuranceComparisonPage() {
 								<td className="px-4 py-3 text-xs text-slate-500">
 									{p.coverageRegion}
 								</td>
-								<td className="px-4 py-3 text-right font-bold text-[#35cdc4]">
+								<td className="px-4 py-3 text-right font-bold text-primary">
 									{premiumDisplay(p.annualPremiumSingle30yo)}
 								</td>
 								<td className="px-4 py-3 text-right font-bold text-slate-700">
@@ -441,7 +441,7 @@ export default function HealthInsuranceComparisonPage() {
 							</div>
 							<div className="text-right">
 								<p className="text-xs text-slate-400">Single/yr</p>
-								<p className="font-bold text-[#35cdc4]">
+								<p className="font-bold text-primary">
 									{premiumDisplay(p.annualPremiumSingle30yo)}
 								</p>
 							</div>
@@ -469,7 +469,7 @@ export default function HealthInsuranceComparisonPage() {
 								href={p.website}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="mt-2 inline-block text-xs text-[#35cdc4] hover:text-[#2ba8a0] font-semibold underline"
+								className="mt-2 inline-block text-xs text-primary hover:text-primary-hover font-semibold underline"
 							>
 								Visit website →
 							</a>
@@ -497,7 +497,7 @@ export default function HealthInsuranceComparisonPage() {
 									href={p.website}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="text-xs text-[#35cdc4] hover:text-[#2ba8a0] font-semibold underline"
+									className="text-xs text-primary hover:text-primary-hover font-semibold underline"
 								>
 									Website →
 								</a>
@@ -538,13 +538,13 @@ export default function HealthInsuranceComparisonPage() {
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/guides/gesy-registration-guide/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Read: GeSY Registration Guide →
 					</Link>{" "}
 					<Link
 						href="/sections/specialist-doctors/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Find a specialist doctor →
 					</Link>

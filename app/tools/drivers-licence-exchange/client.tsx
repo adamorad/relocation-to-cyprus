@@ -233,7 +233,7 @@ function CheckItem({ text }: { text: string }) {
 function StepItem({ n, text }: { n: number; text: string }) {
 	return (
 		<li className="flex items-start gap-3">
-			<span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#35cdc4] text-slate-900 flex items-center justify-center text-xs font-bold">
+			<span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold">
 				{n}
 			</span>
 			<span className="text-sm text-slate-700 leading-relaxed pt-0.5">
@@ -305,7 +305,7 @@ export default function DriversLicenceExchangeClient() {
 				<select
 					value={countryValue}
 					onChange={(e) => setCountryValue(e.target.value)}
-					className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#35cdc4]"
+					className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-focus"
 				>
 					<option value="">— Select your country —</option>
 					<optgroup label="EU / EEA countries (direct exchange, no test)">
@@ -366,7 +366,7 @@ export default function DriversLicenceExchangeClient() {
 								onClick={() => setCategory(opt.value)}
 								className={`flex flex-col items-center justify-center p-3 rounded-xl border-2 text-sm font-semibold transition-colors ${
 									category === opt.value
-										? "border-[#35cdc4] bg-teal-50 text-slate-900"
+										? "border-primary bg-teal-50 text-slate-900"
 										: "border-slate-200 bg-white text-slate-700 hover:border-teal-300"
 								}`}
 							>
@@ -536,15 +536,15 @@ export default function DriversLicenceExchangeClient() {
 						</p>
 						<ul className="space-y-1 text-sm text-slate-600">
 							<li className="flex items-center gap-2">
-								<span className="text-[#35cdc4]">&#8227;</span>
+								<span className="text-primary">&#8227;</span>
 								Limassol District Transport Department
 							</li>
 							<li className="flex items-center gap-2">
-								<span className="text-[#35cdc4]">&#8227;</span>
+								<span className="text-primary">&#8227;</span>
 								Larnaca District Transport Department
 							</li>
 							<li className="flex items-center gap-2">
-								<span className="text-[#35cdc4]">&#8227;</span>
+								<span className="text-primary">&#8227;</span>
 								Paphos District Transport Department
 							</li>
 						</ul>

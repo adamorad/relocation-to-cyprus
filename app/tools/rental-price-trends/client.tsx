@@ -18,10 +18,10 @@ const CITIES = ["Limassol", "Paphos", "Larnaca", "Ayia Napa"] as const;
 type City = (typeof CITIES)[number];
 
 const CITY_COLOURS: Record<City, string> = {
-	Limassol: "#35cdc4",
-	Paphos: "#f59e0b",
+	Limassol: "#087f98",
+	Paphos: "#fa794d",
 	Larnaca: "#3b82f6",
-	"Ayia Napa": "#f43f5e",
+	"Ayia Napa": "#0b2145",
 };
 
 type DataSet = {
@@ -372,8 +372,8 @@ export default function RentalPriceTrendsClient() {
 						onClick={() => setBrType(t)}
 						className={`px-5 py-2 rounded-lg text-sm font-semibold transition-colors ${
 							brType === t
-								? "bg-[#35cdc4] text-slate-900"
-								: "bg-white border border-slate-200 text-slate-700 hover:border-[#35cdc4]"
+								? "bg-primary text-white"
+								: "bg-white border border-slate-200 text-slate-700 hover:border-primary"
 						}`}
 					>
 						{t}
@@ -392,24 +392,19 @@ export default function RentalPriceTrendsClient() {
 							onClick={() => toggleCity(city)}
 							className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold border transition-all ${
 								active
-									? "border-transparent text-white"
+									? "border-2 bg-sky text-ink"
 									: "bg-white border-slate-200 text-slate-500"
 							}`}
 							style={
 								active
-									? {
-											background: CITY_COLOURS[city],
-											borderColor: CITY_COLOURS[city],
-										}
+									? { borderColor: CITY_COLOURS[city] }
 									: {}
 							}
 						>
 							<span
 								className="w-2 h-2 rounded-full inline-block"
 								style={{
-									background: active
-										? "rgba(255,255,255,0.7)"
-										: CITY_COLOURS[city],
+									background: CITY_COLOURS[city],
 								}}
 							/>
 							{city}
@@ -513,19 +508,19 @@ export default function RentalPriceTrendsClient() {
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/tools/rent-vs-buy-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Rent vs Buy Calculator &rarr;
 					</Link>
 					<Link
 						href="/tools/rental-yield-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Rental Yield Calculator &rarr;
 					</Link>
 					<Link
 						href="/tools/mortgage-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Mortgage Calculator &rarr;
 					</Link>

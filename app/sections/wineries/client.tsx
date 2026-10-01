@@ -162,7 +162,7 @@ export default function WineriesPage() {
 									{PRICE_LABEL[winery.priceRange]}
 								</span>
 								{winery.tastingAvailable && (
-									<span className="rounded-full px-2 py-0.5 text-[10px] font-semibold bg-[#35cdc4]/10 text-[#2aada5]">
+									<span className="rounded-full px-2 py-0.5 text-[10px] font-semibold bg-primary/10 text-ink">
 										Tastings
 									</span>
 								)}

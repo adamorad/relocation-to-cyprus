@@ -58,7 +58,7 @@ export default function ShortlistClient() {
 					</p>
 					<Link
 						href="/listings/"
-						className="inline-block text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="inline-block text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Browse new developments
 					</Link>
@@ -132,7 +132,7 @@ function ShortlistCard({
 				<div className="flex gap-2 mt-3 flex-wrap">
 					<Link
 						href={`/listings/${listing.slug}/`}
-						className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						View details
 					</Link>

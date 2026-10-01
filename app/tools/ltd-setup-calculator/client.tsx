@@ -80,8 +80,8 @@ function RadioGroup<T extends string>({
 						onClick={() => onChange(opt.value)}
 						className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors border ${
 							value === opt.value
-								? "bg-[#35cdc4] text-slate-900 border-[#35cdc4]"
-								: "bg-white border-slate-200 text-slate-700 hover:border-[#35cdc4]"
+								? "bg-primary text-white border-primary"
+								: "bg-white border-slate-200 text-slate-700 hover:border-primary"
 						}`}
 					>
 						{opt.label}
@@ -164,7 +164,7 @@ function StatCard({
 				{label}
 			</p>
 			<p
-				className={`text-lg font-bold leading-tight ${accent ? "text-[#35cdc4]" : "text-slate-900"}`}
+				className={`text-lg font-bold leading-tight ${accent ? "text-primary" : "text-slate-900"}`}
 			>
 				{value}
 			</p>
@@ -378,7 +378,7 @@ export default function LtdSetupCalculatorClient() {
 								type="checkbox"
 								checked={includePayroll}
 								onChange={(e) => setIncludePayroll(e.target.checked)}
-								className="w-4 h-4 accent-[#35cdc4]"
+								className="w-4 h-4 accent-primary"
 							/>
 							<span className="text-sm text-slate-700">
 								Include payroll service (€50–100/mo extra) — if paying yourself
@@ -390,7 +390,7 @@ export default function LtdSetupCalculatorClient() {
 								type="checkbox"
 								checked={includeSeal}
 								onChange={(e) => setIncludeSeal(e.target.checked)}
-								className="w-4 h-4 accent-[#35cdc4]"
+								className="w-4 h-4 accent-primary"
 							/>
 							<span className="text-sm text-slate-700">
 								Include company seal (€30–50 one-time)
@@ -631,19 +631,19 @@ export default function LtdSetupCalculatorClient() {
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/tools/sole-trader-vs-ltd/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Sole Trader vs Ltd →
 					</Link>
 					<Link
 						href="/tools/tax-residency-tracker/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Tax Residency Planner →
 					</Link>
 					<Link
 						href="/tools/social-insurance-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Social Insurance Calculator →
 					</Link>

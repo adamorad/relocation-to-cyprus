@@ -44,7 +44,7 @@ function renderBody(text: string) {
 				<Link
 					key={i}
 					href={href}
-					className="text-[#35cdc4] font-medium hover:underline"
+					className="text-primary font-medium hover:underline"
 				>
 					{label}
 				</Link>
@@ -245,7 +245,7 @@ export default async function GuidePage({
 					This guide has moved.{" "}
 					<Link
 						href={url}
-						className="text-[#35cdc4] font-medium hover:underline"
+						className="text-primary font-medium hover:underline"
 					>
 						Continue to the current guide →
 					</Link>

@@ -133,7 +133,7 @@ function SliderInput({
 				step={step}
 				value={value}
 				onChange={(e) => onChange(Number(e.target.value))}
-				className="w-full accent-[#35cdc4]"
+				className="w-full accent-primary"
 			/>
 			<div className="flex justify-between text-[10px] text-slate-400">
 				<span>
@@ -297,8 +297,8 @@ export default function RentalYieldCalculatorClient() {
 									onClick={() => set("horizon")(h)}
 									className={`flex-1 py-2 rounded-lg text-sm font-semibold border transition-colors ${
 										inputs.horizon === h
-											? "bg-[#35cdc4] text-slate-900 border-[#35cdc4]"
-											: "bg-white text-slate-600 border-slate-200 hover:border-[#35cdc4]"
+											? "bg-primary text-white border-primary"
+											: "bg-white text-slate-600 border-slate-200 hover:border-primary"
 									}`}
 								>
 									{h} yr
@@ -319,7 +319,7 @@ export default function RentalYieldCalculatorClient() {
 						<p className="text-[10px] text-slate-500 uppercase tracking-wide mb-1">
 							Gross yield
 						</p>
-						<p className="text-2xl font-bold" style={{ color: "#35cdc4" }}>
+						<p className="text-2xl font-bold" style={{ color: "#087f98" }}>
 							{fmtPct(grossYieldPct)}
 						</p>
 					</div>
@@ -435,7 +435,7 @@ export default function RentalYieldCalculatorClient() {
 									</td>
 									<td
 										className="px-3 py-2 text-right tabular-nums"
-										style={{ color: "#35cdc4" }}
+										style={{ color: "#087f98" }}
 									>
 										{fmt(row.propertyValue)}
 									</td>
@@ -473,19 +473,19 @@ export default function RentalYieldCalculatorClient() {
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/sections/property-management/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Find a property manager &rarr;
 					</Link>
 					<Link
 						href="/guides/buying-process/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Read: Buying Process Guide &rarr;
 					</Link>
 					<Link
 						href="/tools/rent-vs-buy-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Rent vs Buy Calculator &rarr;
 					</Link>

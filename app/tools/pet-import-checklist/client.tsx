@@ -255,9 +255,9 @@ const TIMELINE_STEPS = [
 		sub: "Starts from blood draw",
 		color: "bg-rose-500",
 	},
-	{ label: "Health cert", sub: "10 days before travel", color: "bg-teal-600" },
+	{ label: "Health cert", sub: "10 days before travel", color: "bg-primary" },
 	{ label: "Travel day", sub: "Tapeworm (dogs)", color: "bg-slate-400" },
-	{ label: "Cyprus", sub: "Declare at border", color: "bg-[#35cdc4]" },
+	{ label: "Cyprus", sub: "Declare at border", color: "bg-primary" },
 ];
 
 // ── constants ─────────────────────────────────────────────────────────────────
@@ -402,8 +402,8 @@ export default function PetImportChecklistClient() {
 							}}
 							className={`flex flex-col items-center gap-1 px-5 py-4 rounded-xl border text-sm font-semibold transition-colors ${
 								pet === opt.id
-									? "bg-[#35cdc4] border-[#35cdc4] text-slate-900 shadow-sm"
-									: "bg-white border-slate-200 text-slate-700 hover:border-[#35cdc4]"
+									? "bg-primary border-primary text-white shadow-sm"
+									: "bg-white border-slate-200 text-slate-700 hover:border-primary"
 							}`}
 						>
 							<span className="text-2xl">{opt.emoji}</span>
@@ -429,8 +429,8 @@ export default function PetImportChecklistClient() {
 							}}
 							className={`text-left p-4 rounded-xl border transition-colors ${
 								origin === opt.id
-									? "bg-[#35cdc4]/10 border-[#35cdc4] shadow-sm"
-									: "bg-white border-slate-200 hover:border-[#35cdc4]"
+									? "bg-primary/10 border-primary shadow-sm"
+									: "bg-white border-slate-200 hover:border-primary"
 							}`}
 						>
 							<div className="flex items-start justify-between gap-3 flex-wrap">
@@ -508,7 +508,7 @@ export default function PetImportChecklistClient() {
 						</div>
 						<div className="h-2 bg-slate-200 rounded-full overflow-hidden">
 							<div
-								className="h-full bg-[#35cdc4] rounded-full transition-all duration-300"
+								className="h-full bg-primary rounded-full transition-all duration-300"
 								style={{
 									width:
 										totalItems > 0
@@ -659,8 +659,8 @@ function ChecklistItemRow({
 					aria-label={checked ? "Mark as incomplete" : "Mark as complete"}
 					className={`flex-shrink-0 mt-0.5 w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
 						checked
-							? "bg-[#35cdc4] border-[#35cdc4]"
-							: "border-slate-300 hover:border-[#35cdc4]"
+							? "bg-primary border-primary"
+							: "border-slate-300 hover:border-primary"
 					}`}
 				>
 					{checked && (

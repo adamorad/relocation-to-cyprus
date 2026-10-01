@@ -656,7 +656,7 @@ export default function DoubleTaxTreatyFinderPage() {
 					placeholder="Search country..."
 					value={search}
 					onChange={(e) => setSearch(e.target.value)}
-					className="flex-1 px-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#35cdc4] focus:border-transparent bg-white"
+					className="flex-1 px-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-focus focus:border-transparent bg-white"
 				/>
 				<div className="flex gap-2">
 					{(["all", "treaty", "no-treaty"] as const).map((s) => (
@@ -665,8 +665,8 @@ export default function DoubleTaxTreatyFinderPage() {
 							onClick={() => setFilterStatus(s)}
 							className={`px-3 py-2 rounded-lg text-xs font-semibold border transition-colors ${
 								filterStatus === s
-									? "bg-[#35cdc4] text-white border-[#35cdc4]"
-									: "bg-white text-slate-600 border-slate-300 hover:border-[#35cdc4]"
+									? "bg-primary text-white border-primary"
+									: "bg-white text-slate-600 border-slate-300 hover:border-primary"
 							}`}
 						>
 							{s === "all"
@@ -725,7 +725,7 @@ export default function DoubleTaxTreatyFinderPage() {
 										<p className="text-xs text-slate-500 uppercase tracking-wide">
 											Dividends
 										</p>
-										<p className="text-xl font-bold text-[#35cdc4]">
+										<p className="text-xl font-bold text-primary">
 											{t.dividendsWHT !== null ? `${t.dividendsWHT}%` : "—"}
 										</p>
 									</div>
@@ -733,7 +733,7 @@ export default function DoubleTaxTreatyFinderPage() {
 										<p className="text-xs text-slate-500 uppercase tracking-wide">
 											Interest
 										</p>
-										<p className="text-xl font-bold text-[#35cdc4]">
+										<p className="text-xl font-bold text-primary">
 											{t.interestWHT !== null ? `${t.interestWHT}%` : "—"}
 										</p>
 									</div>
@@ -741,7 +741,7 @@ export default function DoubleTaxTreatyFinderPage() {
 										<p className="text-xs text-slate-500 uppercase tracking-wide">
 											Royalties
 										</p>
-										<p className="text-xl font-bold text-[#35cdc4]">
+										<p className="text-xl font-bold text-primary">
 											{t.royaltiesWHT !== null ? `${t.royaltiesWHT}%` : "—"}
 										</p>
 									</div>
@@ -785,13 +785,13 @@ export default function DoubleTaxTreatyFinderPage() {
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/guides/non-dom-status-guide/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Read: Non-Dom Status Guide →
 					</Link>{" "}
 					<Link
 						href="/sections/accountants/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Find a tax advisor →
 					</Link>

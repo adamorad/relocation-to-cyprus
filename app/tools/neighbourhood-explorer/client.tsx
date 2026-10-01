@@ -309,7 +309,7 @@ function RatingDots({ value, max = 5 }: { value: number; max?: number }) {
 				<span
 					key={i}
 					className={`inline-block w-2 h-2 rounded-full ${
-						i < value ? "bg-[#35cdc4]" : "bg-slate-200"
+						i < value ? "bg-primary" : "bg-slate-200"
 					}`}
 				/>
 			))}
@@ -359,7 +359,7 @@ function NeighbourhoodCard({ n, selected, onToggle, compareCount }: CardProps) {
 					checked={selected}
 					onChange={onToggle}
 					disabled={!canAdd}
-					className="w-3.5 h-3.5 accent-[#35cdc4] cursor-pointer disabled:cursor-not-allowed"
+					className="w-3.5 h-3.5 accent-primary cursor-pointer disabled:cursor-not-allowed"
 				/>
 				<span className="text-[10px] text-slate-500 font-medium">Compare</span>
 			</label>
@@ -607,8 +607,8 @@ export default function NeighbourhoodExplorerClient() {
 						onClick={() => setCity(c)}
 						className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${
 							city === c
-								? "bg-[#35cdc4] text-slate-900"
-								: "bg-white border border-slate-200 text-slate-700 hover:border-[#35cdc4]"
+								? "bg-primary text-white"
+								: "bg-white border border-slate-200 text-slate-700 hover:border-primary"
 						}`}
 					>
 						{c}

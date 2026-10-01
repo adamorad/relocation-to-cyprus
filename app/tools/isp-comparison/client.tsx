@@ -221,7 +221,7 @@ export default function ISPComparisonPage() {
 								onClick={() => setCityFilter(null)}
 								className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
 									cityFilter === null
-										? "bg-[#35cdc4] text-white border-[#35cdc4]"
+										? "bg-primary text-white border-primary"
 										: "bg-white text-slate-700 border-slate-200 hover:border-slate-400"
 								}`}
 							>
@@ -233,7 +233,7 @@ export default function ISPComparisonPage() {
 									onClick={() => setCityFilter(cityFilter === c ? null : c)}
 									className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
 										cityFilter === c
-											? "bg-[#35cdc4] text-white border-[#35cdc4]"
+											? "bg-primary text-white border-primary"
 											: "bg-white text-slate-700 border-slate-200 hover:border-slate-400"
 									}`}
 								>
@@ -285,7 +285,7 @@ export default function ISPComparisonPage() {
 												href={isp.website}
 												target="_blank"
 												rel="noopener noreferrer"
-												className="font-bold text-slate-900 hover:text-[#35cdc4]"
+												className="font-bold text-slate-900 hover:text-primary"
 											>
 												{isp.name}
 											</a>
@@ -306,7 +306,7 @@ export default function ISPComparisonPage() {
 										<td className="px-4 py-3 text-right text-slate-700">
 											{isp.maxSpeedUp} Mbps
 										</td>
-										<td className="px-4 py-3 text-right font-bold text-[#35cdc4]">
+										<td className="px-4 py-3 text-right font-bold text-primary">
 											€{isp.monthlyPrice}
 										</td>
 										<td className="px-4 py-3 text-right text-slate-700">
@@ -379,12 +379,12 @@ export default function ISPComparisonPage() {
 												href={carrier.website}
 												target="_blank"
 												rel="noopener noreferrer"
-												className="font-bold text-slate-900 hover:text-[#35cdc4]"
+												className="font-bold text-slate-900 hover:text-primary"
 											>
 												{carrier.name}
 											</a>
 										</td>
-										<td className="px-4 py-3 text-right font-bold text-[#35cdc4]">
+										<td className="px-4 py-3 text-right font-bold text-primary">
 											€{carrier.unlimitedDataPlan}/mo
 										</td>
 										<td className="px-4 py-3 text-right text-slate-700">
@@ -436,7 +436,7 @@ export default function ISPComparisonPage() {
 			</div>
 
 			<p className="mt-6 text-sm">
-				<Link href="/tools/" className="text-[#35cdc4] hover:underline">
+				<Link href="/tools/" className="text-primary hover:underline">
 					&larr; Back to tools
 				</Link>
 			</p>
@@ -448,13 +448,13 @@ export default function ISPComparisonPage() {
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/guides/utilities-setup-guide/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Read: Setting Up Utilities in Cyprus →
 					</Link>{" "}
 					<Link
 						href="/guides/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Explore Cyprus guides →
 					</Link>

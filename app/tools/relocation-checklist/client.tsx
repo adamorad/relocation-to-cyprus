@@ -360,7 +360,7 @@ export default function RelocationTrackerClient() {
 					<p className="text-sm font-semibold text-slate-700">
 						Overall progress
 					</p>
-					<span className="text-sm font-bold" style={{ color: "#35cdc4" }}>
+					<span className="text-sm font-bold" style={{ color: "#087f98" }}>
 						{mounted ? totalDone : 0} of {TOTAL_TASKS} tasks complete
 					</span>
 				</div>
@@ -369,7 +369,7 @@ export default function RelocationTrackerClient() {
 						className="h-full rounded-full transition-all duration-500"
 						style={{
 							width: `${mounted ? overallPct : 0}%`,
-							backgroundColor: "#35cdc4",
+							backgroundColor: "#087f98",
 						}}
 					/>
 				</div>
@@ -442,7 +442,7 @@ export default function RelocationTrackerClient() {
 													className="h-full rounded-full transition-all duration-500"
 													style={{
 														width: `${mounted ? phasePct : 0}%`,
-														backgroundColor: "#35cdc4",
+														backgroundColor: "#087f98",
 													}}
 												/>
 											</div>
@@ -493,7 +493,7 @@ export default function RelocationTrackerClient() {
 														className={`mt-0.5 flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
 															isDone
 																? "border-green-500 bg-green-500"
-																: "border-slate-300 hover:border-[#35cdc4]"
+																: "border-slate-300 hover:border-primary"
 														}`}
 													>
 														{isDone && (
@@ -525,7 +525,7 @@ export default function RelocationTrackerClient() {
 														{task.link && (
 															<Link
 																href={task.link.href}
-																className="mt-1 inline-block text-xs font-semibold text-[#35cdc4] hover:text-teal-600 underline underline-offset-2"
+																className="mt-1 inline-block text-xs font-semibold text-primary hover:text-primary-hover underline underline-offset-2"
 																onClick={(e) => e.stopPropagation()}
 															>
 																{task.link.text} →
@@ -550,19 +550,19 @@ export default function RelocationTrackerClient() {
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/tools/visa-pathway-finder/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Find your visa route →
 					</Link>
 					<Link
 						href="/tools/budget-builder/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Build your budget →
 					</Link>
 					<Link
 						href="/tools/city-comparison/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Compare cities →
 					</Link>

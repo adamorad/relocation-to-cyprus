@@ -113,7 +113,7 @@ export default function DevelopmentComparisonClient() {
 							: "Search by name or location…"
 					}
 					disabled={selected.length >= MAX_SELECTED}
-					className="w-full border border-slate-300 rounded-lg px-4 py-3 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#35cdc4] disabled:bg-slate-50 disabled:text-slate-400"
+					className="w-full border border-slate-300 rounded-lg px-4 py-3 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-focus disabled:bg-slate-50 disabled:text-slate-400"
 				/>
 				{results.length > 0 && (
 					<ul className="absolute z-10 left-0 right-0 top-full mt-1 bg-white border border-slate-200 rounded-lg shadow-lg max-h-72 overflow-y-auto">
@@ -141,7 +141,7 @@ export default function DevelopmentComparisonClient() {
 					{selected.map((l) => (
 						<span
 							key={l.id}
-							className="inline-flex items-center gap-1.5 bg-[#35cdc4] text-slate-900 text-xs font-semibold px-3 py-1.5 rounded-full"
+							className="inline-flex items-center gap-1.5 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full"
 						>
 							{l.title}
 							<button
@@ -178,7 +178,7 @@ export default function DevelopmentComparisonClient() {
 									{selected.map((l) => (
 										<th
 											key={l.id}
-											className="py-3 px-4 text-left text-slate-900 font-bold border-b-2 border-[#35cdc4]"
+											className="py-3 px-4 text-left text-slate-900 font-bold border-b-2 border-primary"
 										>
 											<div className="leading-snug">{l.title}</div>
 											<div className="text-xs font-normal text-slate-500 mt-0.5">
@@ -216,7 +216,7 @@ export default function DevelopmentComparisonClient() {
 										<td key={l.id} className="py-3 px-4">
 											<Link
 												href={`/listings/${l.slug}/`}
-												className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors inline-block"
+												className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors inline-block"
 											>
 												More info &rarr;
 											</Link>
@@ -255,7 +255,7 @@ export default function DevelopmentComparisonClient() {
 								<div className="px-4 py-3 bg-slate-50 border-t border-slate-200">
 									<Link
 										href={`/listings/${l.slug}/`}
-										className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors inline-block"
+										className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors inline-block"
 									>
 										More info &rarr;
 									</Link>
@@ -275,13 +275,13 @@ export default function DevelopmentComparisonClient() {
 					<div className="flex flex-wrap gap-2">
 						<Link
 							href="/listings/"
-							className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+							className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 						>
 							Browse all listings
 						</Link>
 						<Link
 							href="/tools/rent-vs-buy-calculator/"
-							className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+							className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 						>
 							Rent vs Buy Calculator
 						</Link>

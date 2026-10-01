@@ -201,7 +201,7 @@ export default function VisaRenewalReminderPage() {
 					</p>
 					<button
 						onClick={() => setShowForm(true)}
-						className="px-5 py-2.5 bg-[#35cdc4] text-white rounded-lg font-medium text-sm hover:bg-[#2ab5ac] transition-colors"
+						className="px-5 py-2.5 bg-primary text-white rounded-lg font-medium text-sm hover:bg-[#2ab5ac] transition-colors"
 					>
 						+ Add document
 					</button>
@@ -263,7 +263,7 @@ export default function VisaRenewalReminderPage() {
 
 					<button
 						onClick={() => setShowForm(true)}
-						className="w-full py-2.5 border-2 border-dashed border-slate-300 rounded-xl text-sm text-slate-500 hover:border-[#35cdc4] hover:text-[#35cdc4] transition-colors font-medium"
+						className="w-full py-2.5 border-2 border-dashed border-slate-300 rounded-xl text-sm text-slate-500 hover:border-primary hover:text-primary transition-colors font-medium"
 					>
 						+ Add another document
 					</button>
@@ -293,7 +293,7 @@ export default function VisaRenewalReminderPage() {
 								onChange={(e) =>
 									setForm((f) => ({ ...f, name: e.target.value }))
 								}
-								className="w-full border border-slate-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#35cdc4]"
+								className="w-full border border-slate-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-focus"
 							/>
 						</div>
 
@@ -309,7 +309,7 @@ export default function VisaRenewalReminderPage() {
 										type: e.target.value as DocumentType,
 									}))
 								}
-								className="w-full border border-slate-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#35cdc4] bg-white"
+								className="w-full border border-slate-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-focus bg-white"
 							>
 								{DOC_TYPE_OPTIONS.map((t) => (
 									<option key={t} value={t}>
@@ -329,7 +329,7 @@ export default function VisaRenewalReminderPage() {
 								onChange={(e) =>
 									setForm((f) => ({ ...f, expiryDate: e.target.value }))
 								}
-								className="w-full border border-slate-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#35cdc4]"
+								className="w-full border border-slate-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-focus"
 							/>
 						</div>
 
@@ -344,14 +344,14 @@ export default function VisaRenewalReminderPage() {
 								onChange={(e) =>
 									setForm((f) => ({ ...f, notes: e.target.value }))
 								}
-								className="w-full border border-slate-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#35cdc4]"
+								className="w-full border border-slate-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-focus"
 							/>
 						</div>
 
 						<div className="flex gap-3 pt-2">
 							<button
 								onClick={addDocument}
-								className="px-5 py-2.5 bg-[#35cdc4] text-white rounded-lg font-medium text-sm hover:bg-[#2ab5ac] transition-colors"
+								className="px-5 py-2.5 bg-primary text-white rounded-lg font-medium text-sm hover:bg-[#2ab5ac] transition-colors"
 							>
 								Add document
 							</button>
@@ -407,7 +407,7 @@ export default function VisaRenewalReminderPage() {
 			</div>
 
 			<p className="mt-6 text-sm">
-				<Link href="/tools/" className="text-[#35cdc4] hover:underline">
+				<Link href="/tools/" className="text-primary hover:underline">
 					&larr; Back to tools
 				</Link>
 			</p>
@@ -419,13 +419,13 @@ export default function VisaRenewalReminderPage() {
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/guides/permanent-residency-5year/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Read: Permanent Residency After 5 Years →
 					</Link>{" "}
 					<Link
 						href="/sections/immigration-lawyers/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Find an immigration lawyer →
 					</Link>

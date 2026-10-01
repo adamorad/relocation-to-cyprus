@@ -119,8 +119,8 @@ function PillGroup<T extends string>({
 						onClick={() => onChange(opt)}
 						className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-colors ${
 							value === opt
-								? "bg-[#35cdc4] text-slate-900 border-[#35cdc4]"
-								: "bg-white text-slate-600 border-slate-200 hover:border-[#35cdc4] hover:text-slate-900"
+								? "bg-primary text-white border-primary"
+								: "bg-white text-slate-600 border-slate-200 hover:border-primary hover:text-slate-900"
 						}`}
 					>
 						{labelMap?.[opt] ?? opt}
@@ -278,7 +278,7 @@ export default function BudgetBuilderClient() {
 						))}
 					</tbody>
 					<tfoot>
-						<tr className="bg-[#35cdc4]/10 border-t-2 border-[#35cdc4]">
+						<tr className="bg-primary/10 border-t-2 border-primary">
 							<td className="px-5 py-4 font-bold text-slate-900 text-base">
 								Total
 							</td>
@@ -298,13 +298,13 @@ export default function BudgetBuilderClient() {
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/tools/rent-vs-buy-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Rent vs Buy Calculator →
 					</Link>
 					<Link
 						href="/guides/cost-of-living/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Cost of Living Guide →
 					</Link>

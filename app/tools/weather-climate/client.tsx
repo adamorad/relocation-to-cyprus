@@ -99,8 +99,8 @@ const CITY_DATA: Record<string, CityData> = {
 };
 
 const ALL_CITIES = Object.keys(CITY_DATA);
-const CITY_COLORS = ["#94a3b8", "#f59e0b"]; // slate-400, amber-500
-const CYPRUS_COLOR = "#35cdc4";
+const CITY_COLORS = ["#0b2145", "#fa794d"]; // ink, coral
+const CYPRUS_COLOR = "#087f98";
 
 // ── helpers ───────────────────────────────────────────────────────────────────
 
@@ -464,12 +464,12 @@ export default function WeatherClimateClient() {
 								onClick={() => toggleCity(city)}
 								className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
 									isSelected
-										? "text-white border-transparent"
+										? "border-2 bg-sky text-ink"
 										: "bg-white border-slate-200 text-slate-700 hover:border-slate-400"
 								}`}
 								style={
 									isSelected
-										? { background: activeColor, borderColor: activeColor }
+										? { borderColor: activeColor }
 										: undefined
 								}
 							>

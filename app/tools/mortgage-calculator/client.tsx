@@ -104,7 +104,7 @@ function SliderRow({
 				step={step}
 				value={value}
 				onChange={(e) => onChange(Number(e.target.value))}
-				className="w-full accent-[#35cdc4]"
+				className="w-full accent-primary"
 			/>
 			<div className="flex justify-between text-[10px] text-slate-400">
 				<span>
@@ -144,7 +144,7 @@ function StatCard({
 			</p>
 			<p
 				className="text-2xl font-bold"
-				style={accent ? { color: "#35cdc4" } : undefined}
+				style={accent ? { color: "#087f98" } : undefined}
 			>
 				{value}
 			</p>
@@ -299,8 +299,8 @@ export default function MortgageCalculatorClient({
 								onClick={() => setTerm(t)}
 								className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${
 									term === t
-										? "bg-[#35cdc4] text-slate-900"
-										: "bg-white border border-slate-200 text-slate-700 hover:border-[#35cdc4]"
+										? "bg-primary text-white"
+										: "bg-white border border-slate-200 text-slate-700 hover:border-primary"
 								}`}
 							>
 								{t} yr
@@ -397,19 +397,19 @@ export default function MortgageCalculatorClient({
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/tools/rent-vs-buy-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Rent vs Buy Calculator →
 					</Link>
 					<Link
 						href="/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Browse the property map →
 					</Link>
 					<Link
 						href="/tools/tax-residency-tracker/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Tax Residency Planner →
 					</Link>
@@ -449,7 +449,7 @@ function AmortTableRow({ row }: { row: AmortRow }) {
 			<td className="px-3 py-2 text-right text-amber-700">
 				{fmt(row.annualInterest)}
 			</td>
-			<td className="px-3 py-2 text-right" style={{ color: "#35cdc4" }}>
+			<td className="px-3 py-2 text-right" style={{ color: "#087f98" }}>
 				{fmt(row.annualPrincipal)}
 			</td>
 		</tr>

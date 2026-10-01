@@ -199,7 +199,7 @@ export default function CountryComparisonClient() {
 								disabled={isCyprus}
 								className={`px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors ${
 									isCyprus
-										? "border-[#35cdc4] bg-[#35cdc4] text-slate-900 cursor-default"
+										? "border-primary bg-primary text-white cursor-default"
 										: isVisible
 											? "border-slate-400 bg-slate-800 text-white hover:bg-slate-700"
 											: "border-slate-200 bg-white text-slate-400 hover:border-slate-400"
@@ -230,7 +230,7 @@ export default function CountryComparisonClient() {
 										key={country}
 										className={`px-3 py-3 text-center font-bold min-w-[90px] ${
 											isCyprus
-												? "text-[#35cdc4] border-l-2 border-r-2 border-[#35cdc4]"
+												? "text-primary border-l-2 border-r-2 border-primary"
 												: "text-slate-800"
 										}`}
 									>
@@ -268,7 +268,7 @@ export default function CountryComparisonClient() {
 											key={country}
 											className={`px-3 py-2.5 text-center align-middle ${
 												isCyprus
-													? "border-l-2 border-r-2 border-[#35cdc4] font-semibold text-slate-900"
+													? "border-l-2 border-r-2 border-primary font-semibold text-slate-900"
 													: "text-slate-700"
 											}`}
 										>
@@ -283,7 +283,7 @@ export default function CountryComparisonClient() {
 			</section>
 
 			{/* Cyprus non-dom note */}
-			<aside className="mb-6 p-4 bg-teal-50 border border-[#35cdc4] rounded-xl text-xs text-slate-700 leading-relaxed">
+			<aside className="mb-6 p-4 bg-teal-50 border border-primary rounded-xl text-xs text-slate-700 leading-relaxed">
 				<p className="font-semibold text-slate-900 mb-1">
 					Cyprus Non-Dom explained
 				</p>
@@ -304,19 +304,19 @@ export default function CountryComparisonClient() {
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/tools/tax-residency-tracker/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Cyprus Tax Residency Planner →
 					</Link>
 					<Link
 						href="/tools/visa-pathway-finder/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Visa Pathway Finder →
 					</Link>
 					<Link
 						href="/tools/double-tax-treaty-finder/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Double Tax Treaty Finder →
 					</Link>

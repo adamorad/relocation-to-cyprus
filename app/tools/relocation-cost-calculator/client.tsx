@@ -307,7 +307,7 @@ function SelectRow<T extends string>({
 			<select
 				value={value}
 				onChange={(e) => onChange(e.target.value as T)}
-				className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#35cdc4]"
+				className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-focus"
 			>
 				{options.map((o) => (
 					<option key={o.value} value={o.value}>
@@ -341,7 +341,7 @@ function StepperRow({
 				<button
 					type="button"
 					onClick={() => onChange(Math.max(min, value - 1))}
-					className="w-8 h-8 rounded-lg border border-slate-200 bg-white text-slate-700 font-bold hover:border-[#35cdc4] transition-colors text-lg leading-none"
+					className="w-8 h-8 rounded-lg border border-slate-200 bg-white text-slate-700 font-bold hover:border-primary transition-colors text-lg leading-none"
 					aria-label={`Decrease ${label}`}
 				>
 					−
@@ -352,7 +352,7 @@ function StepperRow({
 				<button
 					type="button"
 					onClick={() => onChange(Math.min(max, value + 1))}
-					className="w-8 h-8 rounded-lg border border-slate-200 bg-white text-slate-700 font-bold hover:border-[#35cdc4] transition-colors text-lg leading-none"
+					className="w-8 h-8 rounded-lg border border-slate-200 bg-white text-slate-700 font-bold hover:border-primary transition-colors text-lg leading-none"
 					aria-label={`Increase ${label}`}
 				>
 					+
@@ -386,8 +386,8 @@ function ToggleRow({
 							onClick={() => onChange(opt === "Yes")}
 							className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
 								active
-									? "bg-[#35cdc4] text-slate-900"
-									: "bg-white border border-slate-200 text-slate-600 hover:border-[#35cdc4]"
+									? "bg-primary text-white"
+									: "bg-white border border-slate-200 text-slate-600 hover:border-primary"
 							}`}
 						>
 							{opt}
@@ -456,7 +456,7 @@ function CostSection({
 									</td>
 									<td
 										className="px-4 py-2 text-right font-semibold"
-										style={{ color: "#35cdc4" }}
+										style={{ color: "#087f98" }}
 									>
 										{fmt(Math.round((item.low + item.high) / 2))}
 									</td>
@@ -474,7 +474,7 @@ function CostSection({
 								</td>
 								<td
 									className="px-4 py-2 text-right font-semibold"
-									style={{ color: "#35cdc4" }}
+									style={{ color: "#087f98" }}
 								>
 									{fmt(catMid)}
 								</td>
@@ -696,7 +696,7 @@ export default function RelocationCostCalculatorClient() {
 										onChange={(e) =>
 											setPropertyPrice(Math.max(50000, Number(e.target.value)))
 										}
-										className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#35cdc4]"
+										className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-focus"
 									/>
 								</div>
 							) : (
@@ -720,14 +720,14 @@ export default function RelocationCostCalculatorClient() {
 				{/* ── results panel ── */}
 				<section>
 					{/* grand total highlight */}
-					<div className="mb-6 p-5 rounded-xl border-2 border-[#35cdc4] bg-teal-50">
+					<div className="mb-6 p-5 rounded-xl border-2 border-primary bg-teal-50">
 						<p className="text-xs text-slate-500 uppercase tracking-wide mb-1">
 							Estimated total (incl. 10% contingency)
 						</p>
 						<div className="flex flex-wrap items-end gap-x-6 gap-y-1">
 							<span
 								className="text-3xl md:text-4xl font-bold"
-								style={{ color: "#35cdc4" }}
+								style={{ color: "#087f98" }}
 							>
 								{fmt(grandMid)}
 							</span>
@@ -764,7 +764,7 @@ export default function RelocationCostCalculatorClient() {
 										</td>
 										<td
 											className="px-4 py-3 text-right font-bold text-lg"
-											style={{ color: "#35cdc4" }}
+											style={{ color: "#d8f3fc" }}
 										>
 											{fmt(grandMid)}
 										</td>
@@ -787,7 +787,7 @@ export default function RelocationCostCalculatorClient() {
 					<button
 						type="button"
 						onClick={() => window.print()}
-						className="mt-4 px-4 py-2 rounded-lg border border-slate-200 bg-white text-xs font-semibold text-slate-700 hover:border-[#35cdc4] transition-colors print:hidden"
+						className="mt-4 px-4 py-2 rounded-lg border border-slate-200 bg-white text-xs font-semibold text-slate-700 hover:border-primary transition-colors print:hidden"
 					>
 						Print / Save as PDF
 					</button>
@@ -802,19 +802,19 @@ export default function RelocationCostCalculatorClient() {
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/tools/budget-builder/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Monthly Budget Builder →
 					</Link>
 					<Link
 						href="/tools/rent-vs-buy-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Rent vs Buy Calculator →
 					</Link>
 					<Link
 						href="/tools/mortgage-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Mortgage Calculator →
 					</Link>

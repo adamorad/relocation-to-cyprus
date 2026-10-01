@@ -420,7 +420,7 @@ export default function EventsCalendarPage() {
 								onClick={() => setSelectedMonth(active ? null : i + 1)}
 								className={`rounded-lg py-2 px-1 text-xs font-medium border transition-colors flex flex-col items-center gap-0.5 ${
 									active
-										? "bg-[#35cdc4] text-white border-[#35cdc4]"
+										? "bg-primary text-white border-primary"
 										: "bg-white text-slate-700 border-slate-200 hover:border-slate-400"
 								}`}
 							>
@@ -544,7 +544,7 @@ export default function EventsCalendarPage() {
 			)}
 
 			<p className="mt-6 text-sm">
-				<Link href="/tools/" className="text-[#35cdc4] hover:underline">
+				<Link href="/tools/" className="text-primary hover:underline">
 					&larr; Back to tools
 				</Link>
 			</p>
@@ -556,13 +556,13 @@ export default function EventsCalendarPage() {
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/guides/cultural-etiquette-guide/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Read: Cultural Etiquette in Cyprus →
 					</Link>{" "}
 					<Link
 						href="/guides/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Explore Cyprus guides →
 					</Link>
@@ -618,7 +618,7 @@ function EventCard({ event }: { event: CyprusEvent }) {
 			<div className="mt-2 flex items-center gap-3">
 				<button
 					onClick={() => setExpanded(!expanded)}
-					className="text-xs text-[#35cdc4] hover:underline"
+					className="text-xs text-primary hover:underline"
 				>
 					{expanded ? "Show less" : "Read more"}
 				</button>

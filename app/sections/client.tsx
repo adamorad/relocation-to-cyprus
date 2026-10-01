@@ -79,21 +79,21 @@ export default function SectionsIndexPage() {
 					<Link
 						key={s.slug}
 						href={`/sections/${s.slug}`}
-						className="group block bg-white border border-slate-200 rounded-xl p-5 hover:border-[#35cdc4] hover:shadow-md transition-all"
+						className="group block bg-white border border-slate-200 rounded-xl p-5 hover:border-primary hover:shadow-md transition-all"
 					>
 						<div className="flex items-start justify-between gap-3">
 							<div className="flex-1 min-w-0">
 								<span className="inline-block text-[10px] font-semibold uppercase tracking-wider text-slate-600 bg-slate-100 border border-slate-200 rounded-full px-2 py-0.5 mb-2">
 									{s.category}
 								</span>
-								<h2 className="text-base font-bold text-slate-900 group-hover:text-[#35cdc4] transition-colors leading-snug">
+								<h2 className="text-base font-bold text-slate-900 group-hover:text-primary transition-colors leading-snug">
 									{s.name}
 								</h2>
 								<p className="mt-1.5 text-sm text-slate-600 leading-relaxed line-clamp-2">
 									{s.description}
 								</p>
 							</div>
-							<span className="flex-shrink-0 text-slate-300 group-hover:text-[#35cdc4] transition-colors text-xl mt-1">
+							<span className="flex-shrink-0 text-slate-300 group-hover:text-primary transition-colors text-xl mt-1">
 								&rarr;
 							</span>
 						</div>

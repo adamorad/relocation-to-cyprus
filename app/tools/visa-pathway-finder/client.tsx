@@ -212,12 +212,12 @@ export default function VisaPathwayFinderPage() {
 								}}
 								className={`flex-1 py-3 px-4 rounded-lg border-2 text-sm font-semibold transition-colors ${
 									citizenship === opt
-										? "border-[#35cdc4] text-white"
+										? "border-primary text-white"
 										: "border-slate-200 bg-white text-slate-700 hover:border-slate-400"
 								}`}
 								style={
 									citizenship === opt
-										? { backgroundColor: "#35cdc4", borderColor: "#35cdc4" }
+										? { backgroundColor: "#087f98", borderColor: "#087f98" }
 										: {}
 								}
 							>
@@ -259,7 +259,7 @@ export default function VisaPathwayFinderPage() {
 										}`}
 										style={
 											euPurpose === opt
-												? { backgroundColor: "#35cdc4", borderColor: "#35cdc4" }
+												? { backgroundColor: "#087f98", borderColor: "#087f98" }
 												: {}
 										}
 									>
@@ -305,7 +305,7 @@ export default function VisaPathwayFinderPage() {
 										}`}
 										style={
 											nonEuPurpose === opt
-												? { backgroundColor: "#35cdc4", borderColor: "#35cdc4" }
+												? { backgroundColor: "#087f98", borderColor: "#087f98" }
 												: {}
 										}
 									>
@@ -319,10 +319,10 @@ export default function VisaPathwayFinderPage() {
 
 				{/* Result */}
 				{pathway && (
-					<div className="p-5 rounded-xl border-2 border-[#35cdc4] bg-white">
+					<div className="p-5 rounded-xl border-2 border-primary bg-white">
 						<p
 							className="text-[10px] uppercase tracking-[0.2em] font-bold mb-1"
-							style={{ color: "#35cdc4" }}
+							style={{ color: "#087f98" }}
 						>
 							Recommended pathway
 						</p>
@@ -355,7 +355,7 @@ export default function VisaPathwayFinderPage() {
 								<Link
 									href={`/guides/${pathway.guideSlug}`}
 									className="inline-block text-sm font-semibold px-4 py-2 rounded-lg text-white"
-									style={{ backgroundColor: "#35cdc4" }}
+									style={{ backgroundColor: "#087f98" }}
 								>
 									{pathway.guideLabel || "Read the guide"} →
 								</Link>

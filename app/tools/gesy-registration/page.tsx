@@ -15,7 +15,7 @@ export default function MovedPage() {
 					This has moved to our GeSY guide.{" "}
 					<Link
 						href={NEW_PATH}
-						className="text-[#35cdc4] font-semibold underline"
+						className="text-primary font-semibold underline"
 					>
 						Read the guide →
 					</Link>

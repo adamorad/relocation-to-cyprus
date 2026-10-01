@@ -75,7 +75,7 @@ function AccountantCard({ accountant }: { accountant: Accountant }) {
 						{accountant.firm}
 					</p>
 				</div>
-				<span className="flex-shrink-0 rounded-full bg-teal-50 border border-teal-200 text-[#35cdc4] text-[10px] font-bold px-2.5 py-1 uppercase tracking-wide">
+				<span className="flex-shrink-0 rounded-full bg-teal-50 border border-teal-200 text-primary text-[10px] font-bold px-2.5 py-1 uppercase tracking-wide">
 					{accountant.city}
 				</span>
 			</div>

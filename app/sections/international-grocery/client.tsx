@@ -59,7 +59,7 @@ function SpecialtyChip({
 			aria-pressed={selected}
 			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
 				selected
-					? "bg-teal-600 text-white border border-teal-600"
+					? "bg-primary text-white border border-primary"
 					: "bg-teal-50 text-teal-800 border border-teal-200 hover:bg-teal-100"
 			}`}
 		>

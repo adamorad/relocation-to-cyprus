@@ -145,7 +145,7 @@ function YesNoField({
 					onClick={() => onChange(true)}
 					className={`px-4 py-1.5 text-sm font-medium transition-colors ${
 						value
-							? "bg-teal-500 text-white"
+							? "bg-primary text-white"
 							: "bg-white text-slate-600 hover:bg-slate-50"
 					}`}
 				>
@@ -155,7 +155,7 @@ function YesNoField({
 					onClick={() => onChange(false)}
 					className={`px-4 py-1.5 text-sm font-medium transition-colors border-l border-slate-200 ${
 						!value
-							? "bg-teal-500 text-white"
+							? "bg-primary text-white"
 							: "bg-white text-slate-600 hover:bg-slate-50"
 					}`}
 				>
@@ -401,13 +401,13 @@ export default function TaxResidencyPlannerClient() {
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/guides/taxes-for-expats/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Read: Taxes for Expats in Cyprus →
 					</Link>{" "}
 					<Link
 						href="/sections/accountants/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-[#35cdc4] text-slate-900 hover:bg-teal-400 transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Find a tax advisor →
 					</Link>
