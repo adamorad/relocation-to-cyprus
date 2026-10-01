@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import DevelopmentComparisonClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,14 +26,22 @@ export default function DevelopmentComparisonClientPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic
+					type="tool"
+					slug="development-comparison"
+					exclude={["/tools/rent-vs-buy-calculator/"]}
+					cols={3}
+				/>
+			}
 			width="wide"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "development-comparison"),
 					{ label: "Development Comparison" },
 				],
-				eyebrow: "Research",
+				eyebrow: getTopicForTool("development-comparison").name,
 				title: "Compare Cyprus Developments",
 				intro:
 					"Select up to 3 new-build developments and compare them side by side.",

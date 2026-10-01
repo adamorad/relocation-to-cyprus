@@ -4,46 +4,21 @@ import { GUIDES } from "@/lib/guides";
 import { allListings } from "@/lib/listings";
 import { REGIONS } from "@/lib/regions";
 import { SECTIONS_INDEX } from "@/lib/sections-index";
+import { TOOLS } from "@/lib/tools-index";
+import { toolSlug } from "@/lib/topic-map";
+import { assertTopicMapComplete } from "@/lib/topic-map-check";
+import { DAILY_TOPICS, hubHref } from "@/lib/topics";
 
-const TOOL_SLUGS = [
-	"rent-vs-buy-calculator",
-	"city-comparison",
-	"meu1-tracker",
-	"visa-pathway-finder",
-	"tax-residency-tracker",
-	"social-insurance-calculator",
-	"banking-fee-comparison",
-	"tax-filing-calendar",
-	"double-tax-treaty-finder",
-	"sole-trader-vs-ltd",
-	"health-insurance-comparison",
-	"flight-connectivity",
-	"events-calendar",
-	"isp-comparison",
-	"visa-renewal-reminder",
-	"grants-finder",
-	"budget-builder",
-	"mortgage-calculator",
-	"country-comparison",
-	"rental-yield-calculator",
-	"relocation-checklist",
-	"development-comparison",
-	"price-benchmarker",
-	"tax-savings-calculator",
-	"relocation-cost-calculator",
-	"neighbourhood-explorer",
-	"weather-climate",
-	"school-finder",
-	"pet-import-checklist",
-	"drivers-licence-exchange",
-	"rental-price-trends",
-];
+/** Every live tool, from lib/tools-index.ts (the tools index and topic map use the same list). */
+const TOOL_SLUGS = TOOLS.map((t) => toolSlug(t.href));
 
 export const dynamic = "force-static";
 
 const SITE_URL = "https://realcy.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+	// Fails the build when a guide, directory or tool has no topic.
+	assertTopicMapComplete();
 	const now = new Date();
 	return [
 		{
@@ -82,6 +57,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			changeFrequency: "monthly",
 			priority: 0.7,
 		},
+		...DAILY_TOPICS.map((t) => ({
+			url: `${SITE_URL}${hubHref(t)}`,
+			lastModified: now,
+			changeFrequency: "weekly" as const,
+			priority: 0.8,
+		})),
 		{
 			url: `${SITE_URL}/moving-to-cyprus/`,
 			lastModified: now,

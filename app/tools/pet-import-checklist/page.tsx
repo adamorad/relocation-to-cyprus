@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import PetImportChecklistClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,14 +26,15 @@ export default function PetImportChecklistPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={<MoreOnTopic type="tool" slug="pet-import-checklist" cols={2} />}
 			width="reading"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "pet-import-checklist"),
 					{ label: "Cyprus Pet Import Checklist" },
 				],
-				eyebrow: "Lifestyle",
+				eyebrow: getTopicForTool("pet-import-checklist").name,
 				title: "Cyprus Pet Import Checklist",
 				intro:
 					"Answer two questions and get a personalised checklist of every step required to bring your pet into Cyprus, with timing guidance so nothing catches you off guard.",

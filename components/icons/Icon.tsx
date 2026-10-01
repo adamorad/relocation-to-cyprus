@@ -88,6 +88,12 @@ const PATHS = {
 			<circle cx="12" cy="10" r="2.5" />
 		</>
 	),
+	school: (
+		<>
+			<path d="m2 9 10-5 10 5-10 5Z" />
+			<path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5M22 9v6" />
+		</>
+	),
 	search: (
 		<>
 			<circle cx="10" cy="10" r="7" />
@@ -103,6 +109,12 @@ const PATHS = {
 		<>
 			<path d="M10.3 3.9 2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" />
 			<path d="M12 9v4M12 17h.01" />
+		</>
+	),
+	suitcase: (
+		<>
+			<rect x="3" y="7" width="18" height="13" rx="2" />
+			<path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18M10 13v2h4v-2" />
 		</>
 	),
 	transport: (

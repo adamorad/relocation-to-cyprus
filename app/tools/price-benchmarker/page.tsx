@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import PriceBenchmarkerClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,14 +26,25 @@ export default function PriceBenchmarkerPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic
+					type="tool"
+					slug="price-benchmarker"
+					exclude={[
+						"/tools/rent-vs-buy-calculator/",
+						"/tools/city-comparison/",
+					]}
+					cols={2}
+				/>
+			}
 			width="reading"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "price-benchmarker"),
 					{ label: "Property Price Benchmarker" },
 				],
-				eyebrow: "Research",
+				eyebrow: getTopicForTool("price-benchmarker").name,
 				title: "Cyprus Property Price Benchmarker",
 				intro:
 					"See how your property's asking price compares to similar developments in the same region.",

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import RentalYieldCalculatorClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,14 +26,26 @@ export default function RentalYieldCalculatorPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic
+					type="tool"
+					slug="rental-yield-calculator"
+					exclude={[
+						"/sections/property-management/",
+						"/guides/buying-process/",
+						"/tools/rent-vs-buy-calculator/",
+					]}
+					cols={2}
+				/>
+			}
 			width="reading"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "rental-yield-calculator"),
 					{ label: "Rental Yield Calculator" },
 				],
-				eyebrow: "Finance tool",
+				eyebrow: getTopicForTool("rental-yield-calculator").name,
 				title: "Cyprus Rental Yield Calculator",
 				intro:
 					"Calculate gross yield, net yield, annual cash flow, and total return for a Cyprus buy-to-let investment. Models appreciation and expenses over up to 15 years.",

@@ -3,8 +3,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { isActive, PRIMARY_NAV, SECONDARY_NAV } from "@/lib/nav-links";
-import { useSavedCount } from "./HeaderParts";
+import {
+	isActive,
+	PRIMARY_NAV,
+	SECONDARY_NAV,
+	TOPIC_NAV,
+} from "@/lib/nav-links";
 import { Icon } from "./icons/Icon";
 
 const MENU_ID = "site-menu";
@@ -17,7 +21,6 @@ const ROW =
 /** Mobile header menu button + full-height dialog. Hidden from md up. */
 export function MobileMenu() {
 	const pathname = usePathname() ?? "/";
-	const savedCount = useSavedCount();
 	const [open, setOpen] = useState(false);
 	const triggerRef = useRef<HTMLButtonElement>(null);
 	const closeRef = useRef<HTMLButtonElement>(null);
@@ -166,6 +169,38 @@ export function MobileMenu() {
 									</form>
 								</search>
 								<nav aria-label="Main menu">
+									<p
+										id="menu-topics-label"
+										className="mb-1 px-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted"
+									>
+										Topics
+									</p>
+									<ul
+										aria-labelledby="menu-topics-label"
+										className="flex flex-col gap-0.5"
+									>
+										{TOPIC_NAV.map((item) => {
+											const active = isActive(pathname, item.href);
+											return (
+												<li key={item.href}>
+													<Link
+														href={item.href}
+														onClick={closeForNav}
+														aria-current={active ? "page" : undefined}
+														className={`flex min-h-11 items-center gap-3 rounded-field px-4 text-base font-semibold text-ink hover:bg-sky ${
+															active ? "bg-sky" : ""
+														}`}
+													>
+														<span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-field bg-sky-strong text-primary">
+															<Icon name={item.icon} size={18} />
+														</span>
+														{item.label}
+													</Link>
+												</li>
+											);
+										})}
+									</ul>
+									<hr className="my-4 border-line" />
 									<ul className="flex flex-col gap-1">
 										{PRIMARY_NAV.map((item) => {
 											const active = isActive(pathname, item.href);
@@ -182,28 +217,6 @@ export function MobileMenu() {
 												</li>
 											);
 										})}
-										<li>
-											<Link
-												href="/my-shortlist/"
-												onClick={closeForNav}
-												aria-current={
-													pathname.startsWith("/my-shortlist")
-														? "page"
-														: undefined
-												}
-												className={`${ROW} ${
-													pathname.startsWith("/my-shortlist") ? "bg-sky" : ""
-												}`}
-											>
-												<Icon name="heart" size={22} />
-												Saved
-												{savedCount > 0 ? (
-													<span className="rounded-full bg-primary px-2 text-sm font-bold leading-6 text-white">
-														{savedCount}
-													</span>
-												) : null}
-											</Link>
-										</li>
 									</ul>
 									<hr className="my-4 border-line" />
 									<ul className="flex flex-col gap-1">

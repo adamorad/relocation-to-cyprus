@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
-import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
-import { Section } from "@/components/ui/Section";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { GARDEN_TIPS } from "@/lib/community-gardens";
-import { GUIDES } from "@/lib/guides";
-import { SECTION_RELATED_GUIDE_SLUGS } from "@/lib/section-related-guides";
+import { topicCrumb } from "@/lib/topic-map";
 import CommunityGardensClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -34,9 +32,6 @@ export default function CommunityGardensPage() {
 			acceptedAnswer: { "@type": "Answer", text: t.body },
 		})),
 	};
-	const relatedGuides = (SECTION_RELATED_GUIDE_SLUGS["community-gardens"] ?? [])
-		.map((slug) => GUIDES.find((g) => g.slug === slug))
-		.filter((g) => g !== undefined);
 
 	return (
 		<DirectoryTemplate
@@ -44,7 +39,7 @@ export default function CommunityGardensPage() {
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Directories", href: "/sections/" },
+					topicCrumb("directory", "community-gardens"),
 					{ label: "Community Gardens" },
 				],
 				eyebrow: "Cyprus Community",
@@ -71,26 +66,7 @@ export default function CommunityGardensPage() {
 				),
 			}}
 			related={
-				relatedGuides.length > 0 ? (
-					<div data-pagefind-ignore>
-						<Section id="related" title="Related guides">
-							<CardGrid cols={2}>
-								{relatedGuides.map((g) => (
-									<CardGridItem key={g.slug}>
-										<Card
-											variant="text"
-											href={`/guides/${g.slug}/`}
-											title={g.title}
-											text={
-												<span className="line-clamp-2">{g.description}</span>
-											}
-										/>
-									</CardGridItem>
-								))}
-							</CardGrid>
-						</Section>
-					</div>
-				) : null
+				<MoreOnTopic type="directory" slug="community-gardens" cols={3} />
 			}
 		>
 			<script

@@ -1,15 +1,18 @@
 import type { ReactNode } from "react";
 import { Container } from "@/components/ui/Container";
 import { PageHeader, type PageHeaderProps } from "@/components/ui/PageHeader";
+import type { SiteImage } from "@/lib/topics";
 import { TemplateMain, type TemplateMainProps } from "./TemplateMain";
 
 /**
- * City page: sky band header, an "On this page" contents nav, the Sections
+ * City page: sky band header, an optional 16:9 hero image (the LCP, so eager
+ * with high fetch priority), an "On this page" contents nav, the Sections
  * (children, each with an id matching `contents`), a call to action (for
  * example one ButtonLink to that city's new developments) and related links.
  */
 export function CityTemplate({
 	header,
+	hero,
 	contents,
 	cta,
 	related,
@@ -17,6 +20,8 @@ export function CityTemplate({
 	...main
 }: TemplateMainProps & {
 	header: PageHeaderProps;
+	/** City scene above the contents nav, aligned with the text column. */
+	hero?: SiteImage;
 	contents?: { id: string; label: string }[];
 	cta?: ReactNode;
 	related?: ReactNode;
@@ -26,6 +31,24 @@ export function CityTemplate({
 		<TemplateMain {...main}>
 			<PageHeader variant="band" {...header} width="wide" />
 			<Container width="wide" className="pt-6 md:pt-8">
+				{hero ? (
+					// <picture> stops React emitting an image preload hint into the
+					// RSC payload, which next/link prefetches of this city would
+					// otherwise apply on the linking page (downloading the hero).
+					<picture className="block">
+						<img
+							src={hero.src}
+							srcSet={`${hero.srcSmall} 800w, ${hero.src} 1600w`}
+							sizes="(min-width: 832px) 768px, calc(100vw - 40px)"
+							width={hero.width}
+							height={hero.height}
+							alt={hero.alt ?? ""}
+							loading="eager"
+							fetchPriority="high"
+							className="mb-8 aspect-video h-auto w-full max-w-3xl rounded-2xl object-cover"
+						/>
+					</picture>
+				) : null}
 				{contents && contents.length > 0 ? (
 					<nav
 						aria-label="On this page"

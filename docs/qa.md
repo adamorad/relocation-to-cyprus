@@ -48,13 +48,17 @@ Do not raise the baseline to make CI pass. If a new Nicosia institution mention 
 
 ## Accessibility (`scripts/qa/axe.mjs`)
 
-Starts a static server on `out/`, opens a fixed sample of 22 URLs at 390 and 1440 px wide (home, guides, directories, tools, a listing, a developer, regions, moving to Cyprus, explore and a search results page) and runs axe-core with the `wcag2a` and `wcag2aa` tags. It prints a table of every violation and fails on `moderate`, `serious` or `critical` impact unless the finding is listed (by URL and rule) in `scripts/qa/axe.baseline.json`. The baseline starts empty. Edit the sample list at the top of the script when routes change.
+Starts a static server on `out/`, opens a fixed sample of 25 URLs at 390 and 1440 px wide (home, guides, directories, tools, a listing, a developer, regions, moving to Cyprus, two topic hubs and a `?city=` view, explore and a search results page) and runs axe-core with the `wcag2a` and `wcag2aa` tags. It prints a table of every violation and fails on `moderate`, `serious` or `critical` impact unless the finding is listed (by URL and rule) in `scripts/qa/axe.baseline.json`. The baseline starts empty. Edit the sample list at the top of the script when routes change.
 
 ```sh
 node scripts/qa/axe.mjs --update-baseline   # record current moderate/serious/critical findings
 node scripts/qa/axe.mjs --urls /about/,/    # check specific URLs
 node scripts/qa/axe.mjs --all               # full-site audit (manual, not CI)
 ```
+
+## Topic mapping (`pnpm qa:topics`)
+
+Every guide, directory route and live tool must have a topic in `lib/topic-map.ts`. `pnpm qa:topics` (`scripts/gen-topics-mapping.mjs --check`) fails on an unmapped item, a mapping for an item that does not exist, an unknown topic or city, more than two secondary topics, or a stale `docs/topics-mapping.md`. The same completeness check runs inside `pnpm build` (from `app/sitemap.ts`), so CI fails too. Regenerate the doc with `node scripts/gen-topics-mapping.mjs`.
 
 ## Site search (Pagefind)
 

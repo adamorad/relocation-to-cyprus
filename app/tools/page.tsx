@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { HubTemplate } from "@/components/templates/HubTemplate";
+import { TopicIndexClient } from "@/components/templates/TopicIndexClient";
 import { Callout } from "@/components/ui/Callout";
 import { TOOLS } from "@/lib/tools-index";
-import ToolsIndexClient from "./client";
+import { primaryTopic, toolSlug } from "@/lib/topic-map";
 
 const title = "Practical tools";
 const description = `${TOOLS.length} free interactive tools for life in Cyprus: rent vs buy calculator, visa pathway finder, tax residency planner, social insurance calculator, banking fee comparison, and more.`;
@@ -38,7 +39,17 @@ export default function ToolsIndexPage() {
 				</Callout>
 			}
 		>
-			<ToolsIndexClient />
+			<TopicIndexClient
+				path="/tools/"
+				noun="tools"
+				variant="icon"
+				items={TOOLS.map((t) => ({
+					href: t.href,
+					title: t.title,
+					description: t.description,
+					topic: primaryTopic("tool", toolSlug(t.href)),
+				}))}
+			/>
 		</HubTemplate>
 	);
 }

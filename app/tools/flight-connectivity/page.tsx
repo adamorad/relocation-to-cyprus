@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import FlightConnectivityClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,14 +26,22 @@ export default function FlightConnectivityClientPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic
+					type="tool"
+					slug="flight-connectivity"
+					exclude={["/guides/airport-transfers-guide/"]}
+					cols={3}
+				/>
+			}
 			width="wide"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "flight-connectivity"),
 					{ label: "Flight Connectivity" },
 				],
-				eyebrow: "Interactive tool",
+				eyebrow: getTopicForTool("flight-connectivity").name,
 				title: "Cyprus Flight Connectivity",
 				intro:
 					"Explore direct routes from Larnaca (LCA) and Paphos (PFO) airports. Search by destination, filter by airport or schedule.",

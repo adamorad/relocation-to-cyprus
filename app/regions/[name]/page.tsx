@@ -3,11 +3,16 @@ import { notFound } from "next/navigation";
 import { CityTemplate } from "@/components/templates/CityTemplate";
 import { ButtonLink } from "@/components/ui/Button";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
+import { DataTable } from "@/components/ui/DataTable";
+import { InfoCards } from "@/components/ui/InfoCards";
 import { Section } from "@/components/ui/Section";
-import { listingsForRegion } from "@/lib/listings";
-import { REGIONS, regionBySlug } from "@/lib/regions";
+import { REGIONS, type RegionInfo, regionBySlug } from "@/lib/regions";
+import { DAILY_TOPICS, hubHref } from "@/lib/topics";
 
 const SITE_URL = "https://realcy.app";
+
+const pageTitle = (r: RegionInfo) =>
+	`Living in ${r.name}: areas, healthcare, schools and costs`;
 
 export function generateStaticParams() {
 	return REGIONS.map((r) => ({ name: r.slug }));
@@ -21,20 +26,44 @@ export async function generateMetadata({
 	const { name } = await params;
 	const r = regionBySlug(name);
 	if (!r) return {};
+	const ogImage = r.image
+		? {
+				url: `${SITE_URL}${r.image.src}`,
+				width: r.image.width,
+				height: r.image.height,
+				alt: r.image.alt ?? `Living in ${r.name}`,
+			}
+		: { url: "https://realcy.app/og-default.webp", width: 1200, height: 630 };
 	return {
-		title: `${r.name} new developments: buy or relocate to ${r.name}, Cyprus`,
-		description: r.oneLiner + " " + r.intro.slice(0, 120) + "…",
+		title: pageTitle(r),
+		description: r.summary,
 		alternates: { canonical: `/regions/${r.slug}/` },
 		openGraph: {
-			title: `${r.name}: Cyprus new developments`,
-			description: r.oneLiner,
+			title: `Living in ${r.name}, Cyprus`,
+			description: r.summary,
 			url: `${SITE_URL}/regions/${r.slug}/`,
 			type: "website",
-			images: [
-				{ url: "https://realcy.app/og-default.webp", width: 1200, height: 630 },
-			],
+			images: [ogImage],
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: `Living in ${r.name}, Cyprus`,
+			description: r.summary,
+			images: [ogImage.url],
 		},
 	};
+}
+
+function Paragraphs({ items }: { items: string[] }) {
+	return (
+		<div className="space-y-4">
+			{items.map((p) => (
+				<p key={p} className="text-base leading-relaxed text-ink">
+					{p}
+				</p>
+			))}
+		</div>
+	);
 }
 
 export default async function RegionPage({
@@ -45,117 +74,93 @@ export default async function RegionPage({
 	const { name } = await params;
 	const r = regionBySlug(name);
 	if (!r) notFound();
-	const listingCount = listingsForRegion(r.name).length;
 
 	const articleJsonLd = {
 		"@context": "https://schema.org",
 		"@type": "Article",
-		headline: `${r.name} new developments`,
-		description: r.oneLiner,
+		headline: `Living in ${r.name}`,
+		description: r.summary,
 		author: { "@type": "Organization", name: "RealCy.app" },
 		publisher: { "@type": "Organization", name: "RealCy.app" },
 		datePublished: "2026-05-22",
+		...(r.image && { image: `${SITE_URL}${r.image.src}` }),
 		mainEntityOfPage: {
 			"@type": "WebPage",
 			"@id": `${SITE_URL}/regions/${r.slug}/`,
 		},
 	};
-	const toId = (h: string) =>
-		h
-			.toLowerCase()
-			.replace(/[^a-z0-9]+/g, "-")
-			.replace(/^-|-$/g, "");
-	const relatedGuides = [
+
+	// Buyer content (r.property) is intentionally not rendered here; Phase 4
+	// shows it in the Property area.
+	const sections: { id: string; label: string; show: boolean }[] = [
+		{ id: "areas", label: "Areas and everyday life", show: r.areas.length > 0 },
 		{
-			href: "/guides/best-areas-to-live-cyprus/",
-			title: "Best areas to live in Cyprus",
-			desc: "Compare cities and neighbourhoods",
+			id: "getting-around",
+			label: "Getting around",
+			show: r.gettingAround.length > 0,
+		},
+		{ id: "healthcare", label: "Healthcare", show: r.healthcare.length > 0 },
+		{
+			id: "schools",
+			label: "Schools and childcare",
+			show: r.schools.length > 0,
 		},
 		{
-			href: "/guides/buying-vs-renting-cyprus/",
-			title: "Buying vs renting in Cyprus",
-			desc: "Which makes financial sense",
+			id: "things-to-do",
+			label: "Beaches, food and things to do",
+			show: r.leisure.length > 0,
 		},
-		{
-			href: "/guides/cost-of-living/",
-			title: "Cost of living in Cyprus",
-			desc: "Monthly budgets by city",
-		},
-		{
-			href: "/guides/banking-in-cyprus/",
-			title: "Opening a bank account",
-			desc: "Banking as a new resident",
-		},
+		{ id: "costs", label: "Monthly costs", show: r.costs.rows.length > 0 },
+		{ id: "faq", label: "Frequently asked questions", show: r.faqs.length > 0 },
+		{ id: "practical", label: "Practical notes", show: r.practical.length > 0 },
+		{ id: "topics", label: "Explore by topic", show: true },
 	];
-	const relatedTools = [
-		{ href: "/tools/rent-vs-buy-calculator/", title: "Rent vs buy calculator" },
-		{ href: "/tools/city-comparison/", title: "Compare cities" },
-		{
-			href: "/tools/relocation-cost-calculator/",
-			title: "Relocation cost calculator",
-		},
-	];
+	const shown = new Set(sections.filter((s) => s.show).map((s) => s.id));
 
 	return (
 		<CityTemplate
 			pagefindType="city"
+			hero={r.image}
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
 					{ label: "Cities", href: "/regions/" },
 					{ label: r.name },
 				],
-				eyebrow: "Region guide",
-				title: `${r.name}, Cyprus`,
-				intro: r.oneLiner,
+				eyebrow: "City guide",
+				title: `Living in ${r.name}`,
+				intro: r.intro,
 			}}
-			contents={[
-				...r.sections.map((s) => ({ id: toId(s.heading), label: s.heading })),
-				{ id: "new-developments", label: "New developments" },
-				{ id: "planning", label: "Planning your move" },
-			]}
+			contents={sections
+				.filter((s) => s.show)
+				.map(({ id, label }) => ({ id, label }))}
 			cta={
 				<Section
-					id="new-developments"
-					title={`New developments in ${r.name}`}
-					description={
-						listingCount > 0
-							? `${listingCount} new-build developments are listed in ${r.name}.`
-							: undefined
-					}
+					id="topics"
+					title={`Explore ${r.name} by topic`}
+					description={`Guides, directories and tools for daily life, filtered to ${r.name}.`}
 				>
-					<ButtonLink href={`/listings/?city=${r.slug}`} size="lg">
-						New developments in {r.name}
-					</ButtonLink>
-				</Section>
-			}
-			related={
-				<div data-pagefind-ignore>
-					<Section
-						id="planning"
-						title={`Planning your move to ${r.name}?`}
-						description="Guides and tools to help you decide where to live and what to buy."
-					>
-						<CardGrid cols={2}>
-							{relatedGuides.map((g) => (
-								<CardGridItem key={g.href}>
+					<div data-pagefind-ignore>
+						<CardGrid cols={4}>
+							{DAILY_TOPICS.map((t) => (
+								<CardGridItem key={t.slug}>
 									<Card
-										variant="text"
-										href={g.href}
-										title={g.title}
-										text={g.desc}
+										variant="icon"
+										icon={t.icon}
+										href={`${hubHref(t)}?city=${r.slug}`}
+										title={t.name}
 									/>
 								</CardGridItem>
 							))}
 						</CardGrid>
-						<div className="mt-5 flex flex-wrap gap-3">
-							{relatedTools.map((t) => (
-								<ButtonLink key={t.href} href={t.href} variant="secondary">
-									{t.title}
-								</ButtonLink>
-							))}
-						</div>
-					</Section>
+					</div>
+				</Section>
+			}
+			related={
+				<div data-pagefind-ignore>
+					<ButtonLink href={`/listings/?city=${r.slug}`} variant="secondary">
+						New developments in {r.name}
+					</ButtonLink>
 				</div>
 			}
 		>
@@ -166,12 +171,68 @@ export default async function RegionPage({
 					__html: JSON.stringify(articleJsonLd),
 				}}
 			/>
-			<p className="text-lg leading-relaxed text-ink">{r.intro}</p>
-			{r.sections.map((s) => (
-				<Section key={s.heading} id={toId(s.heading)} title={s.heading}>
-					<p className="text-base leading-relaxed text-ink">{s.body}</p>
+			{shown.has("areas") ? (
+				<Section id="areas" title="Areas and everyday life">
+					<Paragraphs items={r.areas} />
 				</Section>
-			))}
+			) : null}
+			{shown.has("getting-around") ? (
+				<Section id="getting-around" title="Getting around">
+					<Paragraphs items={r.gettingAround} />
+				</Section>
+			) : null}
+			{shown.has("healthcare") ? (
+				<Section id="healthcare" title="Healthcare">
+					<Paragraphs items={r.healthcare} />
+				</Section>
+			) : null}
+			{shown.has("schools") ? (
+				<Section id="schools" title="Schools and childcare">
+					<Paragraphs items={r.schools} />
+				</Section>
+			) : null}
+			{shown.has("things-to-do") ? (
+				<Section id="things-to-do" title="Beaches, food and things to do">
+					<Paragraphs items={r.leisure} />
+				</Section>
+			) : null}
+			{shown.has("costs") ? (
+				<Section id="costs" title="Monthly costs" description={r.costs.summary}>
+					<DataTable
+						caption={`Sample monthly budget for a couple in ${r.name}`}
+						columns={[
+							{ header: "Item" },
+							{ header: "Per month", align: "right" },
+						]}
+						rows={r.costs.rows.map((c) => [c.item, c.amount])}
+						footer={["Total", r.costs.total]}
+					/>
+					<div className="mt-4 space-y-3">
+						{r.costs.notes.map((n) => (
+							<p key={n} className="text-base leading-relaxed text-ink">
+								{n}
+							</p>
+						))}
+					</div>
+				</Section>
+			) : null}
+			{shown.has("faq") ? (
+				<Section id="faq" title="Frequently asked questions">
+					<InfoCards
+						columns={1}
+						items={r.faqs.map((f) => ({ heading: f.question, body: f.answer }))}
+					/>
+				</Section>
+			) : null}
+			{shown.has("practical") ? (
+				<Section id="practical" title="Practical notes">
+					<ul className="list-disc space-y-2 pl-5 text-base leading-relaxed text-ink">
+						{r.practical.map((p) => (
+							<li key={p}>{p}</li>
+						))}
+					</ul>
+				</Section>
+			) : null}
 		</CityTemplate>
 	);
 }

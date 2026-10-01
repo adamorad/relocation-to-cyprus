@@ -1167,11 +1167,6 @@
 		},
 		"nicosia": {},
 		"relocation-guide": {},
-		"hex-class": {
-			"app/layout.tsx": {
-				"200f0901e0f857da2342ca832efb6a151ba104b0": 3,
-				"79cf061d06f5b6eabf80b133f96be064a9faf63f": 1
-			}
-		}
+		"hex-class": {}
 	}
 }

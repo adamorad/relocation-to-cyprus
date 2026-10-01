@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import VisaPathwayFinderClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,14 +26,25 @@ export default function VisaPathwayFinderPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic
+					type="tool"
+					slug="visa-pathway-finder"
+					exclude={[
+						"/guides/residency-and-visas/",
+						"/sections/immigration-lawyers/",
+					]}
+					cols={2}
+				/>
+			}
 			width="reading"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "visa-pathway-finder"),
 					{ label: "Visa Pathway Finder" },
 				],
-				eyebrow: "Interactive tool",
+				eyebrow: getTopicForTool("visa-pathway-finder").name,
 				title: "Cyprus Visa Pathway Finder",
 				intro:
 					"Answer two questions to find the recommended visa or registration route for your situation. Each result includes the key requirement, processing time, and a link to the relevant guide.",

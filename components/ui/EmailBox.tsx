@@ -1,4 +1,5 @@
 import { EmailCapture } from "@/components/EmailCapture";
+import { NEWSLETTER_ENABLED } from "@/lib/newsletter";
 
 /**
  * The single newsletter/lead form design (logic lives in EmailCapture).
@@ -15,6 +16,7 @@ export function EmailBox({
 	region?: string;
 	className?: string;
 }) {
+	if (!NEWSLETTER_ENABLED) return null;
 	return (
 		<section
 			aria-label="Email sign-up"

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import TaxFilingCalendarClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,14 +26,22 @@ export default function TaxFilingCalendarPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic
+					type="tool"
+					slug="tax-filing-calendar"
+					exclude={["/guides/taxes-for-expats/", "/sections/accountants/"]}
+					cols={2}
+				/>
+			}
 			width="reading"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "tax-filing-calendar"),
 					{ label: "Tax Filing Calendar" },
 				],
-				eyebrow: "Interactive tool",
+				eyebrow: getTopicForTool("tax-filing-calendar").name,
 				title: "Cyprus Annual Tax Filing Calendar",
 				intro:
 					"All key Cyprus tax deadlines for the current year. The current month is highlighted and deadlines are marked by urgency.",

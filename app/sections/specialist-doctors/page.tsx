@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
-import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
-import { Section } from "@/components/ui/Section";
-import { GUIDES } from "@/lib/guides";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { HEALTHCARE_TIPS } from "@/lib/healthcare";
-import { SECTION_RELATED_GUIDE_SLUGS } from "@/lib/section-related-guides";
 import { SPECIALIST_TIPS } from "@/lib/specialist-doctors";
+import { topicCrumb } from "@/lib/topic-map";
 import SpecialistDoctorsClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -35,11 +33,6 @@ export default function SpecialistDoctorsPage() {
 			acceptedAnswer: { "@type": "Answer", text: t.body },
 		})),
 	};
-	const relatedGuides = (
-		SECTION_RELATED_GUIDE_SLUGS["specialist-doctors"] ?? []
-	)
-		.map((slug) => GUIDES.find((g) => g.slug === slug))
-		.filter((g) => g !== undefined);
 
 	return (
 		<DirectoryTemplate
@@ -47,7 +40,7 @@ export default function SpecialistDoctorsPage() {
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Directories", href: "/sections/" },
+					topicCrumb("directory", "specialist-doctors"),
 					{ label: "Specialist Doctors" },
 				],
 				eyebrow: "Healthcare",
@@ -63,26 +56,7 @@ export default function SpecialistDoctorsPage() {
 					"This directory is general information for relocators, not medical advice. Always verify GeSY acceptance status, clinic availability, and consultation fees directly with the provider before attending.",
 			}}
 			related={
-				<div className="space-y-8" data-pagefind-ignore>
-					{relatedGuides.length > 0 ? (
-						<Section id="related" title="Related guides">
-							<CardGrid cols={2}>
-								{relatedGuides.map((g) => (
-									<CardGridItem key={g.slug}>
-										<Card
-											variant="text"
-											href={`/guides/${g.slug}/`}
-											title={g.title}
-											text={
-												<span className="line-clamp-2">{g.description}</span>
-											}
-										/>
-									</CardGridItem>
-								))}
-							</CardGrid>
-						</Section>
-					) : null}
-				</div>
+				<MoreOnTopic type="directory" slug="specialist-doctors" cols={3} />
 			}
 		>
 			<script

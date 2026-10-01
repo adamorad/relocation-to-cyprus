@@ -193,19 +193,18 @@ export const SECTIONS_INDEX: ReadonlyArray<SectionEntry> = [
 		description:
 			"Certified halal and kosher restaurants, butchers, and grocery suppliers.",
 	},
+	{
+		name: "Where to Eat",
+		slug: "food",
+		category: "Food & Drink",
+		description:
+			"Local-favourite cafés, tavernas, grills and sweet shops in four cities, by meal and price band.",
+	},
+	{
+		name: "Supermarkets & Markets",
+		slug: "shopping",
+		category: "Food & Drink",
+		description:
+			"Supermarket chains by budget, municipal markets with opening days, and each city's main mall.",
+	},
 ];
-
-export const SECTION_CATEGORIES = [
-	"Property & Housing",
-	"Legal & Professional",
-	"Business",
-	"Family & Education",
-	"Healthcare",
-	"Active Living",
-	"Getting Around",
-	"Community",
-	"Arts & Culture",
-	"Food & Drink",
-] as const;
-
-export type SectionCategory = (typeof SECTION_CATEGORIES)[number];

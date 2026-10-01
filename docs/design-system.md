@@ -21,9 +21,16 @@ A live showcase of every component and template is at `/design-system/` (noindex
 | `ArticleTemplate` | Guides, long text pages | reading body | Optional `toc` (right rail on wide screens, block on mobile), `related`, `legal`, `share`. No inline email form unless `showInlineEmail`. |
 | `DirectoryTemplate` | Directories under /sections/ | wide | Filters first (client component), entries as text Cards, `info` tips as collapsible cards, `notice` Callout, `related`. |
 | `ToolTemplate` | Calculators, checklists, comparisons | reading (calculators) or wide (tables, two-column tools) | Inputs in `ToolPanel`, results as StatCard/DataTable, `nextSteps` buttons, `disclaimer` (legal Callout). One disclaimer and one next-steps block per page. |
+| `TopicHub` | Topic hubs (/{topic}/ and /moving-to-cyprus/) | wide | Server component on HubTemplate: band header (Home > Topic, eyebrow "Topic", H1 topic name), city ChipGroup (`?city=`), Sections "Guides", "Local directories", "Tools", then "Explore by city". Items come from `itemsForTopic()`; Pagefind type `topic`. |
 | `CityTemplate` | /regions/{city}/ | wide | Band header, `contents` nav, Sections, a `cta` linking to `/listings/?city={slug}`. |
 
-`TemplateMain` is the shared `<main>` wrapper (`pagefindType` adds the Pagefind body and type filter). Redirect stubs, the homepage and the `/design-system/` page are the only pages that do not use PageHeader.
+`MoreOnTopic` (`components/templates/MoreOnTopic.tsx`) is the cross-link block for every guide, directory and tool: pass it as the template's `related`, e.g. `related={<MoreOnTopic type="guide" slug={g.slug} />}`. It shows up to six listed items with the same primary topic (same city first, the item itself and any `exclude` hrefs left out) and a "Browse {Topic}" link to the hub. Tools pass their Next steps hrefs as `exclude`. Do not add other related blocks next to it.
+
+## Topics
+
+Topics are defined in `lib/topics.ts` and every guide, directory and tool is mapped in `lib/topic-map.ts` (one primary topic, up to two secondary topics, specific cities). Item pages build their middle breadcrumb with `topicCrumb(type, slug)` (Home > {Topic} > {Item}). Hubs list primary items first, then items with the topic as a secondary topic. Index pages (/guides/, /sections/, /tools/) filter with `TopicIndexClient` (`?topic=`). URL filters follow the static-export pattern: the server renders every item, the client reads `window.location.search` after hydration and writes changes back with `history.replaceState`. When adding a guide, directory or tool, add its mapping and run `node scripts/gen-topics-mapping.mjs`; the build fails otherwise.
+
+`TemplateMain` is the shared `<main>` wrapper (`pagefindType` adds the Pagefind body and type filter; types: guide, directory, tool, city, topic, listing, developer, page). Redirect stubs, the homepage and the `/design-system/` page are the only pages that do not use PageHeader.
 
 ## Components (`components/ui/`)
 

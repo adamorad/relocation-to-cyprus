@@ -117,6 +117,13 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 	},
 	{
 		slug: "getting-around-cyprus-no-car",
+		image: {
+			src: "/images/guides/getting-around-cyprus-no-car-1600.webp",
+			srcSmall: "/images/guides/getting-around-cyprus-no-car-800.webp",
+			width: 1600,
+			height: 901,
+			alt: "Painting of a turquoise city bus at a shaded seaside bus stop where two passengers wait",
+		},
 		datePublished: "2026-07-14",
 		dateModified: "2026-07-14",
 		category: "transport",

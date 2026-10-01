@@ -62,6 +62,9 @@ const SAMPLE = [
 	"/regions/",
 	"/regions/limassol/",
 	"/moving-to-cyprus/",
+	"/health/",
+	"/home-and-bills/",
+	"/health/?city=limassol",
 	"/explore/",
 	"/explore/?q=pharmacy",
 ];

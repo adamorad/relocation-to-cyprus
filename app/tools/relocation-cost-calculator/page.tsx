@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import RelocationCostCalculatorClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,14 +26,26 @@ export default function RelocationCostCalculatorPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic
+					type="tool"
+					slug="relocation-cost-calculator"
+					exclude={[
+						"/tools/budget-builder/",
+						"/tools/rent-vs-buy-calculator/",
+						"/tools/mortgage-calculator/",
+					]}
+					cols={3}
+				/>
+			}
 			width="wide"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "relocation-cost-calculator"),
 					{ label: "Relocation Cost Estimator" },
 				],
-				eyebrow: "Finance",
+				eyebrow: getTopicForTool("relocation-cost-calculator").name,
 				title: "Relocation Cost Estimator",
 				intro:
 					"Estimate your total one-time moving costs to Cyprus, from flights and shipping to deposits, furniture, and legal fees. Adjust the inputs and see a full itemised breakdown instantly.",

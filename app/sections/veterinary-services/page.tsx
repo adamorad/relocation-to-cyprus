@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
-import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
-import { Section } from "@/components/ui/Section";
-import { GUIDES } from "@/lib/guides";
-import { SECTION_RELATED_GUIDE_SLUGS } from "@/lib/section-related-guides";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
+import { topicCrumb } from "@/lib/topic-map";
 import { VET_TIPS } from "@/lib/veterinary";
 import VeterinaryServicesClient from "./client";
 
@@ -34,11 +32,6 @@ export default function VeterinaryServicesPage() {
 			acceptedAnswer: { "@type": "Answer", text: t.body },
 		})),
 	};
-	const relatedGuides = (
-		SECTION_RELATED_GUIDE_SLUGS["veterinary-services"] ?? []
-	)
-		.map((slug) => GUIDES.find((g) => g.slug === slug))
-		.filter((g) => g !== undefined);
 
 	return (
 		<DirectoryTemplate
@@ -46,7 +39,7 @@ export default function VeterinaryServicesPage() {
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Directories", href: "/sections/" },
+					topicCrumb("directory", "veterinary-services"),
 					{ label: "Veterinary Services" },
 				],
 				eyebrow: "Services",
@@ -62,26 +55,7 @@ export default function VeterinaryServicesPage() {
 					"Opening hours, emergency cover arrangements, and staff availability change. Always confirm directly with the clinic before travelling. For a genuine pet emergency, call ahead even if the clinic is listed as 24/7.",
 			}}
 			related={
-				<div className="space-y-8" data-pagefind-ignore>
-					{relatedGuides.length > 0 ? (
-						<Section id="related" title="Related guides">
-							<CardGrid cols={2}>
-								{relatedGuides.map((g) => (
-									<CardGridItem key={g.slug}>
-										<Card
-											variant="text"
-											href={`/guides/${g.slug}/`}
-											title={g.title}
-											text={
-												<span className="line-clamp-2">{g.description}</span>
-											}
-										/>
-									</CardGridItem>
-								))}
-							</CardGrid>
-						</Section>
-					) : null}
-				</div>
+				<MoreOnTopic type="directory" slug="veterinary-services" cols={3} />
 			}
 		>
 			<script

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
+import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import HealthInsuranceComparisonClient from "./client";
 
 const SITE_URL = "https://realcy.app";
@@ -24,14 +26,25 @@ export default function HealthInsuranceComparisonClientPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
+			related={
+				<MoreOnTopic
+					type="tool"
+					slug="health-insurance-comparison"
+					exclude={[
+						"/guides/gesy-registration-guide/",
+						"/sections/specialist-doctors/",
+					]}
+					cols={3}
+				/>
+			}
 			width="wide"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Tools", href: "/tools/" },
+					topicCrumb("tool", "health-insurance-comparison"),
 					{ label: "Health Insurance Comparison" },
 				],
-				eyebrow: "Health",
+				eyebrow: getTopicForTool("health-insurance-comparison").name,
 				title: "Private Health Insurance for Cyprus",
 				intro:
 					"Compare 8 insurance providers including GeSY as a baseline. Filter by your needs, then get a personal quote from your shortlist.",

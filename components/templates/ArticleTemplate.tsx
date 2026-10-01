@@ -31,8 +31,17 @@ export function ArticleTemplate({
 	...main
 }: TemplateMainProps & {
 	header: PageHeaderProps;
-	/** Hero image above the body (eager, it is the LCP). */
-	hero?: { src: string; alt: string };
+	/**
+	 * Hero image above the body (eager, it is the LCP). With `srcSmall`,
+	 * `width` and `height` it renders an 800w/1600w srcset at that ratio.
+	 */
+	hero?: {
+		src: string;
+		alt: string;
+		srcSmall?: string;
+		width?: number;
+		height?: number;
+	};
 	share?: ReactNode;
 	toc?: TocItem[];
 	tocLabel?: string;
@@ -61,18 +70,30 @@ export function ArticleTemplate({
 					<div className="min-w-0 lg:[grid-area:header]">
 						<PageHeader {...header} contained={false} />
 						{hero ? (
-							<div className="mt-6 overflow-hidden rounded-card">
-								{/* biome-ignore lint/performance/noImgElement: static export, hero is the LCP */}
+							// <picture> stops React emitting an image preload hint into the
+							// RSC payload, so prefetching this guide from another page does
+							// not download its hero there.
+							<picture className="mt-6 block overflow-hidden rounded-card">
 								<img
 									src={hero.src}
+									srcSet={
+										hero.srcSmall
+											? `${hero.srcSmall} 800w, ${hero.src} 1600w`
+											: undefined
+									}
+									sizes={
+										hero.srcSmall
+											? "(min-width: 1024px) 720px, calc(100vw - 40px)"
+											: undefined
+									}
 									alt={hero.alt}
-									className="aspect-[2/1] w-full object-cover"
+									className={`${hero.width ? "h-auto" : "aspect-[2/1]"} w-full object-cover`}
 									loading="eager"
 									fetchPriority="high"
-									width={1200}
-									height={630}
+									width={hero.width ?? 1200}
+									height={hero.height ?? 630}
 								/>
-							</div>
+							</picture>
 						) : null}
 						{share}
 					</div>

@@ -77,7 +77,7 @@ export function EmailCapture({
 			<form
 				data-pagefind-ignore
 				onSubmit={handleSubmit}
-				className="flex gap-2 mt-3 max-w-sm"
+				className="flex gap-2 max-w-sm"
 			>
 				<input
 					type="email"
@@ -85,11 +85,11 @@ export function EmailCapture({
 					onChange={(e) => setEmail(e.target.value)}
 					placeholder="your@email.com"
 					aria-label="Email address"
-					className="flex-1 text-xs px-3 py-2 rounded bg-slate-800 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-white"
+					className="min-w-0 flex-1 min-h-11 text-base px-3 rounded-field bg-white/10 border border-white/25 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white"
 				/>
 				<button
 					type="submit"
-					className="text-xs px-4 py-2 rounded bg-white text-ink font-semibold hover:bg-sky-strong transition-colors whitespace-nowrap"
+					className="min-h-11 text-sm px-4 rounded-field bg-white text-ink font-semibold hover:bg-sky-strong transition-colors whitespace-nowrap"
 				>
 					Get it free
 				</button>
