@@ -104,7 +104,7 @@ const MONTH_NAMES = [
 ];
 
 function getUrgencyClass(daysUntil: number): string {
-	if (daysUntil < 0) return "bg-slate-100 border-slate-200 text-muted";
+	if (daysUntil < 0) return "bg-slate-100 border-line text-muted";
 	if (daysUntil <= 30) return "bg-red-50 border-red-200 text-red-900";
 	if (daysUntil <= 60) return "bg-amber-50 border-amber-200 text-amber-900";
 	return "bg-emerald-50 border-emerald-200 text-emerald-900";
@@ -112,18 +112,18 @@ function getUrgencyClass(daysUntil: number): string {
 
 function getUrgencyBadge(daysUntil: number): { text: string; class: string } {
 	if (daysUntil < 0) {
-		return { text: "Passed", class: "bg-slate-200 text-slate-500" };
+		return { text: "Passed", class: "bg-slate-200 text-slate-700" };
 	}
 	if (daysUntil === 0) {
-		return { text: "Today", class: "bg-red-500 text-white" };
+		return { text: "Today", class: "bg-red-700 text-white" };
 	}
 	if (daysUntil <= 30) {
-		return { text: `${daysUntil}d`, class: "bg-red-500 text-white" };
+		return { text: `${daysUntil}d`, class: "bg-red-700 text-white" };
 	}
 	if (daysUntil <= 60) {
-		return { text: `${daysUntil}d`, class: "bg-amber-500 text-white" };
+		return { text: `${daysUntil}d`, class: "bg-amber-700 text-white" };
 	}
-	return { text: `${daysUntil}d`, class: "bg-emerald-500 text-white" };
+	return { text: `${daysUntil}d`, class: "bg-green-700 text-white" };
 }
 
 function getDaysUntil(month: number, day: number, today: Date): number {
@@ -140,9 +140,9 @@ function taxpayerLabel(type: TaxpayerType): string {
 }
 
 function taxpayerBadgeClass(type: TaxpayerType): string {
-	if (type === "individual") return "bg-teal-100 text-teal-800";
-	if (type === "company") return "bg-blue-100 text-blue-800";
-	return "bg-purple-100 text-purple-800";
+	if (type === "individual") return "bg-sky-strong text-ink";
+	if (type === "company") return "bg-sky text-ink border border-line";
+	return "bg-slate-100 text-ink";
 }
 
 export default function TaxFilingCalendarPage() {
@@ -168,18 +168,18 @@ export default function TaxFilingCalendarPage() {
 	return (
 		<main id="main" className="max-w-3xl mx-auto px-6 py-10 md:py-16">
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-ink">
 					Home
 				</Link>{" "}
 				›{" "}
-				<Link href="/tools" className="hover:text-slate-900">
+				<Link href="/tools" className="hover:text-ink">
 					Tools
 				</Link>{" "}
-				› <span className="text-slate-900">Tax Filing Calendar</span>
+				› <span className="text-ink">Tax Filing Calendar</span>
 			</nav>
 
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
 					Interactive Tool
 				</p>
 				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">
@@ -198,11 +198,11 @@ export default function TaxFilingCalendarPage() {
 					Within 30 days
 				</span>
 				<span className="flex items-center gap-1.5">
-					<span className="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+					<span className="w-3 h-3 rounded-full bg-amber-700 inline-block"></span>
 					31–60 days
 				</span>
 				<span className="flex items-center gap-1.5">
-					<span className="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+					<span className="w-3 h-3 rounded-full bg-green-700 inline-block"></span>
 					More than 60 days
 				</span>
 				<span className="flex items-center gap-1.5">
@@ -220,7 +220,7 @@ export default function TaxFilingCalendarPage() {
 						className={`px-4 py-1.5 text-sm font-medium rounded-full border transition-colors capitalize ${
 							filter === f
 								? "bg-primary border-primary text-white"
-								: "bg-white border-slate-200 text-slate-600 hover:border-slate-300"
+								: "bg-white border-line text-slate-600 hover:border-line"
 						}`}
 					>
 						{f === "all"
@@ -243,22 +243,20 @@ export default function TaxFilingCalendarPage() {
 							key={month}
 							className={`rounded-xl border overflow-hidden ${
 								isCurrentMonth
-									? "border-teal-400 ring-2 ring-teal-400 ring-offset-1"
-									: "border-slate-200"
+									? "border-primary ring-2 ring-primary ring-offset-1"
+									: "border-line"
 							}`}
 						>
 							<div
 								className={`px-5 py-3 flex items-center gap-2 ${
-									isCurrentMonth
-										? "bg-primary text-white"
-										: "bg-slate-900 text-white"
+									isCurrentMonth ? "bg-primary text-white" : "bg-ink text-white"
 								}`}
 							>
 								<h2 className="font-semibold text-sm">
 									{MONTH_NAMES[month - 1]}
 								</h2>
 								{isCurrentMonth && (
-									<span className="text-xs font-bold uppercase tracking-wider bg-white text-teal-700 px-2 py-0.5 rounded-full">
+									<span className="text-xs font-bold uppercase tracking-wider bg-white text-primary px-2 py-0.5 rounded-full">
 										Current
 									</span>
 								)}
@@ -285,12 +283,12 @@ export default function TaxFilingCalendarPage() {
 															{deadline.day} {MONTH_NAMES[month - 1]}
 														</span>
 														{deadline.formRef !== "–" && (
-															<span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-slate-900 text-white">
+															<span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-ink text-white">
 																{deadline.formRef}
 															</span>
 														)}
 														<span
-															className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${taxpayerBadgeClass(
+															className={`text-xs font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${taxpayerBadgeClass(
 																deadline.taxpayer,
 															)}`}
 														>
@@ -325,8 +323,8 @@ export default function TaxFilingCalendarPage() {
 				</div>
 			)}
 
-			<aside className="mt-8 p-5 bg-amber-50 border border-amber-200 rounded-xl text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">Important notice</p>
+			<aside className="mt-8 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
+				<p className="font-semibold text-amber-900 mb-1">Important notice</p>
 				<p>
 					Deadlines change year to year and depend on your specific tax
 					situation. Verify all deadlines with a Cyprus accountant. Late filing
@@ -337,27 +335,27 @@ export default function TaxFilingCalendarPage() {
 			</aside>
 
 			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools" className="underline hover:text-slate-900">
+				<Link href="/tools" className="underline hover:text-ink">
 					← Back to Tools
 				</Link>
 			</p>
 
-			<aside className="mt-10 p-5 rounded-xl bg-slate-50 border border-slate-200">
-				<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
+			<aside className="mt-10 p-5 rounded-2xl bg-slate-50 border border-line">
+				<p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
 					Next steps
 				</p>
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/guides/taxes-for-expats/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Read: Taxes for Expats in Cyprus →
+						Read: Taxes for Expats in Cyprus
 					</Link>{" "}
 					<Link
 						href="/sections/accountants/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Find a tax advisor →
+						Find a tax advisor
 					</Link>
 				</div>
 			</aside>

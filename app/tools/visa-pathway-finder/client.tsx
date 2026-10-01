@@ -162,20 +162,20 @@ export default function VisaPathwayFinderPage() {
 	return (
 		<main className="max-w-3xl mx-auto px-6 py-10">
 			<nav className="text-xs text-slate-500 mb-6 flex gap-3">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-ink">
 					← Home
 				</Link>
 				<span className="text-muted">|</span>
-				<Link href="/tools" className="hover:text-slate-900">
+				<Link href="/tools" className="hover:text-ink">
 					← All Tools
 				</Link>
 			</nav>
 
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
 					Tools
 				</p>
-				<h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl font-bold tracking-tight text-ink">
 					Cyprus Visa Pathway Finder
 				</h1>
 				<p className="mt-2 text-slate-600 text-sm leading-relaxed">
@@ -187,7 +187,7 @@ export default function VisaPathwayFinderPage() {
 
 			<div className="space-y-6">
 				{/* Q1 */}
-				<div className="p-5 bg-slate-50 rounded-xl border border-slate-200">
+				<div className="p-5 bg-slate-50 rounded-2xl border border-line">
 					<div className="flex items-center justify-between mb-3">
 						<p className="text-sm font-bold text-slate-800">
 							Q1 · What is your citizenship status?
@@ -210,10 +210,10 @@ export default function VisaPathwayFinderPage() {
 									setEuPurpose(null);
 									setNonEuPurpose(null);
 								}}
-								className={`flex-1 py-3 px-4 rounded-lg border-2 text-sm font-semibold transition-colors ${
+								className={`flex-1 py-3 px-4 rounded-xl border-2 text-sm font-semibold transition-colors ${
 									citizenship === opt
 										? "border-primary text-white"
-										: "border-slate-200 bg-white text-slate-700 hover:border-slate-400"
+										: "border-line bg-white text-ink hover:bg-sky"
 								}`}
 								style={
 									citizenship === opt
@@ -229,7 +229,7 @@ export default function VisaPathwayFinderPage() {
 
 				{/* Q2 — EU */}
 				{citizenship === "eu" && (
-					<div className="p-5 bg-slate-50 rounded-xl border border-slate-200">
+					<div className="p-5 bg-slate-50 rounded-2xl border border-line">
 						<p className="text-sm font-bold text-slate-800 mb-3">
 							Q2 · What will you be doing in Cyprus?
 						</p>
@@ -252,10 +252,10 @@ export default function VisaPathwayFinderPage() {
 									<button
 										key={opt!}
 										onClick={() => setEuPurpose(opt)}
-										className={`py-3 px-4 rounded-lg border-2 text-sm font-semibold transition-colors text-center ${
+										className={`py-3 px-4 rounded-xl border-2 text-sm font-semibold transition-colors text-center ${
 											euPurpose === opt
 												? "text-white"
-												: "border-slate-200 bg-white text-slate-700 hover:border-slate-400"
+												: "border-line bg-white text-ink hover:bg-sky"
 										}`}
 										style={
 											euPurpose === opt
@@ -273,7 +273,7 @@ export default function VisaPathwayFinderPage() {
 
 				{/* Q2 — Non-EU */}
 				{citizenship === "non-eu" && (
-					<div className="p-5 bg-slate-50 rounded-xl border border-slate-200">
+					<div className="p-5 bg-slate-50 rounded-2xl border border-line">
 						<p className="text-sm font-bold text-slate-800 mb-3">
 							Q2 · What will you do in Cyprus?
 						</p>
@@ -298,10 +298,10 @@ export default function VisaPathwayFinderPage() {
 									<button
 										key={opt!}
 										onClick={() => setNonEuPurpose(opt)}
-										className={`py-3 px-4 rounded-lg border-2 text-sm font-semibold transition-colors text-left ${
+										className={`py-3 px-4 rounded-xl border-2 text-sm font-semibold transition-colors text-left ${
 											nonEuPurpose === opt
 												? "text-white"
-												: "border-slate-200 bg-white text-slate-700 hover:border-slate-400"
+												: "border-line bg-white text-ink hover:bg-sky"
 										}`}
 										style={
 											nonEuPurpose === opt
@@ -319,16 +319,14 @@ export default function VisaPathwayFinderPage() {
 
 				{/* Result */}
 				{pathway && (
-					<div className="p-5 rounded-xl border-2 border-primary bg-white">
+					<div className="p-5 rounded-2xl border-2 border-primary bg-white">
 						<p
-							className="text-[10px] uppercase tracking-[0.2em] font-bold mb-1"
+							className="text-xs uppercase tracking-[0.2em] font-bold mb-1"
 							style={{ color: "#087f98" }}
 						>
 							Recommended pathway
 						</p>
-						<h2 className="text-lg font-bold text-slate-900 mb-3">
-							{pathway.name}
-						</h2>
+						<h2 className="text-lg font-bold text-ink mb-3">{pathway.name}</h2>
 						<p className="text-sm text-slate-700 leading-relaxed mb-4">
 							{pathway.description}
 						</p>
@@ -354,10 +352,10 @@ export default function VisaPathwayFinderPage() {
 							{pathway.guideSlug && (
 								<Link
 									href={`/guides/${pathway.guideSlug}`}
-									className="inline-block text-sm font-semibold px-4 py-2 rounded-lg text-white"
+									className="inline-block text-sm font-semibold px-4 py-2 rounded-xl text-white"
 									style={{ backgroundColor: "#087f98" }}
 								>
-									{pathway.guideLabel || "Read the guide"} →
+									{pathway.guideLabel || "Read the guide"}
 								</Link>
 							)}
 							{pathway.officialLink && (
@@ -365,7 +363,7 @@ export default function VisaPathwayFinderPage() {
 									href={pathway.officialLink}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="inline-block text-sm font-semibold px-4 py-2 rounded-lg border-2 border-slate-200 text-slate-700 hover:border-slate-400"
+									className="inline-block text-sm font-semibold px-4 py-2 rounded-xl border-2 border-line text-ink hover:bg-sky"
 								>
 									{pathway.officialLabel || "Official site"} ↗
 								</a>
@@ -375,8 +373,8 @@ export default function VisaPathwayFinderPage() {
 				)}
 			</div>
 
-			<aside className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-xl text-xs text-slate-700 leading-relaxed">
-				<p className="font-semibold text-slate-900 mb-1">Not legal advice</p>
+			<aside className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-xs text-slate-700 leading-relaxed">
+				<p className="font-semibold text-amber-900 mb-1">Not legal advice</p>
 				<p>
 					This tool provides general guidance only. Immigration rules change
 					frequently — always verify current requirements with the Cyprus Civil
@@ -386,7 +384,7 @@ export default function VisaPathwayFinderPage() {
 			</aside>
 
 			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools" className="underline hover:text-slate-900">
+				<Link href="/tools" className="underline hover:text-ink">
 					← All Tools
 				</Link>
 			</p>

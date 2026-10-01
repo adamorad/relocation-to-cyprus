@@ -66,10 +66,10 @@ export default function SoleTraderVsLtdPage() {
 					]}
 				/>
 				<header className="mb-8">
-					<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold mb-2">
+					<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary mb-2">
 						Business
 					</p>
-					<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+					<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">
 						Sole Trader vs Ltd
 					</h1>
 					<p className="mt-3 text-lg text-slate-600 leading-relaxed max-w-2xl">
