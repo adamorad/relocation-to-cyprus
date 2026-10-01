@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
+import { SourcesNote } from "@/components/ui/SourcesNote";
 import { IMMIGRATION_LAWYER_TIPS } from "@/lib/immigration-lawyers";
 import { topicCrumb } from "@/lib/topic-map";
 import ImmigrationLawyersClient from "./client";
@@ -58,7 +59,25 @@ export default function ImmigrationLawyersPage() {
 					"This is a directory, not legal advice. Always verify Bar Association registration and fee structures directly with the firm.",
 			}}
 			related={
-				<MoreOnTopic type="directory" slug="immigration-lawyers" cols={3} />
+				<>
+					<SourcesNote
+						className="mb-12"
+						lastChecked="2026-10-02"
+						sources={[
+							{
+								label:
+									"Migration Department: Digital nomads and family members",
+								url: "https://www.gov.cy/mip-md/en/documents/digital-nomads-and-family-members/",
+							},
+							{
+								label:
+									"Migration Department: Immigration permits for investors",
+								url: "https://www.gov.cy/mip-md/en/documents/companies-investors-permanent-residence-3/immigration-permits-for-investors/",
+							},
+						]}
+					/>
+					<MoreOnTopic type="directory" slug="immigration-lawyers" cols={3} />
+				</>
 			}
 		>
 			<script

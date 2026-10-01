@@ -32,22 +32,22 @@ const ITEMS: ChecklistItem[] = [
 	{
 		id: "funds",
 		label: "Proof of Sufficient Funds or Employment",
-		note: "3 to 6 months of bank statements showing sufficient income (typically €30,000+/year for self-sufficient applicants), or an employment contract or payslips if employed in Cyprus.",
+		note: "3 to 6 months of bank statements showing enough income or savings to support yourself without social assistance (no fixed amount is published), or an employment contract or payslips if employed in Cyprus.",
 	},
 	{
 		id: "meu1_form",
 		label: "Completed MEU1 Application Form",
-		note: "Download the MEU1 form from crmd.moi.gov.cy. Fill in all fields in block capitals. Do not sign until instructed by the officer at your appointment.",
+		note: "Download the MEU1 form from the Migration Department's MEU1 page on gov.cy (gov.cy/mip-md). Fill in all fields in block capitals. Do not sign until instructed by the officer at your appointment.",
 	},
 	{
 		id: "appointment",
-		label: "Appointment Booked at Civil Registry (crmd.moi.gov.cy)",
-		note: "Book online at crmd.moi.gov.cy. Appointment slots fill 2 to 3 weeks in advance: book as early as possible. Print the confirmation email and bring it to the appointment.",
+		label: "Appointment Booked at the Migration Department",
+		note: "Check on gov.cy (gov.cy/mip-md) how to book with the Migration Department. Appointment slots fill 2 to 3 weeks in advance: book as early as possible. Print the confirmation email and bring it to the appointment.",
 	},
 	{
 		id: "attend",
 		label: "Attend Civil Registry Appointment",
-		note: "Arrive 10 to 15 minutes early with all original documents AND copies. The officer will verify documents, stamp your form, and issue a receipt. Processing typically takes 2 to 4 weeks after the appointment.",
+		note: "Arrive 10 to 15 minutes early with all original documents AND copies. The officer will verify documents, stamp your form, and issue a receipt. The Department aims to decide within one month of a complete application. The application fee is €20.",
 	},
 	{
 		id: "certificate",

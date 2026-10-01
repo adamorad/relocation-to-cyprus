@@ -8,6 +8,13 @@
  * accountant or lawyer before acting.
  */
 
+import {
+	eur,
+	FOREIGN_PENSION_THRESHOLD,
+	FOREIGN_PENSION_THRESHOLD_2025,
+	VISITOR_PERMIT_MONTHLY_INCOME,
+	VISITOR_PERMIT_MONTHLY_INCOME_COUPLE,
+} from "./facts/tax";
 import { GUIDES_BATCH1 } from "./guides-batch1";
 import { GUIDES_BATCH2 } from "./guides-batch2";
 import { GUIDES_BATCH3 } from "./guides-batch3";
@@ -49,11 +56,30 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "residency-and-visas",
 		datePublished: "2026-05-22",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Migration Department: Immigration permits for investors",
+				url: "https://www.gov.cy/mip-md/en/documents/companies-investors-permanent-residence-3/immigration-permits-for-investors/",
+			},
+			{
+				label: "Migration Department: Digital nomads and family members",
+				url: "https://www.gov.cy/mip-md/en/documents/digital-nomads-and-family-members/",
+			},
+			{
+				label: "Migration Department: Registration of EU citizens (MEU1)",
+				url: "https://www.gov.cy/mip-md/en/documents/e-u-e-e-a-citizens-and-family-members-2/e-u-e-e-a-citizens-family-member/registration-of-e-u-citizens-and-members-of-their-families-who-are-also-e-u-e-e-a-citizens-meu1/",
+			},
+			{
+				label: "Migration Department: Frequent questions",
+				url: "https://www.gov.cy/mip-md/en/documents/frequent-questions/",
+			},
+		],
 		category: "immigration",
 		title: "Cyprus Residency Visas 2026: All Routes Compared",
 		description:
-			"Compare Cyprus visas: Golden Visa (€300K), Digital Nomad (€3.5K/mo), EU registration, Category F & EU Blue Card. Investor timelines, costs & eligibility.",
+			"Compare Cyprus visas: permanent residence by investment (€300K), Digital Nomad (€3.5K/mo), EU registration, Category F & EU Blue Card. Investor timelines, costs & eligibility.",
 		sections: [
 			{
 				heading: "Why Cyprus has multiple paths",
@@ -61,33 +87,33 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Permanent Residency by Investment (the property route)",
-				body: "The most common path for non-EU buyers is the Permanent Residency by Investment programme — historically called Category F, currently regulated under Regulation 6(2) of the Aliens and Immigration Regulations. The headline requirement is a real-estate purchase of at least €300,000 (excluding VAT) in a newly-built residential property, paid via bank transfer from a Cypriot account. You also need to demonstrate annual income of at least €50,000 from sources outside Cyprus, plus an additional €15,000 for a spouse and €10,000 per dependent child. There is no minimum stay requirement once granted — you only need to visit Cyprus once every two years to keep the permit alive — which is what makes it popular with families who plan to keep one foot somewhere else for tax or schooling reasons. The permit covers spouse and unmarried children up to 25 if financially dependent, and it does not directly lead to citizenship: that's a separate naturalisation track that requires seven years of legal residence with most of the time physically spent in Cyprus.",
+				body: "The most common path for non-EU buyers is the Permanent Residency by Investment programme, an expedited immigration permit under Regulation 6(2) of the Aliens and Immigration Regulations. The headline requirement is at least €300,000 plus VAT for a new home bought from a developer, paid with funds transferred to Cyprus from abroad, from your own (or your spouse's) bank account. You also need to demonstrate annual income of at least €50,000 from sources outside Cyprus, plus an additional €15,000 for a spouse and €10,000 per dependent child. There is no minimum stay requirement once granted — you only need to visit Cyprus once every two years to keep the permit alive — which is what makes it popular with families who plan to keep one foot somewhere else for tax or schooling reasons. The permit covers spouse and unmarried children up to 25 if financially dependent, and it does not directly lead to citizenship: that's a separate naturalisation track that requires seven years of legal residence with most of the time physically spent in Cyprus.",
 			},
 			{
 				heading: "Digital Nomad Visa",
-				body: "Cyprus introduced its Digital Nomad Visa in late 2021 and significantly expanded it in 2024. It targets non-EU nationals who work remotely for foreign employers or as freelancers serving non-Cyprus clients. The minimum income requirement is €3,500 per month net (after tax, social contributions and any other deductions), increased by 20% for a spouse and 15% per dependent child. The visa is issued for one year, renewable for up to three years, and gives you full residency rights including the ability to bring family members. Crucially, after 183 days in Cyprus during a tax year, you become a Cyprus tax resident — which can be either an advantage (Cyprus has favourable tax treatment for foreign-sourced income and a tax-free dividend regime for non-domiciled residents) or a disadvantage (you may have new filing obligations in Cyprus), depending on your home country's tax treaty and your specific situation. The application is processed through the Civil Registry and Migration Department; expect about 5–8 weeks if your documents are clean.",
+				body: "Cyprus introduced its Digital Nomad Visa in late 2021 and raised the cap to 500 permits in 2022. It targets non-EU nationals who work remotely for foreign employers or as freelancers serving non-Cyprus clients. The minimum income requirement is €3,500 per month net (after tax, social contributions and any other deductions), increased by 20% for a spouse and 15% per dependent child. The permit is issued for one year and can be renewed once for up to two more years, and it gives you full residency rights including the ability to bring family members. Crucially, after 183 days in Cyprus during a tax year, you become a Cyprus tax resident — which can be either an advantage (Cyprus has favourable tax treatment for foreign-sourced income and a tax-free dividend regime for non-domiciled residents) or a disadvantage (you may have new filing obligations in Cyprus), depending on your home country's tax treaty and your specific situation. The application is processed by the Migration Department, whose stated examination time is 5 to 7 weeks for a complete application.",
 			},
 			{
 				heading: "EU citizens and family members",
-				body: "If you hold an EU passport, you do not need a visa to live in Cyprus. After 90 days of continuous presence, you must register your residence with the Civil Registry — they issue a Registration Certificate (often called an MEU1 or yellow slip, though the slip itself is now blue). The requirements are minimal: proof of accommodation (a rental contract or property deed), proof of health insurance or registration with the General Healthcare System (GeSY), and either proof of employment or proof of sufficient funds (typically the same €30,000–€40,000 per year as a self-supporting resident). EU registration is permanent — there is no expiry date — and after five years of continuous legal residence you qualify for the Long-term Residence permit, which carries near-identical rights to citizenship.",
+				body: "If you hold an EU passport, you do not need a visa to live in Cyprus. After 90 days of continuous presence, you must register your residence with the Civil Registry — they issue a Registration Certificate (often called an MEU1 or yellow slip, though the slip itself is now blue). The requirements are minimal: proof of accommodation (a rental contract or property deed), proof of health insurance or registration with the General Healthcare System (GeSY), and either proof of employment or self-employment, or proof that you have enough money to support yourself and your family without relying on social assistance, plus comprehensive health cover. No fixed amount is published. EU registration is permanent (there is no expiry date), and after five years of continuous legal residence you can apply for a Permanent Residence certificate (form MEU3). It confirms a permanent right to live in Cyprus but is not citizenship.",
 			},
 			{
 				heading: "Practical advice",
-				body: "Three pieces of advice that come up consistently in expat forums. First, do not rely on a tourist entry to scout property and then formalise the residency later — both the PR and digital nomad visas require you to apply from outside Cyprus or via a specific in-country procedure, and people get bounced back to their home country surprisingly often if they apply wrong. Second, work with a local lawyer for any property-based application — fees of €1,500–€3,000 are normal, the paperwork is genuinely intricate, and a botched application can delay things by a year. Third, keep originals of every document you used in the application. Cyprus immigration is paper-heavy and a request to re-prove your income from three years ago is not unusual at renewal.",
+				body: "Three pieces of advice that come up consistently in expat forums. First, do not rely on a tourist entry to scout property and then formalise the residency later — the two routes work differently: a Digital Nomad application is made in Nicosia within three months of arriving in Cyprus, while a permanent residence application can be lodged in Nicosia in person or through an authorised representative, and lodging it does not give you a right to stay while it is examined. Second, work with a local lawyer for any property-based application — fees of €1,500–€3,000 are normal, the paperwork is genuinely intricate, and a botched application can delay things by a year. Third, keep originals of every document you used in the application. Cyprus immigration is paper-heavy and a request to re-prove your income from three years ago is not unusual at renewal.",
 			},
 		],
 		faqs: [
 			{
 				q: "Can I get Cyprus residency by buying property?",
-				a: "Yes. The standard route is the Category F permanent residency permit, which requires purchasing property worth at least €300,000 (VAT included) and proving a secured annual income from abroad of at least €30,000. The permit is granted within 2–3 months and grants permanent residency — not citizenship — to the buyer and immediate family.",
+				a: "Yes. Non-EU buyers can apply for a permanent residence (immigration) permit under Regulation 6(2) by buying a new home from a developer for at least €300,000 plus VAT and showing a secured annual income from abroad of at least €50,000 (plus €15,000 for a spouse and €10,000 per dependent child). The Migration Department estimates about two months to examine a complete application. The permit gives residence, not citizenship.",
 			},
 			{
 				q: "How long does the Cyprus Digital Nomad Visa take to process?",
-				a: "The Digital Nomad Visa (MEU1 temporary residency) typically takes 4–8 weeks to process once a complete application is submitted to the Civil Registry and Migration Department. You must apply from within Cyprus on a valid tourist entry, and your income must be at least €3,500/month net from clients outside Cyprus.",
+				a: "The Migration Department states an examination time of 5 to 7 weeks for a Digital Nomad temporary residence permit once a complete application is submitted. You enter Cyprus (on a visa if your nationality needs one) and apply within three months of arrival at the Department's offices in Nicosia. Your net income must be at least €3,500 a month from an employer or clients outside Cyprus.",
 			},
 			{
 				q: "Do I need to physically live in Cyprus to keep my residency?",
-				a: "For permanent residency under Category F, you must visit Cyprus at least once every two years to avoid the permit being considered abandoned. EU citizens under the MEU1 system must not be absent for more than 12 consecutive months. Digital Nomad Visa holders must maintain active residency during their permit period.",
+				a: "For permanent residence by investment (Regulation 6(2)), you must visit Cyprus at least once every two years to avoid the permit being considered abandoned. EU citizens under the MEU1 system must not be absent for more than 12 consecutive months. Digital Nomad Visa holders must maintain active residency during their permit period.",
 			},
 		],
 	},
@@ -185,7 +211,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "Does Cyprus tax foreign pension or employment income?",
-				a: "Foreign pension income remitted to Cyprus is taxed at a flat 5% rate above a €3,420 annual exemption (alternatively taxed at normal rates if lower). Foreign employment income earned for work performed outside Cyprus by a non-dom resident is exempt from Cyprus income tax. Cyprus has double-tax treaties with over 65 countries, which further reduce withholding taxes on cross-border income.",
+				a: `Foreign pension income remitted to Cyprus can be taxed at a flat 5% rate on the amount above ${eur(FOREIGN_PENSION_THRESHOLD)} a year (from tax year 2026; ${eur(FOREIGN_PENSION_THRESHOLD_2025)} for 2025 and earlier), or at normal rates if lower. Foreign employment income earned for work performed outside Cyprus by a non-dom resident is exempt from Cyprus income tax. Cyprus has double-tax treaties with over 65 countries, which further reduce withholding taxes on cross-border income.`,
 			},
 			{
 				q: "Do I need to apply for non-dom status in Cyprus?",
@@ -204,7 +230,14 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "arrival-checklist",
 		datePublished: "2026-05-29",
-		dateModified: "2026-10-01",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Migration Department (gov.cy)",
+				url: "https://www.gov.cy/mip-md/en/",
+			},
+		],
 		category: "immigration",
 		title: "Moving to Cyprus: First-Month Checklist 2026",
 		description:
@@ -217,7 +250,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			{
 				heading:
 					"Week 1: SIM card, temporary address, and booking your registration appointment",
-				body: "The moment you land, buy a Cypriot SIM from the airport arrivals hall — Epic and Cyta both have desks there, and €15 gets you a 30-day unlimited data plan. You need a local number for almost every next step. Your temporary address — a hotel, serviced apartment, or a friend's address — matters too: it's the address on your first official documents, and several later steps require a document sent there. Book your Civil Registry appointment immediately. EU citizens need this for the MEU1 registration (the Yellow Slip); non-EU citizens need it to start the Alien Registration Certificate (ARC) process. Appointment slots at crmd.moi.gov.cy typically fill 2–3 weeks out, so booking on day one means you won't lose three weeks waiting. You can book before you arrive.",
+				body: "The moment you land, buy a Cypriot SIM from the airport arrivals hall — Epic and Cyta both have desks there, and €15 gets you a 30-day unlimited data plan. You need a local number for almost every next step. Your temporary address — a hotel, serviced apartment, or a friend's address — matters too: it's the address on your first official documents, and several later steps require a document sent there. Book your Civil Registry appointment immediately. EU citizens need this for the MEU1 registration (the Yellow Slip); non-EU citizens need it to start the Alien Registration Certificate (ARC) process. Appointment slots with the Migration Department (gov.cy/mip-md) typically fill 2–3 weeks out, so booking on day one means you won't lose three weeks waiting. You can book before you arrive.",
 			},
 			{
 				heading: "Week 1–2: Opening your bank account",
@@ -383,7 +416,22 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "digital-nomad-visa-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-09-30",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Migration Department: Digital nomads and family members",
+				url: "https://www.gov.cy/mip-md/en/documents/digital-nomads-and-family-members/",
+			},
+			{
+				label: "Tax Department: Income Tax Law amendments 2026 (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/03/2026-ΦορΜεταρρύθμιση-Φόρος-Εισοδήματος.pdf",
+			},
+			{
+				label: "Migration Department (gov.cy)",
+				url: "https://www.gov.cy/mip-md/en/",
+			},
+		],
 		category: "immigration",
 		title: "Cyprus Digital Nomad Visa 2026: Requirements",
 		description:
@@ -395,20 +443,20 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Required documents",
-				body: "The DNV application requires the following documents, all in English or accompanied by certified translations: a completed application form (available on crmd.moi.gov.cy); a valid passport with at least 12 months remaining validity; two recent passport-size photographs; proof of remote income — for employees, an employment contract and the last three months of payslips and bank statements; for freelancers, service agreements or contracts with foreign clients and three to six months of bank statements showing consistent income deposits; a clean criminal record certificate from your home country (apostilled or legalised for Cyprus); health insurance valid in Cyprus with at least €30,000 coverage (public GeSY registration does not satisfy this — you need a private policy in place before the application); proof of accommodation in Cyprus (signed rental agreement or property purchase documentation); and a cover letter explaining your work arrangement and why you qualify. For family members, add marriage certificate (apostilled), birth certificates for children, and proof that the primary applicant's income meets the family threshold. All personal status documents require apostille or legalisation; check the requirements for your country of issue.",
+				body: "The DNV application requires the following documents, all in English or accompanied by certified translations: a completed application form (available on the Migration Department's pages on gov.cy); a valid passport with at least 12 months remaining validity; two recent passport-size photographs; proof of remote income — for employees, an employment contract and the last three months of payslips and bank statements; for freelancers, service agreements or contracts with foreign clients and three to six months of bank statements showing consistent income deposits; a clean criminal record certificate from your home country (apostilled or legalised for Cyprus); health insurance valid in Cyprus with at least €30,000 coverage (public GeSY registration does not satisfy this — you need a private policy in place before the application); proof of accommodation in Cyprus (signed rental agreement or property purchase documentation); and a cover letter explaining your work arrangement and why you qualify. For family members, add marriage certificate (apostilled), birth certificates for children, and proof that the primary applicant's income meets the family threshold. All personal status documents require apostille or legalisation; check the requirements for your country of issue.",
 			},
 			{
 				heading:
 					"Tax benefits and non-dom status for Digital Nomad Visa holders",
-				body: "Cyprus's non-domiciled (non-dom) tax regime is the single most important financial advantage of the Cyprus DNV compared to alternatives like Portugal or Spain. Once you become a Cyprus tax resident — which the 60-day rule enables — you qualify for non-dom status if you have not been a Cyprus tax resident for 17 of the preceding 20 years. Non-dom status exempts you from the Special Defence Contribution (SDC) on foreign-sourced dividends and interest for up to 17 years (note: SDC on rental income was abolished from 1 January 2026 for all residents). In practical terms: if your income is structured as dividends from a foreign company, you pay 0% Cypriot SDC on those dividends for 17 years. The 60-day tax residency rule requires you to spend at least 60 days in Cyprus within the tax year, not be tax resident in any other single country for more than 183 days, and not be tax resident in any other country under that country's rules. Capital gains: Cyprus has no general capital gains tax. Gains from selling foreign shares, cryptocurrency, and most investment assets are exempt — the exception is real property in Cyprus and shares in companies where more than 50% of value derives from Cypriot real estate. Employment income and Cyprus-sourced income is taxed under the standard progressive scale (0% up to €22,000, then 20%, 25%, 30%, up to 35% above €72,000). Non-dom status does not exempt employment income from income tax. One common trap: the GeSY healthcare contribution (2.65% for employees, 4% for self-employed) applies regardless of non-dom status. Verify your specific situation with a Cyprus-registered tax adviser before making residency decisions based on tax planning. Prices and rules change — verify with official Cyprus sources before acting.",
+				body: "Cyprus's non-domiciled (non-dom) tax regime is the single most important financial advantage of the Cyprus DNV compared to alternatives like Portugal or Spain. Once you become a Cyprus tax resident — which the 60-day rule enables — you qualify for non-dom status if you have not been a Cyprus tax resident for 17 of the preceding 20 years. Non-dom status exempts you from the Special Defence Contribution (SDC) on foreign-sourced dividends and interest for up to 17 years (note: SDC on rental income was abolished from 1 January 2026 for all residents). In practical terms: if your income is structured as dividends from a foreign company, you pay 0% Cypriot SDC on those dividends for 17 years. The 60-day tax residency rule requires you to spend at least 60 days in Cyprus within the tax year, not be tax resident in any other single country for more than 183 days, and meet the home and business conditions. The condition that you must not be tax resident in any other country was removed from 1 January 2026. Capital gains: Cyprus has no general capital gains tax. Gains from selling foreign shares, cryptocurrency, and most investment assets are exempt — the exception is real property in Cyprus and shares in companies where more than 50% of value derives from Cypriot real estate. Employment income and Cyprus-sourced income is taxed under the standard progressive scale (0% up to €22,000, then 20%, 25%, 30%, up to 35% above €72,000). Non-dom status does not exempt employment income from income tax. One common trap: the GeSY healthcare contribution (2.65% for employees, 4% for self-employed) applies regardless of non-dom status. Verify your specific situation with a Cyprus-registered tax adviser before making residency decisions based on tax planning. Prices and rules change — verify with official Cyprus sources before acting.",
 			},
 			{
-				heading: "Applying via the CRMD portal",
-				body: "Applications are submitted through the Civil Registry and Migration Department (CRMD) portal at crmd.moi.gov.cy. The process: create an account on the portal, select 'Visitor/Temporary Residence — Digital Nomad Visa', complete the online form, and upload all supporting documents. Applications can also be submitted in person at a CRMD district office — there are offices in Nicosia, Limassol, Larnaca, Paphos and Famagusta. In-person submission is recommended for first-time applicants as the officer can flag missing documents on the spot, preventing the need for a back-and-forth by post. The application fee as of 2025 is approximately €70 per adult applicant, payable at the CRMD office or through the portal. Submit from outside Cyprus if you have not yet entered, or within Cyprus on a valid visa (tourist entry is acceptable for initial application, but confirm current procedure with CRMD as this has changed previously).",
+				heading: "Applying at the Migration Department",
+				body: "Applications are submitted at the Migration Department's central offices in Nicosia, in person or through an authorised representative, within three months of arrival. Check on gov.cy whether an appointment is needed. The fee is €70, plus €70 for first registration in the Aliens' Register. You apply after you arrive, not from abroad. If your nationality needs a visa to enter Cyprus, enter on that visa.",
 			},
 			{
 				heading: "Processing time and what to expect",
-				body: "The official CRMD processing target for DNV applications is 5–8 weeks from submission of a complete file. In practice, 6–10 weeks is more realistic, with applications submitted in peak periods (September–November, when many families plan relocations for the start of the school year) sometimes taking 12 weeks or more. Incomplete applications — the most common cause of delay — are returned or suspended with a request for additional documents, resetting the clock. Once approved, you are notified by email and attend a CRMD office appointment to be biometrically enrolled (fingerprints and photo). The ARC (Alien Registration Certificate) is then produced — typically 2–4 weeks after biometric enrollment. During the wait between approval and ARC issuance, CRMD issues a certificate of application that serves as interim documentation. If your application is refused, you receive a written decision explaining the grounds, and you have the right to appeal or reapply with additional documentation.",
+				body: "The Migration Department's stated examination time is 5 to 7 weeks from submission of a complete file. Incomplete applications — the most common cause of delay — are returned or suspended with a request for additional documents, resetting the clock. Once approved, you are notified by email and attend a Migration Department appointment to be biometrically enrolled (fingerprints and photo). The ARC (Alien Registration Certificate) is then produced — typically 2–4 weeks after biometric enrollment. During the wait between approval and ARC issuance, the Migration Department issues a certificate of application that serves as interim documentation. If your application is refused, you receive a written decision explaining the grounds, and you have the right to appeal or reapply with additional documentation.",
 			},
 			{
 				heading: "Renewal, three-year maximum, and family rights",
@@ -420,16 +468,16 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Why applications stall, and how to avoid it",
-				body: "Files tend to be delayed because of what is missing or inconsistent, not because the applicant is ineligible. The most common problems follow directly from the document list above.\n\nIncome evidence that does not match. Payslips, contracts and bank statements should tell the same story. If your income arrives through a company you own, or through several clients, include a short cover explanation and the agreements that link the deposits to the work.\n\nA client or employer with a Cyprus connection. The visa is for work done for employers and clients outside Cyprus. If a material part of your income comes from a Cyprus-based source, get advice before applying.\n\nHealth insurance bought late. The policy needs to be in place and valid for Cyprus at the time of application, and the certificate should show the level of cover CRMD asks for.\n\nDocuments not legalised. Criminal record certificates and civil-status documents need an apostille or legalisation route that matches the country of issue, and translations must be certified where required.\n\nNo confirmed accommodation. A signed rental agreement is stronger than a booking confirmation. If you are still choosing a city, read the best-areas-to-live-cyprus guide before you sign anything long term.",
+				body: "Files tend to be delayed because of what is missing or inconsistent, not because the applicant is ineligible. The most common problems follow directly from the document list above.\n\nIncome evidence that does not match. Payslips, contracts and bank statements should tell the same story. If your income arrives through a company you own, or through several clients, include a short cover explanation and the agreements that link the deposits to the work.\n\nA client or employer with a Cyprus connection. The visa is for work done for employers and clients outside Cyprus. If a material part of your income comes from a Cyprus-based source, get advice before applying.\n\nHealth insurance bought late. The policy needs to be in place and valid for Cyprus at the time of application, and the certificate should show the level of cover the Migration Department asks for.\n\nDocuments not legalised. Criminal record certificates and civil-status documents need an apostille or legalisation route that matches the country of issue, and translations must be certified where required.\n\nNo confirmed accommodation. A signed rental agreement is stronger than a booking confirmation. If you are still choosing a city, read the best-areas-to-live-cyprus guide before you sign anything long term.",
 			},
 			{
 				heading: "Digital Nomad Visa or another route?",
-				body: "The DNV suits non-EU remote workers who want a first residence permit and do not intend to work for a Cyprus employer. It is the wrong tool in several common situations.\n\nIf you hold an EU passport, you register as an EU citizen instead. If a Cyprus company is offering you a job, the route is a work permit, covered in the work-permits-non-eu guide. If you are retired or living on passive income, compare Category F in the residency-and-visas guide. If your goal is a permanent status, the DNV is a temporary permit with a fixed maximum term, so compare the permanent-residency-5year and residency-and-visas guides before you commit. If you plan to run your own Cyprus company, see company-formation-visa.\n\nThe visa-pathway-finder at /tools/visa-pathway-finder asks two questions and points you to the route that fits your passport and situation.",
+				body: "The DNV suits non-EU remote workers who want a first residence permit and do not intend to work for a Cyprus employer. It is the wrong tool in several common situations.\n\nIf you hold an EU passport, you register as an EU citizen instead. If a Cyprus company is offering you a job, the route is a work permit, covered in the work-permits-non-eu guide. If you are retired or living on passive income, compare the Visitor residence permit in the retiring-in-cyprus guide. If your goal is a permanent status, the DNV is a temporary permit with a fixed maximum term, so compare the permanent-residency-5year and residency-and-visas guides before you commit. If you plan to run your own Cyprus company, see company-formation-visa.\n\nThe visa-pathway-finder at /tools/visa-pathway-finder asks two questions and points you to the route that fits your passport and situation.",
 			},
 			{
 				heading:
 					"Check these details against official sources before you apply",
-				body: "Digital nomad rules have been adjusted since the scheme launched, and secondary sources, including this page, can lag behind the Civil Registry and Migration Department. Before you pay for translations or insurance, confirm the following directly on the official CRMD pages or with the department: the current minimum income and whether it is measured net or gross, the uplift for a spouse and for children, the minimum health insurance cover, the current application fee, whether any cap on the number of permits applies, the current processing target, and whether you may apply from inside Cyprus on your current entry status.\n\nIf a figure you find elsewhere differs from the figure on this page, trust the official source.",
+				body: "Digital nomad rules have been adjusted since the scheme launched, and secondary sources, including this page, can lag behind the Migration Department. Before you pay for translations or insurance, confirm the following directly on the Migration Department's pages on gov.cy or with the department: the current minimum income and whether it is measured net or gross, the uplift for a spouse and for children, the minimum health insurance cover, the current application fee, whether any cap on the number of permits applies, the current processing target, and whether you may apply from inside Cyprus on your current entry status.\n\nIf a figure you find elsewhere differs from the figure on this page, trust the official source.",
 			},
 		],
 		faqs: [
@@ -489,7 +537,18 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "permanent-residency-5year",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Migration Department: Immigration permits for investors",
+				url: "https://www.gov.cy/mip-md/en/documents/companies-investors-permanent-residence-3/immigration-permits-for-investors/",
+			},
+			{
+				label: "Migration Department: Immigration permits (categories A to F)",
+				url: "https://www.gov.cy/mip-md/en/documents/companies-investors-permanent-residence-3/immigration-permits/",
+			},
+		],
 		category: "immigration",
 		title: "Cyprus Permanent Residency After 5 Years",
 		description:
@@ -497,7 +556,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "Two routes to permanent residency",
-				body: "It is important to distinguish between two different types of 'permanent residency' in Cyprus. The first is the Permanent Residency by Investment (sometimes called the Category F or Regulation 6(2) permit), which is available to non-EU nationals who make a qualifying property investment of at least €300,000 and does not require any prior period of residence. The second — the subject of this guide — is the Long-Term Resident permit acquired through five years of continuous legal residence, available under EU Directive 2003/109/EC as implemented by the Aliens and Immigration Law of Cyprus. The two are legally distinct documents with different rights, different application processes, and different costs. This guide covers the five-year route. If you hold the investment-based PR, the contents of this guide still apply to you if you later want to convert to the long-term resident status that accrues from physical presence.",
+				body: "It is important to distinguish between two different types of 'permanent residency' in Cyprus. The first is the Permanent Residency by Investment (the Regulation 6(2) immigration permit), which is available to non-EU nationals who make a qualifying property investment of at least €300,000 and does not require any prior period of residence. The second — the subject of this guide — is the Long-Term Resident permit acquired through five years of continuous legal residence, available under EU Directive 2003/109/EC as implemented by the Aliens and Immigration Law of Cyprus. The two are legally distinct documents with different rights, different application processes, and different costs. This guide covers the five-year route. If you hold the investment-based PR, the contents of this guide still apply to you if you later want to convert to the long-term resident status that accrues from physical presence.",
 			},
 			{
 				heading: "The qualifying residency requirement",
@@ -521,7 +580,14 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "company-formation-visa",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Migration Department: Immigration permits for investors",
+				url: "https://www.gov.cy/mip-md/en/documents/companies-investors-permanent-residence-3/immigration-permits-for-investors/",
+			},
+		],
 		category: "immigration",
 		title: "Cyprus Company Residency Permit: Full Guide",
 		description:
@@ -529,7 +595,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "Which visa categories require a Cyprus company",
-				body: "Not all residency routes require a Cyprus-registered company — the Digital Nomad Visa, for example, is explicitly designed for people who work for foreign entities and requires the absence of Cypriot employment. However, several other residency categories do require or strongly benefit from a Cyprus company. The most common: the Category F (Permanent Residency by Investment) sometimes requires a Cyprus company for applicants whose income comes from their own business, as the qualifying income must be demonstrably foreign-sourced and a Cyprus holding company can structure that cleanly; the employment permit (Category E), where a non-EU national employed by a Cyprus-registered company applies for a work permit tied to that entity; the self-employed permit, where an individual establishes a Cyprus company in which they hold a director or executive role; and the 60-day tax residency rule, which requires the applicant to 'carry on business or hold an office in a Cyprus-resident company'. The last is perhaps the most common reason entrepreneurs form a Cyprus company: to qualify as a Cyprus tax resident under the 60-day test while spending only a portion of each year physically in Cyprus.",
+				body: "Not all residency routes require a Cyprus-registered company — the Digital Nomad Visa, for example, is explicitly designed for people who work for foreign entities and requires the absence of Cypriot employment. However, several other residency categories do require or strongly benefit from a Cyprus company. The most common: Permanent Residency by Investment (Regulation 6(2)) sometimes requires a Cyprus company for applicants whose income comes from their own business, as the qualifying income must be demonstrably foreign-sourced and a Cyprus holding company can structure that cleanly; the employment permit (Category E), where a non-EU national employed by a Cyprus-registered company applies for a work permit tied to that entity; the self-employed permit, where an individual establishes a Cyprus company in which they hold a director or executive role; and the 60-day tax residency rule, which requires the applicant to 'carry on business or hold an office in a Cyprus-resident company'. The last is perhaps the most common reason entrepreneurs form a Cyprus company: to qualify as a Cyprus tax resident under the 60-day test while spending only a portion of each year physically in Cyprus.",
 			},
 			{
 				heading: "Minimum substance requirements",
@@ -2470,11 +2536,25 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "retiring-in-cyprus",
 		datePublished: "2026-06-22",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Migration Department: Visitors and family members",
+				url: "https://www.gov.cy/mip-md/en/documents/visitors-and-family-members/",
+			},
+			{
+				label: "Migration Department: Immigration permits (categories A to F)",
+				url: "https://www.gov.cy/mip-md/en/documents/companies-investors-permanent-residence-3/immigration-permits/",
+			},
+			{
+				label: "Tax Department: Income Tax Law amendments 2026 (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/03/2026-ΦορΜεταρρύθμιση-Φόρος-Εισοδήματος.pdf",
+			},
+		],
 		category: "lifestyle",
 		title: "Retiring in Cyprus 2026: Full Expat Guide",
-		description:
-			"Everything retirees need to know about moving to Cyprus — how pension income is taxed (flat 5% after the first €3,420), which residency route applies, how GeSY public healthcare compares to private insurance, and what a comfortable retirement in Cyprus actually costs per month.",
+		description: `Everything retirees need to know about moving to Cyprus — how pension income is taxed (flat 5% after the first ${eur(FOREIGN_PENSION_THRESHOLD)}), which residency route applies, how GeSY public healthcare compares to private insurance, and what a comfortable retirement in Cyprus actually costs per month.`,
 		sections: [
 			{
 				heading: "Why Cyprus works for retirees",
@@ -2482,11 +2562,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Residency options for retirees",
-				body: "The residency route depends on your citizenship. EU citizens have the simplest path: the MEU1 registration (a declaration of residence, not a permit) filed at the Civil Registry and Migration Department, supported by proof of sufficient income (no fixed threshold for EU citizens, but €1,000–€1,500/month is the practical expectation), comprehensive health insurance (or proof of GeSY registration), and a local address. This gives indefinite right of residence in Cyprus. Non-EU citizens — UK nationals, Israelis, Americans, Australians — need a formal permit. The most relevant for retirees is the Category F residence permit, which is specifically designed for people living in Cyprus on a pension or other passive income without working. Requirements: provable income of at least €2,500/month for an individual (€3,500/month for a couple), comprehensive health insurance, a clean criminal record, and a local address (rented or owned). The permit is initially issued for one year and renewed annually; after five years of continuous residence, permanent residency can be applied for. The Permanent Residency by Investment route (minimum €300,000 property purchase) is an alternative that bypasses the annual renewal cycle and grants permanent residency immediately, but requires a larger capital commitment.",
+				body: `The residency route depends on your citizenship. EU citizens have the simplest path: the MEU1 registration (a declaration of residence, not a permit) filed with the Migration Department, supported by proof that you can support yourself without social assistance (no fixed amount is published), comprehensive health insurance (or proof of GeSY registration), and a local address. This gives indefinite right of residence in Cyprus. Non-EU citizens — UK nationals, Israelis, Americans, Australians — need a formal permit. The most relevant for retirees is the Visitor temporary residence permit, for people living on a pension or other passive income without working. Requirements: regular transfers from abroad of at least ${eur(VISITOR_PERMIT_MONTHLY_INCOME)} a month for one person (${eur(VISITOR_PERMIT_MONTHLY_INCOME_COUPLE)} for a couple, plus 15% per child), a 10-year bank guarantee, health insurance, a clean criminal record, and a local address. The permit is issued for one year and renewed. A separate route, the Category F immigration permit, gives permanent residence on a secured income from abroad. The Permanent Residency by Investment route (minimum €300,000 property purchase) is an alternative that bypasses the annual renewal cycle and grants permanent residency immediately, but requires a larger capital commitment.`,
 			},
 			{
 				heading: "How pension income is taxed in Cyprus",
-				body: "Cyprus offers two tax treatment options for foreign-source pension income, and retirees can elect which applies. The default is progressive income tax rates (0% on income up to €22,000/year, 20% on the next €10,000, 25% on the next €10,000, 30% on the next €30,000, 35% above €72,000). The alternative — available by election — is a flat 5% tax on foreign pension income exceeding €3,420 per year. The first €3,420 is tax-free under this election. For a retiree receiving €2,000/month (€24,000/year) in pension income, the 5% flat rate produces a tax liability of €1,029 per year; under the 2026 progressive bands, the same income produces approximately €400 per year — making the progressive rate the better choice at this income level. For higher pension income (above approximately €28,000/year), the flat rate becomes more advantageous: at €36,000/year, the flat rate is approximately €1,629 versus €3,000 under the progressive scale. The election is made annually and is irrevocable for the year in question. To qualify for the 5% rate, you must be a Cyprus tax resident (183+ days in Cyprus per year, or 60 days under the new rules if you are not a tax resident elsewhere and meet certain conditions). Cyprus has double taxation agreements with the UK, Germany, France, and most countries from which retirees come — in most cases, pension income is taxable only in Cyprus under these agreements, eliminating the risk of double taxation.",
+				body: `Cyprus offers two tax treatment options for foreign-source pension income, and retirees can elect which applies. The default is progressive income tax rates (0% on income up to €22,000/year, 20% on the next €10,000, 25% on the next €10,000, 30% on the next €30,000, 35% above €72,000). The alternative, available by election, is a flat 5% tax on foreign pension income above ${eur(FOREIGN_PENSION_THRESHOLD)} a year (from tax year 2026). The first ${eur(FOREIGN_PENSION_THRESHOLD)} is tax-free under this election. For a retiree receiving €24,000 a year, the 5% option costs €950, while the 2026 progressive bands give about €400, so progressive is better at this level. Above roughly €27,700 a year the flat rate wins: at €36,000 it is €1,550 against €3,000. The election is made annually and is irrevocable for the year in question. To qualify for the 5% rate, you must be a Cyprus tax resident (183+ days in Cyprus per year, or at least 60 days if you meet the 60-day rule's conditions). Cyprus has double taxation agreements with the UK, Germany, France, and most countries from which retirees come — in most cases, pension income is taxable only in Cyprus under these agreements, eliminating the risk of double taxation.`,
 			},
 			{
 				heading: "Healthcare: GeSY versus private insurance",
@@ -2498,17 +2578,17 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Practical steps: how the move actually works",
-				body: "The practical sequence for a retiree moving to Cyprus runs as follows. Before leaving: arrange comprehensive health insurance (required for the residence permit application and essential from day one); open a bank account if possible (easier from abroad for some non-EU banks); research areas and do at least one scouting trip of 2–3 weeks; begin the document gathering process (birth certificates, marriage certificate if applicable, criminal record certificate, pension statements — most need apostille endorsement). On arrival: rent initially rather than buying — the rental market allows you to experience different areas and neighbourhoods before committing. First month: register your address at the local municipality (required for the residence permit), open a Cypriot bank account (Bank of Cyprus and Hellenic Bank are the main retail banks; expect a 2–4 week account opening process requiring in-person visit), register with GeSY at a local GP surgery, apply for your Tax Identification Number (TIN) at the Tax Department (required for almost all financial transactions in Cyprus). Within three months: file your residence permit application at the Migration Department (Category F) or MEU1 (EU citizens); obtain a Cypriot driver's licence if staying long-term (required after establishing residency). Year one: establish your tax residency position by consulting a local accountant, file your first Cyprus tax return (due 31 July for income earned in the prior year for individuals), and if eligible, elect the 5% flat rate on foreign pension income.",
+				body: "The practical sequence for a retiree moving to Cyprus runs as follows. Before leaving: arrange comprehensive health insurance (required for the residence permit application and essential from day one); open a bank account if possible (easier from abroad for some non-EU banks); research areas and do at least one scouting trip of 2–3 weeks; begin the document gathering process (birth certificates, marriage certificate if applicable, criminal record certificate, pension statements — most need apostille endorsement). On arrival: rent initially rather than buying — the rental market allows you to experience different areas and neighbourhoods before committing. First month: register your address at the local municipality (required for the residence permit), open a Cypriot bank account (Bank of Cyprus and Hellenic Bank are the main retail banks; expect a 2–4 week account opening process requiring in-person visit), register with GeSY at a local GP surgery, apply for your Tax Identification Number (TIN) at the Tax Department (required for almost all financial transactions in Cyprus). Within three months: file your residence permit application at the Migration Department (Visitor permit) or MEU1 (EU citizens); obtain a Cypriot driver's licence if staying long-term (required after establishing residency). Year one: establish your tax residency position by consulting a local accountant, file your first Cyprus tax return (due 31 July for income earned in the prior year for individuals), and if eligible, elect the 5% flat rate on foreign pension income.",
 			},
 		],
 		faqs: [
 			{
 				q: "How is pension income taxed in Cyprus?",
-				a: "You can elect a flat 5% tax rate on foreign pension income above €3,420/year. The first €3,420 is tax-free. On a pension of €24,000/year, this produces a tax bill of approximately €1,029. The alternative is progressive rates (0–35%), which is worse for most retirees with meaningful pension income. The election is made annually when you file your Cyprus tax return.",
+				a: `You can elect a flat 5% tax rate on foreign pension income above ${eur(FOREIGN_PENSION_THRESHOLD)} a year (from tax year 2026). On a pension of €24,000 a year this costs €950, while progressive rates give about €400, so the flat rate only pays off above roughly €27,700 a year. You choose each year when you file.`,
 			},
 			{
 				q: "Can a non-EU citizen retire in Cyprus?",
-				a: "Yes. The Category F residence permit is designed for non-EU retirees living in Cyprus on pension or passive income. It requires provable income of at least €2,500/month for an individual, comprehensive health insurance, a clean criminal record, and a local address. The permit is renewed annually; permanent residency can be applied for after five years of continuous residence. Alternatively, a minimum €300,000 property purchase qualifies for immediate Permanent Residency by Investment.",
+				a: `Yes. The Visitor temporary residence permit is the usual route for non-EU retirees living in Cyprus on a pension or passive income. It requires regular transfers from abroad of at least ${eur(VISITOR_PERMIT_MONTHLY_INCOME)} a month for one person (${eur(VISITOR_PERMIT_MONTHLY_INCOME_COUPLE)} for a couple), a 10-year bank guarantee, health insurance, a clean criminal record, and a local address. It is issued for one year and renewed. Ask the Migration Department whether time on this permit counts towards long-term residence. Alternatively, a minimum €300,000 property purchase qualifies for immediate Permanent Residency by Investment.`,
 			},
 			{
 				q: "Is GeSY good enough for retirees in Cyprus?",
@@ -2520,18 +2600,37 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "How much money do I need to retire in Cyprus?",
-				a: "A comfortable retirement for a couple costs approximately €2,800–€4,500/month depending on city, lifestyle, and whether you rent or own. For a single retiree, the range is €1,800–€3,000/month. The Category F residence permit requires a minimum provable income of €2,500/month for a single person (€3,500/month for a couple), which happens to roughly align with the lower end of a comfortable retirement budget. More is better — the minimum income thresholds are for permit eligibility, not for a quality lifestyle.",
+				a: `A comfortable retirement for a couple costs approximately €2,800–€4,500/month depending on city, lifestyle, and whether you rent or own. For a single retiree, the range is €1,800–€3,000/month. The Visitor residence permit requires transfers from abroad of at least ${eur(VISITOR_PERMIT_MONTHLY_INCOME)} a month for a single person (${eur(VISITOR_PERMIT_MONTHLY_INCOME_COUPLE)} for a couple), which sits below a comfortable retirement budget. More is better — the minimum income thresholds are for permit eligibility, not for a quality lifestyle.`,
 			},
 		],
 	},
 	{
 		slug: "moving-to-cyprus-from-uk",
 		datePublished: "2026-06-22",
-		dateModified: "2026-09-30",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Migration Department: Visitors and family members",
+				url: "https://www.gov.cy/mip-md/en/documents/visitors-and-family-members/",
+			},
+			{
+				label: "Migration Department: Digital nomads and family members",
+				url: "https://www.gov.cy/mip-md/en/documents/digital-nomads-and-family-members/",
+			},
+			{
+				label: "Migration Department: Immigration permits for investors",
+				url: "https://www.gov.cy/mip-md/en/documents/companies-investors-permanent-residence-3/immigration-permits-for-investors/",
+			},
+			{
+				label: "Tax Department: Income Tax Law amendments 2026 (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/03/2026-ΦορΜεταρρύθμιση-Φόρος-Εισοδήματος.pdf",
+			},
+		],
 		category: "immigration",
 		title: "Moving to Cyprus from the UK After Brexit: 2026 Guide",
 		description:
-			"Practical guide for UK nationals relocating to Cyprus after Brexit — which visa route applies (Category F, Digital Nomad, or Permanent Residency), how UK pension and employment income is taxed in Cyprus, the UK-Cyprus double taxation treaty, and what UK buyers need to know about property purchase.",
+			"Practical guide for UK nationals relocating to Cyprus after Brexit — which visa route applies (Visitor permit, Digital Nomad, or Permanent Residency), how UK pension and employment income is taxed in Cyprus, the UK-Cyprus double taxation treaty, and what UK buyers need to know about property purchase.",
 		sections: [
 			{
 				heading: "Post-Brexit: what changed for UK nationals in Cyprus",
@@ -2539,11 +2638,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Visa and residency routes for UK nationals",
-				body: "There are four main routes. Category F residence permit: the standard route for retirees and those living on pension or passive income. Requires provable income of €2,500/month (individual) or €3,500/month (couple), comprehensive health insurance, a clean criminal record certificate (from UK — apostilled), and a local address. Issued for one year, renewable annually; permanent residency after five years. Digital Nomad Visa: for UK nationals working remotely for a non-Cyprus employer or running a non-Cyprus business. Requires a minimum monthly income of €3,500 (gross), proof of remote work arrangement, and comprehensive health insurance. Initially valid for one year, extendable for two more; does not lead directly to permanent residency. Employed in Cyprus: if you have a job offer from a Cyprus employer, the employer sponsors your work permit through the Civil Registry and Migration Department. This is processed as a work permit application and takes 4–8 weeks. Permanent Residency by Investment: a minimum purchase of a new development property at €300,000 + VAT from a qualifying developer. Grants permanent residency immediately, without the annual renewal cycle. Family members can be included. No right to work is attached to the PR permit. There is no general skilled worker visa for self-employed UK nationals operating a business in Cyprus — company formation and corporate tax residency are handled separately from personal residency.",
+				body: `There are four main routes. Visitor temporary residence permit: the usual route for retirees and others living on pension or passive income without working. You need regular transfers from abroad of at least ${eur(VISITOR_PERMIT_MONTHLY_INCOME)} a month (€24,000 a year), plus 20% for a spouse and 15% per child, a 10-year bank guarantee, health insurance, a clean criminal record certificate (from the UK, apostilled) and a local address. It is issued for one year and renewed. Ask the Migration Department whether time on this permit counts towards long-term residence. Digital Nomad Visa: for UK nationals working remotely for a non-Cyprus employer or running a non-Cyprus business. Requires a minimum net monthly income of €3,500 (after tax and contributions), proof of remote work arrangement, and comprehensive health insurance. Initially valid for one year, extendable for two more; does not lead directly to permanent residency. Employed in Cyprus: if you have a job offer from a Cyprus employer, the employer sponsors your work permit through the Civil Registry and Migration Department. This is processed as a work permit application and takes 4–8 weeks. Permanent Residency by Investment: a minimum purchase of a new development property at €300,000 + VAT from a qualifying developer. Grants permanent residency immediately, without the annual renewal cycle. Family members can be included. No right to work is attached to the PR permit. There is no general skilled worker visa for self-employed UK nationals operating a business in Cyprus — company formation and corporate tax residency are handled separately from personal residency.`,
 			},
 			{
 				heading: "Tax: the UK-Cyprus double taxation treaty",
-				body: "The UK and Cyprus have a Double Taxation Agreement (DTA), signed in 1974 and updated subsequently. Under the DTA, most income is taxable only in the country where you are tax resident — so if you establish Cyprus tax residency (183+ days in Cyprus, or 60 days under the non-domicile rules), most of your income is taxable in Cyprus rather than the UK. Key points for UK nationals. UK state pension: under the DTA, UK government pensions (civil service, NHS, teaching, military) remain taxable in the UK regardless of where you live. Private pensions and personal pensions (ISAs, SIPPs, private employer pensions) are taxable in Cyprus as your country of residence — and you can elect the 5% flat rate on foreign pension income over €3,420/year. Employment income from a UK employer, if you work remotely from Cyprus, is taxable in Cyprus after you establish Cyprus tax residency (some nuance applies if you spend time in both countries). UK rental income from UK property remains taxable in the UK regardless. Dividends from UK companies: taxable in Cyprus as your country of residence under the DTA. Capital gains on UK property remain taxable in the UK. The practical implication: a UK national with a private pension and no UK property to rent out can move to Cyprus and pay 5% flat tax on their pension income — a dramatic reduction from UK income tax rates. Establish this properly: register with the Cyprus Tax Department, file Cyprus tax returns, and get a certificate of Cyprus tax residency to present to HMRC when you de-register from UK tax.",
+				body: `The UK and Cyprus have a Double Taxation Agreement (DTA), signed in 1974 and updated subsequently. Under the DTA, most income is taxable only in the country where you are tax resident — so if you establish Cyprus tax residency (183+ days in Cyprus, or 60 days under the non-domicile rules), most of your income is taxable in Cyprus rather than the UK. Key points for UK nationals. UK state pension: under the DTA, UK government pensions (civil service, NHS, teaching, military) remain taxable in the UK regardless of where you live. Private pensions and personal pensions (ISAs, SIPPs, private employer pensions) are taxable in Cyprus as your country of residence — and you can elect the 5% flat rate on foreign pension income over ${eur(FOREIGN_PENSION_THRESHOLD)} a year (from tax year 2026). Employment income from a UK employer, if you work remotely from Cyprus, is taxable in Cyprus after you establish Cyprus tax residency (some nuance applies if you spend time in both countries). UK rental income from UK property remains taxable in the UK regardless. Dividends from UK companies: taxable in Cyprus as your country of residence under the DTA. Capital gains on UK property remain taxable in the UK. The practical implication: a UK national with a private pension and no UK property to rent out can move to Cyprus and pay 5% flat tax on their pension income — a dramatic reduction from UK income tax rates. Establish this properly: register with the Cyprus Tax Department, file Cyprus tax returns, and get a certificate of Cyprus tax residency to present to HMRC when you de-register from UK tax.`,
 			},
 			{
 				heading: "Buying property in Cyprus as a UK national",
@@ -2559,7 +2658,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Which route fits which UK situation",
-				body: "Most UK movers fall into one of four situations, and the route follows from the situation rather than the other way round.\n\nRetired or living on pensions and savings: Category F is the route built for this, and it also decides how your pensions are taxed once you are resident. Read retiring-in-cyprus alongside this guide.\n\nWorking remotely for an employer or clients outside Cyprus: the Digital Nomad Visa. See digital-nomad-visa-guide for documents and timing. It is temporary, so think about what you will do at the end of the term.\n\nOffered a job by a Cyprus employer: a work permit, sponsored by the employer. See work-permits-non-eu.\n\nBuying property and wanting settled status: Permanent Residency by Investment, which is tied to a qualifying purchase. Read buying-process and property-lawyers-cyprus before you commit money, and do not let a developer or agent choose the route for you.\n\nIf you are unsure, the visa-pathway-finder at /tools/visa-pathway-finder narrows it down in two questions.",
+				body: "Most UK movers fall into one of four situations, and the route follows from the situation rather than the other way round.\n\nRetired or living on pensions and savings: the Visitor residence permit is the usual route, and it also decides how your pensions are taxed once you are resident. Read retiring-in-cyprus alongside this guide.\n\nWorking remotely for an employer or clients outside Cyprus: the Digital Nomad Visa. See digital-nomad-visa-guide for documents and timing. It is temporary, so think about what you will do at the end of the term.\n\nOffered a job by a Cyprus employer: a work permit, sponsored by the employer. See work-permits-non-eu.\n\nBuying property and wanting settled status: Permanent Residency by Investment, which is tied to a qualifying purchase. Read buying-process and property-lawyers-cyprus before you commit money, and do not let a developer or agent choose the route for you.\n\nIf you are unsure, the visa-pathway-finder at /tools/visa-pathway-finder narrows it down in two questions.",
 			},
 			{
 				heading: "Before you leave the UK: a sensible order of operations",
@@ -2569,11 +2668,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		faqs: [
 			{
 				q: "Do UK citizens need a visa to live in Cyprus?",
-				a: "Yes, for stays beyond 90 days. UK nationals can enter Cyprus without a visa for up to 90 days under a bilateral agreement (Cyprus is not in Schengen). For longer stays, you need a formal residence permit: Category F (living on income/pension), Digital Nomad Visa (remote workers), work permit (employed by a Cyprus employer), or Permanent Residency by Investment (€300k+ property purchase).",
+				a: "Yes, for stays beyond 90 days. UK nationals can enter Cyprus without a visa for up to 90 days under a bilateral agreement (Cyprus is not in Schengen). For longer stays, you need a formal residence permit: a Visitor permit (living on income/pension), Digital Nomad Visa (remote workers), work permit (employed by a Cyprus employer), or Permanent Residency by Investment (€300k+ property purchase).",
 			},
 			{
 				q: "Is Cyprus pension tax-free for UK expats?",
-				a: "Private pensions and personal pensions (SIPPs, personal pension plans) are taxable in Cyprus as your country of residence — you can elect a flat 5% rate on the amount above €3,420/year, which is very low compared to UK income tax. UK government pensions (civil service, NHS, military, teaching) remain taxable in the UK under the UK-Cyprus DTA, regardless of where you live. So the answer depends on your pension type.",
+				a: `Private pensions and personal pensions (SIPPs, personal pension plans) are taxable in Cyprus as your country of residence — you can elect a flat 5% rate on the amount above ${eur(FOREIGN_PENSION_THRESHOLD)} a year (from tax year 2026), which is very low compared to UK income tax. UK government pensions (civil service, NHS, military, teaching) remain taxable in the UK under the UK-Cyprus DTA, regardless of where you live. So the answer depends on your pension type.`,
 			},
 			{
 				q: "Can UK nationals buy property in Cyprus after Brexit?",
@@ -2593,7 +2692,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "Which Cyprus route is best for a UK national after Brexit?",
-				a: "It depends on your situation. Retirees and people living on income usually look at Category F, remote workers at the Digital Nomad Visa, people with a Cyprus job offer at a work permit, and property buyers at Permanent Residency by Investment. The visa-pathway-finder tool on this site can narrow it down.",
+				a: "It depends on your situation. Retirees and people living on income usually look at the Visitor residence permit, remote workers at the Digital Nomad Visa, people with a Cyprus job offer at a work permit, and property buyers at Permanent Residency by Investment. The visa-pathway-finder tool on this site can narrow it down.",
 			},
 		],
 	},

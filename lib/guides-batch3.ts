@@ -1,3 +1,4 @@
+import { eur, FOREIGN_PENSION_THRESHOLD } from "./facts/tax";
 import type { GuideInfo } from "./guides";
 
 /**
@@ -115,7 +116,14 @@ export const GUIDES_BATCH3: GuideInfo[] = [
 	{
 		slug: "moving-to-cyprus-from-germany",
 		datePublished: "2026-07-06",
-		dateModified: "2026-07-06",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Tax Department: Income Tax Law amendments 2026 (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/03/2026-ΦορΜεταρρύθμιση-Φόρος-Εισοδήματος.pdf",
+			},
+		],
 		category: "immigration",
 		title: "Moving to Cyprus from Germany: 2026 Guide",
 		description:
@@ -136,7 +144,7 @@ export const GUIDES_BATCH3: GuideInfo[] = [
 			},
 			{
 				heading: "The Germany–Cyprus Tax Treaty and Non-Dom Benefits",
-				body: "Germany and Cyprus have a bilateral double tax treaty (DTA) in force, substantially revised around 2011 and further updated by a protocol signed on 19 February 2021 (effective 1 January 2022). Unlike some relocation routes, German movers to Cyprus benefit from a clear framework for determining which country taxes which income stream.\n\nKey treaty provisions: interest income is taxable exclusively in your country of tax residence, so once you are resident in Cyprus the German tax authority has no claim on your interest earnings. Dividends paid by German companies to Cyprus residents attract German withholding tax at reduced treaty rates (and the EU Parent-Subsidiary Directive may reduce this to zero for qualifying corporate holdings). German private pensions, such as company pensions (Betriebsrente) and private Rentenversicherung, are, broadly, taxable only in Cyprus under the treaty, where Cyprus applies a favourable domestic flat rate of 5% on amounts above a €3,420 annual exemption. The German statutory pension (gesetzliche Rente) may remain partly taxable in Germany under specific treaty articles; confirm your position with a cross-border specialist before filing your first return in Cyprus.\n\nCyprus non-dom status amplifies these advantages considerably. Qualifying as non-domiciled (available for up to 17 years from the time you establish Cypriot tax residency, provided you have not previously been a Cyprus tax resident for 17 of the past 20 years) means dividends and passive interest are completely exempt from income tax. You pay only a 2.65% GHS contribution on those amounts. Combined with Cyprus income tax bands starting at 0% up to €22,000 and capping at 35% above €72,000, the overall effective tax burden is typically far lower than in Germany for individuals with passive income.\n\nFor a full breakdown, see /guides/taxes-for-expats/. Use the double-tax-treaty-finder tool to view treaty context relevant to your income types.",
+				body: `Germany and Cyprus have a bilateral double tax treaty (DTA) in force, substantially revised around 2011 and further updated by a protocol signed on 19 February 2021 (effective 1 January 2022). Unlike some relocation routes, German movers to Cyprus benefit from a clear framework for determining which country taxes which income stream.\n\nKey treaty provisions: interest income is taxable exclusively in your country of tax residence, so once you are resident in Cyprus the German tax authority has no claim on your interest earnings. Dividends paid by German companies to Cyprus residents attract German withholding tax at reduced treaty rates (and the EU Parent-Subsidiary Directive may reduce this to zero for qualifying corporate holdings). German private pensions, such as company pensions (Betriebsrente) and private Rentenversicherung, are, broadly, taxable only in Cyprus under the treaty, where Cyprus applies an optional flat rate of 5% on amounts above ${eur(FOREIGN_PENSION_THRESHOLD)} a year (from tax year 2026). The German statutory pension (gesetzliche Rente) may remain partly taxable in Germany under specific treaty articles; confirm your position with a cross-border specialist before filing your first return in Cyprus.\n\nCyprus non-dom status amplifies these advantages considerably. Qualifying as non-domiciled (available for up to 17 years from the time you establish Cypriot tax residency, provided you have not previously been a Cyprus tax resident for 17 of the past 20 years) means dividends and passive interest are completely exempt from income tax. You pay only a 2.65% GHS contribution on those amounts. Combined with Cyprus income tax bands starting at 0% up to €22,000 and capping at 35% above €72,000, the overall effective tax burden is typically far lower than in Germany for individuals with passive income.\n\nFor a full breakdown, see /guides/taxes-for-expats/. Use the double-tax-treaty-finder tool to view treaty context relevant to your income types.`,
 			},
 			{
 				heading: "German Community, Lifestyle, and Getting Around",
@@ -158,7 +166,7 @@ export const GUIDES_BATCH3: GuideInfo[] = [
 			},
 			{
 				q: "How does the Germany–Cyprus tax treaty affect my pension income in Cyprus?",
-				a: "The Germany–Cyprus DTA (revised around 2011, updated by the 2021 protocol) assigns taxing rights for pension income. German private pensions — such as company pensions and private Rentenversicherung — are broadly taxable only in Cyprus, where a favourable domestic flat rate of 5% applies on amounts above a €3,420 annual exemption. The German statutory pension (gesetzliche Rente) may remain partly taxable in Germany under specific treaty articles, depending on your circumstances. Take personalised advice from a cross-border specialist before filing in either country for the first time.",
+				a: `The Germany–Cyprus DTA (revised around 2011, updated by the 2021 protocol) assigns taxing rights for pension income. German private pensions — such as company pensions and private Rentenversicherung — are broadly taxable only in Cyprus, where an optional flat rate of 5% applies on amounts above ${eur(FOREIGN_PENSION_THRESHOLD)} a year (from tax year 2026). The German statutory pension (gesetzliche Rente) may remain partly taxable in Germany under specific treaty articles, depending on your circumstances. Take personalised advice from a cross-border specialist before filing in either country for the first time.`,
 			},
 			{
 				q: "Can I reclaim my German pension contributions when I move to Cyprus?",

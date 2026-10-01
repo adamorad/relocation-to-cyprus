@@ -8,7 +8,18 @@ export const GUIDES_BATCH1: GuideInfo[] = [
 	{
 		slug: "yellow-slip-meu1-guide",
 		datePublished: "2026-07-05",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Migration Department: Registration of EU citizens (MEU1)",
+				url: "https://www.gov.cy/mip-md/en/documents/e-u-e-e-a-citizens-and-family-members-2/e-u-e-e-a-citizens-family-member/registration-of-e-u-citizens-and-members-of-their-families-who-are-also-e-u-e-e-a-citizens-meu1/",
+			},
+			{
+				label: "Migration Department (gov.cy)",
+				url: "https://www.gov.cy/mip-md/en/",
+			},
+		],
 		category: "immigration",
 		title: "Cyprus Yellow Slip (MEU1): 2026 Complete Guide",
 		description:
@@ -24,7 +35,7 @@ export const GUIDES_BATCH1: GuideInfo[] = [
 			},
 			{
 				heading: "How to Book an Appointment and Where to Apply",
-				body: "MEU1 applications are submitted in person at one of five Civil Registry and Migration Department (CRMD) district offices across Cyprus: Nicosia, Limassol, Larnaca, Paphos, and Famagusta/Paralimni. Appointment requirements vary by district — some offices have accepted walk-ins for certain application categories, while others require advance booking — so contact your local office directly before making the trip. As a general rule, booking three to four weeks ahead is sensible, and during busy periods slots can fill faster. The CRMD headquarters can be reached by email at migration@crmd.moi.gov.cy; phone numbers and any updated online booking details for each district are listed on the gov.cy immigration portal. Lawyers and immigration advisers may attend to assist, but the applicant must be physically present — the application cannot be submitted by a representative on your behalf. Bring originals and photocopies of every document on your checklist: offices have been known to turn applicants away for a single missing item, and it is a long way to travel twice. For MEU1 applicants attending the Nicosia office, receipt on the same day is possible in many cases; in other districts, turnaround is typically within a few weeks.",
+				body: "MEU1 applications are submitted in person at one of five Civil Registry and Migration Department (CRMD) district offices across Cyprus: Nicosia, Limassol, Larnaca, Paphos, and Famagusta/Paralimni. Appointment requirements vary by district — some offices have accepted walk-ins for certain application categories, while others require advance booking — so contact your local office directly before making the trip. As a general rule, booking three to four weeks ahead is sensible, and during busy periods slots can fill faster. The Migration Department can be reached by email at migration@md.mip.gov.cy; phone numbers and any updated online booking details for each district are listed on the gov.cy immigration portal. Lawyers and immigration advisers may attend to assist, but the applicant must be physically present — the application cannot be submitted by a representative on your behalf. Bring originals and photocopies of every document on your checklist: offices have been known to turn applicants away for a single missing item, and it is a long way to travel twice. For MEU1 applicants attending the Nicosia office, receipt on the same day is possible in many cases; in other districts, turnaround is typically within a few weeks.",
 			},
 			{
 				heading: "Your Document Checklist, by Applicant Category",
@@ -36,7 +47,7 @@ export const GUIDES_BATCH1: GuideInfo[] = [
 			},
 			{
 				heading: "What Happens If You Miss the Deadline",
-				body: "Missing the four-month registration window does not strip you of your underlying EU right to reside in Cyprus, but it does expose you to administrative penalties. Fines for late registration are tiered and, based on practitioner reports, typically start at a modest level for short delays and escalate for longer ones, with Cyprus law setting a substantially higher theoretical maximum. In practice, an unregistered EU citizen will encounter more immediate friction day-to-day: banks will not open accounts without a yellow slip, GESY enrolment becomes complicated, and many employers and landlords ask for the certificate as a matter of routine. If you have already missed the four-month window, the right course of action is to apply as soon as possible rather than waiting further — late applications are accepted, and acting promptly limits both the scale of any fine and the risk of further complications. Book the appointment first; do not wait until you have assembled a perfect document set. As for renewal: the MEU1 for EU citizens does not expire. Once issued, it remains valid indefinitely as long as you retain EU citizenship and your qualifying circumstances of residence continue. You are not required to renew or update it when you move address, though informing the CRMD of a change is sensible practice. The /tools/meu1-tracker is useful for staying on top of your application status and making sure you have the slip in hand before you urgently need it.",
+				body: "Missing the four-month registration window does not strip you of your underlying EU right to reside in Cyprus, but it does expose you to administrative penalties. Failing to register makes you liable to a fine of up to €2,500. In practice, an unregistered EU citizen will encounter more immediate friction day-to-day: banks will not open accounts without a yellow slip, GESY enrolment becomes complicated, and many employers and landlords ask for the certificate as a matter of routine. If you have already missed the four-month window, the right course of action is to apply as soon as possible rather than waiting further — late applications are accepted, and acting promptly limits both the scale of any fine and the risk of further complications. Book the appointment first; do not wait until you have assembled a perfect document set. As for renewal: the MEU1 for EU citizens does not expire. Once issued, it remains valid indefinitely as long as you retain EU citizenship and your qualifying circumstances of residence continue. You are not required to renew or update it when you move address, though informing the CRMD of a change is sensible practice. The /tools/meu1-tracker is useful for staying on top of your application status and making sure you have the slip in hand before you urgently need it.",
 			},
 		],
 		faqs: [
@@ -114,7 +125,14 @@ export const GUIDES_BATCH1: GuideInfo[] = [
 	{
 		slug: "moving-to-cyprus-from-israel",
 		datePublished: "2026-07-05",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Migration Department: Digital nomads and family members",
+				url: "https://www.gov.cy/mip-md/en/documents/digital-nomads-and-family-members/",
+			},
+		],
 		category: "immigration",
 		title: "Moving to Cyprus from Israel: 2026 Guide",
 		description:
@@ -126,7 +144,7 @@ export const GUIDES_BATCH1: GuideInfo[] = [
 			},
 			{
 				heading: "Residency Options for Non-EU Israelis",
-				body: "As non-EU nationals, Israelis have no automatic right of residence in Cyprus and must apply for a permit. Three routes are most relevant.\n\nPermanent Residency by Investment (sometimes called the Golden Visa) is the fastest permanent option. A minimum purchase of €300,000 in a newly built residential property — bought directly from a developer on the primary market — qualifies the main applicant, spouse, and minor children for lifelong permanent residency. The applicant must also demonstrate secured annual income from abroad (with additional amounts for dependents). Processing currently takes several months, and permit holders must visit Cyprus at least once every two years to maintain status.\n\nThe Digital Nomad Visa suits remote workers and the self-employed earning at least €3,500 net per month from non-Cypriot clients or employers. The permit lasts one year and can be renewed for a maximum of three years, and the government expanded the total permit cap in recent years.\n\nCategory F is a passive-income residency route with a low income bar, but it carries a serious caveat: the current processing backlog can run to several years, and applicants cannot work in Cyprus under this route. It suits those planning well ahead rather than those seeking near-term residency.\n\nOur residency-and-visas guide explains eligibility criteria and documentation for each pathway in full.",
+				body: "As non-EU nationals, Israelis have no automatic right of residence in Cyprus and must apply for a permit. Three routes are most relevant.\n\nPermanent Residency by Investment (sometimes called the Golden Visa) is the fastest permanent option. A minimum purchase of €300,000 in a newly built residential property — bought directly from a developer on the primary market — qualifies the main applicant, spouse, and minor children for lifelong permanent residency. The applicant must also demonstrate secured annual income from abroad (with additional amounts for dependents). Processing currently takes several months, and permit holders must visit Cyprus at least once every two years to maintain status.\n\nThe Digital Nomad Visa suits remote workers and the self-employed earning at least €3,500 net per month from non-Cypriot clients or employers. The permit lasts one year and can be renewed for up to two more years, and the government expanded the total permit cap in recent years.\n\nCategory F is a passive-income residency route with a low income bar, but it carries a serious caveat: the current processing backlog can run to several years, and applicants cannot work in Cyprus under this route. It suits those planning well ahead rather than those seeking near-term residency.\n\nOur residency-and-visas guide explains eligibility criteria and documentation for each pathway in full.",
 			},
 			{
 				heading: "The Israeli Tax-Exit Reality",
