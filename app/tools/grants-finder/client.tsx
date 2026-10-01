@@ -64,36 +64,6 @@ const SIZE_LABELS: Record<CompanySize, string> = {
 
 const GRANTS: ReadonlyArray<Grant> = [
 	{
-		name: "ARIF: Restart and Recovery Innovation Fund",
-		adminBody: "Research and Innovation Foundation (RIF)",
-		targetSectors: ["tech", "research", "manufacturing", "general"],
-		maxAmountEuros: 200000,
-		coveragePercent: 50,
-		eligibility:
-			"Cyprus-registered SMEs, startups and research organisations. Must have a Cyprus TIC and be operating for at least 12 months.",
-		deadline: "rolling",
-		status: "rolling",
-		companySizes: ["micro", "sme"],
-		url: "https://www.research.org.cy",
-		description:
-			"Supports R&D-driven businesses to develop innovative products, services and processes. Funded under the Recovery and Resilience Plan.",
-	},
-	{
-		name: "IDEA: Business Idea Competition for Startups",
-		adminBody: "Research and Innovation Foundation (RIF)",
-		targetSectors: ["tech", "research", "general"],
-		maxAmountEuros: 50000,
-		coveragePercent: 80,
-		eligibility:
-			"Early-stage startups and entrepreneurs at concept or MVP stage. At least one founder must be resident in Cyprus.",
-		deadline: "rolling",
-		status: "rolling",
-		companySizes: ["micro"],
-		url: "https://www.research.org.cy",
-		description:
-			"Pre-seed funding for innovative business ideas. High coverage rate of up to 80%. Primarily targets tech and deep-tech startups.",
-	},
-	{
 		name: "INNOVATE: Innovate for Competitiveness",
 		adminBody: "Research and Innovation Foundation (RIF)",
 		targetSectors: ["tech", "manufacturing", "research", "general"],
@@ -101,7 +71,8 @@ const GRANTS: ReadonlyArray<Grant> = [
 		coveragePercent: 50,
 		eligibility:
 			"Cyprus-registered SMEs with a demonstrable R&D component and market readiness. Partnerships with research institutions preferred.",
-		deadline: "2025-09-30",
+		deadline:
+			"Closed. Check the Research and Innovation Foundation for the next call",
 		status: "closed",
 		companySizes: ["sme"],
 		url: "https://www.research.org.cy",
@@ -131,7 +102,7 @@ const GRANTS: ReadonlyArray<Grant> = [
 		coveragePercent: 40,
 		eligibility:
 			"Cyprus-registered businesses investing in green practices, energy efficiency, and circular economy. All sizes eligible.",
-		deadline: "2025-12-31",
+		deadline: "Closed. Check MECIT for the next call",
 		status: "closed",
 		companySizes: ["micro", "sme", "large"],
 		url: "https://www.mcit.gov.cy",
@@ -161,7 +132,8 @@ const GRANTS: ReadonlyArray<Grant> = [
 		coveragePercent: 85,
 		eligibility:
 			"Organisations in EU Mediterranean coastal regions (including Cyprus). Requires a transnational project partnership with at least 3 countries.",
-		deadline: "2026-03-31",
+		deadline:
+			"Closed. Check the Interreg Mediterranean programme for the next call",
 		status: "closed",
 		companySizes: ["micro", "sme", "large"],
 		url: "https://interreg-med.eu",
@@ -176,7 +148,8 @@ const GRANTS: ReadonlyArray<Grant> = [
 		coveragePercent: 80,
 		eligibility:
 			"Organisations in Cyprus and eligible Greek regions. Partnership with Greek counterpart required. Public bodies, NGOs, research orgs and businesses eligible.",
-		deadline: "2025-10-15",
+		deadline:
+			"Closed. Check the Interreg Greece-Cyprus programme for the next call",
 		status: "closed",
 		companySizes: ["micro", "sme", "large"],
 		url: "https://www.greece-cyprus.eu",
@@ -191,7 +164,8 @@ const GRANTS: ReadonlyArray<Grant> = [
 		coveragePercent: 45,
 		eligibility:
 			"SMEs registered and operating in Cyprus for at least 2 years. Must demonstrate impact on competitiveness, exports or employment.",
-		deadline: "2025-11-30",
+		deadline:
+			"Closed. Check the Deputy Ministry of Research, Innovation and Digital Policy for the next call",
 		status: "closed",
 		companySizes: ["micro", "sme"],
 		url: "https://www.digitalpolicy.gov.cy",
@@ -237,7 +211,7 @@ const GRANTS: ReadonlyArray<Grant> = [
 		coveragePercent: 40,
 		eligibility:
 			"Hotels, agro-tourism operators, tour operators and hospitality businesses registered in Cyprus. Minimum 2 years of operation.",
-		deadline: "2025-08-31",
+		deadline: "Closed. Check the Deputy Ministry of Tourism for the next call",
 		status: "closed",
 		companySizes: ["micro", "sme", "large"],
 		url: "https://www.visitcyprus.com",
@@ -260,21 +234,6 @@ const GRANTS: ReadonlyArray<Grant> = [
 			"The EU's flagship deep-tech startup funding programme. Up to €2.5M grant + up to €15M equity investment. Highly competitive (3-5% success rate).",
 	},
 	{
-		name: "Horizon Europe: SME Instrument (Step 1)",
-		adminBody: "European Innovation Council (European Commission)",
-		targetSectors: ["tech", "research", "manufacturing", "general"],
-		maxAmountEuros: 50000,
-		coveragePercent: 100,
-		eligibility:
-			"EU SMEs with innovative high-growth potential. Cyprus-registered entities are fully eligible. No partnership requirement for Phase 1.",
-		deadline: "rolling",
-		status: "rolling",
-		companySizes: ["micro", "sme"],
-		url: "https://eic.ec.europa.eu",
-		description:
-			"€50K feasibility study grant for SMEs with breakthrough ideas. 100% coverage. Good entry point into EU innovation funding ecosystem.",
-	},
-	{
 		name: "Digital Economy and Society Investment Plan",
 		adminBody: "Deputy Ministry of Research, Innovation and Digital Policy",
 		targetSectors: ["tech", "retail", "general"],
@@ -282,8 +241,9 @@ const GRANTS: ReadonlyArray<Grant> = [
 		coveragePercent: 60,
 		eligibility:
 			"Micro and small businesses investing in digital tools. Businesses must be registered and operating in Cyprus.",
-		deadline: "2026-06-30",
-		status: "open",
+		deadline:
+			"Closed. Check the Deputy Ministry of Research, Innovation and Digital Policy for the next call",
+		status: "closed",
 		companySizes: ["micro"],
 		url: "https://www.digitalpolicy.gov.cy",
 		description:
@@ -320,19 +280,19 @@ const GRANTS: ReadonlyArray<Grant> = [
 			"Reimburses up to 60% of approved training costs. Covers external courses, certifications, language training and professional development programmes.",
 	},
 	{
-		name: "EIF: COSME Loan Guarantee Facility",
-		adminBody: "European Investment Fund / Bank of Cyprus",
+		name: "InvestEU guarantees (through Cypriot partner banks)",
+		adminBody: "European Investment Fund (InvestEU)",
 		targetSectors: ["general"],
 		maxAmountEuros: null,
 		coveragePercent: null,
 		eligibility:
-			"SMEs in Cyprus seeking business loans. Access via participating banks (Bank of Cyprus, Hellenic Bank). No minimum operation period.",
+			"SMEs in Cyprus seeking business loans, through banks that take part in InvestEU.",
 		deadline: "rolling",
 		status: "rolling",
 		companySizes: ["micro", "sme"],
-		url: "https://www.eif.org",
+		url: "https://single-market-economy.ec.europa.eu/access-finance/policy-areas/eu-supported-loans-guarantees-and-equity-investments_en",
 		description:
-			"EIF-backed loan guarantees that reduce collateral requirements for SME lending. Accessed through Cypriot banks, ask your bank about EU-backed SME loan products.",
+			"EU-backed loan guarantees under InvestEU, which replaced the COSME loan guarantee facility. Ask your bank whether it offers InvestEU-backed SME loans.",
 	},
 	{
 		name: "InvestCyprus Incentive Package",

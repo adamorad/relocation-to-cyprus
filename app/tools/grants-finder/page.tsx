@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
+import { SourcesNote } from "@/components/ui/SourcesNote";
+import { HEALTH_TRANSPORT_CHECKED, SRC } from "@/lib/facts/health-transport";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import GrantsFinderClient from "./client";
@@ -54,7 +56,7 @@ export default function GrantsFinderClientPage() {
 				{ href: "/sections/accountants/", label: "Find an accountant" },
 				{ href: "/tools/", label: "All tools" },
 			]}
-			disclaimer="Grant programmes open and close frequently. Amounts, coverage percentages and deadlines change. Always verify current status and eligibility criteria directly at the official source before investing time in an application. This directory is for research purposes and was last updated in 2025."
+			disclaimer="Grant programmes open and close frequently. Amounts, coverage percentages and deadlines change. Always verify current status and eligibility criteria directly at the official source before investing time in an application. This directory is for research purposes and was last checked on 2 October 2026."
 		>
 			<script
 				type="application/ld+json"
@@ -64,6 +66,10 @@ export default function GrantsFinderClientPage() {
 				}}
 			/>
 			<GrantsFinderClient />
+			<SourcesNote
+				lastChecked={HEALTH_TRANSPORT_CHECKED}
+				sources={[SRC.rifCalls, SRC.fundingPortal, SRC.investEu]}
+			/>
 		</ToolTemplate>
 	);
 }
