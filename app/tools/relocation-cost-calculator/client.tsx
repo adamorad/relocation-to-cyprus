@@ -283,7 +283,7 @@ function calcCosts(inputs: {
 	// Nomad permit plus first registration in the Aliens' Register.
 	items.push({
 		category: "Legal & Admin",
-		label: `Residence registration (EU: ${eur(MEU1_FEE)} MEU1 per adult; non-EU, e.g. Digital Nomad: ${eur(DNV_PERMIT_FEE)} + ${eur(ALIENS_REGISTER_FEE)} per adult)`,
+		label: `Residence registration, per adult (${eur(MEU1_FEE)} MEU1 to ${eur(DNV_PERMIT_FEE + ALIENS_REGISTER_FEE)} non-EU permit)`,
 		low: MEU1_FEE * adults,
 		high: (DNV_PERMIT_FEE + ALIENS_REGISTER_FEE) * adults,
 	});
