@@ -104,24 +104,6 @@ export const HEALTHCARE_VENUES: ReadonlyArray<HealthcareVenue> = [
     website: "https://www.mediterraneanhospital.com.cy",
   },
   {
-    name: "Apollonion Private Hospital",
-    city: "Nicosia",
-    type: "hospital",
-    gesyAccepted: false,
-    englishSpoken: true,
-    why: "One of Nicosia's leading private hospitals. Full specialist services, modern imaging, English-speaking consultants. Commonly used by the diplomatic and business community in the capital.",
-    website: "https://www.apollonion.com",
-  },
-  {
-    name: "Aretaeion Hospital",
-    city: "Nicosia",
-    type: "hospital",
-    gesyAccepted: false,
-    englishSpoken: true,
-    why: "Established private hospital in central Nicosia. Strong cardiology and surgical departments. Accepts most international health insurance plans.",
-    website: "https://www.aretaeio.com",
-  },
-  {
     name: "Iasis Hospital",
     city: "Paphos",
     type: "hospital",
@@ -139,15 +121,6 @@ export const HEALTHCARE_VENUES: ReadonlyArray<HealthcareVenue> = [
     gesyAccepted: true,
     englishSpoken: true,
     why: "The main public hospital for the Limassol district under GeSY. Free or low-cost for registered GeSY users. A&E and most specialist services available. Longer wait times than private but solid infrastructure.",
-  },
-  {
-    name: "Nicosia General Hospital",
-    city: "Nicosia",
-    type: "hospital",
-    gesyAccepted: true,
-    englishSpoken: true,
-    why: "The largest public hospital in Cyprus. Full specialist departments. Free for GeSY-registered patients with a GP referral. English spoken in most departments.",
-    website: "https://www.moh.gov.cy",
   },
   {
     name: "Paphos General Hospital",
@@ -186,15 +159,6 @@ export const HEALTHCARE_VENUES: ReadonlyArray<HealthcareVenue> = [
     why: "Established GP group practice in Paphos. GeSY registered. English-speaking doctors familiar with expat patient profiles. Reasonable wait times outside summer peak.",
   },
   {
-    name: "Nicosia Family Clinic",
-    city: "Nicosia",
-    type: "gp-clinic",
-    gesyAccepted: true,
-    englishSpoken: true,
-    consultationFrom: 30,
-    why: "Central Nicosia GP practice. GeSY registered. Multilingual staff. Good for professionals needing a reliable GP in the capital without travelling to a hospital.",
-  },
-  {
     name: "Larnaca Clinic",
     city: "Larnaca",
     type: "gp-clinic",
@@ -224,15 +188,6 @@ export const HEALTHCARE_VENUES: ReadonlyArray<HealthcareVenue> = [
     why: "Established dental practice in Kato Paphos. English-speaking. Competitive pricing. Implant work at half the cost of UK private dentists. Popular with long-stay expats for all dental needs.",
   },
   {
-    name: "Smile Dental Nicosia",
-    city: "Nicosia",
-    type: "dental",
-    gesyAccepted: false,
-    englishSpoken: true,
-    consultationFrom: 60,
-    why: "City-centre Nicosia dental clinic. English-speaking dentists, modern equipment. Strong reputation in the professional expat community.",
-  },
-  {
     name: "Larnaca Dental Studio",
     city: "Larnaca",
     type: "dental",
@@ -243,16 +198,6 @@ export const HEALTHCARE_VENUES: ReadonlyArray<HealthcareVenue> = [
   },
 
   // ── Specialist ───────────────────────────────────────────────────────────
-  {
-    name: "German Oncology Centre",
-    city: "Nicosia",
-    type: "specialist",
-    specialty: "Oncology",
-    gesyAccepted: false,
-    englishSpoken: true,
-    why: "Cyprus's leading private oncology centre, affiliated with German Cancer Research Center protocols. Attracts patients from across the region. Important for expats with cancer history or ongoing treatment needs.",
-    website: "https://www.germanoncology.com.cy",
-  },
   {
     name: "Heart Institute",
     city: "Limassol",

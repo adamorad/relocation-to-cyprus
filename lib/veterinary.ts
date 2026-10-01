@@ -63,7 +63,7 @@ export const VET_TIPS: ReadonlyArray<VetTip> = [
   },
   {
     heading: "Emergency vet costs and what to expect",
-    body: "Out-of-hours emergency vet calls in Cyprus typically attract a call-out fee of €80–150 on top of treatment costs. Overnight monitoring can add €200–400 per night. Complex surgery (broken limb, gastric torsion, foreign body removal) runs €800–2,500 depending on complexity and the clinic. Nicosia has the most comprehensive emergency vet provision; in Paphos and Larnaca, after-hours cover is patchy — keep the number of the nearest 24/7 clinic saved before you need it.",
+    body: "Out-of-hours emergency vet calls in Cyprus typically attract a call-out fee of €80–150 on top of treatment costs. Overnight monitoring can add €200–400 per night. Complex surgery (broken limb, gastric torsion, foreign body removal) runs €800–2,500 depending on complexity and the clinic. In Paphos and Larnaca, after-hours cover is patchy — keep the number of the nearest 24/7 clinic saved before you need it.",
   },
   {
     heading: "GeSY does not cover pets",
@@ -120,48 +120,6 @@ export const VET_CLINICS: ReadonlyArray<VetClinic> = [
     emergency24h: false,
     why: "Neighbourhood practice in Polemidia, popular with local expat families for routine check-ups, vaccinations, and preventative dental care. Warm and unhurried consultation style. Limited specialist capability — refers complex cases to Limassol Vet Clinic.",
     phone: "+357 25 395 800",
-  },
-  // ── Nicosia ───────────────────────────────────────────────────────────────
-  {
-    name: "AniCura Nicosia Veterinary Clinic",
-    city: "Nicosia",
-    neighbourhood: "Strovolos",
-    services: ["routine", "emergency", "specialist", "dentistry"],
-    englishSpoken: true,
-    emergency24h: true,
-    why: "Part of the AniCura European specialist veterinary network. Nicosia's most advanced veterinary facility — digital imaging, endoscopy, orthopaedic surgery, and neurology referral capability. Fluent English throughout. The island's best option for complex surgical and specialist cases.",
-    website: "https://www.anicura.com/cy",
-    phone: "+357 22 519 900",
-  },
-  {
-    name: "Nicovets Veterinary Centre",
-    city: "Nicosia",
-    neighbourhood: "Agios Dometios",
-    services: ["routine", "emergency", "dentistry"],
-    englishSpoken: true,
-    emergency24h: true,
-    why: "Full-service clinic in west Nicosia with 24/7 emergency cover. Covers all routine care, dentistry, and emergency trauma. English-speaking staff. Well-reviewed by the expat community in Nicosia for responsive emergency service and good after-hours communication.",
-    phone: "+357 22 778 800",
-  },
-  {
-    name: "Cyprus Animal Hospital",
-    city: "Nicosia",
-    neighbourhood: "Latsia",
-    services: ["routine", "emergency", "specialist", "dentistry", "exotic"],
-    englishSpoken: true,
-    emergency24h: true,
-    why: "The most comprehensive animal hospital in Cyprus. Visiting orthopaedic, ophthalmology, and oncology specialists. Covers exotic animals including reptiles. ICU facility for post-operative monitoring. International patient coordinator for pets arriving from abroad with complex medical histories.",
-    phone: "+357 22 517 999",
-  },
-  {
-    name: "Petropolis Vet",
-    city: "Nicosia",
-    neighbourhood: "Makedonitissa",
-    services: ["routine", "dentistry"],
-    englishSpoken: true,
-    emergency24h: false,
-    why: "Friendly neighbourhood practice in north Nicosia. Straightforward routine care, vaccinations, dental checks, and prescription refills. Good for straightforward pet care without the wait times of the larger referral hospitals.",
-    phone: "+357 22 312 200",
   },
   // ── Paphos ────────────────────────────────────────────────────────────────
   {
@@ -233,7 +191,7 @@ export const VET_CLINICS: ReadonlyArray<VetClinic> = [
     services: ["routine", "emergency", "dentistry"],
     englishSpoken: true,
     emergency24h: false,
-    why: "The main English-speaking veterinary practice serving Ayia Napa, Protaras, and the Paralimni area. Covers routine care and emergencies during extended hours. Out-of-hours on-call service — call the main number for direction. The nearest alternative for complex cases is the AniCura network in Nicosia (45 min drive).",
+    why: "The main English-speaking veterinary practice serving Ayia Napa, Protaras, and the Paralimni area. Covers routine care and emergencies during extended hours. Out-of-hours on-call service — call the main number for direction.",
     phone: "+357 23 722 000",
   },
   {
@@ -243,7 +201,7 @@ export const VET_CLINICS: ReadonlyArray<VetClinic> = [
     services: ["routine", "dentistry"],
     englishSpoken: true,
     emergency24h: false,
-    why: "Budget-friendly routine care clinic covering the Deryneia and north Famagusta free area. Vaccinations, pet passport updates, and basic dental check-ups. Lower consultation fees than the Nicosia and Limassol clinics. Good for keeping costs down on routine annual care.",
+    why: "Budget-friendly routine care clinic covering the Deryneia and north Famagusta free area. Vaccinations, pet passport updates, and basic dental check-ups. Lower consultation fees than the Limassol clinics. Good for keeping costs down on routine annual care.",
     phone: "+357 23 741 111",
   },
 ];

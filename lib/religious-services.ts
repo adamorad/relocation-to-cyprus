@@ -80,7 +80,7 @@ export const RELIGIOUS_TIPS: ReadonlyArray<ReligiousTip> = [
   },
   {
     heading: "Jewish community concentrated in Limassol",
-    body: "Cyprus has a growing and active Jewish community, concentrated primarily in Limassol which hosts the island's main Chabad House. Limassol has kosher food options, a Jewish school, and regular Shabbat services. The community is a mix of Israeli expats, European Jewish families, and international professionals. Paphos and Nicosia have smaller communities.",
+    body: "Cyprus has a growing and active Jewish community, concentrated primarily in Limassol which hosts the island's main Chabad House. Limassol has kosher food options, a Jewish school, and regular Shabbat services. The community is a mix of Israeli expats, European Jewish families, and international professionals. Paphos has a smaller community.",
   },
 ];
 
@@ -111,16 +111,6 @@ export const RELIGIOUS_SERVICES: ReadonlyArray<ReligiousService> = [
     website: "https://www.cypgulf.org/larnaca",
   },
   {
-    name: "St Stephen's Anglican Church",
-    city: "Nicosia",
-    faith: "Anglican",
-    languagesOffered: ["English"],
-    serviceFrequency: "Sunday services, weekly",
-    why: "The Anglican congregation in the capital, serving diplomats, business professionals, and English-speaking expats. Regular Sunday services and pastoral care. Part of the Diocese of Cyprus and the Gulf.",
-    address: "Nicosia",
-    website: "https://www.cypgulf.org/nicosia",
-  },
-  {
     name: "All Saints Anglican Church",
     city: "Paphos",
     faith: "Anglican",
@@ -132,16 +122,6 @@ export const RELIGIOUS_SERVICES: ReadonlyArray<ReligiousService> = [
   },
 
   // ── Catholic ─────────────────────────────────────────────────────────────
-  {
-    name: "Holy Cross Catholic Church",
-    city: "Nicosia",
-    faith: "Catholic",
-    languagesOffered: ["English", "Arabic", "French", "Filipino"],
-    serviceFrequency: "Multiple daily Masses, Sunday in multiple languages",
-    why: "The main Latin Rite Catholic church in Cyprus and the largest Catholic congregation on the island. English Mass every Sunday morning. Serves a very international congregation including Filipinos, Indians, Lebanese, and European expats. Pastoral care and community events throughout the week.",
-    address: "Stasinou Avenue, Nicosia",
-    website: "https://www.holycrosscyprus.org",
-  },
   {
     name: "St Catherine's Catholic Church",
     city: "Limassol",
@@ -160,15 +140,6 @@ export const RELIGIOUS_SERVICES: ReadonlyArray<ReligiousService> = [
     why: "Cyprus has a historic Maronite Christian community — one of the island's recognised religious minorities. The Limassol Maronite church offers services in the Maronite rite. An important community for Arabic-speaking Catholic expats and the Lebanese diaspora.",
     address: "Limassol",
   },
-  {
-    name: "St Maron Maronite Church",
-    city: "Nicosia",
-    faith: "Catholic",
-    languagesOffered: ["Arabic", "Greek"],
-    serviceFrequency: "Sunday services",
-    why: "Nicosia's Maronite parish, serving the historic Maronite community in the capital. Part of Cyprus's constitutionally recognised religious minority groups. Services in Arabic and Greek.",
-    address: "Nicosia old city",
-  },
 
   // ── Orthodox ─────────────────────────────────────────────────────────────
   {
@@ -180,15 +151,6 @@ export const RELIGIOUS_SERVICES: ReadonlyArray<ReligiousService> = [
     why: "One of the most important Orthodox churches in Cyprus — built over the tomb of Saint Lazarus of Bethany, who according to tradition became the first Bishop of Kition (Larnaca). Regular liturgies, significant feast days. English-speaking visitors welcome. A spiritual and cultural landmark for all Orthodox expats.",
     address: "Larnaca old town",
     website: "https://www.saint-lazarus.org",
-  },
-  {
-    name: "Cathedral of Agios Ioannis",
-    city: "Nicosia",
-    faith: "Orthodox",
-    languagesOffered: ["Greek"],
-    serviceFrequency: "Daily liturgy",
-    why: "The Archbishopric of Cyprus Cathedral in Nicosia's old city. One of the island's most significant Orthodox churches, with 18th-century frescoes depicting Cyprus's ecclesiastical history. Services in Greek; open to all.",
-    address: "Archbishop Kyprianou Square, Nicosia old city",
   },
 
   // ── Protestant ───────────────────────────────────────────────────────────
@@ -208,14 +170,6 @@ export const RELIGIOUS_SERVICES: ReadonlyArray<ReligiousService> = [
     languagesOffered: ["English"],
     serviceFrequency: "Sunday services, weekly",
     why: "English-language Protestant church serving Paphos's international community. Evangelical orientation with a warm community ethos. Sunday morning services, occasional midweek events. Good entry point for expats seeking English-language Christian worship in Paphos.",
-  },
-  {
-    name: "Nicosia International Christian Fellowship",
-    city: "Nicosia",
-    faith: "Protestant",
-    languagesOffered: ["English", "Filipino"],
-    serviceFrequency: "Sunday services, weekly",
-    why: "Multi-ethnic English-language Protestant congregation in Nicosia. Diverse membership including many Filipino and South Asian expats. Sunday services with worship and preaching in English. Active pastoral care and community outreach.",
   },
   {
     name: "Crossroads Church Larnaca",
@@ -276,12 +230,4 @@ export const RELIGIOUS_SERVICES: ReadonlyArray<ReligiousService> = [
   },
 
   // ── Non-denominational / Other ───────────────────────────────────────────
-  {
-    name: "Baha'i Community of Cyprus",
-    city: "Nicosia",
-    faith: "Non-denominational",
-    languagesOffered: ["English", "Greek"],
-    serviceFrequency: "Feasts (every 19 days), study circles",
-    why: "The Baha'i Faith has had a continuous presence in Cyprus since the 1950s. The Nicosia community holds regular devotional gatherings, Nineteen Day Feasts, and study circles open to all. Welcoming to international expats and those exploring independent religious inquiry.",
-  },
 ];

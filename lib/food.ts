@@ -12,7 +12,6 @@ export type City =
   | "Limassol"
   | "Paphos"
   | "Larnaca"
-  | "Nicosia"
   | "Ayia Napa";
 
 export type Category =
@@ -111,7 +110,7 @@ export const NAME_GUIDE: ReadonlyArray<NameRow> = [
     whatItIs:
       "Shaved spit-roasted meat (usually pork or chicken) carved off a vertical rotisserie. Greek cousin of döner and shawarma. Wrapped in a Greek-style pita.",
     inCyprus:
-      "Common in Cyprus, especially in Limassol and Nicosia. Served in Cypriot pocket pita rather than the Greek flatbread, so it looks more like a sandwich than a wrap.",
+      "Common in Cyprus, especially in Limassol. Served in Cypriot pocket pita rather than the Greek flatbread, so it looks more like a sandwich than a wrap.",
   },
   {
     term: "Sheftalia",
@@ -143,7 +142,7 @@ export const NAME_GUIDE: ReadonlyArray<NameRow> = [
     whatItIs:
       "The Arabic-tradition version of the same shaved-spit meat. Usually leaner cuts, often with tahini or amba sauce, different spice profile (cumin / sumac / cardamom).",
     inCyprus:
-      "Found in Lebanese and Israeli restaurants in Limassol and Nicosia. Authentic spots use Lebanese flatbread or a wrap, not Cypriot pita.",
+      "Found in Lebanese and Israeli restaurants in Limassol. Authentic spots use Lebanese flatbread or a wrap, not Cypriot pita.",
   },
 ];
 
@@ -593,78 +592,6 @@ export const PLACES: Record<City, Record<Category, Place[]>> = {
       },
     ],
   },
-  Nicosia: {
-    breakfast: [
-      {
-        name: "D.O.T Restaurant",
-        neighbourhood: "Near Famagusta Gate",
-        why: "Industrial-design space. The capital's brunch default for locals — go before 11am at weekends.",
-        price: 2,
-      },
-      {
-        name: "Kala Kathoumena",
-        neighbourhood: "Phaneromeni square, old town",
-        why: "Café-bar on Phaneromeni square. Students, artists, old-town locals. Greek coffee done properly.",
-        price: 1,
-      },
-    ],
-    snack: [
-      {
-        name: "Apantisi",
-        neighbourhood: "Nicosia centre",
-        why: "Since 1996. Won Best Souvlaki at the 2014 Cyprus Eating Awards and a perennial nominee since.",
-        price: 1,
-      },
-      {
-        name: "Piatsa Gourounaki",
-        neighbourhood: "Nicosia centre",
-        why: "Souvlaki in warm pita with fresh toppings. Regulars-friendly spot — recognise faces after one visit.",
-        price: 1,
-      },
-    ],
-    lunch: [
-      {
-        name: "Zanettos Cypriot Tavern",
-        neighbourhood: "Trikoupi 65, old city",
-        why: "Since 1938. Fixed-price meze. An 85-year-old local-elder institution.",
-        price: 2,
-      },
-      {
-        name: "Inga's Veggie Heaven",
-        neighbourhood: "Dimonaktos street, old town",
-        why: "Tiny vegetarian / vegan run by Icelandic chef Inga. Eight tables, a craft-studio street.",
-        price: 2,
-      },
-    ],
-    dinner: [
-      {
-        name: "Beba",
-        neighbourhood: "Nicosia",
-        why: "Wood-fire-oven pitta, locally-sourced ingredients, modern-sensibility Greek-Cypriot.",
-        price: 3,
-      },
-      {
-        name: "Tocayo",
-        neighbourhood: "Nicosia",
-        why: "Peruvian / Latin American ceviches and grilled meats, plus cocktails. Locally-driven and trendy.",
-        price: 3,
-      },
-    ],
-    sweets: [
-      {
-        name: "Elements Fine Desserts",
-        neighbourhood: "Nicosia",
-        why: "Modern-French patisserie playing with flavour and texture. Reservation-worthy plated desserts.",
-        price: 2,
-      },
-      {
-        name: "Melissa Confectionery",
-        neighbourhood: "Old town",
-        why: "Traditional family-run bakery & patisserie. Locals stop in daily for bread and weekend cakes.",
-        price: 1,
-      },
-    ],
-  },
   "Ayia Napa": {
     breakfast: [
       {
@@ -744,7 +671,6 @@ export const ALL_CITIES: ReadonlyArray<City> = [
   "Limassol",
   "Paphos",
   "Larnaca",
-  "Nicosia",
   "Ayia Napa",
 ];
 

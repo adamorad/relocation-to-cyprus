@@ -213,29 +213,6 @@ export const VIEW_BARS: ReadonlyArray<ViewBar> = [
     why: "Creative, arty rooftop in Larnaca's old town district. Smaller and more personal than the hotel bars. Regular live music events. Good choice for a laid-back evening with local residents rather than tourists.",
   },
 
-  // ── Nicosia ───────────────────────────────────────────────────────────────
-  {
-    name: "Skyline Bar at Hilton Nicosia",
-    city: "Nicosia",
-    neighbourhood: "Engomi, west Nicosia",
-    viewType: "rooftop",
-    priceRange: 3,
-    cocktailsFrom: 14,
-    reservationRequired: false,
-    why: "The capital is landlocked, so 'sea view' is off the menu — but the Hilton rooftop gives the best panoramic city view in Nicosia, stretching toward the Pentadaktylos mountains. The most reliably excellent bar in the city.",
-    website: "https://www.hilton.com/en/hotels/lcanihi-hilton-nicosia",
-  },
-  {
-    name: "Barolo Rooftop Lounge",
-    city: "Nicosia",
-    neighbourhood: "Nicosia city centre",
-    viewType: "rooftop",
-    priceRange: 2,
-    cocktailsFrom: 11,
-    reservationRequired: false,
-    why: "City-centre rooftop bar popular with the Nicosia professional crowd. Extensive wine list alongside cocktails. No sea view but solid city panorama and a more local atmosphere than the hotel alternatives.",
-    instagram: "https://www.instagram.com/barolonicosiaofficial/",
-  },
 
   // ── Ayia Napa ─────────────────────────────────────────────────────────────
   {

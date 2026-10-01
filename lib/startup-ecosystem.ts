@@ -62,7 +62,7 @@ export const STARTUP_VENUE_TYPE_LABEL: Record<StartupVenueType, string> = {
 
 export const STARTUP_TIPS: ReadonlyArray<StartupTip> = [
   {
-    heading: "The MIIC is the anchor of the Nicosia scene",
+    heading: "The MIIC is the anchor of the public-sector tech scene",
     body: "The Multimodal Information and Interaction Centre (MIIC) at the University of Cyprus (Nicosia) is the most established public-sector tech hub on the island. It hosts spin-offs, research commercialisation projects, and EU-funded startup programmes. If you are a deep-tech or research-driven founder, start here before anywhere else — they have the densest network into Cyprus's academic and public funding ecosystem.",
   },
   {
@@ -121,52 +121,6 @@ export const STARTUP_VENUES: ReadonlyArray<StartupVenue> = [
     website: "https://www.elevate.com.cy",
   },
 
-  // ── Nicosia ───────────────────────────────────────────────────────────────
-  {
-    name: "MIIC — Multimodal Information and Interaction Centre",
-    city: "Nicosia",
-    neighbourhood: "University of Cyprus campus",
-    type: "tech-hub",
-    focusAreas: ["deep tech", "AI", "research commercialisation", "ICT"],
-    why: "The anchor public-sector tech hub in Cyprus, embedded at the University of Cyprus. Hosts spin-offs, EU-funded startup programmes, and research commercialisation projects. Best entry point for deep-tech and research-driven founders.",
-    website: "https://miic.ucy.ac.cy",
-  },
-  {
-    name: "IDEA Innovation Centre",
-    city: "Nicosia",
-    neighbourhood: "Frederick University, Nicosia",
-    type: "incubator",
-    focusAreas: ["general tech", "social enterprise", "EU funding"],
-    why: "Incubator linked to Frederick University, specialising in navigating EU research funding (Horizon Europe, ERDF) for early-stage companies. Strong mentorship network and structured cohort programmes.",
-    website: "https://ideacenter.com.cy",
-  },
-  {
-    name: "Cyprus Startup Hub (CIPA)",
-    city: "Nicosia",
-    neighbourhood: "Nicosia city centre",
-    type: "accelerator",
-    focusAreas: ["FDI", "internationalisation", "scale-ups"],
-    why: "Run under the auspices of the Cyprus Investment Promotion Agency. Focused on foreign founders establishing Cyprus operations and companies looking to scale internationally using Cyprus as a base. Strong government connections.",
-    website: "https://www.cipa.org.cy",
-  },
-  {
-    name: "WeSpace Nicosia",
-    city: "Nicosia",
-    neighbourhood: "Nicosia business district",
-    type: "coworking",
-    focusAreas: ["general business", "startups", "freelancers"],
-    membershipFrom: 110,
-    why: "Well-priced coworking hub in Nicosia's business district. Consistent WiFi, private meeting rooms, and a mixed community of local professionals and international founders settling in the capital.",
-  },
-  {
-    name: "The Nest Nicosia",
-    city: "Nicosia",
-    neighbourhood: "Engomi",
-    type: "coworking",
-    focusAreas: ["digital agencies", "marketing", "tech startups"],
-    membershipFrom: 120,
-    why: "Community-focused coworking space attracting digital agencies and marketing teams alongside solo founders. Regular knowledge-sharing events; good for building a Nicosia professional network quickly.",
-  },
 
   // ── Paphos ────────────────────────────────────────────────────────────────
   {

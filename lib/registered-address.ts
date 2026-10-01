@@ -46,10 +46,6 @@ export const REGISTERED_ADDRESS_TIPS: ReadonlyArray<RegisteredAddressTip> = [
     heading: "Not all providers include mail forwarding — check before signing",
     body: "Many providers include the registered address only (collecting mail for inspection or forwarding is a separate, often paid-extra service). If your company will regularly receive physical correspondence from banks, the tax department or government agencies, confirm that mail scanning and forwarding is included, and ask how quickly mail is forwarded. Some low-cost providers scan and email; others courier a bundle monthly.",
   },
-  {
-    heading: "Nicosia tends to be cheaper for registered address services",
-    body: "Limassol commands a premium for registered addresses because of its status as Cyprus's commercial capital — many international banks and counterparties recognise a Limassol address as a signal of substance. Nicosia providers are typically 20–40% cheaper for an equivalent service. If the registered address city has no bearing on your business operations or client perception, Nicosia is the more cost-effective choice.",
-  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -128,60 +124,6 @@ export const REGISTERED_ADDRESS_PROVIDERS: ReadonlyArray<RegisteredAddressProvid
       website: "https://www.bdo.com.cy",
     },
 
-    // ── Nicosia ────────────────────────────────────────────────────────────
-    {
-      name: "Cyprus Company Registration Centre",
-      city: "Nicosia",
-      neighbourhood: "Nicosia business district",
-      pricePerYear: 200,
-      includes: [
-        "Registered office address",
-        "Mail forwarding (monthly bundle)",
-        "Registrar of Companies correspondence handling",
-      ],
-      why: "One of the most competitive annual prices for a Nicosia registered address. Monthly mail bundle forwarding; suitable for companies that receive low volumes of physical correspondence. Popular with holding structures.",
-    },
-    {
-      name: "Eurofast Cyprus",
-      city: "Nicosia",
-      neighbourhood: "Nicosia centre",
-      pricePerYear: 240,
-      includes: [
-        "Registered office address",
-        "Mail forwarding",
-        "Company secretary",
-        "HR and payroll services available",
-      ],
-      why: "Regional advisory firm with strong presence across the Eastern European and Mediterranean markets. Good option for companies with employees in multiple countries who want an integrated HR and compliance provider.",
-      website: "https://www.eurofast.eu",
-    },
-    {
-      name: "Highworth Accounting",
-      city: "Nicosia",
-      neighbourhood: "Strovolos",
-      pricePerYear: 180,
-      includes: [
-        "Registered office address",
-        "Mail scanning",
-        "Bookkeeping services available",
-      ],
-      why: "Accounting-first practice that includes a registered address in its service bundle. Strovolos is the professional district of Nicosia — lower cost than the city centre, no loss of credibility with Cypriot counterparties.",
-    },
-    {
-      name: "KPMG Cyprus",
-      city: "Nicosia",
-      neighbourhood: "Nicosia business park",
-      pricePerYear: 600,
-      includes: [
-        "Registered office address",
-        "Company secretary",
-        "Full audit and accounting services",
-        "Tax compliance",
-        "Banking introductions",
-      ],
-      why: "Big Four firm; highest price point but the most comprehensive bundle. Particularly relevant for companies that need a recognisable address for institutional banking relationships or for listing on regulated markets.",
-      website: "https://www.kpmg.com.cy",
-    },
 
     // ── Paphos ─────────────────────────────────────────────────────────────
     {

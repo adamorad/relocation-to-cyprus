@@ -143,35 +143,6 @@ export const PROPERTY_LAWYERS: ReadonlyArray<PropertyLawyer> = [
     why: "Handles the Council of Ministers (CoM) approval process required for non-EU nationals purchasing property in Cyprus — a step many buyers overlook. Full-service from CoM application through to title transfer.",
   },
 
-  // ── Nicosia ───────────────────────────────────────────────────────────────
-  {
-    name: "Stavros Katsaros",
-    firm: "Katsaros Legal Advisors",
-    city: "Nicosia",
-    specializations: [
-      "commercial property",
-      "residential conveyancing",
-      "developer due diligence",
-      "mortgage agreements",
-    ],
-    languages: ["English", "Greek", "Russian"],
-    why: "Nicosia-based firm covering both commercial and residential property. Strong expertise in vetting developer financial standing before buyers sign — particularly relevant for off-plan purchases in Nicosia's fast-growing suburbs.",
-    website: "https://www.katsaroslegal.com.cy",
-  },
-  {
-    name: "Irene Georgiou",
-    firm: "Georgiou Law LLP",
-    city: "Nicosia",
-    specializations: [
-      "conveyancing",
-      "inheritance and succession",
-      "foreign buyer",
-      "co-ownership agreements",
-    ],
-    languages: ["English", "Greek", "French"],
-    why: "Specialist in co-ownership structures for buyers purchasing with business partners or family members. Also handles Cypriot inheritance law for expat property owners — an often-overlooked aspect of property planning.",
-    website: "https://www.georgioulaw.cy",
-  },
 
   // ── Larnaca ───────────────────────────────────────────────────────────────
   {

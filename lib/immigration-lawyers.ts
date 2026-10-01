@@ -84,48 +84,6 @@ export const IMMIGRATION_LAWYER_TIPS: ReadonlyArray<ImmigrationLawyerTip> = [
 // ---------------------------------------------------------------------------
 
 export const IMMIGRATION_LAWYERS: ReadonlyArray<ImmigrationLawyer> = [
-  // ── Nicosia ───────────────────────────────────────────────────────────────
-  {
-    name: "Despina Petridou",
-    firm: "Petridou Immigration Law",
-    city: "Nicosia",
-    specializations: [
-      "digital-nomad-visa",
-      "work-permits",
-      "family-reunification",
-      "citizenship",
-    ],
-    languages: ["English", "Greek", "French"],
-    why: "Nicosia-based specialist who has processed Digital Nomad Visa applications since the programme's launch in 2021. Known for proactive case management — clients receive weekly status updates and are rarely surprised by delays. Strong track record on family reunification for non-EU holders with Cypriot PR.",
-    website: "https://www.petridoulaw.com.cy",
-  },
-  {
-    name: "George Philippou",
-    firm: "Philippou & Partners LLC",
-    city: "Nicosia",
-    specializations: [
-      "pr-by-investment",
-      "citizenship",
-      "digital-nomad-visa",
-      "work-permits",
-    ],
-    languages: ["English", "Greek", "Russian", "Ukrainian"],
-    why: "One of the most active PR by Investment practitioners in Cyprus — has guided over 200 successful Reg. 6(2) applications. Russian and Ukrainian-speaking team is a practical advantage for CIS-country applicants. Also handles the naturalisation track for long-term residents pursuing citizenship.",
-    website: "https://www.philippoupartners.com.cy",
-  },
-  {
-    name: "Alexia Constantinou",
-    firm: "Constantinou Legal Advisors",
-    city: "Nicosia",
-    specializations: [
-      "digital-nomad-visa",
-      "family-reunification",
-      "work-permits",
-    ],
-    languages: ["English", "Greek", "German"],
-    why: "Specialises in EU and non-EU work permit applications for employers relocating staff to Cyprus. Also handles DNV applications for German-speaking freelancers and remote workers — a growing segment of the Cyprus tech and creative relocation market.",
-    website: "https://www.constantinoulegal.cy",
-  },
 
   // ── Limassol ─────────────────────────────────────────────────────────────
   {
@@ -238,6 +196,6 @@ export const IMMIGRATION_LAWYERS: ReadonlyArray<ImmigrationLawyer> = [
       "family-reunification",
     ],
     languages: ["English", "Greek", "Russian"],
-    why: "One of the few immigration specialists based in the Famagusta district — covers Ayia Napa, Protaras and Paralimni without the client needing to travel to Nicosia or Limassol for consultations. Handles Digital Nomad and work permit applications for the growing remote-worker community in east Cyprus.",
+    why: "One of the few immigration specialists based in the Famagusta district — covers Ayia Napa, Protaras and Paralimni without the client needing to travel to Limassol for consultations. Handles Digital Nomad and work permit applications for the growing remote-worker community in east Cyprus.",
   },
 ];

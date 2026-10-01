@@ -116,34 +116,6 @@ export const ACCOUNTANTS: ReadonlyArray<Accountant> = [
     website: "https://www.nicolaidescpa.com.cy",
   },
 
-  // ── Nicosia ───────────────────────────────────────────────────────────────
-  {
-    name: "Maria Demetriou",
-    firm: "Demetriou Accounting & Tax",
-    city: "Nicosia",
-    specializations: ["non-dom", "expat-individual", "corporate"],
-    languages: ["English", "Greek", "French"],
-    why: "Nicosia's best-regarded boutique for inbound expat tax. Guides clients through both the non-dom application and the 60-day tax residency substance requirements in tandem — ensuring that travel records, accommodation contracts and business activity documentation are assembled in the format the Tax Department expects.",
-    website: "https://www.demetrioutax.cy",
-  },
-  {
-    name: "Petros Andreou",
-    firm: "Andreou & Vakis LLC",
-    city: "Nicosia",
-    specializations: ["corporate", "vat", "non-dom", "expat-individual"],
-    languages: ["English", "Greek", "German"],
-    why: "Mid-size firm with a strong German-speaking client base. Covers German Wegzugsbesteuerung (exit tax) coordination for German nationals establishing Cyprus residency — the interaction between German exit tax and Cyprus non-dom status is a specialist area few Cyprus accountants handle confidently.",
-    website: "https://www.andreou-vakis.com.cy",
-  },
-  {
-    name: "Irene Stylianou",
-    firm: "Stylianou Tax Advisory",
-    city: "Nicosia",
-    specializations: ["non-dom", "crypto", "expat-individual"],
-    languages: ["English", "Greek"],
-    why: "Focused practice handling non-dom individual returns and crypto tax positions. Has provided written opinions on crypto asset classification — useful for clients who need a defensible position documented before filing, rather than discovering the Tax Department's view at audit.",
-    website: "https://www.stylianoutax.cy",
-  },
 
   // ── Paphos ────────────────────────────────────────────────────────────────
   {
@@ -192,6 +164,6 @@ export const ACCOUNTANTS: ReadonlyArray<Accountant> = [
     city: "Ayia Napa",
     specializations: ["expat-individual", "non-dom", "vat"],
     languages: ["English", "Greek", "Russian"],
-    why: "One of the few qualified ICPAC accountants based in Ayia Napa — avoids the need for east-coast residents to travel to Nicosia or Larnaca for routine filings. Handles non-dom individual returns, VAT registration for short-term rental operators, and standard expat compliance for the Famagusta district.",
+    why: "One of the few qualified ICPAC accountants based in Ayia Napa — avoids the need for east-coast residents to travel to Larnaca for routine filings. Handles non-dom individual returns, VAT registration for short-term rental operators, and standard expat compliance for the Famagusta district.",
   },
 ];

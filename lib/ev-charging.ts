@@ -2,8 +2,8 @@
  * EV Charging section content.
  *
  * Cyprus's public charging network is growing rapidly. As of 2025 there
- * are approximately 200 public charge points, concentrated in Limassol
- * and Nicosia. Fast DC chargers are still sparse outside those two cities.
+ * are approximately 200 public charge points, concentrated in Limassol.
+ * Fast DC chargers are still sparse outside the main cities.
  * Home charging via a Type 2 wall box is strongly recommended.
  *
  * Data reflects 2025/26 network information. Operators add and move
@@ -59,11 +59,11 @@ export const CHARGER_TYPE_LABEL: Record<ChargerType, string> = {
 export const EV_TIPS: ReadonlyArray<EVTip> = [
   {
     heading: "~200 public chargers on the island (2025)",
-    body: "Cyprus had approximately 200 public charge points as of 2025, with the number growing steadily. The density is reasonable in Limassol and Nicosia but thin in Paphos and almost absent in villages and rural areas. Plan longer journeys carefully, especially westward toward the Akamas Peninsula.",
+    body: "Cyprus had approximately 200 public charge points as of 2025, with the number growing steadily. The density is reasonable in Limassol but thin in Paphos and almost absent in villages and rural areas. Plan longer journeys carefully, especially westward toward the Akamas Peninsula.",
   },
   {
     heading: "Fast DC chargers still sparse outside the main cities",
-    body: "CCS DC fast chargers (50 kW+) are concentrated in Limassol, Nicosia, and Larnaca. Paphos has a small number; Ayia Napa has very few outside resort sites. If you drive a vehicle that only accepts CCS rapid charging, you need to plan routes around the known hub locations.",
+    body: "CCS DC fast chargers (50 kW+) are concentrated in Limassol and Larnaca. Paphos has a small number; Ayia Napa has very few outside resort sites. If you drive a vehicle that only accepts CCS rapid charging, you need to plan routes around the known hub locations.",
   },
   {
     heading: "Home charging is strongly recommended",
@@ -154,67 +154,6 @@ export const EV_CHARGERS: ReadonlyArray<EVCharger> = [
     mapsLink: "https://maps.google.com/?q=IONITY+Limassol",
   },
 
-  // ── Nicosia ───────────────────────────────────────────────────────────────
-  {
-    name: "EAC Nicosia The Mall of Cyprus",
-    operator: "EAC",
-    city: "Nicosia",
-    location: "The Mall of Cyprus, Egkomi",
-    chargerTypes: ["Type2-AC", "CCS-DC"],
-    maxKw: 50,
-    numberOfPoints: 8,
-    cost: "~€0.35/kWh via EAC app",
-    why: "The most-used charging hub in Nicosia. Eight points at Cyprus's largest mall means availability is generally good even at peak times. Mixed AC and DC options for different dwell times.",
-    mapsLink: "https://maps.google.com/?q=Mall+of+Cyprus+EV+Charging",
-  },
-  {
-    name: "Tesla Supercharger Nicosia",
-    operator: "Tesla",
-    city: "Nicosia",
-    location: "Strovolos, near major retail area",
-    chargerTypes: ["CCS-DC"],
-    maxKw: 150,
-    numberOfPoints: 6,
-    cost: "Tesla pricing — billed per kWh to Tesla account",
-    why: "The capital's fastest charger. Open to CCS vehicles. Strategically placed near the Strovolos retail corridor — useful for combining a charge with errands or lunch.",
-    mapsLink: "https://maps.google.com/?q=Tesla+Supercharger+Nicosia",
-  },
-  {
-    name: "Verbund Nicosia Hilton",
-    operator: "Verbund",
-    city: "Nicosia",
-    location: "Hilton Nicosia, Archbishop Makarios III Avenue",
-    chargerTypes: ["Type2-AC"],
-    maxKw: 22,
-    numberOfPoints: 4,
-    cost: "~€0.38/kWh via Verbund app",
-    why: "Hotel-based charger accessible to non-guests. Useful for those attending business meetings or events at the Hilton or nearby embassies. Reserve via the Verbund app.",
-    mapsLink: "https://maps.google.com/?q=Hilton+Nicosia+EV+Charging",
-  },
-  {
-    name: "EAC Nicosia Old City Lot",
-    operator: "EAC",
-    city: "Nicosia",
-    location: "Eleftheria Square municipal car park",
-    chargerTypes: ["Type2-AC"],
-    maxKw: 22,
-    numberOfPoints: 6,
-    cost: "~€0.30/kWh via EAC app",
-    why: "Centrally located in the newly refurbished Eleftheria Square area. Walk to the Old City walled district, government offices, or the main shopping street while the car charges. Best AC stop in central Nicosia.",
-    mapsLink: "https://maps.google.com/?q=Eleftheria+Square+Nicosia+EV",
-  },
-  {
-    name: "EAC Nicosia Strovolos Mall",
-    operator: "EAC",
-    city: "Nicosia",
-    location: "Strovolos retail park",
-    chargerTypes: ["Type2-AC", "CCS-DC"],
-    maxKw: 50,
-    numberOfPoints: 4,
-    cost: "~€0.35/kWh via EAC app",
-    why: "Shopping-while-charging at the main Strovolos retail zone. Covered bays, good availability outside weekends. One of the more reliable EAC nodes in the Nicosia network.",
-    mapsLink: "https://maps.google.com/?q=Strovolos+Mall+Nicosia+EV",
-  },
 
   // ── Larnaca ───────────────────────────────────────────────────────────────
   {

@@ -58,7 +58,7 @@ export const CHILDCARE_TIPS: ReadonlyArray<ChildcareTip> = [
   },
   {
     heading: "September waiting lists fill early",
-    body: "Popular bilingual and English-language nurseries in Limassol and Nicosia fill their September intake by January or February of the same year. If you are planning a move for September, contact nurseries in October–December for the following academic year. Arriving in Cyprus in August and expecting a September place in a top setting is almost always too late.",
+    body: "Popular bilingual and English-language nurseries in Limassol fill their September intake by January or February of the same year. If you are planning a move for September, contact nurseries in October–December for the following academic year. Arriving in Cyprus in August and expecting a September place in a top setting is almost always too late.",
   },
 ];
 
@@ -208,50 +208,4 @@ export const NURSERIES: ReadonlyArray<Nursery> = [
     why: "Lower-cost bilingual option in the Aradippou district, east of Larnaca. Morning-only; popular with families where one parent is home in the afternoon. Year-round operation with a summer club available.",
   },
 
-  // ── Nicosia ───────────────────────────────────────────────────────────────
-  {
-    name: "The English School Nicosia — Nursery",
-    city: "Nicosia",
-    neighbourhood: "Engomi",
-    ageRangeFrom: 3,
-    ageRangeTo: 5,
-    languagesOffered: ["English"],
-    annualFeeFrom: 6500,
-    fullDay: true,
-    why: "Nursery section affiliated with one of Cyprus's most academically regarded private schools. English-medium, small groups, and a direct feeder track into the primary school. High demand — register well in advance.",
-    website: "https://www.englishschool.ac.cy",
-  },
-  {
-    name: "Junior Academy Nicosia",
-    city: "Nicosia",
-    neighbourhood: "Strovolos",
-    ageRangeFrom: 18,
-    ageRangeTo: 6,
-    languagesOffered: ["English", "Greek"],
-    annualFeeFrom: 5000,
-    fullDay: true,
-    why: "Well-established Nicosia nursery with a structured bilingual programme and extended-day provision to 18:00. Popular with dual-income professional families. Good facilities including a sensory room and music curriculum.",
-  },
-  {
-    name: "Bright Beginnings Nursery",
-    city: "Nicosia",
-    neighbourhood: "Latsia",
-    ageRangeFrom: 3,
-    ageRangeTo: 5,
-    languagesOffered: ["English", "Greek"],
-    annualFeeFrom: 3600,
-    fullDay: false,
-    why: "More affordable bilingual nursery on the western side of Nicosia. Morning sessions with optional lunch club. MOEC-licensed. Good option for families on a tighter budget who still want English-medium provision.",
-  },
-  {
-    name: "Kids First International Nursery",
-    city: "Nicosia",
-    neighbourhood: "Aglandjia",
-    ageRangeFrom: 6,
-    ageRangeTo: 6,
-    languagesOffered: ["English", "Greek", "French"],
-    annualFeeFrom: 5200,
-    fullDay: true,
-    why: "Trilingual setting in the Aglandjia suburb of Nicosia, popular with EU institution families and French-speaking expats. Full-day provision, qualified staff with international education backgrounds.",
-  },
 ];
