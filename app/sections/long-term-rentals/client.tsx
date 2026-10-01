@@ -136,7 +136,7 @@ export default function LongTermRentalsClient() {
 													/ month
 												</span>
 												<span className="block text-xs font-normal text-muted">
-													District asking rent, middle half of listings
+													District asking rents, 25th to 75th percentile
 												</span>
 											</p>
 										) : (

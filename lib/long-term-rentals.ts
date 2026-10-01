@@ -8,8 +8,8 @@
  * so they carry no figure. Verify current rates on the portals.
  */
 
-import type { City } from "@/lib/food";
 import { type Bedrooms, RENTS } from "@/lib/facts/rents";
+import type { City } from "@/lib/food";
 
 export type { City } from "@/lib/food";
 export { ALL_CITIES } from "@/lib/food";
@@ -24,7 +24,7 @@ export type RentalListing = {
   type: RentalType;
   bedroomsFrom: number;
   bedroomsTo: number;
-  /** Middle half of district asking rents (apartments only); absent when not sampled. */
+  /** 25th to 75th percentile of district asking rents (apartments only); absent when not sampled. */
   monthlyFrom?: number;
   monthlyTo?: number;
   furnished: FurnishedStatus;

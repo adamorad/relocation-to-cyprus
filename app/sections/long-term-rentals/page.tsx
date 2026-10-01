@@ -46,7 +46,7 @@ export default function LongTermRentalsPage() {
 				],
 				eyebrow: "Long-Term Rentals",
 				title: title,
-				intro: `Monthly furnished and unfurnished rentals across all four cities, from city-centre studios to seafront villas, with links to the main Cypriot rental portals. Apartment price ranges show the middle half of district asking rents on Bazaraki, sampled ${RENT_SAMPLED_LABEL}; agreed rents are often lower. Villas, townhouses and studios were not sampled.`,
+				intro: `Monthly furnished and unfurnished rentals across all four cities, from city-centre studios to seafront villas, with links to the main Cypriot rental portals. Apartment price ranges run from the 25th to the 75th percentile of district asking rents on Bazaraki, sampled ${RENT_SAMPLED_LABEL}; agreed rents are often lower. Villas, townhouses and studios were not sampled.`,
 			}}
 			info={RENTAL_TIPS.map((t) => ({ heading: t.heading, body: t.body }))}
 			infoTitle="Before you search"

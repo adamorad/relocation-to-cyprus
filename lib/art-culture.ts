@@ -136,8 +136,8 @@ export const CULTURAL_VENUES: ReadonlyArray<CulturalVenue> = [
     type: "cinema",
     englishSupport: true,
     admissionEuros: 9,
-    highlights: "Multiplex in My Mall, Hollywood releases in original English",
-    why: "Multiplex cinema in My Mall, west Limassol by the new port. Hollywood films screen in original English with Greek subtitles, not dubbed. Check current screens, showtimes and prices on the cinema's website. Located in My Mall for easy parking.",
+    highlights: "Cinema in My Mall, Hollywood releases in original English",
+    why: "Cinema in My Mall, west Limassol by the new port. Hollywood films screen in original English with Greek subtitles, not dubbed. Check current screens, showtimes and prices on the cinema's website. Located in My Mall for easy parking.",
     website: "https://www.kcineplex.com.cy",
   },
   // ── Paphos ────────────────────────────────────────────────────────────────
