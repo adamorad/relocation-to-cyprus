@@ -1,12 +1,14 @@
-import Link from "next/link";
-import { EmailCapture } from "./EmailCapture";
+import { ButtonLink } from "@/components/ui/Button";
+import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
+import { Section } from "@/components/ui/Section";
+import { EmailBox } from "./ui/EmailBox";
 
 type LinkItem = { href: string; title: string; desc?: string };
 
 /**
- * "Next steps" block for otherwise dead-end pages (listings, regions):
- * curated related guides + tool chips + an email capture. Server component
- * that renders the client-side EmailCapture inline.
+ * "Next steps" block for otherwise dead-end pages: curated related guides as
+ * cards, tool links as secondary buttons and, only when `emailSource` is
+ * given, an email box. Pages that already have the footer form omit it.
  */
 export function RelatedContent({
 	heading,
@@ -20,43 +22,34 @@ export function RelatedContent({
 	blurb?: string;
 	guides: LinkItem[];
 	tools?: LinkItem[];
-	emailSource: string;
+	emailSource?: string;
 	emailRegion?: string;
 }) {
 	return (
-		<section data-pagefind-ignore className="mt-12 border-t border-line pt-8">
-			<h2 className="text-xl font-bold text-ink mb-1">{heading}</h2>
-			{blurb ? <p className="text-sm text-muted mb-5">{blurb}</p> : null}
-			<div className="grid gap-3 sm:grid-cols-2">
-				{guides.map((g) => (
-					<Link
-						key={g.href}
-						href={g.href}
-						className="block rounded-2xl border border-line bg-white p-4 hover:border-primary hover:shadow-rc transition-all"
-					>
-						<div className="font-semibold text-sm text-ink">{g.title}</div>
-						{g.desc ? (
-							<div className="text-xs text-muted mt-0.5">{g.desc}</div>
-						) : null}
-					</Link>
-				))}
-			</div>
-			{tools && tools.length > 0 ? (
-				<div className="mt-4 flex flex-wrap gap-2">
-					{tools.map((t) => (
-						<Link
-							key={t.href}
-							href={t.href}
-							className="inline-flex items-center gap-1 rounded-full border border-line bg-sky px-3 py-1.5 text-xs font-medium text-ink hover:border-primary hover:bg-sky-strong transition-colors"
-						>
-							{t.title} →
-						</Link>
+		<div data-pagefind-ignore className="mt-12 border-t border-line pt-8">
+			<Section title={heading} description={blurb}>
+				<CardGrid cols={2}>
+					{guides.map((g) => (
+						<CardGridItem key={g.href}>
+							<Card variant="row" href={g.href} title={g.title} text={g.desc} />
+						</CardGridItem>
 					))}
+				</CardGrid>
+				{tools && tools.length > 0 ? (
+					<div className="mt-4 flex flex-wrap gap-3">
+						{tools.map((t) => (
+							<ButtonLink key={t.href} href={t.href} variant="secondary">
+								{t.title}
+							</ButtonLink>
+						))}
+					</div>
+				) : null}
+			</Section>
+			{emailSource ? (
+				<div className="mt-8">
+					<EmailBox source={emailSource} region={emailRegion} />
 				</div>
 			) : null}
-			<div className="mt-8">
-				<EmailCapture source={emailSource} region={emailRegion} />
-			</div>
-		</section>
+		</div>
 	);
 }

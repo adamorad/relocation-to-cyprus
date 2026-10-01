@@ -1,27 +1,61 @@
 "use client";
 
+import Link from "next/link";
+import { buttonClasses } from "@/components/ui/Button";
 import { trackEvent } from "@/lib/analytics";
 
 interface Props {
+	/** Display name (title case). */
 	name: string;
+	/** Internal developer page, when one exists. */
+	developerHref?: string;
+	/** External web search, kept as a secondary option. */
 	searchHref: string;
 	slug: string;
 }
 
-export default function DeveloperCTA({ name, searchHref, slug }: Props) {
+export default function DeveloperCTA({
+	name,
+	developerHref,
+	searchHref,
+	slug,
+}: Props) {
 	return (
-		<section className="mt-6 p-4 bg-sky rounded-2xl border border-line">
-			<p className="text-xs text-muted mb-0.5">Developer</p>
-			<p className="text-sm font-semibold text-ink">{name}</p>
-			<a
-				href={searchHref}
-				target="_blank"
-				rel="noopener noreferrer"
-				className="mt-3 block w-full text-center min-h-11 py-3 rounded-xl bg-primary text-white font-semibold hover:bg-primary-hover transition-colors"
-				onClick={() => trackEvent("developer_click", { slug, developer: name })}
-			>
-				Find {name} online
-			</a>
+		<section
+			aria-label="Developer"
+			className="rounded-card border border-line bg-sky p-5"
+		>
+			<p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+				Developer
+			</p>
+			<p className="mt-1 text-lg font-bold text-ink">{name}</p>
+			<div className="mt-4 flex flex-col gap-3">
+				{developerHref ? (
+					<Link
+						href={developerHref}
+						className={buttonClasses({ variant: "primary", fullWidth: true })}
+						onClick={() =>
+							trackEvent("developer_click", { slug, developer: name })
+						}
+					>
+						See all {name} projects
+					</Link>
+				) : null}
+				<a
+					href={searchHref}
+					target="_blank"
+					rel="noopener noreferrer"
+					className={buttonClasses({
+						variant: developerHref ? "secondary" : "primary",
+						fullWidth: true,
+					})}
+					onClick={() =>
+						trackEvent("developer_click", { slug, developer: name })
+					}
+				>
+					Find {name} online
+				</a>
+			</div>
 		</section>
 	);
 }
