@@ -1,51 +1,48 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { HubTemplate } from "@/components/templates/HubTemplate";
+import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { REGIONS } from "@/lib/regions";
 
+const title = "Cities";
+const description =
+	"Explore every major city and region in Cyprus: Paphos, Limassol, Larnaca, and Ayia Napa. Compare lifestyle, property, schools, and healthcare.";
+
 export const metadata: Metadata = {
-	title: "Regions of Cyprus",
-	description:
-		"Explore every major region in Cyprus: Paphos, Limassol, Larnaca, and Ayia Napa. Compare lifestyle, property, schools, and healthcare before you relocate.",
+	title,
+	description,
 	alternates: { canonical: "/regions/" },
+	openGraph: {
+		title,
+		description,
+		url: "https://realcy.app/regions/",
+		type: "website",
+	},
 };
 
 export default function RegionsIndexPage() {
 	return (
-		<main id="main" className="max-w-4xl mx-auto px-6 py-10 md:py-16">
-			<Breadcrumbs
-				items={[{ label: "Home", href: "/" }, { label: "Regions" }]}
-			/>
-
-			<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink mb-2">
-				Regions of Cyprus
-			</h1>
-			<p className="text-slate-600 mb-8 text-base leading-relaxed">
-				Each region of Cyprus has a distinct character — from Limassol's
-				high-rise coastal energy to Paphos's laid-back retirement appeal. Browse
-				by region to explore property, schools, healthcare and lifestyle.
-			</p>
-
-			<div className="grid gap-4 sm:grid-cols-2">
+		<HubTemplate
+			header={{
+				breadcrumbs: [{ label: "Home", href: "/" }, { label: "Cities" }],
+				eyebrow: `${REGIONS.length} cities`,
+				title,
+				intro:
+					"Each city has a distinct character, from Limassol's high-rise coastal energy to Paphos's laid-back appeal. Browse by city to explore property, schools, healthcare and lifestyle.",
+			}}
+		>
+			<CardGrid cols={2}>
 				{REGIONS.map((region) => (
-					<Link
-						key={region.slug}
-						href={`/regions/${region.slug}/`}
-						className="group block bg-white border border-line rounded-2xl p-5 hover:border-primary hover:shadow-sm transition-all"
-					>
-						<div className="flex items-start justify-between gap-3">
-							<div className="flex-1 min-w-0">
-								<h2 className="text-base font-bold text-ink group-hover:text-primary transition-colors leading-snug">
-									{region.name}
-								</h2>
-								<p className="mt-1.5 text-sm text-slate-600 leading-relaxed line-clamp-2">
-									{region.oneLiner}
-								</p>
-							</div>
-						</div>
-					</Link>
+					<CardGridItem key={region.slug}>
+						<Card
+							variant="icon"
+							icon="pin"
+							href={`/regions/${region.slug}/`}
+							title={region.name}
+							text={region.oneLiner}
+						/>
+					</CardGridItem>
 				))}
-			</div>
-		</main>
+			</CardGrid>
+		</HubTemplate>
 	);
 }

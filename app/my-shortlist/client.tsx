@@ -1,8 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Icon } from "@/components/icons/Icon";
+import { TemplateMain } from "@/components/templates/TemplateMain";
+import { Button, ButtonLink } from "@/components/ui/Button";
+import { Container } from "@/components/ui/Container";
+import { PageHeader } from "@/components/ui/PageHeader";
 import type { EnrichedListing } from "@/lib/listingsData";
 import { LISTINGS } from "@/lib/listingsData";
 import { getShortlist, toggleShortlist } from "@/lib/shortlist";
@@ -23,66 +26,58 @@ export default function ShortlistClient() {
 		setSlugs(getShortlist());
 	}
 
+	const header = (
+		<PageHeader
+			breadcrumbs={[
+				{ label: "Home", href: "/" },
+				{ label: "Saved developments" },
+			]}
+			title="Saved developments"
+			intro="New-build developments you have saved. Your list is stored in your browser, no account needed."
+			width="reading"
+		/>
+	);
+
 	if (!mounted) {
 		return (
-			<main id="main" className="max-w-3xl mx-auto px-6 py-10 md:py-16">
-				<p className="text-slate-500 text-sm">Loading…</p>
-			</main>
+			<TemplateMain>
+				{header}
+				<Container width="reading" className="pt-8">
+					<p className="text-sm text-muted">Loading...</p>
+				</Container>
+			</TemplateMain>
 		);
 	}
 
 	return (
-		<main id="main" className="max-w-3xl mx-auto px-6 py-10 md:py-16">
-			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:underline">
-					Home
-				</Link>
-				{" › "}
-				<span>My Shortlist</span>
-			</nav>
-
-			<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink mb-2">
-				My Shortlist
-			</h1>
-			<p className="text-sm text-slate-600 mb-8">
-				Developments you have saved. Your list is stored in your browser — no
-				account needed.
-			</p>
-
-			{saved.length === 0 ? (
-				<div className="rounded-2xl border border-line bg-sky p-8 text-center">
-					<Icon name="heart" size={32} className="mx-auto mb-3 text-muted" />
-					<p className="text-slate-700 font-medium mb-1">
-						No saved listings yet.
-					</p>
-					<p className="text-sm text-muted mb-6">
-						Browse new developments and use the heart on a listing to save it.
-					</p>
-					<Link
-						href="/listings/"
-						className="inline-flex items-center min-h-11 text-sm font-semibold px-5 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Browse new developments
-					</Link>
-				</div>
-			) : (
-				<div className="space-y-4">
-					{saved.map((listing) => (
-						<ShortlistCard
-							key={listing.slug}
-							listing={listing}
-							onRemove={() => handleRemove(listing.slug)}
-						/>
-					))}
-				</div>
-			)}
-
-			<div className="mt-10">
-				<Link href="/" className="underline hover:text-ink text-sm">
-					Back to home
-				</Link>
-			</div>
-		</main>
+		<TemplateMain>
+			{header}
+			<Container width="reading" className="pt-8">
+				{saved.length === 0 ? (
+					<div className="rounded-card border border-line bg-sky p-8 text-center">
+						<Icon name="heart" size={32} className="mx-auto mb-3 text-muted" />
+						<p className="mb-1 font-medium text-ink">
+							No saved developments yet.
+						</p>
+						<p className="mb-6 text-sm text-muted">
+							Browse new developments and use the heart on a listing to save it.
+						</p>
+						<ButtonLink href="/listings/">Browse new developments</ButtonLink>
+					</div>
+				) : (
+					<ul className="space-y-4">
+						{saved.map((listing) => (
+							<li key={listing.slug}>
+								<ShortlistCard
+									listing={listing}
+									onRemove={() => handleRemove(listing.slug)}
+								/>
+							</li>
+						))}
+					</ul>
+				)}
+			</Container>
+		</TemplateMain>
 	);
 }
 
@@ -94,7 +89,7 @@ function ShortlistCard({
 	onRemove: () => void;
 }) {
 	return (
-		<div className="rounded-2xl border border-line bg-white p-4 flex gap-4 relative">
+		<div className="rounded-card border border-line bg-white p-4 flex gap-4 relative">
 			{listing.images && listing.images.length > 0 ? (
 				<img
 					src={listing.images[0]}
@@ -116,7 +111,7 @@ function ShortlistCard({
 					{listing.title}
 				</h2>
 				{listing.location ? (
-					<p className="text-xs text-slate-500 mt-0.5 truncate">
+					<p className="text-xs text-muted mt-0.5 truncate">
 						{listing.location}
 					</p>
 				) : null}
@@ -126,25 +121,16 @@ function ShortlistCard({
 					</p>
 				) : null}
 				{listing.developer?.name ? (
-					<p className="text-xs text-slate-500 mt-0.5">
-						{listing.developer.name}
-					</p>
+					<p className="text-xs text-muted mt-0.5">{listing.developer.name}</p>
 				) : null}
 
-				<div className="flex gap-2 mt-3 flex-wrap">
-					<Link
-						href={`/listings/${listing.slug}/`}
-						className="inline-flex items-center min-h-11 text-xs font-semibold px-4 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
+				<div className="mt-3 flex flex-wrap gap-2">
+					<ButtonLink href={`/listings/${listing.slug}/`}>
 						View details
-					</Link>
-					<button
-						type="button"
-						onClick={onRemove}
-						className="inline-flex items-center min-h-11 text-xs font-semibold px-4 rounded-xl border border-line bg-white text-ink hover:bg-sky transition-colors"
-					>
+					</ButtonLink>
+					<Button variant="secondary" onClick={onRemove}>
 						Remove
-					</button>
+					</Button>
 				</div>
 			</div>
 		</div>

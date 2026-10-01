@@ -1,72 +1,63 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
+import type { IconName } from "@/components/icons/Icon";
+import { Badge } from "@/components/ui/Badge";
+import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
+import { ChipGroup, type ChipOption } from "@/components/ui/Chip";
 import { TOOL_CATEGORIES, TOOLS, type ToolCategory } from "@/lib/tools-index";
 
+type Filter = ToolCategory | "all";
+
+const CATEGORY_ICON: Record<ToolCategory, IconName> = {
+	"Visa & Residency": "paperwork",
+	"Tax & Contributions": "legal",
+	"Work & Business": "building",
+	"Property & Rent": "home",
+	"Cost & Budget": "budget",
+	"Location & Living": "map",
+	"Trackers & Calendars": "checklist",
+};
+
+const OPTIONS: ChipOption<Filter>[] = [
+	{ value: "all", label: "All", count: TOOLS.length },
+	...TOOL_CATEGORIES.map((cat) => ({
+		value: cat,
+		label: cat,
+		count: TOOLS.filter((t) => t.category === cat).length,
+	})),
+];
+
+/** Category filter chips and tool card grid for /tools/. */
 export default function ToolsIndexClient() {
-	const [active, setActive] = useState<ToolCategory | "all">("all");
+	const [active, setActive] = useState<Filter>("all");
 
 	const visible =
 		active === "all" ? TOOLS : TOOLS.filter((t) => t.category === active);
 
-	const countFor = (cat: ToolCategory) =>
-		TOOLS.filter((t) => t.category === cat).length;
-
 	return (
 		<>
-			{/* Category filter */}
-			<div className="mb-6 flex flex-wrap gap-2">
-				<button
-					type="button"
-					onClick={() => setActive("all")}
-					className={`rounded-full px-4 min-h-11 text-xs font-semibold border transition-colors ${
-						active === "all"
-							? "bg-ink text-white border-ink"
-							: "bg-white text-ink border-line hover:bg-sky"
-					}`}
-				>
-					All ({TOOLS.length})
-				</button>
-				{TOOL_CATEGORIES.map((cat) => (
-					<button
-						key={cat}
-						type="button"
-						onClick={() => setActive(cat)}
-						className={`rounded-full px-4 min-h-11 text-xs font-semibold border transition-colors ${
-							active === cat
-								? "bg-ink text-white border-ink"
-								: "bg-white text-ink border-line hover:bg-sky"
-						}`}
-					>
-						{cat} ({countFor(cat)})
-					</button>
-				))}
-			</div>
-
-			<div className="grid gap-4 sm:grid-cols-2">
+			<ChipGroup
+				label="Filter by topic"
+				options={OPTIONS}
+				value={active}
+				onChange={setActive}
+			/>
+			<h2 className="sr-only">{active === "all" ? "All tools" : active}</h2>
+			<CardGrid className="mt-6">
 				{visible.map((tool) => (
-					<Link
-						key={tool.href}
-						href={tool.href}
-						className="group block bg-white border border-line rounded-2xl p-5 hover:border-primary hover:shadow-sm transition-all"
-					>
-						<div className="flex items-start justify-between gap-3">
-							<div className="flex-1 min-w-0">
-								<span className="inline-block text-xs font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full mb-2.5 bg-sky-strong text-ink">
-									{tool.tag}
-								</span>
-								<h2 className="text-base font-bold text-ink group-hover:text-primary transition-colors leading-snug">
-									{tool.title}
-								</h2>
-								<p className="mt-1.5 text-sm text-slate-600 leading-relaxed line-clamp-3">
-									{tool.description}
-								</p>
-							</div>
-						</div>
-					</Link>
+					<CardGridItem key={tool.href}>
+						<Card
+							variant="icon"
+							icon={CATEGORY_ICON[tool.category as ToolCategory] ?? "checklist"}
+							href={tool.href}
+							title={tool.title}
+							text={<span className="line-clamp-3">{tool.description}</span>}
+							meta={<Badge>{tool.tag}</Badge>}
+						/>
+					</CardGridItem>
 				))}
-			</div>
+			</CardGrid>
 		</>
 	);
 }
