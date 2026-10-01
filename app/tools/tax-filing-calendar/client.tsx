@@ -54,7 +54,7 @@ const DEADLINES: Deadline[] = [
 		title: "Individual Income Tax Return: Electronic",
 		formRef: "TD1",
 		description:
-			"Electronic filing deadline for individual income tax return (TD1) for the previous calendar year. This is the standard deadline for most employed and self-employed individuals.",
+			"Electronic filing deadline for individual income tax return (TD1) for the previous calendar year. This is the standard deadline for most employed and self-employed individuals. For tax year 2025 the Tax Department set the deadline at 31 October 2026.",
 		taxpayer: "individual",
 	},
 	{
