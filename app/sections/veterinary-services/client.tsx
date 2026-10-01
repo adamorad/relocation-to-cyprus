@@ -1,126 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Badge } from "@/components/ui/Badge";
+import { Callout } from "@/components/ui/Callout";
+import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
+import { ChipGroup } from "@/components/ui/Chip";
 import {
 	ALL_CITIES,
 	ALL_VET_SERVICES,
 	type City,
 	VET_CLINICS,
 	VET_SERVICE_LABEL,
-	VET_TIPS,
 	type VetService,
 } from "@/lib/veterinary";
 
-function CityChip({
-	city,
-	selected,
-	onClick,
-}: {
-	city: City | "All";
-	selected: boolean;
-	onClick: () => void;
-}) {
-	return (
-		<button
-			type="button"
-			onClick={onClick}
-			aria-pressed={selected}
-			className={`rounded-full inline-flex min-h-11 items-center px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors md:min-h-0 ${
-				selected
-					? "bg-ink text-white border border-ink"
-					: "bg-white text-ink border border-line hover:bg-sky"
-			}`}
-		>
-			{city}
-		</button>
-	);
-}
-
-function ServiceChip({
-	label,
-	selected,
-	onClick,
-}: {
-	label: string;
-	selected: boolean;
-	onClick: () => void;
-}) {
-	return (
-		<button
-			type="button"
-			onClick={onClick}
-			aria-pressed={selected}
-			className={`rounded-full inline-flex min-h-11 items-center px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors md:min-h-0 ${
-				selected
-					? "bg-primary text-white border border-primary"
-					: "bg-white text-ink border border-line hover:bg-sky"
-			}`}
-		>
-			{label}
-		</button>
-	);
-}
-
-function ClinicCard({ clinic }: { clinic: (typeof VET_CLINICS)[number] }) {
-	return (
-		<li className="rounded-2xl border border-line bg-white p-4 text-sm flex flex-col gap-2">
-			<div>
-				<p className="font-bold text-ink">{clinic.name}</p>
-				<p className="text-xs text-slate-500 mt-0.5">
-					{clinic.city}
-					{clinic.neighbourhood ? ` · ${clinic.neighbourhood}` : ""}
-				</p>
-			</div>
-
-			<div className="flex flex-wrap gap-1.5">
-				{clinic.emergency24h && (
-					<span className="rounded-full bg-red-50 text-red-800 border border-red-200 px-2 py-0.5 text-xs font-semibold">
-						24h emergency
-					</span>
-				)}
-				{clinic.englishSpoken && (
-					<span className="rounded-full bg-sky-strong text-ink px-2 py-0.5 text-xs font-semibold">
-						English spoken
-					</span>
-				)}
-				{clinic.services.map((s) => (
-					<span
-						key={s}
-						className="rounded-full bg-sky-strong text-ink px-2 py-0.5 text-xs font-semibold"
-					>
-						{VET_SERVICE_LABEL[s]}
-					</span>
-				))}
-			</div>
-
-			<p className="text-slate-700 leading-relaxed text-xs">{clinic.why}</p>
-
-			<div className="flex flex-wrap gap-x-4 gap-y-1 text-xs font-semibold mt-1">
-				{clinic.phone && (
-					<a
-						href={`tel:${clinic.phone.replace(/\s/g, "")}`}
-						className="text-slate-700 hover:text-ink"
-					>
-						{clinic.phone}
-					</a>
-				)}
-				{clinic.website && (
-					<a
-						href={clinic.website}
-						target="_blank"
-						rel="noopener noreferrer"
-						className="text-primary hover:text-primary-hover"
-					>
-						Website
-					</a>
-				)}
-			</div>
-		</li>
-	);
-}
-
-export default function VeterinaryServicesPage() {
+/** Filters first, then the clinic cards. Header, tips and note live in page.tsx. */
+export default function VeterinaryServicesClient() {
 	const [cityFilter, setCityFilter] = useState<City | "All">("All");
 	const [serviceFilter, setServiceFilter] = useState<VetService | "All">("All");
 
@@ -131,125 +26,95 @@ export default function VeterinaryServicesPage() {
 	);
 
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="directory"
-			className="max-w-5xl mx-auto px-4 md:px-6 py-10 md:py-16"
-		>
-			<Breadcrumbs
-				items={[
-					{ label: "Home", href: "/" },
-					{ label: "Directories", href: "/sections/" },
-					{ label: "Veterinary Services" },
-				]}
-			/>
-
-			{/* Header */}
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
-					Services
-				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Veterinary Services in Cyprus
-					<br />
-					<span className="text-2xl md:text-3xl font-semibold text-slate-600">
-						Clinics and Emergency Care
-					</span>
-				</h1>
-				<p className="mt-4 text-base text-slate-700 leading-relaxed max-w-2xl">
-					English-friendly vet clinics across all four major cities, routine
-					care, emergency cover, specialist referrals, and exotic animal
-					services. Includes 24/7 emergency locations.
-				</p>
-			</header>
-
-			{/* Tips */}
-			<section className="mb-10">
-				<h2 className="text-lg font-bold text-ink mb-3">What to know first</h2>
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-					{VET_TIPS.map((tip) => (
-						<div
-							key={tip.heading}
-							className="rounded-2xl border border-line bg-sky p-4 text-xs"
-						>
-							<p className="font-bold text-sm text-ink">{tip.heading}</p>
-							<p className="mt-1.5 text-slate-700 leading-relaxed">
-								{tip.body}
-							</p>
-						</div>
-					))}
-				</div>
-			</section>
-
-			{/* City filter */}
-			<div className="mb-4">
-				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-2">
-					City
-				</p>
-				<div className="flex flex-wrap gap-1.5">
-					{(["All", ...ALL_CITIES] as const).map((c) => (
-						<CityChip
-							key={c}
-							city={c}
-							selected={cityFilter === c}
-							onClick={() => setCityFilter(c)}
-						/>
-					))}
-				</div>
+		<>
+			<div className="space-y-4 rounded-card border border-line bg-sky p-4 md:p-5">
+				<ChipGroup
+					label="City"
+					value={cityFilter}
+					onChange={setCityFilter}
+					options={[
+						{ value: "All", label: "All cities" },
+						...ALL_CITIES.map((c) => ({ value: c, label: c })),
+					]}
+				/>
+				<ChipGroup
+					label="Service"
+					value={serviceFilter}
+					onChange={setServiceFilter}
+					options={[
+						{ value: "All", label: "All services" },
+						...ALL_VET_SERVICES.map((s) => ({
+							value: s,
+							label: VET_SERVICE_LABEL[s],
+						})),
+					]}
+				/>
 			</div>
 
-			{/* Service filter */}
-			<div className="mb-8">
-				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-2">
-					Service
-				</p>
-				<div className="flex flex-wrap gap-1.5">
-					<ServiceChip
-						label="All services"
-						selected={serviceFilter === "All"}
-						onClick={() => setServiceFilter("All")}
-					/>
-					{ALL_VET_SERVICES.map((s) => (
-						<ServiceChip
-							key={s}
-							label={VET_SERVICE_LABEL[s]}
-							selected={serviceFilter === s}
-							onClick={() => setServiceFilter(s)}
-						/>
-					))}
-				</div>
-			</div>
-
-			{/* Results count */}
-			<p className="text-xs text-slate-500 mb-4">
+			<h2
+				className="mt-8 text-2xl font-bold tracking-tight text-ink"
+				aria-live="polite"
+			>
 				{filtered.length} clinic{filtered.length !== 1 ? "s" : ""} listed
 				{cityFilter !== "All" ? ` in ${cityFilter}` : ""}
 				{serviceFilter !== "All"
 					? ` · ${VET_SERVICE_LABEL[serviceFilter]}`
 					: ""}
-			</p>
+			</h2>
 
-			{/* Clinic grid */}
 			{filtered.length === 0 ? (
-				<div className="rounded-xl border border-line bg-sky px-6 py-8 text-center text-sm text-slate-500">
+				<Callout tone="info" className="mt-5">
 					No clinics match the current filters.
-				</div>
+				</Callout>
 			) : (
-				<ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+				<CardGrid className="mt-5">
 					{filtered.map((clinic) => (
-						<ClinicCard key={`${clinic.name}-${clinic.city}`} clinic={clinic} />
+						<CardGridItem key={`${clinic.name}-${clinic.city}`}>
+							<Card
+								variant="text"
+								eyebrow={
+									<span className="flex flex-wrap gap-1.5">
+										{clinic.emergency24h ? <Badge>24h emergency</Badge> : null}
+										{clinic.englishSpoken ? (
+											<Badge>English spoken</Badge>
+										) : null}
+										{clinic.services.map((s) => (
+											<Badge key={s}>{VET_SERVICE_LABEL[s]}</Badge>
+										))}
+									</span>
+								}
+								title={clinic.name}
+								meta={`${clinic.city}${clinic.neighbourhood ? ` · ${clinic.neighbourhood}` : ""}`}
+								text={clinic.why}
+								footer={
+									clinic.phone || clinic.website ? (
+										<div className="flex flex-wrap gap-x-5 gap-y-1">
+											{clinic.phone ? (
+												<a
+													href={`tel:${clinic.phone.replace(/\s/g, "")}`}
+													className="inline-flex min-h-11 items-center font-semibold text-ink underline-offset-2 hover:underline"
+												>
+													{clinic.phone}
+												</a>
+											) : null}
+											{clinic.website ? (
+												<a
+													href={clinic.website}
+													target="_blank"
+													rel="noopener noreferrer"
+													className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
+												>
+													Website
+												</a>
+											) : null}
+										</div>
+									) : undefined
+								}
+							/>
+						</CardGridItem>
 					))}
-				</ul>
+				</CardGrid>
 			)}
-
-			<p className="mt-12 text-xs text-slate-500 leading-relaxed max-w-2xl">
-				Opening hours, emergency cover arrangements, and staff availability
-				change — always confirm directly with the clinic before travelling. For
-				a genuine pet emergency, call ahead even if the clinic is listed as
-				24/7.
-			</p>
-		</main>
+		</>
 	);
 }
