@@ -65,7 +65,7 @@ export function PageHeader({
 					) : null}
 					{titleAction ? (
 						<div
-							className={`flex items-start justify-between gap-3 ${eyebrow ? "mt-2" : ""}`}
+							className={`flex items-start justify-between gap-3 md:justify-start md:gap-5 ${eyebrow ? "mt-2" : ""}`}
 						>
 							<TitleTag className={TITLE}>{title}</TitleTag>
 							<div className="shrink-0">{titleAction}</div>

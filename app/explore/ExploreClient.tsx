@@ -435,13 +435,13 @@ export default function ExploreClient() {
 												<li key={r.url}>
 													<Link
 														href={r.url}
-														className="group block rounded-2xl border border-line p-3.5 transition-all hover:border-primary hover:shadow-sm"
+														className="group block rounded-card border border-line bg-white p-4 shadow-rc transition-colors hover:border-primary"
 													>
-														<span className="block text-sm font-semibold leading-snug text-ink group-hover:text-primary">
+														<span className="block text-base font-bold leading-snug text-ink group-hover:text-primary">
 															{r.title}
 														</span>
 														<span
-															className="mt-1 block text-xs leading-relaxed text-slate-600 [&_mark]:rounded-sm [&_mark]:bg-sky-strong [&_mark]:px-0.5 [&_mark]:text-ink"
+															className="mt-1 block text-sm leading-normal text-muted [overflow-wrap:anywhere] [&_mark]:rounded-sm [&_mark]:bg-sky-strong [&_mark]:px-0.5 [&_mark]:text-ink"
 															// biome-ignore lint/security/noDangerouslySetInnerHtml: Pagefind returns an escaped excerpt with <mark> highlights
 															dangerouslySetInnerHTML={{ __html: r.excerpt }}
 														/>

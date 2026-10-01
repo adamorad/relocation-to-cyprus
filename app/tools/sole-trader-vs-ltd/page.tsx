@@ -24,7 +24,7 @@ export default function SoleTraderVsLtdPage() {
 	return (
 		<ToolTemplate
 			pagefindType="tool"
-			width="reading"
+			width="wide"
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },

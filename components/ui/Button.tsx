@@ -11,8 +11,8 @@ const VARIANT: Record<ButtonVariant, string> = {
 	ghost: "text-primary-hover hover:bg-sky",
 };
 const SIZE: Record<ButtonSize, string> = {
-	md: "min-h-11 px-4 text-sm",
-	lg: "min-h-12 px-6 text-base",
+	md: "min-h-11 px-4 py-2 text-sm",
+	lg: "min-h-12 px-6 py-2.5 text-base",
 };
 
 export function buttonClasses({
@@ -24,7 +24,7 @@ export function buttonClasses({
 	size?: ButtonSize;
 	fullWidth?: boolean;
 } = {}) {
-	return `inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-60 ${VARIANT[variant]} ${SIZE[size]} ${fullWidth ? "w-full" : ""}`;
+	return `inline-flex items-center justify-center gap-2 rounded-xl text-center font-semibold leading-snug transition-colors disabled:cursor-not-allowed disabled:opacity-60 ${VARIANT[variant]} ${SIZE[size]} ${fullWidth ? "w-full" : ""}`;
 }
 
 type Common = {
