@@ -3,16 +3,33 @@
  * source values (ALL CAPS names, "€1.650.000 +VAT"); pages format at render.
  */
 
-const KEEP_UPPER = new Set(["GPA", "IZI", "VIP", "II", "III", "IV", "VI"]);
+const KEEP_UPPER = new Set([
+	"GPA",
+	"IZI",
+	"VIP",
+	"II",
+	"III",
+	"IV",
+	"VI",
+	"HKCY",
+	"MAWJ",
+	"CHYC",
+]);
 const SMALL_WORDS = new Set(["and", "of", "the", "in", "at", "on"]);
 
 function titleToken(tok: string, first: boolean): string {
 	// Only touch fully upper-case tokens: mixed case is already a deliberate brand spelling.
 	if (!/[A-Z]/.test(tok) || /[a-z]/.test(tok)) return tok;
+	// Tokens with digits ("2C/2B", "RES8") are codes, not words.
+	if (/\d/.test(tok)) return tok;
 	if (tok === "LTD") return "Ltd";
 	if (KEEP_UPPER.has(tok)) return tok;
 	// Single letters ("BLOCK A") and initials ("F.G", "K&P", "Z&C").
-	if (/^[A-Z]$/.test(tok) || /^[A-Z]([.&][A-Z])+\.?$/.test(tok)) return tok;
+	if (
+		/^[A-Z]$/.test(tok.replace(/[^A-Za-z]/g, "")) ||
+		/^[A-Z]([.&][A-Z])+\.?$/.test(tok)
+	)
+		return tok;
 	// Short consonant-only acronyms (BBF, HKCY, CCS, MAWJ, TLV, WJ).
 	if (/^[BCDFGHJKLMNPQRSTVWXZ]{2,4}$/.test(tok)) return tok;
 	const lower = tok.toLowerCase();
