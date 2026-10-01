@@ -180,7 +180,8 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		lastChecked: "2026-10-02",
 		sources: [
 			{
-				label: "Tax Department: Special Defence Contribution reform 2026 (Greek, PDF)",
+				label:
+					"Tax Department: Special Defence Contribution reform 2026 (Greek, PDF)",
 				url: "https://www.gov.cy/media/sites/167/2026/03/EEA-ΦΚΚ-ΜΕΤΑΡΡΥΘΜΙΣΗ-06032026.pdf",
 			},
 			{

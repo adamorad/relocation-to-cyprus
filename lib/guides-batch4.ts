@@ -79,7 +79,8 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 				url: "https://www.gov.cy/media/sites/167/2026/02/IR59_2026_English__.pdf",
 			},
 			{
-				label: "Tax Department: Special Defence Contribution reform 2026 (Greek, PDF)",
+				label:
+					"Tax Department: Special Defence Contribution reform 2026 (Greek, PDF)",
 				url: "https://www.gov.cy/media/sites/167/2026/03/EEA-ΦΚΚ-ΜΕΤΑΡΡΥΘΜΙΣΗ-06032026.pdf",
 			},
 			{
