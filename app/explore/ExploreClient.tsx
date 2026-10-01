@@ -157,6 +157,32 @@ type SearchResult =
 			description: string;
 	  };
 
+function stem(w: string): string {
+	if (w.length > 4 && w.endsWith("ies")) return `${w.slice(0, -3)}y`;
+	if (w.length > 4 && /(ss|x|z|ch|sh)es$/.test(w)) return w.slice(0, -2);
+	if (w.length > 3 && w.endsWith("s") && !w.endsWith("ss"))
+		return w.slice(0, -1);
+	if (w.length > 5 && w.endsWith("ing")) return w.slice(0, -3);
+	return w;
+}
+
+function tokenize(text: string): string[] {
+	return text
+		.normalize("NFD")
+		.replace(/[\u0300-\u036f]/g, "")
+		.toLowerCase()
+		.replace(/[^a-z0-9]+/g, " ")
+		.split(" ")
+		.filter(Boolean)
+		.map(stem);
+}
+
+/** Every query word must match (as a substring) a stemmed word in one of the fields. */
+function matches(words: string[], fields: string[]): boolean {
+	const hay = tokenize(fields.join(" "));
+	return words.every((w) => hay.some((t) => t.includes(w)));
+}
+
 export default function ExploreClient() {
 	const searchParams = useSearchParams();
 	const [query, setQuery] = useState(searchParams.get("q") ?? "");
@@ -167,16 +193,19 @@ export default function ExploreClient() {
 	}, [searchParams]);
 
 	const q = query.trim().toLowerCase();
+	const words = tokenize(q);
 
 	const results: SearchResult[] =
-		q.length < 2
+		q.length < 2 || words.length === 0
 			? []
 			: [
-					...GUIDES.filter(
-						(g) =>
-							g.title.toLowerCase().includes(q) ||
-							g.description.toLowerCase().includes(q) ||
-							g.slug.includes(q),
+					...GUIDES.filter((g) =>
+						matches(words, [
+							g.title,
+							g.description,
+							g.slug,
+							GUIDE_CATEGORY_LABEL[g.category],
+						]),
 					).map(
 						(g): SearchResult => ({
 							kind: "guide",
@@ -186,17 +215,11 @@ export default function ExploreClient() {
 							description: g.description,
 						}),
 					),
-					...TOOLS_LIST.filter(
-						(t) =>
-							t.name.toLowerCase().includes(q) ||
-							t.description.toLowerCase().includes(q) ||
-							t.tag.toLowerCase().includes(q),
+					...TOOLS_LIST.filter((t) =>
+						matches(words, [t.name, t.description, t.tag]),
 					).map((t): SearchResult => ({ kind: "tool", ...t })),
-					...SECTIONS_INDEX.filter(
-						(s) =>
-							s.name.toLowerCase().includes(q) ||
-							s.description.toLowerCase().includes(q) ||
-							s.category.toLowerCase().includes(q),
+					...SECTIONS_INDEX.filter((s) =>
+						matches(words, [s.name, s.description, s.category, s.slug]),
 					).map((s): SearchResult => ({ kind: "section", ...s })),
 				];
 
