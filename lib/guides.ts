@@ -129,6 +129,10 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 				label: "Migration Department: Frequent questions",
 				url: "https://www.gov.cy/mip-md/en/documents/frequent-questions/",
 			},
+			{
+				label: "Advocates Law, Cap. 2 (CyLaw)",
+				url: "http://www.cylaw.org/nomoi/enop/non-ind/0_2/full.html",
+			},
 		],
 		category: "immigration",
 		title: "Cyprus Residency Visas 2026: All Routes Compared",
@@ -153,7 +157,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Practical advice",
-				body: "Three pieces of advice that come up consistently in expat forums. First, do not rely on a tourist entry to scout property and then formalise the residency later: the two routes work differently: a Digital Nomad application is made at the Migration Department within three months of arriving in Cyprus, while a permanent residence application can be lodged in person or through an authorised representative, and lodging it does not give you a right to stay while it is examined. Second, work with a local lawyer for any property-based application: fees of €1,500–€3,000 are normal, the paperwork is genuinely intricate, and a botched application can delay things by a year. Third, keep originals of every document you used in the application. Cyprus immigration is paper-heavy and a request to re-prove your income from three years ago is not unusual at renewal.",
+				body: "Three pieces of advice that come up consistently in expat forums. First, do not rely on a tourist entry to scout property and then formalise the residency later: the two routes work differently: a Digital Nomad application is made at the Migration Department within three months of arriving in Cyprus, while a permanent residence application can be lodged in person or through an authorised representative, and lodging it does not give you a right to stay while it is examined. Second, work with a local lawyer for any property-based application (fees are not regulated, so get two or three written quotes): the paperwork is genuinely intricate, and a botched application can delay things by a year. Third, keep originals of every document you used in the application. Cyprus immigration is paper-heavy and a request to re-prove your income from three years ago is not unusual at renewal.",
 			},
 		],
 		faqs: [
@@ -317,6 +321,10 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 				label: "Migration Department (gov.cy)",
 				url: "https://www.gov.cy/mip-md/en/",
 			},
+			{
+				label: "Advocates Law, Cap. 2 (CyLaw)",
+				url: "http://www.cylaw.org/nomoi/enop/non-ind/0_2/full.html",
+			},
 		],
 		category: "immigration",
 		title: "Moving to Cyprus: First-Month Checklist 2026",
@@ -325,7 +333,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "Before you move",
-				body: "Relocating to Cyprus is usually a 6 to 12 month project from decision to settled, and much of it happens before you land.\n\nSix months or more out: visit at least twice, once in low season (November to February) and once in July or August, and shortlist a region (the [best places to live guide](/guides/best-areas-to-live-cyprus/) compares them). Confirm your residency route with the [residency guide](/guides/residency-and-visas/) and talk to a Cyprus tax adviser, because your exit from your current country's tax system needs planning, not improvising. If you have school-age children, start early: admissions for the top international schools open 9 to 12 months ahead and senior-year waitlists are real. Start collecting documents: apostilled birth and marriage certificates, a criminal records check from your home country and 12 months of bank statements.\n\nThree to six months out: apply for your residency permit. If you are buying, engage a Cypriot lawyer (a €1,500 to €3,000 retainer is typical) and apply for any Cypriot mortgage now, since approval takes 6 to 10 weeks.\n\nOne to three months out: book shipping if you are moving belongings. A 20-foot container from London or Hamburg to Limassol port runs €4,500 to €7,000 and takes 4 to 6 weeks; from Israel, €2,500 to €4,000 and 2 to 3 weeks. Customs duty applies to shipments arriving more than 12 months after your residency permit start date, so check the timing with your lawyer. Notify your home tax authority of your move date, arrange temporary accommodation if your home is not ready, and budget €5,000 to €10,000 as a cash float for set-up costs such as a car, furniture and deposits. The full pre-move plan, step by step, is on the [Moving to Cyprus hub](/moving-to-cyprus/).",
+				body: "Relocating to Cyprus is usually a 6 to 12 month project from decision to settled, and much of it happens before you land.\n\nSix months or more out: visit at least twice, once in low season (November to February) and once in July or August, and shortlist a region (the [best places to live guide](/guides/best-areas-to-live-cyprus/) compares them). Confirm your residency route with the [residency guide](/guides/residency-and-visas/) and talk to a Cyprus tax adviser, because your exit from your current country's tax system needs planning, not improvising. If you have school-age children, start early: admissions for the top international schools open 9 to 12 months ahead and senior-year waitlists are real. Start collecting documents: apostilled birth and marriage certificates, a criminal records check from your home country and 12 months of bank statements.\n\nThree to six months out: apply for your residency permit. If you are buying, engage a Cypriot lawyer (fees are not regulated; quotes of around 1% to 1.5% of the price plus VAT are common, so get two or three written quotes) and apply for any Cypriot mortgage now, since approval takes 6 to 10 weeks.\n\nOne to three months out: book shipping if you are moving belongings. A 20-foot container from London or Hamburg to Limassol port runs €4,500 to €7,000 and takes 4 to 6 weeks; from Israel, €2,500 to €4,000 and 2 to 3 weeks. Customs duty applies to shipments arriving more than 12 months after your residency permit start date, so check the timing with your lawyer. Notify your home tax authority of your move date, arrange temporary accommodation if your home is not ready, and budget €5,000 to €10,000 as a cash float for set-up costs such as a car, furniture and deposits. The full pre-move plan, step by step, is on the [Moving to Cyprus hub](/moving-to-cyprus/).",
 			},
 			{
 				heading:
@@ -2361,6 +2369,10 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 				label: "Department of Lands and Surveys: Rights and fees (PDF)",
 				url: "https://portal.dls.moi.gov.cy/wp-content/uploads/2022/07/Rights-and-Fees_EN.pdf",
 			},
+			{
+				label: "Advocates Law, Cap. 2 (CyLaw)",
+				url: "http://www.cylaw.org/nomoi/enop/non-ind/0_2/full.html",
+			},
 		],
 		category: "property",
 		title: "How to Buy Property in Cyprus 2026: Full Guide",
@@ -2377,7 +2389,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Step 2: Choose a lawyer (the most important hire)",
-				body: "Hiring an independent Cyprus property lawyer is the single most important step in the entire process. Do not use the developer's or the agent's recommended lawyer — Cyprus has had multiple historical scandals around developer-linked lawyers protecting the developer's interest at the buyer's expense. Find an independent local lawyer through the Cyprus Bar Association (cyprusbarassociation.org) or through a referral from a recent Cypriot expat. Expected fees: €1,500–€3,000 for a full property purchase up to €500,000, more for higher-priced or complex deals. The lawyer will do title searches at the Land Registry, verify the developer's mortgages and encumbrances on the land (a critical step — historically many Cyprus title-deed delays were caused by undisclosed bank mortgages on the developer's land that should have been cleared before unit handover), draft and negotiate the Sale and Purchase Agreement, oversee deposit transfers, register the contract with the Land Registry (which protects you against the developer selling the same unit twice), apply for any permits you need, and eventually file the title deed in your name once it issues. A good lawyer also assists with residency applications if applicable.",
+				body: "Hiring an independent Cyprus property lawyer is the single most important step in the entire process. Do not use the developer's or the agent's recommended lawyer: Cyprus has had multiple historical scandals around developer-linked lawyers protecting the developer's interest at the buyer's expense. Find an independent local lawyer through the Cyprus Bar Association (cyprusbarassociation.org) or through a referral from a recent Cypriot expat. Fees have not been regulated since 2018, so they vary: quotes of around 1% to 1.5% of the price plus VAT, often with a minimum fee, are common. Get two or three written quotes and agree the fee in writing before work starts. The lawyer will do title searches at the Land Registry, verify the developer's mortgages and encumbrances on the land (a critical step: historically many Cyprus title-deed delays were caused by undisclosed bank mortgages on the developer's land that should have been cleared before unit handover), draft and negotiate the Sale and Purchase Agreement, oversee deposit transfers, register the contract with the Land Registry (which protects you against the developer selling the same unit twice), apply for any permits you need, and eventually file the title deed in your name once it issues. A good lawyer also assists with residency applications if applicable.",
 			},
 			{
 				heading: "Step 3: Sale and Purchase Agreement",
@@ -2421,6 +2433,10 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 				label: "gov.cy: Calculation of real estate transfer fees",
 				url: "https://www.gov.cy/en/service/calculation-of-real-estates-transfer-fees/",
 			},
+			{
+				label: "Advocates Law, Cap. 2 (CyLaw)",
+				url: "http://www.cylaw.org/nomoi/enop/non-ind/0_2/full.html",
+			},
 		],
 		category: "tax",
 		title: "Cyprus Property Taxes 2026: VAT & Transfer Fees",
@@ -2441,7 +2457,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Miscellaneous fees (stamp duty abolished)",
-				body: "Stamp duty on property purchase contracts was abolished from 1 January 2026 — previously 0.15% on the first €170,000 and 0.20% above, capped at €20,000. Land Registry filing fees remain — typically under €100 to register the SPA and an additional small fee for the title transfer. Legal fees are not technically a tax but should be budgeted alongside them: €1,500–€3,000 for a standard purchase up to €500,000. For non-EU buyers, the Council of Ministers permit application carries small government fees (~€500). If you are also obtaining residency via the €300,000 property purchase route, your residency application carries additional fees of approximately €500 in government charges. Bank charges for international wire transfers in EUR to Cyprus banks are typically €25–€80 from EU SEPA countries and higher from non-SEPA sources. Total transaction friction on a €300,000 new build with reduced VAT is around €16,500–€19,000 (5% VAT + legal + small fees); on a €300,000 resale with the 50% transfer-fee reduction, around €5,500–€6,500.",
+				body: "Stamp duty on property purchase contracts was abolished from 1 January 2026; previously 0.15% on the first €170,000 and 0.20% above, capped at €20,000. Land Registry filing fees remain, typically under €100 to register the SPA and an additional small fee for the title transfer. Legal fees are not technically a tax but should be budgeted alongside them: quotes of around 1% to 1.5% of the price plus VAT are common (fees are not regulated, so get written quotes). For non-EU buyers, the Council of Ministers permit application carries small government fees (~€500). If you are also obtaining residency via the €300,000 property purchase route, your residency application carries additional fees of approximately €500 in government charges. Bank charges for international wire transfers in EUR to Cyprus banks are typically €25–€80 from EU SEPA countries and higher from non-SEPA sources. Total transaction friction on a €300,000 new build with reduced VAT is around €16,500–€19,000 (5% VAT + legal + small fees); on a €300,000 resale with the 50% transfer-fee reduction, around €5,500–€6,500.",
 			},
 			{
 				heading: "Municipal taxes and ongoing holding costs",

@@ -9,7 +9,18 @@ export const GUIDES_BATCH2: GuideInfo[] = [
 	{
 		slug: "cyprus-mortgage-foreigners",
 		datePublished: "2026-07-05",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Advocates Law, Cap. 2 (CyLaw)",
+				url: "http://www.cylaw.org/nomoi/enop/non-ind/0_2/full.html",
+			},
+			{
+				label: "Judicare: Cyprus residential purchase pricing",
+				url: "https://www.judicaregroup.com/pricing/cyprus-res-purchase-pricing/",
+			},
+		],
 		category: "property",
 		title: "Cyprus Mortgages for Foreigners: 2026 Guide",
 		description:
@@ -38,7 +49,7 @@ export const GUIDES_BATCH2: GuideInfo[] = [
 			},
 			{
 				heading: "Total Buying Costs and the Mortgage Process",
-				body: "Budgeting for a Cyprus property purchase means setting aside considerably more than just the deposit. The additional costs differ substantially depending on whether you are buying a new build or a resale property.\n\nFor new-build properties, VAT is the dominant cost. The standard rate is 19%, but a reduced rate of 5% applies where the property will serve as your primary residence, subject to detailed area and value conditions. Property transfer fees are waived entirely on new builds where VAT has been paid.\n\nFor resale properties, VAT does not apply, but property transfer fees are payable on a progressive scale: 3% on the first €85,000 of assessed value, 5% on the portion between €85,001 and €170,000, and 8% above €170,000. A statutory 50% reduction applies, halving the effective rates. Stamp duty was abolished from 1 January 2026 — contracts signed from that date carry no stamp duty charge, removing a cost that previously ran to around 0.15–0.20% of the purchase price.\n\nLegal fees typically run to 1–2% of the purchase price plus VAT. The bank will charge a mortgage arrangement fee (commonly around 1% of the loan amount) and a property valuation fee (typically €200–€700), and will require ongoing buildings and life insurance throughout the loan term.\n\nThe full mortgage process from formal application to funds release typically takes one to three months. Most lenders issue an approval-in-principle within two to four weeks of receiving a complete application. Non-EU buyers should factor in Acquisition Permit processing time on top of this. Confirm the current reduced-VAT conditions and any recent changes with your property lawyer before you commit.",
+				body: "Budgeting for a Cyprus property purchase means setting aside considerably more than just the deposit. The additional costs differ substantially depending on whether you are buying a new build or a resale property.\n\nFor new-build properties, VAT is the dominant cost. The standard rate is 19%, but a reduced rate of 5% applies where the property will serve as your primary residence, subject to detailed area and value conditions. Property transfer fees are waived entirely on new builds where VAT has been paid.\n\nFor resale properties, VAT does not apply, but property transfer fees are payable on a progressive scale: 3% on the first €85,000 of assessed value, 5% on the portion between €85,001 and €170,000, and 8% above €170,000. A statutory 50% reduction applies, halving the effective rates. Stamp duty was abolished from 1 January 2026: contracts signed from that date carry no stamp duty charge, removing a cost that previously ran to around 0.15–0.20% of the purchase price.\n\nLegal fees are not regulated, so they vary: quotes of around 1% to 1.5% of the purchase price plus VAT are common, so get two or three written quotes. The bank will charge a mortgage arrangement fee (commonly around 1% of the loan amount) and a property valuation fee (typically €200–€700), and will require ongoing buildings and life insurance throughout the loan term.\n\nThe full mortgage process from formal application to funds release typically takes one to three months. Most lenders issue an approval-in-principle within two to four weeks of receiving a complete application. Non-EU buyers should factor in Acquisition Permit processing time on top of this. Confirm the current reduced-VAT conditions and any recent changes with your property lawyer before you commit.",
 			},
 		],
 		faqs: [
@@ -52,7 +63,7 @@ export const GUIDES_BATCH2: GuideInfo[] = [
 			},
 			{
 				q: "How much deposit do I need for a Cyprus mortgage as a non-resident?",
-				a: "Budget for considerably more than a resident would. EU/EEA non-residents are typically offered 60–70% LTV, meaning a deposit of 30–40% of the purchase price. Non-EU nationals often face 50–60% LTV, implying a 40–50% deposit. The exact figure depends on the bank, the property, and your financial profile, and a larger deposit usually secures a better interest rate. On top of the deposit, budget for transfer fees or VAT, legal fees of 1–2%, and bank arrangement and valuation fees.",
+				a: "Budget for considerably more than a resident would. EU/EEA non-residents are typically offered 60–70% LTV, meaning a deposit of 30–40% of the purchase price. Non-EU nationals often face 50–60% LTV, implying a 40–50% deposit. The exact figure depends on the bank, the property, and your financial profile, and a larger deposit usually secures a better interest rate. On top of the deposit, budget for transfer fees or VAT, legal fees (often around 1% to 1.5% plus VAT), and bank arrangement and valuation fees.",
 			},
 			{
 				q: "How long does a Cyprus mortgage application take for a non-resident?",

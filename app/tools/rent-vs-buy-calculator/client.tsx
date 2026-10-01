@@ -326,9 +326,11 @@ export default function RentVsBuyPage({
 			/>
 
 			<Callout tone="legal" title="Cyprus market assumptions">
-				Based on Cyprus market assumptions. Does not include transfer fees
-				(typically 3–8%), legal costs (~€2,000–4,000), or renovation. The model
-				assumes a 25-year mortgage term, 5% upfront costs, and that the
+				Based on Cyprus market assumptions. Upfront buying costs (transfer
+				fees and legal fees) are modelled as a flat 5% of the price; renovation
+				is not included. Legal fees are not regulated: quotes of around 1% to
+				1.5% of the price plus VAT are common. The model assumes a 25-year
+				mortgage term and that the
 				alternative to the down payment is invested at your stated return.
 				Verify current mortgage rates with your bank. This calculator is for
 				illustrative purposes only and does not constitute financial advice.
