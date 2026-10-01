@@ -133,6 +133,22 @@ export async function generateMetadata({
 	}
 	const g = guideBySlug(slug);
 	if (!g) return {};
+	// The painted hero (when set) is the share image; else the legacy heroImage.
+	const ogImage = g.image
+		? {
+				url: `${SITE_URL}${g.image.src}`,
+				width: g.image.width,
+				height: g.image.height,
+				alt: g.image.alt ?? g.title,
+			}
+		: g.heroImage
+			? {
+					url: `${SITE_URL}${g.heroImage}`,
+					width: 1200,
+					height: 630,
+					alt: g.title,
+				}
+			: null;
 	return {
 		title: g.title,
 		description: g.description,
@@ -142,17 +158,16 @@ export async function generateMetadata({
 			description: g.description,
 			url: `${SITE_URL}/guides/${g.slug}/`,
 			type: "article",
-			...(g.heroImage && {
-				images: [
-					{
-						url: `${SITE_URL}${g.heroImage}`,
-						width: 1200,
-						height: 630,
-						alt: g.title,
-					},
-				],
-			}),
+			...(ogImage && { images: [ogImage] }),
 		},
+		...(ogImage && {
+			twitter: {
+				card: "summary_large_image",
+				title: g.title,
+				description: g.description,
+				images: [ogImage.url],
+			},
+		}),
 	};
 }
 
@@ -221,7 +236,9 @@ export default async function GuidePage({
 		},
 		datePublished: g.datePublished,
 		dateModified: g.dateModified,
-		...(g.heroImage && { image: `${SITE_URL}${g.heroImage}` }),
+		...((g.image || g.heroImage) && {
+			image: `${SITE_URL}${g.image?.src ?? g.heroImage}`,
+		}),
 		mainEntityOfPage: {
 			"@type": "WebPage",
 			"@id": `${SITE_URL}/guides/${g.slug}/`,
@@ -276,7 +293,19 @@ export default async function GuidePage({
 					</>
 				),
 			}}
-			hero={g.heroImage ? { src: g.heroImage, alt: g.title } : undefined}
+			hero={
+				g.image
+					? {
+							src: g.image.src,
+							srcSmall: g.image.srcSmall,
+							width: g.image.width,
+							height: g.image.height,
+							alt: g.image.alt ?? "",
+						}
+					: g.heroImage
+						? { src: g.heroImage, alt: g.title }
+						: undefined
+			}
 			share={<ShareBar url={canonicalUrl} title={g.title} guideSlug={g.slug} />}
 			toc={toc}
 			afterBody={
