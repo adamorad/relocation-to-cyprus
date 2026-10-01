@@ -262,7 +262,7 @@ export default function TaxResidencyPlannerClient() {
 					<p className="text-base text-muted">
 						{qualifies183
 							? `You have spent ${daysInCyprus} days in Cyprus, above the 183-day threshold. You qualify.`
-							: `You have spent ${daysInCyprus} days in Cyprus. You need ${184 - daysInCyprus} more days (more than 183) to qualify under this rule.`}
+							: `You have spent ${daysInCyprus} days in Cyprus. You need ${184 - daysInCyprus} more ${184 - daysInCyprus === 1 ? "day" : "days"} (more than 183 in total) to qualify under this rule.`}
 					</p>
 				</div>
 
