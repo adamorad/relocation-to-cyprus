@@ -4,5 +4,77 @@
   "installCommand": "pnpm install --frozen-lockfile",
   "buildCommand": "pnpm build",
   "outputDirectory": "out",
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/tools/freelancer-vs-company/",
+      "destination": "/tools/sole-trader-vs-ltd/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/freelancer-vs-company",
+      "destination": "/tools/sole-trader-vs-ltd/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/ltd-setup-calculator/",
+      "destination": "/tools/sole-trader-vs-ltd/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/ltd-setup-calculator",
+      "destination": "/tools/sole-trader-vs-ltd/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/gesy-registration/",
+      "destination": "/guides/gesy-registration-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/gesy-registration",
+      "destination": "/guides/gesy-registration-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/neighborhood-comparison/",
+      "destination": "/tools/city-comparison/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/neighborhood-comparison",
+      "destination": "/tools/city-comparison/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/relocation-cost-estimator/",
+      "destination": "/tools/relocation-cost-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/relocation-cost-estimator",
+      "destination": "/tools/relocation-cost-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/relocation-tracker/",
+      "destination": "/tools/relocation-checklist/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/relocation-tracker",
+      "destination": "/tools/relocation-checklist/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/tax-residency-planner/",
+      "destination": "/tools/tax-residency-tracker/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/tax-residency-planner",
+      "destination": "/tools/tax-residency-tracker/",
+      "permanent": true
+    }
+  ]
 }
