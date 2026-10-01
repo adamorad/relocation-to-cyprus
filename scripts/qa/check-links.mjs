@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Internal link checker. Crawls every HTML file in out/ and verifies that
-// each internal href (and local img src) resolves to a file in out/.
+// each internal href (and local img src) and meta-refresh target resolves to a
+// file in out/, and that same-page #anchors match an element id.
 // Respects trailingSlash: true (path/ -> path/index.html). No network.
 import {
 	existsSync,
@@ -57,6 +58,9 @@ function exists(urlPath) {
 const ATTR =
 	/<(a|img|source)\b[^>]*?\s(href|src)\s*=\s*("([^"]*)"|'([^']*)')/gi;
 const BASE_TAG = /<base\b/i;
+const META_REFRESH = /<meta\b[^>]*http-equiv\s*=\s*["']?refresh["']?[^>]*>/gi;
+const META_CONTENT = /\bcontent\s*=\s*("([^"]*)"|'([^']*)')/i;
+const ANY_ID = /\sid\s*=\s*("([^"]*)"|'([^']*)'|([^\s"'>]+))/gi;
 
 function pageUrl(file) {
 	let rel = `/${file
@@ -71,47 +75,80 @@ const broken = new Map(); // key target -> Set(pages)
 let checked = 0;
 let pages = 0;
 
+const brokenAnchors = new Map(); // page -> Set(#id)
+
+function resolveTarget(rawIn, page) {
+	let raw = rawIn.trim().replace(/&amp;/g, "&");
+	if (!raw) return null;
+	if (/^(mailto:|tel:|sms:|javascript:|data:|blob:)/i.test(raw)) return null;
+	if (/^(https?:)?\/\//i.test(raw)) {
+		// Same-origin absolute URLs are treated as internal.
+		const u = raw.replace(/^https?:/i, "");
+		if (/^\/\/(www\.)?realcy\.app(\/|$)/i.test(u))
+			raw = u.replace(/^\/\/(www\.)?realcy\.app/i, "") || "/";
+		else return null;
+	}
+	raw = raw.split("#")[0].split("?")[0];
+	if (!raw) return null;
+	try {
+		return raw.startsWith("/")
+			? decodeURI(raw)
+			: decodeURI(
+					posix.resolve(page.endsWith("/") ? page : posix.dirname(page), raw),
+				);
+	} catch {
+		return raw;
+	}
+}
+
+function checkTarget(target, page) {
+	checked++;
+	if (!exists(target)) {
+		if (!broken.has(target)) broken.set(target, new Set());
+		broken.get(target).add(page);
+	}
+}
+
 for (const file of htmlFiles) {
 	const page = pageUrl(file);
-	// Skip Next internal error shells and the 404 page is still checked.
 	pages++;
 	const html = readFileSync(file, "utf8");
 	if (BASE_TAG.test(html))
 		console.warn(
 			`warn: <base> tag in ${page}; relative links may resolve differently`,
 		);
+	const ids = new Set();
+	for (const m of html.matchAll(ANY_ID)) ids.add(m[2] ?? m[3] ?? m[4] ?? "");
 	for (const m of html.matchAll(ATTR)) {
 		const tag = m[1].toLowerCase();
 		const attr = m[2].toLowerCase();
 		if (tag === "a" && attr !== "href") continue;
 		if ((tag === "img" || tag === "source") && attr !== "src") continue;
-		let raw = (m[4] ?? m[5] ?? "").trim().replace(/&amp;/g, "&");
-		if (!raw || raw.startsWith("#")) continue;
-		if (/^(mailto:|tel:|sms:|javascript:|data:|blob:)/i.test(raw)) continue;
-		if (/^(https?:)?\/\//i.test(raw)) {
-			// Same-origin absolute URLs are treated as internal.
-			const u = raw.replace(/^https?:/i, "");
-			if (/^\/\/(www\.)?realcy\.app(\/|$)/i.test(u))
-				raw = u.replace(/^\/\/(www\.)?realcy\.app/i, "") || "/";
-			else continue;
+		const rawAttr = (m[4] ?? m[5] ?? "").trim().replace(/&amp;/g, "&");
+		if (tag === "a" && rawAttr.startsWith("#")) {
+			// Same-page anchor: must match an element id. A bare "#" is ignored.
+			if (rawAttr === "#") continue;
+			let id = rawAttr.slice(1);
+			try {
+				id = decodeURIComponent(id);
+			} catch {}
+			checked++;
+			if (id !== "top" && !ids.has(id)) {
+				if (!brokenAnchors.has(page)) brokenAnchors.set(page, new Set());
+				brokenAnchors.get(page).add(`#${id}`);
+			}
+			continue;
 		}
-		raw = raw.split("#")[0].split("?")[0];
-		if (!raw) continue;
-		let target;
-		try {
-			target = raw.startsWith("/")
-				? decodeURI(raw)
-				: decodeURI(
-						posix.resolve(page.endsWith("/") ? page : posix.dirname(page), raw),
-					);
-		} catch {
-			target = raw;
-		}
-		checked++;
-		if (!exists(target)) {
-			if (!broken.has(target)) broken.set(target, new Set());
-			broken.get(target).add(page);
-		}
+		const target = resolveTarget(rawAttr, page);
+		if (target !== null) checkTarget(target, page);
+	}
+	for (const tagM of html.matchAll(META_REFRESH)) {
+		const c = tagM[0].match(META_CONTENT);
+		const content = c?.[2] ?? c?.[3] ?? "";
+		const u = content.match(/url\s*=\s*['"]?([^'";]+)/i);
+		if (!u) continue;
+		const target = resolveTarget(u[1], page);
+		if (target !== null) checkTarget(target, page);
 	}
 }
 
@@ -135,9 +172,30 @@ if (rows.length === 0) {
 			console.log(`      ... and ${r.pages.length - 5} more page(s)`);
 	}
 }
+if (brokenAnchors.size) {
+	console.log(
+		`${brokenAnchors.size} page(s) with same-page anchors that match no id:`,
+	);
+	for (const [page, set] of [...brokenAnchors].sort(([a], [b]) =>
+		a.localeCompare(b),
+	))
+		console.log(`  ${page}  ${[...set].join(" ")}`);
+}
 mkdirSync(REPORT_DIR, { recursive: true });
 writeFileSync(
 	join(REPORT_DIR, "links.json"),
-	`${JSON.stringify({ pages, checked, broken: rows }, null, 2)}\n`,
+	`${JSON.stringify(
+		{
+			pages,
+			checked,
+			broken: rows,
+			brokenAnchors: [...brokenAnchors].map(([page, set]) => ({
+				page,
+				anchors: [...set],
+			})),
+		},
+		null,
+		2,
+	)}\n`,
 );
-process.exit(rows.length ? 1 : 0);
+process.exit(rows.length || brokenAnchors.size ? 1 : 0);

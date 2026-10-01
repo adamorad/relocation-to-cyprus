@@ -64,7 +64,7 @@ const STATS = [
 export default function AdvertisePage() {
   return (
     <>
-      <main className="min-h-screen bg-white">
+      <main id="main" className="min-h-screen bg-white">
         {/* Hero */}
         <section className="on-dark bg-ink py-16 md:py-20">
           <div className="max-w-3xl mx-auto px-6 text-center">

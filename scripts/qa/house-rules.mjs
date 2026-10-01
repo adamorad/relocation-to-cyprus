@@ -109,7 +109,9 @@ for (const e of allow.nicosia ?? [])
 const nicosiaContexts = (line) => {
 	const t = norm(line.replace(/[\u2014,;:()]/g, " "));
 	return [...t.matchAll(/Nicosia/gi)].map((m) =>
-		t.slice(Math.max(0, m.index - WINDOW), m.index + m[0].length + WINDOW).trim(),
+		t
+			.slice(Math.max(0, m.index - WINDOW), m.index + m[0].length + WINDOW)
+			.trim(),
 	);
 };
 const updateNicosia = process.argv.includes("--update-nicosia");
@@ -153,8 +155,7 @@ for (const file of files) {
 			const seen = (nicosiaSeen.get(key) ?? 0) + 1;
 			nicosiaSeen.set(key, seen);
 			// Occurrences beyond the allowed count are violations.
-			if (seen > (nicosiaAllowed.get(key) ?? 0))
-				add("nicosia", file, n, line);
+			if (seen > (nicosiaAllowed.get(key) ?? 0)) add("nicosia", file, n, line);
 		}
 		const rg = countMatches(RULES["relocation-guide"].re, line);
 		if (rg) add("relocation-guide", file, n, line, rg);
@@ -209,10 +210,8 @@ if (updateBaseline) {
 }
 
 const baseline = readJson(BASELINE_PATH, { rules: {} }).rules;
-const sumFile = (o) =>
-	Object.values(o ?? {}).reduce((a, b) => a + b, 0);
-const sum = (o) =>
-	Object.values(o ?? {}).reduce((a, f) => a + sumFile(f), 0);
+const sumFile = (o) => Object.values(o ?? {}).reduce((a, b) => a + b, 0);
+const sum = (o) => Object.values(o ?? {}).reduce((a, f) => a + sumFile(f), 0);
 
 console.log(`House rules: scanned ${files.length} files.\n`);
 console.log("rule                total  baseline  new");
