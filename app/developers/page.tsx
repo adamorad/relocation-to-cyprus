@@ -42,17 +42,17 @@ export default function DevelopersIndexPage() {
       />
       <main id="main" className="max-w-3xl mx-auto px-6 py-10 md:py-16">
         <nav className="text-xs text-slate-600 mb-6">
-          <Link href="/" className="hover:text-slate-900">
+          <Link href="/" className="hover:text-ink">
             Home
           </Link>{" "}
           › <span>Developers</span>
         </nav>
 
         <header className="mb-8">
-          <p className="text-[10px] uppercase tracking-[0.2em] text-amber-700 font-semibold mb-2">
+          <p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary mb-2">
             Property developers
           </p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">
             Cyprus Developers
           </h1>
           <p className="mt-3 text-lg text-slate-700">
@@ -71,7 +71,7 @@ export default function DevelopersIndexPage() {
               <Link
                 key={dev.slug}
                 href={`/developers/${dev.slug}/`}
-                className="block rounded-xl border border-slate-200 bg-white p-4 hover:border-slate-900 hover:shadow-md transition-all"
+                className="block rounded-2xl border border-line bg-white p-4 hover:border-primary hover:shadow-sm transition-all"
               >
                 <div className="flex items-center gap-3 mb-3">
                   {dev.logo ? (
@@ -79,16 +79,16 @@ export default function DevelopersIndexPage() {
                     <img
                       src={dev.logo}
                       alt={`${dev.name} logo`}
-                      className="h-10 w-10 rounded object-contain bg-slate-50 border border-slate-100 shrink-0"
+                      className="h-10 w-10 rounded-xl object-contain bg-sky border border-line shrink-0"
                       loading="lazy"
                     />
                   ) : (
-                    <div className="h-10 w-10 rounded bg-slate-100 shrink-0 flex items-center justify-center text-muted text-xs font-bold">
+                    <div className="h-10 w-10 rounded-xl bg-sky-strong shrink-0 flex items-center justify-center text-muted text-xs font-bold">
                       {dev.name.charAt(0)}
                     </div>
                   )}
                   <div className="min-w-0">
-                    <div className="font-semibold text-sm text-slate-900 line-clamp-2 leading-tight">
+                    <div className="font-semibold text-sm text-ink line-clamp-2 leading-tight">
                       {dev.name}
                     </div>
                     <div className="text-xs text-slate-500 mt-0.5">
@@ -102,7 +102,7 @@ export default function DevelopersIndexPage() {
                     {regions.map((r) => (
                       <span
                         key={r}
-                        className="text-[10px] bg-slate-100 text-slate-600 rounded px-2 py-0.5"
+                        className="text-xs bg-sky-strong text-ink rounded-full px-2.5 py-0.5"
                       >
                         {r}
                       </span>
@@ -115,8 +115,8 @@ export default function DevelopersIndexPage() {
         </div>
 
         <div className="mt-10">
-          <Link href="/tools/" className="underline hover:text-slate-900">
-            ← Back to Tools
+          <Link href="/tools/" className="underline hover:text-ink">
+            Back to Tools
           </Link>
         </div>
       </main>

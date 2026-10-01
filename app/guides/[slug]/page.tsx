@@ -44,7 +44,7 @@ function renderBody(text: string) {
 				<Link
 					key={i}
 					href={href}
-					className="text-primary font-medium hover:underline"
+					className="text-primary font-medium underline underline-offset-2 hover:text-primary-hover"
 				>
 					{label}
 				</Link>
@@ -245,9 +245,9 @@ export default async function GuidePage({
 					This guide has moved.{" "}
 					<Link
 						href={url}
-						className="text-primary font-medium hover:underline"
+						className="text-primary font-medium underline underline-offset-2 hover:text-primary-hover"
 					>
-						Continue to the current guide →
+						Continue to the current guide
 					</Link>
 				</p>
 			</main>
@@ -345,21 +345,21 @@ export default async function GuidePage({
 				}}
 			/>
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-ink">
 					Home
 				</Link>{" "}
 				›{" "}
-				<Link href="/guides/" className="hover:text-slate-900">
+				<Link href="/guides/" className="hover:text-ink">
 					Guides
 				</Link>{" "}
-				› <span className="text-slate-900">{g.title}</span>
+				› <span className="text-ink">{g.title}</span>
 			</nav>
 
 			<header>
-				<p className="text-[10px] uppercase tracking-[0.2em] text-amber-700 font-semibold">
+				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
 					Relocation guide
 				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight leading-tight">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight leading-tight text-ink">
 					{g.title}
 				</h1>
 				<p className="mt-3 text-base text-slate-600">{g.description}</p>
@@ -379,7 +379,7 @@ export default async function GuidePage({
 			</header>
 
 			{g.heroImage && (
-				<div className="mt-6 rounded-xl overflow-hidden">
+				<div className="mt-6 rounded-2xl overflow-hidden">
 					<img
 						src={g.heroImage}
 						alt={g.title}
@@ -397,9 +397,9 @@ export default async function GuidePage({
 			{g.sections.length > 2 && (
 				<nav
 					aria-label="In this guide"
-					className="mt-6 mb-2 p-4 bg-slate-50 border border-slate-200 rounded-lg text-sm"
+					className="mt-6 mb-2 p-4 bg-sky border border-line rounded-2xl text-sm"
 				>
-					<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-2">
+					<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-2">
 						In this guide
 					</p>
 					<ol className="space-y-1 list-decimal list-inside">
@@ -407,7 +407,7 @@ export default async function GuidePage({
 							<li key={s.heading}>
 								<a
 									href={`#${toId(s.heading)}`}
-									className="text-amber-700 hover:text-amber-900 hover:underline"
+									className="text-primary hover:text-primary-hover underline"
 								>
 									{s.heading}
 								</a>
@@ -417,12 +417,12 @@ export default async function GuidePage({
 				</nav>
 			)}
 
-			<article className="mt-8 prose prose-slate max-w-none">
+			<article className="guide-body mt-8 prose prose-slate max-w-none">
 				{g.sections.map((s, i) => (
 					<Fragment key={s.heading}>
 						<section id={toId(s.heading)} className="mt-6">
-							<h2 className="text-xl font-bold mb-2">{s.heading}</h2>
-							<p className="text-slate-700 leading-relaxed whitespace-pre-line">
+							<h2>{s.heading}</h2>
+							<p className="whitespace-pre-line">
 								{renderBody(s.body)}
 							</p>
 						</section>
@@ -441,8 +441,8 @@ export default async function GuidePage({
 			</article>
 
 			{relatedTools.length > 0 && (
-				<aside className="mt-4 p-4 bg-teal-50 border border-teal-200 rounded-lg">
-					<p className="text-[10px] font-semibold text-teal-800 uppercase tracking-wider mb-3">
+				<aside className="mt-4 p-4 bg-sky border border-line rounded-2xl">
+					<p className="text-xs font-semibold text-primary uppercase tracking-wider mb-3">
 						Related tools
 					</p>
 					<div className="flex flex-wrap gap-2">
@@ -450,9 +450,9 @@ export default async function GuidePage({
 							<Link
 								key={t.slug}
 								href={`/tools/${t.slug}/`}
-								className="text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-teal-200 text-teal-700 hover:bg-teal-700 hover:text-white transition-colors"
+								className="text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-line text-ink hover:bg-primary hover:border-primary hover:text-white min-h-11 inline-flex items-center transition-colors"
 							>
-								{t.title} →
+								{t.title}
 							</Link>
 						))}
 					</div>
@@ -460,8 +460,8 @@ export default async function GuidePage({
 			)}
 
 			{relatedSections.length > 0 && (
-				<aside className="mt-4 p-4 bg-indigo-50 border border-indigo-200 rounded-lg">
-					<p className="text-[10px] font-semibold text-indigo-800 uppercase tracking-wider mb-3">
+				<aside className="mt-4 p-4 bg-sky border border-line rounded-2xl">
+					<p className="text-xs font-semibold text-primary uppercase tracking-wider mb-3">
 						Related directories
 					</p>
 					<div className="flex flex-wrap gap-2">
@@ -469,9 +469,9 @@ export default async function GuidePage({
 							<Link
 								key={s.slug}
 								href={`/sections/${s.slug}/`}
-								className="text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-indigo-200 text-indigo-700 hover:bg-indigo-700 hover:text-white transition-colors"
+								className="text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-line text-ink hover:bg-primary hover:border-primary hover:text-white min-h-11 inline-flex items-center transition-colors"
 							>
-								{s.name} →
+								{s.name}
 							</Link>
 						))}
 					</div>
@@ -479,8 +479,8 @@ export default async function GuidePage({
 			)}
 
 			{relatedGuides.length > 0 && (
-				<aside className="mt-4 p-4 bg-slate-50 border border-slate-200 rounded-lg">
-					<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
+				<aside className="mt-4 p-4 bg-sky border border-line rounded-2xl">
+					<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
 						More guides in this category
 					</p>
 					<div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
@@ -488,13 +488,10 @@ export default async function GuidePage({
 							<Link
 								key={guide.slug}
 								href={`/guides/${guide.slug}/`}
-								className="flex items-start gap-2 p-3 bg-white border border-slate-200 rounded-lg hover:border-slate-300 hover:bg-slate-50 transition-colors group"
+								className="flex items-start gap-2 p-3 bg-white border border-line rounded-2xl hover:border-primary hover:bg-sky transition-colors group"
 							>
-								<span className="flex-1 text-xs font-semibold text-slate-700 group-hover:text-slate-900 line-clamp-2">
+								<span className="flex-1 text-xs font-semibold text-ink group-hover:text-primary line-clamp-2">
 									{guide.title}
-								</span>
-								<span className="text-muted text-xs shrink-0 mt-0.5">
-									→
 								</span>
 							</Link>
 						))}
@@ -502,11 +499,11 @@ export default async function GuidePage({
 				</aside>
 			)}
 
-			<aside className="mt-6 p-5 bg-slate-900 rounded-xl text-white">
+			<aside className="mt-6 p-5 bg-ink rounded-2xl text-white">
 				<p className="text-sm font-semibold mb-1">
 					Get the free Cyprus Relocation Checklist
 				</p>
-				<p className="text-xs text-slate-400">
+				<p className="text-xs text-white/80">
 					Week-by-week guide for your first month. Free.
 				</p>
 				<EmailCapture compact />
@@ -514,14 +511,14 @@ export default async function GuidePage({
 
 			{g.faqs && g.faqs.length > 0 ? (
 				<section className="mt-10">
-					<h2 className="text-xl font-bold mb-4">Frequently asked questions</h2>
+					<h2 className="text-xl font-bold text-ink mb-4">Frequently asked questions</h2>
 					<dl className="space-y-4">
 						{g.faqs.map((faq) => (
 							<details
 								key={faq.q}
-								className="group border border-slate-200 rounded-lg"
+								className="group border border-line rounded-2xl"
 							>
-								<summary className="flex items-center justify-between px-4 py-3 cursor-pointer font-semibold text-sm text-slate-900 list-none hover:bg-slate-50">
+								<summary className="flex items-center justify-between px-4 py-3 cursor-pointer font-semibold text-sm text-ink list-none hover:bg-sky">
 									{faq.q}
 									<span className="ml-3 text-muted group-open:rotate-180 transition-transform">
 										▾
@@ -536,15 +533,15 @@ export default async function GuidePage({
 				</section>
 			) : null}
 
-			<aside className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg text-xs text-slate-700">
+			<aside className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-xs text-amber-900">
 				This is general information, not legal or tax advice. Cyprus rules
 				change frequently — verify with the relevant Cypriot government
 				department and a local advisor before acting.
 			</aside>
 
 			<p className="mt-10 text-xs text-slate-600">
-				<Link href="/guides/" className="underline hover:text-slate-900">
-					← All guides
+				<Link href="/guides/" className="underline hover:text-ink">
+					All guides
 				</Link>
 			</p>
 		</main>

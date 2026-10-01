@@ -77,17 +77,17 @@ export default async function RegionPage({
 				}}
 			/>
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-ink">
 					Home
 				</Link>{" "}
-				› <span className="text-slate-900">{r.name}</span>
+				› <span className="text-ink">{r.name}</span>
 			</nav>
 
 			<header>
-				<p className="text-[10px] uppercase tracking-[0.2em] text-amber-700 font-semibold">
+				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
 					Region guide
 				</p>
-				<h1 className="mt-2 text-4xl md:text-5xl font-bold tracking-tight">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					{r.name}, Cyprus
 				</h1>
 				<p className="mt-3 text-lg text-slate-700">{r.oneLiner}</p>
@@ -97,7 +97,7 @@ export default async function RegionPage({
 				<p className="text-slate-700 leading-relaxed">{r.intro}</p>
 				{r.sections.map((s) => (
 					<div key={s.heading} className="mt-6">
-						<h2 className="text-xl font-bold mb-2">{s.heading}</h2>
+						<h2 className="text-xl font-bold text-ink mb-2">{s.heading}</h2>
 						<p className="text-slate-700 leading-relaxed">{s.body}</p>
 					</div>
 				))}
@@ -105,7 +105,7 @@ export default async function RegionPage({
 
 			{listings.length > 0 ? (
 				<section className="mt-10">
-					<h2 className="text-xl font-bold mb-4">
+					<h2 className="text-xl font-bold text-ink mb-4">
 						New developments in {r.name} ({listingsForRegion(r.name).length})
 					</h2>
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -113,10 +113,10 @@ export default async function RegionPage({
 							<Link
 								key={l.slug}
 								href={`/listings/${l.slug}/`}
-								className="block rounded-lg border border-slate-200 bg-white hover:border-slate-900 hover:shadow-md transition-all overflow-hidden"
+								className="block rounded-2xl border border-line bg-white hover:border-primary hover:shadow-sm transition-all overflow-hidden"
 							>
 								{l.images?.[0] ? (
-									<div className="aspect-[16/9] bg-slate-100 overflow-hidden">
+									<div className="aspect-[16/9] bg-sky overflow-hidden">
 										<img
 											// biome-ignore lint/performance/noImgElement: static export
 											src={`${l.images[0]}`}
@@ -127,13 +127,13 @@ export default async function RegionPage({
 									</div>
 								) : null}
 								<div className="p-3">
-									<div className="font-semibold text-sm line-clamp-2">
+									<div className="font-semibold text-sm text-ink line-clamp-2">
 										{l.title}
 									</div>
-									<div className="text-[11px] text-slate-600 mt-0.5 truncate">
+									<div className="text-xs text-slate-600 mt-0.5 truncate">
 										{l.location ?? r.name}
 									</div>
-									<div className="text-amber-700 text-sm font-semibold mt-1.5">
+									<div className="text-primary text-sm font-semibold mt-1.5">
 										{l.priceRange ?? "—"}
 									</div>
 								</div>
@@ -184,8 +184,8 @@ export default async function RegionPage({
 			/>
 
 			<p className="mt-10 text-xs text-slate-600">
-				<Link href="/" className="underline hover:text-slate-900">
-					← Back to home
+				<Link href="/" className="underline hover:text-ink">
+					Back to home
 				</Link>
 			</p>
 		</main>
