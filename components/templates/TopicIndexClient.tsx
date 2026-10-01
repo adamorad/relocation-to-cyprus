@@ -1,10 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/Badge";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup, type ChipOption } from "@/components/ui/Chip";
-import { isTopicSlug, TOPICS, type TopicSlug, topicBySlug } from "@/lib/topics";
+import {
+	isTopicSlug,
+	TOPIC_SLUGS,
+	TOPICS,
+	type TopicSlug,
+	topicBySlug,
+} from "@/lib/topics";
+import { UrlPrefilter, useUrlFilter } from "./UrlFilter";
 
 export type IndexCard = {
 	href: string;
@@ -13,12 +19,18 @@ export type IndexCard = {
 	topic: TopicSlug;
 };
 
-type Filter = TopicSlug | "all";
+/** "none" = an unknown `?topic=` value: shows the empty note, not every item. */
+type Filter = TopicSlug | "all" | "none";
+
+const parseTopic = (q: string): Filter => (isTopicSlug(q) ? q : "none");
 
 /**
  * Topic filter chips (URL-readable `?topic=`) and a card grid for the
- * /guides/, /sections/ and /tools/ indexes. The static HTML lists every item
- * under "All"; the URL filter is applied after hydration.
+ * /guides/, /sections/ and /tools/ indexes. Indexes filter by primary topic
+ * only (hubs also list secondary items). The static HTML lists every item;
+ * `UrlPrefilter` applies a preset `?topic=` before first paint, so there is
+ * no layout jump. A topic with no items here, or an unknown one, shows an
+ * empty note with a link back to everything.
  */
 export function TopicIndexClient({
 	path,
@@ -34,18 +46,16 @@ export function TopicIndexClient({
 	/** `text`: topic badge above the title; `icon`: the topic's icon tile. */
 	variant: "text" | "icon";
 }) {
-	const [active, setActive] = useState<Filter>("all");
-
-	useEffect(() => {
-		const q = new URLSearchParams(window.location.search).get("topic");
-		if (isTopicSlug(q) && items.some((i) => i.topic === q)) setActive(q);
-	}, [items]);
-
-	function onChange(next: Filter) {
-		setActive(next);
-		const url = next === "all" ? path : `${path}?topic=${next}`;
-		window.history.replaceState(null, "", url);
-	}
+	const {
+		value: active,
+		set: onChange,
+		scopeRef,
+	} = useUrlFilter<Filter>({
+		param: "topic",
+		path,
+		initial: "all",
+		parse: parseTopic,
+	});
 
 	const options: ChipOption<Filter>[] = [
 		{ value: "all", label: "All", count: items.length },
@@ -58,10 +68,19 @@ export function TopicIndexClient({
 
 	const visible =
 		active === "all" ? items : items.filter((i) => i.topic === active);
-	const activeTopic = active === "all" ? undefined : topicBySlug(active);
+	const activeTopic = isTopicSlug(active) ? topicBySlug(active) : undefined;
+	const emptyTopics = TOPIC_SLUGS.filter(
+		(t) => !items.some((i) => i.topic === t),
+	);
 
 	return (
-		<>
+		<div ref={scopeRef} suppressHydrationWarning>
+			<UrlPrefilter
+				param="topic"
+				values={TOPIC_SLUGS}
+				unknown="none"
+				empty={emptyTopics}
+			/>
 			<ChipGroup
 				label="Filter by topic"
 				options={options}
@@ -69,13 +88,35 @@ export function TopicIndexClient({
 				onChange={onChange}
 			/>
 			<h2 className="sr-only">
-				{activeTopic ? `${activeTopic.name} ${noun}` : `All ${noun}`}
+				{activeTopic
+					? `${activeTopic.name} ${noun}`
+					: active === "none"
+						? `No ${noun}`
+						: `All ${noun}`}
 			</h2>
+			{/* Always in the DOM (text never changes) so the pre-paint filter can show it. */}
+			<div
+				data-empty-note
+				data-show={visible.length === 0 ? "" : undefined}
+				className="mt-6 hidden rounded-card border border-line bg-sky p-5 data-show:block"
+			>
+				<p className="text-base text-ink">No {noun} match this topic yet.</p>
+				<a
+					href={path}
+					onClick={(e) => {
+						e.preventDefault();
+						onChange("all");
+					}}
+					className="mt-2 inline-flex min-h-11 items-center font-semibold text-primary-hover underline underline-offset-2"
+				>
+					Show all {noun}
+				</a>
+			</div>
 			<CardGrid className="mt-6">
 				{visible.map((i) => {
 					const topic = topicBySlug(i.topic);
 					return (
-						<CardGridItem key={i.href}>
+						<CardGridItem key={i.href} filter={i.topic}>
 							{variant === "text" ? (
 								<Card
 									variant="text"
@@ -98,6 +139,6 @@ export function TopicIndexClient({
 					);
 				})}
 			</CardGrid>
-		</>
+		</div>
 	);
 }

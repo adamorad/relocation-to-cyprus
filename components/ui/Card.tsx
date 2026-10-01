@@ -258,7 +258,20 @@ export function CardGrid({
 	);
 }
 
-/** Grid cell wrapper so cards stretch to equal height. */
-export function CardGridItem({ children }: { children: ReactNode }) {
-	return <li className="flex">{children}</li>;
+/**
+ * Grid cell wrapper so cards stretch to equal height. `filter` is written to
+ * `data-filter-item` for the pre-paint URL filter (components/templates/UrlFilter.tsx).
+ */
+export function CardGridItem({
+	filter,
+	children,
+}: {
+	filter?: string;
+	children: ReactNode;
+}) {
+	return (
+		<li className="flex" data-filter-item={filter}>
+			{children}
+		</li>
+	);
 }

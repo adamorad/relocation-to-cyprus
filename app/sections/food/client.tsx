@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { UrlPrefilter, useUrlFilter } from "@/components/templates/UrlFilter";
 import { Badge } from "@/components/ui/Badge";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup } from "@/components/ui/Chip";
@@ -13,6 +14,13 @@ import {
 } from "@/lib/food";
 import { CITY_NAME, CITY_SLUGS, type CitySlug, isCitySlug } from "@/lib/topics";
 
+const parseCity = (q: string): CitySlug | undefined =>
+	isCitySlug(q) ? q : undefined;
+
+/** City slug for an entry's city name (for the pre-paint `?city=` filter). */
+const citySlugOf = (name: string) =>
+	CITY_SLUGS.find((c) => CITY_NAME[c] === name);
+
 const PATH = "/sections/food/";
 
 /**
@@ -20,22 +28,17 @@ const PATH = "/sections/food/";
  * filter is URL-readable (`?city=limassol`), like the topic hubs.
  */
 export default function FoodClient() {
-	const [city, setCity] = useState<CitySlug | "all">("all");
+	const {
+		value: city,
+		set: onCityChange,
+		scopeRef,
+	} = useUrlFilter<CitySlug | "all">({
+		param: "city",
+		path: PATH,
+		initial: "all",
+		parse: parseCity,
+	});
 	const [category, setCategory] = useState<Category | "All">("All");
-
-	useEffect(() => {
-		const q = new URLSearchParams(window.location.search).get("city");
-		if (isCitySlug(q)) setCity(q);
-	}, []);
-
-	function onCityChange(next: CitySlug | "all") {
-		setCity(next);
-		window.history.replaceState(
-			null,
-			"",
-			next === "all" ? PATH : `${PATH}?city=${next}`,
-		);
-	}
 
 	const visible = FOOD_PLACES.filter(
 		(p) =>
@@ -44,7 +47,8 @@ export default function FoodClient() {
 	);
 
 	return (
-		<>
+		<div ref={scopeRef} suppressHydrationWarning>
+			<UrlPrefilter param="city" values={CITY_SLUGS} />
 			<div className="space-y-4 rounded-card border border-line bg-sky p-4 md:p-5">
 				<ChipGroup
 					label="City"
@@ -81,7 +85,10 @@ export default function FoodClient() {
 			{visible.length > 0 ? (
 				<CardGrid className="mt-5">
 					{visible.map((place) => (
-						<CardGridItem key={`${place.city}-${place.category}-${place.name}`}>
+						<CardGridItem
+							key={`${place.city}-${place.category}-${place.name}`}
+							filter={citySlugOf(place.city)}
+						>
 							<Card
 								variant="text"
 								eyebrow={<Badge>{CATEGORY_LABEL[place.category]}</Badge>}
@@ -112,6 +119,6 @@ export default function FoodClient() {
 					))}
 				</CardGrid>
 			) : null}
-		</>
+		</div>
 	);
 }
