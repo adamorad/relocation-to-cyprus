@@ -3,11 +3,13 @@
 import { useState } from "react";
 import { Badge, type BadgeTone } from "@/components/ui/Badge";
 import { ChipGroup } from "@/components/ui/Chip";
+import { TD1_DEADLINE_TAX_YEAR_2025 } from "@/lib/facts/tax";
 
 type TaxpayerType = "individual" | "company" | "both";
 
 type Deadline = {
 	id: string;
+	year?: number; // set for a one-off dated deadline; otherwise it repeats every year
 	month: number; // 1-12
 	day: number;
 	title: string;
@@ -28,16 +30,6 @@ const DEADLINES: Deadline[] = [
 		taxpayer: "company",
 	},
 	{
-		id: "td1-self-assess",
-		month: 3,
-		day: 31,
-		title: "Self-Assessment: Income over €19,500",
-		formRef: "TD1",
-		description:
-			"For individuals whose annual income exceeded €19,500 in the previous year. Filed on paper by 31 March; electronic filing deadline is 31 July.",
-		taxpayer: "individual",
-	},
-	{
 		id: "audited-accounts",
 		month: 4,
 		day: 30,
@@ -51,41 +43,42 @@ const DEADLINES: Deadline[] = [
 		id: "td1-electronic",
 		month: 7,
 		day: 31,
-		title: "Individual Income Tax Return: Electronic",
+		title: "Individual Income Tax Return: statutory deadline",
 		formRef: "TD1",
 		description:
-			"Electronic filing deadline for individual income tax return (TD1) for the previous calendar year. This is the standard deadline for most employed and self-employed individuals. For tax year 2025 the Tax Department set the deadline at 31 October 2026.",
+			"Statutory deadline for the individual income tax return (TD1) for the previous tax year. The Tax Department can extend it: for tax year 2025 it extended the deadline to 31 October 2026 (see October). For tax year 2025 you must file if your gross income was over €19,500; from tax year 2026 every resident with income, and every resident aged 25 to 70, must file.",
 		taxpayer: "individual",
 	},
 	{
-		id: "td4-provisional-1",
+		id: "provisional-1",
 		month: 7,
 		day: 31,
-		title: "Company Provisional Tax: 1st Instalment",
-		formRef: "TD4",
-		description:
-			"First instalment of provisional corporation tax for the current year. Based on your provisional tax return (TD6) estimate. Half of total provisional tax due.",
-		taxpayer: "company",
-	},
-	{
-		id: "td6",
-		month: 9,
-		day: 30,
-		title: "Provisional Tax Return + 2nd Instalment",
-		formRef: "TD6",
-		description:
-			"Submission of the provisional tax return (TD6) and payment of the second instalment. If your actual income differs from the provisional estimate, revise and adjust.",
-		taxpayer: "company",
-	},
-	{
-		id: "td4-final",
-		month: 12,
-		day: 31,
-		title: "Provisional Tax: 3rd Instalment",
+		title: "Provisional Tax: 1st Instalment",
 		formRef: "–",
 		description:
-			"Final provisional tax instalment payment for the current year. Failure to pay at least 75% of the actual tax due results in an additional 10% charge.",
-		taxpayer: "company",
+			"First of two equal instalments of provisional tax for the current year, based on your estimated taxable income. Applies to companies and to self-employed people. Check the dates with the Tax Department.",
+		taxpayer: "both",
+	},
+	{
+		id: "td1-2025-extended",
+		year: Number(TD1_DEADLINE_TAX_YEAR_2025.slice(0, 4)),
+		month: Number(TD1_DEADLINE_TAX_YEAR_2025.slice(5, 7)),
+		day: Number(TD1_DEADLINE_TAX_YEAR_2025.slice(8, 10)),
+		title: "Individual Income Tax Return for tax year 2025: extended deadline",
+		formRef: "TD1",
+		description:
+			"The Tax Department set 31 October 2026 as the deadline for submitting the individual return (TD1) for tax year 2025.",
+		taxpayer: "individual",
+	},
+	{
+		id: "provisional-2",
+		month: 12,
+		day: 31,
+		title: "Provisional Tax: 2nd Instalment",
+		formRef: "–",
+		description:
+			"Second and final instalment of provisional tax for the current year. Check the dates with the Tax Department.",
+		taxpayer: "both",
 	},
 ];
 
@@ -118,8 +111,13 @@ function getUrgency(daysUntil: number): Urgency {
 	return { row: "border-primary", tone: "neutral", text: `${daysUntil}d` };
 }
 
-function getDaysUntil(month: number, day: number, today: Date): number {
-	const target = new Date(today.getFullYear(), month - 1, day);
+function getDaysUntil(
+	month: number,
+	day: number,
+	today: Date,
+	year?: number,
+): number {
+	const target = new Date(year ?? today.getFullYear(), month - 1, day);
 	return Math.floor(
 		(target.getTime() - today.getTime()) / (1000 * 60 * 60 * 24),
 	);
@@ -233,6 +231,7 @@ export default function TaxFilingCalendarPage() {
 										deadline.month,
 										deadline.day,
 										today,
+										deadline.year,
 									);
 									const urgency = getUrgency(daysUntil);
 
@@ -246,6 +245,7 @@ export default function TaxFilingCalendarPage() {
 													<div className="mb-1 flex flex-wrap items-center gap-2">
 														<span className="text-base font-bold text-ink">
 															{deadline.day} {MONTH_NAMES[month - 1]}
+															{deadline.year ? ` ${deadline.year}` : ""}
 														</span>
 														{deadline.formRef !== "–" && (
 															<Badge>{deadline.formRef}</Badge>
