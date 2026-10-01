@@ -8,6 +8,14 @@
  * accountant or lawyer before acting.
  */
 
+import {
+	eur,
+	GESY_AE_COPAY,
+	GESY_ANNUAL_CAP,
+	GESY_ANNUAL_CAP_REDUCED,
+	GESY_RX_ITEM_COPAY,
+	SRC as HT_SRC,
+} from "./facts/health-transport";
 import { GUIDES_BATCH1 } from "./guides-batch1";
 import { GUIDES_BATCH2 } from "./guides-batch2";
 import { GUIDES_BATCH3 } from "./guides-batch3";
@@ -1105,7 +1113,14 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			alt: "Painting of a pharmacy with a green cross sign and open door on a sunny whitewashed street lined with potted olive trees",
 		},
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			HT_SRC.medicinesPriceList,
+			HT_SRC.nonPrescriptionRule,
+			HT_SRC.solpadeine,
+			HT_SRC.gesyCopay,
+		],
 		category: "healthcare",
 		title: "Buy Medicine Over the Counter in Cyprus",
 		description:
@@ -1113,7 +1128,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "Quick answer: what you can buy over the counter in Cyprus",
-				body: "Paracetamol (Depon, Panadol) and ibuprofen (Brufen, Nurofen) are sold over the counter, from pharmacies only. Aspirin is the one common painkiller also sold in ordinary shops and kiosks.\n\nCodeine painkillers such as co-codamol can be supplied by Cypriot pharmacists without a prescription, but strength and status vary by product, so ask the pharmacist what is available before you rely on it. Eye antibiotics, some antifungals and oral contraceptives can be supplied after a brief pharmacist consultation. Oral antibiotics are not covered in this guide, so ask a pharmacist or doctor. Benzodiazepines and strong opioids need a controlled-drug prescription. Omeprazole usually needs a prescription, and a salbutamol inhaler is prescription in practice.\n\nThe full brand-by-brand table is in the section on home-country medicines below. Pharmacists have final discretion and status can change, so confirm anything you depend on.",
+				body: "Paracetamol (Depon, Panadol) and ibuprofen (Brufen, Nurofen) are sold over the counter, from pharmacies only. Aspirin is the one common painkiller also sold in ordinary shops and kiosks.\n\nLow-dose codeine painkillers such as Solpadeine (8 mg codeine) are sold by pharmacists without a prescription. Co-codamol 30/500 is not sold in Cyprus. Antifungal creams and the morning-after pill are sold without a prescription. Oral contraceptives and antibiotic eye drops need a prescription. Oral antibiotics are not covered in this guide, so ask a pharmacist or doctor. Benzodiazepines and strong opioids need a controlled-drug prescription. Omeprazole usually needs a prescription, and a salbutamol inhaler is prescription in practice.\n\nThe full brand-by-brand table is in the section on home-country medicines below. Pharmacists have final discretion and status can change, so confirm anything you depend on.",
 			},
 			{
 				heading: "How the pharmacy system works",
@@ -1121,7 +1136,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "GeSY prescription coverage and co-payments",
-				body: "With a GeSY-registered personal doctor and a GeSY prescription, medications are dispensed at a co-payment of €1 for generic drugs. Branded medications that have a generic equivalent are dispensed at the generic price plus the difference if you specifically request the brand — pharmacists are required to offer the generic substitute and inform you of the price difference. Medications with no generic equivalent are covered at GeSY's reference price, which may be less than the pharmacist's retail price; the patient pays the gap. Chronic disease medications for conditions on the GeSY approved list (diabetes, hypertension, thyroid conditions, and others) are available with zero co-payment for GeSY beneficiaries. To use GeSY at a pharmacy, present your HIO card or beneficiary number; the pharmacist scans the prescription in the GeSY system directly. Pharmacies that accept GeSY display the GeSY logo — not all private pharmacies in Cyprus are contracted with GeSY, though the majority in urban areas are.",
+				body: `With a GeSY-registered personal doctor and a GeSY prescription, medications are dispensed at a co-payment of ${eur(GESY_RX_ITEM_COPAY)} per item for generic drugs. Branded medications that have a generic equivalent are dispensed at the generic price plus the difference if you specifically request the brand; pharmacists are required to offer the generic substitute and inform you of the price difference. Medications with no generic equivalent are covered at GeSY's reference price, which may be less than the pharmacist's retail price; the patient pays the gap. To use GeSY at a pharmacy, present your HIO card or beneficiary number; the pharmacist scans the prescription in the GeSY system directly. Pharmacies that accept GeSY display the GeSY logo. Not all private pharmacies in Cyprus are contracted with GeSY, though the majority in urban areas are.`,
 			},
 			{
 				heading: "Transferring a foreign prescription to Cyprus",
@@ -1129,11 +1144,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Medications available OTC in Cyprus",
-				body: "Cyprus is slightly more liberal than some northern EU countries in what is available over the counter. Strong codeine-combination painkillers (e.g. co-codamol 30/500) are available without prescription from pharmacists in Cyprus, whereas the same product requires a prescription in the UK and Germany. Several antifungal treatments, eye antibiotics, and oral contraceptives that require prescriptions elsewhere in the EU can be obtained from Cypriot pharmacists after a brief consultation. Pharmacists in Cyprus are trained and legally permitted to make these dispensing decisions under the Pharmacy and Poison Law. Conversely, benzodiazepines, strong opioids, and Schedule 1 controlled substances are tightly controlled and require a specific controlled-drug prescription form; the regulations here match or exceed EU norms. If you are accustomed to a medication being available OTC in your home country and it appears to be prescription-only in Cyprus, it is worth asking the pharmacist directly — the answer may be different from what you expect.",
+				body: "What you can buy over the counter in Cyprus differs from other EU countries in both directions. Low-dose codeine combinations, such as Solpadeine (8 mg codeine with paracetamol and caffeine), are sold by pharmacists without a prescription, for a maximum of three days' use. Stronger products such as co-codamol 30/500 are not sold in Cyprus, so bring a prescription and your own supply if you rely on them. Antifungal creams and the morning-after pill are sold without a prescription. Oral contraceptives and antibiotic eye drops need a prescription. At the other end, benzodiazepines, strong opioids, and Schedule 1 controlled substances are tightly controlled and require a specific controlled-drug prescription form; the regulations here match or exceed EU norms. If you are accustomed to a medication being available OTC in your home country and it appears to be prescription-only in Cyprus, it is worth asking the pharmacist directly, as the answer may be different from what you expect.",
 			},
 			{
 				heading: "Home-Country Medicines and Their Cyprus Equivalents",
-				body: "One of the first small frustrations of moving to Cyprus is standing in a pharmacy unable to find the brand you have used for years. The active ingredient is almost always here, just under a different name, and Cypriot pharmacies stock a lot of locally made generics from firms such as Medochemie and Remedica alongside the familiar international brands. Use the table below to translate what you know into what to ask for at the counter. Always learn the generic (active ingredient) name of anything you rely on, because that is what a Cyprus pharmacist will recognise instantly.\n\nActive ingredient — what you may know it as — Cyprus brand(s) to ask for — status:\n\nParacetamol (acetaminophen) — Panadol, Tylenol — Depon, Panadol, Calpol (for children) — OTC\nIbuprofen — Nurofen, Advil, Motrin — Brufen, Nurofen — OTC\nAspirin (acetylsalicylic acid) — Aspirin, Aspro — Aspirin, Aspro Clear — OTC (the one painkiller also sold outside pharmacies, in kiosks and shops)\nLoratadine (antihistamine) — Claritin, Clarityn — Clarityne, Ticevis — OTC\nCetirizine (antihistamine) — Zyrtec, Zirtec — Zyrtec, Temelin — OTC\nLoperamide (anti-diarrhoeal) — Imodium — Imodium, Vacontil, Loperium — OTC\nDiclofenac gel (topical anti-inflammatory) — Voltaren, Voltarol — Voltaren, Almiral gel — OTC\nHydrocortisone cream 1% (mild steroid for bites and rashes) — Cortizone-10 — generic hydrocortisone 1% — OTC\nAntacids and reflux relief — Tums, Gaviscon — Gaviscon, Rennie — OTC\nOmeprazole (stomach-acid PPI) — Prilosec, Losec — Losec, Medoprazole — usually needs a prescription, though a pharmacist may supply a short course at their discretion\nDecongestant — Sudafed, Afrin, Vicks Sinex — Otrivin and other xylometazoline nasal sprays — OTC (Cyprus favours nasal sprays; oral pseudoephedrine tablets are uncommon on the shelf)\nSalbutamol reliever inhaler — Ventolin, ProAir — Ventolin, Salamol — prescription in practice, so bring your own supply and documentation\nLow-dose codeine painkiller — Tylenol with codeine, co-codamol — Solpadeine — low-dose combinations are OTC; stronger codeine needs a prescription\n\nA few of these will surprise people coming from the UK or US, in both directions. Cyprus is often more relaxed than home about low-dose codeine painkillers, yet stricter about things you might expect to grab off a shelf, such as an asthma inhaler. Remember too that brand availability and prescription status change over time, and that a pharmacist always has final discretion. So treat this as a starting point rather than a guarantee: for anything you depend on, confirm its status before you travel, and once you arrive simply ask any Cyprus pharmacist, who can almost always suggest a local equivalent. Pharmacists here are exceptionally accessible, used to advising walk-in customers on minor ailments, and in the towns and tourist areas the vast majority speak fluent English.",
+				body: "One of the first small frustrations of moving to Cyprus is standing in a pharmacy unable to find the brand you have used for years. The active ingredient is almost always here, just under a different name, and Cypriot pharmacies stock a lot of locally made generics from firms such as Medochemie and Remedica alongside the familiar international brands. Use the table below to translate what you know into what to ask for at the counter. Always learn the generic (active ingredient) name of anything you rely on, because that is what a Cyprus pharmacist will recognise instantly.\n\nActive ingredient | what you may know it as | Cyprus brand(s) to ask for | status:\n\nParacetamol (acetaminophen) | Panadol, Tylenol | Depon, Panadol, Calpol (for children) | OTC\nIbuprofen | Nurofen, Advil, Motrin | Brufen, Nurofen | OTC\nAspirin (acetylsalicylic acid) | Aspirin, Aspro | Aspirin, Aspro Clear | OTC (the one painkiller also sold outside pharmacies, in kiosks and shops)\nLoratadine (antihistamine) | Claritin, Clarityn | Clarityne, Ticevis | OTC\nCetirizine (antihistamine) | Zyrtec, Zirtec | Zyrtec, Temelin | OTC\nLoperamide (anti-diarrhoeal) | Imodium | Imodium, Vacontil, Loperium | OTC\nDiclofenac gel (topical anti-inflammatory) | Voltaren, Voltarol | Voltaren, Almiral gel | OTC\nHydrocortisone cream 1% (mild steroid for bites and rashes) | Cortizone-10 | generic hydrocortisone 1% | OTC\nAntacids and reflux relief | Tums, Gaviscon | Gaviscon, Rennie | OTC\nOmeprazole (stomach-acid PPI) | Prilosec, Losec | Losec, Medoprazole | usually needs a prescription, though a pharmacist may supply a short course at their discretion\nDecongestant | Sudafed, Afrin, Vicks Sinex | Otrivin and other xylometazoline nasal sprays | OTC (Cyprus favours nasal sprays; oral pseudoephedrine tablets are uncommon on the shelf)\nSalbutamol reliever inhaler | Ventolin, ProAir | Ventolin, Salamol | prescription in practice, so bring your own supply and documentation\nLow-dose codeine painkiller | Tylenol with codeine, co-codamol | Solpadeine | Solpadeine (8 mg codeine) is sold by pharmacists without a prescription; higher-strength codeine products are not sold in Cyprus\n\nA few of these will surprise people coming from the UK or US, in both directions. Cyprus is often more relaxed than home about low-dose codeine painkillers, yet stricter about things you might expect to grab off a shelf, such as an asthma inhaler. Remember too that brand availability and prescription status change over time, and that a pharmacist always has final discretion. So treat this as a starting point rather than a guarantee: for anything you depend on, confirm its status before you travel, and once you arrive simply ask any Cyprus pharmacist, who can almost always suggest a local equivalent. Pharmacists here are exceptionally accessible, used to advising walk-in customers on minor ailments, and in the towns and tourist areas the vast majority speak fluent English.",
 			},
 			{
 				heading: "Bringing personal medication supply into Cyprus",
@@ -1151,7 +1166,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "How much does medication cost under GeSY in Cyprus?",
-				a: "With a GeSY prescription from your registered personal doctor, generic medications cost €1 per item. Branded medications cost more where no generic exists — you pay the gap between GeSY's reference price and the retail price. Chronic-disease medications (diabetes, hypertension, thyroid) are available at zero co-payment.",
+				a: `With a GeSY prescription from your registered personal doctor, generic medications cost ${eur(GESY_RX_ITEM_COPAY)} per item. Branded medications cost more where no generic exists: you pay the gap between GeSY's reference price and the retail price.`,
 			},
 			{
 				q: "Can I bring my own medication supply into Cyprus?",
@@ -1159,7 +1174,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "What medications are available over the counter in Cyprus?",
-				a: "Cyprus pharmacists can dispense some medications without a prescription that require one elsewhere in the EU, including stronger codeine-combination painkillers, certain antifungals, and some oral contraceptives. Ask the pharmacist directly for routine ailments — a brief consultation is standard practice.",
+				a: "Cyprus pharmacists can sell some medicines without a prescription that need one elsewhere, such as low-dose codeine painkillers (Solpadeine, 8 mg codeine) and many antifungal creams. Oral contraceptives and antibiotics, including eye drops, need a prescription. Ask the pharmacist directly for routine ailments: a brief consultation is standard practice.",
 			},
 			{
 				q: "Can I buy paracetamol and ibuprofen over the counter in Cyprus, and what are they called?",
@@ -1223,7 +1238,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "emergency-services-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [HT_SRC.gesyCopay],
 		category: "healthcare",
 		title: "Emergency Services in Cyprus: 112 & A&E Guide",
 		description:
@@ -1243,7 +1260,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "What to bring and what to expect",
-				body: "For any A&E visit in Cyprus, bring: your ARC or Yellow Slip, your GeSY HIO card or beneficiary number, any relevant private health insurance card or policy number, and a list of your current medications. Public A&E operates on triage — genuine emergencies are seen immediately, non-critical presentations wait. Public hospital A&E waiting times for non-critical cases can reach 3–5 hours on busy evenings and weekends, which is comparable to UK NHS experience. If you have GeSY coverage, the public A&E co-payment is €10–€15 for the visit. If you do not yet have GeSY (new arrivals in their first weeks), public A&E charges a flat fee that varies by treatment — typically €50–€150 for a non-admission A&E visit. The clinical standard at the major public hospitals has improved substantially since GeSY's introduction, which brought performance incentives. For children: Makarios Hospital in Nicosia is the main pediatric facility, with Limassol and Paphos General hospitals also having pediatric departments.",
+				body: `For any A&E visit in Cyprus, bring: your ARC or Yellow Slip, your GeSY HIO card or beneficiary number, any relevant private health insurance card or policy number, and a list of your current medications. Public A&E operates on triage: genuine emergencies are seen immediately, non-critical presentations wait. Public hospital A&E waiting times for non-critical cases can reach 3–5 hours on busy evenings and weekends, which is comparable to UK NHS experience. If you have GeSY coverage, the public A&E co-payment is ${eur(GESY_AE_COPAY)} per visit. If you do not yet have GeSY (new arrivals in their first weeks), public A&E charges a flat fee that varies by treatment, typically €50–€150 for a non-admission A&E visit. The clinical standard at the major public hospitals has improved substantially since GeSY's introduction, which brought performance incentives. For children: Makarios Hospital in Nicosia is the main pediatric facility, with Limassol and Paphos General hospitals also having pediatric departments.`,
 			},
 			{
 				heading: "Air ambulance and serious trauma",
@@ -2191,7 +2208,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "healthcare-in-cyprus",
 		datePublished: "2026-06-09",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [HT_SRC.gesyCopay, HT_SRC.medicinesPriceList],
 		category: "healthcare",
 		title: "Healthcare in Cyprus 2026: GeSY & Private Guide",
 		description:
@@ -2207,7 +2226,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "What GeSY covers",
-				body: "GeSY covers an extensive list of services with no out-of-pocket cost or with very small co-payments: visits to your Personal Doctor (free), visits to specialists by referral from your Personal Doctor (€6 per visit, capped at €150 per year per beneficiary), all prescription medications dispensed by GeSY-contracted pharmacies (€1 co-payment per prescription, also capped annually), most laboratory and imaging tests at GeSY-contracted facilities (€1 per test up to caps), inpatient hospitalisation including surgery at GeSY-contracted public and private hospitals, emergency room visits (€10 co-payment), childbirth (free), preventive care including vaccinations and screening tests (free), mental health services (free to €6 per visit). Dental care is included for children under 18 (free preventive and conservative care) and partially included for adults (some basic interventions). Major exclusions: cosmetic procedures, fertility treatments beyond a limited subsidised programme, most adult dental work beyond basics, optical (eye tests and glasses), and elective procedures with long-established alternative private routes. Co-payment annual caps protect against catastrophic costs — total out-of-pocket per beneficiary is capped at €300 per year for most categories, €75 for low-income earners and €0 for vulnerable groups.",
+				body: `GeSY covers an extensive list of services with no out-of-pocket cost or with very small co-payments: visits to your Personal Doctor (free), visits to specialists by referral from your Personal Doctor (€6 per visit, capped at €150 per year per beneficiary), all prescription medications dispensed by GeSY-contracted pharmacies (${eur(GESY_RX_ITEM_COPAY)} per item, counted towards the annual cap), most laboratory and imaging tests at GeSY-contracted facilities (€1 per test up to caps), inpatient hospitalisation including surgery at GeSY-contracted public and private hospitals, emergency room visits (${eur(GESY_AE_COPAY)} co-payment), childbirth (free), preventive care including vaccinations and screening tests (free), mental health services (free to €6 per visit). Dental care is included for children under 18 (free preventive and conservative care) and partially included for adults (some basic interventions). Major exclusions: cosmetic procedures, fertility treatments beyond a limited subsidised programme, most adult dental work beyond basics, optical (eye tests and glasses), and elective procedures with long-established alternative private routes. Co-payment annual caps protect against catastrophic costs. Co-payments are capped at ${eur(GESY_ANNUAL_CAP)} a year per person, or ${eur(GESY_ANNUAL_CAP_REDUCED)} for under-21s, minimum-income recipients and low-income pensioners.`,
 			},
 			{
 				heading: "Public versus private hospitals",
@@ -2223,7 +2242,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Emergencies, pharmacies and gotchas for new arrivals",
-				body: "For emergencies, the EU-wide 112 number works throughout Cyprus and gives you ambulance, fire and police. Response times in the major cities are good (typically under 10 minutes for ambulances); rural village response can be longer. Emergency room visits at public hospitals are free for GeSY beneficiaries (with a €10 co-payment per visit); private hospitals will admit emergencies and bill GeSY or your insurance afterwards. Pharmacies are abundant in every city — every Cypriot neighbourhood has at least one — and a 24-hour pharmacy rota means there is always one pharmacy open in each city overnight (published in local newspapers and online). Pharmacists in Cyprus are highly trained and can dispense many medications that would require a prescription in the UK or US (antibiotics, some antihypertensives) without one for established conditions, though GeSY-funded medications require a prescription. A few gotchas for new arrivals. (1) Make sure you transfer your medical records before moving — Cypriot doctors will not have your history and key documents (immunisation records, surgical history, medication lists) are useful to have. (2) Bring at least three months of any specialist medication on arrival; sourcing identical brands locally can take time and prescription refills cannot happen before GeSY registration. (3) For chronic conditions, identify and visit your specialist in Cyprus within the first 90 days of arrival to establish care continuity. (4) The Digital Nomad Visa requires private health insurance for the first year before GeSY registration becomes available — factor this into the early-year budget. (5) GeSY has a 100% transparent online portal — log in with your Cypriot government credentials (Ariadne portal) and you can see all your records, prescriptions, referrals and billing in one place.",
+				body: `For emergencies, the EU-wide 112 number works throughout Cyprus and gives you ambulance, fire and police. Response times in the major cities are good (typically under 10 minutes for ambulances); rural village response can be longer. A GeSY A&E visit costs ${eur(GESY_AE_COPAY)}; private hospitals will admit emergencies and bill GeSY or your insurance afterwards. Pharmacies are abundant in every city (every Cypriot neighbourhood has at least one), and a 24-hour pharmacy rota means there is always one pharmacy open in each city overnight (published in local newspapers and online). Pharmacists can advise on minor ailments and sell non-prescription medicines, but antibiotics and blood-pressure medicines need a prescription. A few gotchas for new arrivals. (1) Make sure you transfer your medical records before moving: Cypriot doctors will not have your history and key documents (immunisation records, surgical history, medication lists) are useful to have. (2) Bring at least three months of any specialist medication on arrival; sourcing identical brands locally can take time and prescription refills cannot happen before GeSY registration. (3) For chronic conditions, identify and visit your specialist in Cyprus within the first 90 days of arrival to establish care continuity. (4) The Digital Nomad Visa requires private health insurance for the first year before GeSY registration becomes available, so factor this into the early-year budget. (5) GeSY has a 100% transparent online portal: log in with your Cypriot government credentials (Ariadne portal) and you can see all your records, prescriptions, referrals and billing in one place.`,
 			},
 		],
 	},
