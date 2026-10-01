@@ -33,7 +33,7 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
 		href: "/tools/city-comparison/",
 		title: "City Comparison",
 		description:
-			"Side-by-side comparison of Limassol, Paphos, Larnaca, Nicosia, and Ayia Napa across 10 metrics including rent, property prices, schools, nightlife, and cost of living.",
+			"Side-by-side comparison of Limassol, Paphos, Larnaca, and Ayia Napa across 10 metrics including rent, property prices, schools, nightlife, and cost of living.",
 		tag: "Research",
 		tagColor: "bg-slate-100 text-slate-800",
 		category: "Location & Living",

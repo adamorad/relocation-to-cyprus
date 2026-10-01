@@ -7,7 +7,6 @@ type CoverageCity =
 	| "Limassol"
 	| "Paphos"
 	| "Larnaca"
-	| "Nicosia"
 	| "Ayia Napa"
 	| "Island-wide";
 
@@ -45,7 +44,7 @@ const BROADBAND: BroadbandISP[] = [
 		monthlyPrice: 49,
 		contractMonths: 12,
 		setupFee: 0,
-		coverage: ["Limassol", "Paphos", "Larnaca", "Nicosia", "Ayia Napa"],
+		coverage: ["Limassol", "Paphos", "Larnaca", "Ayia Napa"],
 		englishSupport: true,
 		notes:
 			"State-owned incumbent. Largest coverage including rural areas. VDSL widely available; FTTH (fibre-to-the-home) rolling out fast in urban centres. Reliable customer service with English support. Bundle discounts available with Cyta mobile (MTN partnership). 1 Gbps symmetrical available in covered FTTH areas.",
@@ -59,10 +58,10 @@ const BROADBAND: BroadbandISP[] = [
 		monthlyPrice: 45,
 		contractMonths: 12,
 		setupFee: 0,
-		coverage: ["Limassol", "Paphos", "Larnaca", "Nicosia"],
+		coverage: ["Limassol", "Paphos", "Larnaca"],
 		englishSupport: true,
 		notes:
-			"Private telecoms company offering competitive fibre speeds in major cities. Generally regarded as slightly more agile than Cyta on pricing and customer support. Strong presence in Limassol and Nicosia. FTTH available in urban areas with 1 Gbps speeds. No Ayia Napa coverage. Bundle with Epic mobile for additional savings.",
+			"Private telecoms company offering competitive fibre speeds in major cities. Generally regarded as slightly more agile than Cyta on pricing and customer support. Strong presence in Limassol. FTTH available in urban areas with 1 Gbps speeds. No Ayia Napa coverage. Bundle with Epic mobile for additional savings.",
 		website: "https://www.epic.com.cy",
 	},
 	{
@@ -73,7 +72,7 @@ const BROADBAND: BroadbandISP[] = [
 		monthlyPrice: 42,
 		contractMonths: 12,
 		setupFee: 25,
-		coverage: ["Limassol", "Larnaca", "Nicosia"],
+		coverage: ["Limassol", "Larnaca"],
 		englishSupport: true,
 		notes:
 			"Third-largest provider, operating in the main cities only. Competitive pricing with no contract options available (higher monthly rate). TV bundle (Primetel TV) popular with expat households wanting international channels. Fibre coverage more limited than Cyta or Epic; check availability at your specific address before signing.",
@@ -87,7 +86,7 @@ const BROADBAND: BroadbandISP[] = [
 		monthlyPrice: 39,
 		contractMonths: 12,
 		setupFee: 30,
-		coverage: ["Limassol", "Paphos", "Larnaca", "Nicosia", "Ayia Napa"],
+		coverage: ["Limassol", "Paphos", "Larnaca", "Ayia Napa"],
 		englishSupport: true,
 		notes:
 			"Cable-based provider (DOCSIS 3.1) delivering some of the fastest real-world download speeds in Cyprus. Highly regarded for consistency and actual speeds versus advertised. Island-wide cable network including tourist areas. Upload speeds are asymmetric on the cable technology (lower than download). Strong reputation among remote workers and gamers for low latency.",
@@ -115,7 +114,7 @@ const MOBILE: MobileCarrier[] = [
 		eSIM: true,
 		internationalRoaming: true,
 		notes:
-			"Strong urban coverage with competitive pricing. The cheapest unlimited data option at €20/mo. Slightly lower rural coverage than Cyta/MTN. 5G available in parts of Limassol and Nicosia. eSIM available. EU roaming included. Popular among expats for value-for-money.",
+			"Strong urban coverage with competitive pricing. The cheapest unlimited data option at €20/mo. Slightly lower rural coverage than Cyta/MTN. 5G available in parts of Limassol. eSIM available. EU roaming included. Popular among expats for value-for-money.",
 		website: "https://www.epic.com.cy",
 	},
 	{
@@ -135,7 +134,6 @@ const COVERAGE_CITIES: CoverageCity[] = [
 	"Limassol",
 	"Paphos",
 	"Larnaca",
-	"Nicosia",
 	"Ayia Napa",
 	"Island-wide",
 ];
