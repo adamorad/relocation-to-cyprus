@@ -9,10 +9,18 @@
 - Nicosia was left out of the nav, footer and the /regions/ list. Its page and sitemap entry are untouched.
 - The listing save heart moved from the archived map panel to the listing detail page. The "Back to the map" links are now "Back to home", and the shortlist empty state and city-comparison link point to /listings/.
 
+- Interior pages are restyled to the Living in Cyprus look: sections, tools, guides, listings, regions, developers, about, contact, privacy, advertise, explore, shortlist and the hub pages, including the shared components they use.
+- Guide articles have their own typography (`.guide-body`), scoped to the prose so embedded calculators keep their own styles.
+- Decorative arrows were removed from links and buttons.
+- Chart colours are standardised across the tools, and the rental price trends chart now uses distinct colours for each city.
+- The weather chart keeps a 700 unit minimum width so its labels stay at least 12px on phones, and its tooltip follows the scrolled chart.
+- /explore/ search now matches word stems and prefixes, so "pharmacy" finds the pharmacy guide and "movi" finds "Moving".
+- An accessibility pass took automated colour-contrast violations from 1484 to 0 across 31 pages.
+
 ### Known gaps and follow-ups
 
 - Painted category and guide illustrations and real city and guide photos are missing. The photo slots are in `lib/home-content.ts`.
-- Interior pages (sections, tools, listings, regions) still use the old teal and slate palette and need a restyle phase.
+- Existing content in directories, tools and guides still mentions Nicosia. A decision on that is pending.
 - The kit's "Useful contacts" tool does not exist. It is mapped to the emergency contacts guide.
 - Unused Google Maps dependencies should be removed: `@googlemaps/markerclusterer`, `@vis.gl/react-google-maps` and `@types/google.maps`.
 - A Safari 17+ and iOS smoke test is needed, because the mobile menu uses `inert`.
