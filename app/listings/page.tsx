@@ -19,7 +19,7 @@ export default function ListingsIndexPage() {
 				items={[{ label: "Home", href: "/" }, { label: "Listings" }]}
 			/>
 
-			<h1 className="text-3xl font-bold text-slate-900 mb-2">
+			<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink mb-2">
 				New Developments in Cyprus
 			</h1>
 			<p className="text-slate-600 mb-8 text-base leading-relaxed">
@@ -32,14 +32,14 @@ export default function ListingsIndexPage() {
 					<Link
 						key={listing.slug}
 						href={`/listings/${listing.slug}/`}
-						className="group block bg-white border border-slate-200 rounded-xl p-5 hover:border-primary hover:shadow-md transition-all"
+						className="group block bg-white border border-line rounded-2xl p-5 hover:border-primary hover:shadow-sm transition-all"
 					>
 						<div className="flex items-start justify-between gap-3">
 							<div className="flex-1 min-w-0">
-								<span className="inline-block text-[10px] font-semibold uppercase tracking-wider text-slate-600 bg-slate-100 border border-slate-200 rounded-full px-2 py-0.5 mb-2">
+								<span className="inline-block text-xs font-semibold uppercase tracking-wider text-ink bg-sky-strong rounded-full px-2.5 py-0.5 mb-2">
 									{listing.location ?? listing.regionCity}
 								</span>
-								<h2 className="text-base font-bold text-slate-900 group-hover:text-primary transition-colors leading-snug">
+								<h2 className="text-base font-bold text-ink group-hover:text-primary transition-colors leading-snug">
 									{listing.title}
 								</h2>
 								{listing.priceRange && (
@@ -53,9 +53,6 @@ export default function ListingsIndexPage() {
 									</p>
 								)}
 							</div>
-							<span className="flex-shrink-0 text-muted group-hover:text-primary transition-colors text-xl mt-1">
-								&rarr;
-							</span>
 						</div>
 					</Link>
 				))}
