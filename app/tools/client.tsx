@@ -20,10 +20,10 @@ export default function ToolsIndexClient() {
 				<button
 					type="button"
 					onClick={() => setActive("all")}
-					className={`rounded-full px-3 py-1 text-xs font-semibold border transition-colors ${
+					className={`rounded-full px-4 min-h-11 text-xs font-semibold border transition-colors ${
 						active === "all"
-							? "bg-slate-900 text-white border-slate-900"
-							: "bg-white text-slate-700 border-slate-300 hover:bg-slate-50"
+							? "bg-ink text-white border-ink"
+							: "bg-white text-ink border-line hover:bg-sky"
 					}`}
 				>
 					All ({TOOLS.length})
@@ -33,10 +33,10 @@ export default function ToolsIndexClient() {
 						key={cat}
 						type="button"
 						onClick={() => setActive(cat)}
-						className={`rounded-full px-3 py-1 text-xs font-semibold border transition-colors ${
+						className={`rounded-full px-4 min-h-11 text-xs font-semibold border transition-colors ${
 							active === cat
-								? "bg-slate-900 text-white border-slate-900"
-								: "bg-white text-slate-700 border-slate-300 hover:bg-slate-50"
+								? "bg-ink text-white border-ink"
+								: "bg-white text-ink border-line hover:bg-sky"
 						}`}
 					>
 						{cat} ({countFor(cat)})
@@ -49,25 +49,20 @@ export default function ToolsIndexClient() {
 					<Link
 						key={tool.href}
 						href={tool.href}
-						className="group block bg-white border border-slate-200 rounded-xl p-5 hover:border-primary hover:shadow-md transition-all"
+						className="group block bg-white border border-line rounded-2xl p-5 hover:border-primary hover:shadow-sm transition-all"
 					>
 						<div className="flex items-start justify-between gap-3">
 							<div className="flex-1 min-w-0">
-								<span
-									className={`inline-block text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full mb-2.5 ${tool.tagColor}`}
-								>
+								<span className="inline-block text-xs font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full mb-2.5 bg-sky-strong text-ink">
 									{tool.tag}
 								</span>
-								<h2 className="text-base font-bold text-slate-900 group-hover:text-primary transition-colors leading-snug">
+								<h2 className="text-base font-bold text-ink group-hover:text-primary transition-colors leading-snug">
 									{tool.title}
 								</h2>
 								<p className="mt-1.5 text-sm text-slate-600 leading-relaxed line-clamp-3">
 									{tool.description}
 								</p>
 							</div>
-							<span className="flex-shrink-0 text-muted group-hover:text-primary transition-colors text-xl mt-1">
-								&rarr;
-							</span>
 						</div>
 					</Link>
 				))}

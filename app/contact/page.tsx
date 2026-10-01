@@ -20,15 +20,15 @@ export default function ContactPage() {
     <main id="main" className="max-w-3xl mx-auto px-6 py-10 md:py-16">
       <MetaPixelEvent event="Contact" />
       <nav className="text-xs text-slate-600 mb-6">
-        <Link href="/" className="hover:text-slate-900">Home</Link>{" "}
-        › <span className="text-slate-900">Contact</span>
+        <Link href="/" className="hover:text-ink">Home</Link>{" "}
+        › <span className="text-ink">Contact</span>
       </nav>
 
       <header>
-        <p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+        <p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
           Contact
         </p>
-        <h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight">
+        <h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
           Get in touch.
         </h1>
         <p className="mt-4 text-lg text-slate-700 leading-relaxed">
@@ -46,7 +46,7 @@ export default function ContactPage() {
           <p className="mt-2 text-2xl md:text-3xl font-bold">
             <a
               href={`mailto:${EMAIL}`}
-              className="text-slate-900 hover:text-amber-700 underline-offset-4 hover:underline"
+              className="text-ink hover:text-primary underline-offset-4 hover:underline"
             >
               {EMAIL}
             </a>
@@ -63,20 +63,20 @@ export default function ContactPage() {
         <h2 className="text-xl font-bold mb-2">Common things people email us about</h2>
         <ul className="text-slate-700 leading-relaxed list-disc pl-6 space-y-1">
           <li>
-            <span className="font-semibold text-slate-900">Buyer enquiries:</span>{" "}
+            <span className="font-semibold text-ink">Buyer enquiries:</span>{" "}
             we forward you to the developer; we are not the listing agent.
           </li>
           <li>
-            <span className="font-semibold text-slate-900">Developers:</span>{" "}
+            <span className="font-semibold text-ink">Developers:</span>{" "}
             if your project is missing or shown with outdated info, send the
             corrections and we update the next build.
           </li>
           <li>
-            <span className="font-semibold text-slate-900">Press / partnerships:</span>{" "}
+            <span className="font-semibold text-ink">Press / partnerships:</span>{" "}
             short pitches please.
           </li>
           <li>
-            <span className="font-semibold text-slate-900">Feedback:</span>{" "}
+            <span className="font-semibold text-ink">Feedback:</span>{" "}
             things that broke, categories you want next, regions that should
             be split out.
           </li>
@@ -84,8 +84,8 @@ export default function ContactPage() {
       </section>
 
       <p className="mt-12 text-xs text-slate-600">
-        <Link href="/" className="underline hover:text-slate-900">
-          ← Back to home
+        <Link href="/" className="underline hover:text-ink">
+          Back to home
         </Link>
       </p>
     </main>

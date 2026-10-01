@@ -16,15 +16,15 @@ export default function AboutPage() {
   return (
     <main id="main" className="max-w-3xl mx-auto px-6 py-10 md:py-16">
       <nav className="text-xs text-slate-600 mb-6">
-        <Link href="/" className="hover:text-slate-900">Home</Link>{" "}
-        › <span className="text-slate-900">About</span>
+        <Link href="/" className="hover:text-ink">Home</Link>{" "}
+        › <span className="text-ink">About</span>
       </nav>
 
       <header>
-        <p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+        <p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
           About
         </p>
-        <h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight">
+        <h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
           Your Cyprus portal.
         </h1>
         <p className="mt-4 text-lg text-slate-700 leading-relaxed">
@@ -83,7 +83,7 @@ export default function AboutPage() {
           additions, or feedback,{" "}
           <Link
             href="/contact/"
-            className="text-amber-700 hover:text-amber-900 underline"
+            className="text-primary hover:text-primary-hover underline"
           >
             get in touch
           </Link>
@@ -91,23 +91,23 @@ export default function AboutPage() {
         </p>
       </section>
 
-      <aside className="mt-12 p-5 bg-amber-50 border border-amber-200 rounded-lg text-sm text-slate-700">
-        <p className="font-semibold text-slate-900 mb-1">
+      <aside className="mt-12 p-5 bg-sky border border-line rounded-2xl text-sm text-ink">
+        <p className="font-semibold text-ink mb-1">
           Have a question, a listing to add, or a category you want next?
         </p>
         <p>
           <Link
             href="/contact/"
-            className="text-amber-700 hover:text-amber-900 font-semibold underline"
+            className="text-primary hover:text-primary-hover font-semibold underline"
           >
-            Tell us →
+            Tell us
           </Link>
         </p>
       </aside>
 
       <p className="mt-10 text-xs text-slate-600">
-        <Link href="/" className="underline hover:text-slate-900">
-          ← Back to home
+        <Link href="/" className="underline hover:text-ink">
+          Back to home
         </Link>
       </p>
     </main>

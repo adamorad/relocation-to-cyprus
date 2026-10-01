@@ -28,11 +28,13 @@ export const metadata: Metadata = {
 export default function MovingToCyprusPage() {
 	return (
 		<main id="main" className="max-w-5xl mx-auto px-6 py-12">
-			<h1 className="text-3xl md:text-4xl font-bold">Moving to Cyprus</h1>
+			<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">
+				Moving to Cyprus
+			</h1>
 			<p className="mt-3 text-slate-700 max-w-2xl">
 				Planning a move? Start with residency and tax, then property and
 				business. Already here? See the everyday guides on the{" "}
-				<Link href="/" className="text-[#0f6d67] hover:underline">
+				<Link href="/" className="text-primary hover:underline">
 					homepage
 				</Link>
 				.
@@ -42,7 +44,7 @@ export default function MovingToCyprusPage() {
 				if (guides.length === 0) return null;
 				return (
 					<section key={cat} className="mt-10">
-						<h2 className="text-xl font-semibold">
+						<h2 className="text-xl font-semibold text-ink">
 							{GUIDE_CATEGORY_LABEL[cat]}
 						</h2>
 						<ul className="mt-3 grid md:grid-cols-2 gap-x-8 gap-y-2">
@@ -50,7 +52,7 @@ export default function MovingToCyprusPage() {
 								<li key={g.slug}>
 									<Link
 										href={`/guides/${g.slug}/`}
-										className="text-[#0f6d67] hover:underline"
+										className="text-primary hover:underline"
 									>
 										{g.title}
 									</Link>
