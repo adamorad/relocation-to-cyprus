@@ -5,6 +5,12 @@ import { ToolPanel } from "@/components/templates/ToolTemplate";
 import { Callout } from "@/components/ui/Callout";
 import { ChipGroup, type ChipOption } from "@/components/ui/Chip";
 import { DataTable, StatCard } from "@/components/ui/DataTable";
+import {
+	type Bedrooms,
+	eur,
+	RENT_CITATION_GENERAL,
+	RENTS,
+} from "@/lib/facts/rents";
 
 type City = "Limassol" | "Paphos" | "Larnaca" | "Ayia Napa";
 type Household = "Solo" | "Couple" | "Family";
@@ -14,12 +20,29 @@ type Lifestyle = "Budget" | "Comfortable" | "Luxury";
 
 // --- Cost data ---
 
-const RENT: Record<City, Record<Lifestyle, number>> = {
-	Limassol: { Budget: 750, Comfortable: 1300, Luxury: 2500 },
-	Paphos: { Budget: 550, Comfortable: 900, Luxury: 1700 },
-	Larnaca: { Budget: 500, Comfortable: 800, Luxury: 1500 },
-	"Ayia Napa": { Budget: 600, Comfortable: 1000, Luxury: 2000 },
-};
+// Rent comes from lib/facts/rents.ts (Bazaraki median asking rents, 1 October
+// 2026). Solo and couple use a 1-bedroom, a family a 2-bedroom; Budget is the
+// 25th percentile, Comfortable the median, Luxury the 75th percentile. No
+// multiplier is applied. Every other cost below is an estimate from 2025.
+
+function bedroomsFor(household: Household): Bedrooms {
+	return household === "Family" ? 2 : 1;
+}
+
+/** Ayia Napa 1-bed has too few listings, so it falls back to the 2-bed cell. */
+function rentCell(city: City, household: Household) {
+	const wanted = bedroomsFor(household);
+	const cell = RENTS[city][wanted];
+	if (cell.reliable) return { cell, beds: wanted, fallback: false };
+	return { cell: RENTS[city][2], beds: 2 as Bedrooms, fallback: true };
+}
+
+function rentFor(city: City, household: Household, lifestyle: Lifestyle) {
+	const { cell } = rentCell(city, household);
+	if (lifestyle === "Budget") return cell.p25;
+	if (lifestyle === "Luxury") return cell.p75;
+	return cell.median;
+}
 
 const GROCERIES_PER_PERSON: Record<Lifestyle, number> = {
 	Budget: 180,
@@ -82,11 +105,6 @@ function personCount(household: Household): number {
 	return 2; // Couple and Family both = 2 adults
 }
 
-function rentMultiplier(household: Household): number {
-	if (household === "Family") return 1.2;
-	return 1.0;
-}
-
 function formatEur(value: number): string {
 	return new Intl.NumberFormat("en-IE", {
 		style: "currency",
@@ -107,7 +125,8 @@ export default function BudgetBuilderClient() {
 
 	const persons = personCount(household);
 
-	const rent = Math.round(RENT[city][lifestyle] * rentMultiplier(household));
+	const rent = rentFor(city, household, lifestyle);
+	const rentInfo = rentCell(city, household);
 	const groceries = Math.round(GROCERIES_PER_PERSON[lifestyle] * persons);
 	const diningOut = Math.round(
 		DINING_BASE_PER_PERSON[lifestyle] * DINING_MULTIPLIER[dining] * persons,
@@ -206,6 +225,20 @@ export default function BudgetBuilderClient() {
 					footer={["Total", formatEur(total)]}
 					zebra
 				/>
+				<p className="text-sm text-muted">
+					Rent: {rentInfo.beds}-bedroom apartment,{" "}
+					{lifestyle === "Budget"
+						? "cheapest quarter of listings (25th percentile)"
+						: lifestyle === "Luxury"
+							? "dearest quarter of listings (75th percentile)"
+							: "median listing"}
+					, {eur(rent)} a month.{" "}
+					{rentInfo.fallback
+						? `Too few 1-bedroom listings in the Famagusta free area (${RENTS[city][1].n} on 1 October 2026), so the 2-bedroom figure is used. `
+						: ""}
+					{RENT_CITATION_GENERAL} Other rows are estimates from 2025, not yet
+					re-checked.
+				</p>
 			</section>
 		</>
 	);

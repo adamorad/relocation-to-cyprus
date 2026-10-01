@@ -86,7 +86,7 @@ Hub: https://realcy.app/home-and-bills/
 
 - [Internet & Mobile Provider Comparison](https://realcy.app/tools/isp-comparison/): Compare home broadband (Cyta, Epic, Primetel, Cablenet) and mobile carriers on speed, price, contract terms, eSIM, and city coverage.
 - [Neighbourhood Explorer](https://realcy.app/tools/neighbourhood-explorer/): Explore and compare neighbourhoods across Cyprus cities. Filter by vibe, beach access, expat density, schools, and value for money to find your ideal area.
-- [Cyprus Rental Price Trends](https://realcy.app/tools/rental-price-trends/): Track how apartment rents have changed across Limassol, Paphos, Larnaca, and Ayia Napa since 2021. Interactive SVG line chart for 1BR, 2BR, and 3BR units with city toggles, hover tooltips, and year-on-year comparison table.
+- [Cyprus Rental Price Trends](https://realcy.app/tools/rental-price-trends/): Median asking rents for 1BR, 2BR and 3BR apartments in Limassol, Paphos, Larnaca and Ayia Napa from a dated Bazaraki sample (1 October 2026), with the middle half of listings and sample sizes, plus a separate chart of labelled earlier estimates.
 
 ## Money & paperwork
 

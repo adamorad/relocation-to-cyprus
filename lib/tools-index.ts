@@ -220,7 +220,7 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
 		href: "/tools/rental-price-trends/",
 		title: "Cyprus Rental Price Trends",
 		description:
-			"Track how apartment rents have changed across Limassol, Paphos, Larnaca, and Ayia Napa since 2021. Interactive SVG line chart for 1BR, 2BR, and 3BR units with city toggles, hover tooltips, and year-on-year comparison table.",
+			"Median asking rents for 1BR, 2BR and 3BR apartments in Limassol, Paphos, Larnaca and Ayia Napa from a dated Bazaraki sample (1 October 2026), with the middle half of listings and sample sizes, plus a separate chart of labelled earlier estimates.",
 		category: "Property & Rent",
 	},
 ];

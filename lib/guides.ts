@@ -8,12 +8,32 @@
  * accountant or lawyer before acting.
  */
 
+import {
+	eur,
+	RENT_AGREED_NOTE,
+	RENT_MONTH_LABEL,
+	RENT_SAMPLED_LABEL,
+	RENT_SOURCE_NAME,
+	RENT_SOURCES,
+	RENTS,
+	rentMedian,
+	rentPremiumPct,
+	rentRange,
+} from "./facts/rents";
 import { GUIDES_BATCH1 } from "./guides-batch1";
 import { GUIDES_BATCH2 } from "./guides-batch2";
 import { GUIDES_BATCH3 } from "./guides-batch3";
 import { GUIDES_BATCH4 } from "./guides-batch4";
 import { GUIDES_BATCH5 } from "./guides-batch5";
 import type { SiteImage } from "./topics";
+
+/**
+ * retiring-in-cyprus couple budget, renting in Paphos or Larnaca: the non-rent
+ * lines of that guide (utilities, food, transport, health cover, leisure:
+ * €1,930 low, €3,180 high, estimates not re-checked) plus the two-bedroom
+ * median asking rents from lib/facts/rents.ts (Bazaraki, checked 2026-10-01).
+ */
+const RETIRE_COUPLE_RENTING = `${eur(1930 + RENTS.Larnaca[2].median)}–${eur(3180 + RENTS.Paphos[2].median)}`;
 
 export type GuideCategory =
 	| "immigration"
@@ -94,7 +114,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "cost-of-living",
 		datePublished: "2026-05-22",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: RENT_SOURCES,
 		category: "lifestyle",
 		title: "Cost of Living in Cyprus 2026: City Budgets",
 		description:
@@ -102,11 +124,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "How the regions compare",
-				body: "Cost of living in Cyprus splits sharply by region. Limassol is the most expensive city by a meaningful margin — about 30 to 50 percent more expensive than Larnaca or Paphos for equivalent housing. The other two cities are surprisingly close to each other on most metrics, with Paphos slightly cheaper for property purchase and Larnaca slightly cheaper for groceries. Rural villages can be a third cheaper again, with the trade-off of needing two cars per household and longer drives to schools and hospitals. The cheapest region overall is the Famagusta free area outside the summer months, when resort pricing inflates everything from coffee to taxis.",
+				body: `Cost of living in Cyprus splits sharply by region. Limassol is the most expensive city by a meaningful margin: in ${RENT_MONTH_LABEL} the median asking rent for a two-bedroom apartment in Limassol district was about ${rentPremiumPct("Limassol", "Paphos")}% above Paphos and ${rentPremiumPct("Limassol", "Larnaca")}% above Larnaca. The other two cities are surprisingly close to each other on most metrics, with Paphos slightly cheaper for property purchase and Larnaca slightly cheaper for groceries. Rural villages can be a third cheaper again, with the trade-off of needing two cars per household and longer drives to schools and hospitals. The cheapest region overall is the Famagusta free area outside the summer months, when resort pricing inflates everything from coffee to taxis.`,
 			},
 			{
 				heading: "Rent and utilities",
-				body: "A two-bedroom apartment in a modern building (built in the last ten years, balcony, parking, walking distance to amenities) runs roughly: Limassol €1,400–€2,200, Larnaca €900–€1,400, Paphos €850–€1,400. Sea-view tower apartments in Limassol's seafront strip push past €3,000 easily. Electricity in Cyprus is notoriously expensive — the EAC (Electricity Authority) is a state monopoly and a hot Cypriot summer with the AC on can produce a €350–€450 bill for a two-bedroom flat, billed every two months. Water is comparatively cheap (under €30 per month for most households). Internet is fast and reliable — 1 Gbps fibre packages run €40 to €60 per month with most providers — and mobile data is among the cheapest in the EU at €15 to €25 for an unlimited plan.",
+				body: `Median asking rents for a two-bedroom apartment in ${RENT_MONTH_LABEL} were about ${rentMedian("Limassol", 2)} a month in Limassol district, ${rentMedian("Paphos", 2)} in Paphos district and ${rentMedian("Larnaca", 2)} in Larnaca district. The middle half of listings asked ${rentRange("Limassol", 2)}, ${rentRange("Paphos", 2)} and ${rentRange("Larnaca", 2)} respectively. A quarter of Limassol two-bedroom listings asked more than ${eur(RENTS.Limassol[2].p75)} (${RENT_SOURCE_NAME}, ${RENT_SAMPLED_LABEL}). ${RENT_AGREED_NOTE} Electricity in Cyprus is notoriously expensive: the EAC (Electricity Authority) is a state monopoly and a hot Cypriot summer with the AC on can produce a €350–€450 bill for a two-bedroom flat, billed every two months. Water is comparatively cheap (under €30 per month for most households). Internet is fast and reliable: 1 Gbps fibre packages run €40 to €60 per month with most providers, and mobile data is among the cheapest in the EU at €15 to €25 for an unlimited plan.`,
 			},
 			{
 				heading: "Seasonal budget swings: summer vs winter",
@@ -128,7 +150,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		faqs: [
 			{
 				q: "How much does it cost to rent a 2-bedroom flat in Limassol?",
-				a: "A modern 2-bedroom apartment in Limassol city ranges from €1,400–€2,200/month depending on proximity to the seafront and building quality. New-build developments in Limassol's prime areas (Germasogeia, Neapolis) typically start at €1,600/month. Older stock further inland can be found from €1,000/month.",
+				a: `The median asking rent for a two-bedroom apartment in Limassol district was about ${rentMedian("Limassol", 2)} a month in ${RENT_MONTH_LABEL}, and half of listings asked between ${eur(RENTS.Limassol[2].p25)} and ${eur(RENTS.Limassol[2].p75)} (${RENT_SOURCE_NAME}, n=${RENTS.Limassol[2].n.toLocaleString("en-GB")}). Older inland flats can still be found below €1,500, but they are the cheapest quarter of the market. Agreed rents are often lower than asking rents.`,
 			},
 			{
 				q: "Is Cyprus more expensive than Portugal for expats?",
@@ -2413,7 +2435,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "best-areas-to-live-cyprus",
 		datePublished: "2026-06-22",
-		dateModified: "2026-10-01",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: RENT_SOURCES,
 		category: "lifestyle",
 		title: "Best Places to Live in Cyprus 2026: City Guide",
 		description:
@@ -2421,19 +2445,19 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "How to choose: the four factors that actually matter",
-				body: "Every article about where to live in Cyprus will mention the weather — which is roughly the same everywhere on the island. What actually differentiates the cities is cost, pace of life, expat community density, and connectivity. Cost varies significantly: a comfortable two-bedroom apartment in Limassol runs €1,100–€1,800/month, the same apartment in Larnaca costs €700–€1,100, and Paphos sits in the middle at €750–€1,200. Pace of life ranges from Limassol's urban density — traffic, noise, a genuine city rhythm — to Paphos and Ayia Napa's slower, more village-adjacent quality. Expat community density affects practical quality of life: finding an English-speaking GP, a school with space for your child, a community group that runs events, a network for professional introductions. All four cities have established expat communities, but their size, character, and origin vary substantially. Connectivity — both international flights and internal infrastructure — matters more than most people expect. Larnaca Airport handles most international traffic; Paphos Airport is active but with fewer year-round routes. The A1 motorway connects Limassol, Larnaca, and Paphos in 45–70 minutes. Ayia Napa is the most isolated, 30 km east of Larnaca with no motorway connection.",
+				body: `Every article about where to live in Cyprus will mention the weather, which is roughly the same everywhere on the island. What actually differentiates the cities is cost, pace of life, expat community density, and connectivity. Cost varies significantly: median asking rents for a two-bedroom apartment in ${RENT_MONTH_LABEL} were about ${rentMedian("Limassol", 2)} a month in Limassol, ${rentMedian("Paphos", 2)} in Paphos and ${rentMedian("Larnaca", 2)} in Larnaca (${RENT_SOURCE_NAME}, by district). ${RENT_AGREED_NOTE} Pace of life ranges from Limassol's urban density (traffic, noise, a genuine city rhythm) to Paphos and Ayia Napa's slower, more village-adjacent quality. Expat community density affects practical quality of life: finding an English-speaking GP, a school with space for your child, a community group that runs events, a network for professional introductions. All four cities have established expat communities, but their size, character, and origin vary substantially. Connectivity, both international flights and internal infrastructure, matters more than most people expect. Larnaca Airport handles most international traffic; Paphos Airport is active but with fewer year-round routes. The A1 motorway connects Limassol, Larnaca, and Paphos in 45–70 minutes. Ayia Napa is the most isolated, 30 km east of Larnaca with no motorway connection.`,
 			},
 			{
 				heading: "Limassol — the business hub",
-				body: "Limassol is Cyprus's commercial capital and the city with the largest and most diverse expat population. The Russian, Israeli, British, and broader European communities are all substantial and well-established. The city has the densest concentration of international schools, private clinics, coworking spaces, upscale restaurants, and professional service firms on the island. The Limassol Marina district and the beach road (Molos) promenade give it a proper urban waterfront, unlike anything else in Cyprus. The tradeoff is cost and density. Limassol is the most expensive city on the island for both rent and daily life. Traffic is genuinely problematic during peak hours, particularly on the old road and the beach road. The city has grown fast and infrastructure has not always kept pace. For remote workers, business owners, and professionals relocating for work, Limassol is almost always the right answer. For families, it depends on budget: the international schools are excellent but expensive. For retirees looking for quiet, Limassol's pace can feel relentless.\n\nFor families: Germasogeia is the default landing zone for English-speaking families. It runs along the B1 east of the city centre with wide pavements, several supermarkets and pharmacies, and the private school cluster (Heritage Private School, The Grammar School, PASCAL) is a 10 to 15 minute drive or school bus ride away. A three-bedroom villa with a small garden rents for €2,000 to €3,500 a month. Neighbouring Agios Athanasios, on slightly higher ground, is quieter and marginally cheaper, and its tree-lined streets and lighter traffic suit families with young children. Both areas are safe by any European standard and English is spoken everywhere. The downside: you need a car for almost everything, and in summer the Dasoudi forest park and the seafront promenade become the main outdoor spaces.",
+				body: `Limassol is Cyprus's commercial capital and the city with the largest and most diverse expat population. The Russian, Israeli, British, and broader European communities are all substantial and well-established. The city has the densest concentration of international schools, private clinics, coworking spaces, upscale restaurants, and professional service firms on the island. The Limassol Marina district and the beach road (Molos) promenade give it a proper urban waterfront, unlike anything else in Cyprus. The tradeoff is cost and density. Limassol is the most expensive city on the island for both rent and daily life. Traffic is genuinely problematic during peak hours, particularly on the old road and the beach road. The city has grown fast and infrastructure has not always kept pace. For remote workers, business owners, and professionals relocating for work, Limassol is almost always the right answer. For families, it depends on budget: the international schools are excellent but expensive. For retirees looking for quiet, Limassol's pace can feel relentless.\n\nFor families: Germasogeia is the default landing zone for English-speaking families. It runs along the B1 east of the city centre with wide pavements, several supermarkets and pharmacies, and the private school cluster (Heritage Private School, The Grammar School, PASCAL) is a 10 to 15 minute drive or school bus ride away. Two- and three-bedroom apartments in Limassol district had median asking rents of about ${rentMedian("Limassol", 2)} and ${rentMedian("Limassol", 3)} a month in ${RENT_MONTH_LABEL} (${RENT_SOURCE_NAME}); houses and villas were not part of that sample. Neighbouring Agios Athanasios, on slightly higher ground, is quieter and marginally cheaper, and its tree-lined streets and lighter traffic suit families with young children. Both areas are safe by any European standard and English is spoken everywhere. The downside: you need a car for almost everything, and in summer the Dasoudi forest park and the seafront promenade become the main outdoor spaces.`,
 			},
 			{
 				heading: "Paphos — old town character, quieter pace",
-				body: "Paphos is the city most often chosen by British, Northern European, and retirement-age expats. The old town (Ktima) has genuine character (a working market, a municipal market, a town square that functions as one), and the coastal Kato Paphos area has a seafront promenade, Roman mosaics, and a harbour that remains charming outside peak tourist season. Rents are meaningfully lower than Limassol: a good two-bedroom in Paphos runs €750–€1,100, and the surrounding villages (Tala, Peyia, Chlorakas) offer even lower rents in a quieter setting within 15 minutes of the city. The expat community is large relative to the city's size (Paphos has a higher proportion of expats to locals than any other Cypriot city) and heavily British. This creates practical advantages (English is widely spoken, British services and products are well-represented) and some cultural sameness that puts off expats looking for more local integration. The main practical limitation is connectivity: Paphos Airport serves fewer year-round routes than Larnaca, and the city has less professional infrastructure for business owners. It is an excellent choice for retirees, remote workers who do not need a business ecosystem, and families who prioritise a calmer environment over urban amenity.\n\nFor families: Chlorakas, about 4 km north of the old town and 15 minutes from Paphos airport, has grown into a full suburb with several supermarkets and a restaurant strip. A three-bedroom house rents for €1,200 to €2,000 a month, and purchase prices are among the most accessible in Cyprus. The International School of Paphos anchors the local school scene (fees are in the /guides/schools-in-cyprus/ guide). Peyia, in the hills above Coral Bay and about 20 minutes from the city, attracts families who want space and cooler summers; properties are bigger and gardens are standard. It is more a British expat village than an integrated community, so children grow up immersed in English rather than Cypriot culture, which matters to some families.",
+				body: `Paphos is the city most often chosen by British, Northern European, and retirement-age expats. The old town (Ktima) has genuine character (a working market, a municipal market, a town square that functions as one), and the coastal Kato Paphos area has a seafront promenade, Roman mosaics, and a harbour that remains charming outside peak tourist season. Rents are meaningfully lower than Limassol: the median asking rent for a two-bedroom in Paphos district was about ${rentMedian("Paphos", 2)} a month in ${RENT_MONTH_LABEL}, with half of listings between ${eur(RENTS.Paphos[2].p25)} and ${eur(RENTS.Paphos[2].p75)}, and the surrounding villages (Tala, Peyia, Chlorakas) offer even lower rents in a quieter setting within 15 minutes of the city. The expat community is large relative to the city's size (Paphos has a higher proportion of expats to locals than any other Cypriot city) and heavily British. This creates practical advantages (English is widely spoken, British services and products are well-represented) and some cultural sameness that puts off expats looking for more local integration. The main practical limitation is connectivity: Paphos Airport serves fewer year-round routes than Larnaca, and the city has less professional infrastructure for business owners. It is an excellent choice for retirees, remote workers who do not need a business ecosystem, and families who prioritise a calmer environment over urban amenity.\n\nFor families: Chlorakas, about 4 km north of the old town and 15 minutes from Paphos airport, has grown into a full suburb with several supermarkets and a restaurant strip. Three-bedroom apartments in Paphos district had a median asking rent of about ${rentMedian("Paphos", 3)} a month in ${RENT_MONTH_LABEL} (houses were not sampled), and purchase prices are among the most accessible in Cyprus. The International School of Paphos anchors the local school scene (fees are in the /guides/schools-in-cyprus/ guide). Peyia, in the hills above Coral Bay and about 20 minutes from the city, attracts families who want space and cooler summers; properties are bigger and gardens are standard. It is more a British expat village than an integrated community, so children grow up immersed in English rather than Cypriot culture, which matters to some families.`,
 			},
 			{
 				heading: "Larnaca — the affordable, underrated option",
-				body: "Larnaca is the city that most expats consider and then overlook, which is a mistake. It is 10 minutes from the main international airport, making it by far the most convenient city for frequent travellers. Rents are the lowest of the four cities for equivalent quality: a two-bedroom in a good location runs €700–€1,000. The city has a genuine old quarter (Skala), a long seafront promenade, the Finikoudes palm-lined walkway, and a functioning town centre that is less tourism-dependent than Paphos. The expat community is smaller than Limassol or Paphos but growing quickly, particularly the tech and startup community that has migrated from Limassol. The city's main limitation until recently was infrastructure, specifically the range of international schools and the density of professional services. This has improved substantially since 2022. Larnaca is now a serious option for families and remote workers who want Limassol-level connectivity at significantly lower cost. The city is also an easier entry point: finding an apartment, setting up a bank account, and navigating the bureaucracy is practically simpler in a smaller city where the relevant offices are less overwhelmed.\n\nFor families: Mackenzie, the beach strip south of the old town, has become much more polished since 2020, with a walkable seafront promenade, new restaurants and newer apartment complexes within walking distance of the beach. For school-age children the draw is The English School Larnaca and Pascal Institute Larnaca, both international. Drosia, 3 to 4 km inland along the B1, is the more established suburban choice: quieter and popular with Cypriot middle-class families, so children mix with locals more naturally than in the tourist-facing areas. A three-bedroom house in Drosia rents for €1,100 to €1,800 a month. Larnaca Airport, 5 km away, is convenient for frequent travellers but brings noticeable flight noise under the approach path.",
+				body: `Larnaca is the city that most expats consider and then overlook, which is a mistake. It is 10 minutes from the main international airport, making it by far the most convenient city for frequent travellers. Rents are the lowest of the three larger cities: the median asking rent for a two-bedroom in Larnaca district was about ${rentMedian("Larnaca", 2)} a month in ${RENT_MONTH_LABEL}, with half of listings between ${eur(RENTS.Larnaca[2].p25)} and ${eur(RENTS.Larnaca[2].p75)}. The city has a genuine old quarter (Skala), a long seafront promenade, the Finikoudes palm-lined walkway, and a functioning town centre that is less tourism-dependent than Paphos. The expat community is smaller than Limassol or Paphos but growing quickly, particularly the tech and startup community that has migrated from Limassol. The city's main limitation until recently was infrastructure, specifically the range of international schools and the density of professional services. This has improved substantially since 2022. Larnaca is now a serious option for families and remote workers who want Limassol-level connectivity at significantly lower cost. The city is also an easier entry point: finding an apartment, setting up a bank account, and navigating the bureaucracy is practically simpler in a smaller city where the relevant offices are less overwhelmed.\n\nFor families: Mackenzie, the beach strip south of the old town, has become much more polished since 2020, with a walkable seafront promenade, new restaurants and newer apartment complexes within walking distance of the beach. For school-age children the draw is The English School Larnaca and Pascal Institute Larnaca, both international. Drosia, 3 to 4 km inland along the B1, is the more established suburban choice: quieter and popular with Cypriot middle-class families, so children mix with locals more naturally than in the tourist-facing areas. Three-bedroom apartments in Larnaca district had a median asking rent of about ${rentMedian("Larnaca", 3)} a month in ${RENT_MONTH_LABEL}; houses were not sampled. Larnaca Airport, 5 km away, is convenient for frequent travellers but brings noticeable flight noise under the approach path.`,
 			},
 			{
 				heading: "Ayia Napa and the Famagusta district",
@@ -2451,11 +2475,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "What is the best city in Cyprus for remote workers?",
-				a: "Limassol for those who want a business ecosystem, coworking spaces, and a professional network. Larnaca for those who want good connectivity (10 minutes from the airport) at lower cost — rents run 20–30% below Limassol for comparable quality, and the city has a growing tech community. Paphos works well for remote workers who prioritise lifestyle over professional networking.",
+				a: `Limassol for those who want a business ecosystem, coworking spaces, and a professional network. Larnaca for those who want good connectivity (10 minutes from the airport) at lower cost: the median asking rent for a two-bedroom was about ${100 - Math.round((RENTS.Larnaca[2].median / RENTS.Limassol[2].median) * 100)}% below Limassol in ${RENT_MONTH_LABEL}, and the city has a growing tech community. Paphos works well for remote workers who prioritise lifestyle over professional networking.`,
 			},
 			{
 				q: "What is the cheapest city to live in Cyprus?",
-				a: "Larnaca is the most affordable of the four main cities for renting. A good two-bedroom apartment runs €700–€1,000/month in Larnaca vs €1,100–€1,800 in Limassol. Paphos is mid-range at €750–€1,200. Day-to-day costs (food, restaurants, services) are broadly similar across all four cities, so the main saving is in housing.",
+				a: `Larnaca is the most affordable of the three larger cities for renting. Median asking rents for a two-bedroom apartment in ${RENT_MONTH_LABEL}: Larnaca about ${rentMedian("Larnaca", 2)} a month, Paphos about ${rentMedian("Paphos", 2)}, Limassol about ${rentMedian("Limassol", 2)} (${RENT_SOURCE_NAME}). Agreed rents are often lower. Day-to-day costs (food, restaurants, services) are broadly similar across all four cities, so the main saving is in housing.`,
 			},
 			{
 				q: "Which city in Cyprus has the best social life?",
@@ -2470,7 +2494,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "retiring-in-cyprus",
 		datePublished: "2026-06-22",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: RENT_SOURCES,
 		category: "lifestyle",
 		title: "Retiring in Cyprus 2026: Full Expat Guide",
 		description:
@@ -2494,7 +2520,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "What a comfortable retirement in Cyprus actually costs",
-				body: "The numbers below reflect a comfortable but not extravagant retirement lifestyle for a couple in 2026. Accommodation: a two-bedroom apartment in a good area of Paphos or Larnaca runs €900–€1,300/month; Limassol is €1,100–€1,700. Utilities (electricity, water, internet, mobile): €180–€280/month; electricity is the major variable and rises significantly in summer when air conditioning is essential. Food: a couple spending at a mix of supermarkets and local restaurants can live comfortably on €800–€1,200/month; eating out in Cyprus is materially cheaper than Northern Europe, with a restaurant meal for two costing €25–€60 depending on the venue. Transport: one car, insurance, fuel — approximately €250–€400/month. Health insurance (private top-up, two people): €300–€600/month depending on age and cover. Social and leisure (restaurants, day trips, activities): €400–€700/month. Total: €2,830–€4,480/month for a couple in a comfortable configuration. For a single retiree, the equivalent range is approximately €1,800–€3,000/month. These figures are for renting; homeowners without a mortgage reduce the accommodation line to running costs only.",
+				body: `The numbers below reflect a comfortable but not extravagant retirement lifestyle for a couple in 2026. Accommodation: a two-bedroom apartment has a median asking rent of about ${rentMedian("Larnaca", 2)} a month in Larnaca, ${rentMedian("Paphos", 2)} in Paphos and ${rentMedian("Limassol", 2)} in Limassol (${RENT_SOURCE_NAME}, ${RENT_MONTH_LABEL}; agreed rents are often lower). Utilities (electricity, water, internet, mobile): €180–€280/month; electricity is the major variable and rises significantly in summer when air conditioning is essential. Food: a couple spending at a mix of supermarkets and local restaurants can live comfortably on €800–€1,200/month; eating out in Cyprus is materially cheaper than Northern Europe, with a restaurant meal for two costing €25–€60 depending on the venue. Transport: one car, insurance, fuel: approximately €250–€400/month. Health insurance (private top-up, two people): €300–€600/month depending on age and cover. Social and leisure (restaurants, day trips, activities): €400–€700/month. Total in Paphos or Larnaca, using the two-bedroom median rents: ${RETIRE_COUPLE_RENTING}/month for a couple in a comfortable configuration; in Limassol add about ${eur(RENTS.Limassol[2].median - RENTS.Paphos[2].median)} a month over Paphos for rent. For a single retiree, the equivalent range was estimated at approximately €1,800–€3,000/month before the October 2026 rent check and has not been recalculated. These figures are for renting; homeowners without a mortgage reduce the accommodation line to running costs only.`,
 			},
 			{
 				heading: "Practical steps: how the move actually works",
@@ -2520,7 +2546,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "How much money do I need to retire in Cyprus?",
-				a: "A comfortable retirement for a couple costs approximately €2,800–€4,500/month depending on city, lifestyle, and whether you rent or own. For a single retiree, the range is €1,800–€3,000/month. The Category F residence permit requires a minimum provable income of €2,500/month for a single person (€3,500/month for a couple), which happens to roughly align with the lower end of a comfortable retirement budget. More is better — the minimum income thresholds are for permit eligibility, not for a quality lifestyle.",
+				a: `A comfortable retirement for a couple renting a two-bedroom apartment in Paphos or Larnaca costs approximately ${RETIRE_COUPLE_RENTING}/month; Limassol rents are higher, and owners without a mortgage pay less. For a single retiree, an older estimate of €1,800–€3,000/month has not been recalculated since the October 2026 rent check. The Category F residence permit requires a minimum provable income of €2,500/month for a single person (€3,500/month for a couple), which happens to roughly align with the lower end of a comfortable retirement budget. More is better: the minimum income thresholds are for permit eligibility, not for a quality lifestyle.`,
 			},
 		],
 	},

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
+import { SourcesNote } from "@/components/ui/SourcesNote";
+import { RENT_SOURCES } from "@/lib/facts/rents";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import NeighbourhoodExplorerClient from "./client";
@@ -27,7 +30,12 @@ export default function NeighbourhoodExplorerPage() {
 		<ToolTemplate
 			pagefindType="tool"
 			related={
-				<MoreOnTopic type="tool" slug="neighbourhood-explorer" cols={3} />
+				<>
+					<SourcesNote lastChecked="2026-10-02" sources={RENT_SOURCES} />
+					<div className="mt-12">
+						<MoreOnTopic type="tool" slug="neighbourhood-explorer" cols={3} />
+					</div>
+				</>
 			}
 			width="wide"
 			header={{
@@ -42,7 +50,21 @@ export default function NeighbourhoodExplorerPage() {
 					"Browse neighbourhoods across Cyprus and find the area that fits your lifestyle. Filter by city and vibe, then compare up to 3 areas side by side.",
 			}}
 			nextSteps={[{ href: "/tools/", label: "All tools" }]}
-			disclaimer="Rent ranges and neighbourhood descriptions are indicative only, based on general market knowledge as of early 2025. Actual rents vary by property type, condition, and season. This is not real-estate or financial advice: always verify with local agents."
+			disclaimer={
+				<>
+					Rent ranges are unsourced estimates from early 2025. For current
+					district medians, see{" "}
+					<Link
+						href="/tools/rental-price-trends/"
+						className="underline underline-offset-2"
+					>
+						rent data, October 2026
+					</Link>
+					. Neighbourhood descriptions are indicative only. Actual rents vary by
+					property type, condition, and season. This is not real-estate or
+					financial advice: always verify with local agents.
+				</>
+			}
 		>
 			<script
 				type="application/ld+json"
