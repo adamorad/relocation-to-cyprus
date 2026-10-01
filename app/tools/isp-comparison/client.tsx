@@ -1,7 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useState } from "react";
+import { Badge } from "@/components/ui/Badge";
+import { ChipGroup } from "@/components/ui/Chip";
+import { DataTable } from "@/components/ui/DataTable";
 
 type CoverageCity =
 	| "Limassol"
@@ -143,17 +145,12 @@ const TYPE_LABEL = {
 	cable: "Cable",
 };
 
-const TYPE_COLOR = {
-	fibre: "bg-sky-strong text-ink",
-	cable: "bg-blue-100 text-blue-800",
-};
-
 export default function ISPComparisonPage() {
 	const [tab, setTab] = useState<"broadband" | "mobile">("broadband");
-	const [cityFilter, setCityFilter] = useState<CoverageCity | null>(null);
+	const [cityFilter, setCityFilter] = useState<CoverageCity | "all">("all");
 
 	const filteredBroadband = useMemo(() => {
-		if (!cityFilter || cityFilter === "Island-wide") return BROADBAND;
+		if (cityFilter === "all" || cityFilter === "Island-wide") return BROADBAND;
 		return BROADBAND.filter(
 			(isp) =>
 				isp.coverage.includes(cityFilter) ||
@@ -161,182 +158,87 @@ export default function ISPComparisonPage() {
 		);
 	}, [cityFilter]);
 
-	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="tool"
-			className="max-w-5xl mx-auto px-4 py-8 md:py-12"
+	const providerLink = (name: string, website: string) => (
+		<a
+			href={website}
+			target="_blank"
+			rel="noopener noreferrer"
+			className="font-bold text-ink hover:text-primary"
 		>
-			<nav className="text-xs text-slate-500 mb-6">
-				<Link href="/tools/" className="hover:text-ink">
-					Tools
-				</Link>{" "}
-				&rsaquo; <span className="text-ink">ISP Comparison</span>
-			</nav>
+			{name}
+		</a>
+	);
 
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-2">
-					Interactive Tool
-				</p>
-				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Internet & Mobile Providers in Cyprus
-				</h1>
-				<p className="mt-3 text-slate-600 max-w-2xl">
-					Compare home broadband and mobile carriers. Cyprus has fast internet —
-					1 Gbps fibre is available in urban areas for under €50/month.
-				</p>
-			</header>
-
-			{/* Tabs */}
-			<div className="flex gap-2 mb-6">
-				<button
-					onClick={() => setTab("broadband")}
-					className={`px-5 py-2.5 rounded-xl font-medium text-sm border transition-colors ${
-						tab === "broadband"
-							? "bg-ink text-white border-ink"
-							: "bg-white text-slate-700 border-line hover:border-slate-500"
-					}`}
-				>
-					Home Broadband
-				</button>
-				<button
-					onClick={() => setTab("mobile")}
-					className={`px-5 py-2.5 rounded-xl font-medium text-sm border transition-colors ${
-						tab === "mobile"
-							? "bg-ink text-white border-ink"
-							: "bg-white text-slate-700 border-line hover:border-slate-500"
-					}`}
-				>
-					Mobile
-				</button>
-			</div>
+	return (
+		<>
+			<ChipGroup
+				label="Show"
+				hideLabel
+				options={[
+					{ value: "broadband", label: "Home broadband" },
+					{ value: "mobile", label: "Mobile" },
+				]}
+				value={tab}
+				onChange={setTab}
+			/>
 
 			{tab === "broadband" && (
 				<>
-					{/* City filter */}
-					<div className="mb-5">
-						<p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">
-							Filter by city coverage
-						</p>
-						<div className="flex flex-wrap gap-2">
-							<button
-								onClick={() => setCityFilter(null)}
-								className={`px-3 py-1.5 rounded-xl text-xs font-medium border transition-colors ${
-									cityFilter === null
-										? "bg-primary text-white border-primary"
-										: "bg-white text-slate-700 border-line hover:border-slate-400"
-								}`}
-							>
-								All areas
-							</button>
-							{COVERAGE_CITIES.filter((c) => c !== "Island-wide").map((c) => (
-								<button
-									key={c}
-									onClick={() => setCityFilter(cityFilter === c ? null : c)}
-									className={`px-3 py-1.5 rounded-xl text-xs font-medium border transition-colors ${
-										cityFilter === c
-											? "bg-primary text-white border-primary"
-											: "bg-white text-slate-700 border-line hover:border-slate-400"
-									}`}
-								>
-									{c}
-								</button>
-							))}
-						</div>
-					</div>
+					<ChipGroup
+						label="Filter by city coverage"
+						options={[
+							{ value: "all" as const, label: "All areas" },
+							...COVERAGE_CITIES.filter((c) => c !== "Island-wide").map(
+								(c) => ({ value: c, label: c }),
+							),
+						]}
+						value={cityFilter}
+						onChange={setCityFilter}
+					/>
 
-					{/* Broadband table */}
-					<div className="overflow-x-auto rounded-2xl border border-line">
-						<table className="w-full text-sm">
-							<thead>
-								<tr className="bg-slate-50 border-b border-line">
-									<th className="text-left px-4 py-3 font-semibold text-slate-700">
-										Provider
-									</th>
-									<th className="text-left px-4 py-3 font-semibold text-slate-700">
-										Type
-									</th>
-									<th className="text-right px-4 py-3 font-semibold text-slate-700">
-										Max Down
-									</th>
-									<th className="text-right px-4 py-3 font-semibold text-slate-700">
-										Max Up
-									</th>
-									<th className="text-right px-4 py-3 font-semibold text-slate-700">
-										Price/mo
-									</th>
-									<th className="text-right px-4 py-3 font-semibold text-slate-700">
-										Contract
-									</th>
-									<th className="text-right px-4 py-3 font-semibold text-slate-700">
-										Setup fee
-									</th>
-									<th className="text-center px-4 py-3 font-semibold text-slate-700">
-										English
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								{filteredBroadband.map((isp, i) => (
-									<tr
-										key={isp.name}
-										className={`border-b border-line ${i % 2 === 0 ? "bg-white" : "bg-slate-50/50"}`}
-									>
-										<td className="px-4 py-3">
-											<a
-												href={isp.website}
-												target="_blank"
-												rel="noopener noreferrer"
-												className="font-bold text-ink hover:text-primary"
-											>
-												{isp.name}
-											</a>
-											<p className="text-xs text-muted mt-0.5">
-												{isp.coverage.join(", ")}
-											</p>
-										</td>
-										<td className="px-4 py-3">
-											<span
-												className={`text-xs px-2 py-1 rounded-full font-medium ${TYPE_COLOR[isp.type]}`}
-											>
-												{TYPE_LABEL[isp.type]}
-											</span>
-										</td>
-										<td className="px-4 py-3 text-right font-semibold text-ink">
-											{isp.maxSpeedDown} Mbps
-										</td>
-										<td className="px-4 py-3 text-right text-slate-700">
-											{isp.maxSpeedUp} Mbps
-										</td>
-										<td className="px-4 py-3 text-right font-bold text-primary">
-											€{isp.monthlyPrice}
-										</td>
-										<td className="px-4 py-3 text-right text-slate-700">
-											{isp.contractMonths} mo
-										</td>
-										<td className="px-4 py-3 text-right text-slate-700">
-											{isp.setupFee === 0 ? "Free" : `€${isp.setupFee}`}
-										</td>
-										<td className="px-4 py-3 text-center">
-											{isp.englishSupport ? "✓" : "—"}
-										</td>
-									</tr>
-								))}
-							</tbody>
-						</table>
-					</div>
+					<DataTable
+						caption="Home broadband providers in Cyprus"
+						hideCaption
+						zebra
+						columns={[
+							{ header: "Provider" },
+							{ header: "Type" },
+							{ header: "Max down", align: "right" },
+							{ header: "Max up", align: "right" },
+							{ header: "Price/mo", align: "right" },
+							{ header: "Contract", align: "right" },
+							{ header: "Setup fee", align: "right" },
+							{ header: "English" },
+						]}
+						rows={filteredBroadband.map((isp) => [
+							<>
+								{providerLink(isp.name, isp.website)}
+								<span className="mt-0.5 block text-xs font-normal text-muted">
+									{isp.coverage.join(", ")}
+								</span>
+							</>,
+							<Badge key="t">{TYPE_LABEL[isp.type]}</Badge>,
+							`${isp.maxSpeedDown} Mbps`,
+							`${isp.maxSpeedUp} Mbps`,
+							<span key="p" className="font-bold text-primary-hover">
+								€{isp.monthlyPrice}
+							</span>,
+							`${isp.contractMonths} mo`,
+							isp.setupFee === 0 ? "Free" : `€${isp.setupFee}`,
+							isp.englishSupport ? "Yes" : "No",
+						])}
+					/>
 
-					{/* Notes */}
-					<div className="mt-6 space-y-4">
+					<div className="space-y-4">
 						{filteredBroadband.map((isp) => (
 							<div
 								key={isp.name}
-								className="bg-white border border-line rounded-2xl p-4"
+								className="rounded-card border border-line bg-white p-4"
 							>
-								<p className="font-semibold text-ink mb-1">{isp.name}</p>
-								<p className="text-sm text-slate-600 leading-relaxed">
+								<h2 className="mb-1 text-base font-semibold text-ink">
+									{isp.name}
+								</h2>
+								<p className="text-sm leading-relaxed text-muted">
 									{isp.notes}
 								</p>
 							</div>
@@ -347,77 +249,40 @@ export default function ISPComparisonPage() {
 
 			{tab === "mobile" && (
 				<>
-					{/* Mobile table */}
-					<div className="overflow-x-auto rounded-2xl border border-line">
-						<table className="w-full text-sm">
-							<thead>
-								<tr className="bg-slate-50 border-b border-line">
-									<th className="text-left px-4 py-3 font-semibold text-slate-700">
-										Carrier
-									</th>
-									<th className="text-right px-4 py-3 font-semibold text-slate-700">
-										Unlimited plan
-									</th>
-									<th className="text-right px-4 py-3 font-semibold text-slate-700">
-										Prepay 10 GB
-									</th>
-									<th className="text-right px-4 py-3 font-semibold text-slate-700">
-										Coverage
-									</th>
-									<th className="text-center px-4 py-3 font-semibold text-slate-700">
-										eSIM
-									</th>
-									<th className="text-center px-4 py-3 font-semibold text-slate-700">
-										EU Roaming
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								{MOBILE.map((carrier, i) => (
-									<tr
-										key={carrier.name}
-										className={`border-b border-line ${i % 2 === 0 ? "bg-white" : "bg-slate-50/50"}`}
-									>
-										<td className="px-4 py-3">
-											<a
-												href={carrier.website}
-												target="_blank"
-												rel="noopener noreferrer"
-												className="font-bold text-ink hover:text-primary"
-											>
-												{carrier.name}
-											</a>
-										</td>
-										<td className="px-4 py-3 text-right font-bold text-primary">
-											€{carrier.unlimitedDataPlan}/mo
-										</td>
-										<td className="px-4 py-3 text-right text-slate-700">
-											€{carrier.prepay10GBCost}
-										</td>
-										<td className="px-4 py-3 text-right font-semibold text-ink">
-											{carrier.coverage}%
-										</td>
-										<td className="px-4 py-3 text-center">
-											{carrier.eSIM ? "✓" : "—"}
-										</td>
-										<td className="px-4 py-3 text-center">
-											{carrier.internationalRoaming ? "✓" : "—"}
-										</td>
-									</tr>
-								))}
-							</tbody>
-						</table>
-					</div>
+					<DataTable
+						caption="Mobile carriers in Cyprus"
+						hideCaption
+						zebra
+						columns={[
+							{ header: "Carrier" },
+							{ header: "Unlimited plan", align: "right" },
+							{ header: "Prepay 10 GB", align: "right" },
+							{ header: "Coverage", align: "right" },
+							{ header: "eSIM" },
+							{ header: "EU roaming" },
+						]}
+						rows={MOBILE.map((c) => [
+							providerLink(c.name, c.website),
+							<span key="p" className="font-bold text-primary-hover">
+								€{c.unlimitedDataPlan}/mo
+							</span>,
+							`€${c.prepay10GBCost}`,
+							`${c.coverage}%`,
+							c.eSIM ? "Yes" : "No",
+							c.internationalRoaming ? "Yes" : "No",
+						])}
+					/>
 
-					{/* Notes */}
-					<div className="mt-6 space-y-4">
+					<div className="space-y-4">
 						{MOBILE.map((carrier) => (
 							<div
 								key={carrier.name}
-								className="bg-white border border-line rounded-2xl p-4"
+								className="rounded-card border border-line bg-white p-4"
 							>
-								<p className="font-semibold text-ink mb-1">{carrier.name}</p>
-								<p className="text-sm text-slate-600 leading-relaxed">
+								<h2 className="mb-1 text-base font-semibold text-ink">
+									{carrier.name}
+								</h2>
+								<p className="text-sm leading-relaxed text-muted">
 									{carrier.notes}
 								</p>
 							</div>
@@ -425,43 +290,6 @@ export default function ISPComparisonPage() {
 					</div>
 				</>
 			)}
-
-			{/* Disclaimer */}
-			<div className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
-				<p className="font-semibold text-ink mb-1">Disclaimer</p>
-				<p>
-					Plans and prices change frequently. Verify at provider websites before
-					signing. Prices shown are indicative for 2025 entry-level packages at
-					the highest advertised speed tier — actual available speeds depend on
-					your specific address and infrastructure type.
-				</p>
-			</div>
-
-			<p className="mt-6 text-sm">
-				<Link href="/tools/" className="text-primary hover:underline">
-					&larr; Back to tools
-				</Link>
-			</p>
-
-			<aside className="mt-10 p-5 rounded-2xl bg-sky border border-line">
-				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-					Next steps
-				</p>
-				<div className="flex flex-wrap gap-3">
-					<Link
-						href="/guides/utilities-setup-guide/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Read: Setting Up Utilities in Cyprus
-					</Link>{" "}
-					<Link
-						href="/guides/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Explore Cyprus guides
-					</Link>
-				</div>
-			</aside>
-		</main>
+		</>
 	);
 }

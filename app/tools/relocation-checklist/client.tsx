@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/Button";
+import { CHART_COLORS } from "@/lib/chart-colors";
 
 interface Task {
 	id: string;
@@ -18,7 +20,7 @@ interface Phase {
 const PHASES: Phase[] = [
 	{
 		id: "phase1",
-		title: "Phase 1 — Pre-Move Planning",
+		title: "Phase 1: Pre-Move Planning",
 		tasks: [
 			{
 				id: "p1_visa",
@@ -92,7 +94,7 @@ const PHASES: Phase[] = [
 	},
 	{
 		id: "phase2",
-		title: "Phase 2 — Arrival Week",
+		title: "Phase 2: Arrival Week",
 		tasks: [
 			{
 				id: "p2_bank",
@@ -156,7 +158,7 @@ const PHASES: Phase[] = [
 	},
 	{
 		id: "phase3",
-		title: "Phase 3 — Month 1",
+		title: "Phase 3: Month 1",
 		tasks: [
 			{
 				id: "p3_gesy",
@@ -219,7 +221,7 @@ const PHASES: Phase[] = [
 	},
 	{
 		id: "phase4",
-		title: "Phase 4 — Settling In",
+		title: "Phase 4: Settling In",
 		tasks: [
 			{
 				id: "p4_language",
@@ -329,96 +331,66 @@ export default function RelocationTrackerClient() {
 	const overallPct = Math.round((totalDone / TOTAL_TASKS) * 100);
 
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="tool"
-			className="max-w-3xl mx-auto px-6 py-10 md:py-16"
-		>
-			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-ink">
-					Home
-				</Link>{" "}
-				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-ink">
-					Tools
-				</Link>{" "}
-				&rsaquo; <span>Relocation Progress Tracker</span>
-			</nav>
-
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
-					Checklists
-				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Cyprus Relocation Progress Tracker
-				</h1>
-				<p className="mt-3 text-slate-600 leading-relaxed">
-					Track your relocation journey from planning to settling in. Check off
-					each task as you complete it — progress is saved in your browser.
-				</p>
-			</header>
-
-			{/* Overall progress */}
-			<section className="mb-8 p-5 bg-white border border-line rounded-2xl">
-				<div className="flex items-center justify-between mb-2">
-					<p className="text-sm font-semibold text-slate-700">
-						Overall progress
-					</p>
-					<span className="text-sm font-bold" style={{ color: "#087f98" }}>
+		<>
+			<section
+				aria-label="Overall progress"
+				className="rounded-card border border-line bg-white p-5 shadow-rc"
+			>
+				<div className="mb-2 flex items-center justify-between gap-3">
+					<p className="text-sm font-semibold text-ink">Overall progress</p>
+					<span className="text-sm font-bold text-primary-hover">
 						{mounted ? totalDone : 0} of {TOTAL_TASKS} tasks complete
 					</span>
 				</div>
-				<div className="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
+				<div
+					role="progressbar"
+					aria-valuenow={mounted ? overallPct : 0}
+					aria-valuemin={0}
+					aria-valuemax={100}
+					aria-label="Overall relocation progress"
+					className="h-3 w-full overflow-hidden rounded-full bg-sky-strong"
+				>
 					<div
 						className="h-full rounded-full transition-all duration-500"
 						style={{
 							width: `${mounted ? overallPct : 0}%`,
-							backgroundColor: "#087f98",
+							backgroundColor: CHART_COLORS.primary,
 						}}
 					/>
 				</div>
 				{mounted && overallPct === 100 && (
-					<p className="mt-2 text-xs font-semibold text-green-700">
-						All tasks complete — welcome to Cyprus!
+					<p className="mt-2 text-sm font-semibold text-emerald-800">
+						All tasks complete: welcome to Cyprus!
 					</p>
 				)}
 
 				<div className="mt-4 flex justify-end">
 					{confirmReset ? (
-						<div className="flex items-center gap-3">
-							<span className="text-xs text-slate-600">
-								Reset all progress?
-							</span>
-							<button
-								type="button"
-								onClick={resetAll}
-								className="text-xs font-semibold px-3 py-1.5 rounded-xl bg-red-100 text-red-700 hover:bg-red-200 transition-colors"
-							>
+						<div className="flex flex-wrap items-center gap-3">
+							<span className="text-sm text-muted">Reset all progress?</span>
+							<Button type="button" variant="secondary" onClick={resetAll}>
 								Yes, reset
-							</button>
-							<button
+							</Button>
+							<Button
 								type="button"
+								variant="ghost"
 								onClick={() => setConfirmReset(false)}
-								className="text-xs font-semibold px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors"
 							>
 								Cancel
-							</button>
+							</Button>
 						</div>
 					) : (
-						<button
+						<Button
 							type="button"
+							variant="ghost"
 							onClick={() => setConfirmReset(true)}
-							className="text-xs text-muted hover:text-slate-600 underline transition-colors"
 						>
 							Reset all
-						</button>
+						</Button>
 					)}
 				</div>
 			</section>
 
-			{/* Phase accordions */}
 			<div className="space-y-4">
 				{PHASES.map((phase) => {
 					const phaseDone = phase.tasks.filter((t) => checked[t.id]).length;
@@ -429,98 +401,112 @@ export default function RelocationTrackerClient() {
 					return (
 						<div
 							key={phase.id}
-							className="border border-line rounded-2xl overflow-hidden"
+							className="overflow-hidden rounded-card border border-line bg-white"
 						>
-							{/* Phase header / toggle */}
-							<button
-								type="button"
-								onClick={() => togglePhase(phase.id)}
-								className="w-full text-left px-5 py-4 bg-white hover:bg-slate-50 transition-colors"
-							>
-								<div className="flex items-center justify-between gap-4">
-									<div className="flex-1 min-w-0">
-										<p className="text-sm font-bold text-ink">{phase.title}</p>
-										<div className="mt-2 flex items-center gap-3">
-											<div className="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
-												<div
-													className="h-full rounded-full transition-all duration-500"
-													style={{
-														width: `${mounted ? phasePct : 0}%`,
-														backgroundColor: "#087f98",
-													}}
-												/>
-											</div>
-											<span className="text-xs text-slate-500 whitespace-nowrap">
-												{mounted ? phaseDone : 0} / {phaseTotal}
+							<h2 className="m-0">
+								<button
+									type="button"
+									onClick={() => togglePhase(phase.id)}
+									aria-expanded={isOpen}
+									aria-controls={`${phase.id}-tasks`}
+									className="min-h-11 w-full bg-white px-5 py-4 text-left transition-colors hover:bg-sky"
+								>
+									<span className="flex items-center justify-between gap-4">
+										<span className="min-w-0 flex-1">
+											<span className="block text-base font-bold text-ink">
+												{phase.title}
 											</span>
-										</div>
-									</div>
-									<span
-										className={`flex-shrink-0 text-muted transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-									>
-										<svg
-											className="w-4 h-4"
-											fill="none"
-											viewBox="0 0 24 24"
-											stroke="currentColor"
-											strokeWidth={2}
+											<span className="mt-2 flex items-center gap-3">
+												<span className="h-2 flex-1 overflow-hidden rounded-full bg-sky-strong">
+													<span
+														className="block h-full rounded-full transition-all duration-500"
+														style={{
+															width: `${mounted ? phasePct : 0}%`,
+															backgroundColor: CHART_COLORS.primary,
+														}}
+													/>
+												</span>
+												<span className="whitespace-nowrap text-sm text-muted">
+													{mounted ? phaseDone : 0} / {phaseTotal}
+												</span>
+											</span>
+										</span>
+										<span
+											className={`shrink-0 text-muted transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
 										>
-											<path
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												d="M19 9l-7 7-7-7"
-											/>
-										</svg>
+											<svg
+												aria-hidden="true"
+												className="h-4 w-4"
+												fill="none"
+												viewBox="0 0 24 24"
+												stroke="currentColor"
+												strokeWidth={2}
+											>
+												<path
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													d="M19 9l-7 7-7-7"
+												/>
+											</svg>
+										</span>
 									</span>
-								</div>
-							</button>
+								</button>
+							</h2>
 
-							{/* Task list */}
 							{isOpen && (
-								<ul className="border-t border-line divide-y divide-slate-100">
+								<ul
+									id={`${phase.id}-tasks`}
+									className="divide-y divide-line border-t border-line"
+								>
 									{phase.tasks.map((task) => {
 										const isDone = mounted ? !!checked[task.id] : false;
 										return (
 											<li
 												key={task.id}
-												className={isDone ? "bg-green-50" : "bg-white"}
+												className={isDone ? "bg-emerald-50" : "bg-white"}
 											>
-												<div className="flex items-start gap-3 px-5 py-3.5">
+												<div className="flex items-start gap-1 px-3 py-1.5">
 													<button
 														type="button"
 														onClick={() => toggle(task.id)}
+														aria-pressed={isDone}
 														aria-label={
 															isDone
 																? `Uncheck: ${task.label}`
 																: `Check: ${task.label}`
 														}
-														className={`mt-0.5 flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
-															isDone
-																? "border-green-500 bg-green-500"
-																: "border-line hover:border-primary"
-														}`}
+														className="flex min-h-11 min-w-11 shrink-0 items-center justify-center"
 													>
-														{isDone && (
-															<svg
-																className="w-3 h-3 text-white"
-																fill="none"
-																viewBox="0 0 24 24"
-																stroke="currentColor"
-																strokeWidth={3}
-															>
-																<path
-																	strokeLinecap="round"
-																	strokeLinejoin="round"
-																	d="M5 13l4 4L19 7"
-																/>
-															</svg>
-														)}
+														<span
+															className={`flex h-5 w-5 items-center justify-center rounded border-2 transition-colors ${
+																isDone
+																	? "border-emerald-600 bg-emerald-600"
+																	: "border-slate-500"
+															}`}
+														>
+															{isDone && (
+																<svg
+																	aria-hidden="true"
+																	className="h-3 w-3 text-white"
+																	fill="none"
+																	viewBox="0 0 24 24"
+																	stroke="currentColor"
+																	strokeWidth={3}
+																>
+																	<path
+																		strokeLinecap="round"
+																		strokeLinejoin="round"
+																		d="M5 13l4 4L19 7"
+																	/>
+																</svg>
+															)}
+														</span>
 													</button>
-													<div className="flex-1 min-w-0">
+													<div className="min-w-0 flex-1 py-2.5 pr-2">
 														<p
 															className={`text-sm leading-snug ${
 																isDone
-																	? "text-muted line-through decoration-slate-300"
+																	? "text-muted line-through decoration-slate-400"
 																	: "text-ink"
 															}`}
 														>
@@ -529,8 +515,7 @@ export default function RelocationTrackerClient() {
 														{task.link && (
 															<Link
 																href={task.link.href}
-																className="mt-1 inline-block text-xs font-semibold text-primary hover:text-primary-hover underline underline-offset-2"
-																onClick={(e) => e.stopPropagation()}
+																className="mt-1 inline-block text-sm font-semibold text-primary-hover underline underline-offset-2 hover:text-primary"
 															>
 																{task.link.text}
 															</Link>
@@ -546,48 +531,6 @@ export default function RelocationTrackerClient() {
 					);
 				})}
 			</div>
-
-			<aside className="mt-10 bg-sky border border-line rounded-2xl p-5">
-				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-					Next steps
-				</p>
-				<div className="flex flex-wrap gap-3">
-					<Link
-						href="/tools/visa-pathway-finder/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Find your visa route
-					</Link>
-					<Link
-						href="/tools/budget-builder/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Build your budget
-					</Link>
-					<Link
-						href="/tools/city-comparison/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Compare cities
-					</Link>
-				</div>
-			</aside>
-
-			<aside className="mt-6 bg-amber-50 border border-amber-200 rounded-2xl p-5 text-sm text-amber-900">
-				<p className="font-semibold text-ink mb-1">Disclaimer</p>
-				<p>
-					This checklist provides general guidance only and is not legal, tax,
-					or financial advice. Requirements vary by nationality and residency
-					route — always verify with the Cyprus Tax Department, Civil Registry,
-					and a qualified local adviser before making decisions.
-				</p>
-			</aside>
-
-			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools/" className="underline hover:text-ink">
-					&larr; Back to Tools
-				</Link>
-			</p>
-		</main>
+		</>
 	);
 }
