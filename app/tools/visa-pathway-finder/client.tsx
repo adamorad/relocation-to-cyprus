@@ -212,14 +212,9 @@ export default function VisaPathwayFinderPage() {
 								}}
 								className={`flex-1 py-3 px-4 rounded-xl border-2 text-sm font-semibold transition-colors ${
 									citizenship === opt
-										? "border-primary text-white"
+										? "border-primary bg-primary text-white"
 										: "border-line bg-white text-ink hover:bg-sky"
 								}`}
-								style={
-									citizenship === opt
-										? { backgroundColor: "#087f98", borderColor: "#087f98" }
-										: {}
-								}
 							>
 								{opt === "eu" ? "EU Citizen" : "Non-EU Citizen"}
 							</button>
@@ -254,14 +249,9 @@ export default function VisaPathwayFinderPage() {
 										onClick={() => setEuPurpose(opt)}
 										className={`py-3 px-4 rounded-xl border-2 text-sm font-semibold transition-colors text-center ${
 											euPurpose === opt
-												? "text-white"
+												? "border-primary bg-primary text-white"
 												: "border-line bg-white text-ink hover:bg-sky"
 										}`}
-										style={
-											euPurpose === opt
-												? { backgroundColor: "#087f98", borderColor: "#087f98" }
-												: {}
-										}
 									>
 										{labels[opt!]}
 									</button>
@@ -300,14 +290,9 @@ export default function VisaPathwayFinderPage() {
 										onClick={() => setNonEuPurpose(opt)}
 										className={`py-3 px-4 rounded-xl border-2 text-sm font-semibold transition-colors text-left ${
 											nonEuPurpose === opt
-												? "text-white"
+												? "border-primary bg-primary text-white"
 												: "border-line bg-white text-ink hover:bg-sky"
 										}`}
-										style={
-											nonEuPurpose === opt
-												? { backgroundColor: "#087f98", borderColor: "#087f98" }
-												: {}
-										}
 									>
 										{labels[opt!]}
 									</button>
@@ -322,7 +307,7 @@ export default function VisaPathwayFinderPage() {
 					<div className="p-5 rounded-2xl border-2 border-primary bg-white">
 						<p
 							className="text-xs uppercase tracking-[0.2em] font-bold mb-1"
-							style={{ color: "#087f98" }}
+							style={{ color: "var(--color-primary)" }}
 						>
 							Recommended pathway
 						</p>
@@ -352,8 +337,7 @@ export default function VisaPathwayFinderPage() {
 							{pathway.guideSlug && (
 								<Link
 									href={`/guides/${pathway.guideSlug}`}
-									className="inline-block text-sm font-semibold px-4 py-2 rounded-xl text-white"
-									style={{ backgroundColor: "#087f98" }}
+									className="inline-block text-sm font-semibold px-4 py-2 rounded-xl text-white bg-primary"
 								>
 									{pathway.guideLabel || "Read the guide"}
 								</Link>

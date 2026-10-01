@@ -232,10 +232,9 @@ export default function CityComparisonClient() {
 								onClick={() => toggleCity(city)}
 								className={`px-4 py-2 rounded-full text-sm font-semibold border transition-colors ${
 									isSelected
-										? "border-primary text-white"
+										? "border-primary bg-primary text-white"
 										: "border-line text-slate-600 bg-white hover:border-slate-400"
 								}`}
-								style={isSelected ? { backgroundColor: "#087f98" } : {}}
 							>
 								{city}
 							</button>
