@@ -342,7 +342,7 @@ function StepperRow({
 }) {
 	const id = useId();
 	return (
-		<fieldset className="m-0 flex min-w-0 items-center justify-between gap-2 border-0 p-0">
+		<fieldset className="flex min-w-0 items-center justify-between gap-2 border-0 p-0">
 			<legend className="sr-only">{label}</legend>
 			<span
 				id={id}
