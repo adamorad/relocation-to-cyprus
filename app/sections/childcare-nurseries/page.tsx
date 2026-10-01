@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
+import { SourcesNote } from "@/components/ui/SourcesNote";
 import { CHILDCARE_TIPS } from "@/lib/childcare";
 import { topicCrumb } from "@/lib/topic-map";
 import ChildcareNurseriesClient from "./client";
@@ -55,7 +56,21 @@ export default function ChildcareNurseriesPage() {
 					"Fees and availability change frequently, so always verify directly with the nursery before enrolling. Regulatory oversight is by the Cyprus Ministry of Education, Culture, Sport and Youth (MOEC) and Social Welfare Services.",
 			}}
 			related={
-				<MoreOnTopic type="directory" slug="childcare-nurseries" cols={3} />
+				<>
+					<SourcesNote
+						lastChecked="2026-10-02"
+						sources={[
+							{
+								label:
+									"Ministry of Education: approved private pre-primary schools",
+								url: "https://sch.cy/mc/360/el_idiotika_prodimotiki.pdf",
+							},
+						]}
+					/>
+					<div className="mt-12">
+						<MoreOnTopic type="directory" slug="childcare-nurseries" cols={3} />
+					</div>
+				</>
 			}
 		>
 			<script
