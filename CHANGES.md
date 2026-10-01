@@ -26,6 +26,21 @@
 - /explore/ search now matches word stems and prefixes, so "pharmacy" finds the pharmacy guide and "movi" finds "Moving".
 - An accessibility pass took automated colour-contrast violations from 1484 to 0 across 31 pages.
 
+- Phase 1 design system: shared components in `components/ui/` (Container, PageHeader, Breadcrumbs, Section, Card with icon, text, photo, row and logo options, Badge, Chip and ChipGroup, Button and ButtonLink, Callout, DataTable, StatCard, InfoCards, EmailBox, SponsorSlot) and page templates in `components/templates/` (Hub, Article, Directory, Tool and City). See `docs/design-system.md`.
+- Every page family now uses the templates: guides, directories, tools, cities, listings, developers, hubs, About, Advertise, Contact, Privacy, search, the shortlist and the 404 page.
+- Pages use only two widths: reading (about 720px) and wide (1280px, aligned with the header, homepage and footer).
+- There is one breadcrumb style (Home › Section › Page) with matching BreadcrumbList data, and the scattered "Back to" links are gone.
+- Each page has at most one email form. Guides rely on the footer form instead of an in-article one.
+- /listings/ has a city filter that can be linked with `?city=` and a "Show more" button. City pages link to their filtered list.
+- Listing pages link to the developer's page, and the save heart sits next to the listing title. The developers index shows each developer's logo.
+- The About page was rewritten to describe only what the site offers today.
+- The Advertise page counts guides, tools and directories from the site data, so they always match.
+- Page titles no longer repeat the RealCy.app brand.
+- Guides show their category as the label above the title instead of "Relocation guide".
+- Filter chips, buttons, cards and comparison highlights use one style across the site, with no traffic-light colours for neutral comparisons.
+- /tools/sole-trader-vs-ltd/ has one header, one disclaimer and one set of next steps for both of its tools.
+- `node scripts/qa/axe.mjs --all` runs a full-site accessibility audit plus overflow and page-structure checks (not part of CI).
+
 ### Known gaps and follow-ups
 
 - Painted category and guide illustrations and real city and guide photos are missing. The photo slots are in `lib/home-content.ts`.
