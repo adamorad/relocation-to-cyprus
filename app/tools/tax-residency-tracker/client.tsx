@@ -199,7 +199,7 @@ export default function TaxResidencyPlannerClient() {
 		"183-day": "info",
 		"60-day-qualified": "info",
 		"60-day-marginal": "warning",
-		"not-qualifying": "info",
+		"not-qualifying": "warning",
 	};
 
 	return (

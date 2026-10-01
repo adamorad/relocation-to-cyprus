@@ -366,12 +366,17 @@ export default function SocialInsuranceCalculatorPage({
 			</Callout>
 
 			{embedded ? (
-				<div className="flex flex-wrap gap-3">
-					{NEXT_STEPS.map((s) => (
-						<ButtonLink key={s.href} href={s.href} variant="secondary">
-							{s.label}
-						</ButtonLink>
-					))}
+				<div>
+					<p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted">
+						Next steps
+					</p>
+					<div className="flex flex-wrap gap-3">
+						{NEXT_STEPS.map((s) => (
+							<ButtonLink key={s.href} href={s.href} variant="secondary">
+								{s.label}
+							</ButtonLink>
+						))}
+					</div>
 				</div>
 			) : null}
 		</div>

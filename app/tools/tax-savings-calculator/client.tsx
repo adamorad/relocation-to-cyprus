@@ -663,6 +663,10 @@ export default function TaxSavingsCalculatorClient({
 							display={`${salaryPct}% salary / ${100 - salaryPct}% dividends`}
 							onChange={setSalaryPct}
 						/>
+						<div className="flex justify-between text-sm text-muted">
+							<span>0% salary (all dividends)</span>
+							<span>100% salary</span>
+						</div>
 						<p className="mt-1 text-sm text-muted">
 							Cyprus corporate tax: 15% on profits (2026). Non-dom: no SDC (17%)
 							on dividends.
