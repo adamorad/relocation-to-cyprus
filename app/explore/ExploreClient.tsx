@@ -166,21 +166,32 @@ function stem(w: string): string {
 	return w;
 }
 
-function tokenize(text: string): string[] {
+/** Lower-case, strip accents and punctuation, split into raw words (no stemming). */
+function rawTokens(text: string): string[] {
 	return text
 		.normalize("NFD")
 		.replace(/[\u0300-\u036f]/g, "")
 		.toLowerCase()
 		.replace(/[^a-z0-9]+/g, " ")
 		.split(" ")
-		.filter(Boolean)
-		.map(stem);
+		.filter(Boolean);
 }
 
-/** Every query word must match (as a substring) a stemmed word in one of the fields. */
+/**
+ * Every query word must match a word in one of the fields. A query word matches
+ * as a substring of the raw word (so prefixes like "movi" find "Moving") or of
+ * the stemmed word (so "pharmacies" finds "pharmacy").
+ */
 function matches(words: string[], fields: string[]): boolean {
-	const hay = tokenize(fields.join(" "));
-	return words.every((w) => hay.some((t) => t.includes(w)));
+	const hay = rawTokens(fields.join(" "));
+	const stemmed = hay.map(stem);
+	return words.every((w) => {
+		const sw = stem(w);
+		return (
+			hay.some((t) => t.includes(w) || t.includes(sw)) ||
+			stemmed.some((t) => t.includes(sw))
+		);
+	});
 }
 
 export default function ExploreClient() {
@@ -193,7 +204,7 @@ export default function ExploreClient() {
 	}, [searchParams]);
 
 	const q = query.trim().toLowerCase();
-	const words = tokenize(q);
+	const words = rawTokens(q);
 
 	const results: SearchResult[] =
 		q.length < 2 || words.length === 0
