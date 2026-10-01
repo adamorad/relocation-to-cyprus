@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useId, useMemo, useState } from "react";
 
 interface Inputs {
 	monthlyRent: number;
@@ -138,13 +138,18 @@ function NumInput({
 	max?: number;
 	step?: number;
 }) {
+	const id = useId();
 	return (
 		<div className="flex flex-col gap-1">
-			<label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
+			<label
+				htmlFor={id}
+				className="text-xs font-semibold text-slate-600 uppercase tracking-wide"
+			>
 				{label}
 			</label>
 			<div className="flex items-center gap-2 border border-line rounded-xl px-3 py-2 bg-white focus-within:border-focus focus-within:ring-2 focus-within:ring-focus">
 				<input
+					id={id}
 					type="number"
 					value={value}
 					min={min}

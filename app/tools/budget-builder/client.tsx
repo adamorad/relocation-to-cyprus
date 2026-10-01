@@ -1,7 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
+import { ToolPanel } from "@/components/templates/ToolTemplate";
+import { Callout } from "@/components/ui/Callout";
+import { ChipGroup, type ChipOption } from "@/components/ui/Chip";
+import { DataTable, StatCard } from "@/components/ui/DataTable";
 
 type City = "Limassol" | "Paphos" | "Larnaca" | "Ayia Napa";
 type Household = "Solo" | "Couple" | "Family";
@@ -66,12 +69,12 @@ const HEALTHCARE_PER_PERSON: Record<Lifestyle, number> = {
 
 const CITY_TIPS: Record<City, string> = {
 	Limassol:
-		"Cyprus's most cosmopolitan city — higher rents but the strongest expat infrastructure.",
+		"Cyprus's most cosmopolitan city, with higher rents but the strongest expat infrastructure.",
 	Paphos:
 		"Best value on the coast. Slower pace, smaller expat scene, great for families.",
 	Larnaca: "Most affordable city with an international airport. Up-and-coming.",
 	"Ayia Napa":
-		"Resort town — summer prices spike, off-season bargains available.",
+		"Resort town: summer prices spike, off-season bargains available.",
 };
 
 function personCount(household: Household): number {
@@ -91,44 +94,6 @@ function formatEur(value: number): string {
 		minimumFractionDigits: 0,
 		maximumFractionDigits: 0,
 	}).format(value);
-}
-
-type PillGroupProps<T extends string> = {
-	label: string;
-	options: T[];
-	value: T;
-	onChange: (v: T) => void;
-	labelMap?: Partial<Record<T, string>>;
-};
-
-function PillGroup<T extends string>({
-	label,
-	options,
-	value,
-	onChange,
-	labelMap,
-}: PillGroupProps<T>) {
-	return (
-		<div>
-			<p className="text-sm font-medium text-slate-700 mb-2">{label}</p>
-			<div className="flex flex-wrap gap-2">
-				{options.map((opt) => (
-					<button
-						key={opt}
-						type="button"
-						onClick={() => onChange(opt)}
-						className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-colors ${
-							value === opt
-								? "bg-primary text-white border-primary"
-								: "bg-white text-slate-600 border-line hover:border-primary hover:text-ink"
-						}`}
-					>
-						{labelMap?.[opt] ?? opt}
-					</button>
-				))}
-			</div>
-		</div>
-	);
 }
 
 type BudgetRow = { label: string; amount: number };
@@ -167,169 +132,88 @@ export default function BudgetBuilderClient() {
 	const total = rows.reduce((s, r) => s + r.amount, 0);
 
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="tool"
-			className="max-w-3xl mx-auto px-6 py-10 md:py-16"
-		>
-			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-ink">
-					Home
-				</Link>{" "}
-				›{" "}
-				<Link href="/tools/" className="hover:text-ink">
-					Tools
-				</Link>{" "}
-				› <span className="text-ink">Monthly Budget Builder</span>
-			</nav>
-
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
-					Interactive Tool
-				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Cyprus Monthly Budget Builder
-				</h1>
-				<p className="mt-3 text-slate-600 leading-relaxed">
-					Estimate your monthly living costs in Cyprus. Adjust the options below
-					and the budget updates instantly.
-				</p>
-			</header>
-
-			{/* Inputs */}
-			<div className="bg-white border border-line rounded-2xl p-6 mb-6 space-y-5">
-				<h2 className="text-sm font-semibold text-ink uppercase tracking-wider">
-					Your Situation
-				</h2>
-
-				<PillGroup
+		<>
+			<ToolPanel title="Your situation">
+				<ChipGroup
 					label="City"
-					options={["Limassol", "Paphos", "Larnaca", "Ayia Napa"] as City[]}
+					options={opts([
+						"Limassol",
+						"Paphos",
+						"Larnaca",
+						"Ayia Napa",
+					] as City[])}
 					value={city}
 					onChange={setCity}
 				/>
-
-				<PillGroup
+				<ChipGroup
 					label="Household"
-					options={["Solo", "Couple", "Family"] as Household[]}
+					options={opts(["Solo", "Couple", "Family"] as Household[], {
+						Family: "Family with kids",
+					})}
 					value={household}
 					onChange={setHousehold}
-					labelMap={{ Family: "Family with kids" }}
 				/>
-
-				<PillGroup
+				<ChipGroup
 					label="Transport"
-					options={["Own car", "No car", "Motorbike"] as Transport[]}
+					options={opts(["Own car", "No car", "Motorbike"] as Transport[], {
+						"No car": "No car / taxis",
+					})}
 					value={transport}
 					onChange={setTransport}
-					labelMap={{ "No car": "No car / taxis" }}
 				/>
-
-				<PillGroup
+				<ChipGroup
 					label="Dining"
-					options={["Home-cooked", "Mix", "Restaurants"] as Dining[]}
-					value={dining}
-					onChange={setDining}
-					labelMap={{
+					options={opts(["Home-cooked", "Mix", "Restaurants"] as Dining[], {
 						"Home-cooked": "Mostly home-cooked",
 						Restaurants: "Mostly restaurants",
-					}}
+					})}
+					value={dining}
+					onChange={setDining}
 				/>
-
-				<PillGroup
+				<ChipGroup
 					label="Lifestyle tier"
-					options={["Budget", "Comfortable", "Luxury"] as Lifestyle[]}
+					options={opts(["Budget", "Comfortable", "Luxury"] as Lifestyle[])}
 					value={lifestyle}
 					onChange={setLifestyle}
 				/>
-			</div>
+			</ToolPanel>
 
-			{/* City tip */}
-			<div className="mb-6 px-4 py-3 bg-sky border border-line rounded-2xl text-sm text-ink">
-				<span className="font-semibold">{city}: </span>
+			<Callout tone="info" title={city}>
 				{CITY_TIPS[city]}
-			</div>
+			</Callout>
 
-			{/* Budget table */}
-			<div className="bg-white border border-line rounded-2xl overflow-hidden mb-6">
-				<div className="px-5 py-3 bg-slate-50 border-b border-line">
-					<h2 className="text-sm font-semibold text-slate-700 uppercase tracking-wider">
-						Monthly Budget Breakdown
-					</h2>
-				</div>
-				<table className="w-full text-sm">
-					<thead>
-						<tr className="border-b border-slate-100">
-							<th className="text-left px-5 py-2 font-medium text-slate-500 text-xs">
-								Category
-							</th>
-							<th className="text-right px-5 py-2 font-medium text-slate-500 text-xs">
-								Est. / month
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						{rows.map((row) => (
-							<tr
-								key={row.label}
-								className="border-b border-slate-50 hover:bg-slate-50 transition-colors"
-							>
-								<td className="px-5 py-3 text-slate-700">{row.label}</td>
-								<td className="px-5 py-3 text-right font-medium text-ink">
-									{formatEur(row.amount)}
-								</td>
-							</tr>
-						))}
-					</tbody>
-					<tfoot>
-						<tr className="bg-primary/10 border-t-2 border-primary">
-							<td className="px-5 py-4 font-bold text-ink text-base">Total</td>
-							<td className="px-5 py-4 text-right font-bold text-ink text-base">
-								{formatEur(total)}
-							</td>
-						</tr>
-					</tfoot>
-				</table>
-			</div>
-
-			{/* Next steps */}
-			<aside className="mb-6 p-5 rounded-2xl bg-sky border border-line">
-				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-					Next steps
-				</p>
-				<div className="flex flex-wrap gap-3">
-					<Link
-						href="/tools/rent-vs-buy-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Rent vs Buy Calculator
-					</Link>
-					<Link
-						href="/guides/cost-of-living/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Cost of Living Guide
-					</Link>
-				</div>
-			</aside>
-
-			<aside className="mb-8 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
-				<p className="font-semibold text-ink mb-1">Disclaimer</p>
-				<p>
-					Figures are indicative estimates based on typical costs as of 2025.
-					Actual costs vary by neighbourhood, landlord, season, and personal
-					habits. This tool is for planning purposes only and is not financial
-					advice. Always verify current market rates locally.
-				</p>
-			</aside>
-
-			<p className="mt-2 text-xs text-slate-500">
-				<Link href="/tools/" className="underline hover:text-ink">
-					← Back to Tools
-				</Link>
-			</p>
-		</main>
+			<section aria-labelledby="budget-results" className="space-y-4">
+				<h2
+					id="budget-results"
+					className="text-2xl font-bold tracking-tight text-ink"
+				>
+					Monthly budget breakdown
+				</h2>
+				<StatCard
+					highlight
+					label="Estimated monthly total"
+					value={formatEur(total)}
+					hint={`${city} · ${household === "Family" ? "Family with kids" : household} · ${lifestyle}`}
+				/>
+				<DataTable
+					caption="Estimated monthly costs by category"
+					hideCaption
+					columns={[
+						{ header: "Category" },
+						{ header: "Est. / month", align: "right" },
+					]}
+					rows={rows.map((row) => [row.label, formatEur(row.amount)])}
+					footer={["Total", formatEur(total)]}
+					zebra
+				/>
+			</section>
+		</>
 	);
+}
+
+function opts<T extends string>(
+	values: T[],
+	labels: Partial<Record<T, string>> = {},
+): ChipOption<T>[] {
+	return values.map((v) => ({ value: v, label: labels[v] ?? v }));
 }

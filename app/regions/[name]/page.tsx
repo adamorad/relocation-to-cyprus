@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { RelatedContent } from "@/components/RelatedContent";
+import { CityTemplate } from "@/components/templates/CityTemplate";
+import { ButtonLink } from "@/components/ui/Button";
+import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
+import { Section } from "@/components/ui/Section";
 import { listingsForRegion } from "@/lib/listings";
 import { REGIONS, regionBySlug } from "@/lib/regions";
 
@@ -20,11 +22,11 @@ export async function generateMetadata({
 	const r = regionBySlug(name);
 	if (!r) return {};
 	return {
-		title: `${r.name} new developments — buy or relocate to ${r.name}, Cyprus`,
+		title: `${r.name} new developments: buy or relocate to ${r.name}, Cyprus`,
 		description: r.oneLiner + " " + r.intro.slice(0, 120) + "…",
 		alternates: { canonical: `/regions/${r.slug}/` },
 		openGraph: {
-			title: `${r.name} — Cyprus new developments`,
+			title: `${r.name}: Cyprus new developments`,
 			description: r.oneLiner,
 			url: `${SITE_URL}/regions/${r.slug}/`,
 			type: "website",
@@ -43,7 +45,7 @@ export default async function RegionPage({
 	const { name } = await params;
 	const r = regionBySlug(name);
 	if (!r) notFound();
-	const listings = listingsForRegion(r.name).slice(0, 24);
+	const listingCount = listingsForRegion(r.name).length;
 
 	const articleJsonLd = {
 		"@context": "https://schema.org",
@@ -58,142 +60,118 @@ export default async function RegionPage({
 			"@id": `${SITE_URL}/regions/${r.slug}/`,
 		},
 	};
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Map", item: `${SITE_URL}/` },
-			{ "@type": "ListItem", position: 2, name: r.name },
-		],
-	};
+	const toId = (h: string) =>
+		h
+			.toLowerCase()
+			.replace(/[^a-z0-9]+/g, "-")
+			.replace(/^-|-$/g, "");
+	const relatedGuides = [
+		{
+			href: "/guides/best-areas-to-live-cyprus/",
+			title: "Best areas to live in Cyprus",
+			desc: "Compare cities and neighbourhoods",
+		},
+		{
+			href: "/guides/buying-vs-renting-cyprus/",
+			title: "Buying vs renting in Cyprus",
+			desc: "Which makes financial sense",
+		},
+		{
+			href: "/guides/cost-of-living/",
+			title: "Cost of living in Cyprus",
+			desc: "Monthly budgets by city",
+		},
+		{
+			href: "/guides/banking-in-cyprus/",
+			title: "Opening a bank account",
+			desc: "Banking as a new resident",
+		},
+	];
+	const relatedTools = [
+		{ href: "/tools/rent-vs-buy-calculator/", title: "Rent vs buy calculator" },
+		{ href: "/tools/city-comparison/", title: "Compare cities" },
+		{
+			href: "/tools/relocation-cost-calculator/",
+			title: "Relocation cost calculator",
+		},
+	];
 
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="city"
-			className="max-w-4xl mx-auto px-6 py-10"
+		<CityTemplate
+			pagefindType="city"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Regions", href: "/regions/" },
+					{ label: r.name },
+				],
+				eyebrow: "Region guide",
+				title: `${r.name}, Cyprus`,
+				intro: r.oneLiner,
+			}}
+			contents={[
+				...r.sections.map((s) => ({ id: toId(s.heading), label: s.heading })),
+				{ id: "new-developments", label: "New developments" },
+				{ id: "planning", label: "Planning your move" },
+			]}
+			cta={
+				<Section
+					id="new-developments"
+					title={`New developments in ${r.name}`}
+					description={
+						listingCount > 0
+							? `${listingCount} new-build developments are listed in ${r.name}.`
+							: undefined
+					}
+				>
+					<ButtonLink href="/listings/" size="lg">
+						New developments in {r.name}
+					</ButtonLink>
+				</Section>
+			}
+			related={
+				<div data-pagefind-ignore>
+					<Section
+						id="planning"
+						title={`Planning your move to ${r.name}?`}
+						description="Guides and tools to help you decide where to live and what to buy."
+					>
+						<CardGrid cols={2}>
+							{relatedGuides.map((g) => (
+								<CardGridItem key={g.href}>
+									<Card
+										variant="text"
+										href={g.href}
+										title={g.title}
+										text={g.desc}
+									/>
+								</CardGridItem>
+							))}
+						</CardGrid>
+						<div className="mt-5 flex flex-wrap gap-3">
+							{relatedTools.map((t) => (
+								<ButtonLink key={t.href} href={t.href} variant="secondary">
+									{t.title}
+								</ButtonLink>
+							))}
+						</div>
+					</Section>
+				</div>
+			}
 		>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
 				dangerouslySetInnerHTML={{
-					__html: JSON.stringify([articleJsonLd, breadcrumbJsonLd]),
+					__html: JSON.stringify(articleJsonLd),
 				}}
 			/>
-			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-ink">
-					Home
-				</Link>{" "}
-				› <span className="text-ink">{r.name}</span>
-			</nav>
-
-			<header>
-				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
-					Region guide
-				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					{r.name}, Cyprus
-				</h1>
-				<p className="mt-3 text-lg text-slate-700">{r.oneLiner}</p>
-			</header>
-
-			<section className="mt-8 prose prose-slate max-w-none">
-				<p className="text-slate-700 leading-relaxed">{r.intro}</p>
-				{r.sections.map((s) => (
-					<div key={s.heading} className="mt-6">
-						<h2 className="text-xl font-bold text-ink mb-2">{s.heading}</h2>
-						<p className="text-slate-700 leading-relaxed">{s.body}</p>
-					</div>
-				))}
-			</section>
-
-			{listings.length > 0 ? (
-				<section className="mt-10">
-					<h2 className="text-xl font-bold text-ink mb-4">
-						New developments in {r.name} ({listingsForRegion(r.name).length})
-					</h2>
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-						{listings.map((l) => (
-							<Link
-								key={l.slug}
-								href={`/listings/${l.slug}/`}
-								className="block rounded-2xl border border-line bg-white hover:border-primary hover:shadow-sm transition-all overflow-hidden"
-							>
-								{l.images?.[0] ? (
-									<div className="aspect-[16/9] bg-sky overflow-hidden">
-										<img
-											// biome-ignore lint/performance/noImgElement: static export
-											src={`${l.images[0]}`}
-											alt={l.title}
-											className="w-full h-full object-cover"
-											loading="lazy"
-										/>
-									</div>
-								) : null}
-								<div className="p-3">
-									<div className="font-semibold text-sm text-ink line-clamp-2">
-										{l.title}
-									</div>
-									<div className="text-xs text-slate-600 mt-0.5 truncate">
-										{l.location ?? r.name}
-									</div>
-									<div className="text-primary text-sm font-semibold mt-1.5">
-										{l.priceRange ?? "—"}
-									</div>
-								</div>
-							</Link>
-						))}
-					</div>
-				</section>
-			) : null}
-
-			<RelatedContent
-				heading={`Planning your move to ${r.name}?`}
-				blurb="Guides and tools to help you decide where to live and what to buy."
-				guides={[
-					{
-						href: "/guides/best-areas-to-live-cyprus/",
-						title: "Best areas to live in Cyprus",
-						desc: "Compare cities and neighbourhoods",
-					},
-					{
-						href: "/guides/buying-vs-renting-cyprus/",
-						title: "Buying vs renting in Cyprus",
-						desc: "Which makes financial sense",
-					},
-					{
-						href: "/guides/cost-of-living/",
-						title: "Cost of living in Cyprus",
-						desc: "Monthly budgets by city",
-					},
-					{
-						href: "/guides/banking-in-cyprus/",
-						title: "Opening a bank account",
-						desc: "Banking as a new resident",
-					},
-				]}
-				tools={[
-					{
-						href: "/tools/rent-vs-buy-calculator/",
-						title: "Rent vs buy calculator",
-					},
-					{ href: "/tools/city-comparison/", title: "Compare cities" },
-					{
-						href: "/tools/relocation-cost-calculator/",
-						title: "Relocation cost calculator",
-					},
-				]}
-				emailSource="region"
-				emailRegion={r.name}
-			/>
-
-			<p className="mt-10 text-xs text-slate-600">
-				<Link href="/" className="underline hover:text-ink">
-					Back to home
-				</Link>
-			</p>
-		</main>
+			<p className="text-lg leading-relaxed text-ink">{r.intro}</p>
+			{r.sections.map((s) => (
+				<Section key={s.heading} id={toId(s.heading)} title={s.heading}>
+					<p className="text-base leading-relaxed text-ink">{s.body}</p>
+				</Section>
+			))}
+		</CityTemplate>
 	);
 }

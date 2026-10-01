@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import BudgetBuilderClient from "./client";
 
 const SITE_URL = "https://realcy.app";
-const title = "Cyprus Monthly Cost of Living Calculator 2026 — Budget by City";
+const title = "Cyprus Monthly Cost of Living Calculator 2026: Budget by City";
 const description =
-	"Build a realistic monthly budget for living in Cyprus — choose your city (Limassol, Paphos, Larnaca, Ayia Napa), household size, and lifestyle. Rent, food, transport, and health insurance with 2026 market prices.";
+	"Build a realistic monthly budget for living in Cyprus: choose your city (Limassol, Paphos, Larnaca, Ayia Napa), household size, and lifestyle. Rent, food, transport, and health insurance with 2026 market prices.";
 
 export const metadata: Metadata = {
 	title,
@@ -20,27 +21,31 @@ export const metadata: Metadata = {
 };
 
 export default function BudgetBuilderPage() {
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Tools",
-				item: `${SITE_URL}/tools/`,
-			},
-			{ "@type": "ListItem", position: 3, name: title },
-		],
-	};
 	return (
-		<>
-			<script
-				type="application/ld+json"
-				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-			/>
+		<ToolTemplate
+			pagefindType="tool"
+			width="reading"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Tools", href: "/tools/" },
+					{ label: "Monthly Budget Builder" },
+				],
+				eyebrow: "Interactive tool",
+				title: "Cyprus Monthly Budget Builder",
+				intro:
+					"Estimate your monthly living costs in Cyprus. Adjust the options below and the budget updates instantly.",
+			}}
+			nextSteps={[
+				{
+					href: "/tools/rent-vs-buy-calculator/",
+					label: "Rent vs Buy Calculator",
+				},
+				{ href: "/guides/cost-of-living/", label: "Cost of Living Guide" },
+				{ href: "/tools/", label: "All tools" },
+			]}
+			disclaimer="Figures are indicative estimates based on typical costs as of 2025. Actual costs vary by neighbourhood, landlord, season, and personal habits. This tool is for planning purposes only and is not financial advice. Always verify current market rates locally."
+		>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
@@ -49,6 +54,6 @@ export default function BudgetBuilderPage() {
 				}}
 			/>
 			<BudgetBuilderClient />
-		</>
+		</ToolTemplate>
 	);
 }
