@@ -135,6 +135,16 @@
       "source": "/guides/corporate-bank-account-guide",
       "destination": "/guides/banking-in-cyprus/",
       "permanent": true
+    },
+    {
+      "source": "/guides/off-plan-buying-guide/",
+      "destination": "/guides/new-development-buying-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/off-plan-buying-guide",
+      "destination": "/guides/new-development-buying-guide/",
+      "permanent": true
     }
   ]
 }

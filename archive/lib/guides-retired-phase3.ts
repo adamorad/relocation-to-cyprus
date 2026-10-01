@@ -210,4 +210,40 @@ export const RETIRED_GUIDES = [
 			},
 		],
 	},
+	// off-plan-buying-guide -> /guides/new-development-buying-guide/
+	{
+		slug: "off-plan-buying-guide",
+		datePublished: "2026-05-29",
+		dateModified: "2026-07-05",
+		category: "property",
+		title: "Buying Off-Plan Property in Cyprus 2026",
+		description:
+			"Independent guide to buying off-plan in Cyprus: vet developers, protect your deposit, secure title deeds, understand payment schedules, and avoid common delays.",
+		sections: [
+			{
+				heading: "What 'off-plan' means and the typical payment structure",
+				body: "Buying off-plan means purchasing a property before it is built — or during construction — based on architectural plans, a show apartment, and a legal description of what will be delivered. The buyer pays in stages as construction progresses rather than in full at completion. The typical Cyprus off-plan payment structure: 20–30% deposit at contract signing (this is the amount most at risk if the developer fails), 40–50% paid in stage payments tied to construction milestones (slab pour, structural completion, internal fit-out), and a final 10–20% at handover. The appeal of off-plan over resale is price: off-plan properties in Cyprus are typically priced 15–25% below the equivalent completed unit, and buyers who purchase early in a development's lifecycle sometimes benefit from price appreciation by the time the building completes. The risk is delivery: construction delays of 12–24 months are common, and some projects have been delayed by 3–5 years or stalled entirely. Cyprus has no mandatory escrow, so the stages paid before completion sit in the developer's accounts, not in a protected fund. This guide focuses on how to buy off-plan safely — specifically, how to maximise protection on the 60–80% of the purchase price paid before you have keys in your hand.",
+			},
+			{
+				heading: "Vetting the developer before you sign anything",
+				body: "The developer's track record is the single most important variable in an off-plan purchase — more than the location, the floor plan, or the price. Cyprus has no mandatory developer licensing in the way some jurisdictions do, but you can verify a development's legitimacy through several sources. First, confirm the Department of Lands and Surveys has issued a building permit and, for larger schemes, a planning permission for the specific development you are buying into. Request copies of both documents from the developer; if they refuse or stall, that is a significant warning sign. Second, search the developer's corporate registry record at the Registrar of Companies (mygov.cy) — check when the company was incorporated, who the directors are, and whether the company has filed accounts. Third, look at the developer's completed projects: visit or drive past buildings they have delivered in the past five years. Talk to residents where possible. A developer who delivered their last project three years late and never transferred title deeds has told you everything you need to know.",
+			},
+			{
+				heading: "Escrow requirements and protecting your deposit",
+				body: "Cyprus law does not currently mandate escrow for off-plan purchases, which means your deposit and stage payments are paid directly to the developer and are at risk if the developer becomes insolvent during construction. This is the most significant financial risk in off-plan buying in Cyprus, and it is one that most buyers underestimate until a project stalls. Practical protections you can negotiate: require that stage payments are held in a dedicated client account by the developer's lawyer (not the developer's operating account) until each milestone is certified by an independent architect; negotiate a bank guarantee from the developer's construction lender, which releases the deposit back to you if the project is not completed by a longstop date; insist on deposit insurance where available (some larger developers offer this through insurance partners). If the developer will not agree to any form of deposit protection, price that risk into your decision — or walk away.",
+			},
+			{
+				heading: "Planning permission documents to demand",
+				body: "Before you sign, obtain certified copies (not photocopies) of: the Town Planning Permit (issued by the local municipality or district planning authority), which defines what can be built and the permitted density; the Building Permit (issued by the DLS), which authorises the specific construction; and the Title of Registration for the land, confirming the developer legally owns or has the right to build on the plot. In some cases the developer will be building on land they own outright; in others, the land is held by a related entity or is still being purchased under a vendor mortgage. The latter creates title deed risk for you. Your lawyer should trace the ownership chain back to a clean title — if they cannot, the risk profile rises sharply. Also request a copy of the architectural plans (floor plan, elevations) that are annexed to the planning permission. These define the legal dimensions of what you are buying; any deviation at delivery gives you a claim against the developer.",
+			},
+			{
+				heading: "Title deed timeline for new builds",
+				body: "For a new build purchased off-plan and completed today, the typical timeline from completion to individual title deed is 3–5 years. The process is: developer applies for final planning approval (Certificate of Final Approval) after construction completes → local planning authority inspects and issues certificate (typically 6–18 months) → developer applies to DLS to subdivide the plot and register individual unit titles (typically 1–3 years) → individual title deeds issued to each unit. Delays occur at almost every step. The developer may not apply promptly if they are managing cash flow from multiple projects; the planning authority may request remediation of deviations from the original permit; the DLS subdivision process can stall if the developer's mortgage has not been cleared. Contract clauses requiring the developer to apply for each step within defined timeframes, with financial penalties for delay, are the only practical protection. Some buyers in well-structured contracts have received their title deeds within 18 months of completion; others are still waiting after eight years.",
+			},
+			{
+				heading: "Common completion delay scenarios",
+				body: "Understanding why Cyprus off-plan projects run late helps you build appropriate contractual protections. The most common causes: financing gaps, where the developer's construction loan is drawn against sales revenue and slow sales on other units in the project pauses construction on yours; subcontractor problems, particularly for fit-out trades (tiling, plumbing, electrical) where the island has chronic capacity constraints in peak development cycles; material price escalation, which has affected nearly every Cyprus project started since 2021 given the construction inflation in the post-COVID period; and planning deviation issues, where the developer built something that does not exactly match the approved plans and must either apply for an amendment or remediate. Force majeure clauses in Cyprus property contracts are broadly drafted and developers use them liberally; your counter is to define a longstop date after which you can withdraw and recover your deposit regardless of the cause of delay. Typical longstop is 24 months beyond the contractual completion date. Negotiate this before you sign.",
+			},
+		],
+	},
 ];

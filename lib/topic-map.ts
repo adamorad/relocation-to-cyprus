@@ -327,11 +327,6 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 		also: ["money-and-paperwork"],
 		why: "Buyers here are mostly people moving; the Property area comes in Phase 4.",
 	},
-	"off-plan-buying-guide": {
-		topic: "moving-here",
-		also: ["money-and-paperwork"],
-		why: "Property buying; parked in Moving to Cyprus until the Phase 4 Property area.",
-	},
 	"new-development-buying-guide": {
 		topic: "moving-here",
 		also: ["money-and-paperwork"],

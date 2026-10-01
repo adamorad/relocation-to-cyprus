@@ -13,12 +13,12 @@ Decisions were made on the owner's behalf in Phase 2A and are open for review. R
 | Health | `/health/` | 7 | 3 | 1 | 11 | 12 |
 | Getting around | `/getting-around/` | 8 | 2 | 2 | 12 | 11 |
 | Home & bills | `/home-and-bills/` | 7 | 3 | 3 | 13 | 17 |
-| Money & paperwork | `/money-and-paperwork/` | 21 | 4 | 13 | 38 | 58 |
+| Money & paperwork | `/money-and-paperwork/` | 21 | 4 | 13 | 38 | 57 |
 | Food & shopping | `/food-and-shopping/` | 5 | 5 | 0 | 10 | 11 |
 | Family & schools | `/family-and-schools/` | 7 | 3 | 1 | 11 | 13 |
 | Community & leisure | `/community-and-leisure/` | 5 | 9 | 2 | 16 | 21 |
-| Moving to Cyprus | `/moving-to-cyprus/` | 21 | 2 | 9 | 32 | 59 |
-| **All** | | 81 | 31 | 31 | 143 | |
+| Moving to Cyprus | `/moving-to-cyprus/` | 20 | 2 | 9 | 31 | 58 |
+| **All** | | 80 | 31 | 31 | 142 | |
 
 Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). They keep a topic for their own breadcrumb and "More on" block but are not shown on hubs, indexes, other pages or the sitemap.
 
@@ -100,7 +100,6 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Moving to Cyprus from the UK After Brexit: 2026 Guide](/guides/moving-to-cyprus-from-uk/) | Moving to Cyprus |  |  |  |
 | [Moving to Cyprus With Pets: Import Rules 2026](/guides/moving-to-cyprus-with-pets/) | Moving to Cyprus |  |  | Pet import rules apply once, at the move; vets are in Health. |
 | [Buying a New Development in Cyprus 2026](/guides/new-development-buying-guide/) | Moving to Cyprus | Money & paperwork |  | Property buying; parked in Moving to Cyprus until the Phase 4 Property area. |
-| [Buying Off-Plan Property in Cyprus 2026](/guides/off-plan-buying-guide/) | Moving to Cyprus | Money & paperwork |  | Property buying; parked in Moving to Cyprus until the Phase 4 Property area. |
 | [Property Lawyers in Cyprus 2026: Fees & Guide](/guides/property-lawyers-cyprus/) | Moving to Cyprus | Money & paperwork |  | Property buying; parked in Moving to Cyprus until the Phase 4 Property area. |
 | [Cyprus Residency Visas 2026: All Routes Compared](/guides/residency-and-visas/) | Moving to Cyprus |  |  |  |
 | [Retiring in Cyprus 2026: Full Expat Guide](/guides/retiring-in-cyprus/) | Moving to Cyprus |  |  |  |
