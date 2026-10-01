@@ -421,7 +421,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 		property: [
 			{
 				heading: "Who buys in the south-east",
-				body: "The Famagusta free area has the smallest year-round expat community of any region on this map, but a disproportionately committed one. The dominant group is British: a generation of buyers who came in the 1990s and 2000s and built up a tight social network around the golf at Aphrodite Hills, the Protaras seafront and the inland villages. Lebanese families with summer homes have become a year-round presence since the 2019–2024 instability in Beirut, and Israeli families are now the fastest-growing inbound segment, generally choosing Protaras over Ayia Napa proper for the slightly more residential feel.",
+				body: "The Famagusta free area has the smallest year-round expat community of any region on this map, but a disproportionately committed one. The dominant group is British: a generation of buyers who came in the 1990s and 2000s and built up a tight social network around the Protaras seafront and the inland villages. Lebanese families with summer homes have become a year-round presence since the 2019–2024 instability in Beirut, and Israeli families are now the fastest-growing inbound segment, generally choosing Protaras over Ayia Napa proper for the slightly more residential feel.",
 			},
 			{
 				heading: "What new developments here look like",
