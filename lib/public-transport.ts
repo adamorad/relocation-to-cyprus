@@ -2,7 +2,7 @@
  * Public Transport section content.
  *
  * Cyprus is a car-dominant country. Public transport exists but is limited
- * in frequency, coverage, and reliability — especially outside the main
+ * in frequency, coverage, and reliability, especially outside the main
  * cities. This file summarises what is available city by city and sets
  * realistic expectations for relocators.
  *
@@ -62,7 +62,7 @@ export const TRANSPORT_INFO: Record<City, TransportInfo> = {
 
   Paphos: {
     city: "Paphos",
-    intercityBus: "OSYPA (intercity): 1–2 per hour to Limassol (€4, ~1h). No direct Paphos–Larnaca intercity bus — change at Limassol.",
+    intercityBus: "OSYPA (intercity): 1–2 per hour to Limassol (€4, ~1h). No direct Paphos–Larnaca intercity bus. Change at Limassol.",
     intraCityBus: "OSPA (intra-city): smaller network than Limassol. Covers Kato Paphos, Paphos town centre, and Chlorakas. Frequency: every 30–60 minutes. Service ends ~20:00. Patchy suburban coverage.",
     taxiApp: "Bolt operates in Paphos with reasonable coverage. Local taxi firms available for airport transfers. Paphos Airport to Kato Paphos is approximately €20–€25 by metered taxi.",
     boltAvailable: true,
@@ -144,7 +144,7 @@ export const TRANSPORT_TIPS: ReadonlyArray<TransportTip> = [
   },
   {
     heading: "Taxi fixed airport rates",
-    body: "Taxis from Larnaca and Paphos airports use fixed-rate zones — ask for the rate card before getting in. Larnaca Airport to central Larnaca is €15–€20; to Limassol ~€55. Paphos Airport to Kato Paphos is ~€20; to Limassol ~€45.",
+    body: "Taxis from Larnaca and Paphos airports use fixed-rate zones: ask for the rate card before getting in. Larnaca Airport to central Larnaca is €15–€20; to Limassol ~€55. Paphos Airport to Kato Paphos is ~€20; to Limassol ~€45.",
   },
   {
     heading: "The intercity bus network is good value",

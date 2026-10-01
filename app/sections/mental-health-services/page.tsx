@@ -6,7 +6,7 @@ import MentalHealthServicesClient from "./client";
 const SITE_URL = "https://realcy.app";
 const title = "Mental Health Services in Cyprus — Private Clinics & Therapists";
 const description =
-	"Private mental health clinics in Cyprus — vetted English-speaking therapists and psychiatrists across Limassol, Paphos & Larnaca.";
+	"Private mental health clinics in Cyprus: vetted English-speaking therapists and psychiatrists across Limassol, Paphos & Larnaca.";
 
 export const metadata: Metadata = {
 	title,

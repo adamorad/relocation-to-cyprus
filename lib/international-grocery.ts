@@ -52,7 +52,7 @@ export type Specialty = (typeof ALL_SPECIALTIES)[number];
 export const GROCERY_TIPS: ReadonlyArray<GroceryTip> = [
   {
     heading: "Larnaca for Middle Eastern products",
-    body: "Larnaca has the strongest selection of Middle Eastern and Arabic food products, driven by its large Arab expat and Lebanese-Cypriot communities. Lebanese, Syrian, and Egyptian pantry staples — tahini, pomegranate molasses, freekeh, dried limes, halal spices — are most reliably stocked here.",
+    body: "Larnaca has the strongest selection of Middle Eastern and Arabic food products, driven by its large Arab expat and Lebanese-Cypriot communities. Lebanese, Syrian, and Egyptian pantry staples (tahini, pomegranate molasses, freekeh, dried limes, halal spices) are most reliably stocked here.",
   },
   {
     heading: "Limassol has the best Asian range",

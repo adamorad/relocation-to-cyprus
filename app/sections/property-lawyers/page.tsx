@@ -6,7 +6,7 @@ import PropertyLawyersClient from "./client";
 const SITE_URL = "https://realcy.app";
 const title = "Property Lawyers in Cyprus — Vetted Directory";
 const description =
-	"Property lawyers in Cyprus for relocators — vetted conveyancing solicitors across Limassol, Paphos & Larnaca. Foreign buyer specialists.";
+	"Property lawyers in Cyprus for relocators: vetted conveyancing solicitors across Limassol, Paphos & Larnaca. Foreign buyer specialists.";
 
 export const metadata: Metadata = {
 	title,

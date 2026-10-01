@@ -6,7 +6,7 @@ import SpecialistDoctorsClient from "./client";
 const SITE_URL = "https://realcy.app";
 const title = "Specialist Doctors in Cyprus";
 const description =
-	"Specialist doctors in Cyprus for relocators — English-speaking consultants with GeSY & private options across Limassol, Paphos & Larnaca.";
+	"Specialist doctors in Cyprus for relocators: English-speaking consultants with GeSY & private options across Limassol, Paphos & Larnaca.";
 
 export const metadata: Metadata = {
 	title,

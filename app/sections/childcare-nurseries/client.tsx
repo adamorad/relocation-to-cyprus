@@ -128,7 +128,7 @@ export default function ChildcareNurseriesPage() {
 				</h1>
 				<p className="mt-3 text-base text-slate-600 leading-relaxed max-w-2xl">
 					English-speaking and bilingual nurseries across Limassol, Paphos
-					and Larnaca — with fees, age ranges and what makes each one
+					and Larnaca, with fees, age ranges and what makes each one
 					stand out for expat families.
 				</p>
 			</header>

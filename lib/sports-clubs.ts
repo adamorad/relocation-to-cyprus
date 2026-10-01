@@ -105,7 +105,7 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     level: "recreational",
     englishWelcome: true,
     annualFeeApprox: 480,
-    why: "Central Larnaca club with clay courts, coaching, and a welcoming social atmosphere. Smaller than the Limassol clubs but easier to integrate into — strong expat membership.",
+    why: "Central Larnaca club with clay courts, coaching, and a welcoming social atmosphere. Smaller than the Limassol clubs but easier to integrate into. Strong expat membership.",
   },
   {
     name: "Paphos Tennis Club",

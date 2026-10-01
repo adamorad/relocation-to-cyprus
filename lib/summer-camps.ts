@@ -197,6 +197,6 @@ export const SUMMER_CAMPS: ReadonlyArray<SummerCamp> = [
     ageTo: 16,
     weeklyFeeApprox: 210,
     languages: ["English", "Greek"],
-    why: "Based at Nissi Bay, Cyprus's most famous beach. Daily surf and SUP lessons, supervised snorkelling, beach volleyball. Smaller and more informal than the Limassol camps — good for families staying in the Ayia Napa area for the summer who want structured daily activity for their children.",
+    why: "Based at Nissi Bay, Cyprus's most famous beach. Daily surf and SUP lessons, supervised snorkelling, beach volleyball. Smaller and more informal than the Limassol camps. Good for families staying in the Ayia Napa area for the summer who want structured daily activity for their children.",
   },
 ];

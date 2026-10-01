@@ -196,6 +196,6 @@ export const IMMIGRATION_LAWYERS: ReadonlyArray<ImmigrationLawyer> = [
       "family-reunification",
     ],
     languages: ["English", "Greek", "Russian"],
-    why: "One of the few immigration specialists based in the Famagusta district — covers Ayia Napa, Protaras and Paralimni without the client needing to travel to Limassol for consultations. Handles Digital Nomad and work permit applications for the growing remote-worker community in east Cyprus.",
+    why: "One of the few immigration specialists based in the Famagusta district. Covers Ayia Napa, Protaras and Paralimni without the client needing to travel to Limassol for consultations. Handles Digital Nomad and work permit applications for the growing remote-worker community in east Cyprus.",
   },
 ];

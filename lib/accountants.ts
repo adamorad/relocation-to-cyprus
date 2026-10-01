@@ -164,6 +164,6 @@ export const ACCOUNTANTS: ReadonlyArray<Accountant> = [
     city: "Ayia Napa",
     specializations: ["expat-individual", "non-dom", "vat"],
     languages: ["English", "Greek", "Russian"],
-    why: "One of the few qualified ICPAC accountants based in Ayia Napa — avoids the need for east-coast residents to travel to Larnaca for routine filings. Handles non-dom individual returns, VAT registration for short-term rental operators, and standard expat compliance for the Famagusta district.",
+    why: "One of the few qualified ICPAC accountants based in Ayia Napa, which avoids the need for east-coast residents to travel to Larnaca for routine filings. Handles non-dom individual returns, VAT registration for short-term rental operators, and standard expat compliance for the Famagusta district.",
   },
 ];

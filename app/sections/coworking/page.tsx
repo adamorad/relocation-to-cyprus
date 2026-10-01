@@ -6,7 +6,7 @@ import CoworkingClient from "./client";
 const SITE_URL = "https://realcy.app";
 const title = "Coworking Spaces in Cyprus";
 const description =
-	"Coworking spaces in Cyprus for relocators — vetted venues across Limassol, Paphos & Larnaca. Day-pass prices, WiFi speeds & noise levels rated.";
+	"Coworking spaces in Cyprus for relocators: vetted venues across Limassol, Paphos & Larnaca. Day-pass prices, WiFi speeds & noise levels rated.";
 
 export const metadata: Metadata = {
 	title,

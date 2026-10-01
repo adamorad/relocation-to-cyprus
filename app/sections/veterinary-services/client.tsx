@@ -153,7 +153,7 @@ export default function VeterinaryServicesPage() {
 					</span>
 				</h1>
 				<p className="mt-4 text-base text-slate-700 leading-relaxed max-w-2xl">
-					English-friendly vet clinics across all four major cities — routine
+					English-friendly vet clinics across all four major cities, routine
 					care, emergency cover, specialist referrals, and exotic animal
 					services. Includes 24/7 emergency locations.
 				</p>

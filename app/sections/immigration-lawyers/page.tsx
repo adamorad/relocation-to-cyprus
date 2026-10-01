@@ -6,7 +6,7 @@ import ImmigrationLawyersClient from "./client";
 const SITE_URL = "https://realcy.app";
 const title = "Immigration Lawyers in Cyprus";
 const description =
-	"Immigration lawyers in Cyprus for relocators — specialists in digital nomad visas, PR by investment & work permits across Limassol & Paphos.";
+	"Immigration lawyers in Cyprus for relocators: specialists in digital nomad visas, PR by investment & work permits across Limassol & Paphos.";
 
 export const metadata: Metadata = {
 	title,

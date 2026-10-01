@@ -63,7 +63,7 @@ export const VET_TIPS: ReadonlyArray<VetTip> = [
   },
   {
     heading: "Emergency vet costs and what to expect",
-    body: "Out-of-hours emergency vet calls in Cyprus typically attract a call-out fee of €80–150 on top of treatment costs. Overnight monitoring can add €200–400 per night. Complex surgery (broken limb, gastric torsion, foreign body removal) runs €800–2,500 depending on complexity and the clinic. In Paphos and Larnaca, after-hours cover is patchy — keep the number of the nearest 24/7 clinic saved before you need it.",
+    body: "Out-of-hours emergency vet calls in Cyprus typically attract a call-out fee of €80–150 on top of treatment costs. Overnight monitoring can add €200–400 per night. Complex surgery (broken limb, gastric torsion, foreign body removal) runs €800–2,500 depending on complexity and the clinic. In Paphos and Larnaca, after-hours cover is patchy: keep the number of the nearest 24/7 clinic saved before you need it.",
   },
   {
     heading: "GeSY does not cover pets",
@@ -191,7 +191,7 @@ export const VET_CLINICS: ReadonlyArray<VetClinic> = [
     services: ["routine", "emergency", "dentistry"],
     englishSpoken: true,
     emergency24h: false,
-    why: "The main English-speaking veterinary practice serving Ayia Napa, Protaras, and the Paralimni area. Covers routine care and emergencies during extended hours. Out-of-hours on-call service — call the main number for direction.",
+    why: "The main English-speaking veterinary practice serving Ayia Napa, Protaras, and the Paralimni area. Covers routine care and emergencies during extended hours. Out-of-hours on-call service. Call the main number for direction.",
     phone: "+357 23 722 000",
   },
   {

@@ -55,7 +55,7 @@ export const GARDEN_TIPS: ReadonlyArray<GardenTip> = [
   },
   {
     heading: "Municipality pilot programmes are the entry point",
-    body: "Several Cyprus municipalities — particularly Limassol and Larnaca — have launched urban growing pilots in the last few years, often on underused public land. These are usually the easiest way to access an allotment plot as a new resident: fees are subsidised, waiting lists are shorter than private schemes, and the municipality provides basic infrastructure. Check directly with your municipality's environment or green-spaces department for current availability.",
+    body: "Several Cyprus municipalities (particularly Limassol and Larnaca) have launched urban growing pilots in the last few years, often on underused public land. These are usually the easiest way to access an allotment plot as a new resident: fees are subsidised, waiting lists are shorter than private schemes, and the municipality provides basic infrastructure. Check directly with your municipality's environment or green-spaces department for current availability.",
   },
   {
     heading: "Vertical gardens and balcony growing are increasingly common",

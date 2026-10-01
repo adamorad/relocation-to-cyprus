@@ -68,7 +68,7 @@ export const COMMUNITY_TIPS: ReadonlyArray<CommunityTip> = [
   },
   {
     heading: "In-person meetups are most active in Limassol",
-    body: "Limassol has the largest and most diverse expat population in Cyprus — estimates put the international community at 30–40% of the city's residents. Organised in-person meetups, language exchanges, and networking events happen weekly. Paphos has a strong British expat social scene. Larnaca is quieter but active.",
+    body: "Limassol has the largest and most diverse expat population in Cyprus: estimates put the international community at 30–40% of the city's residents. Organised in-person meetups, language exchanges, and networking events happen weekly. Paphos has a strong British expat social scene. Larnaca is quieter but active.",
   },
   {
     heading: "Ask before you arrive",
@@ -218,7 +218,7 @@ export const EXPAT_COMMUNITIES: ReadonlyArray<ExpatCommunity> = [
     name: "InterNations Cyprus",
     city: "Island-wide",
     platform: "Meetup",
-    why: "InterNations runs organised expat networking events across Cyprus — Limassol and Paphos. Monthly gatherings with a professional networking slant. Paid membership but useful for structured social events when you first arrive.",
+    why: "InterNations runs organised expat networking events across Cyprus: Limassol and Paphos. Monthly gatherings with a professional networking slant. Paid membership but useful for structured social events when you first arrive.",
     url: "https://www.internations.org/cyprus-expats",
   },
   {
