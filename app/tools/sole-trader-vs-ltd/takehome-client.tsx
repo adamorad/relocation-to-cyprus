@@ -6,10 +6,16 @@ import { Badge } from "@/components/ui/Badge";
 import { ChipGroup } from "@/components/ui/Chip";
 import { Section } from "@/components/ui/Section";
 import {
+	CORPORATE_TAX_RATE,
+	eur,
+	GESY_INCOME_CAP,
 	GESY_RATE,
 	GESY_SELF_EMPLOYED_RATE,
+	pct,
 	personalIncomeTax2026,
 	SDC_DIVIDEND_RATE,
+	SI_MAX_INSURABLE_ANNUAL,
+	SI_SELF_EMPLOYED_RATE,
 } from "@/lib/facts/tax";
 
 type Structure = "sole-trader" | "ltd" | "ltd-holding";
@@ -23,8 +29,13 @@ type Inputs = {
 	hasPassiveIncome: boolean;
 };
 
+type LineItem = { label: string; amount: number };
+
 type Recommendation = {
 	primary: Structure;
+	profit: number;
+	soleTraderItems: LineItem[];
+	ltdItems: LineItem[];
 	structureLabel: string;
 	effectiveRateSoleTrader: number;
 	effectiveRateLtd: number;
@@ -47,34 +58,35 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 	const foreignIncome = annualIncome * (foreignIncomePercent / 100);
 	const cyprusIncome = annualIncome - foreignIncome;
 
-	// --- Sole Trader effective tax estimate ---
-	// Cyprus personal income tax bands 2026 (lib/facts/tax.ts)
-	// 0-22,000: 0%
-	// 22,001-32,000: 20%
-	// 32,001-42,000: 25%
-	// 42,001-72,000: 30%
-	// 72,001+: 35%
-	// Plus GeSY for the self-employed: 4% of income
-	// Plus SDC (Special Defence Contribution) on dividends for domiciled residents
+	// Both structures are compared on the same taxable profit: 80% of income
+	// (about 20% deductible expenses).
+	const estimatedProfit = annualIncome * 0.8;
 
-	const soleTraderTax =
-		personalIncomeTax2026(annualIncome) +
-		annualIncome * GESY_SELF_EMPLOYED_RATE;
+	// --- Sole Trader ---
+	// Income tax on the 2026 bands, self-employed social insurance (16.6% up to
+	// the maximum insurable earnings) and self-employed GeSY (4% up to the GeSY
+	// income ceiling), all from lib/facts/tax.ts. Contributions are not
+	// deducted from taxable income here (simplification).
+	const soleTraderIncomeTax = personalIncomeTax2026(estimatedProfit);
+	const soleTraderSI =
+		Math.min(estimatedProfit, SI_MAX_INSURABLE_ANNUAL) * SI_SELF_EMPLOYED_RATE;
+	const soleTraderGesy =
+		Math.min(estimatedProfit, GESY_INCOME_CAP) * GESY_SELF_EMPLOYED_RATE;
+	const soleTraderTax = soleTraderIncomeTax + soleTraderSI + soleTraderGesy;
 	const soleTraderEffectiveRate = Math.round(
 		(soleTraderTax / annualIncome) * 100,
 	);
 
-	// --- Cyprus Ltd effective tax estimate ---
-	// 15% corporate tax on net profit (raised from 12.5% on 1 Jan 2026)
-	// Assuming 80% of income is taxable profit (20% expenses)
-	const estimatedProfit = annualIncome * 0.8;
-	const corporateTax = estimatedProfit * 0.15;
-	// Dividend extraction on profit after corporate tax: dom pays 5% SDC
-	// (dividends from 2026 profits), non-dom pays 0; GeSY 2.65% applies to both
+	// --- Cyprus Ltd ---
+	// 15% corporate tax on profit, all post-tax profit paid out as a dividend:
+	// SDC 5% for domiciled residents (dividends from 2026 profits), 0 for
+	// non-doms; GeSY 2.65% on the dividend up to the GeSY income ceiling.
+	// No director's salary, so no social insurance on this side.
+	const corporateTax = estimatedProfit * CORPORATE_TAX_RATE;
 	const dividend = estimatedProfit - corporateTax;
-	const dividendTax =
-		(nonDomiciled ? 0 : dividend * SDC_DIVIDEND_RATE) + dividend * GESY_RATE;
-	const ltdTotalTax = corporateTax + dividendTax;
+	const dividendSdc = nonDomiciled ? 0 : dividend * SDC_DIVIDEND_RATE;
+	const dividendGesy = Math.min(dividend, GESY_INCOME_CAP) * GESY_RATE;
+	const ltdTotalTax = corporateTax + dividendSdc + dividendGesy;
 	const ltdEffectiveRate = Math.round((ltdTotalTax / annualIncome) * 100);
 
 	// --- Ltd + Holding ---
@@ -142,7 +154,7 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 				"Unlimited personal liability for business debts",
 				"Cannot issue equity, limits future investment options",
 				"Tax rate rises above €32,000: 25% to 35% marginal rate",
-				"Social insurance contributions (GESY + SI) on full income",
+				`Social insurance (${pct(SI_SELF_EMPLOYED_RATE)} up to ${eur(SI_MAX_INSURABLE_ANNUAL)} a year) and GeSY (${pct(GESY_SELF_EMPLOYED_RATE)}) on your profit`,
 				"Harder to retain earnings in a tax-efficient way",
 			],
 			nextSteps: [
@@ -217,6 +229,31 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 
 	return {
 		primary,
+		profit: estimatedProfit,
+		soleTraderItems: [
+			{ label: "Income tax (2026 bands)", amount: soleTraderIncomeTax },
+			{
+				label: `Social insurance (${pct(SI_SELF_EMPLOYED_RATE)}, capped at ${eur(SI_MAX_INSURABLE_ANNUAL)})`,
+				amount: soleTraderSI,
+			},
+			{
+				label: `GeSY (${pct(GESY_SELF_EMPLOYED_RATE)})`,
+				amount: soleTraderGesy,
+			},
+		],
+		ltdItems: [
+			{
+				label: `Corporate tax (${pct(CORPORATE_TAX_RATE)})`,
+				amount: corporateTax,
+			},
+			{
+				label: nonDomiciled
+					? "SDC on dividend (0% as a non-dom)"
+					: `SDC on dividend (${pct(SDC_DIVIDEND_RATE)})`,
+				amount: dividendSdc,
+			},
+			{ label: `GeSY on dividend (${pct(GESY_RATE)})`, amount: dividendGesy },
+		],
 		structureLabel: chosen.label,
 		effectiveRateSoleTrader: soleTraderEffectiveRate,
 		effectiveRateLtd: ltdEffectiveRate,
@@ -402,6 +439,57 @@ export default function FreelancerVsCompanyPage() {
 							<p className="mt-3 text-sm text-muted">
 								Estimates assume ~20% deductible expenses. Actual rates vary.
 								Non-dom status: {inputs.nonDomiciled ? "Yes" : "No"}.
+							</p>
+						</div>
+					</Section>
+
+					<Section title="How the estimate is built" headingLevel="h3">
+						<div className="rounded-card border border-line bg-white p-5">
+							<p className="mb-4 text-sm text-muted">
+								Both columns use the same taxable profit of{" "}
+								{eur(Math.round(result.profit))} a year.
+							</p>
+							<div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+								{[
+									{ title: "Sole trader", items: result.soleTraderItems },
+									{
+										title: "Cyprus Ltd (all profit paid as dividends)",
+										items: result.ltdItems,
+									},
+								].map(({ title, items }) => (
+									<div key={title}>
+										<h4 className="mb-2 text-sm font-bold text-ink">{title}</h4>
+										<dl className="space-y-1.5 text-sm">
+											{items.map((item) => (
+												<div
+													key={item.label}
+													className="flex justify-between gap-3"
+												>
+													<dt className="text-muted">{item.label}</dt>
+													<dd className="shrink-0 font-semibold text-ink">
+														{eur(Math.round(item.amount))}
+													</dd>
+												</div>
+											))}
+											<div className="flex justify-between gap-3 border-t border-line pt-1.5">
+												<dt className="font-semibold text-ink">Total</dt>
+												<dd className="shrink-0 font-bold text-ink">
+													{eur(
+														Math.round(
+															items.reduce((sum, i) => sum + i.amount, 0),
+														),
+													)}
+												</dd>
+											</div>
+										</dl>
+									</div>
+								))}
+							</div>
+							<p className="mt-4 text-sm text-muted">
+								Sole trader social insurance is charged on profit up to the
+								maximum insurable earnings and is not deducted from taxable
+								income here. The Ltd column assumes no director&apos;s salary,
+								so it has no social insurance.
 							</p>
 						</div>
 					</Section>

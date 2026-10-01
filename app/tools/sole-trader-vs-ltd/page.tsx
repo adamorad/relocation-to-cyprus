@@ -53,6 +53,16 @@ export default function SoleTraderVsLtdPage() {
 									"Tax Department: Guide to the 2025 tax return (Greek, PDF)",
 								url: "https://www.gov.cy/media/sites/167/2026/06/Guide-for-completion-of-tax-return-2025-EL.pdf",
 							},
+							{
+								label:
+									"Business in Cyprus: Social insurance registration and contributions",
+								url: "https://www.businessincyprus.gov.cy/social-insurance-registration-and-contributions/",
+							},
+							{
+								label:
+									"Social Insurance Services: Basic insurable earnings 1981-2026",
+								url: "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/9AD159715525E49CC22584D90030E8FF?OpenDocument",
+							},
 						]}
 					/>
 					<MoreOnTopic
