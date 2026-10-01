@@ -11,7 +11,9 @@
 - About 127 Nicosia directory entries and Nicosia city blocks, filter chips and table rows were removed from the sections, tools (city comparison, events calendar, ISP comparison, price benchmarker) and guides. Four Nicosia-located events were removed from the events calendar.
 - Nicosia is kept only where it names a hospital, government office, embassy, university or district fact. Schools in Nicosia were removed from the guides.
 - The listing save heart moved from the archived map panel to the listing detail page. The "Back to the map" links are now "Back to home", and the shortlist empty state and city-comparison link point to /listings/.
-
+- Listing and developer names that were stored in ALL CAPS are now shown in title case (for example "Lemonmaria Developers"). Known acronyms such as HKCY, MAWJ, CHYC and GPA, initials and names with numbers keep their capitals.
+- Listing prices now show as `€1,650,000 + VAT` instead of `€1.650.000 +VAT`. The data files are unchanged.
+- Hub titles were renamed to "Cities", "Practical tools" and "Local directories".
 - Quality gates run on every pull request (`.github/workflows/ci.yml`): type check, build, an internal link check over `out/`, a house-rules scan and an axe accessibility run on a sample of 22 pages at 390 and 1440 px. See `docs/qa.md`.
 - The house-rules scan (em dash, emoji, Nicosia, "Relocation guide", hard-coded hex colours in classes) compares against a committed baseline, so only new violations fail. Existing violations are counted per rule in `scripts/qa/house-rules.baseline.json` for later clean-up.
 - Site search now uses a Pagefind index built from the exported site (`pnpm build` runs `pagefind --site out`). /explore/ became the search results page with results grouped and filterable by type (guides, directories, tools, cities, listings, developers), and still accepts `?q=`. The category browse list stays below the search.
