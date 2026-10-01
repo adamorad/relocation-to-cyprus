@@ -14,6 +14,7 @@ import { Chip } from "@/components/ui/Chip";
 
 /** Content types written to the index as data-type on each page's main element. */
 const TYPES = [
+	{ id: "topic", label: "Topics" },
 	{ id: "guide", label: "Guides" },
 	{ id: "directory", label: "Directories" },
 	{ id: "tool", label: "Tools" },

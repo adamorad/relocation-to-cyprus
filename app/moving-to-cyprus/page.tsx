@@ -1,17 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import type { IconName } from "@/components/icons/Icon";
-import { HubTemplate } from "@/components/templates/HubTemplate";
-import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
-import { Section } from "@/components/ui/Section";
-import { GUIDE_CATEGORY_LABEL, GUIDES, type GuideCategory } from "@/lib/guides";
-
-const CATEGORIES: ReadonlyArray<GuideCategory> = [
-	"immigration",
-	"tax",
-	"property",
-	"business",
-];
+import { TopicHub } from "@/components/templates/TopicHub";
+import { topicBySlug } from "@/lib/topics";
 
 const title = "Moving to Cyprus: Visas, Tax and Property Guides";
 const description =
@@ -29,65 +19,27 @@ export const metadata: Metadata = {
 	},
 };
 
-const CATEGORY_ICON: Record<string, IconName> = {
-	immigration: "paperwork",
-	tax: "legal",
-	property: "home",
-	business: "building",
-};
+// biome-ignore lint/style/noNonNullAssertion: the topic is defined in lib/topics.ts
+const TOPIC = topicBySlug("moving-here")!;
 
+/** The Moving to Cyprus topic hub (keeps its original URL). */
 export default function MovingToCyprusPage() {
 	return (
-		<HubTemplate
-			pagefindType="page"
-			header={{
-				breadcrumbs: [
-					{ label: "Home", href: "/" },
-					{ label: "Moving to Cyprus" },
-				],
-				eyebrow: "Planning a move",
-				title: "Moving to Cyprus",
-				intro: (
-					<>
-						Planning a move? Start with residency and tax, then property and
-						business. Already here? See the everyday guides on the{" "}
-						<Link
-							href="/"
-							className="text-primary-hover underline hover:text-ink"
-						>
-							homepage
-						</Link>
-						.
-					</>
-				),
-			}}
-		>
-			{CATEGORIES.map((cat) => {
-				const guides = GUIDES.filter((g) => g.category === cat);
-				if (guides.length === 0) return null;
-				return (
-					<Section
-						key={cat}
-						id={cat}
-						title={GUIDE_CATEGORY_LABEL[cat]}
-						description={`${guides.length} guides`}
+		<TopicHub
+			topic={TOPIC}
+			intro={
+				<>
+					Planning a move? Start with residency and tax, then property and
+					business. Already here? See the everyday topics on the{" "}
+					<Link
+						href="/"
+						className="text-primary-hover underline hover:text-ink"
 					>
-						<CardGrid>
-							{guides.map((g) => (
-								<CardGridItem key={g.slug}>
-									<Card
-										variant="icon"
-										icon={CATEGORY_ICON[cat] ?? "paperwork"}
-										href={`/guides/${g.slug}/`}
-										title={g.title}
-										text={<span className="line-clamp-3">{g.description}</span>}
-									/>
-								</CardGridItem>
-							))}
-						</CardGrid>
-					</Section>
-				);
-			})}
-		</HubTemplate>
+						homepage
+					</Link>
+					.
+				</>
+			}
+		/>
 	);
 }

@@ -4,6 +4,8 @@ import { GUIDES } from "@/lib/guides";
 import { allListings } from "@/lib/listings";
 import { REGIONS } from "@/lib/regions";
 import { SECTIONS_INDEX } from "@/lib/sections-index";
+import { assertTopicMapComplete } from "@/lib/topic-map-check";
+import { DAILY_TOPICS, hubHref } from "@/lib/topics";
 
 const TOOL_SLUGS = [
 	"rent-vs-buy-calculator",
@@ -44,6 +46,8 @@ export const dynamic = "force-static";
 const SITE_URL = "https://realcy.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+	// Fails the build when a guide, directory or tool has no topic.
+	assertTopicMapComplete();
 	const now = new Date();
 	return [
 		{
@@ -82,6 +86,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			changeFrequency: "monthly",
 			priority: 0.7,
 		},
+		...DAILY_TOPICS.map((t) => ({
+			url: `${SITE_URL}${hubHref(t)}`,
+			lastModified: now,
+			changeFrequency: "weekly" as const,
+			priority: 0.8,
+		})),
 		{
 			url: `${SITE_URL}/moving-to-cyprus/`,
 			lastModified: now,
