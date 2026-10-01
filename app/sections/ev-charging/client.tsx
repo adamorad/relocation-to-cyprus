@@ -29,8 +29,8 @@ function CityChip({
 			aria-pressed={selected}
 			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
 				selected
-					? "bg-slate-900 text-white border border-slate-900"
-					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
+					? "bg-ink text-white border border-ink"
+					: "bg-white text-ink border border-line hover:bg-sky"
 			}`}
 		>
 			{city}
@@ -54,8 +54,8 @@ function TypeChip({
 			aria-pressed={selected}
 			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
 				selected
-					? "bg-slate-900 text-white border border-slate-900"
-					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
+					? "bg-ink text-white border border-ink"
+					: "bg-white text-ink border border-line hover:bg-sky"
 			}`}
 		>
 			{label}
@@ -85,10 +85,10 @@ export default function EvChargingPage() {
 
 			{/* Header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
 					EV Charging
 				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					EV Charging Stations in Cyprus — Directory
 				</h1>
 				<p className="mt-3 text-base text-slate-600 max-w-2xl leading-relaxed">
@@ -99,16 +99,16 @@ export default function EvChargingPage() {
 
 			{/* Tips */}
 			<section className="mb-8">
-				<h2 className="text-sm font-bold text-slate-700 uppercase tracking-wider mb-3">
+				<h2 className="text-sm font-bold text-ink uppercase tracking-wider mb-3">
 					EV charging in Cyprus — key facts
 				</h2>
 				<div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
 					{EV_TIPS.map((tip) => (
 						<div
 							key={tip.heading}
-							className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-sm"
+							className="rounded-2xl border border-line bg-sky p-4 text-sm"
 						>
-							<p className="font-bold text-slate-900">{tip.heading}</p>
+							<p className="font-bold text-ink">{tip.heading}</p>
 							<p className="mt-1.5 text-slate-600 leading-relaxed text-xs">
 								{tip.body}
 							</p>
@@ -120,7 +120,7 @@ export default function EvChargingPage() {
 			{/* Filters */}
 			<section className="mb-6 space-y-3">
 				<div>
-					<p className="text-[10px] uppercase tracking-widest text-slate-500 font-semibold mb-2">
+					<p className="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-2">
 						City
 					</p>
 					<div className="flex flex-wrap gap-1.5">
@@ -140,7 +140,7 @@ export default function EvChargingPage() {
 					</div>
 				</div>
 				<div>
-					<p className="text-[10px] uppercase tracking-widest text-slate-500 font-semibold mb-2">
+					<p className="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-2">
 						Charger type
 					</p>
 					<div className="flex flex-wrap gap-1.5">
@@ -174,13 +174,13 @@ export default function EvChargingPage() {
 					{filtered.map((charger) => (
 						<li
 							key={`${charger.name}-${charger.city}`}
-							className="rounded-xl border border-slate-200 bg-white p-4 flex flex-col gap-2 shadow-sm hover:shadow-md transition-shadow"
+							className="rounded-2xl border border-line bg-white p-4 flex flex-col gap-2 shadow-sm hover:shadow-sm transition-shadow"
 						>
 							<div>
-								<p className="font-bold text-slate-900 text-sm leading-snug">
+								<p className="font-bold text-ink text-sm leading-snug">
 									{charger.name}
 								</p>
-								<p className="text-[10px] text-slate-500 mt-0.5">
+								<p className="text-xs text-slate-500 mt-0.5">
 									{charger.city} · {charger.location}
 								</p>
 							</div>
@@ -190,21 +190,21 @@ export default function EvChargingPage() {
 								{charger.chargerTypes.map((ct) => (
 									<span
 										key={ct}
-										className={`rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide ${
+										className={`rounded-full px-2 py-0.5 text-xs font-bold uppercase tracking-wide ${
 											ct === "CCS-DC"
-												? "bg-teal-50 text-teal-700 border border-teal-200"
+												? "bg-sky-strong text-ink border border-line"
 												: ct === "CHAdeMO"
-													? "bg-purple-50 text-purple-700 border border-purple-200"
-													: "bg-blue-50 text-blue-700 border border-blue-200"
+													? "bg-purple-50 text-purple-800 border border-purple-200"
+													: "bg-blue-50 text-blue-800 border border-blue-200"
 										}`}
 									>
 										{ct}
 									</span>
 								))}
-								<span className="rounded-full px-2 py-0.5 text-[9px] font-bold bg-amber-50 text-amber-700 border border-amber-200">
+								<span className="rounded-full px-2 py-0.5 text-xs font-bold bg-sky-strong text-ink border border-line">
 									{charger.maxKw} kW max
 								</span>
-								<span className="rounded-full px-2 py-0.5 text-[9px] font-semibold bg-slate-50 text-slate-600 border border-slate-200">
+								<span className="rounded-full px-2 py-0.5 text-xs font-semibold bg-sky-strong text-ink border border-line">
 									{charger.numberOfPoints} point
 									{charger.numberOfPoints !== 1 ? "s" : ""}
 								</span>
@@ -214,7 +214,7 @@ export default function EvChargingPage() {
 								{charger.why}
 							</p>
 
-							<div className="text-[10px] text-slate-500">
+							<div className="text-xs text-slate-500">
 								<span className="font-semibold text-slate-700">Operator:</span>{" "}
 								{charger.operator}
 								{" · "}
@@ -227,9 +227,9 @@ export default function EvChargingPage() {
 									href={charger.mapsLink}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="text-[10px] font-semibold text-amber-700 hover:text-amber-900"
+									className="text-xs font-semibold text-primary hover:text-primary-hover"
 								>
-									Open in Maps ↗
+									Open in Maps
 								</a>
 							)}
 						</li>
@@ -239,8 +239,8 @@ export default function EvChargingPage() {
 
 			{/* Footer nav */}
 			<p className="mt-12 text-xs text-slate-500">
-				<Link href="/" className="underline hover:text-slate-900">
-					← Back to home
+				<Link href="/" className="underline hover:text-ink">
+					Back to home
 				</Link>
 			</p>
 		</main>
