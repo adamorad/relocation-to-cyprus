@@ -1,11 +1,16 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Icon } from "@/components/icons/Icon";
+import { Card } from "@/components/ui/Card";
 import { HOME_AREA, HOME_CITIES } from "@/lib/home-content";
+
+/**
+ * 800w city scene for a /regions/{slug}/ href. Same files as REGIONS[].image
+ * (lib/regions.ts is too large to import into this client component).
+ */
+const cityCardImage = (href: string) =>
+	`/images/cities/${href.split("/").filter(Boolean).pop()}-800.webp`;
 
 export function AreaPanel() {
 	const router = useRouter();
@@ -60,30 +65,13 @@ export function AreaPanel() {
 			<ul className="mt-3 grid grid-cols-2 gap-3">
 				{HOME_CITIES.map((c) => (
 					<li key={c.href} className="flex">
-						<Link
+						<Card
+							variant="photo"
 							href={c.href}
-							className="flex w-full flex-col overflow-hidden rounded-card border border-line bg-white text-ink transition-colors hover:border-primary"
-						>
-							<span className="flex aspect-[16/8] items-center justify-center bg-sky text-primary">
-								{c.photo ? (
-									<Image
-										src={c.photo}
-										alt={c.photoAlt ?? ""}
-										width={320}
-										height={180}
-										loading="lazy"
-										className="h-full w-full object-cover"
-									/>
-								) : (
-									<span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/70">
-										<Icon name="pin" size={24} />
-									</span>
-								)}
-							</span>
-							<span className="flex min-h-11 items-center px-3 py-2 text-base font-bold leading-snug">
-								{c.name}
-							</span>
-						</Link>
+							title={c.name}
+							// The card title names the city, so the scene is decorative here.
+							image={{ src: c.photo ?? cityCardImage(c.href), alt: "" }}
+						/>
 					</li>
 				))}
 			</ul>
