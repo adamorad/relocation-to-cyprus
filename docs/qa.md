@@ -28,23 +28,23 @@ Scans `app/`, `components/`, `lib/` (not `lib/data/listings.json` or `archive/`)
 | --- | --- |
 | `em-dash` | The em dash character |
 | `emoji` | Any emoji. Glyphs in `house-rules.allow.json` (`emojiGlyphs`) are ignored. The star and check mark used in the UI are not emoji and need no entry |
-| `nicosia` | The word Nicosia, unless the exact line is listed under `nicosia` in `house-rules.allow.json` (the institution mentions the owner kept). New mentions fail |
+| `nicosia` | The word Nicosia, unless it matches an entry under `nicosia` in `house-rules.allow.json` (the institution mentions the owner kept). Entries are `{file, context, count}`: `context` is the text 30 characters either side of the match (punctuation such as em dashes and commas folded into whitespace), so editing other parts of the line does not break it, and an identical extra copy exceeds `count` and fails. New mentions fail |
 | `relocation-guide` | The label "Relocation guide" |
 | `hex-class` | A hard-coded hex colour inside a Tailwind class such as `text-[#35cdc4]`, anywhere except `app/globals.css` |
 
 ### Baseline
 
-The tree already contains violations (mostly em dashes in copy). `scripts/qa/house-rules.baseline.json` records the number of violating lines per rule per file. The check fails only when a file has more violating lines of a rule than its baseline, so only new violations break CI. The summary table prints total, baseline and new counts per rule to track the burn-down.
+The tree already contains violations (mostly em dashes in copy). `scripts/qa/house-rules.baseline.json` records, per rule and file, a count per line content hash: `{rule: {file: {sha1(trimmed line): count}}}`. Every occurrence counts, so a line with two emoji counts 2. The check fails when a line hash is not in the baseline or its count went up. The summary table prints total, baseline and new counts per rule to track the burn-down.
 
-Because the baseline is a count per file, removing one violation and adding another in the same file goes unnoticed. That is acceptable for a burn-down list.
+Because the key is the trimmed line text, editing a baselined line (even to touch an unrelated word) changes its hash and the line then counts as new. Fix the violation when you touch the line. Moving a line within a file, or reindenting it, is fine.
 
-When you remove violations, lower the numbers:
+When you remove violations, regenerate the baseline so the numbers go down:
 
 ```sh
 node scripts/qa/house-rules.mjs --update-baseline
 ```
 
-Do not raise the baseline to make CI pass. If a new Nicosia institution mention is genuinely needed, add it with `--update-nicosia` and explain why in the pull request.
+Do not raise the baseline to make CI pass. If a new Nicosia institution mention is genuinely needed, add it with `node scripts/qa/house-rules.mjs --update-nicosia` and explain why in the pull request.
 
 ## Accessibility (`scripts/qa/axe.mjs`)
 
