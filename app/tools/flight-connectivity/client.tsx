@@ -1,7 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useState } from "react";
+import { Badge } from "@/components/ui/Badge";
+import { CardGrid, CardGridItem } from "@/components/ui/Card";
+import { ChipGroup } from "@/components/ui/Chip";
 
 type Frequency = "daily" | "several/week" | "seasonal";
 
@@ -398,7 +400,7 @@ const ROUTES: Route[] = [
 		fromLCA: true,
 		fromPFO: false,
 	},
-	// Ukraine (suspended — Ukrainian airspace closed since Feb 2022)
+	// Ukraine (suspended, Ukrainian airspace closed since Feb 2022)
 	// { destination: "Kyiv", country: "Ukraine", airportTo: "KBP", carriers: ["Ukraine International Airlines"], flightTimeMinutes: 195, frequency: "seasonal", fromLCA: true, fromPFO: false },
 	// Armenia
 	{
@@ -417,12 +419,6 @@ const FREQUENCY_LABEL: Record<Frequency, string> = {
 	daily: "Daily",
 	"several/week": "Several per week",
 	seasonal: "Seasonal",
-};
-
-const FREQUENCY_COLOR: Record<Frequency, string> = {
-	daily: "bg-green-100 text-green-800",
-	"several/week": "bg-sky-strong text-ink",
-	seasonal: "bg-slate-100 text-slate-700",
 };
 
 function formatFlightTime(minutes: number): string {
@@ -460,181 +456,114 @@ export default function FlightConnectivityPage() {
 	}, [search, airportFilter, seasonFilter]);
 
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="tool"
-			className="max-w-5xl mx-auto px-4 py-8 md:py-12"
-		>
-			<nav className="text-xs text-slate-500 mb-6">
-				<Link href="/tools/" className="hover:text-ink">
-					Tools
-				</Link>{" "}
-				&rsaquo; <span className="text-ink">Flight Connectivity</span>
-			</nav>
-
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-2">
-					Interactive Tool
-				</p>
-				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Cyprus Flight Connectivity
-				</h1>
-				<p className="mt-3 text-slate-600 max-w-2xl">
-					Explore direct routes from Larnaca (LCA) and Paphos (PFO) airports.
-					Search by destination, filter by airport or schedule.
-				</p>
-			</header>
-
+		<>
 			{/* Filters */}
-			<div className="bg-sky border border-line rounded-2xl p-4 mb-6 flex flex-col sm:flex-row gap-3">
-				<input
-					type="text"
-					placeholder="Search city or country..."
-					value={search}
-					onChange={(e) => setSearch(e.target.value)}
-					className="flex-1 border border-line rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-focus"
-				/>
-				<div className="flex gap-2 flex-wrap">
-					{(["all", "LCA", "PFO"] as AirportFilter[]).map((v) => (
-						<button
-							key={v}
-							onClick={() => setAirportFilter(v)}
-							className={`px-3 py-2 rounded-xl text-sm font-medium border transition-colors ${
-								airportFilter === v
-									? "bg-primary text-white border-primary"
-									: "bg-white text-slate-700 border-line hover:border-primary"
-							}`}
-						>
-							{v === "all" ? "All airports" : v}
-						</button>
-					))}
+			<div className="space-y-4 rounded-card border border-line bg-sky p-4 md:p-5">
+				<div>
+					<label
+						htmlFor="flight-search"
+						className="mb-2 block text-sm font-semibold text-ink"
+					>
+						Search city or country
+					</label>
+					<input
+						id="flight-search"
+						type="text"
+						placeholder="Search city or country..."
+						value={search}
+						onChange={(e) => setSearch(e.target.value)}
+						className="min-h-11 w-full rounded-field border border-line bg-white px-4 py-2 text-base text-ink focus:outline-none focus:ring-2 focus:ring-focus"
+					/>
 				</div>
-				<div className="flex gap-2 flex-wrap">
-					{(["all", "year-round", "seasonal"] as SeasonFilter[]).map((v) => (
-						<button
-							key={v}
-							onClick={() => setSeasonFilter(v)}
-							className={`px-3 py-2 rounded-xl text-sm font-medium border transition-colors ${
-								seasonFilter === v
-									? "bg-primary text-white border-primary"
-									: "bg-white text-slate-700 border-line hover:border-primary"
-							}`}
-						>
-							{v === "all"
-								? "All schedules"
-								: v.charAt(0).toUpperCase() + v.slice(1)}
-						</button>
-					))}
+				<div className="flex flex-col gap-4 sm:flex-row sm:gap-8">
+					<ChipGroup
+						label="Airport"
+						value={airportFilter}
+						onChange={setAirportFilter}
+						options={[
+							{ value: "all", label: "All airports" },
+							{ value: "LCA", label: "LCA" },
+							{ value: "PFO", label: "PFO" },
+						]}
+					/>
+					<ChipGroup
+						label="Schedule"
+						value={seasonFilter}
+						onChange={setSeasonFilter}
+						options={[
+							{ value: "all", label: "All schedules" },
+							{ value: "year-round", label: "Year-round" },
+							{ value: "seasonal", label: "Seasonal" },
+						]}
+					/>
 				</div>
 			</div>
 
-			<p className="text-sm text-slate-500 mb-4">
+			<h2
+				className="text-2xl font-bold tracking-tight text-ink"
+				aria-live="polite"
+			>
 				{filtered.length} destination{filtered.length !== 1 ? "s" : ""} found
-			</p>
+			</h2>
 
 			{/* Route cards grid */}
-			<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+			<CardGrid cols={3}>
 				{filtered.map((r) => (
-					<div
-						key={`${r.destination}-${r.airportTo}`}
-						className="bg-white border border-line rounded-2xl p-4 hover:border-primary transition-colors"
-					>
-						<div className="flex items-start justify-between mb-2">
-							<div>
-								<h2 className="font-bold text-ink text-base leading-tight">
-									{r.destination}
-								</h2>
-								<p className="text-xs text-slate-500 mt-0.5">
-									{r.country} &middot; {r.airportTo}
-								</p>
+					<CardGridItem key={`${r.destination}-${r.airportTo}`}>
+						<article className="w-full rounded-card border border-line bg-white p-4">
+							<div className="mb-2 flex items-start justify-between gap-2">
+								<div>
+									<h3 className="text-base font-bold leading-tight text-ink">
+										{r.destination}
+									</h3>
+									<p className="mt-0.5 text-sm text-muted">
+										{r.country} &middot; {r.airportTo}
+									</p>
+								</div>
+								<Badge>{FREQUENCY_LABEL[r.frequency]}</Badge>
 							</div>
-							<span
-								className={`text-xs px-2 py-1 rounded-full font-medium ${FREQUENCY_COLOR[r.frequency]}`}
-							>
-								{FREQUENCY_LABEL[r.frequency]}
-							</span>
-						</div>
 
-						<div className="mt-3 flex items-center gap-4 text-sm">
-							<div>
-								<span className="text-slate-500 text-xs block">
-									Flight time
-								</span>
-								<span className="font-semibold text-ink">
-									{formatFlightTime(r.flightTimeMinutes)}
-								</span>
-							</div>
-							<div className="flex gap-1 ml-auto">
-								{r.fromLCA && (
-									<span className="bg-ink text-white text-xs px-2 py-0.5 rounded font-medium">
-										LCA
+							<div className="mt-3 flex items-center gap-4 text-sm">
+								<div>
+									<span className="block text-sm text-muted">Flight time</span>
+									<span className="font-semibold text-ink">
+										{formatFlightTime(r.flightTimeMinutes)}
 									</span>
-								)}
-								{r.fromPFO && (
-									<span className="bg-ink text-white text-xs px-2 py-0.5 rounded font-medium">
-										PFO
-									</span>
-								)}
+								</div>
+								<div className="ml-auto flex gap-1">
+									{r.fromLCA && <Badge>LCA</Badge>}
+									{r.fromPFO && <Badge>PFO</Badge>}
+								</div>
 							</div>
-						</div>
 
-						<div className="mt-3 pt-3 border-t border-slate-100">
-							<p className="text-xs text-slate-500 font-medium mb-1">
-								Airlines
-							</p>
-							<div className="flex flex-wrap gap-1">
-								{r.carriers.map((c) => (
-									<span
-										key={c}
-										className="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded"
-									>
-										{c}
-									</span>
-								))}
+							<div className="mt-3 border-t border-line pt-3">
+								<p className="mb-1 text-sm font-medium text-muted">Airlines</p>
+								<div className="flex flex-wrap gap-1">
+									{r.carriers.map((c) => (
+										<span
+											key={c}
+											className="rounded bg-sky px-2 py-0.5 text-sm text-ink"
+										>
+											{c}
+										</span>
+									))}
+								</div>
 							</div>
-						</div>
-					</div>
+						</article>
+					</CardGridItem>
 				))}
-			</div>
+			</CardGrid>
 
 			{filtered.length === 0 && (
-				<div className="text-center py-16 text-slate-500">
+				<div className="py-16 text-center text-muted">
 					No routes match your filters. Try broadening your search.
 				</div>
 			)}
 
-			<p className="mt-8 text-xs text-muted text-center">
+			<p className="text-center text-sm text-muted">
 				Route data is indicative. Schedules, carriers and frequencies change
 				seasonally. Verify on airline websites before booking.
 			</p>
-
-			<p className="mt-6 text-sm">
-				<Link href="/tools/" className="text-primary hover:underline">
-					&larr; Back to tools
-				</Link>
-			</p>
-
-			<aside className="mt-10 p-5 rounded-2xl bg-sky border border-line">
-				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-					Next steps
-				</p>
-				<div className="flex flex-wrap gap-3">
-					<Link
-						href="/guides/airport-transfers-guide/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Read: Getting Around Cyprus
-					</Link>{" "}
-					<Link
-						href="/explore/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Explore Cyprus by region
-					</Link>
-				</div>
-			</aside>
-		</main>
+		</>
 	);
 }
