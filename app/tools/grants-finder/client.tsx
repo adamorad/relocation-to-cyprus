@@ -55,6 +55,7 @@ const ALL_SECTORS: Sector[] = [
 	"general",
 ];
 const ALL_SIZES: CompanySize[] = ["micro", "sme", "large"];
+const ALL_STATUSES: GrantStatus[] = ["open", "rolling", "closed"];
 
 const SIZE_LABELS: Record<CompanySize, string> = {
 	micro: "Micro (<10 employees, <€2M turnover)",
@@ -318,6 +319,18 @@ function formatAmount(amount: number | null): string {
 	return `€${amount}`;
 }
 
+// Filter chips only for values that at least one programme has, so no chip
+// leads to an empty list (e.g. no programme is "open" between calls).
+const SECTOR_OPTIONS = ALL_SECTORS.filter((s) =>
+	GRANTS.some((g) => g.targetSectors.includes(s)),
+);
+const SIZE_OPTIONS = ALL_SIZES.filter((s) =>
+	GRANTS.some((g) => g.companySizes.includes(s)),
+);
+const STATUS_OPTIONS = ALL_STATUSES.filter((s) =>
+	GRANTS.some((g) => g.status === s),
+);
+
 export default function GrantsFinderPage() {
 	const [selectedSector, setSelectedSector] = useState<Sector | "all">("all");
 	const [selectedSize, setSelectedSize] = useState<CompanySize | "all">("all");
@@ -359,7 +372,10 @@ export default function GrantsFinderPage() {
 					onChange={setSelectedSector}
 					options={[
 						{ value: "all", label: "All Sectors" },
-						...ALL_SECTORS.map((s) => ({ value: s, label: SECTOR_LABELS[s] })),
+						...SECTOR_OPTIONS.map((s) => ({
+							value: s,
+							label: SECTOR_LABELS[s],
+						})),
 					]}
 				/>
 				<div className="flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:gap-8">
@@ -369,7 +385,7 @@ export default function GrantsFinderPage() {
 						onChange={setSelectedSize}
 						options={[
 							{ value: "all", label: "Any size" },
-							...ALL_SIZES.map((s) => ({
+							...SIZE_OPTIONS.map((s) => ({
 								value: s,
 								label: s === "micro" ? "Micro" : s === "sme" ? "SME" : "Large",
 							})),
@@ -379,13 +395,13 @@ export default function GrantsFinderPage() {
 						label="Status"
 						value={selectedStatus}
 						onChange={setSelectedStatus}
-						options={(["all", "open", "rolling", "closed"] as const).map(
-							(s) => ({
+						options={[
+							{ value: "all", label: "All" },
+							...STATUS_OPTIONS.map((s) => ({
 								value: s,
-								label:
-									s === "all" ? "All" : s.charAt(0).toUpperCase() + s.slice(1),
-							}),
-						)}
+								label: s.charAt(0).toUpperCase() + s.slice(1),
+							})),
+						]}
 					/>
 				</div>
 			</div>
