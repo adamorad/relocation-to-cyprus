@@ -97,7 +97,7 @@ export const EV_CHARGERS: ReadonlyArray<EVCharger> = [
     name: "Verbund Limassol My Mall",
     operator: "Verbund",
     city: "Limassol",
-    location: "My Mall Limassol, Anexartisias Street",
+    location: "My Mall Limassol, 285 Franklin Roosevelt Avenue",
     chargerTypes: ["Type2-AC", "CCS-DC"],
     maxKw: 50,
     numberOfPoints: 6,

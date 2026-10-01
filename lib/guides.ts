@@ -1703,7 +1703,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "cypriot-cuisine-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
 		category: "lifestyle",
 		title: "Cypriot Food Culture: Eating Like a Local",
 		description:
@@ -1727,7 +1727,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Kafeneion culture and the seasonal produce calendar",
-				body: "The kafeneion is the Cypriot village coffeehouse — a male-dominated, card-playing, hours-long institution that has survived modernisation largely intact. In villages, the kafeneion is where opinions are formed and nothing much is hurried; a non-Cypriot is welcome but should understand the social cadence (you wait for an invitation to join a card game, you do not rush your coffee). Seasonal produce drives Cypriot cooking more than supermarket culture: watermelons from July to September (huge, cheap, omnipresent); carobs harvested September; citrus from November to March; strawberries from March; and the spring window of fresh artichokes, broad beans, and courgette blossoms that briefly dominates village market stalls in April. Olive oil: Cyprus produces good extra-virgin olive oil, and the best way to source it is directly from farmers at village markets or through the local agricultural cooperative (EKA). Prices for genuine Cypriot single-estate olive oil run €10–16 per litre — significantly better value than supermarket imported brands and markedly better flavour.",
+				body: "The kafeneion is the Cypriot village coffeehouse: a male-dominated, card-playing, hours-long institution that has survived modernisation largely intact. In villages, the kafeneion is where opinions are formed and nothing much is hurried; a non-Cypriot is welcome but should understand the social cadence (you wait for an invitation to join a card game, you do not rush your coffee). Seasonal produce drives Cypriot cooking more than supermarket culture: watermelons from July to September (huge, cheap, omnipresent); carobs harvested September; citrus from November to March; strawberries from March; and the spring window of fresh artichokes, broad beans, and courgette blossoms that briefly dominates village market stalls in April. Olive oil: Cyprus produces good extra-virgin olive oil, and the best way to source it is directly from farmers at village markets or through the local agricultural cooperative (EKA). Genuine Cypriot single-estate olive oil is usually better value than imported supermarket brands, with markedly better flavour; prices vary by producer and harvest, so compare a few before buying in bulk.",
 			},
 		],
 	},
@@ -1766,7 +1766,23 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "home-cooking-ingredients",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label:
+					"Cyprus Mail: Sklavenitis completes acquisition of Papantoniou Supermarkets (6 November 2024)",
+				url: "https://cyprus-mail.com/2024/11/06/sklavenitis-completes-acquisition-of-papantoniou-supermarkets",
+			},
+			{
+				label: "Sklavenitis (Wikipedia): Carrefour Cyprus takeover in 2017",
+				url: "https://en.wikipedia.org/wiki/Sklavenitis",
+			},
+			{
+				label: "Metro Supermarkets: store list",
+				url: "https://www.metro.com.cy/en/stores",
+			},
+		],
 		category: "lifestyle",
 		title: "Finding International Ingredients in Cyprus",
 		description:
@@ -1774,15 +1790,15 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "What is abundantly local and excellent",
-				body: "Before surveying the international options, it is worth cataloguing what Cyprus produces well and cheaply — because a significant part of cooking well in Cyprus is leaning into this. Halloumi, obviously: buy from the village cooperative or a market stall rather than a supermarket shelf if you can; the texture and saltiness of fresh-from-brine halloumi is materially different. Anari (fresh whey cheese) is exceptional and essentially unavailable outside Cyprus. Tomatoes, courgettes, aubergines, bell peppers, and cucumbers are inexpensive, flavourful, and local from April through October. Citrus — lemons, oranges, and the Cypriot bergamot used for preserved fruit — are abundant from November to March. Local olive oil from cooperatives runs €8–14 per litre for genuine Cypriot single-estate oil. Fresh herbs — rosemary, thyme, sage, coriander — grow semi-wild and are sold cheaply at markets; dried coriander seed and sumac are staple spices in Cypriot cooking and are widely available. Fresh fish (sea bream, sea bass, snapper) is excellent at seafront fish markets in Limassol and Larnaca. Building a cooking routine around Cypriot local produce first reduces both cost and dependency on specialty sourcing.",
+				body: "Before surveying the international options, it is worth cataloguing what Cyprus produces well and cheaply, because a significant part of cooking well in Cyprus is leaning into this. Halloumi, obviously: buy from the village cooperative or a market stall rather than a supermarket shelf if you can; the texture and saltiness of fresh-from-brine halloumi is materially different. Anari (fresh whey cheese) is exceptional and essentially unavailable outside Cyprus. Tomatoes, courgettes, aubergines, bell peppers, and cucumbers are inexpensive, flavourful, and local from April through October. Citrus (lemons, oranges, and the Cypriot bergamot used for preserved fruit) is abundant from November to March. Local olive oil from cooperatives is genuine Cypriot single-estate oil; prices vary by producer and harvest, so ask at the cooperative. Fresh herbs (rosemary, thyme, sage, coriander) grow semi-wild and are sold cheaply at markets; dried coriander seed and sumac are staple spices in Cypriot cooking and are widely available. Fresh fish (sea bream, sea bass, snapper) is excellent at seafront fish markets in Limassol and Larnaca. Building a cooking routine around Cypriot local produce first reduces both cost and dependency on specialty sourcing.",
 			},
 			{
 				heading: "Mainstream supermarkets: Sklavenitis, Alphamega, and Metro",
-				body: "Sklavenitis is the largest supermarket chain in Cyprus and carries the widest international range — it entered the market by acquiring the former Orphanides chain and has been expanding its imported goods section steadily. A well-stocked Sklavenitis (the Limassol flagship store is most complete) will carry reasonable selections of Japanese sauces (soy, mirin, miso), Thai curry pastes, Italian pasta and preserved goods, French cheeses, and most standard European baking ingredients. Alphamega is locally owned and strong on Cypriot produce; international selection is narrower. Metro (rebranded from Carrefour) carries the most consistent range of French and European produce due to historical supply-chain links. Lidl Cyprus follows the standard Lidl formula: excellent occasional imports (Iberian week, Asian week, etc.) but you cannot rely on them being in stock. For everyday international cooking, Sklavenitis is the practical default; budget €15–30 extra per weekly shop versus what you'd spend on an equivalent basket in northern Europe.",
+				body: "Sklavenitis is one of the two largest supermarket chains in Cyprus and carries the widest international range. It entered the market in 2017 by taking over the Carrefour stores, bought the Papantoniou chain in 2024, and has been expanding its imported goods section steadily. A well-stocked Sklavenitis (the Limassol flagship store is most complete) will carry reasonable selections of Japanese sauces (soy, mirin, miso), Thai curry pastes, Italian pasta and preserved goods, French cheeses, and most standard European baking ingredients. Alphamega is locally owned and strong on Cypriot produce; international selection is narrower. Metro, a Cypriot chain, carries a good range of imported produce. Lidl Cyprus follows the standard Lidl formula: excellent occasional imports (Iberian week, Asian week, etc.) but you cannot rely on them being in stock. For everyday international cooking, Sklavenitis is the practical default; budget €15–30 extra per weekly shop versus what you'd spend on an equivalent basket in northern Europe.",
 			},
 			{
 				heading: "Asian ingredients: Chinese, Thai, and Japanese sourcing",
-				body: "Asian grocery sourcing in Cyprus is primarily centred on Limassol, which has a small but established Chinese and South-East Asian community. There are 2–3 specialist Chinese/Asian grocery stores in Limassol (in the Omonia and tourist strip areas) that stock: rice varieties (jasmine, glutinous, basmati), noodle types (rice noodles, egg noodles, vermicelli), Asian sauces (fish sauce, oyster sauce, dark and light soy, black bean, hoisin, Shaoxing wine), fresh tofu and firm tofu, frozen dim sum, Korean and Japanese snacks, and some fresh vegetables (daikon, bok choy, Thai basil). Stock turnover is slower than a major city so check expiry dates. Larnaca and Paphos have almost no dedicated Asian grocery; occasional items appear in Sklavenitis but the selection is thin. If you are moving to Paphos and cook Asian food regularly, plan a monthly Limassol shop or use online delivery options.",
+				body: "Asian grocery sourcing in Cyprus is primarily centred on Limassol, which has a small but established Chinese and South-East Asian community. There are 2–3 specialist Chinese/Asian grocery stores in Limassol (in the Omonia and tourist strip areas) that stock: rice varieties (jasmine, glutinous, basmati), noodle types (rice noodles, egg noodles, vermicelli), Asian sauces (fish sauce, oyster sauce, dark and light soy, black bean, hoisin, Shaoxing wine), fresh tofu and firm tofu, frozen dim sum, Korean and Japanese snacks, and some fresh vegetables (daikon, bok choy, Thai basil). Stock turnover is slower than a major city so check expiry dates. Larnaca and Paphos each have one or two small Asian grocers, with a narrower range than Limassol's; occasional items also appear in Sklavenitis. If you are moving to Paphos and cook Asian food regularly, plan a monthly Limassol shop or use online delivery options.",
 			},
 			{
 				heading: "Middle Eastern and Indian ingredients",
@@ -1790,7 +1806,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Online delivery and frozen meat services",
-				body: "For items not available locally, Cyprus has a developing online grocery infrastructure. Agora.cy is the main online grocery marketplace and aggregates products from multiple retailers including Sklavenitis, with next-day delivery in the main cities. Papa.cy is a rapid-delivery service (30–60 minutes) for grocery essentials including some specialty items. Neither platform matches the catalogue depth of Ocado or a large European online grocer, but both are useful for staple replenishment and occasional specialty items. For meat specifically, several online services offer frozen or chilled delivery: Loullis Food Market and some specialist butchers in Limassol offer home delivery of halal meat, pork-free options, wagyu cuts, and specialty items. For specific dietary requirements (strictly kosher, certain halal certifications), the sourcing is limited — plan to import some items or build relationships with specific butchers. Limassol also has a weekly open-air market (the Saturday market near the old port area) where local producers, organic vegetable growers, and occasional specialty food importers sell directly — worth visiting on arrival to orient yourself to what is genuinely good locally.",
+				body: "For items not available locally, Cyprus has a developing online grocery infrastructure. Agora.cy is the main online grocery marketplace and aggregates products from multiple retailers including Sklavenitis, with next-day delivery in the main cities. Papa.cy is a rapid-delivery service (30–60 minutes) for grocery essentials including some specialty items. Neither platform matches the catalogue depth of Ocado or a large European online grocer, but both are useful for staple replenishment and occasional specialty items. For meat specifically, several online services offer frozen or chilled delivery: Loullis Food Market and some specialist butchers in Limassol offer home delivery of halal meat, pork-free options, wagyu cuts, and specialty items. For specific dietary requirements (strictly kosher, certain halal certifications), the sourcing is limited: plan to import some items or build relationships with specific butchers. Limassol also has a weekly open-air market (the Saturday market next to the municipal market in the old town) where local producers, organic vegetable growers, and occasional specialty food importers sell directly, worth visiting on arrival to orient yourself to what is genuinely good locally.",
 			},
 		],
 	},

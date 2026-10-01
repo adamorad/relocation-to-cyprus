@@ -294,7 +294,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 				{ item: "Common charges (building with a pool)", amount: "€100–€180" },
 				{ item: "Municipal taxes", amount: "€25–€40" },
 				{
-					item: "Groceries (Lidl, Sklavenitis, Carrefour)",
+					item: "Groceries (Lidl, Sklavenitis, Alphamega)",
 					amount: "€420–€580",
 				},
 				{ item: "Restaurants 3 times a week", amount: "€230–€370" },
