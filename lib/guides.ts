@@ -10,6 +10,12 @@
 
 import {
 	eur,
+	FEES_AMERICAN_ACADEMY_LARNACA,
+	FEES_FOLEYS,
+	FEES_GRAMMAR_LIMASSOL,
+	FEES_HERITAGE,
+	FEES_ISP,
+	feeRange,
 	GESY_AE_COPAY,
 	GESY_ANNUAL_CAP,
 	GESY_ANNUAL_CAP_REDUCED,
@@ -2169,7 +2175,15 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "schools-in-cyprus",
 		datePublished: "2026-06-09",
-		dateModified: "2026-10-01",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			HT_SRC.schoolRegister,
+			HT_SRC.heritageFees,
+			HT_SRC.foleysFees,
+			HT_SRC.grammarFees,
+			HT_SRC.ispFees,
+		],
 		category: "family",
 		title: "International Schools in Cyprus: Full Guide 2026",
 		description:
@@ -2185,15 +2199,15 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Limassol — the deepest international market",
-				body: "Limassol hosts the largest concentration of international schools in Cyprus. The Heritage Private School in Pyrgos is the most prestigious and most expensive — British curriculum from age 3 to 18, with IB Diploma at sixth form, fees from €8,000 (early years) to €14,000 (sixth form), and a waiting list for senior-year admissions of typically 6–12 months. Foley's Grammar School is the second flagship British-curriculum option, broadly comparable academically with slightly more accessible admissions and fees of €6,500–€11,000. The Grammar School Limassol covers ages 3 to 18 in British curriculum with strong A-level results, fees €6,000–€10,000. The American Academy Limassol covers American curriculum through AP level, fees €5,500–€9,500. For Russian-medium schooling, several private Russian schools operate in the city though enrolment has declined sharply since 2022. The City University Limassol and Cyprus University of Technology give Limassol the strongest secondary-to-tertiary pipeline on the island; many Limassol expat families specifically choose this for the option of children continuing at local university.",
+				body: `Limassol hosts the largest concentration of international schools in Cyprus. The Heritage Private School in Palodia is the most prestigious and most expensive: British curriculum from age 3 to 18, with IB Diploma at sixth form, fees from ${eur(FEES_HERITAGE.from)} (early years) to ${eur(FEES_HERITAGE.to)} (sixth form) in 2026-27, and a waiting list for senior-year admissions of typically 6–12 months. Foley's Grammar School is the second flagship British-curriculum option, broadly comparable academically with slightly more accessible admissions and fees of ${feeRange(FEES_FOLEYS)}. The Grammar School Limassol is a secondary school (ages 11 to 18) with strong A-level results; fees are ${feeRange(FEES_GRAMMAR_LIMASSOL)} for non-Cypriot pupils. The American Academy Limassol covers American curriculum through AP level, fees €5,500–€9,500. For Russian-medium schooling, several private Russian schools operate in the city though enrolment has declined sharply since 2022. The City University Limassol and Cyprus University of Technology give Limassol the strongest secondary-to-tertiary pipeline on the island; many Limassol expat families specifically choose this for the option of children continuing at local university.`,
 			},
 			{
 				heading: "Paphos and Larnaca — quality without scale",
-				body: "Paphos and Larnaca have smaller international school markets but with credible options. In Paphos, The International School of Paphos is the largest English-medium school, British curriculum from age 3 to 18, fees €5,800–€9,200. Aspire Private British School covers ages 4–18 with smaller class sizes (~14 per class) and fees €5,500–€8,500. Logos School of English Education is the older, more academic option with consistently strong A-level results. École Française de Paphos serves French-medium families at primary level. Neapolis University Paphos provides local tertiary education in psychology, law and business. In Larnaca, The American Academy Larnaca is the best-known English-medium school, US-style curriculum through to Grade 12 with SAT preparation, fees €5,500–€8,500. Pascal Private School operates a Larnaca campus alongside its Limassol location. The Med High School covers ages 12–18 with British curriculum. Several smaller British-curriculum primary schools serve the under-12 expat population. Larnaca's tertiary options are thinner — most students continue at Nicosia or Limassol universities or go abroad.",
+				body: `Paphos and Larnaca have smaller international school markets but with credible options. In Paphos, The International School of Paphos is the largest English-medium school, British curriculum from age 3 to 18, fees from ${eur(FEES_ISP.from)} (pre-reception and reception) to ${eur(FEES_ISP.to)} (sixth form) in 2026-27. Aspire Private British School covers ages 4–18 with smaller class sizes (~14 per class) and fees €5,500–€8,500. Neapolis University Paphos provides local tertiary education in psychology, law and business. In Larnaca, The American Academy Larnaca is the best-known English-medium school, US-style curriculum through to Grade 12 with SAT preparation, fees ${feeRange(FEES_AMERICAN_ACADEMY_LARNACA)} in 2026-27. Pascal Private School operates a Larnaca campus alongside its Limassol location. The Med High School covers ages 12–18 with British curriculum. Several smaller British-curriculum primary schools serve the under-12 expat population. Larnaca's tertiary options are thinner: most students continue at Nicosia or Limassol universities or go abroad.`,
 			},
 			{
 				heading: "The Famagusta-Ayia Napa area — the schooling challenge",
-				body: "The Famagusta free area has the thinnest school market of the four regions on this site, and schooling is the single most common reason families with secondary-age children choose Larnaca over Protaras or Ayia Napa despite preferring the SE beaches. The Heritage Private School Paralimni (distinct from the Limassol Heritage) is the main local British-curriculum option, well-regarded at the primary level with secondary years still being established. A small number of additional preschools and primaries serve the expat community. For secondary education (ages 12–18), most expat families in the SE either commute their children daily to The American Academy Larnaca (35–45 minutes each way) or to one of the Larnaca British schools. Public Greek-medium schools in Paralimni, Sotira and Frenaros are good and have absorbed meaningful numbers of expat primary children. The pragmatic recommendation for families with school-age children considering the SE: confirm your school plan before signing on the property, including a test of the daily commute.",
+				body: "The Famagusta free area has the thinnest school market of the four regions on this site, and schooling is the single most common reason families with secondary-age children choose Larnaca over Protaras or Ayia Napa despite preferring the SE beaches. The only registered English-language private school in the area is Xenion (with Xenion High School) in Paralimni. A small number of preschools also serve the expat community. For secondary education (ages 12–18), most expat families in the SE either commute their children daily to The American Academy Larnaca (35–45 minutes each way) or to one of the Larnaca British schools. Public Greek-medium schools in Paralimni, Sotira and Frenaros are good and have absorbed meaningful numbers of expat primary children. The pragmatic recommendation for families with school-age children considering the SE: confirm your school plan before signing on the property, including a test of the daily commute.",
 			},
 			{
 				heading: "Curricula and university outcomes",
@@ -2434,7 +2448,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "best-areas-to-live-cyprus",
 		datePublished: "2026-06-22",
-		dateModified: "2026-10-01",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [HT_SRC.schoolRegister, HT_SRC.ispFees],
 		category: "lifestyle",
 		title: "Best Places to Live in Cyprus 2026: City Guide",
 		description:
@@ -2468,7 +2484,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		faqs: [
 			{
 				q: "What is the best city in Cyprus for families?",
-				a: "Limassol and Paphos are the strongest options for families with children, primarily because of international school availability. Limassol has the widest range (The Heritage Private School, American Academy, Falcon School, Pascal English School, among others). Paphos has several solid options including The Grammar School and Paphos Aspire Academy. Larnaca is improving but has fewer established international schools. Ayia Napa has very limited options.",
+				a: `Limassol and Paphos are the strongest options for families with children, primarily because of international school availability. Limassol has the widest range (The Heritage Private School, American Academy, Pascal, among others). In Paphos, The International School of Paphos (${feeRange(FEES_ISP)} a year) is the largest; Aspire, Lumio and TLC in Peyia are the other registered English-language schools. Larnaca is improving but has fewer established international schools. Near Ayia Napa, the only registered English-language private school is Xenion in Paralimni.`,
 			},
 			{
 				q: "What is the best city in Cyprus for remote workers?",
