@@ -107,7 +107,7 @@ const CYPRUS_COLOR = "#087f98";
 function uvColor(uv: number): string {
 	if (uv <= 2) return "bg-green-100 text-green-800";
 	if (uv <= 5) return "bg-yellow-100 text-yellow-800";
-	if (uv <= 7) return "bg-orange-100 text-orange-800";
+	if (uv <= 7) return "bg-amber-100 text-amber-900";
 	return "bg-red-100 text-red-800";
 }
 
@@ -186,7 +186,7 @@ function WeatherChart({ selectedCities }: ChartProps) {
 				ref={svgRef}
 				viewBox={`0 0 ${W} ${H}`}
 				className="w-full"
-				style={{ minWidth: 320 }}
+				style={{ minWidth: 600 }}
 				onMouseMove={handleMouseMove}
 				onMouseLeave={handleMouseLeave}
 			>
@@ -198,15 +198,15 @@ function WeatherChart({ selectedCities }: ChartProps) {
 							y1={yPos(t)}
 							x2={W - PAD.right}
 							y2={yPos(t)}
-							stroke="#e2e8f0"
+							stroke="#d9e5ef"
 							strokeWidth="1"
 						/>
 						<text
 							x={PAD.left - 6}
 							y={yPos(t) + 4}
 							textAnchor="end"
-							fontSize="10"
-							fill="#94a3b8"
+							fontSize="12"
+							fill="#506580"
 						>
 							{t}°
 						</text>
@@ -220,8 +220,8 @@ function WeatherChart({ selectedCities }: ChartProps) {
 						x={xPos(i)}
 						y={H - 8}
 						textAnchor="middle"
-						fontSize="10"
-						fill="#94a3b8"
+						fontSize="12"
+						fill="#506580"
 					>
 						{m}
 					</text>
@@ -280,7 +280,7 @@ function WeatherChart({ selectedCities }: ChartProps) {
 						y1={PAD.top}
 						x2={tooltip.x}
 						y2={H - PAD.bottom}
-						stroke="#cbd5e1"
+						stroke="#506580"
 						strokeWidth="1"
 						strokeDasharray="4 2"
 					/>
@@ -295,14 +295,14 @@ function WeatherChart({ selectedCities }: ChartProps) {
 					const cd = CYPRUS_DATA[month];
 					return (
 						<div
-							className="pointer-events-none absolute top-0 z-10 rounded-xl border border-slate-200 bg-white/95 p-3 shadow-lg text-xs"
+							className="pointer-events-none absolute top-0 z-10 rounded-xl border border-line bg-white/95 p-3 shadow-sm text-xs"
 							style={{
 								left: `${Math.min(Math.max((tooltip.x / W) * 100, 10), 75)}%`,
 								transform: "translateX(-50%)",
 								minWidth: 160,
 							}}
 						>
-							<p className="font-bold text-slate-900 mb-2">{month}</p>
+							<p className="font-bold text-ink mb-2">{month}</p>
 							<div className="flex items-center gap-1.5 mb-1">
 								<span
 									className="inline-block w-3 h-0.5 rounded"
@@ -345,14 +345,14 @@ function MonthCards() {
 				return (
 					<div
 						key={m}
-						className="snap-start flex-none w-28 rounded-xl border border-slate-200 bg-white p-3 text-center"
+						className="snap-start flex-none w-28 rounded-xl border border-line bg-white p-3 text-center"
 					>
-						<p className="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">
+						<p className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">
 							{m}
 						</p>
-						<p className="text-2xl font-bold text-slate-900">{d.high}°</p>
+						<p className="text-2xl font-bold text-ink">{d.high}°</p>
 						<p className="text-xs text-slate-500">{d.low}° low</p>
-						<div className="mt-2 flex items-center justify-center gap-1 text-xs text-blue-600">
+						<div className="mt-2 flex items-center justify-center gap-1 text-xs text-primary">
 							<span>🌊</span>
 							<span>{d.sea}°</span>
 						</div>
@@ -361,7 +361,7 @@ function MonthCards() {
 							<span>{d.rainDays}d</span>
 						</div>
 						<div
-							className={`mt-1.5 inline-block rounded-full px-2 py-0.5 text-[10px] font-semibold ${uvColor(d.uv)}`}
+							className={`mt-1.5 inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${uvColor(d.uv)}`}
 						>
 							UV {d.uv} · {uvLabel(d.uv)}
 						</div>
@@ -395,23 +395,22 @@ export default function WeatherClimateClient() {
 		<main id="main" className="max-w-4xl mx-auto px-6 py-10 md:py-16">
 			{/* breadcrumb */}
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-ink">
 					Home
 				</Link>{" "}
 				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-slate-900">
+				<Link href="/tools/" className="hover:text-ink">
 					Tools
 				</Link>{" "}
-				&rsaquo;{" "}
-				<span className="text-slate-900">Cyprus Weather &amp; Climate</span>
+				&rsaquo; <span className="text-ink">Cyprus Weather &amp; Climate</span>
 			</nav>
 
 			{/* header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-rose-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
 					Lifestyle
 				</p>
-				<h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-ink">
 					Cyprus Weather &amp; Climate
 				</h1>
 				<p className="mt-3 text-slate-600 text-sm leading-relaxed max-w-2xl">
@@ -430,7 +429,7 @@ export default function WeatherClimateClient() {
 				].map(({ label, value }) => (
 					<div
 						key={label}
-						className="rounded-xl border border-slate-200 bg-white p-4 text-center"
+						className="rounded-2xl border border-line bg-white p-4 text-center"
 					>
 						<p className="text-xs text-slate-500 uppercase tracking-wide mb-1">
 							{label}
@@ -462,10 +461,10 @@ export default function WeatherClimateClient() {
 								key={city}
 								type="button"
 								onClick={() => toggleCity(city)}
-								className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
+								className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
 									isSelected
 										? "border-2 bg-sky text-ink"
-										: "bg-white border-slate-200 text-slate-700 hover:border-slate-400"
+										: "bg-white border-line text-ink hover:bg-sky"
 								}`}
 								style={isSelected ? { borderColor: activeColor } : undefined}
 							>
@@ -477,7 +476,7 @@ export default function WeatherClimateClient() {
 			</section>
 
 			{/* chart */}
-			<section className="mb-4 rounded-xl border border-slate-200 bg-white p-4">
+			<section className="mb-4 rounded-2xl border border-line bg-white p-4">
 				<div className="flex flex-wrap gap-4 text-xs text-slate-600 mb-4">
 					<div className="flex items-center gap-1.5">
 						<span
@@ -517,8 +516,8 @@ export default function WeatherClimateClient() {
 
 			{/* fun comparison */}
 			{selectedCities.length > 0 && (
-				<section className="mb-8 rounded-xl border border-teal-200 bg-teal-50 p-4">
-					<p className="text-xs font-semibold text-teal-800 uppercase tracking-wider mb-2">
+				<section className="mb-8 rounded-2xl border border-line bg-sky p-4">
+					<p className="text-xs font-semibold text-ink uppercase tracking-wider mb-2">
 						How does Cyprus compare?
 					</p>
 					<div className="flex flex-col gap-1.5">
@@ -528,7 +527,7 @@ export default function WeatherClimateClient() {
 								<p key={city} className="text-sm text-slate-700">
 									Cyprus is warmer than{" "}
 									<span className="font-semibold">{city}</span> in{" "}
-									<span className="font-bold text-teal-700">
+									<span className="font-bold text-primary">
 										{n} out of 12 months
 									</span>
 									.
@@ -545,15 +544,15 @@ export default function WeatherClimateClient() {
 					Month-by-month in Cyprus
 				</h2>
 				<MonthCards />
-				<p className="mt-2 text-[10px] text-muted">
+				<p className="mt-2 text-xs text-muted">
 					Scroll right to see all months. Sea temp · Rain days · UV index shown
 					per card.
 				</p>
 			</section>
 
 			{/* disclaimer */}
-			<aside className="mt-10 p-5 bg-amber-50 border border-amber-200 rounded-xl text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">Disclaimer</p>
+			<aside className="mt-10 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
+				<p className="font-semibold text-amber-900 mb-1">Disclaimer</p>
 				<p>
 					Climate data represents long-term historical averages and is for
 					general guidance only — not a forecast. Actual conditions vary by
@@ -562,7 +561,7 @@ export default function WeatherClimateClient() {
 			</aside>
 
 			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools/" className="underline hover:text-slate-900">
+				<Link href="/tools/" className="underline hover:text-ink">
 					&larr; Back to Tools
 				</Link>
 			</p>

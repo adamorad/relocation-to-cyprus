@@ -15,10 +15,10 @@ export default function SoleTraderVsLtdClient() {
 				<button
 					type="button"
 					onClick={() => setTab("takehome")}
-					className={`rounded-full px-4 py-1.5 text-sm font-semibold border transition-colors ${
+					className={`rounded-full px-4 py-1.5 min-h-11 text-sm font-semibold border transition-colors ${
 						tab === "takehome"
-							? "bg-slate-900 text-white border-slate-900"
-							: "bg-white text-slate-700 border-slate-300 hover:bg-slate-50"
+							? "bg-primary text-white border-primary"
+							: "bg-white text-ink border-line hover:bg-sky"
 					}`}
 				>
 					Take-home comparison
@@ -26,10 +26,10 @@ export default function SoleTraderVsLtdClient() {
 				<button
 					type="button"
 					onClick={() => setTab("setup")}
-					className={`rounded-full px-4 py-1.5 text-sm font-semibold border transition-colors ${
+					className={`rounded-full px-4 py-1.5 min-h-11 text-sm font-semibold border transition-colors ${
 						tab === "setup"
-							? "bg-slate-900 text-white border-slate-900"
-							: "bg-white text-slate-700 border-slate-300 hover:bg-slate-50"
+							? "bg-primary text-white border-primary"
+							: "bg-white text-ink border-line hover:bg-sky"
 					}`}
 				>
 					Ltd setup costs

@@ -408,7 +408,7 @@ function SliderRow({
 				<label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
 					{label}
 				</label>
-				<span className="text-sm font-bold text-slate-900">{display}</span>
+				<span className="text-sm font-bold text-ink">{display}</span>
 			</div>
 			<input
 				type="range"
@@ -419,7 +419,7 @@ function SliderRow({
 				onChange={(e) => onChange(Number(e.target.value))}
 				className="w-full accent-primary"
 			/>
-			<div className="flex justify-between text-[10px] text-muted">
+			<div className="flex justify-between text-xs text-muted">
 				<span>{min.toLocaleString("en-IE")}</span>
 				<span>{max.toLocaleString("en-IE")}</span>
 			</div>
@@ -491,18 +491,18 @@ function ComparisonTable({
 	];
 
 	return (
-		<div className="overflow-x-auto rounded-xl border border-slate-200">
+		<div className="overflow-x-auto rounded-xl border border-line">
 			<table className="w-full text-xs min-w-[480px]">
 				<thead>
-					<tr className="bg-slate-50 text-slate-500 uppercase tracking-wide text-[10px]">
+					<tr className="bg-slate-50 text-muted uppercase tracking-wide text-xs">
 						<th className="px-3 py-3 text-left font-semibold w-36"></th>
 						<th className="px-3 py-3 text-right font-semibold">
 							{sourceLabel}
 						</th>
-						<th className="px-3 py-3 text-right font-semibold bg-teal-50 text-teal-700">
+						<th className="px-3 py-3 text-right font-semibold bg-sky text-primary">
 							Cyprus Standard
 						</th>
-						<th className="px-3 py-3 text-right font-semibold bg-teal-50 text-teal-700">
+						<th className="px-3 py-3 text-right font-semibold bg-sky text-primary">
 							Cyprus Non-Dom
 						</th>
 					</tr>
@@ -519,16 +519,16 @@ function ComparisonTable({
 							<td className="px-3 py-2.5 text-right text-slate-700">
 								{row.source}
 							</td>
-							<td className="px-3 py-2.5 text-right text-slate-700 bg-teal-50/40">
+							<td className="px-3 py-2.5 text-right text-slate-700 bg-sky/60">
 								{row.std}
 							</td>
-							<td className="px-3 py-2.5 text-right text-slate-700 bg-teal-50/40">
+							<td className="px-3 py-2.5 text-right text-slate-700 bg-sky/60">
 								{row.nd}
 							</td>
 						</tr>
 					))}
 					{/* Saving row */}
-					<tr className="border-t-2 border-slate-200 bg-slate-50 font-semibold">
+					<tr className="border-t-2 border-line bg-slate-50 font-semibold">
 						<td className="px-3 py-3 text-slate-700 text-xs">
 							Est. annual saving
 						</td>
@@ -537,7 +537,7 @@ function ComparisonTable({
 							<span
 								className={
 									savingStd > 0
-										? "text-teal-600 font-bold"
+										? "text-primary font-bold"
 										: savingStd < 0
 											? "text-red-500 font-bold"
 											: "text-slate-500"
@@ -551,7 +551,7 @@ function ComparisonTable({
 							<span
 								className={
 									savingNd > 0
-										? "text-teal-600 font-bold"
+										? "text-primary font-bold"
 										: savingNd < 0
 											? "text-red-500 font-bold"
 											: "text-slate-500"
@@ -638,25 +638,23 @@ export default function TaxSavingsCalculatorClient({
 				<>
 					{/* breadcrumb */}
 					<nav className="text-xs text-slate-600 mb-6">
-						<Link href="/" className="hover:text-slate-900">
+						<Link href="/" className="hover:text-ink">
 							Home
 						</Link>{" "}
 						&rsaquo;{" "}
-						<Link href="/tools/" className="hover:text-slate-900">
+						<Link href="/tools/" className="hover:text-ink">
 							Tools
 						</Link>{" "}
 						&rsaquo;{" "}
-						<span className="text-slate-900">
-							Cyprus Tax Savings Calculator
-						</span>
+						<span className="text-ink">Cyprus Tax Savings Calculator</span>
 					</nav>
 
 					{/* header */}
 					<header className="mb-8">
-						<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+						<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
 							Tax
 						</p>
-						<h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
+						<h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-ink">
 							Cyprus Tax Savings Calculator
 						</h1>
 						<p className="mt-3 text-slate-600 text-sm leading-relaxed max-w-2xl">
@@ -669,7 +667,7 @@ export default function TaxSavingsCalculatorClient({
 			)}
 
 			{/* inputs */}
-			<section className="p-5 bg-slate-50 border border-slate-200 rounded-xl mb-8 flex flex-col gap-6">
+			<section className="p-5 bg-slate-50 border border-line rounded-2xl mb-8 flex flex-col gap-6">
 				<h2 className="text-sm font-bold text-slate-800 -mb-2">Your details</h2>
 
 				{/* Country */}
@@ -680,7 +678,7 @@ export default function TaxSavingsCalculatorClient({
 					<select
 						value={country}
 						onChange={(e) => setCountry(e.target.value as CountryKey)}
-						className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-focus"
+						className="w-full rounded-xl border border-line bg-white px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-focus"
 					>
 						{COUNTRIES.map((c) => (
 							<option key={c} value={c}>
@@ -689,7 +687,7 @@ export default function TaxSavingsCalculatorClient({
 						))}
 					</select>
 					{countryNote && (
-						<p className="text-[11px] text-slate-500 italic">{countryNote}</p>
+						<p className="text-xs text-slate-500 italic">{countryNote}</p>
 					)}
 				</div>
 
@@ -707,11 +705,11 @@ export default function TaxSavingsCalculatorClient({
 								step={0.5}
 								value={manualRate}
 								onChange={(e) => setManualRate(Number(e.target.value))}
-								className="w-28 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-focus"
+								className="w-28 rounded-xl border border-line bg-white px-3 py-2 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-focus"
 							/>
 							<span className="text-sm text-slate-600">% effective rate</span>
 						</div>
-						<p className="text-[11px] text-slate-500 italic">
+						<p className="text-xs text-slate-500 italic">
 							Social contributions not included for &quot;Other&quot; — enter
 							your combined effective rate if preferred.
 						</p>
@@ -735,10 +733,10 @@ export default function TaxSavingsCalculatorClient({
 								key={value}
 								type="button"
 								onClick={() => setEmploymentType(value)}
-								className={`px-4 py-2 rounded-lg text-xs font-semibold transition-colors ${
+								className={`px-4 py-2 rounded-xl text-xs font-semibold transition-colors ${
 									employmentType === value
 										? "bg-primary text-white"
-										: "bg-white border border-slate-200 text-slate-700 hover:border-primary"
+										: "bg-white border border-line text-slate-700 hover:border-primary"
 								}`}
 							>
 								{label}
@@ -760,12 +758,12 @@ export default function TaxSavingsCalculatorClient({
 
 				{/* Salary vs dividend split (company owner only) */}
 				{showDividends && (
-					<div className="flex flex-col gap-1.5 p-4 bg-white border border-slate-200 rounded-lg">
+					<div className="flex flex-col gap-1.5 p-4 bg-white border border-line rounded-2xl">
 						<div className="flex items-center justify-between">
 							<label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
 								Income split: salary vs dividends
 							</label>
-							<span className="text-sm font-bold text-slate-900">
+							<span className="text-sm font-bold text-ink">
 								{salaryPct}% salary / {100 - salaryPct}% dividends
 							</span>
 						</div>
@@ -778,11 +776,11 @@ export default function TaxSavingsCalculatorClient({
 							onChange={(e) => setSalaryPct(Number(e.target.value))}
 							className="w-full accent-primary"
 						/>
-						<div className="flex justify-between text-[10px] text-muted">
+						<div className="flex justify-between text-xs text-muted">
 							<span>0% salary (all dividends)</span>
 							<span>100% salary</span>
 						</div>
-						<p className="text-[11px] text-slate-500 mt-1">
+						<p className="text-xs text-slate-500 mt-1">
 							Cyprus corporate tax: 15% on profits (2026). Non-dom: no SDC (17%)
 							on dividends.
 						</p>
@@ -792,12 +790,12 @@ export default function TaxSavingsCalculatorClient({
 
 			{/* Highlight saving callout */}
 			{savingNd > 0 && (
-				<div className="mb-6 p-4 bg-teal-50 border border-teal-200 rounded-xl flex items-center gap-4">
-					<div className="text-3xl font-bold text-teal-600">
+				<div className="mb-6 p-4 bg-sky border border-line rounded-2xl flex items-center gap-4">
+					<div className="text-3xl font-bold text-primary">
 						{fmtEur(savingNd)}
 					</div>
 					<div>
-						<p className="text-sm font-semibold text-slate-900">
+						<p className="text-sm font-semibold text-ink">
 							estimated annual tax saving with Cyprus Non-Dom
 						</p>
 						<p className="text-xs text-slate-600">
@@ -807,7 +805,7 @@ export default function TaxSavingsCalculatorClient({
 				</div>
 			)}
 			{savingNd <= 0 && (
-				<div className="mb-6 p-4 bg-slate-50 border border-slate-200 rounded-xl">
+				<div className="mb-6 p-4 bg-slate-50 border border-line rounded-2xl">
 					<p className="text-sm text-slate-600">
 						At this income level, Cyprus may not offer a lower tax burden than{" "}
 						{country}. Try adjusting the income or employment type.
@@ -829,36 +827,36 @@ export default function TaxSavingsCalculatorClient({
 			</section>
 
 			{/* Why Cyprus info box */}
-			<aside className="mb-8 p-5 bg-blue-50 border border-blue-200 rounded-xl text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-2">Why Cyprus?</p>
+			<aside className="mb-8 p-5 bg-sky border border-line rounded-2xl text-sm text-slate-700">
+				<p className="font-semibold text-ink mb-2">Why Cyprus?</p>
 				<ul className="space-y-1.5 text-xs leading-relaxed">
 					<li>
-						<span className="font-semibold text-teal-700">Non-Dom regime:</span>{" "}
+						<span className="font-semibold text-primary">Non-Dom regime:</span>{" "}
 						Exempt from Special Defence Contribution (SDC) — 17% dividend tax
 						and 30% interest tax — for 17 years after obtaining non-dom status.
 					</li>
 					<li>
-						<span className="font-semibold text-teal-700">
+						<span className="font-semibold text-primary">
 							15% corporate tax:
 						</span>{" "}
 						A competitive rate within the EU. Companies pay 15% on net profits
 						(raised from 12.5% in 2026).
 					</li>
 					<li>
-						<span className="font-semibold text-teal-700">
+						<span className="font-semibold text-primary">
 							No inheritance tax:
 						</span>{" "}
 						Cyprus abolished inheritance tax in 2000.
 					</li>
 					<li>
-						<span className="font-semibold text-teal-700">
+						<span className="font-semibold text-primary">
 							No capital gains tax
 						</span>{" "}
 						on disposal of securities (shares, bonds, etc.). CGT applies only to
 						immovable property in Cyprus.
 					</li>
 					<li>
-						<span className="font-semibold text-teal-700">
+						<span className="font-semibold text-primary">
 							Income tax relief:
 						</span>{" "}
 						New residents with foreign-source employment income may qualify for
@@ -869,8 +867,8 @@ export default function TaxSavingsCalculatorClient({
 			</aside>
 
 			{/* Illustrative note */}
-			<aside className="mb-8 p-4 bg-amber-50 border border-amber-200 rounded-xl text-xs text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">
+			<aside className="mb-8 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-xs text-amber-900">
+				<p className="font-semibold text-amber-900 mb-1">
 					Simplified illustration
 				</p>
 				<p>
@@ -885,42 +883,42 @@ export default function TaxSavingsCalculatorClient({
 			{!embedded && (
 				<>
 					{/* Next steps */}
-					<aside className="mb-6 p-5 bg-slate-50 border border-slate-200 rounded-xl">
-						<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
+					<aside className="mb-6 p-5 bg-slate-50 border border-line rounded-2xl">
+						<p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
 							Related tools
 						</p>
 						<div className="flex flex-wrap gap-3">
 							<Link
 								href="/tools/tax-residency-tracker/"
-								className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+								className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 							>
-								Tax Residency Planner →
+								Tax Residency Planner
 							</Link>
 							<Link
 								href="/tools/double-tax-treaty-finder/"
-								className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+								className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 							>
-								Double Tax Treaty Finder →
+								Double Tax Treaty Finder
 							</Link>
 							<Link
 								href="/tools/sole-trader-vs-ltd/"
-								className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+								className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 							>
-								Sole Trader vs Ltd →
+								Sole Trader vs Ltd
 							</Link>
 						</div>
 					</aside>
 
 					{/* Disclaimer */}
-					<aside className="mt-6 p-5 bg-amber-50 border border-amber-200 rounded-xl text-sm text-slate-700">
-						<p className="font-semibold text-slate-900 mb-1">Disclaimer</p>
+					<aside className="mt-6 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
+						<p className="font-semibold text-amber-900 mb-1">Disclaimer</p>
 						<p>
 							General information only — not legal, tax, or financial advice.
 						</p>
 					</aside>
 
 					<p className="mt-8 text-xs text-slate-500">
-						<Link href="/tools/" className="underline hover:text-slate-900">
+						<Link href="/tools/" className="underline hover:text-ink">
 							&larr; Back to Tools
 						</Link>
 					</p>

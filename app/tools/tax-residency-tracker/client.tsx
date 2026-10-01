@@ -68,7 +68,7 @@ function CheckRow({ label, pass, detail }: Condition) {
 		<div className="flex items-start gap-3 py-3 border-b border-slate-100 last:border-0">
 			<span
 				className={`mt-0.5 flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold ${
-					pass ? "bg-emerald-100 text-emerald-700" : "bg-red-100 text-red-700"
+					pass ? "bg-green-50 text-green-800" : "bg-red-100 text-red-700"
 				}`}
 			>
 				{pass ? "✓" : "✗"}
@@ -106,7 +106,7 @@ function SliderField({
 		<div className="space-y-2">
 			<div className="flex justify-between items-center">
 				<label className="text-sm font-medium text-slate-700">{label}</label>
-				<span className={`text-sm font-bold ${highlight ?? "text-slate-900"}`}>
+				<span className={`text-sm font-bold ${highlight ?? "text-ink"}`}>
 					{value} {unit}
 				</span>
 			</div>
@@ -116,7 +116,7 @@ function SliderField({
 				max={max}
 				value={value}
 				onChange={(e) => onChange(Number(e.target.value))}
-				className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-teal-500"
+				className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-primary"
 			/>
 			<div className="flex justify-between text-xs text-muted">
 				<span>{min}</span>
@@ -140,7 +140,7 @@ function YesNoField({
 			<label className="text-sm font-medium text-slate-700 flex-1">
 				{label}
 			</label>
-			<div className="flex rounded-lg overflow-hidden border border-slate-200">
+			<div className="flex rounded-lg overflow-hidden border border-line">
 				<button
 					onClick={() => onChange(true)}
 					className={`px-4 py-1.5 text-sm font-medium transition-colors ${
@@ -153,7 +153,7 @@ function YesNoField({
 				</button>
 				<button
 					onClick={() => onChange(false)}
-					className={`px-4 py-1.5 text-sm font-medium transition-colors border-l border-slate-200 ${
+					className={`px-4 py-1.5 text-sm font-medium transition-colors border-l border-line ${
 						!value
 							? "bg-primary text-white"
 							: "bg-white text-slate-600 hover:bg-slate-50"
@@ -218,7 +218,7 @@ export default function TaxResidencyPlannerClient() {
 
 	const recColors: Record<Recommendation, string> = {
 		"183-day": "bg-emerald-50 border-emerald-200 text-emerald-900",
-		"60-day-qualified": "bg-teal-50 border-teal-200 text-teal-900",
+		"60-day-qualified": "bg-sky border-line text-ink",
 		"60-day-marginal": "bg-amber-50 border-amber-200 text-amber-900",
 		"not-qualifying": "bg-red-50 border-red-200 text-red-900",
 	};
@@ -226,18 +226,18 @@ export default function TaxResidencyPlannerClient() {
 	return (
 		<main id="main" className="max-w-3xl mx-auto px-6 py-10 md:py-16">
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-ink">
 					Home
 				</Link>{" "}
 				›{" "}
-				<Link href="/tools" className="hover:text-slate-900">
+				<Link href="/tools" className="hover:text-ink">
 					Tools
 				</Link>{" "}
-				› <span className="text-slate-900">Tax Residency Planner</span>
+				› <span className="text-ink">Tax Residency Planner</span>
 			</nav>
 
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
 					Interactive Tool
 				</p>
 				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">
@@ -253,8 +253,8 @@ export default function TaxResidencyPlannerClient() {
 			<div className="grid md:grid-cols-2 gap-8">
 				{/* Inputs */}
 				<section className="space-y-6">
-					<div className="bg-white border border-slate-200 rounded-xl p-6 space-y-6">
-						<h2 className="text-sm font-semibold text-slate-900 uppercase tracking-wider">
+					<div className="bg-white border border-line rounded-xl p-6 space-y-6">
+						<h2 className="text-sm font-semibold text-ink uppercase tracking-wider">
 							Your Days
 						</h2>
 						<SliderField
@@ -265,9 +265,9 @@ export default function TaxResidencyPlannerClient() {
 							unit="days"
 							highlight={
 								daysInCyprus >= 183
-									? "text-emerald-600"
+									? "text-green-800"
 									: daysInCyprus >= 60
-										? "text-teal-600"
+										? "text-primary"
 										: "text-red-600"
 							}
 							onChange={setDaysInCyprus}
@@ -278,13 +278,11 @@ export default function TaxResidencyPlannerClient() {
 							min={0}
 							max={365 - daysInCyprus}
 							unit="days"
-							highlight={
-								daysInOtherCountry > 183 ? "text-red-600" : "text-slate-900"
-							}
+							highlight={daysInOtherCountry > 183 ? "text-red-600" : "text-ink"}
 							onChange={setDaysInOtherCountry}
 						/>
 						{daysInCyprus + daysInOtherCountry > 183 && (
-							<p className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+							<p className="text-xs text-amber-900 bg-amber-50 border border-amber-200 rounded-xl px-3 py-2">
 								Combined days in Cyprus + other country:{" "}
 								{daysInCyprus + daysInOtherCountry}. The 183-day threshold is a
 								key test — spending more than 183 days in another country will
@@ -293,8 +291,8 @@ export default function TaxResidencyPlannerClient() {
 						)}
 					</div>
 
-					<div className="bg-white border border-slate-200 rounded-xl p-6 space-y-1">
-						<h2 className="text-sm font-semibold text-slate-900 uppercase tracking-wider mb-3">
+					<div className="bg-white border border-line rounded-xl p-6 space-y-1">
+						<h2 className="text-sm font-semibold text-ink uppercase tracking-wider mb-3">
 							Your Situation
 						</h2>
 						<YesNoField
@@ -318,20 +316,18 @@ export default function TaxResidencyPlannerClient() {
 				{/* Results */}
 				<section className="space-y-4">
 					{/* 183-day result */}
-					<div className="bg-white border border-slate-200 rounded-xl p-5">
+					<div className="bg-white border border-line rounded-xl p-5">
 						<div className="flex items-center gap-2 mb-1">
 							<span
 								className={`w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold ${
 									qualifies183
-										? "bg-emerald-100 text-emerald-700"
+										? "bg-green-50 text-green-800"
 										: "bg-slate-100 text-muted"
 								}`}
 							>
 								{qualifies183 ? "✓" : "✗"}
 							</span>
-							<h3 className="text-sm font-semibold text-slate-900">
-								183-Day Rule
-							</h3>
+							<h3 className="text-sm font-semibold text-ink">183-Day Rule</h3>
 						</div>
 						<p className="text-xs text-slate-500 pl-7">
 							{qualifies183
@@ -341,18 +337,18 @@ export default function TaxResidencyPlannerClient() {
 					</div>
 
 					{/* 60-day checklist */}
-					<div className="bg-white border border-slate-200 rounded-xl p-5">
+					<div className="bg-white border border-line rounded-xl p-5">
 						<div className="flex items-center gap-2 mb-3">
 							<span
 								className={`w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold ${
 									sixtyDayAllPass
-										? "bg-emerald-100 text-emerald-700"
+										? "bg-green-50 text-green-800"
 										: "bg-slate-100 text-muted"
 								}`}
 							>
 								{sixtyDayAllPass ? "✓" : "✗"}
 							</span>
-							<h3 className="text-sm font-semibold text-slate-900">
+							<h3 className="text-sm font-semibold text-ink">
 								60-Day Rule Conditions
 							</h3>
 						</div>
@@ -378,8 +374,8 @@ export default function TaxResidencyPlannerClient() {
 				</section>
 			</div>
 
-			<aside className="mt-8 p-5 bg-amber-50 border border-amber-200 rounded-xl text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">Important notice</p>
+			<aside className="mt-8 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
+				<p className="font-semibold text-amber-900 mb-1">Important notice</p>
 				<p>
 					Cyprus Tax Department has tightened audit on 60-day claims. Maintain a
 					day diary with proof of presence (boarding passes, hotel receipts,
@@ -389,27 +385,27 @@ export default function TaxResidencyPlannerClient() {
 			</aside>
 
 			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools" className="underline hover:text-slate-900">
+				<Link href="/tools" className="underline hover:text-ink">
 					← Back to Tools
 				</Link>
 			</p>
 
-			<aside className="mt-10 p-5 rounded-xl bg-slate-50 border border-slate-200">
-				<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
+			<aside className="mt-10 p-5 rounded-2xl bg-slate-50 border border-line">
+				<p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
 					Next steps
 				</p>
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/guides/taxes-for-expats/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Read: Taxes for Expats in Cyprus →
+						Read: Taxes for Expats in Cyprus
 					</Link>{" "}
 					<Link
 						href="/sections/accountants/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Find a tax advisor →
+						Find a tax advisor
 					</Link>
 				</div>
 			</aside>

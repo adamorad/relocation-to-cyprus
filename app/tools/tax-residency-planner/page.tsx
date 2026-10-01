@@ -19,7 +19,7 @@ export default function MovedPage() {
 						href={NEW_PATH}
 						className="text-primary font-semibold underline"
 					>
-						Continue to the new page →
+						Continue to the new page
 					</Link>
 				</p>
 			</main>
