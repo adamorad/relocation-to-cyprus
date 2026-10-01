@@ -5,7 +5,39 @@ import { ToolPanel } from "@/components/templates/ToolTemplate";
 import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
 import { Callout } from "@/components/ui/Callout";
+import { ChipGroup } from "@/components/ui/Chip";
 import { DataTable, StatCard } from "@/components/ui/DataTable";
+import {
+	primaryResidenceVat,
+	REDUCED_VAT_MAX_VALUE,
+	transferFees,
+	VAT_STANDARD_RATE,
+} from "@/lib/facts/tax";
+
+type PropertyType = "resale" | "new-primary" | "new-standard";
+
+// Legal fees are not regulated; quotes of about 1% to 1.5% plus VAT are
+// common, so the model uses the midpoint.
+const LEGAL_FEE_RATE = 0.0125;
+
+interface UpfrontCosts {
+	transferFees: number;
+	vat: number;
+	legal: number;
+	total: number;
+}
+
+function calcUpfront(price: number, type: PropertyType): UpfrontCosts {
+	const fees = type === "resale" ? transferFees(price).reduced : 0;
+	const vat =
+		type === "new-primary"
+			? primaryResidenceVat(price)
+			: type === "new-standard"
+				? price * VAT_STANDARD_RATE
+				: 0;
+	const legal = price * LEGAL_FEE_RATE * (1 + VAT_STANDARD_RATE);
+	return { transferFees: fees, vat, legal, total: fees + vat + legal };
+}
 
 interface Inputs {
 	monthlyRent: number;
@@ -39,7 +71,7 @@ function calcMortgagePayment(
 	return (principal * (r * (1 + r) ** n)) / ((1 + r) ** n - 1);
 }
 
-function runModel(inputs: Inputs): YearRow[] {
+function runModel(inputs: Inputs, propertyType: PropertyType): YearRow[] {
 	const {
 		monthlyRent,
 		purchasePrice,
@@ -60,8 +92,8 @@ function runModel(inputs: Inputs): YearRow[] {
 		mortgageTerm,
 	);
 
-	// Buying upfront costs: assume 5% (transfer fees + legal)
-	const upfrontCosts = purchasePrice * 0.05;
+	// Buying upfront costs: transfer fees (resale) or VAT (new build), plus legal fees
+	const upfrontCosts = calcUpfront(purchasePrice, propertyType).total;
 
 	const rows: YearRow[] = [];
 
@@ -78,8 +110,8 @@ function runModel(inputs: Inputs): YearRow[] {
 		rentCumulative += rentThisYear;
 		currentRent *= 1 + rentIncrease / 100;
 
-		// Buy side: mortgage payments this year
-		const mortgageThisYear = monthlyMortgage * 12;
+		// Buy side: mortgage payments this year (none once the term has ended)
+		const mortgageThisYear = y <= mortgageTerm ? monthlyMortgage * 12 : 0;
 		buyCumulative += mortgageThisYear;
 
 		// Property value at end of year
@@ -196,7 +228,13 @@ export default function RentVsBuyPage({
 	const set = (key: keyof Inputs) => (v: number) =>
 		setInputs((prev) => ({ ...prev, [key]: v }));
 
-	const rows = useMemo(() => runModel(inputs), [inputs]);
+	const [propertyType, setPropertyType] = useState<PropertyType>("resale");
+
+	const rows = useMemo(
+		() => runModel(inputs, propertyType),
+		[inputs, propertyType],
+	);
+	const upfront = calcUpfront(inputs.purchasePrice, propertyType);
 
 	const breakEvenYear =
 		rows.find((r) => r.buyCumulative < r.rentCumulative)?.year ?? null;
@@ -216,7 +254,7 @@ export default function RentVsBuyPage({
 						step={50}
 					/>
 					<NumInput
-						label="Purchase price"
+						label="Purchase price (before VAT)"
 						value={inputs.purchasePrice}
 						onChange={set("purchasePrice")}
 						suffix="€"
@@ -278,6 +316,22 @@ export default function RentVsBuyPage({
 						step={0.5}
 					/>
 				</div>
+				<ChipGroup
+					label="Property type"
+					options={[
+						{ value: "resale" as PropertyType, label: "Resale" },
+						{
+							value: "new-primary" as PropertyType,
+							label: "New build, primary residence (5% VAT)",
+						},
+						{
+							value: "new-standard" as PropertyType,
+							label: "New build, other (19% VAT)",
+						},
+					]}
+					value={propertyType}
+					onChange={setPropertyType}
+				/>
 			</ToolPanel>
 
 			<section
@@ -303,6 +357,31 @@ export default function RentVsBuyPage({
 			</section>
 
 			<DataTable
+				caption="Upfront buying costs"
+				columns={[{ header: "Cost" }, { header: "Amount", align: "right" }]}
+				rows={[
+					[
+						propertyType === "resale"
+							? "Transfer fees (after the 50% reduction)"
+							: "Transfer fees (none: purchase subject to VAT)",
+						fmt(upfront.transferFees),
+					],
+					[
+						propertyType === "resale"
+							? "VAT (none on a resale)"
+							: propertyType === "new-primary"
+								? inputs.purchasePrice > REDUCED_VAT_MAX_VALUE
+									? "VAT (19%: the 5% rate is not available above €475,000)"
+									: "VAT (5% up to €350,000, 19% above)"
+								: "VAT (19%)",
+						fmt(upfront.vat),
+					],
+					["Legal fees (1.25% plus 19% VAT)", fmt(upfront.legal)],
+				]}
+				footer={["Total upfront", fmt(upfront.total)]}
+			/>
+
+			<DataTable
 				caption="Year-by-year comparison of renting and buying"
 				columns={[
 					{ header: "Year" },
@@ -326,14 +405,18 @@ export default function RentVsBuyPage({
 			/>
 
 			<Callout tone="legal" title="Cyprus market assumptions">
-				Based on Cyprus market assumptions. Upfront buying costs (transfer fees
-				and legal fees) are modelled as a flat 5% of the price; renovation is
-				not included. Legal fees are not regulated: quotes of around 1% to 1.5%
-				of the price plus VAT are common. The model assumes a 25-year mortgage
-				term and that the alternative to the down payment is invested at your
-				stated return. Verify current mortgage rates with your bank. This
-				calculator is for illustrative purposes only and does not constitute
-				financial advice.
+				Based on Cyprus market assumptions. Upfront buying costs are the Land
+				Registry transfer fees on a resale (3%, 5% and 8% bands, reduced by 50%)
+				or VAT on a new build bought from a developer (no transfer fees are then
+				due), plus legal fees; renovation is not included. The 5% VAT rate
+				applies only to a primary residence: on the first 130 m² and the first
+				€350,000, and not at all above 190 m² or €475,000 (the area test is not
+				modelled here). Legal fees are not regulated: quotes of around 1% to
+				1.5% of the price plus VAT are common, and the model uses 1.25%. The
+				model assumes a 25-year mortgage term (no payments after year 25) and
+				that the alternative to the down payment is invested at your stated
+				return. Verify current mortgage rates with your bank. This calculator is
+				for illustrative purposes only and does not constitute financial advice.
 			</Callout>
 
 			{embedded ? (

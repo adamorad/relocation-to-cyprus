@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
+import { SourcesNote } from "@/components/ui/SourcesNote";
+import { TAX_SRC } from "@/lib/facts/tax";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import VisaRenewalReminderClient from "./client";
@@ -27,15 +29,22 @@ export default function VisaRenewalReminderPage() {
 		<ToolTemplate
 			pagefindType="tool"
 			related={
-				<MoreOnTopic
-					type="tool"
-					slug="visa-renewal-reminder"
-					exclude={[
-						"/guides/permanent-residency-5year/",
-						"/sections/immigration-lawyers/",
-					]}
-					cols={2}
-				/>
+				<>
+					<SourcesNote
+						className="mb-12"
+						lastChecked="2026-10-02"
+						sources={[TAX_SRC.digitalNomad, TAX_SRC.meu1]}
+					/>
+					<MoreOnTopic
+						type="tool"
+						slug="visa-renewal-reminder"
+						exclude={[
+							"/guides/permanent-residency-5year/",
+							"/sections/immigration-lawyers/",
+						]}
+						cols={2}
+					/>
+				</>
 			}
 			width="reading"
 			header={{

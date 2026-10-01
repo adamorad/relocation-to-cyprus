@@ -160,6 +160,30 @@ export const SI_MAX_INSURABLE_MONTHLY = 5742;
 export const EMPLOYER_ON_COST_RATE = 0.154;
 
 /**
+ * Employer GeSY contribution on employee emoluments.
+ * Source: Business in Cyprus, "Social Insurance Registration and Contributions" (component of EMPLOYER_ON_COST_RATE). Checked 2026-10-02.
+ */
+export const GESY_EMPLOYER_RATE = 0.029;
+
+/**
+ * Employer Redundancy Fund contribution.
+ * Source: Business in Cyprus, "Social Insurance Registration and Contributions" (component of EMPLOYER_ON_COST_RATE). Checked 2026-10-02.
+ */
+export const REDUNDANCY_FUND_RATE = 0.012;
+
+/**
+ * Employer Human Resource Development Authority (HRDA, industrial training) contribution.
+ * Source: Business in Cyprus, "Social Insurance Registration and Contributions" (component of EMPLOYER_ON_COST_RATE). Checked 2026-10-02.
+ */
+export const HRDA_RATE = 0.005;
+
+/**
+ * Employer Social Cohesion Fund contribution.
+ * Source: Business in Cyprus, "Social Insurance Registration and Contributions" (component of EMPLOYER_ON_COST_RATE). Checked 2026-10-02.
+ */
+export const SOCIAL_COHESION_RATE = 0.02;
+
+/**
  * GeSY contribution on employment, pension, dividend, interest and rental income.
  * Source: Tax Department, Guide for completion of tax return 2025 (June 2026). Checked 2026-10-02.
  */
@@ -216,6 +240,29 @@ export const REDUCED_VAT_VALUE_CAP = 350000;
  * Source: Tax Department Circular ΕΕ 11/2023. Checked 2026-10-02.
  */
 export const REDUCED_VAT_MAX_VALUE = 475000;
+
+/**
+ * Reduced VAT rate on a qualifying primary residence.
+ * Source: Tax Department Circular ΕΕ 11/2023. Checked 2026-10-02.
+ */
+export const VAT_REDUCED_RATE = 0.05;
+
+/**
+ * Standard VAT rate (new homes that do not qualify for 5%, professional fees).
+ * Source: PwC Worldwide Tax Summaries, Cyprus other taxes, and the Ministry of Finance VAT rates page. Checked 2026-10-01.
+ */
+export const VAT_STANDARD_RATE = 0.19;
+
+/**
+ * VAT on a new home bought as a primary residence, assuming the buildable area is within the 130 m² limit:
+ * 5% on value up to €350,000 and 19% above, or 19% on all of it above €475,000.
+ * Simplified from Tax Department Circular ΕΕ 11/2023 (the area test is not modelled).
+ */
+export function primaryResidenceVat(price: number): number {
+	if (price > REDUCED_VAT_MAX_VALUE) return price * VAT_STANDARD_RATE;
+	const reduced = Math.min(price, REDUCED_VAT_VALUE_CAP);
+	return reduced * VAT_REDUCED_RATE + (price - reduced) * VAT_STANDARD_RATE;
+}
 
 /**
  * Land Registry transfer fee scale before the 50% reduction (upper limit, rate).
@@ -303,3 +350,106 @@ export const VISITOR_PERMIT_MONTHLY_INCOME_COUPLE = 2400;
  * Source: Migration Department, "Registration of E.U. citizens ... (MEU1)". Checked 2026-10-02.
  */
 export const MEU1_MAX_FINE = 2500;
+
+/**
+ * EU citizens: MEU1 registration application fee.
+ * Source: Migration Department, "Registration of E.U. citizens ... (MEU1)". Checked 2026-10-02.
+ */
+export const MEU1_FEE = 20;
+
+/**
+ * Digital Nomad permit fee, plus ALIENS_REGISTER_FEE on first registration.
+ * Source: Migration Department, "Digital nomads and family members". Checked 2026-10-02.
+ */
+export const DNV_PERMIT_FEE = 70;
+
+/**
+ * Fee for first registration in the Aliens' Register (non-EU permits).
+ * Source: Migration Department, "Digital nomads and family members". Checked 2026-10-02.
+ */
+export const ALIENS_REGISTER_FEE = 70;
+
+/**
+ * Digital Nomad permit: issued for one year, renewable for up to this many further years.
+ * Source: Migration Department, "Digital nomads and family members". Checked 2026-10-02.
+ */
+export const DNV_RENEWAL_MAX_YEARS = 2;
+
+// ---------------------------------------------------------------------------
+// Tax return deadlines
+// ---------------------------------------------------------------------------
+
+/**
+ * Individual return (TD1): statutory deadline is 31 July of the following year.
+ * Source: Tax Department, "Individual Income Tax Return" (posted 06 July 2026). Checked 2026-10-02.
+ */
+export const TD1_STATUTORY_DEADLINE = "31 July";
+
+/**
+ * Individual return (TD1) for tax year 2025: deadline extended to 31 October 2026 (ISO date).
+ * Source: Tax Department, "Individual Income Tax Return" (posted 06 July 2026). Checked 2026-10-02.
+ */
+export const TD1_DEADLINE_TAX_YEAR_2025 = "2026-10-31";
+
+// ---------------------------------------------------------------------------
+// Sources
+// ---------------------------------------------------------------------------
+
+/** Primary sources behind this file, for SourcesNote on tools. */
+export const TAX_SRC = {
+	siContributions: {
+		label:
+			"Business in Cyprus: Social Insurance registration and contributions",
+		url: "https://www.businessincyprus.gov.cy/social-insurance-registration-and-contributions/",
+	},
+	siInsurableEarnings: {
+		label: "Social Insurance Services: basic insurable earnings 1981 to 2026",
+		url: "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/9AD159715525E49CC22584D90030E8FF?OpenDocument",
+	},
+	td59Notes: {
+		label: "Tax Department: Form T.D.59 2026 notes (PDF)",
+		url: "https://www.gov.cy/media/sites/167/2026/02/IR59_2026_English__.pdf",
+	},
+	taxReformIndividuals: {
+		label: "Tax Department: Tax reform 2026 for individuals (Greek, PDF)",
+		url: "https://www.gov.cy/media/sites/167/2026/05/Φορολογική-Μεταρρύθμιση-2026-φυσικά-πρόσωπα-11.05.2026.pdf",
+	},
+	sdcReform: {
+		label:
+			"Tax Department: Special Defence Contribution reform 2026 (Greek, PDF)",
+		url: "https://www.gov.cy/media/sites/167/2026/03/EEA-ΦΚΚ-ΜΕΤΑΡΡΥΘΜΙΣΗ-06032026.pdf",
+	},
+	taxReturnGuide2025: {
+		label: "Tax Department: Guide to the 2025 tax return (Greek, PDF)",
+		url: "https://www.gov.cy/media/sites/167/2026/06/Guide-for-completion-of-tax-return-2025-EL.pdf",
+	},
+	individualReturn: {
+		label: "Tax Department: Individual income tax return",
+		url: "https://www.gov.cy/mof-tax/en/documents/forologiki-dilosi-eisodimatos-atomoy/",
+	},
+	transferFees: {
+		label: "Department of Lands and Surveys: rights and fees (PDF)",
+		url: "https://portal.dls.moi.gov.cy/wp-content/uploads/2022/07/Rights-and-Fees_EN.pdf",
+	},
+	transferFeeService: {
+		label: "gov.cy: calculation of real estate transfer fees",
+		url: "https://www.gov.cy/en/service/calculation-of-real-estates-transfer-fees/",
+	},
+	reducedVat: {
+		label:
+			"Tax Department: Circular ΕΕ 11/2023 on 5% VAT for a primary residence (Greek, PDF)",
+		url: "https://www.gov.cy/media/sites/167/2026/01/%CE%95%CE%95-11_2023.pdf",
+	},
+	vatRates: {
+		label: "PwC Worldwide Tax Summaries: Cyprus other taxes (VAT)",
+		url: "https://taxsummaries.pwc.com/cyprus/corporate/other-taxes",
+	},
+	meu1: {
+		label: "Migration Department: registration of EU citizens (MEU1)",
+		url: "https://www.gov.cy/mip-md/en/documents/e-u-e-e-a-citizens-and-family-members-2/e-u-e-e-a-citizens-family-member/registration-of-e-u-citizens-and-members-of-their-families-who-are-also-e-u-e-e-a-citizens-meu1/",
+	},
+	digitalNomad: {
+		label: "Migration Department: digital nomads and family members",
+		url: "https://www.gov.cy/mip-md/en/documents/digital-nomads-and-family-members/",
+	},
+} as const satisfies Record<string, { label: string; url: string }>;

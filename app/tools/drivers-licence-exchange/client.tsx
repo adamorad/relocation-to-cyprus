@@ -16,13 +16,18 @@ import {
 
 type LicenceCategory = "car" | "motorcycle" | "both" | "other";
 
-type ExchangeType = "direct" | "tests" | null;
+type ExchangeType = "direct" | "check" | "tests" | null;
 
 interface CountryOption {
 	value: string;
 	label: string;
-	group: "eu_eea" | "uk" | "bilateral" | "other";
+	group: Group;
 }
+
+// "check": countries the site has described as having an exchange
+// arrangement, but no official list was found to confirm which ones do
+// (fact-check C6). Readers are sent to the Road Transport Department.
+type Group = "eu_eea" | "uk" | "check" | "other";
 
 const EU_EEA_COUNTRIES: CountryOption[] = [
 	{ value: "AT", label: "Austria", group: "eu_eea" },
@@ -60,39 +65,36 @@ const UK_COUNTRIES: CountryOption[] = [
 	{ value: "GB", label: "United Kingdom", group: "uk" },
 ];
 
-const BILATERAL_COUNTRIES: CountryOption[] = [
-	{ value: "US", label: "USA (all 50 states)", group: "bilateral" },
-	{ value: "CA", label: "Canada (all provinces)", group: "bilateral" },
-	{ value: "AU", label: "Australia", group: "bilateral" },
-	{ value: "NZ", label: "New Zealand", group: "bilateral" },
-	{ value: "CH", label: "Switzerland", group: "bilateral" },
-	{ value: "JP", label: "Japan", group: "bilateral" },
-	{ value: "KR", label: "South Korea", group: "bilateral" },
-	{ value: "AE", label: "UAE", group: "bilateral" },
-	{ value: "IL", label: "Israel", group: "bilateral" },
+const CHECK_COUNTRIES: CountryOption[] = [
+	{ value: "US", label: "USA", group: "check" },
+	{ value: "CA", label: "Canada", group: "check" },
+	{ value: "AU", label: "Australia", group: "check" },
+	{ value: "NZ", label: "New Zealand", group: "check" },
+	{ value: "CH", label: "Switzerland", group: "check" },
+	{ value: "JP", label: "Japan", group: "check" },
+	{ value: "KR", label: "South Korea", group: "check" },
+	{ value: "ZA", label: "South Africa", group: "check" },
+	{ value: "AE", label: "UAE", group: "check" },
+	{ value: "IL", label: "Israel", group: "check" },
 ];
 
 const ALL_COUNTRIES = [
 	...EU_EEA_COUNTRIES,
 	...UK_COUNTRIES,
-	...BILATERAL_COUNTRIES,
+	...CHECK_COUNTRIES,
 ];
 
-function getGroup(
-	countryValue: string,
-): "eu_eea" | "uk" | "bilateral" | "other" {
+function getGroup(countryValue: string): Group {
 	const found = ALL_COUNTRIES.find((c) => c.value === countryValue);
 	return found ? found.group : "other";
 }
 
 // ── cost calculation ──────────────────────────────────────────────────────────
 
-function calcCost(
-	group: "eu_eea" | "uk" | "bilateral" | "other",
-	needsMedical: boolean,
-): { breakdown: { label: string; amount: string }[]; total: string } | null {
-	if (group === "other") return null;
-
+function calcCost(needsMedical: boolean): {
+	breakdown: { label: string; amount: string }[];
+	total: string;
+} {
 	const breakdown: { label: string; amount: string }[] = [
 		{ label: "Licence fee", amount: eur(LICENCE_FEE) },
 	];
@@ -131,13 +133,13 @@ const MEDICAL_DOC_TEST_ROUTE =
 const MEDICAL_DOC_EXCHANGE = `Medical certificate (eye test and fitness to drive), needed because you are ${LICENCE_MEDICAL_AGE} or over or hold lorry or bus categories`;
 
 function getDocuments(
-	group: "eu_eea" | "uk" | "bilateral" | "other",
+	group: Group,
 	countryValue: string,
 	needsMedical: boolean,
 ): string[] {
 	const isEuCitizen = group === "eu_eea";
 	const needsTranslation =
-		group === "bilateral" && ["JP", "KR", "AE", "IL"].includes(countryValue);
+		group === "check" && ["JP", "KR", "AE", "IL"].includes(countryValue);
 
 	const docs = [...BASE_DOCUMENTS];
 
@@ -165,24 +167,29 @@ function getDocuments(
 
 // ── process steps ─────────────────────────────────────────────────────────────
 
-function getSteps(group: "eu_eea" | "uk" | "bilateral" | "other"): string[] {
+function getSteps(group: Group): string[] {
 	if (group === "other") {
 		return [
 			"You may drive on your valid foreign licence for up to 6 months from establishing Cyprus residency.",
-			"Enrol in a Cyprus-approved driving school (recommended: €40–60/lesson, typically 5–15 lessons needed).",
+			"Enrol in a Cyprus-approved driving school; ask schools for their lesson prices.",
 			"Apply for a learner's permit at the District Transport Department.",
-			"Book and pass the theory test (available in Greek, English, Russian, Turkish), fee €17.",
-			"Book and pass the practical driving test, fee €34.",
+			"Book and pass the theory test. Check current test fees with the Road Transport Department.",
+			"Book and pass the practical driving test.",
 			"Upon passing, collect your Cyprus driving licence from the District Transport Department.",
 		];
 	}
 
 	return [
+		...(group === "check"
+			? [
+					"Contact the Road Transport Department to confirm that a licence from your country can be exchanged without tests.",
+				]
+			: []),
 		"Gather all required documents listed below.",
 		"Book an appointment at your nearest District Transport Department (Limassol, Larnaca, or Paphos).",
 		"Attend your appointment and submit your original foreign licence along with all documents.",
 		"Your foreign licence will be surrendered and returned to the issuing country's authority.",
-		"Your Cyprus driving licence will be issued within approximately 4–6 weeks.",
+		"Ask the Road Transport Department how long the new licence will take to be issued.",
 	];
 }
 
@@ -236,12 +243,17 @@ export default function DriversLicenceExchangeClient() {
 
 	const group = countryValue ? getGroup(countryValue) : null;
 	const exchangeType: ExchangeType =
-		group === null ? null : group === "other" ? "tests" : "direct";
+		group === null
+			? null
+			: group === "other"
+				? "tests"
+				: group === "check"
+					? "check"
+					: "direct";
 
 	// RTD: a medical certificate is needed only at 70+ or for lorry/bus categories.
 	const needsMedical = aged70 === "yes" || category === "other";
-	const cost =
-		group && exchangeType === "direct" ? calcCost(group, needsMedical) : null;
+	const cost = calcCost(needsMedical);
 	const documents = group
 		? getDocuments(group, countryValue, needsMedical)
 		: [];
@@ -282,23 +294,23 @@ export default function DriversLicenceExchangeClient() {
 								</option>
 							))}
 						</optgroup>
-						<optgroup label="Bilateral agreement countries (direct exchange, no test)">
-							{BILATERAL_COUNTRIES.map((c) => (
+						<optgroup label="Other countries (check with the Road Transport Department)">
+							{CHECK_COUNTRIES.map((c) => (
 								<option key={c.value} value={c.value}>
 									{c.label}
 								</option>
 							))}
 						</optgroup>
-						<optgroup label="All other countries (tests required)">
+						<optgroup label="All other countries">
 							<option value="OTHER">Other country (not listed above)</option>
 						</optgroup>
 					</select>
 				</div>
 				<p className="text-sm leading-relaxed text-muted">
 					If your country isn&rsquo;t listed, choose &ldquo;Other country&rdquo;
-					at the bottom. Countries in the &ldquo;bilateral agreement&rdquo;
-					group have a specific agreement with Cyprus allowing direct licence
-					exchange without retesting.
+					at the bottom. For licences from outside the EU, EEA and UK, whether
+					you can exchange without tests depends on the issuing country: check
+					with the Road Transport Department before you apply.
 				</p>
 			</ToolPanel>
 
@@ -336,46 +348,50 @@ export default function DriversLicenceExchangeClient() {
 								<Badge tone={exchangeType === "direct" ? "success" : "warning"}>
 									{exchangeType === "direct"
 										? "Direct exchange"
-										: "Tests required"}
+										: exchangeType === "check"
+											? "Check with the RTD"
+											: "Tests likely"}
 								</Badge>
 								<p className="mt-2 text-lg font-bold text-ink">
 									{exchangeType === "direct"
 										? "Direct exchange: no test required"
-										: "Tests required"}
+										: exchangeType === "check"
+											? "Exchange may be possible: check with the Road Transport Department"
+											: "Theory and practical tests likely"}
 								</p>
 								<p className="mt-0.5 text-sm text-muted">
 									{exchangeType === "direct"
 										? "You can exchange your licence directly at the District Transport Department."
-										: "Your country does not have a bilateral agreement with Cyprus. You must pass theory and practical tests."}
+										: exchangeType === "check"
+											? "Whether a licence from your country can be exchanged without tests depends on the issuing country. Check with the Road Transport Department before you apply; if it cannot be exchanged, you will need to pass the theory and practical tests."
+											: "Licences from countries without an exchange arrangement need the theory and practical tests. Check with the Road Transport Department before you start."}
 								</p>
 							</div>
 						</div>
 
 						{isUkBilateralCategoryNote && (
 							<Callout tone="info" title="Note for UK licence holders">
-								The UK bilateral agreement covers car licences (Category B). For
-								motorcycle (A), commercial vehicle (C), or bus (D) categories,
-								please confirm current requirements directly with the Cyprus
-								Road Transport Department.
+								For motorcycle (A), lorry (C) or bus (D) categories, confirm the
+								current requirements with the Road Transport Department before
+								you apply.
 							</Callout>
 						)}
 
 						<div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
 							<div className="rounded-card border border-line bg-white p-4">
-								<p className="mb-1 text-sm text-muted">Estimated timeline</p>
-								<p className="text-xl font-bold text-ink">
-									{exchangeType === "direct" ? "4 to 6 weeks" : "3 to 6 months"}
-								</p>
+								<p className="mb-1 text-sm text-muted">Timeline</p>
+								<p className="text-xl font-bold text-ink">Ask the RTD</p>
 								<p className="mt-1 text-sm text-muted">
-									{exchangeType === "direct"
-										? "From appointment to licence receipt"
-										: "Including test waiting times"}
+									The Road Transport Department does not publish a processing
+									time; ask when you book
+									{exchangeType === "tests" ? ", and allow for test dates" : ""}
+									.
 								</p>
 							</div>
 
 							<div className="rounded-card border border-line bg-white p-4">
 								<p className="mb-1 text-sm text-muted">Estimated cost</p>
-								{exchangeType === "direct" && cost ? (
+								{exchangeType !== "tests" ? (
 									<>
 										<p className="text-xl font-bold text-ink">{cost.total}</p>
 										<ul className="mt-2 space-y-0.5">
@@ -392,23 +408,27 @@ export default function DriversLicenceExchangeClient() {
 									</>
 								) : (
 									<>
-										<p className="text-xl font-bold text-ink">€350–750+</p>
+										<p className="text-xl font-bold text-ink">
+											{eur(LICENCE_FEE)} + tests
+										</p>
 										<ul className="mt-2 space-y-0.5 text-sm text-muted">
 											<li className="flex justify-between gap-3">
-												<span>Theory test</span>
-												<span className="font-semibold">€17</span>
+												<span>Licence fee</span>
+												<span className="font-semibold">
+													{eur(LICENCE_FEE)}
+												</span>
 											</li>
 											<li className="flex justify-between gap-3">
-												<span>Practical test</span>
-												<span className="font-semibold">€34</span>
+												<span>Theory and practical tests</span>
+												<span className="font-semibold">Ask the RTD</span>
 											</li>
 											<li className="flex justify-between gap-3">
-												<span>Driving lessons (5–15 lessons)</span>
-												<span className="font-semibold">€300–700</span>
+												<span>Driving lessons</span>
+												<span className="font-semibold">Ask schools</span>
 											</li>
 											<li className="flex justify-between gap-3">
 												<span>Medical certificate</span>
-												<span className="font-semibold">€15–30</span>
+												<span className="font-semibold">Doctor&apos;s fee</span>
 											</li>
 										</ul>
 									</>

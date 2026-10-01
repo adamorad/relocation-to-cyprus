@@ -7,35 +7,27 @@ import { Callout } from "@/components/ui/Callout";
 import { ChipGroup } from "@/components/ui/Chip";
 import { DataTable, StatCard } from "@/components/ui/DataTable";
 import {
+	GESY_EMPLOYER_RATE,
+	GESY_INCOME_CAP,
+	GESY_RATE,
 	GESY_SELF_EMPLOYED_RATE,
+	HRDA_RATE,
 	pct,
+	REDUNDANCY_FUND_RATE,
 	SI_EMPLOYEE_RATE,
 	SI_EMPLOYER_RATE,
 	SI_MAX_INSURABLE_ANNUAL,
+	SI_MAX_INSURABLE_MONTHLY,
+	SI_SELF_EMPLOYED_RATE,
+	SOCIAL_COHESION_RATE,
 } from "@/lib/facts/tax";
 
 type EmploymentType = "employed" | "self-employed";
 
-// 2026 Cyprus Social Insurance rates (lib/facts/tax.ts)
-const EMPLOYED_RATES = {
-	employee: {
-		socialInsurance: SI_EMPLOYEE_RATE,
-		gesy: 0.0265,
-	},
-	employer: {
-		socialInsurance: SI_EMPLOYER_RATE,
-		redundancyFund: 0.012,
-		holidayFund: 0.08,
-		industrialTraining: 0.005,
-		socialCohesion: 0.02,
-		gesy: 0.029,
-	},
-};
-
-// Self-employed: 16.6% SI on insurable earnings, capped at €68,904/yr (2026)
-const SELF_EMPLOYED_SI_RATE = 0.166;
-const SELF_EMPLOYED_GESY_RATE = GESY_SELF_EMPLOYED_RATE;
-const SELF_EMPLOYED_MAX_ANNUAL = SI_MAX_INSURABLE_ANNUAL;
+// 2026 rates, all from lib/facts/tax.ts. Social insurance is charged on
+// earnings up to the maximum insurable earnings (€5,742 a month in 2026);
+// employee and self-employed GeSY on income up to €180,000 a year.
+const GESY_MAX_MONTHLY = GESY_INCOME_CAP / 12;
 
 function formatEur(value: number): string {
 	return new Intl.NumberFormat("en-IE", {
@@ -128,9 +120,13 @@ export default function SocialInsuranceCalculatorPage({
 	let employerRows: BreakdownRow[] = [];
 	let selfRows: BreakdownRow[] = [];
 
+	// Earnings that social insurance and GeSY are charged on
+	const siMonthlyBase = Math.min(grossMonthly, SI_MAX_INSURABLE_MONTHLY);
+	const gesyMonthlyBase = Math.min(grossMonthly, GESY_MAX_MONTHLY);
+
 	if (employmentType === "employed") {
-		const eSI = grossMonthly * EMPLOYED_RATES.employee.socialInsurance;
-		const eGESY = grossMonthly * EMPLOYED_RATES.employee.gesy;
+		const eSI = siMonthlyBase * SI_EMPLOYEE_RATE;
+		const eGESY = gesyMonthlyBase * GESY_RATE;
 
 		employeeRows = [
 			{
@@ -142,7 +138,7 @@ export default function SocialInsuranceCalculatorPage({
 			},
 			{
 				label: "GeSY (General Healthcare)",
-				rate: "2.65%",
+				rate: pct(GESY_RATE),
 				monthly: eGESY,
 				annual: eGESY * 12,
 				side: "employee",
@@ -150,14 +146,11 @@ export default function SocialInsuranceCalculatorPage({
 		];
 
 		if (cyprusRegistered) {
-			const erSI = grossMonthly * EMPLOYED_RATES.employer.socialInsurance;
-			const erRedundancy =
-				grossMonthly * EMPLOYED_RATES.employer.redundancyFund;
-			const erHoliday = grossMonthly * EMPLOYED_RATES.employer.holidayFund;
-			const erTraining =
-				grossMonthly * EMPLOYED_RATES.employer.industrialTraining;
-			const erCohesion = grossMonthly * EMPLOYED_RATES.employer.socialCohesion;
-			const erGESY = grossMonthly * EMPLOYED_RATES.employer.gesy;
+			const erSI = siMonthlyBase * SI_EMPLOYER_RATE;
+			const erRedundancy = grossMonthly * REDUNDANCY_FUND_RATE;
+			const erTraining = grossMonthly * HRDA_RATE;
+			const erCohesion = grossMonthly * SOCIAL_COHESION_RATE;
+			const erGESY = grossMonthly * GESY_EMPLOYER_RATE;
 
 			employerRows = [
 				{
@@ -169,35 +162,28 @@ export default function SocialInsuranceCalculatorPage({
 				},
 				{
 					label: "Redundancy Fund",
-					rate: "1.2%",
+					rate: pct(REDUNDANCY_FUND_RATE),
 					monthly: erRedundancy,
 					annual: erRedundancy * 12,
 					side: "employer",
 				},
 				{
-					label: "Holiday Fund",
-					rate: "8.0%",
-					monthly: erHoliday,
-					annual: erHoliday * 12,
-					side: "employer",
-				},
-				{
-					label: "Industrial Training",
-					rate: "0.5%",
+					label: "Industrial Training (HRDA)",
+					rate: pct(HRDA_RATE),
 					monthly: erTraining,
 					annual: erTraining * 12,
 					side: "employer",
 				},
 				{
 					label: "Social Cohesion Fund",
-					rate: "2.0%",
+					rate: pct(SOCIAL_COHESION_RATE),
 					monthly: erCohesion,
 					annual: erCohesion * 12,
 					side: "employer",
 				},
 				{
 					label: "GeSY (General Healthcare)",
-					rate: "2.90%",
+					rate: pct(GESY_EMPLOYER_RATE),
 					monthly: erGESY,
 					annual: erGESY * 12,
 					side: "employer",
@@ -205,24 +191,24 @@ export default function SocialInsuranceCalculatorPage({
 			];
 		}
 	} else {
-		// Self-employed: cap insurable earnings
-		const cappedAnnual = Math.min(annualSalary, SELF_EMPLOYED_MAX_ANNUAL);
-		const cappedMonthly = cappedAnnual / 12;
+		// Self-employed: SI on earnings up to the maximum insurable earnings,
+		// GeSY on income up to the GeSY ceiling
+		const cappedMonthly = Math.min(annualSalary, SI_MAX_INSURABLE_ANNUAL) / 12;
 
-		const siMonthly = cappedMonthly * SELF_EMPLOYED_SI_RATE;
-		const gesyMonthly = grossMonthly * SELF_EMPLOYED_GESY_RATE;
+		const siMonthly = cappedMonthly * SI_SELF_EMPLOYED_RATE;
+		const gesyMonthly = gesyMonthlyBase * GESY_SELF_EMPLOYED_RATE;
 
 		selfRows = [
 			{
 				label: "Social Insurance (SI)",
-				rate: "16.6%",
+				rate: pct(SI_SELF_EMPLOYED_RATE),
 				monthly: siMonthly,
 				annual: siMonthly * 12,
 				side: "self",
 			},
 			{
 				label: "GeSY (General Healthcare)",
-				rate: pct(SELF_EMPLOYED_GESY_RATE),
+				rate: pct(GESY_SELF_EMPLOYED_RATE),
 				monthly: gesyMonthly,
 				annual: gesyMonthly * 12,
 				side: "self",
@@ -237,9 +223,7 @@ export default function SocialInsuranceCalculatorPage({
 	const selfTotalMonthly = selfRows.reduce((s, r) => s + r.monthly, 0);
 	const selfTotalAnnual = selfTotalMonthly * 12;
 
-	const isCapped =
-		employmentType === "self-employed" &&
-		annualSalary > SELF_EMPLOYED_MAX_ANNUAL;
+	const isCapped = grossMonthly > SI_MAX_INSURABLE_MONTHLY;
 
 	const sliderId = useId();
 
@@ -291,9 +275,12 @@ export default function SocialInsuranceCalculatorPage({
 
 				{isCapped && (
 					<Callout tone="info">
-						SI is capped at {formatEur(SELF_EMPLOYED_MAX_ANNUAL / 12)}/mo (
-						{formatEur(SELF_EMPLOYED_MAX_ANNUAL)}/yr insurable earnings). Income
-						above this cap is not subject to Social Insurance.
+						Social Insurance is charged on earnings up to{" "}
+						{formatEur(SI_MAX_INSURABLE_MONTHLY)}/mo (
+						{formatEur(SI_MAX_INSURABLE_ANNUAL)}/yr maximum insurable earnings
+						for 2026). Earnings above this are not subject to Social Insurance.
+						GeSY stops at {formatEur(GESY_MAX_MONTHLY)}/mo (
+						{formatEur(GESY_INCOME_CAP)}/yr).
 					</Callout>
 				)}
 
@@ -358,7 +345,12 @@ export default function SocialInsuranceCalculatorPage({
 			</div>
 
 			<Callout tone="legal" title="Important notice">
-				Rates change annually. Verify current rates at{" "}
+				Employers that are not exempt from the Central Holiday Fund also pay a
+				Holiday Fund contribution, which is not included here; check the rate
+				with Social Insurance Services. The Redundancy Fund, HRDA, Social
+				Cohesion and employer GeSY rows are shown on the full salary; ask Social
+				Insurance Services or the HIO whether a ceiling applies to them. Rates
+				change annually. Verify current rates at{" "}
 				<a
 					href="https://www.socialinsurance.gov.cy"
 					target="_blank"

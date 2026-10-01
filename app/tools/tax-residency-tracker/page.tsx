@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { SourcesNote } from "@/components/ui/SourcesNote";
+import { TAX_SRC } from "@/lib/facts/tax";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import TaxResidencyPlannerClient from "./client";
@@ -42,6 +43,7 @@ export default function TaxResidencyTrackerPage() {
 								label: "Tax Department: Tax Reform 2026",
 								url: "https://www.gov.cy/mof-tax/en/documents/forologiki-metarrythmisi-2026/",
 							},
+							TAX_SRC.individualReturn,
 						]}
 					/>
 					<MoreOnTopic

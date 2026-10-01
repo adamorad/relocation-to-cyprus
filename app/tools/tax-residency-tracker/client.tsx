@@ -24,12 +24,13 @@ function getRecommendation(
 	hasPermanentHome: boolean,
 	hasBusinessOrEmployment: boolean,
 ): { type: Recommendation; title: string; description: string } {
-	if (daysInCyprus >= 183) {
+	// The 183-day test needs more than 183 days, so exactly 183 does not qualify.
+	if (daysInCyprus > 183) {
 		return {
 			type: "183-day",
 			title: "183-Day Rule: Clear Qualification",
 			description:
-				"You have spent 183 or more days in Cyprus this year. You qualify as a Cyprus tax resident under the straightforward 183-day test. No further conditions apply. File your TD1 by 31 July of the following year.",
+				"You have spent more than 183 days in Cyprus this year. You qualify as a Cyprus tax resident under the straightforward 183-day test. No further conditions apply. File your TD1 return for the year by the deadline: 31 July of the following year by law, though the Tax Department can extend it (for tax year 2025 it was extended to 31 October 2026).",
 		};
 	}
 
@@ -147,7 +148,7 @@ export default function TaxResidencyPlannerClient() {
 	const [hasPermanentHome, setHasPermanentHome] = useState(true);
 	const [hasBusinessOrEmployment, setHasBusinessOrEmployment] = useState(true);
 
-	const qualifies183 = daysInCyprus >= 183;
+	const qualifies183 = daysInCyprus > 183;
 
 	const sixtyDayConditions: Condition[] = [
 		{
@@ -261,7 +262,7 @@ export default function TaxResidencyPlannerClient() {
 					<p className="text-base text-muted">
 						{qualifies183
 							? `You have spent ${daysInCyprus} days in Cyprus, above the 183-day threshold. You qualify.`
-							: `You have spent ${daysInCyprus} days in Cyprus. You need ${183 - daysInCyprus} more days to qualify under this rule.`}
+							: `You have spent ${daysInCyprus} days in Cyprus. You need ${184 - daysInCyprus} more ${184 - daysInCyprus === 1 ? "day" : "days"} (more than 183 in total) to qualify under this rule.`}
 					</p>
 				</div>
 
