@@ -6,6 +6,11 @@ import { Badge } from "@/components/ui/Badge";
 import { Callout } from "@/components/ui/Callout";
 import { ChipGroup } from "@/components/ui/Chip";
 import { Section } from "@/components/ui/Section";
+import {
+	eur,
+	LICENCE_FEE,
+	LICENCE_MEDICAL_AGE,
+} from "@/lib/facts/health-transport";
 
 // ── data ─────────────────────────────────────────────────────────────────────
 
@@ -84,42 +89,21 @@ function getGroup(
 
 function calcCost(
 	group: "eu_eea" | "uk" | "bilateral" | "other",
-	category: LicenceCategory,
+	needsMedical: boolean,
 ): { breakdown: { label: string; amount: string }[]; total: string } | null {
 	if (group === "other") return null;
 
-	const breakdown: { label: string; amount: string }[] = [];
-	let total = 0;
+	const breakdown: { label: string; amount: string }[] = [
+		{ label: "Licence fee", amount: eur(LICENCE_FEE) },
+	];
 
-	if (group === "eu_eea" || group === "bilateral") {
-		if (category === "car") {
-			breakdown.push({ label: "Car licence (B)", amount: "€24" });
-			total += 24;
-		} else if (category === "motorcycle") {
-			breakdown.push({ label: "Motorcycle licence (A)", amount: "€12" });
-			total += 12;
-		} else if (category === "both") {
-			breakdown.push({ label: "Car licence (B)", amount: "€24" });
-			breakdown.push({ label: "Motorcycle licence (A)", amount: "€12" });
-			total += 36;
-		} else {
-			breakdown.push({ label: "Exchange fee", amount: "€24" });
-			total += 24;
-		}
-	} else if (group === "uk") {
-		// UK only covers car
-		breakdown.push({ label: "Car licence (B)", amount: "€24" });
-		total += 24;
+	if (needsMedical) {
+		breakdown.push({ label: "Medical certificate", amount: "Doctor's fee" });
 	}
-
-	breakdown.push({
-		label: "Medical certificate (approx.)",
-		amount: "€15–30",
-	});
 
 	return {
 		breakdown,
-		total: `€${total} + medical`,
+		total: needsMedical ? `${eur(LICENCE_FEE)} + medical` : eur(LICENCE_FEE),
 	};
 }
 
@@ -129,7 +113,6 @@ const BASE_DOCUMENTS = [
 	"Valid original foreign driving licence (both sides if card format)",
 	"Valid passport or EU ID card",
 	"2 recent passport photos (45×35 mm, white background)",
-	"Medical certificate (eye test + GP declaration of fitness), cost approx. €15–30",
 	"Proof of Cyprus residence (utility bill, bank statement, or municipality registration)",
 	"Completed application form (available at District Transport Department)",
 	"Payment of applicable fee",
@@ -142,15 +125,27 @@ const NON_EU_DOCS = ["ARC card (Alien Registration Certificate)"];
 const TRANSLATION_NOTE =
 	"Certified translation of licence (required if not issued in Latin alphabet or Greek, EU documents are exempt)";
 
+const MEDICAL_DOC_TEST_ROUTE =
+	"Medical certificate (eye test + GP declaration of fitness)";
+
+const MEDICAL_DOC_EXCHANGE = `Medical certificate (eye test and fitness to drive), needed because you are ${LICENCE_MEDICAL_AGE} or over or hold lorry or bus categories`;
+
 function getDocuments(
 	group: "eu_eea" | "uk" | "bilateral" | "other",
 	countryValue: string,
+	needsMedical: boolean,
 ): string[] {
 	const isEuCitizen = group === "eu_eea";
 	const needsTranslation =
 		group === "bilateral" && ["JP", "KR", "AE", "IL"].includes(countryValue);
 
 	const docs = [...BASE_DOCUMENTS];
+
+	if (group === "other") {
+		docs.splice(3, 0, MEDICAL_DOC_TEST_ROUTE);
+	} else if (needsMedical) {
+		docs.splice(3, 0, MEDICAL_DOC_EXCHANGE);
+	}
 
 	if (isEuCitizen) {
 		docs.push(EU_CITIZEN_DOCS[0]);
@@ -237,14 +232,19 @@ function StepItem({ n, text }: { n: number; text: string }) {
 export default function DriversLicenceExchangeClient() {
 	const [countryValue, setCountryValue] = useState("");
 	const [category, setCategory] = useState<LicenceCategory>("car");
+	const [aged70, setAged70] = useState<"no" | "yes">("no");
 
 	const group = countryValue ? getGroup(countryValue) : null;
 	const exchangeType: ExchangeType =
 		group === null ? null : group === "other" ? "tests" : "direct";
 
+	// RTD: a medical certificate is needed only at 70+ or for lorry/bus categories.
+	const needsMedical = aged70 === "yes" || category === "other";
 	const cost =
-		group && exchangeType === "direct" ? calcCost(group, category) : null;
-	const documents = group ? getDocuments(group, countryValue) : [];
+		group && exchangeType === "direct" ? calcCost(group, needsMedical) : null;
+	const documents = group
+		? getDocuments(group, countryValue, needsMedical)
+		: [];
 	const steps = group ? getSteps(group) : [];
 
 	const isUkBilateralCategoryNote =
@@ -303,7 +303,7 @@ export default function DriversLicenceExchangeClient() {
 			</ToolPanel>
 
 			{countryValue && (
-				<ToolPanel title="Step 2: What licence category do you hold?">
+				<ToolPanel title="Step 2: Your licence category and age">
 					<ChipGroup
 						label="Licence category"
 						hideLabel
@@ -314,6 +314,15 @@ export default function DriversLicenceExchangeClient() {
 							{ value: "motorcycle", label: "Motorcycle (A)" },
 							{ value: "both", label: "Both B + A" },
 							{ value: "other", label: "Other (C, D, etc.)" },
+						]}
+					/>
+					<ChipGroup
+						label={`Are you ${LICENCE_MEDICAL_AGE} or over?`}
+						value={aged70}
+						onChange={setAged70}
+						options={[
+							{ value: "no", label: "No" },
+							{ value: "yes", label: "Yes" },
 						]}
 					/>
 				</ToolPanel>

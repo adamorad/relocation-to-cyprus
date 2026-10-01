@@ -21,6 +21,8 @@ import {
 	GESY_ANNUAL_CAP_REDUCED,
 	GESY_RX_ITEM_COPAY,
 	SRC as HT_SRC,
+	LICENCE_FEE,
+	LICENCE_MEDICAL_AGE,
 } from "./facts/health-transport";
 import { GUIDES_BATCH1 } from "./guides-batch1";
 import { GUIDES_BATCH2 } from "./guides-batch2";
@@ -1308,7 +1310,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "driving-licence-conversion",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [HT_SRC.licenceConversion],
 		category: "transport",
 		title: "Converting Your Driving Licence in Cyprus",
 		description:
@@ -1328,11 +1332,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Documents required for the exchange",
-				body: "For a reciprocal-agreement exchange, bring to the Traffic Department: your original foreign driving licence, your ARC (Alien Registration Certificate) or Yellow Slip, your passport, two recent passport-sized photographs (35mm x 45mm, white background), and a completed application form (available at the office). For the full test route (non-reciprocal countries), the same documents are required plus a medical certificate from a Cyprus GP confirming fitness to drive (a standard document that most GPs issue at a check-up visit for €20–€30). The medical certificate requirement applies to all applicants over 65 regardless of nationality. A certified translation of your foreign licence is required if it is not in Greek, English, or a Latin alphabet — translations cost €30–€50 at certified translation agencies; the Traffic Department maintains a list of approved translators. Do not arrive without all documents: the Traffic Department will not process partial applications and a second visit resets the queue.",
+				body: `For a reciprocal-agreement exchange, bring to the Traffic Department: your original foreign driving licence, your ARC (Alien Registration Certificate) or Yellow Slip, your passport, two recent passport-sized photographs (35mm x 45mm, white background), and a completed application form (available at the office). For the full test route (non-reciprocal countries), the same documents are required plus a medical certificate from a Cyprus GP confirming fitness to drive (a standard document that most GPs issue at a check-up visit for €20–€30). The medical certificate requirement applies to all applicants aged ${LICENCE_MEDICAL_AGE} or over, and to lorry and bus licences, regardless of nationality. A certified translation of your foreign licence is required if it is not in Greek, English, or a Latin alphabet; translations cost €30–€50 at certified translation agencies; the Traffic Department maintains a list of approved translators. Do not arrive without all documents: the Traffic Department will not process partial applications and a second visit resets the queue.`,
 			},
 			{
 				heading: "Traffic Department offices, timeline, and cost",
-				body: "Traffic Department offices that handle driving licence applications are located in all five district capitals: Nicosia (main office, Athalassa Avenue), Limassol (Omonia Avenue office), Larnaca (Artemidos Avenue), Paphos (Neofytou Nikolaidi Street), and Famagusta (Paralimni office serving the eastern district). Appointments can be booked online via the Cyprus e-Government portal (eservices.gov.cy) or by phone; walk-in availability exists but is limited in peak periods. For a reciprocal exchange, the processing time from application submission to receiving the Cyprus licence is typically 4–8 weeks, the licence is printed centrally and posted to your registered address. For the test route, add the testing period to this timeline. Cost breakdown for a reciprocal exchange: application fee approximately €50–€70 (fees are reviewed annually), plus document translation if needed. There is no additional fee for the physical licence card. Keep a copy of your application receipt, the Traffic Department receipt serves as temporary proof of an in-progress application if you are stopped by police before the new licence arrives. While the exchange is in progress, many newcomers arrange a [monthly car rental](/guides/long-term-car-rental-cyprus/); check the provider's licence requirements first, especially for stays over three months on a non-EU licence.",
+				body: `Traffic Department offices that handle driving licence applications are located in all five district capitals: Nicosia (main office, Athalassa Avenue), Limassol (Omonia Avenue office), Larnaca (Artemidos Avenue), Paphos (Neofytou Nikolaidi Street), and Famagusta (Paralimni office serving the eastern district). Appointments can be booked online via the Cyprus e-Government portal (eservices.gov.cy) or by phone; walk-in availability exists but is limited in peak periods. For a reciprocal exchange, the processing time from application submission to receiving the Cyprus licence is typically 4–8 weeks, the licence is printed centrally and posted to your registered address. For the test route, add the testing period to this timeline. Cost breakdown for a reciprocal exchange: the licence fee is ${eur(LICENCE_FEE)}, plus document translation if needed. There is no additional fee for the physical licence card. Keep a copy of your application receipt, the Traffic Department receipt serves as temporary proof of an in-progress application if you are stopped by police before the new licence arrives. While the exchange is in progress, many newcomers arrange a [monthly car rental](/guides/long-term-car-rental-cyprus/); check the provider's licence requirements first, especially for stays over three months on a non-EU licence.`,
 			},
 		],
 	},
@@ -2566,7 +2570,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "moving-to-cyprus-from-uk",
 		datePublished: "2026-06-22",
-		dateModified: "2026-09-30",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [HT_SRC.licenceConversion],
 		category: "immigration",
 		title: "Moving to Cyprus from the UK After Brexit: 2026 Guide",
 		description:
@@ -2590,7 +2596,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Converting your UK driving licence",
-				body: "UK driving licences are valid in Cyprus for driving as a visitor. Once you establish residency, specifically, once you have a residency permit and a registered Cyprus address, you are required to exchange your UK licence for a Cyprus licence. The relevant authority is the Department of Road Transport (MCIT), and the exchange is handled at the Limassol, Larnaca, or Paphos district offices. The process: present your current UK driving licence (full, not provisional), your residency permit or registration certificate, a Cyprus identity document or passport, a medical certificate (a standard medical examination by a registered Cypriot doctor, costs approximately €30–€50), and proof of Cyprus address. The exchange fee is approximately €35–€55. Processing typically takes 2–6 weeks. Your UK licence categories transfer directly, if your UK licence covers car and motorcycle, your Cyprus licence will cover the same. There is no requirement to re-take a driving test for UK licence holders. Note: Cyprus drives on the left, which is the same as the UK, the transition is significantly easier than for continental European licence holders. That also makes a [long-term car rental in Cyprus](/guides/long-term-car-rental-cyprus/) straightforward for UK arrivals in their first months.",
+				body: `UK driving licences are valid in Cyprus for driving as a visitor. Once you establish residency, specifically, once you have a residency permit and a registered Cyprus address, you are required to exchange your UK licence for a Cyprus licence. The relevant authority is the Department of Road Transport (MCIT), and the exchange is handled at the Limassol, Larnaca, or Paphos district offices. The process: present your current UK driving licence (full, not provisional), your residency permit or registration certificate, a Cyprus identity document or passport, and proof of Cyprus address. A medical certificate is needed only if you are ${LICENCE_MEDICAL_AGE} or over or hold lorry or bus categories. The fee is ${eur(LICENCE_FEE)}. Processing typically takes 2–6 weeks. Your UK licence categories transfer directly, if your UK licence covers car and motorcycle, your Cyprus licence will cover the same. There is no requirement to re-take a driving test for UK licence holders. Note: Cyprus drives on the left, which is the same as the UK, the transition is significantly easier than for continental European licence holders. That also makes a [long-term car rental in Cyprus](/guides/long-term-car-rental-cyprus/) straightforward for UK arrivals in their first months.`,
 			},
 			{
 				heading: "From NHS to GeSY: healthcare transition for UK nationals",
@@ -2620,7 +2626,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "How do I convert my UK driving licence in Cyprus?",
-				a: "Once you have Cyprus residency, you can exchange your UK licence directly at a MCIT district office (Limassol, Larnaca, or Paphos). Required documents: your UK licence, residency permit, passport, medical certificate (€30–€50), and proof of address. Fee approximately €35–€55; processing 2–6 weeks. No driving test required. UK licence categories transfer directly. Cyprus drives on the left, same as the UK.",
+				a: `Once you have Cyprus residency, you can exchange your UK licence directly at a MCIT district office (Limassol, Larnaca, or Paphos). Required documents: your UK licence, residency permit, passport and proof of address. A medical certificate is needed only if you are ${LICENCE_MEDICAL_AGE} or over or hold lorry or bus categories. The fee is ${eur(LICENCE_FEE)}; processing 2–6 weeks. No driving test required. UK licence categories transfer directly. Cyprus drives on the left, same as the UK.`,
 			},
 			{
 				q: "Can I use my GHIC/EHIC in Cyprus?",
