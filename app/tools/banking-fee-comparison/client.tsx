@@ -300,11 +300,12 @@ export default function BankingFeeComparisonPage() {
 			</Section>
 
 			<Callout tone="warning" title="Important notice">
-				Fees shown are approximate 2025 values for standard retail accounts and
-				change without notice. Digital banks (Revolut, Wise) do not provide a
-				Cyprus-registered IBAN, which matters for landlord deposits, utility
-				direct debits, and certain tax filings. Always verify current fee
-				schedules directly with each bank before opening an account.
+				Fees shown are approximate values from 2025, not yet re-checked, for
+				standard retail accounts and change without notice. Digital banks
+				(Revolut, Wise) do not provide a Cyprus-registered IBAN, which matters
+				for landlord deposits, utility direct debits, and certain tax filings.
+				Always verify current fee schedules directly with each bank before
+				opening an account.
 			</Callout>
 		</>
 	);

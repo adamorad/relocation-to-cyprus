@@ -16,7 +16,10 @@ export type FarmersMarket = {
   name: string;
   city: City;
   location: string;
+  /** Display label, e.g. "Saturday" or "Monday to Saturday". */
   dayOfWeek: string;
+  /** Days the market runs, for the day filter (defaults to [dayOfWeek]). */
+  days?: ReadonlyArray<string>;
   hours: string;
   produces: string[];
   why: string;
@@ -76,29 +79,14 @@ export const FARMERS_MARKETS: ReadonlyArray<FarmersMarket> = [
   {
     name: "Limassol Municipal Market (Agora)",
     city: "Limassol",
-    location: "Kanigos Square, Limassol Old Town",
-    dayOfWeek: "Monday",
-    hours: "06:00–13:00",
+    location: "Saripolou Square / Kanari Street, Old Town",
+    dayOfWeek: "Monday to Saturday",
+    days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    hours: "06:00–15:00 (check with Limassol Municipality)",
     produces: ["vegetables", "fruit", "olives", "halloumi", "herbs", "eggs"],
     why: "The historic covered municipal market in the heart of Limassol's Old Town. A permanent structure housing dedicated stalls for produce, dairy, meat, and deli goods. Excellent for fresh halloumi direct from village producers and a wide range of local herbs.",
     parkingNotes:
       "Street parking on nearby side streets; Anexartisias St car park is 5-minute walk.",
-  },
-  {
-    name: "Limassol Laiki Agora — Agios Ioannis",
-    city: "Limassol",
-    location: "Agios Ioannis neighbourhood, central Limassol",
-    dayOfWeek: "Wednesday",
-    hours: "06:00–13:00",
-    produces: [
-      "seasonal vegetables",
-      "citrus",
-      "tomatoes",
-      "local honey",
-      "olives",
-    ],
-    why: "The main Wednesday street market for central Limassol residents. Dozens of small grower stalls selling seasonal produce at wholesale-adjacent prices. One of the best spots to buy local Cypriot tomatoes in summer and citrus in winter.",
-    parkingNotes: "Arrive before 07:30 to find street parking nearby.",
   },
   {
     name: "Limassol Laiki Agora — Germasogeia",
@@ -110,69 +98,29 @@ export const FARMERS_MARKETS: ReadonlyArray<FarmersMarket> = [
     why: "Serving the expat-heavy eastern suburbs of Limassol. Good range of produce with a mix of Cypriot growers and small vendors. Saturday timing makes it the most accessible market for working families.",
     parkingNotes: "Dedicated market car park available nearby.",
   },
-  {
-    name: "Limassol Organic Farmers Market — Dasoupolis",
-    city: "Limassol",
-    location: "Dasoupolis Park, Limassol",
-    dayOfWeek: "Saturday",
-    hours: "08:00–13:00",
-    produces: [
-      "organic vegetables",
-      "natural honey",
-      "artisan bread",
-      "homemade preserves",
-      "cold-pressed olive oil",
-    ],
-    why: "A smaller, curated organic market with verified growers. Prices are higher than the laiki agora but produce is certified organic and traceable. Popular with the expat community and foodies. Some vendors offer home-made carob products unique to Cyprus.",
-    parkingNotes: "Free parking in the park car park; fills up by 09:30 on busy Saturdays.",
-  },
 
 
   // ── Larnaca ───────────────────────────────────────────────────────────────
   {
     name: "Larnaca Municipal Market",
     city: "Larnaca",
-    location: "Ermou Street, central Larnaca",
-    dayOfWeek: "Monday",
-    hours: "06:00–13:30",
+    location: "Larnaca centre (the rebuilt market by Zouhouri)",
+    dayOfWeek: "Monday to Saturday",
+    days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    hours: "07:00–19:00 (to 18:00 Nov–Feb); open-air farmers' market Saturday 06:00–13:30",
     produces: ["vegetables", "fruit", "fish", "olives", "halloumi", "herbs"],
-    why: "Larnaca's historic covered municipal market, one of the oldest in Cyprus. The fish section is particularly good — Larnaca's position on the coast means fresh daily catches from the salt lake fisheries. Also excellent for fresh herbs and village produce.",
+    why: "Larnaca's covered municipal market, rebuilt and reopened in the town centre. The fish section is good. Also excellent for fresh herbs and village produce.",
     parkingNotes: "On-street parking on Ermou Street; early morning has reasonable availability.",
-  },
-  {
-    name: "Larnaca Laiki Agora — Drosia",
-    city: "Larnaca",
-    location: "Drosia neighbourhood, Larnaca",
-    dayOfWeek: "Thursday",
-    hours: "06:00–13:00",
-    produces: ["vegetables", "citrus", "local honey", "seasonal fruit"],
-    why: "The main Thursday produce market for Larnaca residents. Straightforward, affordable, and well-stocked with seasonal produce from the Larnaca region farms. Particularly known for good-value bulk citrus in winter.",
-    parkingNotes: "Street parking available; market takes up most of the road so plan time.",
-  },
-  {
-    name: "Larnaca Saturday Farmers Market",
-    city: "Larnaca",
-    location: "Finikoudes Promenade area, Larnaca",
-    dayOfWeek: "Saturday",
-    hours: "07:00–13:00",
-    produces: [
-      "organic vegetables",
-      "artisan olive oil",
-      "flavoured olives",
-      "preserves",
-      "fresh bread",
-    ],
-    why: "A growing artisan-focused Saturday market on Larnaca's famous palm-lined promenade. Vendors tend toward small-batch and premium products — flavoured olive oils, spiced olives, homemade jams, organic herbs. A pleasant morning outing combined with a seafront walk.",
-    parkingNotes: "Finikoudes seafront parking fills early on weekends; arrive before 08:00.",
   },
 
   // ── Paphos ────────────────────────────────────────────────────────────────
   {
     name: "Paphos Municipal Market",
     city: "Paphos",
-    location: "Agoras Street, Kato Paphos",
-    dayOfWeek: "Monday",
-    hours: "06:00–13:00",
+    location: "Agoras Street, Paphos old town (Ktima)",
+    dayOfWeek: "Monday to Saturday",
+    days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    hours: "Morning to early afternoon (check with Paphos Municipality)",
     produces: [
       "vegetables",
       "fruit",
@@ -181,34 +129,6 @@ export const FARMERS_MARKETS: ReadonlyArray<FarmersMarket> = [
       "village bread",
       "olives",
     ],
-    why: "The main covered market in Paphos, located in the heart of Kato Paphos near the archaeological site. Good mix of Paphos region produce — the district produces excellent citrus, almonds, and carobs. Village producers often sell their own halloumi here.",
-    parkingNotes: "Municipal car park on Apostolou Pavlou Ave is a 5-minute walk.",
-  },
-  {
-    name: "Paphos Laiki Agora — Chlorakas",
-    city: "Paphos",
-    location: "Chlorakas, north Paphos",
-    dayOfWeek: "Tuesday",
-    hours: "06:00–13:00",
-    produces: ["seasonal vegetables", "herbs", "citrus", "potatoes", "onions"],
-    why: "Serving the large expat community in northern Paphos. Straightforward produce market with good prices on everyday vegetables and seasonal fruit. Popular with both Cypriot locals and British expats who have settled in the area.",
-    parkingNotes: "Adequate parking near the market area.",
-  },
-  {
-    name: "Paphos Saturday Artisan Market",
-    city: "Paphos",
-    location: "Kennedy Square, Paphos town",
-    dayOfWeek: "Saturday",
-    hours: "08:00–14:00",
-    produces: [
-      "organic herbs",
-      "local honey",
-      "handmade preserves",
-      "cold-pressed olive oil",
-      "dried fruit",
-      "carob products",
-    ],
-    why: "A well-established Saturday artisan market in central Paphos, combining farmers and craft vendors. Particularly strong for honey and olive oil from the Paphos hills. One of the most tourist-accessible markets in Cyprus without losing its authentic character.",
-    parkingNotes: "Kennedy Square has paid parking; arrive early for a free street space.",
+    why: "The main covered market in Paphos, in the old town (Ktima) by Kennedy Square. Good mix of Paphos region produce: the district produces excellent citrus, almonds, and carobs. Village producers often sell their own halloumi here.",
   },
 ];

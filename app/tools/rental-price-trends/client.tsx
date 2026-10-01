@@ -5,18 +5,20 @@ import { Badge } from "@/components/ui/Badge";
 import { Chip, ChipGroup } from "@/components/ui/Chip";
 import { DataTable } from "@/components/ui/DataTable";
 import { CHART_COLORS } from "@/lib/chart-colors";
+import {
+	eur,
+	RENT_CITATION_GENERAL,
+	RENT_MONTH_LABEL,
+	RENTS,
+} from "@/lib/facts/rents";
 
 // ── data ─────────────────────────────────────────────────────────────────────
+// Current figures come from lib/facts/rents.ts (Bazaraki, 1 October 2026).
+// The history below has no recorded source and a different basis from the
+// Bazaraki medians: it is shown only as labelled estimates, never joined to
+// the dated sample.
 
-const PERIODS = [
-	"2021",
-	"2022",
-	"2023",
-	"2024 Q1",
-	"2024 Q3",
-	"2025 Q1",
-	"2025 H2 est",
-];
+const PERIODS = ["2021", "2022", "2023", "2024 Q1", "2024 Q3", "2025 Q1"];
 const CITIES = ["Limassol", "Paphos", "Larnaca", "Ayia Napa"] as const;
 type City = (typeof CITIES)[number];
 
@@ -37,32 +39,38 @@ type DataSet = {
 
 const DATA_1BR: DataSet = {
 	periods: PERIODS,
-	Limassol: [650, 800, 980, 1050, 1100, 1150, 1200],
-	Paphos: [480, 570, 680, 720, 750, 780, 810],
-	Larnaca: [420, 490, 580, 620, 650, 680, 700],
-	"Ayia Napa": [380, 440, 510, 540, 560, 590, 610],
+	Limassol: [650, 800, 980, 1050, 1100, 1150],
+	Paphos: [480, 570, 680, 720, 750, 780],
+	Larnaca: [420, 490, 580, 620, 650, 680],
+	"Ayia Napa": [380, 440, 510, 540, 560, 590],
 };
 
 const DATA_2BR: DataSet = {
 	periods: PERIODS,
-	Limassol: [900, 1100, 1350, 1450, 1520, 1600, 1680],
-	Paphos: [650, 780, 950, 1000, 1050, 1100, 1150],
-	Larnaca: [580, 680, 800, 850, 890, 930, 970],
-	"Ayia Napa": [520, 600, 700, 750, 790, 830, 860],
+	Limassol: [900, 1100, 1350, 1450, 1520, 1600],
+	Paphos: [650, 780, 950, 1000, 1050, 1100],
+	Larnaca: [580, 680, 800, 850, 890, 930],
+	"Ayia Napa": [520, 600, 700, 750, 790, 830],
 };
 
 const DATA_3BR: DataSet = {
 	periods: PERIODS,
-	Limassol: [1300, 1600, 1950, 2100, 2200, 2300, 2420],
-	Paphos: [900, 1100, 1350, 1450, 1500, 1570, 1640],
-	Larnaca: [800, 950, 1100, 1180, 1230, 1280, 1340],
-	"Ayia Napa": [700, 820, 980, 1050, 1100, 1150, 1200],
+	Limassol: [1300, 1600, 1950, 2100, 2200, 2300],
+	Paphos: [900, 1100, 1350, 1450, 1500, 1570],
+	Larnaca: [800, 950, 1100, 1180, 1230, 1280],
+	"Ayia Napa": [700, 820, 980, 1050, 1100, 1150],
 };
 
 const DATASETS: Record<"1BR" | "2BR" | "3BR", DataSet> = {
 	"1BR": DATA_1BR,
 	"2BR": DATA_2BR,
 	"3BR": DATA_3BR,
+};
+
+const BEDS: Record<"1BR" | "2BR" | "3BR", 1 | 2 | 3> = {
+	"1BR": 1,
+	"2BR": 2,
+	"3BR": 3,
 };
 
 // ── chart constants ───────────────────────────────────────────────────────────
@@ -72,14 +80,6 @@ const VB_H = 300;
 const PAD = { top: 20, right: 20, bottom: 50, left: 60 };
 const CHART_W = VB_W - PAD.left - PAD.right;
 const CHART_H = VB_H - PAD.top - PAD.bottom;
-
-// ── helpers ───────────────────────────────────────────────────────────────────
-
-function pct(val: number, base: number) {
-	if (base === 0) return "n/a";
-	const p = Math.round(((val - base) / base) * 100);
-	return (p >= 0 ? "+" : "") + p + "%";
-}
 
 // ── SVG Line Chart ────────────────────────────────────────────────────────────
 
@@ -130,8 +130,6 @@ function LineChart({
 	);
 
 	const handleMouseLeave = useCallback(() => setTooltip(null), []);
-
-	const isEstimate = (i: number) => i === nPeriods - 1;
 
 	return (
 		// biome-ignore lint/a11y/useSemanticElements: keyboard access for scrollable regions (axe scrollable-region-focusable)
@@ -184,67 +182,37 @@ function LineChart({
 								i === 0 ? "start" : i === nPeriods - 1 ? "end" : "middle"
 							}
 							fontSize={12}
-							fill={isEstimate(i) ? "#506580" : "#0b2145"}
+							fill="#506580"
 						>
 							{p}
 						</text>
 					))}
 
-					{/* "estimate" label */}
-					<text
-						x={xPos(nPeriods - 1)}
-						y={PAD.top + CHART_H + 30}
-						textAnchor="end"
-						fontSize={12}
-						fill="#506580"
-						fontStyle="italic"
-					>
-						estimate
-					</text>
-
 					{/* Lines per city */}
 					{CITIES.filter((c) => activeCities.has(c)).map((city) => {
 						const pts = data[city];
-						// Draw solid segment up to second-to-last, dashed last segment
-						const solidPoints = pts
-							.slice(0, -1)
-							.map((v, i) => `${xPos(i)},${yPos(v)}`)
-							.join(" ");
-						const lastSolid = `${xPos(nPeriods - 2)},${yPos(pts[nPeriods - 2])}`;
-						const lastDashed = `${xPos(nPeriods - 1)},${yPos(pts[nPeriods - 1])}`;
+						// Every point is an unsourced estimate: one dashed line.
+						const points = pts.map((v, i) => `${xPos(i)},${yPos(v)}`).join(" ");
 
 						return (
 							<g key={city}>
-								{/* solid polyline */}
 								<polyline
-									points={solidPoints}
+									points={points}
 									fill="none"
 									stroke={CITY_COLOURS[city]}
-									strokeWidth={2.5}
+									strokeWidth={2}
+									strokeDasharray="6,4"
 									strokeLinejoin="round"
 								/>
-								{/* dashed last segment */}
-								<line
-									x1={lastSolid.split(",")[0]}
-									y1={lastSolid.split(",")[1]}
-									x2={lastDashed.split(",")[0]}
-									y2={lastDashed.split(",")[1]}
-									stroke={CITY_COLOURS[city]}
-									strokeWidth={2}
-									strokeDasharray="5,4"
-									opacity={0.7}
-								/>
-								{/* dots */}
 								{pts.map((v, i) => (
 									<circle
-										key={i}
+										key={data.periods[i]}
 										cx={xPos(i)}
 										cy={yPos(v)}
-										r={isEstimate(i) ? 3 : 4}
-										fill={isEstimate(i) ? "white" : CITY_COLOURS[city]}
+										r={3}
+										fill="white"
 										stroke={CITY_COLOURS[city]}
-										strokeWidth={isEstimate(i) ? 2 : 0}
-										opacity={isEstimate(i) ? 0.7 : 1}
+										strokeWidth={2}
 									/>
 								))}
 							</g>
@@ -280,9 +248,7 @@ function LineChart({
 						<div className="bg-white border border-line rounded-xl shadow-sm px-4 py-3 text-xs min-w-[150px]">
 							<p className="font-bold text-ink mb-2">
 								{data.periods[tooltip.periodIdx]}
-								{isEstimate(tooltip.periodIdx) && (
-									<span className="ml-1 text-muted font-normal">(est.)</span>
-								)}
+								<span className="ml-1 text-muted font-normal">(est.)</span>
 							</p>
 							{CITIES.filter((c) => activeCities.has(c)).map((city) => (
 								<div
@@ -332,10 +298,7 @@ export default function RentalPriceTrendsClient() {
 		});
 	}
 
-	// Summary stats
-	const lastIdx = data.periods.length - 1;
-	const idx2021 = 0;
-	const idx2023 = 2;
+	const beds = BEDS[brType];
 
 	return (
 		<div className="flex flex-col gap-6">
@@ -355,7 +318,7 @@ export default function RentalPriceTrendsClient() {
 
 				<fieldset className="min-w-0">
 					<legend className="mb-2 text-sm font-semibold text-ink">
-						Cities shown
+						Cities shown on the chart
 					</legend>
 					<div className="flex flex-wrap gap-2">
 						{CITIES.map((city) => {
@@ -379,28 +342,16 @@ export default function RentalPriceTrendsClient() {
 				</fieldset>
 			</section>
 
-			<section
-				aria-label="Rental price chart"
-				className="rounded-card border border-line bg-white p-4 shadow-rc"
-			>
-				<h2 className="mb-3 text-base font-bold text-ink">
-					Average monthly asking rent (EUR), {brType} apartments
-				</h2>
-				<LineChart data={data} activeCities={activeCities} />
-			</section>
-
 			<DataTable
-				caption={`Summary for ${brType} apartments (2025 H2 estimate)`}
+				caption={`Median asking rent, ${brType} apartments, ${RENT_MONTH_LABEL}`}
 				columns={[
-					{ header: "City" },
-					{ header: "Current avg", align: "right" },
-					{ header: "vs 2021", align: "right" },
-					{ header: "vs 2023", align: "right" },
+					{ header: "District" },
+					{ header: "Median a month", align: "right" },
+					{ header: "Middle half", align: "right" },
+					{ header: "Listings (n)", align: "right" },
 				]}
 				rows={CITIES.map((city) => {
-					const cur = data[city][lastIdx];
-					const base2021 = data[city][idx2021];
-					const base2023 = data[city][idx2023];
+					const cell = RENTS[city][beds];
 					return [
 						<span key="c" className="inline-flex items-center gap-2">
 							<span
@@ -408,30 +359,68 @@ export default function RentalPriceTrendsClient() {
 								className="inline-block h-3 w-3 shrink-0 rounded-full"
 								style={{ background: CITY_COLOURS[city] }}
 							/>
-							{city}
+							<span>
+								{city}
+								{city === "Ayia Napa" ? (
+									<span className="block text-xs text-muted">
+										Famagusta free area
+									</span>
+								) : null}
+							</span>
 						</span>,
-						<span key="a" className="font-bold">
-							€{cur.toLocaleString()}/mo
-						</span>,
-						<Badge key="b">{pct(cur, base2021)}</Badge>,
-						<Badge key="d">{pct(cur, base2023)}</Badge>,
+						cell.reliable ? (
+							<span key="a" className="font-bold">
+								{eur(cell.median)}
+							</span>
+						) : (
+							<span key="a" className="text-muted">
+								Too few listings
+							</span>
+						),
+						cell.reliable ? (
+							<span key="r">
+								{eur(cell.p25)}&ndash;{eur(cell.p75)}
+							</span>
+						) : (
+							<span key="r" className="text-muted">
+								n/a
+							</span>
+						),
+						<Badge key="n">{cell.n.toLocaleString("en-GB")}</Badge>,
 					];
 				})}
 			/>
+			<p className="-mt-3 text-sm text-muted">{RENT_CITATION_GENERAL}</p>
+
+			<section
+				aria-labelledby="history-heading"
+				className="rounded-card border border-line bg-white p-4 shadow-rc"
+			>
+				<h2 id="history-heading" className="mb-1 text-base font-bold text-ink">
+					Earlier estimates, 2021 to early 2025, {brType} apartments (EUR a
+					month)
+				</h2>
+				<p className="mb-3 text-sm text-muted">
+					Unsourced estimates kept for shape only. They were built on a
+					different basis from the {RENT_MONTH_LABEL} medians above, so do not
+					read the gap between them as a trend.
+				</p>
+				<LineChart data={data} activeCities={activeCities} />
+			</section>
 
 			<section
 				aria-labelledby="rent-drivers"
 				className="rounded-card border border-line bg-sky p-5 text-base leading-relaxed text-ink"
 			>
 				<h2 id="rent-drivers" className="mb-2 text-lg font-bold">
-					What is driving rents up?
+					What pushed rents up?
 				</h2>
 				<p>
-					Cyprus rents have risen 60&ndash;85% since 2021. The main drivers:
-					arrival of tens of thousands of tech workers (primarily from Russia,
-					Ukraine, and Israel post-2022), limited new housing supply, and rising
-					construction costs. Limassol has seen the steepest increases; Larnaca
-					remains the most affordable major city.
+					Asking rents rose sharply after 2021. The drivers usually cited are
+					the arrival of tens of thousands of tech workers (primarily from
+					Russia, Ukraine, and Israel post-2022), limited new housing supply,
+					and rising construction costs. Limassol remains the most expensive
+					city; Larnaca is the cheapest of the three larger cities.
 				</p>
 			</section>
 		</div>

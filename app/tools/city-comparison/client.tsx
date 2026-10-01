@@ -4,11 +4,13 @@ import { useState } from "react";
 import { Callout } from "@/components/ui/Callout";
 import { Chip } from "@/components/ui/Chip";
 import { DataTable } from "@/components/ui/DataTable";
+import { RENT_CITATION_GENERAL, RENTS } from "@/lib/facts/rents";
 
 type City = "Limassol" | "Paphos" | "Larnaca" | "Ayia Napa";
 
 interface CityData {
-	avgRent2bed: number;
+	/** Median asking rent, 2-bed apartment (lib/facts/rents.ts). */
+	medianRent2bed: number;
 	propertyPriceM2: number;
 	internationalSchools: number;
 	beachMinutes: number;
@@ -22,7 +24,7 @@ interface CityData {
 
 const DATA: Record<City, CityData> = {
 	Limassol: {
-		avgRent2bed: 1700,
+		medianRent2bed: RENTS.Limassol[2].median,
 		propertyPriceM2: 4200,
 		internationalSchools: 8,
 		beachMinutes: 5,
@@ -34,7 +36,7 @@ const DATA: Record<City, CityData> = {
 		summerTemp: 33,
 	},
 	Paphos: {
-		avgRent2bed: 1100,
+		medianRent2bed: RENTS.Paphos[2].median,
 		propertyPriceM2: 2600,
 		internationalSchools: 5,
 		beachMinutes: 5,
@@ -46,7 +48,7 @@ const DATA: Record<City, CityData> = {
 		summerTemp: 31,
 	},
 	Larnaca: {
-		avgRent2bed: 1050,
+		medianRent2bed: RENTS.Larnaca[2].median,
 		propertyPriceM2: 2200,
 		internationalSchools: 4,
 		beachMinutes: 5,
@@ -58,7 +60,7 @@ const DATA: Record<City, CityData> = {
 		summerTemp: 33,
 	},
 	"Ayia Napa": {
-		avgRent2bed: 950,
+		medianRent2bed: RENTS["Ayia Napa"][2].median,
 		propertyPriceM2: 1900,
 		internationalSchools: 1,
 		beachMinutes: 2,
@@ -84,8 +86,8 @@ interface MetricDef {
 
 const METRICS: MetricDef[] = [
 	{
-		key: "avgRent2bed",
-		label: "Avg Rent 2-bed",
+		key: "medianRent2bed",
+		label: "Median asking rent, 2-bed",
 		format: (v) => `€${v.toLocaleString()}`,
 		lowerIsBetter: true,
 	},
@@ -214,12 +216,12 @@ export default function CityComparisonClient() {
 			</p>
 
 			<Callout tone="info" title="About this data">
-				Values are approximate averages based on publicly available data and
-				local market research as of 2025 to 2026. Rental prices vary by exact
-				location, building age, and furnishing. Ratings are relative to other
-				Cyprus cities, not European or global benchmarks. Always verify with
-				local property agents and recent listings before making relocation
-				decisions.
+				Rent row: {RENT_CITATION_GENERAL} Figures are district-wide; Ayia Napa
+				covers the whole Famagusta free area. Other values are estimates from
+				2025 and 2026. Rental prices vary by exact location, building age, and
+				furnishing. Ratings are relative to other Cyprus cities, not European or
+				global benchmarks. Always verify with local property agents and recent
+				listings before making relocation decisions.
 			</Callout>
 		</>
 	);

@@ -86,7 +86,7 @@ Hub: https://realcy.app/home-and-bills/
 
 - [Internet & Mobile Provider Comparison](https://realcy.app/tools/isp-comparison/): Compare home broadband (Cyta, Epic, Primetel, Cablenet) and mobile carriers on speed, price, contract terms, eSIM, and city coverage.
 - [Neighbourhood Explorer](https://realcy.app/tools/neighbourhood-explorer/): Explore and compare neighbourhoods across Cyprus cities. Filter by vibe, beach access, expat density, schools, and value for money to find your ideal area.
-- [Cyprus Rental Price Trends](https://realcy.app/tools/rental-price-trends/): Track how apartment rents have changed across Limassol, Paphos, Larnaca, and Ayia Napa since 2021. Interactive SVG line chart for 1BR, 2BR, and 3BR units with city toggles, hover tooltips, and year-on-year comparison table.
+- [Cyprus Rental Price Trends](https://realcy.app/tools/rental-price-trends/): Median asking rents for 1BR, 2BR and 3BR apartments in Limassol, Paphos, Larnaca and Ayia Napa from a dated Bazaraki sample (1 October 2026), with the middle half of listings and sample sizes, plus a separate chart of labelled earlier estimates.
 
 ## Money & paperwork
 
@@ -127,7 +127,7 @@ Hub: https://realcy.app/money-and-paperwork/
 - [Rent vs Buy Calculator](https://realcy.app/tools/rent-vs-buy-calculator/): Compare the true total cost of renting versus buying in Cyprus over your time horizon, accounting for mortgage payments, property appreciation, and the opportunity cost of your down payment.
 - [MEU1 Registration Tracker](https://realcy.app/tools/meu1-tracker/): An interactive step-by-step checklist for EU citizens registering their residence in Cyprus. Track your progress through all required documents and appointments.
 - [Cyprus 60-Day Tax Residency Planner](https://realcy.app/tools/tax-residency-tracker/): Check whether you qualify for Cyprus tax residency under the 183-day rule or the 60-day rule. See which conditions pass or fail in real time.
-- [Cyprus Social Insurance Calculator](https://realcy.app/tools/social-insurance-calculator/): Calculate your Social Insurance and GeSY contributions based on 2025 rates. Full breakdown for employed and self-employed, including employer contributions.
+- [Cyprus Social Insurance Calculator](https://realcy.app/tools/social-insurance-calculator/): Calculate your Social Insurance and GeSY contributions based on the 2025 contribution rates; not yet updated for 2026. Full breakdown for employed and self-employed, including employer contributions.
 - [Cyprus Banking Fee Comparison](https://realcy.app/tools/banking-fee-comparison/): Compare fees and features across Bank of Cyprus, Hellenic Bank, AstroBank, Revolut, and Wise. Highlights the best value in each category.
 - [Cyprus Annual Tax Filing Calendar](https://realcy.app/tools/tax-filing-calendar/): All key Cyprus tax deadlines in a monthly view. Colour-coded by urgency. Filter by individual or company. Current month highlighted.
 - [Double Tax Treaty Finder](https://realcy.app/tools/double-tax-treaty-finder/): Check whether Cyprus has a tax treaty with your home country and what it means for your income, dividends, interest, and capital gains.
@@ -152,7 +152,7 @@ Hub: https://realcy.app/food-and-shopping/
 
 ### Local directories
 
-- [Farmers Markets](https://realcy.app/sections/farmers-markets/): Weekly markets and local produce stalls across all districts with operating days.
+- [Farmers Markets](https://realcy.app/sections/farmers-markets/): Municipal and weekly produce markets in Limassol, Larnaca and Paphos, with operating days.
 - [International Grocery Stores](https://realcy.app/sections/international-grocery/): Supermarkets and specialty stores carrying Asian, Middle Eastern, and other international foods.
 - [Halal & Kosher Food](https://realcy.app/sections/halal-kosher/): Certified halal and kosher restaurants, butchers, and grocery suppliers.
 - [Where to Eat](https://realcy.app/sections/food/): Local-favourite cafés, tavernas, grills and sweet shops in four cities, by meal and price band.

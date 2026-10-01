@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
+import { SourcesNote } from "@/components/ui/SourcesNote";
 import { EV_TIPS } from "@/lib/ev-charging";
 import { topicCrumb } from "@/lib/topic-map";
 import EvChargingClient from "./client";
@@ -49,7 +50,26 @@ export default function EvChargingPage() {
 			}}
 			info={EV_TIPS.map((t) => ({ heading: t.heading, body: t.body }))}
 			infoTitle="EV charging in Cyprus: key facts"
-			related={<MoreOnTopic type="directory" slug="ev-charging" cols={3} />}
+			related={
+				<>
+					<SourcesNote
+						lastChecked="2026-10-02"
+						sources={[
+							{
+								label: "My Mall Limassol: contact and address",
+								url: "https://www.mymall.com.cy/contact-us/",
+							},
+							{
+								label: "Aphrodite Hills Resort: contact and address",
+								url: "https://www.aphroditehills.com/contact/",
+							},
+						]}
+					/>
+					<div className="mt-12">
+						<MoreOnTopic type="directory" slug="ev-charging" cols={3} />
+					</div>
+				</>
+			}
 		>
 			<script
 				type="application/ld+json"

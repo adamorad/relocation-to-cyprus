@@ -18,6 +18,14 @@ const PRICE_LABEL: Record<1 | 2 | 3, string> = {
 	3: "€€€",
 };
 
+/** Only offer filter values that at least one listed store has. */
+const CITIES = ALL_CITIES.filter((c) =>
+	INTERNATIONAL_STORES.some((s) => s.city === c),
+);
+const SPECIALTIES = ALL_SPECIALTIES.filter((sp) =>
+	INTERNATIONAL_STORES.some((s) => s.specializes.includes(sp)),
+);
+
 /** Filters first, then the store cards. Header and info live in page.tsx. */
 export default function InternationalGroceryClient() {
 	const [cityFilter, setCityFilter] = useState<City | "All">("All");
@@ -42,7 +50,7 @@ export default function InternationalGroceryClient() {
 					onChange={setCityFilter}
 					options={[
 						{ value: "All", label: "All cities" },
-						...ALL_CITIES.map((c) => ({ value: c, label: c })),
+						...CITIES.map((c) => ({ value: c, label: c })),
 					]}
 				/>
 				<ChipGroup
@@ -51,10 +59,17 @@ export default function InternationalGroceryClient() {
 					onChange={setSpecialtyFilter}
 					options={[
 						{ value: "All", label: "All types" },
-						...ALL_SPECIALTIES.map((s) => ({ value: s, label: s })),
+						...SPECIALTIES.map((s) => ({ value: s, label: s })),
 					]}
 				/>
 			</div>
+
+			<p className="mt-6 text-base text-muted">
+				We list only stores we could confirm in a public business listing. Most
+				earlier entries could not be found and were removed, so this list is
+				short for now. The supermarket chains and the tips below cover most
+				imported staples.
+			</p>
 
 			<h2
 				className="mt-8 text-2xl font-bold tracking-tight text-ink"

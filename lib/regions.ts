@@ -15,6 +15,15 @@ import {
 	FEES_ISP,
 	feeRange,
 } from "./facts/health-transport";
+import {
+	RENT_AGREED_NOTE,
+	RENT_MONTH_LABEL,
+	RENT_SAMPLED_LABEL,
+	RENT_SOURCE_NAME,
+	RENTS,
+	rentMedian,
+	rentPremiumPct,
+} from "./facts/rents";
 import type { SiteImage } from "./topics";
 
 /** One line of the sample monthly budget table. */
@@ -121,7 +130,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 			],
 			total: "roughly €1,500–€2,200",
 			notes: [
-				"Before travel, schooling and larger discretionary spending; utilities vary with aircon use. Lidl and Sklavenitis are cheaper than Carrefour and Alpha Mega. Renting a two-bed in central Paphos costs €800–€1,200 a month (€1,100–€1,600 in Coral Bay or Kato Paphos).",
+				`Before travel, schooling and larger discretionary spending; utilities vary with aircon use. Lidl is the cheapest chain; Sklavenitis and Alphamega are the main full-range supermarkets. The median asking rent for a two-bedroom apartment in Paphos district was about ${rentMedian("Paphos", 2)} a month in ${RENT_MONTH_LABEL} (half of listings between ${eur(RENTS.Paphos[2].p25)} and ${eur(RENTS.Paphos[2].p75)}; ${RENT_SOURCE_NAME}). ${RENT_AGREED_NOTE}`,
 			],
 		},
 		faqs: [
@@ -208,7 +217,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 			],
 			total: "roughly €1,900–€2,950",
 			notes: [
-				"Rent is extra: a central two-bedroom costs €1,800–€3,000 unfurnished or €2,200–€3,800 furnished, and sea-view tower apartments regularly clear €4,000–€7,000. Rents and prices are 30–50% higher than Larnaca or Paphos for equivalent space, Limassol has consistently topped Cyprus's cost-of-living index, and newcomers consistently underestimate the gap.",
+				`Rent is extra: the median asking rent for a two-bedroom apartment in Limassol district was about ${rentMedian("Limassol", 2)} a month in ${RENT_MONTH_LABEL}, and half of listings asked between ${eur(RENTS.Limassol[2].p25)} and ${eur(RENTS.Limassol[2].p75)} (${RENT_SOURCE_NAME}, n=${RENTS.Limassol[2].n.toLocaleString("en-GB")}). That median is about ${rentPremiumPct("Limassol", "Paphos")}% above Paphos and ${rentPremiumPct("Limassol", "Larnaca")}% above Larnaca, and the most expensive seafront towers ask several times the median. ${RENT_AGREED_NOTE} Limassol has consistently topped Cyprus's cost-of-living index, and newcomers consistently underestimate the gap.`,
 			],
 		},
 		faqs: [
@@ -293,7 +302,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 				{ item: "Common charges (building with a pool)", amount: "€100–€180" },
 				{ item: "Municipal taxes", amount: "€25–€40" },
 				{
-					item: "Groceries (Lidl, Sklavenitis, Carrefour)",
+					item: "Groceries (Lidl, Sklavenitis, Alphamega)",
 					amount: "€420–€580",
 				},
 				{ item: "Restaurants 3 times a week", amount: "€230–€370" },
@@ -302,7 +311,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 			],
 			total: "roughly €1,400–€2,050",
 			notes: [
-				"Before discretionary spending. Renting a central two-bedroom costs €700–€1,200 unfurnished or €900–€1,500 furnished, meaningfully below Limassol.",
+				`Before discretionary spending. The median asking rent for a two-bedroom apartment in Larnaca district was about ${rentMedian("Larnaca", 2)} a month in ${RENT_MONTH_LABEL} (half of listings between ${eur(RENTS.Larnaca[2].p25)} and ${eur(RENTS.Larnaca[2].p75)}; ${RENT_SOURCE_NAME}, n=${RENTS.Larnaca[2].n}), well below Limassol. ${RENT_AGREED_NOTE}`,
 			],
 		},
 		faqs: [
@@ -396,7 +405,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 			total: "roughly €1,470–€2,170 off-season",
 			notes: [
 				"Resort amenities push common charges above equivalent Larnaca buildings. From June to September restaurants charge resort prices (30–50% higher than off-season) and supermarket lines are long; owners often hold off big spending until October.",
-				"Long-term rentals are scarce because most units are aimed at holiday letting: expect €750–€1,400 for a year-round two-bedroom, and significantly more if the lease includes the high season.",
+				`Long-term rentals are scarce because most units are aimed at holiday letting: expect €750–€1,400 for a year-round two-bedroom, and significantly more if the lease includes the high season. ${RENT_SOURCE_NAME} listed only ${RENTS["Ayia Napa"][2].n} two-bedroom apartments for long-term rent across the whole Famagusta free area on ${RENT_SAMPLED_LABEL}, with a median asking rent of about ${rentMedian("Ayia Napa", 2)} and half between ${eur(RENTS["Ayia Napa"][2].p25)} and ${eur(RENTS["Ayia Napa"][2].p75)}.`,
 			],
 		},
 		faqs: [
@@ -420,7 +429,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 		property: [
 			{
 				heading: "Who buys in the south-east",
-				body: "The Famagusta free area has the smallest year-round expat community of any region on this map, but a disproportionately committed one. The dominant group is British: a generation of buyers who came in the 1990s and 2000s and built up a tight social network around the golf at Aphrodite Hills, the Protaras seafront and the inland villages. Lebanese families with summer homes have become a year-round presence since the 2019–2024 instability in Beirut, and Israeli families are now the fastest-growing inbound segment, generally choosing Protaras over Ayia Napa proper for the slightly more residential feel.",
+				body: "The Famagusta free area has the smallest year-round expat community of any region on this map, but a disproportionately committed one. The dominant group is British: a generation of buyers who came in the 1990s and 2000s and built up a tight social network around the Protaras seafront and the inland villages. Lebanese families with summer homes have become a year-round presence since the 2019–2024 instability in Beirut, and Israeli families are now the fastest-growing inbound segment, generally choosing Protaras over Ayia Napa proper for the slightly more residential feel.",
 			},
 			{
 				heading: "What new developments here look like",

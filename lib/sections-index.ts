@@ -177,7 +177,7 @@ export const SECTIONS_INDEX: ReadonlyArray<SectionEntry> = [
 		slug: "farmers-markets",
 		category: "Food & Drink",
 		description:
-			"Weekly markets and local produce stalls across all districts with operating days.",
+			"Municipal and weekly produce markets in Limassol, Larnaca and Paphos, with operating days.",
 	},
 	{
 		name: "International Grocery Stores",

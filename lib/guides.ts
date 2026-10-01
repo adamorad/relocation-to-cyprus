@@ -50,12 +50,31 @@ import {
 	PFO_TAXI,
 	TAXI_NIGHT_HOURS,
 } from "./facts/health-transport";
+import {
+	RENT_AGREED_NOTE,
+	RENT_MONTH_LABEL,
+	RENT_SAMPLED_LABEL,
+	RENT_SOURCE_NAME,
+	RENT_SOURCES,
+	RENTS,
+	rentMedian,
+	rentPremiumPct,
+	rentRange,
+} from "./facts/rents";
 import { GUIDES_BATCH1 } from "./guides-batch1";
 import { GUIDES_BATCH2 } from "./guides-batch2";
 import { GUIDES_BATCH3 } from "./guides-batch3";
 import { GUIDES_BATCH4 } from "./guides-batch4";
 import { GUIDES_BATCH5 } from "./guides-batch5";
 import type { SiteImage } from "./topics";
+
+/**
+ * retiring-in-cyprus couple budget, renting in Paphos or Larnaca: the non-rent
+ * lines of that guide (utilities, food, transport, health cover, leisure:
+ * €1,930 low, €3,180 high, estimates not re-checked) plus the two-bedroom
+ * median asking rents from lib/facts/rents.ts (Bazaraki, checked 2026-10-01).
+ */
+const RETIRE_COUPLE_RENTING = `${eur(1930 + RENTS.Larnaca[2].median)}–${eur(3180 + RENTS.Paphos[2].median)}`;
 
 export type GuideCategory =
 	| "immigration"
@@ -155,7 +174,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "cost-of-living",
 		datePublished: "2026-05-22",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: RENT_SOURCES,
 		category: "lifestyle",
 		title: "Cost of Living in Cyprus 2026: City Budgets",
 		description:
@@ -163,11 +184,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "How the regions compare",
-				body: "Cost of living in Cyprus splits sharply by region. Limassol is the most expensive city by a meaningful margin — about 30 to 50 percent more expensive than Larnaca or Paphos for equivalent housing. The other two cities are surprisingly close to each other on most metrics, with Paphos slightly cheaper for property purchase and Larnaca slightly cheaper for groceries. Rural villages can be a third cheaper again, with the trade-off of needing two cars per household and longer drives to schools and hospitals. The cheapest region overall is the Famagusta free area outside the summer months, when resort pricing inflates everything from coffee to taxis.",
+				body: `Cost of living in Cyprus splits sharply by region. Limassol is the most expensive city by a meaningful margin: in ${RENT_MONTH_LABEL} the median asking rent for a two-bedroom apartment in Limassol district was about ${rentPremiumPct("Limassol", "Paphos")}% above Paphos and ${rentPremiumPct("Limassol", "Larnaca")}% above Larnaca. The other two cities are surprisingly close to each other on most metrics, with Paphos slightly cheaper for property purchase and Larnaca slightly cheaper for groceries. Rural villages can be a third cheaper again, with the trade-off of needing two cars per household and longer drives to schools and hospitals. The cheapest region overall is the Famagusta free area outside the summer months, when resort pricing inflates everything from coffee to taxis.`,
 			},
 			{
 				heading: "Rent and utilities",
-				body: "A two-bedroom apartment in a modern building (built in the last ten years, balcony, parking, walking distance to amenities) runs roughly: Limassol €1,400–€2,200, Larnaca €900–€1,400, Paphos €850–€1,400. Sea-view tower apartments in Limassol's seafront strip push past €3,000 easily. Electricity in Cyprus is notoriously expensive — the EAC (Electricity Authority) is a state monopoly and a hot Cypriot summer with the AC on can produce a €350–€450 bill for a two-bedroom flat, billed every two months. Water is comparatively cheap (under €30 per month for most households). Internet is fast and reliable — 1 Gbps fibre packages run €40 to €60 per month with most providers — and mobile data is among the cheapest in the EU at €15 to €25 for an unlimited plan.",
+				body: `Median asking rents for a two-bedroom apartment in ${RENT_MONTH_LABEL} were about ${rentMedian("Limassol", 2)} a month in Limassol district, ${rentMedian("Paphos", 2)} in Paphos district and ${rentMedian("Larnaca", 2)} in Larnaca district. The middle half of listings asked ${rentRange("Limassol", 2)}, ${rentRange("Paphos", 2)} and ${rentRange("Larnaca", 2)} respectively. A quarter of Limassol two-bedroom listings asked more than ${eur(RENTS.Limassol[2].p75)} (${RENT_SOURCE_NAME}, ${RENT_SAMPLED_LABEL}). ${RENT_AGREED_NOTE} Electricity in Cyprus is notoriously expensive: the EAC (Electricity Authority) is a state monopoly and a hot Cypriot summer with the AC on can produce a €350–€450 bill for a two-bedroom flat, billed every two months. Water is comparatively cheap (under €30 per month for most households). Internet is fast and reliable: 1 Gbps fibre packages run €40 to €60 per month with most providers, and mobile data is among the cheapest in the EU at €15 to €25 for an unlimited plan.`,
 			},
 			{
 				heading: "Seasonal budget swings: summer vs winter",
@@ -189,7 +210,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		faqs: [
 			{
 				q: "How much does it cost to rent a 2-bedroom flat in Limassol?",
-				a: "A modern 2-bedroom apartment in Limassol city ranges from €1,400–€2,200/month depending on proximity to the seafront and building quality. New-build developments in Limassol's prime areas (Germasogeia, Neapolis) typically start at €1,600/month. Older stock further inland can be found from €1,000/month.",
+				a: `The median asking rent for a two-bedroom apartment in Limassol district was about ${rentMedian("Limassol", 2)} a month in ${RENT_MONTH_LABEL}, and half of listings asked between ${eur(RENTS.Limassol[2].p25)} and ${eur(RENTS.Limassol[2].p75)} (${RENT_SOURCE_NAME}, n=${RENTS.Limassol[2].n.toLocaleString("en-GB")}). Older inland flats can still be found below €1,500, but they are the cheapest quarter of the market. Agreed rents are often lower than asking rents.`,
 			},
 			{
 				q: "Is Cyprus more expensive than Portugal for expats?",
@@ -427,7 +448,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "The legacy backlog — why title deeds are still a major issue",
-				body: "Cyprus accumulated a well-documented title deed backlog over the 1990s and 2000s: developers built properties on bank-mortgaged land, sold the units to buyers, and then — in many cases — failed to transfer the deeds once construction completed. At its peak, the backlog exceeded 130,000 properties. Legislative reforms from 2015 onwards (Law 139(I)/2015 and subsequent amendments) introduced a fast-track transfer mechanism allowing buyers to transfer titles even when an outstanding developer mortgage exists, provided the buyer pays the transfer fees. As of 2025, the backlog is materially smaller, but legacy-stock properties built before 2010 still commonly lack clear individual title deeds, and buyers of resale units in older complexes are still frequently purchasing properties where the communal or individual title deed has never been separated from the original plot title. Always treat a title deed search as mandatory due diligence, not optional.",
+				body: "Cyprus accumulated a well-documented title deed backlog over the 1990s and 2000s: developers built properties on bank-mortgaged land, sold the units to buyers, and then, in many cases, failed to transfer the deeds once construction completed. At its peak, the backlog exceeded 130,000 properties. Legislative reforms from 2015 onwards (Law 139(I)/2015 and subsequent amendments) introduced a fast-track transfer mechanism allowing buyers to transfer titles even when an outstanding developer mortgage exists, provided the buyer pays the transfer fees. By 2025 the backlog was materially smaller, but legacy-stock properties built before 2010 still commonly lack clear individual title deeds, and buyers of resale units in older complexes are still frequently purchasing properties where the communal or individual title deed has never been separated from the original plot title. Always treat a title deed search as mandatory due diligence, not optional.",
 			},
 			{
 				heading:
@@ -576,7 +597,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "family-reunification-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
 		category: "immigration",
 		title: "Bringing Your Family to Cyprus: Reunification",
 		description:
@@ -588,7 +609,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Spouse reunification: documents and process",
-				body: "For a non-EU primary permit holder bringing a non-EU spouse: you need the original marriage certificate, apostilled and officially translated into Greek or English; a passport photograph for the spouse; the spouse's valid passport with at least 12 months remaining; proof that the primary permit is current and valid; proof of shared accommodation in Cyprus (a lease in both names is cleanest, or a landlord declaration that the spouse will reside at the address); health insurance valid in Cyprus for the spouse; and the primary applicant's bank statements for the past three to six months confirming the income threshold is met including the spousal uplift (typically 20% above the base threshold for the primary permit category). For DNV holders, this means €4,200 net per month as of 2025. The joint application is submitted at the CRMD; both applicants should attend in person when possible. Processing mirrors the primary permit timeline: 6–10 weeks for clean, complete files.",
+				body: "For a non-EU primary permit holder bringing a non-EU spouse: you need the original marriage certificate, apostilled and officially translated into Greek or English; a passport photograph for the spouse; the spouse's valid passport with at least 12 months remaining; proof that the primary permit is current and valid; proof of shared accommodation in Cyprus (a lease in both names is cleanest, or a landlord declaration that the spouse will reside at the address); health insurance valid in Cyprus for the spouse; and the primary applicant's bank statements for the past three to six months confirming the income threshold is met including the spousal uplift (typically 20% above the base threshold for the primary permit category). For DNV holders, this means €4,200 net per month (2025 threshold; check the current figure with CRMD). The joint application is submitted at the CRMD; both applicants should attend in person when possible. Processing mirrors the primary permit timeline: 6–10 weeks for clean, complete files.",
 			},
 			{
 				heading: "Bringing children: documents by dependent type",
@@ -1234,7 +1255,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Parental leave: 18 weeks per parent",
-				body: "In addition to maternity and paternity leave, each parent is entitled to 18 weeks of parental leave per child (the same 18 weeks cannot be shared — each parent has their own 18-week entitlement). Parental leave in Cyprus is currently unpaid — unlike the maternity benefit, there is no Social Insurance payment during parental leave. It can be taken at any point until the child's 8th birthday, and it can be taken all at once or in separate blocks. The employer cannot refuse the request but can ask for it to be scheduled in a way that does not disrupt operations — they can defer it by up to a month in certain circumstances. For families where one partner earns significantly more than the other, the practical use of parental leave tends to fall to the lower earner since there is no income replacement. Calls to make parental leave paid (following EU Parental Leave Directive requirements) have been discussed in Cypriot parliament; the position as of 2025 is unpaid, but this is worth verifying if you are planning leave more than 12 months out.",
+				body: "In addition to maternity and paternity leave, each parent is entitled to 18 weeks of parental leave per child (the same 18 weeks cannot be shared: each parent has their own 18-week entitlement). Parental leave in Cyprus was unpaid in 2025: unlike the maternity benefit, there was no Social Insurance payment during parental leave. It can be taken at any point until the child's 8th birthday, and it can be taken all at once or in separate blocks. The employer cannot refuse the request but can ask for it to be scheduled in a way that does not disrupt operations; they can defer it by up to a month in certain circumstances. For families where one partner earns significantly more than the other, the practical use of parental leave tends to fall to the lower earner since there is no income replacement. Calls to make parental leave paid (following EU Parental Leave Directive requirements) have been discussed in Cypriot parliament; in 2025 parental leave was unpaid, but this is worth verifying if you are planning leave more than 12 months out.",
 			},
 			{
 				heading: "Self-employed maternity benefit",
@@ -1388,7 +1409,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "dental-care-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
 		category: "healthcare",
 		title: "Dental Care in Cyprus 2026: Costs & GeSY Cover",
 		description:
@@ -1396,7 +1417,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "GeSY dental coverage: what is and is not included",
-				body: "GeSY dental coverage is limited compared to general medical coverage. As of 2025, GeSY covers emergency dental care (emergency extractions, urgent pain treatment, emergency temporary fillings) and basic preventive care for children up to age 18. Routine adult check-ups, professional cleaning, composite fillings, crowns, bridges, implants, and orthodontic work are not covered by GeSY — these are entirely private costs for adults. This is an area of ongoing political discussion in Cyprus, with broader dental coverage regularly debated in parliament, but the current situation means most adults budget entirely privately for dental care. The practical consequence for relocators: do not expect GeSY to cover your dental needs the way it covers your GP visits and hospital care. Factor a separate dental budget or dental insurance policy into your planning.",
+				body: "GeSY dental coverage is limited compared to general medical coverage. In 2025, GeSY covered emergency dental care (emergency extractions, urgent pain treatment, emergency temporary fillings) and basic preventive care for children up to age 18. Routine adult check-ups, professional cleaning, composite fillings, crowns, bridges, implants, and orthodontic work are not covered by GeSY: these are entirely private costs for adults. This is an area of ongoing political discussion in Cyprus, with broader dental coverage regularly debated in parliament, but the current situation means most adults budget entirely privately for dental care. The practical consequence for relocators: do not expect GeSY to cover your dental needs the way it covers your GP visits and hospital care. Factor a separate dental budget or dental insurance policy into your planning.",
 			},
 			{
 				heading: "Private dental costs in Cyprus",
@@ -1519,7 +1540,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Non-EU countries with reciprocal agreements",
-				body: "Cyprus has bilateral driving licence exchange agreements with a number of non-EU countries, allowing direct conversion without a test. The countries with reciprocal arrangements as of 2025 include: the United Kingdom, the United States, Canada, Australia, Switzerland, and South Africa. Under a reciprocal agreement, you surrender your foreign licence and the Cyprus Traffic Department issues a Cyprus licence in exchange — no written test, no driving test. This is a genuine exchange: your original foreign licence is typically retained by the Traffic Department (or returned cancelled), so you cannot hold both simultaneously. Verify the current list at the Traffic Department's official page (mcw.gov.cy) before assuming your country is included — agreements can be added or the specific terms can change. The UK's inclusion post-Brexit (the reciprocal agreement survived the UK's EU exit) is confirmed for UK residents, making the exchange process smooth for the large British community in Cyprus.",
+				body: "Cyprus has bilateral driving licence exchange agreements with a number of non-EU countries, allowing direct conversion without a test. The countries with exchange arrangements in 2025 included: the United Kingdom, the United States, Canada, Australia, Switzerland, and South Africa. Under a reciprocal agreement, you surrender your foreign licence and the Cyprus Traffic Department issues a Cyprus licence in exchange: no written test, no driving test. This is a genuine exchange: your original foreign licence is typically retained by the Traffic Department (or returned cancelled), so you cannot hold both simultaneously. Verify the current list at the Traffic Department's official page (mcw.gov.cy) before assuming your country is included: agreements can be added or the specific terms can change. The UK's inclusion post-Brexit (the reciprocal agreement survived the UK's EU exit) is confirmed for UK residents, making the exchange process smooth for the large British community in Cyprus.",
 			},
 			{
 				heading: "Non-reciprocal countries: the test route",
@@ -1910,7 +1931,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "cypriot-cuisine-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
 		category: "lifestyle",
 		title: "Cypriot Food Culture: Eating Like a Local",
 		description:
@@ -1934,7 +1955,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Kafeneion culture and the seasonal produce calendar",
-				body: "The kafeneion is the Cypriot village coffeehouse — a male-dominated, card-playing, hours-long institution that has survived modernisation largely intact. In villages, the kafeneion is where opinions are formed and nothing much is hurried; a non-Cypriot is welcome but should understand the social cadence (you wait for an invitation to join a card game, you do not rush your coffee). Seasonal produce drives Cypriot cooking more than supermarket culture: watermelons from July to September (huge, cheap, omnipresent); carobs harvested September; citrus from November to March; strawberries from March; and the spring window of fresh artichokes, broad beans, and courgette blossoms that briefly dominates village market stalls in April. Olive oil: Cyprus produces good extra-virgin olive oil, and the best way to source it is directly from farmers at village markets or through the local agricultural cooperative (EKA). Prices for genuine Cypriot single-estate olive oil run €10–16 per litre — significantly better value than supermarket imported brands and markedly better flavour.",
+				body: "The kafeneion is the Cypriot village coffeehouse: a male-dominated, card-playing, hours-long institution that has survived modernisation largely intact. In villages, the kafeneion is where opinions are formed and nothing much is hurried; a non-Cypriot is welcome but should understand the social cadence (you wait for an invitation to join a card game, you do not rush your coffee). Seasonal produce drives Cypriot cooking more than supermarket culture: watermelons from July to September (huge, cheap, omnipresent); carobs harvested September; citrus from November to March; strawberries from March; and the spring window of fresh artichokes, broad beans, and courgette blossoms that briefly dominates village market stalls in April. Olive oil: Cyprus produces good extra-virgin olive oil, and the best way to source it is directly from farmers at village markets or through the local agricultural cooperative (EKA). Genuine Cypriot single-estate olive oil is usually better value than imported supermarket brands, with markedly better flavour; prices vary by producer and harvest, so compare a few before buying in bulk.",
 			},
 		],
 	},
@@ -1973,7 +1994,23 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "home-cooking-ingredients",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label:
+					"Cyprus Mail: Sklavenitis completes acquisition of Papantoniou Supermarkets (6 November 2024)",
+				url: "https://cyprus-mail.com/2024/11/06/sklavenitis-completes-acquisition-of-papantoniou-supermarkets",
+			},
+			{
+				label: "Sklavenitis (Wikipedia): Carrefour Cyprus takeover in 2017",
+				url: "https://en.wikipedia.org/wiki/Sklavenitis",
+			},
+			{
+				label: "Metro Supermarkets: store list",
+				url: "https://www.metro.com.cy/en/stores",
+			},
+		],
 		category: "lifestyle",
 		title: "Finding International Ingredients in Cyprus",
 		description:
@@ -1981,15 +2018,15 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "What is abundantly local and excellent",
-				body: "Before surveying the international options, it is worth cataloguing what Cyprus produces well and cheaply — because a significant part of cooking well in Cyprus is leaning into this. Halloumi, obviously: buy from the village cooperative or a market stall rather than a supermarket shelf if you can; the texture and saltiness of fresh-from-brine halloumi is materially different. Anari (fresh whey cheese) is exceptional and essentially unavailable outside Cyprus. Tomatoes, courgettes, aubergines, bell peppers, and cucumbers are inexpensive, flavourful, and local from April through October. Citrus — lemons, oranges, and the Cypriot bergamot used for preserved fruit — are abundant from November to March. Local olive oil from cooperatives runs €8–14 per litre for genuine Cypriot single-estate oil. Fresh herbs — rosemary, thyme, sage, coriander — grow semi-wild and are sold cheaply at markets; dried coriander seed and sumac are staple spices in Cypriot cooking and are widely available. Fresh fish (sea bream, sea bass, snapper) is excellent at seafront fish markets in Limassol and Larnaca. Building a cooking routine around Cypriot local produce first reduces both cost and dependency on specialty sourcing.",
+				body: "Before surveying the international options, it is worth cataloguing what Cyprus produces well and cheaply, because a significant part of cooking well in Cyprus is leaning into this. Halloumi, obviously: buy from the village cooperative or a market stall rather than a supermarket shelf if you can; the texture and saltiness of fresh-from-brine halloumi is materially different. Anari (fresh whey cheese) is exceptional and essentially unavailable outside Cyprus. Tomatoes, courgettes, aubergines, bell peppers, and cucumbers are inexpensive, flavourful, and local from April through October. Citrus (lemons, oranges, and the Cypriot bergamot used for preserved fruit) is abundant from November to March. Local olive oil from cooperatives is genuine Cypriot single-estate oil; prices vary by producer and harvest, so ask at the cooperative. Fresh herbs (rosemary, thyme, sage, coriander) grow semi-wild and are sold cheaply at markets; dried coriander seed and sumac are staple spices in Cypriot cooking and are widely available. Fresh fish (sea bream, sea bass, snapper) is excellent at seafront fish markets in Limassol and Larnaca. Building a cooking routine around Cypriot local produce first reduces both cost and dependency on specialty sourcing.",
 			},
 			{
 				heading: "Mainstream supermarkets: Sklavenitis, Alphamega, and Metro",
-				body: "Sklavenitis is the largest supermarket chain in Cyprus and carries the widest international range — it entered the market by acquiring the former Orphanides chain and has been expanding its imported goods section steadily. A well-stocked Sklavenitis (the Limassol flagship store is most complete) will carry reasonable selections of Japanese sauces (soy, mirin, miso), Thai curry pastes, Italian pasta and preserved goods, French cheeses, and most standard European baking ingredients. Alphamega is locally owned and strong on Cypriot produce; international selection is narrower. Metro (rebranded from Carrefour) carries the most consistent range of French and European produce due to historical supply-chain links. Lidl Cyprus follows the standard Lidl formula: excellent occasional imports (Iberian week, Asian week, etc.) but you cannot rely on them being in stock. For everyday international cooking, Sklavenitis is the practical default; budget €15–30 extra per weekly shop versus what you'd spend on an equivalent basket in northern Europe.",
+				body: "Sklavenitis is one of the two largest supermarket chains in Cyprus and carries the widest international range. It entered the market in 2017 by taking over the Carrefour stores, bought the Papantoniou chain in 2024, and has been expanding its imported goods section steadily. A well-stocked Sklavenitis (the Limassol flagship store is most complete) will carry reasonable selections of Japanese sauces (soy, mirin, miso), Thai curry pastes, Italian pasta and preserved goods, French cheeses, and most standard European baking ingredients. Alphamega is locally owned and strong on Cypriot produce; international selection is narrower. Metro, a Cypriot chain, carries a good range of imported produce. Lidl Cyprus follows the standard Lidl formula: excellent occasional imports (Iberian week, Asian week, etc.) but you cannot rely on them being in stock. For everyday international cooking, Sklavenitis is the practical default; budget €15–30 extra per weekly shop versus what you'd spend on an equivalent basket in northern Europe.",
 			},
 			{
 				heading: "Asian ingredients: Chinese, Thai, and Japanese sourcing",
-				body: "Asian grocery sourcing in Cyprus is primarily centred on Limassol, which has a small but established Chinese and South-East Asian community. There are 2–3 specialist Chinese/Asian grocery stores in Limassol (in the Omonia and tourist strip areas) that stock: rice varieties (jasmine, glutinous, basmati), noodle types (rice noodles, egg noodles, vermicelli), Asian sauces (fish sauce, oyster sauce, dark and light soy, black bean, hoisin, Shaoxing wine), fresh tofu and firm tofu, frozen dim sum, Korean and Japanese snacks, and some fresh vegetables (daikon, bok choy, Thai basil). Stock turnover is slower than a major city so check expiry dates. Larnaca and Paphos have almost no dedicated Asian grocery; occasional items appear in Sklavenitis but the selection is thin. If you are moving to Paphos and cook Asian food regularly, plan a monthly Limassol shop or use online delivery options.",
+				body: "Asian grocery sourcing in Cyprus is primarily centred on Limassol, which has a small but established Chinese and South-East Asian community. There are 2–3 specialist Chinese/Asian grocery stores in Limassol (in the Omonia and tourist strip areas) that stock: rice varieties (jasmine, glutinous, basmati), noodle types (rice noodles, egg noodles, vermicelli), Asian sauces (fish sauce, oyster sauce, dark and light soy, black bean, hoisin, Shaoxing wine), fresh tofu and firm tofu, frozen dim sum, Korean and Japanese snacks, and some fresh vegetables (daikon, bok choy, Thai basil). Stock turnover is slower than a major city so check expiry dates. Larnaca and Paphos each have one or two small Asian grocers, with a narrower range than Limassol's; occasional items also appear in Sklavenitis. If you are moving to Paphos and cook Asian food regularly, plan a monthly Limassol shop or use online delivery options.",
 			},
 			{
 				heading: "Middle Eastern and Indian ingredients",
@@ -1997,7 +2034,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Online delivery and frozen meat services",
-				body: "For items not available locally, Cyprus has a developing online grocery infrastructure. Agora.cy is the main online grocery marketplace and aggregates products from multiple retailers including Sklavenitis, with next-day delivery in the main cities. Papa.cy is a rapid-delivery service (30–60 minutes) for grocery essentials including some specialty items. Neither platform matches the catalogue depth of Ocado or a large European online grocer, but both are useful for staple replenishment and occasional specialty items. For meat specifically, several online services offer frozen or chilled delivery: Loullis Food Market and some specialist butchers in Limassol offer home delivery of halal meat, pork-free options, wagyu cuts, and specialty items. For specific dietary requirements (strictly kosher, certain halal certifications), the sourcing is limited — plan to import some items or build relationships with specific butchers. Limassol also has a weekly open-air market (the Saturday market near the old port area) where local producers, organic vegetable growers, and occasional specialty food importers sell directly — worth visiting on arrival to orient yourself to what is genuinely good locally.",
+				body: "For items not available locally, Cyprus has a developing online grocery infrastructure. Agora.cy is the main online grocery marketplace and aggregates products from multiple retailers including Sklavenitis, with next-day delivery in the main cities. Papa.cy is a rapid-delivery service (30–60 minutes) for grocery essentials including some specialty items. Neither platform matches the catalogue depth of Ocado or a large European online grocer, but both are useful for staple replenishment and occasional specialty items. For meat specifically, several online services offer frozen or chilled delivery: Loullis Food Market and some specialist butchers in Limassol offer home delivery of halal meat, pork-free options, wagyu cuts, and specialty items. For specific dietary requirements (strictly kosher, certain halal certifications), the sourcing is limited: plan to import some items or build relationships with specific butchers. Limassol also has a weekly open-air market (the Saturday market next to the municipal market in the old town) where local producers, organic vegetable growers, and occasional specialty food importers sell directly, worth visiting on arrival to orient yourself to what is genuinely good locally.",
 			},
 		],
 	},
@@ -2074,7 +2111,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "solar-energy-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
 		category: "environment",
 		title: "Solar Panels in Cyprus: Net Metering & ROI",
 		description:
@@ -2090,7 +2127,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "System costs, payback period, and subsidies",
-				body: "A 4 kWp residential system (16 panels of 250W each, plus a string inverter, mounting hardware, DC cabling, and installation) runs approximately €6,000–9,000 fully installed in 2025. Higher-quality components (Tier 1 panels such as LG, SunPower, or Jinko, paired with a Fronius or SMA inverter) sit at the top of that range; standard Chinese-manufactured panels with an off-brand inverter sit at the bottom. A 6 kWp system — the more common choice for families with higher AC usage — costs roughly €8,500–13,000. Payback periods are typically 5–8 years for a well-sized system at current electricity prices. The Ministry of Energy, Commerce, and Industry (MECIT) periodically opens grant rounds through the European Regional Development Fund — subsidy rates of 20–40% on equipment cost have been available in past cycles. Check mecit.gov.cy and the Cyprus Energy Agency (cea.org.cy) for current open calls before finalising your installer quote, since a €2,000–4,000 grant materially changes the calculation.",
+				body: "A 4 kWp residential system (16 panels of 250W each, plus a string inverter, mounting hardware, DC cabling, and installation) runs about €6,000–9,000 fully installed in 2025 (installer quotes; not re-checked). Higher-quality components (Tier 1 panels such as LG, SunPower, or Jinko, paired with a Fronius or SMA inverter) sit at the top of that range; standard Chinese-manufactured panels with an off-brand inverter sit at the bottom. A 6 kWp system (the more common choice for families with higher AC usage) costs roughly €8,500–13,000. Payback periods are typically 5–8 years for a well-sized system at current electricity prices. The Ministry of Energy, Commerce, and Industry (MECIT) periodically opens grant rounds through the European Regional Development Fund: subsidy rates of 20–40% on equipment cost have been available in past cycles. Check mecit.gov.cy and the Cyprus Energy Agency (cea.org.cy) for current open calls before finalising your installer quote, since a €2,000–4,000 grant materially changes the calculation.",
 			},
 			{
 				heading: "Battery storage and installer selection",
@@ -2693,7 +2730,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-06-22",
 		dateModified: "2026-10-02",
 		lastChecked: "2026-10-02",
-		sources: [HT_SRC.schoolRegister, HT_SRC.ispFees],
+		sources: [...RENT_SOURCES, HT_SRC.schoolRegister, HT_SRC.ispFees],
 		category: "lifestyle",
 		title: "Best Places to Live in Cyprus 2026: City Guide",
 		description:
@@ -2701,19 +2738,19 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "How to choose: the four factors that actually matter",
-				body: "Every article about where to live in Cyprus will mention the weather — which is roughly the same everywhere on the island. What actually differentiates the cities is cost, pace of life, expat community density, and connectivity. Cost varies significantly: a comfortable two-bedroom apartment in Limassol runs €1,100–€1,800/month, the same apartment in Larnaca costs €700–€1,100, and Paphos sits in the middle at €750–€1,200. Pace of life ranges from Limassol's urban density — traffic, noise, a genuine city rhythm — to Paphos and Ayia Napa's slower, more village-adjacent quality. Expat community density affects practical quality of life: finding an English-speaking GP, a school with space for your child, a community group that runs events, a network for professional introductions. All four cities have established expat communities, but their size, character, and origin vary substantially. Connectivity — both international flights and internal infrastructure — matters more than most people expect. Larnaca Airport handles most international traffic; Paphos Airport is active but with fewer year-round routes. The A1 motorway connects Limassol, Larnaca, and Paphos in 45–70 minutes. Ayia Napa is the most isolated, 30 km east of Larnaca with no motorway connection.",
+				body: `Every article about where to live in Cyprus will mention the weather, which is roughly the same everywhere on the island. What actually differentiates the cities is cost, pace of life, expat community density, and connectivity. Cost varies significantly: median asking rents for a two-bedroom apartment in ${RENT_MONTH_LABEL} were about ${rentMedian("Limassol", 2)} a month in Limassol, ${rentMedian("Paphos", 2)} in Paphos and ${rentMedian("Larnaca", 2)} in Larnaca (${RENT_SOURCE_NAME}, by district). ${RENT_AGREED_NOTE} Pace of life ranges from Limassol's urban density (traffic, noise, a genuine city rhythm) to Paphos and Ayia Napa's slower, more village-adjacent quality. Expat community density affects practical quality of life: finding an English-speaking GP, a school with space for your child, a community group that runs events, a network for professional introductions. All four cities have established expat communities, but their size, character, and origin vary substantially. Connectivity, both international flights and internal infrastructure, matters more than most people expect. Larnaca Airport handles most international traffic; Paphos Airport is active but with fewer year-round routes. The A1 motorway connects Limassol, Larnaca, and Paphos in 45–70 minutes. Ayia Napa is the most isolated, 30 km east of Larnaca with no motorway connection.`,
 			},
 			{
 				heading: "Limassol — the business hub",
-				body: "Limassol is Cyprus's commercial capital and the city with the largest and most diverse expat population. The Russian, Israeli, British, and broader European communities are all substantial and well-established. The city has the densest concentration of international schools, private clinics, coworking spaces, upscale restaurants, and professional service firms on the island. The Limassol Marina district and the beach road (Molos) promenade give it a proper urban waterfront, unlike anything else in Cyprus. The tradeoff is cost and density. Limassol is the most expensive city on the island for both rent and daily life. Traffic is genuinely problematic during peak hours, particularly on the old road and the beach road. The city has grown fast and infrastructure has not always kept pace. For remote workers, business owners, and professionals relocating for work, Limassol is almost always the right answer. For families, it depends on budget: the international schools are excellent but expensive. For retirees looking for quiet, Limassol's pace can feel relentless.\n\nFor families: Germasogeia is the default landing zone for English-speaking families. It runs along the B1 east of the city centre with wide pavements, several supermarkets and pharmacies, and the private school cluster (Heritage Private School, The Grammar School, PASCAL) is a 10 to 15 minute drive or school bus ride away. A three-bedroom villa with a small garden rents for €2,000 to €3,500 a month. Neighbouring Agios Athanasios, on slightly higher ground, is quieter and marginally cheaper, and its tree-lined streets and lighter traffic suit families with young children. Both areas are safe by any European standard and English is spoken everywhere. The downside: you need a car for almost everything, and in summer the Dasoudi forest park and the seafront promenade become the main outdoor spaces.",
+				body: `Limassol is Cyprus's commercial capital and the city with the largest and most diverse expat population. The Russian, Israeli, British, and broader European communities are all substantial and well-established. The city has the densest concentration of international schools, private clinics, coworking spaces, upscale restaurants, and professional service firms on the island. The Limassol Marina district and the beach road (Molos) promenade give it a proper urban waterfront, unlike anything else in Cyprus. The tradeoff is cost and density. Limassol is the most expensive city on the island for both rent and daily life. Traffic is genuinely problematic during peak hours, particularly on the old road and the beach road. The city has grown fast and infrastructure has not always kept pace. For remote workers, business owners, and professionals relocating for work, Limassol is almost always the right answer. For families, it depends on budget: the international schools are excellent but expensive. For retirees looking for quiet, Limassol's pace can feel relentless.\n\nFor families: Germasogeia is the default landing zone for English-speaking families. It runs along the B1 east of the city centre with wide pavements, several supermarkets and pharmacies, and the private school cluster (Heritage Private School, The Grammar School, PASCAL) is a 10 to 15 minute drive or school bus ride away. Two- and three-bedroom apartments in Limassol district had median asking rents of about ${rentMedian("Limassol", 2)} and ${rentMedian("Limassol", 3)} a month in ${RENT_MONTH_LABEL} (${RENT_SOURCE_NAME}); houses and villas were not part of that sample. Neighbouring Agios Athanasios, on slightly higher ground, is quieter and marginally cheaper, and its tree-lined streets and lighter traffic suit families with young children. Both areas are safe by any European standard and English is spoken everywhere. The downside: you need a car for almost everything, and in summer the Dasoudi forest park and the seafront promenade become the main outdoor spaces.`,
 			},
 			{
 				heading: "Paphos — old town character, quieter pace",
-				body: "Paphos is the city most often chosen by British, Northern European, and retirement-age expats. The old town (Ktima) has genuine character (a working market, a municipal market, a town square that functions as one), and the coastal Kato Paphos area has a seafront promenade, Roman mosaics, and a harbour that remains charming outside peak tourist season. Rents are meaningfully lower than Limassol: a good two-bedroom in Paphos runs €750–€1,100, and the surrounding villages (Tala, Peyia, Chlorakas) offer even lower rents in a quieter setting within 15 minutes of the city. The expat community is large relative to the city's size (Paphos has a higher proportion of expats to locals than any other Cypriot city) and heavily British. This creates practical advantages (English is widely spoken, British services and products are well-represented) and some cultural sameness that puts off expats looking for more local integration. The main practical limitation is connectivity: Paphos Airport serves fewer year-round routes than Larnaca, and the city has less professional infrastructure for business owners. It is an excellent choice for retirees, remote workers who do not need a business ecosystem, and families who prioritise a calmer environment over urban amenity.\n\nFor families: Chlorakas, about 4 km north of the old town and 15 minutes from Paphos airport, has grown into a full suburb with several supermarkets and a restaurant strip. A three-bedroom house rents for €1,200 to €2,000 a month, and purchase prices are among the most accessible in Cyprus. The International School of Paphos anchors the local school scene (fees are in the /guides/schools-in-cyprus/ guide). Peyia, in the hills above Coral Bay and about 20 minutes from the city, attracts families who want space and cooler summers; properties are bigger and gardens are standard. It is more a British expat village than an integrated community, so children grow up immersed in English rather than Cypriot culture, which matters to some families.",
+				body: `Paphos is the city most often chosen by British, Northern European, and retirement-age expats. The old town (Ktima) has genuine character (a working market, a municipal market, a town square that functions as one), and the coastal Kato Paphos area has a seafront promenade, Roman mosaics, and a harbour that remains charming outside peak tourist season. Rents are meaningfully lower than Limassol: the median asking rent for a two-bedroom in Paphos district was about ${rentMedian("Paphos", 2)} a month in ${RENT_MONTH_LABEL}, with half of listings between ${eur(RENTS.Paphos[2].p25)} and ${eur(RENTS.Paphos[2].p75)}, and the surrounding villages (Tala, Peyia, Chlorakas) offer even lower rents in a quieter setting within 15 minutes of the city. The expat community is large relative to the city's size (Paphos has a higher proportion of expats to locals than any other Cypriot city) and heavily British. This creates practical advantages (English is widely spoken, British services and products are well-represented) and some cultural sameness that puts off expats looking for more local integration. The main practical limitation is connectivity: Paphos Airport serves fewer year-round routes than Larnaca, and the city has less professional infrastructure for business owners. It is an excellent choice for retirees, remote workers who do not need a business ecosystem, and families who prioritise a calmer environment over urban amenity.\n\nFor families: Chlorakas, about 4 km north of the old town and 15 minutes from Paphos airport, has grown into a full suburb with several supermarkets and a restaurant strip. Three-bedroom apartments in Paphos district had a median asking rent of about ${rentMedian("Paphos", 3)} a month in ${RENT_MONTH_LABEL} (houses were not sampled), and purchase prices are among the most accessible in Cyprus. The International School of Paphos anchors the local school scene (fees are in the /guides/schools-in-cyprus/ guide). Peyia, in the hills above Coral Bay and about 20 minutes from the city, attracts families who want space and cooler summers; properties are bigger and gardens are standard. It is more a British expat village than an integrated community, so children grow up immersed in English rather than Cypriot culture, which matters to some families.`,
 			},
 			{
 				heading: "Larnaca — the affordable, underrated option",
-				body: "Larnaca is the city that most expats consider and then overlook, which is a mistake. It is 10 minutes from the main international airport, making it by far the most convenient city for frequent travellers. Rents are the lowest of the four cities for equivalent quality: a two-bedroom in a good location runs €700–€1,000. The city has a genuine old quarter (Skala), a long seafront promenade, the Finikoudes palm-lined walkway, and a functioning town centre that is less tourism-dependent than Paphos. The expat community is smaller than Limassol or Paphos but growing quickly, particularly the tech and startup community that has migrated from Limassol. The city's main limitation until recently was infrastructure, specifically the range of international schools and the density of professional services. This has improved substantially since 2022. Larnaca is now a serious option for families and remote workers who want Limassol-level connectivity at significantly lower cost. The city is also an easier entry point: finding an apartment, setting up a bank account, and navigating the bureaucracy is practically simpler in a smaller city where the relevant offices are less overwhelmed.\n\nFor families: Mackenzie, the beach strip south of the old town, has become much more polished since 2020, with a walkable seafront promenade, new restaurants and newer apartment complexes within walking distance of the beach. For school-age children the draw is The English School Larnaca and Pascal Institute Larnaca, both international. Drosia, 3 to 4 km inland along the B1, is the more established suburban choice: quieter and popular with Cypriot middle-class families, so children mix with locals more naturally than in the tourist-facing areas. A three-bedroom house in Drosia rents for €1,100 to €1,800 a month. Larnaca Airport, 5 km away, is convenient for frequent travellers but brings noticeable flight noise under the approach path.",
+				body: `Larnaca is the city that most expats consider and then overlook, which is a mistake. It is 10 minutes from the main international airport, making it by far the most convenient city for frequent travellers. Rents are the lowest of the three larger cities: the median asking rent for a two-bedroom in Larnaca district was about ${rentMedian("Larnaca", 2)} a month in ${RENT_MONTH_LABEL}, with half of listings between ${eur(RENTS.Larnaca[2].p25)} and ${eur(RENTS.Larnaca[2].p75)}. The city has a genuine old quarter (Skala), a long seafront promenade, the Finikoudes palm-lined walkway, and a functioning town centre that is less tourism-dependent than Paphos. The expat community is smaller than Limassol or Paphos but growing quickly, particularly the tech and startup community that has migrated from Limassol. The city's main limitation until recently was infrastructure, specifically the range of international schools and the density of professional services. This has improved substantially since 2022. Larnaca is now a serious option for families and remote workers who want Limassol-level connectivity at significantly lower cost. The city is also an easier entry point: finding an apartment, setting up a bank account, and navigating the bureaucracy is practically simpler in a smaller city where the relevant offices are less overwhelmed.\n\nFor families: Mackenzie, the beach strip south of the old town, has become much more polished since 2020, with a walkable seafront promenade, new restaurants and newer apartment complexes within walking distance of the beach. For school-age children the draw is The English School Larnaca and Pascal Institute Larnaca, both international. Drosia, 3 to 4 km inland along the B1, is the more established suburban choice: quieter and popular with Cypriot middle-class families, so children mix with locals more naturally than in the tourist-facing areas. Three-bedroom apartments in Larnaca district had a median asking rent of about ${rentMedian("Larnaca", 3)} a month in ${RENT_MONTH_LABEL}; houses were not sampled. Larnaca Airport, 5 km away, is convenient for frequent travellers but brings noticeable flight noise under the approach path.`,
 			},
 			{
 				heading: "Ayia Napa and the Famagusta district",
@@ -2731,11 +2768,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "What is the best city in Cyprus for remote workers?",
-				a: "Limassol for those who want a business ecosystem, coworking spaces, and a professional network. Larnaca for those who want good connectivity (10 minutes from the airport) at lower cost — rents run 20–30% below Limassol for comparable quality, and the city has a growing tech community. Paphos works well for remote workers who prioritise lifestyle over professional networking.",
+				a: `Limassol for those who want a business ecosystem, coworking spaces, and a professional network. Larnaca for those who want good connectivity (10 minutes from the airport) at lower cost: the median asking rent for a two-bedroom was about ${100 - Math.round((RENTS.Larnaca[2].median / RENTS.Limassol[2].median) * 100)}% below Limassol in ${RENT_MONTH_LABEL}, and the city has a growing tech community. Paphos works well for remote workers who prioritise lifestyle over professional networking.`,
 			},
 			{
 				q: "What is the cheapest city to live in Cyprus?",
-				a: "Larnaca is the most affordable of the four main cities for renting. A good two-bedroom apartment runs €700–€1,000/month in Larnaca vs €1,100–€1,800 in Limassol. Paphos is mid-range at €750–€1,200. Day-to-day costs (food, restaurants, services) are broadly similar across all four cities, so the main saving is in housing.",
+				a: `Larnaca is the most affordable of the three larger cities for renting. Median asking rents for a two-bedroom apartment in ${RENT_MONTH_LABEL}: Larnaca about ${rentMedian("Larnaca", 2)} a month, Paphos about ${rentMedian("Paphos", 2)}, Limassol about ${rentMedian("Limassol", 2)} (${RENT_SOURCE_NAME}). Agreed rents are often lower. Day-to-day costs (food, restaurants, services) are broadly similar across all four cities, so the main saving is in housing.`,
 			},
 			{
 				q: "Which city in Cyprus has the best social life?",
@@ -2752,8 +2789,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-06-22",
 		dateModified: "2026-10-02",
 		lastChecked: "2026-10-02",
-		sources: [
-			{
+		sources: [...RENT_SOURCES, {
 				label: "Migration Department: Visitors and family members",
 				url: "https://www.gov.cy/mip-md/en/documents/visitors-and-family-members/",
 			},
@@ -2764,8 +2800,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			{
 				label: "Tax Department: Income Tax Law amendments 2026 (Greek, PDF)",
 				url: "https://www.gov.cy/media/sites/167/2026/03/2026-ΦορΜεταρρύθμιση-Φόρος-Εισοδήματος.pdf",
-			},
-		],
+			},],
 		category: "lifestyle",
 		title: "Retiring in Cyprus 2026: Full Expat Guide",
 		description: `Everything retirees need to know about moving to Cyprus: how pension income is taxed (flat 5% after the first ${eur(FOREIGN_PENSION_THRESHOLD)}), which residency route applies, how GeSY public healthcare compares to private insurance, and what a comfortable retirement in Cyprus actually costs per month.`,
@@ -2788,7 +2823,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "What a comfortable retirement in Cyprus actually costs",
-				body: "The numbers below reflect a comfortable but not extravagant retirement lifestyle for a couple in 2026. Accommodation: a two-bedroom apartment in a good area of Paphos or Larnaca runs €900–€1,300/month; Limassol is €1,100–€1,700. Utilities (electricity, water, internet, mobile): €180–€280/month; electricity is the major variable and rises significantly in summer when air conditioning is essential. Food: a couple spending at a mix of supermarkets and local restaurants can live comfortably on €800–€1,200/month; eating out in Cyprus is materially cheaper than Northern Europe, with a restaurant meal for two costing €25–€60 depending on the venue. Transport: one car, insurance, fuel — approximately €250–€400/month. Health insurance (private top-up, two people): €300–€600/month depending on age and cover. Social and leisure (restaurants, day trips, activities): €400–€700/month. Total: €2,830–€4,480/month for a couple in a comfortable configuration. For a single retiree, the equivalent range is approximately €1,800–€3,000/month. These figures are for renting; homeowners without a mortgage reduce the accommodation line to running costs only.",
+				body: `The numbers below reflect a comfortable but not extravagant retirement lifestyle for a couple in 2026. Accommodation: a two-bedroom apartment has a median asking rent of about ${rentMedian("Larnaca", 2)} a month in Larnaca, ${rentMedian("Paphos", 2)} in Paphos and ${rentMedian("Limassol", 2)} in Limassol (${RENT_SOURCE_NAME}, ${RENT_MONTH_LABEL}; agreed rents are often lower). Utilities (electricity, water, internet, mobile): €180–€280/month; electricity is the major variable and rises significantly in summer when air conditioning is essential. Food: a couple spending at a mix of supermarkets and local restaurants can live comfortably on €800–€1,200/month; eating out in Cyprus is materially cheaper than Northern Europe, with a restaurant meal for two costing €25–€60 depending on the venue. Transport: one car, insurance, fuel: approximately €250–€400/month. Health insurance (private top-up, two people): €300–€600/month depending on age and cover. Social and leisure (restaurants, day trips, activities): €400–€700/month. Total in Paphos or Larnaca, using the two-bedroom median rents: ${RETIRE_COUPLE_RENTING}/month for a couple in a comfortable configuration; in Limassol add about ${eur(RENTS.Limassol[2].median - RENTS.Paphos[2].median)} a month over Paphos for rent. For a single retiree, the equivalent range was estimated at approximately €1,800–€3,000/month before the October 2026 rent check and has not been recalculated. These figures are for renting; homeowners without a mortgage reduce the accommodation line to running costs only.`,
 			},
 			{
 				heading: "Practical steps: how the move actually works",
@@ -2814,7 +2849,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "How much money do I need to retire in Cyprus?",
-				a: `A comfortable retirement for a couple costs approximately €2,800–€4,500/month depending on city, lifestyle, and whether you rent or own. For a single retiree, the range is €1,800–€3,000/month. The Visitor residence permit requires transfers from abroad of at least ${eur(VISITOR_PERMIT_MONTHLY_INCOME)} a month for a single person (${eur(VISITOR_PERMIT_MONTHLY_INCOME_COUPLE)} for a couple), which sits below a comfortable retirement budget. More is better: the minimum income thresholds are for permit eligibility, not for a quality lifestyle.`,
+				a: `A comfortable retirement for a couple renting a two-bedroom apartment in Paphos or Larnaca costs approximately ${RETIRE_COUPLE_RENTING}/month; Limassol rents are higher, and owners without a mortgage pay less. For a single retiree, an older estimate of €1,800–€3,000/month has not been recalculated since the October 2026 rent check. The Visitor residence permit requires transfers from abroad of at least ${eur(VISITOR_PERMIT_MONTHLY_INCOME)} a month for a single person (${eur(VISITOR_PERMIT_MONTHLY_INCOME_COUPLE)} for a couple), which sits below a comfortable retirement budget. More is better: the minimum income thresholds are for permit eligibility, not for a quality lifestyle.`,
 			},
 		],
 	},

@@ -4,8 +4,9 @@
  * Curation philosophy: places are sourced from local Cypriot food blogs
  * and press (cypruseats, artandthensome, mycyprustravel, Cyprus Mail
  * lifestyle, in-cyprus), not TripAdvisor top-tourist lists. Prices and
- * event dates reflect 2026 settings. Verify before publishing — this is
- * editorial recommendation, not a directory.
+ * event dates reflect 2026 settings. Places were checked against TripAdvisor,
+ * own-site and social listings on 2026-10-01; this is editorial
+ * recommendation, not a directory.
  */
 
 export type City =
@@ -285,11 +286,11 @@ export const FOOD_EVENTS: ReadonlyArray<FoodEvent> = [
     url: "https://cyprusdiscovery.com/cyprus-grape-harvest-festivals/",
   },
   {
-    name: "Limassol Wine Festival (65th edition)",
+    name: "Limassol Wine Festival",
     dates: "26 Sep – 4 Oct 2026",
     city: "Municipal Gardens, Limassol",
     description:
-      "Flagship Cypriot wine festival since 1961. Tastings from KEO, SODAP, ETKO, LOEL plus food stalls, dancing, zivania shots. Nine evenings, 18:00–24:00.",
+      "Held every year since 1961 (2026: 26 September to 4 October). Tastings from KEO, SODAP, ETKO, LOEL plus food stalls, dancing, zivania shots. Nine evenings, 19:00–24:00.",
     url: "https://evoinos.com/limassol-wine-festival/",
   },
   {
@@ -384,8 +385,8 @@ export const PLACES: Record<City, Record<Category, Place[]>> = {
       },
       {
         name: "The Shopkeeper & Co.",
-        neighbourhood: "Old Town / Saripolou",
-        why: "Concept space in a restored shop. Brunch leans creative-healthy: coconut chia, Sticky Fingers bowl.",
+        neighbourhood: "Gladstonos, city centre",
+        why: "Concept space in a restored shop. Brunch leans creative-healthy: coconut chia, Sticky Fingers bowl. Closed Sundays.",
         price: 2,
         instagram: "theshopkeeperandco",
       },
@@ -407,18 +408,18 @@ export const PLACES: Record<City, Record<Category, Place[]>> = {
     lunch: [
       {
         name: "Symposio Tavern",
-        neighbourhood: "Omodos village (40-min drive)",
+        neighbourhood: "Pelendri village (about 1 hour from Limassol)",
         why: "Stone-built village taverna under vines. Slow-cooked stews and charcoal grills.",
-        price: 2,
-      },
-      {
-        name: "Taverna Forsos",
-        neighbourhood: "Mouttagiaka",
-        why: "Unprepossessing from the street; leafy courtyard inside. Full Cypriot meze.",
         price: 2,
       },
     ],
     dinner: [
+      {
+        name: "Taverna Forsos",
+        neighbourhood: "Mouttagiaka",
+        why: "Unprepossessing from the street; leafy courtyard inside. Full Cypriot meze. Evenings only.",
+        price: 2,
+      },
       {
         name: "Artima Bistro",
         neighbourhood: "Castle Square, Old Town",
@@ -434,14 +435,14 @@ export const PLACES: Record<City, Record<Category, Place[]>> = {
     ],
     sweets: [
       {
-        name: "Pentadromos Trigona & Bougatsa",
+        name: "Paradosiaka Glyka Thessalonikis",
         neighbourhood: "Nicolaou Pentadromos Centre",
         why: "Thessaloniki-style trigona and bougatsa made daily. Honey-syrup-soaked pastry the way it should be.",
         price: 1,
       },
       {
         name: "Gelatofabio",
-        neighbourhood: "Multiple Limassol locations",
+        neighbourhood: "Old port (Agiou Andreou and Spyrou Araouzou)",
         why: "Local-favourite gelato. Carob, basil-yoghurt, Cypriot-specific flavours alongside the usuals.",
         price: 1,
       },
@@ -451,8 +452,8 @@ export const PLACES: Record<City, Record<Category, Place[]>> = {
     breakfast: [
       {
         name: "Omikron Brunch",
-        neighbourhood: "Kato Paphos",
-        why: "Minimalist health-leaning brunch since 2015. A local mainstay rather than a tourist photo-op.",
+        neighbourhood: "Paphos centre (Ktima), 25 Martiou Street",
+        why: "Minimalist health-leaning brunch since 2015. A local mainstay rather than a tourist photo-op. Closed Tuesdays.",
         price: 2,
       },
       {
@@ -466,7 +467,7 @@ export const PLACES: Record<City, Record<Category, Place[]>> = {
       {
         name: "Artognosia Bakery",
         neighbourhood: "Paphos centre, side street",
-        why: "Artisan bakery hidden off the main drag. Top-tier breads, savoury pies, koupes.",
+        why: "Artisan bakery on a side street in Paphos centre. Breads, savoury pies and seasonal Cypriot sweets such as flaouna.",
         price: 1,
       },
       {
@@ -479,14 +480,14 @@ export const PLACES: Record<City, Record<Category, Place[]>> = {
     lunch: [
       {
         name: "7 St George's Tavern",
-        neighbourhood: "Geroskipou village",
+        neighbourhood: "Geroskipou, next to Paphos town",
         why: "Family taverna, organic-local meze, rustic-cosy. Reservations recommended for weekend lunch.",
         price: 2,
       },
       {
         name: "Stavros Taverna",
-        neighbourhood: "Geroskipou village",
-        why: "Fresh white fish, crisp batter, priced well below the Paphos harbour.",
+        neighbourhood: "Geroskipou, next to Paphos town",
+        why: "Fish taverna known for fresh white fish in crisp batter. Reviews report a change of owners: check it is open before you go.",
         price: 2,
       },
     ],
@@ -499,32 +500,19 @@ export const PLACES: Record<City, Record<Category, Place[]>> = {
       },
       {
         name: "Vrasidas Tavern",
-        neighbourhood: "Tala village",
+        neighbourhood: "Tala village, above Paphos",
         why: "Rustic Tala-village meze with mountain hospitality. The drive up is half the experience.",
         price: 2,
       },
     ],
-    sweets: [
-      {
-        name: "Toni Patisserie & Café",
-        neighbourhood: "Central Paphos",
-        why: "European-style patisserie locally regarded for cakes and viennoiserie. Strong almond croissant.",
-        price: 2,
-      },
-      {
-        name: "Artognosia Bakery (sweet side)",
-        neighbourhood: "Paphos centre",
-        why: "Flaouna, kourabiedes, seasonal Cypriot treats. Doubles as the morning bread stop above.",
-        price: 1,
-      },
-    ],
+    sweets: [],
   },
   Larnaca: {
     breakfast: [
       {
         name: "Mingle Café",
-        neighbourhood: "Foinikoudes, base of QBIC Hotel",
-        why: "Eclectic menu, Parisian-style interior. The local brunch default.",
+        neighbourhood: "Ermou Street, inside the Qbic City Hotel",
+        why: "Eclectic menu, Parisian-style interior. The local brunch default. Closed Mondays.",
         price: 2,
       },
       {
@@ -551,12 +539,6 @@ export const PLACES: Record<City, Record<Category, Place[]>> = {
     ],
     lunch: [
       {
-        name: "To Kazani",
-        neighbourhood: "Aradippou, just outside Larnaca",
-        why: "Family-run quiet-neighbourhood meze. Reservations recommended even at lunch.",
-        price: 2,
-      },
-      {
         name: "Militzis",
         neighbourhood: "Piale Pasha, near the Salt Lake",
         why: "Iconic for Cypriot soul food. Sheftalia, kleftiko, ofto. On every long-time-Larnaca list for a reason.",
@@ -565,10 +547,10 @@ export const PLACES: Record<City, Record<Category, Place[]>> = {
     ],
     dinner: [
       {
-        name: "Rous",
-        neighbourhood: "Corner Stasandrou & Mpoumpoulinas, downtown",
-        why: "Contemporary Cypriot, open cold kitchen. The 'modern Cypriot' address locals name first.",
-        price: 3,
+        name: "To Kazani",
+        neighbourhood: "Aradippou, just outside Larnaca",
+        why: "Family-run quiet-neighbourhood meze. Evenings only; reservations recommended.",
+        price: 2,
       },
       {
         name: "ALMAR Seafood Bar",
@@ -629,14 +611,14 @@ export const PLACES: Record<City, Record<Category, Place[]>> = {
         why: "Homemade daily-cooked Cypriot food, huge portions, low prices. A 50-year survivor for a reason.",
         price: 2,
       },
-      {
-        name: "Ttappis",
-        neighbourhood: "Paralimni (next to Margarita bakery)",
-        why: "Rich meze starting with warm bread. Firm local favourite, especially outside summer.",
-        price: 2,
-      },
     ],
     dinner: [
+      {
+        name: "Ttappis",
+        neighbourhood: "Paralimni, 92 Stadiou Street",
+        why: "Rich meze starting with warm bread. Firm local favourite, especially outside summer. Evenings only.",
+        price: 2,
+      },
       {
         name: "Vassos Psarolimano",
         neighbourhood: "Ayia Napa harbour (since 1962)",
@@ -659,8 +641,8 @@ export const PLACES: Record<City, Record<Category, Place[]>> = {
       },
       {
         name: "Eurobakers",
-        neighbourhood: "Paralimni / Protaras",
-        why: "All-female-staffed local bakery. Traditional cakes, daktyla, baklava.",
+        neighbourhood: "Paralimni, Sotira and Ayia Napa",
+        why: "Local bakery chain. Traditional cakes, daktyla, baklava.",
         price: 1,
       },
     ],

@@ -62,7 +62,7 @@ export default function CountryComparisonClientPage() {
 				},
 				{ href: "/tools/", label: "All tools" },
 			]}
-			disclaimer="All data is indicative and based on publicly available information as of 2025 to 2026. Tax rates, regime conditions, and visa rules change frequently. Always verify with a qualified local tax advisor or lawyer before making relocation decisions."
+			disclaimer="All data is indicative and based on publicly available information collected in 2025 and 2026; check current rules. Tax rates, regime conditions, and visa rules change frequently. Always verify with a qualified local tax advisor or lawyer before making relocation decisions."
 		>
 			<script
 				type="application/ld+json"

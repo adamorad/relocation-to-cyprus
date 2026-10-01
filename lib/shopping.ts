@@ -2,9 +2,10 @@
  * Shopping section content. Its former panel component is archived in archive/homepage-map/.
  *
  * Curation philosophy: chains and venues are verified against 2026 operating
- * information. Sunday closures, siesta hours, and online-shopping tips are
- * relevant to relocators setting up daily life. Verify before publishing —
- * this is editorial guidance, not a directory.
+ * information. Sunday opening, siesta hours, and online-shopping tips are
+ * relevant to relocators setting up daily life. Checked against store, mall,
+ * municipal and tax sources on 2026-10-01; this is editorial guidance, not a
+ * directory.
  */
 
 import { ALL_CITIES, type City } from "@/lib/food";
@@ -58,12 +59,12 @@ export type ShoppingTip = {
 
 export const SHOPPING_TIPS: ReadonlyArray<ShoppingTip> = [
   {
-    heading: "Sunday closures",
-    body: "Almost all retail, including supermarkets, is closed on Sundays. Petrol stations and some convenience kiosks stay open. Plan your weekly shop for Friday or Saturday.",
+    heading: "Sunday opening",
+    body: "Most supermarkets and malls open on Sundays, usually later in the morning, and some smaller independent shops close. Opening hours on public holidays vary.",
   },
   {
     heading: "Siesta hours",
-    body: "Independent shops typically close 13:00–16:00 on weekdays. Malls and large supermarkets operate continuously. If you need a hardware store at 14:00, you'll likely find it shut.",
+    body: "From mid-June to the end of August some independent shops close from 14:00 to 17:00, and some close on Wednesday and Saturday afternoons all year. Malls and large supermarkets operate continuously. If you need a hardware store at 14:00, you'll likely find it shut.",
   },
   {
     heading: "Cash vs card",
@@ -79,7 +80,7 @@ export const SHOPPING_TIPS: ReadonlyArray<ShoppingTip> = [
   },
   {
     heading: "VAT (ΦΠΑ) receipts",
-    body: "Cyprus VAT is 19% (standard) / 9% (food and hotels). Always ask for a receipt ('Μπορώ να πάρω απόδειξη;'). Receipts are required by law and help you track spending while you settle in.",
+    body: "Cyprus VAT is 19% standard, 9% for restaurants and hotels, and 5% for most food in shops. Fresh fruit and vegetables are at 0% until the end of 2026. Always ask for a receipt ('Μπορώ να πάρω απόδειξη;'). Receipts are required by law and help you track spending while you settle in.",
   },
 ];
 
@@ -91,7 +92,7 @@ export const SUPERMARKETS: Record<City, Store[]> = {
   Limassol: [
     {
       name: "Alphamega Hypermarket",
-      neighbourhood: "Polemidia / Germasogeia / Ayios Athanasios",
+      neighbourhood: "Several Limassol branches (see the store locator)",
       why: "The premium Cypriot chain. Widest selection on the island: imported cheeses, gluten-free range, sushi counter, in-store bakery. The go-to for relocators who want familiar Western brands.",
       tier: 3,
       website: "https://www.alphamega.com.cy",
@@ -99,27 +100,22 @@ export const SUPERMARKETS: Record<City, Store[]> = {
     {
       name: "Lidl Cyprus",
       neighbourhood: "Multiple Limassol locations",
-      why: "German budget chain. Weekly rotating specials ('Bazaar week') include non-food items. Strong own-brand products at low prices. Best for pantry staples and household goods.",
+      why: "German budget chain. Weekly specials include non-food items. Strong own-brand products at low prices. Best for pantry staples and household goods.",
       tier: 1,
       website: "https://www.lidl.com.cy",
     },
     {
       name: "Sklavenitis",
       neighbourhood: "Germasogeia / Marina area",
-      why: "Greek supermarket chain that entered Cyprus in 2021. Mid-range, strong deli section, good Greek-import range. Usually less crowded than Alphamega.",
+      why: "Greek supermarket chain that took over the Carrefour stores in Cyprus in 2017 and the Papantoniou chain in 2024. Mid-range, strong deli section, good range of Greek products.",
       tier: 2,
     },
     {
-      name: "Papantoniou",
-      neighbourhood: "Multiple Limassol locations",
-      why: "Long-established Cypriot family chain. Good local produce, Cypriot cheeses, and cured meats. Cheaper than Alphamega for basics. Strong fresh-fish counter at larger branches.",
+      name: "Metro Supermarkets",
+      neighbourhood: "Agias Fylaxeos and Mouttagiaka",
+      why: "Cypriot supermarket chain with a good imported range. No membership needed.",
       tier: 2,
-    },
-    {
-      name: "Metro Cash & Carry",
-      neighbourhood: "Limassol industrial area",
-      why: "Wholesale / bulk. Membership required but easy to obtain. Useful for bulk non-perishables, catering quantities, and cleaning supplies, not for a regular weekly shop.",
-      tier: 2,
+      website: "https://www.metro.com.cy",
     },
   ],
   Paphos: [
@@ -138,16 +134,16 @@ export const SUPERMARKETS: Record<City, Store[]> = {
       website: "https://www.lidl.com.cy",
     },
     {
-      name: "Papantoniou",
-      neighbourhood: "Paphos centre",
-      why: "Reliable local chain, solid fresh-produce section. Good for Cypriot specialties not found in international chains.",
+      name: "Sklavenitis",
+      neighbourhood: "Kings Avenue Mall and Kato Paphos",
+      why: "Greek supermarket chain that bought Papantoniou in 2024; the Paphos stores reopened as Sklavenitis in 2025. Mid-range, strong deli section, good range of Greek products.",
       tier: 2,
     },
   ],
   Larnaca: [
     {
       name: "Alphamega Hypermarket",
-      neighbourhood: "Larnaca / Aradippou",
+      neighbourhood: "Larnaca, including Metropolis Mall",
       why: "Largest branch in the Larnaca district. Full product range including fresh fish, bakery, and a wine section.",
       tier: 3,
       website: "https://www.alphamega.com.cy",
@@ -159,33 +155,14 @@ export const SUPERMARKETS: Record<City, Store[]> = {
       tier: 1,
       website: "https://www.lidl.com.cy",
     },
-    {
-      name: "Papantoniou",
-      neighbourhood: "Larnaca centre / Drosia",
-      why: "Well-established Cypriot chain. Strong deli and local-brand range.",
-      tier: 2,
-    },
   ],
   "Ayia Napa": [
-    {
-      name: "Alphamega Hypermarket",
-      neighbourhood: "Paralimni / Protaras",
-      why: "Closest large hypermarket to Ayia Napa. The Paralimni branch covers the Famagusta district for premium shopping.",
-      tier: 3,
-      website: "https://www.alphamega.com.cy",
-    },
     {
       name: "Lidl Cyprus",
       neighbourhood: "Paralimni",
       why: "Budget option for the east. Paralimni branch is well-stocked for the area.",
       tier: 1,
       website: "https://www.lidl.com.cy",
-    },
-    {
-      name: "Papantoniou",
-      neighbourhood: "Ayia Napa / Paralimni",
-      why: "Local chain with presence in the Famagusta district. Reliable for daily shopping when based in the east long-term.",
-      tier: 2,
     },
   ],
 };
@@ -198,25 +175,25 @@ export const MALLS: ReadonlyArray<Mall> = [
   {
     name: "My Mall Limassol",
     city: "Limassol",
-    neighbourhood: "Polemidia",
-    anchors: "H&M, Zara, Pull&Bear, MediaMarkt, 8-screen cinema, 20+ food-court options",
-    why: "Limassol's main shopping destination. Two floors, fully climate-controlled. The MediaMarkt is the best electronics store in the city. The cinema makes it a full-evening outing.",
+    neighbourhood: "Franklin Roosevelt Avenue, west Limassol (by the new port)",
+    anchors: "Zara, Pull&Bear, Marks & Spencer, ice rink, bowling, food court",
+    why: "Limassol's main shopping destination. Two floors, fully climate-controlled. The ice rink and bowling make it a full-evening outing.",
     mapsQuery: "My Mall Limassol Cyprus",
   },
   {
     name: "Kings Avenue Mall",
     city: "Paphos",
-    neighbourhood: "Kato Paphos",
-    anchors: "Zara, H&M, Marks & Spencer food section, Alphamega, cinema",
+    neighbourhood: "Northern entrance to Kato Paphos (Apostolou Pavlou and Tombs of the Kings Avenue)",
+    anchors: "Zara, H&M, Marks & Spencer, Sklavenitis, 6-screen cinema",
     why: "Paphos's main mall. Compact but well-curated. Walkable from the Kato Paphos hotel strip. Good mix of fashion and daily-essentials anchor stores.",
     mapsQuery: "Kings Avenue Mall Paphos Cyprus",
   },
   {
     name: "Metropolis Mall",
     city: "Larnaca",
-    neighbourhood: "Mackenzie / Larnaca south",
-    anchors: "Zara, H&M, Pull&Bear, Carrefour, cinema, food court",
-    why: "Larnaca's main mall, opened 2020. Modern layout with a large Carrefour hypermarket anchor. The cinema and food court make it a destination visit, not just a shopping run.",
+    neighbourhood: "5 European Union Avenue, Larnaca",
+    anchors: "Zara, H&M, Pull&Bear, Alphamega, cinema, food court",
+    why: "Larnaca's main mall, opened in September 2021. Modern layout with an Alphamega hypermarket anchor, open on Sundays. The cinema and food court make it a destination visit, not just a shopping run.",
     mapsQuery: "Metropolis Mall Larnaca Cyprus",
   },
 ];
@@ -230,31 +207,31 @@ export const MARKETS: ReadonlyArray<Market> = [
     name: "Limassol Municipal Market (Agora)",
     city: "Limassol",
     neighbourhood: "Old Town, Saripolou",
-    when: "Mon–Sat 06:00–14:00; Fri until 18:00",
-    what: "Fresh fruit, vegetables, meat, fish, olives, halloumi, dried herbs, Cypriot spoon sweets. Cheaper than supermarkets for produce. The Friday afternoon session is the busiest.",
+    when: "Mon–Sat 06:00–15:00",
+    what: "Fresh fruit, vegetables, meat, fish, olives, halloumi, dried herbs, Cypriot spoon sweets. Cheaper than supermarkets for produce.",
     mapsQuery: "Limassol Municipal Market Old Town Cyprus",
   },
   {
     name: "Limassol Saturday Farmers Market",
     city: "Limassol",
-    neighbourhood: "Makarios III Avenue area (rotates)",
-    when: "Saturdays 07:00–13:00",
+    neighbourhood: "Thirotou Georgiou, next to the municipal market",
+    when: "Saturday mornings, from about 06:00",
     what: "Organic and smallholder producers. Seasonal fruit, vegetables, eggs, honey, preserved foods. Smaller than the Agora but more direct-from-farmer.",
     mapsQuery: "Limassol Saturday Farmers Market Cyprus",
   },
   {
-    name: "Larnaca Laiki Agora",
+    name: "Larnaca Municipal Market",
     city: "Larnaca",
-    neighbourhood: "Ermou Street, Larnaca centre",
-    when: "Tue, Thu, Sat 06:00–13:00",
+    neighbourhood: "Larnaca centre (the rebuilt market by Zouhouri)",
+    when: "Mon–Sat 07:00–19:00 (to 18:00 Nov–Feb); open-air farmers' market Sat 06:00–13:30",
     what: "Vegetables, fruit, herbs, dairy. Smaller than the Limassol markets but convenient for daily fresh produce without driving to a large supermarket.",
-    mapsQuery: "Larnaca Laiki Agora Market Cyprus",
+    mapsQuery: "Larnaca Municipal Market Cyprus",
   },
   {
     name: "Paphos Municipal Market",
     city: "Paphos",
-    neighbourhood: "Agoras Street, Paphos centre",
-    when: "Mon–Sat 06:30–14:00",
+    neighbourhood: "Agoras Street, Paphos old town (Ktima)",
+    when: "Monday to Saturday, morning to early afternoon (check hours with Paphos Municipality)",
     what: "Local produce, halloumi, olives, herbs. Compact but authentically local. Avoid tourist souvenir stalls near the entrance; the real market is inside.",
     mapsQuery: "Paphos Municipal Market Cyprus",
   },
@@ -262,7 +239,7 @@ export const MARKETS: ReadonlyArray<Market> = [
     name: "Paralimni Laiki Agora",
     city: "Ayia Napa",
     neighbourhood: "Paralimni town centre",
-    when: "Wed and Sat 07:00–13:00",
+    when: "Weekly market in the town centre; check the day with Paralimni Municipality",
     what: "Fresh produce, seasonal citrus (the east is known for oranges and lemons in winter), olives. More local and less tourist-facing than Ayia Napa centre.",
     mapsQuery: "Paralimni Laiki Agora market Cyprus",
   },
@@ -277,13 +254,13 @@ export const ONLINE_RESOURCES: ReadonlyArray<OnlineResource> = [
     name: "Amazon.co.uk",
     url: "https://www.amazon.co.uk",
     category: "delivery",
-    tip: "Use Amazon UK, not .com or .de. Amazon UK ships most items to Cyprus directly. Typical delivery 3–7 working days. Items above €22 in declared value may attract VAT (19%) at customs — factor this into pricing.",
+    tip: "Use Amazon UK, not .com or .de. Amazon UK ships most items to Cyprus directly. Typical delivery 3–7 working days. The UK is outside the EU, so every order is an import: 19% VAT applies whatever the value, plus possible customs duty and a courier handling fee unless Amazon charges VAT at checkout.",
   },
   {
     name: "AliExpress",
     url: "https://www.aliexpress.com",
     category: "delivery",
-    tip: "Very cheap but delivery to Cyprus takes 3–6 weeks. Useful for accessories, phone cases, small electronics, and kitchenware where speed is not critical. Items under €22 typically clear customs without extra charges.",
+    tip: "Very cheap but delivery to Cyprus takes 3–6 weeks. Useful for accessories, phone cases, small electronics, and kitchenware where speed is not critical. Since July 2021 every parcel from outside the EU carries Cyprus VAT, usually charged at checkout on AliExpress.",
   },
   {
     name: "Skroutz.com.cy",

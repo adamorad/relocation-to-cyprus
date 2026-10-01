@@ -281,7 +281,7 @@ export default function SchoolFinderClient() {
 
 			<p className="text-base text-muted">
 				Fees for Heritage, Foley&rsquo;s, The Grammar School and ISP are 2026-27
-				tuition from each school&rsquo;s fee sheet; other fees are indicative.
+				tuition from each school&rsquo;s fee sheet; other fees are indicative figures from 2025 and have not been re-checked.
 				Contact schools directly for current fee schedules and availability.
 				Registration, deposits, books and uniform are charged on top of tuition.
 			</p>

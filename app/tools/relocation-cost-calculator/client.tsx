@@ -703,8 +703,8 @@ export default function RelocationCostCalculatorClient() {
 				/>
 
 				<p className="text-sm text-muted print:text-slate-600">
-					Costs shown are indicative estimates based on typical 2024-2025 market
-					rates. Actual costs vary significantly.
+					Costs shown are indicative estimates from 2024 to 2025, not yet
+					re-checked. Actual costs vary significantly.
 				</p>
 
 				<Button
