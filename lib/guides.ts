@@ -26,30 +26,6 @@ export type GuideCategory =
 	| "lifestyle"
 	| "environment";
 
-export const GUIDE_CATEGORY_LABEL: Record<GuideCategory, string> = {
-	immigration: "Immigration & Visas",
-	tax: "Taxes & Finance",
-	business: "Business",
-	property: "Property",
-	family: "Family & Children",
-	healthcare: "Healthcare",
-	transport: "Transport",
-	lifestyle: "Lifestyle",
-	environment: "Environment",
-};
-
-export const ALL_GUIDE_CATEGORIES: ReadonlyArray<GuideCategory> = [
-	"immigration",
-	"tax",
-	"business",
-	"property",
-	"family",
-	"healthcare",
-	"transport",
-	"lifestyle",
-	"environment",
-];
-
 export type GuideInfo = {
 	slug: string;
 	title: string;

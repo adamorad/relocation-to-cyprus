@@ -208,18 +208,3 @@ export const SECTIONS_INDEX: ReadonlyArray<SectionEntry> = [
 			"Supermarket chains by budget, municipal markets with opening days, and each city's main mall.",
 	},
 ];
-
-export const SECTION_CATEGORIES = [
-	"Property & Housing",
-	"Legal & Professional",
-	"Business",
-	"Family & Education",
-	"Healthcare",
-	"Active Living",
-	"Getting Around",
-	"Community",
-	"Arts & Culture",
-	"Food & Drink",
-] as const;
-
-export type SectionCategory = (typeof SECTION_CATEGORIES)[number];

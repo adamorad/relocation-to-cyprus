@@ -17,9 +17,6 @@ export const TOPIC_NAV: ReadonlyArray<
 	NavLink & { icon: (typeof TOPICS)[number]["icon"] }
 > = TOPICS.map((t) => ({ label: t.name, href: hubHref(t), icon: t.icon }));
 
-/** Saved shortlist (localStorage, new-build listings). No sign-in on this site. */
-export const SAVED_LINK: NavLink = { label: "Saved", href: "/my-shortlist/" };
-
 /** Secondary links, shown in the mobile menu and the desktop More disclosure. */
 export const SECONDARY_NAV: ReadonlyArray<NavLink> = [
 	{ label: "Local directories", href: "/sections/" },
