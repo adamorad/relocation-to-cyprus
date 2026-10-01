@@ -54,7 +54,7 @@ const EU_PATHWAYS: Record<NonNullable<EuPurpose>, Pathway> = {
 	employment: {
 		name: "EU Registration Certificate (MEU1): Employed",
 		description:
-			"EU citizens working in Cyprus do not need a visa. After 90 days, you must register your residence at the Civil Registry. As an employed person you present your employment contract.",
+			"EU citizens working in Cyprus do not need a visa. After 90 days, you must register your residence with the Migration Department. As an employed person you present your employment contract.",
 		keyRequirement:
 			"Employment contract with a Cyprus-registered employer, proof of accommodation, valid EU passport or ID.",
 		processingTime: "2–4 weeks after appointment",

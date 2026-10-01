@@ -67,7 +67,7 @@ export const IMMIGRATION_LAWYER_TIPS: ReadonlyArray<ImmigrationLawyerTip> = [
   },
   {
     heading: "DNV income must be verifiable and stable",
-    body: "The Digital Nomad Visa requires at least €3,500/month net income from non-Cyprus sources. The Civil Registry expects three months of bank statements, employment contracts or client invoices, and tax declarations from your home country. A lawyer helps you assemble a credible evidence bundle — the most common DNV refusals are documentation failures, not eligibility failures.",
+    body: "The Digital Nomad Visa requires at least €3,500/month net income from non-Cyprus sources. The Migration Department expects three months of bank statements, employment contracts or client invoices, and tax declarations from your home country. A lawyer helps you assemble a credible evidence bundle: the most common DNV refusals are documentation failures, not eligibility failures.",
   },
   {
     heading: "PR by Investment requires a clean source-of-funds trail",
@@ -167,7 +167,7 @@ export const IMMIGRATION_LAWYERS: ReadonlyArray<ImmigrationLawyer> = [
       "family-reunification",
     ],
     languages: ["English", "Greek", "Russian"],
-    why: "Larnaca-focused practice well-known for smooth DNV processing — has an established working relationship with the Larnaca Civil Registry office that helps avoid common documentation requests that delay applications. Transparent flat-fee structure published on the firm website.",
+    why: "Larnaca-focused practice with a focus on DNV applications. Transparent flat-fee structure published on the firm website.",
     website: "https://www.georgiades-immigration.cy",
   },
   {

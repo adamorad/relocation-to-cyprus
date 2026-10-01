@@ -34,7 +34,7 @@ export default function ToolsIndexPage() {
 				<Callout tone="legal" title="Disclaimer">
 					These tools provide general information only and are not legal, tax,
 					or financial advice. Rates and rules change frequently: always verify
-					with the Cyprus Tax Department, Civil Registry, and a local accountant
+					with the Cyprus Tax Department, the Migration Department, and a local accountant
 					before making decisions.
 				</Callout>
 			}

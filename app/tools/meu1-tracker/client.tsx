@@ -17,7 +17,7 @@ const ITEMS: ChecklistItem[] = [
 	{
 		id: "passport",
 		label: "Valid Passport or EU National ID",
-		note: "Must be in date. Cyprus Civil Registry accepts the original; bring certified copies. Non-EU citizens: passport only (ID cards not accepted).",
+		note: "Must be in date. The Migration Department checks the original; bring certified copies. Non-EU citizens: passport only (ID cards not accepted).",
 	},
 	{
 		id: "accommodation",
@@ -46,7 +46,7 @@ const ITEMS: ChecklistItem[] = [
 	},
 	{
 		id: "attend",
-		label: "Attend Civil Registry Appointment",
+		label: "Attend Migration Department Appointment",
 		note: "Arrive 10 to 15 minutes early with all original documents AND copies. The officer will verify documents, stamp your form, and issue a receipt. The Department aims to decide within one month of a complete application. The application fee is €20.",
 	},
 	{
