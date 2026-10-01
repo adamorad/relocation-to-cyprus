@@ -373,7 +373,7 @@ export default function VisaPathwayFinderPage() {
 				)}
 			</div>
 
-			<aside className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-xs text-slate-700 leading-relaxed">
+			<aside className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-xs text-amber-900 leading-relaxed">
 				<p className="font-semibold text-amber-900 mb-1">Not legal advice</p>
 				<p>
 					This tool provides general guidance only. Immigration rules change
