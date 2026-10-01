@@ -3,6 +3,8 @@
 // each internal href (and local img src) and meta-refresh target resolves to a
 // file in out/, and that same-page #anchors match an element id.
 // Respects trailingSlash: true (path/ -> path/index.html). No network.
+// Also runs the redirect gate (check-redirects.mjs): no internal link may
+// point at a vercel.json redirect source, even though the 301 would work.
 import {
 	existsSync,
 	mkdirSync,
@@ -13,6 +15,7 @@ import {
 } from "node:fs";
 import { dirname, join, posix, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { checkRedirects, reportRedirects } from "./check-redirects.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const OUT = join(ROOT, "out");
@@ -198,4 +201,6 @@ writeFileSync(
 		2,
 	)}\n`,
 );
-process.exit(rows.length || brokenAnchors.size ? 1 : 0);
+const redirectResult = checkRedirects({ root: ROOT, out: OUT });
+const redirectFail = reportRedirects(redirectResult);
+process.exit(rows.length || brokenAnchors.size || redirectFail ? 1 : 0);

@@ -34,7 +34,7 @@ export type TopicAssignment = {
 };
 
 // ---------------------------------------------------------------------------
-// Directories: SECTIONS_INDEX plus the five routes de-listed in Phase 3C
+// Directories: SECTIONS_INDEX plus the routes de-listed in Phase 3C
 // (b0899d2). The de-listed ones keep a topic (breadcrumb and "More on" on
 // their own page) but stay out of hubs, indexes, other pages' cross-links and
 // the sitemap, as before.
@@ -67,12 +67,6 @@ const UNLISTED_DIRECTORIES: ReadonlyArray<Omit<DirectoryEntry, "listed">> = [
 			"Public EV charging points by city with charger type and operator details.",
 	},
 	{
-		slug: "registered-address",
-		name: "Registered Address Providers",
-		description:
-			"Registered address and virtual office providers for Cyprus-incorporated companies.",
-	},
-	{
 		slug: "rooftop-bars",
 		name: "Rooftop & Sea View Bars",
 		description:
@@ -91,7 +85,7 @@ export const DIRECTORIES: ReadonlyArray<DirectoryEntry> = [
 ];
 
 // ---------------------------------------------------------------------------
-// Guides (87)
+// Guides (80)
 // ---------------------------------------------------------------------------
 
 export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
@@ -145,7 +139,8 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 	},
 	"waste-recycling-guide": {
 		topic: "home-and-bills",
-		why: "Old category Environment; bins and collections are a household chore.",
+		also: ["community-and-leisure"],
+		why: "Bins and collections are a household chore; also covers sustainable living (Beyond the bins).",
 	},
 	"earthquake-preparedness": {
 		topic: "home-and-bills",
@@ -154,11 +149,6 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 	"wildfire-risk-guide": {
 		topic: "home-and-bills",
 		why: "Old category Environment; preparing the home, alerts and insurance.",
-	},
-	"environmental-impact-guide": {
-		topic: "home-and-bills",
-		also: ["community-and-leisure"],
-		why: "Sustainable living is mostly household habits (energy, water, waste).",
 	},
 	"rental-transition-guide": {
 		topic: "home-and-bills",
@@ -171,7 +161,7 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 	"taxes-for-expats": {
 		topic: "money-and-paperwork",
 		also: ["moving-here"],
-		why: "How tax works for residents day to day; the non-dom decision itself sits in Moving to Cyprus.",
+		why: "How tax works for residents day to day, including non-dom status; also a moving decision.",
 	},
 	"cyprus-tax-return-filing": { topic: "money-and-paperwork" },
 	"self-employed-tax-cyprus": { topic: "money-and-paperwork" },
@@ -186,7 +176,6 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 		also: ["moving-here"],
 		why: "Work and business admin sits in Money & paperwork (there is no Work topic).",
 	},
-	"corporate-bank-account-guide": { topic: "money-and-paperwork" },
 	"hiring-in-cyprus": {
 		topic: "money-and-paperwork",
 		why: "Work and business admin sits in Money & paperwork.",
@@ -264,7 +253,6 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 	},
 
 	// Family & schools
-	"international-vs-public-school": { topic: "family-and-schools" },
 	"schools-in-cyprus": { topic: "family-and-schools" },
 	"international-school-fees-cyprus": { topic: "family-and-schools" },
 	"universities-in-cyprus": { topic: "family-and-schools" },
@@ -276,11 +264,6 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 	"maternity-paternity-rights": {
 		topic: "family-and-schools",
 		also: ["money-and-paperwork"],
-	},
-	"family-neighborhoods-guide": {
-		topic: "family-and-schools",
-		also: ["home-and-bills", "moving-here"],
-		why: "Old category Lifestyle; written for families choosing an area.",
 	},
 	"getting-married-in-cyprus": {
 		topic: "family-and-schools",
@@ -310,11 +293,6 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 		also: ["family-and-schools"],
 	},
 	"cyprus-schengen-guide": { topic: "moving-here" },
-	"non-dom-status-guide": {
-		topic: "moving-here",
-		also: ["money-and-paperwork"],
-		why: "Non-dom is claimed when you become resident, so it is a moving decision.",
-	},
 	"cyprus-company-formation": {
 		topic: "moving-here",
 		also: ["money-and-paperwork"],
@@ -324,11 +302,11 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 		topic: "moving-here",
 		also: ["money-and-paperwork"],
 	},
-	"relocation-checklist": { topic: "moving-here" },
 	"cyprus-vs-portugal": { topic: "moving-here" },
 	"best-areas-to-live-cyprus": {
 		topic: "moving-here",
-		also: ["home-and-bills"],
+		also: ["home-and-bills", "family-and-schools"],
+		why: "Choosing a city; also has a For families paragraph per city.",
 	},
 	"retiring-in-cyprus": { topic: "moving-here" },
 	"moving-to-cyprus-from-uk": { topic: "moving-here" },
@@ -342,11 +320,6 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 		topic: "moving-here",
 		also: ["money-and-paperwork"],
 		why: "Buyers here are mostly people moving; the Property area comes in Phase 4.",
-	},
-	"off-plan-buying-guide": {
-		topic: "moving-here",
-		also: ["money-and-paperwork"],
-		why: "Property buying; parked in Moving to Cyprus until the Phase 4 Property area.",
 	},
 	"new-development-buying-guide": {
 		topic: "moving-here",
@@ -400,10 +373,6 @@ export const DIRECTORY_TOPICS: Record<string, TopicAssignment> = {
 	},
 
 	accountants: { topic: "money-and-paperwork" },
-	"registered-address": {
-		topic: "money-and-paperwork",
-		why: "Company admin service.",
-	},
 	coworking: {
 		topic: "money-and-paperwork",
 		also: ["community-and-leisure"],

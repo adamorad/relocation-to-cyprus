@@ -6,9 +6,9 @@ import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import RelocationTrackerClient from "./client";
 
 const SITE_URL = "https://realcy.app";
-const title = "Cyprus Relocation Progress Tracker: 32-Task Checklist";
+const title = "Cyprus Relocation Progress Tracker: 32 Tasks, Plan to Settled";
 const description =
-	"Track your relocation journey from planning to settling in. Persistent checklist saved in your browser. Four phases: pre-move planning, arrival week, month one, and settling in.";
+	"Track your relocation journey from planning to settling in. Your progress is saved in your browser. Four phases: pre-move planning, arrival week, month one, and settling in.";
 
 export const metadata: Metadata = {
 	title,
@@ -56,7 +56,7 @@ export default function RelocationChecklistPage() {
 				{ href: "/tools/city-comparison/", label: "Compare cities" },
 				{ href: "/tools/", label: "All tools" },
 			]}
-			disclaimer="This checklist provides general guidance only and is not legal, tax, or financial advice. Requirements vary by nationality and residency route. Always verify with the Cyprus Tax Department, Civil Registry, and a qualified local adviser before making decisions."
+			disclaimer="This tracker provides general guidance only and is not legal, tax, or financial advice. Requirements vary by nationality and residency route. Always verify with the Cyprus Tax Department, Civil Registry, and a qualified local adviser before making decisions."
 		>
 			<script
 				type="application/ld+json"

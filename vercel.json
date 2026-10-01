@@ -4,5 +4,157 @@
   "installCommand": "pnpm install --frozen-lockfile",
   "buildCommand": "pnpm build",
   "outputDirectory": "out",
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/tools/freelancer-vs-company/",
+      "destination": "/tools/sole-trader-vs-ltd/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/freelancer-vs-company",
+      "destination": "/tools/sole-trader-vs-ltd/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/ltd-setup-calculator/",
+      "destination": "/tools/sole-trader-vs-ltd/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/ltd-setup-calculator",
+      "destination": "/tools/sole-trader-vs-ltd/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/gesy-registration/",
+      "destination": "/guides/gesy-registration-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/gesy-registration",
+      "destination": "/guides/gesy-registration-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/neighborhood-comparison/",
+      "destination": "/tools/city-comparison/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/neighborhood-comparison",
+      "destination": "/tools/city-comparison/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/relocation-cost-estimator/",
+      "destination": "/tools/relocation-cost-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/relocation-cost-estimator",
+      "destination": "/tools/relocation-cost-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/relocation-tracker/",
+      "destination": "/tools/relocation-checklist/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/relocation-tracker",
+      "destination": "/tools/relocation-checklist/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/tax-residency-planner/",
+      "destination": "/tools/tax-residency-tracker/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/tax-residency-planner",
+      "destination": "/tools/tax-residency-tracker/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/relocation-checklist/",
+      "destination": "/guides/arrival-checklist/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/relocation-checklist",
+      "destination": "/guides/arrival-checklist/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/non-dom-status-guide/",
+      "destination": "/guides/taxes-for-expats/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/non-dom-status-guide",
+      "destination": "/guides/taxes-for-expats/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/international-vs-public-school/",
+      "destination": "/guides/schools-in-cyprus/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/international-vs-public-school",
+      "destination": "/guides/schools-in-cyprus/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/family-neighborhoods-guide/",
+      "destination": "/guides/best-areas-to-live-cyprus/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/family-neighborhoods-guide",
+      "destination": "/guides/best-areas-to-live-cyprus/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/environmental-impact-guide/",
+      "destination": "/guides/waste-recycling-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/environmental-impact-guide",
+      "destination": "/guides/waste-recycling-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/corporate-bank-account-guide/",
+      "destination": "/guides/banking-in-cyprus/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/corporate-bank-account-guide",
+      "destination": "/guides/banking-in-cyprus/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/off-plan-buying-guide/",
+      "destination": "/guides/new-development-buying-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/off-plan-buying-guide",
+      "destination": "/guides/new-development-buying-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/sections/registered-address/",
+      "destination": "/sections/accountants/",
+      "permanent": true
+    },
+    {
+      "source": "/sections/registered-address",
+      "destination": "/sections/accountants/",
+      "permanent": true
+    }
+  ]
 }

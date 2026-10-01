@@ -150,7 +150,7 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
 		href: "/tools/relocation-checklist/",
 		title: "Relocation Progress Tracker",
 		description:
-			"A 32-task checklist covering pre-move planning, arrival week, month one, and settling in. Persistent progress saved in your browser.",
+			"32 tasks covering pre-move planning, arrival week, month one, and settling in. Your progress is saved in your browser.",
 		category: "Trackers & Calendars",
 	},
 	{

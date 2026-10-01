@@ -12,13 +12,13 @@ Decisions were made on the owner's behalf in Phase 2A and are open for review. R
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
 | Health | `/health/` | 7 | 3 | 1 | 11 | 12 |
 | Getting around | `/getting-around/` | 8 | 2 | 2 | 12 | 11 |
-| Home & bills | `/home-and-bills/` | 8 | 3 | 3 | 14 | 19 |
-| Money & paperwork | `/money-and-paperwork/` | 22 | 4 | 13 | 39 | 60 |
+| Home & bills | `/home-and-bills/` | 7 | 3 | 3 | 13 | 17 |
+| Money & paperwork | `/money-and-paperwork/` | 21 | 3 | 13 | 37 | 57 |
 | Food & shopping | `/food-and-shopping/` | 5 | 5 | 0 | 10 | 11 |
-| Family & schools | `/family-and-schools/` | 9 | 3 | 1 | 13 | 14 |
+| Family & schools | `/family-and-schools/` | 7 | 3 | 1 | 11 | 13 |
 | Community & leisure | `/community-and-leisure/` | 5 | 9 | 2 | 16 | 21 |
-| Moving to Cyprus | `/moving-to-cyprus/` | 23 | 2 | 9 | 34 | 62 |
-| **All** | | 87 | 31 | 31 | 149 | |
+| Moving to Cyprus | `/moving-to-cyprus/` | 20 | 2 | 9 | 31 | 58 |
+| **All** | | 80 | 30 | 31 | 141 | |
 
 Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). They keep a topic for their own breadcrumb and "More on" block but are not shown on hubs, indexes, other pages or the sitemap.
 
@@ -42,11 +42,10 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Long-Term Car Rental Cyprus 2026: Monthly Hire Rates](/guides/long-term-car-rental-cyprus/) | Getting around |  |  | Old category Lifestyle; it is about getting a car for daily use. |
 | [Driving in Cyprus: Road Safety & Culture Guide](/guides/road-safety-driving/) | Getting around |  |  |  |
 | [Earthquake Risk in Cyprus: How to Prepare](/guides/earthquake-preparedness/) | Home & bills |  |  | Old category Environment; preparing the home and household. |
-| [Sustainable Living in Cyprus: Expat Guide](/guides/environmental-impact-guide/) | Home & bills | Community & leisure |  | Sustainable living is mostly household habits (energy, water, waste). |
 | [Short-Term to Long-Term Rental in Cyprus](/guides/rental-transition-guide/) | Home & bills | Moving to Cyprus |  | Old category Property; it is about renting a home, not buying. |
 | [Solar Panels in Cyprus: Net Metering & ROI](/guides/solar-energy-guide/) | Home & bills |  |  | Old category Environment; it is about cutting the electricity bill. |
 | [Cyprus Utilities Setup 2026: Electricity & Water](/guides/utilities-setup-guide/) | Home & bills |  |  |  |
-| [Recycling in Cyprus: Guide for New Residents](/guides/waste-recycling-guide/) | Home & bills |  |  | Old category Environment; bins and collections are a household chore. |
+| [Recycling in Cyprus: Guide for New Residents](/guides/waste-recycling-guide/) | Home & bills | Community & leisure |  | Bins and collections are a household chore; also covers sustainable living (Beyond the bins). |
 | [Water Quality & Scarcity in Cyprus: Key Facts](/guides/water-quality-scarcity/) | Home & bills |  |  | Old category Environment; tap water, filters and supply at home. |
 | [Wildfire Risk in Cyprus: How to Prepare](/guides/wildfire-risk-guide/) | Home & bills |  |  | Old category Environment; preparing the home, alerts and insurance. |
 | [Airbnb & Short-Term Rentals in Cyprus 2026](/guides/airbnb-short-term-rental-cyprus/) | Money & paperwork |  |  | Licence, VAT and tax for owners letting short term; Property area comes in Phase 4. |
@@ -54,7 +53,6 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Buying vs Renting in Cyprus: 2026 Guide](/guides/buying-vs-renting-cyprus/) | Money & paperwork | Home & bills, Moving to Cyprus |  | A money decision about the home; Property area comes in Phase 4. |
 | [Cyprus Citizenship by Naturalisation 2026](/guides/citizenship-naturalization/) | Money & paperwork | Moving to Cyprus |  | Applied for after years of residence, so it is resident paperwork. |
 | [Cyprus Ltd vs Sole Trader vs Partnership](/guides/company-types-comparison/) | Money & paperwork | Moving to Cyprus |  | Work and business admin sits in Money & paperwork (there is no Work topic). |
-| [Cyprus Corporate Bank Account: Foreign Director](/guides/corporate-bank-account-guide/) | Money & paperwork |  |  |  |
 | [Cost of Living in Cyprus 2026: City Budgets](/guides/cost-of-living/) | Money & paperwork | Moving to Cyprus |  | Monthly household budgets are useful to residents; also listed for movers. |
 | [Cryptocurrency Tax Treatment in Cyprus (2026)](/guides/crypto-tax-cyprus/) | Money & paperwork |  |  |  |
 | [Cyprus Mortgages for Foreigners: 2026 Guide](/guides/cyprus-mortgage-foreigners/) | Money & paperwork | Moving to Cyprus |  | Mortgage is a money question; Property area comes in Phase 4. |
@@ -66,7 +64,7 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Cyprus Property Taxes 2026: VAT & Transfer Fees](/guides/property-taxes-2026/) | Money & paperwork | Moving to Cyprus |  | Property taxes apply to owners every year; the Property area comes in Phase 4. |
 | [Cyprus Rental Income Tax 2026: Landlord Guide](/guides/rental-income-tax-cyprus/) | Money & paperwork |  |  | Landlord tax; Property area comes in Phase 4. |
 | [Self-Employed Tax in Cyprus: 2026 Guide](/guides/self-employed-tax-cyprus/) | Money & paperwork |  |  |  |
-| [Cyprus Expat Tax Guide 2026: Non-Dom Regime](/guides/taxes-for-expats/) | Money & paperwork | Moving to Cyprus |  | How tax works for residents day to day; the non-dom decision itself sits in Moving to Cyprus. |
+| [Cyprus Expat Tax Guide 2026: Non-Dom Regime](/guides/taxes-for-expats/) | Money & paperwork | Moving to Cyprus |  | How tax works for residents day to day, including non-dom status; also a moving decision. |
 | [Trade Licence Requirements in Cyprus 2026](/guides/trade-licenses-cyprus/) | Money & paperwork |  |  | Work and business admin sits in Money & paperwork. |
 | [VAT Registration in Cyprus: Thresholds & OSS](/guides/vat-registration-guide/) | Money & paperwork |  |  |  |
 | [Employee Rights in Cyprus (2026 Guide)](/guides/working-in-cyprus-employee-rights/) | Money & paperwork |  |  | Contracts, pay and leave for employees; no separate Work topic. |
@@ -77,10 +75,8 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Finding International Ingredients in Cyprus](/guides/home-cooking-ingredients/) | Food & shopping |  |  |  |
 | [Booking Restaurants in Cyprus: How It Works](/guides/restaurant-reservations/) | Food & shopping | Community & leisure |  |  |
 | [Registering Your Child in Cyprus: School & ARC](/guides/child-registration-guide/) | Family & schools | Money & paperwork |  |  |
-| [Best Family-Friendly Neighborhoods in Cyprus: District by District](/guides/family-neighborhoods-guide/) | Family & schools | Home & bills, Moving to Cyprus |  | Old category Lifestyle; written for families choosing an area. |
 | [Getting Married in Cyprus (2026 Guide)](/guides/getting-married-in-cyprus/) | Family & schools | Money & paperwork |  | Family life event; the steps are civil paperwork. |
 | [International School Fees in Cyprus (2026)](/guides/international-school-fees-cyprus/) | Family & schools |  |  |  |
-| [International vs Public Schools in Cyprus](/guides/international-vs-public-school/) | Family & schools |  |  |  |
 | [Maternity and Paternity Rights in Cyprus: What Employed Parents Are Entitled To](/guides/maternity-paternity-rights/) | Family & schools | Money & paperwork |  |  |
 | [International Schools in Cyprus: Full Guide 2026](/guides/schools-in-cyprus/) | Family & schools |  |  |  |
 | [Special Educational Needs in Cyprus: SEN Guide](/guides/sen-guide/) | Family & schools |  |  |  |
@@ -91,7 +87,7 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Hiking in Cyprus: Troodos, Akamas & Coastal Trails](/guides/hiking-trails-guide/) | Community & leisure |  |  |  |
 | [Learning Greek in Cyprus: Schools & Resources](/guides/language-learning-cyprus/) | Community & leisure |  |  |  |
 | [Moving to Cyprus: First-Month Checklist 2026](/guides/arrival-checklist/) | Moving to Cyprus | Money & paperwork |  |  |
-| [Best Places to Live in Cyprus 2026: City Guide](/guides/best-areas-to-live-cyprus/) | Moving to Cyprus | Home & bills |  |  |
+| [Best Places to Live in Cyprus 2026: City Guide](/guides/best-areas-to-live-cyprus/) | Moving to Cyprus | Home & bills, Family & schools |  | Choosing a city; also has a For families paragraph per city. |
 | [How to Buy Property in Cyprus 2026: Full Guide](/guides/buying-process/) | Moving to Cyprus | Money & paperwork |  | Buyers here are mostly people moving; the Property area comes in Phase 4. |
 | [Cyprus Company Residency Permit: Full Guide](/guides/company-formation-visa/) | Moving to Cyprus |  |  |  |
 | [Cyprus Company Formation 2026: Ltd Registration](/guides/cyprus-company-formation/) | Moving to Cyprus | Money & paperwork |  | Mostly read by people setting up a company to move (the owner's brief). |
@@ -104,10 +100,7 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Moving to Cyprus from the UK After Brexit: 2026 Guide](/guides/moving-to-cyprus-from-uk/) | Moving to Cyprus |  |  |  |
 | [Moving to Cyprus With Pets: Import Rules 2026](/guides/moving-to-cyprus-with-pets/) | Moving to Cyprus |  |  | Pet import rules apply once, at the move; vets are in Health. |
 | [Buying a New Development in Cyprus 2026](/guides/new-development-buying-guide/) | Moving to Cyprus | Money & paperwork |  | Property buying; parked in Moving to Cyprus until the Phase 4 Property area. |
-| [Cyprus Non-Dom Tax Status 2026: 0% on Dividends](/guides/non-dom-status-guide/) | Moving to Cyprus | Money & paperwork |  | Non-dom is claimed when you become resident, so it is a moving decision. |
-| [Buying Off-Plan Property in Cyprus 2026](/guides/off-plan-buying-guide/) | Moving to Cyprus | Money & paperwork |  | Property buying; parked in Moving to Cyprus until the Phase 4 Property area. |
 | [Property Lawyers in Cyprus 2026: Fees & Guide](/guides/property-lawyers-cyprus/) | Moving to Cyprus | Money & paperwork |  | Property buying; parked in Moving to Cyprus until the Phase 4 Property area. |
-| [Cyprus Relocation Checklist 2026: Action Plan](/guides/relocation-checklist/) | Moving to Cyprus |  |  |  |
 | [Cyprus Residency Visas 2026: All Routes Compared](/guides/residency-and-visas/) | Moving to Cyprus |  |  |  |
 | [Retiring in Cyprus 2026: Full Expat Guide](/guides/retiring-in-cyprus/) | Moving to Cyprus |  |  |  |
 | [Cyprus Innovative Company Permit: Tech Founder](/guides/startup-visa-ict/) | Moving to Cyprus |  |  |  |
@@ -128,7 +121,6 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Property Management](/sections/property-management/) | Home & bills | Money & paperwork |  | Managing a home you own; Property area comes in Phase 4. |
 | [Accountants & Tax Advisors](/sections/accountants/) | Money & paperwork |  |  |  |
 | [Coworking Spaces](/sections/coworking/) | Money & paperwork | Community & leisure |  | Work sits in Money & paperwork (no Work topic); also a place to meet people. |
-| [Registered Address Providers](/sections/registered-address/) *(not listed)* | Money & paperwork |  |  | Company admin service. |
 | [Startup Ecosystem](/sections/startup-ecosystem/) | Money & paperwork | Moving to Cyprus |  | Business support for founders; no Work topic. |
 | [Farmers Markets](/sections/farmers-markets/) | Food & shopping |  |  |  |
 | [Where to Eat](/sections/food/) | Food & shopping |  | limassol, paphos, larnaca, ayia-napa | Restored from the archived homepage Food panel. |

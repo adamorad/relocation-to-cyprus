@@ -32,7 +32,7 @@ export default function CityComparisonClientPage() {
 					slug="city-comparison"
 					exclude={[
 						"/sections/property-lawyers/",
-						"/guides/family-neighborhoods-guide/",
+						"/guides/best-areas-to-live-cyprus/",
 						"/guides/cost-of-living/",
 					]}
 					cols={3}
@@ -57,8 +57,8 @@ export default function CityComparisonClientPage() {
 					label: "Find a property lawyer",
 				},
 				{
-					href: "/guides/family-neighborhoods-guide/",
-					label: "Read: Family Neighbourhoods Guide",
+					href: "/guides/best-areas-to-live-cyprus/",
+					label: "Read: Best Places to Live",
 				},
 				{
 					href: "/guides/cost-of-living/",

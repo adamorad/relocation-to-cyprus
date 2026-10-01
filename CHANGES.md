@@ -2,6 +2,22 @@
 
 ## Unreleased
 
+- Merged and retired pages (Phase 3A, owner-approved). Each retired URL now returns a permanent redirect from `vercel.json` (`permanent: true`, which Vercel serves as 308), for both the `/x/` and `/x` forms. Every internal link was repointed to the survivor, and the retired pages no longer build:
+  - /guides/relocation-checklist/ to /guides/arrival-checklist/ (new Before you move, Month 1 and First 90 days sections). The /tools/relocation-checklist/ tracker stays and is retitled "Cyprus Relocation Progress Tracker: 32 Tasks, Plan to Settled".
+  - /guides/non-dom-status-guide/ to /guides/taxes-for-expats/ (new "Non-dom status" section and three FAQs).
+  - /guides/international-vs-public-school/ to /guides/schools-in-cyprus/ (new "Public or international school?" section). The fees guide and school finder are unchanged.
+  - /guides/family-neighborhoods-guide/ to /guides/best-areas-to-live-cyprus/ (a "For families" paragraph in each city block).
+  - /guides/environmental-impact-guide/ to /guides/waste-recycling-guide/ (new "Beyond the bins" section).
+  - /guides/corporate-bank-account-guide/ to /guides/banking-in-cyprus/ (new "Company accounts" section).
+  - /guides/off-plan-buying-guide/ to /guides/new-development-buying-guide/ (five off-plan sections).
+  - /sections/registered-address/ to /sections/accountants/ (registered office providers behind a "Registered office" filter).
+  - /tools/freelancer-vs-company/ and /tools/ltd-setup-calculator/ to /tools/sole-trader-vs-ltd/ (their two calculators now live in that tool's folder, code unchanged).
+  - /tools/gesy-registration/ to /guides/gesy-registration-guide/; /tools/neighborhood-comparison/ to /tools/city-comparison/; /tools/relocation-cost-estimator/ to /tools/relocation-cost-calculator/; /tools/relocation-tracker/ to /tools/relocation-checklist/; /tools/tax-residency-planner/ to /tools/tax-residency-tracker/. These replace the old meta-refresh stub pages.
+- Retired guide entries are kept in `archive/lib/guides-retired-phase3.ts`; the stub pages, the registered-address page and its data are in `archive/`.
+- Not done (dropped after Search Console review): co-living into long-term rentals, rooftop bars into Where to Eat, community gardens into volunteering, and restaurant reservations into the Cypriot cuisine guide. Those pages are unchanged.
+- School finder: removed the "Lycee Francais de Nicosie" entry (a Nicosia school labelled Paphos) and the now-empty French filter.
+- Guide prose can link to the Moving to Cyprus hub with `[text](/moving-to-cyprus/)`.
+- `pnpm qa:links` now also runs `scripts/qa/check-redirects.mjs`, which fails the build check if any page, the sitemap or llms.txt links to a redirect source, if a retired URL still has a page in out/, or if a redirect target is missing or itself redirected.
 - Advertise page reworked around sponsored top spots: top of a directory (Featured, from €80/month), top of a guide (from €200/month) and top of a topic hub (price on request), with a preview of the sponsored unit, labelling rules and booking steps. Newsletter sponsorship removed (there is no newsletter yet). `SponsorSlot` gains a `preview` mode.
 - Homepage "Your local area": the city dropdown and Go button are removed; the four city cards below it do the same job.
 - Footer redesigned: brand line ("Everyday life in Cyprus, made easier") with the newsletter signup in a card beside it, then Topics, Cities (plus All cities) and Explore columns; About, Advertise, Contact, Privacy and Sitemap move to the bottom row with the copyright. The "Featured developments" listing strip and the guide/directory/tool counts are removed from the footer, and the footer no longer describes the site as new-build real estate. Signup field and button are 44px tall.

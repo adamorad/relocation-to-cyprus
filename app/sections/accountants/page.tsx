@@ -8,7 +8,7 @@ import AccountantsClient from "./client";
 const SITE_URL = "https://realcy.app";
 const title = "Accountants & Tax Advisors in Cyprus";
 const description =
-	"Accountants & tax advisors in Cyprus for relocators: ICPAC-registered firms across Limassol, Paphos & Larnaca. Non-dom filings & company tax.";
+	"Accountants, tax advisors and registered office providers in Cyprus: ICPAC-registered firms across Limassol, Paphos & Larnaca. Non-dom filings & company tax.";
 
 export const metadata: Metadata = {
 	title,
@@ -45,14 +45,14 @@ export default function AccountantsPage() {
 				eyebrow: "Professional Services",
 				title: title,
 				intro:
-					"ICPAC-registered accountants with proven experience in the non-domiciled regime, expat individual returns, corporate tax, VAT, and crypto.",
+					"ICPAC-registered accountants with proven experience in the non-domiciled regime, expat individual returns, corporate tax, VAT, and crypto, plus registered office providers for Cyprus companies.",
 			}}
 			info={ACCOUNTANT_TIPS.map((t) => ({ heading: t.heading, body: t.body }))}
 			infoTitle="Before you engage an accountant"
 			notice={{
 				tone: "legal",
 				content:
-					"This is a directory, not tax advice. Always verify ICPAC membership and fee structures directly with the firm.",
+					"This is a directory, not tax or legal advice. Always verify ICPAC membership, fees and service inclusions directly with the firm or provider.",
 			}}
 			related={<MoreOnTopic type="directory" slug="accountants" cols={3} />}
 		>

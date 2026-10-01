@@ -7,25 +7,37 @@ import { ChipGroup } from "@/components/ui/Chip";
 import {
 	ACCOUNTANT_SPEC_LABEL,
 	ACCOUNTANTS,
-	type AccountantSpecialization,
+	type AccountantFilter,
 	ALL_ACCOUNTANT_SPECIALIZATIONS,
 	ALL_CITIES,
 	type City,
+	REGISTERED_OFFICE_PROVIDERS,
 } from "@/lib/accountants";
 
-/** Filters first, then the accountant cards. Header and info live in page.tsx. */
+/**
+ * Filters first, then the accountant cards, then registered office providers
+ * (merged from the retired registered-address directory). The "Registered
+ * office" chip shows only the providers. Header and info live in page.tsx.
+ */
 export default function AccountantsClient() {
 	const [cityFilter, setCityFilter] = useState<City | "All">("All");
-	const [specFilter, setSpecFilter] = useState<
-		AccountantSpecialization | "All"
-	>("All");
+	const [specFilter, setSpecFilter] = useState<AccountantFilter | "All">("All");
 
-	const visible = ACCOUNTANTS.filter((a) => {
-		const cityMatch = cityFilter === "All" || a.city === cityFilter;
-		const specMatch =
-			specFilter === "All" || a.specializations.includes(specFilter);
-		return cityMatch && specMatch;
-	});
+	const officeOnly = specFilter === "registered-office";
+	const visible = officeOnly
+		? []
+		: ACCOUNTANTS.filter((a) => {
+				const cityMatch = cityFilter === "All" || a.city === cityFilter;
+				const specMatch =
+					specFilter === "All" || a.specializations.includes(specFilter);
+				return cityMatch && specMatch;
+			});
+	const offices =
+		specFilter === "All" || officeOnly
+			? REGISTERED_OFFICE_PROVIDERS.filter(
+					(p) => cityFilter === "All" || p.city === cityFilter,
+				)
+			: [];
 
 	return (
 		<>
@@ -46,27 +58,33 @@ export default function AccountantsClient() {
 					options={[
 						{ value: "All", label: "All specializations" },
 						...ALL_ACCOUNTANT_SPECIALIZATIONS.map((s) => ({
-							value: s,
+							value: s as AccountantFilter,
 							label: ACCOUNTANT_SPEC_LABEL[s],
 						})),
+						{
+							value: "registered-office" as AccountantFilter,
+							label: ACCOUNTANT_SPEC_LABEL["registered-office"],
+						},
 					]}
 				/>
 			</div>
 
-			<h2
-				className="mt-8 text-2xl font-bold tracking-tight text-ink"
-				aria-live="polite"
-			>
-				{visible.length === 0
-					? "No accountants match the selected filters"
-					: `${visible.length} accountant${visible.length === 1 ? "" : "s"}${
-							cityFilter !== "All" ? ` in ${cityFilter}` : ""
-						}${
-							specFilter !== "All"
-								? ` · ${ACCOUNTANT_SPEC_LABEL[specFilter]}`
-								: ""
-						}`}
-			</h2>
+			{officeOnly ? null : (
+				<h2
+					className="mt-8 text-2xl font-bold tracking-tight text-ink"
+					aria-live="polite"
+				>
+					{visible.length === 0
+						? "No accountants match the selected filters"
+						: `${visible.length} accountant${visible.length === 1 ? "" : "s"}${
+								cityFilter !== "All" ? ` in ${cityFilter}` : ""
+							}${
+								specFilter !== "All"
+									? ` · ${ACCOUNTANT_SPEC_LABEL[specFilter]}`
+									: ""
+							}`}
+				</h2>
+			)}
 
 			{visible.length > 0 ? (
 				<CardGrid cols={2} className="mt-5">
@@ -109,6 +127,63 @@ export default function AccountantsClient() {
 						</CardGridItem>
 					))}
 				</CardGrid>
+			) : null}
+			{offices.length > 0 || officeOnly ? (
+				<>
+					<h2
+						className="mt-10 text-2xl font-bold tracking-tight text-ink"
+						aria-live="polite"
+					>
+						{offices.length === 0
+							? "No registered office providers in this city"
+							: `${offices.length} registered office provider${offices.length === 1 ? "" : "s"}${
+									cityFilter !== "All" ? ` in ${cityFilter}` : ""
+								}`}
+					</h2>
+					<p className="mt-2 max-w-prose text-muted">
+						Every Cyprus company needs a registered office in Cyprus. These
+						corporate service providers offer the address, often with mail
+						handling and company secretary services.
+					</p>
+					{offices.length > 0 ? (
+						<CardGrid cols={2} className="mt-5">
+							{offices.map((provider) => (
+								<CardGridItem key={provider.name}>
+									<Card
+										variant="text"
+										eyebrow={<Badge>{provider.city}</Badge>}
+										title={provider.name}
+										meta={`${
+											provider.pricePerYear != null
+												? `€${provider.pricePerYear} / year`
+												: "Price on request"
+										}${provider.neighbourhood ? ` · ${provider.neighbourhood}` : ""}`}
+										text={provider.why}
+										footer={
+											<>
+												<ul className="list-disc space-y-0.5 pb-1 pl-5 text-muted">
+													{provider.includes.map((item) => (
+														<li key={item}>{item}</li>
+													))}
+												</ul>
+												{provider.website ? (
+													<a
+														href={provider.website}
+														target="_blank"
+														rel="noopener noreferrer"
+														className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
+													>
+														Website
+													</a>
+												) : null}
+											</>
+										}
+									/>
+								</CardGridItem>
+							))}
+						</CardGrid>
+					) : null}
+				</>
 			) : null}
 		</>
 	);

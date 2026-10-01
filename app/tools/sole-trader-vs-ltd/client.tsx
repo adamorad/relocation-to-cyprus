@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import FreelancerVsCompanyPage from "@/app/tools/freelancer-vs-company/client";
-import LtdSetupCalculatorClient from "@/app/tools/ltd-setup-calculator/client";
+import LtdSetupCalculatorClient from "@/app/tools/sole-trader-vs-ltd/setup-client";
+import FreelancerVsCompanyPage from "@/app/tools/sole-trader-vs-ltd/takehome-client";
 import { ChipGroup } from "@/components/ui/Chip";
 
 type Tab = "takehome" | "setup";
