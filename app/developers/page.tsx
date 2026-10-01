@@ -5,12 +5,12 @@ import { DEVELOPERS } from "@/lib/developers";
 const SITE_URL = "https://realcy.app";
 
 export const metadata: Metadata = {
-  title: "Cyprus Property Developers — New Build Projects | RealCy.app",
+  title: "Cyprus Property Developers: New Build Projects",
   description:
     "Browse all 62 property developers active in Cyprus. View their new-build projects, regions, and pricing across Paphos, Limassol, Larnaca, and more.",
   alternates: { canonical: "/developers/" },
   openGraph: {
-    title: "Cyprus Property Developers — New Build Projects | RealCy.app",
+    title: "Cyprus Property Developers: New Build Projects",
     description:
       "Browse all 62 property developers active in Cyprus. View their new-build projects, regions, and pricing across Paphos, Limassol, Larnaca, and more.",
     url: `${SITE_URL}/developers/`,

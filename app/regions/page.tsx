@@ -4,7 +4,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { REGIONS } from "@/lib/regions";
 
 export const metadata: Metadata = {
-	title: "Regions — Cyprus Relocation Guide | RealCy",
+	title: "Regions of Cyprus",
 	description:
 		"Explore every major region in Cyprus: Paphos, Limassol, Larnaca, and Ayia Napa. Compare lifestyle, property, schools, and healthcare before you relocate.",
 	alternates: { canonical: "/regions/" },

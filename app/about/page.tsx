@@ -6,7 +6,7 @@ const title = "About RealCy.app";
 const description = "RealCy.app is an independent guide to living in Cyprus: practical guides, service directories, planning tools and new-build real estate.";
 
 export const metadata: Metadata = {
-  title,
+  title: { absolute: title },
   description,
   alternates: { canonical: "/about/" },
   openGraph: { title, description, url: `${SITE_URL}/about/`, type: "website" },

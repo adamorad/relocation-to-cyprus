@@ -4,7 +4,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import ToolsIndexClient from "./client";
 
 export const metadata: Metadata = {
-	title: "Cyprus Relocation Tools — RealCy.app",
+	title: "Cyprus Relocation Tools",
 	description:
 		"Free interactive tools for Cyprus relocators: rent vs buy calculator, visa pathway finder, tax residency planner, social insurance calculator, banking fee comparison, and more.",
 	alternates: { canonical: "/tools/" },

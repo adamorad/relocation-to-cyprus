@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ShortlistClient from "./client";
 
 export const metadata: Metadata = {
-	title: "Saved Shortlist — RealCy.app",
+	title: "Saved Shortlist",
 	robots: { index: false, follow: true },
 };
 

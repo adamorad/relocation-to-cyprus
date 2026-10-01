@@ -6,7 +6,7 @@ const description =
   "Reach a targeted audience of people actively planning a move to Cyprus. Featured directory listings, guide sponsorship, and newsletter placement for law firms, accountants, healthcare providers, and other professional services.";
 
 export const metadata: Metadata = {
-  title,
+  title: { absolute: title },
   description,
   alternates: { canonical: "/advertise/" },
   openGraph: { title, description, url: `${SITE_URL}/advertise/`, type: "website" },

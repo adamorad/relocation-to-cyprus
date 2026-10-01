@@ -7,7 +7,7 @@ const title = "Contact RealCy.app";
 const description = "Get in touch with RealCy.app — questions about a Cyprus listing, suggestions, partnerships, or a category you want us to build next.";
 
 export const metadata: Metadata = {
-  title,
+  title: { absolute: title },
   description,
   alternates: { canonical: "/contact/" },
   openGraph: { title, description, url: `${SITE_URL}/contact/`, type: "website" },

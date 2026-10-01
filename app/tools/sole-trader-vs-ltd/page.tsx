@@ -4,7 +4,7 @@ import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import SoleTraderVsLtdClient from "./client";
 
 const SITE_URL = "https://realcy.app";
-const title = "Sole Trader vs Ltd — RealCy.app";
+const title = "Sole Trader vs Ltd";
 const description =
 	"Compare operating as a Cyprus sole trader versus a Cyprus Ltd. Tab between take-home pay comparison and Ltd formation cost calculator — all in one place.";
 
