@@ -105,6 +105,16 @@
       "source": "/guides/international-vs-public-school",
       "destination": "/guides/schools-in-cyprus/",
       "permanent": true
+    },
+    {
+      "source": "/guides/family-neighborhoods-guide/",
+      "destination": "/guides/best-areas-to-live-cyprus/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/family-neighborhoods-guide",
+      "destination": "/guides/best-areas-to-live-cyprus/",
+      "permanent": true
     }
   ]
 }

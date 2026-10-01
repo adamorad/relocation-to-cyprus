@@ -12,13 +12,13 @@ Decisions were made on the owner's behalf in Phase 2A and are open for review. R
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
 | Health | `/health/` | 7 | 3 | 1 | 11 | 12 |
 | Getting around | `/getting-around/` | 8 | 2 | 2 | 12 | 11 |
-| Home & bills | `/home-and-bills/` | 8 | 3 | 3 | 14 | 19 |
+| Home & bills | `/home-and-bills/` | 8 | 3 | 3 | 14 | 18 |
 | Money & paperwork | `/money-and-paperwork/` | 22 | 4 | 13 | 39 | 59 |
 | Food & shopping | `/food-and-shopping/` | 5 | 5 | 0 | 10 | 11 |
-| Family & schools | `/family-and-schools/` | 8 | 3 | 1 | 12 | 13 |
+| Family & schools | `/family-and-schools/` | 7 | 3 | 1 | 11 | 13 |
 | Community & leisure | `/community-and-leisure/` | 5 | 9 | 2 | 16 | 21 |
-| Moving to Cyprus | `/moving-to-cyprus/` | 21 | 2 | 9 | 32 | 60 |
-| **All** | | 84 | 31 | 31 | 146 | |
+| Moving to Cyprus | `/moving-to-cyprus/` | 21 | 2 | 9 | 32 | 59 |
+| **All** | | 83 | 31 | 31 | 145 | |
 
 Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). They keep a topic for their own breadcrumb and "More on" block but are not shown on hubs, indexes, other pages or the sitemap.
 
@@ -77,7 +77,6 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Finding International Ingredients in Cyprus](/guides/home-cooking-ingredients/) | Food & shopping |  |  |  |
 | [Booking Restaurants in Cyprus: How It Works](/guides/restaurant-reservations/) | Food & shopping | Community & leisure |  |  |
 | [Registering Your Child in Cyprus: School & ARC](/guides/child-registration-guide/) | Family & schools | Money & paperwork |  |  |
-| [Best Family-Friendly Neighborhoods in Cyprus: District by District](/guides/family-neighborhoods-guide/) | Family & schools | Home & bills, Moving to Cyprus |  | Old category Lifestyle; written for families choosing an area. |
 | [Getting Married in Cyprus (2026 Guide)](/guides/getting-married-in-cyprus/) | Family & schools | Money & paperwork |  | Family life event; the steps are civil paperwork. |
 | [International School Fees in Cyprus (2026)](/guides/international-school-fees-cyprus/) | Family & schools |  |  |  |
 | [Maternity and Paternity Rights in Cyprus: What Employed Parents Are Entitled To](/guides/maternity-paternity-rights/) | Family & schools | Money & paperwork |  |  |
@@ -90,7 +89,7 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Hiking in Cyprus: Troodos, Akamas & Coastal Trails](/guides/hiking-trails-guide/) | Community & leisure |  |  |  |
 | [Learning Greek in Cyprus: Schools & Resources](/guides/language-learning-cyprus/) | Community & leisure |  |  |  |
 | [Moving to Cyprus: First-Month Checklist 2026](/guides/arrival-checklist/) | Moving to Cyprus | Money & paperwork |  |  |
-| [Best Places to Live in Cyprus 2026: City Guide](/guides/best-areas-to-live-cyprus/) | Moving to Cyprus | Home & bills |  |  |
+| [Best Places to Live in Cyprus 2026: City Guide](/guides/best-areas-to-live-cyprus/) | Moving to Cyprus | Home & bills, Family & schools |  | Choosing a city; also has a For families paragraph per city. |
 | [How to Buy Property in Cyprus 2026: Full Guide](/guides/buying-process/) | Moving to Cyprus | Money & paperwork |  | Buyers here are mostly people moving; the Property area comes in Phase 4. |
 | [Cyprus Company Residency Permit: Full Guide](/guides/company-formation-visa/) | Moving to Cyprus |  |  |  |
 | [Cyprus Company Formation 2026: Ltd Registration](/guides/cyprus-company-formation/) | Moving to Cyprus | Money & paperwork |  | Mostly read by people setting up a company to move (the owner's brief). |

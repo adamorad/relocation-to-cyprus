@@ -276,11 +276,6 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 		topic: "family-and-schools",
 		also: ["money-and-paperwork"],
 	},
-	"family-neighborhoods-guide": {
-		topic: "family-and-schools",
-		also: ["home-and-bills", "moving-here"],
-		why: "Old category Lifestyle; written for families choosing an area.",
-	},
 	"getting-married-in-cyprus": {
 		topic: "family-and-schools",
 		also: ["money-and-paperwork"],
@@ -321,7 +316,8 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 	"cyprus-vs-portugal": { topic: "moving-here" },
 	"best-areas-to-live-cyprus": {
 		topic: "moving-here",
-		also: ["home-and-bills"],
+		also: ["home-and-bills", "family-and-schools"],
+		why: "Choosing a city; also has a For families paragraph per city.",
 	},
 	"retiring-in-cyprus": { topic: "moving-here" },
 	"moving-to-cyprus-from-uk": { topic: "moving-here" },

@@ -116,4 +116,33 @@ export const RETIRED_GUIDES = [
 			},
 		],
 	},
+	// family-neighborhoods-guide -> /guides/best-areas-to-live-cyprus/
+	{
+		slug: "family-neighborhoods-guide",
+		datePublished: "2026-05-29",
+		dateModified: "2026-07-05",
+		category: "lifestyle",
+		title:
+			"Best Family-Friendly Neighborhoods in Cyprus — District by District",
+		description:
+			"Which specific neighborhoods in Limassol, Paphos, Larnaca, and Ayia Napa actually work for families — covering safety, green space, international school proximity, community character, and price ranges.",
+		sections: [
+			{
+				heading: "Limassol: Germasogeia and Agios Athanasios",
+				body: "Germasogeia is the default landing zone for English-speaking families moving to Limassol. It runs along the B1 highway east of the city center and offers a well-established suburban feel: wide pavements, multiple supermarkets, several pharmacies, and direct routes to the private school cluster (Heritage Private School, The Grammar School, PASCAL) which are all within a 10–15 minute drive or school bus route. Rents for a three-bedroom villa with a small garden run €2,000–€3,500 per month; apartments in the €1,500–€2,200 range are plentiful. Agios Athanasios, directly south and slightly more elevated, is quieter and marginally cheaper. Its tree-lined streets and lower traffic density make it popular with families with young children. Both areas are safe by any European standard — street crime is rare and the expat-to-local ratio is high enough that English is spoken everywhere. The downside of both: you need a car for almost everything, and Limassol's summer heat means the nearby Dasoudi forest park and seafront promenade become the main outdoor activity zones.",
+			},
+			{
+				heading: "Paphos: Chlorakas and Peyia",
+				body: "Paphos is significantly more relaxed than Limassol in pace and price, which makes it popular with families who want lower costs without sacrificing an international community. Chlorakas is the closest suburb to central Paphos, about 4 km north of the old town, and has grown considerably in the last decade — it now has several supermarkets, a growing restaurant strip, and easy access to Paphos International Airport (15 minutes). Rents are €1,200–€2,000 for a three-bedroom house, and property purchase prices are among the most accessible in Cyprus. The local international school scene is anchored by The International School of Paphos and Falcon School, both well-regarded and charging €5,000–€8,000 per year — meaningfully cheaper than Limassol equivalents. Peyia, higher up the hills above Coral Bay, attracts families who want space and cooler summers; it's a 20-minute drive from the city but properties are bigger and gardens are standard. The trade-off is that Peyia is a British-expat village more than an integrated community — your children will be immersed in English culture rather than Cypriot culture, which matters for some families.",
+			},
+			{
+				heading: "Larnaca: Mackenzie and Drosia",
+				body: "Larnaca is underrated as a family destination and noticeably cheaper than Limassol for equivalent space. Mackenzie, named after the beach strip south of the old town, has become significantly more polished since 2020 — the seafront promenade is walkable, new restaurants have replaced old tavernas, and several apartment complexes in the €1,100–€1,700 range are within walking distance of the beach. For families with school-age children, the draw is proximity to The English School Larnaca and Pascal Institute Larnaca (both international, €5,000–€8,000 per year). Drosia, 3–4 km inland along the B1, is the more established suburban choice — quieter, slightly lower crime even by Cyprus standards, and popular with Cypriot middle-class families, meaning your children will mix with locals more naturally than in the tourist-facing neighborhoods. A three-bedroom house in Drosia rents for €1,100–€1,800. Larnaca Airport being 5 km away is genuinely convenient for frequent travellers but produces noticeable flight noise under the approach path.",
+			},
+			{
+				heading: "Ayia Napa: Protaras and Paralimni",
+				body: "Ayia Napa itself is a party town and not a practical family base outside the winter months. The residential family choice in the eastern district is Protaras and the municipality of Paralimni, about 8–10 km north of Ayia Napa. Protaras blends holiday infrastructure with a growing year-round residential community — the beaches (Fig Tree Bay is one of the best in Cyprus) are genuinely excellent, the area is safe, and property prices remain lower than Limassol or Paphos for comparable quality. Paralimni is the administrative center and more authentically Cypriot in character — it has a full supermarket offering, the main government offices for the district, and a quieter residential feel. The school situation is the main constraint: there is no major international private school in the Famagusta district, meaning families typically choose between the local Greek-Cypriot public system (increasingly English-medium at secondary level but still primarily Greek) or boarding/daily commute to Larnaca. For families with young children, this is manageable; for secondary-age children, it becomes the deciding factor.",
+			},
+		],
+	},
 ];
