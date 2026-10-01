@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
+import { SourcesNote } from "@/components/ui/SourcesNote";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import RentVsBuyCalculatorClient from "./client";
@@ -27,16 +28,32 @@ export default function RentVsBuyCalculatorPage() {
 		<ToolTemplate
 			pagefindType="tool"
 			related={
-				<MoreOnTopic
-					type="tool"
-					slug="rent-vs-buy-calculator"
-					exclude={[
-						"/sections/property-lawyers/",
-						"/guides/buying-process/",
-						"/guides/rental-transition-guide/",
-					]}
-					cols={2}
-				/>
+				<>
+					<SourcesNote
+						className="mb-12"
+						lastChecked="2026-10-02"
+						sources={[
+							{
+								label: "Advocates Law, Cap. 2 (CyLaw)",
+								url: "http://www.cylaw.org/nomoi/enop/non-ind/0_2/full.html",
+							},
+							{
+								label: "Judicare: Cyprus residential purchase pricing",
+								url: "https://www.judicaregroup.com/pricing/cyprus-res-purchase-pricing/",
+							},
+						]}
+					/>
+					<MoreOnTopic
+						type="tool"
+						slug="rent-vs-buy-calculator"
+						exclude={[
+							"/sections/property-lawyers/",
+							"/guides/buying-process/",
+							"/guides/rental-transition-guide/",
+						]}
+						cols={2}
+					/>
+				</>
 			}
 			width="reading"
 			header={{
