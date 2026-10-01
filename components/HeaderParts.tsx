@@ -45,7 +45,14 @@ export function Brand() {
 	);
 }
 
-export function SavedLink({ className = "" }: { className?: string }) {
+/** Saved link. `compact` hides the word "Saved" below lg (the label stays). */
+export function SavedLink({
+	className = "",
+	compact = false,
+}: {
+	className?: string;
+	compact?: boolean;
+}) {
 	const count = useSavedCount();
 	const pathname = usePathname() ?? "/";
 	const active = pathname.startsWith("/my-shortlist");
@@ -58,12 +65,12 @@ export function SavedLink({ className = "" }: { className?: string }) {
 					? `Saved, ${count} ${count === 1 ? "listing" : "listings"}`
 					: "Saved"
 			}
-			className={`inline-flex min-h-11 items-center gap-2 rounded-field px-3 text-base font-semibold text-ink hover:bg-sky ${
+			className={`inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-field px-3 text-base font-semibold text-ink hover:bg-sky ${
 				active ? "bg-sky" : ""
 			} ${className}`}
 		>
 			<Icon name="heart" size={22} />
-			<span>Saved</span>
+			<span className={compact ? "hidden lg:inline" : undefined}>Saved</span>
 			{count > 0 ? (
 				<span
 					aria-hidden="true"

@@ -4,16 +4,20 @@ import { usePathname } from "next/navigation";
 import { isActive, PRIMARY_NAV } from "@/lib/nav-links";
 import { SavedLink } from "./HeaderParts";
 import { Icon } from "./icons/Icon";
-import { MoreMenu } from "./MoreMenu";
+import { MoreMenu, TopicsMenu } from "./MoreMenu";
 
-/** Desktop header navigation (hidden below md; mobile uses MobileMenu). */
+/**
+ * Desktop header navigation (hidden below md; mobile uses MobileMenu):
+ * Topics menu, Cities, Guides, Tools, search, Saved, More.
+ */
 export function PrimaryNav() {
 	const pathname = usePathname() ?? "/";
 	return (
 		<nav
 			aria-label="Primary"
-			className="hidden items-center gap-1 md:flex lg:gap-3"
+			className="hidden items-center gap-0.5 md:flex lg:gap-2"
 		>
+			<TopicsMenu />
 			{PRIMARY_NAV.map((item) => {
 				const active = isActive(pathname, item.href);
 				return (
@@ -31,7 +35,6 @@ export function PrimaryNav() {
 					</Link>
 				);
 			})}
-			<MoreMenu />
 			<Link
 				href="/explore/"
 				aria-label="Search the site"
@@ -42,7 +45,8 @@ export function PrimaryNav() {
 			>
 				<Icon name="search" size={22} />
 			</Link>
-			<SavedLink className="ml-1" />
+			<SavedLink compact />
+			<MoreMenu />
 		</nav>
 	);
 }
