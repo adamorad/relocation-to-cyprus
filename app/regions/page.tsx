@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { NAV_REGIONS } from "@/lib/regions";
+import { REGIONS } from "@/lib/regions";
 
 export const metadata: Metadata = {
 	title: "Regions — Cyprus Relocation Guide | RealCy",
@@ -27,7 +27,7 @@ export default function RegionsIndexPage() {
 			</p>
 
 			<div className="grid gap-4 sm:grid-cols-2">
-				{NAV_REGIONS.map((region) => (
+				{REGIONS.map((region) => (
 					<Link
 						key={region.slug}
 						href={`/regions/${region.slug}/`}

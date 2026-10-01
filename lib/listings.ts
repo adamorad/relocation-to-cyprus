@@ -25,7 +25,6 @@ export const REGION_SLUGS: Record<string, string> = {
   paphos: "Paphos",
   limassol: "Limassol",
   larnaca: "Larnaca",
-  nicosia: "Nicosia",
   "ayia-napa": "Ayia Napa",
 };
 
