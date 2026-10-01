@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Advertise page reworked around sponsored top spots: top of a directory (Featured, from €80/month), top of a guide (from €200/month) and top of a topic hub (price on request), with a preview of the sponsored unit, labelling rules and booking steps. Newsletter sponsorship removed (there is no newsletter yet). `SponsorSlot` gains a `preview` mode.
+- Homepage "Your local area": the city dropdown and Go button are removed; the four city cards below it do the same job.
 - Footer redesigned: brand line ("Everyday life in Cyprus, made easier") with the newsletter signup in a card beside it, then Topics, Cities (plus All cities) and Explore columns; About, Advertise, Contact, Privacy and Sitemap move to the bottom row with the copyright. The "Featured developments" listing strip and the guide/directory/tool counts are removed from the footer, and the footer no longer describes the site as new-build real estate. Signup field and button are 44px tall.
 - Newsletter sign-up hidden everywhere (footer card, guide and listing EmailBoxes) behind `NEWSLETTER_ENABLED` in `lib/newsletter.ts`. The form never sent addresses anywhere (they stayed in the visitor's own browser) and the promised checklist was never delivered; it returns once it posts to a real email service.
 - Saved removed from the header, the mobile menu and /explore/. The /my-shortlist/ page and listing save buttons still work (Saved returns inside the Property area in Phase 4).

@@ -7,14 +7,16 @@ import { Container } from "@/components/ui/Container";
 import { StatCard } from "@/components/ui/DataTable";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
+import { SponsorSlot } from "@/components/ui/SponsorSlot";
 import { GUIDES } from "@/lib/guides";
 import { SECTIONS_INDEX } from "@/lib/sections-index";
 import { TOOLS } from "@/lib/tools-index";
+import { TOPICS } from "@/lib/topics";
 
 const SITE_URL = "https://realcy.app";
-const title = "Advertise on RealCy.app: Reach People Relocating to Cyprus";
+const title = "Advertise on RealCy.app: Sponsored Top Spots";
 const description =
-	"Reach a targeted audience of people actively planning a move to Cyprus. Featured directory listings, guide sponsorship, and newsletter placement for law firms, accountants, healthcare providers, and other professional services.";
+	"Put your business at the top of the page people read when they need your service in Cyprus: featured directory spots, guide sponsorship and topic hub sponsorship, always clearly labelled.";
 
 export const metadata: Metadata = {
 	title: { absolute: title },
@@ -28,45 +30,47 @@ export const metadata: Metadata = {
 	},
 };
 
-const TIERS = [
+const SPOTS = [
 	{
-		name: "Featured Listing",
+		name: "Top of a directory",
+		label: "Featured",
 		price: "From €80/month",
-		ideal:
-			"Property lawyers, immigration specialists, accountants, insurance brokers",
+		where: `Any of our ${SECTIONS_INDEX.length} local directories, for example accountants, property lawyers or specialist doctors.`,
 		description:
-			"Your firm appears at the top of the relevant service directory: highlighted with a Featured badge, your logo, an extended description, and a direct link to your website. Standard listings have no badge and lower visibility.",
+			"Your business is the first entry in the directory, above the standard listings, with a Featured label, your logo, a longer description and a direct link to your website.",
 		includes: [
-			"Priority placement in your category",
+			"First position in your category",
 			"Logo and extended description",
 			"Direct link to your website",
 			"Monthly click report",
 		],
 	},
 	{
-		name: "Guide Sponsorship",
+		name: "Top of a guide",
+		label: "Sponsored by",
 		price: "From €200/month",
-		ideal: "Law firms, accountants, health insurance providers, banks",
+		where: `Any of our ${GUIDES.length} guides, for example GeSY registration, opening a bank account or buying a car.`,
 		description:
-			"Exclusive sponsorship of a single guide: one sponsor per guide. Your firm appears at the top of the guide with logo and tagline, seen by readers who are actively researching the exact topic your service covers.",
+			"One sponsor per guide. Your logo and a one-line tagline sit above the guide, in front of readers researching exactly the service you offer.",
 		includes: [
-			"Exclusive placement (one sponsor per guide)",
-			"Logo and tagline above the guide body",
+			"Exclusive: one sponsor per guide",
+			"Logo and tagline above the guide",
 			"Monthly reader count report",
 			"Right of first renewal",
 		],
 	},
 	{
-		name: "Newsletter Sponsorship",
-		price: "From €300/send",
-		ideal: "Professional services, property developers, financial advisors",
+		name: "Top of a topic hub",
+		label: "Sponsored by",
+		price: "Price on request",
+		where: `One of the ${TOPICS.length} topic hubs, for example Health, Home & bills or Money & paperwork.`,
 		description:
-			"One sponsor per monthly email. Placement includes a short paragraph, logo, and link: sent to subscribers who have explicitly opted in to Cyprus relocation updates.",
+			"One sponsor per topic. Your unit sits at the top of the hub that collects every guide, directory and tool on that subject.",
 		includes: [
-			"Exclusive placement per issue",
-			"Logo, short copy, and link",
-			"Subscriber count disclosed before booking",
-			"Plain-text and HTML variants",
+			"Exclusive: one sponsor per topic",
+			"Logo, name and one-line message",
+			"Direct link to your website",
+			"Monthly click report",
 		],
 	},
 ];
@@ -76,9 +80,30 @@ const STATS = [
 	{ value: "IL, UK, DE, FR", label: "Primary audience countries" },
 	{
 		value: String(GUIDES.length + TOOLS.length),
-		label: "Guides and planning tools",
+		label: "Guides and practical tools",
 	},
-	{ value: String(SECTIONS_INDEX.length), label: "Service directories" },
+	{ value: String(SECTIONS_INDEX.length), label: "Local directories" },
+];
+
+const RULES = [
+	{
+		title: "Always labelled",
+		text: "Every paid spot says Featured or Sponsored, so readers know what they are looking at.",
+	},
+	{
+		title: "One sponsor per spot",
+		text: "A guide or topic hub carries one sponsor at a time. Nobody shares the top with a competitor.",
+	},
+	{
+		title: "Marked for search engines",
+		text: 'Sponsored links carry rel="sponsored", as search engines require for paid placements.',
+	},
+];
+
+const STEPS = [
+	"Pick the directory, guide or topic where your customers look.",
+	"Email us your business name, website and the spot you want.",
+	"We confirm availability and the current traffic for that page, then your spot goes live.",
 ];
 
 export default function AdvertisePage() {
@@ -87,9 +112,9 @@ export default function AdvertisePage() {
 			<PageHeader
 				variant="band"
 				breadcrumbs={[{ label: "Home", href: "/" }, { label: "Advertise" }]}
-				eyebrow="Advertise with RealCy"
-				title="Reach people actively planning a move to Cyprus"
-				intro="RealCy.app is an independent portal for life in Cyprus: guides, tools, and service directories used by people researching immigration, property, tax, and healthcare before they move."
+				eyebrow="Advertise"
+				title="Be the first name people see"
+				intro="When someone in Cyprus needs an accountant, a doctor or a lawyer, they open the RealCy.app page for it. A sponsored spot puts your business at the top of that page, clearly labelled."
 				width="wide"
 			/>
 
@@ -105,57 +130,62 @@ export default function AdvertisePage() {
 				</ul>
 			</Container>
 
-			<section className="mt-12 bg-sky py-12 md:mt-16 md:py-14">
-				<Container width="reading">
-					<Section title="High intent. Nowhere else to go.">
-						<div className="grid gap-6 text-base leading-relaxed text-ink md:grid-cols-2">
-							<p>
-								People relocating to Cyprus need a property lawyer, an
-								accountant, a healthcare provider, and a bank, typically within
-								the first three months of arriving. They are actively searching,
-								they have money to spend, and they have no existing local
-								relationships to lean on.
-							</p>
-							<p>
-								RealCy.app is where they do that research. The guides on
-								property law, tax, GeSY registration, and visas are written for
-								exactly the moment when someone is deciding which firms to
-								contact. A featured listing in the right directory is a direct
-								introduction at the right time.
-							</p>
-						</div>
-					</Section>
-				</Container>
-			</section>
-
 			<Container width="wide" className="pt-12 md:pt-16">
 				<Section
-					title="Three ways to be visible"
-					description="Placement options"
+					title="What a sponsored spot looks like"
+					description="The first thing on the page, before the standard entries."
 				>
+					<div className="max-w-2xl rounded-panel border border-line bg-sky p-4 md:p-6">
+						<p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+							Example: Accountants directory
+						</p>
+						<div className="mt-4">
+							<SponsorSlot
+								preview
+								sponsor={{
+									kind: "featured",
+									name: "Your business",
+									href: "#",
+									text: "One line about what you do, with a direct link to your website.",
+								}}
+							/>
+						</div>
+						<ul aria-hidden="true" className="mt-3 space-y-3">
+							{[0, 1].map((i) => (
+								<li
+									key={i}
+									className="rounded-card border border-line bg-white/60 p-4"
+								>
+									<span className="block h-3 w-40 rounded bg-line" />
+									<span className="mt-3 block h-3 w-64 max-w-full rounded bg-line/70" />
+								</li>
+							))}
+						</ul>
+					</div>
+				</Section>
+
+				<Section title="Three top spots" className="mt-12 md:mt-16">
 					<CardGrid>
-						{TIERS.map((tier, i) => (
-							<CardGridItem key={tier.name}>
+						{SPOTS.map((spot) => (
+							<CardGridItem key={spot.name}>
 								<Card
 									variant="text"
-									title={tier.name}
-									eyebrow={<Badge>{String(i + 1).padStart(2, "0")}</Badge>}
+									title={spot.name}
+									eyebrow={<Badge>{spot.label}</Badge>}
 									meta={
 										<span className="font-semibold text-primary-hover">
-											{tier.price}
+											{spot.price}
 										</span>
 									}
 									text={
 										<>
-											<span className="block text-sm">
-												Ideal for: {tier.ideal}
-											</span>
-											<span className="mt-3 block">{tier.description}</span>
+											<span className="block text-sm">{spot.where}</span>
+											<span className="mt-3 block">{spot.description}</span>
 										</>
 									}
 									footer={
 										<ul className="space-y-1.5 pt-1 text-muted">
-											{tier.includes.map((item) => (
+											{spot.includes.map((item) => (
 												<li key={item} className="flex items-start gap-2">
 													<span
 														aria-hidden="true"
@@ -173,22 +203,57 @@ export default function AdvertisePage() {
 						))}
 					</CardGrid>
 				</Section>
+			</Container>
 
-				<Section title="Get in touch" className="mt-12 md:mt-16">
-					<div className="rounded-card border border-line bg-sky p-6 md:p-8">
-						<p className="max-w-xl text-base leading-relaxed text-ink">
-							Send us a short note about your firm and the placement you have in
-							mind. We will share current traffic numbers for the relevant
-							directory or guide and confirm availability.
-						</p>
-						<div className="mt-5">
-							<ButtonLink href="mailto:hello@realcy.app" size="lg">
-								hello@realcy.app
-							</ButtonLink>
+			<section className="mt-12 bg-sky py-12 md:mt-16 md:py-14">
+				<Container width="wide">
+					<Section title="Paid, and clearly so">
+						<ul className="grid gap-6 md:grid-cols-3">
+							{RULES.map((r) => (
+								<li key={r.title}>
+									<h3 className="text-lg font-bold text-ink">{r.title}</h3>
+									<p className="mt-2 text-base leading-relaxed text-muted">
+										{r.text}
+									</p>
+								</li>
+							))}
+						</ul>
+					</Section>
+				</Container>
+			</section>
+
+			<Container width="wide" className="pt-12 md:pt-16">
+				<Section title="How to book a spot" id="contact">
+					<div className="grid gap-8 rounded-card border border-line bg-white p-6 md:grid-cols-2 md:p-8">
+						<ol className="space-y-4">
+							{STEPS.map((step, i) => (
+								<li key={step} className="flex gap-4">
+									<span
+										aria-hidden="true"
+										className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white"
+									>
+										{i + 1}
+									</span>
+									<span className="pt-1 text-base leading-relaxed text-ink">
+										{step}
+									</span>
+								</li>
+							))}
+						</ol>
+						<div className="rounded-card bg-sky p-6">
+							<p className="text-base leading-relaxed text-ink">
+								Tell us your business and the spot you have in mind. We reply
+								with availability and the page's current traffic.
+							</p>
+							<div className="mt-5">
+								<ButtonLink href="mailto:hello@realcy.app" size="lg">
+									hello@realcy.app
+								</ButtonLink>
+							</div>
+							<p className="mt-4 text-sm text-muted">
+								We typically respond within one business day.
+							</p>
 						</div>
-						<p className="mt-4 text-sm text-muted">
-							We typically respond within one business day.
-						</p>
 					</div>
 				</Section>
 			</Container>
