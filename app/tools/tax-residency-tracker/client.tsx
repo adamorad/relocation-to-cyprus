@@ -118,7 +118,7 @@ function SliderField({
 				onChange={(e) => onChange(Number(e.target.value))}
 				className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-teal-500"
 			/>
-			<div className="flex justify-between text-xs text-slate-400">
+			<div className="flex justify-between text-xs text-muted">
 				<span>{min}</span>
 				<span>{max}</span>
 			</div>
@@ -324,7 +324,7 @@ export default function TaxResidencyPlannerClient() {
 								className={`w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold ${
 									qualifies183
 										? "bg-emerald-100 text-emerald-700"
-										: "bg-slate-100 text-slate-400"
+										: "bg-slate-100 text-muted"
 								}`}
 							>
 								{qualifies183 ? "✓" : "✗"}
@@ -347,7 +347,7 @@ export default function TaxResidencyPlannerClient() {
 								className={`w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold ${
 									sixtyDayAllPass
 										? "bg-emerald-100 text-emerald-700"
-										: "bg-slate-100 text-slate-400"
+										: "bg-slate-100 text-muted"
 								}`}
 							>
 								{sixtyDayAllPass ? "✓" : "✗"}

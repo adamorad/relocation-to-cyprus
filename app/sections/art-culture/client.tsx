@@ -139,7 +139,7 @@ export default function ArtCulturePage() {
 									{venue.city}
 									{venue.neighbourhood ? (
 										<>
-											<span className="mx-1 text-slate-300">·</span>
+											<span className="mx-1 text-muted">·</span>
 											{venue.neighbourhood}
 										</>
 									) : null}

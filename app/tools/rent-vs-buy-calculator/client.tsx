@@ -154,7 +154,7 @@ function NumInput({
 					className="w-full outline-none text-slate-900 text-sm bg-transparent"
 				/>
 				{suffix && (
-					<span className="text-slate-400 text-sm shrink-0">{suffix}</span>
+					<span className="text-muted text-sm shrink-0">{suffix}</span>
 				)}
 			</div>
 		</div>
@@ -199,7 +199,7 @@ export default function RentVsBuyPage({
 						<Link href="/" className="hover:text-slate-900">
 							← Home
 						</Link>
-						<span className="text-slate-300">|</span>
+						<span className="text-muted">|</span>
 						<Link href="/tools" className="hover:text-slate-900">
 							← All Tools
 						</Link>

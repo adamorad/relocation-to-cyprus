@@ -239,7 +239,7 @@ export default function ExploreClient() {
 			<div className="mb-8">
 				<div className="relative">
 					<svg
-						className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"
+						className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted"
 						fill="none"
 						stroke="currentColor"
 						strokeWidth="2"
@@ -261,7 +261,7 @@ export default function ExploreClient() {
 						<button
 							type="button"
 							onClick={() => setQuery("")}
-							className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 text-lg leading-none"
+							className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-slate-700 text-lg leading-none"
 							aria-label="Clear search"
 						>
 							×
@@ -277,7 +277,7 @@ export default function ExploreClient() {
 						<p className="text-slate-500 text-sm">
 							No results for &ldquo;{query}&rdquo;
 						</p>
-						<p className="text-slate-400 text-xs mt-1">
+						<p className="text-muted text-xs mt-1">
 							Try a different term, or browse by category below.
 						</p>
 						<button
@@ -313,7 +313,7 @@ export default function ExploreClient() {
 														{r.description}
 													</p>
 												</div>
-												<span className="flex-shrink-0 text-slate-300 group-hover:text-primary transition-colors">
+												<span className="flex-shrink-0 text-muted group-hover:text-primary transition-colors">
 													→
 												</span>
 											</Link>
@@ -346,7 +346,7 @@ export default function ExploreClient() {
 														{r.description}
 													</p>
 												</div>
-												<span className="flex-shrink-0 text-slate-300 group-hover:text-primary transition-colors">
+												<span className="flex-shrink-0 text-muted group-hover:text-primary transition-colors">
 													→
 												</span>
 											</Link>
@@ -379,7 +379,7 @@ export default function ExploreClient() {
 														{r.description}
 													</p>
 												</div>
-												<span className="flex-shrink-0 text-slate-300 group-hover:text-primary transition-colors">
+												<span className="flex-shrink-0 text-muted group-hover:text-primary transition-colors">
 													→
 												</span>
 											</Link>
@@ -392,7 +392,7 @@ export default function ExploreClient() {
 						<button
 							type="button"
 							onClick={() => setQuery("")}
-							className="text-xs text-slate-400 underline hover:text-slate-700"
+							className="text-xs text-muted underline hover:text-slate-700"
 						>
 							Clear search — browse by category
 						</button>
@@ -416,7 +416,7 @@ export default function ExploreClient() {
 											href={item.href}
 											className="text-sm text-slate-700 hover:text-primary transition-colors flex items-center gap-1.5 group"
 										>
-											<span className="text-slate-300 group-hover:text-primary transition-colors text-xs">
+											<span className="text-muted group-hover:text-primary transition-colors text-xs">
 												→
 											</span>
 											{item.name}

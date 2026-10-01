@@ -150,7 +150,7 @@ export default function WineriesPage() {
 									{winery.city} district
 									{winery.village ? (
 										<>
-											<span className="mx-1 text-slate-300">·</span>
+											<span className="mx-1 text-muted">·</span>
 											{winery.village}
 										</>
 									) : null}

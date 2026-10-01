@@ -202,7 +202,7 @@ export default function CountryComparisonClient() {
 										? "border-primary bg-primary text-white cursor-default"
 										: isVisible
 											? "border-slate-400 bg-slate-800 text-white hover:bg-slate-700"
-											: "border-slate-200 bg-white text-slate-400 hover:border-slate-400"
+											: "border-slate-200 bg-white text-muted hover:border-slate-400"
 								}`}
 							>
 								{country}
@@ -256,7 +256,7 @@ export default function CountryComparisonClient() {
 								<td className="px-3 py-2.5 text-slate-700 font-medium leading-snug">
 									{metric.label}
 									{metric.note && (
-										<span className="block text-[10px] text-slate-400 font-normal">
+										<span className="block text-[10px] text-muted font-normal">
 											{metric.note}
 										</span>
 									)}

@@ -428,7 +428,7 @@ function CostSection({
 					<span className="text-xs text-slate-500">
 						{fmt(catLow)} – {fmt(catHigh)}
 					</span>
-					<span className="text-slate-400 text-sm" aria-hidden="true">
+					<span className="text-muted text-sm" aria-hidden="true">
 						{open ? "▲" : "▼"}
 					</span>
 				</div>
@@ -437,7 +437,7 @@ function CostSection({
 				<div className="overflow-x-auto">
 					<table className="w-full text-xs">
 						<thead>
-							<tr className="bg-white border-t border-slate-100 text-slate-400 uppercase tracking-wide">
+							<tr className="bg-white border-t border-slate-100 text-muted uppercase tracking-wide">
 								<th className="px-4 py-2 text-left font-semibold">Item</th>
 								<th className="px-4 py-2 text-right font-semibold">Low</th>
 								<th className="px-4 py-2 text-right font-semibold">Midpoint</th>
@@ -778,7 +778,7 @@ export default function RelocationCostCalculatorClient() {
 					</div>
 
 					{/* print note */}
-					<p className="mt-3 text-[10px] text-slate-400 italic print:text-slate-600">
+					<p className="mt-3 text-[10px] text-muted italic print:text-slate-600">
 						Costs shown are indicative estimates based on typical 2024–2025
 						market rates. Actual costs vary significantly.
 					</p>

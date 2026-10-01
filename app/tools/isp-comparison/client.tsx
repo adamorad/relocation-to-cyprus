@@ -289,7 +289,7 @@ export default function ISPComparisonPage() {
 											>
 												{isp.name}
 											</a>
-											<p className="text-xs text-slate-400 mt-0.5">
+											<p className="text-xs text-muted mt-0.5">
 												{isp.coverage.join(", ")}
 											</p>
 										</td>

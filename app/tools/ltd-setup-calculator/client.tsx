@@ -112,7 +112,7 @@ function CostRow({
 			<td className="px-3 py-2.5 text-slate-700">
 				{label}
 				{note && (
-					<span className="ml-1 text-[10px] text-slate-400 italic">{note}</span>
+					<span className="ml-1 text-[10px] text-muted italic">{note}</span>
 				)}
 			</td>
 			<td className="px-3 py-2.5 text-right text-slate-600 font-mono text-xs">
@@ -168,7 +168,7 @@ function StatCard({
 			>
 				{value}
 			</p>
-			{sub && <p className="text-[10px] text-slate-400 mt-1">{sub}</p>}
+			{sub && <p className="text-[10px] text-muted mt-1">{sub}</p>}
 		</div>
 	);
 }

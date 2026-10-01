@@ -278,7 +278,7 @@ function LineChart({
 						<p className="font-bold text-slate-900 mb-2">
 							{data.periods[tooltip.periodIdx]}
 							{isEstimate(tooltip.periodIdx) && (
-								<span className="ml-1 text-slate-400 font-normal">(est.)</span>
+								<span className="ml-1 text-muted font-normal">(est.)</span>
 							)}
 						</p>
 						{CITIES.filter((c) => activeCities.has(c)).map((city) => (

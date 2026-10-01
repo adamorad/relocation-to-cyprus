@@ -135,7 +135,7 @@ function SliderInput({
 				onChange={(e) => onChange(Number(e.target.value))}
 				className="w-full accent-primary"
 			/>
-			<div className="flex justify-between text-[10px] text-slate-400">
+			<div className="flex justify-between text-[10px] text-muted">
 				<span>
 					{typeof min === "number" && min >= 1000
 						? "€" + min.toLocaleString("en-IE")
@@ -365,7 +365,7 @@ export default function RentalYieldCalculatorClient() {
 						<p className="text-xl font-bold text-slate-900">
 							{fmt(annualExpenses)}
 						</p>
-						<p className="text-[10px] text-slate-400 mt-1">
+						<p className="text-[10px] text-muted mt-1">
 							Management + maintenance + IPT + vacancy
 						</p>
 					</div>
@@ -378,7 +378,7 @@ export default function RentalYieldCalculatorClient() {
 						>
 							{fmt(totalReturnAtHorizon)}
 						</p>
-						<p className="text-[10px] text-slate-400 mt-1">
+						<p className="text-[10px] text-muted mt-1">
 							Cash flow income + appreciation gain
 						</p>
 					</div>
@@ -391,7 +391,7 @@ export default function RentalYieldCalculatorClient() {
 						>
 							{fmtPct(annualisedReturnPct)}
 						</p>
-						<p className="text-[10px] text-slate-400 mt-1">
+						<p className="text-[10px] text-muted mt-1">
 							IRR approximation over {inputs.horizon} years
 						</p>
 					</div>

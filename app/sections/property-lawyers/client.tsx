@@ -180,7 +180,7 @@ export default function PropertyLawyersPage() {
 					Conveyancing solicitors experienced with foreign buyers, title deed
 					transfers, and new-build contracts across all Cyprus cities.
 				</p>
-				<p className="mt-2 text-xs text-slate-400">
+				<p className="mt-2 text-xs text-muted">
 					This is a directory, not legal advice. Always verify Bar Association
 					registration and fee structures directly with the firm.
 				</p>
@@ -236,7 +236,7 @@ export default function PropertyLawyersPage() {
 			</div>
 
 			{/* Results count */}
-			<p className="text-xs text-slate-400 mb-4">
+			<p className="text-xs text-muted mb-4">
 				Showing {visible.length} lawyer{visible.length !== 1 ? "s" : ""}
 				{cityFilter !== "All" ? ` in ${cityFilter}` : ""}
 				{specFilter !== "All" ? ` · ${specFilter}` : ""}

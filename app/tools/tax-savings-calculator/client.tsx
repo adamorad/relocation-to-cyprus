@@ -419,7 +419,7 @@ function SliderRow({
 				onChange={(e) => onChange(Number(e.target.value))}
 				className="w-full accent-primary"
 			/>
-			<div className="flex justify-between text-[10px] text-slate-400">
+			<div className="flex justify-between text-[10px] text-muted">
 				<span>{min.toLocaleString("en-IE")}</span>
 				<span>{max.toLocaleString("en-IE")}</span>
 			</div>
@@ -532,7 +532,7 @@ function ComparisonTable({
 						<td className="px-3 py-3 text-slate-700 text-xs">
 							Est. annual saving
 						</td>
-						<td className="px-3 py-3 text-right text-slate-400 text-xs">—</td>
+						<td className="px-3 py-3 text-right text-muted text-xs">—</td>
 						<td className="px-3 py-3 text-right text-xs">
 							<span
 								className={
@@ -778,7 +778,7 @@ export default function TaxSavingsCalculatorClient({
 							onChange={(e) => setSalaryPct(Number(e.target.value))}
 							className="w-full accent-primary"
 						/>
-						<div className="flex justify-between text-[10px] text-slate-400">
+						<div className="flex justify-between text-[10px] text-muted">
 							<span>0% salary (all dividends)</span>
 							<span>100% salary</span>
 						</div>

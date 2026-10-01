@@ -251,7 +251,7 @@ export default function CoworkingPage() {
 							)}
 
 							<div className="flex items-center justify-between mt-1">
-								<p className="text-[10px] text-slate-400">
+								<p className="text-[10px] text-muted">
 									Verified {space.verifiedDate}
 								</p>
 								{space.website && (

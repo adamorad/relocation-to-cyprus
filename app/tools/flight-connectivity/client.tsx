@@ -599,7 +599,7 @@ export default function FlightConnectivityPage() {
 				</div>
 			)}
 
-			<p className="mt-8 text-xs text-slate-400 text-center">
+			<p className="mt-8 text-xs text-muted text-center">
 				Route data is indicative. Schedules, carriers and frequencies change
 				seasonally. Verify on airline websites before booking.
 			</p>

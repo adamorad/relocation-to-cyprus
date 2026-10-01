@@ -53,7 +53,7 @@ export default function ListingsIndexPage() {
 									</p>
 								)}
 							</div>
-							<span className="flex-shrink-0 text-slate-300 group-hover:text-primary transition-colors text-xl mt-1">
+							<span className="flex-shrink-0 text-muted group-hover:text-primary transition-colors text-xl mt-1">
 								&rarr;
 							</span>
 						</div>

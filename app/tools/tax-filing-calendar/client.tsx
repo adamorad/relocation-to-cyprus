@@ -104,7 +104,7 @@ const MONTH_NAMES = [
 ];
 
 function getUrgencyClass(daysUntil: number): string {
-	if (daysUntil < 0) return "bg-slate-100 border-slate-200 text-slate-400";
+	if (daysUntil < 0) return "bg-slate-100 border-slate-200 text-muted";
 	if (daysUntil <= 30) return "bg-red-50 border-red-200 text-red-900";
 	if (daysUntil <= 60) return "bg-amber-50 border-amber-200 text-amber-900";
 	return "bg-emerald-50 border-emerald-200 text-emerald-900";

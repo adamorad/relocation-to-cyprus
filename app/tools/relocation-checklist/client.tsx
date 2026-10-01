@@ -404,7 +404,7 @@ export default function RelocationTrackerClient() {
 						<button
 							type="button"
 							onClick={() => setConfirmReset(true)}
-							className="text-xs text-slate-400 hover:text-slate-600 underline transition-colors"
+							className="text-xs text-muted hover:text-slate-600 underline transition-colors"
 						>
 							Reset all
 						</button>
@@ -452,7 +452,7 @@ export default function RelocationTrackerClient() {
 										</div>
 									</div>
 									<span
-										className={`flex-shrink-0 text-slate-400 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+										className={`flex-shrink-0 text-muted transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
 									>
 										<svg
 											className="w-4 h-4"
@@ -516,7 +516,7 @@ export default function RelocationTrackerClient() {
 														<p
 															className={`text-sm leading-snug ${
 																isDone
-																	? "text-slate-400 line-through decoration-slate-300"
+																	? "text-muted line-through decoration-slate-300"
 																	: "text-slate-800"
 															}`}
 														>

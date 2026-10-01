@@ -138,7 +138,7 @@ export default function AdvertisePage() {
         {/* Tiers */}
         <section className="py-14 bg-white border-t border-[#EBE8E3]">
           <div className="max-w-3xl mx-auto px-6">
-            <p className="text-[10px] uppercase tracking-[0.25em] text-slate-400 font-semibold mb-2">
+            <p className="text-[10px] uppercase tracking-[0.25em] text-muted font-semibold mb-2">
               Placement options
             </p>
             <h2

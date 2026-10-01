@@ -363,7 +363,7 @@ export default async function GuidePage({
 					{g.title}
 				</h1>
 				<p className="mt-3 text-base text-slate-600">{g.description}</p>
-				<p className="mt-3 text-xs text-slate-400">
+				<p className="mt-3 text-xs text-muted">
 					By <span className="font-semibold text-slate-600">{author.name}</span>
 					{" · "}
 					{author.role}
@@ -493,7 +493,7 @@ export default async function GuidePage({
 								<span className="flex-1 text-xs font-semibold text-slate-700 group-hover:text-slate-900 line-clamp-2">
 									{guide.title}
 								</span>
-								<span className="text-slate-400 text-xs shrink-0 mt-0.5">
+								<span className="text-muted text-xs shrink-0 mt-0.5">
 									→
 								</span>
 							</Link>
@@ -523,7 +523,7 @@ export default async function GuidePage({
 							>
 								<summary className="flex items-center justify-between px-4 py-3 cursor-pointer font-semibold text-sm text-slate-900 list-none hover:bg-slate-50">
 									{faq.q}
-									<span className="ml-3 text-slate-400 group-open:rotate-180 transition-transform">
+									<span className="ml-3 text-muted group-open:rotate-180 transition-transform">
 										▾
 									</span>
 								</summary>

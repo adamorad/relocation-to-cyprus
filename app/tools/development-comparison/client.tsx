@@ -113,7 +113,7 @@ export default function DevelopmentComparisonClient() {
 							: "Search by name or location…"
 					}
 					disabled={selected.length >= MAX_SELECTED}
-					className="w-full border border-slate-300 rounded-lg px-4 py-3 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-focus disabled:bg-slate-50 disabled:text-slate-400"
+					className="w-full border border-slate-300 rounded-lg px-4 py-3 text-sm placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-focus disabled:bg-slate-50 disabled:text-slate-400"
 				/>
 				{results.length > 0 && (
 					<ul className="absolute z-10 left-0 right-0 top-full mt-1 bg-white border border-slate-200 rounded-lg shadow-lg max-h-72 overflow-y-auto">
@@ -159,7 +159,7 @@ export default function DevelopmentComparisonClient() {
 
 			{/* Empty state */}
 			{selected.length === 0 && (
-				<div className="mt-10 text-center py-16 text-slate-400 text-sm border border-dashed border-slate-200 rounded-xl">
+				<div className="mt-10 text-center py-16 text-muted text-sm border border-dashed border-slate-200 rounded-xl">
 					Search and select up to 3 developments to compare
 				</div>
 			)}

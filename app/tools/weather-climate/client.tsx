@@ -549,7 +549,7 @@ export default function WeatherClimateClient() {
 					Month-by-month in Cyprus
 				</h2>
 				<MonthCards />
-				<p className="mt-2 text-[10px] text-slate-400">
+				<p className="mt-2 text-[10px] text-muted">
 					Scroll right to see all months. Sea temp · Rain days · UV index shown
 					per card.
 				</p>

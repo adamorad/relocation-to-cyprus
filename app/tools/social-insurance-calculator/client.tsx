@@ -361,7 +361,7 @@ export default function SocialInsuranceCalculatorPage({
 						onChange={(e) => setGrossMonthly(Number(e.target.value))}
 						className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-teal-500"
 					/>
-					<div className="flex justify-between text-xs text-slate-400">
+					<div className="flex justify-between text-xs text-muted">
 						<span>€0</span>
 						<span>€20,000</span>
 					</div>

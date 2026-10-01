@@ -354,7 +354,7 @@ export default function SchoolFinderClient() {
 				<div>
 					<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wide mb-2">
 						Curriculum{" "}
-						<span className="text-slate-400 normal-case font-normal">
+						<span className="text-muted normal-case font-normal">
 							(select multiple)
 						</span>
 					</p>

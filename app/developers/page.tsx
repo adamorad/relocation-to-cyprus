@@ -83,7 +83,7 @@ export default function DevelopersIndexPage() {
                       loading="lazy"
                     />
                   ) : (
-                    <div className="h-10 w-10 rounded bg-slate-100 shrink-0 flex items-center justify-center text-slate-400 text-xs font-bold">
+                    <div className="h-10 w-10 rounded bg-slate-100 shrink-0 flex items-center justify-center text-muted text-xs font-bold">
                       {dev.name.charAt(0)}
                     </div>
                   )}

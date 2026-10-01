@@ -135,7 +135,7 @@ export default function SportsClubsPage() {
 								</p>
 								<p className="text-[11px] text-slate-500 mt-0.5">
 									{club.city}
-									<span className="mx-1 text-slate-300">·</span>
+									<span className="mx-1 text-muted">·</span>
 									<span className="text-primary font-semibold">
 										{club.sport}
 									</span>

@@ -221,7 +221,7 @@ function CheckItem({ text }: { text: string }) {
 			</span>
 			<span
 				className={`text-sm leading-relaxed transition-colors ${
-					checked ? "line-through text-slate-400" : "text-slate-700"
+					checked ? "line-through text-muted" : "text-slate-700"
 				}`}
 			>
 				{text}
@@ -334,7 +334,7 @@ export default function DriversLicenceExchangeClient() {
 					</optgroup>
 				</select>
 
-				<p className="mt-3 text-[11px] text-slate-400 leading-relaxed">
+				<p className="mt-3 text-[11px] text-muted leading-relaxed">
 					Countries in the &ldquo;bilateral agreement&rdquo; group have a
 					specific agreement with Cyprus allowing direct licence exchange
 					without retesting.
@@ -448,7 +448,7 @@ export default function DriversLicenceExchangeClient() {
 							<p className="text-xl font-bold text-slate-900">
 								{exchangeType === "direct" ? "4–6 weeks" : "3–6 months"}
 							</p>
-							<p className="text-[11px] text-slate-400 mt-1">
+							<p className="text-[11px] text-muted mt-1">
 								{exchangeType === "direct"
 									? "From appointment to licence receipt"
 									: "Including test waiting times"}
@@ -548,7 +548,7 @@ export default function DriversLicenceExchangeClient() {
 								Paphos District Transport Department
 							</li>
 						</ul>
-						<p className="mt-2 text-[11px] text-slate-400">
+						<p className="mt-2 text-[11px] text-muted">
 							All offices open weekday mornings. Check MCIT website for current
 							hours and appointment availability.
 						</p>

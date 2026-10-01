@@ -413,7 +413,7 @@ export default function HealthInsuranceComparisonPage() {
 										{(p[f.key] as boolean) ? (
 											<span className="text-emerald-500 text-base">✓</span>
 										) : (
-											<span className="text-slate-300 text-base">—</span>
+											<span className="text-muted text-base">—</span>
 										)}
 									</td>
 								))}
@@ -440,7 +440,7 @@ export default function HealthInsuranceComparisonPage() {
 								</span>
 							</div>
 							<div className="text-right">
-								<p className="text-xs text-slate-400">Single/yr</p>
+								<p className="text-xs text-muted">Single/yr</p>
 								<p className="font-bold text-primary">
 									{premiumDisplay(p.annualPremiumSingle30yo)}
 								</p>
@@ -454,7 +454,7 @@ export default function HealthInsuranceComparisonPage() {
 									className={`text-xs px-2 py-0.5 rounded-full font-semibold ${
 										(p[f.key] as boolean)
 											? "bg-emerald-100 text-emerald-700"
-											: "bg-slate-100 text-slate-400"
+											: "bg-slate-100 text-muted"
 									}`}
 								>
 									{f.label}

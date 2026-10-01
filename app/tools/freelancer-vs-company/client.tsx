@@ -296,7 +296,7 @@ export default function FreelancerVsCompanyPage() {
 								}
 								className="w-full accent-primary"
 							/>
-							<div className="flex justify-between text-xs text-slate-400 mt-1">
+							<div className="flex justify-between text-xs text-muted mt-1">
 								<span>€20K</span>
 								<span>€500K</span>
 							</div>
@@ -326,7 +326,7 @@ export default function FreelancerVsCompanyPage() {
 								}
 								className="w-full accent-primary"
 							/>
-							<div className="flex justify-between text-xs text-slate-400 mt-1">
+							<div className="flex justify-between text-xs text-muted mt-1">
 								<span>0% (all Cyprus)</span>
 								<span>100% (all foreign)</span>
 							</div>
@@ -441,7 +441,7 @@ export default function FreelancerVsCompanyPage() {
 								</div>
 							))}
 						</div>
-						<p className="text-xs text-slate-400 mt-3">
+						<p className="text-xs text-muted mt-3">
 							Estimates assume ~20% deductible expenses. Actual rates vary.
 							Non-dom status: {inputs.nonDomiciled ? "Yes" : "No"}.
 						</p>
@@ -485,7 +485,7 @@ export default function FreelancerVsCompanyPage() {
 						<ol className="space-y-2">
 							{result.nextSteps.map((s, i) => (
 								<li key={i} className="flex gap-2 text-sm text-slate-600">
-									<span className="text-slate-400 font-mono text-xs mt-0.5 w-4 shrink-0">
+									<span className="text-muted font-mono text-xs mt-0.5 w-4 shrink-0">
 										{i + 1}.
 									</span>
 									<span>{s}</span>

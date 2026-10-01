@@ -92,7 +92,7 @@ export default function Meu1TrackerPage() {
 				<Link href="/" className="hover:text-slate-900">
 					← Home
 				</Link>
-				<span className="text-slate-300">|</span>
+				<span className="text-muted">|</span>
 				<Link href="/tools" className="hover:text-slate-900">
 					← All Tools
 				</Link>
@@ -174,7 +174,7 @@ export default function Meu1TrackerPage() {
 									</div>
 									<div className="flex-1 min-w-0">
 										<div className="flex items-center gap-2 flex-wrap">
-											<span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+											<span className="text-[10px] font-bold text-muted uppercase tracking-wider">
 												Step {idx + 1}
 											</span>
 											<span

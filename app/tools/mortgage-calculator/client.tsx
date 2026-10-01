@@ -106,7 +106,7 @@ function SliderRow({
 				onChange={(e) => onChange(Number(e.target.value))}
 				className="w-full accent-primary"
 			/>
-			<div className="flex justify-between text-[10px] text-slate-400">
+			<div className="flex justify-between text-[10px] text-muted">
 				<span>
 					{step < 1 ? min.toFixed(1) : min.toLocaleString("en-IE")}
 					{label.toLowerCase().includes("rate") ||
@@ -148,7 +148,7 @@ function StatCard({
 			>
 				{value}
 			</p>
-			{sub && <p className="text-[10px] text-slate-400 mt-1">{sub}</p>}
+			{sub && <p className="text-[10px] text-muted mt-1">{sub}</p>}
 		</div>
 	);
 }
@@ -375,7 +375,7 @@ export default function MortgageCalculatorClient({
 												<tr className="border-t border-slate-100 bg-slate-50">
 													<td
 														colSpan={4}
-														className="px-3 py-2 text-slate-400 italic text-center"
+														className="px-3 py-2 text-muted italic text-center"
 													>
 														… {middle} years remaining
 													</td>

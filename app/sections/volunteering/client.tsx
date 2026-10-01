@@ -103,7 +103,7 @@ export default function VolunteeringPage() {
 
 			{/* City filter */}
 			<div className="mb-4">
-				<p className="text-xs uppercase tracking-[0.15em] text-slate-400 font-semibold mb-2">
+				<p className="text-xs uppercase tracking-[0.15em] text-muted font-semibold mb-2">
 					City
 				</p>
 				<div className="flex flex-wrap gap-2">
@@ -130,7 +130,7 @@ export default function VolunteeringPage() {
 
 			{/* Focus filter */}
 			<div className="mb-8">
-				<p className="text-xs uppercase tracking-[0.15em] text-slate-400 font-semibold mb-2">
+				<p className="text-xs uppercase tracking-[0.15em] text-muted font-semibold mb-2">
 					Focus area
 				</p>
 				<div className="flex flex-wrap gap-2">

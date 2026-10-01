@@ -252,7 +252,7 @@ export default function VisaRenewalReminderPage() {
 								</div>
 								<button
 									onClick={() => deleteDocument(doc.id)}
-									className="text-slate-400 hover:text-red-500 transition-colors text-xs font-medium flex-shrink-0 mt-0.5"
+									className="text-muted hover:text-red-500 transition-colors text-xs font-medium flex-shrink-0 mt-0.5"
 									aria-label="Delete document"
 								>
 									Delete

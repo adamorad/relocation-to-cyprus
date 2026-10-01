@@ -426,7 +426,7 @@ export default function EventsCalendarPage() {
 							>
 								<span>{m.slice(0, 3)}</span>
 								<span
-									className={`text-[10px] ${active ? "text-white/80" : "text-slate-400"}`}
+									className={`text-[10px] ${active ? "text-white/80" : "text-muted"}`}
 								>
 									{count}
 								</span>
@@ -521,7 +521,7 @@ export default function EventsCalendarPage() {
 							<section key={m}>
 								<h2 className="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
 									{m}
-									<span className="text-sm font-normal text-slate-400">
+									<span className="text-sm font-normal text-muted">
 										{monthEvents.length} event
 										{monthEvents.length !== 1 ? "s" : ""}
 									</span>

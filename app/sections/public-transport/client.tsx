@@ -143,7 +143,7 @@ export default function PublicTransportPage() {
 								{/* Left column */}
 								<div className="space-y-4">
 									<div>
-										<p className="text-[10px] uppercase tracking-widest text-slate-400 font-semibold mb-1">
+										<p className="text-[10px] uppercase tracking-widest text-muted font-semibold mb-1">
 											Intercity bus
 										</p>
 										<p className="text-xs text-slate-700 leading-relaxed">
@@ -151,7 +151,7 @@ export default function PublicTransportPage() {
 										</p>
 									</div>
 									<div>
-										<p className="text-[10px] uppercase tracking-widest text-slate-400 font-semibold mb-1">
+										<p className="text-[10px] uppercase tracking-widest text-muted font-semibold mb-1">
 											Intra-city bus
 										</p>
 										<p className="text-xs text-slate-700 leading-relaxed">
@@ -159,7 +159,7 @@ export default function PublicTransportPage() {
 										</p>
 									</div>
 									<div>
-										<p className="text-[10px] uppercase tracking-widest text-slate-400 font-semibold mb-1">
+										<p className="text-[10px] uppercase tracking-widest text-muted font-semibold mb-1">
 											Taxis &amp; ride-hailing
 										</p>
 										<p className="text-xs text-slate-700 leading-relaxed">
@@ -171,7 +171,7 @@ export default function PublicTransportPage() {
 								{/* Right column */}
 								<div className="space-y-4">
 									<div>
-										<p className="text-[10px] uppercase tracking-widest text-slate-400 font-semibold mb-2">
+										<p className="text-[10px] uppercase tracking-widest text-muted font-semibold mb-2">
 											Key routes
 										</p>
 										<ul className="space-y-1">
@@ -189,7 +189,7 @@ export default function PublicTransportPage() {
 										</ul>
 									</div>
 									<div>
-										<p className="text-[10px] uppercase tracking-widest text-slate-400 font-semibold mb-2">
+										<p className="text-[10px] uppercase tracking-widest text-muted font-semibold mb-2">
 											Practical tips
 										</p>
 										<ul className="space-y-1">

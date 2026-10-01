@@ -138,7 +138,7 @@ export default function ReligiousServicesPage() {
 
 			{/* City filter */}
 			<div className="mb-4">
-				<p className="text-xs uppercase tracking-[0.15em] text-slate-400 font-semibold mb-2">
+				<p className="text-xs uppercase tracking-[0.15em] text-muted font-semibold mb-2">
 					City
 				</p>
 				<div className="flex flex-wrap gap-2">
@@ -160,7 +160,7 @@ export default function ReligiousServicesPage() {
 
 			{/* Faith filter */}
 			<div className="mb-8">
-				<p className="text-xs uppercase tracking-[0.15em] text-slate-400 font-semibold mb-2">
+				<p className="text-xs uppercase tracking-[0.15em] text-muted font-semibold mb-2">
 					Faith
 				</p>
 				<div className="flex flex-wrap gap-2">
@@ -234,7 +234,7 @@ export default function ReligiousServicesPage() {
 							</p>
 
 							{service.address && (
-								<p className="text-xs text-slate-400 leading-snug">
+								<p className="text-xs text-muted leading-snug">
 									📍 {service.address}
 								</p>
 							)}

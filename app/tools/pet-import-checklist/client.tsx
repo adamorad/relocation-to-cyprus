@@ -603,7 +603,7 @@ export default function PetImportChecklistClient() {
 
 			{/* Empty state */}
 			{(!pet || !origin) && (
-				<div className="py-12 text-center text-slate-400 text-sm border-2 border-dashed border-slate-200 rounded-xl">
+				<div className="py-12 text-center text-muted text-sm border-2 border-dashed border-slate-200 rounded-xl">
 					Select your pet type and origin above to generate your personalised
 					checklist.
 				</div>
@@ -682,7 +682,7 @@ function ChecklistItemRow({
 				<div className="flex-1 min-w-0">
 					<p
 						className={`text-sm font-medium leading-snug ${
-							checked ? "line-through text-slate-400" : "text-slate-900"
+							checked ? "line-through text-muted" : "text-slate-900"
 						}`}
 					>
 						{item.critical && (

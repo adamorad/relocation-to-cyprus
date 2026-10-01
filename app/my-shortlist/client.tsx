@@ -101,7 +101,7 @@ function ShortlistCard({
 					loading="lazy"
 				/>
 			) : (
-				<div className="w-20 h-20 rounded-lg bg-slate-100 flex-shrink-0 flex items-center justify-center text-slate-400 text-xs">
+				<div className="w-20 h-20 rounded-lg bg-slate-100 flex-shrink-0 flex items-center justify-center text-muted text-xs">
 					No image
 				</div>
 			)}

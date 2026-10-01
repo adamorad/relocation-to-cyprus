@@ -199,7 +199,7 @@ export default function CityComparisonClient() {
 				<Link href="/" className="hover:text-slate-900">
 					← Home
 				</Link>
-				<span className="text-slate-300">|</span>
+				<span className="text-muted">|</span>
 				<Link href="/tools" className="hover:text-slate-900">
 					← All Tools
 				</Link>

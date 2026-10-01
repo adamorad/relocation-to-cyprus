@@ -157,7 +157,7 @@ export default function AccountantsPage() {
 					non-domiciled regime, expat individual returns, corporate tax, VAT,
 					and crypto.
 				</p>
-				<p className="mt-2 text-xs text-slate-400">
+				<p className="mt-2 text-xs text-muted">
 					This is a directory, not tax advice. Always verify ICPAC membership
 					and fee structures directly with the firm.
 				</p>
@@ -213,7 +213,7 @@ export default function AccountantsPage() {
 			</div>
 
 			{/* Results count */}
-			<p className="text-xs text-slate-400 mb-4">
+			<p className="text-xs text-muted mb-4">
 				Showing {visible.length} accountant{visible.length !== 1 ? "s" : ""}
 				{cityFilter !== "All" ? ` in ${cityFilter}` : ""}
 				{specFilter !== "All" ? ` · ${ACCOUNTANT_SPEC_LABEL[specFilter]}` : ""}

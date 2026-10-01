@@ -543,7 +543,7 @@ export default function GrantsFinderPage() {
 							</div>
 							<div className="flex gap-4 shrink-0 text-right">
 								<div>
-									<p className="text-xs text-slate-400 uppercase tracking-wide">
+									<p className="text-xs text-muted uppercase tracking-wide">
 										Max Grant
 									</p>
 									<p className="font-bold text-primary text-lg">
@@ -552,7 +552,7 @@ export default function GrantsFinderPage() {
 								</div>
 								{g.coveragePercent !== null && (
 									<div>
-										<p className="text-xs text-slate-400 uppercase tracking-wide">
+										<p className="text-xs text-muted uppercase tracking-wide">
 											Coverage
 										</p>
 										<p className="font-bold text-slate-700 text-lg">
@@ -569,7 +569,7 @@ export default function GrantsFinderPage() {
 
 						<div className="border-t border-slate-100 pt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
 							<div>
-								<p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1">
+								<p className="text-xs font-semibold text-muted uppercase tracking-wide mb-1">
 									Eligibility
 								</p>
 								<p className="text-slate-600 text-xs leading-relaxed">
@@ -578,7 +578,7 @@ export default function GrantsFinderPage() {
 							</div>
 							<div>
 								<div className="mb-2">
-									<p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1">
+									<p className="text-xs font-semibold text-muted uppercase tracking-wide mb-1">
 										Deadline
 									</p>
 									<p className="text-slate-700 text-xs font-semibold">
@@ -588,7 +588,7 @@ export default function GrantsFinderPage() {
 									</p>
 								</div>
 								<div>
-									<p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1">
+									<p className="text-xs font-semibold text-muted uppercase tracking-wide mb-1">
 										Company sizes
 									</p>
 									<div className="flex gap-1 flex-wrap">

@@ -82,7 +82,7 @@ export default function GuidesClient() {
                       {g.description}
                     </p>
                   </div>
-                  <span className="flex-shrink-0 text-slate-300 text-xl mt-1">→</span>
+                  <span className="flex-shrink-0 text-muted text-xl mt-1">→</span>
                 </div>
               </Link>
             </li>
