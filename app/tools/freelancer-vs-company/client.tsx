@@ -1,7 +1,12 @@
 "use client";
 
-import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useId, useMemo, useState } from "react";
+import { ToolPanel } from "@/components/templates/ToolTemplate";
+import { Badge } from "@/components/ui/Badge";
+import { ButtonLink } from "@/components/ui/Button";
+import { Callout } from "@/components/ui/Callout";
+import { ChipGroup } from "@/components/ui/Chip";
+import { Section } from "@/components/ui/Section";
 
 type Structure = "sole-trader" | "ltd" | "ltd-holding";
 
@@ -125,7 +130,7 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 		"sole-trader": {
 			label: "Sole Trader / Self-Employed",
 			advantages: [
-				"Simplest setup — register with Tax Department only",
+				"Simplest setup, register with Tax Department only",
 				"No company formation costs (~€500–1,500 to incorporate a Ltd)",
 				"No annual audit requirement below certain thresholds",
 				"Lower ongoing compliance costs (no annual returns filing)",
@@ -135,7 +140,7 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 			],
 			risks: [
 				"Unlimited personal liability for business debts",
-				"Cannot issue equity — limits future investment options",
+				"Cannot issue equity, limits future investment options",
 				"Tax rate scales steeply above €28,000: 25%–35% marginal rate",
 				"Social insurance contributions (GESY + SI) on full income",
 				"Harder to retain earnings in a tax-efficient way",
@@ -151,9 +156,9 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 		ltd: {
 			label: "Cyprus Ltd (Private Company)",
 			advantages: [
-				"15% flat corporate tax — competitive within the EU",
+				"15% flat corporate tax, competitive within the EU",
 				nonDomiciled
-					? "As a non-dom, dividend extraction is 0% tax — highly efficient"
+					? "As a non-dom, dividend extraction is 0% tax, highly efficient"
 					: "Dividends taxed at 17% SDC (domiciled); consider non-dom status",
 				"Limited liability protects personal assets",
 				"Easier to bring in co-founders, issue options, or raise investment",
@@ -195,7 +200,7 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 				"Substance requirements: must demonstrate genuine economic activity in Cyprus",
 				"BEPS/OECD Pillar Two rules may affect structures above €750M turnover",
 				"More complex compliance: group accounts, inter-company agreements needed",
-				"Requires experienced Cyprus tax counsel — DIY is not advisable",
+				"Requires experienced Cyprus tax counsel, DIY is not advisable",
 			],
 			nextSteps: [
 				"Engage a specialist Cyprus tax law firm (not just an accountant)",
@@ -203,7 +208,7 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 				"Review IP ownership and intercompany pricing before transfer",
 				"Ensure Cyprus substance: office, local directors, board meetings in Cyprus",
 				"Prepare a transfer pricing policy if group transactions exceed €750K",
-				"Plan the structure before incorporation — restructuring later is costly",
+				"Plan the structure before incorporation, restructuring later is costly",
 			],
 		},
 	};
@@ -223,7 +228,7 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 			primary === "sole-trader"
 				? `At €${annualIncome.toLocaleString()}/year with your profile, sole trader is the most practical starting point. Set up fast, keep compliance simple, and re-evaluate when income grows past €50–60K.`
 				: primary === "ltd"
-					? `A Cyprus Ltd makes strong sense at €${annualIncome.toLocaleString()}/year. The 15% corporate rate${nonDomiciled ? " plus 0% on dividends as a non-dom" : ""} gives you an estimated effective rate of ~${ltdEffectiveRate}% — materially lower than the sole trader rate of ~${soleTraderEffectiveRate}%.`
+					? `A Cyprus Ltd makes strong sense at €${annualIncome.toLocaleString()}/year. The 15% corporate rate${nonDomiciled ? " plus 0% on dividends as a non-dom" : ""} gives you an estimated effective rate of ~${ltdEffectiveRate}%, materially lower than the sole trader rate of ~${soleTraderEffectiveRate}%.`
 					: `At €${annualIncome.toLocaleString()}/year with passive income and your profile, a holding structure could reduce your effective rate to ~${holdingEffectiveRate}%. This requires specialist advice and real substance in Cyprus.`,
 	};
 }
@@ -243,249 +248,205 @@ export default function FreelancerVsCompanyPage() {
 
 	const result = useMemo(() => computeRecommendation(inputs), [inputs]);
 
-	const structureColors: Record<Structure, string> = {
-		"sole-trader": "bg-blue-50 border-blue-200 text-blue-800",
-		ltd: "bg-primary/10 border-primary/40 text-ink",
-		"ltd-holding": "bg-sky border-line text-ink",
-	};
+	const incomeId = useId();
+	const foreignId = useId();
 
-	const badgeColors: Record<Structure, string> = {
-		"sole-trader": "bg-blue-100 text-blue-800",
-		ltd: "bg-primary/20 text-ink",
-		"ltd-holding": "bg-sky-strong text-ink",
-	};
+	const rates = [
+		{
+			label: "Sole Trader",
+			rate: result.effectiveRateSoleTrader,
+		},
+		{
+			label: "Cyprus Ltd",
+			rate: result.effectiveRateLtd,
+		},
+		...(result.effectiveRateLtdHolding !== null
+			? [{ label: "Ltd + Holding", rate: result.effectiveRateLtdHolding }]
+			: []),
+	];
+
+	const toggles: { key: keyof Inputs; label: string }[] = [
+		{ key: "hasEmployees", label: "Do you have employees?" },
+		{ key: "plansToRaise", label: "Do you plan to raise investment?" },
+		{ key: "nonDomiciled", label: "Are you non-domiciled in Cyprus?" },
+		{
+			key: "hasPassiveIncome",
+			label: "Significant passive income? (dividends, investments)",
+		},
+	];
 
 	return (
-		<div className="max-w-4xl mx-auto px-4 sm:px-6 py-10 md:py-16">
-			{/* Header */}
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-2">
-					Tools
-				</p>
-				<h2 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Freelancer vs Cyprus Ltd
-				</h2>
-				<p className="mt-3 text-lg text-slate-600 leading-relaxed">
-					Answer 6 questions to get a personalised recommendation: Sole Trader,
-					Cyprus Ltd, or a Holding Structure — with estimated tax rates.
-				</p>
-			</header>
+		<div className="space-y-6">
+			<p className="text-lg leading-relaxed text-muted">
+				Answer 6 questions to get a personalised recommendation: Sole Trader,
+				Cyprus Ltd, or a Holding Structure, with estimated tax rates.
+			</p>
 
-			<div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+			<div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
 				{/* --- Inputs --- */}
-				<div className="space-y-6">
-					<div className="bg-white border border-line rounded-2xl p-5 space-y-6">
-						{/* Annual Income Slider */}
-						<div>
-							<div className="flex justify-between items-baseline mb-2">
-								<label className="text-sm font-semibold text-slate-700">
-									Annual net income
-								</label>
-								<span className="text-lg font-bold text-primary">
-									€{inputs.annualIncome.toLocaleString()}
-								</span>
-							</div>
-							<input
-								type="range"
-								min={INCOME_MIN}
-								max={INCOME_MAX}
-								step={5000}
-								value={inputs.annualIncome}
-								onChange={(e) =>
-									setInputs({ ...inputs, annualIncome: Number(e.target.value) })
-								}
-								className="w-full accent-primary"
-							/>
-							<div className="flex justify-between text-xs text-muted mt-1">
-								<span>€20K</span>
-								<span>€500K</span>
-							</div>
+				<ToolPanel title="Your situation" className="self-start">
+					<div>
+						<div className="mb-2 flex items-baseline justify-between">
+							<label
+								htmlFor={incomeId}
+								className="text-sm font-semibold text-ink"
+							>
+								Annual net income
+							</label>
+							<span className="text-lg font-bold text-primary">
+								€{inputs.annualIncome.toLocaleString()}
+							</span>
 						</div>
-
-						{/* Foreign income % */}
-						<div>
-							<div className="flex justify-between items-baseline mb-2">
-								<label className="text-sm font-semibold text-slate-700">
-									Income from outside Cyprus
-								</label>
-								<span className="text-lg font-bold text-primary">
-									{inputs.foreignIncomePercent}%
-								</span>
-							</div>
-							<input
-								type="range"
-								min={0}
-								max={100}
-								step={5}
-								value={inputs.foreignIncomePercent}
-								onChange={(e) =>
-									setInputs({
-										...inputs,
-										foreignIncomePercent: Number(e.target.value),
-									})
-								}
-								className="w-full accent-primary"
-							/>
-							<div className="flex justify-between text-xs text-muted mt-1">
-								<span>0% (all Cyprus)</span>
-								<span>100% (all foreign)</span>
-							</div>
+						<input
+							id={incomeId}
+							type="range"
+							min={INCOME_MIN}
+							max={INCOME_MAX}
+							step={5000}
+							value={inputs.annualIncome}
+							onChange={(e) =>
+								setInputs({ ...inputs, annualIncome: Number(e.target.value) })
+							}
+							className="w-full accent-primary"
+						/>
+						<div className="mt-1 flex justify-between text-sm text-muted">
+							<span>€20K</span>
+							<span>€500K</span>
 						</div>
-
-						{/* Yes/No toggles */}
-						{(
-							[
-								{ key: "hasEmployees", label: "Do you have employees?" },
-								{
-									key: "plansToRaise",
-									label: "Do you plan to raise investment?",
-								},
-								{
-									key: "nonDomiciled",
-									label: "Are you non-domiciled in Cyprus?",
-								},
-								{
-									key: "hasPassiveIncome",
-									label: "Significant passive income? (dividends, investments)",
-								},
-							] as { key: keyof Inputs; label: string }[]
-						).map(({ key, label }) => (
-							<div key={key} className="flex items-center justify-between">
-								<label className="text-sm font-semibold text-slate-700 pr-4">
-									{label}
-								</label>
-								<div className="flex gap-2">
-									<button
-										onClick={() => setInputs({ ...inputs, [key]: true })}
-										className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
-											(inputs[key] as boolean)
-												? "bg-primary text-white border-primary"
-												: "bg-white text-slate-500 border-line hover:border-primary"
-										}`}
-									>
-										Yes
-									</button>
-									<button
-										onClick={() => setInputs({ ...inputs, [key]: false })}
-										className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
-											!(inputs[key] as boolean)
-												? "bg-ink text-white border-slate-700"
-												: "bg-white text-slate-500 border-line hover:border-primary"
-										}`}
-									>
-										No
-									</button>
-								</div>
-							</div>
-						))}
 					</div>
-				</div>
+
+					<div>
+						<div className="mb-2 flex items-baseline justify-between">
+							<label
+								htmlFor={foreignId}
+								className="text-sm font-semibold text-ink"
+							>
+								Income from outside Cyprus
+							</label>
+							<span className="text-lg font-bold text-primary">
+								{inputs.foreignIncomePercent}%
+							</span>
+						</div>
+						<input
+							id={foreignId}
+							type="range"
+							min={0}
+							max={100}
+							step={5}
+							value={inputs.foreignIncomePercent}
+							onChange={(e) =>
+								setInputs({
+									...inputs,
+									foreignIncomePercent: Number(e.target.value),
+								})
+							}
+							className="w-full accent-primary"
+						/>
+						<div className="mt-1 flex justify-between text-sm text-muted">
+							<span>0% (all Cyprus)</span>
+							<span>100% (all foreign)</span>
+						</div>
+					</div>
+
+					{toggles.map(({ key, label }) => (
+						<ChipGroup
+							key={key}
+							label={label}
+							value={(inputs[key] as boolean) ? "yes" : "no"}
+							onChange={(v) => setInputs({ ...inputs, [key]: v === "yes" })}
+							options={[
+								{ value: "yes", label: "Yes" },
+								{ value: "no", label: "No" },
+							]}
+						/>
+					))}
+				</ToolPanel>
 
 				{/* --- Results --- */}
 				<div className="space-y-5">
-					{/* Recommendation badge */}
-					<div
-						className={`rounded-2xl border p-5 ${structureColors[result.primary]}`}
-					>
-						<p className="text-xs uppercase tracking-wider font-bold mb-1 opacity-70">
+					<div className="rounded-card border border-primary bg-sky p-5">
+						<p className="mb-1 text-sm font-semibold text-muted">
 							Recommended structure
 						</p>
-						<h2 className="text-2xl font-bold">{result.structureLabel}</h2>
-						<p className="mt-2 text-sm leading-relaxed opacity-80">
+						<h2 className="text-2xl font-bold text-ink">
+							{result.structureLabel}
+						</h2>
+						<p className="mt-2 text-base leading-relaxed text-ink">
 							{result.summary}
 						</p>
 					</div>
 
-					{/* Effective rate comparison */}
-					<div className="bg-white border border-line rounded-2xl p-5">
-						<h3 className="font-bold text-ink mb-3 text-sm uppercase tracking-wide">
-							Estimated Effective Tax Rate
-						</h3>
-						<div className="space-y-3">
-							{[
-								{
-									label: "Sole Trader",
-									rate: result.effectiveRateSoleTrader,
-									structure: "sole-trader" as Structure,
-								},
-								{
-									label: "Cyprus Ltd",
-									rate: result.effectiveRateLtd,
-									structure: "ltd" as Structure,
-								},
-								...(result.effectiveRateLtdHolding !== null
-									? [
-											{
-												label: "Ltd + Holding",
-												rate: result.effectiveRateLtdHolding,
-												structure: "ltd-holding" as Structure,
-											},
-										]
-									: []),
-							].map(({ label, rate, structure }) => (
-								<div key={label} className="flex items-center gap-3">
-									<span
-										className={`text-xs font-semibold px-2 py-0.5 rounded-full ${badgeColors[structure]}`}
-									>
-										{label}
-									</span>
-									<div className="flex-1 bg-slate-100 rounded-full h-2">
-										<div
-											className="h-2 rounded-full bg-primary transition-all duration-500"
-											style={{ width: `${Math.min(rate, 40) * 2.5}%` }}
-										/>
+					<Section title="Estimated effective tax rate" headingLevel="h3">
+						<div className="rounded-card border border-line bg-white p-5">
+							<div className="space-y-3">
+								{rates.map(({ label, rate }) => (
+									<div key={label} className="flex items-center gap-3">
+										<Badge className="w-28 justify-center">{label}</Badge>
+										<div className="h-2 flex-1 rounded-full bg-sky">
+											<div
+												className="h-2 rounded-full bg-primary transition-all duration-500"
+												style={{ width: `${Math.min(rate, 40) * 2.5}%` }}
+											/>
+										</div>
+										<span className="w-12 text-right text-sm font-bold text-ink">
+											~{rate}%
+										</span>
 									</div>
-									<span className="text-sm font-bold text-slate-700 w-10 text-right">
-										~{rate}%
-									</span>
-								</div>
-							))}
+								))}
+							</div>
+							<p className="mt-3 text-sm text-muted">
+								Estimates assume ~20% deductible expenses. Actual rates vary.
+								Non-dom status: {inputs.nonDomiciled ? "Yes" : "No"}.
+							</p>
 						</div>
-						<p className="text-xs text-muted mt-3">
-							Estimates assume ~20% deductible expenses. Actual rates vary.
-							Non-dom status: {inputs.nonDomiciled ? "Yes" : "No"}.
-						</p>
-					</div>
+					</Section>
 
-					{/* Advantages */}
-					<div className="bg-white border border-line rounded-2xl p-5">
-						<h3 className="font-bold text-ink mb-3 text-sm">
+					<div className="rounded-card border border-line bg-white p-5">
+						<h3 className="mb-3 text-base font-bold text-ink">
 							Key advantages for your profile
 						</h3>
 						<ul className="space-y-2">
-							{result.advantages.filter(Boolean).map((a, i) => (
-								<li key={i} className="flex gap-2 text-sm text-slate-600">
-									<span className="text-primary font-bold mt-0.5">✓</span>
+							{result.advantages.filter(Boolean).map((a) => (
+								<li key={a} className="flex gap-2 text-sm text-ink">
+									<span
+										aria-hidden="true"
+										className="mt-0.5 font-bold text-primary"
+									>
+										+
+									</span>
 									<span>{a}</span>
 								</li>
 							))}
 						</ul>
 					</div>
 
-					{/* Risks */}
-					<div className="bg-white border border-line rounded-2xl p-5">
-						<h3 className="font-bold text-ink mb-3 text-sm">
-							Risks / complications
+					<div className="rounded-card border border-line bg-white p-5">
+						<h3 className="mb-3 text-base font-bold text-ink">
+							Risks and complications
 						</h3>
 						<ul className="space-y-2">
-							{result.risks.map((r, i) => (
-								<li key={i} className="flex gap-2 text-sm text-slate-600">
-									<span className="text-amber-700 font-bold mt-0.5">!</span>
+							{result.risks.map((r) => (
+								<li key={r} className="flex gap-2 text-sm text-ink">
+									<span
+										aria-hidden="true"
+										className="mt-0.5 font-bold text-amber-800"
+									>
+										!
+									</span>
 									<span>{r}</span>
 								</li>
 							))}
 						</ul>
 					</div>
 
-					{/* Next steps */}
-					<div className="bg-white border border-line rounded-2xl p-5">
-						<h3 className="font-bold text-ink mb-3 text-sm">
+					<div className="rounded-card border border-line bg-white p-5">
+						<h3 className="mb-3 text-base font-bold text-ink">
 							Recommended next steps
 						</h3>
 						<ol className="space-y-2">
 							{result.nextSteps.map((s, i) => (
-								<li key={i} className="flex gap-2 text-sm text-slate-600">
-									<span className="text-muted font-mono text-xs mt-0.5 w-4 shrink-0">
+								<li key={s} className="flex gap-2 text-sm text-ink">
+									<span className="mt-0.5 w-4 shrink-0 text-sm text-muted">
 										{i + 1}.
 									</span>
 									<span>{s}</span>
@@ -496,51 +457,31 @@ export default function FreelancerVsCompanyPage() {
 				</div>
 			</div>
 
-			{/* Disclaimer */}
-			<aside className="mt-10 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
-				<p className="font-semibold text-ink mb-1">Disclaimer</p>
-				<p>
-					This tool provides a general orientation only. Tax rates shown are
-					estimates based on simplified assumptions. Your actual tax position
-					depends on your specific income mix, deductions, residency status,
-					home-country obligations and the structure of your business. Tax
-					optimization should always be confirmed with a qualified Cyprus
-					accountant and, where relevant, a tax adviser in your home country.
-				</p>
-			</aside>
+			<Callout tone="legal" title="Disclaimer">
+				This tool provides a general orientation only. Tax rates shown are
+				estimates based on simplified assumptions. Your actual tax position
+				depends on your specific income mix, deductions, residency status,
+				home-country obligations and the structure of your business. Tax
+				optimization should always be confirmed with a qualified Cyprus
+				accountant and, where relevant, a tax adviser in your home country.
+			</Callout>
 
-			<aside className="mt-6 p-5 rounded-2xl bg-sky border border-line">
-				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-					Related guides
-				</p>
+			<Section title="Related guides" headingLevel="h3">
 				<div className="flex flex-wrap gap-3">
-					<Link
+					<ButtonLink
 						href="/guides/company-types-comparison/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
+						variant="secondary"
 					>
 						Read: Company Types in Cyprus
-					</Link>
-					<Link
-						href="/guides/taxes-for-expats/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
+					</ButtonLink>
+					<ButtonLink href="/guides/taxes-for-expats/" variant="secondary">
 						Read: Taxes for Expats
-					</Link>
-					<Link
-						href="/sections/accountants/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
+					</ButtonLink>
+					<ButtonLink href="/sections/accountants/" variant="secondary">
 						Find an accountant
-					</Link>
+					</ButtonLink>
 				</div>
-			</aside>
-
-			{/* Back */}
-			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools" className="underline hover:text-ink">
-					← Back to Tools
-				</Link>
-			</p>
+			</Section>
 		</div>
 	);
 }

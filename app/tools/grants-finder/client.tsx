@@ -1,7 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useState } from "react";
+import { Badge, type BadgeTone } from "@/components/ui/Badge";
+import { CardGrid, CardGridItem } from "@/components/ui/Card";
+import { ChipGroup } from "@/components/ui/Chip";
 
 type Sector =
 	| "tech"
@@ -62,7 +64,7 @@ const SIZE_LABELS: Record<CompanySize, string> = {
 
 const GRANTS: ReadonlyArray<Grant> = [
 	{
-		name: "ARIF — Restart and Recovery Innovation Fund",
+		name: "ARIF: Restart and Recovery Innovation Fund",
 		adminBody: "Research and Innovation Foundation (RIF)",
 		targetSectors: ["tech", "research", "manufacturing", "general"],
 		maxAmountEuros: 200000,
@@ -77,7 +79,7 @@ const GRANTS: ReadonlyArray<Grant> = [
 			"Supports R&D-driven businesses to develop innovative products, services and processes. Funded under the Recovery and Resilience Plan.",
 	},
 	{
-		name: "IDEA — Business Idea Competition for Startups",
+		name: "IDEA: Business Idea Competition for Startups",
 		adminBody: "Research and Innovation Foundation (RIF)",
 		targetSectors: ["tech", "research", "general"],
 		maxAmountEuros: 50000,
@@ -92,7 +94,7 @@ const GRANTS: ReadonlyArray<Grant> = [
 			"Pre-seed funding for innovative business ideas. High coverage rate of up to 80%. Primarily targets tech and deep-tech startups.",
 	},
 	{
-		name: "INNOVATE — Innovate for Competitiveness",
+		name: "INNOVATE: Innovate for Competitiveness",
 		adminBody: "Research and Innovation Foundation (RIF)",
 		targetSectors: ["tech", "manufacturing", "research", "general"],
 		maxAmountEuros: 1000000,
@@ -152,7 +154,7 @@ const GRANTS: ReadonlyArray<Grant> = [
 			"Feed-in tariff and capital grants for renewable energy installations. Part of Cyprus's National Energy and Climate Plan (NECP) targets.",
 	},
 	{
-		name: "INTERREG Med — Blue Mediterranean Platform",
+		name: "INTERREG Med: Blue Mediterranean Platform",
 		adminBody: "EU INTERREG Mediterranean Programme",
 		targetSectors: ["hospitality", "agri", "energy", "general"],
 		maxAmountEuros: 300000,
@@ -212,7 +214,7 @@ const GRANTS: ReadonlyArray<Grant> = [
 			"Supports innovation in Cyprus's agri-food sector: precision farming, food safety, organic certification, vertical farming and export development.",
 	},
 	{
-		name: "Rural Development Programme — Business Support",
+		name: "Rural Development Programme: Business Support",
 		adminBody:
 			"Ministry of Agriculture, Rural Development and Environment (EAFRD)",
 		targetSectors: ["agri", "hospitality", "general"],
@@ -243,7 +245,7 @@ const GRANTS: ReadonlyArray<Grant> = [
 			"Supports tourism product quality improvement, sustainability certification, accessible tourism investment, and digital marketing for Cyprus tourism businesses.",
 	},
 	{
-		name: "Horizon Europe — EIC Accelerator",
+		name: "Horizon Europe: EIC Accelerator",
 		adminBody: "European Innovation Council (European Commission)",
 		targetSectors: ["tech", "research", "energy", "general"],
 		maxAmountEuros: 2500000,
@@ -258,7 +260,7 @@ const GRANTS: ReadonlyArray<Grant> = [
 			"The EU's flagship deep-tech startup funding programme. Up to €2.5M grant + up to €15M equity investment. Highly competitive (3-5% success rate).",
 	},
 	{
-		name: "Horizon Europe — SME Instrument (Step 1)",
+		name: "Horizon Europe: SME Instrument (Step 1)",
 		adminBody: "European Innovation Council (European Commission)",
 		targetSectors: ["tech", "research", "manufacturing", "general"],
 		maxAmountEuros: 50000,
@@ -288,7 +290,7 @@ const GRANTS: ReadonlyArray<Grant> = [
 			"Vouchers and grants for micro-businesses to adopt digital tools: websites, accounting software, digital payments, online marketing and cybersecurity.",
 	},
 	{
-		name: "Employment Incentive Scheme — Hiring Support",
+		name: "Employment Incentive Scheme: Hiring Support",
 		adminBody: "Human Resources Development Authority (HRDA)",
 		targetSectors: ["general"],
 		maxAmountEuros: 30000,
@@ -318,7 +320,7 @@ const GRANTS: ReadonlyArray<Grant> = [
 			"Reimburses up to 60% of approved training costs. Covers external courses, certifications, language training and professional development programmes.",
 	},
 	{
-		name: "EIF — COSME Loan Guarantee Facility",
+		name: "EIF: COSME Loan Guarantee Facility",
 		adminBody: "European Investment Fund / Bank of Cyprus",
 		targetSectors: ["general"],
 		maxAmountEuros: null,
@@ -330,7 +332,7 @@ const GRANTS: ReadonlyArray<Grant> = [
 		companySizes: ["micro", "sme"],
 		url: "https://www.eif.org",
 		description:
-			"EIF-backed loan guarantees that reduce collateral requirements for SME lending. Accessed through Cypriot banks — ask your bank about EU-backed SME loan products.",
+			"EIF-backed loan guarantees that reduce collateral requirements for SME lending. Accessed through Cypriot banks, ask your bank about EU-backed SME loan products.",
 	},
 	{
 		name: "InvestCyprus Incentive Package",
@@ -375,10 +377,10 @@ export default function GrantsFinderPage() {
 		});
 	}, [selectedSector, selectedSize, selectedStatus]);
 
-	const statusColors: Record<GrantStatus, string> = {
-		open: "bg-emerald-100 text-emerald-700",
-		rolling: "bg-blue-100 text-blue-700",
-		closed: "bg-slate-100 text-slate-500",
+	const statusTones: Record<GrantStatus, BadgeTone> = {
+		open: "success",
+		rolling: "neutral",
+		closed: "neutral",
 	};
 
 	const statusLabels: Record<GrantStatus, string> = {
@@ -388,285 +390,158 @@ export default function GrantsFinderPage() {
 	};
 
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="tool"
-			className="max-w-4xl mx-auto px-4 sm:px-6 py-10 md:py-16"
-		>
-			{/* Breadcrumb */}
-			<nav className="text-xs text-slate-500 mb-6">
-				<Link href="/" className="hover:text-ink">
-					Home
-				</Link>
-				{" › "}
-				<span className="text-ink">Cyprus Business Grants Finder</span>
-			</nav>
-
-			{/* Header */}
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-2">
-					Tools
-				</p>
-				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Cyprus Business Grants Finder
-				</h1>
-				<p className="mt-3 text-lg text-slate-600 leading-relaxed">
-					Browse {GRANTS.length} active and recently active grant programmes for
-					businesses in Cyprus. Filter by sector, company size, and status.
-				</p>
-			</header>
-
+		<>
 			{/* Filters */}
-			<div className="space-y-4 mb-6">
-				{/* Sector filter */}
-				<div>
-					<p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">
-						Sector
-					</p>
-					<div className="flex flex-wrap gap-2">
-						<button
-							onClick={() => setSelectedSector("all")}
-							className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
-								selectedSector === "all"
-									? "bg-primary text-white border-primary"
-									: "bg-white text-slate-600 border-line hover:border-primary"
-							}`}
-						>
-							All Sectors
-						</button>
-						{ALL_SECTORS.map((s) => (
-							<button
-								key={s}
-								onClick={() => setSelectedSector(s)}
-								className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
-									selectedSector === s
-										? "bg-primary text-white border-primary"
-										: "bg-white text-slate-600 border-line hover:border-primary"
-								}`}
-							>
-								{SECTOR_LABELS[s]}
-							</button>
-						))}
-					</div>
-				</div>
-
-				{/* Size + Status filter */}
-				<div className="flex flex-wrap gap-6">
-					<div>
-						<p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">
-							Company Size
-						</p>
-						<div className="flex gap-2">
-							<button
-								onClick={() => setSelectedSize("all")}
-								className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
-									selectedSize === "all"
-										? "bg-slate-700 text-white border-slate-700"
-										: "bg-white text-slate-600 border-line hover:border-slate-500"
-								}`}
-							>
-								Any size
-							</button>
-							{ALL_SIZES.map((s) => (
-								<button
-									key={s}
-									onClick={() => setSelectedSize(s)}
-									className={`px-3 py-1.5 rounded-xl text-xs font-semibold border capitalize transition-colors ${
-										selectedSize === s
-											? "bg-slate-700 text-white border-slate-700"
-											: "bg-white text-slate-600 border-line hover:border-slate-500"
-									}`}
-								>
-									{s === "micro" ? "Micro" : s === "sme" ? "SME" : "Large"}
-								</button>
-							))}
-						</div>
-					</div>
-
-					<div>
-						<p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">
-							Status
-						</p>
-						<div className="flex gap-2">
-							{(["all", "open", "rolling", "closed"] as const).map((s) => (
-								<button
-									key={s}
-									onClick={() => setSelectedStatus(s)}
-									className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
-										selectedStatus === s
-											? "bg-slate-700 text-white border-slate-700"
-											: "bg-white text-slate-600 border-line hover:border-slate-500"
-									}`}
-								>
-									{s === "all" ? "All" : s.charAt(0).toUpperCase() + s.slice(1)}
-								</button>
-							))}
-						</div>
-					</div>
+			<div className="space-y-5 rounded-card border border-line bg-sky p-4 md:p-5">
+				<ChipGroup
+					label="Sector"
+					value={selectedSector}
+					onChange={setSelectedSector}
+					options={[
+						{ value: "all", label: "All Sectors" },
+						...ALL_SECTORS.map((s) => ({ value: s, label: SECTOR_LABELS[s] })),
+					]}
+				/>
+				<div className="flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:gap-8">
+					<ChipGroup
+						label="Company size"
+						value={selectedSize}
+						onChange={setSelectedSize}
+						options={[
+							{ value: "all", label: "Any size" },
+							...ALL_SIZES.map((s) => ({
+								value: s,
+								label: s === "micro" ? "Micro" : s === "sme" ? "SME" : "Large",
+							})),
+						]}
+					/>
+					<ChipGroup
+						label="Status"
+						value={selectedStatus}
+						onChange={setSelectedStatus}
+						options={(["all", "open", "rolling", "closed"] as const).map(
+							(s) => ({
+								value: s,
+								label:
+									s === "all" ? "All" : s.charAt(0).toUpperCase() + s.slice(1),
+							}),
+						)}
+					/>
 				</div>
 			</div>
 
 			{/* Result count */}
-			<p className="text-xs text-slate-500 mb-5">
+			<h2
+				className="text-2xl font-bold tracking-tight text-ink"
+				aria-live="polite"
+			>
 				Showing {filtered.length} of {GRANTS.length} programmes
-			</p>
+			</h2>
 
-			{/* Grant cards */}
-			<div className="space-y-4">
-				{filtered.length === 0 && (
-					<div className="text-center py-12 text-slate-500">
-						No grants match your current filters. Try broadening your search.
-					</div>
-				)}
+			{filtered.length === 0 && (
+				<div className="py-12 text-center text-muted">
+					No grants match your current filters. Try broadening your search.
+				</div>
+			)}
+			<CardGrid cols={1}>
 				{filtered.map((g) => (
-					<div
-						key={g.name}
-						className="bg-white border border-line rounded-2xl p-5"
-					>
-						<div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
-							<div>
-								<div className="flex flex-wrap items-center gap-2 mb-1">
-									<span
-										className={`text-xs font-semibold px-2 py-0.5 rounded-full ${statusColors[g.status]}`}
-									>
-										{statusLabels[g.status]}
-									</span>
-									{g.targetSectors.map((s) => (
-										<span
-											key={s}
-											className="text-xs text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full"
-										>
-											{SECTOR_LABELS[s]}
-										</span>
-									))}
-								</div>
-								<h2 className="font-bold text-ink text-base leading-snug">
-									{g.name}
-								</h2>
-								<p className="text-xs text-slate-500 mt-0.5">{g.adminBody}</p>
-							</div>
-							<div className="flex gap-4 shrink-0 text-right">
+					<CardGridItem key={g.name}>
+						<article className="w-full rounded-card border border-line bg-white p-5">
+							<div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
 								<div>
-									<p className="text-xs text-muted uppercase tracking-wide">
-										Max Grant
-									</p>
-									<p className="font-bold text-primary text-lg">
-										{formatAmount(g.maxAmountEuros)}
-									</p>
-								</div>
-								{g.coveragePercent !== null && (
-									<div>
-										<p className="text-xs text-muted uppercase tracking-wide">
-											Coverage
-										</p>
-										<p className="font-bold text-slate-700 text-lg">
-											{g.coveragePercent}%
-										</p>
-									</div>
-								)}
-							</div>
-						</div>
-
-						<p className="text-sm text-slate-600 leading-relaxed mb-3">
-							{g.description}
-						</p>
-
-						<div className="border-t border-line pt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-							<div>
-								<p className="text-xs font-semibold text-muted uppercase tracking-wide mb-1">
-									Eligibility
-								</p>
-								<p className="text-slate-600 text-xs leading-relaxed">
-									{g.eligibility}
-								</p>
-							</div>
-							<div>
-								<div className="mb-2">
-									<p className="text-xs font-semibold text-muted uppercase tracking-wide mb-1">
-										Deadline
-									</p>
-									<p className="text-slate-700 text-xs font-semibold">
-										{g.deadline === "rolling"
-											? "Rolling / ongoing"
-											: g.deadline}
-									</p>
-								</div>
-								<div>
-									<p className="text-xs font-semibold text-muted uppercase tracking-wide mb-1">
-										Company sizes
-									</p>
-									<div className="flex gap-1 flex-wrap">
-										{g.companySizes.map((s) => (
+									<div className="mb-1 flex flex-wrap items-center gap-2">
+										<Badge tone={statusTones[g.status]}>
+											{statusLabels[g.status]}
+										</Badge>
+										{g.targetSectors.map((s) => (
 											<span
 												key={s}
-												className="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full capitalize"
+												className="rounded-full bg-sky px-2 py-0.5 text-xs text-ink"
 											>
-												{s === "sme"
-													? "SME"
-													: s.charAt(0).toUpperCase() + s.slice(1)}
+												{SECTOR_LABELS[s]}
 											</span>
 										))}
 									</div>
+									<h3 className="text-base font-bold leading-snug text-ink">
+										{g.name}
+									</h3>
+									<p className="mt-0.5 text-sm text-muted">{g.adminBody}</p>
+								</div>
+								<div className="flex shrink-0 gap-4 sm:text-right">
+									<div>
+										<p className="text-sm text-muted">Max grant</p>
+										<p className="text-lg font-bold text-primary">
+											{formatAmount(g.maxAmountEuros)}
+										</p>
+									</div>
+									{g.coveragePercent !== null && (
+										<div>
+											<p className="text-sm text-muted">Coverage</p>
+											<p className="text-lg font-bold text-ink">
+												{g.coveragePercent}%
+											</p>
+										</div>
+									)}
 								</div>
 							</div>
-						</div>
 
-						{g.url && (
-							<div className="mt-3 pt-3 border-t border-line">
-								<a
-									href={g.url}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="text-xs text-primary hover:text-primary-hover font-semibold underline"
-								>
-									Official source
-								</a>
+							<p className="mb-3 text-sm leading-relaxed text-ink">
+								{g.description}
+							</p>
+
+							<div className="grid grid-cols-1 gap-3 border-t border-line pt-3 text-sm sm:grid-cols-2">
+								<div>
+									<p className="mb-1 text-sm font-semibold text-muted">
+										Eligibility
+									</p>
+									<p className="text-sm leading-relaxed text-ink">
+										{g.eligibility}
+									</p>
+								</div>
+								<div>
+									<div className="mb-2">
+										<p className="mb-1 text-sm font-semibold text-muted">
+											Deadline
+										</p>
+										<p className="text-sm font-semibold text-ink">
+											{g.deadline === "rolling"
+												? "Rolling / ongoing"
+												: g.deadline}
+										</p>
+									</div>
+									<div>
+										<p className="mb-1 text-sm font-semibold text-muted">
+											Company sizes
+										</p>
+										<div className="flex flex-wrap gap-1">
+											{g.companySizes.map((s) => (
+												<Badge key={s}>
+													{s === "sme"
+														? "SME"
+														: s.charAt(0).toUpperCase() + s.slice(1)}
+												</Badge>
+											))}
+										</div>
+									</div>
+								</div>
 							</div>
-						)}
-					</div>
+
+							{g.url && (
+								<div className="mt-3 border-t border-line pt-3">
+									<a
+										href={g.url}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="inline-flex min-h-11 items-center text-sm font-semibold text-primary underline hover:text-primary-hover"
+									>
+										Official source
+									</a>
+								</div>
+							)}
+						</article>
+					</CardGridItem>
 				))}
-			</div>
-
-			{/* Disclaimer */}
-			<aside className="mt-10 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
-				<p className="font-semibold text-ink mb-1">Important notice</p>
-				<p>
-					Grant programmes open and close frequently. Amounts, coverage
-					percentages and deadlines change. Always verify current status and
-					eligibility criteria directly at the official source before investing
-					time in an application. This directory is for research purposes and
-					was last updated in 2025.
-				</p>
-			</aside>
-
-			{/* Back */}
-			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools" className="underline hover:text-ink">
-					← Back to Tools
-				</Link>
-			</p>
-
-			<aside className="mt-10 p-5 rounded-2xl bg-sky border border-line">
-				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-					Next steps
-				</p>
-				<div className="flex flex-wrap gap-3">
-					<Link
-						href="/guides/trade-licenses-cyprus/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Read: Trade Licences in Cyprus
-					</Link>{" "}
-					<Link
-						href="/sections/accountants/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Find an accountant
-					</Link>
-				</div>
-			</aside>
-		</main>
+			</CardGrid>
+		</>
 	);
 }

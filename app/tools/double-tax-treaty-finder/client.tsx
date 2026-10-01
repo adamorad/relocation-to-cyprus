@@ -1,7 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useState } from "react";
+import { Badge } from "@/components/ui/Badge";
+import { CardGrid, CardGridItem } from "@/components/ui/Card";
+import { ChipGroup } from "@/components/ui/Chip";
 
 type Treaty = {
 	country: string;
@@ -365,7 +367,7 @@ const TREATIES: ReadonlyArray<Treaty> = [
 		royaltiesWHT: 0,
 		treatyType: "Full DTC",
 		notes:
-			"Signed 2015; in force. Very favourable — 0% on all three categories.",
+			"Signed 2015; in force. Very favourable, 0% on all three categories.",
 	},
 	{
 		country: "Qatar",
@@ -487,7 +489,7 @@ const TREATIES: ReadonlyArray<Treaty> = [
 		interestWHT: 0,
 		royaltiesWHT: 0,
 		treatyType: "Full DTC",
-		notes: "Very favourable — 0% on all three categories.",
+		notes: "Very favourable, 0% on all three categories.",
 	},
 	{
 		country: "Thailand",
@@ -519,9 +521,9 @@ const TREATIES: ReadonlyArray<Treaty> = [
 		royaltiesWHT: 0,
 		treatyType: "Full DTC",
 		notes:
-			"Very favourable — 0% on all three categories. Used by SA entrepreneurs expanding to EU.",
+			"Very favourable, 0% on all three categories. Used by SA entrepreneurs expanding to EU.",
 	},
-	// Americas / Oceania — no treaty (important)
+	// Americas / Oceania, no treaty (important)
 	{
 		country: "USA",
 		flag: "🇺🇸",
@@ -620,187 +622,99 @@ export default function DoubleTaxTreatyFinderPage() {
 	}, [search, filterStatus]);
 
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="tool"
-			className="max-w-4xl mx-auto px-4 sm:px-6 py-10 md:py-16"
-		>
-			{/* Breadcrumb */}
-			<nav className="text-xs text-slate-500 mb-6">
-				<Link href="/" className="hover:text-ink">
-					Home
-				</Link>
-				{" › "}
-				<Link href="/tools" className="hover:text-ink">
-					Tools
-				</Link>
-				{" › "}
-				<span className="text-ink">Cyprus Double Tax Treaty Finder</span>
-			</nav>
-
-			{/* Header */}
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-2">
-					Tools
-				</p>
-				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Cyprus Double Tax Treaty Finder
-				</h1>
-				<p className="mt-3 text-lg text-slate-600 leading-relaxed">
-					Search Cyprus&apos;s ~57 countries covered by double tax treaties. See
-					withholding tax rates on dividends, interest and royalties — and which
-					countries have no treaty at all.
-				</p>
-			</header>
-
+		<>
 			{/* Filters */}
-			<div className="flex flex-col sm:flex-row gap-3 mb-6">
-				<input
-					type="text"
-					placeholder="Search country..."
-					value={search}
-					onChange={(e) => setSearch(e.target.value)}
-					className="flex-1 px-4 py-2 border border-line rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-focus focus:border-transparent bg-white"
-				/>
-				<div className="flex gap-2">
-					{(["all", "treaty", "no-treaty"] as const).map((s) => (
-						<button
-							key={s}
-							onClick={() => setFilterStatus(s)}
-							className={`px-3 py-2 rounded-xl text-xs font-semibold border transition-colors ${
-								filterStatus === s
-									? "bg-primary text-white border-primary"
-									: "bg-white text-slate-600 border-line hover:border-primary"
-							}`}
-						>
-							{s === "all"
-								? "All"
-								: s === "treaty"
-									? "Has Treaty"
-									: "No Treaty"}
-						</button>
-					))}
+			<div className="space-y-4 rounded-card border border-line bg-sky p-4 md:p-5">
+				<div>
+					<label
+						htmlFor="treaty-search"
+						className="mb-2 block text-sm font-semibold text-ink"
+					>
+						Search country
+					</label>
+					<input
+						id="treaty-search"
+						type="text"
+						placeholder="Search country..."
+						value={search}
+						onChange={(e) => setSearch(e.target.value)}
+						className="min-h-11 w-full rounded-field border border-line bg-white px-4 py-2 text-base text-ink focus:outline-none focus:ring-2 focus:ring-focus"
+					/>
 				</div>
+				<ChipGroup
+					label="Treaty status"
+					value={filterStatus}
+					onChange={setFilterStatus}
+					options={[
+						{ value: "all", label: "All" },
+						{ value: "treaty", label: "Has Treaty" },
+						{ value: "no-treaty", label: "No Treaty" },
+					]}
+				/>
 			</div>
 
 			{/* Results count */}
-			<p className="text-xs text-slate-500 mb-4">
+			<h2
+				className="text-2xl font-bold tracking-tight text-ink"
+				aria-live="polite"
+			>
 				Showing {filtered.length} of {TREATIES.length} entries
-			</p>
+			</h2>
 
-			{/* Treaty Cards */}
-			<div className="space-y-3">
-				{filtered.length === 0 && (
-					<div className="text-center py-12 text-slate-500">
-						No results for &quot;{search}&quot;. Try a different country name.
-					</div>
-				)}
+			{filtered.length === 0 && (
+				<div className="py-12 text-center text-muted">
+					No results for &quot;{search}&quot;. Try a different country name.
+				</div>
+			)}
+			<CardGrid cols={2}>
 				{filtered.map((t) => (
-					<div
-						key={t.country}
-						className={`rounded-2xl border p-4 ${
-							t.hasTreaty ? "bg-white border-line" : "bg-red-50 border-red-200"
-						}`}
-					>
-						<div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
-							{/* Country name + treaty status */}
-							<div className="flex items-center gap-3">
-								<span className="text-2xl">{t.flag}</span>
+					<CardGridItem key={t.country}>
+						<article className="w-full rounded-card border border-line bg-white p-4">
+							<div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-start">
+								{/* Country name + treaty status */}
 								<div>
-									<h2 className="font-bold text-ink">{t.country}</h2>
-									<span
-										className={`inline-block text-xs font-semibold px-2 py-0.5 rounded-full mt-0.5 ${
-											t.hasTreaty
-												? "bg-emerald-100 text-emerald-700"
-												: "bg-red-100 text-red-800"
-										}`}
+									<h3 className="font-bold text-ink">{t.country}</h3>
+									<Badge
+										tone={t.hasTreaty ? "neutral" : "danger"}
+										className="mt-1"
 									>
 										{t.treatyType}
-									</span>
+									</Badge>
 								</div>
+
+								{/* WHT rates */}
+								{t.hasTreaty && (
+									<div className="flex gap-4 text-center sm:gap-5">
+										{(
+											[
+												["Dividends", t.dividendsWHT],
+												["Interest", t.interestWHT],
+												["Royalties", t.royaltiesWHT],
+											] as const
+										).map(([label, v]) => (
+											<div key={label}>
+												<p className="text-xs uppercase tracking-wide text-muted">
+													{label}
+												</p>
+												<p className="text-xl font-bold text-primary">
+													{v !== null ? `${v}%` : "n/a"}
+												</p>
+											</div>
+										))}
+									</div>
+								)}
 							</div>
 
-							{/* WHT rates */}
-							{t.hasTreaty && (
-								<div className="flex gap-4 sm:gap-6 text-center">
-									<div>
-										<p className="text-xs text-slate-500 uppercase tracking-wide">
-											Dividends
-										</p>
-										<p className="text-xl font-bold text-primary">
-											{t.dividendsWHT !== null ? `${t.dividendsWHT}%` : "—"}
-										</p>
-									</div>
-									<div>
-										<p className="text-xs text-slate-500 uppercase tracking-wide">
-											Interest
-										</p>
-										<p className="text-xl font-bold text-primary">
-											{t.interestWHT !== null ? `${t.interestWHT}%` : "—"}
-										</p>
-									</div>
-									<div>
-										<p className="text-xs text-slate-500 uppercase tracking-wide">
-											Royalties
-										</p>
-										<p className="text-xl font-bold text-primary">
-											{t.royaltiesWHT !== null ? `${t.royaltiesWHT}%` : "—"}
-										</p>
-									</div>
-								</div>
+							{/* Notes */}
+							{t.notes && (
+								<p className="mt-3 border-t border-line pt-3 text-sm leading-relaxed text-muted">
+									{t.notes}
+								</p>
 							)}
-						</div>
-
-						{/* Notes */}
-						{t.notes && (
-							<p className="mt-3 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
-								{t.notes}
-							</p>
-						)}
-					</div>
+						</article>
+					</CardGridItem>
 				))}
-			</div>
-
-			{/* Disclaimer */}
-			<aside className="mt-10 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
-				<p className="font-semibold text-ink mb-1">Disclaimer</p>
-				<p>
-					For general reference only. Tax treaty application depends on your
-					specific situation, the type of income, holding structure, and
-					residency status. Treaty rates shown are the treaty-reduced rates —
-					domestic rates may apply if conditions are not met. Always verify with
-					a qualified Cyprus tax accountant before making decisions.
-				</p>
-			</aside>
-
-			{/* Back link */}
-			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools" className="underline hover:text-ink">
-					← Back to Tools
-				</Link>
-			</p>
-
-			<aside className="mt-10 p-5 rounded-2xl bg-sky border border-line">
-				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-					Next steps
-				</p>
-				<div className="flex flex-wrap gap-3">
-					<Link
-						href="/guides/non-dom-status-guide/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Read: Non-Dom Status Guide
-					</Link>{" "}
-					<Link
-						href="/sections/accountants/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Find a tax advisor
-					</Link>
-				</div>
-			</aside>
-		</main>
+			</CardGrid>
+		</>
 	);
 }

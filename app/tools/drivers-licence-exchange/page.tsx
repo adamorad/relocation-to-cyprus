@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import DriversLicenceExchangeClient from "./client";
 
@@ -19,28 +20,25 @@ export const metadata: Metadata = {
 	},
 };
 
-export default function DriversLicenceExchangePage() {
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Home", item: SITE_URL + "/" },
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Tools",
-				item: SITE_URL + "/tools/",
-			},
-			{ "@type": "ListItem", position: 3, name: title },
-		],
-	};
-
+export default function DriversLicenceExchangeClientPage() {
 	return (
-		<>
-			<script
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-			/>
+		<ToolTemplate
+			pagefindType="tool"
+			width="reading"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Tools", href: "/tools/" },
+					{ label: "Driver’s Licence Exchange" },
+				],
+				eyebrow: "Bureaucracy",
+				title: "Driver’s Licence Exchange",
+				intro:
+					"Find out whether you can directly exchange your foreign driving licence in Cyprus or need to take tests. Get a personalised checklist and cost estimate.",
+			}}
+			nextSteps={[{ href: "/tools/", label: "All tools" }]}
+			disclaimer="General information only, not legal, tax, or financial advice. Regulations and fees are subject to change. Always confirm current requirements with official Cyprus authorities before taking action."
+		>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
@@ -49,6 +47,6 @@ export default function DriversLicenceExchangePage() {
 				}}
 			/>
 			<DriversLicenceExchangeClient />
-		</>
+		</ToolTemplate>
 	);
 }

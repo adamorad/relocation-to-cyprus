@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import DoubleTaxTreatyFinderClient from "./client";
 
 const SITE_URL = "https://realcy.app";
 const title = "Cyprus Double Tax Treaty Finder";
 const description =
-	"Look up Cyprus double tax treaties with 65+ countries — withholding rates on dividends, interest, and royalties.";
+	"Look up Cyprus double tax treaties with 65+ countries , withholding rates on dividends, interest, and royalties.";
 
 export const metadata: Metadata = {
 	title,
@@ -19,28 +20,32 @@ export const metadata: Metadata = {
 	},
 };
 
-export default function DoubleTaxTreatyFinderPage() {
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Tools",
-				item: `${SITE_URL}/tools/`,
-			},
-			{ "@type": "ListItem", position: 3, name: title },
-		],
-	};
+export default function DoubleTaxTreatyFinderClientPage() {
 	return (
-		<>
-			<script
-				type="application/ld+json"
-				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-			/>
+		<ToolTemplate
+			pagefindType="tool"
+			width="wide"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Tools", href: "/tools/" },
+					{ label: "Double Tax Treaty Finder" },
+				],
+				eyebrow: "Tax",
+				title: "Cyprus Double Tax Treaty Finder",
+				intro:
+					"Search Cyprus's ~57 countries covered by double tax treaties. See withholding tax rates on dividends, interest and royalties, and which countries have no treaty at all.",
+			}}
+			nextSteps={[
+				{
+					href: "/guides/non-dom-status-guide/",
+					label: "Read: Non-Dom Status Guide",
+				},
+				{ href: "/sections/accountants/", label: "Find a tax advisor" },
+				{ href: "/tools/", label: "All tools" },
+			]}
+			disclaimer="For general reference only. Tax treaty application depends on your specific situation, the type of income, holding structure, and residency status. Treaty rates shown are the treaty-reduced rates; domestic rates may apply if conditions are not met. Always verify with a qualified Cyprus tax accountant before making decisions."
+		>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
@@ -49,6 +54,6 @@ export default function DoubleTaxTreatyFinderPage() {
 				}}
 			/>
 			<DoubleTaxTreatyFinderClient />
-		</>
+		</ToolTemplate>
 	);
 }

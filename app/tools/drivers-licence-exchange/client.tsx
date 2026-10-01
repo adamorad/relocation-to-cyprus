@@ -1,7 +1,11 @@
 "use client";
 
-import Link from "next/link";
-import { useState } from "react";
+import { useId, useState } from "react";
+import { ToolPanel } from "@/components/templates/ToolTemplate";
+import { Badge } from "@/components/ui/Badge";
+import { Callout } from "@/components/ui/Callout";
+import { ChipGroup } from "@/components/ui/Chip";
+import { Section } from "@/components/ui/Section";
 
 // ── data ─────────────────────────────────────────────────────────────────────
 
@@ -125,7 +129,7 @@ const BASE_DOCUMENTS = [
 	"Valid original foreign driving licence (both sides if card format)",
 	"Valid passport or EU ID card",
 	"2 recent passport photos (45×35 mm, white background)",
-	"Medical certificate (eye test + GP declaration of fitness) — cost approx. €15–30",
+	"Medical certificate (eye test + GP declaration of fitness), cost approx. €15–30",
 	"Proof of Cyprus residence (utility bill, bank statement, or municipality registration)",
 	"Completed application form (available at District Transport Department)",
 	"Payment of applicable fee",
@@ -136,7 +140,7 @@ const EU_CITIZEN_DOCS = ["MEU1 certificate (EU citizens)"];
 const NON_EU_DOCS = ["ARC card (Alien Registration Certificate)"];
 
 const TRANSLATION_NOTE =
-	"Certified translation of licence (required if not issued in Latin alphabet or Greek — EU documents are exempt)";
+	"Certified translation of licence (required if not issued in Latin alphabet or Greek, EU documents are exempt)";
 
 function getDocuments(
 	group: "eu_eea" | "uk" | "bilateral" | "other",
@@ -172,8 +176,8 @@ function getSteps(group: "eu_eea" | "uk" | "bilateral" | "other"): string[] {
 			"You may drive on your valid foreign licence for up to 6 months from establishing Cyprus residency.",
 			"Enrol in a Cyprus-approved driving school (recommended: €40–60/lesson, typically 5–15 lessons needed).",
 			"Apply for a learner's permit at the District Transport Department.",
-			"Book and pass the theory test (available in Greek, English, Russian, Turkish) — fee €17.",
-			"Book and pass the practical driving test — fee €34.",
+			"Book and pass the theory test (available in Greek, English, Russian, Turkish), fee €17.",
+			"Book and pass the practical driving test, fee €34.",
 			"Upon passing, collect your Cyprus driving licence from the District Transport Department.",
 		];
 	}
@@ -191,41 +195,28 @@ function getSteps(group: "eu_eea" | "uk" | "bilateral" | "other"): string[] {
 
 function CheckItem({ text }: { text: string }) {
 	const [checked, setChecked] = useState(false);
+	const id = useId();
 	return (
-		<li
-			className="flex items-start gap-3 cursor-pointer group"
-			onClick={() => setChecked((v) => !v)}
-		>
-			<span
-				className={`mt-0.5 flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
-					checked
-						? "bg-primary border-primary"
-						: "border-line group-hover:border-primary"
-				}`}
+		<li>
+			<label
+				htmlFor={id}
+				className="flex min-h-11 cursor-pointer items-start gap-3 py-1"
 			>
-				{checked && (
-					<svg
-						className="w-3 h-3 text-white"
-						fill="none"
-						viewBox="0 0 12 12"
-						stroke="currentColor"
-						strokeWidth={2.5}
-					>
-						<path
-							strokeLinecap="round"
-							strokeLinejoin="round"
-							d="M2 6l3 3 5-5"
-						/>
-					</svg>
-				)}
-			</span>
-			<span
-				className={`text-sm leading-relaxed transition-colors ${
-					checked ? "line-through text-muted" : "text-slate-700"
-				}`}
-			>
-				{text}
-			</span>
+				<input
+					id={id}
+					type="checkbox"
+					checked={checked}
+					onChange={() => setChecked((v) => !v)}
+					className="mt-1 h-5 w-5 flex-shrink-0 accent-primary"
+				/>
+				<span
+					className={`text-sm leading-relaxed transition-colors ${
+						checked ? "text-muted line-through" : "text-ink"
+					}`}
+				>
+					{text}
+				</span>
+			</label>
 		</li>
 	);
 }
@@ -233,12 +224,10 @@ function CheckItem({ text }: { text: string }) {
 function StepItem({ n, text }: { n: number; text: string }) {
 	return (
 		<li className="flex items-start gap-3">
-			<span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold">
+			<span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold">
 				{n}
 			</span>
-			<span className="text-sm text-slate-700 leading-relaxed pt-0.5">
-				{text}
-			</span>
+			<span className="text-sm text-ink leading-relaxed pt-0.5">{text}</span>
 		</li>
 	);
 }
@@ -263,330 +252,209 @@ export default function DriversLicenceExchangeClient() {
 		(category === "motorcycle" || category === "both" || category === "other");
 
 	return (
-		<main
-			id="main"
-			data-pagefind-body
-			data-pagefind-filter="type[data-type]"
-			data-type="tool"
-			className="max-w-4xl mx-auto px-6 py-10 md:py-16"
-		>
-			{/* breadcrumb */}
-			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-ink">
-					Home
-				</Link>{" "}
-				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-ink">
-					Tools
-				</Link>{" "}
-				&rsaquo;{" "}
-				<span className="text-ink">Driver&rsquo;s Licence Exchange</span>
-			</nav>
-
-			{/* header */}
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
-					Bureaucracy
+		<>
+			<ToolPanel title="Step 1: Where was your licence issued?">
+				<div>
+					<label
+						htmlFor="licence-country"
+						className="mb-2 block text-sm font-semibold text-ink"
+					>
+						Country of issue
+					</label>
+					<select
+						id="licence-country"
+						value={countryValue}
+						onChange={(e) => setCountryValue(e.target.value)}
+						className="min-h-11 w-full rounded-field border border-line bg-white px-3 py-2.5 text-base text-ink focus:outline-none focus:ring-2 focus:ring-focus"
+					>
+						<option value="">Select your country</option>
+						<optgroup label="EU / EEA countries (direct exchange, no test)">
+							{EU_EEA_COUNTRIES.map((c) => (
+								<option key={c.value} value={c.value}>
+									{c.label}
+								</option>
+							))}
+						</optgroup>
+						<optgroup label="United Kingdom (direct exchange, no test)">
+							{UK_COUNTRIES.map((c) => (
+								<option key={c.value} value={c.value}>
+									{c.label}
+								</option>
+							))}
+						</optgroup>
+						<optgroup label="Bilateral agreement countries (direct exchange, no test)">
+							{BILATERAL_COUNTRIES.map((c) => (
+								<option key={c.value} value={c.value}>
+									{c.label}
+								</option>
+							))}
+						</optgroup>
+						<optgroup label="All other countries (tests required)">
+							<option value="OTHER">Other country (not listed above)</option>
+						</optgroup>
+					</select>
+				</div>
+				<p className="text-sm leading-relaxed text-muted">
+					If your country isn&rsquo;t listed, choose &ldquo;Other country&rdquo;
+					at the bottom. Countries in the &ldquo;bilateral agreement&rdquo;
+					group have a specific agreement with Cyprus allowing direct licence
+					exchange without retesting.
 				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					Driver&rsquo;s Licence Exchange
-				</h1>
-				<p className="mt-3 text-slate-600 text-sm leading-relaxed max-w-2xl">
-					Find out whether you can directly exchange your foreign driving
-					licence in Cyprus or need to take tests. Get a personalised checklist
-					and cost estimate.
-				</p>
-			</header>
+			</ToolPanel>
 
-			{/* step 1 — country selector */}
-			<section className="p-5 bg-sky border border-line rounded-2xl mb-5">
-				<h2 className="text-sm font-bold text-ink mb-1">
-					Step 1 — Where was your licence issued?
-				</h2>
-				<p className="text-xs text-slate-500 mb-4">
-					Select your country. If your country isn&rsquo;t listed, choose
-					&ldquo;Other country&rdquo; at the bottom.
-				</p>
-
-				<select
-					value={countryValue}
-					onChange={(e) => setCountryValue(e.target.value)}
-					className="w-full rounded-xl border border-line bg-white px-3 py-2.5 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-focus"
-				>
-					<option value="">— Select your country —</option>
-					<optgroup label="EU / EEA countries (direct exchange, no test)">
-						{EU_EEA_COUNTRIES.map((c) => (
-							<option key={c.value} value={c.value}>
-								{c.label}
-							</option>
-						))}
-					</optgroup>
-					<optgroup label="United Kingdom (direct exchange, no test)">
-						{UK_COUNTRIES.map((c) => (
-							<option key={c.value} value={c.value}>
-								{c.label}
-							</option>
-						))}
-					</optgroup>
-					<optgroup label="Bilateral agreement countries (direct exchange, no test)">
-						{BILATERAL_COUNTRIES.map((c) => (
-							<option key={c.value} value={c.value}>
-								{c.label}
-							</option>
-						))}
-					</optgroup>
-					<optgroup label="All other countries (tests required)">
-						<option value="OTHER">Other country (not listed above)</option>
-					</optgroup>
-				</select>
-
-				<p className="mt-3 text-xs text-muted leading-relaxed">
-					Countries in the &ldquo;bilateral agreement&rdquo; group have a
-					specific agreement with Cyprus allowing direct licence exchange
-					without retesting.
-				</p>
-			</section>
-
-			{/* step 2 — category */}
 			{countryValue && (
-				<section className="p-5 bg-sky border border-line rounded-2xl mb-5">
-					<h2 className="text-sm font-bold text-ink mb-4">
-						Step 2 — What licence category do you hold?
-					</h2>
-					<div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-						{(
-							[
-								{ value: "car", label: "Car (B)", sub: "Standard car" },
-								{
-									value: "motorcycle",
-									label: "Motorcycle (A)",
-									sub: "Motorbike",
-								},
-								{ value: "both", label: "Both B + A", sub: "Car & bike" },
-								{ value: "other", label: "Other", sub: "C, D, etc." },
-							] as { value: LicenceCategory; label: string; sub: string }[]
-						).map((opt) => (
-							<button
-								key={opt.value}
-								type="button"
-								onClick={() => setCategory(opt.value)}
-								className={`flex flex-col items-center justify-center p-3 rounded-xl border-2 text-sm font-semibold transition-colors ${
-									category === opt.value
-										? "border-primary bg-sky text-ink"
-										: "border-line bg-white text-slate-700 hover:border-primary"
-								}`}
-							>
-								{opt.label}
-								<span className="text-xs font-normal text-slate-500 mt-0.5">
-									{opt.sub}
-								</span>
-							</button>
-						))}
-					</div>
-				</section>
+				<ToolPanel title="Step 2: What licence category do you hold?">
+					<ChipGroup
+						label="Licence category"
+						hideLabel
+						value={category}
+						onChange={setCategory}
+						options={[
+							{ value: "car", label: "Car (B)" },
+							{ value: "motorcycle", label: "Motorcycle (A)" },
+							{ value: "both", label: "Both B + A" },
+							{ value: "other", label: "Other (C, D, etc.)" },
+						]}
+					/>
+				</ToolPanel>
 			)}
 
-			{/* step 3 — result */}
 			{group && (
-				<section className="mb-6">
-					<h2 className="text-sm font-bold text-ink mb-4">
-						Step 3 — Your personalised result
-					</h2>
-
-					{/* status badge */}
-					<div
-						className={`flex items-center gap-4 p-5 rounded-2xl border-2 mb-5 ${
-							exchangeType === "direct"
-								? "bg-green-50 border-green-300"
-								: "bg-amber-50 border-amber-300"
-						}`}
-					>
-						<span
-							className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-xl ${
-								exchangeType === "direct"
-									? "bg-green-100 text-green-800"
-									: "bg-amber-100 text-amber-900"
-							}`}
-						>
-							{exchangeType === "direct" ? "✓" : "!"}
-						</span>
-						<div>
-							<p
-								className={`text-lg font-bold ${
-									exchangeType === "direct"
-										? "text-green-800"
-										: "text-amber-900"
-								}`}
-							>
-								{exchangeType === "direct"
-									? "Direct Exchange — No Test Required"
-									: "Tests Required"}
-							</p>
-							<p className="text-sm text-slate-600 mt-0.5">
-								{exchangeType === "direct"
-									? "You can exchange your licence directly at the District Transport Department."
-									: "Your country does not have a bilateral agreement with Cyprus. You must pass theory and practical tests."}
-							</p>
+				<Section id="result" title="Step 3: Your personalised result">
+					<div className="space-y-5">
+						<div className="flex items-start gap-4 rounded-card border border-line bg-white p-5">
+							<div>
+								<Badge tone={exchangeType === "direct" ? "success" : "warning"}>
+									{exchangeType === "direct"
+										? "Direct exchange"
+										: "Tests required"}
+								</Badge>
+								<p className="mt-2 text-lg font-bold text-ink">
+									{exchangeType === "direct"
+										? "Direct exchange: no test required"
+										: "Tests required"}
+								</p>
+								<p className="mt-0.5 text-sm text-muted">
+									{exchangeType === "direct"
+										? "You can exchange your licence directly at the District Transport Department."
+										: "Your country does not have a bilateral agreement with Cyprus. You must pass theory and practical tests."}
+								</p>
+							</div>
 						</div>
-					</div>
 
-					{/* UK category note */}
-					{isUkBilateralCategoryNote && (
-						<div className="mb-5 p-4 bg-sky border border-line rounded-2xl text-sm text-ink">
-							<p className="font-semibold text-ink mb-1">
-								Note for UK licence holders
-							</p>
-							<p>
+						{isUkBilateralCategoryNote && (
+							<Callout tone="info" title="Note for UK licence holders">
 								The UK bilateral agreement covers car licences (Category B). For
 								motorcycle (A), commercial vehicle (C), or bus (D) categories,
 								please confirm current requirements directly with the Cyprus
 								Road Transport Department.
-							</p>
-						</div>
-					)}
+							</Callout>
+						)}
 
-					{/* timeline + cost */}
-					<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-						<div className="p-4 rounded-2xl border border-line bg-white">
-							<p className="text-xs text-slate-500 uppercase tracking-wide mb-1">
-								Estimated timeline
-							</p>
-							<p className="text-xl font-bold text-ink">
-								{exchangeType === "direct" ? "4–6 weeks" : "3–6 months"}
-							</p>
-							<p className="text-xs text-muted mt-1">
-								{exchangeType === "direct"
-									? "From appointment to licence receipt"
-									: "Including test waiting times"}
-							</p>
-						</div>
+						<div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+							<div className="rounded-card border border-line bg-white p-4">
+								<p className="mb-1 text-sm text-muted">Estimated timeline</p>
+								<p className="text-xl font-bold text-ink">
+									{exchangeType === "direct" ? "4 to 6 weeks" : "3 to 6 months"}
+								</p>
+								<p className="mt-1 text-sm text-muted">
+									{exchangeType === "direct"
+										? "From appointment to licence receipt"
+										: "Including test waiting times"}
+								</p>
+							</div>
 
-						<div className="p-4 rounded-2xl border border-line bg-white">
-							<p className="text-xs text-slate-500 uppercase tracking-wide mb-1">
-								Estimated cost
-							</p>
-							{exchangeType === "direct" && cost ? (
-								<>
-									<p className="text-xl font-bold text-ink">{cost.total}</p>
-									<ul className="mt-2 space-y-0.5">
-										{cost.breakdown.map((item) => (
-											<li
-												key={item.label}
-												className="flex justify-between text-xs text-slate-500"
-											>
-												<span>{item.label}</span>
-												<span className="font-semibold">{item.amount}</span>
+							<div className="rounded-card border border-line bg-white p-4">
+								<p className="mb-1 text-sm text-muted">Estimated cost</p>
+								{exchangeType === "direct" && cost ? (
+									<>
+										<p className="text-xl font-bold text-ink">{cost.total}</p>
+										<ul className="mt-2 space-y-0.5">
+											{cost.breakdown.map((item) => (
+												<li
+													key={item.label}
+													className="flex justify-between gap-3 text-sm text-muted"
+												>
+													<span>{item.label}</span>
+													<span className="font-semibold">{item.amount}</span>
+												</li>
+											))}
+										</ul>
+									</>
+								) : (
+									<>
+										<p className="text-xl font-bold text-ink">€350–750+</p>
+										<ul className="mt-2 space-y-0.5 text-sm text-muted">
+											<li className="flex justify-between gap-3">
+												<span>Theory test</span>
+												<span className="font-semibold">€17</span>
 											</li>
-										))}
-									</ul>
-								</>
-							) : (
-								<>
-									<p className="text-xl font-bold text-ink">€350–750+</p>
-									<ul className="mt-2 space-y-0.5 text-xs text-slate-500">
-										<li className="flex justify-between">
-											<span>Theory test</span>
-											<span className="font-semibold">€17</span>
-										</li>
-										<li className="flex justify-between">
-											<span>Practical test</span>
-											<span className="font-semibold">€34</span>
-										</li>
-										<li className="flex justify-between">
-											<span>Driving lessons (5–15 lessons)</span>
-											<span className="font-semibold">€300–700</span>
-										</li>
-										<li className="flex justify-between">
-											<span>Medical certificate</span>
-											<span className="font-semibold">€15–30</span>
-										</li>
-									</ul>
-								</>
-							)}
+											<li className="flex justify-between gap-3">
+												<span>Practical test</span>
+												<span className="font-semibold">€34</span>
+											</li>
+											<li className="flex justify-between gap-3">
+												<span>Driving lessons (5–15 lessons)</span>
+												<span className="font-semibold">€300–700</span>
+											</li>
+											<li className="flex justify-between gap-3">
+												<span>Medical certificate</span>
+												<span className="font-semibold">€15–30</span>
+											</li>
+										</ul>
+									</>
+								)}
+							</div>
 						</div>
-					</div>
 
-					{/* step-by-step process */}
-					<div className="p-5 bg-white border border-line rounded-2xl mb-5">
-						<h3 className="text-sm font-bold text-ink mb-4">
-							Step-by-step process
-						</h3>
-						<ol className="space-y-3">
-							{steps.map((step, i) => (
-								<StepItem key={i} n={i + 1} text={step} />
-							))}
-						</ol>
-					</div>
+						<div className="rounded-card border border-line bg-white p-5">
+							<h3 className="mb-4 text-lg font-bold text-ink">
+								Step-by-step process
+							</h3>
+							<ol className="space-y-3">
+								{steps.map((step, i) => (
+									<StepItem key={step} n={i + 1} text={step} />
+								))}
+							</ol>
+						</div>
 
-					{/* required documents checklist */}
-					<div className="p-5 bg-white border border-line rounded-2xl mb-5">
-						<h3 className="text-sm font-bold text-ink mb-1">
-							Required documents checklist
-						</h3>
-						<p className="text-xs text-slate-500 mb-4">
-							Click each item to mark it as gathered.
-						</p>
-						<ul className="space-y-3">
-							{documents.map((doc) => (
-								<CheckItem key={doc} text={doc} />
-							))}
-						</ul>
-					</div>
+						<div className="rounded-card border border-line bg-white p-5">
+							<h3 className="mb-1 text-lg font-bold text-ink">
+								Required documents checklist
+							</h3>
+							<p className="mb-3 text-sm text-muted">
+								Tick each item once you have gathered it.
+							</p>
+							<ul>
+								{documents.map((doc) => (
+									<CheckItem key={doc} text={doc} />
+								))}
+							</ul>
+						</div>
 
-					{/* office locations */}
-					<div className="p-4 bg-sky border border-line rounded-2xl mb-5">
-						<p className="text-xs font-bold text-slate-700 uppercase tracking-wide mb-2">
-							District Transport Department offices
-						</p>
-						<ul className="space-y-1 text-sm text-slate-600">
-							<li className="flex items-center gap-2">
-								<span className="text-primary">&#8227;</span>
-								Limassol District Transport Department
-							</li>
-							<li className="flex items-center gap-2">
-								<span className="text-primary">&#8227;</span>
-								Larnaca District Transport Department
-							</li>
-							<li className="flex items-center gap-2">
-								<span className="text-primary">&#8227;</span>
-								Paphos District Transport Department
-							</li>
-						</ul>
-						<p className="mt-2 text-xs text-muted">
-							All offices open weekday mornings. Check MCIT website for current
-							hours and appointment availability.
-						</p>
-					</div>
+						<div className="rounded-card border border-line bg-sky p-4">
+							<h3 className="mb-2 text-sm font-bold text-ink">
+								District Transport Department offices
+							</h3>
+							<ul className="list-inside list-disc space-y-1 text-sm text-ink marker:text-primary">
+								<li>Limassol District Transport Department</li>
+								<li>Larnaca District Transport Department</li>
+								<li>Paphos District Transport Department</li>
+							</ul>
+							<p className="mt-2 text-sm text-muted">
+								All offices open weekday mornings. Check MCIT website for
+								current hours and appointment availability.
+							</p>
+						</div>
 
-					{/* official confirmation note */}
-					<div className="p-4 bg-sky border border-line rounded-2xl text-sm text-ink">
-						<p className="font-semibold text-ink mb-1">
-							Always confirm before your appointment
-						</p>
-						<p>
+						<Callout tone="info" title="Always confirm before your appointment">
 							Requirements can change. Always verify current requirements with
 							the Cyprus Road Transport Department (MCIT) before attending your
 							appointment.
-						</p>
+						</Callout>
 					</div>
-				</section>
+				</Section>
 			)}
-
-			{/* disclaimer */}
-			<aside className="mt-10 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
-				<p className="font-semibold text-ink mb-1">Disclaimer</p>
-				<p>
-					General information only — not legal, tax, or financial advice.
-					Regulations and fees are subject to change. Always confirm current
-					requirements with official Cyprus authorities before taking action.
-				</p>
-			</aside>
-
-			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools/" className="underline hover:text-ink">
-					&larr; Back to Tools
-				</Link>
-			</p>
-		</main>
+		</>
 	);
 }

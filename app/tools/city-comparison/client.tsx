@@ -1,7 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
+import { Callout } from "@/components/ui/Callout";
+import { Chip } from "@/components/ui/Chip";
+import { DataTable } from "@/components/ui/DataTable";
 
 type City = "Limassol" | "Paphos" | "Larnaca" | "Ayia Napa";
 
@@ -69,12 +71,7 @@ const DATA: Record<City, CityData> = {
 	},
 };
 
-const ALL_CITIES: City[] = [
-	"Limassol",
-	"Paphos",
-	"Larnaca",
-	"Ayia Napa",
-];
+const ALL_CITIES: City[] = ["Limassol", "Paphos", "Larnaca", "Ayia Napa"];
 
 type MetricKey = keyof CityData;
 
@@ -117,12 +114,12 @@ const METRICS: MetricDef[] = [
 	},
 	{
 		key: "nightlifeRating",
-		label: "Nightlife (1–5)",
+		label: "Nightlife (1 to 5)",
 		format: (v) => "★".repeat(v) + "☆".repeat(5 - v),
 	},
 	{
 		key: "expatsRating",
-		label: "Expat Community (1–5)",
+		label: "Expat Community (1 to 5)",
 		format: (v) => "★".repeat(v) + "☆".repeat(5 - v),
 	},
 	{
@@ -135,29 +132,17 @@ const METRICS: MetricDef[] = [
 	{ key: "summerTemp", label: "Summer Avg Temp", format: (v) => `${v}°C` },
 ];
 
-function getCellColor(cities: City[], metric: MetricDef, city: City): string {
+/** True when this city has the best value in the row (not shared by every city). */
+function isBestInRow(cities: City[], metric: MetricDef, city: City): boolean {
 	const values = cities.map((c) => DATA[c][metric.key]);
 	const val = DATA[city][metric.key];
 	const min = Math.min(...values);
 	const max = Math.max(...values);
-
-	if (min === max) return "";
-
-	let isBest: boolean;
-	let isWorst: boolean;
-
-	if (metric.lowerIsBetter) {
-		isBest = val === min;
-		isWorst = val === max;
-	} else {
-		isBest = val === max;
-		isWorst = val === min;
-	}
-
-	if (isBest) return "bg-green-50 text-green-800 font-semibold";
-	if (isWorst) return "bg-red-50 text-red-800";
-	return "bg-amber-50 text-amber-900";
+	if (min === max) return false;
+	return metric.lowerIsBetter ? val === min : val === max;
 }
+
+const BEST_CLASS = "rounded bg-sky-strong px-2 py-0.5 font-semibold text-ink";
 
 export default function CityComparisonClient() {
 	const [selected, setSelected] = useState<Set<City>>(
@@ -181,141 +166,61 @@ export default function CityComparisonClient() {
 	const selectedCities = ALL_CITIES.filter((c) => selected.has(c));
 
 	return (
-		<main id="main" data-pagefind-body data-pagefind-filter="type[data-type]" data-type="tool" className="max-w-3xl mx-auto px-6 py-10">
-			<nav className="text-xs text-slate-500 mb-6 flex gap-3">
-				<Link href="/" className="hover:text-ink">
-					← Home
-				</Link>
-				<span className="text-muted">|</span>
-				<Link href="/tools" className="hover:text-ink">
-					← All Tools
-				</Link>
-			</nav>
-
-			<header className="mb-8">
-				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
-					Tools
-				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
-					City Comparison
-				</h1>
-				<p className="mt-2 text-slate-600 text-sm leading-relaxed">
-					Compare key metrics across Cyprus cities side by side. Select 2–4
-					cities to compare. Color coding: green = best, amber = middle, red =
-					relative worst per row.
-				</p>
-			</header>
-
-			<section className="mb-6">
-				<p className="text-xs font-semibold text-slate-600 uppercase tracking-wide mb-3">
-					Select cities (2–4)
-				</p>
+		<>
+			<fieldset className="min-w-0">
+				<legend className="mb-2 text-sm font-semibold text-ink">
+					Select cities (2 to 4)
+				</legend>
 				<div className="flex flex-wrap gap-2">
-					{ALL_CITIES.map((city) => {
-						const isSelected = selected.has(city);
-						return (
-							<button
-								key={city}
-								onClick={() => toggleCity(city)}
-								className={`px-4 py-2 rounded-full text-sm font-semibold border transition-colors ${
-									isSelected
-										? "border-primary bg-primary text-white"
-										: "border-line text-slate-600 bg-white hover:border-slate-400"
-								}`}
-							>
-								{city}
-							</button>
-						);
-					})}
+					{ALL_CITIES.map((city) => (
+						<Chip
+							key={city}
+							selected={selected.has(city)}
+							onClick={() => toggleCity(city)}
+						>
+							{city}
+						</Chip>
+					))}
 				</div>
-			</section>
+			</fieldset>
 
-			<section className="overflow-x-auto rounded-2xl border border-line">
-				<table className="w-full text-xs">
-					<thead>
-						<tr className="bg-slate-50">
-							<th className="px-3 py-3 text-left text-slate-500 font-semibold uppercase tracking-wide w-48">
-								Metric
-							</th>
-							{selectedCities.map((city) => (
-								<th
-									key={city}
-									className="px-3 py-3 text-center font-bold text-ink"
-								>
-									{city}
-								</th>
-							))}
-						</tr>
-					</thead>
-					<tbody>
-						{METRICS.map((metric) => (
-							<tr key={metric.key} className="border-t border-slate-100">
-								<td className="px-3 py-2 text-slate-600 font-medium">
-									{metric.label}
-								</td>
-								{selectedCities.map((city) => (
-									<td
-										key={city}
-										className={`px-3 py-2 text-center ${getCellColor(selectedCities, metric, city)}`}
-									>
-										{metric.format(DATA[city][metric.key])}
-									</td>
-								))}
-							</tr>
-						))}
-					</tbody>
-				</table>
-			</section>
-
-			<aside className="mt-6 p-4 bg-sky border border-line rounded-2xl text-xs text-ink leading-relaxed">
-				<p className="font-semibold text-ink mb-1">About this data</p>
-				<p>
-					Values are approximate averages based on publicly available data and
-					local market research as of 2025–2026. Rental prices vary by exact
-					location, building age, and furnishing. Ratings are relative to other
-					Cyprus cities, not European or global benchmarks. Always verify with
-					local property agents and recent listings before making relocation
-					decisions.
-				</p>
-			</aside>
-
-			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools" className="underline hover:text-ink">
-					← All Tools
-				</Link>
+			<DataTable
+				caption="City comparison"
+				hideCaption
+				zebra
+				columns={[
+					{ header: "Metric" },
+					...selectedCities.map((city) => ({
+						header: city,
+						align: "right" as const,
+					})),
+				]}
+				rows={METRICS.map((metric) => [
+					metric.label,
+					...selectedCities.map((city) => (
+						<span
+							key={city}
+							className={
+								isBestInRow(selectedCities, metric, city) ? BEST_CLASS : ""
+							}
+						>
+							{metric.format(DATA[city][metric.key])}
+						</span>
+					)),
+				])}
+			/>
+			<p className="text-sm text-muted">
+				Highlighted cells show the best value in each row.
 			</p>
 
-			<aside className="mt-10 p-5 rounded-2xl bg-sky border border-line">
-				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
-					Next steps
-				</p>
-				<div className="flex flex-wrap gap-3">
-					<Link
-						href="/listings/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Browse new developments
-					</Link>
-					<Link
-						href="/sections/property-lawyers/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Find a property lawyer
-					</Link>
-					<Link
-						href="/guides/family-neighborhoods-guide/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Read: Family Neighbourhoods Guide
-					</Link>
-					<Link
-						href="/guides/cost-of-living/"
-						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
-					>
-						Read: Cost of Living by City
-					</Link>
-				</div>
-			</aside>
-		</main>
+			<Callout tone="info" title="About this data">
+				Values are approximate averages based on publicly available data and
+				local market research as of 2025 to 2026. Rental prices vary by exact
+				location, building age, and furnishing. Ratings are relative to other
+				Cyprus cities, not European or global benchmarks. Always verify with
+				local property agents and recent listings before making relocation
+				decisions.
+			</Callout>
+		</>
 	);
 }

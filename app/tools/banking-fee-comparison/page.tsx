@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import BankingFeeComparisonClient from "./client";
 
@@ -19,28 +20,31 @@ export const metadata: Metadata = {
 	},
 };
 
-export default function BankingFeeComparisonPage() {
-	const breadcrumbJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
-			{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-			{
-				"@type": "ListItem",
-				position: 2,
-				name: "Tools",
-				item: `${SITE_URL}/tools/`,
-			},
-			{ "@type": "ListItem", position: 3, name: title },
-		],
-	};
+export default function BankingFeeComparisonClientPage() {
 	return (
-		<>
-			<script
-				type="application/ld+json"
-				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-			/>
+		<ToolTemplate
+			pagefindType="tool"
+			width="wide"
+			header={{
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Tools", href: "/tools/" },
+					{ label: "Banking Fee Comparison" },
+				],
+				eyebrow: "Interactive tool",
+				title: "Cyprus Banking Fee Comparison",
+				intro:
+					"Compare fees and features across the main banks available to Cyprus residents.",
+			}}
+			nextSteps={[
+				{
+					href: "/guides/banking-in-cyprus/",
+					label: "Read: Banking in Cyprus Guide",
+				},
+				{ href: "/sections/accountants/", label: "Find an accountant" },
+				{ href: "/tools/", label: "All tools" },
+			]}
+		>
 			<script
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
@@ -49,6 +53,6 @@ export default function BankingFeeComparisonPage() {
 				}}
 			/>
 			<BankingFeeComparisonClient />
-		</>
+		</ToolTemplate>
 	);
 }
