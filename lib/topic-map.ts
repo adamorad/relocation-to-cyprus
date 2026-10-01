@@ -264,7 +264,6 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 	},
 
 	// Family & schools
-	"international-vs-public-school": { topic: "family-and-schools" },
 	"schools-in-cyprus": { topic: "family-and-schools" },
 	"international-school-fees-cyprus": { topic: "family-and-schools" },
 	"universities-in-cyprus": { topic: "family-and-schools" },

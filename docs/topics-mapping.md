@@ -15,10 +15,10 @@ Decisions were made on the owner's behalf in Phase 2A and are open for review. R
 | Home & bills | `/home-and-bills/` | 8 | 3 | 3 | 14 | 19 |
 | Money & paperwork | `/money-and-paperwork/` | 22 | 4 | 13 | 39 | 59 |
 | Food & shopping | `/food-and-shopping/` | 5 | 5 | 0 | 10 | 11 |
-| Family & schools | `/family-and-schools/` | 9 | 3 | 1 | 13 | 14 |
+| Family & schools | `/family-and-schools/` | 8 | 3 | 1 | 12 | 13 |
 | Community & leisure | `/community-and-leisure/` | 5 | 9 | 2 | 16 | 21 |
 | Moving to Cyprus | `/moving-to-cyprus/` | 21 | 2 | 9 | 32 | 60 |
-| **All** | | 85 | 31 | 31 | 147 | |
+| **All** | | 84 | 31 | 31 | 146 | |
 
 Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). They keep a topic for their own breadcrumb and "More on" block but are not shown on hubs, indexes, other pages or the sitemap.
 
@@ -80,7 +80,6 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Best Family-Friendly Neighborhoods in Cyprus: District by District](/guides/family-neighborhoods-guide/) | Family & schools | Home & bills, Moving to Cyprus |  | Old category Lifestyle; written for families choosing an area. |
 | [Getting Married in Cyprus (2026 Guide)](/guides/getting-married-in-cyprus/) | Family & schools | Money & paperwork |  | Family life event; the steps are civil paperwork. |
 | [International School Fees in Cyprus (2026)](/guides/international-school-fees-cyprus/) | Family & schools |  |  |  |
-| [International vs Public Schools in Cyprus](/guides/international-vs-public-school/) | Family & schools |  |  |  |
 | [Maternity and Paternity Rights in Cyprus: What Employed Parents Are Entitled To](/guides/maternity-paternity-rights/) | Family & schools | Money & paperwork |  |  |
 | [International Schools in Cyprus: Full Guide 2026](/guides/schools-in-cyprus/) | Family & schools |  |  |  |
 | [Special Educational Needs in Cyprus: SEN Guide](/guides/sen-guide/) | Family & schools |  |  |  |

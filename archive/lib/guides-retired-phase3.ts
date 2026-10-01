@@ -84,4 +84,36 @@ export const RETIRED_GUIDES = [
 			},
 		],
 	},
+	// international-vs-public-school -> /guides/schools-in-cyprus/
+	{
+		slug: "international-vs-public-school",
+		datePublished: "2026-05-29",
+		dateModified: "2026-07-05",
+		category: "family",
+		title: "International vs Public Schools in Cyprus",
+		description:
+			"A frank look at what public and international schools in Cyprus actually deliver — language, curriculum, costs, university outcomes, and who each track works for.",
+		sections: [
+			{
+				heading: "Public school basics — Greek-medium with English from age 6",
+				body: "Cyprus's public school system is Greek-medium from day one. All core subjects — maths, science, history, geography — are taught in Greek throughout primary and secondary school. English is taught as a compulsory foreign language starting at age 6 (Year 1) with increasing hours through primary school, and there are subject teachers for English at secondary. A second foreign language (typically French or German) is added from Year 4. Public school is entirely free, including books, and the calendar runs September to June. For expat children who arrive with zero Greek, immersion is the explicit policy — there is no formal English-medium stream in the public system, though some teachers will support settling-in pupils in English. Children who arrive before age 8 typically reach functional Greek within one school year; children arriving at secondary school age face a much steeper integration curve. The academic standard in public school ranges widely by school — urban schools in Limassol are generally stronger than rural ones.",
+			},
+			{
+				heading: "International school curricula and fees",
+				body: "International schools in Cyprus predominantly follow three curricula: the British IGCSE and A-Level pathway (the most widely available), the International Baccalaureate (IB) Diploma Programme, and — at a smaller number of schools — the American curriculum with US High School Diploma. Most international schools are privately owned and the quality of teaching, facilities, and pastoral care varies considerably even within the same curriculum type. Annual fees range from approximately €4,000 to €8,000 per year at the smaller or newer schools in Paphos and Larnaca, to €10,000–€16,000 per year at the established schools in Limassol (Grammar School Limassol, Heritage School).",
+			},
+			{
+				heading: "Social integration and language outcomes",
+				body: "The choice between public and international school is partly a bet on what your child's life in Cyprus will look like in five years. International school children typically make English-speaking expat friends easily, have strong relationships with other internationally mobile families, and integrate into the expat social bubble. Greek-language outcomes from international schools are generally weak — most have Greek as a second language, but a child spending 8 hours a day in an English-medium environment rarely achieves functional Greek. Public school children develop Cypriot Greek fluency and build social networks that extend into the local community — which matters considerably if your family is planning to stay long-term. The pattern among long-term Cyprus residents is: families planning to stay 10+ years and arriving with children under 8 often choose public school; families on a 3–5 year horizon, families who value curriculum continuity with the UK or US, and families arriving with older children almost always choose international.",
+			},
+			{
+				heading: "University recognition and academic pathways",
+				body: "British A-Level and IB Diplomas from Cyprus international schools are recognised directly by UK, US, and European universities without any additional equivalency steps. The British curriculum pathway in particular has a strong track record for UK Russell Group admissions from Cyprus schools. Public school students in Cyprus sit the Pancyprian Examinations (Pankyprior Examinations) at the end of secondary school, which qualify them for admission to Cypriot public universities and, via NARIC equivalency, for applications to EU universities. UK and US university applications from public school are possible but require individual equivalency assessments and are less frequently pursued. IB schools in Cyprus — including Pascal English School and a small number of others — produce graduates who have genuinely unrestricted university access globally, which is why IB has grown in popularity among internationally mobile families even at its higher price point.",
+			},
+			{
+				heading: "Who chooses public and who needs international",
+				body: "The families who successfully choose public school tend to share a profile: they are planning a permanent or very long-term stay, they have children under 8, they have a parent who speaks some Greek (helpful for parent-teacher communication), and they view Cypriot social integration as a priority. Some families from EU countries with strong language learning cultures are also more comfortable committing to a Greek-medium environment than UK or US families. The families who genuinely need international school include: English-only families who cannot support a Greek-learning child at home, families on time-limited assignments (3–5 years), children with A-Level or IB as the target qualification for university applications, and children with SEN needs who require specific support (public school SEN provision is improving but inconsistent — see our SEN guide for detail). Cost is real: at €10,000–€16,000 per child per year, two children at an established international school add €1,500–€2,700 per month to a family budget before any other costs.",
+			},
+		],
+	},
 ];

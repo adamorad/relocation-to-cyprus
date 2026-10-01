@@ -74,7 +74,7 @@ const PHASES: Phase[] = [
 				id: "p1_schools",
 				label: "Research schools if relocating with children",
 				link: {
-					href: "/guides/international-vs-public-school/",
+					href: "/guides/schools-in-cyprus/",
 					text: "Schools Guide",
 				},
 			},

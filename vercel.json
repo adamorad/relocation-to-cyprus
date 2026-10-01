@@ -95,6 +95,16 @@
       "source": "/guides/non-dom-status-guide",
       "destination": "/guides/taxes-for-expats/",
       "permanent": true
+    },
+    {
+      "source": "/guides/international-vs-public-school/",
+      "destination": "/guides/schools-in-cyprus/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/international-vs-public-school",
+      "destination": "/guides/schools-in-cyprus/",
+      "permanent": true
     }
   ]
 }
