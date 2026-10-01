@@ -82,7 +82,7 @@ function changeColour(val: number, base: number): string {
 	if (base === 0) return "";
 	const p = ((val - base) / base) * 100;
 	if (p < 20) return "bg-green-100 text-green-800";
-	if (p <= 60) return "bg-amber-100 text-amber-800";
+	if (p <= 60) return "bg-amber-100 text-amber-900";
 	return "bg-red-100 text-red-800";
 }
 
@@ -139,168 +139,170 @@ function LineChart({
 	const isEstimate = (i: number) => i === nPeriods - 1;
 
 	return (
-		<div className="relative w-full">
-			<svg
-				viewBox={`0 0 ${VB_W} ${VB_H}`}
-				className="w-full h-auto"
-				onMouseMove={handleMouseMove}
-				onMouseLeave={handleMouseLeave}
-				style={{ cursor: "crosshair" }}
-			>
-				{/* Y grid lines + labels */}
-				{yTicks.map((v) => (
-					<g key={v}>
-						<line
-							x1={PAD.left}
-							y1={yPos(v)}
-							x2={PAD.left + CHART_W}
-							y2={yPos(v)}
-							stroke="#e2e8f0"
-							strokeWidth={1}
-						/>
-						<text
-							x={PAD.left - 6}
-							y={yPos(v)}
-							textAnchor="end"
-							dominantBaseline="middle"
-							fontSize={10}
-							fill="#94a3b8"
-						>
-							€{v >= 1000 ? (v / 1000).toFixed(1) + "k" : v}
-						</text>
-					</g>
-				))}
-
-				{/* X axis labels */}
-				{data.periods.map((p, i) => (
-					<text
-						key={p}
-						x={xPos(i)}
-						y={PAD.top + CHART_H + 16}
-						textAnchor={
-							i === 0 ? "start" : i === nPeriods - 1 ? "end" : "middle"
-						}
-						fontSize={9}
-						fill={isEstimate(i) ? "#94a3b8" : "#64748b"}
-					>
-						{p}
-					</text>
-				))}
-
-				{/* "estimate" label */}
-				<text
-					x={xPos(nPeriods - 1)}
-					y={PAD.top + CHART_H + 30}
-					textAnchor="end"
-					fontSize={8}
-					fill="#94a3b8"
-					fontStyle="italic"
+		<div className="w-full overflow-x-auto">
+			<div className="relative w-full min-w-[800px]">
+				<svg
+					viewBox={`0 0 ${VB_W} ${VB_H}`}
+					className="w-full h-auto"
+					onMouseMove={handleMouseMove}
+					onMouseLeave={handleMouseLeave}
+					style={{ cursor: "crosshair" }}
 				>
-					estimate
-				</text>
-
-				{/* Lines per city */}
-				{CITIES.filter((c) => activeCities.has(c)).map((city) => {
-					const pts = data[city];
-					// Draw solid segment up to second-to-last, dashed last segment
-					const solidPoints = pts
-						.slice(0, -1)
-						.map((v, i) => `${xPos(i)},${yPos(v)}`)
-						.join(" ");
-					const lastSolid = `${xPos(nPeriods - 2)},${yPos(pts[nPeriods - 2])}`;
-					const lastDashed = `${xPos(nPeriods - 1)},${yPos(pts[nPeriods - 1])}`;
-
-					return (
-						<g key={city}>
-							{/* solid polyline */}
-							<polyline
-								points={solidPoints}
-								fill="none"
-								stroke={CITY_COLOURS[city]}
-								strokeWidth={2.5}
-								strokeLinejoin="round"
-							/>
-							{/* dashed last segment */}
+					{/* Y grid lines + labels */}
+					{yTicks.map((v) => (
+						<g key={v}>
 							<line
-								x1={lastSolid.split(",")[0]}
-								y1={lastSolid.split(",")[1]}
-								x2={lastDashed.split(",")[0]}
-								y2={lastDashed.split(",")[1]}
-								stroke={CITY_COLOURS[city]}
-								strokeWidth={2}
-								strokeDasharray="5,4"
-								opacity={0.7}
+								x1={PAD.left}
+								y1={yPos(v)}
+								x2={PAD.left + CHART_W}
+								y2={yPos(v)}
+								stroke="#d9e5ef"
+								strokeWidth={1}
 							/>
-							{/* dots */}
-							{pts.map((v, i) => (
-								<circle
-									key={i}
-									cx={xPos(i)}
-									cy={yPos(v)}
-									r={isEstimate(i) ? 3 : 4}
-									fill={isEstimate(i) ? "white" : CITY_COLOURS[city]}
-									stroke={CITY_COLOURS[city]}
-									strokeWidth={isEstimate(i) ? 2 : 0}
-									opacity={isEstimate(i) ? 0.7 : 1}
-								/>
-							))}
-						</g>
-					);
-				})}
-
-				{/* Hover vertical line */}
-				{tooltip && (
-					<line
-						x1={tooltip.x}
-						y1={PAD.top}
-						x2={tooltip.x}
-						y2={PAD.top + CHART_H}
-						stroke="#94a3b8"
-						strokeWidth={1}
-						strokeDasharray="3,3"
-					/>
-				)}
-			</svg>
-
-			{/* Tooltip card */}
-			{tooltip && (
-				<div
-					className="absolute top-2 pointer-events-none z-10"
-					style={{
-						left: `${(tooltip.x / VB_W) * 100}%`,
-						transform:
-							tooltip.periodIdx >= nPeriods - 2
-								? "translateX(-110%)"
-								: "translateX(8px)",
-					}}
-				>
-					<div className="bg-white border border-slate-200 rounded-xl shadow-lg px-4 py-3 text-xs min-w-[150px]">
-						<p className="font-bold text-slate-900 mb-2">
-							{data.periods[tooltip.periodIdx]}
-							{isEstimate(tooltip.periodIdx) && (
-								<span className="ml-1 text-muted font-normal">(est.)</span>
-							)}
-						</p>
-						{CITIES.filter((c) => activeCities.has(c)).map((city) => (
-							<div
-								key={city}
-								className="flex items-center justify-between gap-3 py-0.5"
+							<text
+								x={PAD.left - 6}
+								y={yPos(v)}
+								textAnchor="end"
+								dominantBaseline="middle"
+								fontSize={12}
+								fill="#506580"
 							>
-								<span className="flex items-center gap-1.5">
-									<span
-										className="inline-block w-2 h-2 rounded-full flex-shrink-0"
-										style={{ background: CITY_COLOURS[city] }}
+								€{v >= 1000 ? (v / 1000).toFixed(1) + "k" : v}
+							</text>
+						</g>
+					))}
+
+					{/* X axis labels */}
+					{data.periods.map((p, i) => (
+						<text
+							key={p}
+							x={xPos(i)}
+							y={PAD.top + CHART_H + 16}
+							textAnchor={
+								i === 0 ? "start" : i === nPeriods - 1 ? "end" : "middle"
+							}
+							fontSize={12}
+							fill={isEstimate(i) ? "#506580" : "#0b2145"}
+						>
+							{p}
+						</text>
+					))}
+
+					{/* "estimate" label */}
+					<text
+						x={xPos(nPeriods - 1)}
+						y={PAD.top + CHART_H + 30}
+						textAnchor="end"
+						fontSize={12}
+						fill="#506580"
+						fontStyle="italic"
+					>
+						estimate
+					</text>
+
+					{/* Lines per city */}
+					{CITIES.filter((c) => activeCities.has(c)).map((city) => {
+						const pts = data[city];
+						// Draw solid segment up to second-to-last, dashed last segment
+						const solidPoints = pts
+							.slice(0, -1)
+							.map((v, i) => `${xPos(i)},${yPos(v)}`)
+							.join(" ");
+						const lastSolid = `${xPos(nPeriods - 2)},${yPos(pts[nPeriods - 2])}`;
+						const lastDashed = `${xPos(nPeriods - 1)},${yPos(pts[nPeriods - 1])}`;
+
+						return (
+							<g key={city}>
+								{/* solid polyline */}
+								<polyline
+									points={solidPoints}
+									fill="none"
+									stroke={CITY_COLOURS[city]}
+									strokeWidth={2.5}
+									strokeLinejoin="round"
+								/>
+								{/* dashed last segment */}
+								<line
+									x1={lastSolid.split(",")[0]}
+									y1={lastSolid.split(",")[1]}
+									x2={lastDashed.split(",")[0]}
+									y2={lastDashed.split(",")[1]}
+									stroke={CITY_COLOURS[city]}
+									strokeWidth={2}
+									strokeDasharray="5,4"
+									opacity={0.7}
+								/>
+								{/* dots */}
+								{pts.map((v, i) => (
+									<circle
+										key={i}
+										cx={xPos(i)}
+										cy={yPos(v)}
+										r={isEstimate(i) ? 3 : 4}
+										fill={isEstimate(i) ? "white" : CITY_COLOURS[city]}
+										stroke={CITY_COLOURS[city]}
+										strokeWidth={isEstimate(i) ? 2 : 0}
+										opacity={isEstimate(i) ? 0.7 : 1}
 									/>
-									<span className="text-slate-600">{city}</span>
-								</span>
-								<span className="font-semibold text-slate-900">
-									€{data[city][tooltip.periodIdx].toLocaleString()}
-								</span>
-							</div>
-						))}
+								))}
+							</g>
+						);
+					})}
+
+					{/* Hover vertical line */}
+					{tooltip && (
+						<line
+							x1={tooltip.x}
+							y1={PAD.top}
+							x2={tooltip.x}
+							y2={PAD.top + CHART_H}
+							stroke="#506580"
+							strokeWidth={1}
+							strokeDasharray="3,3"
+						/>
+					)}
+				</svg>
+
+				{/* Tooltip card */}
+				{tooltip && (
+					<div
+						className="absolute top-2 pointer-events-none z-10"
+						style={{
+							left: `${(tooltip.x / VB_W) * 100}%`,
+							transform:
+								tooltip.periodIdx >= nPeriods - 2
+									? "translateX(-110%)"
+									: "translateX(8px)",
+						}}
+					>
+						<div className="bg-white border border-line rounded-xl shadow-sm px-4 py-3 text-xs min-w-[150px]">
+							<p className="font-bold text-ink mb-2">
+								{data.periods[tooltip.periodIdx]}
+								{isEstimate(tooltip.periodIdx) && (
+									<span className="ml-1 text-muted font-normal">(est.)</span>
+								)}
+							</p>
+							{CITIES.filter((c) => activeCities.has(c)).map((city) => (
+								<div
+									key={city}
+									className="flex items-center justify-between gap-3 py-0.5"
+								>
+									<span className="flex items-center gap-1.5">
+										<span
+											className="inline-block w-2 h-2 rounded-full flex-shrink-0"
+											style={{ background: CITY_COLOURS[city] }}
+										/>
+										<span className="text-slate-600">{city}</span>
+									</span>
+									<span className="font-semibold text-ink">
+										€{data[city][tooltip.periodIdx].toLocaleString()}
+									</span>
+								</div>
+							))}
+						</div>
 					</div>
-				</div>
-			)}
+				)}
+			</div>
 		</div>
 	);
 }
@@ -337,23 +339,22 @@ export default function RentalPriceTrendsClient() {
 		<main id="main" className="max-w-4xl mx-auto px-6 py-10 md:py-16">
 			{/* breadcrumb */}
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-primary">
 					Home
 				</Link>{" "}
 				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-slate-900">
+				<Link href="/tools/" className="hover:text-primary">
 					Tools
 				</Link>{" "}
-				&rsaquo;{" "}
-				<span className="text-slate-900">Cyprus Rental Price Trends</span>
+				&rsaquo; <span className="text-ink">Cyprus Rental Price Trends</span>
 			</nav>
 
 			{/* header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
 					Research
 				</p>
-				<h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Cyprus Rental Price Trends
 				</h1>
 				<p className="mt-3 text-slate-600 text-sm leading-relaxed max-w-2xl">
@@ -370,10 +371,10 @@ export default function RentalPriceTrendsClient() {
 						key={t}
 						type="button"
 						onClick={() => setBrType(t)}
-						className={`px-5 py-2 rounded-lg text-sm font-semibold transition-colors ${
+						className={`px-5 py-2 rounded-xl text-sm font-semibold transition-colors ${
 							brType === t
 								? "bg-primary text-white"
-								: "bg-white border border-slate-200 text-slate-700 hover:border-primary"
+								: "bg-white border border-line text-slate-700 hover:border-primary"
 						}`}
 					>
 						{t}
@@ -393,7 +394,7 @@ export default function RentalPriceTrendsClient() {
 							className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold border transition-all ${
 								active
 									? "border-2 bg-sky text-ink"
-									: "bg-white border-slate-200 text-slate-500"
+									: "bg-white border-line text-muted"
 							}`}
 							style={active ? { borderColor: CITY_COLOURS[city] } : {}}
 						>
@@ -410,8 +411,8 @@ export default function RentalPriceTrendsClient() {
 			</div>
 
 			{/* chart */}
-			<section className="p-4 bg-white border border-slate-200 rounded-xl mb-8 overflow-hidden">
-				<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
+			<section className="p-4 bg-white border border-line rounded-2xl mb-8 overflow-hidden">
+				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
 					Average monthly asking rent (EUR) — {brType} apartments
 				</p>
 				<LineChart data={data} activeCities={activeCities} />
@@ -419,13 +420,13 @@ export default function RentalPriceTrendsClient() {
 
 			{/* summary stats table */}
 			<section className="mb-8">
-				<h2 className="text-sm font-bold text-slate-800 mb-3">
+				<h2 className="text-sm font-bold text-ink mb-3">
 					Summary — {brType} apartments (2025 H2 estimate)
 				</h2>
-				<div className="overflow-x-auto rounded-xl border border-slate-200">
+				<div className="overflow-x-auto rounded-xl border border-line">
 					<table className="w-full text-xs">
 						<thead>
-							<tr className="bg-slate-50 text-slate-500 uppercase tracking-wide text-[10px]">
+							<tr className="bg-sky text-muted uppercase tracking-wide text-xs">
 								<th className="px-4 py-2.5 text-left font-semibold">City</th>
 								<th className="px-4 py-2.5 text-right font-semibold">
 									Current avg
@@ -444,12 +445,9 @@ export default function RentalPriceTrendsClient() {
 								const base2021 = data[city][idx2021];
 								const base2023 = data[city][idx2023];
 								return (
-									<tr
-										key={city}
-										className="border-t border-slate-100 hover:bg-slate-50"
-									>
+									<tr key={city} className="border-t border-line hover:bg-sky">
 										<td className="px-4 py-2.5">
-											<span className="flex items-center gap-2 font-semibold text-slate-800">
+											<span className="flex items-center gap-2 font-semibold text-ink">
 												<span
 													className="w-2.5 h-2.5 rounded-full inline-block flex-shrink-0"
 													style={{ background: CITY_COLOURS[city] }}
@@ -457,7 +455,7 @@ export default function RentalPriceTrendsClient() {
 												{city}
 											</span>
 										</td>
-										<td className="px-4 py-2.5 text-right font-bold text-slate-900">
+										<td className="px-4 py-2.5 text-right font-bold text-ink">
 											€{cur.toLocaleString()}/mo
 										</td>
 										<td className="px-4 py-2.5 text-right">
@@ -483,10 +481,8 @@ export default function RentalPriceTrendsClient() {
 			</section>
 
 			{/* context callout */}
-			<aside className="mb-8 p-5 bg-blue-50 border border-blue-200 rounded-xl text-sm text-slate-700 leading-relaxed">
-				<p className="font-semibold text-slate-900 mb-2">
-					What is driving rents up?
-				</p>
+			<aside className="mb-8 p-5 bg-sky border border-line rounded-2xl text-sm text-slate-700 leading-relaxed">
+				<p className="font-semibold text-ink mb-2">What is driving rents up?</p>
 				<p>
 					Cyprus rents have risen 60&ndash;85% since 2021. The main drivers:
 					arrival of tens of thousands of tech workers (primarily from Russia,
@@ -497,35 +493,35 @@ export default function RentalPriceTrendsClient() {
 			</aside>
 
 			{/* related tools */}
-			<aside className="mb-8 p-5 bg-slate-50 border border-slate-200 rounded-xl">
-				<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
+			<aside className="mb-8 p-5 bg-sky border border-line rounded-2xl">
+				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
 					Related tools
 				</p>
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/tools/rent-vs-buy-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Rent vs Buy Calculator &rarr;
+						Rent vs Buy Calculator
 					</Link>
 					<Link
 						href="/tools/rental-yield-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Rental Yield Calculator &rarr;
+						Rental Yield Calculator
 					</Link>
 					<Link
 						href="/tools/mortgage-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Mortgage Calculator &rarr;
+						Mortgage Calculator
 					</Link>
 				</div>
 			</aside>
 
 			{/* data disclaimer */}
-			<aside className="mt-4 p-5 bg-amber-50 border border-amber-200 rounded-xl text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">Data disclaimer</p>
+			<aside className="mt-4 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
+				<p className="font-semibold text-ink mb-1">Data disclaimer</p>
 				<p>
 					Figures are estimates based on aggregated public market data. Actual
 					rents depend heavily on exact location, condition, furnishing, and
@@ -534,8 +530,8 @@ export default function RentalPriceTrendsClient() {
 				</p>
 			</aside>
 
-			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools/" className="underline hover:text-slate-900">
+			<p className="mt-8 text-xs text-muted">
+				<Link href="/tools/" className="underline hover:text-primary">
 					&larr; Back to Tools
 				</Link>
 			</p>
