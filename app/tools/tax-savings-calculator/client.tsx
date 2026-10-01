@@ -532,7 +532,7 @@ function ComparisonTable({
 						<td className="px-3 py-3 text-slate-700 text-xs">
 							Est. annual saving
 						</td>
-						<td className="px-3 py-3 text-right text-muted text-xs">—</td>
+						<td className="px-3 py-3 text-right text-muted text-xs">&#8212;</td>
 						<td className="px-3 py-3 text-right text-xs">
 							<span
 								className={

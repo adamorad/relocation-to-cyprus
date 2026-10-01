@@ -413,7 +413,7 @@ export default function HealthInsuranceComparisonPage() {
 										{(p[f.key] as boolean) ? (
 											<span className="text-emerald-500 text-base">✓</span>
 										) : (
-											<span className="text-muted text-base">—</span>
+											<span className="text-muted text-base">&#8212;</span>
 										)}
 									</td>
 								))}
