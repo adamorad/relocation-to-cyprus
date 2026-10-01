@@ -169,7 +169,7 @@ export function isCitySlug(v: string | null | undefined): v is CitySlug {
 }
 
 /**
- * Open Graph / Twitter share metadata using a topic's 1600w illustration
+ * Open Graph / Twitter share metadata using a topic's share image ({slug}-og.jpg)
  * (falls back to the site default). Page-level `openGraph` replaces the root
  * one, so this also restores `siteName` and `locale`.
  */
@@ -183,9 +183,11 @@ export function topicShareMetadata(
 ) {
 	const image = topic.image
 		? {
-				url: `https://realcy.app${topic.image.src}`,
-				width: topic.image.width,
-				height: topic.image.height,
+				// Flattened 1200x630 JPEG on the sky colour: the hub illustration
+				// is transparent and some platforms render alpha as black.
+				url: `https://realcy.app${topic.image.src.replace("-1600.webp", "-og.jpg")}`,
+				width: 1200,
+				height: 630,
 				alt: `${topic.name} in Cyprus`,
 			}
 		: {
