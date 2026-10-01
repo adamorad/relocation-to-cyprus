@@ -1,0 +1,60 @@
+# Quality gates
+
+Three checks run against the static export (`out/`) and the source tree. They run in CI on every pull request (`.github/workflows/ci.yml`) and locally with the same commands. The gates do no network calls except the local server used by the accessibility check.
+
+## Run locally
+
+```sh
+pnpm install --frozen-lockfile
+pnpm exec tsc --noEmit
+pnpm build            # next build, then the Pagefind index into out/pagefind/
+pnpm qa:links         # internal link check
+pnpm qa:rules         # house rules
+pnpm exec playwright install chromium   # once
+pnpm qa:axe           # accessibility
+```
+
+`pnpm qa` runs the build and all three gates in order. Reports are written to `qa-reports/` (git-ignored); CI uploads that folder as the `qa-reports` artifact.
+
+## Link check (`scripts/qa/check-links.mjs`)
+
+Reads every HTML file in `out/` and checks each internal `href` (and local `img`/`source` `src`) against the files in `out/`, with `trailingSlash: true` rules (`/path/` maps to `/path/index.html`). External links, `mailto:`, `tel:` and hash-only links are ignored; query strings and hashes are stripped. Exit code 1 lists each broken target with the pages that link to it.
+
+## House rules (`scripts/qa/house-rules.mjs`)
+
+Scans `app/`, `components/`, `lib/` (not `lib/data/listings.json` or `archive/`) and `public/llms.txt`.
+
+| Rule | What it flags |
+| --- | --- |
+| `em-dash` | The em dash character |
+| `emoji` | Any emoji. Glyphs in `house-rules.allow.json` (`emojiGlyphs`) are ignored. The star and check mark used in the UI are not emoji and need no entry |
+| `nicosia` | The word Nicosia, unless the exact line is listed under `nicosia` in `house-rules.allow.json` (the institution mentions the owner kept). New mentions fail |
+| `relocation-guide` | The label "Relocation guide" |
+| `hex-class` | A hard-coded hex colour inside a Tailwind class such as `text-[#35cdc4]`, anywhere except `app/globals.css` |
+
+### Baseline
+
+The tree already contains violations (mostly em dashes in copy). `scripts/qa/house-rules.baseline.json` records the number of violating lines per rule per file. The check fails only when a file has more violating lines of a rule than its baseline, so only new violations break CI. The summary table prints total, baseline and new counts per rule to track the burn-down.
+
+Because the baseline is a count per file, removing one violation and adding another in the same file goes unnoticed. That is acceptable for a burn-down list.
+
+When you remove violations, lower the numbers:
+
+```sh
+node scripts/qa/house-rules.mjs --update-baseline
+```
+
+Do not raise the baseline to make CI pass. If a new Nicosia institution mention is genuinely needed, add it with `--update-nicosia` and explain why in the pull request.
+
+## Accessibility (`scripts/qa/axe.mjs`)
+
+Starts a static server on `out/`, opens a fixed sample of 22 URLs at 390 and 1440 px wide (home, guides, directories, tools, a listing, a developer, regions, moving to Cyprus, explore and a search results page) and runs axe-core with the `wcag2a` and `wcag2aa` tags. It prints a table of every violation and fails on `serious` or `critical` impact unless the finding is listed (by URL and rule) in `scripts/qa/axe.baseline.json`. The baseline starts empty. Edit the sample list at the top of the script when routes change.
+
+```sh
+node scripts/qa/axe.mjs --update-baseline   # record current serious/critical findings
+node scripts/qa/axe.mjs --urls /about/,/    # check specific URLs
+```
+
+## Site search (Pagefind)
+
+`pnpm build` runs `next build && pagefind --site out`, which writes the index to `out/pagefind/`. Only pages with `data-pagefind-body` on their main element are indexed (guides, directories, tools, city pages, listings, developers and Moving to Cyprus). The element also carries `data-type` (`guide`, `directory`, `tool`, `city`, `listing`, `developer`, `page`) exposed as the `type` filter. Headers, footers, the cookie banner, breadcrumbs, share bars, email forms and related-content blocks use `data-pagefind-ignore`. The `/explore/` page loads `/pagefind/pagefind.js` at runtime; in `next dev` the index does not exist and the page says so.

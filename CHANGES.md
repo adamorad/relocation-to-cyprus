@@ -12,6 +12,12 @@
 - Nicosia is kept only where it names a hospital, government office, embassy, university or district fact. Schools in Nicosia were removed from the guides.
 - The listing save heart moved from the archived map panel to the listing detail page. The "Back to the map" links are now "Back to home", and the shortlist empty state and city-comparison link point to /listings/.
 
+- Quality gates run on every pull request (`.github/workflows/ci.yml`): type check, build, an internal link check over `out/`, a house-rules scan and an axe accessibility run on a sample of 22 pages at 390 and 1440 px. See `docs/qa.md`.
+- The house-rules scan (em dash, emoji, Nicosia, "Relocation guide", hard-coded hex colours in classes) compares against a committed baseline, so only new violations fail. Existing violations are counted per rule in `scripts/qa/house-rules.baseline.json` for later clean-up.
+- Site search now uses a Pagefind index built from the exported site (`pnpm build` runs `pagefind --site out`). /explore/ became the search results page with results grouped and filterable by type (guides, directories, tools, cities, listings, developers), and still accepts `?q=`. The category browse list stays below the search.
+- The header has a search icon link to /explore/ and the mobile menu has a search box. Navigation padding was tightened slightly between 768 and 1023 px to make room.
+- Five tool pages were missing the `id="main"` target for the skip link; they now have it.
+
 - Interior pages are restyled to the Living in Cyprus look: sections, tools, guides, listings, regions, developers, about, contact, privacy, advertise, explore, shortlist and the hub pages, including the shared components they use.
 - Guide articles have their own typography (`.guide-body`), scoped to the prose so embedded calculators keep their own styles.
 - Decorative arrows were removed from links and buttons.

@@ -7,8 +7,6 @@
 			"app/contact/page.tsx": 2,
 			"app/developers/[slug]/page.tsx": 4,
 			"app/developers/page.tsx": 2,
-			"app/explore/ExploreClient.tsx": 3,
-			"app/explore/page.tsx": 2,
 			"app/guides/[slug]/page.tsx": 2,
 			"app/guides/GuidesClient.tsx": 1,
 			"app/layout.tsx": 2,
