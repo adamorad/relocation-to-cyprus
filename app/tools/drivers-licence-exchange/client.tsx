@@ -199,8 +199,8 @@ function CheckItem({ text }: { text: string }) {
 			<span
 				className={`mt-0.5 flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
 					checked
-						? "bg-emerald-500 border-emerald-500"
-						: "border-slate-300 group-hover:border-emerald-400"
+						? "bg-primary border-primary"
+						: "border-line group-hover:border-primary"
 				}`}
 			>
 				{checked && (
@@ -266,23 +266,23 @@ export default function DriversLicenceExchangeClient() {
 		<main id="main" className="max-w-4xl mx-auto px-6 py-10 md:py-16">
 			{/* breadcrumb */}
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-ink">
 					Home
 				</Link>{" "}
 				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-slate-900">
+				<Link href="/tools/" className="hover:text-ink">
 					Tools
 				</Link>{" "}
 				&rsaquo;{" "}
-				<span className="text-slate-900">Driver&rsquo;s Licence Exchange</span>
+				<span className="text-ink">Driver&rsquo;s Licence Exchange</span>
 			</nav>
 
 			{/* header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-purple-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
 					Bureaucracy
 				</p>
-				<h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Driver&rsquo;s Licence Exchange
 				</h1>
 				<p className="mt-3 text-slate-600 text-sm leading-relaxed max-w-2xl">
@@ -293,8 +293,8 @@ export default function DriversLicenceExchangeClient() {
 			</header>
 
 			{/* step 1 — country selector */}
-			<section className="p-5 bg-slate-50 border border-slate-200 rounded-xl mb-5">
-				<h2 className="text-sm font-bold text-slate-800 mb-1">
+			<section className="p-5 bg-sky border border-line rounded-2xl mb-5">
+				<h2 className="text-sm font-bold text-ink mb-1">
 					Step 1 — Where was your licence issued?
 				</h2>
 				<p className="text-xs text-slate-500 mb-4">
@@ -305,7 +305,7 @@ export default function DriversLicenceExchangeClient() {
 				<select
 					value={countryValue}
 					onChange={(e) => setCountryValue(e.target.value)}
-					className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-focus"
+					className="w-full rounded-xl border border-line bg-white px-3 py-2.5 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-focus"
 				>
 					<option value="">— Select your country —</option>
 					<optgroup label="EU / EEA countries (direct exchange, no test)">
@@ -334,7 +334,7 @@ export default function DriversLicenceExchangeClient() {
 					</optgroup>
 				</select>
 
-				<p className="mt-3 text-[11px] text-muted leading-relaxed">
+				<p className="mt-3 text-xs text-muted leading-relaxed">
 					Countries in the &ldquo;bilateral agreement&rdquo; group have a
 					specific agreement with Cyprus allowing direct licence exchange
 					without retesting.
@@ -343,8 +343,8 @@ export default function DriversLicenceExchangeClient() {
 
 			{/* step 2 — category */}
 			{countryValue && (
-				<section className="p-5 bg-slate-50 border border-slate-200 rounded-xl mb-5">
-					<h2 className="text-sm font-bold text-slate-800 mb-4">
+				<section className="p-5 bg-sky border border-line rounded-2xl mb-5">
+					<h2 className="text-sm font-bold text-ink mb-4">
 						Step 2 — What licence category do you hold?
 					</h2>
 					<div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -366,12 +366,12 @@ export default function DriversLicenceExchangeClient() {
 								onClick={() => setCategory(opt.value)}
 								className={`flex flex-col items-center justify-center p-3 rounded-xl border-2 text-sm font-semibold transition-colors ${
 									category === opt.value
-										? "border-primary bg-teal-50 text-slate-900"
-										: "border-slate-200 bg-white text-slate-700 hover:border-teal-300"
+										? "border-primary bg-sky text-ink"
+										: "border-line bg-white text-slate-700 hover:border-primary"
 								}`}
 							>
 								{opt.label}
-								<span className="text-[10px] font-normal text-slate-500 mt-0.5">
+								<span className="text-xs font-normal text-slate-500 mt-0.5">
 									{opt.sub}
 								</span>
 							</button>
@@ -383,23 +383,23 @@ export default function DriversLicenceExchangeClient() {
 			{/* step 3 — result */}
 			{group && (
 				<section className="mb-6">
-					<h2 className="text-sm font-bold text-slate-800 mb-4">
+					<h2 className="text-sm font-bold text-ink mb-4">
 						Step 3 — Your personalised result
 					</h2>
 
 					{/* status badge */}
 					<div
-						className={`flex items-center gap-4 p-5 rounded-xl border-2 mb-5 ${
+						className={`flex items-center gap-4 p-5 rounded-2xl border-2 mb-5 ${
 							exchangeType === "direct"
-								? "bg-emerald-50 border-emerald-300"
+								? "bg-green-50 border-green-300"
 								: "bg-amber-50 border-amber-300"
 						}`}
 					>
 						<span
 							className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-xl ${
 								exchangeType === "direct"
-									? "bg-emerald-100 text-emerald-700"
-									: "bg-amber-100 text-amber-700"
+									? "bg-green-100 text-green-800"
+									: "bg-amber-100 text-amber-900"
 							}`}
 						>
 							{exchangeType === "direct" ? "✓" : "!"}
@@ -408,8 +408,8 @@ export default function DriversLicenceExchangeClient() {
 							<p
 								className={`text-lg font-bold ${
 									exchangeType === "direct"
-										? "text-emerald-800"
-										: "text-amber-800"
+										? "text-green-800"
+										: "text-amber-900"
 								}`}
 							>
 								{exchangeType === "direct"
@@ -426,8 +426,8 @@ export default function DriversLicenceExchangeClient() {
 
 					{/* UK category note */}
 					{isUkBilateralCategoryNote && (
-						<div className="mb-5 p-4 bg-blue-50 border border-blue-200 rounded-xl text-sm text-slate-700">
-							<p className="font-semibold text-slate-900 mb-1">
+						<div className="mb-5 p-4 bg-sky border border-line rounded-2xl text-sm text-ink">
+							<p className="font-semibold text-ink mb-1">
 								Note for UK licence holders
 							</p>
 							<p>
@@ -441,34 +441,32 @@ export default function DriversLicenceExchangeClient() {
 
 					{/* timeline + cost */}
 					<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-						<div className="p-4 rounded-xl border border-slate-200 bg-white">
+						<div className="p-4 rounded-2xl border border-line bg-white">
 							<p className="text-xs text-slate-500 uppercase tracking-wide mb-1">
 								Estimated timeline
 							</p>
-							<p className="text-xl font-bold text-slate-900">
+							<p className="text-xl font-bold text-ink">
 								{exchangeType === "direct" ? "4–6 weeks" : "3–6 months"}
 							</p>
-							<p className="text-[11px] text-muted mt-1">
+							<p className="text-xs text-muted mt-1">
 								{exchangeType === "direct"
 									? "From appointment to licence receipt"
 									: "Including test waiting times"}
 							</p>
 						</div>
 
-						<div className="p-4 rounded-xl border border-slate-200 bg-white">
+						<div className="p-4 rounded-2xl border border-line bg-white">
 							<p className="text-xs text-slate-500 uppercase tracking-wide mb-1">
 								Estimated cost
 							</p>
 							{exchangeType === "direct" && cost ? (
 								<>
-									<p className="text-xl font-bold text-slate-900">
-										{cost.total}
-									</p>
+									<p className="text-xl font-bold text-ink">{cost.total}</p>
 									<ul className="mt-2 space-y-0.5">
 										{cost.breakdown.map((item) => (
 											<li
 												key={item.label}
-												className="flex justify-between text-[11px] text-slate-500"
+												className="flex justify-between text-xs text-slate-500"
 											>
 												<span>{item.label}</span>
 												<span className="font-semibold">{item.amount}</span>
@@ -478,8 +476,8 @@ export default function DriversLicenceExchangeClient() {
 								</>
 							) : (
 								<>
-									<p className="text-xl font-bold text-slate-900">€350–750+</p>
-									<ul className="mt-2 space-y-0.5 text-[11px] text-slate-500">
+									<p className="text-xl font-bold text-ink">€350–750+</p>
+									<ul className="mt-2 space-y-0.5 text-xs text-slate-500">
 										<li className="flex justify-between">
 											<span>Theory test</span>
 											<span className="font-semibold">€17</span>
@@ -503,8 +501,8 @@ export default function DriversLicenceExchangeClient() {
 					</div>
 
 					{/* step-by-step process */}
-					<div className="p-5 bg-white border border-slate-200 rounded-xl mb-5">
-						<h3 className="text-sm font-bold text-slate-800 mb-4">
+					<div className="p-5 bg-white border border-line rounded-2xl mb-5">
+						<h3 className="text-sm font-bold text-ink mb-4">
 							Step-by-step process
 						</h3>
 						<ol className="space-y-3">
@@ -515,8 +513,8 @@ export default function DriversLicenceExchangeClient() {
 					</div>
 
 					{/* required documents checklist */}
-					<div className="p-5 bg-white border border-slate-200 rounded-xl mb-5">
-						<h3 className="text-sm font-bold text-slate-800 mb-1">
+					<div className="p-5 bg-white border border-line rounded-2xl mb-5">
+						<h3 className="text-sm font-bold text-ink mb-1">
 							Required documents checklist
 						</h3>
 						<p className="text-xs text-slate-500 mb-4">
@@ -530,7 +528,7 @@ export default function DriversLicenceExchangeClient() {
 					</div>
 
 					{/* office locations */}
-					<div className="p-4 bg-slate-50 border border-slate-200 rounded-xl mb-5">
+					<div className="p-4 bg-sky border border-line rounded-2xl mb-5">
 						<p className="text-xs font-bold text-slate-700 uppercase tracking-wide mb-2">
 							District Transport Department offices
 						</p>
@@ -548,15 +546,15 @@ export default function DriversLicenceExchangeClient() {
 								Paphos District Transport Department
 							</li>
 						</ul>
-						<p className="mt-2 text-[11px] text-muted">
+						<p className="mt-2 text-xs text-muted">
 							All offices open weekday mornings. Check MCIT website for current
 							hours and appointment availability.
 						</p>
 					</div>
 
 					{/* official confirmation note */}
-					<div className="p-4 bg-blue-50 border border-blue-200 rounded-xl text-sm text-slate-700">
-						<p className="font-semibold text-slate-900 mb-1">
+					<div className="p-4 bg-sky border border-line rounded-2xl text-sm text-ink">
+						<p className="font-semibold text-ink mb-1">
 							Always confirm before your appointment
 						</p>
 						<p>
@@ -569,8 +567,8 @@ export default function DriversLicenceExchangeClient() {
 			)}
 
 			{/* disclaimer */}
-			<aside className="mt-10 p-5 bg-amber-50 border border-amber-200 rounded-xl text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">Disclaimer</p>
+			<aside className="mt-10 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
+				<p className="font-semibold text-ink mb-1">Disclaimer</p>
 				<p>
 					General information only — not legal, tax, or financial advice.
 					Regulations and fees are subject to change. Always confirm current
@@ -579,7 +577,7 @@ export default function DriversLicenceExchangeClient() {
 			</aside>
 
 			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools/" className="underline hover:text-slate-900">
+				<Link href="/tools/" className="underline hover:text-ink">
 					&larr; Back to Tools
 				</Link>
 			</p>

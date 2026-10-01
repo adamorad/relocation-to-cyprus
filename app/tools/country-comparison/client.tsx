@@ -155,21 +155,21 @@ export default function CountryComparisonClient() {
 	return (
 		<main id="main" className="max-w-3xl mx-auto px-6 py-10 md:py-16">
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-ink">
 					Home
 				</Link>{" "}
 				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-slate-900">
+				<Link href="/tools/" className="hover:text-ink">
 					Tools
 				</Link>{" "}
 				&rsaquo; <span>Country Comparison</span>
 			</nav>
 
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
 					Research
 				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Cyprus vs Europe
 				</h1>
 				<p className="mt-3 text-slate-600 text-sm leading-relaxed">
@@ -201,14 +201,12 @@ export default function CountryComparisonClient() {
 									isCyprus
 										? "border-primary bg-primary text-white cursor-default"
 										: isVisible
-											? "border-slate-400 bg-slate-800 text-white hover:bg-slate-700"
-											: "border-slate-200 bg-white text-muted hover:border-slate-400"
+											? "border-ink bg-ink text-white hover:bg-ink"
+											: "border-line bg-white text-muted hover:border-primary"
 								}`}
 							>
 								{country}
-								{isCyprus && (
-									<span className="ml-1 text-[10px] opacity-70">★</span>
-								)}
+								{isCyprus && <span className="ml-1 text-xs opacity-70">★</span>}
 							</button>
 						);
 					})}
@@ -216,10 +214,10 @@ export default function CountryComparisonClient() {
 			</section>
 
 			{/* Comparison table */}
-			<section className="overflow-x-auto rounded-xl border border-slate-200 mb-6">
+			<section className="overflow-x-auto rounded-2xl border border-line mb-6">
 				<table className="w-full text-xs">
 					<thead>
-						<tr className="bg-slate-50 border-b border-slate-200">
+						<tr className="bg-slate-50 border-b border-line">
 							<th className="px-3 py-3 text-left text-slate-500 font-semibold uppercase tracking-wide min-w-[160px]">
 								Metric
 							</th>
@@ -231,12 +229,12 @@ export default function CountryComparisonClient() {
 										className={`px-3 py-3 text-center font-bold min-w-[90px] ${
 											isCyprus
 												? "text-primary border-l-2 border-r-2 border-primary"
-												: "text-slate-800"
+												: "text-ink"
 										}`}
 									>
 										{country}
 										{isCyprus && (
-											<span className="block text-[9px] font-normal text-slate-500 mt-0.5">
+											<span className="block text-xs font-normal text-slate-500 mt-0.5">
 												highlighted
 											</span>
 										)}
@@ -256,7 +254,7 @@ export default function CountryComparisonClient() {
 								<td className="px-3 py-2.5 text-slate-700 font-medium leading-snug">
 									{metric.label}
 									{metric.note && (
-										<span className="block text-[10px] text-muted font-normal">
+										<span className="block text-xs text-muted font-normal">
 											{metric.note}
 										</span>
 									)}
@@ -268,7 +266,7 @@ export default function CountryComparisonClient() {
 											key={country}
 											className={`px-3 py-2.5 text-center align-middle ${
 												isCyprus
-													? "border-l-2 border-r-2 border-primary font-semibold text-slate-900"
+													? "border-l-2 border-r-2 border-primary font-semibold text-ink"
 													: "text-slate-700"
 											}`}
 										>
@@ -283,10 +281,8 @@ export default function CountryComparisonClient() {
 			</section>
 
 			{/* Cyprus non-dom note */}
-			<aside className="mb-6 p-4 bg-teal-50 border border-primary rounded-xl text-xs text-slate-700 leading-relaxed">
-				<p className="font-semibold text-slate-900 mb-1">
-					Cyprus Non-Dom explained
-				</p>
+			<aside className="mb-6 p-4 bg-sky border border-line rounded-2xl text-xs text-ink leading-relaxed">
+				<p className="font-semibold text-ink mb-1">Cyprus Non-Dom explained</p>
 				<p>
 					Cyprus non-dom status grants{" "}
 					<strong>0% tax on dividends and interest</strong> for up to{" "}
@@ -297,35 +293,35 @@ export default function CountryComparisonClient() {
 			</aside>
 
 			{/* Next steps */}
-			<aside className="mb-6 p-5 bg-slate-50 border border-slate-200 rounded-xl">
-				<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
+			<aside className="mb-6 p-5 bg-sky border border-line rounded-2xl">
+				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
 					Next steps
 				</p>
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/tools/tax-residency-tracker/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Cyprus Tax Residency Planner →
+						Cyprus Tax Residency Planner
 					</Link>
 					<Link
 						href="/tools/visa-pathway-finder/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Visa Pathway Finder →
+						Visa Pathway Finder
 					</Link>
 					<Link
 						href="/tools/double-tax-treaty-finder/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Double Tax Treaty Finder →
+						Double Tax Treaty Finder
 					</Link>
 				</div>
 			</aside>
 
 			{/* Disclaimer */}
-			<aside className="mb-6 p-5 bg-amber-50 border border-amber-200 rounded-xl text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">Disclaimer</p>
+			<aside className="mb-6 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
+				<p className="font-semibold text-ink mb-1">Disclaimer</p>
 				<p>
 					All data is indicative and based on publicly available information as
 					of 2025–2026. Tax rates, regime conditions, and visa rules change
@@ -336,7 +332,7 @@ export default function CountryComparisonClient() {
 
 			<Link
 				href="/tools/"
-				className="underline hover:text-slate-900 text-sm text-slate-600"
+				className="underline hover:text-ink text-sm text-slate-600"
 			>
 				&larr; Back to Tools
 			</Link>
