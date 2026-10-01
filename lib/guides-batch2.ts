@@ -14,7 +14,7 @@ export const GUIDES_BATCH2: GuideInfo[] = [
 		sources: [
 			{
 				label: "Advocates Law, Cap. 2 (CyLaw)",
-				url: "http://www.cylaw.org/nomoi/enop/non-ind/0_2/full.html",
+				url: "https://www.cylaw.org/nomoi/enop/non-ind/0_2/full.html",
 			},
 			{
 				label: "Judicare: Cyprus residential purchase pricing",

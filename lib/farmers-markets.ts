@@ -89,7 +89,7 @@ export const FARMERS_MARKETS: ReadonlyArray<FarmersMarket> = [
       "Street parking on nearby side streets; Anexartisias St car park is 5-minute walk.",
   },
   {
-    name: "Limassol Laiki Agora — Germasogeia",
+    name: "Limassol Laiki Agora (Germasogeia)",
     city: "Limassol",
     location: "Germasogeia, east Limassol",
     dayOfWeek: "Saturday",

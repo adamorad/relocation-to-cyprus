@@ -132,7 +132,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				label: "Advocates Law, Cap. 2 (CyLaw)",
-				url: "http://www.cylaw.org/nomoi/enop/non-ind/0_2/full.html",
+				url: "https://www.cylaw.org/nomoi/enop/non-ind/0_2/full.html",
 			},
 		],
 		category: "immigration",
@@ -324,7 +324,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				label: "Advocates Law, Cap. 2 (CyLaw)",
-				url: "http://www.cylaw.org/nomoi/enop/non-ind/0_2/full.html",
+				url: "https://www.cylaw.org/nomoi/enop/non-ind/0_2/full.html",
 			},
 		],
 		category: "immigration",
@@ -1379,7 +1379,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "Quick answer: what you can buy over the counter in Cyprus",
-				body: "Paracetamol (Depon, Panadol) and ibuprofen (Brufen, Nurofen) are sold over the counter, from pharmacies only. Aspirin is the one common painkiller also sold in ordinary shops and kiosks.\n\nLow-dose codeine painkillers such as Solpadeine (8 mg codeine) are sold by pharmacists without a prescription. Co-codamol 30/500 is not sold in Cyprus. Antifungal creams and the morning-after pill are sold without a prescription. Oral contraceptives and antibiotic eye drops need a prescription. Oral antibiotics are not covered in this guide, so ask a pharmacist or doctor. Benzodiazepines and strong opioids need a controlled-drug prescription. Omeprazole usually needs a prescription, and a salbutamol inhaler is prescription in practice.\n\nThe full brand-by-brand table is in the section on home-country medicines below. Pharmacists have final discretion and status can change, so confirm anything you depend on.",
+				body: "Paracetamol (Depon, Panadol) and ibuprofen (Brufen, Nurofen) are sold over the counter, from pharmacies only. Aspirin is the one common painkiller also sold in ordinary shops and kiosks.\n\nLow-dose codeine painkillers such as Solpadeine (8 mg codeine) are sold by pharmacists without a prescription. Co-codamol 30/500 is not sold in Cyprus. Antifungal creams and the morning-after pill are sold without a prescription. Oral contraceptives and antibiotic eye drops need a prescription. Oral antibiotics also need a prescription. Benzodiazepines and strong opioids need a controlled-drug prescription. Omeprazole usually needs a prescription, and a salbutamol inhaler is prescription in practice.\n\nThe full brand-by-brand table is in the section on home-country medicines below. Pharmacists have final discretion and status can change, so confirm anything you depend on.",
 			},
 			{
 				heading: "How the pharmacy system works",
@@ -1399,7 +1399,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Home-Country Medicines and Their Cyprus Equivalents",
-				body: "One of the first small frustrations of moving to Cyprus is standing in a pharmacy unable to find the brand you have used for years. The active ingredient is almost always here, just under a different name, and Cypriot pharmacies stock a lot of locally made generics from firms such as Medochemie and Remedica alongside the familiar international brands. Use the table below to translate what you know into what to ask for at the counter. Always learn the generic (active ingredient) name of anything you rely on, because that is what a Cyprus pharmacist will recognise instantly.\n\nActive ingredient | what you may know it as | Cyprus brand(s) to ask for | status:\n\nParacetamol (acetaminophen) | Panadol, Tylenol | Depon, Panadol, Calpol (for children) | OTC\nIbuprofen | Nurofen, Advil, Motrin | Brufen, Nurofen | OTC\nAspirin (acetylsalicylic acid) | Aspirin, Aspro | Aspirin, Aspro Clear | OTC (the one painkiller also sold outside pharmacies, in kiosks and shops)\nLoratadine (antihistamine) | Claritin, Clarityn | Clarityne, Ticevis | OTC\nCetirizine (antihistamine) | Zyrtec, Zirtec | Zyrtec, Temelin | OTC\nLoperamide (anti-diarrhoeal) | Imodium | Imodium, Vacontil, Loperium | OTC\nDiclofenac gel (topical anti-inflammatory) | Voltaren, Voltarol | Voltaren, Almiral gel | OTC\nHydrocortisone cream 1% (mild steroid for bites and rashes) | Cortizone-10 | generic hydrocortisone 1% | OTC\nAntacids and reflux relief | Tums, Gaviscon | Gaviscon, Rennie | OTC\nOmeprazole (stomach-acid PPI) | Prilosec, Losec | Losec, Medoprazole | usually needs a prescription, though a pharmacist may supply a short course at their discretion\nDecongestant | Sudafed, Afrin, Vicks Sinex | Otrivin and other xylometazoline nasal sprays | OTC (Cyprus favours nasal sprays; oral pseudoephedrine tablets are uncommon on the shelf)\nSalbutamol reliever inhaler | Ventolin, ProAir | Ventolin, Salamol | prescription in practice, so bring your own supply and documentation\nLow-dose codeine painkiller | Tylenol with codeine, co-codamol | Solpadeine | Solpadeine (8 mg codeine) is sold by pharmacists without a prescription; higher-strength codeine products are not sold in Cyprus\n\nA few of these will surprise people coming from the UK or US, in both directions. Cyprus is often more relaxed than home about low-dose codeine painkillers, yet stricter about things you might expect to grab off a shelf, such as an asthma inhaler. Remember too that brand availability and prescription status change over time, and that a pharmacist always has final discretion. So treat this as a starting point rather than a guarantee: for anything you depend on, confirm its status before you travel, and once you arrive simply ask any Cyprus pharmacist, who can almost always suggest a local equivalent. Pharmacists here are exceptionally accessible, used to advising walk-in customers on minor ailments, and in the towns and tourist areas the vast majority speak fluent English.",
+				body: "One of the first small frustrations of moving to Cyprus is standing in a pharmacy unable to find the brand you have used for years. The active ingredient is almost always here, just under a different name, and Cypriot pharmacies stock a lot of locally made generics from firms such as Medochemie and Remedica alongside the familiar international brands. Use the table below to translate what you know into what to ask for at the counter. Always learn the generic (active ingredient) name of anything you rely on, because that is what a Cyprus pharmacist will recognise instantly.\n\nActive ingredient | what you may know it as | Cyprus brand(s) to ask for | status:\n\nParacetamol (acetaminophen) | Panadol, Tylenol | Depon, Panadol, Calpol (for children) | OTC\nIbuprofen | Nurofen, Advil, Motrin | Brufen, Nurofen | OTC\nAspirin (acetylsalicylic acid) | Aspirin, Aspro | Aspirin, Aspro Clear | OTC (the one painkiller also sold outside pharmacies, in kiosks and shops)\nLoratadine (antihistamine) | Claritin, Clarityn | Clarityne, Ticevis | OTC\nCetirizine (antihistamine) | Zyrtec, Zirtec | Zyrtec, Temelin | OTC\nLoperamide (anti-diarrhoeal) | Imodium | Imodium, Vacontil, Loperium | OTC\nDiclofenac gel (topical anti-inflammatory) | Voltaren, Voltarol | Voltaren, Almiral gel | OTC\nHydrocortisone cream 1% (mild steroid for bites and rashes) | Cortizone-10 | generic hydrocortisone 1% | OTC\nAntacids and reflux relief | Tums, Gaviscon | Gaviscon, Rennie | OTC\nOmeprazole (stomach-acid PPI) | Prilosec, Losec | Losec, Medoprazole | usually needs a prescription, though a pharmacist may supply a short course at their discretion\nDecongestant | Sudafed, Afrin, Vicks Sinex | Otrivin and other xylometazoline nasal sprays | OTC (Cyprus favours nasal sprays; oral pseudoephedrine tablets are uncommon on the shelf)\nSalbutamol reliever inhaler | Ventolin, ProAir | Ventolin, Salamol | prescription in practice, so bring your own supply and documentation\nLow-dose codeine painkiller | co-codamol 8/500 | Solpadeine | Solpadeine (8 mg codeine) is sold by pharmacists without a prescription; higher-strength codeine products are not sold in Cyprus\n\nA few of these may surprise people coming from the UK or US: a salbutamol asthma inhaler, for example, is prescription in practice in Cyprus. Remember too that brand availability and prescription status change over time, and that a pharmacist always has final discretion. So treat this as a starting point rather than a guarantee: for anything you depend on, confirm its status before you travel, and once you arrive simply ask any Cyprus pharmacist, who can almost always suggest a local equivalent. Pharmacists here are exceptionally accessible, used to advising walk-in customers on minor ailments, and in the towns and tourist areas the vast majority speak fluent English.",
 			},
 			{
 				heading: "Bringing personal medication supply into Cyprus",
@@ -2372,7 +2372,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				label: "Advocates Law, Cap. 2 (CyLaw)",
-				url: "http://www.cylaw.org/nomoi/enop/non-ind/0_2/full.html",
+				url: "https://www.cylaw.org/nomoi/enop/non-ind/0_2/full.html",
 			},
 		],
 		category: "property",
@@ -2436,7 +2436,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				label: "Advocates Law, Cap. 2 (CyLaw)",
-				url: "http://www.cylaw.org/nomoi/enop/non-ind/0_2/full.html",
+				url: "https://www.cylaw.org/nomoi/enop/non-ind/0_2/full.html",
 			},
 		],
 		category: "tax",
@@ -2681,7 +2681,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "What is a good monthly rental rate for a car in Cyprus in 2026?",
-				a: "As a rough guide, not a quote, expect to pay €380–€550/month for a compact class car (VW Polo, Toyota Yaris) on a 1–3 month contract from a local provider. International chains typically run €450–€650 for the same class. Economy cars start around €300/month. Mid-size cars and SUVs run €600–€950/month. Rates are lower for 6-month or 12-month agreements and higher during peak summer months. No provider publishes monthly rates, so get written quotes before you decide.",
+				a: "As a rough guide, not a quote, expect to pay €380–€550/month for a compact class car (VW Polo, Toyota Yaris) on a 1–3 month contract from a local provider. International chains typically run €450–€650 for the same class. Economy cars start around €300/month. Mid-size cars run €500–€750/month and SUVs €650–€950/month. Rates are lower for 6-month or 12-month agreements and higher during peak summer months. No provider publishes monthly rates, so get written quotes before you decide.",
 			},
 			{
 				q: "Which companies offer long-term monthly car rental in Cyprus?",

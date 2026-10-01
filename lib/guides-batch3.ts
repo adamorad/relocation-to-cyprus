@@ -35,7 +35,7 @@ export const GUIDES_BATCH3: GuideInfo[] = [
 			},
 			{
 				label: "Advocates Law, Cap. 2 (CyLaw)",
-				url: "http://www.cylaw.org/nomoi/enop/non-ind/0_2/full.html",
+				url: "https://www.cylaw.org/nomoi/enop/non-ind/0_2/full.html",
 			},
 		],
 		category: "property",

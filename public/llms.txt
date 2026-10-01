@@ -180,7 +180,7 @@ Hub: https://realcy.app/family-and-schools/
 
 ### Tools
 
-- [International School Finder](https://realcy.app/tools/school-finder/): Find and compare international schools in Cyprus. Filter by city, curriculum (British, IB, German, French, Waldorf, Montessori), and age group to shortlist the right options for your family.
+- [International School Finder](https://realcy.app/tools/school-finder/): Find and compare international schools in Cyprus. Filter by city, curriculum (British, IB), and age group to shortlist the right options for your family.
 
 ## Community & leisure
 
