@@ -542,7 +542,7 @@ export default function RelocationTrackerClient() {
 			</div>
 
 			<aside className="mt-10 bg-sky border border-line rounded-2xl p-5">
-				<p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
+				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
 					Next steps
 				</p>
 				<div className="flex flex-wrap gap-3">

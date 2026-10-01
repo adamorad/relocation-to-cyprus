@@ -181,7 +181,12 @@ function WeatherChart({ selectedCities }: ChartProps) {
 	const gridTemps = [-10, 0, 10, 20, 30, 40];
 
 	return (
-		<div className="relative w-full overflow-x-auto">
+		<div
+			tabIndex={0}
+			role="region"
+			aria-label="Climate chart"
+			className="relative w-full overflow-x-auto"
+		>
 			<svg
 				ref={svgRef}
 				viewBox={`0 0 ${W} ${H}`}
@@ -339,7 +344,12 @@ function WeatherChart({ selectedCities }: ChartProps) {
 
 function MonthCards() {
 	return (
-		<div className="flex gap-3 overflow-x-auto pb-2 snap-x">
+		<div
+			tabIndex={0}
+			role="region"
+			aria-label="Monthly climate cards"
+			className="flex gap-3 overflow-x-auto pb-2 snap-x"
+		>
 			{MONTHS.map((m) => {
 				const d = CYPRUS_DATA[m];
 				return (

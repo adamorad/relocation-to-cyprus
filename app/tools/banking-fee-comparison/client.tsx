@@ -265,7 +265,12 @@ export default function BankingFeeComparisonPage() {
 			</div>
 
 			{/* Comparison table */}
-			<div className="overflow-x-auto rounded-2xl border border-line mb-8">
+			<div
+				tabIndex={0}
+				role="region"
+				aria-label="Bank fee comparison table"
+				className="overflow-x-auto rounded-2xl border border-line mb-8"
+			>
 				<table className="w-full text-sm">
 					<thead>
 						<tr className="bg-ink text-white">

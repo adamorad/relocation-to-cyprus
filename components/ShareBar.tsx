@@ -27,7 +27,7 @@ export function ShareBar({ url, title, guideSlug }: ShareBarProps) {
 
   return (
     <div className="mt-4 flex items-center gap-2 flex-wrap">
-      <span className="text-[10px] font-semibold text-muted uppercase tracking-wider mr-1">
+			<span className="text-xs font-semibold text-muted uppercase tracking-wider mr-1">
         Share
       </span>
       <button

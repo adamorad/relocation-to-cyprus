@@ -341,7 +341,7 @@ export default function TaxFilingCalendarPage() {
 			</p>
 
 			<aside className="mt-10 p-5 rounded-2xl bg-slate-50 border border-line">
-				<p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
+				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
 					Next steps
 				</p>
 				<div className="flex flex-wrap gap-3">

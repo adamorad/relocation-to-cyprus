@@ -55,7 +55,7 @@ export default function ShortlistClient() {
 					<p className="text-slate-700 font-medium mb-1">
 						No saved listings yet.
 					</p>
-					<p className="text-sm text-slate-500 mb-6">
+					<p className="text-sm text-muted mb-6">
 						Browse new developments and use the heart on a listing to save it.
 					</p>
 					<Link

@@ -141,7 +141,7 @@ function SiteFooter() {
 					</div>
 				</div>
 				<nav aria-label="Regions">
-					<p className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
+					<p className="text-xs uppercase tracking-wider text-slate-400 font-semibold">
 						Regions
 					</p>
 					<ul className="mt-3 space-y-2">
@@ -158,7 +158,7 @@ function SiteFooter() {
 					</ul>
 				</nav>
 				<nav aria-label="Popular guides">
-					<p className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
+					<p className="text-xs uppercase tracking-wider text-slate-400 font-semibold">
 						Guides
 					</p>
 					<ul className="mt-3 space-y-2">
@@ -190,7 +190,7 @@ function SiteFooter() {
 					</ul>
 				</nav>
 				<nav aria-label="Directories">
-					<p className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
+					<p className="text-xs uppercase tracking-wider text-slate-400 font-semibold">
 						Directories
 					</p>
 					<ul className="mt-3 space-y-2">
@@ -222,7 +222,7 @@ function SiteFooter() {
 					</ul>
 				</nav>
 				<nav aria-label="Tools and company">
-					<p className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
+					<p className="text-xs uppercase tracking-wider text-slate-400 font-semibold">
 						Tools
 					</p>
 					<ul className="mt-3 space-y-2">
@@ -250,7 +250,7 @@ function SiteFooter() {
 							</Link>
 						</li>
 					</ul>
-					<p className="mt-6 text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
+					<p className="mt-6 text-xs uppercase tracking-wider text-slate-400 font-semibold">
 						RealCy.app
 					</p>
 					<ul className="mt-3 space-y-2">
@@ -339,7 +339,7 @@ function SiteFooter() {
 			</div>
 			<div className="border-t border-white/10">
 				<div className="max-w-6xl mx-auto px-6 py-6">
-					<p className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
+					<p className="text-xs uppercase tracking-wider text-slate-400 font-semibold">
 						Featured developments
 					</p>
 					<ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-slate-400">
@@ -351,7 +351,7 @@ function SiteFooter() {
 								>
 									{l.title}
 									{l.regionCity ? (
-										<span className="text-slate-600"> · {l.regionCity}</span>
+										<span className="text-slate-400"> · {l.regionCity}</span>
 									) : null}
 								</Link>
 							</li>
@@ -371,7 +371,7 @@ function SiteFooter() {
 				</div>
 			</div>
 			<div className="border-t border-white/10">
-				<div className="max-w-6xl mx-auto px-6 py-4 text-xs text-slate-500">
+				<div className="max-w-6xl mx-auto px-6 py-4 text-xs text-slate-400">
 					© {new Date().getFullYear()} RealCy.app, independent guide to living
 					in Cyprus.
 				</div>

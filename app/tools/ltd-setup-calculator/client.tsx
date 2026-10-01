@@ -623,7 +623,7 @@ export default function LtdSetupCalculatorClient() {
 
 			{/* next steps */}
 			<aside className="mb-6 p-5 bg-sky border border-line rounded-2xl">
-				<p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
+				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
 					Related tools
 				</p>
 				<div className="flex flex-wrap gap-3">

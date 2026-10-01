@@ -136,3 +136,11 @@ footer :focus-visible,
 .guide-body th { background: var(--rc-ink); color: #fff; text-align: left; font-weight: 600; padding: 0.625rem 0.75rem; }
 .guide-body td { padding: 0.625rem 0.75rem; border-bottom: 1px solid var(--rc-border); }
 .guide-body hr { border: 0; border-top: 1px solid var(--rc-border); margin: 2rem 0; }
+
+/* Primary teal text on the sky or slate-50 tints is 4.3 to 4.5:1; use the darker primary there to pass AA. */
+.bg-sky.text-primary,
+.bg-sky .text-primary,
+.bg-slate-50 .text-primary,
+.bg-slate-50.text-primary {
+  color: var(--color-primary-hover);
+}

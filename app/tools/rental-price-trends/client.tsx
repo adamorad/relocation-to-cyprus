@@ -139,7 +139,12 @@ function LineChart({
 	const isEstimate = (i: number) => i === nPeriods - 1;
 
 	return (
-		<div className="w-full overflow-x-auto">
+		<div
+			tabIndex={0}
+			role="region"
+			aria-label="Rental price chart"
+			className="w-full overflow-x-auto"
+		>
 			<div className="relative w-full min-w-[800px]">
 				<svg
 					viewBox={`0 0 ${VB_W} ${VB_H}`}
@@ -423,7 +428,12 @@ export default function RentalPriceTrendsClient() {
 				<h2 className="text-sm font-bold text-ink mb-3">
 					Summary — {brType} apartments (2025 H2 estimate)
 				</h2>
-				<div className="overflow-x-auto rounded-xl border border-line">
+				<div
+					tabIndex={0}
+					role="region"
+					aria-label="Rental price table"
+					className="overflow-x-auto rounded-xl border border-line"
+				>
 					<table className="w-full text-xs">
 						<thead>
 							<tr className="bg-sky text-muted uppercase tracking-wide text-xs">

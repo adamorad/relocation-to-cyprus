@@ -422,9 +422,7 @@ export default async function GuidePage({
 					<Fragment key={s.heading}>
 						<section id={toId(s.heading)} className="mt-6">
 							<h2>{s.heading}</h2>
-							<p className="whitespace-pre-line">
-								{renderBody(s.body)}
-							</p>
+							<p className="whitespace-pre-line">{renderBody(s.body)}</p>
 						</section>
 						{embed && EmbedComp && i === 1 && (
 							<EmbeddedTool
@@ -511,8 +509,10 @@ export default async function GuidePage({
 
 			{g.faqs && g.faqs.length > 0 ? (
 				<section className="mt-10">
-					<h2 className="text-xl font-bold text-ink mb-4">Frequently asked questions</h2>
-					<dl className="space-y-4">
+					<h2 className="text-xl font-bold text-ink mb-4">
+						Frequently asked questions
+					</h2>
+					<div className="space-y-4">
 						{g.faqs.map((faq) => (
 							<details
 								key={faq.q}
@@ -529,7 +529,7 @@ export default async function GuidePage({
 								</div>
 							</details>
 						))}
-					</dl>
+					</div>
 				</section>
 			) : null}
 

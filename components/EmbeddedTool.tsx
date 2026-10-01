@@ -24,7 +24,7 @@ export function EmbeddedTool({
 	return (
 		<section className="not-prose my-10 rounded-2xl border border-line bg-white shadow-rc overflow-hidden">
 			<div className="border-b border-line bg-sky px-5 py-4">
-				<p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+				<p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
 					{eyebrow}
 				</p>
 				<h2 className="mt-1 text-lg font-bold text-ink">{title}</h2>

@@ -34,7 +34,10 @@ export default function MovingToCyprusPage() {
 			<p className="mt-3 text-slate-700 max-w-2xl">
 				Planning a move? Start with residency and tax, then property and
 				business. Already here? See the everyday guides on the{" "}
-				<Link href="/" className="text-primary hover:underline">
+				<Link
+					href="/"
+					className="text-primary underline hover:text-primary-hover"
+				>
 					homepage
 				</Link>
 				.

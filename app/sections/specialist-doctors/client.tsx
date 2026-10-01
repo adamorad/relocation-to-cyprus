@@ -187,7 +187,7 @@ export default function SpecialistDoctorsPage() {
 
 			{/* City filter */}
 			<div className="mb-4">
-				<p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-2">
 					City
 				</p>
 				<div className="flex flex-wrap gap-1.5">
@@ -204,7 +204,7 @@ export default function SpecialistDoctorsPage() {
 
 			{/* Specialty filter */}
 			<div className="mb-8">
-				<p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+				<p className="text-xs font-semibold text-muted uppercase tracking-wider mb-2">
 					Specialty
 				</p>
 				<div className="flex flex-wrap gap-1.5">

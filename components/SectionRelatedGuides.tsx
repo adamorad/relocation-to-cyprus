@@ -15,7 +15,7 @@ export function SectionRelatedGuides({ sectionSlug }: { sectionSlug: string }) {
   return (
     <div className="max-w-5xl mx-auto px-4 md:px-6 pb-10">
       <aside className="p-5 bg-sky border border-line rounded-2xl">
-        <p className="text-[10px] font-semibold text-ink uppercase tracking-wider mb-3">
+				<p className="text-xs font-semibold text-ink uppercase tracking-wider mb-3">
           Related guides
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
