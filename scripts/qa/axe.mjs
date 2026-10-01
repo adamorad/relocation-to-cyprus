@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 // Accessibility gate. Serves out/ with an in-process static server, opens a
 // fixed sample of pages at 390 and 1440 px with Playwright and runs axe-core
-// (wcag2a + wcag2aa). Fails on serious or critical violations that are not in
+// (wcag2a + wcag2aa). Fails on moderate, serious or critical violations that are not in
 // scripts/qa/axe.baseline.json.
 //
 // Usage:
 //   node scripts/qa/axe.mjs                    run the gate
-//   node scripts/qa/axe.mjs --update-baseline  record current serious/critical findings
+//   node scripts/qa/axe.mjs --update-baseline  record current moderate/serious/critical findings
 //   node scripts/qa/axe.mjs --urls /a/,/b/     override the sample (debugging)
 import {
 	createReadStream,
@@ -53,7 +53,7 @@ const SAMPLE = [
 	"/explore/?q=pharmacy",
 ];
 const WIDTHS = [390, 1440];
-const BLOCKING = new Set(["serious", "critical"]);
+const BLOCKING = new Set(["moderate", "serious", "critical"]);
 
 const argv = process.argv.slice(2);
 const updateBaseline = argv.includes("--update-baseline");
@@ -90,10 +90,7 @@ const MIME = {
 };
 
 function resolveFile(pathname) {
-	const clean = normalize(decodeURIComponent(pathname)).replace(
-		/^(\.\.[/\\])+/,
-		"",
-	);
+	const clean = normalize(pathname).replace(/^(\.\.[/\\])+/, "");
 	let p = join(OUT, clean);
 	if (!p.startsWith(OUT)) return null;
 	if (existsSync(p) && statSync(p).isDirectory()) p = join(p, "index.html");
@@ -102,7 +99,13 @@ function resolveFile(pathname) {
 }
 
 const server = createServer((req, res) => {
-	const pathname = new URL(req.url, "http://x").pathname;
+	let pathname;
+	try {
+		pathname = decodeURIComponent(new URL(req.url, "http://x").pathname);
+	} catch {
+		res.writeHead(400, { "content-type": "text/plain; charset=utf-8" });
+		return res.end("bad request");
+	}
 	const file = resolveFile(pathname);
 	if (!file) {
 		const nf = join(OUT, "404.html");
@@ -129,6 +132,11 @@ for (const width of WIDTHS) {
 	const ctx = await browser.newContext({
 		viewport: { width, height: width < 800 ? 844 : 900 },
 	});
+	// Only the local server is reachable: nothing leaves the machine.
+	await ctx.route(
+		(u) => !u.href.startsWith(base),
+		(r) => r.abort(),
+	);
 	for (const url of urls) {
 		const page = await ctx.newPage();
 		try {
@@ -137,12 +145,10 @@ for (const width of WIDTHS) {
 				errors.push(`${url} @${width}: HTTP ${resp?.status()}`);
 			await page.waitForTimeout(600);
 			if (url.startsWith("/explore/?q="))
-				await page
-					.waitForSelector(
-						"[data-search-state]:not([data-search-state='loading'])",
-						{ timeout: 10000 },
-					)
-					.catch(() => {});
+				await page.waitForSelector(
+					"[data-search-state]:not([data-search-state='loading'])",
+					{ timeout: 10000 },
+				);
 			const result = await new AxeBuilder({ page })
 				.withTags(["wcag2a", "wcag2aa"])
 				.analyze();
@@ -181,7 +187,7 @@ if (updateBaseline) {
 	].sort((a, b) => key(a).localeCompare(key(b)));
 	writeFileSync(
 		BASELINE_PATH,
-		`${JSON.stringify({ note: "Known serious/critical axe findings (url + rule). CI fails on anything not listed. Remove entries as they are fixed.", findings: entries }, null, "\t")}\n`,
+		`${JSON.stringify({ note: "Known moderate/serious/critical axe findings (url + rule). CI fails on anything not listed. Remove entries as they are fixed.", findings: entries }, null, "\t")}\n`,
 	);
 	console.log(`Wrote ${entries.length} baseline entries.`);
 }
