@@ -10,8 +10,15 @@
 
 import {
 	eur,
+	FIRST_EMPLOYMENT_20PCT_CAP,
+	FIRST_EMPLOYMENT_50PCT_THRESHOLD,
 	FOREIGN_PENSION_THRESHOLD,
 	FOREIGN_PENSION_THRESHOLD_2025,
+	NON_DOM_EXTENSION_FEE,
+	pct,
+	SDC_DIVIDEND_RATE,
+	SDC_DIVIDEND_RATE_PRE_2026_PROFITS,
+	SDC_INTEREST_RATE,
 	VISITOR_PERMIT_MONTHLY_INCOME,
 	VISITOR_PERMIT_MONTHLY_INCOME_COUPLE,
 } from "./facts/tax";
@@ -169,7 +176,30 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "taxes-for-expats",
 		datePublished: "2026-05-22",
-		dateModified: "2026-10-01",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Tax Department: Special Defence Contribution reform 2026 (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/03/EEA-ΦΚΚ-ΜΕΤΑΡΡΥΘΜΙΣΗ-06032026.pdf",
+			},
+			{
+				label: "Tax Department: Income Tax Law amendments 2026 (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/03/2026-ΦορΜεταρρύθμιση-Φόρος-Εισοδήματος.pdf",
+			},
+			{
+				label: "Tax Department: Form T.D.59 2026 notes (PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/02/IR59_2026_English__.pdf",
+			},
+			{
+				label: "Tax Department: Guide to the 2025 tax return (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/06/Guide-for-completion-of-tax-return-2025-EL.pdf",
+			},
+			{
+				label: "Tax Department: Tax Reform 2026",
+				url: "https://www.gov.cy/mof-tax/en/documents/forologiki-metarrythmisi-2026/",
+			},
+		],
 		category: "tax",
 		title: "Cyprus Expat Tax Guide 2026: Non-Dom Regime",
 		description:
@@ -181,15 +211,15 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Becoming a Cyprus tax resident",
-				body: "There are two ways to qualify as a Cyprus tax resident. The classic test is the 183-day rule: if you spend more than 183 days in Cyprus during a calendar year, you are tax resident for that year. The second is the 60-day rule introduced in 2017, designed specifically to attract high earners who travel: you can be tax resident with only 60 days in Cyprus provided you (a) do not spend more than 183 days in any other country in the same year, (b) are not tax resident anywhere else, (c) have a permanent residence in Cyprus (rented or owned), and (d) carry on business or employment in Cyprus, including holding an office in a Cyprus-resident company. The 60-day rule is what makes Cyprus genuinely attractive to globally mobile entrepreneurs, but it is also where most tax-residency disputes happen — the Cyprus Tax Department has tightened audit on the 60-day applications, and you need real substance to defend it.",
+				body: "There are two ways to qualify as a Cyprus tax resident. The classic test is the 183-day rule: if you spend more than 183 days in Cyprus during a calendar year, you are tax resident for that year. The second is the 60-day rule introduced in 2017, designed specifically to attract high earners who travel: you can be tax resident with only 60 days in Cyprus provided you (a) do not spend more than 183 days in any other country in the same year, (b) have a permanent residence in Cyprus (rented or owned), and (c) carry on business or employment in Cyprus, including holding an office in a Cyprus-resident company. Until the end of 2025 you also had to show you were not tax resident anywhere else; that condition was removed from 1 January 2026. The 60-day rule is what makes Cyprus genuinely attractive to globally mobile entrepreneurs, but it is also where most tax-residency disputes happen — the Cyprus Tax Department has tightened audit on the 60-day applications, and you need real substance to defend it.",
 			},
 			{
 				heading: "The non-dom regime in detail",
-				body: "Non-dom status is automatic for tax residents who have been domiciled outside Cyprus, which in practice means almost every relocator. Once you are a Cyprus tax resident and a non-dom, the following income types are completely exempt from Cyprus tax: dividends received from anywhere in the world, interest received from anywhere, rental income from properties outside Cyprus (though you still pay Cyprus's GeSY healthcare contribution on it — 2.65%), capital gains on shares and securities, and most types of capital gains on property outside Cyprus. The non-dom regime lasts for 17 of the 20 tax years following your relocation, so it is genuinely long-term. For employment income earned in Cyprus, you pay regular Cypriot income tax (0% on the first €22,000, scaling up progressively to 35% above €72,000), and for self-employment income earned in Cyprus the same. There is a special 50% income tax exemption for new residents earning more than €100,000 per year from Cypriot employment for the first 17 years.",
+				body: `Non-dom status is automatic for tax residents who have been domiciled outside Cyprus, which in practice means almost every relocator. Once you are a Cyprus tax resident and a non-dom, the following income types are completely exempt from Cyprus tax: dividends received from anywhere in the world, interest received from anywhere, rental income from properties outside Cyprus (though you still pay Cyprus's GeSY healthcare contribution on it — 2.65%), capital gains on shares and securities, and most types of capital gains on property outside Cyprus. The non-dom regime lasts for 17 of the 20 tax years following your relocation, so it is genuinely long-term. For employment income earned in Cyprus, you pay regular Cypriot income tax (0% on the first €22,000, scaling up progressively to 35% above €72,000), and for self-employment income earned in Cyprus the same. There are also income tax exemptions for people taking up their first employment in Cyprus: 50% of salary for those earning more than ${eur(FIRST_EMPLOYMENT_50PCT_THRESHOLD)} a year, or 20% of salary (capped at ${eur(FIRST_EMPLOYMENT_20PCT_CAP)} a year) for others, subject to conditions.`,
 			},
 			{
 				heading: "Non-dom status",
-				body: "Non-dom (non-domiciled) status is a designation within the Cyprus tax system. It is not a tax holiday, an investment visa or a residency permit. Its core job is to remove the Special Defence Contribution (SDC), the levy that otherwise applies to dividends (17% for domiciled residents) and interest (30%) received by Cyprus tax residents. SDC on rental income was abolished from 1 January 2026 for all Cyprus tax residents, so rent carries no SDC with or without non-dom. You can be a Cyprus tax resident without being non-dom (if you are long-term domiciled in Cyprus), and you can be non-dom without any special permit: an EU citizen registered with a Yellow Slip qualifies from the first day of tax residency.\n\nWhat non-dom does not cover: employment and self-employment income earned in Cyprus (taxed at the normal progressive rates up to 35%), income tax on rent from Cyprus property, and capital gains on Cypriot real estate, which fall under the Capital Gains Tax Law.\n\nWho qualifies and the 17-year clock: domicile follows an English common-law concept. Broadly, if you were not born to a Cypriot-domiciled parent and have not lived in Cyprus intending to stay permanently for most of your adult life, you are not domiciled in Cyprus. In practice almost every relocating foreign national qualifies automatically from the first day of tax residency. There is no application, certificate or fee: you declare non-dom status on your annual tax return (Form TD1). You lose it once you have been tax resident in Cyprus for 17 or more of the 20 tax years ending with the current year; someone who first became tax resident in 2015 would not lose it before 2032.\n\nThe 2026 extension option: a 2025 amendment, effective from January 2026, lets non-dom individuals who reach the 17-year limit apply to extend the status for up to two further periods of five years each, paying a flat €250,000 per extension period, for a maximum of 27 years. The extension is not automatic; the application must reach the Tax Department before the 17th year of residency ends. The same amendment clarified the 60-day rule's condition that you must not be tax resident in any other country, which makes that route slightly easier to defend. Implementation regulations were still being finalised in mid-2026, so confirm the current procedure with a Cyprus-registered accountant.\n\nGeSY on passive income: non-dom does not exempt dividends, interest or rents from the GeSY healthcare contribution. They pay 2.65% of the gross amount, capped at €4,770 a year per person (the cap is based on €180,000 of income). Someone receiving €500,000 in dividends a year pays no SDC (saving €85,000 at the domiciled rate) but still pays €4,770 in GeSY contributions.\n\nCommon misconceptions: non-dom does not mean no tax in Cyprus, because Cyprus employment, self-employment and Cyprus rental income are taxed as normal. Staying under 183 days does not protect non-dom either: below 183 days you are not a Cyprus tax resident at all unless you meet the 60-day rule, and non-dom exists only for tax residents. A salary from your own Cyprus company is employment income taxed at normal rates, while dividends from the same company are SDC-free under non-dom, so the director and shareholder structure matters. And non-dom is not permanent: if you plan a long-term base in Cyprus, model the 17-year expiry into your plans.",
+				body: `Non-dom (non-domiciled) status is a designation within the Cyprus tax system. It is not a tax holiday, an investment visa or a residency permit. Its core job is to remove the Special Defence Contribution (SDC), the levy that otherwise applies to dividends and interest received by Cyprus tax residents (SDC for domiciled residents is ${pct(SDC_DIVIDEND_RATE)} on dividends from 2026 profits, ${pct(SDC_DIVIDEND_RATE_PRE_2026_PROFITS)} on dividends from earlier profits, and ${pct(SDC_INTEREST_RATE)} on interest). SDC on rental income was abolished from 1 January 2026 for all Cyprus tax residents, so rent carries no SDC with or without non-dom. You can be a Cyprus tax resident without being non-dom (if you are long-term domiciled in Cyprus), and you can be non-dom without any special permit: an EU citizen registered with a Yellow Slip qualifies from the first day of tax residency.\n\nWhat non-dom does not cover: employment and self-employment income earned in Cyprus (taxed at the normal progressive rates up to 35%), income tax on rent from Cyprus property, and capital gains on Cypriot real estate, which fall under the Capital Gains Tax Law.\n\nWho qualifies and the 17-year clock: domicile follows an English common-law concept. Broadly, if you were not born to a Cypriot-domiciled parent and have not lived in Cyprus intending to stay permanently for most of your adult life, you are not domiciled in Cyprus. In practice almost every relocating foreign national qualifies automatically from the first day of tax residency. There is no application, certificate or fee: you declare non-dom status on your annual tax return (Form TD1). You lose it once you have been tax resident in Cyprus for 17 or more of the 20 tax years ending with the current year; someone who first became tax resident in 2015 would not lose it before 2032.\n\nThe 2026 extension option: a 2025 amendment, effective from January 2026, lets non-dom individuals who reach the 17-year limit apply to extend the status for up to two further periods of five years each, paying a flat €250,000 per extension period, for a maximum of 27 years. The extension is not automatic: you apply to the Tax Commissioner by 30 June of the first year of each five-year period, and the ${eur(NON_DOM_EXTENSION_FEE)} is due by the end of the month after approval. The choice is irrevocable and the payment is not refundable. Separately, the 60-day rule's condition that you must not be tax resident in any other country was removed from 1 January 2026; the other 60-day conditions still apply. Implementation regulations were still being finalised in mid-2026, so confirm the current procedure with a Cyprus-registered accountant.\n\nGeSY on passive income: non-dom does not exempt dividends, interest or rents from the GeSY healthcare contribution. They pay 2.65% of the gross amount, capped at €4,770 a year per person (the cap is based on €180,000 of income). Someone receiving €500,000 in dividends a year pays no SDC (saving €25,000 at the 5% domiciled rate on dividends from 2026 profits) but still pays €4,770 in GeSY contributions.\n\nCommon misconceptions: non-dom does not mean no tax in Cyprus, because Cyprus employment, self-employment and Cyprus rental income are taxed as normal. Staying under 183 days does not protect non-dom either: below 183 days you are not a Cyprus tax resident at all unless you meet the 60-day rule, and non-dom exists only for tax residents. A salary from your own Cyprus company is employment income taxed at normal rates, while dividends from the same company are SDC-free under non-dom, so the director and shareholder structure matters. And non-dom is not permanent: if you plan a long-term base in Cyprus, model the 17-year expiry into your plans.`,
 			},
 			{
 				heading: "Capital gains, property and crypto",
@@ -203,7 +233,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		faqs: [
 			{
 				q: "What is the Cyprus non-dom regime?",
-				a: "The non-domiciled (non-dom) resident status exempts qualifying individuals from the Special Defence Contribution (SDC) — a 17% tax on dividends and 30% tax on interest — for 17 years from becoming a Cyprus tax resident. To qualify you must become a Cyprus tax resident and must not have been a Cyprus tax resident for 20 or more of the preceding 25 years. Effectively, foreign-source dividends and interest are received entirely tax-free.",
+				a: `Non-domiciled (non-dom) status exempts Cyprus tax residents from the Special Defence Contribution (SDC): ${pct(SDC_DIVIDEND_RATE)} on dividends paid out of profits from 2026 onwards (${pct(SDC_DIVIDEND_RATE_PRE_2026_PROFITS)} on dividends from earlier profits) and ${pct(SDC_INTEREST_RATE)} on interest. To qualify you must be Cyprus tax resident with a domicile of origin outside Cyprus. After 17 of the last 20 years as a tax resident you are treated as domiciled. You can keep non-dom treatment for up to two further five-year periods by paying ${eur(NON_DOM_EXTENSION_FEE)} per period (see the non-dom section of this guide). The 2.65% GeSY contribution still applies to dividends and interest.`,
 			},
 			{
 				q: "How do I become a Cyprus tax resident?",
@@ -223,7 +253,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "Can Cyprus non-dom status be extended beyond 17 years?",
-				a: "Under a 2025 amendment effective from January 2026, non-dom individuals reaching the 17-year limit can apply to extend the status for up to two further five-year periods, paying a flat €250,000 per period, for a maximum of 27 years. The application must be made before the 17th year of residency ends. Confirm the current procedure with a Cyprus-registered accountant, as the implementing rules were still being finalised in mid-2026.",
+				a: "Under a 2025 amendment effective from January 2026, non-dom individuals reaching the 17-year limit can apply to extend the status for up to two further five-year periods, paying a flat €250,000 per period, for a maximum of 27 years. You apply to the Tax Commissioner by 30 June of the first year of each five-year period; the choice is irrevocable and the payment is not refundable. Confirm the current procedure with a Cyprus-registered accountant, as the implementing rules were still being finalised in mid-2026.",
 			},
 		],
 	},
@@ -731,7 +761,14 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "ip-box-regime",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Tax Department: Income Tax Law amendments 2026 (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/03/2026-ΦορΜεταρρύθμιση-Φόρος-Εισοδήματος.pdf",
+			},
+		],
 		category: "tax",
 		title: "Cyprus IP Box Regime: 3% Effective Tax on IP",
 		description:
@@ -739,7 +776,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "What the IP Box is and why Cyprus built it",
-				body: "Cyprus's IP Box (formally the Intellectual Property scheme under Section 9(1)(l) of the Income Tax Law as amended) is an 80% income tax exemption applied to qualifying profits derived from qualifying intellectual property. Since Cyprus's standard corporate tax rate is 15% (raised from 12.5% on 1 January 2026), an 80% exemption leaves an effective rate of 3% on IP-derived income. Cyprus introduced its first IP Box in 2012, revised it in 2016 to comply with the OECD's BEPS Action 5 'nexus approach', and the current version is a fully BEPS-compliant 'modified nexus' regime. What this means in practice: the benefit is not unlimited. It applies in proportion to the ratio of qualifying R&D expenditure the company (or its related parties) incurred to create the IP, relative to total acquisition and development costs. The regime is designed for companies that genuinely create IP in Cyprus, not purely for holding companies that acquire IP from related parties abroad.",
+				body: "Cyprus's IP Box (formally the Intellectual Property scheme under section 9 of the Income Tax Law as amended) is an 80% income tax exemption applied to qualifying profits derived from qualifying intellectual property. Since Cyprus's standard corporate tax rate is 15% (raised from 12.5% on 1 January 2026), an 80% exemption leaves an effective rate of 3% on IP-derived income. Cyprus introduced its first IP Box in 2012, revised it in 2016 to comply with the OECD's BEPS Action 5 'nexus approach', and the current version is a fully BEPS-compliant 'modified nexus' regime. What this means in practice: the benefit is not unlimited. It applies in proportion to the ratio of qualifying R&D expenditure the company (or its related parties) incurred to create the IP, relative to total acquisition and development costs. The regime is designed for companies that genuinely create IP in Cyprus, not purely for holding companies that acquire IP from related parties abroad.",
 			},
 			{
 				heading: "Qualifying and non-qualifying IP",
@@ -2296,7 +2333,14 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "cyprus-vs-portugal",
 		datePublished: "2026-06-09",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Tax Department: Form T.D.59 2026 notes (PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/02/IR59_2026_English__.pdf",
+			},
+		],
 		category: "lifestyle",
 		title: "Cyprus vs Portugal for Relocation 2026",
 		description:
@@ -2312,7 +2356,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Taxes — non-dom vs NHR",
-				body: "Tax is where most relocators do the maths. Cyprus's non-dom regime: 0% tax on dividends, interest and most foreign-sourced passive income for 17 of the next 20 tax years; 0% income tax on the first €22,000 of Cypriot employment; 50% income tax exemption on Cypriot employment income above €100,000 for the first 17 years; flat 15% corporate tax; 20% capital gains tax only on Cypriot real estate (everything else exempt). Portugal's Non-Habitual Resident (NHR) regime was sharply curtailed in 2024 — the new version (now called IFICI for new applicants from 2024+) applies only to specific high-value-added professions and offers a narrower set of benefits than the previous NHR, with a 20% flat rate on covered Portuguese income for 10 years and varying treatment of foreign income. Pre-2024 NHR applicants remain on the old regime: 10-year preferential treatment with 10% on foreign-source pensions and various exemptions on foreign income. Verdict: Cyprus has the more generous and longer-lasting tax position for new applicants in 2026, particularly for individuals whose income is primarily dividends, interest or business profits. Portugal still has appeal for specific professional categories under the new IFICI regime, and for buyers prioritising lifestyle over tax.",
+				body: `Tax is where most relocators do the maths. Cyprus's non-dom regime: 0% tax on dividends, interest and most foreign-sourced passive income for 17 of the next 20 tax years; 0% income tax on the first €22,000 of Cypriot employment; 50% income tax exemption on Cypriot employment income for new residents earning over ${eur(FIRST_EMPLOYMENT_50PCT_THRESHOLD)} (conditions apply); flat 15% corporate tax; 20% capital gains tax only on Cypriot real estate (everything else exempt). Portugal's Non-Habitual Resident (NHR) regime was sharply curtailed in 2024 — the new version (now called IFICI for new applicants from 2024+) applies only to specific high-value-added professions and offers a narrower set of benefits than the previous NHR, with a 20% flat rate on covered Portuguese income for 10 years and varying treatment of foreign income. Pre-2024 NHR applicants remain on the old regime: 10-year preferential treatment with 10% on foreign-source pensions and various exemptions on foreign income. Verdict: Cyprus has the more generous and longer-lasting tax position for new applicants in 2026, particularly for individuals whose income is primarily dividends, interest or business profits. Portugal still has appeal for specific professional categories under the new IFICI regime, and for buyers prioritising lifestyle over tax.`,
 			},
 			{
 				heading: "Cost of living and property",

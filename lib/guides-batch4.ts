@@ -1,3 +1,9 @@
+import {
+	eur,
+	FIRST_EMPLOYMENT_50PCT_THRESHOLD,
+	pct,
+	SDC_DIVIDEND_RATE,
+} from "./facts/tax";
 import type { GuideInfo } from "./guides";
 
 /**
@@ -61,7 +67,26 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 	{
 		slug: "cyprus-tax-return-filing",
 		datePublished: "2026-07-14",
-		dateModified: "2026-07-14",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Tax Department: Individual income tax return",
+				url: "https://www.gov.cy/mof-tax/en/documents/forologiki-dilosi-eisodimatos-atomoy/",
+			},
+			{
+				label: "Tax Department: Form T.D.59 2026 notes (PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/02/IR59_2026_English__.pdf",
+			},
+			{
+				label: "Tax Department: Special Defence Contribution reform 2026 (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/03/EEA-ΦΚΚ-ΜΕΤΑΡΡΥΘΜΙΣΗ-06032026.pdf",
+			},
+			{
+				label: "Tax Department: Income Tax Law amendments 2026 (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/03/2026-ΦορΜεταρρύθμιση-Φόρος-Εισοδήματος.pdf",
+			},
+		],
 		category: "tax",
 		title: "Cyprus Tax Return 2026: Filing Your TD1 Form",
 		description:
@@ -81,7 +106,7 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 			},
 			{
 				heading: "Non-Dom Status and the 50% Employment Exemption",
-				body: "Non-domicile (non-dom) status is the most widely used expat tax advantage in Cyprus. Broadly, a Cyprus tax resident who was not born domiciled in Cyprus and who has not established a permanent home here qualifies. Non-dom status exempts you from Special Defence Contribution (SDC) on worldwide dividends and passive interest income for up to 17 years. For the 2025 tax year, SDC on dividends stood at 17 per cent for domiciled residents, making the non-dom exemption a substantial saving for those holding investment income. For full eligibility details, see the non-dom section of /guides/taxes-for-expats/.\n\nTo claim the SDC exemption on your TD1, you must have previously submitted form TD38 to the Tax Department, typically at the point you first receive income that would otherwise attract SDC. Once on record, the exemption carries into subsequent TD1 returns automatically. If you have not yet submitted your TD38, do so before or alongside your current TD1. Non-dom status does not exempt employment, rental, or self-employment income from standard income tax.\n\nThe 50 per cent employment income exemption is entirely separate from non-dom status and cannot be combined with it. To qualify, broadly you must not have been a Cyprus tax resident for a defined run of years immediately before your first Cyprus employment, your first employment in Cyprus must have begun on or after 1 January 2022, and your annual remuneration must exceed the qualifying threshold (in the region of €55,000). The exemption runs for up to 17 tax years and is claimed in the employment income section of the TD1. Retain your employment contract and evidence of the look-back period, as these may be requested during an audit. Verify your residency position using the tax-residency-tracker tool at /tools/tax-residency-tracker.",
+				body: `Non-domicile (non-dom) status is the most widely used expat tax advantage in Cyprus. Broadly, a Cyprus tax resident who was not born domiciled in Cyprus and who has not established a permanent home here qualifies. Non-dom status exempts you from Special Defence Contribution (SDC) on worldwide dividends and passive interest income for up to 17 years. For the 2025 tax year, SDC on dividends stood at 17 per cent for domiciled residents, making the non-dom exemption a substantial saving for those holding investment income. From 2026 the rate is ${pct(SDC_DIVIDEND_RATE)} on dividends paid out of 2026 and later profits. For full eligibility details, see the non-dom section of /guides/taxes-for-expats/.\n\nTo claim the SDC exemption on your TD1, you must have previously submitted form TD38 to the Tax Department, typically at the point you first receive income that would otherwise attract SDC. Once on record, the exemption carries into subsequent TD1 returns automatically. If you have not yet submitted your TD38, do so before or alongside your current TD1. Non-dom status does not exempt employment, rental, or self-employment income from standard income tax.\n\nThe 50 per cent employment income exemption is a separate income tax relief from non-dom status. To qualify, broadly you must not have been a Cyprus tax resident for a defined run of years immediately before your first Cyprus employment, your first employment in Cyprus must have begun on or after 1 January 2022, and your annual remuneration must exceed the qualifying threshold (more than ${eur(FIRST_EMPLOYMENT_50PCT_THRESHOLD)} a year). The exemption runs for up to 17 tax years and is claimed in the employment income section of the TD1. Retain your employment contract and evidence of the look-back period, as these may be requested during an audit. Verify your residency position using the tax-residency-tracker tool at /tools/tax-residency-tracker.`,
 			},
 			{
 				heading: "Provisional Tax: Advance Payments",

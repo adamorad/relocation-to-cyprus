@@ -5,6 +5,12 @@ import { ToolPanel } from "@/components/templates/ToolTemplate";
 import { Badge } from "@/components/ui/Badge";
 import { ChipGroup } from "@/components/ui/Chip";
 import { Section } from "@/components/ui/Section";
+import {
+	GESY_RATE,
+	GESY_SELF_EMPLOYED_RATE,
+	personalIncomeTax2026,
+	SDC_DIVIDEND_RATE,
+} from "@/lib/facts/tax";
 
 type Structure = "sole-trader" | "ltd" | "ltd-holding";
 
@@ -42,25 +48,18 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 	const cyprusIncome = annualIncome - foreignIncome;
 
 	// --- Sole Trader effective tax estimate ---
-	// Cyprus personal income tax brackets 2025
-	// 0-19,500: 0%
-	// 19,501-28,000: 20%
-	// 28,001-36,300: 25%
-	// 36,301-60,000: 30%
-	// 60,001+: 35%
-	// Plus GeSY (NHIS) contributions: 2.65% of gross income
+	// Cyprus personal income tax bands 2026 (lib/facts/tax.ts)
+	// 0-22,000: 0%
+	// 22,001-32,000: 20%
+	// 32,001-42,000: 25%
+	// 42,001-72,000: 30%
+	// 72,001+: 35%
+	// Plus GeSY for the self-employed: 4% of income
 	// Plus SDC (Special Defence Contribution) on dividends for domiciled residents
 
-	function personalIncomeTax(income: number): number {
-		let tax = 0;
-		if (income > 60000) tax += (income - 60000) * 0.35;
-		if (income > 36300) tax += (Math.min(income, 60000) - 36300) * 0.3;
-		if (income > 28000) tax += (Math.min(income, 36300) - 28000) * 0.25;
-		if (income > 19500) tax += (Math.min(income, 28000) - 19500) * 0.2;
-		return tax;
-	}
-
-	const soleTraderTax = personalIncomeTax(annualIncome) + annualIncome * 0.0265;
+	const soleTraderTax =
+		personalIncomeTax2026(annualIncome) +
+		annualIncome * GESY_SELF_EMPLOYED_RATE;
 	const soleTraderEffectiveRate = Math.round(
 		(soleTraderTax / annualIncome) * 100,
 	);
@@ -70,8 +69,11 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 	// Assuming 80% of income is taxable profit (20% expenses)
 	const estimatedProfit = annualIncome * 0.8;
 	const corporateTax = estimatedProfit * 0.15;
-	// Dividend extraction: non-dom pays 0 on dividends; dom pays 17% SDC
-	const dividendTax = nonDomiciled ? 0 : estimatedProfit * 0.17;
+	// Dividend extraction on profit after corporate tax: dom pays 5% SDC
+	// (dividends from 2026 profits), non-dom pays 0; GeSY 2.65% applies to both
+	const dividend = estimatedProfit - corporateTax;
+	const dividendTax =
+		(nonDomiciled ? 0 : dividend * SDC_DIVIDEND_RATE) + dividend * GESY_RATE;
 	const ltdTotalTax = corporateTax + dividendTax;
 	const ltdEffectiveRate = Math.round((ltdTotalTax / annualIncome) * 100);
 
@@ -139,7 +141,7 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 			risks: [
 				"Unlimited personal liability for business debts",
 				"Cannot issue equity, limits future investment options",
-				"Tax rate scales steeply above €28,000: 25%–35% marginal rate",
+				"Tax rate rises above €32,000: 25% to 35% marginal rate",
 				"Social insurance contributions (GESY + SI) on full income",
 				"Harder to retain earnings in a tax-efficient way",
 			],
@@ -157,7 +159,7 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 				"15% flat corporate tax, competitive within the EU",
 				nonDomiciled
 					? "As a non-dom, dividend extraction is 0% tax, highly efficient"
-					: "Dividends taxed at 17% SDC (domiciled); consider non-dom status",
+					: "Dividends taxed at 5% SDC (domiciled); consider non-dom status",
 				"Limited liability protects personal assets",
 				"Easier to bring in co-founders, issue options, or raise investment",
 				"Can accumulate retained earnings at low tax rates",
@@ -185,7 +187,7 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 			label: "Cyprus Ltd + Holding Structure",
 			advantages: [
 				"Participation exemption: dividends from subsidiaries often 0% tax",
-				"IP box regime: 80% exemption on qualifying IP income → effective ~2.5% on IP profits",
+				"IP box regime: 80% exemption on qualifying IP profit, effective 3% at the 15% corporate rate",
 				"Cyprus as EU hub with 65+ double tax treaties",
 				"Interest deduction regime available for equity-funded holding companies",
 				"Estate planning and succession benefits",

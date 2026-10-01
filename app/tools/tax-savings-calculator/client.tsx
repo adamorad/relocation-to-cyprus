@@ -5,6 +5,7 @@ import { ToolPanel } from "@/components/templates/ToolTemplate";
 import { Callout } from "@/components/ui/Callout";
 import { ChipGroup } from "@/components/ui/Chip";
 import { DataTable, StatCard } from "@/components/ui/DataTable";
+import { GESY_INCOME_CAP, GESY_RATE, SDC_DIVIDEND_RATE } from "@/lib/facts/tax";
 
 // ── types ────────────────────────────────────────────────────────────────────
 
@@ -322,8 +323,12 @@ function calculate(input: CalcInput): Comparison {
 
 		cypStdIncomeTax = calcCyprusIncomeTax(salaryAmount);
 		cypStdSocial = calcCyprusGesy(salaryAmount, "employed");
-		// Standard: SDC 17% on dividends
-		cypStdDividend = netDividend * 0.17 + corporateTax;
+		// Standard: SDC 5% on dividends from 2026 profits, plus GeSY 2.65% (capped)
+		cypStdDividend =
+			netDividend * SDC_DIVIDEND_RATE +
+			Math.min(netDividend, Math.max(GESY_INCOME_CAP - salaryAmount, 0)) *
+				GESY_RATE +
+			corporateTax;
 	} else {
 		cypStdIncomeTax = calcCyprusIncomeTax(grossIncome);
 		cypStdSocial = calcCyprusGesy(grossIncome, employmentType);
@@ -668,8 +673,8 @@ export default function TaxSavingsCalculatorClient({
 							<span>100% salary</span>
 						</div>
 						<p className="mt-1 text-sm text-muted">
-							Cyprus corporate tax: 15% on profits (2026). Non-dom: no SDC (17%)
-							on dividends.
+							Cyprus corporate tax: 15% on profits (2026). Non-dom: no SDC (5%
+							on dividends for domiciled residents).
 						</p>
 					</div>
 				)}
@@ -708,8 +713,9 @@ export default function TaxSavingsCalculatorClient({
 				<ul className="space-y-2 text-base leading-relaxed">
 					<li>
 						<span className="font-semibold">Non-Dom regime:</span> Exempt from
-						Special Defence Contribution (SDC), 17% dividend tax and 30%
-						interest tax, for 17 years after obtaining non-dom status.
+						Special Defence Contribution (SDC): 5% on dividends from 2026
+						profits and 17% on interest, for 17 years after obtaining non-dom
+						status.
 					</li>
 					<li>
 						<span className="font-semibold">15% corporate tax:</span> A
