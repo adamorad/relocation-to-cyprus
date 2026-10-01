@@ -21,7 +21,14 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 	{
 		slug: "rental-income-tax-cyprus",
 		datePublished: "2026-07-14",
-		dateModified: "2026-07-14",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Tax Department: Individual Income Tax Return",
+				url: "https://www.gov.cy/mof-tax/en/documents/forologiki-dilosi-eisodimatos-atomoy/",
+			},
+		],
 		category: "tax",
 		title: "Cyprus Rental Income Tax 2026: Landlord Guide",
 		description:

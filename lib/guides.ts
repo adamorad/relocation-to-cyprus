@@ -1054,7 +1054,14 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "startup-visa-ict",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Migration Department: Immigration permits for investors",
+				url: "https://www.gov.cy/mip-md/en/documents/companies-investors-permanent-residence-3/immigration-permits-for-investors/",
+			},
+		],
 		category: "immigration",
 		title: "Cyprus Innovative Company Permit: Tech Founder",
 		description:
