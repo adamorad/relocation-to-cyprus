@@ -334,7 +334,14 @@ export default function RentVsBuyPage({
 				<h2 className="text-sm font-bold text-ink mb-3">
 					Year-by-year comparison
 				</h2>
-				<div className="overflow-x-auto rounded-xl border border-line">
+				{/* biome-ignore lint/a11y/useSemanticElements: keyboard access for scrollable regions (axe scrollable-region-focusable) */}
+				<div
+					// biome-ignore lint/a11y/noNoninteractiveTabindex: keyboard access for scrollable regions (axe scrollable-region-focusable)
+					tabIndex={0}
+					role="region"
+					aria-label="Rent versus buy comparison table"
+					className="overflow-x-auto rounded-xl border border-line"
+				>
 					<table className="w-full text-xs">
 						<thead>
 							<tr className="bg-sky text-muted uppercase tracking-wide">
