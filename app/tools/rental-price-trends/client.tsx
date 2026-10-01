@@ -7,9 +7,11 @@ import { DataTable } from "@/components/ui/DataTable";
 import { CHART_COLORS } from "@/lib/chart-colors";
 import {
 	eur,
+	RENT_AGREED_NOTE,
 	RENT_CITATION_GENERAL,
 	RENT_MONTH_LABEL,
 	RENTS,
+	rentMedian,
 } from "@/lib/facts/rents";
 
 // ── data ─────────────────────────────────────────────────────────────────────
@@ -370,7 +372,7 @@ export default function RentalPriceTrendsClient() {
 						</span>,
 						cell.reliable ? (
 							<span key="a" className="font-bold">
-								{eur(cell.median)}
+								{rentMedian(city, beds)}
 							</span>
 						) : (
 							<span key="a" className="text-muted">
@@ -413,14 +415,14 @@ export default function RentalPriceTrendsClient() {
 				className="rounded-card border border-line bg-sky p-5 text-base leading-relaxed text-ink"
 			>
 				<h2 id="rent-drivers" className="mb-2 text-lg font-bold">
-					What pushed rents up?
+					Reading these figures
 				</h2>
 				<p>
-					Asking rents rose sharply after 2021. The drivers usually cited are
-					the arrival of tens of thousands of tech workers (primarily from
-					Russia, Ukraine, and Israel post-2022), limited new housing supply,
-					and rising construction costs. Limassol remains the most expensive
-					city; Larnaca is the cheapest of the three larger cities.
+					These are asking rents from one dated sample, so they show levels, not
+					a trend. {RENT_AGREED_NOTE} The Council also said that no rent
+					increases had been recorded in 2026. In this sample Limassol has the
+					highest median asking rents and Larnaca the lowest of the three larger
+					cities.
 				</p>
 			</section>
 		</div>
