@@ -102,7 +102,7 @@ export default async function RegionPage({
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
-					{ label: "Regions", href: "/regions/" },
+					{ label: "Cities", href: "/regions/" },
 					{ label: r.name },
 				],
 				eyebrow: "Region guide",
@@ -124,7 +124,7 @@ export default async function RegionPage({
 							: undefined
 					}
 				>
-					<ButtonLink href="/listings/" size="lg">
+					<ButtonLink href={`/listings/?city=${r.slug}`} size="lg">
 						New developments in {r.name}
 					</ButtonLink>
 				</Section>
