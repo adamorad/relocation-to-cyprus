@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
+import { SourcesNote } from "@/components/ui/SourcesNote";
+import { HEALTH_TRANSPORT_CHECKED, SRC } from "@/lib/facts/health-transport";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import HealthInsuranceComparisonClient from "./client";
@@ -27,15 +29,22 @@ export default function HealthInsuranceComparisonClientPage() {
 		<ToolTemplate
 			pagefindType="tool"
 			related={
-				<MoreOnTopic
-					type="tool"
-					slug="health-insurance-comparison"
-					exclude={[
-						"/guides/gesy-registration-guide/",
-						"/sections/specialist-doctors/",
-					]}
-					cols={3}
-				/>
+				<>
+					<SourcesNote
+						className="mb-12"
+						lastChecked={HEALTH_TRANSPORT_CHECKED}
+						sources={[SRC.gesyCopay]}
+					/>
+					<MoreOnTopic
+						type="tool"
+						slug="health-insurance-comparison"
+						exclude={[
+							"/guides/gesy-registration-guide/",
+							"/sections/specialist-doctors/",
+						]}
+						cols={3}
+					/>
+				</>
 			}
 			width="wide"
 			header={{

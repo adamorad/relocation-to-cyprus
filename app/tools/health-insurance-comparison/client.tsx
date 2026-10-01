@@ -6,6 +6,13 @@ import { Callout } from "@/components/ui/Callout";
 import { ChipGroup } from "@/components/ui/Chip";
 import { DataTable } from "@/components/ui/DataTable";
 import { Section } from "@/components/ui/Section";
+import {
+	eur,
+	GESY_AE_COPAY,
+	GESY_ANNUAL_CAP,
+	GESY_ANNUAL_CAP_REDUCED,
+	GESY_RX_ITEM_COPAY,
+} from "@/lib/facts/health-transport";
 
 type ProviderType = "local" | "international" | "public";
 
@@ -36,8 +43,7 @@ const PROVIDERS: ReadonlyArray<InsuranceProvider> = [
 		preExistingCovered: true,
 		gesyCompatible: true,
 		directBillingCyprusHospitals: true,
-		keyNote:
-			"Universal public health system. Free at point of care for all legal residents. Excellent baseline, covers GP, specialists, most hospital care. No dental or vision. Wait times for non-emergency specialist appointments can be 4–8 weeks. Most relocators use GeSY + supplemental private insurance.",
+		keyNote: `Public health system funded by income-based contributions, with no separate premium. Co-payments apply: ${eur(GESY_AE_COPAY)} per A&E visit and ${eur(GESY_RX_ITEM_COPAY)} per prescription item, capped at ${eur(GESY_ANNUAL_CAP)} a year per person (${eur(GESY_ANNUAL_CAP_REDUCED)} for under-21s, minimum-income recipients and low-income pensioners). Ask the HIO (contact centre 17000) whether you are a beneficiary. Covers GP, specialists, most hospital care. No dental or vision. Wait times for non-emergency specialist appointments can be 4–8 weeks. Most relocators use GeSY + supplemental private insurance.`,
 		website: "https://www.gesy.org.cy",
 	},
 	{
@@ -195,19 +201,23 @@ export default function HealthInsuranceComparisonPage() {
 
 	function premiumDisplay(amount: number | null): string {
 		if (amount === null) return "n/a";
-		if (amount === 0) return "Free";
+		if (amount === 0) return "No premium";
 		return `€${amount.toLocaleString()}/yr`;
 	}
 
 	return (
 		<>
 			<Callout tone="info" title="How GeSY fits in">
-				All legal residents in Cyprus are eligible for GeSY (the public General
-				Healthcare System). It costs nothing extra: contributions come from
-				employer/employee taxes. For most relocators, GeSY handles everyday
-				healthcare and emergencies, while a private policy speeds up specialist
-				access and adds dental/maternity cover. You don&apos;t have to choose
-				one or the other.
+				GeSY (the public General Healthcare System) has no separate premium: it
+				is funded by income-based contributions, and visits carry small
+				co-payments ({eur(GESY_AE_COPAY)} per A&amp;E visit,{" "}
+				{eur(GESY_RX_ITEM_COPAY)} per prescription item, capped at{" "}
+				{eur(GESY_ANNUAL_CAP)} a year). Whether you are a beneficiary depends on
+				your status: check with the Health Insurance Organisation (contact
+				centre 17000) before you rely on it. For beneficiaries, GeSY handles
+				everyday healthcare and emergencies, while a private policy speeds up
+				specialist access and adds dental/maternity cover. You don&apos;t have
+				to choose one or the other.
 			</Callout>
 
 			{/* Filters */}
