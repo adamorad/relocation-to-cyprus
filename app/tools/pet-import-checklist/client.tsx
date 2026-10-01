@@ -247,9 +247,9 @@ function getDogCatChecklist(origin: OriginRegion): ChecklistItem[] {
 // ── timeline data (Part 2 countries) ─────────────────────────────────────────
 
 const TIMELINE_STEPS = [
-	{ label: "Microchip", sub: "Day 0", color: "bg-slate-700" },
+	{ label: "Microchip", sub: "Day 0", color: "bg-ink" },
 	{ label: "Rabies vaccine", sub: "Day 0+", color: "bg-blue-600" },
-	{ label: "Titre test", sub: "30+ days after vaccine", color: "bg-amber-500" },
+	{ label: "Titre test", sub: "30+ days after vaccine", color: "bg-coral" },
 	{
 		label: "3-month wait",
 		sub: "Starts from blood draw",
@@ -329,8 +329,8 @@ const TIMING_GROUPS: {
 	{
 		key: "arrival",
 		label: "On arrival in Cyprus",
-		color: "border-teal-300",
-		badgeBg: "bg-teal-100 text-teal-800",
+		color: "border-line",
+		badgeBg: "bg-sky-strong text-ink",
 	},
 ];
 
@@ -360,23 +360,22 @@ export default function PetImportChecklistClient() {
 		<main id="main" className="max-w-4xl mx-auto px-6 py-10 md:py-16">
 			{/* breadcrumb */}
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-ink">
 					Home
 				</Link>{" "}
 				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-slate-900">
+				<Link href="/tools/" className="hover:text-ink">
 					Tools
 				</Link>{" "}
-				&rsaquo;{" "}
-				<span className="text-slate-900">Cyprus Pet Import Checklist</span>
+				&rsaquo; <span className="text-ink">Cyprus Pet Import Checklist</span>
 			</nav>
 
 			{/* header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-rose-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
 					Lifestyle
 				</p>
-				<h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Cyprus Pet Import Checklist
 				</h1>
 				<p className="mt-3 text-slate-600 text-sm leading-relaxed max-w-2xl">
@@ -388,7 +387,7 @@ export default function PetImportChecklistClient() {
 
 			{/* Step 1 — pet type */}
 			<section className="mb-8">
-				<h2 className="text-sm font-bold text-slate-800 mb-3 uppercase tracking-wide">
+				<h2 className="text-sm font-bold text-ink mb-3 uppercase tracking-wide">
 					Step 1 — What type of pet?
 				</h2>
 				<div className="flex flex-wrap gap-3">
@@ -403,7 +402,7 @@ export default function PetImportChecklistClient() {
 							className={`flex flex-col items-center gap-1 px-5 py-4 rounded-xl border text-sm font-semibold transition-colors ${
 								pet === opt.id
 									? "bg-primary border-primary text-white shadow-sm"
-									: "bg-white border-slate-200 text-slate-700 hover:border-primary"
+									: "bg-white border-line text-slate-700 hover:border-primary"
 							}`}
 						>
 							<span className="text-2xl">{opt.emoji}</span>
@@ -415,7 +414,7 @@ export default function PetImportChecklistClient() {
 
 			{/* Step 2 — origin */}
 			<section className="mb-8">
-				<h2 className="text-sm font-bold text-slate-800 mb-3 uppercase tracking-wide">
+				<h2 className="text-sm font-bold text-ink mb-3 uppercase tracking-wide">
 					Step 2 — Where are you travelling from?
 				</h2>
 				<div className="flex flex-col gap-3">
@@ -430,18 +429,16 @@ export default function PetImportChecklistClient() {
 							className={`text-left p-4 rounded-xl border transition-colors ${
 								origin === opt.id
 									? "bg-primary/10 border-primary shadow-sm"
-									: "bg-white border-slate-200 hover:border-primary"
+									: "bg-white border-line hover:border-primary"
 							}`}
 						>
 							<div className="flex items-start justify-between gap-3 flex-wrap">
 								<div>
-									<p className="text-sm font-semibold text-slate-900">
-										{opt.label}
-									</p>
+									<p className="text-sm font-semibold text-ink">{opt.label}</p>
 									<p className="text-xs text-slate-500 mt-0.5">{opt.sub}</p>
 								</div>
 								<span
-									className={`text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap ${opt.badgeColor}`}
+									className={`text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap ${opt.badgeColor}`}
 								>
 									{opt.badge}
 								</span>
@@ -457,7 +454,7 @@ export default function PetImportChecklistClient() {
 					{/* Critical warning banner */}
 					{origin === "listed2" &&
 						(pet === "dog" || pet === "cat" || pet === "ferret") && (
-							<div className="mb-6 p-4 bg-amber-50 border border-amber-300 rounded-xl">
+							<div className="mb-6 p-4 bg-amber-50 border border-amber-300 rounded-2xl">
 								<p className="text-sm font-bold text-amber-900 mb-1">
 									Months-long process — start planning immediately
 								</p>
@@ -470,7 +467,7 @@ export default function PetImportChecklistClient() {
 						)}
 
 					{origin === "unlisted" && (
-						<div className="mb-6 p-4 bg-rose-50 border border-rose-300 rounded-xl">
+						<div className="mb-6 p-4 bg-rose-50 border border-rose-300 rounded-2xl">
 							<p className="text-sm font-bold text-rose-900 mb-1">
 								High-risk / unlisted country — contact Cyprus Veterinary
 								Services first
@@ -485,7 +482,7 @@ export default function PetImportChecklistClient() {
 					)}
 
 					{pet === "bird" && (
-						<div className="mb-6 p-4 bg-amber-50 border border-amber-300 rounded-xl">
+						<div className="mb-6 p-4 bg-amber-50 border border-amber-300 rounded-2xl">
 							<p className="text-sm font-bold text-amber-900 mb-1">
 								Birds face significant import restrictions
 							</p>
@@ -521,7 +518,7 @@ export default function PetImportChecklistClient() {
 
 					{/* Timeline visualiser (Part 2 only) */}
 					{showTimeline && (
-						<section className="mb-8 p-5 bg-slate-50 border border-slate-200 rounded-xl overflow-x-auto">
+						<section className="mb-8 p-5 bg-sky border border-line rounded-2xl overflow-x-auto">
 							<h2 className="text-xs font-bold text-slate-700 uppercase tracking-wide mb-4">
 								Timeline overview (Listed Part 2)
 							</h2>
@@ -532,7 +529,7 @@ export default function PetImportChecklistClient() {
 											<div
 												className={`w-3 h-3 rounded-full flex-shrink-0 mt-1 ${step.color}`}
 											/>
-											<p className="text-[10px] font-semibold text-slate-800 text-center mt-1 leading-tight">
+											<p className="text-xs font-semibold text-ink text-center mt-1 leading-tight">
 												{step.label}
 											</p>
 											<p className="text-[9px] text-slate-500 text-center mt-0.5 leading-tight">
@@ -550,7 +547,7 @@ export default function PetImportChecklistClient() {
 
 					{/* Checklist grouped by timing */}
 					<section className="mb-8">
-						<h2 className="text-sm font-bold text-slate-800 mb-4 uppercase tracking-wide">
+						<h2 className="text-sm font-bold text-ink mb-4 uppercase tracking-wide">
 							Step 3 — Your checklist
 						</h2>
 						<div className="flex flex-col gap-6">
@@ -563,7 +560,7 @@ export default function PetImportChecklistClient() {
 											className={`flex items-center gap-2 mb-3 pb-2 border-b-2 ${group.color}`}
 										>
 											<span
-												className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${group.badgeBg}`}
+												className={`text-xs font-bold px-2 py-0.5 rounded-full ${group.badgeBg}`}
 											>
 												{group.label}
 											</span>
@@ -587,10 +584,8 @@ export default function PetImportChecklistClient() {
 					</section>
 
 					{/* Verification footer */}
-					<div className="mb-8 p-4 bg-blue-50 border border-blue-200 rounded-xl text-xs text-slate-700 leading-relaxed">
-						<p className="font-semibold text-slate-900 mb-1">
-							Approved entry points
-						</p>
+					<div className="mb-8 p-4 bg-sky border border-line rounded-2xl text-xs text-slate-700 leading-relaxed">
+						<p className="font-semibold text-ink mb-1">Approved entry points</p>
 						<p>
 							Pets may only enter Cyprus via{" "}
 							<strong>Larnaca International Airport</strong> or{" "}
@@ -603,15 +598,15 @@ export default function PetImportChecklistClient() {
 
 			{/* Empty state */}
 			{(!pet || !origin) && (
-				<div className="py-12 text-center text-muted text-sm border-2 border-dashed border-slate-200 rounded-xl">
+				<div className="py-12 text-center text-muted text-sm border-2 border-dashed border-line rounded-xl">
 					Select your pet type and origin above to generate your personalised
 					checklist.
 				</div>
 			)}
 
 			{/* Disclaimer */}
-			<aside className="mt-10 p-5 bg-amber-50 border border-amber-200 rounded-xl text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">Disclaimer</p>
+			<aside className="mt-10 p-5 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
+				<p className="font-semibold text-ink mb-1">Disclaimer</p>
 				<p>
 					General information only — not veterinary or legal advice. Always
 					verify current requirements with{" "}
@@ -621,7 +616,7 @@ export default function PetImportChecklistClient() {
 			</aside>
 
 			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools/" className="underline hover:text-slate-900">
+				<Link href="/tools/" className="underline hover:text-ink">
 					&larr; Back to Tools
 				</Link>
 			</p>
@@ -646,10 +641,8 @@ function ChecklistItemRow({
 }) {
 	return (
 		<div
-			className={`p-4 rounded-xl border transition-colors ${
-				item.critical
-					? "border-amber-300 bg-amber-50"
-					: "border-slate-200 bg-white"
+			className={`p-4 rounded-2xl border transition-colors ${
+				item.critical ? "border-amber-300 bg-amber-50" : "border-line bg-white"
 			} ${checked ? "opacity-60" : ""}`}
 		>
 			<div className="flex items-start gap-3">
@@ -660,7 +653,7 @@ function ChecklistItemRow({
 					className={`flex-shrink-0 mt-0.5 w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
 						checked
 							? "bg-primary border-primary"
-							: "border-slate-300 hover:border-primary"
+							: "border-line hover:border-primary"
 					}`}
 				>
 					{checked && (
@@ -682,11 +675,11 @@ function ChecklistItemRow({
 				<div className="flex-1 min-w-0">
 					<p
 						className={`text-sm font-medium leading-snug ${
-							checked ? "line-through text-muted" : "text-slate-900"
+							checked ? "line-through text-muted" : "text-ink"
 						}`}
 					>
 						{item.critical && (
-							<span className="inline-block mr-1.5 text-amber-500 font-bold">
+							<span className="inline-block mr-1.5 text-amber-800 font-bold">
 								!
 							</span>
 						)}

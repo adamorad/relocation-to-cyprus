@@ -172,11 +172,11 @@ export default function PriceBenchmarkerClient() {
 		<main id="main" className="max-w-3xl mx-auto px-6 py-10 md:py-16">
 			{/* Breadcrumb */}
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-ink">
 					Home
 				</Link>{" "}
 				&rsaquo;{" "}
-				<Link href="/tools/" className="hover:text-slate-900">
+				<Link href="/tools/" className="hover:text-ink">
 					Tools
 				</Link>{" "}
 				&rsaquo; <span>Property Price Benchmarker</span>
@@ -184,10 +184,10 @@ export default function PriceBenchmarkerClient() {
 
 			{/* Header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">
 					Research
 				</p>
-				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Cyprus Property Price Benchmarker
 				</h1>
 				<p className="mt-3 text-base text-slate-600 leading-relaxed">
@@ -197,13 +197,13 @@ export default function PriceBenchmarkerClient() {
 			</header>
 
 			{/* Inputs */}
-			<section className="bg-white border border-slate-200 rounded-xl p-6 mb-6">
+			<section className="bg-white border border-line rounded-2xl p-6 mb-6">
 				<div className="grid gap-5 sm:grid-cols-2">
 					{/* City selector */}
 					<div>
 						<label
 							htmlFor="city-select"
-							className="block text-sm font-semibold text-slate-800 mb-1.5"
+							className="block text-sm font-semibold text-ink mb-1.5"
 						>
 							City / Region
 						</label>
@@ -211,7 +211,7 @@ export default function PriceBenchmarkerClient() {
 							id="city-select"
 							value={selectedCity}
 							onChange={(e) => setSelectedCity(e.target.value)}
-							className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-focus"
+							className="w-full border border-line rounded-xl px-3 py-2 text-sm text-ink bg-white focus:outline-none focus:ring-2 focus:ring-focus"
 						>
 							{availableCities.map((city) => (
 								<option key={city} value={city}>
@@ -225,7 +225,7 @@ export default function PriceBenchmarkerClient() {
 					<div>
 						<label
 							htmlFor="price-input"
-							className="block text-sm font-semibold text-slate-800 mb-1.5"
+							className="block text-sm font-semibold text-ink mb-1.5"
 						>
 							Your property price (€)
 						</label>
@@ -236,7 +236,7 @@ export default function PriceBenchmarkerClient() {
 							placeholder="e.g. 450000"
 							value={priceInput}
 							onChange={(e) => setPriceInput(e.target.value)}
-							className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-focus"
+							className="w-full border border-line rounded-xl px-3 py-2 text-sm text-ink bg-white focus:outline-none focus:ring-2 focus:ring-focus"
 						/>
 					</div>
 				</div>
@@ -248,7 +248,7 @@ export default function PriceBenchmarkerClient() {
 					{/* Percentile result */}
 					{userPrice !== null && pctRank !== null ? (
 						<section className="mb-6">
-							<div className="bg-slate-900 text-white rounded-xl p-6">
+							<div className="bg-ink text-white rounded-2xl p-6">
 								<p className="text-base leading-relaxed">
 									Your price of{" "}
 									<span className="font-bold text-sky-strong">
@@ -264,23 +264,23 @@ export default function PriceBenchmarkerClient() {
 
 								{/* Percentile bar */}
 								<div className="mt-5">
-									<div className="flex justify-between text-[10px] text-slate-400 mb-1">
+									<div className="flex justify-between text-xs text-slate-400 mb-1">
 										<span>Cheapest</span>
 										<span>Most expensive</span>
 									</div>
 									<div className="relative h-3 bg-slate-700 rounded-full overflow-visible">
 										{/* Gradient fill up to marker */}
 										<div
-											className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-teal-400 to-primary"
+											className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-sky-strong to-primary"
 											style={{ width: `${markerLeft}%` }}
 										/>
 										{/* Marker pin */}
 										<div
-											className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white border-2 border-primary shadow-md"
+											className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white border-2 border-primary shadow-sm"
 											style={{ left: `${markerLeft}%` }}
 										/>
 									</div>
-									<div className="flex justify-between text-[10px] text-slate-400 mt-1">
+									<div className="flex justify-between text-xs text-slate-400 mt-1">
 										<span>{fmt(stats.min)}</span>
 										<span>{fmt(stats.max)}</span>
 									</div>
@@ -300,7 +300,7 @@ export default function PriceBenchmarkerClient() {
 						</section>
 					) : (
 						<section className="mb-6">
-							<div className="bg-slate-50 border border-slate-200 rounded-xl p-5 text-sm text-slate-600">
+							<div className="bg-sky border border-line rounded-2xl p-5 text-sm text-slate-600">
 								Enter a price above to see where it sits in the distribution.
 							</div>
 						</section>
@@ -308,7 +308,7 @@ export default function PriceBenchmarkerClient() {
 
 					{/* Stats table */}
 					<section className="mb-6">
-						<h2 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-3">
+						<h2 className="text-sm font-bold text-ink uppercase tracking-wider mb-3">
 							{selectedCity} — Price Distribution
 						</h2>
 						<div className="overflow-x-auto">
@@ -336,14 +336,14 @@ export default function PriceBenchmarkerClient() {
 											key={row.label}
 											className={
 												i % 2 === 0
-													? "bg-white border-b border-slate-100"
-													: "bg-slate-50 border-b border-slate-100"
+													? "bg-white border-b border-line"
+													: "bg-slate-50 border-b border-line"
 											}
 										>
 											<td className="px-4 py-2.5 text-slate-700">
 												{row.label}
 											</td>
-											<td className="px-4 py-2.5 text-right font-mono font-semibold text-slate-900">
+											<td className="px-4 py-2.5 text-right font-mono font-semibold text-ink">
 												{fmt(row.value)}
 											</td>
 										</tr>
@@ -361,8 +361,8 @@ export default function PriceBenchmarkerClient() {
 					{/* City note */}
 					{CITY_NOTES[selectedCity] && (
 						<section className="mb-6">
-							<div className="bg-teal-50 border border-teal-200 rounded-xl p-4 text-sm text-slate-700">
-								<span className="font-semibold text-slate-900">
+							<div className="bg-sky border border-line rounded-2xl p-4 text-sm text-slate-700">
+								<span className="font-semibold text-ink">
 									About {selectedCity}:{" "}
 								</span>
 								{CITY_NOTES[selectedCity]}
@@ -373,8 +373,8 @@ export default function PriceBenchmarkerClient() {
 			)}
 
 			{/* Next steps */}
-			<aside className="bg-slate-50 border border-slate-200 rounded-xl p-5 mb-6">
-				<p className="text-sm font-semibold text-slate-900 mb-2">Next steps</p>
+			<aside className="bg-sky border border-line rounded-2xl p-5 mb-6">
+				<p className="text-sm font-semibold text-ink mb-2">Next steps</p>
 				<p className="text-sm text-slate-600 mb-4">
 					Use the benchmarker alongside the rent vs buy calculator and
 					neighbourhood comparison to build a complete picture.
@@ -382,13 +382,13 @@ export default function PriceBenchmarkerClient() {
 				<div className="flex flex-wrap gap-2">
 					<Link
 						href="/tools/rent-vs-buy-calculator/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						Rent vs Buy Calculator
 					</Link>
 					<Link
 						href="/tools/city-comparison/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
 						City Comparison
 					</Link>
@@ -396,8 +396,8 @@ export default function PriceBenchmarkerClient() {
 			</aside>
 
 			{/* Disclaimer */}
-			<aside className="bg-amber-50 border border-amber-200 rounded-xl p-5 mb-6 text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">Disclaimer</p>
+			<aside className="bg-amber-50 border border-amber-200 rounded-2xl p-5 mb-6 text-sm text-amber-900">
+				<p className="font-semibold text-ink mb-1">Disclaimer</p>
 				<p>
 					Prices are extracted from publicly listed development data and are
 					indicative only. Prices vary by unit, floor, and negotiation. This
@@ -407,7 +407,7 @@ export default function PriceBenchmarkerClient() {
 			</aside>
 
 			{/* Back link */}
-			<Link href="/tools/" className="underline hover:text-slate-900 text-sm">
+			<Link href="/tools/" className="underline hover:text-ink text-sm">
 				&larr; Back to Tools
 			</Link>
 		</main>

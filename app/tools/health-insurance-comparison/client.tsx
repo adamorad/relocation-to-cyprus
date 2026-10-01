@@ -205,19 +205,19 @@ export default function HealthInsuranceComparisonPage() {
 		<main id="main" className="max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-16">
 			{/* Breadcrumb */}
 			<nav className="text-xs text-slate-500 mb-6">
-				<Link href="/" className="hover:text-slate-900">
+				<Link href="/" className="hover:text-ink">
 					Home
 				</Link>
 				{" › "}
-				<span className="text-slate-900">Health Insurance Comparison</span>
+				<span className="text-ink">Health Insurance Comparison</span>
 			</nav>
 
 			{/* Header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold mb-2">
+				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-2">
 					Tools
 				</p>
-				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+				<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Private Health Insurance for Cyprus
 				</h1>
 				<p className="mt-3 text-lg text-slate-600 leading-relaxed">
@@ -227,8 +227,8 @@ export default function HealthInsuranceComparisonPage() {
 			</header>
 
 			{/* GeSY highlight box */}
-			<div className="mb-6 p-4 bg-primary/10 border border-primary/30 rounded-xl text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">How GeSY fits in</p>
+			<div className="mb-6 p-4 bg-sky border border-line rounded-2xl text-sm text-slate-700">
+				<p className="font-semibold text-ink mb-1">How GeSY fits in</p>
 				<p>
 					All legal residents in Cyprus are eligible for GeSY (the public
 					General Healthcare System). It costs nothing extra — contributions
@@ -240,7 +240,7 @@ export default function HealthInsuranceComparisonPage() {
 			</div>
 
 			{/* Filters */}
-			<div className="bg-white border border-slate-200 rounded-xl p-5 mb-6">
+			<div className="bg-white border border-line rounded-2xl p-5 mb-6">
 				<h2 className="font-semibold text-slate-700 text-sm mb-4">
 					Filter providers
 				</h2>
@@ -255,10 +255,10 @@ export default function HealthInsuranceComparisonPage() {
 								<button
 									key={t}
 									onClick={() => setFilters({ ...filters, coverageType: t })}
-									className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
+									className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
 										filters.coverageType === t
 											? "bg-primary text-white border-primary"
-											: "bg-white text-slate-600 border-slate-300 hover:border-primary"
+											: "bg-white text-slate-600 border-line hover:border-primary"
 									}`}
 								>
 									{t === "all" ? "All" : t.charAt(0).toUpperCase() + t.slice(1)}
@@ -278,10 +278,10 @@ export default function HealthInsuranceComparisonPage() {
 									<button
 										key={t}
 										onClick={() => setFilters({ ...filters, providerType: t })}
-										className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
+										className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
 											filters.providerType === t
 												? "bg-slate-700 text-white border-slate-700"
-												: "bg-white text-slate-600 border-slate-300 hover:border-slate-500"
+												: "bg-white text-slate-600 border-line hover:border-slate-500"
 										}`}
 									>
 										{t.charAt(0).toUpperCase() + t.slice(1)}
@@ -299,20 +299,20 @@ export default function HealthInsuranceComparisonPage() {
 						<div className="flex gap-2">
 							<button
 								onClick={() => setFilters({ ...filters, maternity: null })}
-								className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
+								className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
 									filters.maternity === null
 										? "bg-slate-700 text-white border-slate-700"
-										: "bg-white text-slate-600 border-slate-300 hover:border-slate-500"
+										: "bg-white text-slate-600 border-line hover:border-slate-500"
 								}`}
 							>
 								Any
 							</button>
 							<button
 								onClick={() => setFilters({ ...filters, maternity: true })}
-								className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
+								className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
 									filters.maternity === true
 										? "bg-primary text-white border-primary"
-										: "bg-white text-slate-600 border-slate-300 hover:border-primary"
+										: "bg-white text-slate-600 border-line hover:border-primary"
 								}`}
 							>
 								Required
@@ -328,20 +328,20 @@ export default function HealthInsuranceComparisonPage() {
 						<div className="flex gap-2">
 							<button
 								onClick={() => setFilters({ ...filters, preExisting: null })}
-								className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
+								className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
 									filters.preExisting === null
 										? "bg-slate-700 text-white border-slate-700"
-										: "bg-white text-slate-600 border-slate-300 hover:border-slate-500"
+										: "bg-white text-slate-600 border-line hover:border-slate-500"
 								}`}
 							>
 								Any
 							</button>
 							<button
 								onClick={() => setFilters({ ...filters, preExisting: true })}
-								className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
+								className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-colors ${
 									filters.preExisting === true
 										? "bg-primary text-white border-primary"
-										: "bg-white text-slate-600 border-slate-300 hover:border-primary"
+										: "bg-white text-slate-600 border-line hover:border-primary"
 								}`}
 							>
 								Covered
@@ -357,10 +357,10 @@ export default function HealthInsuranceComparisonPage() {
 			</p>
 
 			{/* Comparison table — desktop */}
-			<div className="hidden md:block overflow-x-auto rounded-xl border border-slate-200 mb-6">
+			<div className="hidden md:block overflow-x-auto rounded-2xl border border-line mb-6">
 				<table className="w-full text-sm">
 					<thead>
-						<tr className="bg-slate-50 border-b border-slate-200">
+						<tr className="bg-slate-50 border-b border-line">
 							<th className="text-left px-4 py-3 font-semibold text-slate-600 text-xs uppercase tracking-wide">
 								Provider
 							</th>
@@ -387,11 +387,11 @@ export default function HealthInsuranceComparisonPage() {
 						{filtered.map((p, i) => (
 							<tr
 								key={p.name}
-								className={`border-b border-slate-100 ${i % 2 === 0 ? "bg-white" : "bg-slate-50/50"}`}
+								className={`border-b border-line ${i % 2 === 0 ? "bg-white" : "bg-slate-50/50"}`}
 							>
 								<td className="px-4 py-3">
 									<div>
-										<p className="font-semibold text-slate-900">{p.name}</p>
+										<p className="font-semibold text-ink">{p.name}</p>
 										<span
 											className={`text-xs font-semibold px-1.5 py-0.5 rounded-full ${typeColors[p.type]}`}
 										>
@@ -428,11 +428,11 @@ export default function HealthInsuranceComparisonPage() {
 				{filtered.map((p) => (
 					<div
 						key={p.name}
-						className="bg-white border border-slate-200 rounded-xl p-4"
+						className="bg-white border border-line rounded-2xl p-4"
 					>
 						<div className="flex items-start justify-between mb-3">
 							<div>
-								<h2 className="font-bold text-slate-900">{p.name}</h2>
+								<h2 className="font-bold text-ink">{p.name}</h2>
 								<span
 									className={`text-xs font-semibold px-1.5 py-0.5 rounded-full ${typeColors[p.type]}`}
 								>
@@ -471,7 +471,7 @@ export default function HealthInsuranceComparisonPage() {
 								rel="noopener noreferrer"
 								className="mt-2 inline-block text-xs text-primary hover:text-primary-hover font-semibold underline"
 							>
-								Visit website →
+								Visit website
 							</a>
 						)}
 					</div>
@@ -480,18 +480,16 @@ export default function HealthInsuranceComparisonPage() {
 
 			{/* Detail notes — desktop only (shown below table) */}
 			<div className="hidden md:block space-y-3 mb-8">
-				<h2 className="font-bold text-slate-800 text-sm uppercase tracking-wide">
+				<h2 className="font-bold text-ink text-sm uppercase tracking-wide">
 					Provider notes
 				</h2>
 				{filtered.map((p) => (
 					<div
 						key={`note-${p.name}`}
-						className="bg-white border border-slate-100 rounded-lg p-4"
+						className="bg-white border border-line rounded-xl p-4"
 					>
 						<div className="flex items-center gap-2 mb-1">
-							<span className="font-semibold text-slate-900 text-sm">
-								{p.name}
-							</span>
+							<span className="font-semibold text-ink text-sm">{p.name}</span>
 							{p.website && (
 								<a
 									href={p.website}
@@ -499,7 +497,7 @@ export default function HealthInsuranceComparisonPage() {
 									rel="noopener noreferrer"
 									className="text-xs text-primary hover:text-primary-hover font-semibold underline"
 								>
-									Website →
+									Website
 								</a>
 							)}
 						</div>
@@ -511,8 +509,8 @@ export default function HealthInsuranceComparisonPage() {
 			</div>
 
 			{/* Disclaimer */}
-			<aside className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-xl text-sm text-slate-700">
-				<p className="font-semibold text-slate-900 mb-1">Disclaimer</p>
+			<aside className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-sm text-amber-900">
+				<p className="font-semibold text-ink mb-1">Disclaimer</p>
 				<p>
 					Premiums shown are approximate 2025 estimates for a healthy non-smoker
 					at indicated age brackets. Actual premiums depend on age, health
@@ -526,27 +524,27 @@ export default function HealthInsuranceComparisonPage() {
 
 			{/* Back */}
 			<p className="mt-8 text-xs text-slate-500">
-				<Link href="/tools" className="underline hover:text-slate-900">
+				<Link href="/tools" className="underline hover:text-ink">
 					← Back to Tools
 				</Link>
 			</p>
 
-			<aside className="mt-10 p-5 rounded-xl bg-slate-50 border border-slate-200">
-				<p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-3">
+			<aside className="mt-10 p-5 rounded-2xl bg-sky border border-line">
+				<p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
 					Next steps
 				</p>
 				<div className="flex flex-wrap gap-3">
 					<Link
 						href="/guides/gesy-registration-guide/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Read: GeSY Registration Guide →
+						Read: GeSY Registration Guide
 					</Link>{" "}
 					<Link
 						href="/sections/specialist-doctors/"
-						className="text-xs font-semibold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary-hover transition-colors"
+						className="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary-hover transition-colors"
 					>
-						Find a specialist doctor →
+						Find a specialist doctor
 					</Link>
 				</div>
 			</aside>
