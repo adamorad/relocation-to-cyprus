@@ -395,11 +395,7 @@ export default function RentalPriceTrendsClient() {
 									? "border-2 bg-sky text-ink"
 									: "bg-white border-slate-200 text-slate-500"
 							}`}
-							style={
-								active
-									? { borderColor: CITY_COLOURS[city] }
-									: {}
-							}
+							style={active ? { borderColor: CITY_COLOURS[city] } : {}}
 						>
 							<span
 								className="w-2 h-2 rounded-full inline-block"

@@ -467,11 +467,7 @@ export default function WeatherClimateClient() {
 										? "border-2 bg-sky text-ink"
 										: "bg-white border-slate-200 text-slate-700 hover:border-slate-400"
 								}`}
-								style={
-									isSelected
-										? { borderColor: activeColor }
-										: undefined
-								}
+								style={isSelected ? { borderColor: activeColor } : undefined}
 							>
 								{city}
 							</button>
