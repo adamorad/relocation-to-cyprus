@@ -38,10 +38,10 @@ function CityChip({
 			type="button"
 			onClick={onClick}
 			aria-pressed={selected}
-			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
+			className={`rounded-full inline-flex min-h-11 items-center px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors md:min-h-0 ${
 				selected
-					? "bg-slate-900 text-white border border-slate-900"
-					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
+					? "bg-ink text-white border border-ink"
+					: "bg-white text-ink border border-line hover:bg-sky"
 			}`}
 		>
 			{city}
@@ -68,10 +68,10 @@ function ViewTypeChip({
 			type="button"
 			onClick={onClick}
 			aria-pressed={selected}
-			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
+			className={`rounded-full inline-flex min-h-11 items-center px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors md:min-h-0 ${
 				selected
 					? "bg-primary text-white border border-primary"
-					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
+					: "bg-white text-ink border border-line hover:bg-sky"
 			}`}
 		>
 			{label}
@@ -85,31 +85,31 @@ function ViewTypeChip({
 
 function ViewBarCard({ bar }: { bar: (typeof VIEW_BARS)[number] }) {
 	return (
-		<div className="rounded-lg border border-slate-200 bg-white p-4 text-sm flex flex-col gap-2">
+		<div className="rounded-2xl border border-line bg-white p-4 text-sm flex flex-col gap-2">
 			<div className="flex items-start justify-between gap-2">
 				<div className="min-w-0">
-					<p className="font-bold text-slate-900 leading-snug">{bar.name}</p>
-					<p className="text-[11px] text-slate-500 mt-0.5">
+					<p className="font-bold text-ink leading-snug">{bar.name}</p>
+					<p className="text-xs text-slate-500 mt-0.5">
 						{bar.city}
 						{bar.neighbourhood ? ` · ${bar.neighbourhood}` : ""}
 					</p>
 				</div>
-				<span className="flex-shrink-0 text-xs font-semibold text-amber-700">
+				<span className="flex-shrink-0 text-xs font-semibold text-ink">
 					{priceStr(bar.priceRange)}
 				</span>
 			</div>
 
 			<div className="flex flex-wrap gap-1.5">
-				<span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-slate-600">
+				<span className="rounded-full bg-sky-strong px-2 py-0.5 text-xs font-semibold text-slate-600">
 					{VIEW_TYPE_LABEL[bar.viewType]}
 				</span>
 				{bar.reservationRequired && (
-					<span className="rounded-full bg-amber-50 border border-amber-200 px-2 py-0.5 text-[10px] font-semibold text-amber-700">
+					<span className="rounded-full bg-sky-strong px-2 py-0.5 text-xs font-semibold text-ink">
 						Reservation required
 					</span>
 				)}
 				{bar.cocktailsFrom !== undefined && (
-					<span className="rounded-full bg-slate-50 border border-slate-200 px-2 py-0.5 text-[10px] text-slate-600">
+					<span className="rounded-full bg-sky border border-line px-2 py-0.5 text-xs text-slate-600">
 						Cocktails from €{bar.cocktailsFrom}
 					</span>
 				)}
@@ -117,7 +117,7 @@ function ViewBarCard({ bar }: { bar: (typeof VIEW_BARS)[number] }) {
 
 			<p className="text-slate-700 leading-relaxed text-xs">{bar.why}</p>
 
-			<div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px] font-semibold mt-1">
+			<div className="flex flex-wrap gap-x-4 gap-y-1 text-xs font-semibold mt-1">
 				{bar.website && (
 					<a
 						href={bar.website}
@@ -125,7 +125,7 @@ function ViewBarCard({ bar }: { bar: (typeof VIEW_BARS)[number] }) {
 						rel="noopener noreferrer"
 						className="text-primary hover:text-primary-hover"
 					>
-						Website ↗
+						Website
 					</a>
 				)}
 				{bar.instagram && (
@@ -135,7 +135,7 @@ function ViewBarCard({ bar }: { bar: (typeof VIEW_BARS)[number] }) {
 						rel="noopener noreferrer"
 						className="text-pink-600 hover:text-pink-800"
 					>
-						Instagram ↗
+						Instagram
 					</a>
 				)}
 			</div>
@@ -161,21 +161,21 @@ export default function RooftopBarsPage() {
 		<main id="main" className="max-w-5xl mx-auto px-4 py-8 md:py-14">
 			{/* Back nav */}
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/" className="hover:text-slate-900">
-					← Home
+				<Link href="/" className="hover:text-ink">
+					Home
 				</Link>
 				{" / "}
-				<Link href="/sections" className="hover:text-slate-900">
-					← Directories
+				<Link href="/sections" className="hover:text-ink">
+					Directories
 				</Link>
 			</nav>
 
 			{/* Header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
 					Cyprus Lifestyle
 				</p>
-				<h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Rooftop &amp; Sea View Bars in Cyprus
 				</h1>
 				<p className="mt-4 text-lg text-slate-600 leading-relaxed max-w-2xl">
@@ -191,11 +191,9 @@ export default function RooftopBarsPage() {
 					{VIEW_BAR_TIPS.map((tip) => (
 						<div
 							key={tip.heading}
-							className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-xs"
+							className="rounded-2xl border border-line bg-sky p-4 text-xs"
 						>
-							<p className="font-bold text-sm text-slate-900 mb-1.5">
-								{tip.heading}
-							</p>
+							<p className="font-bold text-sm text-ink mb-1.5">{tip.heading}</p>
 							<p className="text-slate-700 leading-relaxed">{tip.body}</p>
 						</div>
 					))}
@@ -228,7 +226,7 @@ export default function RooftopBarsPage() {
 
 			{/* Results */}
 			{filtered.length === 0 ? (
-				<p className="text-sm text-slate-500 bg-slate-50 rounded-lg border border-slate-100 px-4 py-6 text-center">
+				<p className="text-sm text-slate-500 bg-sky rounded-2xl border border-line px-4 py-6 text-center">
 					No bars match the selected filters.
 				</p>
 			) : (

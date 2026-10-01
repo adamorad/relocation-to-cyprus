@@ -23,10 +23,10 @@ function CityChip({
 			type="button"
 			onClick={onClick}
 			aria-pressed={selected}
-			className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
+			className={`rounded-full inline-flex min-h-11 items-center px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors md:min-h-0 ${
 				selected
-					? "bg-slate-900 text-white border border-slate-900"
-					: "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
+					? "bg-ink text-white border border-ink"
+					: "bg-white text-ink border border-line hover:bg-sky"
 			}`}
 		>
 			{city}
@@ -45,17 +45,17 @@ export default function PropertyManagementPage() {
 		<main id="main" className="max-w-5xl mx-auto px-6 py-10 md:py-16">
 			{/* Back nav */}
 			<nav className="text-xs text-slate-600 mb-6">
-				<Link href="/sections" className="hover:text-slate-900">
-					← Directories
+				<Link href="/sections" className="hover:text-ink">
+					Directories
 				</Link>
 			</nav>
 
 			{/* Header */}
 			<header className="mb-8">
-				<p className="text-[10px] uppercase tracking-[0.25em] text-amber-700 font-bold">
+				<p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary">
 					Property Management
 				</p>
-				<h1 className="mt-2 text-3xl md:text-5xl font-bold tracking-tight">
+				<h1 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-ink">
 					Property Management in Cyprus
 				</h1>
 				<p className="mt-4 text-lg text-slate-700 leading-relaxed max-w-2xl">
@@ -67,33 +67,31 @@ export default function PropertyManagementPage() {
 
 			{/* Tips section */}
 			<section className="mb-10">
-				<h2 className="text-xl font-bold mb-4">
+				<h2 className="text-xl font-bold mb-4 text-ink">
 					What to check before you engage
 				</h2>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-3">
 					{PROPERTY_MANAGEMENT_TIPS.map((tip) => (
 						<div
 							key={tip.heading}
-							className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-xs"
+							className="rounded-2xl border border-line bg-sky p-4 text-xs"
 						>
-							<p className="font-bold text-sm text-slate-900">{tip.heading}</p>
+							<p className="font-bold text-sm text-ink">{tip.heading}</p>
 							<p className="mt-1.5 text-slate-700 leading-relaxed">
 								{tip.body}
 							</p>
 						</div>
 					))}
 				</div>
-				<div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-4 text-xs text-slate-700">
-					<span className="font-semibold text-slate-900">
-						Verify any agent:{" "}
-					</span>
+				<div className="mt-4 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-xs text-amber-900">
+					<span className="font-semibold text-ink">Verify any agent: </span>
 					The Cyprus Real Estate Agents Registration Council (RERA) register is
 					searchable at{" "}
 					<a
 						href="https://realestate.gov.cy"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="text-amber-700 hover:text-amber-900 underline font-semibold"
+						className="text-amber-900 hover:text-amber-950 underline font-semibold"
 					>
 						realestate.gov.cy
 					</a>
@@ -132,7 +130,7 @@ export default function PropertyManagementPage() {
 
 			{/* Card grid */}
 			{filtered.length === 0 ? (
-				<div className="rounded-lg border border-slate-200 bg-slate-50 px-6 py-8 text-center text-sm text-slate-500">
+				<div className="rounded-2xl border border-line bg-sky px-6 py-8 text-center text-sm text-slate-500">
 					No property managers listed for {cityFilter} yet. Check back soon.
 				</div>
 			) : (
@@ -140,15 +138,13 @@ export default function PropertyManagementPage() {
 					{filtered.map((manager) => (
 						<article
 							key={manager.name}
-							className="rounded-lg border border-slate-200 bg-white p-4 flex flex-col text-xs"
+							className="rounded-2xl border border-line bg-white p-4 flex flex-col text-xs"
 						>
 							<div className="flex-1">
 								<div className="flex items-start justify-between gap-2">
-									<p className="font-bold text-sm text-slate-900">
-										{manager.name}
-									</p>
+									<p className="font-bold text-sm text-ink">{manager.name}</p>
 									{manager.licensedByRERA && (
-										<span className="flex-shrink-0 rounded-full bg-teal-50 border border-teal-200 px-2 py-0.5 text-[10px] font-semibold text-teal-800">
+										<span className="flex-shrink-0 rounded-full bg-sky-strong px-2 py-0.5 text-xs font-semibold text-ink">
 											RERA Licensed
 										</span>
 									)}
@@ -157,7 +153,7 @@ export default function PropertyManagementPage() {
 									{manager.cities.map((city) => (
 										<span
 											key={city}
-											className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] text-slate-600"
+											className="rounded-full bg-sky-strong px-2 py-0.5 text-xs text-slate-600"
 										>
 											{city}
 										</span>
@@ -168,14 +164,14 @@ export default function PropertyManagementPage() {
 								</p>
 							</div>
 							{manager.website && (
-								<div className="mt-3 pt-3 border-t border-slate-100">
+								<div className="mt-3 pt-3 border-t border-line">
 									<a
 										href={manager.website}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="text-[10px] font-semibold text-amber-700 hover:text-amber-900"
+										className="text-xs font-semibold text-primary hover:text-primary-hover"
 									>
-										Website ↗
+										Website
 									</a>
 								</div>
 							)}
@@ -185,8 +181,8 @@ export default function PropertyManagementPage() {
 			)}
 
 			<p className="mt-12 text-xs text-slate-600">
-				<Link href="/" className="underline hover:text-slate-900">
-					← Back to home
+				<Link href="/" className="underline hover:text-ink">
+					Back to home
 				</Link>
 			</p>
 		</main>
