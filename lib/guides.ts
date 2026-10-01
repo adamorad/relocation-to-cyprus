@@ -2880,7 +2880,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "What is the cheapest city to retire in Cyprus?",
-				a: "Larnaca offers the best value combination of cost and liveability for retirees. Rents are 20–30% lower than Limassol for comparable quality, the airport is 10 minutes away (convenient for family visits), and the city has a growing expat community with adequate services. Paphos is slightly more expensive than Larnaca but has a larger and more organised British retiree community, which some people find valuable for social integration. Village living outside the main cities can be cheaper still, but practical services (healthcare, banking) require regular driving.",
+				a: `Larnaca offers the best value combination of cost and liveability for retirees. Median asking rents for a two-bedroom apartment are about ${Math.round((1 - RENTS.Larnaca[2].median / RENTS.Limassol[2].median) * 100)}% lower than in Limassol (${rentMedian("Larnaca", 2)} against ${rentMedian("Limassol", 2)} a month, ${RENT_SOURCE_NAME}, ${RENT_MONTH_LABEL}), the airport is 10 minutes away (convenient for family visits), and the city has a growing expat community with adequate services. Paphos is slightly more expensive than Larnaca but has a larger and more organised British retiree community, which some people find valuable for social integration. Village living outside the main cities can be cheaper still, but practical services (healthcare, banking) require regular driving.`,
 			},
 			{
 				q: "How much money do I need to retire in Cyprus?",

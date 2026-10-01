@@ -79,7 +79,7 @@ Hub: https://realcy.app/home-and-bills/
 
 ### Local directories
 
-- [Long-Term Rentals](https://realcy.app/sections/long-term-rentals/): Verified rental listings across all four cities: apartments, villas, and studios.
+- [Long-Term Rentals](https://realcy.app/sections/long-term-rentals/): Rental areas across all four cities, with district asking rents for apartments and links to the main portals.
 - [Property Management](https://realcy.app/sections/property-management/): Licensed property managers for non-resident owners renting out their Cyprus property.
 
 ### Tools

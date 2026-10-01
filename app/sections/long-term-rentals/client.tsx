@@ -124,16 +124,26 @@ export default function LongTermRentalsClient() {
 								text={listing.why}
 								footer={
 									<div className="flex items-center justify-between gap-3">
-										<p className="font-bold text-ink">
-											€{listing.monthlyFrom.toLocaleString()}
-											{listing.monthlyTo !== listing.monthlyFrom
-												? `–€${listing.monthlyTo.toLocaleString()}`
-												: ""}
-											<span className="text-sm font-normal text-muted">
-												{" "}
-												/ month
-											</span>
-										</p>
+										{listing.monthlyFrom !== undefined &&
+										listing.monthlyTo !== undefined ? (
+											<p className="font-bold text-ink">
+												€{listing.monthlyFrom.toLocaleString("en-GB")}
+												{listing.monthlyTo !== listing.monthlyFrom
+													? `–€${listing.monthlyTo.toLocaleString("en-GB")}`
+													: ""}
+												<span className="text-sm font-normal text-muted">
+													{" "}
+													/ month
+												</span>
+												<span className="block text-xs font-normal text-muted">
+													District asking rent, middle half of listings
+												</span>
+											</p>
+										) : (
+											<p className="text-sm text-muted">
+												Not sampled: check current listings
+											</p>
+										)}
 										{listing.website ? (
 											<a
 												href={listing.website}
