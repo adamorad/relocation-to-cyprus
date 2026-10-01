@@ -1,8 +1,9 @@
 /**
  * Halal & Kosher Finder section content.
  *
- * Curation: restaurants, butchers, bakeries, and grocery stores with verified
- * or community-trusted halal or kosher status across Cyprus. Note: kosher
+ * Curation: only venues confirmed outside RealCy (own site, Chabad listing or
+ * a public business listing) are listed; entries that could not be found were
+ * removed after the 2026-10-01 fact-check. Note: kosher
  * certification in Cyprus is administered by the Chabad of Cyprus and the
  * Rabbinate; halal certification follows EU halal standards. Always verify
  * current certification status directly with the venue before relying on it
@@ -93,134 +94,22 @@ export const DIETARY_TIPS: ReadonlyArray<DietaryTip> = [
 // ---------------------------------------------------------------------------
 
 export const HALAL_KOSHER_VENUES: ReadonlyArray<HalalKosherVenue> = [
-  // ── Halal Restaurants ─────────────────────────────────────────────────────
+  // ── Kosher ────────────────────────────────────────────────────────────────
   {
-    name: "Al-Diwan",
-    city: "Larnaca",
-    neighbourhood: "Finikoudes, central Larnaca",
-    type: "restaurant",
-    certification: "halal",
-    cuisine: "Lebanese",
-    why: "A well-regarded Lebanese restaurant near Larnaca's seafront promenade. Full halal menu with authentic mezze, grilled meats, and Lebanese flatbreads baked on-site. Popular with the Arab expat community and widely recommended as Larnaca's best halal dining option.",
-    phone: "+357 24 650 600",
-  },
-  {
-    name: "Babylon Shawarma",
+    name: "Chabad of Limassol kosher shop",
     city: "Limassol",
-    neighbourhood: "Agios Nikolaos, central Limassol",
-    type: "restaurant",
-    certification: "halal",
-    cuisine: "Middle Eastern",
-    why: "A fast-casual shawarma and falafel spot in Limassol with a certified halal kitchen. Popular with the city's Arab and Muslim expat community for quick lunches. Chicken shawarma and falafel wraps are particularly good.",
-  },
-  {
-    name: "Taste of Pakistan",
-    city: "Limassol",
-    neighbourhood: "Central Limassol",
-    type: "restaurant",
-    certification: "halal",
-    cuisine: "Pakistani",
-    why: "Serving the Pakistani expat community and others seeking South Asian halal food in Limassol. Reliable curries, biryanis, and tandoor-cooked breads. A community-oriented restaurant where the food is authentically prepared rather than adapted for tourist palates.",
-  },
-  {
-    name: "Al-Salam",
-    city: "Larnaca",
-    neighbourhood: "Central Larnaca",
-    type: "restaurant",
-    certification: "halal",
-    cuisine: "Egyptian / Arabic",
-    why: "An Egyptian-owned restaurant serving halal Egyptian and Arabic food in central Larnaca. Known for its hearty koshary, ful medames, and grilled kofta. An affordable halal lunch option popular with working expats.",
-  },
-
-  // ── Kosher Restaurants ────────────────────────────────────────────────────
-  {
-    name: "Chabad Cyprus Kosher Dining",
-    city: "Limassol",
-    neighbourhood: "Germasogeia, Limassol",
-    type: "restaurant",
-    certification: "kosher",
-    cuisine: "Jewish / Israeli",
-    why: "Operated by Chabad of Cyprus, the primary kosher dining resource for the Jewish community in Cyprus. Certified kosher meals, Shabbat dinners on request, and holiday dining available by reservation. Essential contact point for new Jewish residents establishing their kosher food supply.",
-    website: "https://www.chabadcyprus.com",
-  },
-  {
-    name: "Hummus Bar",
-    city: "Limassol",
-    neighbourhood: "Old Town, Limassol",
-    type: "restaurant",
-    certification: "kosher",
-    cuisine: "Israeli / Mediterranean",
-    why: "An Israeli-style hummus and mezze restaurant in Limassol's Old Town with kosher certification. The hummus, shakshuka, and sabich are made to Israeli standards. Very popular with the large Israeli expat community in Limassol.",
-  },
-
-  // ── Halal Butchers ────────────────────────────────────────────────────────
-  {
-    name: "Halal Meat Shop — Larnaca",
-    city: "Larnaca",
-    neighbourhood: "Central Larnaca",
-    type: "butcher",
-    certification: "halal",
-    why: "Larnaca's most established halal butcher, supplying the city's Muslim community with certified halal beef, lamb, and chicken. Fresh cuts available daily; can prepare special cuts on request. Whole animal purchases available for Eid.",
-    phone: "+357 24 625 400",
-  },
-  {
-    name: "Halal Butcher Limassol",
-    city: "Limassol",
-    neighbourhood: "Omonia area, Limassol",
-    type: "butcher",
-    certification: "halal",
-    why: "Central Limassol's most accessible halal butcher. Full range of halal meats including minced meat, chicken portions, and lamb cuts. Popular with the Arab expat community in the Omonia area and the wider Muslim population of Limassol.",
-  },
-
-  // ── Kosher Butchers ───────────────────────────────────────────────────────
-  {
-    name: "Kosher Meats Cyprus",
-    city: "Limassol",
-    neighbourhood: "Germasogeia, Limassol",
-    type: "butcher",
-    certification: "kosher",
-    why: "The primary certified kosher meat supplier for Cyprus's Jewish community. Supplies kosher beef and chicken with Rabbinate certification. Pre-orders recommended as stock is limited; delivers to customers across Cyprus. Contact via Chabad of Cyprus for current availability.",
-    website: "https://www.chabadcyprus.com",
-  },
-
-  // ── Halal Bakeries ────────────────────────────────────────────────────────
-  {
-    name: "Arabian Bakery",
-    city: "Larnaca",
-    neighbourhood: "Central Larnaca",
-    type: "bakery",
-    certification: "halal",
-    cuisine: "Arabic",
-    why: "A traditional Arabic bakery in Larnaca baking fresh Arabic flatbreads, ka'ak biscuits, and Arabic pastries daily. All products halal. The fresh pita bread is baked multiple times a day and is significantly better than supermarket alternatives.",
-  },
-
-  // ── Halal Grocery Stores ──────────────────────────────────────────────────
-  {
-    name: "Al-Baraka Halal Supermarket",
-    city: "Larnaca",
-    neighbourhood: "Central Larnaca",
-    type: "grocery",
-    certification: "halal",
-    why: "A comprehensive halal supermarket in Larnaca stocking halal packaged goods, frozen halal meats, Arabic pantry staples, and imported halal-certified products. One of the most complete halal grocery options in Cyprus for stocking a household pantry.",
-    openingHours: "Mon–Sun 08:00–21:00",
-  },
-
-  // ── Kosher Grocery Stores ─────────────────────────────────────────────────
-  {
-    name: "Kosher Corner at Alphamega",
-    city: "Limassol",
-    neighbourhood: "Germasogeia, Limassol",
+    neighbourhood: "Chabad of Limassol, 5 Porfyriou Dikaiou",
     type: "grocery",
     certification: "kosher",
-    why: "Alphamega's Germasogeia branch in Limassol maintains a dedicated kosher section stocking imported Israeli kosher products, kosher wines, and certified packaged goods. The most accessible in-supermarket kosher section in Cyprus. Stock varies seasonally and increases around Jewish holidays.",
+    why: "A small kosher shop (makolet) inside the Chabad of Limassol centre. Ask Chabad for current stock and opening times before a special trip.",
+    website: "https://chabadlimassol.com/en/c/food/",
   },
   {
-    name: "Kosher Products — Chabad Store",
+    name: "Chabad-supervised kosher restaurants",
     city: "Limassol",
-    neighbourhood: "Germasogeia, Limassol",
-    type: "grocery",
+    type: "restaurant",
     certification: "kosher",
-    why: "A small kosher grocery operated by or affiliated with Chabad of Cyprus. Stocks essential certified kosher products including wine, olive oil, pasta, and preserved foods. The go-to resource for newly arrived Jewish residents establishing kosher kitchens.",
-    website: "https://www.chabadcyprus.com",
+    why: "Chabad of Limassol supervises kosher restaurants in the city, Allenby Kosher among them, and lists the current ones on its food page.",
+    website: "https://chabadlimassol.com/en/c/food/",
   },
 ];
