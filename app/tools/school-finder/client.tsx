@@ -340,9 +340,9 @@ export default function SchoolFinderClient() {
 			)}
 
 			<p className="text-base text-muted">
-				Fees are indicative for 2025. Contact schools directly for current fee
-				schedules and availability. Some schools charge registration and capital
-				levy fees on top of tuition.
+				Fees are indicative figures from 2025 and have not been re-checked.
+				Contact schools for the current schedule and availability. Some schools
+				charge registration and capital levy fees on top of tuition.
 			</p>
 		</div>
 	);

@@ -59,7 +59,7 @@ export default function RelocationCostCalculatorPage() {
 				{ href: "/tools/mortgage-calculator/", label: "Mortgage Calculator" },
 				{ href: "/tools/", label: "All tools" },
 			]}
-			disclaimer="General information only, not legal, tax, or financial advice. Cost ranges are indicative and based on publicly available market data for 2024-2025. Always obtain multiple quotes and consult qualified professionals before making financial decisions."
+			disclaimer="General information only, not legal, tax, or financial advice. Cost ranges are indicative estimates from 2024 to 2025, not yet re-checked, based on publicly available market data. Always obtain multiple quotes and consult qualified professionals before making financial decisions."
 		>
 			<script
 				type="application/ld+json"

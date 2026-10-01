@@ -45,7 +45,7 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
 		href: "/tools/social-insurance-calculator/",
 		title: "Cyprus Social Insurance Calculator",
 		description:
-			"Calculate your Social Insurance and GeSY contributions based on 2025 rates. Full breakdown for employed and self-employed, including employer contributions.",
+			"Calculate your Social Insurance and GeSY contributions based on the 2025 contribution rates; not yet updated for 2026. Full breakdown for employed and self-employed, including employer contributions.",
 		category: "Tax & Contributions",
 	},
 	{

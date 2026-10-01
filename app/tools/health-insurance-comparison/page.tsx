@@ -60,7 +60,7 @@ export default function HealthInsuranceComparisonClientPage() {
 				},
 				{ href: "/tools/", label: "All tools" },
 			]}
-			disclaimer="Premiums shown are approximate 2025 estimates for a healthy non-smoker at indicated age brackets. Actual premiums depend on age, health history, chosen deductible, optional riders, and the specific plan tier. Waiting periods, exclusions and benefit limits vary significantly between plans. Always obtain a personal quote and read the policy terms before purchasing. We are not insurance brokers and do not receive commission from any provider listed here."
+			disclaimer="Premiums shown are approximate premiums from 2025, not yet re-checked, for a healthy non-smoker at indicated age brackets. Actual premiums depend on age, health history, chosen deductible, optional riders, and the specific plan tier. Waiting periods, exclusions and benefit limits vary significantly between plans. Always obtain a personal quote and read the policy terms before purchasing. We are not insurance brokers and do not receive commission from any provider listed here."
 		>
 			<script
 				type="application/ld+json"

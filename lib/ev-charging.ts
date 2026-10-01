@@ -58,8 +58,8 @@ export const CHARGER_TYPE_LABEL: Record<ChargerType, string> = {
 
 export const EV_TIPS: ReadonlyArray<EVTip> = [
   {
-    heading: "~200 public chargers on the island (2025)",
-    body: "Cyprus had approximately 200 public charge points as of 2025, with the number growing steadily. The density is reasonable in Limassol but thin in Paphos and almost absent in villages and rural areas. Plan longer journeys carefully, especially westward toward the Akamas Peninsula.",
+    heading: "About 200 public chargers (2025 figure, not yet updated)",
+    body: "Cyprus had approximately 200 public charge points in 2025 (figure not yet updated), with the number growing steadily. The density is reasonable in Limassol but thin in Paphos and almost absent in villages and rural areas. Plan longer journeys carefully, especially westward toward the Akamas Peninsula.",
   },
   {
     heading: "Fast DC chargers still sparse outside the main cities",

@@ -338,7 +338,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "title-deed-status-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
 		category: "property",
 		title: "Cyprus Title Deed Guide 2026: Full Overview",
 		description:
@@ -346,7 +346,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "The legacy backlog — why title deeds are still a major issue",
-				body: "Cyprus accumulated a well-documented title deed backlog over the 1990s and 2000s: developers built properties on bank-mortgaged land, sold the units to buyers, and then — in many cases — failed to transfer the deeds once construction completed. At its peak, the backlog exceeded 130,000 properties. Legislative reforms from 2015 onwards (Law 139(I)/2015 and subsequent amendments) introduced a fast-track transfer mechanism allowing buyers to transfer titles even when an outstanding developer mortgage exists, provided the buyer pays the transfer fees. As of 2025, the backlog is materially smaller, but legacy-stock properties built before 2010 still commonly lack clear individual title deeds, and buyers of resale units in older complexes are still frequently purchasing properties where the communal or individual title deed has never been separated from the original plot title. Always treat a title deed search as mandatory due diligence, not optional.",
+				body: "Cyprus accumulated a well-documented title deed backlog over the 1990s and 2000s: developers built properties on bank-mortgaged land, sold the units to buyers, and then, in many cases, failed to transfer the deeds once construction completed. At its peak, the backlog exceeded 130,000 properties. Legislative reforms from 2015 onwards (Law 139(I)/2015 and subsequent amendments) introduced a fast-track transfer mechanism allowing buyers to transfer titles even when an outstanding developer mortgage exists, provided the buyer pays the transfer fees. By 2025 the backlog was materially smaller, but legacy-stock properties built before 2010 still commonly lack clear individual title deeds, and buyers of resale units in older complexes are still frequently purchasing properties where the communal or individual title deed has never been separated from the original plot title. Always treat a title deed search as mandatory due diligence, not optional.",
 			},
 			{
 				heading:
@@ -405,7 +405,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "digital-nomad-visa-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-09-30",
+		dateModified: "2026-10-02",
 		category: "immigration",
 		title: "Cyprus Digital Nomad Visa 2026: Requirements",
 		description:
@@ -426,7 +426,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Applying via the CRMD portal",
-				body: "Applications are submitted through the Civil Registry and Migration Department (CRMD) portal at crmd.moi.gov.cy. The process: create an account on the portal, select 'Visitor/Temporary Residence — Digital Nomad Visa', complete the online form, and upload all supporting documents. Applications can also be submitted in person at a CRMD district office — there are offices in Nicosia, Limassol, Larnaca, Paphos and Famagusta. In-person submission is recommended for first-time applicants as the officer can flag missing documents on the spot, preventing the need for a back-and-forth by post. The application fee as of 2025 is approximately €70 per adult applicant, payable at the CRMD office or through the portal. Submit from outside Cyprus if you have not yet entered, or within Cyprus on a valid visa (tourist entry is acceptable for initial application, but confirm current procedure with CRMD as this has changed previously).",
+				body: "Applications are submitted through the Civil Registry and Migration Department (CRMD) portal at crmd.moi.gov.cy. The process: create an account on the portal, select 'Visitor/Temporary Residence: Digital Nomad Visa', complete the online form, and upload all supporting documents. Applications can also be submitted in person at a CRMD district office; there are offices in Nicosia, Limassol, Larnaca, Paphos and Famagusta. In-person submission is recommended for first-time applicants as the officer can flag missing documents on the spot, preventing the need for a back-and-forth by post. The application fee was about €70 per adult applicant in 2025, payable at the CRMD office or through the portal; check the CRMD fee list before applying. Submit from outside Cyprus if you have not yet entered, or within Cyprus on a valid visa (tourist entry is acceptable for initial application, but confirm current procedure with CRMD as this has changed previously).",
 			},
 			{
 				heading: "Processing time and what to expect",
@@ -480,7 +480,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "family-reunification-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
 		category: "immigration",
 		title: "Bringing Your Family to Cyprus: Reunification",
 		description:
@@ -492,7 +492,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Spouse reunification: documents and process",
-				body: "For a non-EU primary permit holder bringing a non-EU spouse: you need the original marriage certificate, apostilled and officially translated into Greek or English; a passport photograph for the spouse; the spouse's valid passport with at least 12 months remaining; proof that the primary permit is current and valid; proof of shared accommodation in Cyprus (a lease in both names is cleanest, or a landlord declaration that the spouse will reside at the address); health insurance valid in Cyprus for the spouse; and the primary applicant's bank statements for the past three to six months confirming the income threshold is met including the spousal uplift (typically 20% above the base threshold for the primary permit category). For DNV holders, this means €4,200 net per month as of 2025. The joint application is submitted at the CRMD; both applicants should attend in person when possible. Processing mirrors the primary permit timeline: 6–10 weeks for clean, complete files.",
+				body: "For a non-EU primary permit holder bringing a non-EU spouse: you need the original marriage certificate, apostilled and officially translated into Greek or English; a passport photograph for the spouse; the spouse's valid passport with at least 12 months remaining; proof that the primary permit is current and valid; proof of shared accommodation in Cyprus (a lease in both names is cleanest, or a landlord declaration that the spouse will reside at the address); health insurance valid in Cyprus for the spouse; and the primary applicant's bank statements for the past three to six months confirming the income threshold is met including the spousal uplift (typically 20% above the base threshold for the primary permit category). For DNV holders, this means €4,200 net per month (2025 threshold; check the current figure with CRMD). The joint application is submitted at the CRMD; both applicants should attend in person when possible. Processing mirrors the primary permit timeline: 6–10 weeks for clean, complete files.",
 			},
 			{
 				heading: "Bringing children: documents by dependent type",
@@ -1192,7 +1192,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "dental-care-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
 		category: "healthcare",
 		title: "Dental Care in Cyprus 2026: Costs & GeSY Cover",
 		description:
@@ -1200,7 +1200,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "GeSY dental coverage: what is and is not included",
-				body: "GeSY dental coverage is limited compared to general medical coverage. As of 2025, GeSY covers emergency dental care (emergency extractions, urgent pain treatment, emergency temporary fillings) and basic preventive care for children up to age 18. Routine adult check-ups, professional cleaning, composite fillings, crowns, bridges, implants, and orthodontic work are not covered by GeSY — these are entirely private costs for adults. This is an area of ongoing political discussion in Cyprus, with broader dental coverage regularly debated in parliament, but the current situation means most adults budget entirely privately for dental care. The practical consequence for relocators: do not expect GeSY to cover your dental needs the way it covers your GP visits and hospital care. Factor a separate dental budget or dental insurance policy into your planning.",
+				body: "GeSY dental coverage is limited compared to general medical coverage. In 2025, GeSY covered emergency dental care (emergency extractions, urgent pain treatment, emergency temporary fillings) and basic preventive care for children up to age 18. Routine adult check-ups, professional cleaning, composite fillings, crowns, bridges, implants, and orthodontic work are not covered by GeSY: these are entirely private costs for adults. This is an area of ongoing political discussion in Cyprus, with broader dental coverage regularly debated in parliament, but the current situation means most adults budget entirely privately for dental care. The practical consequence for relocators: do not expect GeSY to cover your dental needs the way it covers your GP visits and hospital care. Factor a separate dental budget or dental insurance policy into your planning.",
 			},
 			{
 				heading: "Private dental costs in Cyprus",
@@ -1307,7 +1307,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "driving-licence-conversion",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
 		category: "transport",
 		title: "Converting Your Driving Licence in Cyprus",
 		description:
@@ -1319,7 +1319,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Non-EU countries with reciprocal agreements",
-				body: "Cyprus has bilateral driving licence exchange agreements with a number of non-EU countries, allowing direct conversion without a test. The countries with reciprocal arrangements as of 2025 include: the United Kingdom, the United States, Canada, Australia, Switzerland, and South Africa. Under a reciprocal agreement, you surrender your foreign licence and the Cyprus Traffic Department issues a Cyprus licence in exchange — no written test, no driving test. This is a genuine exchange: your original foreign licence is typically retained by the Traffic Department (or returned cancelled), so you cannot hold both simultaneously. Verify the current list at the Traffic Department's official page (mcw.gov.cy) before assuming your country is included — agreements can be added or the specific terms can change. The UK's inclusion post-Brexit (the reciprocal agreement survived the UK's EU exit) is confirmed for UK residents, making the exchange process smooth for the large British community in Cyprus.",
+				body: "Cyprus has bilateral driving licence exchange agreements with a number of non-EU countries, allowing direct conversion without a test. The countries with exchange arrangements in 2025 included: the United Kingdom, the United States, Canada, Australia, Switzerland, and South Africa. Under a reciprocal agreement, you surrender your foreign licence and the Cyprus Traffic Department issues a Cyprus licence in exchange: no written test, no driving test. This is a genuine exchange: your original foreign licence is typically retained by the Traffic Department (or returned cancelled), so you cannot hold both simultaneously. Verify the current list at the Traffic Department's official page (mcw.gov.cy) before assuming your country is included: agreements can be added or the specific terms can change. The UK's inclusion post-Brexit (the reciprocal agreement survived the UK's EU exit) is confirmed for UK residents, making the exchange process smooth for the large British community in Cyprus.",
 			},
 			{
 				heading: "Non-reciprocal countries: the test route",
@@ -1867,7 +1867,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "solar-energy-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
 		category: "environment",
 		title: "Solar Panels in Cyprus: Net Metering & ROI",
 		description:
@@ -1883,7 +1883,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "System costs, payback period, and subsidies",
-				body: "A 4 kWp residential system (16 panels of 250W each, plus a string inverter, mounting hardware, DC cabling, and installation) runs approximately €6,000–9,000 fully installed in 2025. Higher-quality components (Tier 1 panels such as LG, SunPower, or Jinko, paired with a Fronius or SMA inverter) sit at the top of that range; standard Chinese-manufactured panels with an off-brand inverter sit at the bottom. A 6 kWp system — the more common choice for families with higher AC usage — costs roughly €8,500–13,000. Payback periods are typically 5–8 years for a well-sized system at current electricity prices. The Ministry of Energy, Commerce, and Industry (MECIT) periodically opens grant rounds through the European Regional Development Fund — subsidy rates of 20–40% on equipment cost have been available in past cycles. Check mecit.gov.cy and the Cyprus Energy Agency (cea.org.cy) for current open calls before finalising your installer quote, since a €2,000–4,000 grant materially changes the calculation.",
+				body: "A 4 kWp residential system (16 panels of 250W each, plus a string inverter, mounting hardware, DC cabling, and installation) runs about €6,000–9,000 fully installed in 2025 (installer quotes; not re-checked). Higher-quality components (Tier 1 panels such as LG, SunPower, or Jinko, paired with a Fronius or SMA inverter) sit at the top of that range; standard Chinese-manufactured panels with an off-brand inverter sit at the bottom. A 6 kWp system (the more common choice for families with higher AC usage) costs roughly €8,500–13,000. Payback periods are typically 5–8 years for a well-sized system at current electricity prices. The Ministry of Energy, Commerce, and Industry (MECIT) periodically opens grant rounds through the European Regional Development Fund: subsidy rates of 20–40% on equipment cost have been available in past cycles. Check mecit.gov.cy and the Cyprus Energy Agency (cea.org.cy) for current open calls before finalising your installer quote, since a €2,000–4,000 grant materially changes the calculation.",
 			},
 			{
 				heading: "Battery storage and installer selection",

@@ -55,7 +55,7 @@ export default function IspComparisonPage() {
 				{ href: "/guides/", label: "Explore Cyprus guides" },
 				{ href: "/tools/", label: "All tools" },
 			]}
-			disclaimer="Plans and prices change frequently. Verify at provider websites before signing. Prices shown are indicative for 2025 entry-level packages at the highest advertised speed tier. Actual available speeds depend on your specific address and infrastructure type."
+			disclaimer="Plans and prices change frequently. Verify at provider websites before signing. Prices shown are entry-level packages at the highest advertised speed tier, taken from provider sites in 2025 and not re-checked since. Actual available speeds depend on your specific address and infrastructure type."
 		>
 			<script
 				type="application/ld+json"
