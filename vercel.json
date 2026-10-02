@@ -155,6 +155,16 @@
       "source": "/sections/registered-address",
       "destination": "/sections/accountants/",
       "permanent": true
+    },
+    {
+      "source": "/sections/public-transport/",
+      "destination": "/guides/getting-around-cyprus-no-car/",
+      "permanent": true
+    },
+    {
+      "source": "/sections/public-transport",
+      "destination": "/guides/getting-around-cyprus-no-car/",
+      "permanent": true
     }
   ]
 }

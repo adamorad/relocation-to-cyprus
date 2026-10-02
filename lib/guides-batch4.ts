@@ -1,16 +1,16 @@
 import {
-	eur,
-	FIRST_EMPLOYMENT_50PCT_THRESHOLD,
-	pct,
-	SDC_DIVIDEND_RATE,
-} from "./facts/tax";
-import {
 	SRC as HT_SRC,
 	INTERCITY_FARE,
 	LARNACA_BUS,
 	LIMASSOL_BUS,
 	PAPHOS_BUS,
 } from "./facts/health-transport";
+import {
+	eur,
+	FIRST_EMPLOYMENT_50PCT_THRESHOLD,
+	pct,
+	SDC_DIVIDEND_RATE,
+} from "./facts/tax";
 import type { GuideInfo } from "./guides";
 
 /**
@@ -173,11 +173,13 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 			HT_SRC.limassolBuses,
 			HT_SRC.paphosBuses,
 			HT_SRC.paphosAirportBuses,
+			HT_SRC.airportExpress,
+			HT_SRC.airportTaxiFares,
 		],
 		category: "transport",
 		title: "Getting Around Cyprus Without a Car (2026)",
 		description:
-			"Honest guide to Cyprus public transport for expats: intercity buses, city routes, Bolt, shared taxis, and which cities work without a car.",
+			"Cyprus without a car: city bus routes and operators in Limassol, Paphos, Larnaca and Ayia Napa, airport buses, intercity coaches, Bolt and shared taxis.",
 		sections: [
 			{
 				heading: "The Honest Reality: Cyprus Is Car-Centric",
@@ -193,7 +195,7 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 			},
 			{
 				heading: "City Buses: Routes, Passes, and the Motion Bus Card",
-				body: `Each district has its own operator: EMEL in Limassol, OSYPA in Paphos, Cyprus Public Transport in Larnaca and OSEA around Ayia Napa. The Motion card works on all of them. Each operator publishes its own routes and timetables; the public-transport directory at /sections/public-transport lists each operator with direct links.\n\nA single costs ${eur(LIMASSOL_BUS.single)} in Limassol and Paphos and ${eur(LARNACA_BUS.singleCash)} cash (${eur(LARNACA_BUS.singleCard)} by card) in Larnaca. Night fares after 21:00 are ${eur(LIMASSOL_BUS.night)} in Limassol and Paphos and ${eur(LARNACA_BUS.nightCash)} cash in Larnaca. A 30-day pass costs ${eur(LIMASSOL_BUS.monthly)} in Limassol, ${eur(PAPHOS_BUS.monthlyPersonalised)} in Paphos and ${eur(LARNACA_BUS.monthlyPersonalised)} in Larnaca (personalised card). Monthly passes for heavy users cost broadly the same as a few Bolt rides per week. Pricing differs between card types and cities and has been revised more than once in recent years, so check each operator's ticket page for current figures before buying.\n\nA practical caveat: services thin out after 21:00 and night fares apply, so check each operator's night timetable. Sunday frequency is markedly lower than on weekdays. If your social life regularly runs late, budget for Bolt or taxis to fill the gaps.`,
+				body: `Each district has its own operator: EMEL in Limassol, OSYPA in Paphos, Cyprus Public Transport in Larnaca and OSEA around Ayia Napa. The Motion card works on all of them. Each operator publishes its own routes and timetables; the Buses city by city block below lists each operator with its key routes and airport links.\n\nA single costs ${eur(LIMASSOL_BUS.single)} in Limassol and Paphos and ${eur(LARNACA_BUS.singleCash)} cash (${eur(LARNACA_BUS.singleCard)} by card) in Larnaca. Night fares after 21:00 are ${eur(LIMASSOL_BUS.night)} in Limassol and Paphos and ${eur(LARNACA_BUS.nightCash)} cash in Larnaca. A 30-day pass costs ${eur(LIMASSOL_BUS.monthly)} in Limassol, ${eur(PAPHOS_BUS.monthlyPersonalised)} in Paphos and ${eur(LARNACA_BUS.monthlyPersonalised)} in Larnaca (personalised card). Monthly passes for heavy users cost broadly the same as a few Bolt rides per week. Pricing differs between card types and cities and has been revised more than once in recent years, so check each operator's ticket page for current figures before buying.\n\nA practical caveat: services thin out after 21:00 and night fares apply, so check each operator's night timetable. Sunday frequency is markedly lower than on weekdays. If your social life regularly runs late, budget for Bolt or taxis to fill the gaps.`,
 			},
 			{
 				heading: "Bolt, Taxi Apps, and When to Book Ahead",

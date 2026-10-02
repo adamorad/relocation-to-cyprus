@@ -6,6 +6,7 @@ import MortgageCalculatorClient from "@/app/tools/mortgage-calculator/client";
 import RentVsBuyPage from "@/app/tools/rent-vs-buy-calculator/client";
 import SocialInsuranceCalculatorPage from "@/app/tools/social-insurance-calculator/client";
 import TaxSavingsCalculatorClient from "@/app/tools/tax-savings-calculator/client";
+import { CityBusesBlock } from "@/components/CityBusesBlock";
 import { EmbeddedTool } from "@/components/EmbeddedTool";
 import { MetaPixelEvent } from "@/components/MetaPixelEvent";
 import { ShareBar } from "@/components/ShareBar";
@@ -16,6 +17,7 @@ import { InfoCards } from "@/components/ui/InfoCards";
 import { Section } from "@/components/ui/Section";
 import { formatChecked, SourcesNote } from "@/components/ui/SourcesNote";
 import { AUTHORS, CATEGORY_AUTHOR } from "@/lib/authors";
+import { CITY_BUSES_ID, CITY_BUSES_TITLE } from "@/lib/city-buses";
 import { GUIDE_REDIRECTS } from "@/lib/guide-redirects";
 import { GUIDES, type GuideCategory, guideBySlug } from "@/lib/guides";
 import { getTopicForGuide, topicCrumb } from "@/lib/topic-map";
@@ -109,6 +111,20 @@ const EMBED_BY_CATEGORY: Partial<Record<GuideCategory, EmbedKey>> = {
 	tax: "tax",
 	property: "rentbuy",
 	business: "social",
+};
+
+// Structured blocks rendered after a given section (0-based) of one guide,
+// with a matching table-of-contents entry.
+const GUIDE_BLOCKS: Record<
+	string,
+	{ after: number; id: string; label: string; Comp: ComponentType }
+> = {
+	"getting-around-cyprus-no-car": {
+		after: 3,
+		id: CITY_BUSES_ID,
+		label: CITY_BUSES_TITLE,
+		Comp: CityBusesBlock,
+	},
 };
 
 export function generateStaticParams() {
@@ -265,9 +281,16 @@ export default async function GuidePage({
 		year: "numeric",
 		timeZone: "UTC",
 	});
+	const block = GUIDE_BLOCKS[g.slug];
+	const BlockComp = block?.Comp;
 	const toc =
 		g.sections.length > 2
-			? g.sections.map((s) => ({ id: toId(s.heading), label: s.heading }))
+			? g.sections.flatMap((s, i) => [
+					{ id: toId(s.heading), label: s.heading },
+					...(block && i === block.after
+						? [{ id: block.id, label: block.label }]
+						: []),
+				])
 			: undefined;
 	const topic = getTopicForGuide(g.slug);
 
@@ -364,6 +387,7 @@ export default async function GuidePage({
 						<h2>{s.heading}</h2>
 						<p className="whitespace-pre-line">{renderBody(s.body)}</p>
 					</section>
+					{BlockComp && i === block.after && <BlockComp />}
 					{embed && EmbedComp && i === 1 && (
 						<EmbeddedTool
 							title={embed.title}

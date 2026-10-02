@@ -52,11 +52,7 @@ Hub: https://realcy.app/getting-around/
 - [Cyprus Ferry Routes 2026: Piraeus, Crete & Egypt](https://realcy.app/guides/ferry-routes-guide/): Limassol to Piraeus via Crete with Grimaldi Lines (36-40 hrs). Cyprus to Egypt and Haifa ferry status, car rates from €250 and how to book in 2026.
 - [Driving in Cyprus: Road Safety & Culture Guide](https://realcy.app/guides/road-safety-driving/): Everything you need to know before driving in Cyprus: left-hand traffic, speed limits, camera locations, accident procedures, and an honest assessment of local driving culture.
 - [Long-Term Car Rental Cyprus 2026: Monthly Hire Rates](https://realcy.app/guides/long-term-car-rental-cyprus/): Long-term car rental in Cyprus (monthly car hire): rough monthly rates (€300–€950, a guide not a quote), what is included, Limassol, Larnaca and Paphos options, and rent vs buy.
-- [Getting Around Cyprus Without a Car (2026)](https://realcy.app/guides/getting-around-cyprus-no-car/): Honest guide to Cyprus public transport for expats: intercity buses, city routes, Bolt, shared taxis, and which cities work without a car.
-
-### Local directories
-
-- [Public Transport](https://realcy.app/sections/public-transport/): Bus routes, Bolt availability, taxi apps, and monthly pass costs by city.
+- [Getting Around Cyprus Without a Car (2026)](https://realcy.app/guides/getting-around-cyprus-no-car/): Cyprus without a car: city bus routes and operators in Limassol, Paphos, Larnaca and Ayia Napa, airport buses, intercity coaches, Bolt and shared taxis.
 
 ### Tools
 

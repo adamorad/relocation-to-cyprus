@@ -123,15 +123,6 @@ export const SECTIONS_INDEX: ReadonlyArray<SectionEntry> = [
 			"Tennis, golf, sailing, padel, hiking groups, and more — with membership fees.",
 	},
 
-	// Getting Around
-	{
-		name: "Public Transport",
-		slug: "public-transport",
-		category: "Getting Around",
-		description:
-			"Bus routes, Bolt availability, taxi apps, and monthly pass costs by city.",
-	},
-
 	// Community
 	{
 		name: "Expat Community Groups",

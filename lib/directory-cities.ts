@@ -27,7 +27,6 @@ import { RENTAL_LISTINGS } from "./long-term-rentals";
 import { MENTAL_HEALTH_PROVIDERS } from "./mental-health";
 import { PROPERTY_LAWYERS } from "./property-lawyers";
 import { PROPERTY_MANAGERS } from "./property-management";
-import { TRANSPORT_INFO } from "./public-transport";
 import { RELIGIOUS_SERVICES } from "./religious-services";
 import { VIEW_BARS } from "./rooftop-bars";
 import { SHOP_ENTRIES } from "./shopping";
@@ -62,7 +61,6 @@ const DATA: Record<string, ReadonlyArray<Entry>> = {
 	"mental-health-services": MENTAL_HEALTH_PROVIDERS,
 	"property-lawyers": PROPERTY_LAWYERS,
 	"property-management": PROPERTY_MANAGERS,
-	"public-transport": Object.keys(TRANSPORT_INFO).map((city) => ({ city })),
 	"religious-services": RELIGIOUS_SERVICES,
 	"rooftop-bars": VIEW_BARS,
 	shopping: SHOP_ENTRIES,
