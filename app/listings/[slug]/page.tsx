@@ -192,6 +192,7 @@ export default async function ListingPage({
 			<PageHeader
 				breadcrumbs={[
 					{ label: "Home", href: "/" },
+					{ label: "Property", href: "/property/" },
 					{ label: "New developments", href: "/listings/" },
 					{ label: name },
 				]}

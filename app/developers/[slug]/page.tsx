@@ -60,6 +60,7 @@ export default async function DeveloperPage({
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
+					{ label: "Property", href: "/property/" },
 					{ label: "Developers", href: "/developers/" },
 					{ label: name },
 				],

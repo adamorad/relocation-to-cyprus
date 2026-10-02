@@ -37,6 +37,7 @@ export default function ListingsIndexPage() {
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },
+					{ label: "Property", href: "/property/" },
 					{ label: "New developments" },
 				],
 				eyebrow: `${listings.length} developments`,
