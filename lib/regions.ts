@@ -6,6 +6,25 @@
  * facts here without a source (see the fact-check step in the rebuild plan).
  */
 
+import {
+	eur,
+	FEES_AMERICAN_ACADEMY_LARNACA,
+	FEES_FOLEYS,
+	FEES_GRAMMAR_LIMASSOL,
+	FEES_HERITAGE,
+	FEES_ISP,
+	feeRange,
+	INTERCITY_FARE,
+} from "./facts/health-transport";
+import {
+	RENT_AGREED_NOTE,
+	RENT_MONTH_LABEL,
+	RENT_SAMPLED_LABEL,
+	RENT_SOURCE_NAME,
+	RENTS,
+	rentMedian,
+	rentPremiumPct,
+} from "./facts/rents";
 import type { SiteImage } from "./topics";
 
 /** One line of the sample monthly budget table. */
@@ -80,12 +99,12 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 			"The town runs on cars: local buses cover the coast but are rarely a serious commuting option. Pretty much every long-haul flight from Western Europe lands at Paphos International (PFO).",
 		],
 		healthcare: [
-			"Paphos General Hospital is the main public facility and part of GeSY, the national healthcare system that all legal residents can register with after immigration formalities. Contributions are deducted at source for employees and pensioners; private health insurance is still common but no longer essential.",
+			"Paphos General Hospital is the main public facility and part of GeSY, the national healthcare system that most legal residents can register with after immigration formalities (ask the Health Insurance Organisation on 17000 about your own eligibility). Contributions are deducted at source for employees and pensioners; private health insurance is still common but no longer essential.",
 			"Iasis Hospital and Evangelistria Medical Center cover most specialties privately, with shorter waits than GeSY for non-urgent referrals. For anything genuinely complex (major cardiac, oncology, neurosurgery) most expats still drive to Limassol or Nicosia. Pharmacies are abundant, English-speaking, and dispense most common UK and EU prescriptions without trouble.",
 			"Dental and optical care are private only and reasonably priced (a standard cleaning runs €40–€60). Call 112 in an emergency, as anywhere in the EU; ambulances are fast in central Paphos and occasionally slow in the inland villages.",
 		],
 		schools: [
-			"The International School of Paphos is the largest: British curriculum from age 3 to 18, fees from €5,800 (early years) to €9,200 (sixth form), and a waiting list at the upper end. Aspire Private British School (ages 4–18, ~14 per class, €5,500–€8,500) has a strong reputation among the British and Israeli communities. Logos School of English Education is older and more academic, with consistently strong A-level results. École Française de Paphos takes ages 3–11.",
+			`The International School of Paphos is the largest: British curriculum from age 3 to 18, fees from ${eur(FEES_ISP.from)} (pre-reception and reception) to ${eur(FEES_ISP.to)} (sixth form) in 2026-27, and a waiting list at the upper end. Aspire Private British School (ages 4–18, ~14 per class, €5,500–€8,500) has a strong reputation among the British and Israeli communities.`,
 			"Public Greek-medium schools are free, and the education ministry runs a Greek-as-a-second-language programme for newly-arrived expat children. For university, most Paphos teens commute to the University of Cyprus campus in Nicosia or Cyprus University of Technology in Limassol; Neapolis University in Paphos offers psychology, law and business (undergraduate and postgraduate).",
 		],
 		leisure: [
@@ -112,7 +131,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 			],
 			total: "roughly €1,500–€2,200",
 			notes: [
-				"Before travel, schooling and larger discretionary spending; utilities vary with aircon use. Lidl and Sklavenitis are cheaper than Carrefour and Alpha Mega. Renting a two-bed in central Paphos costs €800–€1,200 a month (€1,100–€1,600 in Coral Bay or Kato Paphos).",
+				`Before travel, schooling and larger discretionary spending; utilities vary with aircon use. Lidl is the cheapest chain; Sklavenitis and Alphamega are the main full-range supermarkets. The median asking rent for a two-bedroom apartment in Paphos district was about ${rentMedian("Paphos", 2)} a month in ${RENT_MONTH_LABEL} (half of listings between ${eur(RENTS.Paphos[2].p25)} and ${eur(RENTS.Paphos[2].p75)}; ${RENT_SOURCE_NAME}). ${RENT_AGREED_NOTE}`,
 			],
 		},
 		faqs: [
@@ -167,7 +186,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 			"If you move to Cyprus to work for a company, you almost certainly land here. Newcomers average 30 to 45 and are almost always working: Wargaming, Revolut, eToro, Exness, NEXTEN, JetBrains, the shipping firms and many forex brokers and crypto outfits have substantial Limassol headcount. The city is heavily Russian-speaking (a legacy of two decades of Russian investment), but the workforce is international: Greek, French, Israeli, Indian, South African. The social pace is genuinely European, with late dinners and busy bars on weekday evenings.",
 		],
 		gettingAround: [
-			"Limassol has no airport: most expats use Larnaca (40 minutes east, the main international gateway) or Paphos (60 minutes west). City buses are improving but most expats drive; public coaches to Larnaca and Paphos cost €4–€7 one way.",
+			`Limassol has no airport: most expats use Larnaca (40 minutes east, the main international gateway) or Paphos (60 minutes west). City buses are improving but most expats drive; InterCity coaches to Larnaca and Paphos cost ${eur(INTERCITY_FARE.limassolLarnaca)} one way.`,
 			"Traffic is the main complaint. The city sprawls along a thin coastal strip with one main road, and rush hour through Germasogeia and the Old Town can turn a 10-minute Google Maps trip into 30 minutes. Test regular drives at 8:30 AM and 6:00 PM; living within walking distance of the seafront promenade or your employer avoids 80% of that pain.",
 		],
 		healthcare: [
@@ -175,7 +194,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 			"GeSY registration is straightforward for legal residents and gives you a personal doctor and specialist referrals, mostly without out-of-pocket cost. Non-urgent specialist waits can run weeks, so many expats keep private cover: typically €80–€180 a month for an adult under 50. Dental care is private only: €40–€80 for a cleaning, €600–€1,200 for a single implant. English-fluent specialists are easy to find in almost any field; many physicians trained in the UK.",
 		],
 		schools: [
-			"Limassol has the strongest international schools in Cyprus, plus several Greek private schools and public schools that increasingly accommodate international children. The Heritage Private School (Pyrgos) is the most prestigious: British curriculum from 3 to 18, IB Diploma at sixth form, €8,000–€14,000, and up to a 12-month wait for senior years. Foley's Grammar School and The Grammar School Limassol have strong A-level outcomes and fees from €6,500 to €11,000. The American Academy Limassol teaches an American curriculum to AP level. Several private Russian schools remain, though enrolment has dropped sharply since 2022.",
+			`Limassol has the strongest international schools in Cyprus, plus several Greek private schools and public schools that increasingly accommodate international children. The Heritage Private School (Palodia) is the most prestigious: British curriculum from 3 to 18, IB Diploma at sixth form, ${feeRange(FEES_HERITAGE)} a year (2026-27), and up to a 12-month wait for senior years. Foley's (${feeRange(FEES_FOLEYS)}) and The Grammar School Limassol (secondary only, ${feeRange(FEES_GRAMMAR_LIMASSOL)} for non-Cypriot pupils) have strong A-level results. The American Academy Limassol teaches an American curriculum to AP level. Several private Russian schools remain, though enrolment has dropped sharply since 2022.`,
 			"Some new residential complexes have kindergartens on-site. The University of Limassol opened in 2022 as a private campus; Cyprus University of Technology (CUT) is the main public university.",
 		],
 		leisure: [
@@ -199,7 +218,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 			],
 			total: "roughly €1,900–€2,950",
 			notes: [
-				"Rent is extra: a central two-bedroom costs €1,800–€3,000 unfurnished or €2,200–€3,800 furnished, and sea-view tower apartments regularly clear €4,000–€7,000. Rents and prices are 30–50% higher than Larnaca or Paphos for equivalent space, Limassol has consistently topped Cyprus's cost-of-living index, and newcomers consistently underestimate the gap.",
+				`Rent is extra: the median asking rent for a two-bedroom apartment in Limassol district was about ${rentMedian("Limassol", 2)} a month in ${RENT_MONTH_LABEL}, and half of listings asked between ${eur(RENTS.Limassol[2].p25)} and ${eur(RENTS.Limassol[2].p75)} (${RENT_SOURCE_NAME}, n=${RENTS.Limassol[2].n.toLocaleString("en-GB")}). That median is about ${rentPremiumPct("Limassol", "Paphos")}% above Paphos and ${rentPremiumPct("Limassol", "Larnaca")}% above Larnaca, and the most expensive seafront towers ask several times the median. ${RENT_AGREED_NOTE} Limassol has consistently topped Cyprus's cost-of-living index, and newcomers consistently underestimate the gap.`,
 			],
 		},
 		faqs: [
@@ -269,7 +288,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 			"Cardiac and orthopaedic specialists are well-represented locally; complex paediatrics, oncology and neurosurgery still tend to flow toward Mediterranean Hospital in Limassol or the New Nicosia General. Pharmacies are everywhere and reliable. Dental care is private only (€40–€60 cleaning, €700–€1,400 implant). Emergency response is good in the city; from inland villages the nearest A&E may be 20–30 minutes away. 112 works throughout the district.",
 		],
 		schools: [
-			"The international school market is smaller than in Limassol or Paphos but growing. The American Academy Larnaca (ages 4 to 18, American-style curriculum, SAT preparation, €5,500–€8,500) is the best known. Pascal Private School's Larnaca campus (British curriculum, same ages) is the standard pick for UK-bound students, and The Med High School (12–18) has a tighter academic focus. Several smaller British-curriculum primary schools serve under-12s, and the Junior School Larnaca (primary) is within commuting distance.",
+			`The international school market is smaller than in Limassol or Paphos but growing. The American Academy Larnaca (ages 4 to 18, American-style curriculum, SAT preparation, ${feeRange(FEES_AMERICAN_ACADEMY_LARNACA)} in 2026-27) is the best known. Pascal Private School's Larnaca campus (British curriculum, same ages) is the standard pick for UK-bound students, and The Med High School (12–18) has a tighter academic focus. Several smaller British-curriculum primary schools serve under-12s.`,
 			"Public Greek-medium schools are free, and the district education authority has been particularly responsive to international families: schools in Pervolia, Kiti and Aradippou increasingly have meaningful expat representation.",
 		],
 		leisure: [
@@ -284,7 +303,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 				{ item: "Common charges (building with a pool)", amount: "€100–€180" },
 				{ item: "Municipal taxes", amount: "€25–€40" },
 				{
-					item: "Groceries (Lidl, Sklavenitis, Carrefour)",
+					item: "Groceries (Lidl, Sklavenitis, Alphamega)",
 					amount: "€420–€580",
 				},
 				{ item: "Restaurants 3 times a week", amount: "€230–€370" },
@@ -293,7 +312,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 			],
 			total: "roughly €1,400–€2,050",
 			notes: [
-				"Before discretionary spending. Renting a central two-bedroom costs €700–€1,200 unfurnished or €900–€1,500 furnished, meaningfully below Limassol.",
+				`Before discretionary spending. The median asking rent for a two-bedroom apartment in Larnaca district was about ${rentMedian("Larnaca", 2)} a month in ${RENT_MONTH_LABEL} (half of listings between ${eur(RENTS.Larnaca[2].p25)} and ${eur(RENTS.Larnaca[2].p75)}; ${RENT_SOURCE_NAME}, n=${RENTS.Larnaca[2].n}), well below Limassol. ${RENT_AGREED_NOTE}`,
 			],
 		},
 		faqs: [
@@ -362,7 +381,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 			"Families with chronic conditions sometimes drive to Larnaca or further three or four times a month. Emergency response is reasonable in the resort towns and can take 15–25 minutes in the inland villages (Liopetri, Frenaros, Sotira); 112 works throughout. Many full-time expats supplement GeSY with private insurance specifically to access Limassol or Nicosia specialists without GeSY referral delays.",
 		],
 		schools: [
-			"The area has the thinnest international-school market of the four cities: competent British-curriculum primary schools (notably Heritage Private School Paralimni, distinct from the Limassol Heritage) and a handful of preschools and kindergartens. Public Greek-medium schools in Paralimni and Sotira are good and have absorbed a meaningful number of expat children, particularly in primary.",
+			"The area has the thinnest international-school market of the four cities: the only registered English-language private school is Xenion in Paralimni, plus a handful of preschools and kindergartens. Public Greek-medium schools in Paralimni and Sotira are good and have absorbed a meaningful number of expat children, particularly in primary.",
 			"Secondary school is the genuine challenge: most families commute to The American Academy Larnaca (35–45 minutes each way) or one of the Larnaca British schools, or board. For families with several school-age children it is the most-cited reason for choosing Larnaca instead. The area lacks any local university campus; students typically attend Nicosia or Limassol institutions or go abroad.",
 		],
 		leisure: [
@@ -387,7 +406,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 			total: "roughly €1,470–€2,170 off-season",
 			notes: [
 				"Resort amenities push common charges above equivalent Larnaca buildings. From June to September restaurants charge resort prices (30–50% higher than off-season) and supermarket lines are long; owners often hold off big spending until October.",
-				"Long-term rentals are scarce because most units are aimed at holiday letting: expect €750–€1,400 for a year-round two-bedroom, and significantly more if the lease includes the high season.",
+				`Long-term rentals are scarce because most units are aimed at holiday letting: expect €750–€1,400 for a year-round two-bedroom, and significantly more if the lease includes the high season. ${RENT_SOURCE_NAME} listed only ${RENTS["Ayia Napa"][2].n} two-bedroom apartments for long-term rent across the whole Famagusta free area on ${RENT_SAMPLED_LABEL}, with a median asking rent of about ${rentMedian("Ayia Napa", 2)} and half between ${eur(RENTS["Ayia Napa"][2].p25)} and ${eur(RENTS["Ayia Napa"][2].p75)}.`,
 			],
 		},
 		faqs: [
@@ -411,7 +430,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 		property: [
 			{
 				heading: "Who buys in the south-east",
-				body: "The Famagusta free area has the smallest year-round expat community of any region on this map, but a disproportionately committed one. The dominant group is British: a generation of buyers who came in the 1990s and 2000s and built up a tight social network around the golf at Aphrodite Hills, the Protaras seafront and the inland villages. Lebanese families with summer homes have become a year-round presence since the 2019–2024 instability in Beirut, and Israeli families are now the fastest-growing inbound segment, generally choosing Protaras over Ayia Napa proper for the slightly more residential feel.",
+				body: "The Famagusta free area has the smallest year-round expat community of any region on this map, but a disproportionately committed one. The dominant group is British: a generation of buyers who came in the 1990s and 2000s and built up a tight social network around the Protaras seafront and the inland villages. Lebanese families with summer homes have become a year-round presence since the 2019–2024 instability in Beirut, and Israeli families are now the fastest-growing inbound segment, generally choosing Protaras over Ayia Napa proper for the slightly more residential feel.",
 			},
 			{
 				heading: "What new developments here look like",

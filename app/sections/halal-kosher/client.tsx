@@ -16,6 +16,18 @@ import {
 	type VenueType,
 } from "@/lib/halal-kosher";
 
+/** Only offer filter values that at least one listed venue has. */
+const CITIES = ALL_CITIES.filter((c) =>
+	HALAL_KOSHER_VENUES.some((v) => v.city === c),
+);
+const CERTS = ALL_CERTIFICATIONS.filter((c) =>
+	HALAL_KOSHER_VENUES.some((v) => v.certification === c),
+);
+const TYPES = ALL_VENUE_TYPES.filter((t) =>
+	HALAL_KOSHER_VENUES.some((v) => v.type === t),
+);
+const HAS_HALAL = HALAL_KOSHER_VENUES.some((v) => v.certification !== "kosher");
+
 /** Filters first, then the venue cards. Header and info live in page.tsx. */
 export default function HalalKosherClient() {
 	const [cityFilter, setCityFilter] = useState<City | "All">("All");
@@ -41,7 +53,7 @@ export default function HalalKosherClient() {
 					onChange={setCityFilter}
 					options={[
 						{ value: "All", label: "All cities" },
-						...ALL_CITIES.map((c) => ({ value: c, label: c })),
+						...CITIES.map((c) => ({ value: c, label: c })),
 					]}
 				/>
 				<ChipGroup
@@ -50,7 +62,7 @@ export default function HalalKosherClient() {
 					onChange={setCertFilter}
 					options={[
 						{ value: "All", label: "All" },
-						...ALL_CERTIFICATIONS.map((c) => ({
+						...CERTS.map((c) => ({
 							value: c,
 							label: CERTIFICATION_LABEL[c],
 						})),
@@ -62,13 +74,23 @@ export default function HalalKosherClient() {
 					onChange={setTypeFilter}
 					options={[
 						{ value: "All", label: "All types" },
-						...ALL_VENUE_TYPES.map((t) => ({
+						...TYPES.map((t) => ({
 							value: t,
 							label: VENUE_TYPE_LABEL[t],
 						})),
 					]}
 				/>
 			</div>
+
+			{HAS_HALAL ? null : (
+				<p className="mt-6 text-base text-muted">
+					No halal venues are listed at the moment. The earlier halal listings
+					could not be confirmed in any public business listing, so they were
+					removed rather than send you to places that may not exist. The tips
+					below still apply; ask at your local mosque or community group for
+					current halal butchers and restaurants.
+				</p>
+			)}
 
 			<h2
 				className="mt-8 text-2xl font-bold tracking-tight text-ink"

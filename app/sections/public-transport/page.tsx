@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
+import { SourcesNote } from "@/components/ui/SourcesNote";
+import { HEALTH_TRANSPORT_CHECKED, SRC } from "@/lib/facts/health-transport";
 import { TRANSPORT_TIPS } from "@/lib/public-transport";
 import { topicCrumb } from "@/lib/topic-map";
 import PublicTransportClient from "./client";
@@ -59,6 +61,17 @@ export default function PublicTransportPage() {
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
 			/>
 			<PublicTransportClient />
+			<SourcesNote
+				className="mt-8"
+				lastChecked={HEALTH_TRANSPORT_CHECKED}
+				sources={[
+					SRC.limassolBuses,
+					SRC.paphosBuses,
+					SRC.larnacaBuses,
+					SRC.intercity,
+					SRC.airportTaxiFares,
+				]}
+			/>
 		</DirectoryTemplate>
 	);
 }

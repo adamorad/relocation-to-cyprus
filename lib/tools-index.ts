@@ -45,7 +45,7 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
 		href: "/tools/social-insurance-calculator/",
 		title: "Cyprus Social Insurance Calculator",
 		description:
-			"Calculate your Social Insurance and GeSY contributions based on 2025 rates. Full breakdown for employed and self-employed, including employer contributions.",
+			"Calculate your Social Insurance and GeSY contributions based on the 2026 contribution rates. Full breakdown for employed and self-employed, including employer contributions.",
 		category: "Tax & Contributions",
 	},
 	{
@@ -199,7 +199,7 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
 		href: "/tools/school-finder/",
 		title: "International School Finder",
 		description:
-			"Find and compare international schools in Cyprus. Filter by city, curriculum (British, IB, German, French, Waldorf, Montessori), and age group to shortlist the right options for your family.",
+			"Find and compare international schools in Cyprus. Filter by city, curriculum (British, IB), and age group to shortlist the right options for your family.",
 		category: "Location & Living",
 	},
 	{
@@ -220,7 +220,7 @@ export const TOOLS: ReadonlyArray<ToolEntry> = [
 		href: "/tools/rental-price-trends/",
 		title: "Cyprus Rental Price Trends",
 		description:
-			"Track how apartment rents have changed across Limassol, Paphos, Larnaca, and Ayia Napa since 2021. Interactive SVG line chart for 1BR, 2BR, and 3BR units with city toggles, hover tooltips, and year-on-year comparison table.",
+			"Median asking rents for 1BR, 2BR and 3BR apartments in Limassol, Paphos, Larnaca and Ayia Napa from a dated Bazaraki sample (1 October 2026), with the middle half of listings and sample sizes, plus a separate chart of labelled earlier estimates.",
 		category: "Property & Rent",
 	},
 ];

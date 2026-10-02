@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
+import { SourcesNote } from "@/components/ui/SourcesNote";
 import { MARKET_TIPS } from "@/lib/farmers-markets";
 import { topicCrumb } from "@/lib/topic-map";
 import FarmersMarketsClient from "./client";
@@ -8,7 +9,7 @@ import FarmersMarketsClient from "./client";
 const SITE_URL = "https://realcy.app";
 const title = "Farmers Markets & Local Produce in Cyprus";
 const description =
-	"Weekly markets and local produce stalls across all districts with operating days.";
+	"Municipal and weekly produce markets in Limassol, Larnaca and Paphos, with operating days.";
 
 export const metadata: Metadata = {
 	title,
@@ -45,11 +46,30 @@ export default function FarmersMarketsPage() {
 				eyebrow: "Food & Dining",
 				title: title,
 				intro:
-					"Weekly laiki agorai, municipal covered markets, and organic farmers markets across Cyprus: the best places to buy directly from local growers. Seasonal produce, fresh halloumi, village honey, and artisan food products at prices that reflect Cyprus's agricultural heritage.",
+					"Municipal covered markets and weekly laiki agorai in Limassol, Larnaca and Paphos: the best places to buy directly from local growers. Seasonal produce, fresh halloumi, village honey, and artisan food products at prices that reflect Cyprus's agricultural heritage.",
 			}}
 			info={MARKET_TIPS.map((t) => ({ heading: t.heading, body: t.body }))}
 			infoTitle="Market tips"
-			related={<MoreOnTopic type="directory" slug="farmers-markets" cols={3} />}
+			related={
+				<>
+					<SourcesNote
+						lastChecked="2026-10-02"
+						sources={[
+							{
+								label: "Larnaka Tourism Board: Larnaca Municipal Market",
+								url: "https://larnakaregion.com/en/directory/product/municipal-market",
+							},
+							{
+								label: "Larnaca Salt Lake (Wikipedia)",
+								url: "https://en.wikipedia.org/wiki/Larnaca_Salt_Lake",
+							},
+						]}
+					/>
+					<div className="mt-12">
+						<MoreOnTopic type="directory" slug="farmers-markets" cols={3} />
+					</div>
+				</>
+			}
 		>
 			<script
 				type="application/ld+json"

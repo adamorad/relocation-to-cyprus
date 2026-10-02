@@ -45,7 +45,7 @@ export default function InternationalGroceryPage() {
 				eyebrow: "Food & Dining",
 				title: title,
 				intro:
-					"Asian grocery stores, Middle Eastern supermarkets, Indian spice shops, Russian food stores, and British import shops across Cyprus: wherever you are relocating from, this is where to find the taste of home.",
+					"Where to find Asian, Middle Eastern, Indian, Eastern European and British food in Cyprus, with the specialty stores we could confirm.",
 			}}
 			info={GROCERY_TIPS.map((t) => ({ heading: t.heading, body: t.body }))}
 			infoTitle="Shopping tips"

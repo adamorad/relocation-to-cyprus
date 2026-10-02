@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
+import { SourcesNote } from "@/components/ui/SourcesNote";
 import { SHOPPING_TIPS } from "@/lib/shopping";
 import { topicCrumb } from "@/lib/topic-map";
 import { topicBySlug, topicShareMetadata } from "@/lib/topics";
@@ -56,7 +57,40 @@ export default function ShoppingPage() {
 				content:
 					"Opening hours and market days change, especially around holidays. Check with the store or market before a special trip.",
 			}}
-			related={<MoreOnTopic type="directory" slug="shopping" cols={3} />}
+			related={
+				<>
+					<SourcesNote
+						lastChecked="2026-10-02"
+						sources={[
+							{
+								label: "Visit Cyprus: working hours and Sunday opening",
+								url: "https://www.visitcyprus.com/useful-info/time-working-hours-holidays/",
+							},
+							{
+								label:
+									"European Commission: e-commerce VAT package explanatory notes",
+								url: "https://taxation-customs.ec.europa.eu/system/files/2020-12/vatecommerceexplanatory_28102020_en.pdf",
+							},
+							{
+								label: "Larnaka Tourism Board: Larnaca Municipal Market",
+								url: "https://larnakaregion.com/en/directory/product/municipal-market",
+							},
+							{
+								label:
+									"Cyprus Mail: Sklavenitis completes acquisition of Papantoniou (6 November 2024)",
+								url: "https://cyprus-mail.com/2024/11/06/sklavenitis-completes-acquisition-of-papantoniou-supermarkets",
+							},
+							{
+								label: "My Mall Limassol: contact and address",
+								url: "https://www.mymall.com.cy/contact-us/",
+							},
+						]}
+					/>
+					<div className="mt-12">
+						<MoreOnTopic type="directory" slug="shopping" cols={3} />
+					</div>
+				</>
+			}
 		>
 			<script
 				type="application/ld+json"

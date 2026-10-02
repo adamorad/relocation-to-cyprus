@@ -23,30 +23,27 @@ function getRecommendation(
 	daysInOtherCountry: number,
 	hasPermanentHome: boolean,
 	hasBusinessOrEmployment: boolean,
-	isTaxResidentElsewhere: boolean,
 ): { type: Recommendation; title: string; description: string } {
-	if (daysInCyprus >= 183) {
+	// The 183-day test needs more than 183 days, so exactly 183 does not qualify.
+	if (daysInCyprus > 183) {
 		return {
 			type: "183-day",
 			title: "183-Day Rule: Clear Qualification",
 			description:
-				"You have spent 183 or more days in Cyprus this year. You qualify as a Cyprus tax resident under the straightforward 183-day test. No further conditions apply. File your TD1 by 31 July of the following year.",
+				"You have spent more than 183 days in Cyprus this year. You qualify as a Cyprus tax resident under the straightforward 183-day test. No further conditions apply. File your TD1 return for the year by the deadline: 31 July of the following year by law, though the Tax Department can extend it (for tax year 2025 it was extended to 31 October 2026).",
 		};
 	}
 
 	if (daysInCyprus >= 60) {
 		const conditionsMet =
-			daysInOtherCountry <= 183 &&
-			hasPermanentHome &&
-			hasBusinessOrEmployment &&
-			!isTaxResidentElsewhere;
+			daysInOtherCountry <= 183 && hasPermanentHome && hasBusinessOrEmployment;
 
 		if (conditionsMet) {
 			return {
 				type: "60-day-qualified",
 				title: "60-Day Rule: Qualified",
 				description:
-					"You meet all four conditions for the 60-day tax residency rule. You are likely tax resident in Cyprus for this year. Maintain a detailed day diary and ensure all four conditions are documented. Consult a Cyprus tax accountant before filing.",
+					"You meet the conditions for the 60-day tax residency rule. You are likely tax resident in Cyprus for this year. Maintain a detailed day diary and keep evidence of each condition. Consult a Cyprus tax accountant before filing.",
 			};
 		}
 
@@ -150,9 +147,8 @@ export default function TaxResidencyPlannerClient() {
 	const [daysInOtherCountry, setDaysInOtherCountry] = useState(120);
 	const [hasPermanentHome, setHasPermanentHome] = useState(true);
 	const [hasBusinessOrEmployment, setHasBusinessOrEmployment] = useState(true);
-	const [isTaxResidentElsewhere, setIsTaxResidentElsewhere] = useState(false);
 
-	const qualifies183 = daysInCyprus >= 183;
+	const qualifies183 = daysInCyprus > 183;
 
 	const sixtyDayConditions: Condition[] = [
 		{
@@ -177,12 +173,6 @@ export default function TaxResidencyPlannerClient() {
 			detail:
 				"You must carry on business, hold employment, or hold an office in a Cyprus-resident entity.",
 		},
-		{
-			label: "Not tax resident in any other country this year",
-			pass: !isTaxResidentElsewhere,
-			detail:
-				"You must not be a tax resident in any other jurisdiction during the same calendar year.",
-		},
 	];
 
 	const sixtyDayAllPass = sixtyDayConditions.every((c) => c.pass);
@@ -192,7 +182,6 @@ export default function TaxResidencyPlannerClient() {
 		daysInOtherCountry,
 		hasPermanentHome,
 		hasBusinessOrEmployment,
-		isTaxResidentElsewhere,
 	);
 
 	const recTone: Record<Recommendation, CalloutTone> = {
@@ -242,11 +231,10 @@ export default function TaxResidencyPlannerClient() {
 					value={hasBusinessOrEmployment}
 					onChange={setHasBusinessOrEmployment}
 				/>
-				<YesNoField
-					label="Are you tax resident elsewhere this year?"
-					value={isTaxResidentElsewhere}
-					onChange={setIsTaxResidentElsewhere}
-				/>
+				<p className="text-sm text-muted">
+					From 1 January 2026, being tax resident in another country no longer
+					rules out the 60-day rule; the other conditions still apply.
+				</p>
 			</ToolPanel>
 
 			<section aria-labelledby="residency-results" className="space-y-4">
@@ -274,7 +262,7 @@ export default function TaxResidencyPlannerClient() {
 					<p className="text-base text-muted">
 						{qualifies183
 							? `You have spent ${daysInCyprus} days in Cyprus, above the 183-day threshold. You qualify.`
-							: `You have spent ${daysInCyprus} days in Cyprus. You need ${183 - daysInCyprus} more days to qualify under this rule.`}
+							: `You have spent ${daysInCyprus} days in Cyprus. You need ${184 - daysInCyprus} more ${184 - daysInCyprus === 1 ? "day" : "days"} (more than 183 in total) to qualify under this rule.`}
 					</p>
 				</div>
 

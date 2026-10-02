@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
+import { SourcesNote } from "@/components/ui/SourcesNote";
+import { TAX_SRC } from "@/lib/facts/tax";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import TaxResidencyPlannerClient from "./client";
@@ -27,12 +29,30 @@ export default function TaxResidencyTrackerPage() {
 		<ToolTemplate
 			pagefindType="tool"
 			related={
-				<MoreOnTopic
-					type="tool"
-					slug="tax-residency-tracker"
-					exclude={["/guides/taxes-for-expats/", "/sections/accountants/"]}
-					cols={2}
-				/>
+				<>
+					<SourcesNote
+						className="mb-12"
+						lastChecked="2026-10-02"
+						sources={[
+							{
+								label:
+									"Tax Department: Income Tax Law amendments 2026 (Greek, PDF)",
+								url: "https://www.gov.cy/media/sites/167/2026/03/2026-ΦορΜεταρρύθμιση-Φόρος-Εισοδήματος.pdf",
+							},
+							{
+								label: "Tax Department: Tax Reform 2026",
+								url: "https://www.gov.cy/mof-tax/en/documents/forologiki-metarrythmisi-2026/",
+							},
+							TAX_SRC.individualReturn,
+						]}
+					/>
+					<MoreOnTopic
+						type="tool"
+						slug="tax-residency-tracker"
+						exclude={["/guides/taxes-for-expats/", "/sections/accountants/"]}
+						cols={2}
+					/>
+				</>
 			}
 			width="reading"
 			header={{

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
+import { SourcesNote } from "@/components/ui/SourcesNote";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import SoleTraderVsLtdClient from "./client";
@@ -27,18 +28,56 @@ export default function SoleTraderVsLtdPage() {
 		<ToolTemplate
 			pagefindType="tool"
 			related={
-				<MoreOnTopic
-					type="tool"
-					slug="sole-trader-vs-ltd"
-					exclude={[
-						"/sections/accountants/",
-						"/guides/company-types-comparison/",
-						"/guides/taxes-for-expats/",
-						"/tools/social-insurance-calculator/",
-						"/tools/tax-residency-tracker/",
-					]}
-					cols={3}
-				/>
+				<>
+					<SourcesNote
+						className="mb-12"
+						lastChecked="2026-10-02"
+						sources={[
+							{
+								label:
+									"Tax Department: Tax reform 2026 for individuals (Greek, PDF)",
+								url: "https://www.gov.cy/media/sites/167/2026/05/Φορολογική-Μεταρρύθμιση-2026-φυσικά-πρόσωπα-11.05.2026.pdf",
+							},
+							{
+								label:
+									"Tax Department: Special Defence Contribution reform 2026 (Greek, PDF)",
+								url: "https://www.gov.cy/media/sites/167/2026/03/EEA-ΦΚΚ-ΜΕΤΑΡΡΥΘΜΙΣΗ-06032026.pdf",
+							},
+							{
+								label:
+									"Tax Department: Income Tax Law amendments 2026 (Greek, PDF)",
+								url: "https://www.gov.cy/media/sites/167/2026/03/2026-ΦορΜεταρρύθμιση-Φόρος-Εισοδήματος.pdf",
+							},
+							{
+								label:
+									"Tax Department: Guide to the 2025 tax return (Greek, PDF)",
+								url: "https://www.gov.cy/media/sites/167/2026/06/Guide-for-completion-of-tax-return-2025-EL.pdf",
+							},
+							{
+								label:
+									"Business in Cyprus: Social insurance registration and contributions",
+								url: "https://www.businessincyprus.gov.cy/social-insurance-registration-and-contributions/",
+							},
+							{
+								label:
+									"Social Insurance Services: Basic insurable earnings 1981-2026",
+								url: "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/9AD159715525E49CC22584D90030E8FF?OpenDocument",
+							},
+						]}
+					/>
+					<MoreOnTopic
+						type="tool"
+						slug="sole-trader-vs-ltd"
+						exclude={[
+							"/sections/accountants/",
+							"/guides/company-types-comparison/",
+							"/guides/taxes-for-expats/",
+							"/tools/social-insurance-calculator/",
+							"/tools/tax-residency-tracker/",
+						]}
+						cols={3}
+					/>
+				</>
 			}
 			width="wide"
 			header={{
@@ -73,12 +112,13 @@ export default function SoleTraderVsLtdPage() {
 				<>
 					This page provides a general orientation only, not legal, tax or
 					financial advice. Tax rates shown are estimates based on simplified
-					assumptions, and setup fees are market estimates for 2025. Your actual
-					position depends on your income mix, deductions, residency status,
-					home-country obligations and the structure of your business, and costs
-					vary by service provider. Confirm with a qualified Cyprus accountant
-					(and, where relevant, a tax adviser in your home country), and request
-					quotes from 2 to 3 licensed fiduciaries before making decisions.
+					assumptions, and setup fees are market estimates gathered in 2025, not
+					yet re-checked. Your actual position depends on your income mix,
+					deductions, residency status, home-country obligations and the
+					structure of your business, and costs vary by service provider.
+					Confirm with a qualified Cyprus accountant (and, where relevant, a tax
+					adviser in your home country), and request quotes from 2 to 3 licensed
+					fiduciaries before making decisions.
 				</>
 			}
 		>

@@ -1,3 +1,15 @@
+import {
+	eur,
+	FOREIGN_PENSION_THRESHOLD,
+	REDUCED_VAT_MAX_VALUE,
+} from "./facts/tax";
+import {
+	GESY_AE_COPAY,
+	GESY_ANNUAL_CAP,
+	GESY_ANNUAL_CAP_REDUCED,
+	GESY_RX_ITEM_COPAY,
+	SRC as HT_SRC,
+} from "./facts/health-transport";
 import type { GuideInfo } from "./guides";
 
 /**
@@ -9,7 +21,23 @@ export const GUIDES_BATCH3: GuideInfo[] = [
 	{
 		slug: "buying-vs-renting-cyprus",
 		datePublished: "2026-07-06",
-		dateModified: "2026-07-06",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label:
+					"Tax Department: Circular ΕΕ 11/2023 on 5% VAT for a primary residence (PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/01/%CE%95%CE%95-11_2023.pdf",
+			},
+			{
+				label: "Department of Lands and Surveys: Rights and fees (PDF)",
+				url: "https://portal.dls.moi.gov.cy/wp-content/uploads/2022/07/Rights-and-Fees_EN.pdf",
+			},
+			{
+				label: "Advocates Law, Cap. 2 (CyLaw)",
+				url: "https://www.cylaw.org/nomoi/enop/non-ind/0_2/full.html",
+			},
+		],
 		category: "property",
 		title: "Buying vs Renting in Cyprus: 2026 Guide",
 		description:
@@ -17,7 +45,7 @@ export const GUIDES_BATCH3: GuideInfo[] = [
 		sections: [
 			{
 				heading: "The Real Cost of Buying in Cyprus",
-				body: "Buying property anywhere involves transaction costs that most promotional materials understate. In Cyprus the headline items are transfer fees, VAT on new builds, and legal fees. The good news: stamp duty was fully abolished from 1 January 2026, removing one cost that previously added up to several thousand euros on a typical purchase.\n\nTransfer fees are levied by the Land Registry on resale properties at a tiered rate: 3% on the first €85,000 of purchase price, 5% on €85,001–€170,000, and 8% on everything above. A statutory 50% reduction applies to all resale purchases, cutting the effective rates to 1.5%, 2.5%, and 4% respectively. On new-build properties where the developer has already paid VAT, transfer fees are waived altogether.\n\nVAT applies to new builds at the standard rate of 19%. A reduced rate of 5% is available if the property will be your primary residence, subject to detailed conditions on area and value (broadly, the 5% rate applies only to the first 130 m² of a home up to 190 m², with a value cap; you must also occupy it as a primary residence or proportional VAT becomes repayable). Verify your eligibility with your solicitor before factoring this rate into your budget.\n\nLegal fees for a reputable Cypriot firm typically run 1–2% of the purchase price, covering title searches, contract review, and Land Registry registration. Independent legal representation is not optional — title-deed issues remain a known risk in the Cypriot market.\n\nAdding buying-side costs together on a typical resale property, the total sits at roughly 4–6% of the purchase price. Add agent commission of 3–5% (plus 19% VAT on the commission) and legal fees of around 1% on the sale side, and the full round-trip cost of buying and later selling a Cyprus property comes to approximately 8–12%. That is the hurdle your capital appreciation must clear before buying becomes superior to renting. The rent-vs-buy calculator at /tools/rent-vs-buy-calculator quantifies this for your own figures.",
+				body: `Buying property anywhere involves transaction costs that most promotional materials understate. In Cyprus the headline items are transfer fees, VAT on new builds, and legal fees. The good news: stamp duty was fully abolished from 1 January 2026, removing one cost that previously added up to several thousand euros on a typical purchase.\n\nTransfer fees are levied by the Land Registry on resale properties at a tiered rate: 3% on the first €85,000 of purchase price, 5% on €85,001–€170,000, and 8% on everything above. A statutory 50% reduction applies to all resale purchases, cutting the effective rates to 1.5%, 2.5%, and 4% respectively. On new-build properties where the developer has already paid VAT, transfer fees are waived altogether.\n\nVAT applies to new builds at the standard rate of 19%. A reduced rate of 5% is available if the property will be your primary residence, subject to detailed conditions on area and value (broadly, the 5% rate applies only to the first 130 m² of a home up to 190 m², with a value cap of ${eur(REDUCED_VAT_MAX_VALUE)}; you must also occupy it as a primary residence or proportional VAT becomes repayable). Verify your eligibility with your solicitor before factoring this rate into your budget.\n\nLegal fees are not regulated, so they vary; quotes of around 1% to 1.5% of the purchase price plus VAT are common, covering title searches, contract review, and Land Registry registration. Independent legal representation is not optional: title-deed issues remain a known risk in the Cypriot market.\n\nAdding buying-side costs together on a typical resale property, the total sits at roughly 4–6% of the purchase price. Add agent commission of 3–5% (plus 19% VAT on the commission) and legal fees of around 1% on the sale side, and the full round-trip cost of buying and later selling a Cyprus property comes to approximately 8–12%. That is the hurdle your capital appreciation must clear before buying becomes superior to renting. The rent-vs-buy calculator at /tools/rent-vs-buy-calculator quantifies this for your own figures.`,
 			},
 			{
 				heading: "The Break-Even Holding Period",
@@ -43,7 +71,7 @@ export const GUIDES_BATCH3: GuideInfo[] = [
 		faqs: [
 			{
 				q: "What are the total transaction costs when buying property in Cyprus in 2026?",
-				a: "On a resale property, expect to pay transfer fees (effectively 1.5%–4% after the statutory 50% reduction, applied in tiers on the purchase price), plus legal fees of roughly 1–2%. Stamp duty was abolished from 1 January 2026. On a new-build where VAT has been paid at 19% (or the 5% reduced rate for a qualifying primary residence), transfer fees are waived. Adding all buying-side costs, the total is typically 4–6% of the purchase price on a resale. Include agent commission (3–5%, plus 19% VAT on the commission) and legal fees when you eventually sell, and the full round-trip sits at approximately 8–12%.",
+				a: "On a resale property, expect to pay transfer fees (effectively 1.5%–4% after the statutory 50% reduction, applied in tiers on the purchase price), plus legal fees, often around 1% to 1.5% plus VAT (fees are not regulated, so get written quotes). Stamp duty was abolished from 1 January 2026. On a new-build where VAT has been paid at 19% (or the 5% reduced rate for a qualifying primary residence), transfer fees are waived. Adding all buying-side costs, the total is typically 4–6% of the purchase price on a resale. Include agent commission (3–5%, plus 19% VAT on the commission) and legal fees when you eventually sell, and the full round-trip sits at approximately 8–12%.",
 			},
 			{
 				q: "How long do I need to stay in Cyprus for buying to make more financial sense than renting?",
@@ -62,7 +90,9 @@ export const GUIDES_BATCH3: GuideInfo[] = [
 	{
 		slug: "private-health-insurance-cyprus",
 		datePublished: "2026-07-06",
-		dateModified: "2026-07-06",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [HT_SRC.gesyCopay],
 		category: "healthcare",
 		title: "Private Health Insurance in Cyprus 2026",
 		description:
@@ -70,7 +100,7 @@ export const GUIDES_BATCH3: GuideInfo[] = [
 		sections: [
 			{
 				heading: "What GeSY covers — and what you still pay",
-				body: "GeSY (the General Health System) provides broad public healthcare funded through payroll contributions. Most residents — including employed non-EU nationals who have completed the residency process — can register and access the system for the bulk of their medical needs. For a full walkthrough of the enrolment process, see the gesy-registration-guide.\n\nWhen you see a GeSY-contracted personal doctor, the appointment is free. A referred specialist visit costs €6; without a referral the charge is higher. Each laboratory test carries a €1 fee, diagnostic imaging (X-ray, MRI, CT scan) costs around €10 per session, and prescription items are €1 each, capped per prescription. Accident and emergency carries a €10 charge, which is refunded if you are subsequently admitted. Hospital inpatient stays are free at the point of care.\n\nAn annual co-payment ceiling protects heavy users: once a general adult has reached €150 in co-payments within a calendar year, further eligible GeSY services are free for the remainder of that year. Vulnerable groups — including children, minimum-income recipients, and low-income pensioners — have a lower cap of €75.\n\nGeSY's contracted network is broad but not universal. Not every private hospital in Cyprus participates, and some specialist departments within participating hospitals may fall outside GeSY's scope. Routine specialist appointments typically carry a two-to-four-week wait; MRI and CT scan slots can run longer during peak summer months. These structural limitations drive most expats to top up with private cover, explored in the next section. For a broader overview of the system, see the healthcare-in-cyprus guide.",
+				body: `GeSY (the General Health System) provides broad public healthcare funded through payroll contributions. Most residents, including employed non-EU nationals who have completed the residency process, can register and access the system for the bulk of their medical needs. For a full walkthrough of the enrolment process, see the gesy-registration-guide.\n\nWhen you see a GeSY-contracted personal doctor, the appointment is free. A referred specialist visit costs €6; without a referral the charge is higher. Each laboratory test carries a €1 fee, diagnostic imaging (X-ray, MRI, CT scan) costs around €10 per session, and prescription items are ${eur(GESY_RX_ITEM_COPAY)} each. Accident and emergency carries a ${eur(GESY_AE_COPAY)} charge, and you do not pay co-payments for care while admitted. Hospital inpatient stays are free at the point of care.\n\nAn annual co-payment ceiling protects heavy users: once a general adult has reached ${eur(GESY_ANNUAL_CAP)} in co-payments within a calendar year, further eligible GeSY services are free for the remainder of that year. Vulnerable groups, including under-21s, minimum-income recipients, and low-income pensioners, have a lower cap of ${eur(GESY_ANNUAL_CAP_REDUCED)}.\n\nGeSY's contracted network is broad but not universal. Not every private hospital in Cyprus participates, and some specialist departments within participating hospitals may fall outside GeSY's scope. Routine specialist appointments typically carry a two-to-four-week wait; MRI and CT scan slots can run longer during peak summer months. These structural limitations drive most expats to top up with private cover, explored in the next section. For a broader overview of the system, see the healthcare-in-cyprus guide.`,
 			},
 			{
 				heading: "Five gaps private insurance fills",
@@ -78,7 +108,7 @@ export const GUIDES_BATCH3: GuideInfo[] = [
 			},
 			{
 				heading: "The non-EU residency requirement for private cover",
-				body: "Non-EU nationals applying for a Cyprus residency permit are generally required to hold private health insurance at the point of application. The minimum level of cover required depends on the permit category, and requirements change — always confirm the current standard with an immigration lawyer or licensed broker before you apply.\n\nFor most non-EU residency routes — including the standard temporary residence permit (often called the Pink Slip), employer-sponsored work permits, and the Category F retirement residence permit — the Civil Registry and Migration Department accepts a basic immigration medical policy (commonly called Plan A). These carry a relatively low annual coverage ceiling (widely reported around €13,000–€14,000 total, with lower inpatient and outpatient sub-limits), require no medical examination, and typically cost between roughly €120 and €430 per year depending on age. Cover must be maintained continuously; during a long Category F processing period, applicants generally cannot access GeSY and rely entirely on their private policy.\n\nThe Cyprus Digital Nomad Visa applies a higher bar: applicants must hold a policy providing at least €30,000 of annual coverage, explicitly including inpatient care, outpatient care, and repatriation. Standard basic immigration policies do not meet this threshold and are rejected.\n\nEU citizens who are not in employment when applying for their Yellow Slip (MEU1), and non-EU family members of EU citizens (MEU2), must also demonstrate adequate sickness insurance coverage.",
+				body: "Non-EU nationals applying for a Cyprus residency permit are generally required to hold private health insurance at the point of application. The minimum level of cover required depends on the permit category, and requirements change, so always confirm the current standard with an immigration lawyer or licensed broker before you apply.\n\nFor most non-EU residency routes, including the standard temporary residence permit (often called the Pink Slip), employer-sponsored work permits, and the Visitor residence permit used by retirees, the Migration Department accepts a basic immigration medical policy (commonly called Plan A). These carry a relatively low annual coverage ceiling (widely reported around €13,000–€14,000 total, with lower inpatient and outpatient sub-limits), require no medical examination, and typically cost between roughly €120 and €430 per year depending on age. Cover must be maintained continuously. Whether you can also register with GeSY depends on your status, so ask the Health Insurance Organisation (gesy.org.cy, contact centre 17000) before relying on it.\n\nThe Cyprus Digital Nomad Visa applies a higher bar: applicants must hold a policy providing at least €30,000 of annual coverage, explicitly including inpatient care, outpatient care, and repatriation. Standard basic immigration policies do not meet this threshold and are rejected.\n\nEU citizens who are not in employment when applying for their Yellow Slip (MEU1), and non-EU family members of EU citizens (MEU2), must also demonstrate adequate sickness insurance coverage.",
 			},
 			{
 				heading: "Main providers and plan types in Cyprus",
@@ -115,7 +145,18 @@ export const GUIDES_BATCH3: GuideInfo[] = [
 	{
 		slug: "moving-to-cyprus-from-germany",
 		datePublished: "2026-07-06",
-		dateModified: "2026-07-06",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Tax Department: Income Tax Law amendments 2026 (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/03/2026-ΦορΜεταρρύθμιση-Φόρος-Εισοδήματος.pdf",
+			},
+			{
+				label: "Migration Department (gov.cy)",
+				url: "https://www.gov.cy/mip-md/en/",
+			},
+		],
 		category: "immigration",
 		title: "Moving to Cyprus from Germany: 2026 Guide",
 		description:
@@ -127,7 +168,7 @@ export const GUIDES_BATCH3: GuideInfo[] = [
 			},
 			{
 				heading: "EU Residency: No Visa, Just the Yellow Slip",
-				body: "As a German national you are an EU citizen, which means you have an unconditional right to live and work in Cyprus without a visa or work permit. What you do need, once you intend to stay longer than 90 days, is to register with the Civil Registry and Migration Department and obtain your MEU1 Registration Certificate — universally known as the yellow slip.\n\nRegistration must be completed within four months of your arrival in Cyprus. You attend your local district immigration office in person (appointments must be booked in advance; slots fill quickly between March and May). Bring your valid German passport or EU identity card, proof of accommodation (a signed rental or purchase agreement), proof of health insurance, recent bank statements demonstrating sufficient financial resources, and evidence of employment, self-employment, or pension income. The government fee is around €20 per applicant.\n\nThe yellow slip does not expire and serves as your proof of EU residency rights on the island. You will need it to open a Cypriot bank account, obtain a Tax Identification Card (TIC), register a vehicle, and access a range of government services. Your TIC is the gateway to claiming non-dom status and filing Cyprus tax returns.\n\nSee the yellow-slip-meu1-guide on this site for the full document checklist, district office contacts, and appointment booking tips. Once you have landed, the arrival-checklist walks you through the complete sequence of administrative steps in your first 30 days.",
+				body: "As a German national you are an EU citizen, which means you have an unconditional right to live and work in Cyprus without a visa or work permit. What you do need, once you intend to stay longer than 90 days, is to register with the Migration Department and obtain your MEU1 Registration Certificate, universally known as the yellow slip.\n\nRegistration must be completed within four months of your arrival in Cyprus. You attend your local district immigration office in person (appointments must be booked in advance; slots fill quickly between March and May). Bring your valid German passport or EU identity card, proof of accommodation (a signed rental or purchase agreement), proof of health insurance, recent bank statements demonstrating sufficient financial resources, and evidence of employment, self-employment, or pension income. The government fee is around €20 per applicant.\n\nThe yellow slip does not expire and serves as your proof of EU residency rights on the island. You will need it to open a Cypriot bank account, obtain a Tax Identification Card (TIC), register a vehicle, and access a range of government services. Your TIC is the gateway to claiming non-dom status and filing Cyprus tax returns.\n\nSee the yellow-slip-meu1-guide on this site for the full document checklist, district office contacts, and appointment booking tips. Once you have landed, the arrival-checklist walks you through the complete sequence of administrative steps in your first 30 days.",
 			},
 			{
 				heading:
@@ -136,7 +177,7 @@ export const GUIDES_BATCH3: GuideInfo[] = [
 			},
 			{
 				heading: "The Germany–Cyprus Tax Treaty and Non-Dom Benefits",
-				body: "Germany and Cyprus have a bilateral double tax treaty (DTA) in force, substantially revised around 2011 and further updated by a protocol signed on 19 February 2021 (effective 1 January 2022). Unlike some relocation routes, German movers to Cyprus benefit from a clear framework for determining which country taxes which income stream.\n\nKey treaty provisions: interest income is taxable exclusively in your country of tax residence, so once you are resident in Cyprus the German tax authority has no claim on your interest earnings. Dividends paid by German companies to Cyprus residents attract German withholding tax at reduced treaty rates (and the EU Parent-Subsidiary Directive may reduce this to zero for qualifying corporate holdings). German private pensions, such as company pensions (Betriebsrente) and private Rentenversicherung, are, broadly, taxable only in Cyprus under the treaty, where Cyprus applies a favourable domestic flat rate of 5% on amounts above a €3,420 annual exemption. The German statutory pension (gesetzliche Rente) may remain partly taxable in Germany under specific treaty articles; confirm your position with a cross-border specialist before filing your first return in Cyprus.\n\nCyprus non-dom status amplifies these advantages considerably. Qualifying as non-domiciled (available for up to 17 years from the time you establish Cypriot tax residency, provided you have not previously been a Cyprus tax resident for 17 of the past 20 years) means dividends and passive interest are completely exempt from income tax. You pay only a 2.65% GHS contribution on those amounts. Combined with Cyprus income tax bands starting at 0% up to €22,000 and capping at 35% above €72,000, the overall effective tax burden is typically far lower than in Germany for individuals with passive income.\n\nFor a full breakdown, see /guides/taxes-for-expats/. Use the double-tax-treaty-finder tool to view treaty context relevant to your income types.",
+				body: `Germany and Cyprus have a bilateral double tax treaty (DTA) in force, substantially revised around 2011 and further updated by a protocol signed on 19 February 2021 (effective 1 January 2022). Unlike some relocation routes, German movers to Cyprus benefit from a clear framework for determining which country taxes which income stream.\n\nKey treaty provisions: interest income is taxable exclusively in your country of tax residence, so once you are resident in Cyprus the German tax authority has no claim on your interest earnings. Dividends paid by German companies to Cyprus residents attract German withholding tax at reduced treaty rates (and the EU Parent-Subsidiary Directive may reduce this to zero for qualifying corporate holdings). German private pensions, such as company pensions (Betriebsrente) and private Rentenversicherung, are, broadly, taxable only in Cyprus under the treaty, where Cyprus applies an optional flat rate of 5% on amounts above ${eur(FOREIGN_PENSION_THRESHOLD)} a year (from tax year 2026). The German statutory pension (gesetzliche Rente) may remain partly taxable in Germany under specific treaty articles; confirm your position with a cross-border specialist before filing your first return in Cyprus.\n\nCyprus non-dom status amplifies these advantages considerably. Qualifying as non-domiciled (available for up to 17 years from the time you establish Cypriot tax residency, provided you have not previously been a Cyprus tax resident for 17 of the past 20 years) means dividends and passive interest are completely exempt from income tax. You pay only a 2.65% GHS contribution on those amounts. Combined with Cyprus income tax bands starting at 0% up to €22,000 and capping at 35% above €72,000, the overall effective tax burden is typically far lower than in Germany for individuals with passive income.\n\nFor a full breakdown, see /guides/taxes-for-expats/. Use the double-tax-treaty-finder tool to view treaty context relevant to your income types.`,
 			},
 			{
 				heading: "German Community, Lifestyle, and Getting Around",
@@ -158,7 +199,7 @@ export const GUIDES_BATCH3: GuideInfo[] = [
 			},
 			{
 				q: "How does the Germany–Cyprus tax treaty affect my pension income in Cyprus?",
-				a: "The Germany–Cyprus DTA (revised around 2011, updated by the 2021 protocol) assigns taxing rights for pension income. German private pensions — such as company pensions and private Rentenversicherung — are broadly taxable only in Cyprus, where a favourable domestic flat rate of 5% applies on amounts above a €3,420 annual exemption. The German statutory pension (gesetzliche Rente) may remain partly taxable in Germany under specific treaty articles, depending on your circumstances. Take personalised advice from a cross-border specialist before filing in either country for the first time.",
+				a: `The Germany–Cyprus DTA (revised around 2011, updated by the 2021 protocol) assigns taxing rights for pension income. German private pensions (such as company pensions and private Rentenversicherung) are broadly taxable only in Cyprus, where an optional flat rate of 5% applies on amounts above ${eur(FOREIGN_PENSION_THRESHOLD)} a year (from tax year 2026). The German statutory pension (gesetzliche Rente) may remain partly taxable in Germany under specific treaty articles, depending on your circumstances. Take personalised advice from a cross-border specialist before filing in either country for the first time.`,
 			},
 			{
 				q: "Can I reclaim my German pension contributions when I move to Cyprus?",

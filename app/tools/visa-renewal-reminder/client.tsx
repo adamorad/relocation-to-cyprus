@@ -4,6 +4,7 @@ import { useCallback, useEffect, useId, useState } from "react";
 import { Badge, type BadgeTone } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Callout } from "@/components/ui/Callout";
+import { DNV_RENEWAL_MAX_YEARS } from "@/lib/facts/tax";
 
 type DocumentType =
 	| "visa"
@@ -377,7 +378,8 @@ export default function VisaRenewalReminderPage() {
 					</li>
 					<li>
 						<span className="font-semibold">Visa / Digital Nomad Visa</span>:
-						DNV is issued for 1 year, renewable up to 3 years
+						the Digital Nomad permit is issued for one year and can be renewed
+						for up to {DNV_RENEWAL_MAX_YEARS} more years
 					</li>
 					<li>
 						<span className="font-semibold">Health insurance</span>: Required

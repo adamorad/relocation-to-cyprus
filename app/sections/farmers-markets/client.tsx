@@ -19,7 +19,8 @@ export default function FarmersMarketsClient() {
 
 	const visible = FARMERS_MARKETS.filter((m) => {
 		const matchCity = cityFilter === "All" || m.city === cityFilter;
-		const matchDay = dayFilter === "All" || m.dayOfWeek === dayFilter;
+		const matchDay =
+			dayFilter === "All" || (m.days ?? [m.dayOfWeek]).includes(dayFilter);
 		return matchCity && matchDay;
 	});
 
@@ -32,7 +33,9 @@ export default function FarmersMarketsClient() {
 					onChange={setCityFilter}
 					options={[
 						{ value: "All", label: "All cities" },
-						...ALL_CITIES.map((c) => ({ value: c, label: c })),
+						...ALL_CITIES.filter((c) =>
+							FARMERS_MARKETS.some((m) => m.city === c),
+						).map((c) => ({ value: c, label: c })),
 					]}
 				/>
 				<ChipGroup

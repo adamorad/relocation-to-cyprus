@@ -56,7 +56,7 @@ export default function RelocationChecklistPage() {
 				{ href: "/tools/city-comparison/", label: "Compare cities" },
 				{ href: "/tools/", label: "All tools" },
 			]}
-			disclaimer="This tracker provides general guidance only and is not legal, tax, or financial advice. Requirements vary by nationality and residency route. Always verify with the Cyprus Tax Department, Civil Registry, and a qualified local adviser before making decisions."
+			disclaimer="This tracker provides general guidance only and is not legal, tax, or financial advice. Requirements vary by nationality and residency route. Always verify with the Cyprus Tax Department, the Migration Department, and a qualified local adviser before making decisions."
 		>
 			<script
 				type="application/ld+json"

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
+import { SourcesNote } from "@/components/ui/SourcesNote";
+import { RENT_SOURCES } from "@/lib/facts/rents";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import RentalPriceTrendsClient from "./client";
@@ -8,7 +10,7 @@ import RentalPriceTrendsClient from "./client";
 const SITE_URL = "https://realcy.app";
 const title = "Cyprus Rental Price Trends";
 const description =
-	"Track how apartment rents have changed across Limassol, Paphos, Larnaca, and Ayia Napa since 2021. Interactive charts for 1BR, 2BR, and 3BR units with year-on-year comparisons.";
+	"Median asking rents for 1, 2 and 3-bedroom apartments in Limassol, Paphos, Larnaca and Ayia Napa from a dated Bazaraki sample (1 October 2026), plus labelled earlier estimates.";
 
 export const metadata: Metadata = {
 	title,
@@ -27,16 +29,21 @@ export default function RentalPriceTrendsPage() {
 		<ToolTemplate
 			pagefindType="tool"
 			related={
-				<MoreOnTopic
-					type="tool"
-					slug="rental-price-trends"
-					exclude={[
-						"/tools/rent-vs-buy-calculator/",
-						"/tools/rental-yield-calculator/",
-						"/tools/mortgage-calculator/",
-					]}
-					cols={3}
-				/>
+				<>
+					<SourcesNote lastChecked="2026-10-02" sources={RENT_SOURCES} />
+					<div className="mt-12">
+						<MoreOnTopic
+							type="tool"
+							slug="rental-price-trends"
+							exclude={[
+								"/tools/rent-vs-buy-calculator/",
+								"/tools/rental-yield-calculator/",
+								"/tools/mortgage-calculator/",
+							]}
+							cols={3}
+						/>
+					</div>
+				</>
 			}
 			width="wide"
 			header={{
@@ -48,7 +55,7 @@ export default function RentalPriceTrendsPage() {
 				eyebrow: getTopicForTool("rental-price-trends").name,
 				title: "Cyprus Rental Price Trends",
 				intro:
-					"Monthly asking rents across Limassol, Paphos, Larnaca, and Ayia Napa from 2021 to 2025. Select a bedroom type and toggle cities to explore the data.",
+					"Median asking rents by city, from a dated Bazaraki sample (latest: 1 October 2026). Select a bedroom type; earlier estimates from 2021 to early 2025 are shown separately and labelled.",
 			}}
 			nextSteps={[
 				{
@@ -63,7 +70,7 @@ export default function RentalPriceTrendsPage() {
 				{ href: "/tools/", label: "All tools" },
 			]}
 			disclaimer={
-				"Figures are estimates based on aggregated public market data. Actual rents depend heavily on exact location, condition, furnishing, and negotiation. General information only, not legal, tax, or financial advice."
+				"Current figures are median asking rents from Bazaraki listings sampled on 1 October 2026; agreed rents are often lower. The 2021 to 2025 figures are unsourced estimates. Actual rents depend heavily on exact location, condition, furnishing, and negotiation. General information only, not legal, tax, or financial advice."
 			}
 		>
 			<script

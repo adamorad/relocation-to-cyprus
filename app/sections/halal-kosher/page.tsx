@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
+import { SourcesNote } from "@/components/ui/SourcesNote";
 import { DIETARY_TIPS } from "@/lib/halal-kosher";
 import { topicCrumb } from "@/lib/topic-map";
 import HalalKosherClient from "./client";
@@ -8,7 +9,7 @@ import HalalKosherClient from "./client";
 const SITE_URL = "https://realcy.app";
 const title = "Halal & Kosher Food in Cyprus";
 const description =
-	"Certified halal and kosher restaurants, butchers, and grocery suppliers.";
+	"How to find halal and kosher food in Cyprus, with the kosher outlets confirmed in Limassol.";
 
 export const metadata: Metadata = {
 	title,
@@ -45,7 +46,7 @@ export default function HalalKosherPage() {
 				eyebrow: "Food & Dining",
 				title,
 				intro:
-					"Certified halal restaurants, butchers, and grocery stores, and kosher dining, meat suppliers, and certified products across Cyprus. A guide for Muslim and Jewish residents finding food that meets their dietary requirements.",
+					"A guide for Muslim and Jewish residents finding food that meets their dietary requirements in Cyprus, with the kosher outlets we could confirm in Limassol. Halal venues are added once they have been checked.",
 			}}
 			info={DIETARY_TIPS.map((t) => ({ heading: t.heading, body: t.body }))}
 			infoTitle="What to know before you search"
@@ -54,7 +55,22 @@ export default function HalalKosherPage() {
 				content:
 					"Always verify current certification directly with the venue before relying on it for religious requirements. Certifications can change.",
 			}}
-			related={<MoreOnTopic type="directory" slug="halal-kosher" cols={3} />}
+			related={
+				<>
+					<SourcesNote
+						lastChecked="2026-10-02"
+						sources={[
+							{
+								label: "Chabad of Limassol: kosher food",
+								url: "https://chabadlimassol.com/en/c/food/",
+							},
+						]}
+					/>
+					<div className="mt-12">
+						<MoreOnTopic type="directory" slug="halal-kosher" cols={3} />
+					</div>
+				</>
+			}
 		>
 			<script
 				type="application/ld+json"

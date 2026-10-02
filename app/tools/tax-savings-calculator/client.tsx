@@ -5,6 +5,22 @@ import { ToolPanel } from "@/components/templates/ToolTemplate";
 import { Callout } from "@/components/ui/Callout";
 import { ChipGroup } from "@/components/ui/Chip";
 import { DataTable, StatCard } from "@/components/ui/DataTable";
+import {
+	CORPORATE_TAX_RATE,
+	eur,
+	FIRST_EMPLOYMENT_20PCT_CAP,
+	FIRST_EMPLOYMENT_50PCT_THRESHOLD,
+	GESY_INCOME_CAP,
+	GESY_RATE,
+	GESY_SELF_EMPLOYED_RATE,
+	NON_DOM_EXTENSION_FEE,
+	pct,
+	personalIncomeTax2026,
+	SDC_DIVIDEND_RATE,
+	SI_EMPLOYEE_RATE,
+	SI_MAX_INSURABLE_ANNUAL,
+	SI_SELF_EMPLOYED_RATE,
+} from "@/lib/facts/tax";
 
 // ── types ────────────────────────────────────────────────────────────────────
 
@@ -251,25 +267,27 @@ function calcSourceSocial(
 	}
 }
 
-// Cyprus income tax bands (2026 reform — raised tax-free threshold to €22,000)
+// Cyprus income tax on the 2026 bands (lib/facts/tax.ts)
 function calcCyprusIncomeTax(income: number): number {
-	const bands = [
-		{ upTo: 22_000, rate: 0 },
-		{ upTo: 32_000, rate: 0.2 },
-		{ upTo: 42_000, rate: 0.25 },
-		{ upTo: 72_000, rate: 0.3 },
-		{ upTo: Infinity, rate: 0.35 },
-	];
-	return applyBands(income, bands);
+	return personalIncomeTax2026(income);
 }
 
-// Cyprus GeSY (healthcare)
-function calcCyprusGesy(
+// Cyprus social insurance (capped at the maximum insurable earnings) plus
+// GeSY (capped at the GeSY income ceiling). Employees pay 8.8% SI and 2.65%
+// GeSY; the self-employed pay 16.6% SI and 4% GeSY. Contributions are not
+// deducted from taxable income here (simplification).
+function calcCyprusSocial(
 	income: number,
-	employmentType: EmploymentType,
+	employmentType: "employed" | "self-employed",
 ): number {
-	const rate = employmentType === "employed" ? 0.0265 : 0.04;
-	return Math.min(income, 180_000) * rate;
+	const selfEmployed = employmentType === "self-employed";
+	const si =
+		Math.min(income, SI_MAX_INSURABLE_ANNUAL) *
+		(selfEmployed ? SI_SELF_EMPLOYED_RATE : SI_EMPLOYEE_RATE);
+	const gesy =
+		Math.min(income, GESY_INCOME_CAP) *
+		(selfEmployed ? GESY_SELF_EMPLOYED_RATE : GESY_RATE);
+	return si + gesy;
 }
 
 // ── main calculation ─────────────────────────────────────────────────────────
@@ -317,16 +335,21 @@ function calculate(input: CalcInput): Comparison {
 	if (employmentType === "company-owner") {
 		const salaryAmount = grossIncome * (salaryPct / 100);
 		const dividendAmount = grossIncome * (1 - salaryPct / 100);
-		const corporateTax = dividendAmount * 0.15; // 15% corporate tax on profit portion (2026)
+		const corporateTax = dividendAmount * CORPORATE_TAX_RATE; // corporate tax on the profit portion
 		const netDividend = dividendAmount - corporateTax;
 
 		cypStdIncomeTax = calcCyprusIncomeTax(salaryAmount);
-		cypStdSocial = calcCyprusGesy(salaryAmount, "employed");
-		// Standard: SDC 17% on dividends
-		cypStdDividend = netDividend * 0.17 + corporateTax;
+		// Employee SI and GeSY on the salary part
+		cypStdSocial = calcCyprusSocial(salaryAmount, "employed");
+		// Standard: SDC 5% on dividends from 2026 profits, plus GeSY 2.65% (capped)
+		cypStdDividend =
+			netDividend * SDC_DIVIDEND_RATE +
+			Math.min(netDividend, Math.max(GESY_INCOME_CAP - salaryAmount, 0)) *
+				GESY_RATE +
+			corporateTax;
 	} else {
 		cypStdIncomeTax = calcCyprusIncomeTax(grossIncome);
-		cypStdSocial = calcCyprusGesy(grossIncome, employmentType);
+		cypStdSocial = calcCyprusSocial(grossIncome, employmentType);
 		cypStdDividend = 0;
 	}
 
@@ -347,20 +370,21 @@ function calculate(input: CalcInput): Comparison {
 	if (employmentType === "company-owner") {
 		const salaryAmount = grossIncome * (salaryPct / 100);
 		const dividendAmount = grossIncome * (1 - salaryPct / 100);
-		const corporateTax = dividendAmount * 0.15;
+		const corporateTax = dividendAmount * CORPORATE_TAX_RATE;
 		const netDividend = dividendAmount - corporateTax;
 
 		cypNdIncomeTax = calcCyprusIncomeTax(salaryAmount);
-		cypNdSocial = calcCyprusGesy(salaryAmount, "employed");
+		cypNdSocial = calcCyprusSocial(salaryAmount, "employed");
 		// Non-dom: SDC exempt on dividends, only corporate tax
 		cypNdDividend = corporateTax;
 		// GeSY on dividends for non-dom (2.65% if employed structure, capped)
 		const gesyOnDividend =
-			Math.min(netDividend, Math.max(180_000 - salaryAmount, 0)) * 0.0265;
+			Math.min(netDividend, Math.max(GESY_INCOME_CAP - salaryAmount, 0)) *
+			GESY_RATE;
 		cypNdDividend += gesyOnDividend;
 	} else {
 		cypNdIncomeTax = calcCyprusIncomeTax(grossIncome);
-		cypNdSocial = calcCyprusGesy(grossIncome, employmentType);
+		cypNdSocial = calcCyprusSocial(grossIncome, employmentType);
 		cypNdDividend = 0;
 	}
 
@@ -464,7 +488,7 @@ function ComparisonTable({
 			fmtEur(result.cyprusNonDom.incomeTax),
 		],
 		[
-			"Social / health",
+			"Social insurance / GeSY",
 			fmtEur(result.source.socialHealth),
 			fmtEur(result.cyprusStandard.socialHealth),
 			fmtEur(result.cyprusNonDom.socialHealth),
@@ -668,8 +692,8 @@ export default function TaxSavingsCalculatorClient({
 							<span>100% salary</span>
 						</div>
 						<p className="mt-1 text-sm text-muted">
-							Cyprus corporate tax: 15% on profits (2026). Non-dom: no SDC (17%)
-							on dividends.
+							Cyprus corporate tax: 15% on profits (2026). Non-dom: no SDC (5%
+							on dividends for domiciled residents).
 						</p>
 					</div>
 				)}
@@ -708,8 +732,11 @@ export default function TaxSavingsCalculatorClient({
 				<ul className="space-y-2 text-base leading-relaxed">
 					<li>
 						<span className="font-semibold">Non-Dom regime:</span> Exempt from
-						Special Defence Contribution (SDC), 17% dividend tax and 30%
-						interest tax, for 17 years after obtaining non-dom status.
+						Special Defence Contribution (SDC): 5% on dividends from 2026
+						profits and 17% on interest. You are treated as domiciled once you
+						have been tax resident for 17 of the last 20 years; non-dom
+						treatment can then be extended for up to two five-year periods at{" "}
+						{eur(NON_DOM_EXTENSION_FEE)} per period.
 					</li>
 					<li>
 						<span className="font-semibold">15% corporate tax:</span> A
@@ -726,20 +753,26 @@ export default function TaxSavingsCalculatorClient({
 						immovable property in Cyprus.
 					</li>
 					<li>
-						<span className="font-semibold">Income tax relief:</span> New
-						residents with foreign-source employment income may qualify for a
-						50% income tax exemption on earnings above €100,000 (five-year new
-						resident relief).
+						<span className="font-semibold">Income tax relief:</span> People
+						taking up their first employment in Cyprus may qualify for an
+						exemption of 50% of salary if it exceeds{" "}
+						{eur(FIRST_EMPLOYMENT_50PCT_THRESHOLD)} a year, or 20% capped at{" "}
+						{eur(FIRST_EMPLOYMENT_20PCT_CAP)}, subject to conditions. This
+						calculator does not apply either exemption.
 					</li>
 				</ul>
 			</Callout>
 
 			<Callout tone="legal" title="Simplified illustration">
 				This tool uses approximate effective tax rates for illustration
-				purposes. Actual tax liability depends on your personal circumstances,
-				deductions, tax treaties, residency status, and applicable law. Always
-				consult a Cyprus-qualified accountant and legal adviser before making
-				relocation decisions.
+				purposes. Cyprus figures include social insurance (
+				{pct(SI_EMPLOYEE_RATE)} employed, {pct(SI_SELF_EMPLOYED_RATE)}{" "}
+				self-employed, on earnings up to {eur(SI_MAX_INSURABLE_ANNUAL)} a year)
+				and GeSY, and do not deduct contributions from taxable income. Actual
+				tax liability depends on your personal circumstances, deductions, tax
+				treaties, residency status, and applicable law. Always consult a
+				Cyprus-qualified accountant and legal adviser before making relocation
+				decisions.
 			</Callout>
 		</div>
 	);

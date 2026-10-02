@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
+import { SourcesNote } from "@/components/ui/SourcesNote";
 import { CULTURE_TIPS } from "@/lib/art-culture";
 import { topicCrumb } from "@/lib/topic-map";
 import ArtCultureClient from "./client";
@@ -49,7 +50,22 @@ export default function ArtCulturePage() {
 			}}
 			info={CULTURE_TIPS.map((t) => ({ heading: t.heading, body: t.body }))}
 			infoTitle="Good to know"
-			related={<MoreOnTopic type="directory" slug="art-culture" cols={3} />}
+			related={
+				<>
+					<SourcesNote
+						lastChecked="2026-10-02"
+						sources={[
+							{
+								label: "My Mall Limassol: contact and address",
+								url: "https://www.mymall.com.cy/contact-us/",
+							},
+						]}
+					/>
+					<div className="mt-12">
+						<MoreOnTopic type="directory" slug="art-culture" cols={3} />
+					</div>
+				</>
+			}
 		>
 			<script
 				type="application/ld+json"

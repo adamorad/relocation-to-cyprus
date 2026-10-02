@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
+import { SourcesNote } from "@/components/ui/SourcesNote";
 import { FOOD_PLACES } from "@/lib/food";
 import { topicCrumb } from "@/lib/topic-map";
 import { topicBySlug, topicShareMetadata } from "@/lib/topics";
@@ -58,7 +59,24 @@ export default function FoodPage() {
 				content:
 					"Per person: € under €10, €€ €10 to €25, €€€ €25 to €50, €€€€ over €50. Opening times and menus change, so check with the place before you go.",
 			}}
-			related={<MoreOnTopic type="directory" slug="food" cols={3} />}
+			related={
+				<>
+					<SourcesNote
+						lastChecked="2026-10-02"
+						sources={[
+							{ label: "Nomad Bread & Coffee", url: "https://nomadbread.com/" },
+							{ label: "JPS Eurobakers", url: "https://eurobakers.com.cy/" },
+							{
+								label: "Visit Cyprus (Deputy Ministry of Tourism): events",
+								url: "https://www.visitcyprus.com/",
+							},
+						]}
+					/>
+					<div className="mt-12">
+						<MoreOnTopic type="directory" slug="food" cols={3} />
+					</div>
+				</>
+			}
 		>
 			<script
 				type="application/ld+json"

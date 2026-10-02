@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
+import { SourcesNote } from "@/components/ui/SourcesNote";
+import { TAX_SRC } from "@/lib/facts/tax";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import TaxSavingsCalculatorClient from "./client";
@@ -27,16 +29,29 @@ export default function TaxSavingsCalculatorPage() {
 		<ToolTemplate
 			pagefindType="tool"
 			related={
-				<MoreOnTopic
-					type="tool"
-					slug="tax-savings-calculator"
-					exclude={[
-						"/tools/tax-residency-tracker/",
-						"/tools/double-tax-treaty-finder/",
-						"/tools/sole-trader-vs-ltd/",
-					]}
-					cols={2}
-				/>
+				<>
+					<SourcesNote
+						className="mb-12"
+						lastChecked="2026-10-02"
+						sources={[
+							TAX_SRC.taxReformIndividuals,
+							TAX_SRC.sdcReform,
+							TAX_SRC.taxReturnGuide2025,
+							TAX_SRC.siContributions,
+							TAX_SRC.td59Notes,
+						]}
+					/>
+					<MoreOnTopic
+						type="tool"
+						slug="tax-savings-calculator"
+						exclude={[
+							"/tools/tax-residency-tracker/",
+							"/tools/double-tax-treaty-finder/",
+							"/tools/sole-trader-vs-ltd/",
+						]}
+						cols={2}
+					/>
+				</>
 			}
 			width="reading"
 			header={{

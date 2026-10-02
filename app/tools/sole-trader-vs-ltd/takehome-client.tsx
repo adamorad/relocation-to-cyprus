@@ -5,6 +5,18 @@ import { ToolPanel } from "@/components/templates/ToolTemplate";
 import { Badge } from "@/components/ui/Badge";
 import { ChipGroup } from "@/components/ui/Chip";
 import { Section } from "@/components/ui/Section";
+import {
+	CORPORATE_TAX_RATE,
+	eur,
+	GESY_INCOME_CAP,
+	GESY_RATE,
+	GESY_SELF_EMPLOYED_RATE,
+	pct,
+	personalIncomeTax2026,
+	SDC_DIVIDEND_RATE,
+	SI_MAX_INSURABLE_ANNUAL,
+	SI_SELF_EMPLOYED_RATE,
+} from "@/lib/facts/tax";
 
 type Structure = "sole-trader" | "ltd" | "ltd-holding";
 
@@ -17,12 +29,16 @@ type Inputs = {
 	hasPassiveIncome: boolean;
 };
 
+type LineItem = { label: string; amount: number };
+
 type Recommendation = {
 	primary: Structure;
+	profit: number;
+	soleTraderItems: LineItem[];
+	ltdItems: LineItem[];
 	structureLabel: string;
 	effectiveRateSoleTrader: number;
 	effectiveRateLtd: number;
-	effectiveRateLtdHolding: number | null;
 	advantages: string[];
 	risks: string[];
 	nextSteps: string[];
@@ -41,45 +57,41 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 	const foreignIncome = annualIncome * (foreignIncomePercent / 100);
 	const cyprusIncome = annualIncome - foreignIncome;
 
-	// --- Sole Trader effective tax estimate ---
-	// Cyprus personal income tax brackets 2025
-	// 0-19,500: 0%
-	// 19,501-28,000: 20%
-	// 28,001-36,300: 25%
-	// 36,301-60,000: 30%
-	// 60,001+: 35%
-	// Plus GeSY (NHIS) contributions: 2.65% of gross income
-	// Plus SDC (Special Defence Contribution) on dividends for domiciled residents
+	// Both structures are compared on the same taxable profit: 80% of income
+	// (about 20% deductible expenses).
+	const estimatedProfit = annualIncome * 0.8;
 
-	function personalIncomeTax(income: number): number {
-		let tax = 0;
-		if (income > 60000) tax += (income - 60000) * 0.35;
-		if (income > 36300) tax += (Math.min(income, 60000) - 36300) * 0.3;
-		if (income > 28000) tax += (Math.min(income, 36300) - 28000) * 0.25;
-		if (income > 19500) tax += (Math.min(income, 28000) - 19500) * 0.2;
-		return tax;
-	}
-
-	const soleTraderTax = personalIncomeTax(annualIncome) + annualIncome * 0.0265;
+	// --- Sole Trader ---
+	// Income tax on the 2026 bands, self-employed social insurance (16.6% up to
+	// the maximum insurable earnings) and self-employed GeSY (4% up to the GeSY
+	// income ceiling), all from lib/facts/tax.ts. Contributions are not
+	// deducted from taxable income here (simplification).
+	const soleTraderIncomeTax = personalIncomeTax2026(estimatedProfit);
+	const soleTraderSI =
+		Math.min(estimatedProfit, SI_MAX_INSURABLE_ANNUAL) * SI_SELF_EMPLOYED_RATE;
+	const soleTraderGesy =
+		Math.min(estimatedProfit, GESY_INCOME_CAP) * GESY_SELF_EMPLOYED_RATE;
+	const soleTraderTax = soleTraderIncomeTax + soleTraderSI + soleTraderGesy;
 	const soleTraderEffectiveRate = Math.round(
 		(soleTraderTax / annualIncome) * 100,
 	);
 
-	// --- Cyprus Ltd effective tax estimate ---
-	// 15% corporate tax on net profit (raised from 12.5% on 1 Jan 2026)
-	// Assuming 80% of income is taxable profit (20% expenses)
-	const estimatedProfit = annualIncome * 0.8;
-	const corporateTax = estimatedProfit * 0.15;
-	// Dividend extraction: non-dom pays 0 on dividends; dom pays 17% SDC
-	const dividendTax = nonDomiciled ? 0 : estimatedProfit * 0.17;
-	const ltdTotalTax = corporateTax + dividendTax;
+	// --- Cyprus Ltd ---
+	// 15% corporate tax on profit, all post-tax profit paid out as a dividend:
+	// SDC 5% for domiciled residents (dividends from 2026 profits), 0 for
+	// non-doms; GeSY 2.65% on the dividend up to the GeSY income ceiling.
+	// No director's salary, so no social insurance on this side.
+	const corporateTax = estimatedProfit * CORPORATE_TAX_RATE;
+	const dividend = estimatedProfit - corporateTax;
+	const dividendSdc = nonDomiciled ? 0 : dividend * SDC_DIVIDEND_RATE;
+	const dividendGesy = Math.min(dividend, GESY_INCOME_CAP) * GESY_RATE;
+	const ltdTotalTax = corporateTax + dividendSdc + dividendGesy;
 	const ltdEffectiveRate = Math.round((ltdTotalTax / annualIncome) * 100);
 
 	// --- Ltd + Holding ---
-	// IP box regime or holding with participation exemption can reduce further
-	// Typically effective rate 10-14% for complex structures at high income
-	const holdingEffectiveRate =
-		annualIncome > 150000 ? Math.max(8, ltdEffectiveRate - 4) : null;
+	// No rate is shown for a holding structure: its effect depends on the
+	// group and has no single published figure. The text sends readers to an
+	// adviser instead.
 
 	// --- Scoring ---
 	let ltdScore = 0;
@@ -139,8 +151,8 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 			risks: [
 				"Unlimited personal liability for business debts",
 				"Cannot issue equity, limits future investment options",
-				"Tax rate scales steeply above €28,000: 25%–35% marginal rate",
-				"Social insurance contributions (GESY + SI) on full income",
+				"Tax rate rises above €32,000: 25% to 35% marginal rate",
+				`Social insurance (${pct(SI_SELF_EMPLOYED_RATE)} up to ${eur(SI_MAX_INSURABLE_ANNUAL)} a year) and GeSY (${pct(GESY_SELF_EMPLOYED_RATE)}) on your profit`,
 				"Harder to retain earnings in a tax-efficient way",
 			],
 			nextSteps: [
@@ -157,7 +169,7 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 				"15% flat corporate tax, competitive within the EU",
 				nonDomiciled
 					? "As a non-dom, dividend extraction is 0% tax, highly efficient"
-					: "Dividends taxed at 17% SDC (domiciled); consider non-dom status",
+					: "Dividends taxed at 5% SDC (domiciled); consider non-dom status",
 				"Limited liability protects personal assets",
 				"Easier to bring in co-founders, issue options, or raise investment",
 				"Can accumulate retained earnings at low tax rates",
@@ -185,7 +197,7 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 			label: "Cyprus Ltd + Holding Structure",
 			advantages: [
 				"Participation exemption: dividends from subsidiaries often 0% tax",
-				"IP box regime: 80% exemption on qualifying IP income → effective ~2.5% on IP profits",
+				"IP box regime: 80% exemption on qualifying IP profit, effective 3% at the 15% corporate rate",
 				"Cyprus as EU hub with 65+ double tax treaties",
 				"Interest deduction regime available for equity-funded holding companies",
 				"Estate planning and succession benefits",
@@ -215,10 +227,34 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 
 	return {
 		primary,
+		profit: estimatedProfit,
+		soleTraderItems: [
+			{ label: "Income tax (2026 bands)", amount: soleTraderIncomeTax },
+			{
+				label: `Social insurance (${pct(SI_SELF_EMPLOYED_RATE)}, capped at ${eur(SI_MAX_INSURABLE_ANNUAL)})`,
+				amount: soleTraderSI,
+			},
+			{
+				label: `GeSY (${pct(GESY_SELF_EMPLOYED_RATE)})`,
+				amount: soleTraderGesy,
+			},
+		],
+		ltdItems: [
+			{
+				label: `Corporate tax (${pct(CORPORATE_TAX_RATE)})`,
+				amount: corporateTax,
+			},
+			{
+				label: nonDomiciled
+					? "SDC on dividend (0% as a non-dom)"
+					: `SDC on dividend (${pct(SDC_DIVIDEND_RATE)})`,
+				amount: dividendSdc,
+			},
+			{ label: `GeSY on dividend (${pct(GESY_RATE)})`, amount: dividendGesy },
+		],
 		structureLabel: chosen.label,
 		effectiveRateSoleTrader: soleTraderEffectiveRate,
 		effectiveRateLtd: ltdEffectiveRate,
-		effectiveRateLtdHolding: holdingEffectiveRate,
 		advantages: chosen.advantages,
 		risks: chosen.risks,
 		nextSteps: chosen.nextSteps,
@@ -227,7 +263,7 @@ function computeRecommendation(inputs: Inputs): Recommendation {
 				? `At €${annualIncome.toLocaleString()}/year with your profile, sole trader is the most practical starting point. Set up fast, keep compliance simple, and re-evaluate when income grows past €50–60K.`
 				: primary === "ltd"
 					? `A Cyprus Ltd makes strong sense at €${annualIncome.toLocaleString()}/year. The 15% corporate rate${nonDomiciled ? " plus 0% on dividends as a non-dom" : ""} gives you an estimated effective rate of ~${ltdEffectiveRate}%, materially lower than the sole trader rate of ~${soleTraderEffectiveRate}%.`
-					: `At €${annualIncome.toLocaleString()}/year with passive income and your profile, a holding structure could reduce your effective rate to ~${holdingEffectiveRate}%. This requires specialist advice and real substance in Cyprus.`,
+					: `At €${annualIncome.toLocaleString()}/year with passive income and your profile, a holding structure may reduce your effective rate further, but by how much depends on the structure: ask a Cyprus tax adviser for figures. It also requires real substance in Cyprus.`,
 	};
 }
 
@@ -263,9 +299,6 @@ export default function FreelancerVsCompanyPage() {
 			label: "Cyprus Ltd",
 			rate: result.effectiveRateLtd,
 		},
-		...(result.effectiveRateLtdHolding !== null
-			? [{ label: "Ltd + Holding", rate: result.effectiveRateLtdHolding }]
-			: []),
 	];
 
 	const toggles: { key: keyof Inputs; label: string }[] = [
@@ -294,7 +327,7 @@ export default function FreelancerVsCompanyPage() {
 								htmlFor={incomeId}
 								className="text-sm font-semibold text-ink"
 							>
-								Annual net income
+								Annual income before expenses
 							</label>
 							<span className="text-lg font-bold text-primary">
 								€{inputs.annualIncome.toLocaleString()}
@@ -400,6 +433,57 @@ export default function FreelancerVsCompanyPage() {
 							<p className="mt-3 text-sm text-muted">
 								Estimates assume ~20% deductible expenses. Actual rates vary.
 								Non-dom status: {inputs.nonDomiciled ? "Yes" : "No"}.
+							</p>
+						</div>
+					</Section>
+
+					<Section title="How the estimate is built" headingLevel="h3">
+						<div className="rounded-card border border-line bg-white p-5">
+							<p className="mb-4 text-sm text-muted">
+								Both columns use the same taxable profit of{" "}
+								{eur(Math.round(result.profit))} a year.
+							</p>
+							<div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+								{[
+									{ title: "Sole trader", items: result.soleTraderItems },
+									{
+										title: "Cyprus Ltd (all profit paid as dividends)",
+										items: result.ltdItems,
+									},
+								].map(({ title, items }) => (
+									<div key={title}>
+										<h4 className="mb-2 text-sm font-bold text-ink">{title}</h4>
+										<dl className="space-y-1.5 text-sm">
+											{items.map((item) => (
+												<div
+													key={item.label}
+													className="flex justify-between gap-3"
+												>
+													<dt className="text-muted">{item.label}</dt>
+													<dd className="shrink-0 font-semibold text-ink">
+														{eur(Math.round(item.amount))}
+													</dd>
+												</div>
+											))}
+											<div className="flex justify-between gap-3 border-t border-line pt-1.5">
+												<dt className="font-semibold text-ink">Total</dt>
+												<dd className="shrink-0 font-bold text-ink">
+													{eur(
+														Math.round(
+															items.reduce((sum, i) => sum + i.amount, 0),
+														),
+													)}
+												</dd>
+											</div>
+										</dl>
+									</div>
+								))}
+							</div>
+							<p className="mt-4 text-sm text-muted">
+								Sole trader social insurance is charged on profit up to the
+								maximum insurable earnings and is not deducted from taxable
+								income here. The Ltd column assumes no director&apos;s salary,
+								so it has no social insurance.
 							</p>
 						</div>
 					</Section>

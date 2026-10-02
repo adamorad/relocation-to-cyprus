@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
+import { SourcesNote } from "@/components/ui/SourcesNote";
+import { SRC } from "@/lib/facts/health-transport";
+import { TAX_SRC } from "@/lib/facts/tax";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import RelocationCostCalculatorClient from "./client";
@@ -27,16 +30,29 @@ export default function RelocationCostCalculatorPage() {
 		<ToolTemplate
 			pagefindType="tool"
 			related={
-				<MoreOnTopic
-					type="tool"
-					slug="relocation-cost-calculator"
-					exclude={[
-						"/tools/budget-builder/",
-						"/tools/rent-vs-buy-calculator/",
-						"/tools/mortgage-calculator/",
-					]}
-					cols={3}
-				/>
+				<>
+					<SourcesNote
+						className="mb-12"
+						lastChecked="2026-10-02"
+						sources={[
+							TAX_SRC.transferFees,
+							TAX_SRC.transferFeeService,
+							TAX_SRC.meu1,
+							TAX_SRC.digitalNomad,
+							SRC.licenceConversion,
+						]}
+					/>
+					<MoreOnTopic
+						type="tool"
+						slug="relocation-cost-calculator"
+						exclude={[
+							"/tools/budget-builder/",
+							"/tools/rent-vs-buy-calculator/",
+							"/tools/mortgage-calculator/",
+						]}
+						cols={3}
+					/>
+				</>
 			}
 			width="wide"
 			header={{
@@ -59,7 +75,7 @@ export default function RelocationCostCalculatorPage() {
 				{ href: "/tools/mortgage-calculator/", label: "Mortgage Calculator" },
 				{ href: "/tools/", label: "All tools" },
 			]}
-			disclaimer="General information only, not legal, tax, or financial advice. Cost ranges are indicative and based on publicly available market data for 2024-2025. Always obtain multiple quotes and consult qualified professionals before making financial decisions."
+			disclaimer="General information only, not legal, tax, or financial advice. Transfer fees, residence registration and licence fees use official figures checked in October 2026; other cost ranges are indicative estimates from 2024 to 2025, not yet re-checked, based on publicly available market data. Always obtain multiple quotes and consult qualified professionals before making financial decisions."
 		>
 			<script
 				type="application/ld+json"

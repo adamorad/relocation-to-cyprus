@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
+import { SourcesNote } from "@/components/ui/SourcesNote";
+import { HEALTH_TRANSPORT_CHECKED, SRC } from "@/lib/facts/health-transport";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import GrantsFinderClient from "./client";
@@ -44,7 +46,7 @@ export default function GrantsFinderClientPage() {
 				eyebrow: getTopicForTool("grants-finder").name,
 				title: "Cyprus Business Grants Finder",
 				intro:
-					"Browse active and recently active grant programmes for businesses in Cyprus. Filter by sector, company size, and status.",
+					"Browse grant programmes for businesses in Cyprus, filtered by sector, company size and status. Most programmes could not be confirmed as open, so check each one on the government funding programmes portal before you apply.",
 			}}
 			nextSteps={[
 				{
@@ -54,7 +56,7 @@ export default function GrantsFinderClientPage() {
 				{ href: "/sections/accountants/", label: "Find an accountant" },
 				{ href: "/tools/", label: "All tools" },
 			]}
-			disclaimer="Grant programmes open and close frequently. Amounts, coverage percentages and deadlines change. Always verify current status and eligibility criteria directly at the official source before investing time in an application. This directory is for research purposes and was last updated in 2025."
+			disclaimer="Grant programmes open and close frequently. This list was last reviewed on 2 October 2026, but for most programmes the current status, amounts and dates could not be confirmed, so none are shown. Check live calls on the government funding programmes portal and verify eligibility with the programme body before investing time in an application."
 		>
 			<script
 				type="application/ld+json"
@@ -64,6 +66,10 @@ export default function GrantsFinderClientPage() {
 				}}
 			/>
 			<GrantsFinderClient />
+			<SourcesNote
+				lastChecked={HEALTH_TRANSPORT_CHECKED}
+				sources={[SRC.rifCalls, SRC.fundingPortal, SRC.investEu]}
+			/>
 		</ToolTemplate>
 	);
 }

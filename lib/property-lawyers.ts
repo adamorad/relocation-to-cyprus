@@ -43,11 +43,11 @@ export const LAWYER_TIPS: ReadonlyArray<PropertyLawyerTip> = [
   },
   {
     heading: "Understand fixed fee vs hourly billing",
-    body: "Most Cyprus property lawyers offer a fixed fee for standard conveyancing — typically 0.5–1% of the purchase price with a minimum of around €1,500. Hourly billing is less common but applies to litigation or complex title-deed disputes. Agree the fee structure in writing before work begins.",
+    body: "Fees are not regulated, so they vary. Quotes of around 1% to 1.5% of the price plus 19% VAT, often with a minimum fee, are common. Get two or three written quotes and agree the fee in writing before work starts. Hourly billing is less common but applies to litigation or complex title-deed disputes.",
   },
   {
     heading: "Separate your lawyer from the developer's lawyer",
-    body: "Developers often have a recommended lawyer on retainer — this lawyer represents the developer's interests, not yours. Always engage your own independent solicitor. The additional cost (€1,500–€3,000) is trivial compared to the legal exposure of entering a property contract without independent representation.",
+    body: "Developers often have a recommended lawyer on retainer, and this lawyer represents the developer's interests, not yours. Always engage your own independent solicitor. The cost of your own lawyer is small compared to the legal exposure of entering a property contract without independent representation.",
   },
 ];
 

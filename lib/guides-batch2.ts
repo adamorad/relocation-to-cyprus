@@ -9,7 +9,18 @@ export const GUIDES_BATCH2: GuideInfo[] = [
 	{
 		slug: "cyprus-mortgage-foreigners",
 		datePublished: "2026-07-05",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Advocates Law, Cap. 2 (CyLaw)",
+				url: "https://www.cylaw.org/nomoi/enop/non-ind/0_2/full.html",
+			},
+			{
+				label: "Judicare: Cyprus residential purchase pricing",
+				url: "https://www.judicaregroup.com/pricing/cyprus-res-purchase-pricing/",
+			},
+		],
 		category: "property",
 		title: "Cyprus Mortgages for Foreigners: 2026 Guide",
 		description:
@@ -38,7 +49,7 @@ export const GUIDES_BATCH2: GuideInfo[] = [
 			},
 			{
 				heading: "Total Buying Costs and the Mortgage Process",
-				body: "Budgeting for a Cyprus property purchase means setting aside considerably more than just the deposit. The additional costs differ substantially depending on whether you are buying a new build or a resale property.\n\nFor new-build properties, VAT is the dominant cost. The standard rate is 19%, but a reduced rate of 5% applies where the property will serve as your primary residence, subject to detailed area and value conditions. Property transfer fees are waived entirely on new builds where VAT has been paid.\n\nFor resale properties, VAT does not apply, but property transfer fees are payable on a progressive scale: 3% on the first €85,000 of assessed value, 5% on the portion between €85,001 and €170,000, and 8% above €170,000. A statutory 50% reduction applies, halving the effective rates. Stamp duty was abolished from 1 January 2026 — contracts signed from that date carry no stamp duty charge, removing a cost that previously ran to around 0.15–0.20% of the purchase price.\n\nLegal fees typically run to 1–2% of the purchase price plus VAT. The bank will charge a mortgage arrangement fee (commonly around 1% of the loan amount) and a property valuation fee (typically €200–€700), and will require ongoing buildings and life insurance throughout the loan term.\n\nThe full mortgage process from formal application to funds release typically takes one to three months. Most lenders issue an approval-in-principle within two to four weeks of receiving a complete application. Non-EU buyers should factor in Acquisition Permit processing time on top of this. Confirm the current reduced-VAT conditions and any recent changes with your property lawyer before you commit.",
+				body: "Budgeting for a Cyprus property purchase means setting aside considerably more than just the deposit. The additional costs differ substantially depending on whether you are buying a new build or a resale property.\n\nFor new-build properties, VAT is the dominant cost. The standard rate is 19%, but a reduced rate of 5% applies where the property will serve as your primary residence, subject to detailed area and value conditions. Property transfer fees are waived entirely on new builds where VAT has been paid.\n\nFor resale properties, VAT does not apply, but property transfer fees are payable on a progressive scale: 3% on the first €85,000 of assessed value, 5% on the portion between €85,001 and €170,000, and 8% above €170,000. A statutory 50% reduction applies, halving the effective rates. Stamp duty was abolished from 1 January 2026: contracts signed from that date carry no stamp duty charge, removing a cost that previously ran to around 0.15–0.20% of the purchase price.\n\nLegal fees are not regulated, so they vary: quotes of around 1% to 1.5% of the purchase price plus VAT are common, so get two or three written quotes. The bank will charge a mortgage arrangement fee (commonly around 1% of the loan amount) and a property valuation fee (typically €200–€700), and will require ongoing buildings and life insurance throughout the loan term.\n\nThe full mortgage process from formal application to funds release typically takes one to three months. Most lenders issue an approval-in-principle within two to four weeks of receiving a complete application. Non-EU buyers should factor in Acquisition Permit processing time on top of this. Confirm the current reduced-VAT conditions and any recent changes with your property lawyer before you commit.",
 			},
 		],
 		faqs: [
@@ -52,7 +63,7 @@ export const GUIDES_BATCH2: GuideInfo[] = [
 			},
 			{
 				q: "How much deposit do I need for a Cyprus mortgage as a non-resident?",
-				a: "Budget for considerably more than a resident would. EU/EEA non-residents are typically offered 60–70% LTV, meaning a deposit of 30–40% of the purchase price. Non-EU nationals often face 50–60% LTV, implying a 40–50% deposit. The exact figure depends on the bank, the property, and your financial profile, and a larger deposit usually secures a better interest rate. On top of the deposit, budget for transfer fees or VAT, legal fees of 1–2%, and bank arrangement and valuation fees.",
+				a: "Budget for considerably more than a resident would. EU/EEA non-residents are typically offered 60–70% LTV, meaning a deposit of 30–40% of the purchase price. Non-EU nationals often face 50–60% LTV, implying a 40–50% deposit. The exact figure depends on the bank, the property, and your financial profile, and a larger deposit usually secures a better interest rate. On top of the deposit, budget for transfer fees or VAT, legal fees (often around 1% to 1.5% plus VAT), and bank arrangement and valuation fees.",
 			},
 			{
 				q: "How long does a Cyprus mortgage application take for a non-resident?",
@@ -63,7 +74,14 @@ export const GUIDES_BATCH2: GuideInfo[] = [
 	{
 		slug: "self-employed-tax-cyprus",
 		datePublished: "2026-07-05",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Tax Department: Individual income tax return",
+				url: "https://www.gov.cy/mof-tax/en/documents/forologiki-dilosi-eisodimatos-atomoy/",
+			},
+		],
 		category: "tax",
 		title: "Self-Employed Tax in Cyprus: 2026 Guide",
 		description:
@@ -87,11 +105,11 @@ export const GUIDES_BATCH2: GuideInfo[] = [
 			},
 			{
 				heading: "Income Tax Bands, the 2026 Reform, and Non-Dom Status",
-				body: "Cyprus taxes self-employment income on net profit after allowable business expenses, using the same progressive income tax bands as employed individuals.\n\nTwo sets of bands are relevant in 2026. If you are filing your 2025 personal tax return (TD1) this summer, your 2025 income is taxed under the bands that applied to the 2025 tax year: 0% up to €19,500; 20% on €19,501 to €28,000; 25% on €28,001 to €36,300; 30% on €36,301 to €60,000; and 35% above €60,000.\n\nFor income earned in the 2026 tax year itself, reformed bands apply as part of Cyprus's comprehensive tax reform effective 1 January 2026: 0% up to €22,000; 20% on €22,001 to €32,000; 25% on €32,001 to €42,000; 30% on €42,001 to €72,000; and 35% above €72,000. These are widely reported by the major professional firms as enacted, but as with any recent reform you should confirm the position with a qualified Cyprus accountant before relying on it for planning.\n\nIf you hold non-domicile (non-dom) status in Cyprus, you are exempt from Special Defence Contribution (SDC), a levy that otherwise applies to dividends and interest for domiciled residents. Non-dom status can be highly valuable if you also receive foreign investment income alongside self-employment profits. See the /guides/taxes-for-expats/ guide for eligibility criteria.\n\nSelf-employed persons must also pay provisional (advance) income tax during the year, in two equal instalments (by 31 July and 31 December of the current tax year), based on estimated annual liability; underpaying significantly can attract interest on any shortfall when the annual return is filed.",
+				body: "Cyprus taxes self-employment income on net profit after allowable business expenses, using the same progressive income tax bands as employed individuals.\n\nTwo sets of bands are relevant in 2026. If you are filing your 2025 personal tax return (TD1), due by 31 October 2026, your 2025 income is taxed under the bands that applied to the 2025 tax year: 0% up to €19,500; 20% on €19,501 to €28,000; 25% on €28,001 to €36,300; 30% on €36,301 to €60,000; and 35% above €60,000.\n\nFor income earned in the 2026 tax year itself, reformed bands apply as part of Cyprus's comprehensive tax reform effective 1 January 2026: 0% up to €22,000; 20% on €22,001 to €32,000; 25% on €32,001 to €42,000; 30% on €42,001 to €72,000; and 35% above €72,000. These are widely reported by the major professional firms as enacted, but as with any recent reform you should confirm the position with a qualified Cyprus accountant before relying on it for planning.\n\nIf you hold non-domicile (non-dom) status in Cyprus, you are exempt from Special Defence Contribution (SDC), a levy that otherwise applies to dividends and interest for domiciled residents. Non-dom status can be highly valuable if you also receive foreign investment income alongside self-employment profits. See the /guides/taxes-for-expats/ guide for eligibility criteria.\n\nSelf-employed persons must also pay provisional (advance) income tax during the year, in two equal instalments (by 31 July and 31 December of the current tax year), based on estimated annual liability; underpaying significantly can attract interest on any shortfall when the annual return is filed.",
 			},
 			{
 				heading: "Filing, Deadlines, and Penalties",
-				body: "Self-employed individuals who are not required to prepare audited financial statements — broadly, those with annual turnover at or below €70,000 — file their personal income tax return using Form TD1, submitted via the TAXISnet online platform. For the 2025 tax year, the standard statutory deadline is 31 July 2026. The Tax Department has in the past announced extensions (the 2024-year return was extended to 30 September 2025), and signalled in April 2026 that an extension might again follow, but you should not rely on one — check TAXISnet and confirm with your accountant before the deadline.\n\nSelf-employed persons with annual turnover above €70,000 whose accounts require an audit are subject to different, later deadlines; professional advice is recommended if this applies to you. Looking ahead, personal tax filing is transitioning from TAXISnet to the new Tax For All (TFA) system, so expect different procedures for the 2026 tax year onwards.\n\nPenalties for non-compliance are meaningful. Late filing of the TD1 attracts a fixed penalty of €100, plus €200 for each calendar month the return remains outstanding, up to a maximum of €17,000. Late payment of tax due attracts interest (recently 5% per annum) on the outstanding balance. Failure to register with the Tax Department or Social Insurance Services within the required window from commencing business results in retrospective contribution charges, accrued interest, and penalties.\n\nGiven the number of quarterly deadlines, the mid-year provisional tax payments, and the ongoing transition to TFA, engaging a Cyprus-qualified accountant from the outset is strongly recommended.",
+				body: "Self-employed individuals who are not required to prepare audited financial statements (broadly, those with annual turnover at or below €70,000) file their personal income tax return using Form TD1, submitted via the TAXISnet online platform. For the 2025 tax year, the Tax Department gives the deadline for submitting the return as 31 October 2026. Check TAXISnet and confirm with your accountant well before that date.\n\nSelf-employed persons with annual turnover above €70,000 whose accounts require an audit are subject to different, later deadlines; professional advice is recommended if this applies to you. Looking ahead, personal tax filing is transitioning from TAXISnet to the new Tax For All (TFA) system, so expect different procedures for the 2026 tax year onwards.\n\nPenalties for non-compliance are meaningful. Late filing of the TD1 attracts a fixed penalty of €100, plus €200 for each calendar month the return remains outstanding, up to a maximum of €17,000. Late payment of tax due attracts interest (recently 5% per annum) on the outstanding balance. Failure to register with the Tax Department or Social Insurance Services within the required window from commencing business results in retrospective contribution charges, accrued interest, and penalties.\n\nGiven the number of quarterly deadlines, the mid-year provisional tax payments, and the ongoing transition to TFA, engaging a Cyprus-qualified accountant from the outset is strongly recommended.",
 			},
 		],
 		faqs: [

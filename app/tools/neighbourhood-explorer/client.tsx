@@ -1,16 +1,21 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Badge } from "@/components/ui/Badge";
+import { Callout } from "@/components/ui/Callout";
 import { Chip, ChipGroup } from "@/components/ui/Chip";
 import { DataTable } from "@/components/ui/DataTable";
+import { RENT_SAMPLED_LABEL, RENTS, rentMedian } from "@/lib/facts/rents";
 
 // ── data ─────────────────────────────────────────────────────────────────────
 
 interface Neighbourhood {
 	name: string;
 	city: string;
+	/** Unsourced estimate from early 2025; not checked against listings. */
 	rent1br: string;
+	/** Unsourced estimate from early 2025; not checked against listings. */
 	rent2br: string;
 	vibe: string[];
 	beach: string;
@@ -358,7 +363,7 @@ function NeighbourhoodCard({ n, selected, onToggle, compareCount }: CardProps) {
 
 			<div className="mb-3 flex flex-wrap gap-1.5">
 				<Badge>{n.city}</Badge>
-				<Badge>{`1BR ${n.rent1br}`}</Badge>
+				<Badge>{`1BR est. ${n.rent1br}`}</Badge>
 			</div>
 
 			<ul className="mb-3 flex flex-wrap gap-1">
@@ -433,8 +438,8 @@ function CompareTable({ items }: { items: Neighbourhood[] }) {
 					})),
 				]}
 				rows={[
-					["1BR rent", ...items.map((n) => n.rent1br)],
-					["2BR rent", ...items.map((n) => n.rent2br)],
+					["1BR rent (2025 estimate)", ...items.map((n) => n.rent1br)],
+					["2BR rent (2025 estimate)", ...items.map((n) => n.rent2br)],
 					[
 						"Vibe",
 						...items.map((n) => (
@@ -510,6 +515,22 @@ export default function NeighbourhoodExplorerClient() {
 
 	return (
 		<>
+			<Callout tone="info" title="About the rent ranges">
+				The neighbourhood rent ranges are unsourced estimates from early 2025
+				and have not been checked against listings. For a dated figure, the
+				median asking rent for a two-bedroom apartment on {RENT_SAMPLED_LABEL}{" "}
+				was about {rentMedian("Limassol", 2)} in Limassol district,{" "}
+				{rentMedian("Paphos", 2)} in Paphos district, {rentMedian("Larnaca", 2)}{" "}
+				in Larnaca district and {rentMedian("Ayia Napa", 2)} across the
+				Famagusta free area (Bazaraki, n={RENTS["Ayia Napa"][2].n} there). See{" "}
+				<Link
+					href="/tools/rental-price-trends/"
+					className="font-semibold underline underline-offset-2"
+				>
+					rent data, October 2026
+				</Link>
+				.
+			</Callout>
 			<div className="space-y-5">
 				<ChipGroup
 					label="City"

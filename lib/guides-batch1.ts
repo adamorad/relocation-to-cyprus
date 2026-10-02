@@ -8,7 +8,18 @@ export const GUIDES_BATCH1: GuideInfo[] = [
 	{
 		slug: "yellow-slip-meu1-guide",
 		datePublished: "2026-07-05",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Migration Department: Registration of EU citizens (MEU1)",
+				url: "https://www.gov.cy/mip-md/en/documents/e-u-e-e-a-citizens-and-family-members-2/e-u-e-e-a-citizens-family-member/registration-of-e-u-citizens-and-members-of-their-families-who-are-also-e-u-e-e-a-citizens-meu1/",
+			},
+			{
+				label: "Migration Department (gov.cy)",
+				url: "https://www.gov.cy/mip-md/en/",
+			},
+		],
 		category: "immigration",
 		title: "Cyprus Yellow Slip (MEU1): 2026 Complete Guide",
 		description:
@@ -24,7 +35,7 @@ export const GUIDES_BATCH1: GuideInfo[] = [
 			},
 			{
 				heading: "How to Book an Appointment and Where to Apply",
-				body: "MEU1 applications are submitted in person at one of five Civil Registry and Migration Department (CRMD) district offices across Cyprus: Nicosia, Limassol, Larnaca, Paphos, and Famagusta/Paralimni. Appointment requirements vary by district — some offices have accepted walk-ins for certain application categories, while others require advance booking — so contact your local office directly before making the trip. As a general rule, booking three to four weeks ahead is sensible, and during busy periods slots can fill faster. The CRMD headquarters can be reached by email at migration@crmd.moi.gov.cy; phone numbers and any updated online booking details for each district are listed on the gov.cy immigration portal. Lawyers and immigration advisers may attend to assist, but the applicant must be physically present — the application cannot be submitted by a representative on your behalf. Bring originals and photocopies of every document on your checklist: offices have been known to turn applicants away for a single missing item, and it is a long way to travel twice. For MEU1 applicants attending the Nicosia office, receipt on the same day is possible in many cases; in other districts, turnaround is typically within a few weeks.",
+				body: "MEU1 applications are submitted in person to the Migration Department (Deputy Ministry of Migration and International Protection). Check on gov.cy which office handles your district and whether you need an appointment before making the trip. As a general rule, booking three to four weeks ahead is sensible, and during busy periods slots can fill faster. The Migration Department can be reached by email at migration@md.mip.gov.cy; phone numbers and any updated online booking details for each district are listed on the gov.cy immigration portal. Lawyers and immigration advisers may attend to assist, but the applicant must be physically present: the application cannot be submitted by a representative on your behalf. Bring originals and photocopies of every document on your checklist: offices have been known to turn applicants away for a single missing item, and it is a long way to travel twice. The application fee is €20, and the Migration Department aims to decide within one month of a complete application.",
 			},
 			{
 				heading: "Your Document Checklist, by Applicant Category",
@@ -36,7 +47,7 @@ export const GUIDES_BATCH1: GuideInfo[] = [
 			},
 			{
 				heading: "What Happens If You Miss the Deadline",
-				body: "Missing the four-month registration window does not strip you of your underlying EU right to reside in Cyprus, but it does expose you to administrative penalties. Fines for late registration are tiered and, based on practitioner reports, typically start at a modest level for short delays and escalate for longer ones, with Cyprus law setting a substantially higher theoretical maximum. In practice, an unregistered EU citizen will encounter more immediate friction day-to-day: banks will not open accounts without a yellow slip, GESY enrolment becomes complicated, and many employers and landlords ask for the certificate as a matter of routine. If you have already missed the four-month window, the right course of action is to apply as soon as possible rather than waiting further — late applications are accepted, and acting promptly limits both the scale of any fine and the risk of further complications. Book the appointment first; do not wait until you have assembled a perfect document set. As for renewal: the MEU1 for EU citizens does not expire. Once issued, it remains valid indefinitely as long as you retain EU citizenship and your qualifying circumstances of residence continue. You are not required to renew or update it when you move address, though informing the CRMD of a change is sensible practice. The /tools/meu1-tracker is useful for staying on top of your application status and making sure you have the slip in hand before you urgently need it.",
+				body: "Missing the four-month registration window does not strip you of your underlying EU right to reside in Cyprus, but it does expose you to administrative penalties. Failing to register makes you liable to a fine of up to €2,500. In practice, an unregistered EU citizen will encounter more immediate friction day-to-day: banks will not open accounts without a yellow slip, GESY enrolment becomes complicated, and many employers and landlords ask for the certificate as a matter of routine. If you have already missed the four-month window, the right course of action is to apply as soon as possible rather than waiting further. Late applications are accepted, and acting promptly limits both the scale of any fine and the risk of further complications. Book the appointment first; do not wait until you have assembled a perfect document set. As for renewal: the MEU1 for EU citizens does not expire. Once issued, it remains valid indefinitely as long as you retain EU citizenship and your qualifying circumstances of residence continue. You are not required to renew or update it when you move address, though informing the Migration Department of a change is sensible practice. The /tools/meu1-tracker is useful for staying on top of your application status and making sure you have the slip in hand before you urgently need it.",
 			},
 		],
 		faqs: [
@@ -46,7 +57,7 @@ export const GUIDES_BATCH1: GuideInfo[] = [
 			},
 			{
 				q: "How long does it take to get a yellow slip in Cyprus?",
-				a: "For MEU1 (EU citizen) applications, processing at district offices can be as fast as the same day, and is typically completed within a few weeks. Allow up to a month in busier periods or if any of your documents require additional verification — the Nicosia office tends to be fastest.",
+				a: "The Migration Department aims to decide on an MEU1 (EU citizen) application within one month of receiving a complete file. Allow longer if any of your documents need additional verification, and check current waiting times for appointments on gov.cy.",
 			},
 			{
 				q: "What is the difference between MEU1 and MEU3 in Cyprus?",
@@ -61,7 +72,14 @@ export const GUIDES_BATCH1: GuideInfo[] = [
 	{
 		slug: "cyprus-schengen-guide",
 		datePublished: "2026-07-05",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Migration Department (gov.cy)",
+				url: "https://www.gov.cy/mip-md/en/",
+			},
+		],
 		category: "immigration",
 		title: "Is Cyprus in Schengen? 2026 Guide",
 		description:
@@ -81,7 +99,7 @@ export const GUIDES_BATCH1: GuideInfo[] = [
 			},
 			{
 				heading: "UK Nationals Post-Brexit: A Separate Allowance",
-				body: "Brexit fundamentally changed the travel equation for British nationals. Since 1 January 2021, UK passport holders are treated as third-country nationals across the EU, subject to the same rules as any non-EU traveller. That means the Schengen 90/180-day rule applies whenever Brits travel to France, Spain, Germany, Greece, or any of the other Schengen countries. Every day counts.\n\nWhere Cyprus stands apart is that it operates a completely separate 90/180-day allowance. British nationals can spend up to 90 days in any 180-day period in Cyprus without a visa, and those days have no impact on their Schengen tally. In practical terms, a British traveller could exhaust their full 90 Schengen days on a trip around southern Europe, then fly directly to Limassol and spend a further 90 days on the island — entirely within the law.\n\nFor British expats establishing long-term residency in Cyprus, the arrangement is even more favourable. A Cyprus residence permit removes the short-stay 90-day cap altogether, allowing indefinite stays on the island while leaving the Schengen allowance fully intact for European travel.\n\nThe dual-allowance structure makes Cyprus arguably the most practical EU base for British nationals post-Brexit. Our residency-and-visas guide walks through the specific permit routes available, including the popular Category F (financially independent person) route that many British retirees and remote workers use.",
+				body: "Brexit fundamentally changed the travel equation for British nationals. Since 1 January 2021, UK passport holders are treated as third-country nationals across the EU, subject to the same rules as any non-EU traveller. That means the Schengen 90/180-day rule applies whenever Brits travel to France, Spain, Germany, Greece, or any of the other Schengen countries. Every day counts.\n\nWhere Cyprus stands apart is that it operates a completely separate 90/180-day allowance. British nationals can spend up to 90 days in any 180-day period in Cyprus without a visa, and those days have no impact on their Schengen tally. In practical terms, a British traveller could exhaust their full 90 Schengen days on a trip around southern Europe, then fly directly to Limassol and spend a further 90 days on the island, entirely within the law.\n\nFor British expats establishing long-term residency in Cyprus, the arrangement is even more favourable. A Cyprus residence permit removes the short-stay 90-day cap altogether, allowing indefinite stays on the island while leaving the Schengen allowance fully intact for European travel.\n\nThe dual-allowance structure makes Cyprus arguably the most practical EU base for British nationals post-Brexit. Our residency-and-visas guide walks through the specific permit routes available, including the Visitor residence permit used by many British retirees and the Digital Nomad Visa for remote workers.",
 			},
 			{
 				heading: "Counter-Intuitive Travel Planning Advantages",
@@ -89,7 +107,7 @@ export const GUIDES_BATCH1: GuideInfo[] = [
 			},
 			{
 				heading: "When Accession Happens: What Changes for Expats",
-				body: "Cyprus's eventual Schengen accession will bring genuine benefits, but it will also remove some of the advantages that non-EU expats and UK nationals currently enjoy. It is sensible to plan for both scenarios.\n\nOn the upside: once Cyprus joins Schengen, holders of a Cyprus residence permit from non-EU countries will likely gain the right to travel across Schengen states without needing a separate visa. Passport checks on intra-Schengen flights from Cyprus will disappear. The island will become a fully integrated part of the European travel zone, which will simplify movement considerably.\n\nOn the downside for non-EU residents without a long-term permit: days spent in Cyprus will start counting towards the Schengen 90/180-day limit. The separate-allowance advantage that makes Cyprus such an attractive base today will be gone. Non-EU short-stay visitors will no longer be able to treat Cyprus as an unlimited backstop after exhausting their Schengen days.\n\nGiven that final approval requires a unanimous EU Council vote — and at least some member states have raised objections linked to the Green Line — accession is unlikely to arrive without meaningful advance notice. The process moves slowly. Watch official EU Council announcements and the Cypriot Civil Registry and Migration Department for developments, and use our visa-pathway-finder to choose a permit route that works under both the current and any future framework.",
+				body: "Cyprus's eventual Schengen accession will bring genuine benefits, but it will also remove some of the advantages that non-EU expats and UK nationals currently enjoy. It is sensible to plan for both scenarios.\n\nOn the upside: once Cyprus joins Schengen, holders of a Cyprus residence permit from non-EU countries will likely gain the right to travel across Schengen states without needing a separate visa. Passport checks on intra-Schengen flights from Cyprus will disappear. The island will become a fully integrated part of the European travel zone, which will simplify movement considerably.\n\nOn the downside for non-EU residents without a long-term permit: days spent in Cyprus will start counting towards the Schengen 90/180-day limit. The separate-allowance advantage that makes Cyprus such an attractive base today will be gone. Non-EU short-stay visitors will no longer be able to treat Cyprus as an unlimited backstop after exhausting their Schengen days.\n\nGiven that final approval requires a unanimous EU Council vote (and at least some member states have raised objections linked to the Green Line), accession is unlikely to arrive without meaningful advance notice. The process moves slowly. Watch official EU Council announcements and the Cypriot Migration Department for developments, and use our visa-pathway-finder to choose a permit route that works under both the current and any future framework.",
 			},
 		],
 		faqs: [
@@ -114,7 +132,14 @@ export const GUIDES_BATCH1: GuideInfo[] = [
 	{
 		slug: "moving-to-cyprus-from-israel",
 		datePublished: "2026-07-05",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Migration Department: Digital nomads and family members",
+				url: "https://www.gov.cy/mip-md/en/documents/digital-nomads-and-family-members/",
+			},
+		],
 		category: "immigration",
 		title: "Moving to Cyprus from Israel: 2026 Guide",
 		description:
@@ -126,7 +151,7 @@ export const GUIDES_BATCH1: GuideInfo[] = [
 			},
 			{
 				heading: "Residency Options for Non-EU Israelis",
-				body: "As non-EU nationals, Israelis have no automatic right of residence in Cyprus and must apply for a permit. Three routes are most relevant.\n\nPermanent Residency by Investment (sometimes called the Golden Visa) is the fastest permanent option. A minimum purchase of €300,000 in a newly built residential property — bought directly from a developer on the primary market — qualifies the main applicant, spouse, and minor children for lifelong permanent residency. The applicant must also demonstrate secured annual income from abroad (with additional amounts for dependents). Processing currently takes several months, and permit holders must visit Cyprus at least once every two years to maintain status.\n\nThe Digital Nomad Visa suits remote workers and the self-employed earning at least €3,500 net per month from non-Cypriot clients or employers. The permit lasts one year and can be renewed for a maximum of three years, and the government expanded the total permit cap in recent years.\n\nCategory F is a passive-income residency route with a low income bar, but it carries a serious caveat: the current processing backlog can run to several years, and applicants cannot work in Cyprus under this route. It suits those planning well ahead rather than those seeking near-term residency.\n\nOur residency-and-visas guide explains eligibility criteria and documentation for each pathway in full.",
+				body: "As non-EU nationals, Israelis have no automatic right of residence in Cyprus and must apply for a permit. Three routes are most relevant.\n\nPermanent Residency by Investment (an immigration permit under Regulation 6(2) of the Aliens and Immigration Regulations) is the fastest permanent option. A minimum purchase of €300,000 plus VAT in a newly built residential property, bought directly from a developer on the primary market, qualifies the main applicant, spouse, and minor children for lifelong permanent residency. The applicant must also demonstrate secured annual income from abroad (with additional amounts for dependents). The Migration Department estimates about two months to examine a complete application, and permit holders must visit Cyprus at least once every two years to maintain status.\n\nThe Digital Nomad Visa suits remote workers and the self-employed earning at least €3,500 net per month from non-Cypriot clients or employers. The permit lasts one year and can be renewed for up to two more years, and the government expanded the total permit cap in recent years.\n\nThe Visitor temporary residence permit suits retirees and others living on a pension or passive income without working in Cyprus. It needs regular transfers from abroad of at least €2,000 a month, a bank guarantee and health insurance, and it is issued for one year and renewed.\n\nOur residency-and-visas guide explains eligibility criteria and documentation for each pathway in full.",
 			},
 			{
 				heading: "The Israeli Tax-Exit Reality",
@@ -142,13 +167,13 @@ export const GUIDES_BATCH1: GuideInfo[] = [
 			},
 			{
 				heading: "Banking and First Steps in Cyprus",
-				body: "Cyprus's banking sector operates under EU regulation, and deposits are protected up to €100,000 per depositor per institution under the European Deposit Guarantee Scheme. The main retail banks include Bank of Cyprus, Eurobank Cyprus, Alpha Bank Cyprus, AstroBank, and Ancoria Bank. AstroBank and Ancoria are frequently recommended by the expat community for their more relationship-focused approach with international clients.\n\nOpening an account as a new arrival typically requires: a valid passport, proof of a Cyprus address (a rental agreement or recent utility bill), documentation of your source of funds (payslips, tax returns, dividend statements, or business accounts), and — once registered with the authorities — your Cyprus Tax Identification Number. All banks apply enhanced know-your-customer checks under EU anti-money-laundering rules, so expect detailed questions about the origin of funds, particularly if significant amounts are being transferred internationally.\n\nWhile your account application is in progress, fintech platforms such as Wise or Revolut provide a practical bridge: both issue euro IBANs, support SEPA transfers, and are accepted by many Cypriot landlords and service providers.\n\nA sensible first-steps sequence: confirm and apply for your chosen residency route; sign a rental or purchase contract; register with the Civil Registry and Migration Department; open a local bank account; and register for Cypriot tax. Our banking-in-cyprus guide covers each stage in detail, including what to do if an initial application is delayed.",
+				body: "Cyprus's banking sector operates under EU regulation, and deposits are protected up to €100,000 per depositor per institution under the European Deposit Guarantee Scheme. The main retail banks include Bank of Cyprus, Eurobank Cyprus, Alpha Bank Cyprus, AstroBank, and Ancoria Bank. AstroBank and Ancoria are frequently recommended by the expat community for their more relationship-focused approach with international clients.\n\nOpening an account as a new arrival typically requires: a valid passport, proof of a Cyprus address (a rental agreement or recent utility bill), documentation of your source of funds (payslips, tax returns, dividend statements, or business accounts), and, once registered with the authorities, your Cyprus Tax Identification Number. All banks apply enhanced know-your-customer checks under EU anti-money-laundering rules, so expect detailed questions about the origin of funds, particularly if significant amounts are being transferred internationally.\n\nWhile your account application is in progress, fintech platforms such as Wise or Revolut provide a practical bridge: both issue euro IBANs, support SEPA transfers, and are accepted by many Cypriot landlords and service providers.\n\nA sensible first-steps sequence: confirm and apply for your chosen residency route; sign a rental or purchase contract; register with the Migration Department; open a local bank account; and register for Cypriot tax. Our banking-in-cyprus guide covers each stage in detail, including what to do if an initial application is delayed.",
 			},
 		],
 		faqs: [
 			{
 				q: "Do Israelis need a visa to live in Cyprus?",
-				a: "Israeli citizens do not require a visa to visit Cyprus for stays of up to 90 days in any 180-day period. To stay longer or establish legal residence, you must hold a valid Cyprus residency permit — the Permanent Residency by Investment, Digital Nomad Visa, or Category F, depending on your circumstances. Purchasing a property or receiving a job offer does not in itself confer the right to reside.",
+				a: "Israeli citizens do not require a visa to visit Cyprus for stays of up to 90 days in any 180-day period. To stay longer or establish legal residence, you must hold a valid Cyprus residency permit, such as Permanent Residency by Investment, the Digital Nomad Visa or a Visitor permit, depending on your circumstances. Purchasing a property or receiving a job offer does not in itself confer the right to reside.",
 			},
 			{
 				q: "Is there a tax treaty between Israel and Cyprus?",

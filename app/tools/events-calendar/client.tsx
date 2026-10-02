@@ -196,7 +196,8 @@ const EVENTS: CyprusEvent[] = [
 		name: "Limassol Wine Festival",
 		city: "Limassol",
 		month: 9,
-		dateDescription: "First two weeks of September",
+		dateDescription:
+			"Late September to early October (2026: 26 September to 4 October)",
 		type: "wine",
 		description:
 			"The most famous wine festival in Cyprus, held annually in the Limassol Municipal Gardens since 1961. For a modest entry fee, visitors receive unlimited tastings of Cypriot wines from all the major producers, including KEO, SODAP, ETKO and Loel. Live music, traditional food, and dancing complete the evenings. An unmissable event for wine lovers and a genuine local tradition.",

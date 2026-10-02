@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
+import { SourcesNote } from "@/components/ui/SourcesNote";
+import { RENT_SOURCES } from "@/lib/facts/rents";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import CityComparisonClient from "./client";
@@ -27,16 +29,21 @@ export default function CityComparisonClientPage() {
 		<ToolTemplate
 			pagefindType="tool"
 			related={
-				<MoreOnTopic
-					type="tool"
-					slug="city-comparison"
-					exclude={[
-						"/sections/property-lawyers/",
-						"/guides/best-areas-to-live-cyprus/",
-						"/guides/cost-of-living/",
-					]}
-					cols={3}
-				/>
+				<>
+					<SourcesNote lastChecked="2026-10-02" sources={RENT_SOURCES} />
+					<div className="mt-12">
+						<MoreOnTopic
+							type="tool"
+							slug="city-comparison"
+							exclude={[
+								"/sections/property-lawyers/",
+								"/guides/best-areas-to-live-cyprus/",
+								"/guides/cost-of-living/",
+							]}
+							cols={3}
+						/>
+					</div>
+				</>
 			}
 			width="wide"
 			header={{

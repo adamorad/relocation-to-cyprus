@@ -2,10 +2,13 @@
  * Long-term rental listings for Cyprus. Covers the main rental platforms
  * and residential areas across all four cities.
  *
- * Price ranges are indicative as of 2026; verify current rates on
- * bazaraki.com, spitogatos.cy, and prime-property.com.cy before quoting.
+ * Apartment price ranges come from lib/facts/rents.ts: the middle half
+ * (25th to 75th percentile) of Bazaraki district asking rents for the
+ * bedroom counts listed. Villas, townhouses and studios were not sampled,
+ * so they carry no figure. Verify current rates on the portals.
  */
 
+import { type Bedrooms, RENTS } from "@/lib/facts/rents";
 import type { City } from "@/lib/food";
 
 export type { City } from "@/lib/food";
@@ -21,8 +24,9 @@ export type RentalListing = {
   type: RentalType;
   bedroomsFrom: number;
   bedroomsTo: number;
-  monthlyFrom: number;
-  monthlyTo: number;
+  /** 25th to 75th percentile of district asking rents (apartments only); absent when not sampled. */
+  monthlyFrom?: number;
+  monthlyTo?: number;
   furnished: FurnishedStatus;
   petFriendly: boolean;
   why: string;
@@ -58,8 +62,29 @@ export const RENTAL_TIPS: ReadonlyArray<RentalTip> = [
 ];
 
 // ---------------------------------------------------------------------------
-// Rental listings (12–15 real-or-realistic entries across all cities)
+// Rental listings
 // ---------------------------------------------------------------------------
+
+/**
+ * District asking-rent range for apartments with `from` to `to` bedrooms:
+ * the lowest 25th percentile to the highest 75th percentile among the
+ * reliable Bazaraki cells. Empty when no reliable cell exists.
+ */
+function districtAskingRange(
+  city: City,
+  from: number,
+  to: number,
+): { monthlyFrom: number; monthlyTo: number } | Record<string, never> {
+  const cells = ([1, 2, 3] as Bedrooms[])
+    .filter((b) => b >= from && b <= to)
+    .map((b) => RENTS[city][b])
+    .filter((c) => c.reliable && c.p25 > 0 && c.p75 > 0);
+  if (cells.length === 0) return {};
+  return {
+    monthlyFrom: Math.min(...cells.map((c) => c.p25)),
+    monthlyTo: Math.max(...cells.map((c) => c.p75)),
+  };
+}
 
 export const RENTAL_LISTINGS: ReadonlyArray<RentalListing> = [
   // ── Limassol ─────────────────────────────────────────────────────────────
@@ -70,8 +95,7 @@ export const RENTAL_LISTINGS: ReadonlyArray<RentalListing> = [
     type: "apartment",
     bedroomsFrom: 2,
     bedroomsTo: 3,
-    monthlyFrom: 1400,
-    monthlyTo: 2200,
+    ...districtAskingRange("Limassol", 2, 3),
     furnished: "both",
     petFriendly: false,
     why: "Prime tourist-strip location walking distance to the sea. New-build complexes with pools and gym. Popular with relocators wanting walkable city life. Browse current listings on bazaraki.com.",
@@ -84,8 +108,6 @@ export const RENTAL_LISTINGS: ReadonlyArray<RentalListing> = [
     type: "studio",
     bedroomsFrom: 0,
     bedroomsTo: 1,
-    monthlyFrom: 700,
-    monthlyTo: 1100,
     furnished: "furnished",
     petFriendly: true,
     why: "Converted traditional buildings in the restored Old Town. Walkable to restaurants, the castle, and the Municipal Gardens. Often furnished and available month-to-month. Best value furnished option in central Limassol.",
@@ -98,8 +120,6 @@ export const RENTAL_LISTINGS: ReadonlyArray<RentalListing> = [
     type: "villa",
     bedroomsFrom: 3,
     bedroomsTo: 5,
-    monthlyFrom: 3500,
-    monthlyTo: 6000,
     furnished: "furnished",
     petFriendly: true,
     why: "Premium seafront villas east of the city, near Four Seasons and Parklane. Private pools, sea views, gated communities. Ideal for families needing space and privacy. Listed on prime-property.com.cy and spitogatos.cy.",
@@ -112,8 +132,7 @@ export const RENTAL_LISTINGS: ReadonlyArray<RentalListing> = [
     type: "apartment",
     bedroomsFrom: 2,
     bedroomsTo: 3,
-    monthlyFrom: 1100,
-    monthlyTo: 1700,
+    ...districtAskingRange("Limassol", 2, 3),
     furnished: "both",
     petFriendly: true,
     why: "Residential area popular with young families and professionals. Good schools nearby, easy access to the highway, quieter than the tourist strip. Better value per square metre than the seafront.",
@@ -128,8 +147,7 @@ export const RENTAL_LISTINGS: ReadonlyArray<RentalListing> = [
     type: "apartment",
     bedroomsFrom: 1,
     bedroomsTo: 2,
-    monthlyFrom: 750,
-    monthlyTo: 1400,
+    ...districtAskingRange("Paphos", 1, 2),
     furnished: "both",
     petFriendly: true,
     why: "Kato Paphos is the expat hub of Paphos — walking distance to the harbour, restaurants, and supermarkets. Well-furnished apartments with pools available at strong value versus Limassol. Paphos has the island's best overall expat rental market.",
@@ -142,8 +160,6 @@ export const RENTAL_LISTINGS: ReadonlyArray<RentalListing> = [
     type: "townhouse",
     bedroomsFrom: 2,
     bedroomsTo: 3,
-    monthlyFrom: 900,
-    monthlyTo: 1500,
     furnished: "both",
     petFriendly: true,
     why: "Family-friendly residential suburb north of Paphos. Modern townhouse complexes with shared pools and communal gardens. Quiet, green, and well-connected to international schools in the area.",
@@ -156,8 +172,6 @@ export const RENTAL_LISTINGS: ReadonlyArray<RentalListing> = [
     type: "villa",
     bedroomsFrom: 3,
     bedroomsTo: 4,
-    monthlyFrom: 1500,
-    monthlyTo: 2800,
     furnished: "furnished",
     petFriendly: true,
     why: "Hillside villas above Coral Bay with sea views and private pools. Peyia is popular with British expats for its established community, English-speaking services, and proximity to one of Paphos's best beaches.",
@@ -172,8 +186,7 @@ export const RENTAL_LISTINGS: ReadonlyArray<RentalListing> = [
     type: "apartment",
     bedroomsFrom: 1,
     bedroomsTo: 2,
-    monthlyFrom: 700,
-    monthlyTo: 1300,
+    ...districtAskingRange("Larnaca", 1, 2),
     furnished: "both",
     petFriendly: false,
     why: "The most affordable city-centre rental market among major Cyprus cities. The Finikoudes promenade area has a good mix of modern and renovated stock. 10–15 minutes from the airport makes it a popular first landing point.",
@@ -186,8 +199,7 @@ export const RENTAL_LISTINGS: ReadonlyArray<RentalListing> = [
     type: "apartment",
     bedroomsFrom: 1,
     bedroomsTo: 3,
-    monthlyFrom: 900,
-    monthlyTo: 1600,
+    ...districtAskingRange("Larnaca", 1, 3),
     furnished: "both",
     petFriendly: true,
     why: "Mackenzie is Larnaca's most popular residential beach area — promenade cafes, a sandy beach, and a relaxed atmosphere. Newer apartment buildings with pools available. Strong long-stay community of digital nomads.",
@@ -203,8 +215,7 @@ export const RENTAL_LISTINGS: ReadonlyArray<RentalListing> = [
     type: "apartment",
     bedroomsFrom: 1,
     bedroomsTo: 2,
-    monthlyFrom: 600,
-    monthlyTo: 1100,
+    ...districtAskingRange("Ayia Napa", 1, 2),
     furnished: "furnished",
     petFriendly: true,
     why: "Ayia Napa's year-round residential stock is surprisingly affordable outside tourist season. Off-season (October–April) rents drop significantly. Great beach access and growing remote-worker community. Long-stay discounts common.",

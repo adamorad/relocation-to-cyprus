@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Fact-check (Phase 3): every high-stakes claim was checked against official sources on 1 and 2 October 2026 and corrected where wrong. Guides show "Last checked" and a Sources list (`components/ui/SourcesNote.tsx`); tools and directories show the same note. Corrected figures live in one place: `lib/facts/tax.ts` (2026 tax reform, SDC, social insurance, GeSY, minimum wage, residence permits, property VAT and transfer fees), `lib/facts/health-transport.ts` (GeSY co-payments, licence exchange, airport taxis and buses, school fees) and `lib/facts/rents.ts` (Bazaraki median asking rents, 1 October 2026, used by the city pages, guides and rent tools).
+  - Medical: strong codeine is not sold in Cyprus; oral contraceptives, antibiotic eye drops and antibiotics need a prescription.
+  - Immigration now points to the Migration Department (Deputy Ministry of Migration and International Protection); dead CRMD links removed.
+  - Calculators fixed: tax-savings (2026 exemptions, social insurance), social insurance (monthly cap), sole-trader vs Ltd (2026 bands, IP Box, self-employed SI and GeSY), relocation cost (transfer fees), rent vs buy (mortgage ends at its term), tax residency (more than 183 days), filing calendar (31 October 2026 deadline).
+  - Removed entries that could not be found anywhere: 13 schools, 3 car rental firms, most halal and international grocery listings, Rous, Toni Patisserie, Carrefour mentions; claims that could not be confirmed now point readers to the official office instead of stating a figure.
 - Merged and retired pages (Phase 3A, owner-approved). Each retired URL now returns a permanent redirect from `vercel.json` (`permanent: true`, which Vercel serves as 308), for both the `/x/` and `/x` forms. Every internal link was repointed to the survivor, and the retired pages no longer build:
   - /guides/relocation-checklist/ to /guides/arrival-checklist/ (new Before you move, Month 1 and First 90 days sections). The /tools/relocation-checklist/ tracker stays and is retitled "Cyprus Relocation Progress Tracker: 32 Tasks, Plan to Settled".
   - /guides/non-dom-status-guide/ to /guides/taxes-for-expats/ (new "Non-dom status" section and three FAQs).

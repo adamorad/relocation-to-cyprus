@@ -5,6 +5,14 @@ import { ToolPanel } from "@/components/templates/ToolTemplate";
 import { Button } from "@/components/ui/Button";
 import { ChipGroup } from "@/components/ui/Chip";
 import { DataTable, StatCard } from "@/components/ui/DataTable";
+import { LICENCE_FEE } from "@/lib/facts/health-transport";
+import {
+	ALIENS_REGISTER_FEE,
+	DNV_PERMIT_FEE,
+	eur,
+	MEU1_FEE,
+	transferFees,
+} from "@/lib/facts/tax";
 
 // ── types ────────────────────────────────────────────────────────────────────
 
@@ -108,6 +116,7 @@ function calcCosts(inputs: {
 	rentBudget: RentBudget;
 	useAgent: boolean;
 	buying: boolean;
+	newBuild: boolean;
 	propertyPrice: number;
 }): CostItem[] {
 	const {
@@ -120,6 +129,7 @@ function calcCosts(inputs: {
 		rentBudget,
 		useAgent,
 		buying,
+		newBuild,
 		propertyPrice,
 	} = inputs;
 	const pets = Number(petsStr) as PetCount;
@@ -208,11 +218,16 @@ function calcCosts(inputs: {
 			low: solicitorsLow,
 			high: Math.round(solicitorsLow * 1.2),
 		});
+		// Land Registry transfer fees after the 50% reduction; none are due
+		// when the purchase itself is subject to VAT (lib/facts/tax.ts)
+		const fees = newBuild ? 0 : Math.round(transferFees(propertyPrice).reduced);
 		items.push({
 			category: "Property Purchase",
-			label: "Stamp duty & transfer fees",
-			low: 500,
-			high: 2000,
+			label: newBuild
+				? "Transfer fees (none: purchase subject to VAT)"
+				: "Land Registry transfer fees (after the 50% reduction)",
+			low: fees,
+			high: fees,
 		});
 	} else {
 		const rentMid = RENT_MIDPOINTS[rentBudget];
@@ -264,17 +279,19 @@ function calcCosts(inputs: {
 	}
 
 	// Legal / admin
+	// Low: MEU1 for EU citizens. High: a non-EU permit such as the Digital
+	// Nomad permit plus first registration in the Aliens' Register.
 	items.push({
 		category: "Legal & Admin",
-		label: "MEU1 / ARC / TIN registration (govt. fees)",
-		low: 70,
-		high: 150,
+		label: `Residence registration, per adult (${eur(MEU1_FEE)} MEU1 to ${eur(DNV_PERMIT_FEE + ALIENS_REGISTER_FEE)} non-EU permit)`,
+		low: MEU1_FEE * adults,
+		high: (DNV_PERMIT_FEE + ALIENS_REGISTER_FEE) * adults,
 	});
 	items.push({
 		category: "Legal & Admin",
-		label: "Driving licence exchange",
-		low: 30,
-		high: 80,
+		label: `Driving licence exchange (${eur(LICENCE_FEE)} per licence)`,
+		low: LICENCE_FEE,
+		high: LICENCE_FEE * adults,
 	});
 
 	if (useAgent) {
@@ -517,6 +534,7 @@ export default function RelocationCostCalculatorClient() {
 	const [rentBudget, setRentBudget] = useState<RentBudget>("800-1500");
 	const [useAgent, setUseAgent] = useState(false);
 	const [buying, setBuying] = useState(false);
+	const [newBuild, setNewBuild] = useState(false);
 	const [propertyPrice, setPropertyPrice] = useState(250000);
 
 	// UI
@@ -538,6 +556,7 @@ export default function RelocationCostCalculatorClient() {
 				rentBudget,
 				useAgent,
 				buying,
+				newBuild,
 				propertyPrice,
 			}),
 		[
@@ -550,6 +569,7 @@ export default function RelocationCostCalculatorClient() {
 			rentBudget,
 			useAgent,
 			buying,
+			newBuild,
 			propertyPrice,
 		],
 	);
@@ -637,10 +657,17 @@ export default function RelocationCostCalculatorClient() {
 					/>
 
 					{buying ? (
-						<PropertyPriceField
-							value={propertyPrice}
-							onChange={setPropertyPrice}
-						/>
+						<>
+							<PropertyPriceField
+								value={propertyPrice}
+								onChange={setPropertyPrice}
+							/>
+							<ToggleRow
+								label="New build from a developer (VAT charged)"
+								value={newBuild}
+								onChange={setNewBuild}
+							/>
+						</>
 					) : (
 						<SelectRow
 							label="Monthly rent budget"
@@ -702,9 +729,19 @@ export default function RelocationCostCalculatorClient() {
 					]}
 				/>
 
+				{buying && newBuild ? (
+					<p className="text-sm text-muted print:text-slate-600">
+						A new build bought from a developer carries VAT (19%, or 5% on a
+						qualifying primary residence) instead of transfer fees. This
+						estimate leaves out the price and its VAT.
+					</p>
+				) : null}
+
 				<p className="text-sm text-muted print:text-slate-600">
-					Costs shown are indicative estimates based on typical 2024-2025 market
-					rates. Actual costs vary significantly.
+					Transfer fees, residence registration and licence fees use official
+					figures checked in October 2026. The other costs are indicative
+					estimates from 2024 to 2025, not yet re-checked. Actual costs vary
+					significantly.
 				</p>
 
 				<Button

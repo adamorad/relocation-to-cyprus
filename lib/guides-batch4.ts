@@ -1,3 +1,16 @@
+import {
+	eur,
+	FIRST_EMPLOYMENT_50PCT_THRESHOLD,
+	pct,
+	SDC_DIVIDEND_RATE,
+} from "./facts/tax";
+import {
+	SRC as HT_SRC,
+	INTERCITY_FARE,
+	LARNACA_BUS,
+	LIMASSOL_BUS,
+	PAPHOS_BUS,
+} from "./facts/health-transport";
 import type { GuideInfo } from "./guides";
 
 /**
@@ -8,7 +21,14 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 	{
 		slug: "rental-income-tax-cyprus",
 		datePublished: "2026-07-14",
-		dateModified: "2026-07-14",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Tax Department: Individual Income Tax Return",
+				url: "https://www.gov.cy/mof-tax/en/documents/forologiki-dilosi-eisodimatos-atomoy/",
+			},
+		],
 		category: "tax",
 		title: "Cyprus Rental Income Tax 2026: Landlord Guide",
 		description:
@@ -36,7 +56,7 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 			},
 			{
 				heading: "Filing, Allowable Deductions and Year-Round Compliance",
-				body: "Individual Cyprus income tax returns (form TD1, submitted online via TAXISnet) covering the prior tax year are due by 31 October for electronic filers, though the Tax Department has extended this deadline in recent years — always confirm the current date. If you expect taxable income in the current year, provisional tax instalments — each equal to half the estimated annual liability — are payable by 31 July and 31 December. GHS self-assessment payments are due separately, by 30 June and 31 December. For the step-by-step filing process, see the cyprus-tax-return-filing guide.\n\nBeyond the automatic 20 per cent wear-and-tear deduction, individual landlords may deduct: loan interest on borrowings used to acquire, construct, or improve the rented property; maintenance and repair costs supported by VAT invoices or official receipts (note that capital improvements are not deductible as repairs); insurance premiums directly attributable to the rental property; and professional property management fees.\n\nKeep all rental agreements, bank statements, invoices, and receipts for a minimum of six years. For a full picture of your investment economics after all taxes and costs, use the rental-yield calculator at /tools/rental-yield-calculator, and to weigh a purchase against renting, see the buying-vs-renting-cyprus guide. For a complete view of Cyprus property ownership costs beyond income tax, see the property-taxes-2026 guide.",
+				body: "Individual Cyprus income tax returns (form TD1, submitted online via TAXISnet) covering the prior tax year have a statutory deadline of 31 July of the following year. For tax year 2025 the deadline was extended to 31 October 2026 for the individual return (TD1 without accounts), so always confirm the current date. If you expect taxable income in the current year, provisional tax instalments (each equal to half the estimated annual liability) are payable by 31 July and 31 December. GHS self-assessment payments are due separately, by 30 June and 31 December. For the step-by-step filing process, see the cyprus-tax-return-filing guide.\n\nBeyond the automatic 20 per cent wear-and-tear deduction, individual landlords may deduct: loan interest on borrowings used to acquire, construct, or improve the rented property; maintenance and repair costs supported by VAT invoices or official receipts (note that capital improvements are not deductible as repairs); insurance premiums directly attributable to the rental property; and professional property management fees.\n\nKeep all rental agreements, bank statements, invoices, and receipts for a minimum of six years. For a full picture of your investment economics after all taxes and costs, use the rental-yield calculator at /tools/rental-yield-calculator, and to weigh a purchase against renting, see the buying-vs-renting-cyprus guide. For a complete view of Cyprus property ownership costs beyond income tax, see the property-taxes-2026 guide.",
 			},
 		],
 		faqs: [
@@ -61,7 +81,27 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 	{
 		slug: "cyprus-tax-return-filing",
 		datePublished: "2026-07-14",
-		dateModified: "2026-07-14",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Tax Department: Individual income tax return",
+				url: "https://www.gov.cy/mof-tax/en/documents/forologiki-dilosi-eisodimatos-atomoy/",
+			},
+			{
+				label: "Tax Department: Form T.D.59 2026 notes (PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/02/IR59_2026_English__.pdf",
+			},
+			{
+				label:
+					"Tax Department: Special Defence Contribution reform 2026 (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/03/EEA-ΦΚΚ-ΜΕΤΑΡΡΥΘΜΙΣΗ-06032026.pdf",
+			},
+			{
+				label: "Tax Department: Income Tax Law amendments 2026 (Greek, PDF)",
+				url: "https://www.gov.cy/media/sites/167/2026/03/2026-ΦορΜεταρρύθμιση-Φόρος-Εισοδήματος.pdf",
+			},
+		],
 		category: "tax",
 		title: "Cyprus Tax Return 2026: Filing Your TD1 Form",
 		description:
@@ -69,19 +109,19 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 		sections: [
 			{
 				heading: "Who Must File — and the Deadline for Tax Year 2025",
-				body: "For the 2025 tax year, you are required to submit a TD1 personal income tax return if your gross income from all sources exceeded €19,500. This covers employment income, self-employment profits, rental income, foreign pensions, and investment income. Company directors must file regardless of their income level. Employees whose only income comes from a single Cyprus employer operating payroll — and whose total gross income is below the threshold — are generally not required to file, though specific circumstances can change this. Seek advice if you are at all unsure.\n\nThe statutory deadline for the 2025 TD1 is 31 July 2026. A decree published in mid-2026 extended this to 31 October 2026 for individuals who are neither self-employed nor required to prepare audited or reviewed financial statements. Crucially, the extension covers both the submission of the return and the payment of any tax due — no penalties or interest apply if you file and settle in full by the extended date. Always verify the current deadline at taxisnet.mof.gov.cy, as the Tax Department may issue further updates.\n\nFrom the 2026 tax year onward, Cyprus's tax reform introduces a significant change: all Cyprus tax residents aged 25 to 70 will be required to file an annual return regardless of income level. That return will be submitted through the new Tax For All platform in 2027.\n\nTrack your upcoming filing obligations with the tax-filing-calendar tool at /tools/tax-filing-calendar.",
+				body: "For the 2025 tax year, you are required to submit a TD1 personal income tax return if your gross income from all sources exceeded €19,500. This covers employment income, self-employment profits, rental income, foreign pensions, and investment income. Employees whose only income comes from a single Cyprus employer operating payroll, and whose total gross income is below the threshold, are generally not required to file, though specific circumstances can change this. Seek advice if you are at all unsure.\n\nThe statutory deadline for the 2025 TD1 is 31 July 2026. A decree published in mid-2026 extended this to 31 October 2026 for the individual return (TD1 without accounts). Crucially, the extension covers both the submission of the return and the payment of any tax due: no penalties or interest apply if you file and settle in full by the extended date. Always verify the current deadline at taxisnet.mof.gov.cy, as the Tax Department may issue further updates.\n\nFrom tax year 2026, every Cyprus tax resident with income must file, and so must every resident aged 25 to 70 even with no income. Returns for 2026 onwards are filed through Tax For All.\n\nTrack your upcoming filing obligations with the tax-filing-calendar tool at /tools/tax-filing-calendar.",
 			},
 			{
 				heading: "TAXISnet Registration and the Tax For All Transition",
-				body: "The 2025 tax year TD1 is submitted through the existing TAXISnet portal at taxisnet.mof.gov.cy. In 2026 the Cyprus Tax Department confirmed that the Tax For All (TFA) system — originally intended to replace TAXISnet for income tax filings — will not be used for personal income tax returns until 2027, when it will cover the 2026 tax year. For the return you are filing now, use TAXISnet.\n\nBefore you can use TAXISnet you need a Cyprus Tax Identification Code (TIC): a nine-character identifier comprising eight digits and one letter. If you do not already have a TIC, apply in person at a Cyprus Tax District Office using form TD2001. EU citizens typically present their Registration Certificate (the yellow slip); non-EU citizens present their residence documentation from the Civil Registry and Migration Department. Processing usually takes two to eight weeks, though some applicants receive their TIC within a fortnight.\n\nOnce you have a TIC, registering for TAXISnet is a separate step completed online. Visit taxisnet.mof.gov.cy, select Registration, enter your TIC and date of birth, create a username and password, then verify your email address. The process takes around fifteen minutes and is free. The portal defaults to Greek — toggle to English using the language selector before you begin. TAXISnet is accessible worldwide; you do not need to be physically in Cyprus to file or pay.\n\nNote that VAT, PAYE, and VIES obligations have already migrated to TFA, so use the correct portal for each obligation type. See the taxes-for-expats guide for a full walkthrough of obtaining your TIC.",
+				body: "The 2025 tax year TD1 is submitted through the existing TAXISnet portal at taxisnet.mof.gov.cy. In 2026 the Cyprus Tax Department confirmed that the Tax For All (TFA) system, originally intended to replace TAXISnet for income tax filings, will not be used for personal income tax returns until 2027, when it will cover the 2026 tax year. For the return you are filing now, use TAXISnet.\n\nBefore you can use TAXISnet you need a Cyprus Tax Identification Code (TIC): a nine-character identifier comprising eight digits and one letter. If you do not already have a TIC, apply in person at a Cyprus Tax District Office using form TD2001. EU citizens typically present their Registration Certificate (the yellow slip); non-EU citizens present their residence documentation from the Migration Department. Processing usually takes two to eight weeks, though some applicants receive their TIC within a fortnight.\n\nOnce you have a TIC, registering for TAXISnet is a separate step completed online. Visit taxisnet.mof.gov.cy, select Registration, enter your TIC and date of birth, create a username and password, then verify your email address. The process takes around fifteen minutes and is free. The portal defaults to Greek: toggle to English using the language selector before you begin. TAXISnet is accessible worldwide; you do not need to be physically in Cyprus to file or pay.\n\nNote that VAT, PAYE, and VIES obligations have already migrated to TFA, so use the correct portal for each obligation type. See the taxes-for-expats guide for a full walkthrough of obtaining your TIC.",
 			},
 			{
 				heading: "Completing the TD1: Key Income Sections",
-				body: "The TD1 covers your worldwide income for the 2025 calendar year. TAXISnet pre-populates some fields from employer PAYE submissions and Social Insurance data, but you remain responsible for verifying every figure before you submit.\n\nEmployment income appears in the first major section. Cross-check any pre-populated figures against your payslips and employment contract. If you are claiming the 50 per cent high-earner exemption (see below), you declare it here.\n\nRental income from Cyprus property is reported net of allowable expenses, which may include mortgage interest, routine maintenance costs, and a 20 per cent wear-and-tear allowance. For the 2025 tax year, net rental income was also subject to Special Defence Contribution (SDC) at an effective rate of 2.25 per cent. SDC on rental income is abolished from 1 January 2026, so the 2025 return is the last year it features — see the rental-income-tax-cyprus guide for the new position.\n\nForeign dividends and passive interest are declared in a dedicated section. Non-dom residents claim their SDC exemption here; domiciled residents paid 17 per cent SDC on these amounts for the 2025 tax year.\n\nForeign pensions for services rendered outside Cyprus may attract a 5 per cent flat rate on amounts exceeding €3,420 for the 2025 tax year (this threshold rises to €5,000 from the 2026 tax year). Whether this treatment applies automatically or requires an election in your particular circumstances is worth clarifying with a tax adviser before you finalise the return.\n\nFor those with self-employment or business profits, see the self-employed-tax-cyprus guide.",
+				body: "The TD1 covers your worldwide income for the 2025 calendar year. TAXISnet pre-populates some fields from employer PAYE submissions and Social Insurance data, but you remain responsible for verifying every figure before you submit.\n\nEmployment income appears in the first major section. Cross-check any pre-populated figures against your payslips and employment contract. If you are claiming the 50 per cent high-earner exemption (see below), you declare it here.\n\nRental income from Cyprus property is reported net of allowable expenses, which may include mortgage interest, routine maintenance costs, and a 20 per cent wear-and-tear allowance. For the 2025 tax year, net rental income was also subject to Special Defence Contribution (SDC) at an effective rate of 2.25 per cent. SDC on rental income is abolished from 1 January 2026, so the 2025 return is the last year it features; see the rental-income-tax-cyprus guide for the new position.\n\nForeign dividends and passive interest are declared in a dedicated section. Non-dom residents claim their SDC exemption here; for the 2025 tax year, domiciled residents paid SDC on these amounts at 17 per cent on dividends and 30 per cent on interest.\n\nForeign pensions for services rendered outside Cyprus may attract a 5 per cent flat rate on amounts exceeding €3,420 for the 2025 tax year (this threshold rises to €5,000 from the 2026 tax year). Whether this treatment applies automatically or requires an election in your particular circumstances is worth clarifying with a tax adviser before you finalise the return.\n\nFor those with self-employment or business profits, see the self-employed-tax-cyprus guide.",
 			},
 			{
 				heading: "Non-Dom Status and the 50% Employment Exemption",
-				body: "Non-domicile (non-dom) status is the most widely used expat tax advantage in Cyprus. Broadly, a Cyprus tax resident who was not born domiciled in Cyprus and who has not established a permanent home here qualifies. Non-dom status exempts you from Special Defence Contribution (SDC) on worldwide dividends and passive interest income for up to 17 years. For the 2025 tax year, SDC on dividends stood at 17 per cent for domiciled residents, making the non-dom exemption a substantial saving for those holding investment income. For full eligibility details, see the non-dom section of /guides/taxes-for-expats/.\n\nTo claim the SDC exemption on your TD1, you must have previously submitted form TD38 to the Tax Department, typically at the point you first receive income that would otherwise attract SDC. Once on record, the exemption carries into subsequent TD1 returns automatically. If you have not yet submitted your TD38, do so before or alongside your current TD1. Non-dom status does not exempt employment, rental, or self-employment income from standard income tax.\n\nThe 50 per cent employment income exemption is entirely separate from non-dom status and cannot be combined with it. To qualify, broadly you must not have been a Cyprus tax resident for a defined run of years immediately before your first Cyprus employment, your first employment in Cyprus must have begun on or after 1 January 2022, and your annual remuneration must exceed the qualifying threshold (in the region of €55,000). The exemption runs for up to 17 tax years and is claimed in the employment income section of the TD1. Retain your employment contract and evidence of the look-back period, as these may be requested during an audit. Verify your residency position using the tax-residency-tracker tool at /tools/tax-residency-tracker.",
+				body: `Non-domicile (non-dom) status is the most widely used expat tax advantage in Cyprus. Broadly, a Cyprus tax resident who was not born domiciled in Cyprus and who has not established a permanent home here qualifies. Non-dom status exempts you from Special Defence Contribution (SDC) on worldwide dividends and passive interest income for up to 17 years. For the 2025 tax year, SDC on dividends stood at 17 per cent for domiciled residents, making the non-dom exemption a substantial saving for those holding investment income. From 2026 the rate is ${pct(SDC_DIVIDEND_RATE)} on dividends paid out of 2026 and later profits. For full eligibility details, see the non-dom section of /guides/taxes-for-expats/.\n\nTo claim the SDC exemption on your TD1, you must have previously submitted form TD38 to the Tax Department, typically at the point you first receive income that would otherwise attract SDC. Once on record, the exemption carries into subsequent TD1 returns automatically. If you have not yet submitted your TD38, do so before or alongside your current TD1. Non-dom status does not exempt employment, rental, or self-employment income from standard income tax.\n\nThe 50 per cent employment income exemption is a separate income tax relief from non-dom status. To qualify, broadly you must not have been a Cyprus tax resident for a defined run of years immediately before your first Cyprus employment, your first employment in Cyprus must have begun on or after 1 January 2022, and your annual remuneration must exceed the qualifying threshold (more than ${eur(FIRST_EMPLOYMENT_50PCT_THRESHOLD)} a year). The exemption runs for up to 17 tax years and is claimed in the employment income section of the TD1. Retain your employment contract and evidence of the look-back period, as these may be requested during an audit. Verify your residency position using the tax-residency-tracker tool at /tools/tax-residency-tracker.`,
 			},
 			{
 				heading: "Provisional Tax: Advance Payments",
@@ -95,11 +135,11 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 		faqs: [
 			{
 				q: "Do I need to file a TD1 if my income is below €19,500?",
-				a: "For the 2025 tax year, the general threshold for mandatory filing is gross income above €19,500. However, company directors, individuals with rental property, and those with certain types of foreign-source income may be required to file regardless of total income. From the 2026 tax year, all Cyprus tax residents aged 25 to 70 must file regardless of income level. If in doubt, seek advice — filing an unnecessary return costs little, while a missed filing can trigger penalties.",
+				a: "For the 2025 tax year, the general threshold for mandatory filing is gross income above €19,500. However, individuals with rental property and those with certain types of foreign-source income may be required to file regardless of total income. From the 2026 tax year, every Cyprus tax resident with income must file, and so must every resident aged 25 to 70 even with no income. If in doubt, seek advice. Filing an unnecessary return costs little, while a missed filing can trigger penalties.",
 			},
 			{
 				q: "Is the filing deadline 31 July 2026 or 31 October 2026?",
-				a: "The statutory deadline is 31 July 2026, but a decree published in mid-2026 extended it to 31 October 2026 for individuals not required to prepare audited accounts. Both the return submission and any associated tax payment are covered by the extension. Always verify the current deadline at taxisnet.mof.gov.cy, as the Tax Department may issue further updates.",
+				a: "The statutory deadline is 31 July 2026, but a decree published in mid-2026 extended it to 31 October 2026 for the individual return (TD1 without accounts). Both the return submission and any associated tax payment are covered by the extension. Always verify the current deadline at taxisnet.mof.gov.cy, as the Tax Department may issue further updates.",
 			},
 			{
 				q: "Do I file the 2025 return on TAXISnet or Tax For All (TFA)?",
@@ -107,7 +147,7 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 			},
 			{
 				q: "Can I claim both non-dom status and the 50% employment exemption?",
-				a: "No — these are mutually exclusive. Non-dom status exempts you from SDC on dividends and passive interest but leaves your employment income fully subject to income tax. The 50 per cent exemption halves your taxable employment income but does not affect SDC on investment income. The right choice depends on your overall income profile, so obtain qualified tax advice before committing to either.",
+				a: "They are separate reliefs under different laws. Non-dom status exempts you from SDC on dividends and passive interest but leaves your employment income subject to income tax. The 50 per cent exemption reduces your taxable employment income but does not affect SDC on investment income. Confirm your position with a tax adviser before relying on either.",
 			},
 			{
 				q: "Which income tax bands apply to my 2025 return?",
@@ -125,7 +165,15 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 			alt: "Painting of a turquoise city bus at a shaded seaside bus stop where two passengers wait",
 		},
 		datePublished: "2026-07-14",
-		dateModified: "2026-07-14",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			HT_SRC.intercity,
+			HT_SRC.larnacaBuses,
+			HT_SRC.limassolBuses,
+			HT_SRC.paphosBuses,
+			HT_SRC.paphosAirportBuses,
+		],
 		category: "transport",
 		title: "Getting Around Cyprus Without a Car (2026)",
 		description:
@@ -141,11 +189,11 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 			},
 			{
 				heading: "Intercity Buses and Shared Taxis",
-				body: "Getting between cities by public transport is far more practical than getting around within them. InterCity Buses operates the main coach network connecting Limassol, Larnaca, Paphos, and the Famagusta/Ayia Napa area, with comfortable air-conditioned coaches on fixed timetables. One-way fares between major cities are approximately €4 to €9 depending on the route. Timetables are published at intercity-buses.com — always check before travelling, as frequency drops significantly in the evenings and on Sundays.\n\nAlongside regular coaches, Cyprus has a traditional shared taxi service (sometimes called a service taxi), running 8-seater minibuses between the three main cities and both airports. These operate roughly Monday to Friday 06:00–18:00 and reduced hours at weekends. Fares start at around €11 per person, and the service picks up and drops off at or near your address along the route, giving door-to-door flexibility that regular buses cannot match.\n\nFor airport arrivals, public buses serve both Larnaca and Paphos airports. At Larnaca, Route 425 runs frequently into the city centre at a single daytime fare of around €2.40 (higher at night). Paphos airport is served by routes into the town area at a similar flat fare. See the airport-transfers-guide for a full comparison of bus, shared taxi, and private transfer options, and the ferry-routes-guide for sea connections onward to Greece or the eastern Mediterranean.",
+				body: `Getting between cities by public transport is far more practical than getting around within them. InterCity Buses operates the main coach network connecting Limassol, Larnaca, Paphos, and the Famagusta/Ayia Napa area, with comfortable air-conditioned coaches on fixed timetables. One-way fares between major cities are ${eur(INTERCITY_FARE.min)} to ${eur(INTERCITY_FARE.max)} depending on the route. Timetables are published at intercity-buses.com; always check before travelling, as frequency drops significantly in the evenings and on Sundays.\n\nAlongside regular coaches, Cyprus has a traditional shared taxi service (sometimes called a service taxi), running 8-seater minibuses between the three main cities and both airports. These operate roughly Monday to Friday 06:00–18:00 and reduced hours at weekends. Fares start at around €11 per person, and the service picks up and drops off at or near your address along the route, giving door-to-door flexibility that regular buses cannot match.\n\nFor airport arrivals, public buses serve both Larnaca and Paphos airports. At Larnaca, Route 425 runs frequently into the city centre at ${eur(LARNACA_BUS.singleCash)} cash or ${eur(LARNACA_BUS.singleCard)} by Motion card (${eur(LARNACA_BUS.nightCash)} cash after 21:00). Paphos airport is served by routes 612 and 613 (${eur(PAPHOS_BUS.single)}). See the airport-transfers-guide for a full comparison of bus, shared taxi, and private transfer options, and the ferry-routes-guide for sea connections onward to Greece or the eastern Mediterranean.`,
 			},
 			{
 				heading: "City Buses: Routes, Passes, and the Motion Bus Card",
-				body: "Each major city runs its own bus operator co-ordinated under the national Cyprus Public Transport umbrella. Routes and timetables are published centrally at publictransport.com.cy; the public-transport directory at /sections/public-transport lists each operator with direct links.\n\nUnder the updated ticketing policy from 2026, a single cash journey costs approximately €2.40 during the day, rising to around €4.20 for night services running after 21:00. For regular commuters, the Motion Bus Card brings the per-trip cost down considerably. Multi-trip bundles, weekly, and monthly options are available — a four-trip bundle is approximately €7.50 and a weekly pass approximately €41.70 at standard rates. Monthly passes for heavy users cost broadly the same as a few Bolt rides per week. Pricing differs slightly between card types and cities and has been revised more than once in recent years, so check the Fares and Cards section on publictransport.com.cy for current figures before buying.\n\nA practical caveat: most city bus routes stop running by 21:00–22:00, and Sunday frequency is markedly lower than on weekdays. If your social life regularly runs past 10 pm, budget for Bolt or taxis to fill the gap.",
+				body: `Each district has its own operator: EMEL in Limassol, OSYPA in Paphos, Cyprus Public Transport in Larnaca and OSEA around Ayia Napa. The Motion card works on all of them. Each operator publishes its own routes and timetables; the public-transport directory at /sections/public-transport lists each operator with direct links.\n\nA single costs ${eur(LIMASSOL_BUS.single)} in Limassol and Paphos and ${eur(LARNACA_BUS.singleCash)} cash (${eur(LARNACA_BUS.singleCard)} by card) in Larnaca. Night fares after 21:00 are ${eur(LIMASSOL_BUS.night)} in Limassol and Paphos and ${eur(LARNACA_BUS.nightCash)} cash in Larnaca. A 30-day pass costs ${eur(LIMASSOL_BUS.monthly)} in Limassol, ${eur(PAPHOS_BUS.monthlyPersonalised)} in Paphos and ${eur(LARNACA_BUS.monthlyPersonalised)} in Larnaca (personalised card). Monthly passes for heavy users cost broadly the same as a few Bolt rides per week. Pricing differs between card types and cities and has been revised more than once in recent years, so check each operator's ticket page for current figures before buying.\n\nA practical caveat: services thin out after 21:00 and night fares apply, so check each operator's night timetable. Sunday frequency is markedly lower than on weekdays. If your social life regularly runs late, budget for Bolt or taxis to fill the gaps.`,
 			},
 			{
 				heading: "Bolt, Taxi Apps, and When to Book Ahead",
@@ -167,15 +215,15 @@ export const GUIDES_BATCH4: GuideInfo[] = [
 			},
 			{
 				q: "How much does a city bus cost in Cyprus?",
-				a: "A single cash journey on any city bus network costs approximately €2.40 during the day and around €4.20 after 21:00. Multi-trip Motion Bus Cards reduce the per-journey cost; a four-trip bundle is approximately €7.50 and a weekly pass approximately €41.70 at standard rates. Fares were revised in 2026 — check publictransport.com.cy for the current table before buying.",
+				a: `A single costs ${eur(LIMASSOL_BUS.single)} in Limassol and Paphos and ${eur(LARNACA_BUS.singleCash)} cash (${eur(LARNACA_BUS.singleCard)} by Motion card) in Larnaca. After 21:00, night fares are ${eur(LIMASSOL_BUS.night)} in Limassol and Paphos and ${eur(LARNACA_BUS.nightCash)} cash in Larnaca. A 30-day pass costs ${eur(LIMASSOL_BUS.monthly)} in Limassol, ${eur(PAPHOS_BUS.monthlyPersonalised)} in Paphos and ${eur(LARNACA_BUS.monthlyPersonalised)} in Larnaca (personalised card). Fares change, so check each operator's ticket page before buying.`,
 			},
 			{
 				q: "How do I get between cities without a car?",
-				a: "Two main options: InterCity Buses, which run air-conditioned coaches between Limassol, Larnaca, Paphos, and Ayia Napa on published timetables (fares approximately €4–9 one-way), and shared taxis, which run 8-seater minibuses with near-door-to-door pickup from around €11 per person. Check intercity-buses.com for current schedules.",
+				a: `Two main options: InterCity Buses, which run air-conditioned coaches between Limassol, Larnaca, Paphos, and Ayia Napa on published timetables (fares ${eur(INTERCITY_FARE.min)} to ${eur(INTERCITY_FARE.max)} one way), and shared taxis, which run 8-seater minibuses with near-door-to-door pickup from around €11 per person. Check intercity-buses.com for current schedules.`,
 			},
 			{
 				q: "Can I get a bus from Larnaca or Paphos airport?",
-				a: "Yes, from both. Larnaca Airport is served by Route 425 into the city centre at roughly €2.40, and Paphos Airport is served by town routes at a similar fare. Night services at both airports carry a surcharge. The airport-transfers-guide covers private shuttle and taxi options alongside the buses.",
+				a: `Yes, from both. Larnaca Airport is served by Route 425 into the city centre (${eur(LARNACA_BUS.singleCash)} cash, ${eur(LARNACA_BUS.singleCard)} by Motion card), and Paphos Airport by routes 612 and 613 (${eur(PAPHOS_BUS.single)}). Night services at both airports carry a surcharge. The airport-transfers-guide covers private shuttle and taxi options alongside the buses.`,
 			},
 		],
 	},

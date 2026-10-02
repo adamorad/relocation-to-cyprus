@@ -5,6 +5,14 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { Chip, ChipGroup } from "@/components/ui/Chip";
+import {
+	FEES_AMERICAN_ACADEMY_LARNACA,
+	FEES_FOLEYS,
+	FEES_GRAMMAR_LIMASSOL,
+	FEES_HERITAGE,
+	FEES_ISP,
+	feeRange,
+} from "@/lib/facts/health-transport";
 
 // ── data ──────────────────────────────────────────────────────────────────────
 
@@ -19,28 +27,34 @@ interface School {
 	notes: string;
 }
 
+/** "EUR 7,020–13,200/yr" from a verified 2026-27 fee range. */
+function feeText(range: { from: number; to: number }): string {
+	return `EUR ${range.from.toLocaleString("en-GB")}–${range.to.toLocaleString("en-GB")}/yr`;
+}
+
 const SCHOOLS: School[] = [
 	{
 		name: "The Grammar School",
 		branch: "Limassol branch",
 		city: "Limassol",
 		curricula: ["British", "GCSE", "A-Level"],
-		ageRange: "4-18",
-		fees: "EUR 6,000–14,000/yr",
+		ageRange: "11-18",
+		fees: `${feeText(FEES_GRAMMAR_LIMASSOL)} (non-Cypriot pupils)`,
 		type: "Private day",
-		notes: "Long-established British school. Strong academics and sports.",
+		notes:
+			"Secondary only. Long-established British school. Strong academics and sports.",
 	},
 	{
 		name: "Heritage Private School",
 		city: "Limassol",
 		curricula: ["British", "IB"],
 		ageRange: "3-18",
-		fees: "EUR 7,000–16,000/yr",
+		fees: feeText(FEES_HERITAGE),
 		type: "Private day",
 		notes: "IB Diploma Programme. Large expat community. Strong pastoral care.",
 	},
 	{
-		name: "Pascal English School",
+		name: "Pascal Private School Lemesos",
 		city: "Limassol",
 		curricula: ["British", "GCSE", "A-Level"],
 		ageRange: "11-18",
@@ -62,104 +76,30 @@ const SCHOOLS: School[] = [
 		name: "Foley's School",
 		city: "Limassol",
 		curricula: ["British"],
-		ageRange: "4-11",
-		fees: "EUR 4,000–7,000/yr",
-		type: "Private day",
-		notes: "Primary school only. Known for small class sizes.",
-	},
-	{
-		name: "Neue Deutsche Schule Limassol",
-		city: "Limassol",
-		curricula: ["German", "IB"],
-		ageRange: "4-18",
-		fees: "EUR 5,000–10,000/yr",
+		ageRange: "5-18",
+		fees: feeText(FEES_FOLEYS),
 		type: "Private day",
 		notes:
-			"German curriculum with IB option. Growing community. Bilingual German/English.",
-	},
-	{
-		name: "Russian International School (RISE)",
-		city: "Limassol",
-		curricula: ["Russian", "IB"],
-		ageRange: "4-18",
-		fees: "EUR 4,000–9,000/yr",
-		type: "Private day",
-		notes:
-			"Russian-language instruction alongside English. IB option available.",
-	},
-	{
-		name: "Montessori School Limassol",
-		city: "Limassol",
-		curricula: ["Montessori"],
-		ageRange: "3-6",
-		fees: "EUR 3,000–5,000/yr",
-		type: "Alternative preschool",
-		notes: "Preschool only. Small, internationally-minded community.",
+			"Primary and secondary (Years 1 to 13). Known for small class sizes.",
 	},
 	{
 		name: "International School of Paphos (ISP)",
 		city: "Paphos",
 		curricula: ["British", "GCSE", "A-Level"],
 		ageRange: "3-18",
-		fees: "EUR 5,000–11,000/yr",
+		fees: feeText(FEES_ISP),
 		type: "Private day",
 		notes:
 			"The main international school in Paphos. Popular with expat families in the region.",
-	},
-	{
-		name: "Silver Birch International School",
-		city: "Paphos",
-		curricula: ["British"],
-		ageRange: "3-11",
-		fees: "EUR 4,500–7,500/yr",
-		type: "Private day",
-		notes: "Primary years only. Small class sizes. Nurturing environment.",
-	},
-	{
-		name: "Paphos Waldorf School",
-		city: "Paphos",
-		curricula: ["Waldorf"],
-		ageRange: "4-12",
-		fees: "EUR 3,000–6,000/yr",
-		type: "Alternative",
-		notes:
-			"Holistic Waldorf education. Small, community-oriented. Bilingual Greek/English.",
-	},
-	{
-		name: "Larnaca English School",
-		city: "Larnaca",
-		curricula: ["British", "GCSE"],
-		ageRange: "4-16",
-		fees: "EUR 4,000–8,000/yr",
-		type: "Private day",
-		notes:
-			"Main English-language school in Larnaca. Well-regarded by the expat community.",
-	},
-	{
-		name: "Ayia Napa International School",
-		city: "Ayia Napa",
-		curricula: ["British"],
-		ageRange: "4-16",
-		fees: "EUR 4,000–7,500/yr",
-		type: "Private day",
-		notes:
-			"Serves the eastern Cyprus expat community around Famagusta district.",
 	},
 ];
 
 // ── filter helpers ────────────────────────────────────────────────────────────
 
-const CITIES = ["All", "Limassol", "Paphos", "Larnaca", "Ayia Napa"] as const;
+const CITIES = ["All", "Limassol", "Paphos"] as const;
 type City = (typeof CITIES)[number];
 
-const CURRICULA_OPTIONS = [
-	"British",
-	"IB",
-	"German",
-	"Russian",
-	"Waldorf",
-	"Montessori",
-] as const;
+const CURRICULA_OPTIONS = ["British", "IB"] as const;
 type Curriculum = (typeof CURRICULA_OPTIONS)[number];
 
 const AGE_GROUPS = [
@@ -340,9 +280,16 @@ export default function SchoolFinderClient() {
 			)}
 
 			<p className="text-base text-muted">
-				Fees are indicative for 2025. Contact schools directly for current fee
-				schedules and availability. Some schools charge registration and capital
-				levy fees on top of tuition.
+				Fees for Heritage, Foley&rsquo;s, The Grammar School and ISP are 2026-27
+				tuition from each school&rsquo;s fee sheet; other fees are indicative figures from 2025 and have not been re-checked.
+				Contact schools directly for current fee schedules and availability.
+				Registration, deposits, books and uniform are charged on top of tuition.
+			</p>
+			<p className="text-base text-muted">
+				Larnaca: The American Academy Larnaca charges{" "}
+				{feeRange(FEES_AMERICAN_ACADEMY_LARNACA)} a year (2026-27). Ayia Napa
+				and Protaras: the only registered English-language private school in
+				Famagusta district is Xenion, in Paralimni.
 			</p>
 		</div>
 	);

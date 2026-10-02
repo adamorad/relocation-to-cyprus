@@ -175,17 +175,6 @@ export const NURSERIES: ReadonlyArray<Nursery> = [
 
   // ── Larnaca ───────────────────────────────────────────────────────────────
   {
-    name: "International School of Larnaca — Early Years",
-    city: "Larnaca",
-    neighbourhood: "Drosia",
-    ageRangeFrom: 2,
-    ageRangeTo: 6,
-    languagesOffered: ["English"],
-    annualFeeFrom: 5600,
-    fullDay: true,
-    why: "Early Years section of the International School of Larnaca. English-only setting, EYFS-based curriculum, smooth feeder into the school's primary years. MOEC-licensed, strong reputation among the Larnaca expat community.",
-  },
-  {
     name: "Treasure Island Nursery",
     city: "Larnaca",
     neighbourhood: "Mackenzie Beach area",

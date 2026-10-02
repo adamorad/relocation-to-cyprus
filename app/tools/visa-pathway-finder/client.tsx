@@ -3,6 +3,26 @@
 import { useState } from "react";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { ChipGroup } from "@/components/ui/Chip";
+import {
+	DNV_EXAMINATION_WEEKS,
+	DNV_NET_MONTHLY_INCOME,
+	eur,
+	PR_INCOME_CHILD,
+	PR_INCOME_MIN,
+	PR_INCOME_SPOUSE,
+	PR_INVESTMENT_MIN,
+	VISITOR_PERMIT_MONTHLY_INCOME,
+} from "@/lib/facts/tax";
+
+const MIGRATION_DEPT_URL = "https://www.gov.cy/mip-md/en/";
+const MEU1_URL =
+	"https://www.gov.cy/mip-md/en/documents/e-u-e-e-a-citizens-and-family-members-2/e-u-e-e-a-citizens-family-member/registration-of-e-u-citizens-and-members-of-their-families-who-are-also-e-u-e-e-a-citizens-meu1/";
+const DNV_URL =
+	"https://www.gov.cy/mip-md/en/documents/digital-nomads-and-family-members/";
+const INVESTOR_URL =
+	"https://www.gov.cy/mip-md/en/documents/companies-investors-permanent-residence-3/immigration-permits-for-investors/";
+const VISITOR_URL =
+	"https://www.gov.cy/mip-md/en/documents/visitors-and-family-members/";
 
 type CitizenshipStatus = "eu" | "non-eu" | null;
 type EuPurpose =
@@ -34,14 +54,14 @@ const EU_PATHWAYS: Record<NonNullable<EuPurpose>, Pathway> = {
 	employment: {
 		name: "EU Registration Certificate (MEU1): Employed",
 		description:
-			"EU citizens working in Cyprus do not need a visa. After 90 days, you must register your residence at the Civil Registry. As an employed person you present your employment contract.",
+			"EU citizens working in Cyprus do not need a visa. After 90 days, you must register your residence with the Migration Department. As an employed person you present your employment contract.",
 		keyRequirement:
 			"Employment contract with a Cyprus-registered employer, proof of accommodation, valid EU passport or ID.",
 		processingTime: "2–4 weeks after appointment",
 		guideSlug: "residency-and-visas",
 		guideLabel: "Residency & Visas guide",
-		officialLink: "https://crmd.moi.gov.cy",
-		officialLabel: "Book at crmd.moi.gov.cy",
+		officialLink: MEU1_URL,
+		officialLabel: "Migration Department (gov.cy)",
 	},
 	"self-employed": {
 		name: "EU Registration Certificate (MEU1): Self-Employed",
@@ -52,32 +72,32 @@ const EU_PATHWAYS: Record<NonNullable<EuPurpose>, Pathway> = {
 		processingTime: "2–4 weeks after appointment",
 		guideSlug: "residency-and-visas",
 		guideLabel: "Residency & Visas guide",
-		officialLink: "https://crmd.moi.gov.cy",
-		officialLabel: "Book at crmd.moi.gov.cy",
+		officialLink: MEU1_URL,
+		officialLabel: "Migration Department (gov.cy)",
 	},
 	"self-sufficient": {
 		name: "EU Registration Certificate (MEU1): Self-Sufficient",
 		description:
 			"EU citizens who are financially independent (not working in Cyprus) can register by proving sufficient funds to support themselves without recourse to Cyprus's social welfare system.",
 		keyRequirement:
-			"Bank statements showing approximately €30,000–€40,000/year income from abroad, comprehensive private health insurance, proof of accommodation.",
+			"Evidence of enough regular income or savings to support yourself without social assistance (no fixed amount is published), comprehensive health insurance, proof of accommodation.",
 		processingTime: "2–4 weeks after appointment",
 		guideSlug: "residency-and-visas",
 		guideLabel: "Residency & Visas guide",
-		officialLink: "https://crmd.moi.gov.cy",
-		officialLabel: "Book at crmd.moi.gov.cy",
+		officialLink: MEU1_URL,
+		officialLabel: "Migration Department (gov.cy)",
 	},
 	retired: {
 		name: "EU Registration Certificate (MEU1): Retired",
 		description:
-			"EU retired citizens follow the self-sufficient MEU1 route. Pension income qualifies as proof of sufficient funds. Cyprus has no minimum pension threshold for EU citizens, but €2,000–€3,000/month is typically sufficient in practice.",
+			"EU retired citizens follow the self-sufficient MEU1 route. Pension income qualifies as proof of sufficient funds. No fixed amount is published: you show enough regular income to support yourself without social assistance.",
 		keyRequirement:
 			"Proof of pension income, comprehensive private health insurance (recommended in addition to GeSY), proof of accommodation.",
 		processingTime: "2–4 weeks after appointment",
 		guideSlug: "residency-and-visas",
 		guideLabel: "Residency & Visas guide",
-		officialLink: "https://crmd.moi.gov.cy",
-		officialLabel: "Book at crmd.moi.gov.cy",
+		officialLink: MEU1_URL,
+		officialLabel: "Migration Department (gov.cy)",
 	},
 };
 
@@ -85,15 +105,13 @@ const NON_EU_PATHWAYS: Record<NonNullable<NonEuPurpose>, Pathway> = {
 	"remote-work": {
 		name: "Digital Nomad Visa",
 		description:
-			"Cyprus's Digital Nomad Visa (DNV) is designed for non-EU nationals who work remotely for foreign employers or serve non-Cypriot clients as freelancers. Issued for 1 year, renewable up to 3 years. Covers spouse and dependent children.",
-		keyRequirement:
-			"Minimum net monthly income of €3,500 (€4,200 with a spouse, +15% per dependent child). Employment contract or freelance contracts with non-Cyprus clients. No working for Cyprus-based employers.",
-		processingTime: "5–8 weeks from full application",
+			"Cyprus's Digital Nomad Visa (DNV) is designed for non-EU nationals who work remotely for foreign employers or serve non-Cypriot clients as freelancers. Issued for 1 year and can be renewed for up to two more years. Covers spouse and dependent children.",
+		keyRequirement: `Minimum net monthly income of ${eur(DNV_NET_MONTHLY_INCOME)} (€4,200 with a spouse, +15% per dependent child). Employment contract or freelance contracts with non-Cyprus clients. No working for Cyprus-based employers.`,
+		processingTime: `${DNV_EXAMINATION_WEEKS.from} to ${DNV_EXAMINATION_WEEKS.to} weeks from a complete application (official examination time)`,
 		guideSlug: "residency-and-visas",
 		guideLabel: "Residency & Visas guide",
-		officialLink:
-			"https://www.mfa.gov.cy/mfa/mfa2016.nsf/All/0E3FE0BDC725C79AC22587100025B77E",
-		officialLabel: "Apply at mfa.gov.cy",
+		officialLink: DNV_URL,
+		officialLabel: "Migration Department (gov.cy)",
 	},
 	"cyprus-employer": {
 		name: "Work Permit (Employment Visa, Category E)",
@@ -107,28 +125,28 @@ const NON_EU_PATHWAYS: Record<NonNullable<NonEuPurpose>, Pathway> = {
 		officialLabel: "Labour Department (mlsi.gov.cy)",
 	},
 	investment: {
-		name: "Permanent Residency by Investment (Category F / Reg 6(2))",
+		name: "Permanent Residency by Investment (Regulation 6(2))",
 		description:
 			"Non-EU nationals who purchase qualifying Cyprus real estate can obtain Permanent Residency. No minimum stay is required once granted. Does not directly lead to citizenship (a separate 7-year naturalisation track applies).",
-		keyRequirement:
-			"Purchase of a newly-built residential property for at least €300,000 (ex-VAT), paid from a Cypriot bank account. Annual income of at least €50,000 from outside Cyprus (+€15,000 per spouse, +€10,000 per child).",
-		processingTime: "6–12 months",
+		keyRequirement: `Purchase of a new house or apartment from a developer for at least ${eur(PR_INVESTMENT_MIN)} (ex-VAT), paid with funds transferred to Cyprus from abroad, from your own (or your spouse's) bank account. Secured annual income from abroad of at least ${eur(PR_INCOME_MIN)} (+${eur(PR_INCOME_SPOUSE)} for a spouse, +${eur(PR_INCOME_CHILD)} per dependent child).`,
+		processingTime:
+			"About 2 months to examine a complete application (Migration Department estimate)",
 		guideSlug: "residency-and-visas",
 		guideLabel: "Residency & Visas guide",
-		officialLink: "https://crmd.moi.gov.cy",
-		officialLabel: "Civil Registry (crmd.moi.gov.cy)",
+		officialLink: INVESTOR_URL,
+		officialLabel: "Migration Department (gov.cy)",
 	},
 	retired: {
-		name: "Permanent Residency by Income (Category F / Self-Sufficient)",
+		name: "Visitor residence permit (retirees and passive income)",
 		description:
-			"Non-EU retirees or financially independent individuals can obtain Permanent Residency by demonstrating stable income from abroad. Property purchase of at least €300,000 is still required unless applying under a long-stay visa.",
-		keyRequirement:
-			"Annual income of at least €50,000 from outside Cyprus (pension, investments, rental income), property purchase of €300,000+, comprehensive health insurance.",
-		processingTime: "6–12 months",
-		guideSlug: "residency-and-visas",
-		guideLabel: "Residency & Visas guide",
-		officialLink: "https://crmd.moi.gov.cy",
-		officialLabel: "Civil Registry (crmd.moi.gov.cy)",
+			"Non-EU retirees and others living on a pension or other passive income, without working in Cyprus, usually apply for a Visitor temporary residence permit. It is issued for one year and renewed. Permanent residence is a separate route (by investment, or the Category F income-based immigration permit).",
+		keyRequirement: `Transfers from abroad of at least ${eur(VISITOR_PERMIT_MONTHLY_INCOME)} a month (€24,000 a year), +20% for a spouse, +15% per child; 10-year bank guarantee; health insurance; accommodation.`,
+		processingTime:
+			"Check current examination times with the Migration Department",
+		guideSlug: "retiring-in-cyprus",
+		guideLabel: "Retiring in Cyprus guide",
+		officialLink: VISITOR_URL,
+		officialLabel: "Migration Department (gov.cy)",
 	},
 	student: {
 		name: "Student Visa / Temporary Residence Permit",
@@ -137,8 +155,8 @@ const NON_EU_PATHWAYS: Record<NonNullable<NonEuPurpose>, Pathway> = {
 		keyRequirement:
 			"Acceptance letter from a recognised Cyprus institution, proof of sufficient funds to cover tuition and living costs, comprehensive health insurance.",
 		processingTime: "4–8 weeks",
-		officialLink: "https://crmd.moi.gov.cy",
-		officialLabel: "Civil Registry (crmd.moi.gov.cy)",
+		officialLink: MIGRATION_DEPT_URL,
+		officialLabel: "Migration Department (gov.cy)",
 	},
 };
 

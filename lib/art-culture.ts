@@ -132,12 +132,12 @@ export const CULTURAL_VENUES: ReadonlyArray<CulturalVenue> = [
   {
     name: "K-Cineplex Limassol",
     city: "Limassol",
-    neighbourhood: "My Mall, Polemidia",
+    neighbourhood: "My Mall, 285 Franklin Roosevelt Avenue",
     type: "cinema",
     englishSupport: true,
     admissionEuros: 9,
-    highlights: "8-screen multiplex, all Hollywood releases in original English, IMAX-equivalent screen",
-    why: "The main multiplex cinema in Limassol. All Hollywood films screen in original English (Greek subtitles only — not dubbed). Good seating, reliable air conditioning, and a full snack bar. Located in My Mall for easy parking.",
+    highlights: "Cinema in My Mall, Hollywood releases in original English",
+    why: "Cinema in My Mall, west Limassol by the new port. Hollywood films screen in original English with Greek subtitles, not dubbed. Check current screens, showtimes and prices on the cinema's website. Located in My Mall for easy parking.",
     website: "https://www.kcineplex.com.cy",
   },
   // ── Paphos ────────────────────────────────────────────────────────────────

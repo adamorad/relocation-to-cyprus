@@ -1,3 +1,15 @@
+import {
+	eur,
+	SI_MAX_INSURABLE_ANNUAL,
+	SI_MAX_INSURABLE_MONTHLY,
+} from "./facts/tax";
+import {
+	FEES_GRAMMAR_LIMASSOL,
+	FEES_GRAMMAR_LIMASSOL_CYPRIOT,
+	FEES_HERITAGE,
+	feeRange,
+	SRC as HT_SRC,
+} from "./facts/health-transport";
 import type { GuideInfo } from "./guides";
 
 /**
@@ -8,7 +20,14 @@ export const GUIDES_BATCH5: GuideInfo[] = [
 	{
 		slug: "working-in-cyprus-employee-rights",
 		datePublished: "2026-07-14",
-		dateModified: "2026-07-14",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			{
+				label: "Social Insurance Services: Basic insurable earnings 1981-2026",
+				url: "https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/All/9AD159715525E49CC22584D90030E8FF?OpenDocument",
+			},
+		],
 		category: "business",
 		title: "Employee Rights in Cyprus (2026 Guide)",
 		description:
@@ -28,7 +47,7 @@ export const GUIDES_BATCH5: GuideInfo[] = [
 			},
 			{
 				heading: "Social Insurance and GHS Deductions",
-				body: "Every employed person in Cyprus must contribute to two statutory schemes, and both appear on your payslip as deductions.\n\nFirst, the Social Insurance Fund: employees pay 8.8% of gross salary, matched by an equal 8.8% from the employer. Second, the General Health System (GHS/GeSY): employees pay 2.65% of gross salary, with employers paying 2.9%. Your combined statutory employee deduction is therefore approximately 11.45% of gross pay.\n\nBoth schemes apply to capped earnings. For Social Insurance, the maximum insurable earnings cap for 2026 is in the region of €68,900 per year (around €5,740 per month) — confirm the current-year figure with the Social Insurance Services, as it is revised annually. Once your earnings exceed this cap in a calendar year, no further Social Insurance is deducted for the remainder of that year. The GHS cap is €180,000 per year, which the vast majority of employees will not reach.\n\nYour employer also pays additional contributions that do not appear as deductions on your payslip but form part of your total employment cost: a Social Cohesion Fund levy, a Redundancy Fund contribution, and a Human Resource Development levy. These are the employer's cost, not yours, but they explain why your total cost to the company is higher than your gross salary.\n\nIncome tax is calculated separately; non-domiciled residents may qualify for significant exemptions — see the taxes-for-expats guide. If you are considering self-employment rather than employment, contribution rates and rules differ substantially — see the self-employed-tax-cyprus guide. For a live take-home pay calculation on any gross salary, use the social-insurance-calculator at /tools/social-insurance-calculator.",
+				body: `Every employed person in Cyprus must contribute to two statutory schemes, and both appear on your payslip as deductions.\n\nFirst, the Social Insurance Fund: employees pay 8.8% of gross salary, matched by an equal 8.8% from the employer. Second, the General Health System (GHS/GeSY): employees pay 2.65% of gross salary, with employers paying 2.9%. Your combined statutory employee deduction is therefore approximately 11.45% of gross pay.\n\nBoth schemes apply to capped earnings. For Social Insurance, the maximum insurable earnings cap is ${eur(SI_MAX_INSURABLE_ANNUAL)} a year (${eur(SI_MAX_INSURABLE_MONTHLY)} a month) for 2026; it is revised each January. Once your earnings exceed this cap in a calendar year, no further Social Insurance is deducted for the remainder of that year. The GHS cap is €180,000 per year, which the vast majority of employees will not reach.\n\nYour employer also pays additional contributions that do not appear as deductions on your payslip but form part of your total employment cost: a Social Cohesion Fund levy, a Redundancy Fund contribution, and a Human Resource Development levy. These are the employer's cost, not yours, but they explain why your total cost to the company is higher than your gross salary.\n\nIncome tax is calculated separately; non-domiciled residents may qualify for significant exemptions; see the taxes-for-expats guide. If you are considering self-employment rather than employment, contribution rates and rules differ substantially; see the self-employed-tax-cyprus guide. For a live take-home pay calculation on any gross salary, use the social-insurance-calculator at /tools/social-insurance-calculator.`,
 			},
 			{
 				heading: "Notice Periods, Probation and Termination",
@@ -50,7 +69,7 @@ export const GUIDES_BATCH5: GuideInfo[] = [
 			},
 			{
 				q: "How much will be deducted from my salary for social insurance and health?",
-				a: "Employees pay 8.8% of gross salary to the Social Insurance Fund and 2.65% to the General Health System (GHS/GeSY), totalling approximately 11.45% combined. The Social Insurance deduction applies only up to a maximum insurable earnings cap (in the region of €68,900 per year for 2026) — once you pass this annual cap, no further Social Insurance is deducted for the rest of that calendar year. The GHS deduction applies up to €180,000 per year. Income tax is calculated separately. Use the social-insurance-calculator at /tools/social-insurance-calculator for a live net-pay breakdown on any gross figure.",
+				a: `Employees pay 8.8% of gross salary to the Social Insurance Fund and 2.65% to the General Health System (GHS/GeSY), totalling approximately 11.45% combined. The Social Insurance deduction applies only up to a maximum insurable earnings cap (${eur(SI_MAX_INSURABLE_ANNUAL)} a year, ${eur(SI_MAX_INSURABLE_MONTHLY)} a month, for 2026). Once you pass this annual cap, no further Social Insurance is deducted for the rest of that calendar year. The GHS deduction applies up to €180,000 per year. Income tax is calculated separately. Use the social-insurance-calculator at /tools/social-insurance-calculator for a live net-pay breakdown on any gross figure.`,
 			},
 			{
 				q: "What is the national minimum wage in Cyprus in 2026?",
@@ -127,7 +146,15 @@ export const GUIDES_BATCH5: GuideInfo[] = [
 	{
 		slug: "international-school-fees-cyprus",
 		datePublished: "2026-07-14",
-		dateModified: "2026-07-14",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: [
+			HT_SRC.heritageFees,
+			HT_SRC.foleysFees,
+			HT_SRC.grammarFees,
+			HT_SRC.ispFees,
+			HT_SRC.aalFees,
+		],
 		category: "family",
 		title: "International School Fees in Cyprus (2026)",
 		description:
@@ -139,7 +166,7 @@ export const GUIDES_BATCH5: GuideInfo[] = [
 			},
 			{
 				heading: "Fees by City: Limassol, Larnaca and Paphos",
-				body: "Limassol has the island's densest cluster of English-medium private schools. Heritage Private School (Palodia) is indicatively €7,000–€13,500 depending on stage. Foley's (Agios Athanasios) sits broadly in the €7,500–€12,600 range. The Grammar School Limassol is approximately €7,500–€9,500. Logos School of English Education is among the more affordable options, broadly €3,000–€7,500. The Island Private School — a leading full IB Continuum school — charges significantly more, with senior fees rising to around €16,000–€19,000.\n\nIn Paphos, the International School of Paphos is the most established option, known for competitive fees relative to quality. Lumio Private School, which opened recently and holds IB authorisation, is indicatively €8,500–€14,000. TLC Private School (Peyia) is broadly €4,000–€8,500. In Larnaca, the American Academy and PASCAL serve the expat community. All figures above are approximate — contact each school directly for its current fee schedule.",
+				body: `Limassol has the island's densest cluster of English-medium private schools. Heritage Private School (Palodia) is ${feeRange(FEES_HERITAGE)} in 2026-27, depending on stage. Foley's (Agios Athanasios) sits broadly in the €7,500–€12,600 range. The Grammar School Limassol is ${feeRange(FEES_GRAMMAR_LIMASSOL)} for non-Cypriot pupils (${feeRange(FEES_GRAMMAR_LIMASSOL_CYPRIOT)} for Cypriot citizens). Logos School of English Education is among the more affordable options, broadly €3,000–€7,500. The Island Private School, a leading full IB Continuum school, charges significantly more, with senior fees rising to around €16,000–€19,000.\n\nIn Paphos, the International School of Paphos is the most established option, known for competitive fees relative to quality. Lumio Private School, which opened recently and holds IB authorisation, is indicatively €8,500–€14,000. TLC Private School (Peyia) is broadly €4,000–€8,500. In Larnaca, the American Academy and PASCAL serve the expat community. Other figures above are approximate: contact each school directly for its current fee schedule.`,
 			},
 			{
 				heading: "Beyond Tuition: The Hidden Extras",

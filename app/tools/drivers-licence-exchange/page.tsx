@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
+import { SourcesNote } from "@/components/ui/SourcesNote";
+import { HEALTH_TRANSPORT_CHECKED, SRC } from "@/lib/facts/health-transport";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import DriversLicenceExchangeClient from "./client";
@@ -52,6 +54,10 @@ export default function DriversLicenceExchangeClientPage() {
 				}}
 			/>
 			<DriversLicenceExchangeClient />
+			<SourcesNote
+				lastChecked={HEALTH_TRANSPORT_CHECKED}
+				sources={[SRC.licenceConversion]}
+			/>
 		</ToolTemplate>
 	);
 }

@@ -62,16 +62,16 @@ export const IMMIGRATION_SPEC_LABEL: Record<ImmigrationSpecialization, string> =
 
 export const IMMIGRATION_LAWYER_TIPS: ReadonlyArray<ImmigrationLawyerTip> = [
   {
-    heading: "Apply from outside Cyprus — not on a tourist visa",
-    body: "The Digital Nomad Visa and PR by Investment applications are designed to be submitted either from your home country or via a specific in-country procedure. Attempting to formalise residency while on a tourist entry is a common and costly mistake — people are bounced back to their home country and the clock resets.",
+    heading: "Apply within three months of arriving in Cyprus",
+    body: "A Digital Nomad application is made at the Migration Department's central offices within three months of arriving in Cyprus, entering on a visa only if your nationality needs one. A permanent residence (PR by Investment) application can be lodged in person or through an authorised representative, and lodging it does not give you a right to stay while it is examined.",
   },
   {
     heading: "DNV income must be verifiable and stable",
-    body: "The Digital Nomad Visa requires at least €3,500/month net income from non-Cyprus sources. The Civil Registry expects three months of bank statements, employment contracts or client invoices, and tax declarations from your home country. A lawyer helps you assemble a credible evidence bundle — the most common DNV refusals are documentation failures, not eligibility failures.",
+    body: "The Digital Nomad Visa requires at least €3,500/month net income from non-Cyprus sources. The Migration Department expects three months of bank statements, employment contracts or client invoices, and tax declarations from your home country. A lawyer helps you assemble a credible evidence bundle: the most common DNV refusals are documentation failures, not eligibility failures.",
   },
   {
     heading: "PR by Investment requires a clean source-of-funds trail",
-    body: "The Permanent Residency by Investment (Reg. 6(2)) requires you to demonstrate that the €300,000+ purchase price came from declared sources outside Cyprus, transferred via a Cypriot bank. A lawyer who is experienced in this process will guide you through the source-of-funds declaration early — assembling it after the fact is significantly harder.",
+    body: "The Permanent Residency by Investment (Reg. 6(2)) requires you to demonstrate that the €300,000+ purchase price came from declared sources and was transferred to Cyprus from abroad, from your own (or your spouse's) bank account. A lawyer who is experienced in this process will guide you through the source-of-funds declaration early, because assembling it after the fact is significantly harder.",
   },
   {
     heading: "60-day tax residency requires genuine substance",
@@ -167,7 +167,7 @@ export const IMMIGRATION_LAWYERS: ReadonlyArray<ImmigrationLawyer> = [
       "family-reunification",
     ],
     languages: ["English", "Greek", "Russian"],
-    why: "Larnaca-focused practice well-known for smooth DNV processing — has an established working relationship with the Larnaca Civil Registry office that helps avoid common documentation requests that delay applications. Transparent flat-fee structure published on the firm website.",
+    why: "Larnaca-focused practice with a focus on DNV applications. Transparent flat-fee structure published on the firm website.",
     website: "https://www.georgiades-immigration.cy",
   },
   {
@@ -181,7 +181,7 @@ export const IMMIGRATION_LAWYERS: ReadonlyArray<ImmigrationLawyer> = [
       "digital-nomad-visa",
     ],
     languages: ["English", "Greek", "Italian"],
-    why: "Serves a strong Italian and Southern European client base relocating to Larnaca. Particular experience with EU citizens navigating the MEU1 registration process and the subsequent transition to Long-term Residence after five years.",
+    why: "Serves a strong Italian and Southern European client base relocating to Larnaca. Particular experience with EU citizens navigating the MEU1 registration process and the Permanent Residence certificate (MEU3) they can apply for after five years.",
     website: "https://www.papadakilegal.cy",
   },
 

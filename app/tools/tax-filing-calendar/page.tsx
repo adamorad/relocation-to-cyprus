@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
+import { SourcesNote } from "@/components/ui/SourcesNote";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import TaxFilingCalendarClient from "./client";
@@ -27,12 +28,24 @@ export default function TaxFilingCalendarPage() {
 		<ToolTemplate
 			pagefindType="tool"
 			related={
-				<MoreOnTopic
-					type="tool"
-					slug="tax-filing-calendar"
-					exclude={["/guides/taxes-for-expats/", "/sections/accountants/"]}
-					cols={2}
-				/>
+				<>
+					<SourcesNote
+						className="mb-12"
+						lastChecked="2026-10-02"
+						sources={[
+							{
+								label: "Tax Department: Individual income tax return",
+								url: "https://www.gov.cy/mof-tax/en/documents/forologiki-dilosi-eisodimatos-atomoy/",
+							},
+						]}
+					/>
+					<MoreOnTopic
+						type="tool"
+						slug="tax-filing-calendar"
+						exclude={["/guides/taxes-for-expats/", "/sections/accountants/"]}
+						cols={2}
+					/>
+				</>
 			}
 			width="reading"
 			header={{
