@@ -122,8 +122,16 @@ export default function HalalKosherClient() {
 								}
 								text={venue.why}
 								footer={
-									venue.phone || venue.website ? (
+									venue.address ||
+									venue.phone ||
+									venue.website ||
+									venue.sourceUrl ? (
 										<div className="flex flex-wrap gap-x-5 gap-y-1">
+											{venue.address ? (
+												<p className="w-full text-sm text-muted">
+													{venue.address}
+												</p>
+											) : null}
 											{venue.phone ? (
 												<a
 													href={`tel:${venue.phone}`}
@@ -140,6 +148,18 @@ export default function HalalKosherClient() {
 													className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
 												>
 													Website
+													<span className="sr-only">: {venue.name}</span>
+												</a>
+											) : null}
+											{venue.sourceUrl && venue.sourceUrl !== venue.website ? (
+												<a
+													href={venue.sourceUrl}
+													target="_blank"
+													rel="noopener noreferrer"
+													className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
+												>
+													Listing
+													<span className="sr-only">: {venue.name}</span>
 												</a>
 											) : null}
 										</div>

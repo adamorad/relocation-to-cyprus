@@ -191,7 +191,7 @@ export const SECTIONS_INDEX: ReadonlyArray<SectionEntry> = [
 		slug: "halal-kosher",
 		category: "Food & Drink",
 		description:
-			"How to find halal and kosher food in Cyprus, with the kosher outlets confirmed in Limassol.",
+			"Halal restaurants and a halal butcher in Limassol, Larnaca, Paphos and Ayia Napa, plus the kosher outlets in Limassol, each checked against a current listing.",
 	},
 	{
 		name: "Where to Eat",
