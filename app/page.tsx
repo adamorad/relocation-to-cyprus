@@ -5,15 +5,18 @@ import { HomeHero } from "@/components/home/HomeHero";
 import { ToolsStrip } from "@/components/home/ToolsStrip";
 import { TopicGrid } from "@/components/home/TopicGrid";
 import { GUIDES } from "@/lib/guides";
-import { LISTINGS } from "@/lib/listingsData";
+import { SECTIONS_INDEX } from "@/lib/sections-index";
+import { TOOLS } from "@/lib/tools-index";
 
 const GUIDE_COUNT = GUIDES.length;
+const DIRECTORY_COUNT = SECTIONS_INDEX.length;
+const TOOL_COUNT = TOOLS.length;
 
 export const metadata: Metadata = {
 	title: {
-		absolute: "RealCy.app: Living in Cyprus, Guides, Tools & New Builds",
+		absolute: "RealCy.app: Everyday life in Cyprus, made easier",
 	},
-	description: `Practical help for life in Cyprus: pharmacies, ferries, car rental, GESY, recycling and more. Plus new-build listings, planning tools and ${GUIDE_COUNT} guides.`,
+	description: `Practical help for life in Cyprus: pharmacies, ferries, car rental, GESY, recycling and more, with ${GUIDE_COUNT} guides, ${DIRECTORY_COUNT} local directories and ${TOOL_COUNT} tools.`,
 	alternates: { canonical: "/" },
 };
 
@@ -27,7 +30,7 @@ export default function Home() {
 		alternateName: "RealCy",
 		url: SITE_URL,
 		description:
-			"Independent guide to everyday life in Cyprus: practical guides, service directories, new-build listings and planning tools.",
+			"Independent guide to everyday life in Cyprus: practical guides, local directories and planning tools.",
 		publisher: { "@type": "Organization", name: "RealCy.app" },
 		potentialAction: {
 			"@type": "SearchAction",
@@ -44,20 +47,8 @@ export default function Home() {
 		name: "RealCy.app",
 		url: SITE_URL,
 		logo: `${SITE_URL}/apple-touch-icon.png`,
-		description: `Independent guide to living in Cyprus: new-build real estate, 30+ service directories, 31 planning tools, and ${GUIDE_COUNT} in-depth guides.`,
+		description: `Independent guide to everyday life in Cyprus: ${GUIDE_COUNT} guides, ${DIRECTORY_COUNT} local directories and ${TOOL_COUNT} planning tools.`,
 		sameAs: [],
-	};
-	const itemList = {
-		"@context": "https://schema.org",
-		"@type": "ItemList",
-		name: "Cyprus new developments",
-		numberOfItems: LISTINGS.length,
-		itemListElement: LISTINGS.slice(0, 50).map((l, i) => ({
-			"@type": "ListItem",
-			position: i + 1,
-			url: `${SITE_URL}/listings/${l.slug}/`,
-			name: l.title,
-		})),
 	};
 	return (
 		<>
@@ -65,7 +56,7 @@ export default function Home() {
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
 				dangerouslySetInnerHTML={{
-					__html: JSON.stringify([websiteJsonLd, orgJsonLd, itemList]),
+					__html: JSON.stringify([websiteJsonLd, orgJsonLd]),
 				}}
 			/>
 			<main id="main">
