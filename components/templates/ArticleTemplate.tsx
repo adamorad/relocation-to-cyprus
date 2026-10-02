@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import { Callout } from "@/components/ui/Callout";
 import { Container } from "@/components/ui/Container";
-import { EmailBox } from "@/components/ui/EmailBox";
 import { PageHeader, type PageHeaderProps } from "@/components/ui/PageHeader";
 import { TemplateMain, type TemplateMainProps } from "./TemplateMain";
 
@@ -26,8 +25,6 @@ export function ArticleTemplate({
 	afterBody,
 	related,
 	legal,
-	showInlineEmail = false,
-	emailSource = "article",
 	children,
 	...main
 }: TemplateMainProps & {
@@ -54,9 +51,6 @@ export function ArticleTemplate({
 	related?: ReactNode;
 	/** Legal / disclaimer text, rendered as a legal Callout. */
 	legal?: ReactNode;
-	/** Opt in to an inline EmailBox; the footer form covers the rest (one form per page). */
-	showInlineEmail?: boolean;
-	emailSource?: string;
 	children: ReactNode;
 }) {
 	const hasToc = !!toc && toc.length > 0;
@@ -130,9 +124,6 @@ export function ArticleTemplate({
 						<article className="guide-body mt-8">{children}</article>
 						{afterBody}
 						{related ? <div className="mt-12">{related}</div> : null}
-						{showInlineEmail ? (
-							<EmailBox source={emailSource} className="mt-10" />
-						) : null}
 						{legal ? (
 							<Callout tone="legal" className="mt-10">
 								{legal}

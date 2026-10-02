@@ -13,7 +13,6 @@ import { Callout } from "@/components/ui/Callout";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { Container } from "@/components/ui/Container";
 import { DataTable, StatCard } from "@/components/ui/DataTable";
-import { EmailBox } from "@/components/ui/EmailBox";
 import { InfoCards } from "@/components/ui/InfoCards";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
@@ -299,14 +298,6 @@ export default function DesignSystemPage() {
 									{ heading: "Second question", body: "Answer text." },
 								]}
 							/>
-						</Section>
-
-						<Section
-							headingLevel="h3"
-							title="EmailBox"
-							description="One form per page. The footer form is always present, so pages opt in."
-						>
-							<EmailBox source="design-system" />
 						</Section>
 
 						<Section

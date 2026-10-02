@@ -324,8 +324,6 @@ if (errors.length) {
 	console.log("\nPage errors:");
 	for (const e of errors) console.log(`  ${e}`);
 }
-// The component showcase demos EmailBox next to the footer form on purpose.
-const EMAIL_DEMO_PAGES = new Set(["/design-system/"]);
 let structFail = [];
 if (all) {
 	structFail = structure.filter(
@@ -334,7 +332,7 @@ if (all) {
 			r.mains !== 1 ||
 			r.mainId !== 1 ||
 			r.h1 !== 1 ||
-			(r.emails > 1 && !EMAIL_DEMO_PAGES.has(r.url)),
+			r.emails > 1,
 	);
 	const by = (w) => structure.filter((r) => r.width === w).length;
 	console.log(
