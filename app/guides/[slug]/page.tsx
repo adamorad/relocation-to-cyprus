@@ -12,6 +12,7 @@ import { MetaPixelEvent } from "@/components/MetaPixelEvent";
 import { ShareBar } from "@/components/ShareBar";
 import { ArticleTemplate } from "@/components/templates/ArticleTemplate";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
+import { guideSponsorUnit } from "@/components/templates/sponsor-units";
 import { Container } from "@/components/ui/Container";
 import { InfoCards } from "@/components/ui/InfoCards";
 import { Section } from "@/components/ui/Section";
@@ -297,6 +298,7 @@ export default async function GuidePage({
 	return (
 		<ArticleTemplate
 			pagefindType="guide"
+			sponsor={guideSponsorUnit(g.slug)}
 			header={{
 				breadcrumbs: [
 					{ label: "Home", href: "/" },

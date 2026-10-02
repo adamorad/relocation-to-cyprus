@@ -35,6 +35,7 @@ export default function CoLivingPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="co-living"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

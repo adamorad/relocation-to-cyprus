@@ -35,6 +35,7 @@ export default function AfterSchoolActivitiesPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="after-school-activities"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

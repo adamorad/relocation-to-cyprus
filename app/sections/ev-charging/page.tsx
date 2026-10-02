@@ -36,6 +36,7 @@ export default function EvChargingPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="ev-charging"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

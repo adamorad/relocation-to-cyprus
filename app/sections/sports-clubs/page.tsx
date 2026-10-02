@@ -35,6 +35,7 @@ export default function SportsClubsPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="sports-clubs"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

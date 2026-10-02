@@ -37,6 +37,7 @@ export default function PropertyLawyersPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="property-lawyers"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

@@ -35,6 +35,7 @@ export default function SummerCampsPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="summer-camps"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

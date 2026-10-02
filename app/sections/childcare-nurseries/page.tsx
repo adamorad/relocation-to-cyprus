@@ -36,6 +36,7 @@ export default function ChildcareNurseriesPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="childcare-nurseries"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

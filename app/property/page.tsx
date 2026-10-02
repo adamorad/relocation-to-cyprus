@@ -6,6 +6,7 @@ import {
 } from "@/app/listings/format";
 import type { IconName } from "@/components/icons/Icon";
 import { HubTemplate } from "@/components/templates/HubTemplate";
+import { topicSponsorUnit } from "@/components/templates/sponsor-units";
 import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
@@ -14,7 +15,13 @@ import { DEVELOPERS } from "@/lib/developers";
 import { allListings } from "@/lib/listings";
 import { PROPERTY_ITEMS, type PropertySection } from "@/lib/property";
 import { allTopicItems, type TopicItem } from "@/lib/topic-map";
-import { CITY_NAME, CITY_SLUGS, type CitySlug, isCitySlug } from "@/lib/topics";
+import {
+	CITY_NAME,
+	CITY_SLUGS,
+	type CitySlug,
+	isCitySlug,
+	PROPERTY_SLUG,
+} from "@/lib/topics";
 import { type PreviewCard, PropertyPreview } from "./PropertyPreview";
 
 const SITE_URL = "https://realcy.app";
@@ -139,6 +146,7 @@ export default function PropertyPage() {
 	return (
 		<HubTemplate
 			pagefindType="topic"
+			sponsor={topicSponsorUnit(PROPERTY_SLUG)}
 			header={{
 				breadcrumbs: [{ label: "Home", href: "/" }, { label: "Property" }],
 				eyebrow: "Property",

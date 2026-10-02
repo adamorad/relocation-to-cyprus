@@ -35,6 +35,7 @@ export default function RooftopBarsPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="rooftop-bars"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

@@ -142,6 +142,7 @@ export default function AdvertisePage() {
 						<div className="mt-4">
 							<SponsorSlot
 								preview
+								spot="directory"
 								sponsor={{
 									kind: "featured",
 									name: "Your business",

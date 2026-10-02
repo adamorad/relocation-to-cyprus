@@ -35,6 +35,7 @@ export default function ReligiousServicesPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="religious-services"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

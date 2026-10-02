@@ -36,6 +36,7 @@ export default function ArtCulturePage() {
 
 	return (
 		<DirectoryTemplate
+			slug="art-culture"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

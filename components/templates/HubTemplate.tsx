@@ -17,6 +17,7 @@ import { TemplateMain, type TemplateMainProps } from "./TemplateMain";
 export function HubTemplate({
 	header,
 	headerImage,
+	sponsor,
 	filters,
 	after,
 	children,
@@ -25,6 +26,8 @@ export function HubTemplate({
 	header: PageHeaderProps;
 	/** Decorative illustration for the band (alt=""; the H1 names the page). */
 	headerImage?: SiteImage;
+	/** Paid "Sponsored by" unit (SponsorSlot), first thing under the header. */
+	sponsor?: ReactNode;
 	/** Filter row (ChipGroup) shown above the grid. */
 	filters?: ReactNode;
 	/** Content after the grid (related links, notes). */
@@ -51,6 +54,7 @@ export function HubTemplate({
 				<PageHeader variant="band" {...header} width="wide" />
 			)}
 			<Container width="wide" className="pt-8 md:pt-10">
+				{sponsor ? <div className="mb-8 max-w-2xl">{sponsor}</div> : null}
 				{filters ? <div className="mb-6">{filters}</div> : null}
 				{children}
 				{after ? <div className="mt-12">{after}</div> : null}

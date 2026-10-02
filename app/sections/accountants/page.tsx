@@ -35,6 +35,7 @@ export default function AccountantsPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="accountants"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

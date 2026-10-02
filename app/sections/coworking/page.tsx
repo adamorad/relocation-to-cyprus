@@ -35,6 +35,7 @@ export default function CoworkingPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="coworking"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

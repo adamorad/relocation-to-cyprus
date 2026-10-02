@@ -36,6 +36,7 @@ export default function ImmigrationLawyersPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="immigration-lawyers"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

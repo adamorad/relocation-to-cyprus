@@ -37,6 +37,7 @@ export default function LongTermRentalsPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="long-term-rentals"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

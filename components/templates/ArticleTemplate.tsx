@@ -18,6 +18,7 @@ export type TocItem = { id: string; label: string };
  */
 export function ArticleTemplate({
 	header,
+	sponsor,
 	hero,
 	share,
 	toc,
@@ -31,6 +32,8 @@ export function ArticleTemplate({
 	...main
 }: TemplateMainProps & {
 	header: PageHeaderProps;
+	/** Paid "Sponsored by" unit (SponsorSlot), directly under the header. */
+	sponsor?: ReactNode;
 	/**
 	 * Hero image above the body (eager, it is the LCP). With `srcSmall`,
 	 * `width` and `height` it renders an 800w/1600w srcset at that ratio.
@@ -69,6 +72,7 @@ export function ArticleTemplate({
 				>
 					<div className="min-w-0 lg:[grid-area:header]">
 						<PageHeader {...header} contained={false} />
+						{sponsor ? <div className="mt-6">{sponsor}</div> : null}
 						{hero ? (
 							// <picture> stops React emitting an image preload hint into the
 							// RSC payload, so prefetching this guide from another page does

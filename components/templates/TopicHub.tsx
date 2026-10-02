@@ -5,6 +5,7 @@ import { directoryCityCounts } from "@/lib/directory-cities";
 import { itemsForTopic, type TopicItem } from "@/lib/topic-map";
 import { CITY_NAME, CITY_SLUGS, hubHref, type Topic } from "@/lib/topics";
 import { HubTemplate } from "./HubTemplate";
+import { topicSponsorUnit } from "./sponsor-units";
 import { type HubCard, TopicHubClient } from "./TopicHubClient";
 
 const toCard = (i: TopicItem): HubCard => {
@@ -48,6 +49,7 @@ export function TopicHub({
 		<HubTemplate
 			pagefindType="topic"
 			headerImage={topic.image}
+			sponsor={topicSponsorUnit(topic.slug)}
 			header={{
 				breadcrumbs: [{ label: "Home", href: "/" }, { label: topic.name }],
 				eyebrow: "Topic",

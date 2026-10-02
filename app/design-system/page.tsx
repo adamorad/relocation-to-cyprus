@@ -314,9 +314,11 @@ export default function DesignSystemPage() {
 							title="SponsorSlot"
 							description="Renders nothing without data; with data:"
 						>
-							<SponsorSlot sponsor={null} />
+							<SponsorSlot spot="directory" sponsor={null} />
 							<div className="max-w-md">
 								<SponsorSlot
+									preview
+									spot="directory"
 									sponsor={{
 										kind: "featured",
 										name: "Example sponsor",
@@ -396,6 +398,7 @@ export default function DesignSystemPage() {
 
 						<Preview label="DirectoryTemplate">
 							<DirectoryTemplate
+								slug={null}
 								as="div"
 								header={{
 									breadcrumbs: crumbs,
