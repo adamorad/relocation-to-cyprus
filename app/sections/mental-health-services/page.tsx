@@ -10,7 +10,7 @@ import { topicCrumb } from "@/lib/topic-map";
 import MentalHealthServicesClient from "./client";
 
 const SITE_URL = "https://realcy.app";
-const title = `${MENTAL_HEALTH_PROVIDERS.length} English-Speaking Therapists & Psychiatrists in Cyprus`;
+const title = `${MENTAL_HEALTH_PROVIDERS.length} Therapists, Psychologists and Psychiatrists in Cyprus`;
 const description = `Directory of ${MENTAL_HEALTH_PROVIDERS.length} psychologists, psychotherapists, psychiatrists and counsellors in Limassol, Paphos and Larnaca. Filter by city and type; see languages, approaches and online availability.`;
 
 export const metadata: Metadata = {

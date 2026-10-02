@@ -10,7 +10,7 @@ import PropertyManagementClient from "./client";
 
 const SITE_URL = "https://realcy.app";
 const title = `${PROPERTY_MANAGERS.length} Property Managers in Cyprus: Limassol, Paphos, Larnaca`;
-const description = `Directory of ${PROPERTY_MANAGERS.length} RERA-licensed property management companies in Cyprus. Filter by Limassol, Paphos or Larnaca, see what each offers, and what to check before you sign.`;
+const description = `Directory of ${PROPERTY_MANAGERS.length} property management companies in Cyprus. Filter by Limassol, Paphos or Larnaca, see what each offers, and what to check before you sign.`;
 
 export const metadata: Metadata = {
 	title,
