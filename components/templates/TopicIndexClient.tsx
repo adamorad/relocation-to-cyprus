@@ -4,8 +4,8 @@ import { Badge } from "@/components/ui/Badge";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup, type ChipOption } from "@/components/ui/Chip";
 import {
-	isItemTopicSlug,
 	type ItemTopicSlug,
+	isItemTopicSlug,
 	itemTopicBySlug,
 	PROPERTY_AREA,
 	TOPIC_SLUGS,

@@ -67,7 +67,7 @@ lines.push(
 );
 lines.push("");
 lines.push(
-	'Property items (Phase 4) have the Property area as their primary home instead of a topic: they are listed on `/property/` (from `PROPERTY_ITEMS` in `lib/property.ts`, which must match the rows mapped to Property below), their breadcrumb is Home > Property > item, and they appear on an everyday topic hub only where a secondary topic is given. The /guides/, /tools/ and /sections/ indexes still list them under a Property filter.',
+	"Property items (Phase 4) have the Property area as their primary home instead of a topic: they are listed on `/property/` (from `PROPERTY_ITEMS` in `lib/property.ts`, which must match the rows mapped to Property below), their breadcrumb is Home > Property > item, and they appear on an everyday topic hub only where a secondary topic is given. The /guides/, /tools/ and /sections/ indexes still list them under a Property filter.",
 );
 lines.push("");
 lines.push(
