@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { formatPrice, titleCaseName } from "@/app/listings/format";
+import { formatListingPrice, titleCaseName } from "@/app/listings/format";
 import { HubTemplate } from "@/components/templates/HubTemplate";
 import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
@@ -113,7 +113,7 @@ export default async function DeveloperPage({
 				<CardGrid>
 					{dev.listings.map((l) => {
 						const lname = titleCaseName(l.title);
-						const price = formatPrice(l.priceRange);
+						const price = formatListingPrice(l.priceRange);
 						return (
 							<CardGridItem key={l.slug}>
 								<Card
@@ -129,11 +129,7 @@ export default async function DeveloperPage({
 									}
 									eyebrow={<Badge>{l.location ?? l.regionCity}</Badge>}
 									title={lname}
-									meta={
-										price ? (
-											<span className="font-semibold text-ink">{price}</span>
-										) : undefined
-									}
+									meta={<span className="font-semibold text-ink">{price}</span>}
 								/>
 							</CardGridItem>
 						);
