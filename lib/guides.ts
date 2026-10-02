@@ -2638,11 +2638,19 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-06-18",
 		dateModified: "2026-10-02",
 		lastChecked: "2026-10-02",
-		sources: [HT_SRC.astra, HT_SRC.autohellasCyprus],
+		sources: [
+			HT_SRC.astra,
+			HT_SRC.autohellasCyprus,
+			HT_SRC.masCarsMonthly,
+			HT_SRC.infiniteCarRentalsMonthly,
+			HT_SRC.sevenSevenRentLimassol,
+			HT_SRC.priorityRentalsLongTerm,
+			HT_SRC.hertzCyMonthlyOffers,
+		],
 		category: "lifestyle",
 		title: "Long-Term Car Rental Cyprus 2026: Monthly Hire Rates",
 		description:
-			"Long-term car rental in Cyprus (monthly car hire): rough monthly rates (€300–€950, a guide not a quote), what is included, Limassol, Larnaca and Paphos options, and rent vs buy.",
+			"Long-term car rental in Cyprus (monthly car hire): published monthly prices from five providers (economy from about €450, SUVs from about €680), what is included, Limassol, Larnaca and Paphos options, and rent vs buy.",
 		sections: [
 			{
 				heading:
@@ -2651,12 +2659,12 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "What to budget: monthly rates in 2026",
-				body: "The figures below are a rough guide, not quotes. No provider publishes monthly rates, so get written quotes from two or three providers before you decide. As a rough guide, monthly rentals in Cyprus in 2026 run as follows (1–3 month contract, before any longer-term discount):\n\nEconomy (Fiat Panda, Toyota Aygo, Hyundai i10): €300–€450/month\nCompact (VW Polo, Toyota Yaris, Opel Corsa): €380–€550/month\nMid-size (VW Golf, Toyota Corolla, Seat Leon): €500–€750/month\nSUV / crossover (Toyota C-HR, Kia Sportage, Hyundai Tucson): €650–€950/month\nPremium / large SUV (Toyota RAV4, Volvo XC40, VW Tiguan): €900–€1,400/month\n\nOlder vehicles (3–5 years) from local operators can be materially cheaper, roughly €230–€380/month for a compact. These figures assume a contract of 1–3 months; rates fall further for 6-month and 12-month agreements, sometimes by 15–25% relative to the monthly rate. All major providers increase rates during peak summer months (June through September), when demand from the tourism market competes with long-term contracts. If your timing is flexible, signing a long-term agreement that starts in October or November gives you better rates and more vehicle choice.",
+				body: "The prices below are the \"from\" prices each provider publishes on its own page, checked on 2 October 2026. They are starting prices, not quotes: the final rate depends on the car, the dates and the contract length, so get written quotes from two or three providers before you decide.\n\nMAS Cars: from €450/month, described as all inclusive; compact SUVs from about €680/month.\n\nInfinite Car Rentals (1–3 month plans, plus 19% VAT): Nissan Note from €463, Honda Fit from €505, Toyota C-HR or Yaris Cross Hybrid from €715, Nissan X-Trail from €925.\n\n7777 Rent-A-Car, Limassol (leasing page, VAT not stated): Economy from €500, Compact €600, Standard €750, Premium €900.\n\nPriority Rentals: from €450/month, with a limit of 2,000 km a month and €0.20/km above it.\n\nHertz Cyprus (12-month offers): Kia Picanto from €14/day, VW Tiguan automatic from €33/day.\n\nThe Infinite Car Rentals prices exclude VAT, so add 19% when comparing (the Nissan Note at €463 plus VAT is about €551). Check whether the other providers' prices include VAT. Demand from the tourism market is highest from June through September, so a contract starting in October or November is usually easier to arrange. Ask each provider for its own longer-contract discount rather than assuming one.",
 			},
 			{
 				heading:
 					"Cheapest long-term car rental in Cyprus: how to lower the monthly rate",
-				body: "There is no single cheapest provider, because monthly quotes change with season, car age and contract length. The levers that consistently lower the price, based on the ranges above, are these:\n\nStart outside summer. Rates rise from June through September, so a contract starting in October or November is cheaper and has more cars available.\n\nChoose a smaller or older car. Economy cars start around €300/month, and 3–5 year old cars from local operators run roughly €230–€380/month for a compact.\n\nCommit for longer. Six and twelve month agreements are often 15–25% cheaper per month than a 1–3 month contract.\n\nGet quotes from local operators as well as the international chains. Local operators can be cheaper for monthly contracts, so ask both.\n\nCompare the total, not the headline rate. A low monthly price with a tight mileage cap, a high excess or no breakdown cover can cost more than a slightly higher all-in quote. Ask each provider for the same package (mileage, CDW excess, servicing, VAT) so the quotes are comparable.",
+				body: "There is no single cheapest provider, because monthly quotes change with season, car age and contract length. The levers that can lower the price are these:\n\nStart outside summer. Rates rise from June through September, so a contract starting in October or November is cheaper and has more cars available.\n\nChoose a smaller car. The lowest published monthly prices above start at €450/month for an economy car (MAS Cars, Priority Rentals), and SUVs cost noticeably more.\n\nCommit for longer. Ask each provider what it offers for six and twelve month agreements; Hertz Cyprus, for example, publishes 12-month offers priced per day.\n\nGet quotes from local operators as well as the international chains. Local operators can be cheaper for monthly contracts, so ask both.\n\nCompare the total, not the headline rate. A low monthly price with a tight mileage cap, a high excess or no breakdown cover can cost more than a slightly higher all-in quote. Ask each provider for the same package (mileage, CDW excess, servicing, VAT) so the quotes are comparable.",
 			},
 			{
 				heading: "What is and is not included",
@@ -2664,7 +2672,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "The main providers",
-				body: "Hertz and Avis have the widest fleet variety and the most straightforward online long-term booking portals, but their rates are typically the highest among the options available in Cyprus. Enterprise and Europcar are competitive on price and strong on fleet condition. Budget and Sixt are present in Cyprus and worth getting quotes from. Local operators such as Astra (branches in all four cities and both airports) and Auto Union can be cheaper than the international chains for monthly contracts, so get quotes from both. Some local operators offer the option to rent older vehicles (3–5 years) at materially lower rates (roughly €230–€380/month for a compact, as a rough guide), which is worth considering if your primary need is reliable daily transport rather than a new vehicle. For stays over six months, ask about operational leasing; Hertz in Cyprus (run by Autohellas) offers it. Whichever provider you choose, contact the long-term or fleet desk directly rather than booking the advertised online rate, because the website prices are tourist daily rates and rarely reflect the monthly contract price.",
+				body: "Hertz and Avis have the widest fleet variety and the most straightforward online long-term booking portals, but their rates are typically the highest among the options available in Cyprus. Enterprise and Europcar are competitive on price and strong on fleet condition. Budget and Sixt are present in Cyprus and worth getting quotes from. Local operators such as Astra (branches in all four cities and both airports) and Auto Union can be cheaper than the international chains for monthly contracts, so get quotes from both. Ask local operators whether they have older vehicles at a lower rate, which is worth considering if your primary need is reliable daily transport rather than a new vehicle. For stays over six months, ask about operational leasing; Hertz in Cyprus (run by Autohellas) offers it. Whichever provider you choose, contact the long-term or fleet desk directly rather than booking the advertised online rate, because the website prices are tourist daily rates and rarely reflect the monthly contract price.",
 			},
 			{
 				heading: "Long-term car rental in Limassol",
@@ -2706,7 +2714,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "What is a good monthly rental rate for a car in Cyprus in 2026?",
-				a: "As a rough guide, not a quote, expect to pay €380–€550/month for a compact class car (VW Polo, Toyota Yaris) on a 1–3 month contract from a local provider. International chains typically run €450–€650 for the same class. Economy cars start around €300/month. Mid-size cars run €500–€750/month and SUVs €650–€950/month. Rates are lower for 6-month or 12-month agreements and higher during peak summer months. No provider publishes monthly rates, so get written quotes before you decide.",
+				a: "Published \"from\" prices (checked 2 October 2026) start at about €450/month for an economy car (MAS Cars, Priority Rentals), €463 plus 19% VAT for a Nissan Note (Infinite Car Rentals) and €500 for Economy at 7777 Rent-A-Car in Limassol. Compact SUVs start from about €680/month at MAS Cars, and Infinite Car Rentals lists the Nissan X-Trail from €925 plus VAT. These are starting prices, not quotes, so get written quotes before you decide.",
 			},
 			{
 				q: "Which companies offer long-term monthly car rental in Cyprus?",

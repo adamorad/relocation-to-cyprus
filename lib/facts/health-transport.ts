@@ -232,6 +232,26 @@ export const SRC = {
 		label: "Astra Car Rentals",
 		url: "https://www.astracarrentals.com/",
 	},
+	masCarsMonthly: {
+		label: "MAS Cars: monthly car rental Cyprus",
+		url: "https://mascars.co/monthly-car-rental-cyprus",
+	},
+	infiniteCarRentalsMonthly: {
+		label: "Infinite Car Rentals: long-term car rental in Cyprus",
+		url: "https://infinitecarrentals.com/long-term-car-rental-in-cyprus-flexible-monthly-plans/",
+	},
+	sevenSevenRentLimassol: {
+		label: "7777 Rent-A-Car: leasing in Limassol",
+		url: "https://7777rentacar.com/leasing-limassol/",
+	},
+	priorityRentalsLongTerm: {
+		label: "Priority Rentals: long-term rentals",
+		url: "https://priority-rentals.com/car-hire-blog/long-term-rentals",
+	},
+	hertzCyMonthlyOffers: {
+		label: "Hertz Cyprus: monthly rental offers",
+		url: "https://www.hertz.com.cy/en/car-rental/offers/monthly-rental-offers/",
+	},
 	autohellasCyprus: {
 		label: "Autohellas: Cyprus (Hertz, Firefly, Thrifty)",
 		url: "https://www.autohellas.gr/en/brands-activities/international-activity/cyprus/",
