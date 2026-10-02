@@ -5,8 +5,9 @@ import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { DEVELOPERS } from "@/lib/developers";
 
 const SITE_URL = "https://realcy.app";
-const title = "Cyprus property developers";
-const description = `Browse ${DEVELOPERS.length} property developers active in Cyprus. View their new-build projects, regions and pricing across Paphos, Limassol, Larnaca and Ayia Napa.`;
+const h1 = "Cyprus property developers";
+const title = "Property developers in Cyprus: projects, locations and prices";
+const description = `Property developers in Cyprus: compare ${DEVELOPERS.length} developers and their new-build projects, regions and pricing across Paphos, Limassol, Larnaca and Ayia Napa.`;
 
 export const metadata: Metadata = {
 	title,
@@ -31,7 +32,7 @@ export default function DevelopersIndexPage() {
 					{ label: "Developers" },
 				],
 				eyebrow: "Property developers",
-				title,
+				title: h1,
 				intro: `${DEVELOPERS.length} developers behind ${projectCount} new-build projects across Cyprus.`,
 			}}
 		>
