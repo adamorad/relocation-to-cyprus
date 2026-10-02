@@ -10,7 +10,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
 import { DEVELOPERS } from "@/lib/developers";
 import { allListings, listingBySlug } from "@/lib/listings";
-import { formatPrice, titleCaseName } from "../format";
+import { formatListingPrice, titleCaseName } from "../format";
 import DeveloperCTA from "./DeveloperCTA";
 
 const SITE_URL = "https://realcy.app";
@@ -31,7 +31,7 @@ export async function generateMetadata({
 	const name = titleCaseName(l.title);
 	const desc =
 		l.description?.slice(0, 160) ??
-		`${name}: new-build development in ${l.location ?? l.regionCity}, Cyprus. ${formatPrice(l.priceRange) ?? "Price on request"}.`;
+		`${name}: new-build development in ${l.location ?? l.regionCity}, Cyprus. ${formatListingPrice(l.priceRange)}.`;
 	return {
 		title: `${name}: ${l.location ?? l.regionCity}`,
 		description: desc,
@@ -73,7 +73,8 @@ export default async function ListingPage({
 	);
 	const lowPrice = priceNumber(l.priceRange);
 	const name = titleCaseName(l.title);
-	const price = formatPrice(l.priceRange);
+	const price = formatListingPrice(l.priceRange);
+	const vatExcluded = /\+\s*VAT/i.test(l.priceRange ?? "");
 	const dev = l.developer?.name
 		? DEVELOPERS.find((d) => d.name === l.developer?.name)
 		: undefined;
@@ -106,7 +107,7 @@ export default async function ListingPage({
 		url: `${SITE_URL}/listings/${l.slug}/`,
 		image: (l.images ?? []).map((u) => `${SITE_URL}${u}`),
 		brand: l.developer?.name
-			? { "@type": "Organization", name: l.developer.name }
+			? { "@type": "Organization", name: titleCaseName(l.developer.name) }
 			: undefined,
 		address: {
 			"@type": "PostalAddress",
@@ -137,6 +138,16 @@ export default async function ListingPage({
 					"@type": "Offer",
 					price: lowPrice,
 					priceCurrency: "EUR",
+					...(vatExcluded
+						? {
+								priceSpecification: {
+									"@type": "PriceSpecification",
+									price: lowPrice,
+									priceCurrency: "EUR",
+									valueAddedTaxIncluded: false,
+								},
+							}
+						: {}),
 					url: `${SITE_URL}/listings/${l.slug}/`,
 					availability: "https://schema.org/InStock",
 				}
@@ -168,12 +179,12 @@ export default async function ListingPage({
 	const unitRows = offers.map((o) => {
 		const f = o.features ?? {};
 		return [
-			cell(o.unit ?? o.title),
+			cell(titleCaseName(o.unit ?? o.title ?? "")),
 			cell(o.bedrooms ?? f.bedrooms),
 			cell(o.bathrooms ?? f.bathrooms),
 			cell(o["living area"] ?? f.living_area),
 			cell(o.floor ?? f.floor),
-			cell(formatPrice(o.price)),
+			formatListingPrice(o.price),
 		];
 	});
 
@@ -198,7 +209,7 @@ export default async function ListingPage({
 				]}
 				eyebrow={l.location ?? l.regionCity}
 				title={name}
-				intro={price ?? "Price on request"}
+				intro={price}
 				titleAction={<HeartButton slug={l.slug} name={name} />}
 			/>
 
@@ -283,9 +294,13 @@ export default async function ListingPage({
 							<DeveloperCTA
 								name={titleCaseName(l.developer.name)}
 								developerHref={dev ? `/developers/${dev.slug}/` : undefined}
-								searchHref={`https://www.google.com/search?q=${encodeURIComponent(
-									`${l.developer.name} Cyprus real estate`,
-								)}`}
+								searchHref={
+									dev
+										? undefined
+										: `https://www.google.com/search?q=${encodeURIComponent(
+												`${l.developer.name} Cyprus real estate`,
+											)}`
+								}
 								slug={l.slug}
 							/>
 						</aside>

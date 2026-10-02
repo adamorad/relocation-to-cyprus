@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { HubTemplate } from "@/components/templates/HubTemplate";
 import { allListings } from "@/lib/listings";
-import { citySlugFor, formatPrice, titleCaseName } from "./format";
+import { citySlugFor, formatListingPrice, titleCaseName } from "./format";
 import ListingsClient, { type ListingCardData } from "./ListingsClient";
 
 const SITE_URL = "https://realcy.app";
@@ -28,7 +28,7 @@ export default function ListingsIndexPage() {
 		name: titleCaseName(l.title),
 		city: citySlugFor(l.regionCity),
 		location: l.location ?? l.regionCity,
-		price: formatPrice(l.priceRange),
+		price: formatListingPrice(l.priceRange),
 		image: l.images?.[0] ?? null,
 	}));
 
