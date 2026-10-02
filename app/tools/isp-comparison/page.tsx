@@ -7,9 +7,9 @@ import IspComparisonClient from "./client";
 
 const SITE_URL = "https://realcy.app";
 const title =
-	"Best Broadband & Mobile Plans in Cyprus 2026: Cyta, Epic, Primetel, Cablenet";
+	"Cyprus Internet & Mobile Plans: Cyta, Epic, Primetel, Cablenet";
 const description =
-	"Compare home broadband and mobile plans from all four Cyprus providers. Monthly costs, speeds, contract lengths, and coverage by city, with 2026 pricing.";
+	"Compare 4 broadband providers and 3 mobile carriers in Cyprus side by side: monthly cost, speed, contract length and coverage by city. Prices from 2025; verify before signing.";
 
 export const metadata: Metadata = {
 	title,
