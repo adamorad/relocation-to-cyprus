@@ -35,6 +35,7 @@ export default function WineriesPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="wineries"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

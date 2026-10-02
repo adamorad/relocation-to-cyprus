@@ -35,6 +35,7 @@ export default function VeterinaryServicesPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="veterinary-services"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

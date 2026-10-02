@@ -35,6 +35,7 @@ export default function InternationalGroceryPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="international-grocery"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

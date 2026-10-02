@@ -35,6 +35,7 @@ export default function VolunteeringPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="volunteering"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

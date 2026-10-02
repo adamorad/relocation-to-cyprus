@@ -35,6 +35,7 @@ export default function PropertyManagementPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="property-management"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

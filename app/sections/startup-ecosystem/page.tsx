@@ -35,6 +35,7 @@ export default function StartupEcosystemPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="startup-ecosystem"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

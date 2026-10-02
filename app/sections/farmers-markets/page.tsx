@@ -36,6 +36,7 @@ export default function FarmersMarketsPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="farmers-markets"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

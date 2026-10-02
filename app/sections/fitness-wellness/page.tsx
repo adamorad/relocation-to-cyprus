@@ -35,6 +35,7 @@ export default function FitnessWellnessPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="fitness-wellness"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

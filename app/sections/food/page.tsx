@@ -41,6 +41,7 @@ export default function FoodPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="food"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

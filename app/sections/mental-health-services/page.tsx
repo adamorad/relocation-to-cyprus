@@ -36,6 +36,7 @@ export default function MentalHealthServicesPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="mental-health-services"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

@@ -36,6 +36,7 @@ export default function SpecialistDoctorsPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="specialist-doctors"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

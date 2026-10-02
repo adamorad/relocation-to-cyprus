@@ -38,6 +38,7 @@ export default function ShoppingPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="shopping"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

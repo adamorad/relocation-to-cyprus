@@ -35,6 +35,7 @@ export default function CommunityGardensPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="community-gardens"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

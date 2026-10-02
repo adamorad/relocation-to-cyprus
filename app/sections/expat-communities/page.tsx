@@ -35,6 +35,7 @@ export default function ExpatCommunitiesPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="expat-communities"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

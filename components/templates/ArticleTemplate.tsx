@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import { Callout } from "@/components/ui/Callout";
 import { Container } from "@/components/ui/Container";
-import { EmailBox } from "@/components/ui/EmailBox";
 import { PageHeader, type PageHeaderProps } from "@/components/ui/PageHeader";
 import { TemplateMain, type TemplateMainProps } from "./TemplateMain";
 
@@ -18,6 +17,7 @@ export type TocItem = { id: string; label: string };
  */
 export function ArticleTemplate({
 	header,
+	sponsor,
 	hero,
 	share,
 	toc,
@@ -25,12 +25,12 @@ export function ArticleTemplate({
 	afterBody,
 	related,
 	legal,
-	showInlineEmail = false,
-	emailSource = "article",
 	children,
 	...main
 }: TemplateMainProps & {
 	header: PageHeaderProps;
+	/** Paid "Sponsored by" unit (SponsorSlot), directly under the header. */
+	sponsor?: ReactNode;
 	/**
 	 * Hero image above the body (eager, it is the LCP). With `srcSmall`,
 	 * `width` and `height` it renders an 800w/1600w srcset at that ratio.
@@ -51,9 +51,6 @@ export function ArticleTemplate({
 	related?: ReactNode;
 	/** Legal / disclaimer text, rendered as a legal Callout. */
 	legal?: ReactNode;
-	/** Opt in to an inline EmailBox; the footer form covers the rest (one form per page). */
-	showInlineEmail?: boolean;
-	emailSource?: string;
 	children: ReactNode;
 }) {
 	const hasToc = !!toc && toc.length > 0;
@@ -69,6 +66,7 @@ export function ArticleTemplate({
 				>
 					<div className="min-w-0 lg:[grid-area:header]">
 						<PageHeader {...header} contained={false} />
+						{sponsor ? <div className="mt-6">{sponsor}</div> : null}
 						{hero ? (
 							// <picture> stops React emitting an image preload hint into the
 							// RSC payload, so prefetching this guide from another page does
@@ -126,9 +124,6 @@ export function ArticleTemplate({
 						<article className="guide-body mt-8">{children}</article>
 						{afterBody}
 						{related ? <div className="mt-12">{related}</div> : null}
-						{showInlineEmail ? (
-							<EmailBox source={emailSource} className="mt-10" />
-						) : null}
 						{legal ? (
 							<Callout tone="legal" className="mt-10">
 								{legal}

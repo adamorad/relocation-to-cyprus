@@ -17,9 +17,9 @@ A live showcase of every component and template is at `/design-system/` (noindex
 
 | Template | Use for | Width | Notes |
 | --- | --- | --- | --- |
-| `HubTemplate` | Index pages (guides, tools, directories, cities, listings, developers) | wide | Band header, optional `filters` (ChipGroup), card grid as children. |
-| `ArticleTemplate` | Guides, long text pages | reading body | Optional `toc` (right rail on wide screens, block on mobile), `related`, `legal`, `share`. No inline email form unless `showInlineEmail`. |
-| `DirectoryTemplate` | Directories under /sections/ | wide | Filters first (client component), entries as text Cards, `info` tips as collapsible cards, `notice` Callout, `related`. |
+| `HubTemplate` | Index pages (guides, tools, directories, cities, listings, developers) | wide | Band header, optional `sponsor` (paid unit, topic hubs and /property/), optional `filters` (ChipGroup), card grid as children. |
+| `ArticleTemplate` | Guides, long text pages | reading body | Optional `toc` (right rail on wide screens, block on mobile), `related`, `legal`, `share`, `sponsor` (paid unit under the header). |
+| `DirectoryTemplate` | Directories under /sections/ | wide | Filters first (client component), entries as text Cards, `info` tips as collapsible cards, `notice` Callout, `related`. Required `slug` (or `null` in demos) picks the Featured sponsor, which the client renders with `<DirectoryFeatured />` after its filters; unsold directories end with a quiet Advertise line. |
 | `ToolTemplate` | Calculators, checklists, comparisons | reading (calculators) or wide (tables, two-column tools) | Inputs in `ToolPanel`, results as StatCard/DataTable, `nextSteps` buttons, `disclaimer` (legal Callout). One disclaimer and one next-steps block per page. |
 | `TopicHub` | Topic hubs (/{topic}/ and /moving-to-cyprus/) | wide | Server component on HubTemplate: band header (Home > Topic, eyebrow "Topic", H1 topic name), city ChipGroup (`?city=`), Sections "Guides", "Local directories", "Tools", then "Explore by city". Items come from `itemsForTopic()`; Pagefind type `topic`. |
 | `CityTemplate` | /regions/{city}/ | wide | Band header, `contents` nav, Sections, a `cta` linking to `/listings/?city={slug}`. |
@@ -45,8 +45,7 @@ Topics are defined in `lib/topics.ts` and every guide, directory and tool is map
 - `Callout`: `info`, `warning`, `legal` (disclaimers).
 - `DataTable` and `StatCard`: tables sit in a focusable, labelled scroll region so phones never scroll the page sideways.
 - `InfoCards`: collapsible `<details>` cards for tips and FAQs.
-- `EmailBox`: the single email form design. One email form per page; the footer already has one, so pages add an EmailBox only when they replace that need.
-- `SponsorSlot`: renders nothing without data; uses `rel="sponsored"`.
+- `SponsorSlot`: the paid unit sold on /advertise/ (Featured or Sponsored by). Renders nothing without data; live units link with `rel="sponsored noopener noreferrer"` and fire `sponsor_click`; `preview` is the non-link mock-up. Data and scheduling: `lib/sponsors.ts`, `docs/sponsors.md`.
 - Icons come from `components/icons/Icon.tsx`.
 
 ## Rules

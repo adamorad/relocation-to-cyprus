@@ -36,6 +36,7 @@ export default function HalalKosherPage() {
 
 	return (
 		<DirectoryTemplate
+			slug="halal-kosher"
 			pagefindType="directory"
 			header={{
 				breadcrumbs: [

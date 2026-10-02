@@ -1,7 +1,8 @@
 import Image from "next/image";
+import { SponsorLink } from "./SponsorLink";
 
-export type Sponsor = {
-	/** "featured" renders "Featured"; "sponsored" renders "Sponsored by {name}". */
+export type SponsorUnit = {
+	/** Label above the name: "featured" reads "Featured", "sponsored" reads "Sponsored by". */
 	kind: "featured" | "sponsored";
 	name: string;
 	href: string;
@@ -9,44 +10,60 @@ export type Sponsor = {
 	logo?: { src: string; alt: string };
 };
 
-const SLOT_CLASS =
-	"flex items-center gap-4 rounded-card border border-line bg-white p-4 text-ink shadow-rc";
+/** Where a unit sits; sent as `spot` with the GA4 `sponsor_click` event. */
+export type SponsorSpot = "directory" | "guide" | "topic";
+
+const BASE =
+	"flex items-center gap-4 rounded-card bg-white p-4 text-ink shadow-rc";
+/** Featured directory unit reads as a highlighted entry. */
+const KIND_CLASS: Record<SponsorUnit["kind"], string> = {
+	featured: "border-2 border-primary",
+	sponsored: "border border-line",
+};
 
 /**
- * Native sponsor unit sold on /advertise/. Renders nothing without data.
- * `preview` renders a non-link mock-up (used on /advertise/ to show the unit).
+ * Native sponsor unit sold on /advertise/ (data: lib/sponsors.ts). Renders
+ * nothing without data. `preview` renders the same unit as a non-link
+ * mock-up (used on /advertise/ to show what buyers get).
  */
 export function SponsorSlot({
 	sponsor,
+	spot,
+	placement = "",
 	preview = false,
+	className = "",
 }: {
-	sponsor?: Sponsor | null;
+	sponsor?: SponsorUnit | null;
+	spot: SponsorSpot;
+	/** The page's slug (directory, guide or topic), sent with the click event. */
+	placement?: string;
 	preview?: boolean;
+	className?: string;
 }) {
 	if (!sponsor) return null;
-	const label =
-		sponsor.kind === "featured" ? "Featured" : `Sponsored by ${sponsor.name}`;
+	const label = sponsor.kind === "featured" ? "Featured" : "Sponsored by";
+	const cls = `${BASE} ${KIND_CLASS[sponsor.kind]} ${className}`;
 	if (preview) {
 		return (
-			<div data-pagefind-ignore className={SLOT_CLASS}>
+			<div data-pagefind-ignore className={cls}>
 				<SlotBody sponsor={sponsor} label={label} />
 			</div>
 		);
 	}
 	return (
-		<a
+		<SponsorLink
 			href={sponsor.href}
-			target="_blank"
-			rel="sponsored noopener noreferrer"
-			data-pagefind-ignore
-			className={`${SLOT_CLASS} transition-colors hover:border-primary`}
+			spot={spot}
+			placement={placement}
+			sponsor={sponsor.name}
+			className={`${cls} transition-colors hover:bg-sky`}
 		>
 			<SlotBody sponsor={sponsor} label={label} />
-		</a>
+		</SponsorLink>
 	);
 }
 
-function SlotBody({ sponsor, label }: { sponsor: Sponsor; label: string }) {
+function SlotBody({ sponsor, label }: { sponsor: SponsorUnit; label: string }) {
 	return (
 		<>
 			{sponsor.logo ? (
@@ -59,7 +76,9 @@ function SlotBody({ sponsor, label }: { sponsor: Sponsor; label: string }) {
 				/>
 			) : null}
 			<span className="min-w-0">
-				<span className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted">
+				<span
+					className={`block text-xs font-semibold uppercase tracking-[0.2em] ${sponsor.kind === "featured" ? "text-primary-hover" : "text-muted"}`}
+				>
 					{label}
 				</span>
 				<span className="mt-1 block text-base font-bold">{sponsor.name}</span>

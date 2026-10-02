@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { DirectoryFeatured } from "@/components/templates/DirectoryFeatured";
 import { Badge } from "@/components/ui/Badge";
 import { Callout } from "@/components/ui/Callout";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
@@ -54,6 +55,8 @@ export default function VolunteeringClient() {
 					]}
 				/>
 			</div>
+
+			<DirectoryFeatured />
 
 			<h2
 				className="mt-8 text-2xl font-bold tracking-tight text-ink"
