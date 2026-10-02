@@ -7,8 +7,8 @@ An empty entry renders nothing.
 | Spot | Map in `lib/sponsors.ts` | Key | Where it renders | Label |
 | --- | --- | --- | --- | --- |
 | Top of a directory | `DIRECTORY_FEATURED` | directory slug, e.g. `accountants` (the folder name under `app/sections/`) | First item after the filters, above the entries, as a highlighted entry | Featured |
-| Top of a guide | `GUIDE_SPONSORS` | guide slug, e.g. `banking-in-cyprus` (the `/guides/{slug}/` part) | Directly under the guide header, before the hero and body | Sponsored by {name} |
-| Top of a topic hub | `TOPIC_SPONSORS` | topic slug: `health`, `getting-around`, `home-and-bills`, `money-and-paperwork`, `food-and-shopping`, `family-and-schools`, `community-and-leisure`, `moving-here` (/moving-to-cyprus/) or `property` (/property/) | Under the hub header, before the content | Sponsored by {name} |
+| Top of a guide | `GUIDE_SPONSORS` | guide slug, e.g. `banking-in-cyprus` (the `/guides/{slug}/` part) | Directly under the guide header, before the hero and body | Sponsored by |
+| Top of a topic hub | `TOPIC_SPONSORS` | topic slug: `health`, `getting-around`, `home-and-bills`, `money-and-paperwork`, `food-and-shopping`, `family-and-schools`, `community-and-leisure`, `moving-here` (/moving-to-cyprus/) or `property` (/property/) | Under the hub header, before the content | Sponsored by |
 
 Each spot holds one sponsor (a key has one value). Every unit is labelled,
 links out with `target="_blank" rel="sponsored noopener noreferrer"`, is left

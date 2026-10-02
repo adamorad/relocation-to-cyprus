@@ -2,7 +2,7 @@ import Image from "next/image";
 import { SponsorLink } from "./SponsorLink";
 
 export type SponsorUnit = {
-	/** "featured" renders "Featured"; "sponsored" renders "Sponsored by {name}". */
+	/** Label above the name: "featured" reads "Featured", "sponsored" reads "Sponsored by". */
 	kind: "featured" | "sponsored";
 	name: string;
 	href: string;
@@ -41,8 +41,7 @@ export function SponsorSlot({
 	className?: string;
 }) {
 	if (!sponsor) return null;
-	const label =
-		sponsor.kind === "featured" ? "Featured" : `Sponsored by ${sponsor.name}`;
+	const label = sponsor.kind === "featured" ? "Featured" : "Sponsored by";
 	const cls = `${BASE} ${KIND_CLASS[sponsor.kind]} ${className}`;
 	if (preview) {
 		return (
