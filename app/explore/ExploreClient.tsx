@@ -11,6 +11,7 @@ import {
 } from "react";
 import { Icon } from "@/components/icons/Icon";
 import { Chip } from "@/components/ui/Chip";
+import { trackEvent } from "@/lib/analytics";
 
 /** Content types written to the index as data-type on each page's main element. */
 const TYPES = [
@@ -99,6 +100,17 @@ async function searchByType(
 }
 
 const FALLBACK_BELOW = 3;
+const SEARCH_TRACK_DELAY_MS = 1000;
+
+/** Normalised GA4 search_term, or null when it may contain personal data. */
+function analyticsTerm(raw: string): string | null {
+	const term = raw.trim().toLowerCase().slice(0, 100).trim();
+	if (term.length < MIN_CHARS) return null;
+	if (term.includes("@") || /\d{6,}/.test(term.replace(/[\s.\-()]/g, ""))) {
+		return null;
+	}
+	return term;
+}
 
 /**
  * Searches every type. When the whole query finds fewer than three results and
@@ -238,6 +250,20 @@ export default function ExploreClient() {
 			}
 		})();
 	}, [query, filter, attempt]);
+
+	// Report settled searches to GA4 once per distinct term per page view.
+	const trackedTerms = useRef(new Set<string>());
+	useEffect(() => {
+		if (state.kind !== "results" || filter !== "all") return;
+		const term = analyticsTerm(query);
+		if (!term || trackedTerms.current.has(term)) return;
+		const results = state.total;
+		const t = setTimeout(() => {
+			trackedTerms.current.add(term);
+			trackEvent("search", { search_term: term, results_count: results });
+		}, SEARCH_TRACK_DELAY_MS);
+		return () => clearTimeout(t);
+	}, [state, query, filter]);
 
 	// Counts for the type filter come from an "all" search; keep them while a filter is active.
 	const [counts, setCounts] = useState<Record<TypeId, number> | null>(null);
