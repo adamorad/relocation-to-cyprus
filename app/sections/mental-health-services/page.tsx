@@ -2,14 +2,16 @@ import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { Callout } from "@/components/ui/Callout";
-import { MENTAL_HEALTH_TIPS } from "@/lib/mental-health";
+import {
+	MENTAL_HEALTH_PROVIDERS,
+	MENTAL_HEALTH_TIPS,
+} from "@/lib/mental-health";
 import { topicCrumb } from "@/lib/topic-map";
 import MentalHealthServicesClient from "./client";
 
 const SITE_URL = "https://realcy.app";
-const title = "Mental Health Services in Cyprus: Private Clinics & Therapists";
-const description =
-	"Private mental health clinics in Cyprus: vetted English-speaking therapists and psychiatrists across Limassol, Paphos & Larnaca.";
+const title = `${MENTAL_HEALTH_PROVIDERS.length} English-Speaking Therapists & Psychiatrists in Cyprus`;
+const description = `Directory of ${MENTAL_HEALTH_PROVIDERS.length} psychologists, psychotherapists, psychiatrists and counsellors in Limassol, Paphos and Larnaca. Filter by city and type; see languages, approaches and online availability.`;
 
 export const metadata: Metadata = {
 	title,

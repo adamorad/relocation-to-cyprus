@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
-import { PROPERTY_MANAGEMENT_TIPS } from "@/lib/property-management";
+import {
+	PROPERTY_MANAGEMENT_TIPS,
+	PROPERTY_MANAGERS,
+} from "@/lib/property-management";
 import { topicCrumb } from "@/lib/topic-map";
 import PropertyManagementClient from "./client";
 
 const SITE_URL = "https://realcy.app";
-const title = "Property Management in Cyprus: Vetted Companies & Services";
-const description =
-	"Property management service in Cyprus for landlords: vetted companies across Limassol, Paphos & Larnaca. English-speaking managers.";
+const title = `${PROPERTY_MANAGERS.length} Property Managers in Cyprus: Limassol, Paphos, Larnaca`;
+const description = `Directory of ${PROPERTY_MANAGERS.length} RERA-licensed property management companies in Cyprus. Filter by Limassol, Paphos or Larnaca, see what each offers, and what to check before you sign.`;
 
 export const metadata: Metadata = {
 	title,
