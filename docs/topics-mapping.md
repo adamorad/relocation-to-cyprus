@@ -40,7 +40,7 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Importing and Registering a Car in Cyprus](/guides/car-import-registration/) | Getting around | Moving to Cyprus |  |  |
 | [Cycling in Cyprus: Best Routes & Infrastructure](/guides/cycling-guide/) | Getting around | Community & leisure |  |  |
 | [Converting Your Driving Licence in Cyprus](/guides/driving-licence-conversion/) | Getting around | Money & paperwork |  |  |
-| [Cyprus Ferry Routes 2026: Piraeus, Greece & Egypt](/guides/ferry-routes-guide/) | Getting around |  |  |  |
+| [Cyprus Ferry Routes 2026: Limassol to Piraeus (Greece)](/guides/ferry-routes-guide/) | Getting around |  |  |  |
 | [Getting Around Cyprus Without a Car (2026)](/guides/getting-around-cyprus-no-car/) | Getting around |  |  |  |
 | [Long-Term Car Rental Cyprus 2026: Monthly Hire Rates](/guides/long-term-car-rental-cyprus/) | Getting around |  |  | Old category Lifestyle; it is about getting a car for daily use. |
 | [Driving in Cyprus: Road Safety & Culture Guide](/guides/road-safety-driving/) | Getting around |  |  |  |

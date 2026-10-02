@@ -1715,7 +1715,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		lastChecked: "2026-10-02",
 		sources: FERRY_SOURCES,
 		category: "transport",
-		title: "Cyprus Ferry Routes 2026: Piraeus, Greece & Egypt",
+		title: "Cyprus Ferry Routes 2026: Limassol to Piraeus (Greece)",
 		description: `Limassol to Piraeus on the ${FERRY_VESSEL}: summer only (29 May to 1 Sep in 2026), about ${FERRY_CROSSING_HOURS} hours, seats from ${eur(FERRY_ADULT_ONE_WAY.seat)} with taxes. Egypt, Lebanon, Israel and 2027 status.`,
 		sections: [
 			{
