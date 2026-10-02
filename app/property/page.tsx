@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { citySlugFor, formatPrice, titleCaseName } from "@/app/listings/format";
+import {
+	citySlugFor,
+	formatListingPrice,
+	titleCaseName,
+} from "@/app/listings/format";
 import type { IconName } from "@/components/icons/Icon";
 import { HubTemplate } from "@/components/templates/HubTemplate";
 import { Badge } from "@/components/ui/Badge";
@@ -75,7 +79,7 @@ function previewData() {
 				slug: l.slug,
 				name: titleCaseName(l.title),
 				location: l.location ?? l.regionCity,
-				price: formatPrice(l.priceRange),
+				price: formatListingPrice(l.priceRange),
 				image: l.images?.[0] ?? null,
 			};
 			return l.slug;
