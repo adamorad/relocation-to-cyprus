@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
+import { Card, CardGrid } from "@/components/ui/Card";
 import { ChipGroup, type ChipOption } from "@/components/ui/Chip";
 import { CITY_SLUGS, type CitySlug } from "./format";
 
@@ -12,7 +12,8 @@ export type ListingCardData = {
 	name: string;
 	city: string;
 	location: string;
-	price: string | null;
+	/** Formatted with formatListingPrice ("Price on request" when missing). */
+	price: string;
 	image: string | null;
 };
 
@@ -24,7 +25,12 @@ function isCity(v: string | null): v is CitySlug {
 	return v !== null && Object.hasOwn(CITY_SLUGS, v);
 }
 
-/** City filter (URL-readable `?city=`), photo cards and a "Show more" step of 24. */
+/**
+ * City filter (URL-readable `?city=`), photo cards and a "Show more" step of
+ * 24. Every card is in the static HTML (so every listing link is crawlable);
+ * cards past the step or outside the city are display:none, and their lazy
+ * images are not fetched until shown.
+ */
 export default function ListingsClient({
 	listings,
 }: {
@@ -56,7 +62,8 @@ export default function ListingsClient({
 
 	const matching =
 		city === "all" ? listings : listings.filter((l) => l.city === city);
-	const visible = matching.slice(0, shown);
+	const rank = new Map(matching.map((l, i) => [l.slug, i]));
+	const visibleCount = Math.min(shown, matching.length);
 
 	return (
 		<>
@@ -73,28 +80,28 @@ export default function ListingsClient({
 				</span>
 			</h2>
 			<CardGrid className="mt-4">
-				{visible.map((l) => (
-					<CardGridItem key={l.slug}>
-						<Card
-							variant="photo"
-							href={`/listings/${l.slug}/`}
-							image={
-								l.image
-									? { src: l.image, alt: `${l.name}, ${l.location}` }
-									: undefined
-							}
-							eyebrow={<Badge>{l.location}</Badge>}
-							title={l.name}
-							meta={
-								l.price ? (
-									<span className="font-semibold text-ink">{l.price}</span>
-								) : undefined
-							}
-						/>
-					</CardGridItem>
-				))}
+				{listings.map((l) => {
+					const i = rank.get(l.slug);
+					const show = i !== undefined && i < shown;
+					return (
+						<li key={l.slug} className={show ? "flex" : "hidden"}>
+							<Card
+								variant="photo"
+								href={`/listings/${l.slug}/`}
+								image={
+									l.image
+										? { src: l.image, alt: `${l.name}, ${l.location}` }
+										: undefined
+								}
+								eyebrow={<Badge>{l.location}</Badge>}
+								title={l.name}
+								meta={<span className="font-semibold text-ink">{l.price}</span>}
+							/>
+						</li>
+					);
+				})}
 			</CardGrid>
-			{matching.length > visible.length ? (
+			{matching.length > visibleCount ? (
 				<div className="mt-8 flex flex-col items-center gap-2">
 					<Button
 						variant="secondary"
@@ -104,7 +111,7 @@ export default function ListingsClient({
 						Show more
 					</Button>
 					<p className="text-sm text-muted">
-						Showing {visible.length} of {matching.length}
+						Showing {visibleCount} of {matching.length}
 					</p>
 				</div>
 			) : null}
