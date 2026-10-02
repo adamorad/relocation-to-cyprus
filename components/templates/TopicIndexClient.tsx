@@ -4,11 +4,12 @@ import { Badge } from "@/components/ui/Badge";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup, type ChipOption } from "@/components/ui/Chip";
 import {
-	isTopicSlug,
+	isItemTopicSlug,
+	type ItemTopicSlug,
+	itemTopicBySlug,
+	PROPERTY_AREA,
 	TOPIC_SLUGS,
 	TOPICS,
-	type TopicSlug,
-	topicBySlug,
 } from "@/lib/topics";
 import { UrlPrefilter, useUrlFilter } from "./UrlFilter";
 
@@ -16,13 +17,21 @@ export type IndexCard = {
 	href: string;
 	title: string;
 	description: string;
-	topic: TopicSlug;
+	/** Primary topic, or "property" for the Property area. */
+	topic: ItemTopicSlug;
 };
 
 /** "none" = an unknown `?topic=` value: shows the empty note, not every item. */
-type Filter = TopicSlug | "all" | "none";
+type Filter = ItemTopicSlug | "all" | "none";
 
-const parseTopic = (q: string): Filter => (isTopicSlug(q) ? q : "none");
+/** The eight topics, then the Property area (`?topic=property`). */
+const HOMES = [...TOPICS, PROPERTY_AREA];
+const HOME_SLUGS: ReadonlyArray<ItemTopicSlug> = [
+	...TOPIC_SLUGS,
+	PROPERTY_AREA.slug,
+];
+
+const parseTopic = (q: string): Filter => (isItemTopicSlug(q) ? q : "none");
 
 /**
  * Topic filter chips (URL-readable `?topic=`) and a card grid for the
@@ -59,7 +68,7 @@ export function TopicIndexClient({
 
 	const options: ChipOption<Filter>[] = [
 		{ value: "all", label: "All", count: items.length },
-		...TOPICS.map((t) => ({
+		...HOMES.map((t) => ({
 			value: t.slug,
 			label: t.shortName,
 			count: items.filter((i) => i.topic === t.slug).length,
@@ -68,8 +77,10 @@ export function TopicIndexClient({
 
 	const visible =
 		active === "all" ? items : items.filter((i) => i.topic === active);
-	const activeTopic = isTopicSlug(active) ? topicBySlug(active) : undefined;
-	const emptyTopics = TOPIC_SLUGS.filter(
+	const activeTopic = isItemTopicSlug(active)
+		? itemTopicBySlug(active)
+		: undefined;
+	const emptyTopics = HOME_SLUGS.filter(
 		(t) => !items.some((i) => i.topic === t),
 	);
 
@@ -77,7 +88,7 @@ export function TopicIndexClient({
 		<div ref={scopeRef} suppressHydrationWarning>
 			<UrlPrefilter
 				param="topic"
-				values={TOPIC_SLUGS}
+				values={HOME_SLUGS}
 				unknown="none"
 				empty={emptyTopics}
 			/>
@@ -114,7 +125,7 @@ export function TopicIndexClient({
 			</div>
 			<CardGrid className="mt-6">
 				{visible.map((i) => {
-					const topic = topicBySlug(i.topic);
+					const topic = itemTopicBySlug(i.topic);
 					return (
 						<CardGridItem key={i.href} filter={i.topic}>
 							{variant === "text" ? (

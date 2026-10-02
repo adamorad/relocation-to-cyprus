@@ -6,6 +6,13 @@
  * time by `assertTopicMapComplete()` (lib/topic-map-check.ts, called from
  * app/sitemap.ts), so an unmapped or misspelt item fails `pnpm build`.
  *
+ * Property items (new-build buying guides, property tools and the property
+ * directories) have the Property area (`topic: "property"`, hub /property/)
+ * as their primary home instead of a topic. They are left off the everyday
+ * topic hubs unless a topic is listed as a secondary (`also`), they are still
+ * listed on the /guides/, /tools/ and /sections/ indexes (Property chip), and
+ * their breadcrumb reads Home > Property > item. The list is lib/property.ts.
+ *
  * Server-side only (imports all guide content). Client components receive
  * slim props computed from these helpers.
  */
@@ -14,17 +21,20 @@ import { GUIDES } from "./guides";
 import { SECTIONS_INDEX } from "./sections-index";
 import { TOOLS } from "./tools-index";
 import {
+	type Area,
 	type CitySlug,
 	hubHref,
+	type ItemTopicSlug,
+	itemTopicBySlug,
 	type Topic,
 	type TopicSlug,
-	topicBySlug,
 } from "./topics";
 
 export type ItemType = "guide" | "directory" | "tool";
 
 export type TopicAssignment = {
-	topic: TopicSlug;
+	/** Primary topic, or "property" for the Property area (lib/property.ts). */
+	topic: ItemTopicSlug;
 	/** Secondary topics (max 2). The item is also listed on those hubs. */
 	also?: ReadonlyArray<TopicSlug>;
 	/** Cities the item is specific to. Empty or absent means island-wide. */
@@ -212,29 +222,6 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 		also: ["moving-here"],
 		why: "Monthly household budgets are useful to residents; also listed for movers.",
 	},
-	"property-taxes-2026": {
-		topic: "money-and-paperwork",
-		also: ["moving-here"],
-		why: "Property taxes apply to owners every year; the Property area comes in Phase 4.",
-	},
-	"cyprus-mortgage-foreigners": {
-		topic: "money-and-paperwork",
-		also: ["moving-here"],
-		why: "Mortgage is a money question; Property area comes in Phase 4.",
-	},
-	"buying-vs-renting-cyprus": {
-		topic: "money-and-paperwork",
-		also: ["home-and-bills", "moving-here"],
-		why: "A money decision about the home; Property area comes in Phase 4.",
-	},
-	"rental-income-tax-cyprus": {
-		topic: "money-and-paperwork",
-		why: "Landlord tax; Property area comes in Phase 4.",
-	},
-	"airbnb-short-term-rental-cyprus": {
-		topic: "money-and-paperwork",
-		why: "Licence, VAT and tax for owners letting short term; Property area comes in Phase 4.",
-	},
 
 	// Food & shopping
 	"cypriot-cuisine-guide": {
@@ -316,25 +303,35 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 		topic: "moving-here",
 		why: "Pet import rules apply once, at the move; vets are in Health.",
 	},
-	"buying-process": {
-		topic: "moving-here",
-		also: ["money-and-paperwork"],
-		why: "Buyers here are mostly people moving; the Property area comes in Phase 4.",
+
+	// Property area (/property/; lib/property.ts)
+	"buying-process": { topic: "property" },
+	"new-development-buying-guide": { topic: "property" },
+	"title-deed-status-guide": { topic: "property" },
+	"property-taxes-2026": {
+		topic: "property",
+		why: "Taxes on buying and owning property; moved from Money & paperwork in Phase 4.",
 	},
-	"new-development-buying-guide": {
-		topic: "moving-here",
-		also: ["money-and-paperwork"],
-		why: "Property buying; parked in Moving to Cyprus until the Phase 4 Property area.",
+	"cyprus-mortgage-foreigners": {
+		topic: "property",
+		why: "Financing a purchase; moved from Money & paperwork in Phase 4.",
 	},
-	"title-deed-status-guide": {
-		topic: "moving-here",
-		also: ["money-and-paperwork"],
-		why: "Property buying; parked in Moving to Cyprus until the Phase 4 Property area.",
+	"buying-vs-renting-cyprus": {
+		topic: "property",
+		also: ["home-and-bills"],
+		why: "Tenants weighing a purchase use it too, so it stays listed on Home & bills.",
+	},
+	"airbnb-short-term-rental-cyprus": {
+		topic: "property",
+		why: "Licence, VAT and tax for owners letting short term; moved from Money & paperwork in Phase 4.",
+	},
+	"rental-income-tax-cyprus": {
+		topic: "property",
+		why: "Landlord tax; moved from Money & paperwork in Phase 4.",
 	},
 	"property-lawyers-cyprus": {
-		topic: "moving-here",
-		also: ["money-and-paperwork"],
-		why: "Property buying; parked in Moving to Cyprus until the Phase 4 Property area.",
+		topic: "property",
+		why: "Choosing a conveyancing lawyer; shown under Professionals on /property/.",
 	},
 };
 
@@ -359,11 +356,6 @@ export const DIRECTORY_TOPICS: Record<string, TopicAssignment> = {
 		topic: "home-and-bills",
 		also: ["moving-here"],
 		why: "Old category Property & Housing; renting a home is daily life.",
-	},
-	"property-management": {
-		topic: "home-and-bills",
-		also: ["money-and-paperwork"],
-		why: "Managing a home you own; Property area comes in Phase 4.",
 	},
 	"co-living": {
 		topic: "home-and-bills",
@@ -429,15 +421,20 @@ export const DIRECTORY_TOPICS: Record<string, TopicAssignment> = {
 		topic: "moving-here",
 		also: ["money-and-paperwork"],
 	},
+
+	// Property area (/property/; lib/property.ts)
 	"property-lawyers": {
-		topic: "moving-here",
-		also: ["money-and-paperwork"],
-		why: "Conveyancing for buyers; parked in Moving to Cyprus until the Phase 4 Property area.",
+		topic: "property",
+		why: "Conveyancing for buyers; moved from Moving to Cyprus in Phase 4.",
+	},
+	"property-management": {
+		topic: "property",
+		why: "Managing a property you own or let; moved from Home & bills in Phase 4.",
 	},
 };
 
 // ---------------------------------------------------------------------------
-// Tools (31 live tools; redirect stubs are not mapped)
+// Tools (live tools; redirect stubs are not mapped)
 // ---------------------------------------------------------------------------
 
 export const TOOL_TOPICS: Record<string, TopicAssignment> = {
@@ -459,7 +456,7 @@ export const TOOL_TOPICS: Record<string, TopicAssignment> = {
 	"rental-price-trends": {
 		topic: "home-and-bills",
 		also: ["moving-here"],
-		why: "Rent levels matter most to tenants; Property area comes in Phase 4.",
+		why: "Rent levels matter most to tenants, so it stays in Home & bills (not Property).",
 	},
 	"neighbourhood-explorer": {
 		topic: "home-and-bills",
@@ -495,19 +492,6 @@ export const TOOL_TOPICS: Record<string, TopicAssignment> = {
 		also: ["moving-here"],
 		why: "Monthly household budget; the homepage presents it as the cost of living planner.",
 	},
-	"rent-vs-buy-calculator": {
-		topic: "money-and-paperwork",
-		also: ["home-and-bills", "moving-here"],
-	},
-	"mortgage-calculator": {
-		topic: "money-and-paperwork",
-		also: ["moving-here"],
-	},
-	"rental-yield-calculator": {
-		topic: "money-and-paperwork",
-		also: ["moving-here"],
-		why: "Investment maths; Property area comes in Phase 4.",
-	},
 
 	"school-finder": { topic: "family-and-schools" },
 
@@ -532,15 +516,28 @@ export const TOOL_TOPICS: Record<string, TopicAssignment> = {
 		why: "Compares your home country with Cyprus, a pre-move question.",
 	},
 	"pet-import-checklist": { topic: "moving-here" },
+
+	// Property area (/property/; lib/property.ts)
+	"mortgage-calculator": {
+		topic: "property",
+		why: "Financing a purchase; moved from Money & paperwork in Phase 4.",
+	},
+	"rental-yield-calculator": {
+		topic: "property",
+		why: "Investment maths; moved from Money & paperwork in Phase 4.",
+	},
+	"rent-vs-buy-calculator": {
+		topic: "property",
+		also: ["home-and-bills"],
+		why: "Tenants weighing a purchase use it too, so it stays listed on Home & bills.",
+	},
 	"development-comparison": {
-		topic: "moving-here",
-		also: ["money-and-paperwork"],
-		why: "New-build buying; parked in Moving to Cyprus until the Phase 4 Property area.",
+		topic: "property",
+		why: "Comparing new builds; moved from Moving to Cyprus in Phase 4.",
 	},
 	"price-benchmarker": {
-		topic: "moving-here",
-		also: ["money-and-paperwork"],
-		why: "New-build buying; parked in Moving to Cyprus until the Phase 4 Property area.",
+		topic: "property",
+		why: "New-build price check; moved from Moving to Cyprus in Phase 4.",
 	},
 };
 
@@ -564,9 +561,9 @@ export function getAssignment(
 	return MAPS[type][slug];
 }
 
-function topicOf(type: ItemType, slug: string): Topic {
+function topicOf(type: ItemType, slug: string): Topic | Area {
 	const a = MAPS[type][slug];
-	const t = a ? topicBySlug(a.topic) : undefined;
+	const t = a ? itemTopicBySlug(a.topic) : undefined;
 	if (!t)
 		throw new Error(
 			`No topic mapped for ${type} "${slug}": add it to lib/topic-map.ts`,
@@ -574,15 +571,21 @@ function topicOf(type: ItemType, slug: string): Topic {
 	return t;
 }
 
-/** Primary topic slug of an item; throws a clear error when unmapped. */
-export const primaryTopic = (type: ItemType, slug: string): TopicSlug =>
+/**
+ * Primary topic slug of an item ("property" for the Property area); throws a
+ * clear error when unmapped.
+ */
+export const primaryTopic = (type: ItemType, slug: string): ItemTopicSlug =>
 	topicOf(type, slug).slug;
 
 export const getTopicForGuide = (slug: string) => topicOf("guide", slug);
 export const getTopicForSection = (slug: string) => topicOf("directory", slug);
 export const getTopicForTool = (slug: string) => topicOf("tool", slug);
 
-/** Middle breadcrumb for an item page: { label: topic name, href: hub }. */
+/**
+ * Middle breadcrumb for an item page: { label: topic name, href: hub }
+ * (Property, /property/ for property items).
+ */
 export function topicCrumb(type: ItemType, slug: string) {
 	const t = topicOf(type, slug);
 	return { label: t.name, href: hubHref(t) };
@@ -595,7 +598,7 @@ export type TopicItem = {
 	href: string;
 	title: string;
 	description: string;
-	topic: TopicSlug;
+	topic: ItemTopicSlug;
 	also: TopicSlug[];
 	cities: CitySlug[];
 	/** False for the de-listed directories (never shown on other pages). */
@@ -687,7 +690,7 @@ export function moreOnTopic(
 	type: ItemType,
 	slug: string,
 	{ limit = 6, exclude = [] }: { limit?: number; exclude?: string[] } = {},
-): { topic: Topic; items: TopicItem[] } {
+): { topic: Topic | Area; items: TopicItem[] } {
 	const topic = topicOf(type, slug);
 	const self = allTopicItems().find((i) => i.type === type && i.slug === slug);
 	const skip = new Set(exclude.map((h) => (h.endsWith("/") ? h : `${h}/`)));

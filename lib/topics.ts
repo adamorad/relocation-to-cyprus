@@ -122,13 +122,45 @@ export const TOPICS: ReadonlyArray<Topic> = [
 		name: "Moving to Cyprus",
 		shortName: "Moving here",
 		description:
-			"Visas, residency routes, tax status, buying property and planning the move.",
+			"Visas, residency routes, tax status, setting up a business and planning the move.",
 		icon: "suitcase",
 		image: topicImage("moving-here", 1067),
 	},
 ];
 
 const BY_SLUG = new Map<string, Topic>(TOPICS.map((t) => [t.slug, t]));
+
+/**
+ * The Property area (/property/): new-build homes, buying guides and property
+ * tools. Not one of the eight topics (no topic hub, not in the Topics menu);
+ * property guides, directories and tools have it as their primary home
+ * instead of a topic (see lib/topic-map.ts and lib/property.ts).
+ */
+export const PROPERTY_SLUG = "property";
+export type AreaSlug = typeof PROPERTY_SLUG;
+/** Primary home of a guide, directory or tool: a topic or the Property area. */
+export type ItemTopicSlug = TopicSlug | AreaSlug;
+export type Area = Omit<Topic, "slug" | "image"> & { slug: AreaSlug };
+
+export const PROPERTY_AREA: Area = {
+	slug: PROPERTY_SLUG,
+	name: "Property",
+	shortName: "Property",
+	description:
+		"New-build homes for sale in Limassol, Paphos, Larnaca and Ayia Napa, with buying guides and calculators.",
+	icon: "building",
+};
+
+export function isItemTopicSlug(
+	v: string | null | undefined,
+): v is ItemTopicSlug {
+	return v === PROPERTY_SLUG || isTopicSlug(v);
+}
+
+/** A topic, or the Property area for "property". */
+export function itemTopicBySlug(slug: string): Topic | Area | undefined {
+	return slug === PROPERTY_SLUG ? PROPERTY_AREA : BY_SLUG.get(slug);
+}
 
 export function isTopicSlug(v: string | null | undefined): v is TopicSlug {
 	return typeof v === "string" && BY_SLUG.has(v);
@@ -138,8 +170,11 @@ export function topicBySlug(slug: string): Topic | undefined {
 	return BY_SLUG.get(slug);
 }
 
-/** Hub URL: "/{slug}/", except Moving here which keeps /moving-to-cyprus/. */
-export function hubHref(topic: Topic | TopicSlug): string {
+/**
+ * Hub URL: "/{slug}/", except Moving here which keeps /moving-to-cyprus/.
+ * The Property area's hub is /property/.
+ */
+export function hubHref(topic: Topic | Area | ItemTopicSlug): string {
 	const slug = typeof topic === "string" ? topic : topic.slug;
 	return slug === "moving-here" ? "/moving-to-cyprus/" : `/${slug}/`;
 }
