@@ -88,6 +88,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			priority: 0.6,
 		},
 		{
+			url: `${SITE_URL}/property/`,
+			lastModified: now,
+			changeFrequency: "weekly" as const,
+			priority: 0.7,
+		},
+		{
 			url: `${SITE_URL}/listings/`,
 			lastModified: now,
 			changeFrequency: "monthly" as const,
