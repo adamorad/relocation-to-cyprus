@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
 import { allTopicItems } from "@/lib/topic-map";
-import { hubHref, TOPICS } from "@/lib/topics";
+import { hubHref, PROPERTY_AREA, TOPICS } from "@/lib/topics";
 import ExploreClient from "./ExploreClient";
 
 const SITE_URL = "https://realcy.app";
@@ -35,7 +35,8 @@ type BrowseGroup = {
 /**
  * One group per topic: the heading links to the topic hub, then the listed
  * directories whose primary topic it is (de-listed directories never
- * appear). Built from lib/topics.ts and lib/topic-map.ts, so it follows the
+ * appear). The Property area follows the topics with its directories,
+ * developments and developers. Built from lib/topics.ts and lib/topic-map.ts, so it follows the
  * topic structure. Replaces the old private category list (archived at
  * archive/app/explore/categories.ts).
  */
@@ -51,13 +52,23 @@ const BROWSE: BrowseGroup[] = [
 			.map((d) => ({ name: d.title, href: d.href })),
 	})),
 	{
+		title: PROPERTY_AREA.name,
+		href: hubHref(PROPERTY_AREA),
+		items: [
+			{ name: "New developments", href: "/listings/" },
+			{ name: "Developers", href: "/developers/" },
+			...directories
+				.filter((d) => d.topic === PROPERTY_AREA.slug)
+				.map((d) => ({ name: d.title, href: d.href })),
+		],
+	},
+	{
 		title: "More ways to browse",
 		items: [
 			{ name: "All guides", href: "/guides/" },
 			{ name: "All tools", href: "/tools/" },
 			{ name: "All local directories", href: "/sections/" },
 			{ name: "Cities", href: "/regions/" },
-			{ name: "New developments", href: "/listings/" },
 		],
 	},
 ];
@@ -76,7 +87,7 @@ export default function ExplorePage() {
 					<ExploreClient />
 				</Suspense>
 
-				<Section title="Browse by topic" className="mt-12">
+				<Section title="Browse by topic or area" className="mt-12">
 					<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 						{BROWSE.map((group) => (
 							<div

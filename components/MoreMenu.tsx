@@ -1,7 +1,12 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { isActive, SECONDARY_NAV, TOPIC_NAV } from "@/lib/nav-links";
+import {
+	isActive,
+	isNavActive,
+	SECONDARY_NAV,
+	TOPIC_NAV,
+} from "@/lib/nav-links";
 import { Icon } from "./icons/Icon";
 import { NavDisclosure } from "./NavDisclosure";
 
@@ -11,13 +16,13 @@ const ITEM =
 /** Desktop "More" disclosure holding the secondary links. */
 export function MoreMenu() {
 	const pathname = usePathname() ?? "/";
-	const hasActive = SECONDARY_NAV.some((l) => isActive(pathname, l.href));
+	const hasActive = SECONDARY_NAV.some((l) => isNavActive(pathname, l));
 	return (
 		<NavDisclosure label="More" panelId="site-more" active={hasActive}>
 			{(close) => (
 				<ul aria-label="More">
 					{SECONDARY_NAV.map((item) => {
-						const active = isActive(pathname, item.href);
+						const active = isNavActive(pathname, item);
 						return (
 							<li key={item.href}>
 								<Link

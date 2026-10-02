@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import {
 	isActive,
+	isNavActive,
 	PRIMARY_NAV,
 	SECONDARY_NAV,
 	TOPIC_NAV,
@@ -221,7 +222,7 @@ export function MobileMenu() {
 									<hr className="my-4 border-line" />
 									<ul className="flex flex-col gap-1">
 										{SECONDARY_NAV.map((item) => {
-											const active = isActive(pathname, item.href);
+											const active = isNavActive(pathname, item);
 											return (
 												<li key={item.href}>
 													<Link
