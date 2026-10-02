@@ -98,7 +98,7 @@ export const DIRECTORIES: ReadonlyArray<DirectoryEntry> = [
 // Guides (80)
 // ---------------------------------------------------------------------------
 
-export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
+export const GUIDE_TOPICS = {
 	// Health
 	"gesy-registration-guide": { topic: "health", also: ["money-and-paperwork"] },
 	"pharmacies-medication": { topic: "health" },
@@ -333,13 +333,16 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 		topic: "property",
 		why: "Choosing a conveyancing lawyer; shown under Professionals on /property/.",
 	},
-};
+} satisfies Record<string, TopicAssignment>;
+
+/** Every guide slug in GUIDES (asserted by topic-map-check). */
+export type GuideSlug = keyof typeof GUIDE_TOPICS;
 
 // ---------------------------------------------------------------------------
 // Directories (28 routes under /sections/)
 // ---------------------------------------------------------------------------
 
-export const DIRECTORY_TOPICS: Record<string, TopicAssignment> = {
+export const DIRECTORY_TOPICS = {
 	"specialist-doctors": { topic: "health" },
 	"mental-health-services": { topic: "health" },
 	"veterinary-services": {
@@ -431,7 +434,10 @@ export const DIRECTORY_TOPICS: Record<string, TopicAssignment> = {
 		topic: "property",
 		why: "Managing a property you own or let; moved from Home & bills in Phase 4.",
 	},
-};
+} satisfies Record<string, TopicAssignment>;
+
+/** Every directory route under app/sections/ (asserted by topic-map-check). */
+export type DirectorySlug = keyof typeof DIRECTORY_TOPICS;
 
 // ---------------------------------------------------------------------------
 // Tools (live tools; redirect stubs are not mapped)
