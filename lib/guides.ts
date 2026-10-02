@@ -30,6 +30,24 @@ import {
 	VISITOR_PERMIT_MONTHLY_INCOME_COUPLE,
 } from "./facts/tax";
 import {
+	FERRY_2026_BOOKINGS_OPENED,
+	FERRY_2026_FIRST,
+	FERRY_2026_LAST,
+	FERRY_ADULT_ONE_WAY,
+	FERRY_ADULT_TAX,
+	FERRY_CROSSING_HOURS,
+	FERRY_EMBARK_OPENS_HOURS,
+	FERRY_MAX_VEHICLE_M,
+	FERRY_OPERATOR,
+	FERRY_PET_CABINS,
+	FERRY_PET_MAX_KG,
+	FERRY_PET_ONE_WAY,
+	FERRY_SOURCES,
+	FERRY_VEHICLE_ONE_WAY,
+	FERRY_VEHICLE_SALES_CLOSE_DAYS,
+	FERRY_VESSEL,
+} from "./facts/ferry";
+import {
 	AIRPORT_EXPRESS_FARE,
 	dayNight,
 	FEES_AMERICAN_ACADEMY_LARNACA,
@@ -1693,55 +1711,55 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "ferry-routes-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-02",
+		lastChecked: "2026-10-02",
+		sources: FERRY_SOURCES,
 		category: "transport",
-		title: "Cyprus Ferry Routes 2026: Piraeus, Crete & Egypt",
-		description:
-			"Limassol to Piraeus via Crete with Grimaldi Lines (36-40 hrs). Cyprus to Egypt and Haifa ferry status, car rates from €250 and how to book in 2026.",
+		title: "Cyprus Ferry Routes 2026: Limassol to Piraeus (Greece)",
+		description: `Limassol to Piraeus on the ${FERRY_VESSEL}: summer only (29 May to 1 Sep in 2026), about ${FERRY_CROSSING_HOURS} hours, seats from ${eur(FERRY_ADULT_ONE_WAY.seat)} with taxes. Egypt, Lebanon, Israel and 2027 status.`,
 		sections: [
 			{
 				heading: "The state of Cyprus ferry services",
-				body: "Cyprus has no land borders — it is an island — and for most of its modern history passenger ferry services have been secondary to air travel for residents. The discontinuation of the Limassol-Haifa route (previously operated by Nissos Cyprus) and the suspension of some Mediterranean routes have reduced options over the years. As of 2026, the most reliable scheduled passenger service is the Grimaldi Lines service connecting Limassol with Piraeus (Athens's port), routing via Crete (Heraklion). This service operates roughly weekly during the high season (approximately April to October) with reduced frequency in winter. It is a cargo-passenger service — meaning the primary commercial purpose is freight, and the passenger capacity is secondary — which sets the tone: this is a comfortable but utilitarian voyage, not a luxury cruise experience. Seasonal cruise-style routes operated by Louis Cruises and other Mediterranean operators add additional options in summer.",
+				body: `Cyprus is an island, and for most residents flying is the normal way off it. In 2026 the only scheduled passenger ferry from the Republic of Cyprus was the seasonal link between Limassol and Piraeus (the port of Athens), set up by the Republic of Cyprus and announced each year by the Shipping Deputy Ministry. It ran for its fifth year in 2026, operated by ${FERRY_OPERATOR} with the ship ${FERRY_VESSEL}. It is a summer-only route: the first sailing left Limassol on ${FERRY_2026_FIRST} and the last left Piraeus on ${FERRY_2026_LAST}. There is no winter service, so from September until the next season starts there is no passenger ferry between Cyprus and Greece. The ship sails direct between Limassol and Piraeus with no calls in Crete or anywhere else, and there is no scheduled passenger ferry from Larnaca port. Cruise ships do call at Limassol, but those are holidays sold by cruise lines, not point-to-point transport.\n\nPlanning for 2027: the route is confirmed year by year, and at the time of checking (October 2026) the operator's website showed only the 2026 schedule. Watch for the Shipping Deputy Ministry's announcement in spring (in 2026 it came on 16 April, and bookings opened on ${FERRY_2026_BOOKINGS_OPENED}) and check the timetable and price list at scandroholding.com. The ship, dates and fares can all change from one year to the next.`,
 			},
 			{
-				heading:
-					"Limassol to Piraeus and Crete with Grimaldi Lines: what to expect",
-				body: "The Grimaldi service from Limassol to Piraeus takes approximately 36–40 hours, with a stop in Heraklion adding several hours. Deck passage (reclining seat, access to public areas, no cabin) starts from approximately €80 per person each way. An interior cabin (no window) runs €120–€160 per person; a sea-view cabin is €200–€280. Cabins sleep 2–4 passengers. The ships are Italian-operated and well-maintained: there is a self-service restaurant, a bar, and adequate public seating. The crossing can be choppy between Crete and Piraeus during winter months — this is the Eastern Mediterranean, not the English Channel, but it is not always flat either. Booking is done through the Grimaldi Lines website (grimaldi-lines.com) or through local travel agents in Limassol; booking well in advance during summer is strongly recommended as the limited passenger capacity sells out. Check the current schedule directly with Grimaldi before planning, as sailing dates and routes change seasonally.",
+				heading: `Limassol to Piraeus on the ${FERRY_VESSEL}: what to expect`,
+				body: `The scheduled crossing takes about ${FERRY_CROSSING_HOURS} hours in each direction. In 2026, for example, the Tuesday sailing left Limassol at 13:00 and reached Piraeus at 20:00 on Wednesday, and the return left Piraeus at 04:00 on Thursday and reached Limassol at 11:00 on Friday. There were one or two sailings a week each way through June, July and August. All cabins are first-class cabins with beds, a shower and a toilet, and there are cabins for passengers with reduced mobility and for passengers with pets. The cheapest option is a reclining "Airbus" seat. One-way adult fares in 2026, including port taxes of ${eur(FERRY_ADULT_TAX)}, were ${eur(FERRY_ADULT_ONE_WAY.seat)} for a seat, ${eur(FERRY_ADULT_ONE_WAY.cabinQuad)} per person in a cabin shared by four, ${eur(FERRY_ADULT_ONE_WAY.cabinDouble)} per person in a cabin for two and ${eur(FERRY_ADULT_ONE_WAY.cabinSingle)} for a cabin on your own. Children aged 3 to 12 paid reduced fares and children under 3 travelled free. If you book a double or four-berth cabin you pay for every berth, though you can claim back the port taxes for berths left empty. On board there is a restaurant, coffee shop, bar, paid wifi and a doctor. Tickets are sold online through the operator's booking page at scandroholding.com and through its agents, Orthodoxou Aviation in Cyprus and Proton Aviation Services in Greece. The only travel documents accepted are a civil ID card or a passport.`,
 			},
 			{
 				heading: "Vehicle transport on the ferry",
-				body: "Transporting a vehicle from Cyprus to Greece (or vice versa) on the Grimaldi service is one of the most practical aspects of the route for relocators. Vehicle rates start from approximately €200–€350 for a standard car, depending on vehicle length and the specific sailing. A standard 4m car runs approximately €250. Motorhomes and campervans pay by length and run €400–€600. The vehicle is driven onto the ferry at Limassol and driven off at Heraklion or Piraeus; you cannot access your vehicle during the crossing for safety reasons — so pack what you need for the voyage in your hand luggage. This route is used by Cyprus residents transporting cars to Greece for sale or vice versa, by people moving households, and occasionally by tourists doing a longer road-trip itinerary (ferry Cyprus to Greece, drive north through Greece and the Balkans). Booking vehicle transport requires providing exact vehicle dimensions; do this accurately as weight and size restrictions apply.",
+				body: `The ship carries accompanied cars, motorcycles, motorhomes and caravans up to ${FERRY_MAX_VEHICLE_M} m long, plus bicycles. In 2026 a car or motorhome up to ${FERRY_MAX_VEHICLE_M} m cost ${eur(FERRY_VEHICLE_ONE_WAY.car)} to ${eur(FERRY_VEHICLE_ONE_WAY.motorhome)} one way including taxes, a motorcycle ${eur(FERRY_VEHICLE_ONE_WAY.motorcycle)} and a bicycle nothing; the driver and passengers pay their own fares on top. The rules are strict. The vehicle must travel with its owner, or with a first-degree relative or spouse holding a certified authorisation, and each passenger may bring only one vehicle. Company, commercial, van-type and unaccompanied vehicles are refused, so a rental car is unlikely to be accepted, and a car part-owned by a bank needs the bank's written consent. Vehicles that entered Cyprus through ports or airports in the north cannot board. Vehicle tickets close ${FERRY_VEHICLE_SALES_CLOSE_DAYS} days before departure, and the vehicle documents (ownership title, ID or passport, valid road tax for Cypriot cars, import documents for other cars) must be sent at least 4 days before sailing. Fully electric and plug-in hybrid cars must have no more than 40% battery charge, and charging on board is not allowed. You cannot get to the car during the crossing. Release of a vehicle arriving in Cyprus is subject to customs approval, so read the operator's vehicle terms before you book.`,
 			},
 			{
 				heading: "Cyprus to Egypt ferry, Haifa, Lebanon and seasonal routes",
-				body: "Seasonal passenger services from Cyprus to Lebanon (Tripoli or Beirut) have existed historically but are subject to geopolitical disruption, so current availability depends on the political situation in Lebanon and should be verified directly with Limassol Port Authority (limassolport.com.cy) or local travel agents at the time of travel. Services to Egypt (Port Said or Alexandria) have operated intermittently; as of early 2026 there is no regular scheduled passenger service, though freight connections exist, so there is no current timetable for Cyprus to Egypt or Egypt to Cyprus by ferry. The Limassol to Haifa passenger route (previously operated by Nissos Cyprus) was discontinued and is not part of the current Grimaldi service. The Latchi harbour in the Paphos district is relevant for boat hire and private yacht movement rather than commercial ferry services. It is a popular departure point for day trips to the Akamas peninsula sea caves and for private charters to Turkey (Kas or Antalya, roughly 90 nautical miles). Charter hire from Latchi for day trips runs €150–€350 depending on the boat size and duration.",
+				body: "We could not find a scheduled passenger ferry from the Republic of Cyprus to Egypt, Israel (Haifa) or Lebanon with a published 2026 timetable. Passenger routes to these countries have run in the past and stopped, so if you see one advertised, confirm it with the operator and the Cyprus Ports Authority (cpa.gov.cy) before you rely on it.\n\nSea links to Turkey operate from ports in the north of the island, in the areas not under the effective control of the Government of the Republic of Cyprus. These are a separate legal matter. The Republic of Cyprus Ministry of Foreign Affairs states that the legal points of entry are Larnaca and Paphos airports and the ports of Larnaca, Limassol, Latsi and Paphos, and that entering the Republic through any port or airport in the north breaches its national law. The Limassol to Piraeus ferry also refuses vehicles that entered Cyprus that way. Check current official travel advice before planning a journey that uses those ports.\n\nLatchi (Latsi) harbour in Paphos district is one of the legal ports of entry but has no passenger ferry; it is a base for boat trips and private yachts. For day trips to the Akamas coast and its sea caves, compare prices with the boat operators directly.",
 			},
 			{
 				heading:
 					"Practical tips: booking, packing, and the overnight experience",
-				body: "Four pieces of practical advice for the Limassol-Piraeus crossing. First, book a cabin rather than deck passage if you are doing the full 36-hour journey — the price difference (€50–€100) is small relative to the quality difference, and deck seats are uncomfortable for a full day and night. Second, bring your own food supplements — the on-board restaurant is functional but limited and expensive; a bag of snacks, fruit, and good coffee from the supermarket makes the journey significantly better. Third, boarding begins 3 hours before departure, and vehicles are loaded before passengers — if you are transporting a car, arrive at the port with considerable margin. Fourth, check the Grimaldi schedule against your preferred travel date rather than assuming weekly sailings — during the shoulder season (October-November and March-April) the frequency drops to every 10–14 days, and missing your sailing by a day can mean a long wait for the next one.",
+				body: `Book early. In 2026 bookings opened on ${FERRY_2026_BOOKINGS_OPENED}, about five weeks before the first sailing, and the operator advised early reservations because of high summer demand. Vehicle tickets close ${FERRY_VEHICLE_SALES_CLOSE_DAYS} days before departure and foot passenger tickets 3 days before, so this is not a turn-up-and-go service. Embarkation opens ${FERRY_EMBARK_OPENS_HOURS} hours before departure and closes 1 hour before. In Limassol all passengers check in at the Limassol Cruise Terminal; in Piraeus the ship used gate E11 in 2026 (vehicles enter through gate E9). For a ${FERRY_CROSSING_HOURS}-hour crossing a cabin is worth the extra over a seat, especially if you can share it. Pets: dogs and cats up to ${FERRY_PET_MAX_KG} kg travel only in one of the ${FERRY_PET_CABINS} pet-friendly cabins, which must be booked in advance, at ${eur(FERRY_PET_ONE_WAY)} per pet each way and a maximum of two pets per passenger. Certain breeds are refused, pets are not allowed in the public areas, and the pet documents are set out in the operator's terms. There are no cash machines on board, so bring a card or cash. Changing the date after your ticket is issued costs €25 per adult per trip.`,
 			},
 		],
 		faqs: [
 			{
 				q: "Is there a ferry from Cyprus to Greece in 2026?",
-				a: "Yes. Grimaldi Lines operates a cargo-passenger service between Limassol and Piraeus (Athens) in 2026, routing via Heraklion (Crete). The crossing takes approximately 36–40 hours. The service runs roughly weekly during high season (April to October) and reduces frequency in winter. Book directly at grimaldi-lines.com or through a Limassol travel agent, and confirm current schedules before planning — sailing dates change seasonally.",
+				a: `Yes, in summer only. In 2026 the ${FERRY_VESSEL}, operated by ${FERRY_OPERATOR}, sailed between Limassol and Piraeus (Athens) from ${FERRY_2026_FIRST} to ${FERRY_2026_LAST}, with one or two sailings a week each way and no stop in Crete. That season has ended and there is no winter service. For 2027, watch for the Shipping Deputy Ministry's announcement in spring and check the timetable at scandroholding.com.`,
 			},
 			{
 				q: "Is there a ferry from Cyprus to Egypt?",
-				a: "As of early 2026, there is no regular scheduled passenger ferry service between Cyprus and Egypt. Historical routes connecting Limassol with Port Said or Alexandria have operated intermittently but are not currently running on a reliable schedule. Freight connections exist. Check with Limassol Port Authority (limassolport.com.cy) for the most current status — services can resume depending on commercial demand and regional conditions.",
+				a: "Not on any published timetable that we could find for 2026. The only scheduled passenger ferry from the Republic of Cyprus in 2026 was the summer link between Limassol and Piraeus in Greece. Check with the Cyprus Ports Authority (cpa.gov.cy) for the current position before planning a trip that depends on a sea crossing to Egypt.",
 			},
 			{
 				q: "Can I take my car on the ferry from Cyprus to Greece?",
-				a: "Yes. The Grimaldi Lines Limassol-Piraeus service carries vehicles. A standard car (up to 4m) costs approximately €250 each way. You drive the vehicle onto the ship at Limassol and off at Heraklion or Piraeus; you cannot access the car during the crossing. Book vehicle transport in advance with exact vehicle dimensions — weight and size restrictions apply.",
+				a: `Yes, if it is your own vehicle and you travel with it. In 2026 a car up to ${FERRY_MAX_VEHICLE_M} m cost ${eur(FERRY_VEHICLE_ONE_WAY.car)} one way including taxes, on top of your own fare. Company, commercial and van-type vehicles are not accepted, vehicle tickets close ${FERRY_VEHICLE_SALES_CLOSE_DAYS} days before departure, and the vehicle documents must be sent at least 4 days before sailing. Read the operator's vehicle terms before booking.`,
 			},
 			{
 				q: "How long is the ferry from Cyprus to Greece?",
-				a: "The Grimaldi Lines crossing from Limassol to Piraeus takes approximately 36–40 hours, with a stop in Heraklion (Crete). Direct sailing time to Heraklion alone is roughly 18–20 hours. There is no direct overnight ferry that reaches Piraeus in under 30 hours — this is a significant sea crossing, not a short hop.",
+				a: `About ${FERRY_CROSSING_HOURS} hours. In 2026 sailings left Limassol at 13:00 (12:00 on Saturdays) and reached Piraeus at 20:00 (19:00) the next day, with no stops on the way. It is a long sea crossing with a night on board, so most passengers book a cabin.`,
 			},
 			{
 				q: "Is there a ferry from Cyprus to Lebanon?",
-				a: "Historically yes, but the Limassol-Beirut and Limassol-Tripoli passenger routes have been subject to repeated suspensions due to geopolitical instability in Lebanon. As of 2026 no regular scheduled passenger service is running. Verify the current status with Limassol Port Authority (limassolport.com.cy) before planning travel that depends on this route.",
+				a: "Not on any published timetable that we could find for 2026. Passenger routes between Limassol and Lebanon have run in the past but have not operated as a regular service. Check with the Cyprus Ports Authority (cpa.gov.cy) before planning travel that depends on this route.",
 			},
 		],
 	},
@@ -2704,7 +2722,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "Can I take a long-term rental car in Cyprus outside the country?",
-				a: "Most standard monthly contracts in Cyprus prohibit taking the vehicle outside Cyprus, or restrict it to EU countries only. Taking the car on a ferry to Greece or crossing into the non-controlled areas of Cyprus typically requires advance written authorisation from the rental provider. Always confirm the geographic restriction clause before signing, and obtain a written letter from the provider if cross-border travel is part of your plans.",
+				a: "Most standard monthly contracts in Cyprus prohibit taking the vehicle outside Cyprus, or restrict it to EU countries only. Crossing into the non-controlled areas of Cyprus typically requires advance written authorisation from the rental provider. A rental car is also unlikely to be accepted on the summer ferry to Greece, whose operator carries only vehicles travelling with their owner and refuses company and commercial vehicles. Always confirm the geographic restriction clause before signing, and obtain a written letter from the provider if cross-border travel is part of your plans.",
 			},
 		],
 	},
