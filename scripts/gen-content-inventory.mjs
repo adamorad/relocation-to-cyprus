@@ -89,12 +89,14 @@ const regions = records(read("lib/regions.ts"), "slug").map((r) => ({
 }));
 
 // ── Listings (count only) ─────────────────────────────────────────────────────
-// The data file also holds listings hidden from the site (see isHiddenListing in
-// lib/listingsData.ts). This script cannot import TypeScript, so the hidden
-// count is a fixed note and the total is labelled as including them.
-const HIDDEN_LISTINGS = 33;
-const listingsCount = (read("lib/data/listings.json").match(/"slug":/g) || [])
-	.length;
+// The data file also holds listings hidden from the site (rule in
+// lib/listingRegion.ts). This script cannot import TypeScript, so the hidden
+// count is the source total minus the generated visible subset
+// (lib/data/listings.visible.json, see pnpm data:listings).
+const countSlugs = (file) => (read(file).match(/"slug":/g) || []).length;
+const listingsCount = countSlugs("lib/data/listings.json");
+const HIDDEN_LISTINGS =
+	listingsCount - countSlugs("lib/data/listings.visible.json");
 const listingsLabel = `${listingsCount} listings in data, ${HIDDEN_LISTINGS} of them hidden from the site`;
 
 // ── Planned roadmap (cross-checked against existing guide slugs) ───────────────

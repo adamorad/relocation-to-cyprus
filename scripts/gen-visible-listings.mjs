@@ -6,9 +6,9 @@
 // lib/data/listings.json stays the untouched source of truth.
 //
 // Run after changing lib/data/listings.json or the classifier:
-//   node scripts/gen-visible-listings.mjs
+//   pnpm data:listings
 // Check only (fails when the committed file is stale):
-//   node scripts/gen-visible-listings.mjs --check
+//   pnpm data:listings:check
 // The build also fails when the file is stale (guard in lib/listings.ts).
 // Uses Node's built-in TypeScript type stripping (Node 22.15+ / 24).
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
@@ -53,7 +53,7 @@ if (process.argv.includes("--check")) {
 	const current = existsSync(OUT) ? readFileSync(OUT, "utf8") : "";
 	if (current !== text) {
 		console.error(
-			"lib/data/listings.visible.json is stale. Run: node scripts/gen-visible-listings.mjs",
+			"lib/data/listings.visible.json is stale. Run: pnpm data:listings",
 		);
 		process.exit(1);
 	}

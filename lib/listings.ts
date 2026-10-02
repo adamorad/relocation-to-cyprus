@@ -24,7 +24,7 @@ if (
 	) !== JSON.stringify(visibleListings)
 ) {
 	throw new Error(
-		"lib/data/listings.visible.json is stale. Run: node scripts/gen-visible-listings.mjs",
+		"lib/data/listings.visible.json is stale. Run: pnpm data:listings",
 	);
 }
 
