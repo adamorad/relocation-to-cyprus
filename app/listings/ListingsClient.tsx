@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { UrlPrefilter, useUrlFilter } from "@/components/templates/UrlFilter";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card, CardGrid } from "@/components/ui/Card";
@@ -25,6 +26,21 @@ function isCity(v: string | null): v is CitySlug {
 	return v !== null && Object.hasOwn(CITY_SLUGS, v);
 }
 
+const parseCity = (q: string): Filter | undefined =>
+	isCity(q) ? q : undefined;
+
+const CITY_VALUES = Object.keys(CITY_SLUGS);
+
+/**
+ * Pre-hydration paint for `?city=`: UrlPrefilter hides every card whose
+ * data-filter-item lacks the city; each card carries its city only while it
+ * is within that city's first STEP, and this rule shows those (the static
+ * markup hides them when they are past the all-cities first STEP).
+ */
+const SHOW_RULES = CITY_VALUES.map(
+	(c) => `[data-url-filter="${c}"] [data-filter-item~="${c}"]{display:flex}`,
+).join("");
+
 /**
  * City filter (URL-readable `?city=`), photo cards and a "Show more" step of
  * 24. Every card is in the static HTML (so every listing link is crawlable);
@@ -36,13 +52,17 @@ export default function ListingsClient({
 }: {
 	listings: ListingCardData[];
 }) {
-	const [city, setCity] = useState<Filter>("all");
+	const {
+		value: city,
+		set: setCity,
+		scopeRef,
+	} = useUrlFilter<Filter>({
+		param: "city",
+		path: "/listings/",
+		initial: "all",
+		parse: parseCity,
+	});
 	const [shown, setShown] = useState(STEP);
-
-	useEffect(() => {
-		const q = new URLSearchParams(window.location.search).get("city");
-		if (isCity(q)) setCity(q);
-	}, []);
 
 	const options: ChipOption<Filter>[] = [
 		{ value: "all", label: "All cities", count: listings.length },
@@ -56,17 +76,19 @@ export default function ListingsClient({
 	function onChange(next: Filter) {
 		setCity(next);
 		setShown(STEP);
-		const url = next === "all" ? "/listings/" : `/listings/?city=${next}`;
-		window.history.replaceState(null, "", url);
 	}
 
 	const matching =
 		city === "all" ? listings : listings.filter((l) => l.city === city);
 	const rank = new Map(matching.map((l, i) => [l.slug, i]));
 	const visibleCount = Math.min(shown, matching.length);
+	const cityRank: Record<string, number> = {};
 
 	return (
-		<>
+		<div ref={scopeRef}>
+			<UrlPrefilter param="city" values={CITY_VALUES} />
+			{/* biome-ignore lint/security/noDangerouslySetInnerHtml: static, built from slugs */}
+			<style dangerouslySetInnerHTML={{ __html: SHOW_RULES }} />
 			<ChipGroup
 				label="Filter by city"
 				options={options}
@@ -83,8 +105,14 @@ export default function ListingsClient({
 				{listings.map((l) => {
 					const i = rank.get(l.slug);
 					const show = i !== undefined && i < shown;
+					const n = cityRank[l.city] ?? 0;
+					cityRank[l.city] = n + 1;
 					return (
-						<li key={l.slug} className={show ? "flex" : "hidden"}>
+						<li
+							key={l.slug}
+							className={show ? "flex" : "hidden"}
+							data-filter-item={n < STEP ? l.city : ""}
+						>
 							<Card
 								variant="photo"
 								href={`/listings/${l.slug}/`}
@@ -106,7 +134,10 @@ export default function ListingsClient({
 					<Button
 						variant="secondary"
 						size="lg"
-						onClick={() => setShown((n) => n + STEP)}
+						onClick={() => {
+							scopeRef.current?.removeAttribute("data-url-filter");
+							setShown((n) => n + STEP);
+						}}
 					>
 						Show more
 					</Button>
@@ -115,6 +146,6 @@ export default function ListingsClient({
 					</p>
 				</div>
 			) : null}
-		</>
+		</div>
 	);
 }
