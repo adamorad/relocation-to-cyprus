@@ -24,15 +24,20 @@ export async function generateMetadata({
 	const dev = developerBySlug(slug);
 	if (!dev) return {};
 	const name = titleCaseName(dev.name);
-	const desc =
-		dev.description?.slice(0, 160) ??
-		`${name}: Cyprus property developer with ${dev.listings.length} new-build projects.`;
+	const count = dev.listings.length;
+	const noun = count === 1 ? "project" : "projects";
+	const regions = Array.from(
+		new Set(dev.listings.map((l) => l.regionCity)),
+	).sort();
+	const where = regions.length ? ` in ${regions.join(", ")}` : " in Cyprus";
+	const title = `${name}: ${count} new-build ${noun}${where}`;
+	const desc = `${name} new-build ${noun}${where}: ${count} ${noun} with locations, unit prices and details to compare. Browse every ${name} development on Realcy.`;
 	return {
-		title: `${name}: Cyprus new developments`,
+		title,
 		description: desc,
 		alternates: { canonical: `/developers/${dev.slug}/` },
 		openGraph: {
-			title: `${name}: Cyprus new developments`,
+			title,
 			description: desc,
 			url: `${SITE_URL}/developers/${dev.slug}/`,
 			type: "website",
