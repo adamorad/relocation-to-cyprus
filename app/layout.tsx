@@ -7,9 +7,13 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { GUIDES } from "@/lib/guides";
 import { NEWSLETTER_ENABLED } from "@/lib/newsletter";
 import { REGIONS } from "@/lib/regions";
+import { SECTIONS_INDEX } from "@/lib/sections-index";
+import { TOOLS } from "@/lib/tools-index";
 import { hubHref, TOPICS } from "@/lib/topics";
 
 const GUIDE_COUNT = GUIDES.length;
+const DIRECTORY_COUNT = SECTIONS_INDEX.length;
+const TOOL_COUNT = TOOLS.length;
 import "./globals.css";
 
 const manrope = Manrope({
@@ -35,7 +39,8 @@ export const viewport: Viewport = {
 };
 
 const SITE_NAME = "RealCy.app";
-const SITE_TAGLINE = "Living in Cyprus: Guides, Directories & New Builds";
+const SITE_TAGLINE = "Everyday life in Cyprus, made easier";
+const SITE_DESCRIPTION = `Practical help for everyday life in Cyprus: ${GUIDE_COUNT} guides, ${DIRECTORY_COUNT} local directories and ${TOOL_COUNT} tools for healthcare, getting around, bills, paperwork, food, family and leisure.`;
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://realcy.app"),
@@ -51,18 +56,18 @@ export const metadata: Metadata = {
 		default: `${SITE_NAME} - ${SITE_TAGLINE}`,
 		template: `%s · ${SITE_NAME}`,
 	},
-	description: `Practical help for life in Cyprus: guides, 30+ service directories, ${GUIDE_COUNT} in-depth guides, planning tools and new-build listings.`,
+	description: SITE_DESCRIPTION,
 	keywords: [
-		"Cyprus real estate",
-		"Cyprus new developments",
-		"Cyprus apartments for sale",
-		"Cyprus villas",
-		"Paphos apartments",
-		"Limassol new builds",
-		"Larnaca real estate",
-		"Ayia Napa apartments",
-		"relocate to Cyprus",
-		"Cyprus residency real estate",
+		"living in Cyprus",
+		"life in Cyprus",
+		"moving to Cyprus",
+		"Cyprus expat guide",
+		"GESY Cyprus",
+		"Cyprus residence permit",
+		"Limassol",
+		"Paphos",
+		"Larnaca",
+		"Ayia Napa",
 	],
 	authors: [{ name: SITE_NAME }],
 	openGraph: {
@@ -70,7 +75,7 @@ export const metadata: Metadata = {
 		locale: "en_GB",
 		siteName: SITE_NAME,
 		title: `${SITE_NAME} - ${SITE_TAGLINE}`,
-		description: `Your guide to living in Cyprus: practical guides, 30+ service directories, planning tools, and new-build real estate.`,
+		description: SITE_DESCRIPTION,
 		images: [
 			{
 				url: "https://realcy.app/og-default.webp",
@@ -83,7 +88,7 @@ export const metadata: Metadata = {
 	twitter: {
 		card: "summary_large_image",
 		title: `${SITE_NAME} - ${SITE_TAGLINE}`,
-		description: `Your guide to living in Cyprus: practical guides, 30+ service directories, planning tools, and new-build real estate.`,
+		description: SITE_DESCRIPTION,
 		images: ["https://realcy.app/og-default.webp"],
 	},
 	robots: {
@@ -98,13 +103,13 @@ export const metadata: Metadata = {
 	},
 };
 
-/** Everyday browsing; property sits last, outside the main frame (Phase 4). */
+/** Everyday browsing; Property sits last, outside the main frame (Phase 4). */
 const FOOTER_EXPLORE_LINKS: ReadonlyArray<{ label: string; href: string }> = [
 	{ label: "All guides", href: "/guides/" },
 	{ label: "Local directories", href: "/sections/" },
 	{ label: "Practical tools", href: "/tools/" },
 	{ label: "Search", href: "/explore/" },
-	{ label: "New developments", href: "/listings/" },
+	{ label: "Property", href: "/property/" },
 ];
 
 /** Small print row: who we are and the legal pages. */

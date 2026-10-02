@@ -25,7 +25,11 @@ export default function DevelopersIndexPage() {
 	return (
 		<HubTemplate
 			header={{
-				breadcrumbs: [{ label: "Home", href: "/" }, { label: "Developers" }],
+				breadcrumbs: [
+					{ label: "Home", href: "/" },
+					{ label: "Property", href: "/property/" },
+					{ label: "Developers" },
+				],
 				eyebrow: "Property developers",
 				title,
 				intro: `${DEVELOPERS.length} developers behind ${projectCount} new-build projects across Cyprus.`,

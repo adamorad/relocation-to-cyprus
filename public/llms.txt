@@ -1,8 +1,8 @@
 # RealCy.app
 
-> Independent guide to everyday life in Cyprus: practical guides, local directories and planning tools for residents, organised into eight topics, plus city guides for Limassol, Paphos, Larnaca and Ayia Napa and new-build real estate listings. Also serves people planning a move to Cyprus.
+> Independent guide to everyday life in Cyprus: practical guides, local directories and planning tools for residents, organised into eight topics, plus city guides for Limassol, Paphos, Larnaca and Ayia Napa. Also serves people planning a move to Cyprus. New-build property sits in a separate Property area.
 
-Every guide, directory and tool belongs to one primary topic. Each topic has a hub page listing its guides, directories and tools (some items also appear on a second topic's hub). Hubs accept `?city=limassol|paphos|larnaca|ayia-napa` to show directories with entries in that city.
+Every guide, directory and tool belongs to one primary topic (property items belong to the Property area instead). Each topic has a hub page listing its guides, directories and tools (some items also appear on a second topic's hub). Hubs accept `?city=limassol|paphos|larnaca|ayia-napa` to show directories with entries in that city.
 
 ## Topics
 
@@ -13,7 +13,7 @@ Every guide, directory and tool belongs to one primary topic. Each topic has a h
 - [Food & shopping](https://realcy.app/food-and-shopping/): Markets, international groceries, food delivery and eating like a local.
 - [Family & schools](https://realcy.app/family-and-schools/): Schools, nurseries, activities for children and family paperwork.
 - [Community & leisure](https://realcy.app/community-and-leisure/): Meeting people, sport, culture, the outdoors and learning Greek.
-- [Moving to Cyprus](https://realcy.app/moving-to-cyprus/): Visas, residency routes, tax status, buying property and planning the move.
+- [Moving to Cyprus](https://realcy.app/moving-to-cyprus/): Visas, residency routes, tax status, setting up a business and planning the move.
 
 ## Health
 
@@ -76,7 +76,6 @@ Hub: https://realcy.app/home-and-bills/
 ### Local directories
 
 - [Long-Term Rentals](https://realcy.app/sections/long-term-rentals/): Rental areas across all four cities, with district asking rents for apartments and links to the main portals.
-- [Property Management](https://realcy.app/sections/property-management/): Licensed property managers for non-resident owners renting out their Cyprus property.
 
 ### Tools
 
@@ -102,13 +101,8 @@ Hub: https://realcy.app/money-and-paperwork/
 - [Hiring Employees in Cyprus 2026: Costs & Law](https://realcy.app/guides/hiring-in-cyprus/): What Cyprus employment law requires when you hire your first employee, contracts, minimum wage, social insurance, probation, and how to calculate redundancy. Prices and rules change, verify with official Cyprus sources before acting.
 - [Registering IP in Cyprus: Trademarks & Patents](https://realcy.app/guides/ip-registration-cyprus/): How to protect a brand, patent an invention, and understand software copyright in Cyprus, covering the Cyprus Trademark Registry, EUIPO, the European Patent Office, and the .cy domain registry. Prices and rules change, verify with official Cyprus sources before acting.
 - [Trade Licence Requirements in Cyprus 2026](https://realcy.app/guides/trade-licenses-cyprus/): Which business activities require a license before trading in Cyprus, which authority issues each one, and what the typical costs and timelines look like. Prices and rules change: verify with official Cyprus sources before acting.
-- [Cyprus Property Taxes 2026: VAT & Transfer Fees](https://realcy.app/guides/property-taxes-2026/): Every tax on Cyprus property in 2026: VAT (19% or reduced 5%), transfer fees, capital gains, rental income, and municipal taxes (stamp duty on property contracts abolished January 2026).
 - [Cyprus Yellow Slip (MEU1): 2026 Complete Guide](https://realcy.app/guides/yellow-slip-meu1-guide/): Everything EU citizens need to register for the Cyprus yellow slip (MEU1) in 2026: documents, appointment booking, fees, and the UK biometric deadline.
-- [Cyprus Mortgages for Foreigners: 2026 Guide](https://realcy.app/guides/cyprus-mortgage-foreigners/): Can foreigners get a Cyprus mortgage? Yes: which banks lend to non-residents, deposit requirements, rate ranges, and the total buying costs to budget for.
 - [Self-Employed Tax in Cyprus: 2026 Guide](https://realcy.app/guides/self-employed-tax-cyprus/): Freelancer or sole trader in Cyprus? This 2026 guide covers social insurance, GHS, VAT, income tax bands, and TD1 filing deadlines in plain English.
-- [Airbnb & Short-Term Rentals in Cyprus 2026](https://realcy.app/guides/airbnb-short-term-rental-cyprus/): Cyprus Airbnb registration, tax, and short-term rental law for 2026: the Deputy Ministry licence, 9% VAT, the SDC abolition, and the penalties for skipping it.
-- [Buying vs Renting in Cyprus: 2026 Guide](https://realcy.app/guides/buying-vs-renting-cyprus/): Buy or rent in Cyprus? Our 2026 guide covers transaction costs, break-even timelines, rental yields, and city price data to help you decide.
-- [Cyprus Rental Income Tax 2026: Landlord Guide](https://realcy.app/guides/rental-income-tax-cyprus/): Cyprus landlord tax 2026: how rental income is taxed after SDC abolition, GHS obligations, non-resident rules and the new cashless-rent requirement.
 - [Cyprus Tax Return 2026: Filing Your TD1 Form](https://realcy.app/guides/cyprus-tax-return-filing/): How to file your Cyprus TD1 personal income tax return via TAXISnet: who must file, the 2026 deadline, non-dom relief, and the 50% expat exemption.
 - [Employee Rights in Cyprus (2026 Guide)](https://realcy.app/guides/working-in-cyprus-employee-rights/): Minimum wage, annual leave, notice periods, social insurance and the 13th salary: a plain-English guide to Cyprus employment law for expats.
 
@@ -120,7 +114,6 @@ Hub: https://realcy.app/money-and-paperwork/
 
 ### Tools
 
-- [Rent vs Buy Calculator](https://realcy.app/tools/rent-vs-buy-calculator/): Compare the true total cost of renting versus buying in Cyprus over your time horizon, accounting for mortgage payments, property appreciation, and the opportunity cost of your down payment.
 - [MEU1 Registration Tracker](https://realcy.app/tools/meu1-tracker/): An interactive step-by-step checklist for EU citizens registering their residence in Cyprus. Track your progress through all required documents and appointments.
 - [Cyprus 60-Day Tax Residency Planner](https://realcy.app/tools/tax-residency-tracker/): Check whether you qualify for Cyprus tax residency under the 183-day rule or the 60-day rule. See which conditions pass or fail in real time.
 - [Cyprus Social Insurance Calculator](https://realcy.app/tools/social-insurance-calculator/): Calculate your Social Insurance and GeSY contributions based on the 2026 contribution rates. Full breakdown for employed and self-employed, including employer contributions.
@@ -130,9 +123,7 @@ Hub: https://realcy.app/money-and-paperwork/
 - [Sole Trader vs Ltd](https://realcy.app/tools/sole-trader-vs-ltd/): Compare take-home pay as a Cyprus sole trader versus a Cyprus Ltd, then estimate the one-time and annual costs of setting up and running a limited company: two tools in one.
 - [Cyprus Grants & Incentives Finder](https://realcy.app/tools/grants-finder/): Find available grants, subsidies, and incentives for businesses, startups, and individuals relocating or investing in Cyprus.
 - [Visa & Document Renewal Reminder](https://realcy.app/tools/visa-renewal-reminder/): Track expiry dates for your ARC, passport, visa, health insurance, and driving licence. Colour-coded alerts at 30 and 90 days. Stores data in your browser: nothing sent to a server.
-- [Mortgage Calculator](https://realcy.app/tools/mortgage-calculator/): Calculate monthly payments, total interest, and an amortization schedule for a Cyprus property purchase. Covers standard LTV limits for residents and non-residents.
 - [Monthly Budget Builder](https://realcy.app/tools/budget-builder/): Estimate your monthly living costs in Cyprus by city, household size, and lifestyle. Covers rent, groceries, dining, transport, utilities, and entertainment.
-- [Rental Yield Calculator](https://realcy.app/tools/rental-yield-calculator/): Calculate gross yield, net yield, annual cash flow, and total return for a Cyprus buy-to-let investment. Includes appreciation and expense modelling over up to 15 years.
 
 ## Food & shopping
 
@@ -214,16 +205,12 @@ Hub: https://realcy.app/moving-to-cyprus/
 - [Cyprus Residency Visas 2026: All Routes Compared](https://realcy.app/guides/residency-and-visas/): Compare Cyprus visas: permanent residence by investment (€300K), Digital Nomad (€3.5K/mo), EU registration, Category F & EU Blue Card. Investor timelines, costs & eligibility.
 - [Moving to Cyprus: First-Month Checklist 2026](https://realcy.app/guides/arrival-checklist/): The steps to take in your first week, first month and first 90 days after arriving in Cyprus, in the right order, plus what to sort before you move.
 - [Moving to Cyprus With Pets: Import Rules 2026](https://realcy.app/guides/moving-to-cyprus-with-pets/): The exact requirements for bringing a dog or cat to Cyprus, covering EU passport holders, post-Brexit UK residents, and non-EU countries including Israel, the US and the UAE, with backwards-planning timelines so you don't miss a step.
-- [Cyprus Title Deed Guide 2026: Full Overview](https://realcy.app/guides/title-deed-status-guide/): Complete guide to Cyprus title deeds: how to search the Land Registry, understand mortgages, protect yourself with contract clauses, and transfer fees. 2026.
 - [Cyprus Digital Nomad Visa 2026: Requirements](https://realcy.app/guides/digital-nomad-visa-guide/): Cyprus digital nomad visa: €3,500/mo income requirement, non-dom tax benefits, required documents, application process, and renewal (one year, renewable for up to two more). Updated 2026.
 - [Bringing Your Family to Cyprus: Reunification](https://realcy.app/guides/family-reunification-guide/): How the primary visa holder brings a spouse, children, and parents to Cyprus, documents by dependent type, income thresholds, processing timelines, and rights granted to dependents. Prices and rules change, verify with official Cyprus sources before acting.
 - [Cyprus Company Residency Permit: Full Guide](https://realcy.app/guides/company-formation-visa/): Which visa categories require a Cyprus entity, minimum substance requirements, company formation steps, typical costs, and common pitfalls. Prices and rules change: verify with official Cyprus sources before acting.
-- [Buying a New Development in Cyprus 2026](https://realcy.app/guides/new-development-buying-guide/): The reservation process, off-plan payment stages and deposit protection, the contract of sale, VAT on new builds, the Land Registry deposit, title deed timelines and snagging. Prices and rules change: verify with official Cyprus sources before acting.
 - [Work Permits for Non-EU Nationals in Cyprus](https://realcy.app/guides/work-permits-non-eu/): How the Cyprus employer-sponsored work permit system operates, quota rules, required documents, the critical permit, fast-track tech scheme, and renewal. Prices and rules change, verify with official Cyprus sources before acting.
 - [Cyprus Innovative Company Permit: Tech Founder](https://realcy.app/guides/startup-visa-ict/): How non-EU tech founders can get a 2-year Cyprus residence permit through the Innovative Company scheme, income requirements, the business plan evaluation, and what happens if you are rejected. Prices and rules change, verify with official Cyprus sources before acting.
-- [How to Buy Property in Cyprus 2026: Full Guide](https://realcy.app/guides/buying-process/): From the first viewing to the title deed in your name: reservation, lawyer, sales contract, deposits, completion and registration in Cyprus.
 - [Cyprus vs Portugal for Relocation 2026](https://realcy.app/guides/cyprus-vs-portugal/): Cyprus and Portugal are the two go-to EU relocation destinations for non-EU buyers. Compared head-to-head: visas, taxes, cost of living, climate, property markets, schools.
-- [Property Lawyers in Cyprus 2026: Fees & Guide](https://realcy.app/guides/property-lawyers-cyprus/): A practical guide to using a property lawyer when buying in Cyprus: what they do that your estate agent does not, what fees typically look like (often 1% to 1.5% plus VAT), how to find a reputable one, and the red flags that cost buyers tens of thousands of euros.
 - [Best Places to Live in Cyprus 2026: City Guide](https://realcy.app/guides/best-areas-to-live-cyprus/): Which city to choose when moving to Cyprus: how Limassol, Paphos, Larnaca, and Ayia Napa differ on cost, pace of life, expat community, connectivity, and property availability. Including which city suits remote workers, families, retirees, and property investors.
 - [Retiring in Cyprus 2026: Full Expat Guide](https://realcy.app/guides/retiring-in-cyprus/): Everything retirees need to know about moving to Cyprus: how pension income is taxed (flat 5% after the first €5,000), which residency route applies, how GeSY public healthcare compares to private insurance, and what a comfortable retirement in Cyprus actually costs per month.
 - [Moving to Cyprus from the UK After Brexit: 2026 Guide](https://realcy.app/guides/moving-to-cyprus-from-uk/): Practical guide for UK nationals relocating to Cyprus after Brexit: which visa route applies (Visitor permit, Digital Nomad, or Permanent Residency), how UK pension and employment income is taxed in Cyprus, the UK-Cyprus double taxation treaty, and what UK buyers need to know about property purchase.
@@ -234,7 +221,6 @@ Hub: https://realcy.app/moving-to-cyprus/
 
 ### Local directories
 
-- [Property Lawyers](https://realcy.app/sections/property-lawyers/): Vetted conveyancing solicitors specialising in foreign buyer transactions.
 - [Immigration Lawyers](https://realcy.app/sections/immigration-lawyers/): Immigration specialists covering digital nomad visas, PR by investment, and work permits.
 
 ### Tools
@@ -243,11 +229,45 @@ Hub: https://realcy.app/moving-to-cyprus/
 - [Visa Pathway Finder](https://realcy.app/tools/visa-pathway-finder/): Answer two questions to find your recommended Cyprus visa or registration route. Covers EU citizens, Digital Nomad Visa, Permanent Residency by Investment, work permits, and more.
 - [Country Comparison](https://realcy.app/tools/country-comparison/): Compare Cyprus against Portugal, Malta, Greece, Spain and Italy across corporate tax, income tax, special regimes, property prices, cost of living, and visa options.
 - [Relocation Progress Tracker](https://realcy.app/tools/relocation-checklist/): 32 tasks covering pre-move planning, arrival week, month one, and settling in. Your progress is saved in your browser.
-- [Development Comparison](https://realcy.app/tools/development-comparison/): Select up to 3 Cyprus new-build developments and compare them side by side on price, location, specs, developer, and available bedrooms.
-- [Property Price Benchmarker](https://realcy.app/tools/price-benchmarker/): See how a property's asking price compares to other developments in the same Cyprus city: based on real listings data.
 - [Cyprus Tax Savings Calculator](https://realcy.app/tools/tax-savings-calculator/): Compare your current country's income tax burden against Cyprus Standard and Non-Dom regimes. Enter your income, employment type, and country to see your estimated annual tax saving at a glance.
 - [Relocation Cost Estimator](https://realcy.app/tools/relocation-cost-calculator/): Calculate your one-time moving costs to Cyprus: flights, shipping containers, car import, pet fees, rental deposits, furnishing, and legal fees. Get a full itemised breakdown with low/midpoint/high ranges and a 10% contingency buffer.
 - [Cyprus Pet Import Checklist](https://realcy.app/tools/pet-import-checklist/): Generate a personalised checklist for importing your dog, cat, bird, or other pet into Cyprus. Covers microchipping, rabies titre tests, health certificates, and arrival procedures based on your pet type and country of origin.
+
+## Property
+
+Hub: https://realcy.app/property/
+
+New-build homes for sale, developers, buying guides, property tools and professionals. Kept apart from the everyday topics; the Rent vs Buy calculator and the Buying vs Renting guide are also listed on the Home & bills hub.
+
+### Guides
+
+- [How to Buy Property in Cyprus 2026: Full Guide](https://realcy.app/guides/buying-process/): From the first viewing to the title deed in your name: reservation, lawyer, sales contract, deposits, completion and registration in Cyprus.
+- [Buying a New Development in Cyprus 2026](https://realcy.app/guides/new-development-buying-guide/): The reservation process, off-plan payment stages and deposit protection, the contract of sale, VAT on new builds, the Land Registry deposit, title deed timelines and snagging. Prices and rules change: verify with official Cyprus sources before acting.
+- [Cyprus Title Deed Guide 2026: Full Overview](https://realcy.app/guides/title-deed-status-guide/): Complete guide to Cyprus title deeds: how to search the Land Registry, understand mortgages, protect yourself with contract clauses, and transfer fees. 2026.
+- [Cyprus Property Taxes 2026: VAT & Transfer Fees](https://realcy.app/guides/property-taxes-2026/): Every tax on Cyprus property in 2026: VAT (19% or reduced 5%), transfer fees, capital gains, rental income, and municipal taxes (stamp duty on property contracts abolished January 2026).
+- [Cyprus Mortgages for Foreigners: 2026 Guide](https://realcy.app/guides/cyprus-mortgage-foreigners/): Can foreigners get a Cyprus mortgage? Yes: which banks lend to non-residents, deposit requirements, rate ranges, and the total buying costs to budget for.
+- [Buying vs Renting in Cyprus: 2026 Guide](https://realcy.app/guides/buying-vs-renting-cyprus/): Buy or rent in Cyprus? Our 2026 guide covers transaction costs, break-even timelines, rental yields, and city price data to help you decide.
+- [Airbnb & Short-Term Rentals in Cyprus 2026](https://realcy.app/guides/airbnb-short-term-rental-cyprus/): Cyprus Airbnb registration, tax, and short-term rental law for 2026: the Deputy Ministry licence, 9% VAT, the SDC abolition, and the penalties for skipping it.
+- [Cyprus Rental Income Tax 2026: Landlord Guide](https://realcy.app/guides/rental-income-tax-cyprus/): Cyprus landlord tax 2026: how rental income is taxed after SDC abolition, GHS obligations, non-resident rules and the new cashless-rent requirement.
+- [Property Lawyers in Cyprus 2026: Fees & Guide](https://realcy.app/guides/property-lawyers-cyprus/): A practical guide to using a property lawyer when buying in Cyprus: what they do that your estate agent does not, what fees typically look like (often 1% to 1.5% plus VAT), how to find a reputable one, and the red flags that cost buyers tens of thousands of euros.
+
+### Local directories
+
+- [Property Lawyers](https://realcy.app/sections/property-lawyers/): Vetted conveyancing solicitors specialising in foreign buyer transactions.
+- [Property Management](https://realcy.app/sections/property-management/): Licensed property managers for non-resident owners renting out their Cyprus property.
+
+### Tools
+
+- [Mortgage Calculator](https://realcy.app/tools/mortgage-calculator/): Calculate monthly payments, total interest, and an amortization schedule for a Cyprus property purchase. Covers standard LTV limits for residents and non-residents.
+- [Rental Yield Calculator](https://realcy.app/tools/rental-yield-calculator/): Calculate gross yield, net yield, annual cash flow, and total return for a Cyprus buy-to-let investment. Includes appreciation and expense modelling over up to 15 years.
+- [Rent vs Buy Calculator](https://realcy.app/tools/rent-vs-buy-calculator/): Compare the true total cost of renting versus buying in Cyprus over your time horizon, accounting for mortgage payments, property appreciation, and the opportunity cost of your down payment.
+- [Development Comparison](https://realcy.app/tools/development-comparison/): Select up to 3 Cyprus new-build developments and compare them side by side on price, location, specs, developer, and available bedrooms.
+- [Property Price Benchmarker](https://realcy.app/tools/price-benchmarker/): See how a property's asking price compares to other developments in the same Cyprus city: based on real listings data.
+
+### Listings
+
+- [New developments](https://realcy.app/listings/): new-build apartments and villas, filter by city with `?city=`
+- [Developers](https://realcy.app/developers/): the developers behind the listed projects
 
 ## Cities
 
@@ -258,9 +278,9 @@ Hub: https://realcy.app/moving-to-cyprus/
 
 ## Indexes
 
-- [All guides](https://realcy.app/guides/): filter by topic with `?topic={topic-slug}`
-- [All local directories](https://realcy.app/sections/): filter by topic with `?topic={topic-slug}`
-- [All tools](https://realcy.app/tools/): filter by topic with `?topic={topic-slug}`
-- [New developments](https://realcy.app/listings/): new-build apartments and villas, filter by city with `?city=`
+- [All guides](https://realcy.app/guides/): filter by topic with `?topic={topic-slug}`, or `?topic=property` for the Property area
+- [All local directories](https://realcy.app/sections/): filter by topic with `?topic={topic-slug}`, or `?topic=property` for the Property area
+- [All tools](https://realcy.app/tools/): filter by topic with `?topic={topic-slug}`, or `?topic=property` for the Property area
+- [Property](https://realcy.app/property/): new developments, developers, buying guides and property tools
 - [Search](https://realcy.app/explore/): site search, accepts `?q=`
 - [Sitemap](https://realcy.app/sitemap.xml): every page, including each development listing

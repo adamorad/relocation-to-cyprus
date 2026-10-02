@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { formatListingPrice, titleCaseName } from "@/app/listings/format";
 import { ButtonLink } from "@/components/ui/Button";
 import { DataTable } from "@/components/ui/DataTable";
 import type { EnrichedListing } from "@/lib/listingsData";
@@ -43,10 +44,13 @@ const ROW_LABELS: { label: string; key: string }[] = [
 ];
 
 function getCellValue(listing: EnrichedListing, key: string): string {
-	if (key === "__developer") return listing.developer?.name ?? "n/a";
+	if (key === "__developer")
+		return listing.developer?.name
+			? titleCaseName(listing.developer.name)
+			: "n/a";
 	if (key === "__location")
 		return listing.location ?? listing.regionCity ?? "n/a";
-	if (key === "__priceRange") return listing.priceRange ?? "n/a";
+	if (key === "__priceRange") return formatListingPrice(listing.priceRange);
 	if (key === "__bedrooms") return getBedrooms(listing);
 	return spec(listing, key);
 }
@@ -103,7 +107,9 @@ export default function DevelopmentComparisonClient() {
 									onClick={() => addListing(l)}
 									className="min-h-11 w-full px-4 py-2.5 text-left text-sm transition-colors hover:bg-sky"
 								>
-									<span className="font-medium text-ink">{l.title}</span>
+									<span className="font-medium text-ink">
+										{titleCaseName(l.title)}
+									</span>
 									<span className="ml-2 text-xs text-muted">
 										{l.location ?? l.regionCity}
 									</span>
@@ -120,11 +126,11 @@ export default function DevelopmentComparisonClient() {
 					{selected.map((l) => (
 						<li key={l.id}>
 							<span className="inline-flex min-h-11 items-center gap-2 rounded-full bg-primary pl-4 pr-1 text-sm font-semibold text-white">
-								{l.title}
+								{titleCaseName(l.title)}
 								<button
 									type="button"
 									onClick={() => removeListing(l.id)}
-									aria-label={`Remove ${l.title}`}
+									aria-label={`Remove ${titleCaseName(l.title)}`}
 									className="inline-flex h-9 w-9 items-center justify-center rounded-full leading-none hover:bg-primary-hover"
 								>
 									×
@@ -156,7 +162,9 @@ export default function DevelopmentComparisonClient() {
 								...selected.map((l) => ({
 									header: (
 										<>
-											<span className="block font-bold">{l.title}</span>
+											<span className="block font-bold">
+												{titleCaseName(l.title)}
+											</span>
 											<span className="text-xs font-normal text-muted">
 												{l.location ?? l.regionCity}
 											</span>
@@ -190,11 +198,13 @@ export default function DevelopmentComparisonClient() {
 						{selected.map((l) => (
 							<section
 								key={l.id}
-								aria-label={l.title}
+								aria-label={titleCaseName(l.title)}
 								className="overflow-hidden rounded-card border border-line bg-white"
 							>
 								<div className="bg-sky px-4 py-3">
-									<h2 className="text-base font-bold text-ink">{l.title}</h2>
+									<h2 className="text-base font-bold text-ink">
+										{titleCaseName(l.title)}
+									</h2>
 									<p className="mt-0.5 text-sm text-muted">
 										{l.location ?? l.regionCity}
 									</p>

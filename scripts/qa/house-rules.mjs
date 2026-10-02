@@ -53,6 +53,8 @@ const EXTS = new Set([
 ]);
 const EXCLUDE = (rel) =>
 	rel === "lib/data/listings.json" ||
+	// Generated subset of listings.json (scripts/gen-visible-listings.mjs).
+	rel === "lib/data/listings.visible.json" ||
 	rel
 		.split("/")
 		.some((p) => p === "node_modules" || p === "archive" || p === ".next");

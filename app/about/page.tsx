@@ -12,7 +12,7 @@ import { TOOLS } from "@/lib/tools-index";
 const SITE_URL = "https://realcy.app";
 const title = "About RealCy.app";
 const description =
-	"RealCy.app is an independent guide to living in Cyprus: practical guides, service directories, planning tools and new-build real estate.";
+	"RealCy.app is an independent guide to living in Cyprus: practical guides, local directories and tools for everyday life.";
 
 export const metadata: Metadata = {
 	title: { absolute: title },

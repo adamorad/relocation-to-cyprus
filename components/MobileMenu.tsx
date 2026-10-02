@@ -5,6 +5,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import {
 	isActive,
+	isNavActive,
+	navCurrent,
 	PRIMARY_NAV,
 	SECONDARY_NAV,
 	TOPIC_NAV,
@@ -221,13 +223,13 @@ export function MobileMenu() {
 									<hr className="my-4 border-line" />
 									<ul className="flex flex-col gap-1">
 										{SECONDARY_NAV.map((item) => {
-											const active = isActive(pathname, item.href);
+											const active = isNavActive(pathname, item);
 											return (
 												<li key={item.href}>
 													<Link
 														href={item.href}
 														onClick={closeForNav}
-														aria-current={active ? "page" : undefined}
+														aria-current={navCurrent(pathname, item)}
 														className={`flex min-h-11 items-center rounded-field px-4 text-base font-medium text-muted hover:bg-sky hover:text-ink ${
 															active ? "bg-sky text-ink" : ""
 														}`}

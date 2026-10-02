@@ -49,13 +49,28 @@ export function titleCaseName(name: string): string {
 }
 
 /** "€1.650.000 +VAT" -> "€1,650,000 + VAT"; ranges keep their en dash. */
-export function formatPrice(s: string | null | undefined): string | null {
+function formatPrice(s: string | null | undefined): string | null {
 	if (!s) return null;
 	return s
 		.replace(/\d{1,3}(?:[.,]\d{3})+/g, (m) => m.replace(/[.,]/g, ","))
 		.replace(/\s*\+\s*VAT/i, " + VAT")
 		.replace(/\s+/g, " ")
 		.trim();
+}
+
+/**
+ * Listing price for display, used on every surface that shows one (cards,
+ * listing page, unit table, developer page, shortlist, /property/ preview).
+ * The source data marks VAT on every price ("+VAT" on all 260 price ranges and
+ * every unit price), so formatPrice keeps it as "+ VAT"; a value without the
+ * marker is shown without it. Ranges stay ranges (lowest to highest unit).
+ * "From" is kept only when the source value itself says it. Missing prices
+ * read "Price on request".
+ */
+export function formatListingPrice(s: string | null | undefined): string {
+	const p = formatPrice(s);
+	if (!p) return "Price on request";
+	return p.replace(/^from\s+/i, "From ");
 }
 
 export const CITY_SLUGS = {

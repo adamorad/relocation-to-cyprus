@@ -6,11 +6,24 @@ import { TemplateMain } from "@/components/templates/TemplateMain";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
-import type { EnrichedListing } from "@/lib/listingsData";
-import { LISTINGS } from "@/lib/listingsData";
 import { getShortlist, toggleShortlist } from "@/lib/shortlist";
 
-export default function ShortlistClient() {
+/** Display-ready listing (title case, formatted price), built in page.tsx. */
+export type SavedCard = {
+	slug: string;
+	name: string;
+	city: string;
+	location: string | null;
+	price: string;
+	developer: string | null;
+	image: string | null;
+};
+
+export default function ShortlistClient({
+	listings,
+}: {
+	listings: SavedCard[];
+}) {
 	const [slugs, setSlugs] = useState<string[]>([]);
 	const [mounted, setMounted] = useState(false);
 
@@ -19,7 +32,7 @@ export default function ShortlistClient() {
 		setMounted(true);
 	}, []);
 
-	const saved = LISTINGS.filter((l) => slugs.includes(l.slug));
+	const saved = listings.filter((l) => slugs.includes(l.slug));
 
 	function handleRemove(slug: string) {
 		toggleShortlist(slug);
@@ -30,6 +43,7 @@ export default function ShortlistClient() {
 		<PageHeader
 			breadcrumbs={[
 				{ label: "Home", href: "/" },
+				{ label: "Property", href: "/property/" },
 				{ label: "Saved developments" },
 			]}
 			title="Saved developments"
@@ -85,14 +99,15 @@ function ShortlistCard({
 	listing,
 	onRemove,
 }: {
-	listing: EnrichedListing;
+	listing: SavedCard;
 	onRemove: () => void;
 }) {
 	return (
 		<div className="rounded-card border border-line bg-white p-4 flex gap-4 relative">
-			{listing.images && listing.images.length > 0 ? (
+			{listing.image ? (
+				// biome-ignore lint/performance/noImgElement: static export
 				<img
-					src={listing.images[0]}
+					src={listing.image}
 					alt=""
 					className="w-20 h-20 rounded-xl object-cover flex-shrink-0 bg-sky"
 					loading="lazy"
@@ -105,23 +120,19 @@ function ShortlistCard({
 
 			<div className="min-w-0 flex-1">
 				<p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-0.5">
-					{listing.regionCity}
+					{listing.city}
 				</p>
 				<h2 className="font-bold text-ink leading-snug truncate">
-					{listing.title}
+					{listing.name}
 				</h2>
 				{listing.location ? (
 					<p className="text-xs text-muted mt-0.5 truncate">
 						{listing.location}
 					</p>
 				) : null}
-				{listing.priceRange ? (
-					<p className="text-sm font-semibold text-ink mt-1">
-						{listing.priceRange}
-					</p>
-				) : null}
-				{listing.developer?.name ? (
-					<p className="text-xs text-muted mt-0.5">{listing.developer.name}</p>
+				<p className="text-sm font-semibold text-ink mt-1">{listing.price}</p>
+				{listing.developer ? (
+					<p className="text-xs text-muted mt-0.5">{listing.developer}</p>
 				) : null}
 
 				<div className="mt-3 flex flex-wrap gap-2">

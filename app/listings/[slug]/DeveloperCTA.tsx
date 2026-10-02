@@ -9,8 +9,8 @@ interface Props {
 	name: string;
 	/** Internal developer page, when one exists. */
 	developerHref?: string;
-	/** External web search, kept as a secondary option. */
-	searchHref: string;
+	/** External web search, only when the developer has no page here. */
+	searchHref?: string;
 	slug: string;
 }
 
@@ -41,20 +41,22 @@ export default function DeveloperCTA({
 						See all {name} projects
 					</Link>
 				) : null}
-				<a
-					href={searchHref}
-					target="_blank"
-					rel="noopener noreferrer"
-					className={buttonClasses({
-						variant: developerHref ? "secondary" : "primary",
-						fullWidth: true,
-					})}
-					onClick={() =>
-						trackEvent("developer_click", { slug, developer: name })
-					}
-				>
-					Find {name} online
-				</a>
+				{searchHref ? (
+					<a
+						href={searchHref}
+						target="_blank"
+						rel="noopener noreferrer"
+						className={buttonClasses({
+							variant: developerHref ? "secondary" : "primary",
+							fullWidth: true,
+						})}
+						onClick={() =>
+							trackEvent("developer_click", { slug, developer: name })
+						}
+					>
+						Find {name} online
+					</a>
+				) : null}
 			</div>
 		</section>
 	);
