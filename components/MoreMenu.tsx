@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import {
 	isActive,
 	isNavActive,
+	navCurrent,
 	SECONDARY_NAV,
 	TOPIC_NAV,
 } from "@/lib/nav-links";
@@ -27,7 +28,7 @@ export function MoreMenu() {
 							<li key={item.href}>
 								<Link
 									href={item.href}
-									aria-current={active ? "page" : undefined}
+									aria-current={navCurrent(pathname, item)}
 									onClick={close}
 									className={`${ITEM} ${active ? "bg-sky text-ink" : "text-muted"}`}
 								>

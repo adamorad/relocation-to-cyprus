@@ -1,6 +1,6 @@
 import { CITIES } from "./cyprusData";
 import visibleListings from "./data/listings.visible.json";
-import { isHiddenRegion, placeListing } from "./listingRegion";
+import { placeListing } from "./listingRegion";
 
 export type Offer = {
 	unit?: string;
@@ -78,18 +78,9 @@ export type EnrichedListing = Listing & {
  * bundle. LISTINGS, LISTINGS_BY_REGION, developers, the sitemap, static params
  * and every tool all derive from LISTINGS below.
  */
-export function isHiddenListing(
-	l: Pick<EnrichedListing, "regionCity">,
-): boolean {
-	return isHiddenRegion(l.regionCity);
-}
-
 export const LISTINGS: EnrichedListing[] = (
 	visibleListings as unknown as Listing[]
-)
-	.filter((l) => typeof l.lat === "number" && typeof l.lng === "number")
-	.map((l) => ({ ...l, ...placeListing(l.lng, l.lat) }))
-	.filter((l) => !isHiddenListing(l));
+).map((l) => ({ ...l, ...placeListing(l.lng, l.lat) }));
 
 export const LISTINGS_BY_REGION: Record<string, EnrichedListing[]> = (() => {
 	const m: Record<string, EnrichedListing[]> = {};

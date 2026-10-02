@@ -57,22 +57,18 @@ export const metadata: Metadata = {
 	},
 };
 
-/** Preview cards: per city the first listings with a price, in data order. */
+/** Preview cards: per city the first listings, in data order. */
 function previewData() {
 	const withCity = listings
 		.map((l) => ({ l, city: citySlugFor(l.regionCity) }))
 		.filter((x): x is { l: (typeof listings)[number]; city: CitySlug } =>
 			isCitySlug(x.city),
 		);
-	const ordered = [
-		...withCity.filter((x) => x.l.priceRange),
-		...withCity.filter((x) => !x.l.priceRange),
-	];
 	const cards: Record<string, PreviewCard> = {};
 	const byCity = {} as Record<CitySlug, string[]>;
 	const counts = { all: withCity.length } as Record<CitySlug | "all", number>;
 	for (const c of CITY_SLUGS) {
-		const inCity = ordered.filter((x) => x.city === c);
+		const inCity = withCity.filter((x) => x.city === c);
 		counts[c] = inCity.length;
 		byCity[c] = inCity.slice(0, PREVIEW_SIZE).map(({ l }) => {
 			cards[l.slug] = {

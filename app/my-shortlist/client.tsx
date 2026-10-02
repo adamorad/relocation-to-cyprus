@@ -43,6 +43,7 @@ export default function ShortlistClient({
 		<PageHeader
 			breadcrumbs={[
 				{ label: "Home", href: "/" },
+				{ label: "Property", href: "/property/" },
 				{ label: "Saved developments" },
 			]}
 			title="Saved developments"

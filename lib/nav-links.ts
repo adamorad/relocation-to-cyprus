@@ -39,6 +39,20 @@ export function isNavActive(pathname: string, link: NavLink): boolean {
 	return [link.href, ...(link.match ?? [])].some((h) => isActive(pathname, h));
 }
 
+/**
+ * aria-current value for a nav link: "page" on the link's own page, "true"
+ * when the page only belongs to its section (e.g. /listings/ under Property).
+ */
+export function navCurrent(
+	pathname: string,
+	link: NavLink,
+): "page" | "true" | undefined {
+	if (!isNavActive(pathname, link)) return undefined;
+	return pathname === link.href || pathname === link.href.replace(/\/$/, "")
+		? "page"
+		: "true";
+}
+
 /** True when the current pathname is within the nav item's section. */
 export function isActive(pathname: string, href: string): boolean {
 	const clean = href.replace(/\/$/, "");

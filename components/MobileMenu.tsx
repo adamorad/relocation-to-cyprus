@@ -6,6 +6,7 @@ import { createPortal } from "react-dom";
 import {
 	isActive,
 	isNavActive,
+	navCurrent,
 	PRIMARY_NAV,
 	SECONDARY_NAV,
 	TOPIC_NAV,
@@ -228,7 +229,7 @@ export function MobileMenu() {
 													<Link
 														href={item.href}
 														onClick={closeForNav}
-														aria-current={active ? "page" : undefined}
+														aria-current={navCurrent(pathname, item)}
 														className={`flex min-h-11 items-center rounded-field px-4 text-base font-medium text-muted hover:bg-sky hover:text-ink ${
 															active ? "bg-sky text-ink" : ""
 														}`}

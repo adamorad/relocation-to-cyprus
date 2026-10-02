@@ -173,7 +173,7 @@ export const DISTRICTS: ReadonlyArray<District> = [
   },
   // Owner rule: Nicosia is intentionally excluded from RealCy.app. This
   // polygon is kept ONLY as an internal classifier so Nicosia listings are
-  // recognised (and hidden by isHiddenListing in lib/listingsData.ts) rather
+  // recognised (and hidden by lib/listingRegion.ts) rather
   // than misassigned to Limassol or Larnaca. Never render or list it.
   {
     name: "Nicosia",

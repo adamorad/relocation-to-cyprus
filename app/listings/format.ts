@@ -49,7 +49,7 @@ export function titleCaseName(name: string): string {
 }
 
 /** "€1.650.000 +VAT" -> "€1,650,000 + VAT"; ranges keep their en dash. */
-export function formatPrice(s: string | null | undefined): string | null {
+function formatPrice(s: string | null | undefined): string | null {
 	if (!s) return null;
 	return s
 		.replace(/\d{1,3}(?:[.,]\d{3})+/g, (m) => m.replace(/[.,]/g, ","))

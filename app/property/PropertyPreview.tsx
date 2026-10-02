@@ -11,7 +11,7 @@ export type PreviewCard = {
 	slug: string;
 	name: string;
 	location: string;
-	price: string | null;
+	price: string;
 	image: string | null;
 };
 
@@ -85,11 +85,7 @@ export function PropertyPreview({
 							}
 							eyebrow={<Badge>{l.location}</Badge>}
 							title={l.name}
-							meta={
-								l.price ? (
-									<span className="font-semibold text-ink">{l.price}</span>
-								) : undefined
-							}
+							meta={<span className="font-semibold text-ink">{l.price}</span>}
 						/>
 					</CardGridItem>
 				))}
