@@ -339,7 +339,7 @@ export const GUIDE_TOPICS: Record<string, TopicAssignment> = {
 };
 
 // ---------------------------------------------------------------------------
-// Directories (29 routes under /sections/)
+// Directories (28 routes under /sections/)
 // ---------------------------------------------------------------------------
 
 export const DIRECTORY_TOPICS: Record<string, TopicAssignment> = {
@@ -350,7 +350,6 @@ export const DIRECTORY_TOPICS: Record<string, TopicAssignment> = {
 		why: "Pet health care; there is no Pets topic and people look for vets next to doctors.",
 	},
 
-	"public-transport": { topic: "getting-around" },
 	"ev-charging": {
 		topic: "getting-around",
 		also: ["home-and-bills"],

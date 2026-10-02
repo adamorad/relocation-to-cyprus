@@ -11,14 +11,14 @@ Decisions were made on the owner's behalf in Phase 2A and are open for review. R
 | Topic | Hub | Guides | Directories | Tools | Total primary | Listed on hub (incl. secondary) |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
 | Health | `/health/` | 7 | 3 | 1 | 11 | 12 |
-| Getting around | `/getting-around/` | 8 | 2 | 2 | 12 | 11 |
+| Getting around | `/getting-around/` | 8 | 1 | 2 | 11 | 10 |
 | Home & bills | `/home-and-bills/` | 7 | 3 | 3 | 13 | 17 |
 | Money & paperwork | `/money-and-paperwork/` | 21 | 3 | 13 | 37 | 57 |
 | Food & shopping | `/food-and-shopping/` | 5 | 5 | 0 | 10 | 11 |
 | Family & schools | `/family-and-schools/` | 7 | 3 | 1 | 11 | 13 |
 | Community & leisure | `/community-and-leisure/` | 5 | 9 | 2 | 16 | 21 |
 | Moving to Cyprus | `/moving-to-cyprus/` | 20 | 2 | 9 | 31 | 58 |
-| **All** | | 80 | 30 | 31 | 141 | |
+| **All** | | 80 | 29 | 31 | 140 | |
 
 Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). They keep a topic for their own breadcrumb and "More on" block but are not shown on hubs, indexes, other pages or the sitemap.
 
@@ -115,7 +115,6 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Specialist Doctors](/sections/specialist-doctors/) | Health |  |  |  |
 | [Veterinary Services](/sections/veterinary-services/) | Health |  |  | Pet health care; there is no Pets topic and people look for vets next to doctors. |
 | [EV Charging Stations](/sections/ev-charging/) *(not listed)* | Getting around | Home & bills |  |  |
-| [Public Transport](/sections/public-transport/) | Getting around |  |  |  |
 | [Co-Living & Serviced Apartments](/sections/co-living/) *(not listed)* | Home & bills | Moving to Cyprus |  | Furnished monthly housing, mostly used on arrival. |
 | [Long-Term Rentals](/sections/long-term-rentals/) | Home & bills | Moving to Cyprus |  | Old category Property & Housing; renting a home is daily life. |
 | [Property Management](/sections/property-management/) | Home & bills | Money & paperwork |  | Managing a home you own; Property area comes in Phase 4. |

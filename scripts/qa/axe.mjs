@@ -50,7 +50,7 @@ const SAMPLE = [
 	"/sections/",
 	"/sections/accountants/",
 	"/sections/specialist-doctors/",
-	"/sections/public-transport/",
+	"/guides/getting-around-cyprus-no-car/",
 	"/tools/",
 	"/tools/mortgage-calculator/",
 	"/tools/budget-builder/",
