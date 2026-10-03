@@ -949,32 +949,76 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "crypto-tax-cyprus",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-03",
+		lastChecked: "2026-10-03",
+		sources: [
+			{
+				label: "Tax Department: Income Tax reform 2026 presentation (Greek)",
+				url: "https://www.gov.cy/media/sites/167/2026/03/2026-ΦορΜεταρρύθμιση-Φόρος-Εισοδήματος.pdf",
+			},
+			{
+				label: "Tax Department: Tax Reform 2026 documents",
+				url: "https://www.gov.cy/mof-tax/en/documents/forologiki-metarrythmisi-2026/",
+			},
+		],
 		category: "tax",
-		title: "Cryptocurrency Tax Treatment in Cyprus (2026)",
+		title: "Cryptocurrency Tax in Cyprus (2026): The 8% Rule",
 		description:
-			"How Cyprus currently taxes cryptocurrency gains, where the investing-versus-trading line is drawn, VAT on crypto services, documentation best practices for non-dom filers, and what local accountants currently recommend.",
+			"From 1 January 2026, gains from disposing of crypto-assets in the Republic of Cyprus are taxed at 8% under new Article 20E of the Income Tax Law. What counts as a disposal, how losses work, what is excluded, and what is still unclear. Tax rules change; confirm with a Cyprus tax adviser.",
 		sections: [
 			{
-				heading:
-					"The current position: no formal guidance, but a working consensus",
-				body: "Cyprus has not published formal binding guidance on the taxation of cryptocurrency as of 2026 — there is no equivalent to HMRC's 'Cryptoassets Manual' or the IRS's Notice 2014-21. The Cyprus Tax Department has confirmed informally that it views crypto disposals through the lens of the existing tax framework rather than a new regime, and on that basis the working consensus among Cypriot tax practitioners is as follows: gains from selling or exchanging cryptocurrency by an individual investor are treated as capital gains on movable property; capital gains tax in Cyprus applies only to gains from Cypriot real estate and shares in companies holding Cypriot real estate; therefore, capital gains on cryptocurrency are not subject to Cyprus capital gains tax. This would place individual crypto gains in the same category as gains on listed shares or foreign property — wholly exempt. The critical caveat: this is a position, not a ruling. The Tax Department has discretion to characterise frequent trading as a business activity.",
+				heading: "The rule since 1 January 2026: 8% on crypto disposal gains",
+				body: "The Income Tax (Amendment) Law (N. 244(I)/2025) took effect on 1 January 2026 and adds a new Article 20E to the Income Tax Law of the Republic of Cyprus. According to the Tax Department, the gain of any person from the disposal of crypto-assets is taxed at 8%. The rule is not limited to professional traders: the Tax Department's own worked examples apply it to both an individual and a company. It covers Cyprus tax residents and, through a separate amendment to Article 5, non-residents. Which gains of a non-resident count as taxable in Cyprus is not covered by the published guidance we checked; ask a tax adviser. This guide covers the Republic of Cyprus only; the northern part of the island has its own tax system. Earlier versions of this guide said Cyprus had no formal crypto rules and that individual gains were exempt. That is no longer correct for 2026.",
 			},
 			{
-				heading: "Investing versus trading — where the line is drawn",
-				body: "The distinction between capital gains (exempt) and trading income (taxable as self-employment income at progressive rates up to 35%) is fact-specific and contested. Factors that courts and tax authorities in common-law jurisdictions (which Cyprus closely follows for this analysis, given the absence of local caselaw) use to draw the line: frequency of transactions (a few per year suggests investment; dozens per week suggests trade), holding period (months or years suggests investment; hours or days suggests trade), source of the assets (earned via mining or staking, then sold, can look like a business), use of leverage or derivatives (typically marks trading intent), whether this is your primary occupation and income source, and whether you hold yourself out as providing trading services to others. A founder who relocated to Cyprus with an existing crypto portfolio, holds positions for months, and sells occasionally: almost certainly treated as capital gains and exempt. A person who day-trades altcoins as their primary occupation, turning over the entire portfolio weekly: almost certainly treated as a business and taxed as self-employment income. The grey zone is large and growing as more crypto activities (staking rewards, liquidity provision, yield farming) generate regular income that looks increasingly like interest or operating income.",
+				heading: "What counts as a disposal",
+				body: "The law defines a disposal of crypto-assets as selling them, giving them away (a gift), exchanging one crypto-asset for another, and using a crypto-asset as a means of payment. Swapping one token for another is therefore a taxable event even if you never convert to euros. \"Crypto-assets\" has the meaning given in EU Regulation 2023/1114 (MiCA). Whether items such as NFTs, some stablecoins or DeFi positions fall inside that definition is not covered by the published guidance we checked; ask a tax adviser if you hold them.",
 			},
 			{
-				heading: "VAT treatment of crypto services",
-				body: "The EU Court of Justice's 2015 Hedqvist ruling (C-264/14) established that exchanging fiat currency for Bitcoin or other cryptocurrencies is a VAT-exempt financial service under Article 135(1)(e) of the VAT Directive. Cyprus follows this ruling: exchange services, custody services, and straightforward crypto-to-fiat or crypto-to-crypto exchange transactions are VAT-exempt. However, the exemption is narrow. Services that are not 'exchange' — crypto consulting, portfolio management services, NFT creation and sale, running a node for transaction fees, software development for blockchain protocols — may be standard-rated at 19% if they constitute a taxable supply of services to a Cypriot or EU consumer. For a Cyprus-based crypto business, the VAT treatment of each revenue stream needs to be mapped individually; bundling exchange with advisory services without clear invoicing separation creates VAT exposure. If you provide crypto-related services to non-EU clients only, those are zero-rated exports regardless of the specific activity type.",
+				heading: "What is not covered: mined crypto and other income",
+				body: "Disposals of crypto-assets that you acquired through mining are expressly excluded from Article 20E. The Tax Department's example taxes gains on mined coins under the ordinary income tax rules (Parts III and V of the law, at the standard Second Schedule rates) instead of the 8% rate. The law also says any crypto-related gain that falls outside Article 20E is taxed under those ordinary rules. Where staking rewards, airdrops, lending or DeFi yield, or an activity amounting to a trading business, fall is not covered by the published guidance we checked; ask a tax adviser. Do not assume the 8% rate applies to them.",
 			},
 			{
-				heading: "Documenting crypto holdings for non-dom filing",
-				body: "Non-dom status exempts Cyprus tax residents from SDC on dividends and interest — and while the Tax Department has not confirmed that staking rewards are 'interest' for SDC purposes, many practitioners treat them as potentially SDC-exempt under non-dom pending formal clarification. Whatever the ultimate treatment, detailed records are essential. The Tax Department expects Cyprus tax residents to be able to produce, on request, a record of all crypto holdings at year-end, a transaction history for the year (acquisitions, disposals, swaps, staking rewards, airdrops), the cost base for each acquisition, the value at disposal in EUR, and any exchange or wallet addresses used. Portfolio tracking tools such as Koinly, CoinTracking, or Accointing can export these records in formats that accountants can work with. The practical problem is wallet-level aggregation: if your portfolio spans a hardware wallet, three CEX accounts, and two DeFi protocols, manual reconciliation is time-consuming. Start year-by-year tracking from the day you become a Cyprus tax resident, not retrospectively.",
+				heading: "How losses work",
+				body: "Losses on crypto disposals can be set off only against gains from crypto disposals in the same tax year. They cannot be carried forward and cannot be set against other income. A company cannot pass them to another group company under the group-loss rules (Article 13). The Tax Department's example: in 2026 a person has a €400,000 sale gain (of which €300,000 relates to mined coins), a €200,000 gain on a crypto-to-crypto swap and a €400,000 loss from using crypto as payment. The 8% base is €0: the €300,000 mined-coin gain is taxed under ordinary rules, and the other items net to a €100,000 loss. That loss cannot be used in 2027, when a €150,000 sale gain is taxed at 8%, giving €12,000 of tax.",
 			},
 			{
-				heading: "What accountants currently recommend",
-				body: "Based on the practices of Cypriot accounting firms with active crypto clients in 2025–2026: first, file a Cyprus tax return each year even if you believe all your crypto income is exempt — the non-dom and capital gains exemptions both require an affirmative declaration, and failing to file is a separate risk from getting the tax position wrong. Second, if your crypto activity looks like trading (high frequency, leverage, primary income source), engage an accountant before year-end rather than after — there may be structuring options that reclassify the activity or manage the timing of recognition. Third, for significant holdings (over €100,000), obtain a written opinion from your accountant or tax lawyer on your specific position; this constitutes 'reasonable care' and provides some protection against penalties if the Tax Department later takes a different view. Fourth, watch the 2024–2026 EU legislative calendar: the DAC8 directive (effective from 2026) requires all EU crypto asset service providers to report transaction data to tax authorities, which will significantly increase the Tax Department's ability to cross-reference declared positions against exchange records.",
+				heading: "Company example",
+				body: "In another Tax Department example, a company with an €800,000 sale gain (of which €300,000 relates to mined coins), a €700,000 swap gain and a €400,000 payment loss has an 8% base of €800,000 and tax of €64,000. A €500,000 crypto loss in another group company is ignored. The €300,000 mined-coin gain and €1,000,000 of consulting profit are taxed under the normal rules.",
+			},
+			{
+				heading: "What is still unclear",
+				body: "The published guidance we checked does not answer these questions, so treat each as open and ask a tax adviser: how Article 20E interacts with the Special Defence Contribution; whether non-dom status changes the result; how cost basis is calculated, including for coins held before 2026; how gift disposals are valued; how a non-resident's Cyprus-taxable gains are determined; and how staking, airdrops and DeFi income are classified. The Tax Department publishes an explanatory guide and FAQ for natural persons (new editions dated 11 May 2026, in Greek) on its Tax Reform 2026 page.",
+			},
+			{
+				heading: "Record-keeping and what to do now",
+				body: "Every disposal, including swaps and payments in crypto, needs a record, because gains and losses are netted by tax year. Keep for each year: all transactions with dates, acquisition cost and disposal value in euros, wallet and exchange identifiers, and how each coin was acquired (purchase, mining or other), since mined coins are treated differently. Tracking tools such as Koinly or CoinTracking can export this. Because the rules are new and several points are open, get written advice from a Cyprus accountant or tax lawyer before filing, particularly for large holdings, mining, staking or DeFi income, or if you are not tax resident in Cyprus.",
+			},
+		],
+		faqs: [
+			{
+				q: "Is crypto tax-free in Cyprus in 2026?",
+				a: "No. Since 1 January 2026, disposal gains are taxed at 8% under Article 20E. Mined coins are excluded and taxed under the ordinary rules.",
+			},
+			{
+				q: "Is swapping one coin for another taxable?",
+				a: "Yes. Exchanging one crypto-asset for another is listed as a disposal.",
+			},
+			{
+				q: "Can I carry a crypto loss forward?",
+				a: "No. Losses offset only same-year crypto disposal gains.",
+			},
+			{
+				q: "Does the 8% apply to mined coins?",
+				a: "No. They are taxed under the ordinary rules.",
+			},
+			{
+				q: "Does Special Defence Contribution apply to crypto gains?",
+				a: "This is not covered by the published guidance we checked; ask a Cyprus tax adviser.",
+			},
+			{
+				q: "Does non-dom status change this?",
+				a: "This is not covered by the published guidance we checked; ask a Cyprus tax adviser.",
 			},
 		],
 	},
