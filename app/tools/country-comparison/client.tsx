@@ -31,7 +31,7 @@ const DATA: Record<Country, CountryData> = {
 		avgPropPrice: "€2,800",
 		monthlyCost: "€2,000",
 		euVisaNonEU: "Yes / D7",
-		cryptoFriendly: "Yes",
+		cryptoFriendly: "8% on gains (2026)",
 		englishSpoken: "High",
 		climate: "★★★★★",
 	},

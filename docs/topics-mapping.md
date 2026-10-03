@@ -55,7 +55,7 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Cyprus Citizenship by Naturalisation 2026](/guides/citizenship-naturalization/) | Money & paperwork | Moving to Cyprus |  | Applied for after years of residence, so it is resident paperwork. |
 | [Cyprus Ltd vs Sole Trader vs Partnership](/guides/company-types-comparison/) | Money & paperwork | Moving to Cyprus |  | Work and business admin sits in Money & paperwork (there is no Work topic). |
 | [Cost of Living in Cyprus 2026: City Budgets](/guides/cost-of-living/) | Money & paperwork | Moving to Cyprus |  | Monthly household budgets are useful to residents; also listed for movers. |
-| [Cryptocurrency Tax Treatment in Cyprus (2026)](/guides/crypto-tax-cyprus/) | Money & paperwork |  |  |  |
+| [Cryptocurrency Tax in Cyprus (2026): The 8% Rule](/guides/crypto-tax-cyprus/) | Money & paperwork |  |  |  |
 | [Cyprus Tax Return 2026: Filing Your TD1 Form](/guides/cyprus-tax-return-filing/) | Money & paperwork |  |  |  |
 | [Hiring Employees in Cyprus 2026: Costs & Law](/guides/hiring-in-cyprus/) | Money & paperwork |  |  | Work and business admin sits in Money & paperwork. |
 | [Cyprus IP Box Regime: 3% Effective Tax on IP](/guides/ip-box-regime/) | Money & paperwork |  |  | Business tax for people already running a company here. |
