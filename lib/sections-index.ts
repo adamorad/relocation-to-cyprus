@@ -132,6 +132,13 @@ export const SECTIONS_INDEX: ReadonlyArray<SectionEntry> = [
 			"Active Facebook groups, WhatsApp communities, and Meetup events by city and nationality.",
 	},
 	{
+		name: "Cyprus Influencers",
+		slug: "cyprus-influencers",
+		category: "Community",
+		description:
+			"Instagram and TikTok accounts about Cyprus: news, places, expat life, language, food and cooking.",
+	},
+	{
 		name: "Religious Services",
 		slug: "religious-services",
 		category: "Community",

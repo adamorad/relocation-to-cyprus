@@ -18,10 +18,10 @@ Decisions were made on the owner's behalf in Phase 2A and are open for review. R
 | Money & paperwork | `/money-and-paperwork/` | 16 | 3 | 10 | 29 | 41 |
 | Food & shopping | `/food-and-shopping/` | 5 | 5 | 0 | 10 | 11 |
 | Family & schools | `/family-and-schools/` | 7 | 3 | 1 | 11 | 13 |
-| Community & leisure | `/community-and-leisure/` | 5 | 9 | 2 | 16 | 21 |
+| Community & leisure | `/community-and-leisure/` | 5 | 10 | 2 | 17 | 22 |
 | Moving to Cyprus | `/moving-to-cyprus/` | 16 | 1 | 7 | 24 | 45 |
 | Property | `/property/` | 9 | 2 | 5 | 16 | 16 |
-| **All** | | 80 | 29 | 31 | 140 | |
+| **All** | | 80 | 30 | 31 | 141 | |
 
 Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). They keep a topic for their own breadcrumb and "More on" block but are not shown on hubs, indexes, other pages or the sitemap.
 
@@ -133,6 +133,7 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Summer Camps](/sections/summer-camps/) | Family & schools |  |  |  |
 | [Art Galleries & Museums](/sections/art-culture/) | Community & leisure |  |  |  |
 | [Community Gardens](/sections/community-gardens/) *(not listed)* | Community & leisure |  |  |  |
+| [Cyprus Influencers](/sections/cyprus-influencers/) | Community & leisure |  |  |  |
 | [Expat Community Groups](/sections/expat-communities/) | Community & leisure |  |  |  |
 | [Fitness & Wellness Studios](/sections/fitness-wellness/) | Community & leisure | Health |  | Gyms and studios are leisure; wellness also listed under Health. |
 | [Religious Services](/sections/religious-services/) | Community & leisure |  |  |  |
