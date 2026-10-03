@@ -15,6 +15,7 @@ import { NURSERIES } from "./childcare";
 import { CO_LIVING_LISTINGS } from "./co-living";
 import { COMMUNITY_GARDENS } from "./community-gardens";
 import { COWORK_SPACES } from "./coworking";
+import { INFLUENCERS } from "./cyprus-influencers";
 import { EV_CHARGERS } from "./ev-charging";
 import { EXPAT_COMMUNITIES } from "./expat-communities";
 import { FARMERS_MARKETS } from "./farmers-markets";
@@ -49,6 +50,7 @@ const DATA: Record<string, ReadonlyArray<Entry>> = {
 	"co-living": CO_LIVING_LISTINGS,
 	"community-gardens": COMMUNITY_GARDENS,
 	coworking: COWORK_SPACES,
+	"cyprus-influencers": INFLUENCERS,
 	"ev-charging": EV_CHARGERS,
 	"expat-communities": EXPAT_COMMUNITIES,
 	"farmers-markets": FARMERS_MARKETS,

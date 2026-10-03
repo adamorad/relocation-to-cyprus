@@ -400,6 +400,7 @@ export const DIRECTORY_TOPICS = {
 	"summer-camps": { topic: "family-and-schools" },
 
 	"expat-communities": { topic: "community-and-leisure" },
+	"cyprus-influencers": { topic: "community-and-leisure" },
 	"religious-services": { topic: "community-and-leisure" },
 	volunteering: { topic: "community-and-leisure" },
 	"art-culture": { topic: "community-and-leisure" },

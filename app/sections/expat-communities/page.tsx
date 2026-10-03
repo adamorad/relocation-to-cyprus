@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { COMMUNITY_TIPS } from "@/lib/expat-communities";
@@ -59,6 +60,16 @@ export default function ExpatCommunitiesPage() {
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
 			/>
+			<p className="mb-4 text-sm text-ink">
+				Also see{" "}
+				<Link
+					href="/sections/cyprus-influencers/"
+					className="text-primary-hover underline underline-offset-2 hover:text-ink"
+				>
+					Cyprus influencers to follow on Instagram and TikTok
+				</Link>
+				.
+			</p>
 			<ExpatCommunitiesClient />
 		</DirectoryTemplate>
 	);
