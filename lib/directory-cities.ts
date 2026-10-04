@@ -22,6 +22,7 @@ import { FARMERS_MARKETS } from "./farmers-markets";
 import { FITNESS_VENUES } from "./fitness-wellness";
 import { FOOD_PLACES } from "./food";
 import { HALAL_KOSHER_VENUES } from "./halal-kosher";
+import { HOME_SERVICES } from "./home-services";
 import { IMMIGRATION_LAWYERS } from "./immigration-lawyers";
 import { INTERNATIONAL_STORES } from "./international-grocery";
 import { RENTAL_LISTINGS } from "./long-term-rentals";
@@ -57,6 +58,7 @@ const DATA: Record<string, ReadonlyArray<Entry>> = {
 	"fitness-wellness": FITNESS_VENUES,
 	food: FOOD_PLACES,
 	"halal-kosher": HALAL_KOSHER_VENUES,
+	"home-services": HOME_SERVICES,
 	"immigration-lawyers": IMMIGRATION_LAWYERS,
 	"international-grocery": INTERNATIONAL_STORES,
 	"long-term-rentals": RENTAL_LISTINGS,

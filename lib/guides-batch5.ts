@@ -212,4 +212,70 @@ export const GUIDES_BATCH5: GuideInfo[] = [
 			},
 		],
 	},
+	{
+		slug: "finding-tradespeople-cyprus",
+		datePublished: "2026-10-04",
+		dateModified: "2026-10-04",
+		lastChecked: "2026-10-04",
+		sources: [
+			{
+				label:
+					"Business in Cyprus: Electrical services professionals",
+				url: "https://www.businessincyprus.gov.cy/business-sectors/electrical-services-professionals/",
+			},
+			{
+				label:
+					"Business in Cyprus: Installer of technical systems of buildings (natural person)",
+				url: "https://www.businessincyprus.gov.cy/business-sectors/installer-of-technical-systems-of-buildings-by-natural-person/",
+			},
+			{
+				label: "Department of Labour Inspection (Ministry of Labour)",
+				url: "https://www.mlsi.gov.cy/mlsi/dli/dliup.nsf/pagemc_en/pagemc_en",
+			},
+			{
+				label: "Consumer Protection Service: Contact us",
+				url: "https://consumer.gov.cy/en/contact-us",
+			},
+		],
+		category: "property",
+		title: "Finding a Tradesperson in Cyprus: Licences, Checks and Quotes",
+		description:
+			"Which trades need a licence in Cyprus, how to check an electrician, air conditioning or gas installer before you hire, how to handle quotes and payment, and where to complain.",
+		sections: [
+			{
+				heading: "Who Needs a Licence",
+				body: "Not every trade is regulated the same way. Three are worth knowing about before you hire for work at home.\n\nElectricians: according to the Cyprus government's business portal, no unregistered individual or company can carry out electrical work. An electrician must hold a Certificate of Competence and an annual Registration Certificate, which is valid until 31 December of the year it is issued. The registration is issued by the Department of Electrical and Mechanical Services. A certificate from an earlier year is therefore out of date.\n\nAir conditioning, heating, ventilation and hot-water installers: installers of the technical systems of buildings need a registration certificate from the Energy Service of the Ministry of Energy, Commerce and Industry, which keeps the Registry of installers.\n\nLPG (gas) installers: these must be approved by the Chief Inspector of the Department of Labour Inspection.\n\nWe have not found a public lookup of licensed electricians, so the check below relies on asking to see the paperwork.",
+			},
+			{
+				heading: "How to Check Before You Hire",
+				body: "Ask first, before any work starts.\n\nFor an electrician, ask to see the Certificate of Competence and the registration certificate for the current year. For air conditioning, heating or hot-water work, ask for the installer's Energy Service registration. For anything involving gas, use an approved LPG installer.\n\nCheck that the business has a real website or office, a phone number that answers and a name you can write down. Ask what work they will do themselves and whether anyone else will be on site.\n\nThe businesses in our home services directory (/sections/home-services/) were each checked on their own website on 4 October 2026. That is not an endorsement and it is not a licence check, so the questions above still apply to every one of them.",
+			},
+			{
+				heading: "Quotes and Payment Tips",
+				body: "Get a written quote that describes the work, the materials and what is and is not included. For larger jobs, ask for two or three quotes and compare like with like.\n\nAgree the scope and timing in writing before work begins, and keep messages, quotes and receipts in one place. Be wary of anyone who asks for the full amount upfront; paying in stages as work is completed is safer for you. Ask for a receipt or invoice for every payment.\n\nIf the price changes during the job, ask for the change in writing before you agree to it.",
+			},
+			{
+				heading: "If Something Goes Wrong",
+				body: "Start by raising the problem with the tradesperson in writing, with photos and a copy of the quote or invoice.\n\nFor consumer complaints, contact the Consumer Protection Service. Its Consumer Helpline is 1429, and contact details are on the Service's website, consumer.gov.cy. If the work involved an unregistered electrician or installer, the registering body named above is the place to ask about it.\n\nWe have not verified any specific legal remedies, so for a larger dispute speak to a lawyer.",
+			},
+		],
+		faqs: [
+			{
+				q: "Does an electrician in Cyprus need to be registered?",
+				a: "Yes. According to the Cyprus government's business portal, no unregistered individual or company can carry out electrical work. They must hold a Certificate of Competence and an annual Registration Certificate valid until 31 December of the year issued.",
+			},
+			{
+				q: "Who registers air conditioning and heating installers?",
+				a: "Installers of heating, cooling, ventilation and hot-water systems need a registration certificate from the Energy Service of the Ministry of Energy, Commerce and Industry, which keeps the Registry of installers.",
+			},
+			{
+				q: "Who can install LPG gas systems?",
+				a: "LPG installers must be approved by the Chief Inspector of the Department of Labour Inspection. Ask to see the approval before any gas work starts.",
+			},
+			{
+				q: "Where do I complain about a tradesperson?",
+				a: "Contact the Consumer Protection Service. The Consumer Helpline is 1429.",
+			},
+		],
+	},
 ];

@@ -14,14 +14,14 @@ Decisions were made on the owner's behalf in Phase 2A and are open for review. R
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
 | Health | `/health/` | 7 | 3 | 1 | 11 | 12 |
 | Getting around | `/getting-around/` | 8 | 1 | 2 | 11 | 10 |
-| Home & bills | `/home-and-bills/` | 7 | 2 | 3 | 12 | 16 |
+| Home & bills | `/home-and-bills/` | 8 | 3 | 3 | 14 | 18 |
 | Money & paperwork | `/money-and-paperwork/` | 16 | 3 | 10 | 29 | 41 |
 | Food & shopping | `/food-and-shopping/` | 5 | 5 | 0 | 10 | 11 |
 | Family & schools | `/family-and-schools/` | 7 | 3 | 1 | 11 | 13 |
 | Community & leisure | `/community-and-leisure/` | 5 | 10 | 2 | 17 | 22 |
 | Moving to Cyprus | `/moving-to-cyprus/` | 16 | 1 | 7 | 24 | 45 |
 | Property | `/property/` | 9 | 2 | 5 | 16 | 16 |
-| **All** | | 80 | 30 | 31 | 141 | |
+| **All** | | 81 | 31 | 31 | 143 | |
 
 Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). They keep a topic for their own breadcrumb and "More on" block but are not shown on hubs, indexes, other pages or the sitemap.
 
@@ -45,6 +45,7 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Long-Term Car Rental Cyprus 2026: Monthly Hire Rates](/guides/long-term-car-rental-cyprus/) | Getting around |  |  | Old category Lifestyle; it is about getting a car for daily use. |
 | [Driving in Cyprus: Road Safety & Culture Guide](/guides/road-safety-driving/) | Getting around |  |  |  |
 | [Earthquake Risk in Cyprus: How to Prepare](/guides/earthquake-preparedness/) | Home & bills |  |  | Old category Environment; preparing the home and household. |
+| [Finding a Tradesperson in Cyprus: Licences, Checks and Quotes](/guides/finding-tradespeople-cyprus/) | Home & bills |  |  | Licences, checks and quotes before hiring a tradesperson for the home. |
 | [Short-Term to Long-Term Rental in Cyprus](/guides/rental-transition-guide/) | Home & bills | Moving to Cyprus |  | Old category Property; it is about renting a home, not buying. |
 | [Solar Panels in Cyprus: Net Metering & ROI](/guides/solar-energy-guide/) | Home & bills |  |  | Old category Environment; it is about cutting the electricity bill. |
 | [Cyprus Utilities Setup 2026: Electricity & Water](/guides/utilities-setup-guide/) | Home & bills |  |  |  |
@@ -119,6 +120,7 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Veterinary Services](/sections/veterinary-services/) | Health |  |  | Pet health care; there is no Pets topic and people look for vets next to doctors. |
 | [EV Charging Stations](/sections/ev-charging/) *(not listed)* | Getting around | Home & bills |  |  |
 | [Co-Living & Serviced Apartments](/sections/co-living/) *(not listed)* | Home & bills | Moving to Cyprus |  | Furnished monthly housing, mostly used on arrival. |
+| [Home Services](/sections/home-services/) | Home & bills |  | limassol, paphos, larnaca | Plumbers, electricians and other trades for fixing the home. |
 | [Long-Term Rentals](/sections/long-term-rentals/) | Home & bills | Moving to Cyprus |  | Old category Property & Housing; renting a home is daily life. |
 | [Accountants & Tax Advisors](/sections/accountants/) | Money & paperwork |  |  |  |
 | [Coworking Spaces](/sections/coworking/) | Money & paperwork | Community & leisure |  | Work sits in Money & paperwork (no Work topic); also a place to meet people. |
