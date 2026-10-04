@@ -5,6 +5,7 @@ import { DirectoryFeatured } from "@/components/templates/DirectoryFeatured";
 import { Badge } from "@/components/ui/Badge";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup } from "@/components/ui/Chip";
+import { trackEvent } from "@/lib/analytics";
 import {
 	ALL_CITIES,
 	ALL_TRADES,
@@ -74,12 +75,36 @@ export default function HomeServicesClient() {
 											href={s.website}
 											target="_blank"
 											rel="noopener noreferrer"
+											data-umami-event="listing_click"
+											data-umami-event-business={s.name}
+											data-umami-event-trade={s.trade}
+											data-umami-event-link="website"
+											onClick={() =>
+												trackEvent("listing_click", {
+													directory: "home-services",
+													business: s.name,
+													trade: s.trade,
+													link_type: "website",
+												})
+											}
 											className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
 										>
 											Website
 										</a>
 										<a
 											href={telHref(s.phone)}
+											data-umami-event="listing_click"
+											data-umami-event-business={s.name}
+											data-umami-event-trade={s.trade}
+											data-umami-event-link="phone"
+											onClick={() =>
+												trackEvent("listing_click", {
+													directory: "home-services",
+													business: s.name,
+													trade: s.trade,
+													link_type: "phone",
+												})
+											}
 											className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
 										>
 											{s.phone}

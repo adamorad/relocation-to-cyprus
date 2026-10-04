@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Badge } from "@/components/ui/Badge";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup } from "@/components/ui/Chip";
+import { trackEvent } from "@/lib/analytics";
 import {
 	ALL_CATEGORIES,
 	ALL_PLATFORMS,
@@ -89,6 +90,15 @@ export default function CyprusInfluencersClient() {
 												href={instagramUrl(a.instagram.handle)}
 												target="_blank"
 												rel="noopener noreferrer"
+												data-umami-event="influencer_click"
+												data-umami-event-account={a.name}
+												data-umami-event-platform="instagram"
+												onClick={() =>
+													trackEvent("influencer_click", {
+														account: a.name,
+														platform: "instagram",
+													})
+												}
 												className={linkClass}
 											>
 												Instagram: {followersLabel(a.instagram.followers)}
@@ -99,6 +109,15 @@ export default function CyprusInfluencersClient() {
 												href={tiktokUrl(a.tiktok.handle)}
 												target="_blank"
 												rel="noopener noreferrer"
+												data-umami-event="influencer_click"
+												data-umami-event-account={a.name}
+												data-umami-event-platform="tiktok"
+												onClick={() =>
+													trackEvent("influencer_click", {
+														account: a.name,
+														platform: "tiktok",
+													})
+												}
 												className={linkClass}
 											>
 												TikTok: {followersLabel(a.tiktok.followers)}
