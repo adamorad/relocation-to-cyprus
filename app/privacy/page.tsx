@@ -45,7 +45,7 @@ export default function PrivacyPage() {
 							2. Data we collect
 						</h2>
 						<p className="text-slate-700 mb-3">
-							We collect data only when you give consent via the cookie banner.
+							Analytics and advertising tools that use cookies (Google Analytics 4 and the Meta Pixel) run only if you accept them in the cookie banner. Umami, which does not use cookies, counts visits for everyone.
 						</p>
 						<ul className="list-disc pl-5 space-y-2 text-slate-700">
 							<li>
@@ -56,10 +56,12 @@ export default function PrivacyPage() {
 								tracking.
 							</li>
 							<li>
-								<strong>Analytics (Umami):</strong> If you consent, we also
-								count pageviews and events with Umami, a privacy-focused
-								analytics tool that does not set cookies: pages visited,
-								referrer, browser, device type and country.
+								<strong>Visit counts (Umami):</strong> For all visitors, we
+								count pageviews with Umami, a privacy-focused analytics tool
+								that does not use cookies: pages visited, referrer, browser,
+								device type, screen size, language and country. It is not used
+								for advertising. If your browser sends a Do Not Track signal,
+								Umami does not record your visit.
 							</li>
 							<li>
 								<strong>Conversion events (Meta Pixel):</strong> If you consent,
