@@ -52,6 +52,13 @@ window.gtag('config', '${gaId}', { anonymize_ip: true });`}
           </Script>
         </>
       )}
+      {consent === "accepted" && (
+        <Script
+          src="https://stackfollow-analytics.vercel.app/script.js"
+          data-website-id="5546e3e2-cc20-4d1b-a535-02f3d0db2a1e"
+          strategy="afterInteractive"
+        />
+      )}
       {consent === "accepted" && pixelId && (
         <Script id="meta-pixel" strategy="afterInteractive">
           {`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -66,7 +73,7 @@ fbq('init','${pixelId}');fbq('track','PageView');`}
         <div data-pagefind-ignore className="fixed bottom-0 left-0 right-0 z-50 bg-ink border-t border-white/15 px-4 py-3 md:py-4">
           <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-3">
             <p className="flex-1 text-xs text-white/85 leading-relaxed">
-              We use cookies for analytics (Google Analytics) and to measure ad performance (Meta Pixel).{" "}
+              We use cookies and similar tools for analytics (Google Analytics, Umami) and to measure ad performance (Meta Pixel).{" "}
               <Link href="/privacy/" className="underline hover:text-white">
                 Privacy Policy
               </Link>
