@@ -27,7 +27,7 @@ export const SECTIONS_INDEX: ReadonlyArray<SectionEntry> = [
 		slug: "home-services",
 		category: "Property & Housing",
 		description:
-			"Plumbers, electricians, air conditioning, handyman, locksmith and pest control businesses in Limassol, Paphos and Larnaca, each checked on its own website.",
+			"Plumbers, electricians, air conditioning, handyman, locksmiths, pest control, cleaning and key holding in Limassol, Paphos and Larnaca, each checked on its own website.",
 	},
 
 	// Legal & Professional
