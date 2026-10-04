@@ -22,7 +22,6 @@ import { CITY_BUSES_ID, CITY_BUSES_TITLE } from "@/lib/city-buses";
 import { GUIDE_REDIRECTS } from "@/lib/guide-redirects";
 import { GUIDES, type GuideCategory, guideBySlug } from "@/lib/guides";
 import { getTopicForGuide, topicCrumb } from "@/lib/topic-map";
-import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 
@@ -153,41 +152,21 @@ export async function generateMetadata({
 	const g = guideBySlug(slug);
 	if (!g) return {};
 	// The painted hero (when set) is the share image; else the legacy heroImage.
-	const ogImage = g.image
-		? {
-				url: `${SITE_URL}${g.image.src}`,
-				width: g.image.width,
-				height: g.image.height,
-				alt: g.image.alt ?? g.title,
-			}
-		: g.heroImage
-			? {
-					url: `${SITE_URL}${g.heroImage}`,
-					width: 1200,
-					height: 630,
-					alt: g.title,
-				}
-			: null;
 	return {
 		title: g.title,
 		description: g.description,
 		alternates: { canonical: `/guides/${g.slug}/` },
 		openGraph: {
-			images: [DEFAULT_OG_IMAGE],
 			title: g.title,
 			description: g.description,
 			url: `${SITE_URL}/guides/${g.slug}/`,
 			type: "article",
-			...(ogImage && { images: [ogImage] }),
 		},
-		...(ogImage && {
-			twitter: {
-				card: "summary_large_image",
-				title: g.title,
-				description: g.description,
-				images: [ogImage.url],
-			},
-		}),
+		twitter: {
+			card: "summary_large_image",
+			title: g.title,
+			description: g.description,
+		},
 	};
 }
 
