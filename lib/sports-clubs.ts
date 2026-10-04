@@ -96,7 +96,7 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     englishWelcome: true,
     annualFeeApprox: 700,
     why: "Part of the Aphrodite Hills Resort complex. Professional-grade facilities with resident coaches, a high-performance programme for juniors, and social tennis for adults. Beautiful setting above Kouklia.",
-    website: "https://www.aphroditehills.com/sport/tennis",
+    website: "https://www.aphroditehills.com/",
   },
   {
     name: "Larnaca Tennis Club",

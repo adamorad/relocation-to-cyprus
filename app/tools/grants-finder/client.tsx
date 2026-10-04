@@ -144,7 +144,7 @@ const GRANTS: ReadonlyArray<Grant> = [
 			"Closed. Check the Deputy Ministry of Research, Innovation and Digital Policy for the next call",
 		status: "closed",
 		companySizes: ["micro", "sme"],
-		url: "https://www.digitalpolicy.gov.cy",
+		url: "https://www.gov.cy/dmrid/en/",
 		description:
 			"Broad competitiveness support for Cypriot SMEs. Covers equipment, process improvement, certification, quality management and market access.",
 	},
@@ -200,7 +200,7 @@ const GRANTS: ReadonlyArray<Grant> = [
 			"Not confirmed. Check the European Innovation Council for current cut-off dates",
 		status: "check",
 		companySizes: ["micro", "sme"],
-		url: "https://eic.ec.europa.eu/eic-funding/eic-accelerator_en",
+		url: "https://eic.ec.europa.eu/eic-funding-opportunities/eic-accelerator_en",
 		description:
 			"The EU's flagship deep-tech startup funding programme, combining grant funding with equity investment. Highly competitive.",
 	},
@@ -214,7 +214,7 @@ const GRANTS: ReadonlyArray<Grant> = [
 			"Closed. Check the Deputy Ministry of Research, Innovation and Digital Policy for the next call",
 		status: "closed",
 		companySizes: ["micro"],
-		url: "https://www.digitalpolicy.gov.cy",
+		url: "https://www.gov.cy/dmrid/en/",
 		description:
 			"Vouchers and grants for micro-businesses to adopt digital tools: websites, accounting software, digital payments, online marketing and cybersecurity.",
 	},

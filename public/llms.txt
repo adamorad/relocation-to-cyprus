@@ -67,6 +67,8 @@ Hub: https://realcy.app/home-and-bills/
 
 - [Short-Term to Long-Term Rental in Cyprus](https://realcy.app/guides/rental-transition-guide/): Standard lease terms, typical deposit amounts, what landlords require from foreign tenants, furnished versus unfurnished market realities, breaking a lease, and rent increase rules.
 - [Cyprus Utilities Setup 2026: Electricity & Water](https://realcy.app/guides/utilities-setup-guide/): How to connect EAC electricity, water, broadband (Cyta, Cablenet, Epic, Primetel), and LPG gas after moving into a Cyprus home. Realistic timelines, 2026 costs, and the documents each utility requires.
+- [Home Services in Cyprus](https://realcy.app/sections/home-services/): Plumbers, electricians, air conditioning, handyman, locksmiths, pest control, cleaning and key holding in Limassol, Paphos and Larnaca, each checked on its own website.
+- [Finding a Tradesperson in Cyprus: Licences, Checks and Quotes](https://realcy.app/guides/finding-tradespeople-cyprus/): Which trades need a licence (electricians, heating and cooling installers, LPG installers), how to check before hiring, and where to complain.
 - [Solar Panels in Cyprus: Net Metering & ROI](https://realcy.app/guides/solar-energy-guide/): Why Cyprus is one of the best countries in Europe for solar power, how the net metering scheme works, what a residential system costs, and how to navigate the EAC connection process.
 - [Water Quality & Scarcity in Cyprus: Key Facts](https://realcy.app/guides/water-quality-scarcity/): Tap water safety, the desalination infrastructure that underpins Cyprus's water supply, seasonal pressure issues, filtration options, and practical conservation tips for households and gardens.
 - [Recycling in Cyprus: Guide for New Residents](https://realcy.app/guides/waste-recycling-guide/): How to use the kerbside bins, where to drop off electronics, batteries, textiles and glass, an honest assessment of Cyprus's recycling culture, and how to live more sustainably beyond the bins.
@@ -186,6 +188,7 @@ Hub: https://realcy.app/community-and-leisure/
 - [Fitness & Wellness Studios](https://realcy.app/sections/fitness-wellness/): Gyms, yoga, CrossFit, Pilates, and wellness centres with pricing and language flags.
 - [Sports & Recreation Clubs](https://realcy.app/sections/sports-clubs/): Tennis, golf, sailing, padel, hiking groups, and more: with membership fees.
 - [Expat Community Groups](https://realcy.app/sections/expat-communities/): Active Facebook groups, WhatsApp communities, and Meetup events by city and nationality.
+- [Cyprus Influencers to Follow](https://realcy.app/sections/cyprus-influencers/): Instagram and TikTok accounts about Cyprus news, places, expat life, language, food and cooking, each checked on the platform.
 - [Religious Services](https://realcy.app/sections/religious-services/): English-language churches, mosques, synagogues, and temples across all districts.
 - [Volunteering Opportunities](https://realcy.app/sections/volunteering/): NGOs, animal shelters, environmental groups, and community orgs welcoming expat volunteers.
 - [Art Galleries & Museums](https://realcy.app/sections/art-culture/): Galleries, museums, and cultural venues with English signage and exhibition schedules.
