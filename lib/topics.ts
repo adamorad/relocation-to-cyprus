@@ -226,10 +226,10 @@ export function topicShareMetadata(
 				alt: `${topic.name} in Cyprus`,
 			}
 		: {
-				url: "https://realcy.app/og-default.webp",
+				url: "https://realcy.app/og-realcy.jpg",
 				width: 1200,
 				height: 630,
-				alt: "RealCy.app: Living in Cyprus",
+				alt: "RealCy.app: everyday life in Cyprus, made easier",
 			};
 	return {
 		openGraph: {

@@ -5,6 +5,7 @@ import { SourcesNote } from "@/components/ui/SourcesNote";
 import { MARKET_TIPS } from "@/lib/farmers-markets";
 import { topicCrumb } from "@/lib/topic-map";
 import FarmersMarketsClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Farmers Markets & Local Produce in Cyprus";
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/sections/farmers-markets/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/sections/farmers-markets/`,

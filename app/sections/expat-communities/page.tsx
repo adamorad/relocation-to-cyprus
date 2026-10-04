@@ -5,6 +5,7 @@ import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { COMMUNITY_TIPS } from "@/lib/expat-communities";
 import { topicCrumb } from "@/lib/topic-map";
 import ExpatCommunitiesClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Expat Community Groups in Cyprus";
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/sections/expat-communities/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/sections/expat-communities/`,

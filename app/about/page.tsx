@@ -8,6 +8,7 @@ import { GUIDES } from "@/lib/guides";
 import { REGIONS } from "@/lib/regions";
 import { SECTIONS_INDEX } from "@/lib/sections-index";
 import { TOOLS } from "@/lib/tools-index";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "About RealCy.app";
@@ -18,7 +19,13 @@ export const metadata: Metadata = {
 	title: { absolute: title },
 	description,
 	alternates: { canonical: "/about/" },
-	openGraph: { title, description, url: `${SITE_URL}/about/`, type: "website" },
+	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
+		title,
+		description,
+		url: `${SITE_URL}/about/`,
+		type: "website",
+	},
 };
 
 const OFFER = [

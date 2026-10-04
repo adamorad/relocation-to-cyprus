@@ -8,6 +8,7 @@ import { Callout } from "@/components/ui/Callout";
 import { Card, CardGrid, CardGridItem, LogoTile } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { allDeveloperSlugs, developerBySlug } from "@/lib/developers";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 
@@ -37,6 +38,7 @@ export async function generateMetadata({
 		description: desc,
 		alternates: { canonical: `/developers/${dev.slug}/` },
 		openGraph: {
+			images: [DEFAULT_OG_IMAGE],
 			title,
 			description: desc,
 			url: `${SITE_URL}/developers/${dev.slug}/`,

@@ -5,12 +5,17 @@ import { SourcesNote } from "@/components/ui/SourcesNote";
 import { DIETARY_TIPS, HALAL_KOSHER_VENUES } from "@/lib/halal-kosher";
 import { topicCrumb } from "@/lib/topic-map";
 import HalalKosherClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Halal & Kosher Food in Cyprus";
 
-const halalVenues = HALAL_KOSHER_VENUES.filter((v) => v.certification !== "kosher");
-const kosherVenues = HALAL_KOSHER_VENUES.filter((v) => v.certification !== "halal");
+const halalVenues = HALAL_KOSHER_VENUES.filter(
+	(v) => v.certification !== "kosher",
+);
+const kosherVenues = HALAL_KOSHER_VENUES.filter(
+	(v) => v.certification !== "halal",
+);
 const cityList = (venues: ReadonlyArray<{ city: string }>) => {
 	const cities = [...new Set(venues.map((v) => v.city))];
 	return cities.length > 1
@@ -25,6 +30,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/sections/halal-kosher/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title: metaTitle,
 		description,
 		url: `${SITE_URL}/sections/halal-kosher/`,

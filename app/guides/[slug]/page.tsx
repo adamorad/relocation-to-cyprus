@@ -22,6 +22,7 @@ import { CITY_BUSES_ID, CITY_BUSES_TITLE } from "@/lib/city-buses";
 import { GUIDE_REDIRECTS } from "@/lib/guide-redirects";
 import { GUIDES, type GuideCategory, guideBySlug } from "@/lib/guides";
 import { getTopicForGuide, topicCrumb } from "@/lib/topic-map";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 
@@ -172,6 +173,7 @@ export async function generateMetadata({
 		description: g.description,
 		alternates: { canonical: `/guides/${g.slug}/` },
 		openGraph: {
+			images: [DEFAULT_OG_IMAGE],
 			title: g.title,
 			description: g.description,
 			url: `${SITE_URL}/guides/${g.slug}/`,

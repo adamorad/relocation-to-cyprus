@@ -3,6 +3,7 @@ import { HubTemplate } from "@/components/templates/HubTemplate";
 import { TopicIndexClient } from "@/components/templates/TopicIndexClient";
 import { GUIDES } from "@/lib/guides";
 import { primaryTopic } from "@/lib/topic-map";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Guides for living in Cyprus";
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/guides/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/guides/`,

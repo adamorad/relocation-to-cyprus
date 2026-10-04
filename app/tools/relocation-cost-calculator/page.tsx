@@ -7,6 +7,7 @@ import { TAX_SRC } from "@/lib/facts/tax";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import RelocationCostCalculatorClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Cyprus Relocation Cost Calculator 2026: What It Costs to Move";
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/tools/relocation-cost-calculator/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/tools/relocation-cost-calculator/`,
