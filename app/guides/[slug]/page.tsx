@@ -161,11 +161,20 @@ export async function generateMetadata({
 			description: g.description,
 			url: `${SITE_URL}/guides/${g.slug}/`,
 			type: "article",
+			images: [
+				{
+					url: `${SITE_URL}/og/guides/${g.slug}.png`,
+					width: 1200,
+					height: 630,
+					alt: g.title,
+				},
+			],
 		},
 		twitter: {
 			card: "summary_large_image",
 			title: g.title,
 			description: g.description,
+			images: [`${SITE_URL}/og/guides/${g.slug}.png`],
 		},
 	};
 }
