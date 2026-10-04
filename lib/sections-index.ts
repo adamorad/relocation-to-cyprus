@@ -22,6 +22,14 @@ export const SECTIONS_INDEX: ReadonlyArray<SectionEntry> = [
 			"Licensed property managers for non-resident owners renting out their Cyprus property.",
 	},
 
+	{
+		name: "Home Services",
+		slug: "home-services",
+		category: "Property & Housing",
+		description:
+			"Plumbers, electricians, air conditioning, handyman, locksmith and pest control businesses in Limassol, Paphos and Larnaca, each checked on its own website.",
+	},
+
 	// Legal & Professional
 	{
 		name: "Property Lawyers",

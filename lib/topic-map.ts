@@ -166,6 +166,11 @@ export const GUIDE_TOPICS = {
 		why: "Old category Property; it is about renting a home, not buying.",
 	},
 
+	"finding-tradespeople-cyprus": {
+		topic: "home-and-bills",
+		why: "Licences, checks and quotes before hiring a tradesperson for the home.",
+	},
+
 	// Money & paperwork
 	"banking-in-cyprus": { topic: "money-and-paperwork" },
 	"taxes-for-expats": {
@@ -364,6 +369,12 @@ export const DIRECTORY_TOPICS = {
 		topic: "home-and-bills",
 		also: ["moving-here"],
 		why: "Furnished monthly housing, mostly used on arrival.",
+	},
+
+	"home-services": {
+		topic: "home-and-bills",
+		cities: ["limassol", "paphos", "larnaca"],
+		why: "Plumbers, electricians and other trades for fixing the home.",
 	},
 
 	accountants: { topic: "money-and-paperwork" },
