@@ -4,10 +4,10 @@ import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import IspComparisonClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
-const title =
-	"Cyprus Internet & Mobile Plans: Cyta, Epic, Primetel, Cablenet";
+const title = "Cyprus Internet & Mobile Plans: Cyta, Epic, Primetel, Cablenet";
 const description =
 	"Compare 4 broadband providers and 3 mobile carriers in Cyprus side by side: monthly cost, speed, contract length and coverage by city. Prices from 2025; verify before signing.";
 
@@ -16,6 +16,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/tools/isp-comparison/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/tools/isp-comparison/`,

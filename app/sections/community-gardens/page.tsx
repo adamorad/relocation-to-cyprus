@@ -4,6 +4,7 @@ import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { GARDEN_TIPS } from "@/lib/community-gardens";
 import { topicCrumb } from "@/lib/topic-map";
 import CommunityGardensClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Community Gardens & Urban Farming in Cyprus";
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/sections/community-gardens/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/sections/community-gardens/`,

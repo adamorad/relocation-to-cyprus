@@ -44,12 +44,14 @@ export const metadata: Metadata = {
 	metadataBase: new URL("https://realcy.app"),
 	icons: {
 		icon: [
+			{ url: "/favicon.svg", type: "image/svg+xml" },
 			{ url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
 			{ url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
 		],
 		apple: "/apple-touch-icon.png",
 		shortcut: "/favicon.ico",
 	},
+	manifest: "/site.webmanifest",
 	title: {
 		default: `${SITE_NAME} - ${SITE_TAGLINE}`,
 		template: `%s · ${SITE_NAME}`,
@@ -76,10 +78,10 @@ export const metadata: Metadata = {
 		description: SITE_DESCRIPTION,
 		images: [
 			{
-				url: "https://realcy.app/og-default.webp",
+				url: "https://realcy.app/og-realcy.jpg",
 				width: 1200,
 				height: 630,
-				alt: "RealCy.app: Living in Cyprus",
+				alt: "RealCy.app: everyday life in Cyprus, made easier",
 			},
 		],
 	},
@@ -87,7 +89,7 @@ export const metadata: Metadata = {
 		card: "summary_large_image",
 		title: `${SITE_NAME} - ${SITE_TAGLINE}`,
 		description: SITE_DESCRIPTION,
-		images: ["https://realcy.app/og-default.webp"],
+		images: ["https://realcy.app/og-realcy.jpg"],
 	},
 	robots: {
 		index: true,

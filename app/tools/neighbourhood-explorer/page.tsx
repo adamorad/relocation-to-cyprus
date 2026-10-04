@@ -7,6 +7,7 @@ import { RENT_SOURCES } from "@/lib/facts/rents";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import NeighbourhoodExplorerClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Neighbourhood Explorer";
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/tools/neighbourhood-explorer/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/tools/neighbourhood-explorer/`,

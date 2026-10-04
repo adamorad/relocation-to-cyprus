@@ -5,6 +5,7 @@ import { SourcesNote } from "@/components/ui/SourcesNote";
 import { CHILDCARE_TIPS } from "@/lib/childcare";
 import { topicCrumb } from "@/lib/topic-map";
 import ChildcareNurseriesClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Childcare & Nurseries in Cyprus";
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/sections/childcare-nurseries/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/sections/childcare-nurseries/`,

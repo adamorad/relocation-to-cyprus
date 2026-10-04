@@ -12,6 +12,7 @@ import { GUIDES } from "@/lib/guides";
 import { SECTIONS_INDEX } from "@/lib/sections-index";
 import { TOOLS } from "@/lib/tools-index";
 import { TOPICS } from "@/lib/topics";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Advertise on RealCy.app: Sponsored Top Spots";
@@ -23,6 +24,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/advertise/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/advertise/`,

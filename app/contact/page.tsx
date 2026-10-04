@@ -4,6 +4,7 @@ import { TemplateMain } from "@/components/templates/TemplateMain";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Contact RealCy.app";
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/contact/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/contact/`,

@@ -3,6 +3,7 @@ import { titleCaseName } from "@/app/listings/format";
 import { HubTemplate } from "@/components/templates/HubTemplate";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { DEVELOPERS } from "@/lib/developers";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const h1 = "Cyprus property developers";
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/developers/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/developers/`,

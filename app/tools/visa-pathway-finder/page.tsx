@@ -5,6 +5,7 @@ import { SourcesNote } from "@/components/ui/SourcesNote";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import VisaPathwayFinderClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Cyprus Visa Pathway Finder 2026: Find Your Route in 2 Questions";
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/tools/visa-pathway-finder/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/tools/visa-pathway-finder/`,

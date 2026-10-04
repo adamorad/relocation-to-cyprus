@@ -33,7 +33,12 @@ export async function generateMetadata({
 				height: r.image.height,
 				alt: r.image.alt ?? `Living in ${r.name}`,
 			}
-		: { url: "https://realcy.app/og-default.webp", width: 1200, height: 630 };
+		: {
+				url: "https://realcy.app/og-realcy.jpg",
+				width: 1200,
+				height: 630,
+				alt: "RealCy.app: everyday life in Cyprus, made easier",
+			};
 	return {
 		title: pageTitle(r),
 		description: r.summary,

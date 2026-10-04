@@ -4,6 +4,7 @@ import { TopicIndexClient } from "@/components/templates/TopicIndexClient";
 import { Callout } from "@/components/ui/Callout";
 import { TOOLS } from "@/lib/tools-index";
 import { primaryTopic, toolSlug } from "@/lib/topic-map";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const title = "Practical tools";
 const description = `${TOOLS.length} free interactive tools for life in Cyprus: rent vs buy calculator, visa pathway finder, tax residency planner, social insurance calculator, banking fee comparison, and more.`;
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/tools/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: "https://realcy.app/tools/",

@@ -4,6 +4,7 @@ import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import RentalYieldCalculatorClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Cyprus Rental Yield Calculator";
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/tools/rental-yield-calculator/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/tools/rental-yield-calculator/`,

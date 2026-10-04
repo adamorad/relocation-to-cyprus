@@ -8,6 +8,7 @@ import { Section } from "@/components/ui/Section";
 import { allTopicItems } from "@/lib/topic-map";
 import { hubHref, PROPERTY_AREA, TOPICS } from "@/lib/topics";
 import ExploreClient from "./ExploreClient";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Search guides, directories and tools";
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/explore/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/explore/`,

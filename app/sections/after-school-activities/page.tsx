@@ -4,6 +4,7 @@ import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ACTIVITY_TIPS } from "@/lib/after-school";
 import { topicCrumb } from "@/lib/topic-map";
 import AfterSchoolActivitiesClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "After-School Activities for Children in Cyprus";
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/sections/after-school-activities/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/sections/after-school-activities/`,

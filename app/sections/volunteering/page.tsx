@@ -4,6 +4,7 @@ import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { topicCrumb } from "@/lib/topic-map";
 import { VOLUNTEER_TIPS } from "@/lib/volunteering";
 import VolunteeringClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Volunteering in Cyprus";
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/sections/volunteering/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/sections/volunteering/`,

@@ -5,6 +5,7 @@ import { SourcesNote } from "@/components/ui/SourcesNote";
 import { IMMIGRATION_LAWYER_TIPS } from "@/lib/immigration-lawyers";
 import { topicCrumb } from "@/lib/topic-map";
 import ImmigrationLawyersClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Immigration Lawyers in Cyprus";
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/sections/immigration-lawyers/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/sections/immigration-lawyers/`,

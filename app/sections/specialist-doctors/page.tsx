@@ -5,6 +5,7 @@ import { HEALTHCARE_TIPS } from "@/lib/healthcare";
 import { SPECIALIST_TIPS } from "@/lib/specialist-doctors";
 import { topicCrumb } from "@/lib/topic-map";
 import SpecialistDoctorsClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Specialist Doctors in Cyprus";
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/sections/specialist-doctors/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/sections/specialist-doctors/`,

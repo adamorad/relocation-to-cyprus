@@ -6,6 +6,7 @@ import { RENT_SAMPLED_LABEL, RENT_SOURCES } from "@/lib/facts/rents";
 import { RENTAL_TIPS } from "@/lib/long-term-rentals";
 import { topicCrumb } from "@/lib/topic-map";
 import LongTermRentalsClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Long-Term Rentals in Cyprus";
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/sections/long-term-rentals/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/sections/long-term-rentals/`,

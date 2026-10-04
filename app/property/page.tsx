@@ -49,10 +49,10 @@ export const metadata: Metadata = {
 		url: `${SITE_URL}/property/`,
 		images: [
 			{
-				url: `${SITE_URL}/og-default.webp`,
+				url: `${SITE_URL}/og-realcy.jpg`,
 				width: 1200,
 				height: 630,
-				alt: "RealCy.app: Living in Cyprus",
+				alt: "RealCy.app: everyday life in Cyprus, made easier",
 			},
 		],
 	},
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
 		card: "summary_large_image",
 		title,
 		description,
-		images: [`${SITE_URL}/og-default.webp`],
+		images: [`${SITE_URL}/og-realcy.jpg`],
 	},
 };
 

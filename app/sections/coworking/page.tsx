@@ -4,6 +4,7 @@ import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { COWORK_TIPS } from "@/lib/coworking";
 import { topicCrumb } from "@/lib/topic-map";
 import CoworkingClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Coworking Spaces in Cyprus";
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/sections/coworking/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/sections/coworking/`,

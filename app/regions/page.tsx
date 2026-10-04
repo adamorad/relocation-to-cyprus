@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { HubTemplate } from "@/components/templates/HubTemplate";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { REGIONS } from "@/lib/regions";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const title = "Cities";
 const description =
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/regions/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: "https://realcy.app/regions/",

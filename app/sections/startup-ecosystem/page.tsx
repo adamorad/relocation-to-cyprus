@@ -4,6 +4,7 @@ import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { STARTUP_TIPS } from "@/lib/startup-ecosystem";
 import { topicCrumb } from "@/lib/topic-map";
 import StartupEcosystemClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Cyprus Startup Ecosystem: Coworking, Incubators & Tech Hubs";
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/sections/startup-ecosystem/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/sections/startup-ecosystem/`,

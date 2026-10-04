@@ -6,6 +6,7 @@ import { HEALTH_TRANSPORT_CHECKED, SRC } from "@/lib/facts/health-transport";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import GrantsFinderClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Cyprus Business Grants Finder";
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/tools/grants-finder/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/tools/grants-finder/`,

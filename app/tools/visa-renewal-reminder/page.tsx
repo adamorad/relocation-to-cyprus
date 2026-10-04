@@ -6,6 +6,7 @@ import { TAX_SRC } from "@/lib/facts/tax";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
 import { getTopicForTool, topicCrumb } from "@/lib/topic-map";
 import VisaRenewalReminderClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Visa & Document Renewal Reminder: Cyprus";
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/tools/visa-renewal-reminder/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/tools/visa-renewal-reminder/`,

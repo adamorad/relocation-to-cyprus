@@ -5,6 +5,7 @@ import { SourcesNote } from "@/components/ui/SourcesNote";
 import { CULTURE_TIPS } from "@/lib/art-culture";
 import { topicCrumb } from "@/lib/topic-map";
 import ArtCultureClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Art Galleries, Museums & Cultural Venues in Cyprus";
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/sections/art-culture/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/sections/art-culture/`,

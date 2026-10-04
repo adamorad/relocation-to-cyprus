@@ -7,6 +7,7 @@ import {
 } from "@/lib/property-management";
 import { topicCrumb } from "@/lib/topic-map";
 import PropertyManagementClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = `${PROPERTY_MANAGERS.length} Property Managers in Cyprus: Limassol, Paphos, Larnaca`;
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/sections/property-management/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/sections/property-management/`,

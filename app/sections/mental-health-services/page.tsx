@@ -8,6 +8,7 @@ import {
 } from "@/lib/mental-health";
 import { topicCrumb } from "@/lib/topic-map";
 import MentalHealthServicesClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = `${MENTAL_HEALTH_PROVIDERS.length} Therapists, Psychologists and Psychiatrists in Cyprus`;
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/sections/mental-health-services/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/sections/mental-health-services/`,

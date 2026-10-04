@@ -4,6 +4,7 @@ import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { VIEW_BAR_TIPS, VIEW_BARS } from "@/lib/rooftop-bars";
 import { topicCrumb } from "@/lib/topic-map";
 import RooftopBarsClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Rooftop & Sea View Bars in Cyprus";
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/sections/rooftop-bars/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/sections/rooftop-bars/`,

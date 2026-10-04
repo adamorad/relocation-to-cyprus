@@ -3,6 +3,7 @@ import { HubTemplate } from "@/components/templates/HubTemplate";
 import { TopicIndexClient } from "@/components/templates/TopicIndexClient";
 import { SECTIONS_INDEX } from "@/lib/sections-index";
 import { primaryTopic } from "@/lib/topic-map";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const DIR_COUNT = SECTIONS_INDEX.length;
 const title = "Local directories";
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
 	description: DIR_DESC,
 	alternates: { canonical: "/sections/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description: DIR_DESC,
 		url: "https://realcy.app/sections/",

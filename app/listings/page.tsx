@@ -3,6 +3,7 @@ import { HubTemplate } from "@/components/templates/HubTemplate";
 import { allListings } from "@/lib/listings";
 import { citySlugFor, formatListingPrice, titleCaseName } from "./format";
 import ListingsClient, { type ListingCardData } from "./ListingsClient";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "New developments in Cyprus";
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/listings/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/listings/`,

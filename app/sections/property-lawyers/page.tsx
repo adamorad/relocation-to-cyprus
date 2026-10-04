@@ -6,6 +6,7 @@ import { HEALTH_TRANSPORT_CHECKED, SRC } from "@/lib/facts/health-transport";
 import { LAWYER_TIPS } from "@/lib/property-lawyers";
 import { topicCrumb } from "@/lib/topic-map";
 import PropertyLawyersClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Property Lawyers in Cyprus: Vetted Directory";
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
 	description,
 	alternates: { canonical: "/sections/property-lawyers/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title,
 		description,
 		url: `${SITE_URL}/sections/property-lawyers/`,

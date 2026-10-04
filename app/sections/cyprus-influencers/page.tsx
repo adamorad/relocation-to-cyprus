@@ -4,6 +4,7 @@ import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { SEO_DESCRIPTION, SEO_TITLE } from "@/lib/cyprus-influencers";
 import { topicCrumb } from "@/lib/topic-map";
 import CyprusInfluencersClient from "./client";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 	description: SEO_DESCRIPTION,
 	alternates: { canonical: "/sections/cyprus-influencers/" },
 	openGraph: {
+		images: [DEFAULT_OG_IMAGE],
 		title: SEO_TITLE,
 		description: SEO_DESCRIPTION,
 		url: `${SITE_URL}/sections/cyprus-influencers/`,
