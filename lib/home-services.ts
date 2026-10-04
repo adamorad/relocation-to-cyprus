@@ -14,7 +14,8 @@ export type Trade =
 	| "Air conditioning"
 	| "Handyman"
 	| "Locksmiths"
-	| "Pest control";
+	| "Pest control"
+	| "Cleaning and key holding";
 
 export type City = "Limassol" | "Paphos" | "Larnaca";
 
@@ -35,6 +36,7 @@ export const ALL_TRADES: ReadonlyArray<Trade> = [
 	"Handyman",
 	"Locksmiths",
 	"Pest control",
+	"Cleaning and key holding",
 ];
 
 export const ALL_CITIES: ReadonlyArray<City> = [
@@ -110,6 +112,14 @@ export const HOME_SERVICES: ReadonlyArray<HomeService> = [
 	row("Car Master Key", "Locksmiths", ["Larnaca", "Limassol"], "https://carmasterkey.com/en/", "+35796498981"),
 	row("Pick-a-lock Cyprus", "Locksmiths", ["Paphos"], "https://pickalockcyprus.com/", "97 744 121"),
 	row("Demou Bros Locksmith Services", "Locksmiths", ["Paphos"], "https://keysandsigns.com/", "7000 2468"),
+	row("Lemons & Linen", "Cleaning and key holding", ["Larnaca", "Limassol", "Paphos"], "https://lemonsandlinen.com/", "+357 95 914 874"),
+	row("Lonely Homes", "Cleaning and key holding", ["Paphos"], "https://lonelyhomes.cy/", "+357 26 250555"),
+	row("Keyper", "Cleaning and key holding", ["Paphos"], "https://www.keypermanagement.com/", "+357 97 950559"),
+	row("Perfect Cleaning Services", "Cleaning and key holding", ["Limassol"], "https://perfectcleaningservices.com.cy/", "+357 96 906429"),
+	row("WeClean4u", "Cleaning and key holding", ["Limassol"], "https://weclean4u.com.cy/", "+357 99 229441"),
+	row("LuxeShine", "Cleaning and key holding", ["Limassol"], "https://luxeshine.cy/", "+357 96 034345"),
+	row("Genika Maintenance & Cleaning", "Cleaning and key holding", ["Larnaca"], "https://genikaservices.com/", "94 210 787"),
+	row("Cyprus Property Solutions (Paphos Cleaning Services)", "Cleaning and key holding", ["Limassol", "Paphos"], "https://cypruspropertysolutions.com/en/", "+357 96 393 914"),
 ];
 
 /** Distinct businesses (the same website can be listed under several trades). */

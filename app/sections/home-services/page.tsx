@@ -42,7 +42,7 @@ export default function HomeServicesPage() {
 				],
 				eyebrow: "Home",
 				title: "Home Services in Cyprus",
-				intro: `Plumbers, electricians, air conditioning, handyman, locksmith and pest control businesses in Limassol, Paphos and Larnaca. ${BUSINESS_COUNT} businesses, each with its own website.`,
+				intro: `Plumbers, electricians, air conditioning, handyman, locksmith, pest control, and cleaning and key holding businesses in Limassol, Paphos and Larnaca. ${BUSINESS_COUNT} businesses, each with its own website.`,
 			}}
 			notice={{
 				tone: "warning",
