@@ -56,6 +56,12 @@ export default function PrivacyPage() {
 								tracking.
 							</li>
 							<li>
+								<strong>Analytics (Umami):</strong> If you consent, we also
+								count pageviews and events with Umami, a privacy-focused
+								analytics tool that does not set cookies: pages visited,
+								referrer, browser, device type and country.
+							</li>
+							<li>
 								<strong>Conversion events (Meta Pixel):</strong> If you consent,
 								a Meta Pixel fires on page load and on key interactions (e.g.
 								viewing a guide or listing). This may link your visit to a Meta
