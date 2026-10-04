@@ -2,21 +2,30 @@ import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { SourcesNote } from "@/components/ui/SourcesNote";
-import { DIETARY_TIPS } from "@/lib/halal-kosher";
+import { DIETARY_TIPS, HALAL_KOSHER_VENUES } from "@/lib/halal-kosher";
 import { topicCrumb } from "@/lib/topic-map";
 import HalalKosherClient from "./client";
 
 const SITE_URL = "https://realcy.app";
 const title = "Halal & Kosher Food in Cyprus";
-const description =
-	"Halal restaurants and a halal butcher in Limassol, Larnaca, Paphos and Ayia Napa, plus the kosher outlets in Limassol, each checked against a current listing.";
+
+const halalVenues = HALAL_KOSHER_VENUES.filter((v) => v.certification !== "kosher");
+const kosherVenues = HALAL_KOSHER_VENUES.filter((v) => v.certification !== "halal");
+const cityList = (venues: ReadonlyArray<{ city: string }>) => {
+	const cities = [...new Set(venues.map((v) => v.city))];
+	return cities.length > 1
+		? `${cities.slice(0, -1).join(", ")} and ${cities[cities.length - 1]}`
+		: cities[0];
+};
+const metaTitle = `${title}: ${halalVenues.length} Halal Venues by City`;
+const description = `${halalVenues.length} halal restaurants and butchers in ${cityList(halalVenues)}, plus kosher outlets in ${cityList(kosherVenues)}. Each halal venue links to a current listing; verify certification with the venue.`;
 
 export const metadata: Metadata = {
-	title,
+	title: metaTitle,
 	description,
 	alternates: { canonical: "/sections/halal-kosher/" },
 	openGraph: {
-		title,
+		title: metaTitle,
 		description,
 		url: `${SITE_URL}/sections/halal-kosher/`,
 		type: "website",
