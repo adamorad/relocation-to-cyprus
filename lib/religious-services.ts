@@ -98,7 +98,7 @@ export const RELIGIOUS_SERVICES: ReadonlyArray<ReligiousService> = [
     serviceFrequency: "Sunday services, weekly",
     why: "The main Anglican church in Limassol and one of the most established English-language congregations in Cyprus. Part of the Diocese of Cyprus and the Gulf. Regular Sunday Eucharist, pastoral support, and a strong community of British and international expats.",
     address: "Ayios Ioannis Lambadistis Street, Limassol",
-    website: "https://www.cypgulf.org/limassol",
+    website: "https://www.cypgulf.org/",
   },
   {
     name: "St Lazarus Anglican Church",
@@ -108,7 +108,7 @@ export const RELIGIOUS_SERVICES: ReadonlyArray<ReligiousService> = [
     serviceFrequency: "Sunday services, weekly",
     why: "Historic Anglican church in Larnaca serving the English-speaking community. Located near the famous Church of Saint Lazarus. Regular Sunday services with a congregation that includes both long-term British residents and newer relocators.",
     address: "Larnaca town centre",
-    website: "https://www.cypgulf.org/larnaca",
+    website: "https://www.cypgulf.org/",
   },
   {
     name: "All Saints Anglican Church",

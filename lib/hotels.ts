@@ -123,7 +123,7 @@ export const HOTELS: ReadonlyArray<Hotel> = [
     stars: 5,
     why: "Sleek adults-only property right on the Paphos seafront. Contemporary design, infinity pool overlooking the sea, and a renowned spa. One of Cyprus's best-regarded boutique luxury stays.",
     bookingCom: "https://www.booking.com/hotel/cy/almyra.html",
-    website: "https://www.thanoshotels.com/almyra",
+    website: "https://www.thanoshotels.com/",
   },
   {
     name: "Columbia Beach Resort",
@@ -217,7 +217,7 @@ export const HOTELS: ReadonlyArray<Hotel> = [
     stars: 5,
     why: "Legendary Paphos property — lush tropical gardens, the most beautiful pool setting in the city, and a genuinely personal level of service. Feels boutique despite its size.",
     bookingCom: "https://www.booking.com/hotel/cy/annabelle.html",
-    website: "https://www.thanoshotels.com/annabelle",
+    website: "https://www.thanoshotels.com/",
   },
   {
     name: "15 Boutique Hotel",

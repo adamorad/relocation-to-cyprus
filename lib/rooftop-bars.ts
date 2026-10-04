@@ -146,7 +146,7 @@ export const VIEW_BARS: ReadonlyArray<ViewBar> = [
     cocktailsFrom: 15,
     reservationRequired: true,
     why: "The most polished rooftop in Paphos — infinity-pool-adjacent terrace on the Almyra hotel. The sea view stretches to the Paphos lighthouse and at sunset it is difficult to beat in the city. Adults-only property.",
-    website: "https://www.thanoshotels.com/almyra",
+    website: "https://www.thanoshotels.com/",
   },
   {
     name: "Roof at Annabelle",
@@ -157,7 +157,7 @@ export const VIEW_BARS: ReadonlyArray<ViewBar> = [
     cocktailsFrom: 16,
     reservationRequired: true,
     why: "The Annabelle's rooftop terrace overlooks the Paphos harbour and the castle. Mature, relaxed atmosphere compared to trendier venues. Excellent martinis. One of the most classically beautiful sea views in Paphos.",
-    website: "https://www.thanoshotels.com/annabelle",
+    website: "https://www.thanoshotels.com/",
   },
   {
     name: "Seagull Rooftop",

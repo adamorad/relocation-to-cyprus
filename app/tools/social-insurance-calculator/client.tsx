@@ -352,12 +352,12 @@ export default function SocialInsuranceCalculatorPage({
 				Insurance Services or the HIO whether a ceiling applies to them. Rates
 				change annually. Verify current rates at{" "}
 				<a
-					href="https://www.socialinsurance.gov.cy"
+					href="https://www.mlsi.gov.cy/mlsi/sid/sidv2.nsf/index_en/index_en"
 					target="_blank"
 					rel="noopener noreferrer"
 					className="font-semibold underline"
 				>
-					socialinsurance.gov.cy
+					the Social Insurance Services website
 				</a>{" "}
 				before filing. GeSY rates are set by the Health Insurance Organisation
 				and may differ from the figures shown. This tool provides general

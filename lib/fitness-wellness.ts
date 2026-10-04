@@ -221,7 +221,7 @@ export const FITNESS_VENUES: ReadonlyArray<FitnessVenue> = [
     dropInFrom: 15,
     englishSpoken: true,
     why: "Gym within the Aphrodite Hills resort complex. Premium equipment and a pool available for day passes. Open to non-residents. One of the better-equipped facilities in the Paphos region.",
-    website: "https://www.aphroditehills.com/sport-and-fitness",
+    website: "https://www.aphroditehills.com/",
   },
   // ── Paphos — Yoga / Pilates ───────────────────────────────────────────────
   {
@@ -253,7 +253,7 @@ export const FITNESS_VENUES: ReadonlyArray<FitnessVenue> = [
     dropInFrom: 120,
     englishSpoken: true,
     why: "Arguably the finest spa in Cyprus. The thalasso circuit at Anassa uses heated seawater pools, scrubs, and traditional treatments. Day spa access available for non-hotel guests by reservation. Worth the splurge.",
-    website: "https://www.thanoshotels.com/anassa/spa",
+    website: "https://www.thanoshotels.com/",
   },
 
   // ── Larnaca — Gyms ────────────────────────────────────────────────────────
