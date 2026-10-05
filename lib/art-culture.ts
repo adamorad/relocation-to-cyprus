@@ -181,8 +181,8 @@ export const CULTURAL_VENUES: ReadonlyArray<CulturalVenue> = [
     type: "museum",
     englishSupport: true,
     admissionEuros: 3,
-    highlights: "Chalcolithic, Bronze Age, Geometric, and Archaic period Cypriot artefacts",
-    why: "The original Pierides collection — the Larnaca branch of this legendary private museum. Housed in a 1920s building in the town centre, it covers the pre-historic and early historic periods with excellent English-language curation.",
+    highlights: "Cypriot artefacts spanning the Neolithic to Byzantine-Medieval periods",
+    why: "A private archaeological collection housed in a 19th-century colonial-style family mansion in the town centre and run by the Bank of Cyprus Cultural Foundation, covering roughly 9,000 years of Cypriot history.",
     website: "https://www.boccf.org/en-gb/homepage/museums-collections2/mouseio-pieride/",
   },
   {
