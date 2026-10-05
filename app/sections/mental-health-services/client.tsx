@@ -124,21 +124,18 @@ export default function MentalHealthServicesClient() {
 			)}
 
 			<Callout tone="warning" title="Crisis support in Cyprus" className="mt-8">
-				EAPN Cyprus crisis line:{" "}
-				<a href="tel:1480" className="font-semibold underline">
-					1480
+				If you or someone else is in immediate danger, call{" "}
+				<a href="tel:112" className="font-semibold underline">
+					112
 				</a>{" "}
-				(free, 24/7). Lifeline Cyprus:{" "}
-				<a
-					href="https://www.lifeline.org.cy"
-					target="_blank"
-					rel="noopener noreferrer"
-					className="font-semibold underline"
-				>
-					lifeline.org.cy
-				</a>
-				. In acute crisis, go to Nicosia General Hospital or Limassol General
-				Hospital psychiatric emergency.
+				(emergency services, free, 24/7) or go to the nearest hospital
+				emergency department. To talk to someone about loneliness, a
+				psychological crisis or thoughts of suicide, call the emotional
+				support line{" "}
+				<a href="tel:116123" className="font-semibold underline">
+					116 123
+				</a>{" "}
+				run by SPAVO (check its current opening hours).
 			</Callout>
 		</>
 	);

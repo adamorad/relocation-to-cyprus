@@ -68,8 +68,8 @@ export const MENTAL_HEALTH_TIPS: ReadonlyArray<MentalHealthTip> = [
     body: "A standard 50-minute session with an English-speaking therapist in Cyprus runs €60–100. Psychiatrist consultations (first appointment) are typically €120–180; follow-up medication reviews €80–120. Some counsellors offer sliding-scale fees (€40–60) for clients who declare financial hardship. Private health insurance plans rarely cover more than 10–15 sessions per year; check your policy carefully. GeSY covers some mental health services via GP referral, but the number of GeSY-registered English-speaking therapists is still limited.",
   },
   {
-    heading: "EAPN Cyprus and crisis support",
-    body: "EAPN Cyprus (the European Anti-Poverty Network Cyprus) operates the island's main mental health support line: 1480 (free, 24/7). If you or someone you know is in acute crisis, Nicosia General Hospital and Limassol General Hospital both have psychiatric emergency departments. The Athalassa Psychiatric Hospital in Nicosia operates a 24/7 emergency unit.",
+    heading: "Crisis support",
+    body: "If you or someone else is in immediate danger, call 112 (emergency services, free, 24/7) or go to the nearest hospital emergency department. For emotional support with loneliness, a psychological crisis or thoughts of suicide, call 116 123, the emotional support line run by SPAVO (check its current opening hours).",
   },
   {
     heading: "Relocation depression and expat-specific issues",
