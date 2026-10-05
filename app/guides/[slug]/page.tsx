@@ -15,9 +15,10 @@ import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { guideSponsorUnit } from "@/components/templates/sponsor-units";
 import { Container } from "@/components/ui/Container";
 import { InfoCards } from "@/components/ui/InfoCards";
+import { RegulationNote } from "@/components/ui/RegulationNote";
 import { Section } from "@/components/ui/Section";
 import { formatChecked, SourcesNote } from "@/components/ui/SourcesNote";
-import { AUTHORS, CATEGORY_AUTHOR } from "@/lib/authors";
+import { AUTHORS } from "@/lib/authors";
 import { CITY_BUSES_ID, CITY_BUSES_TITLE } from "@/lib/city-buses";
 import { GUIDE_REDIRECTS } from "@/lib/guide-redirects";
 import { GUIDES, type GuideCategory, guideBySlug } from "@/lib/guides";
@@ -218,7 +219,7 @@ export default async function GuidePage({
 	const embed = embedKey ? GUIDE_EMBEDS[embedKey] : null;
 	const EmbedComp = embed?.Comp;
 	const canonicalUrl = `${SITE_URL}/guides/${g.slug}/`;
-	const author = AUTHORS[CATEGORY_AUTHOR[g.category]] ?? AUTHORS.team;
+	const author = AUTHORS.team;
 	const readingMinutes = Math.max(
 		1,
 		Math.round(
@@ -231,7 +232,7 @@ export default async function GuidePage({
 		"@type": "Article",
 		headline: g.title,
 		description: g.description,
-		author: { "@type": "Person", name: author.name, jobTitle: author.role },
+		author: { "@type": "Organization", name: "RealCy.app", url: SITE_URL },
 		publisher: {
 			"@type": "Organization",
 			name: "RealCy.app",
@@ -377,7 +378,28 @@ export default async function GuidePage({
 				<Fragment key={s.heading}>
 					<section id={toId(s.heading)}>
 						<h2>{s.heading}</h2>
-						<p className="whitespace-pre-line">{renderBody(s.body)}</p>
+						{(() => {
+							const n = s.regulationNote;
+							const cut = n ? s.body.indexOf(n.after) : -1;
+							if (!n || cut === -1) {
+								return <p className="whitespace-pre-line">{renderBody(s.body)}</p>;
+							}
+							const end = cut + n.after.length;
+							const rest = s.body.slice(end).trimStart();
+							return (
+								<>
+									<p className="whitespace-pre-line">
+										{renderBody(s.body.slice(0, end))}
+									</p>
+									<RegulationNote lead={n.lead} source={n.source}>
+										{n.text}
+									</RegulationNote>
+									{rest && (
+										<p className="whitespace-pre-line">{renderBody(rest)}</p>
+									)}
+								</>
+							);
+						})()}
 					</section>
 					{BlockComp && i === block.after && <BlockComp />}
 					{embed && EmbedComp && i === 1 && (
