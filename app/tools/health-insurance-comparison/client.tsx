@@ -136,7 +136,7 @@ const PROVIDERS: ReadonlyArray<InsuranceProvider> = [
 			"Major local insurer. Most competitive premiums for Cyprus-only coverage. Ideal as a top-up to GeSY for faster private specialist access and private room hospitalisation. Direct billing at most Cypriot private hospitals. No international coverage. Good choice if you rarely travel or have international coverage through an employer.",
 	},
 	{
-		name: "CNP Asfalistiki (Cyprus)",
+		name: "ERB Asfalistiki (Cyprus, formerly CNP)",
 		type: "local",
 		coverageRegion: "Cyprus + EU emergency",
 		annualPremiumSingle30yo: 750,

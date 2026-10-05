@@ -59,7 +59,7 @@ export type VetTip = {
 export const VET_TIPS: ReadonlyArray<VetTip> = [
   {
     heading: "Get pet insurance before you arrive",
-    body: "Pet insurance in Cyprus is available from providers including Interamerican, CNP Cyprialife, and international pet insurers (Petplan, Many Pets). Premiums for a dog run €300–700/year depending on breed, age, and coverage level. Critically, pre-existing conditions diagnosed before the policy starts will be excluded — so insure your pet before the first Cyprus vet visit, not after. Emergency hospitalisation and surgery costs in Cyprus can run €800–2,500+; insurance makes this manageable.",
+    body: "Pet insurance in Cyprus is available from providers including Interamerican, ERB Cyprialife (formerly CNP Cyprialife), and international pet insurers (Petplan, Many Pets). Premiums for a dog run €300–700/year depending on breed, age, and coverage level. Critically, pre-existing conditions diagnosed before the policy starts will be excluded — so insure your pet before the first Cyprus vet visit, not after. Emergency hospitalisation and surgery costs in Cyprus can run €800–2,500+; insurance makes this manageable.",
   },
   {
     heading: "Emergency vet costs and what to expect",
