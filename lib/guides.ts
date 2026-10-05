@@ -115,7 +115,17 @@ export type GuideInfo = {
 	image?: SiteImage;
 	/** URL: /guides/{slug}. */
 	description: string;
-	sections: Array<{ heading: string; body: string }>;
+	sections: Array<{
+		heading: string;
+		body: string;
+		/** Renders a RegulationNote directly after the first occurrence of `after` in body. */
+		regulationNote?: {
+			after: string;
+			lead: string;
+			text: string;
+			source: { label: string; url: string };
+		};
+	}>;
 	datePublished: string;
 	dateModified: string;
 	faqs?: Array<{ q: string; a: string }>;
@@ -463,7 +473,16 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 				body: "AstroBank is another Cyprus retail bank. Banks differ in which customer profiles and countries they serve: Bank of Cyprus, for example, says some products are not available to customers in certain countries. If you hold a non-EU passport or have a complex source of funds, apply to more than one bank in parallel and ask each about its policy for your profile. We have no verified data on relative acceptance rates.",
 			},
 			{
-				heading: "Revolut and Wise as a bridge — but not a substitute",
+				heading: "Revolut and Wise as a bridge, but not a substitute",
+				regulationNote: {
+					after: "a verifiable Cypriot bank account on record.",
+					lead: "There might be a contradiction with Regulation (EU) No 260/2012 (SEPA), Article 9.",
+					text: "Article 9 says a payer or payee cannot specify the EU Member State where the account is located. If a company or public body refuses your non-Cypriot euro IBAN, you can report it to the Ministry of Finance (registry@mof.gov.cy); refusals by banks or payment providers go to the Central Bank of Cyprus.",
+					source: {
+						label: "Central Bank of Cyprus: IBAN discrimination",
+						url: "https://www.centralbank.cy/en/financial-market-infrastructures-payments/international-bank-account-number-iban/iban-discrimination",
+					},
+				},
 				body: "Revolut and Wise both work from day one for day-to-day spending, receiving EUR transfers, and saving on exchange rates versus bank wire fees. Many relocators lean heavily on one or both during the 2–4 week account-opening period. However, they cannot substitute for a Cypriot bank account in three important ways: landlords require a CY-prefix IBAN for deposit payments and often for ongoing rent — a LT-prefix (Revolut Lithuania) or BE-prefix (Wise Belgium) IBAN is frequently rejected; utility direct debits require a domestic IBAN in many cases; and certain tax and non-dom filings require a verifiable Cypriot bank account on record. Use Revolut and Wise as your spending account while the traditional account application processes — they are genuinely useful for that — but treat them as a bridge, not a destination. For sign-up: Revolut's referral link (revolut.com/referral) and Wise's referral (wise.com/invite) both offer fee-free transfers for the first period after sign-up, which is worth using given you will likely be making international transfers during your relocation.",
 			},
 			{
