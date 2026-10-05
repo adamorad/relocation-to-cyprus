@@ -69,7 +69,7 @@ export const MENTAL_HEALTH_TIPS: ReadonlyArray<MentalHealthTip> = [
   },
   {
     heading: "Crisis support",
-    body: "If you or someone else is in immediate danger, call 112 (emergency services, free, 24/7) or go to the nearest hospital emergency department. For emotional support with loneliness, a psychological crisis or thoughts of suicide, call 116 123, the emotional support line run by SPAVO (check its current opening hours).",
+    body: "If you or someone else is in immediate danger, call 112 (emergency services, free, 24/7) or go to the nearest hospital emergency department. For emotional support with loneliness, a psychological crisis or thoughts of suicide, call 116 123, the emotional support line run by SPAVO. According to SPAVO, it is staffed Monday to Friday, 8:30 to 16:00, so it is not available at night or at weekends; outside those hours call 112 or go to an emergency department.",
   },
   {
     heading: "Relocation depression and expat-specific issues",
