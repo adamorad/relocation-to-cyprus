@@ -31,7 +31,8 @@ export async function generateMetadata({
 		new Set(dev.listings.map((l) => l.regionCity)),
 	).sort();
 	const where = regions.length ? ` in ${regions.join(", ")}` : " in Cyprus";
-	const title = `${name}: ${count} new-build ${noun}${where}`;
+	// Root layout title template appends the site name.
+	const title = `${name}: projects and prices`;
 	const desc = `${name} new-build ${noun}${where}: ${count} ${noun} with locations, unit prices and details to compare. Browse every ${name} development on Realcy.`;
 	return {
 		title,
