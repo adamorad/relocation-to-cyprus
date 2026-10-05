@@ -47,7 +47,7 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Earthquake Risk in Cyprus: How to Prepare](/guides/earthquake-preparedness/) | Home & bills |  |  | Old category Environment; preparing the home and household. |
 | [Finding a Tradesperson in Cyprus: Licences, Checks and Quotes](/guides/finding-tradespeople-cyprus/) | Home & bills |  |  | Licences, checks and quotes before hiring a tradesperson for the home. |
 | [Short-Term to Long-Term Rental in Cyprus](/guides/rental-transition-guide/) | Home & bills | Moving to Cyprus |  | Old category Property; it is about renting a home, not buying. |
-| [Solar Panels in Cyprus: Net Metering & ROI](/guides/solar-energy-guide/) | Home & bills |  |  | Old category Environment; it is about cutting the electricity bill. |
+| [Solar Panels in Cyprus: Self-Consumption Rules & Costs](/guides/solar-energy-guide/) | Home & bills |  |  | Old category Environment; it is about cutting the electricity bill. |
 | [Cyprus Utilities Setup 2026: Electricity & Water](/guides/utilities-setup-guide/) | Home & bills |  |  |  |
 | [Recycling in Cyprus: Guide for New Residents](/guides/waste-recycling-guide/) | Home & bills | Community & leisure |  | Bins and collections are a household chore; also covers sustainable living (Beyond the bins). |
 | [Water Quality & Scarcity in Cyprus: Key Facts](/guides/water-quality-scarcity/) | Home & bills |  |  | Old category Environment; tap water, filters and supply at home. |

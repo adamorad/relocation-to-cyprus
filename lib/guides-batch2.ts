@@ -81,6 +81,11 @@ export const GUIDES_BATCH2: GuideInfo[] = [
 				label: "Tax Department: Individual income tax return",
 				url: "https://www.gov.cy/mof-tax/en/documents/forologiki-dilosi-eisodimatos-atomoy/",
 			},
+			{
+				label:
+					"Tax Department: Guide to the 2025 tax return (Greek, PDF; GeSY rate and €180,000 cap, accessed 2026-10-05)",
+				url: "https://www.gov.cy/media/sites/167/2026/06/Guide-for-completion-of-tax-return-2025-EL.pdf",
+			},
 		],
 		category: "tax",
 		title: "Self-Employed Tax in Cyprus: 2026 Guide",
@@ -89,7 +94,7 @@ export const GUIDES_BATCH2: GuideInfo[] = [
 		sections: [
 			{
 				heading: "Who Counts as Self-Employed, and How to Register",
-				body: "In Cyprus, you are treated as self-employed if you work on your own account (as a freelancer, sole trader, consultant, or contractor) rather than under a contract of employment. There is no income floor that excuses you from registration: the obligation begins as soon as you start trading.\n\nThe registration sequence matters and must be followed in order. First, register with the Tax Department to obtain a Tax Identification Code (TIC, also called a TIN) by submitting Form T.D.2001. You can apply in person at your local Tax Department office or, once registered, via the TAXISnet portal. EU citizens with complete documentation typically receive their TIN on the same day. You must register within 60 days of commencing business activity; failure to do so can result in retrospective charges and interest.\n\nSecond, once you have your TIN, register with your local District Social Insurance Office by submitting the relevant self-employed registration form along with a copy of your identity document or passport. A Social Insurance number is typically issued within one to two weeks. Third, if your annual taxable turnover reaches or is expected to reach €15,600 in any rolling 12-month period, you must register for VAT with the Tax Department (see the VAT section below).\n\nIf you are deciding between sole-trader status and incorporating a limited company, the /tools/sole-trader-vs-ltd/ comparison tool can model the after-tax outcome for your expected profit level.",
+				body: "Self-employed people in Cyprus pay GeSY at 4% of profit up to €180,000 (Tax Department, accessed 2026-10-05), plus Social Insurance on deemed earnings. Register for VAT once taxable supplies exceed €15,600 in a year.\n\nIn Cyprus, you are treated as self-employed if you work on your own account (as a freelancer, sole trader, consultant, or contractor) rather than under a contract of employment. There is no income floor that excuses you from registration: the obligation begins as soon as you start trading.\n\nThe registration sequence matters and must be followed in order. First, register with the Tax Department to obtain a Tax Identification Code (TIC, also called a TIN) by submitting Form T.D.2001. You can apply in person at your local Tax Department office or, once registered, via the TAXISnet portal. EU citizens with complete documentation typically receive their TIN on the same day. You must register within 60 days of commencing business activity; failure to do so can result in retrospective charges and interest.\n\nSecond, once you have your TIN, register with your local District Social Insurance Office by submitting the relevant self-employed registration form along with a copy of your identity document or passport. A Social Insurance number is typically issued within one to two weeks. Third, if your annual taxable turnover reaches or is expected to reach €15,600 in any rolling 12-month period, you must register for VAT with the Tax Department (see the VAT section below).\n\nIf you are deciding between sole-trader status and incorporating a limited company, the /tools/sole-trader-vs-ltd/ comparison tool can model the after-tax outcome for your expected profit level.",
 			},
 			{
 				heading: "Social Insurance Contributions for the Self-Employed",
