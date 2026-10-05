@@ -450,6 +450,18 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 				label: "Bank of Cyprus: New customer application",
 				url: "https://www.bankofcyprus.com/en-gb/Personal/new-customer-application/",
 			},
+			{
+				label: "Central Bank of Cyprus: IBAN discrimination (accessed 2026-10-05)",
+				url: "https://www.centralbank.cy/en/financial-market-infrastructures-payments/international-bank-account-number-iban/iban-discrimination",
+			},
+			{
+				label: "ECB/European Commission EFIP: IBAN Discrimination (9/02/2022; accessed 2026-10-05)",
+				url: "https://www.ecb.europa.eu/paym/groups/pdf/efip/IBAN_discrimination_update.pdf",
+			},
+			{
+				label: "Central Bank of Cyprus: Payment accounts with basic features (accessed 2026-10-05)",
+				url: "https://www.centralbank.cy/en/licensing-supervision/financial-conduct/directive-on-the-comparability-of-fees-related-to-payment-accounts-payment-account-switching-and-access-to-payment-accounts-with-basic-features",
+			},
 		],
 		category: "business",
 		title: "Opening a Bank Account in Cyprus 2026",
@@ -473,21 +485,16 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 				body: "AstroBank is another Cyprus retail bank. Banks differ in which customer profiles and countries they serve: Bank of Cyprus, for example, says some products are not available to customers in certain countries. If you hold a non-EU passport or have a complex source of funds, apply to more than one bank in parallel and ask each about its policy for your profile. We have no verified data on relative acceptance rates.",
 			},
 			{
-				heading: "Revolut and Wise as a bridge, but not a substitute",
-				regulationNote: {
-					after: "a verifiable Cypriot bank account on record.",
-					lead: "There might be a contradiction with Regulation (EU) No 260/2012 (SEPA), Article 9.",
-					text: "Article 9 says a payer or payee cannot specify the EU Member State where the account is located. If a company or public body refuses your non-Cypriot euro IBAN, you can report it to the Ministry of Finance (registry@mof.gov.cy); refusals by banks or payment providers go to the Central Bank of Cyprus.",
-					source: {
-						label: "Central Bank of Cyprus: IBAN discrimination",
-						url: "https://www.centralbank.cy/en/financial-market-infrastructures-payments/international-bank-account-number-iban/iban-discrimination",
-					},
-				},
-				body: "Revolut and Wise both work from day one for day-to-day spending, receiving EUR transfers, and saving on exchange rates versus bank wire fees. Many relocators lean heavily on one or both during the 2–4 week account-opening period. However, they cannot substitute for a Cypriot bank account in three important ways: landlords require a CY-prefix IBAN for deposit payments and often for ongoing rent — a LT-prefix (Revolut Lithuania) or BE-prefix (Wise Belgium) IBAN is frequently rejected; utility direct debits require a domestic IBAN in many cases; and certain tax and non-dom filings require a verifiable Cypriot bank account on record. Use Revolut and Wise as your spending account while the traditional account application processes — they are genuinely useful for that — but treat them as a bridge, not a destination. For sign-up: Revolut's referral link (revolut.com/referral) and Wise's referral (wise.com/invite) both offer fee-free transfers for the first period after sign-up, which is worth using given you will likely be making international transfers during your relocation.",
+				heading: "Revolut and Wise as a bridge: useful, but not a Cypriot bank account",
+				body: "Revolut and Wise can cover day-to-day spending and receiving euro transfers while your bank application is processed; check each provider's current terms for your situation. Their IBANs may not carry a Cyprus (CY) prefix. Under Article 9 of the EU SEPA Regulation (No 260/2012) a payer or payee cannot specify the Member State of the account to be debited or credited, so a landlord or utility refusing a non-Cypriot euro IBAN is breaching that rule, according to the European Commission and ECB. Some still refuse in practice; if that happens, point to the rule or ask whether another payment route is acceptable. Whether you need a bank account for any tax filing: confirm with the Tax Department or your accountant.",
+			},
+			{
+				heading: "Your right to a basic payment account",
+				body: "EU law (Directive 2014/92/EU), transposed in Cyprus by Law 64(I)/2017, requires Member States to guarantee consumers a right to open and use a payment account with basic features. The Central Bank of Cyprus is the competent authority. This is a consumer right, not a right for companies. Eligibility conditions, fees and decision deadlines are set in the law (Greek text only), so ask the bank for its fee information document for basic accounts and contact the Central Bank of Cyprus if you believe a refusal is unjustified.",
 			},
 			{
 				heading: "Company accounts",
-				body: "Opening an account for a Cyprus company is a separate process from your personal account, and it has become materially harder since 2021 to 2022. Central Bank of Cyprus de-risking directives after the 2022 sanctions, the scrutiny that followed the FinCEN files and Hellenic Bank's clean-up of its corporate book have left fewer, more cautious providers. For a company with a Cypriot director physically resident in Cyprus, a clear business model and locally sourced income, an account is still achievable in 4 to 8 weeks. With a foreign-only director, offshore-facing income or a complex ownership structure, expect resistance, longer timelines and possible outright decline. There is no regulatory entitlement to a bank account: banks decide on compliance cost and risk appetite.\n\nWhich banks: Bank of Cyprus accepts foreign-director applications but has the most document-intensive process. Hellenic Bank accepts corporate accounts with significantly tighter criteria since 2022; its Limassol Makarios Avenue branch has the most experienced team for international corporate applications. AstroBank has historically been the most accommodating for companies with non-EU ownership, MENA or CIS-connected structures or non-standard source-of-funds profiles, with a smaller branch network but higher acceptance rates for profiles the larger banks decline. Alpha Bank Cyprus is a less-mentioned option that handles regional Eastern European and Israeli-connected structures with more flexibility. Cooperative and smaller regional banks are generally not equipped for foreign-director applications.\n\nDocuments: certified passport copies for all directors and beneficial owners (UBOs); the Certificate of Incorporation, Certificate of Directors and Secretary and Certificate of Shareholders from the Registrar of Companies, usually issued within the last three months; the certified Memorandum and Articles of Association; each bank's own application form; a source-of-funds declaration covering the initial capital and expected revenues; a short business plan (about two pages on what the company does, its customers and expected transaction volumes); 6 to 12 months of statements from any existing company accounts; and, optionally, professional reference letters. Beneficial owners from jurisdictions the EU classes as higher-risk for money laundering face enhanced due diligence: evidence of home-country tax status, previous corporate history and sometimes personal source-of-wealth evidence.\n\nWhat slows it down: incomplete documents (a missing certificate, an expired document or a certification the compliance team rejects) reset the clock by 2 to 3 weeks each time; follow-up compliance queries are common for multi-jurisdiction structures or companies with past ownership changes; and companies planning high volumes or complex currency arrangements may go to an internal credit committee. A complete, organised bundle with a covering letter summarising the business, ownership and expected account use shortens the process. Some business introducers and law firms in Limassol offer bank-introduction services (€500 to €1,500) that pre-screen applications, which is often worth it for complex profiles.\n\nEMIs as a bridge: Revolut Business (Lithuania-licensed) and Wise Business (Belgium-licensed) open accounts for Cyprus companies with foreign directors in 1 to 5 business days, fully online, with IBANs, SEPA and SWIFT transfers, multi-currency wallets, cards and API access. Revolut Business charges a subscription (€0 to €100 a month depending on plan); Wise Business charges per transfer. Neither gives a CY-prefix IBAN, so some Cypriot counterparties (utilities, landlords, certain government payment systems) will not accept them, and neither can provide loans, guarantees or letters of credit. The practical approach for a new company: open an EMI account straight away for day-to-day payments, pursue a bank account in parallel, and do not rely on the EMI indefinitely, since both platforms have frozen accounts whose activity pattern changed unexpectedly.",
+				body: "Opening an account for a Cyprus company is a separate process from a personal account. Banks apply their own risk assessment and may decline, and the basic-account right above is framed by the Central Bank for consumers. Ask each bank for its corporate checklist (typically company registration documents, identification of directors and beneficial owners, and information on source of funds and expected activity) and apply to more than one provider.",
 			},
 		],
 	},
