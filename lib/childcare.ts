@@ -92,18 +92,6 @@ export const NURSERIES: ReadonlyArray<Nursery> = [
     why: "Long-established Limassol nursery with good outdoor play space and a bilingual Greek-English approach. Known for warm, family-like atmosphere and flexible hours to suit working parents.",
   },
   {
-    name: "Rainbow International School Nursery",
-    city: "Limassol",
-    neighbourhood: "Polemidia",
-    ageRangeFrom: 2,
-    ageRangeTo: 6,
-    languagesOffered: ["English"],
-    annualFeeFrom: 6200,
-    fullDay: true,
-    why: "Nursery and reception section attached to Rainbow International School. English-only curriculum from age 2. Smooth transition into the school's primary years. Waiting list applies from January for September starts.",
-    website: "https://www.rainbowschool.com.cy",
-  },
-  {
     name: "The English Nursery Limassol",
     city: "Limassol",
     neighbourhood: "Germasogeia",

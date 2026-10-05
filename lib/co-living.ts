@@ -123,7 +123,7 @@ export const CO_LIVING_LISTINGS: ReadonlyArray<CoLiving> = [
     monthlyTo: 1400,
     includes: ["WiFi", "utilities", "weekly cleaning", "fully equipped kitchen", "parking"],
     why: "Modern serviced apartments on the Finikoudes promenade available from one month. Promenade sea views, walking distance to the city's best restaurants, and 15 minutes from the airport. Month-to-month with 30-day notice.",
-    website: "https://www.spitogatos.cy/en/rent/apartment/larnaca/",
+    website: "https://www.spitogatos.com.cy/en/property-to-rent",
   },
 
 

@@ -4,7 +4,7 @@
  *
  * Always verify RICS/RERA licence status directly with the company and with
  * the Cyprus Real Estate Agents Registration Council (RERA) at
- * realestate.gov.cy before engaging any agent.
+ * ktimatomesites.com before engaging any agent.
  */
 
 import type { City } from "@/lib/food";
@@ -32,7 +32,7 @@ export type PropertyManagementTip = {
 export const PROPERTY_MANAGEMENT_TIPS: ReadonlyArray<PropertyManagementTip> = [
   {
     heading: "Verify the RICS/RERA licence before signing anything",
-    body: "In Cyprus, property management and agency work requires a licence from the Real Estate Agents Registration Council (RERA), a statutory body under the Ministry of Interior. The RERA register is searchable at realestate.gov.cy — cross-check the company's name AND the individual agent's name before engaging. Unlicensed operators have no legal accountability, no professional indemnity insurance, and no recourse process. This is the single most important check.",
+    body: "In Cyprus, property management and agency work requires a licence from the Real Estate Agents Registration Council (RERA), a statutory body under the Ministry of Interior. The RERA register is searchable at ktimatomesites.com: cross-check the company's name AND the individual agent's name before engaging. Unlicensed operators have no legal accountability, no professional indemnity insurance, and no recourse process. This is the single most important check.",
   },
   {
     heading: "Understand what 'property management' covers — it varies widely",
@@ -122,13 +122,6 @@ export const PROPERTY_MANAGERS: ReadonlyArray<PropertyManager> = [
     website: "https://www.century21.com.cy",
   },
 
-  {
-    name: "Cyfield Property Management",
-    cities: ["Limassol"],
-    why: "Property management company operating in Limassol. Specialises in commercial and mixed-use residential portfolios. Strong with corporate relocators and investors who hold multiple units. ISO-certified management processes.",
-    licensedByRERA: true,
-    website: "https://www.cyfield.com.cy",
-  },
 
   // ── Island-wide / multi-city ──────────────────────────────────────────────
   {

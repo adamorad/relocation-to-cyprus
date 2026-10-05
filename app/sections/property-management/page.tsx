@@ -65,12 +65,12 @@ export default function PropertyManagementPage() {
 						The Cyprus Real Estate Agents Registration Council (RERA) register
 						is searchable at{" "}
 						<a
-							href="https://realestate.gov.cy"
+							href="https://ktimatomesites.com"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="font-semibold underline"
 						>
-							realestate.gov.cy
+							ktimatomesites.com
 						</a>
 						. Always cross-check the company AND individual agent name before
 						signing any management agreement.

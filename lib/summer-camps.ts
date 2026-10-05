@@ -67,19 +67,6 @@ export const SUMMER_CAMP_TIPS: ReadonlyArray<SummerCampTip> = [
 export const SUMMER_CAMPS: ReadonlyArray<SummerCamp> = [
   // ── Limassol ──────────────────────────────────────────────────────────────
   {
-    name: "Rainbow International School Summer Camp",
-    city: "Limassol",
-    neighbourhood: "Polemidia",
-    type: "day",
-    focusAreas: ["multi-activity", "sports", "arts & crafts", "swimming"],
-    ageFrom: 4,
-    ageTo: 14,
-    weeklyFeeApprox: 280,
-    languages: ["English"],
-    why: "One of the most popular day camps in Limassol, run by Rainbow International School on its own campus. English-medium, structured timetable, swimming sessions in the school pool. Flexible single-week bookings available. One of the first to fill in Limassol.",
-    website: "https://www.rainbowschool.com.cy",
-  },
-  {
     name: "Limassol Football Summer Academy",
     city: "Limassol",
     neighbourhood: "Agios Athanasios",

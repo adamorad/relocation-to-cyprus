@@ -86,62 +86,8 @@ export const IMMIGRATION_LAWYER_TIPS: ReadonlyArray<ImmigrationLawyerTip> = [
 export const IMMIGRATION_LAWYERS: ReadonlyArray<ImmigrationLawyer> = [
 
   // ── Limassol ─────────────────────────────────────────────────────────────
-  {
-    name: "Nikos Stavrou",
-    firm: "Stavrou Immigration & Law",
-    city: "Limassol",
-    specializations: [
-      "pr-by-investment",
-      "digital-nomad-visa",
-      "citizenship",
-      "family-reunification",
-    ],
-    languages: ["English", "Greek", "Russian", "Hebrew"],
-    why: "Limassol practice with a large Israeli client base — familiar with the specific documentation patterns, bank transfer evidence, and source-of-funds packages that Israeli buyers present. Handles both the immigration and the parallel property purchase documentation, reducing the number of professionals a buyer needs to coordinate.",
-    website: "https://www.stavroulaw.com.cy",
-  },
-  {
-    name: "Sophia Andreou",
-    firm: "Andreou & Associates",
-    city: "Limassol",
-    specializations: [
-      "digital-nomad-visa",
-      "work-permits",
-      "family-reunification",
-    ],
-    languages: ["English", "Greek", "Romanian"],
-    why: "Well-regarded for Digital Nomad Visa applications with non-standard employment structures — freelancers with multiple clients, founders of foreign companies, and creators with income spread across platforms. Prepares detailed income narrative documents to accompany the standard evidence bundle.",
-    website: "https://www.andreoullc.com.cy",
-  },
-  {
-    name: "Panagiotis Demetriou",
-    firm: "Demetriou Law Group",
-    city: "Limassol",
-    specializations: [
-      "pr-by-investment",
-      "citizenship",
-      "work-permits",
-      "digital-nomad-visa",
-    ],
-    languages: ["English", "Greek", "Arabic"],
-    why: "Covers the full spectrum from initial DNV to long-term naturalisation. Arabic-speaking team serves MENA-based buyers and investors — particularly useful for UAE and Lebanese applicants navigating PR by Investment alongside Cypriot company formation.",
-    website: "https://www.demetrioulawgroup.cy",
-  },
 
   // ── Paphos ────────────────────────────────────────────────────────────────
-  {
-    name: "Christos Ioannou",
-    firm: "Ioannou Immigration Law",
-    city: "Paphos",
-    specializations: [
-      "pr-by-investment",
-      "digital-nomad-visa",
-      "family-reunification",
-    ],
-    languages: ["English", "Greek", "Russian"],
-    why: "Paphos specialist whose practice is heavily focused on PR by Investment applications — the majority of clients are non-EU buyers who purchase in the Paphos district. Coordinates with local property lawyers on the parallel conveyancing timeline to avoid delays in the PR submission.",
-    website: "https://www.ioannouimmigration.com.cy",
-  },
   {
     name: "Elena Voskarides",
     firm: "Voskarides & Co Legal",
@@ -157,33 +103,6 @@ export const IMMIGRATION_LAWYERS: ReadonlyArray<ImmigrationLawyer> = [
   },
 
   // ── Larnaca ───────────────────────────────────────────────────────────────
-  {
-    name: "Marios Georgiades",
-    firm: "Georgiades Immigration Services",
-    city: "Larnaca",
-    specializations: [
-      "digital-nomad-visa",
-      "work-permits",
-      "family-reunification",
-    ],
-    languages: ["English", "Greek", "Russian"],
-    why: "Larnaca-focused practice with a focus on DNV applications. Transparent flat-fee structure published on the firm website.",
-    website: "https://www.georgiades-immigration.cy",
-  },
-  {
-    name: "Thea Papadaki",
-    firm: "Papadaki Legal",
-    city: "Larnaca",
-    specializations: [
-      "pr-by-investment",
-      "citizenship",
-      "family-reunification",
-      "digital-nomad-visa",
-    ],
-    languages: ["English", "Greek", "Italian"],
-    why: "Serves a strong Italian and Southern European client base relocating to Larnaca. Particular experience with EU citizens navigating the MEU1 registration process and the Permanent Residence certificate (MEU3) they can apply for after five years.",
-    website: "https://www.papadakilegal.cy",
-  },
 
   // ── Ayia Napa ─────────────────────────────────────────────────────────────
   {

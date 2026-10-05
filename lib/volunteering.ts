@@ -96,15 +96,6 @@ export const VOLUNTEER_TIPS: ReadonlyArray<VolunteerTip> = [
 export const VOLUNTEER_ORGS: ReadonlyArray<VolunteerOrg> = [
   // ── Animals ──────────────────────────────────────────────────────────────
   {
-    name: "PAWS Animal Welfare Society",
-    city: "Limassol",
-    focus: "animals",
-    languages: ["English", "Greek"],
-    timeCommitment: "weekly",
-    why: "One of the most active animal welfare organisations in Cyprus. Runs a shelter, foster network, and adoption programme for dogs and cats. Volunteers help with socialisation, dog walking, shelter cleaning, and adoption event support. English-speaking volunteers very welcome.",
-    website: "https://www.pawscyprus.com",
-  },
-  {
     name: "Cyprus Animal Party (KIKA)",
     city: "Island-wide",
     focus: "animals",
@@ -119,7 +110,7 @@ export const VOLUNTEER_ORGS: ReadonlyArray<VolunteerOrg> = [
     languages: ["English", "Greek"],
     timeCommitment: "weekly",
     why: "Paphos's main animal welfare charity. Runs a busy rehoming centre and relies heavily on volunteer dog walkers, cat socialisation helpers, and event assistants. Long-established British expat volunteer base — excellent for newcomers to Paphos looking to integrate.",
-    website: "https://www.pawspafos.org",
+    website: "https://pawsdogshelter.com",
   },
   {
     name: "Larnaca Animal Welfare (LAW)",
@@ -138,7 +129,6 @@ export const VOLUNTEER_ORGS: ReadonlyArray<VolunteerOrg> = [
     languages: ["Greek", "English"],
     timeCommitment: "monthly",
     why: "One of Cyprus's leading wildlife conservation organisations. Volunteer opportunities include sea turtle monitoring (May–September), bird ringing surveys, invasive species removal, and nature trail maintenance. Popular with expats who want to engage with Cyprus's exceptional natural environment.",
-    website: "https://www.cypriot-wildlife.org",
   },
   {
     name: "AKTI Project (Marine Conservation)",
@@ -149,26 +139,8 @@ export const VOLUNTEER_ORGS: ReadonlyArray<VolunteerOrg> = [
     why: "AKTI focuses on marine and coastal conservation in Cyprus — plastic pollution removal, beach clean-ups, citizen science surveys, and environmental education. Organises regular community clean-up days open to all volunteers. Good for expats wanting to engage with Cyprus's coastal ecosystems.",
     website: "https://www.akti.org.cy",
   },
-  {
-    name: "Sea Turtle Protection of Cyprus (STPC)",
-    city: "Paphos",
-    focus: "environment",
-    languages: ["Greek", "English"],
-    timeCommitment: "weekly",
-    why: "Runs the sea turtle monitoring and nest protection programme on Cyprus's nesting beaches around Paphos and Larnaca. Summer volunteers monitor nesting activity, protect nests from disturbance, and release hatchlings. One of the most memorable volunteering experiences available in Cyprus.",
-    website: "https://www.stpc.org.cy",
-  },
 
   // ── Children & Youth ─────────────────────────────────────────────────────
-  {
-    name: "SOS Children's Villages Cyprus",
-    city: "Limassol",
-    focus: "children",
-    languages: ["Greek", "English"],
-    timeCommitment: "weekly",
-    why: "SOS Children's Villages supports vulnerable children and families in Cyprus. Volunteer opportunities include tutoring, after-school support, and youth programme assistance. Long-term, structured roles — best for expats planning to stay in Cyprus for a year or more.",
-    website: "https://www.sos-cy.org",
-  },
   {
     name: "Anastasio, Limassol Youth Sports",
     city: "Limassol",
@@ -179,15 +151,6 @@ export const VOLUNTEER_ORGS: ReadonlyArray<VolunteerOrg> = [
   },
 
   // ── Elderly ──────────────────────────────────────────────────────────────
-  {
-    name: "Age Concern Cyprus",
-    city: "Paphos",
-    focus: "elderly",
-    languages: ["English", "Greek"],
-    timeCommitment: "weekly",
-    why: "Supports elderly expats and local Cypriots in Paphos. Services include friendly visiting, transport assistance, information and advice. Volunteers help with everything from companionship visits to driving elderly residents to medical appointments. Particularly meaningful for expats without nearby family.",
-    website: "https://www.ageconcerncyprus.org",
-  },
 
   // ── Refugees & Asylum ────────────────────────────────────────────────────
 

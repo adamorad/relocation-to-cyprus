@@ -95,28 +95,6 @@ export const FITNESS_TIPS: ReadonlyArray<FitnessTip> = [
 export const FITNESS_VENUES: ReadonlyArray<FitnessVenue> = [
   // ── Limassol — Gyms ───────────────────────────────────────────────────────
   {
-    name: "Fitness First Limassol",
-    city: "Limassol",
-    neighbourhood: "Germasogeia",
-    type: "gym",
-    monthlyFrom: 65,
-    dropInFrom: 10,
-    englishSpoken: true,
-    why: "Large commercial gym on the tourist strip with full weight floor, cardio machines, group classes, and a sauna. One of the most expat-friendly gyms in Cyprus — English is the default language at the desk.",
-    website: "https://www.fitnessfirst.com.cy",
-  },
-  {
-    name: "World Gym Limassol",
-    city: "Limassol",
-    neighbourhood: "Agios Athanasios",
-    type: "gym",
-    monthlyFrom: 55,
-    dropInFrom: 8,
-    englishSpoken: true,
-    why: "Franchise gym with solid free-weight section, machines, and functional training area. Popular with the expat tech and finance crowd. Multiple membership tiers available including off-peak options.",
-    website: "https://www.worldgym.com.cy",
-  },
-  {
     name: "O2 Fitness Center",
     city: "Limassol",
     neighbourhood: "Neapolis",
@@ -320,6 +298,6 @@ export const FITNESS_VENUES: ReadonlyArray<FitnessVenue> = [
     dropInFrom: 60,
     englishSpoken: true,
     why: "Full spa at the Adams Beach Hotel. Day passes available. Good for a recovery day between viewings — sports massage and thalassotherapy treatments available. English spoken throughout.",
-    website: "https://www.adamsbeachhotel.com/spa",
+    website: "https://www.adams.com.cy/coralspa/",
   },
 ];

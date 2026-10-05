@@ -71,17 +71,6 @@ export const VIEW_TYPE_LABEL: Record<ViewType, string> = {
 export const VIEW_BARS: ReadonlyArray<ViewBar> = [
   // ── Limassol ─────────────────────────────────────────────────────────────
   {
-    name: "Breeze Rooftop Bar",
-    city: "Limassol",
-    neighbourhood: "Limassol Marina",
-    viewType: "both",
-    priceRange: 3,
-    cocktailsFrom: 16,
-    reservationRequired: true,
-    why: "Atop the Four Seasons Hotel, this is the benchmark rooftop experience in Limassol — panoramic sea view, well-trained bar team, and cocktails that justify the price tag. Popular with the finance and tech expat crowd.",
-    website: "https://www.fourseasons-cyprus.com",
-  },
-  {
     name: "Roof Garden at The Londa",
     city: "Limassol",
     neighbourhood: "Germasogeia tourist strip",
@@ -90,7 +79,7 @@ export const VIEW_BARS: ReadonlyArray<ViewBar> = [
     cocktailsFrom: 15,
     reservationRequired: true,
     why: "Adults-only rooftop on The Londa boutique hotel. Unobstructed sea view from a small, well-curated terrace. One of the quieter high-end options on the tourist strip — fewer tables means better service.",
-    website: "https://www.londa.com.cy",
+    website: "https://londahotel.com",
   },
   {
     name: "Guaba Beach Bar",

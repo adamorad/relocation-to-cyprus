@@ -118,65 +118,11 @@ export const ACCOUNTANTS: ReadonlyArray<Accountant> = [
     why: "Limassol-based practice specialising in non-dom applications and crypto tax for high-net-worth relocators. One of the early adopters of crypto tax guidance in Cyprus — has handled classification questions on DeFi income, staking rewards, and NFT disposals at a time when the Tax Department guidance is still evolving. Non-dom annual return fee clearly quoted upfront.",
     website: "https://www.papageorgioutax.com.cy",
   },
-  {
-    name: "Elena Charalambous",
-    firm: "Charalambous & Partners CPA",
-    city: "Limassol",
-    specializations: ["non-dom", "vat", "expat-individual", "corporate"],
-    languages: ["English", "Greek", "Russian", "Ukrainian"],
-    why: "Mid-size ICPAC firm in Limassol with a strong expat practice. Handles both individual non-dom returns and the corporate side — useful for founders who operate through a Cyprus company alongside a personal non-dom position. Russian and Ukrainian-speaking team serves a significant CIS relocator client base.",
-    website: "https://www.charalambouspartners.com.cy",
-  },
-  {
-    name: "Andreas Loizou",
-    firm: "Loizou Tax Consultants",
-    city: "Limassol",
-    specializations: ["non-dom", "expat-individual", "vat"],
-    languages: ["English", "Greek", "Hebrew"],
-    why: "Boutique Limassol practice with a concentrated focus on Israeli and English-speaking expat returns. Hebrew-speaking team removes the language barrier for Israeli clients who want to review their tax position in their first language. Known for thorough source-of-funds documentation support during the first year of residency.",
-    website: "https://www.loizoutax.cy",
-  },
-  {
-    name: "Stavros Nicolaides",
-    firm: "Nicolaides & Co Certified Accountants",
-    city: "Limassol",
-    specializations: ["corporate", "vat", "non-dom", "expat-individual"],
-    languages: ["English", "Greek"],
-    why: "Established full-service firm handling both personal non-dom filings and corporate tax compliance for Cyprus-registered companies. Strong on VAT registration and quarterly filings for businesses operating across the EU — relevant for founders who set up a Cypriot holding company alongside their relocation.",
-    website: "https://www.nicolaidescpa.com.cy",
-  },
 
 
   // ── Paphos ────────────────────────────────────────────────────────────────
-  {
-    name: "Costas Antoniades",
-    firm: "Antoniades Financial Services",
-    city: "Paphos",
-    specializations: ["non-dom", "expat-individual", "vat"],
-    languages: ["English", "Greek", "Russian"],
-    why: "The most established expat-focused accounting practice in Paphos. Handles non-dom returns for the large UK and Scandinavian retired population in the Paphos district — familiar with UK pension income, offshore bond arrangements, and the specific questions that arise when UK tax residency breaks down in the same year Cyprus residency begins.",
-    website: "https://www.antoniadesfinancial.com.cy",
-  },
-  {
-    name: "Niki Georgiou",
-    firm: "Georgiou & Nicolaou CPA",
-    city: "Paphos",
-    specializations: ["corporate", "vat", "non-dom", "expat-individual"],
-    languages: ["English", "Greek"],
-    why: "Full-service Paphos firm covering both the personal and corporate layers. Useful for buyers who combine property ownership with a Cypriot operating company — handles the VAT implications of renting property, corporate payroll, and the personal non-dom filing in a coordinated engagement.",
-    website: "https://www.georgiou-nicolaou.com.cy",
-  },
 
   // ── Larnaca ───────────────────────────────────────────────────────────────
-  {
-    name: "Nicos Pittakas",
-    firm: "Pittakas & Partners",
-    city: "Larnaca",
-    specializations: ["expat-individual", "non-dom", "vat"],
-    languages: ["English", "Greek", "Russian"],
-    why: "Larnaca-based ICPAC firm serving the city's growing expat community. Fixed-fee transparent pricing for standard non-dom individual returns — published on the website, which is rare in a market where most firms price on enquiry. Good choice for straightforward relocation tax positions without complex corporate structures.",
-    website: "https://www.pittakaspartners.cy",
-  },
   {
     name: "Theodora Kyriacou",
     firm: "Kyriacou Tax & Compliance",
@@ -220,19 +166,6 @@ export const REGISTERED_OFFICE_PROVIDERS: ReadonlyArray<RegisteredOfficeProvider
       website: "https://www.totalserve.eu",
     },
     {
-      name: "Cyfield Corporate Services",
-      city: "Limassol",
-      neighbourhood: "Limassol Marina area",
-      pricePerYear: 300,
-      includes: [
-        "Registered office address",
-        "Mail scanning and forwarding",
-        "Registrar of Companies filings",
-      ],
-      why: "Boutique corporate services firm focused on company formation and ongoing compliance. Transparent annual pricing and responsive email support: good fit for solo founders and small international teams.",
-      website: "https://www.cyfield.com.cy",
-    },
-    {
       name: "Elias Neocleous & Co LLC",
       city: "Limassol",
       neighbourhood: "Limassol seafront",
@@ -245,19 +178,6 @@ export const REGISTERED_OFFICE_PROVIDERS: ReadonlyArray<RegisteredOfficeProvider
       ],
       why: "One of Cyprus's largest law and corporate services firms. Their registered office service comes with integrated access to legal, tax and banking introduction services, worth the premium for complex structures.",
       website: "https://www.neocleous.com",
-    },
-    {
-      name: "Papafides Business Advisors",
-      city: "Limassol",
-      neighbourhood: "Limassol city centre",
-      pricePerYear: 280,
-      includes: [
-        "Registered office address",
-        "Mail receipt and forwarding",
-        "Annual return filing",
-      ],
-      why: "Mid-range corporate services provider with a clean track record. Includes annual return filing in the package, which removes one common admin task from founders managing their own compliance.",
-      website: "https://www.papafides.com",
     },
     {
       name: "BDO Cyprus",

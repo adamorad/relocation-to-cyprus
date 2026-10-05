@@ -208,7 +208,6 @@ export const RELIGIOUS_SERVICES: ReadonlyArray<ReligiousService> = [
     serviceFrequency: "Daily prayers (Jumu'ah on Friday)",
     why: "One of the most important Islamic sites in the Middle East — contains the tomb of Umm Haram bint Milhan, a companion of the Prophet. Active mosque with daily prayers. Significant for Arab Muslim expats and pilgrims from across the Islamic world.",
     address: "Larnaca Salt Lake, Larnaca",
-    website: "https://www.halasultantekke.com",
   },
   {
     name: "Larnaca Grand Mosque (Djami Kebir)",

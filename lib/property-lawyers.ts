@@ -57,48 +57,6 @@ export const LAWYER_TIPS: ReadonlyArray<PropertyLawyerTip> = [
 
 export const PROPERTY_LAWYERS: ReadonlyArray<PropertyLawyer> = [
   // ── Limassol ─────────────────────────────────────────────────────────────
-  {
-    name: "Phoebus Stavrinakis",
-    firm: "Stavrinakis & Associates LLC",
-    city: "Limassol",
-    specializations: [
-      "conveyancing",
-      "title deed transfer",
-      "new-build contracts",
-      "foreign buyer representation",
-    ],
-    languages: ["English", "Greek", "Russian"],
-    why: "Long-established Limassol firm with a dedicated foreign-buyer conveyancing team. Handles the full chain from contract review to Land Registry deposit and title deed transfer. Well-regarded in the expat community for clear fixed-fee structures.",
-    website: "https://www.stavrinakislaw.com",
-  },
-  {
-    name: "Maria Papadopoulou",
-    firm: "Papadopoulou & Partners",
-    city: "Limassol",
-    specializations: [
-      "property purchase",
-      "mortgage assistance",
-      "developer contracts",
-      "due diligence",
-    ],
-    languages: ["English", "Greek", "French"],
-    why: "Specialist in new-build developer contracts across Limassol's seafront developments. Strong track record with Israeli and French buyers. Provides detailed due diligence reports on developer track records before clients commit.",
-    website: "https://www.papadopoulalaw.com.cy",
-  },
-  {
-    name: "Andreas Chrysostomou",
-    firm: "Chrysostomou Legal",
-    city: "Limassol",
-    specializations: [
-      "conveyancing",
-      "title deed disputes",
-      "off-plan purchases",
-      "mortgage registration",
-    ],
-    languages: ["English", "Greek"],
-    why: "Known for handling complex title deed dispute cases where developers failed to transfer titles — a significant issue with older Cyprus properties. Also handles straightforward conveyancing for new-build buyers from first contract to keys.",
-    website: "https://www.chrysostomoulegal.cy",
-  },
 
   // ── Paphos ────────────────────────────────────────────────────────────────
   {
@@ -116,20 +74,6 @@ export const PROPERTY_LAWYERS: ReadonlyArray<PropertyLawyer> = [
     website: "https://www.nicolaoulaw.com.cy",
   },
   {
-    name: "Costas Loucaides",
-    firm: "Loucaides & Co LLC",
-    city: "Paphos",
-    specializations: [
-      "conveyancing",
-      "resale properties",
-      "land registry compliance",
-      "estate planning",
-    ],
-    languages: ["English", "Greek"],
-    why: "Paphos-based firm with over two decades of experience in both new-build and resale property transactions. Particularly thorough on Land Registry compliance checks — important in Paphos where some older properties have title complications.",
-    website: "https://www.loucaideslaw.com.cy",
-  },
-  {
     name: "Demetrios Hadjikyriacos",
     firm: "Hadjikyriacos & Associates",
     city: "Paphos",
@@ -145,20 +89,6 @@ export const PROPERTY_LAWYERS: ReadonlyArray<PropertyLawyer> = [
 
 
   // ── Larnaca ───────────────────────────────────────────────────────────────
-  {
-    name: "Nicos Antoniou",
-    firm: "Antoniou & Antoniou LLC",
-    city: "Larnaca",
-    specializations: [
-      "residential purchase",
-      "title deed transfer",
-      "tenancy law",
-      "buyer representation",
-    ],
-    languages: ["English", "Greek"],
-    why: "Established Larnaca family firm with a strong residential property practice. Well-connected with local Land Registry officials — useful for expediting title deed transfers, which can be slow in the Larnaca district without active follow-up.",
-    website: "https://www.antonioullc.com.cy",
-  },
   {
     name: "Katerina Michaelides",
     firm: "Michaelides Property Law",

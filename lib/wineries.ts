@@ -106,7 +106,7 @@ export const WINERIES: ReadonlyArray<Winery> = [
     restaurantOnSite: false,
     priceRange: 2,
     why: "High-altitude winery in the Paphos hills, one of the highest in Cyprus at around 1,100m. Specialises in indigenous Cypriot varieties rarely found elsewhere, including the white Promara. The elevation produces wines with notable freshness and acidity.",
-    website: "https://www.vounipanayia.com.cy",
+    website: "https://www.vounipanayiawinery.com",
   },
   {
     name: "Tsiakkas Winery",
@@ -118,7 +118,7 @@ export const WINERIES: ReadonlyArray<Winery> = [
     restaurantOnSite: false,
     priceRange: 2,
     why: "Family winery in the Commandaria zone at Pelendri, producing both table wines and Commandaria. The Tsiakkas Commandaria is considered one of the finest expressions of the style. High-altitude vineyards above 800m produce wines with exceptional aromatic complexity.",
-    website: "https://www.tsiakkas.com.cy",
+    website: "https://www.tsiakkaswinery.com",
   },
   {
     name: "Kyperounda Winery",
@@ -153,7 +153,7 @@ export const WINERIES: ReadonlyArray<Winery> = [
     restaurantOnSite: true,
     priceRange: 2,
     why: "One of the standout boutique producers in Omodos. The Gerolemo tasting room and restaurant in the village is a popular stopping point on any Troodos wine tour. Strong focus on Maratheftiko — the flagship red of Cyprus.",
-    website: "https://www.gerolemo.com",
+    website: "https://www.ktimagerolemo.com",
   },
   {
     name: "Vasa Winery",
@@ -176,7 +176,7 @@ export const WINERIES: ReadonlyArray<Winery> = [
     restaurantOnSite: true,
     priceRange: 2,
     why: "One of the leading wineries in the Paphos region, based in Stroumpi village. Modern facilities, a full range from indigenous to international varieties, and a restaurant serving traditional Cypriot food paired with estate wines. A good anchor for a Paphos hills wine day.",
-    website: "https://www.constantiou-winery.com",
+    website: "https://www.constantinouwinery.com",
   },
   {
     name: "Vasilikon Winery",
@@ -188,7 +188,7 @@ export const WINERIES: ReadonlyArray<Winery> = [
     restaurantOnSite: false,
     priceRange: 2,
     why: "Boutique winery in Kathikas village in the Paphos hills, producing wines from estate vineyards at 600m. The Vasilikon Xynisteri is consistently one of the best whites in Cyprus. The tasting room has views over the valley towards the Akamas.",
-    website: "https://www.vasilikon.com.cy",
+    website: "https://vasilikon.com",
   },
   {
     name: "Ezousa Winery",

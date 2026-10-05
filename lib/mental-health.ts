@@ -69,7 +69,7 @@ export const MENTAL_HEALTH_TIPS: ReadonlyArray<MentalHealthTip> = [
   },
   {
     heading: "EAPN Cyprus and crisis support",
-    body: "EAPN Cyprus (the European Anti-Poverty Network Cyprus) operates the island's main mental health support line: 1480 (free, 24/7). For English-language crisis support, Lifeline Cyprus (lifeline.org.cy) offers counselling by phone and email, staffed by trained volunteers. If you or someone you know is in acute crisis, Nicosia General Hospital and Limassol General Hospital both have psychiatric emergency departments. The Athalassa Psychiatric Hospital in Nicosia operates a 24/7 emergency unit.",
+    body: "EAPN Cyprus (the European Anti-Poverty Network Cyprus) operates the island's main mental health support line: 1480 (free, 24/7). If you or someone you know is in acute crisis, Nicosia General Hospital and Limassol General Hospital both have psychiatric emergency departments. The Athalassa Psychiatric Hospital in Nicosia operates a 24/7 emergency unit.",
   },
   {
     heading: "Relocation depression and expat-specific issues",
@@ -83,18 +83,6 @@ export const MENTAL_HEALTH_TIPS: ReadonlyArray<MentalHealthTip> = [
 
 export const MENTAL_HEALTH_PROVIDERS: ReadonlyArray<MentalHealthProvider> = [
   // ── Limassol ──────────────────────────────────────────────────────────────
-  {
-    name: "Dr Katerina Andreou",
-    title: "Clinical Psychologist",
-    city: "Limassol",
-    type: "psychologist",
-    approaches: ["CBT", "Schema Therapy", "ACT"],
-    languages: ["English", "Greek"],
-    onlineAvailable: true,
-    sessionFrom: 80,
-    why: "One of Limassol's most established clinical psychologists for expats. Trained in the UK (DClinPsy). Specialises in anxiety, depression, and life transitions — including relocation adjustment. Combines CBT and schema therapy. Long waitlist; book well in advance.",
-    website: "https://www.psychologycy.com",
-  },
   {
     name: "Maria Economidou",
     title: "Psychotherapist & Couples Therapist",
