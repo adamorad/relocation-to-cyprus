@@ -135,7 +135,7 @@ export default function MentalHealthServicesClient() {
 				<a href="tel:116123" className="font-semibold underline">
 					116 123
 				</a>{" "}
-				run by SPAVO (check its current opening hours).
+				run by SPAVO. According to SPAVO, it is staffed Monday to Friday, 8:30 to 16:00, so it is not available at night or at weekends; outside those hours call 112 or go to an emergency department.
 			</Callout>
 		</>
 	);
