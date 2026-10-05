@@ -8,7 +8,7 @@ import { DEFAULT_OG_IMAGE } from "@/lib/og";
 const SITE_URL = "https://realcy.app";
 const h1 = "Cyprus property developers";
 const title = "Property developers in Cyprus: projects, locations and prices";
-const description = `Property developers in Cyprus: compare ${DEVELOPERS.length} developers and their new-build projects, regions and pricing across Paphos, Limassol, Larnaca and Ayia Napa.`;
+const description = `Directory of ${DEVELOPERS.length} property developers in Cyprus with new-build projects, regions and prices in Paphos, Limassol, Larnaca and Ayia Napa. Compare before you buy.`;
 
 export const metadata: Metadata = {
 	title,
