@@ -89,12 +89,14 @@ export default function ImmigrationLawyersClient() {
 											))}
 										</div>
 										<div className="flex flex-wrap items-center gap-x-5 text-muted">
-											<span>
-												<span className="font-semibold text-ink">
-													Languages:
-												</span>{" "}
-												{l.languages.join(", ")}
-											</span>
+											{l.languages?.length ? (
+												<span>
+													<span className="font-semibold text-ink">
+														Languages:
+													</span>{" "}
+													{l.languages.join(", ")}
+												</span>
+											) : null}
 											{l.website ? (
 												<a
 													href={l.website}

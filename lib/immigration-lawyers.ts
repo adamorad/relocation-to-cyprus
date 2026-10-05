@@ -1,10 +1,11 @@
 /**
  * Immigration Lawyers section content.
  *
- * Curation: firms selected for documented experience with the Digital Nomad
- * Visa, Permanent Residency by Investment, work permits, and citizenship
- * applications. This is a directory, not legal advice — always verify
- * current Bar registration and fees directly with the firm before engaging.
+ * Curation: firms whose own website describes immigration services (office
+ * address and services quoted from the firm's page, fetched 2026-10-05).
+ * Languages, fees and quality are NOT verified; Bar registration is NOT
+ * verified. Not an endorsement. This is a directory, not legal advice.
+ * always verify current Bar registration and fees directly with the firm.
  */
 
 import type { City } from "@/lib/food";
@@ -24,9 +25,12 @@ export type ImmigrationLawyer = {
   firm: string;
   city: City;
   specializations: ImmigrationSpecialization[];
-  languages: string[];
+  /** Omitted when not verified on the firm's own site. */
+  languages?: string[];
   why: string;
   website?: string;
+  /** Editorial verification notes (not rendered). */
+  notes?: string;
 };
 
 export type ImmigrationLawyerTip = {
@@ -84,37 +88,67 @@ export const IMMIGRATION_LAWYER_TIPS: ReadonlyArray<ImmigrationLawyerTip> = [
 // ---------------------------------------------------------------------------
 
 export const IMMIGRATION_LAWYERS: ReadonlyArray<ImmigrationLawyer> = [
-
-  // ── Limassol ─────────────────────────────────────────────────────────────
-
-  // ── Paphos ────────────────────────────────────────────────────────────────
   {
-    name: "Elena Voskarides",
-    firm: "Voskarides & Co Legal",
-    city: "Paphos",
-    specializations: [
-      "digital-nomad-visa",
-      "work-permits",
-      "citizenship",
-      "family-reunification",
-    ],
-    languages: ["English", "Greek", "Swedish"],
-    why: "Handles a significant volume of Swedish and Nordic Digital Nomad Visa applications — a demographic that has grown substantially in Paphos since 2023. Familiar with the Swedish Skatteverket documentation that accompanies Nordic income declarations.",
+    name: "George K. Konstantinou Law Firm",
+    firm: "Office: Gladstonos 55, Roussos Center Point, 5th floor, Office 5E, Limassol 3040",
+    city: "Limassol",
+    specializations: ["pr-by-investment", "work-permits", "citizenship"],
+    why: "Limassol firm whose site lists residency by investment, immigration permits, permanent residence permits, employment rules, citizenship applications and visas.",
+    website: "https://gk-lawfirm.com/practice-areas/immigration-law/",
+    notes: "Office and services quoted from the firm's own page, fetched 2026-10-05. Bar registration UNVERIFIED. Languages and fees UNVERIFIED.",
   },
-
-  // ── Larnaca ───────────────────────────────────────────────────────────────
-
-  // ── Ayia Napa ─────────────────────────────────────────────────────────────
   {
-    name: "Yiannos Charalambous",
-    firm: "Charalambous Law Office",
-    city: "Ayia Napa",
-    specializations: [
-      "digital-nomad-visa",
-      "work-permits",
-      "family-reunification",
-    ],
-    languages: ["English", "Greek", "Russian"],
-    why: "One of the few immigration specialists based in the Famagusta district. Covers Ayia Napa, Protaras and Paralimni without the client needing to travel to Limassol for consultations. Handles Digital Nomad and work permit applications for the growing remote-worker community in east Cyprus.",
+    name: "A. Georgiou Law Office",
+    firm: "Office: 1 Chrysanthou Mylona, Megaro Panayides, 2nd Floor, Office 1, Limassol",
+    city: "Limassol",
+    specializations: ["citizenship", "family-reunification"],
+    why: "Limassol firm whose site lists citizenship applications, immigration permits and family permits, and temporary and permanent residence permits.",
+    website: "https://ageorgioulaw.com/immigration-and-citizenship/",
+    notes: "Office and services quoted from the firm's own page, fetched 2026-10-05. Bar registration UNVERIFIED. Languages and fees UNVERIFIED.",
+  },
+  {
+    name: "Philippou Law Firm (Polycarpos Philippou & Associates LLC)",
+    firm: "Office: Onisiforou Center, 2nd & 3rd Floor, 8011 Paphos",
+    city: "Paphos",
+    specializations: ["pr-by-investment", "citizenship"],
+    why: "Paphos firm whose site lists permanent residence by investment, temporary residence, EU residency, EU Blue Card and naturalisation.",
+    website: "https://philippoulaw.com/service/immigration/",
+    notes: "Office and services quoted from the firm's own page, fetched 2026-10-05. Bar registration UNVERIFIED. Languages and fees UNVERIFIED.",
+  },
+  {
+    name: "Andreas Demetriades & Co LLC",
+    firm: "Office: Tryfonos Court, Nikolaou I. Nikolaidi Ave 16, 3rd Floor, Paphos 8010",
+    city: "Paphos",
+    specializations: ["pr-by-investment"],
+    why: "Paphos firm whose site lists applications for temporary and permanent residency, including investment-based residency.",
+    website: "https://www.demetriadeslaw.com/permanent-residency-programme-immigration-services/",
+    notes: "Office and services quoted from the firm's own page, fetched 2026-10-05. Bar registration UNVERIFIED. Languages and fees UNVERIFIED.",
+  },
+  {
+    name: "Nicos Papacleovoulou LLC (Cyprus Law Chambers)",
+    firm: "Office: 3 Alkiviades Street, 8011 Paphos",
+    city: "Paphos",
+    specializations: [],
+    why: "Paphos firm whose site lists immigration and relocation legal services, including route assessment, document planning and application preparation.",
+    website: "https://www.papacleovoulou.com/services-1/immigration-law",
+    notes: "Office and services quoted from the firm's own page, fetched 2026-10-05. Bar registration UNVERIFIED. Languages and fees UNVERIFIED.",
+  },
+  {
+    name: "George A. Vasiliou LLC",
+    firm: "Office: 22 Arch Makarios III Ave., Makaria center, Office 402, 4th Floor, 6017 Larnaca",
+    city: "Larnaca",
+    specializations: ["work-permits"],
+    why: "Larnaca firm whose site lists permanent and temporary residence, employment permits and visas.",
+    website: "https://gvasilioulaw.com/legal-practices/immigration/",
+    notes: "Office and services quoted from the firm's own page, fetched 2026-10-05. Bar registration UNVERIFIED. Languages and fees UNVERIFIED.",
+  },
+  {
+    name: "AK Law Firm",
+    firm: "Office: The Square, 33 Konstantinou Palaiologou Street, Larnaca 6036",
+    city: "Larnaca",
+    specializations: ["work-permits"],
+    why: "Larnaca firm whose site lists applications for immigration permits, permanent residence permits and visas, and work authorisations.",
+    website: "https://akfirm.law/services/immigration-services/",
+    notes: "Office and services quoted from the firm's own page, fetched 2026-10-05. Bar registration UNVERIFIED. Languages and fees UNVERIFIED.",
   },
 ];
