@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { topicCrumb } from "@/lib/topic-map";
-import { VET_TIPS } from "@/lib/veterinary";
+import { itemListJsonLd } from "@/lib/item-list-jsonld";
+import { VET_CLINICS, VET_TIPS } from "@/lib/veterinary";
 import VeterinaryServicesClient from "./client";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
@@ -35,6 +36,15 @@ export default function VeterinaryServicesPage() {
 		})),
 	};
 
+	const listJsonLd = itemListJsonLd(
+		"Veterinary Services in Cyprus",
+		VET_CLINICS.map((c) => ({
+			name: c.name,
+			url: c.website,
+			telephone: c.phone,
+		})),
+	);
+
 	return (
 		<DirectoryTemplate
 			slug="veterinary-services"
@@ -65,6 +75,11 @@ export default function VeterinaryServicesPage() {
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+			/>
+			<script
+				type="application/ld+json"
+				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(listJsonLd) }}
 			/>
 			<VeterinaryServicesClient />
 		</DirectoryTemplate>

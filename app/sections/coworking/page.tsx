@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
-import { COWORK_TIPS } from "@/lib/coworking";
+import { COWORK_SPACES, COWORK_TIPS } from "@/lib/coworking";
+import { itemListJsonLd } from "@/lib/item-list-jsonld";
 import { topicCrumb } from "@/lib/topic-map";
 import CoworkingClient from "./client";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
@@ -35,6 +36,11 @@ export default function CoworkingPage() {
 		})),
 	};
 
+	const listJsonLd = itemListJsonLd(
+		title,
+		COWORK_SPACES.map((s) => ({ name: s.name, url: s.website })),
+	);
+
 	return (
 		<DirectoryTemplate
 			slug="coworking"
@@ -58,6 +64,11 @@ export default function CoworkingPage() {
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+			/>
+			<script
+				type="application/ld+json"
+				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(listJsonLd) }}
 			/>
 			<CoworkingClient />
 		</DirectoryTemplate>

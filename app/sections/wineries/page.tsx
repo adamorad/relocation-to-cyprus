@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { topicCrumb } from "@/lib/topic-map";
-import { WINE_TIPS } from "@/lib/wineries";
+import { itemListJsonLd } from "@/lib/item-list-jsonld";
+import { WINE_TIPS, WINERIES } from "@/lib/wineries";
 import WineriesClient from "./client";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
@@ -35,6 +36,11 @@ export default function WineriesPage() {
 		})),
 	};
 
+	const listJsonLd = itemListJsonLd(
+		"Wineries & Wine Tourism in Cyprus",
+		WINERIES.map((w) => ({ name: w.name, url: w.website })),
+	);
+
 	return (
 		<DirectoryTemplate
 			slug="wineries"
@@ -58,6 +64,11 @@ export default function WineriesPage() {
 				type="application/ld+json"
 				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+			/>
+			<script
+				type="application/ld+json"
+				// biome-ignore lint/security/noDangerouslySetInnerHtml: SEO JSON-LD
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(listJsonLd) }}
 			/>
 			<WineriesClient />
 		</DirectoryTemplate>
