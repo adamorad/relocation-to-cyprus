@@ -421,7 +421,26 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "banking-in-cyprus",
 		datePublished: "2026-05-29",
-		dateModified: "2026-10-01",
+		dateModified: "2026-10-05",
+		lastChecked: "2026-10-05",
+		sources: [
+			{
+				label: "Central Bank of Cyprus: Deposit Guarantee and Resolution of Credit and Other Institutions Scheme",
+				url: "https://www.centralbank.cy/en/deposit-guarantee-investors-compensation-schemes/deposit-guarantee-and-resolution-of-credit-and-other-institutions-scheme",
+			},
+			{
+				label: "Bank of Cyprus: Informative leaflet on the Deposit Guarantee Scheme (12/2022)",
+				url: "https://www.bankofcyprus.com/globalassets/cyprus/org_methods/banking_codes_schemes/eng/informative-leaflet-on-the-deposit-guarantee-scheme-12-2022.pdf",
+			},
+			{
+				label: "Bank of Cyprus: International account opening",
+				url: "https://www.bankofcyprus.com/en-gb/international/Products-and-services/Account-opening/",
+			},
+			{
+				label: "Bank of Cyprus: New customer application",
+				url: "https://www.bankofcyprus.com/en-gb/Personal/new-customer-application/",
+			},
+		],
 		category: "business",
 		title: "Opening a Bank Account in Cyprus 2026",
 		description:
@@ -429,19 +448,19 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "Why bank accounts take longer than you expect",
-				body: "Every relocator to Cyprus underestimates the bank account. The common assumption is that it takes a week — you show up with your passport, they open an account, you get a card. The reality, since the post-2022 KYC and AML tightening across Cypriot banking, is materially different. The Central Bank of Cyprus and the European Banking Authority have significantly increased compliance requirements on all retail banks, meaning every new account requires a full know-your-customer file: verified identity, verified address, verified source of funds, and a completed anti-money-laundering questionnaire. From first appointment to a functioning account with a card, 2–4 weeks is the realistic timeline. Some applicants take 6–8 weeks. The document list is longer than any bank's website advertises, the branch staff are often helpful but constrained by compliance rules they cannot override, and the most common bottleneck is incomplete documentation at the first meeting — which resets the clock. Set your expectations before you arrive, not after.",
+				body: "Every relocator to Cyprus underestimates the bank account. The common assumption is that it takes a week - you show up with your passport, they open an account, you get a card. The reality is often slower. Under EU anti-money-laundering rules, banks must complete customer due diligence before opening an account, and Bank of Cyprus states it may decline an application at any time. Expect checks on your identity, address and the origin of your funds. Our editorial estimate is 2–4 weeks, and some applicants wait 6–8 weeks; banks do not publish timeframes. The document list is longer than any bank's website advertises, the branch staff are often helpful but constrained by compliance rules they cannot override, and the most common bottleneck is incomplete documentation at the first meeting - which resets the clock. Set your expectations before you arrive, not after.",
 			},
 			{
 				heading: "What documents you actually need",
-				body: "Banks in Cyprus will ask for, at minimum: a valid passport, your ARC (Alien Registration Certificate) or Yellow Slip (EU citizens), TWO separate proofs of address — a utility bill or signed and stamped lease agreement; hotel invoices and serviced apartment confirmations are explicitly rejected by most branches — and documented proof of source of funds, typically three months of payslips from an employer, or three months of company bank statements if self-employed. You will also complete an AML questionnaire at the branch, which asks about the nature of your income, expected transaction volumes, and business relationships. The practical tip most relocators learn too late: bring original documents AND certified copies of everything. Banks are required to copy and verify originals but cannot keep originals, so if you bring only originals you will be asked to return with copies, which adds another week. Certifications can be done by a local notary in Cyprus for €15–€25 per document.",
+				body: "Banks set their own document lists, so ask for the account-opening questionnaire before your first appointment. As an example, Bank of Cyprus's online application asks for ID or passport, proof of residential address and, where applicable, an Alien Registration Certificate, plus your country of tax residency; it also requires an account-opening questionnaire and may ask for additional documents depending on the case. Banks also ask about the origin of your funds, commonly evidenced by payslips or company bank statements, and you will usually complete an anti-money-laundering questionnaire covering your income and expected transactions. Bring originals and copies of everything, and confirm with the branch whether copies must be certified and who may certify them. Do not assume a Cyprus Tax Identification Number is required: we found no bank source listing it as a universal requirement.",
 			},
 			{
 				heading: "Bank of Cyprus and Hellenic Bank: the standard path",
-				body: "Bank of Cyprus and Hellenic Bank are the two main retail banks and the default recommendation for most new residents. Both offer full English-language service, online banking in English, and standard retail products (current account, debit card, online transfers). For expats, the most highly regarded branches are the Limassol Marina branch of Bank of Cyprus and the Makarios Avenue branch of Hellenic Bank in Limassol — both have staff experienced with international account openings and shorter average processing times for new-resident applications. Outbound wire transfer fees run €15–€25 per transfer at both banks; SEPA transfers within the Eurozone are cheaper at around €2–€5. Account opening typically takes 2–4 weeks from your first appointment to account activation, and debit cards are issued and shipped separately — typically 1–2 weeks after account activation. Do not assume you will have a card on the day the account activates. Plan for two separate waits.",
+				body: "Bank of Cyprus and Hellenic Bank are the two main retail banks. Deposits at Cypriot banks are protected up to €100,000 per depositor per credit institution, including accrued interest, under the Deposit Guarantee and Resolution of Credit and Other Institutions Scheme administered by the Central Bank of Cyprus. Check each bank's current price list for wire and SEPA transfer fees, and ask about card delivery time when you open the account.",
 			},
 			{
-				heading: "AstroBank: worth knowing for non-EU and complex profiles",
-				body: "AstroBank — formerly Arab Jordan Investment Bank Cyprus, rebranded in 2016 — is the third name that experienced relocators mention, and it is specifically relevant if you have a non-EU passport or a complex source-of-funds profile. Historically, AstroBank has been more accommodating for applicants from MENA, CIS, and South Asian countries whose profiles Bank of Cyprus or Hellenic may decline at the compliance stage. This is not a reflection on the legitimacy of those profiles — it is a reflection of each bank's risk appetite and their established compliance frameworks for different geographic profiles. AstroBank has a smaller branch network than the main two (Limassol and Larnaca are covered), but the account-opening success rate for applications that the bigger banks reject is meaningfully higher. Fees are broadly comparable. If your profile is non-standard — dual nationality, foreign company income, source-of-funds documentation in a non-EU context — contact AstroBank in parallel with your other applications, not as a fallback after the others decline.",
+				heading: "Applying to more than one bank",
+				body: "AstroBank is another Cyprus retail bank. Banks differ in which customer profiles and countries they serve: Bank of Cyprus, for example, says some products are not available to customers in certain countries. If you hold a non-EU passport or have a complex source of funds, apply to more than one bank in parallel and ask each about its policy for your profile. We have no verified data on relative acceptance rates.",
 			},
 			{
 				heading: "Revolut and Wise as a bridge — but not a substitute",
