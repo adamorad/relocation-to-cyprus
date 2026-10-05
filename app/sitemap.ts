@@ -19,59 +19,53 @@ const SITE_URL = "https://realcy.app";
 export default function sitemap(): MetadataRoute.Sitemap {
 	// Fails the build when a guide, directory or tool has no topic.
 	assertTopicMapComplete();
-	const now = new Date();
+	// lastModified is set only where a real last-changed date exists (guides:
+	// dateModified). Listings, developers, sections, tools, regions and hubs
+	// carry no per-item date, so lastmod is omitted rather than set to the
+	// build time.
 	return [
 		{
 			url: `${SITE_URL}/`,
-			lastModified: now,
 			changeFrequency: "weekly",
 			priority: 1,
 		},
 		{
 			url: `${SITE_URL}/about/`,
-			lastModified: now,
 			changeFrequency: "monthly",
 			priority: 0.6,
 		},
 		{
 			url: `${SITE_URL}/contact/`,
-			lastModified: now,
 			changeFrequency: "monthly",
 			priority: 0.6,
 		},
 		{
 			url: `${SITE_URL}/privacy/`,
-			lastModified: now,
 			changeFrequency: "yearly" as const,
 			priority: 0.3,
 		},
 		{
 			url: `${SITE_URL}/explore/`,
-			lastModified: now,
 			changeFrequency: "monthly",
 			priority: 0.7,
 		},
 		{
 			url: `${SITE_URL}/guides/`,
-			lastModified: now,
 			changeFrequency: "monthly",
 			priority: 0.7,
 		},
 		...DAILY_TOPICS.map((t) => ({
 			url: `${SITE_URL}${hubHref(t)}`,
-			lastModified: now,
 			changeFrequency: "weekly" as const,
 			priority: 0.8,
 		})),
 		{
 			url: `${SITE_URL}/moving-to-cyprus/`,
-			lastModified: now,
 			changeFrequency: "monthly",
 			priority: 0.7,
 		},
 		...REGIONS.map((r) => ({
 			url: `${SITE_URL}/regions/${r.slug}/`,
-			lastModified: now,
 			changeFrequency: "weekly" as const,
 			priority: 0.9,
 		})),
@@ -83,67 +77,56 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		})),
 		{
 			url: `${SITE_URL}/regions/`,
-			lastModified: now,
 			changeFrequency: "monthly" as const,
 			priority: 0.6,
 		},
 		{
 			url: `${SITE_URL}/property/`,
-			lastModified: now,
 			changeFrequency: "weekly" as const,
 			priority: 0.7,
 		},
 		{
 			url: `${SITE_URL}/listings/`,
-			lastModified: now,
 			changeFrequency: "monthly" as const,
 			priority: 0.6,
 		},
 		{
 			url: `${SITE_URL}/advertise/`,
-			lastModified: now,
 			changeFrequency: "monthly" as const,
 			priority: 0.6,
 		},
 		...allListings().map((l) => ({
 			url: `${SITE_URL}/listings/${l.slug}/`,
-			lastModified: now,
 			changeFrequency: "monthly" as const,
 			priority: 0.6,
 		})),
 		{
 			url: `${SITE_URL}/sections/`,
-			lastModified: now,
 			changeFrequency: "monthly" as const,
 			priority: 0.8,
 		},
 		...SECTIONS_INDEX.map((s) => ({
 			url: `${SITE_URL}/sections/${s.slug}/`,
-			lastModified: now,
 			changeFrequency: "monthly" as const,
 			priority: 0.7,
 		})),
 		{
 			url: `${SITE_URL}/tools/`,
-			lastModified: now,
 			changeFrequency: "monthly" as const,
 			priority: 0.8,
 		},
 		...TOOL_SLUGS.map((slug) => ({
 			url: `${SITE_URL}/tools/${slug}/`,
-			lastModified: now,
 			changeFrequency: "monthly" as const,
 			priority: 0.7,
 		})),
 		{
 			url: `${SITE_URL}/developers/`,
-			lastModified: now,
 			changeFrequency: "weekly" as const,
 			priority: 0.8,
 		},
 		...DEVELOPERS.map((d) => ({
 			url: `${SITE_URL}/developers/${d.slug}/`,
-			lastModified: now,
 			changeFrequency: "monthly" as const,
 			priority: 0.7,
 		})),
