@@ -200,18 +200,6 @@ export const AFTER_SCHOOL_ACTIVITIES: ReadonlyArray<AfterSchoolActivity> = [
 
   // ── Dance ─────────────────────────────────────────────────────────────────
   {
-    name: "Limassol Dance Academy",
-    city: "Limassol",
-    neighbourhood: "Mesa Geitonia",
-    type: "dance",
-    ageRangeFrom: 3,
-    ageRangeTo: 18,
-    languagesOffered: ["Greek", "English"],
-    weeklyFeeApprox: 18,
-    why: "Comprehensive dance academy covering ballet, contemporary, jazz and Greek traditional dance. RAD-affiliated ballet examinations available. Popular with expat and local families. Annual showcase performance.",
-    website: "https://www.limassolacademy.com",
-  },
-  {
     name: "Paphos School of Dance",
     city: "Paphos",
     neighbourhood: "Paphos town centre",
@@ -261,18 +249,6 @@ export const AFTER_SCHOOL_ACTIVITIES: ReadonlyArray<AfterSchoolActivity> = [
   },
 
   // ── STEM & Coding ─────────────────────────────────────────────────────────
-  {
-    name: "Code Island Cyprus — Limassol",
-    city: "Limassol",
-    neighbourhood: "Limassol city centre",
-    type: "stem",
-    ageRangeFrom: 7,
-    ageRangeTo: 16,
-    languagesOffered: ["English", "Greek"],
-    weeklyFeeApprox: 22,
-    why: "Coding and STEM academy with a structured curriculum (Scratch, Python, robotics). English-medium instruction. Well-reviewed by expat parents for keeping up with international coding curricula. Weekend and after-school slots available.",
-    website: "https://www.codeisland.com.cy",
-  },
 
   // ── Languages ─────────────────────────────────────────────────────────────
   {

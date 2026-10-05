@@ -28,7 +28,7 @@ type InsuranceProvider = {
 	gesyCompatible: boolean;
 	directBillingCyprusHospitals: boolean;
 	keyNote: string;
-	website: string;
+	website?: string;
 };
 
 const PROVIDERS: ReadonlyArray<InsuranceProvider> = [
@@ -134,7 +134,6 @@ const PROVIDERS: ReadonlyArray<InsuranceProvider> = [
 		directBillingCyprusHospitals: true,
 		keyNote:
 			"Major local insurer. Most competitive premiums for Cyprus-only coverage. Ideal as a top-up to GeSY for faster private specialist access and private room hospitalisation. Direct billing at most Cypriot private hospitals. No international coverage. Good choice if you rarely travel or have international coverage through an employer.",
-		website: "https://www.laikiasfalistiki.com.cy",
 	},
 	{
 		name: "CNP Asfalistiki (Cyprus)",
@@ -149,7 +148,6 @@ const PROVIDERS: ReadonlyArray<InsuranceProvider> = [
 		directBillingCyprusHospitals: true,
 		keyNote:
 			"Local insurer with wider EU emergency coverage. Dental included in comprehensive plans. Good balance of cost and coverage for Cyprus-based workers who occasionally travel within Europe. Not suitable as standalone for frequent international travellers. English-language customer service available.",
-		website: "https://www.cnpasfalistiki.com.cy",
 	},
 ];
 

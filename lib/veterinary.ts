@@ -102,16 +102,6 @@ export const VET_CLINICS: ReadonlyArray<VetClinic> = [
     phone: "+357 25 311 234",
   },
   {
-    name: "Petmed Veterinary Centre",
-    city: "Limassol",
-    neighbourhood: "Germasogeia",
-    services: ["routine", "specialist", "exotic"],
-    englishSpoken: true,
-    emergency24h: false,
-    why: "Specialist-led practice covering both small animals and exotic pets (reptiles, birds, small mammals). One of the few clinics in Cyprus with documented experience treating exotic species. Useful for relocators arriving with unusual pets. Good online booking system.",
-    website: "https://www.petmedcy.com",
-  },
-  {
     name: "Dr Elias Clinic",
     city: "Limassol",
     neighbourhood: "Polemidia",

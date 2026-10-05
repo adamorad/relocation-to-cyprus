@@ -145,7 +145,7 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     englishWelcome: true,
     annualFeeApprox: 1800,
     why: "18-hole championship course designed by Tony Jacklin in a dramatic volcanic valley setting. One of Cyprus's top courses. Membership includes access to the driving range and regular competitions.",
-    website: "https://www.secretvalleygolf.com",
+    website: "https://csvgolf.com",
   },
   {
     name: "Aphrodite Hills Golf Club",
@@ -186,7 +186,7 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     englishWelcome: true,
     annualFeeApprox: 800,
     why: "The primary sailing and motorboat club in Limassol, based at the old port. Active racing calendar, dinghies and keelboats, and a strong social programme. English is widely spoken.",
-    website: "https://www.lnc.com.cy",
+    website: "https://www.limassolnauticalclub.com",
   },
   {
     name: "St. Raphael Marina Sailing",
@@ -215,7 +215,6 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     level: "all",
     englishWelcome: true,
     why: "The main English-speaking running community in Limassol. Regular group runs along the seafront and in the Troodos foothills, WhatsApp coordination, and organised participation in Cyprus races. Free to join.",
-    website: "https://www.limassolrunningclub.com",
   },
   {
     name: "Cyprus Hash House Harriers",
@@ -226,16 +225,6 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     why: "Monthly social hashing runs (running and orienteering combined with beer and socialising) across the island. One of the oldest expat social clubs in Cyprus. Runs in different locations each month — check the Facebook group.",
   },
   // ── Rugby ─────────────────────────────────────────────────────────────────
-  {
-    name: "Limassol RFC",
-    city: "Limassol",
-    sport: "Rugby",
-    level: "competitive",
-    englishWelcome: true,
-    annualFeeApprox: 350,
-    why: "The main rugby union club in Limassol and one of the strongest in Cyprus. Competes in the national league. Predominantly expat membership — English is the working language of training. Touch rugby sessions for those returning to the sport.",
-    website: "https://www.limassolrfc.com",
-  },
   // ── Football ──────────────────────────────────────────────────────────────
   {
     name: "Limassol Expat Football League",

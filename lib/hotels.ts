@@ -143,7 +143,7 @@ export const HOTELS: ReadonlyArray<Hotel> = [
     stars: 5,
     why: "Boutique adults-only hotel on the Limassol tourist strip. Intimate scale (60 suites), rooftop bar with sea views, Art Deco-inflected design. Good base for exploring the city.",
     bookingCom: "https://www.booking.com/hotel/cy/the-londa-hotel.html",
-    website: "https://www.londa.com.cy",
+    website: "https://londahotel.com",
   },
   {
     name: "Elysium Resort",
@@ -259,7 +259,7 @@ export const HOTELS: ReadonlyArray<Hotel> = [
     stars: 5,
     why: "Flagship luxury property on the Limassol seafront. Private beach, five restaurants, and the quality standards expected of the brand. Popular with business travellers relocating via Limassol.",
     bookingCom: "https://www.booking.com/hotel/cy/four-seasons.html",
-    website: "https://www.fourseasons-cyprus.com",
+    website: "https://www.fourseasons.com.cy",
   },
   {
     name: "Parklane, a Luxury Collection Resort & Spa",

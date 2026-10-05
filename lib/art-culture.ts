@@ -85,7 +85,6 @@ export const CULTURAL_VENUES: ReadonlyArray<CulturalVenue> = [
     admissionEuros: 2,
     highlights: "Contemporary Cypriot and international art, annual open-call exhibition, residency programme",
     why: "The hub of Limassol's contemporary art scene. LIMART occupies a restored neoclassical building and runs a year-round programme of exhibitions, installations, and public events. The annual open-call exhibition is one of the most important shows in the Cypriot art calendar.",
-    website: "https://www.limart.org.cy",
   },
   {
     name: "Limassol Archaeological Museum",
@@ -153,17 +152,6 @@ export const CULTURAL_VENUES: ReadonlyArray<CulturalVenue> = [
     website: "https://www.mcw.gov.cy",
   },
   {
-    name: "Pierides Museum",
-    city: "Paphos",
-    neighbourhood: "Kato Paphos",
-    type: "museum",
-    englishSupport: true,
-    admissionEuros: 3,
-    highlights: "Private collection of Cypriot antiquities spanning 6,000 years, Chalcolithic to Byzantine",
-    why: "The Pierides family's private collection is one of the finest in Cyprus — assembled over 170 years and spanning the full arc of Cypriot civilisation. Smaller and more intimate than the Cyprus Museum, with excellent English curation.",
-    website: "https://www.pierides-museum.com",
-  },
-  {
     name: "Paphos Medieval Fort",
     city: "Paphos",
     neighbourhood: "Kato Paphos harbour",
@@ -195,7 +183,7 @@ export const CULTURAL_VENUES: ReadonlyArray<CulturalVenue> = [
     admissionEuros: 3,
     highlights: "Chalcolithic, Bronze Age, Geometric, and Archaic period Cypriot artefacts",
     why: "The original Pierides collection — the Larnaca branch of this legendary private museum. Housed in a 1920s building in the town centre, it covers the pre-historic and early historic periods with excellent English-language curation.",
-    website: "https://www.pierides-museum.com",
+    website: "https://www.boccf.org/en-gb/homepage/museums-collection",
   },
   {
     name: "Larnaca Archaeological Museum",

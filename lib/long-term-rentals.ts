@@ -136,7 +136,7 @@ export const RENTAL_LISTINGS: ReadonlyArray<RentalListing> = [
     furnished: "both",
     petFriendly: true,
     why: "Residential area popular with young families and professionals. Good schools nearby, easy access to the highway, quieter than the tourist strip. Better value per square metre than the seafront.",
-    website: "https://www.spitogatos.cy/en/rent/apartment/limassol/",
+    website: "https://www.spitogatos.com.cy/en/property-to-rent",
   },
 
   // ── Paphos ───────────────────────────────────────────────────────────────
@@ -163,7 +163,7 @@ export const RENTAL_LISTINGS: ReadonlyArray<RentalListing> = [
     furnished: "both",
     petFriendly: true,
     why: "Family-friendly residential suburb north of Paphos. Modern townhouse complexes with shared pools and communal gardens. Quiet, green, and well-connected to international schools in the area.",
-    website: "https://www.spitogatos.cy/en/rent/townhouse/paphos/chlorakas/",
+    website: "https://www.spitogatos.com.cy/en/property-to-rent",
   },
   {
     name: "Peyia Village Villa",
@@ -203,7 +203,7 @@ export const RENTAL_LISTINGS: ReadonlyArray<RentalListing> = [
     furnished: "both",
     petFriendly: true,
     why: "Mackenzie is Larnaca's most popular residential beach area — promenade cafes, a sandy beach, and a relaxed atmosphere. Newer apartment buildings with pools available. Strong long-stay community of digital nomads.",
-    website: "https://www.spitogatos.cy/en/rent/apartment/larnaca/mackenzie/",
+    website: "https://www.spitogatos.com.cy/en/property-to-rent",
   },
 
 

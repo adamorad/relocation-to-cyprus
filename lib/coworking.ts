@@ -6,7 +6,7 @@
  * founders relocating to the island.
  *
  * Sources: venue websites, Google Maps listings, Impact Hub Limassol,
- * WorkHub Paphos, and expat community reports. Prices, WiFi speeds and
+ * and expat community reports. Prices, WiFi speeds and
  * availability change — always verify directly before committing.
  */
 
@@ -141,28 +141,6 @@ export const COWORK_SPACES: ReadonlyArray<CoworkSpace> = [
     website: "https://hub.cy",
   },
   {
-    name: "Elevate Business Centre",
-    city: "Limassol",
-    neighbourhood: "Germasogeia",
-    type: "managed-office",
-    dayPassEuros: 35,
-    monthlyHotDesk: 160,
-    monthlyDedicatedDesk: 300,
-    wifiMbps: 400,
-    noiseLevel: "quiet",
-    amenities: [
-      "Private offices",
-      "Boardroom (bookable)",
-      "Receptionist",
-      "Mail handling",
-      "Printing",
-      "Business address service",
-    ],
-    why: "Professional managed office environment catering to consultants, legal professionals and mid-stage startups. The quietest and most corporate-feeling option in Limassol — suitable for client-facing roles where ambient noise matters.",
-    verifiedDate: "2026-01-10",
-    website: "https://www.elevate.com.cy",
-  },
-  {
     name: "The Nest Limassol",
     city: "Limassol",
     neighbourhood: "Limassol city centre",
@@ -207,27 +185,6 @@ export const COWORK_SPACES: ReadonlyArray<CoworkSpace> = [
 
 
   // ── Paphos ────────────────────────────────────────────────────────────────
-  {
-    name: "WorkHub Paphos",
-    city: "Paphos",
-    neighbourhood: "Kato Paphos",
-    type: "coworking",
-    dayPassEuros: 20,
-    monthlyHotDesk: 130,
-    monthlyDedicatedDesk: 210,
-    wifiMbps: 300,
-    noiseLevel: "quiet",
-    amenities: [
-      "Phone booths",
-      "Meeting rooms",
-      "Kitchen",
-      "Printing",
-      "Outdoor area",
-    ],
-    why: "The most complete coworking offering in Paphos. Good phone booths, reliable fibre, and a calm working environment suited to deep work. The outdoor area is excellent in the mild Paphos climate eight months of the year.",
-    verifiedDate: "2026-01-18",
-    website: "https://www.workhubpaphos.com",
-  },
   {
     name: "Work in Paphos",
     city: "Paphos",

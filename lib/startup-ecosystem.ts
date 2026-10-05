@@ -92,16 +92,6 @@ export const STARTUP_VENUES: ReadonlyArray<StartupVenue> = [
     website: "https://www.inspirecowork.com",
   },
   {
-    name: "Limassol Innovation Hub",
-    city: "Limassol",
-    neighbourhood: "Agios Athanasios",
-    type: "tech-hub",
-    focusAreas: ["blockchain", "fintech", "gaming"],
-    membershipFrom: 200,
-    why: "Tech hub serving Limassol's growing blockchain and gaming cluster. Flexible desk and office options, fast fibre, and regular programming for the crypto-adjacent companies that have clustered in east Limassol.",
-    website: "https://www.limassolhub.com",
-  },
-  {
     name: "The Nest Limassol",
     city: "Limassol",
     neighbourhood: "Limassol Marina area",
@@ -109,16 +99,6 @@ export const STARTUP_VENUES: ReadonlyArray<StartupVenue> = [
     focusAreas: ["startups", "freelancers", "digital nomads"],
     membershipFrom: 130,
     why: "Stylish coworking space near the marina. Popular with remote workers and early-stage founders who want proximity to Limassol's coffee-and-meetings circuit. Good event calendar and open community vibe.",
-  },
-  {
-    name: "Elevate Business Centre",
-    city: "Limassol",
-    neighbourhood: "Germasogeia",
-    type: "coworking",
-    focusAreas: ["professional services", "general business"],
-    membershipFrom: 160,
-    why: "Professional coworking and serviced office environment catering to consultants, lawyers, and mid-stage startups. Includes boardroom access, a business address service, and full secretarial support.",
-    website: "https://www.elevate.com.cy",
   },
 
 
