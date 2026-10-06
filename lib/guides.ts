@@ -1215,7 +1215,25 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "ip-registration-cyprus",
 		datePublished: "2026-05-29",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-06",
+		sources: [
+			{
+				label: "nic.cy: .cy domain registry (accessed 2026-10-06)",
+				url: "https://nic.cy/",
+			},
+			{
+				label: "WIPO: Madrid Protocol, Cyprus accession notice (accessed 2026-10-06)",
+				url: "https://www.wipo.int/wipolex/en/treaties/notifications/details/treaty_madridp-gp_148",
+			},
+			{
+				label: "WIPO: Cyprus Law 63(I)/2020 trade marks amendment notice (accessed 2026-10-06)",
+				url: "https://www.wipo.int/en/web/wipolex/w/news/2020/article_0014",
+			},
+			{
+				label: "Harris Kyriakides: European patent validation in Cyprus (accessed 2026-10-06)",
+				url: "https://www.harriskyriakides.law/insights/news/european-patent-validation-cyprus/",
+			},
+		],
 		category: "business",
 		title: "Registering IP in Cyprus: Trademarks & Patents",
 		description:
@@ -1223,16 +1241,16 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "Cyprus Trademark Registry — national registration",
-				body: "Cyprus is a signatory to the Madrid Protocol, and trademarks registered through the Cyprus Trademark Registry (a department of the Registrar of Companies and Intellectual Property) provide protection within the Republic of Cyprus only. The application fee is approximately €250 for one class under the Nice Classification; each additional class adds ~€100. Applications are examined on absolute grounds (distinctiveness, descriptiveness) and published for opposition; the full process from filing to registration typically takes 6–9 months if unopposed. Applications can be filed directly online via the Registrar's portal. A Cyprus trademark is valid for 10 years and renewable indefinitely. For most businesses operating primarily in Cyprus, a national registration is sufficient for enforcement purposes. If your business plans extend to the broader EU market, a Cyprus national mark is rarely the right primary strategy — the EUIPO route is more efficient.",
+				body: "Cyprus is a party to the Madrid Protocol (in force for Cyprus since 4 November 2003), and trademarks registered through the Cyprus Trademark Registry (a department of the Registrar of Companies and Intellectual Property) provide protection within the Republic of Cyprus only. The official fee is roughly €130 for one class filed electronically under the Nice Classification, plus about €95 for each extra class; confirm the current figures on the Registrar's trade-marks page before filing. Applications are examined on absolute grounds (distinctiveness, descriptiveness) and published for opposition; the full process from filing to registration typically takes roughly 6 to 12 months, longer if opposed. Applications can be filed directly online via the Registrar's portal. A Cyprus trademark is valid for 10 years and renewable indefinitely. For most businesses operating primarily in Cyprus, a national registration is sufficient for enforcement purposes. If your business plans extend to the broader EU market, a Cyprus national mark is rarely the right primary strategy, as the EUIPO route is more efficient.",
 			},
 			{
 				heading:
 					"EUIPO EU trademark — the practical choice for most businesses",
-				body: "An EU Trade Mark (EUTM) registered through the European Union Intellectual Property Office (EUIPO, based in Alicante, Spain) provides protection across all 27 EU member states including Cyprus for a single application. The official EUIPO application fee is €850 for one class (€50 for the second class, €150 for each further class). The examination and publication process typically takes 7 months from filing to registration if there are no oppositions. An EUTM registered before a business relocates to Cyprus automatically extends to Cyprus — there is no separate Cyprus filing needed. The EUIPO also offers an accelerated Fast Track procedure which can reduce the timeline to 4–5 months for applications that pass the initial checks cleanly. For brands targeting the EU market, an EUTM is almost always more cost-effective than filing in multiple EU member states individually. EUIPO's online filing system is straightforward and does not require a local agent, though using a trademark attorney reduces the risk of objections.",
+				body: "An EU Trade Mark (EUTM) registered through the European Union Intellectual Property Office (EUIPO, based in Alicante, Spain) provides protection across all 27 EU member states including Cyprus for a single application. The EUIPO application fee depends on the number of classes; check the current schedule on the EUIPO website before filing. The examination and publication process typically takes several months from filing to registration if there are no oppositions. An EUTM registered before a business relocates to Cyprus automatically extends to Cyprus, so there is no separate Cyprus filing needed. The EUIPO also offers an accelerated Fast Track procedure which can shorten the timeline (about 4 to 7 months overall; see EUIPO) for applications that pass the initial checks cleanly. For brands targeting the EU market, an EUTM is almost always more cost-effective than filing in multiple EU member states individually. EUIPO's online filing system is straightforward and does not require a local agent, though using a trademark attorney reduces the risk of objections.",
 			},
 			{
 				heading: "Patents — European Patent Office and the PCT route",
-				body: "Cyprus is a contracting state of the European Patent Convention (EPC), meaning a European Patent granted by the European Patent Office (EPO) must be validated in Cyprus within 3 months of grant to have effect here. Validation in Cyprus requires payment of a validation fee (approximately €200–€300) and, for some categories, translation. Cyprus does not have an independent national patent office with examination capacity — the effective route for any patent with Cyprus coverage is through the EPO or, for global protection, the Patent Cooperation Treaty (PCT) with Cyprus designated. EPO application costs are substantial: official filing fees start around €4,000 and total costs including search, examination, and prosecution typically reach €8,000–€15,000 before grant, plus validation fees in each country. Patent attorneys are essentially mandatory for prosecution. Software patents per se are not granted by the EPO (software 'as such' is excluded), but software implementing a technical process or having technical effect is patentable — the boundary is complex and requires careful claim drafting.",
+				body: "Cyprus is a contracting state of the European Patent Convention (EPC), meaning a European Patent granted by the European Patent Office (EPO) must be validated in Cyprus within 3 months of grant to have effect here. Validation in Cyprus requires a certified Greek translation of the granted patent filed with the Registrar (Form Π.17); the translation is the main cost. Cyprus has no substantive examination of its own for most applicants, so the practical route for any patent with Cyprus coverage is through the EPO or, for global protection, the Patent Cooperation Treaty (PCT) with Cyprus designated. EPO application costs are substantial: indicative market estimates (not official figures) put total costs including search, examination, and prosecution in the thousands of euros before grant, plus validation costs in each country. Patent attorneys are essentially mandatory for prosecution. Software patents per se are not granted by the EPO (software 'as such' is excluded), but software implementing a technical process or having technical effect is patentable, but the boundary is complex and requires careful claim drafting.",
 			},
 			{
 				heading: "Software copyright — automatic, no registration required",
@@ -1240,7 +1258,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Domain names and the .cy registry",
-				body: "The .cy country code top-level domain is administered by the University of Cyprus acting as the IANA-delegated registry. Registrations are available through accredited registrars including several Cyprus-based ISPs and hosting providers. The .cy registry operates under a reserved namespace policy: .com.cy is the standard commercial second-level domain; .org.cy and .net.cy are also available. A .com.cy registration requires proof of legitimate business interest in Cyprus (a company registration number satisfies this) and costs approximately €25–€35 per year through most registrars. The registration process takes 1–3 business days. Non-residents can register .com.cy domains but must provide a Cyprus company or local contact address. For businesses incorporating in Cyprus, registering the corresponding .com.cy domain alongside a .com or other international TLD is standard practice.",
+				body: "The .cy country code top-level domain is administered by the University of Cyprus. Registrations are available through accredited registrars including several Cyprus-based ISPs and hosting providers. The .cy registry operates under a reserved namespace policy: .com.cy is the standard commercial second-level domain; .org.cy and .net.cy are also available. Registry prices start from about €20 per year and registrar prices vary; check eligibility rules and current prices with the registry at nic.cy or your registrar. For businesses incorporating in Cyprus, registering the corresponding .com.cy domain alongside a .com or other international TLD is standard practice.",
 			},
 		],
 	},
