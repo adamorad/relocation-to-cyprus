@@ -168,14 +168,14 @@ export const WINERIES: ReadonlyArray<Winery> = [
   },
   {
     name: "Constantinou Winery",
-    city: "Paphos",
-    village: "Stroumpi",
+    city: "Limassol",
+    village: "Pera Pedi",
     grapeVarieties: ["Maratheftiko", "Xynisteri", "Cabernet Sauvignon", "Merlot"],
     tastingAvailable: true,
     tourAvailable: true,
     restaurantOnSite: true,
     priceRange: 2,
-    why: "One of the leading wineries in the Paphos region, based in Stroumpi village. Modern facilities, a full range from indigenous to international varieties, and a restaurant serving traditional Cypriot food paired with estate wines. A good anchor for a Paphos hills wine day.",
+    why: "Winery in Pera Pedi village in the Limassol district, on the southern slopes of the Troodos. Modern facilities, a full range from indigenous to international varieties, and a restaurant serving traditional Cypriot food paired with estate wines. A good stop on a Troodos wine day.",
     website: "https://www.constantinouwinery.com",
   },
   {
