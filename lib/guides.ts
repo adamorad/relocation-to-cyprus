@@ -3162,11 +3162,20 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "cyprus-company-formation",
 		datePublished: "2026-06-22",
-		dateModified: "2026-07-05",
+		dateModified: "2026-10-06",
+		lastChecked: "2026-10-05",
 		sources: [
 			{
 				label: "Registrar of Companies: company incorporation forms and fees (accessed 2026-10-05)",
 				url: "https://www.companies.gov.cy/en/knowledgebase/forms-fees/companies-forms-and-fees/starting-a-company-forms/company-incorporation-forms",
+			},
+			{
+				label: "Registrar of Companies: choosing a company name (accessed 2026-10-05)",
+				url: "https://www.companies.gov.cy/en/business-entities/2-company/5-lifecycle/1-starting-a-company/15-guidance/incorporating-a-company/choosing-a-company-name",
+			},
+			{
+				label: "Registrar of Companies: when to enter details in the Register of Beneficial Owners (accessed 2026-10-05)",
+				url: "https://www.companies.gov.cy/en/business-entities/2-company/5-lifecycle/1-running-a-company/5-guidance/updating-the-register-of-beneficial-owners/when-should-i-enter-the-details-in-the-register",
 			},
 		],
 		category: "business",
@@ -3192,11 +3201,20 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "What it costs",
-				body: "The Registrar of Companies' published registration fee is EUR165 for a company with share capital (EUR235 for a company without share capital); an accelerated service costs an additional EUR100. Check the Registrar's fee page for current amounts. Service provider fees cover everything else: M&AA preparation, Registrar submission management, registered office address for the first year, company secretary, and all incorporation certificates. A standard formation package from a reputable Cyprus service provider costs €800–€2,000 depending on the provider and scope. Basic packages (formation only, no nominee services) start around €800. Full-service packages including nominee director, nominee shareholder, apostilled documents, and tax registration assistance run €1,500–€3,000. Annual recurring costs are where the budget consideration matters. Every Cyprus Ltd is required by law to have its accounts audited annually by a licensed Cypriot auditor: this is mandatory regardless of company size or revenue. Audit fees start at approximately €1,000–€1,500 for a simple company with minimal transactions and rise significantly for companies with complex accounting. Annual levy payable to the Registrar of Companies: €350. Accountancy and bookkeeping: €500–€2,000/year depending on transaction volume. Company secretarial services: €300–€600/year. Registered office: €200–€500/year. Total annual compliance overhead: €2,500–€5,000 for a straightforward company, rising with complexity. A Cyprus Ltd is cost-effective for a business generating €30,000+ in annual profit; below that threshold, the compliance costs consume a material share of the tax saving.",
+				regulationNote: {
+					after: "Annual levy payable to the Registrar of Companies: €350.",
+					lead: "There might be a contradiction with current law.",
+					text: "Several sources report the annual company levy was abolished; we could not confirm this on an official page yet. Check with the Registrar of Companies or your accountant.",
+					source: {
+						label: "Registrar of Companies: forms and fees",
+						url: "https://www.companies.gov.cy/en/knowledgebase/forms-fees/companies-forms-and-fees/starting-a-company-forms/company-incorporation-forms",
+					},
+				},
+				body: "The Registrar of Companies' published registration fee is EUR165 for a company with share capital (EUR235 for a company without share capital); an accelerated service costs an additional EUR100 on top of the fee (EUR265 in total for a company with share capital). Name approval costs EUR10 per proposed name (plus EUR20 per name if accelerated). Check the Registrar's fee page for current amounts. Service provider fees cover everything else: M&AA preparation, Registrar submission management, registered office address for the first year, company secretary, and all incorporation certificates. A standard formation package from a reputable Cyprus service provider costs €800–€2,000 depending on the provider and scope. Basic packages (formation only, no nominee services) start around €800. Full-service packages including nominee director, nominee shareholder, apostilled documents, and tax registration assistance run €1,500–€3,000. Annual recurring costs are where the budget consideration matters. Every Cyprus Ltd is required by law to have its accounts audited annually by a licensed Cypriot auditor: this is mandatory regardless of company size or revenue. Audit fees start at approximately €1,000–€1,500 for a simple company with minimal transactions and rise significantly for companies with complex accounting. Annual levy payable to the Registrar of Companies: €350. Accountancy and bookkeeping: €500–€2,000/year depending on transaction volume. Company secretarial services: €300–€600/year. Registered office: €200–€500/year. Total annual compliance overhead: €2,500–€5,000 for a straightforward company, rising with complexity. A Cyprus Ltd is cost-effective for a business generating €30,000+ in annual profit; below that threshold, the compliance costs consume a material share of the tax saving.",
 			},
 			{
 				heading: "Post-formation: tax registration, banking, and UBO",
-				body: "After incorporation, four actions are required before the company can operate normally. Tax registration: register with the Tax Department within 60 days of incorporation to obtain a Tax Identification Number (TIN). This is done online via the TaxisNet portal or in person at the Tax Department. VAT registration: required if the company's Cypriot-source taxable supplies exceed €15,600/year. Voluntary registration is possible from day one if the company makes supplies to other businesses and wishes to recover input VAT. VAT registration is processed by the Tax Department and takes 3–6 weeks. UBO registration: under Cyprus's AML implementation of the EU 5th Anti-Money Laundering Directive, all Cyprus companies must register their Ultimate Beneficial Owners (individuals who own or control 25%+ of the company) in the Registrar of Companies' UBO register. This must be done within 45 days of incorporation and kept up to date. Failure to register carries penalties. Bank account opening: this is the most time-consuming post-formation step. Bank of Cyprus and Hellenic Bank are the main retail banks and require in-person visits and extensive KYC documentation; account opening can take 4–12 weeks from application. For companies that need accounts faster, Electronic Money Institutions (EMIs) such as Wise Business, Revolut Business, and Airwallex offer faster onboarding (often online, within days) and are widely used by Cyprus companies for day-to-day operations. EMI accounts are not bank accounts and do not provide access to lending, but for payment processing, receiving client funds, and making supplier payments they are fully functional.",
+				body: "After incorporation, four actions are required before the company can operate normally. Tax registration: register with the Tax Department promptly after incorporation to obtain a Tax Identification Number (TIN). This is done online via the TaxisNet portal or in person at the Tax Department. VAT registration: required if the company's Cypriot-source taxable supplies exceed €15,600/year. Voluntary registration is possible from day one if the company makes supplies to other businesses and wishes to recover input VAT. VAT registration is processed by the Tax Department and takes 3–6 weeks. UBO registration: under Cyprus's AML implementation of the EU 5th Anti-Money Laundering Directive, all Cyprus companies must register their Ultimate Beneficial Owners (individuals who own or control 25%+ of the company) in the Registrar of Companies' UBO register. New companies must file their beneficial owners on the BO Register within 90 days of incorporation, confirm them annually between 1 October and 31 December, and report any change within 45 days. Failure to register carries penalties. Bank account opening: this is the most time-consuming post-formation step. Bank of Cyprus and Hellenic Bank are the main retail banks and require in-person visits and extensive KYC documentation; account opening can take 4–12 weeks from application. For companies that need accounts faster, Electronic Money Institutions (EMIs) such as Wise Business, Revolut Business, and Airwallex offer faster onboarding (often online, within days) and are widely used by Cyprus companies for day-to-day operations. EMI accounts are not bank accounts and do not provide access to lending, but for payment processing, receiving client funds, and making supplier payments they are fully functional.",
 			},
 		],
 		faqs: [
