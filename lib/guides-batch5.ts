@@ -156,9 +156,9 @@ export const GUIDES_BATCH5: GuideInfo[] = [
 			HT_SRC.aalFees,
 		],
 		category: "family",
-		title: "International School Fees in Cyprus (2026)",
+		title: "International School Fees in Cyprus 2026, by City",
 		description:
-			"Annual tuition ranges, hidden extras and city-by-city costs for expat families choosing a private or international school in Cyprus in 2026.",
+			"International school fees in Cyprus in 2026: about €4,000 in nursery to over €19,000 at IB schools, by city, plus extras that add 15 to 30%.",
 		sections: [
 			{
 				heading: "What International School Really Costs",
