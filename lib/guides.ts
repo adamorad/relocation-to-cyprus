@@ -1246,6 +1246,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	},
 	{
 		slug: "trade-licenses-cyprus",
+		lastChecked: "2026-10-06",
 		datePublished: "2026-05-29",
 		dateModified: "2026-10-06",
 		sources: [
