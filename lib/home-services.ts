@@ -1,12 +1,12 @@
 /**
  * Home services directory: tradespeople with their own website.
  *
- * Each business was checked on its own website on 4 October 2026: site live,
+ * Each business was checked on its own website on 4 and 5 October 2026: site live,
  * phone and city shown there, trade shown there. Phones are copied exactly as
  * printed on the business site. Listings are not endorsements.
  */
 
-export const CHECKED_AT = "2026-10-04";
+export const CHECKED_AT = "2026-10-05";
 
 export type Trade =
 	| "Plumbers"
@@ -17,7 +17,13 @@ export type Trade =
 	| "Pest control"
 	| "Cleaning and key holding";
 
-export type City = "Limassol" | "Paphos" | "Larnaca";
+export type City =
+	| "Limassol"
+	| "Paphos"
+	| "Larnaca"
+	| "Ayia Napa"
+	| "Protaras"
+	| "Paralimni";
 
 export type HomeService = {
 	name: string;
@@ -43,6 +49,9 @@ export const ALL_CITIES: ReadonlyArray<City> = [
 	"Limassol",
 	"Paphos",
 	"Larnaca",
+	"Ayia Napa",
+	"Protaras",
+	"Paralimni",
 ];
 
 const row = (
@@ -57,8 +66,8 @@ export const HOME_SERVICES: ReadonlyArray<HomeService> = [
 	row("Alexandrou Plumbing", "Plumbers", ["Limassol"], "https://www.alexandrouplumbing.com/", "+357 99 492127"),
 	row("Limassol Plumbers", "Plumbers", ["Limassol"], "https://limassolplumbers.com/", "+35797809104"),
 	row("Plumbair Plumbing & Air Conditioning", "Plumbers", ["Limassol"], "https://plumbairservices.com/", "+357 96 301520"),
-	row("Chillout HomeServe", "Plumbers", ["Larnaca", "Limassol"], "https://chillouthomeserve.com/", "+357 22 353550"),
-	row("ConstruX", "Plumbers", ["Larnaca", "Limassol"], "https://construx-cyprus.com/", "+357 99 857 807"),
+	row("Chillout HomeServe", "Plumbers", ["Larnaca", "Limassol", "Paralimni", "Protaras", "Ayia Napa"], "https://chillouthomeserve.com/", "+357 22 353550"),
+	row("ConstruX", "Plumbers", ["Larnaca", "Limassol", "Ayia Napa"], "https://construx-cyprus.com/", "+357 99 857 807"),
 	row("Build in Cyprus (BuildInCyprus Project Management & More)", "Plumbers", ["Paphos"], "https://buildincyprus.com/", "+357 96 922 275"),
 	row("Cyprus HomeCare", "Plumbers", ["Paphos"], "https://www.cyprushomecare.com/", "00357-99900696"),
 	row("Green Air Ltd", "Plumbers", ["Paphos"], "https://www.greenair-cy.com/", "+357 26 941 555"),
@@ -77,7 +86,7 @@ export const HOME_SERVICES: ReadonlyArray<HomeService> = [
 	row("S Rush Electrical Ltd.", "Electricians", ["Larnaca"], "https://www.electricianlarnaca.com/", "00357 9900 5944"),
 	row("ZeroKlima Services Cyprus", "Air conditioning", ["Limassol"], "https://www.zeroklima.com.cy/", "(+357) 7000 69 00"),
 	row("Cooling Cyprus", "Air conditioning", ["Larnaca", "Limassol", "Paphos"], "https://www.cooling-cyprus.com/", "+357 97 487002 (Sales & Technical)"),
-	row("AirFix", "Air conditioning", ["Larnaca", "Limassol", "Paphos"], "https://airfix.cy/en", "+357 97 532 688"),
+	row("AirFix", "Air conditioning", ["Larnaca", "Limassol", "Paphos", "Ayia Napa"], "https://airfix.cy/en", "+357 97 532 688"),
 	row("Plumbair Plumbing & Air Conditioning", "Air conditioning", ["Limassol"], "https://plumbairservices.com/", "+357 96 301520"),
 	row("Chillout HomeServe", "Air conditioning", ["Larnaca", "Limassol"], "https://chillouthomeserve.com/", "+357 22 353550"),
 	row("Kyriakos Electric", "Air conditioning", ["Larnaca", "Limassol"], "https://kyriakoselectric.com/", "+357 24 258 478; +357 94 492 292"),
@@ -95,10 +104,10 @@ export const HOME_SERVICES: ReadonlyArray<HomeService> = [
 	row("Waves & Noble Paphos Property Management", "Handyman", ["Paphos"], "https://wavesandnoblepaphospropertymanagement.com/", "+35797824629"),
 	row("Nicks Maintenance Services", "Handyman", ["Paphos"], "https://www.n-m-services.eu/", "(00357) 99009798"),
 	row("Genika Maintenance & Cleaning", "Handyman", ["Larnaca"], "https://genikaservices.com/", "94 210 787"),
-	row("Atom Exterminators", "Pest control", ["Larnaca", "Limassol", "Paphos"], "https://atomexterminators.com/", "777-77-890"),
+	row("Atom Exterminators", "Pest control", ["Larnaca", "Limassol", "Paphos", "Paralimni", "Ayia Napa"], "https://atomexterminators.com/", "777-77-890"),
 	row("GG Pest Control", "Pest control", ["Limassol"], "https://pestcontrollimassol.com/", "99 03 68 72"),
 	row("Cvenviropest", "Pest control", ["Larnaca", "Limassol", "Paphos"], "https://cvenviropest.com/", "+357 96 698386"),
-	row("FLY PEST CONTROL", "Pest control", ["Larnaca", "Limassol", "Paphos"], "https://www.flypestcontrol.net/en", "22311698 / 99623363"),
+	row("FLY PEST CONTROL", "Pest control", ["Larnaca", "Limassol", "Paphos", "Paralimni"], "https://www.flypestcontrol.net/en", "22311698 / 99623363"),
 	row("Pest Protection Services (Cyprus) Holdings Ltd (PPS Cyprus)", "Pest control", ["Larnaca", "Limassol", "Paphos"], "https://ppscyprus.com/", "77 77 21 21 (24/7 hotline); +357 24 656 800"),
 	row("Pest Control in Cyprus", "Pest control", ["Larnaca", "Limassol"], "https://pestcontrolincyprus.com/", "+357 24023002"),
 	row("Panic Pest Control", "Pest control", ["Paphos"], "https://www.panicpestcontroller.com/", "99489888"),
@@ -112,7 +121,7 @@ export const HOME_SERVICES: ReadonlyArray<HomeService> = [
 	row("Car Master Key", "Locksmiths", ["Larnaca", "Limassol"], "https://carmasterkey.com/en/", "+35796498981"),
 	row("Pick-a-lock Cyprus", "Locksmiths", ["Paphos"], "https://pickalockcyprus.com/", "97 744 121"),
 	row("Demou Bros Locksmith Services", "Locksmiths", ["Paphos"], "https://keysandsigns.com/", "7000 2468"),
-	row("Lemons & Linen", "Cleaning and key holding", ["Larnaca", "Limassol", "Paphos"], "https://lemonsandlinen.com/", "+357 95 914 874"),
+	row("Lemons & Linen", "Cleaning and key holding", ["Larnaca", "Limassol", "Paphos", "Ayia Napa", "Protaras", "Paralimni"], "https://lemonsandlinen.com/", "+357 95 914 874"),
 	row("Lonely Homes", "Cleaning and key holding", ["Paphos"], "https://lonelyhomes.cy/", "+357 26 250555"),
 	row("Keyper", "Cleaning and key holding", ["Paphos"], "https://www.keypermanagement.com/", "+357 97 950559"),
 	row("Perfect Cleaning Services", "Cleaning and key holding", ["Limassol"], "https://perfectcleaningservices.com.cy/", "+357 96 906429"),
@@ -126,7 +135,7 @@ export const HOME_SERVICES: ReadonlyArray<HomeService> = [
 export const BUSINESS_COUNT = new Set(HOME_SERVICES.map((s) => s.website)).size;
 
 export const HOME_SERVICES_NOTE =
-	"Listings are not endorsements. We checked each business's own website on 4 October 2026 (website live, phone and city shown there). Always ask for licences and a written quote.";
+	"Listings are not endorsements. We checked each business's own website on 4 and 5 October 2026 (website live, phone and city shown there). Always ask for licences and a written quote.";
 
 /** First number printed on the site as a tel: href (digits and leading +). */
 export function telHref(phone: string): string {
@@ -136,4 +145,4 @@ export function telHref(phone: string): string {
 
 export const HOME_SERVICES_TITLE =
 	"Home Services in Cyprus: Plumbers, Electricians and More";
-export const HOME_SERVICES_DESCRIPTION = `${BUSINESS_COUNT} businesses (${HOME_SERVICES.length} listings) for plumbing, electrical, air conditioning, handyman, locksmith and pest control work in Limassol, Paphos and Larnaca, each checked on its own website on 4 October 2026.`;
+export const HOME_SERVICES_DESCRIPTION = `${BUSINESS_COUNT} businesses (${HOME_SERVICES.length} listings) for plumbing, electrical, air conditioning, handyman, locksmith and pest control work in Limassol, Paphos, Larnaca, Ayia Napa, Protaras and Paralimni, each checked on its own website on 4 and 5 October 2026.`;
