@@ -30,17 +30,17 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | Item | Primary topic | Secondary | Cities | Reason |
 | --- | --- | --- | --- | --- |
 | [Air Quality & Allergens in Cyprus: Expat Guide](/guides/air-quality-allergens/) | Health | Home & bills |  | Old category Environment; the practical advice is about allergies and breathing. |
-| [Dental Care in Cyprus 2026: Costs & GeSY Cover](/guides/dental-care-guide/) | Health |  |  |  |
-| [Emergency Services in Cyprus: 112 & A&E Guide](/guides/emergency-services-guide/) | Health |  |  |  |
+| [Dentist Costs in Cyprus 2026: Prices and GeSY Cover](/guides/dental-care-guide/) | Health |  |  |  |
+| [112 and Ambulance Number in Cyprus: Emergency Guide](/guides/emergency-services-guide/) | Health |  |  |  |
 | [GeSY Registration Guide 2026: Step-by-Step](/guides/gesy-registration-guide/) | Health | Money & paperwork |  |  |
 | [Healthcare in Cyprus 2026: GeSY & Private Guide](/guides/healthcare-in-cyprus/) | Health | Moving to Cyprus |  |  |
-| [Buy Medicine Over the Counter in Cyprus](/guides/pharmacies-medication/) | Health |  |  |  |
+| [Pharmacies in Cyprus: Over-the-Counter and Prescriptions](/guides/pharmacies-medication/) | Health |  |  |  |
 | [Private Health Insurance in Cyprus 2026](/guides/private-health-insurance-cyprus/) | Health | Money & paperwork |  |  |
 | [Cyprus Airport Transfers 2026: All Options](/guides/airport-transfers-guide/) | Getting around |  |  |  |
 | [Importing and Registering a Car in Cyprus](/guides/car-import-registration/) | Getting around | Moving to Cyprus |  |  |
 | [Cycling in Cyprus: Best Routes & Infrastructure](/guides/cycling-guide/) | Getting around | Community & leisure |  |  |
 | [Converting Your Driving Licence in Cyprus](/guides/driving-licence-conversion/) | Getting around | Money & paperwork |  |  |
-| [Cyprus Ferry Routes 2026: Limassol to Piraeus (Greece)](/guides/ferry-routes-guide/) | Getting around |  |  |  |
+| [Cyprus Ferries 2026: Piraeus Route, Egypt and Israel Status](/guides/ferry-routes-guide/) | Getting around |  |  |  |
 | [Getting Around Cyprus Without a Car (2026)](/guides/getting-around-cyprus-no-car/) | Getting around |  |  |  |
 | [Long-Term Car Rental Cyprus 2026: Monthly Hire Rates](/guides/long-term-car-rental-cyprus/) | Getting around |  |  | Old category Lifestyle; it is about getting a car for daily use. |
 | [Driving in Cyprus: Road Safety & Culture Guide](/guides/road-safety-driving/) | Getting around |  |  |  |
@@ -49,7 +49,7 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Short-Term to Long-Term Rental in Cyprus](/guides/rental-transition-guide/) | Home & bills | Moving to Cyprus |  | Old category Property; it is about renting a home, not buying. |
 | [Solar Panels in Cyprus: Self-Consumption Rules & Costs](/guides/solar-energy-guide/) | Home & bills |  |  | Old category Environment; it is about cutting the electricity bill. |
 | [Cyprus Utilities Setup 2026: Electricity & Water](/guides/utilities-setup-guide/) | Home & bills |  |  |  |
-| [Recycling in Cyprus: Guide for New Residents](/guides/waste-recycling-guide/) | Home & bills | Community & leisure |  | Bins and collections are a household chore; also covers sustainable living (Beyond the bins). |
+| [Recycling in Cyprus: Bins, Drop-Offs and What Goes Where](/guides/waste-recycling-guide/) | Home & bills | Community & leisure |  | Bins and collections are a household chore; also covers sustainable living (Beyond the bins). |
 | [Water Quality & Scarcity in Cyprus: Key Facts](/guides/water-quality-scarcity/) | Home & bills |  |  | Old category Environment; tap water, filters and supply at home. |
 | [Wildfire Risk in Cyprus: How to Prepare](/guides/wildfire-risk-guide/) | Home & bills |  |  | Old category Environment; preparing the home, alerts and insurance. |
 | [Opening a Bank Account in Cyprus 2026](/guides/banking-in-cyprus/) | Money & paperwork |  |  |  |
@@ -70,14 +70,14 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Cyprus Yellow Slip (MEU1): 2026 Complete Guide](/guides/yellow-slip-meu1-guide/) | Money & paperwork | Moving to Cyprus |  | Residency admin that people already living here also need (renewals, changes). |
 | [Coffee Culture in Cyprus: Freddo & Third Wave](/guides/coffee-culture-guide/) | Food & shopping | Community & leisure |  |  |
 | [Cypriot Food Culture: Eating Like a Local](/guides/cypriot-cuisine-guide/) | Food & shopping | Community & leisure |  |  |
-| [Food Delivery Cyprus 2026: Wolt, Bolt & Foody](/guides/food-delivery-apps/) | Food & shopping |  |  |  |
+| [Food Delivery in Cyprus: Wolt, Bolt Food and Foody Apps](/guides/food-delivery-apps/) | Food & shopping |  |  |  |
 | [Finding International Ingredients in Cyprus](/guides/home-cooking-ingredients/) | Food & shopping |  |  |  |
 | [Booking Restaurants in Cyprus: How It Works](/guides/restaurant-reservations/) | Food & shopping | Community & leisure |  |  |
 | [Registering Your Child in Cyprus: School & ARC](/guides/child-registration-guide/) | Family & schools | Money & paperwork |  |  |
 | [Getting Married in Cyprus (2026 Guide)](/guides/getting-married-in-cyprus/) | Family & schools | Money & paperwork |  | Family life event; the steps are civil paperwork. |
-| [International School Fees in Cyprus (2026)](/guides/international-school-fees-cyprus/) | Family & schools |  |  |  |
+| [International School Fees in Cyprus 2026, by City](/guides/international-school-fees-cyprus/) | Family & schools |  |  |  |
 | [Maternity and Paternity Rights in Cyprus: What Employed Parents Are Entitled To](/guides/maternity-paternity-rights/) | Family & schools | Money & paperwork |  |  |
-| [International Schools in Cyprus: Full Guide 2026](/guides/schools-in-cyprus/) | Family & schools |  |  |  |
+| [Schools in Cyprus for Expat Kids: Public vs International](/guides/schools-in-cyprus/) | Family & schools |  |  |  |
 | [Special Educational Needs in Cyprus: SEN Guide](/guides/sen-guide/) | Family & schools |  |  |  |
 | [Universities in Cyprus: Guide for Students](/guides/universities-in-cyprus/) | Family & schools |  |  |  |
 | [Cyprus Beach Guide: Best Beaches by District](/guides/beach-guide-by-district/) | Community & leisure |  |  |  |
