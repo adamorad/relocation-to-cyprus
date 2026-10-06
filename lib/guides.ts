@@ -1503,9 +1503,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			HT_SRC.gesyCopay,
 		],
 		category: "healthcare",
-		title: "Buy Medicine Over the Counter in Cyprus",
+		title: "Pharmacies in Cyprus: Over-the-Counter and Prescriptions",
 		description:
-			"What you can buy over the counter in Cyprus: paracetamol, ibuprofen, some codeine painkillers. Plus GeSY €1 generics and foreign prescription rules.",
+			"What you can buy over the counter at Cyprus pharmacies, how foreign prescriptions are handled, and GeSY €1 generics.",
 		sections: [
 			{
 				heading: "Quick answer: what you can buy over the counter in Cyprus",
@@ -1568,9 +1568,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-10-02",
 		category: "healthcare",
-		title: "Dental Care in Cyprus 2026: Costs & GeSY Cover",
+		title: "Dentist Costs in Cyprus 2026: Prices and GeSY Cover",
 		description:
-			"Indicative private dental costs in Cyprus in 2026 (editorial estimates; clinic quotes vary), what GeSY covers according to the HIO catalogue, and how to find an English-speaking dentist.",
+			"Indicative dental prices in Cyprus in 2026 (editorial estimates), what GeSY covers according to the HIO catalogue, and how to find an English-speaking dentist.",
 		sections: [
 			{
 				heading: "GeSY dental coverage: what is and is not included",
@@ -1637,9 +1637,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 		],
 		category: "healthcare",
-		title: "Emergency Services in Cyprus: 112 & A&E Guide",
+		title: "112 and Ambulance Number in Cyprus: Emergency Guide",
 		description:
-			"The single emergency number, which hospitals have 24-hour A&E, how the ambulance service works, what to bring, and the difference between public and private A&E for non-critical situations.",
+			"Call 112 for police, fire and ambulance in Cyprus. Which hospitals have 24-hour A&E, how the ambulance service works and what to tell the operator.",
 		sections: [
 			{
 				heading: "112: the single emergency number",
@@ -1834,8 +1834,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		lastChecked: "2026-10-02",
 		sources: FERRY_SOURCES,
 		category: "transport",
-		title: "Cyprus Ferry Routes 2026: Limassol to Piraeus (Greece)",
-		description: `Limassol to Piraeus on the ${FERRY_VESSEL}: summer only (29 May to 1 Sep in 2026), about ${FERRY_CROSSING_HOURS} hours, seats from ${eur(FERRY_ADULT_ONE_WAY.seat)} with taxes. Egypt, Lebanon, Israel and 2027 status.`,
+		title: "Cyprus Ferries 2026: Piraeus Route, Egypt and Israel Status",
+		description:
+			"We found no scheduled 2026 ferry from Cyprus to Egypt, Haifa or Lebanon. The only one is Limassol to Piraeus, summer only. Dates, fares, cars.",
 		sections: [
 			{
 				heading: "The state of Cyprus ferry services",
@@ -2047,9 +2048,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-07-05",
 		category: "lifestyle",
-		title: "Food Delivery Cyprus 2026: Wolt, Bolt & Foody",
+		title: "Food Delivery in Cyprus: Wolt, Bolt Food and Foody Apps",
 		description:
-			"Wolt, Bolt Food & Foody compared for Cyprus 2026: city coverage, delivery fees, Bolt Pass/Wolt+ subscriptions, late-night options & grocery delivery.",
+			"Which food delivery app to use in Cyprus: Bolt Food, Wolt or Foody. Coverage in Limassol, Paphos and Larnaca, fees, subscriptions and late-night orders.",
 		sections: [
 			{
 				heading: "The three main apps and how they divide the market",
@@ -2353,9 +2354,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		datePublished: "2026-05-29",
 		dateModified: "2026-10-01",
 		category: "environment",
-		title: "Recycling in Cyprus: Guide for New Residents",
+		title: "Recycling in Cyprus: Bins, Drop-Offs and What Goes Where",
 		description:
-			"How to use the kerbside bins, where to drop off electronics, batteries, textiles and glass, an honest assessment of Cyprus's recycling culture, and how to live more sustainably beyond the bins.",
+			"How recycling works in Cyprus: what goes in the blue bin, where glass goes, and where to drop off electronics, batteries and textiles.",
 		sections: [
 			{
 				heading: "Kerbside bins: what goes where",
@@ -2642,9 +2643,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			HT_SRC.ispFees,
 		],
 		category: "family",
-		title: "International Schools in Cyprus: Full Guide 2026",
+		title: "Schools in Cyprus for Expat Kids: Public vs International",
 		description:
-			"Public or international school, plus every major English-medium, American and IB school in Limassol, Paphos, Larnaca and the Famagusta area: fees, curricula, admissions.",
+			"Public or international school in Cyprus? Free Greek-medium state schools vs English-medium, American and IB schools in Limassol, Paphos, Larnaca.",
 		sections: [
 			{
 				heading: "The shape of the school market",
