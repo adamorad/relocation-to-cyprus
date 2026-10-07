@@ -9,7 +9,7 @@ import { DEFAULT_OG_IMAGE } from "@/lib/og";
 const SITE_URL = "https://realcy.app";
 const title = "Cyprus Internet & Mobile Plans: Cyta, Epic, Primetel, Cablenet";
 const description =
-	"Compare 4 broadband providers and 3 mobile carriers in Cyprus side by side: monthly cost, speed, contract length and coverage by city. Prices from 2025; verify before signing.";
+	"Compare 4 broadband providers and 3 mobile carriers in Cyprus side by side: coverage by city, technology and links to each provider's current plans. Verify prices before signing.";
 
 export const metadata: Metadata = {
 	title,
@@ -46,7 +46,7 @@ export default function IspComparisonPage() {
 				eyebrow: getTopicForTool("isp-comparison").name,
 				title: "Internet & Mobile Providers in Cyprus",
 				intro:
-					"Compare home broadband and mobile carriers. Cyprus has fast internet: 1 Gbps fibre is available in urban areas for under €50/month.",
+					"Compare home broadband and mobile carriers. Prices vary by provider, contract and bundle; check each provider's page.",
 			}}
 			nextSteps={[
 				{
@@ -56,7 +56,7 @@ export default function IspComparisonPage() {
 				{ href: "/guides/", label: "Explore Cyprus guides" },
 				{ href: "/tools/", label: "All tools" },
 			]}
-			disclaimer="Plans and prices change frequently. Verify at provider websites before signing. Prices shown are entry-level packages at the highest advertised speed tier, taken from provider sites in 2025 and not re-checked since. Actual available speeds depend on your specific address and infrastructure type."
+			disclaimer="Plans and prices change frequently. Verify at provider websites before signing. Prices and speeds are not quoted here because they were not verified against provider pages as of 2026-10-07. Actual available speeds depend on your specific address and infrastructure type."
 		>
 			<script
 				type="application/ld+json"
