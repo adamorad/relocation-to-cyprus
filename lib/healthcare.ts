@@ -75,7 +75,7 @@ export const HEALTHCARE_TIPS: ReadonlyArray<HealthcareTip> = [
   },
   {
     heading: "English-speaking doctors",
-    body: "Most private hospital staff speak English fluently — it's the default working language in private healthcare. GP clinics vary: some are entirely English-speaking, others mix Greek and English. Always check before booking.",
+    body: "Most private hospital staff speak English fluently, and it's the default working language in private healthcare. GP clinics vary: some are entirely English-speaking, others mix Greek and English. Always check before booking.",
   },
   {
     heading: "Dental savings",
