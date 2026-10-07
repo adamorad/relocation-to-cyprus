@@ -15,11 +15,6 @@ type CoverageCity =
 type BroadbandISP = {
 	name: string;
 	type: "fibre" | "cable";
-	maxSpeedDown: number; // Mbps
-	maxSpeedUp: number; // Mbps
-	monthlyPrice: number; // €
-	contractMonths: number;
-	setupFee: number; // €
 	coverage: CoverageCity[];
 	englishSupport: boolean;
 	notes: string;
@@ -41,57 +36,37 @@ const BROADBAND: BroadbandISP[] = [
 	{
 		name: "Cyta (Cytanet)",
 		type: "fibre",
-		maxSpeedDown: 1000,
-		maxSpeedUp: 1000,
-		monthlyPrice: 49,
-		contractMonths: 12,
-		setupFee: 0,
 		coverage: ["Limassol", "Paphos", "Larnaca", "Ayia Napa"],
 		englishSupport: true,
 		notes:
-			"State-owned incumbent. Largest coverage including rural areas. VDSL widely available; FTTH (fibre-to-the-home) rolling out fast in urban centres. Reliable customer service with English support. Bundle discounts available with Cyta mobile (MTN partnership). 1 Gbps symmetrical available in covered FTTH areas.",
+			"State-owned incumbent. Largest coverage including rural areas. VDSL widely available; FTTH (fibre-to-the-home) rolling out fast in urban centres. Reliable customer service with English support. Bundle discounts available with Cyta mobile (MTN partnership).",
 		website: "https://www.cyta.com.cy",
 	},
 	{
 		name: "Epic",
 		type: "fibre",
-		maxSpeedDown: 1000,
-		maxSpeedUp: 1000,
-		monthlyPrice: 45,
-		contractMonths: 12,
-		setupFee: 0,
 		coverage: ["Limassol", "Paphos", "Larnaca"],
 		englishSupport: true,
 		notes:
-			"Private telecoms company offering competitive fibre speeds in major cities. Generally regarded as slightly more agile than Cyta on pricing and customer support. Strong presence in Limassol. FTTH available in urban areas with 1 Gbps speeds. No Ayia Napa coverage. Bundle with Epic mobile for additional savings.",
+			"Private telecoms company offering competitive fibre speeds in major cities. Generally regarded as slightly more agile than Cyta on pricing and customer support. Strong presence in Limassol. FTTH available in urban areas. No Ayia Napa coverage. Bundle with Epic mobile for additional savings.",
 		website: "https://www.epic.com.cy",
 	},
 	{
 		name: "Primetel",
 		type: "fibre",
-		maxSpeedDown: 500,
-		maxSpeedUp: 500,
-		monthlyPrice: 42,
-		contractMonths: 12,
-		setupFee: 25,
 		coverage: ["Limassol", "Larnaca"],
 		englishSupport: true,
 		notes:
-			"Third-largest provider, operating in the main cities only. Competitive pricing with no contract options available (higher monthly rate). TV bundle (Primetel TV) popular with expat households wanting international channels. Fibre coverage more limited than Cyta or Epic; check availability at your specific address before signing.",
+			"Third-largest provider, operating in the main cities only. TV bundle (Primetel TV) popular with expat households wanting international channels. Fibre coverage more limited than Cyta or Epic; check availability at your specific address before signing.",
 		website: "https://www.primetel.com.cy",
 	},
 	{
 		name: "Cablenet",
 		type: "cable",
-		maxSpeedDown: 1000,
-		maxSpeedUp: 500,
-		monthlyPrice: 39,
-		contractMonths: 12,
-		setupFee: 30,
 		coverage: ["Limassol", "Paphos", "Larnaca", "Ayia Napa"],
 		englishSupport: true,
 		notes:
-			"Cable-based provider (DOCSIS 3.1) delivering some of the fastest real-world download speeds in Cyprus. Highly regarded for consistency and actual speeds versus advertised. Island-wide cable network including tourist areas. Upload speeds are asymmetric on the cable technology (lower than download). Strong reputation among remote workers and gamers for low latency.",
+			"Cable-based provider (DOCSIS 3.1) with an island-wide network including tourist areas. Upload speeds are asymmetric on the cable technology (lower than download).",
 		website: "https://www.cablenet.com.cy",
 	},
 ];
@@ -196,6 +171,14 @@ export default function ISPComparisonPage() {
 						onChange={setCityFilter}
 					/>
 
+					<h2 className="text-xl font-semibold text-ink">
+						Fastest home internet in Cyprus: 1 Gbps plans compared
+					</h2>
+					<p className="text-sm leading-relaxed text-muted">
+						Speeds, prices and contract terms change often and depend on
+						bundles and promotions, so this page does not quote them. Use the
+						links below to see current plans on each provider site.
+					</p>
 					<DataTable
 						caption="Home broadband providers in Cyprus"
 						hideCaption
@@ -203,11 +186,7 @@ export default function ISPComparisonPage() {
 						columns={[
 							{ header: "Provider" },
 							{ header: "Type" },
-							{ header: "Max down", align: "right" },
-							{ header: "Max up", align: "right" },
-							{ header: "Price/mo", align: "right" },
-							{ header: "Contract", align: "right" },
-							{ header: "Setup fee", align: "right" },
+							{ header: "Current plans and prices" },
 							{ header: "English" },
 						]}
 						rows={filteredBroadband.map((isp) => [
@@ -218,17 +197,27 @@ export default function ISPComparisonPage() {
 								</span>
 							</>,
 							<Badge key="t">{TYPE_LABEL[isp.type]}</Badge>,
-							`${isp.maxSpeedDown} Mbps`,
-							`${isp.maxSpeedUp} Mbps`,
-							<span key="p" className="font-bold text-primary-hover">
-								€{isp.monthlyPrice}
-							</span>,
-							`${isp.contractMonths} mo`,
-							isp.setupFee === 0 ? "Free" : `€${isp.setupFee}`,
+							<a
+								key="l"
+								href={isp.website}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="text-primary hover:underline"
+							>
+								Check plans
+							</a>,
 							isp.englishSupport ? "Yes" : "No",
 						])}
 					/>
 
+					<h2 className="text-xl font-semibold text-ink">
+						Check availability at your address
+					</h2>
+					<p className="text-sm leading-relaxed text-muted">
+						Fibre and cable coverage differs street by street. Confirm
+						availability for your exact address on the provider site before
+						signing.
+					</p>
 					<div className="space-y-4">
 						{filteredBroadband.map((isp) => (
 							<div
