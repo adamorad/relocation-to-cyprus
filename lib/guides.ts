@@ -1542,7 +1542,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		category: "healthcare",
 		title: "Pharmacies in Cyprus: Over-the-Counter and Prescriptions",
 		description:
-			"What you can buy over the counter at Cyprus pharmacies, how foreign prescriptions are handled, and GeSY €1 generics.",
+			"What can you buy without a prescription in Cyprus? Pharmacists advise on common painkillers. Plus GeSY €1 prescription co-payment and foreign prescriptions.",
 		sections: [
 			{
 				heading: "Quick answer: what you can buy over the counter in Cyprus",
@@ -1873,7 +1873,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		category: "transport",
 		title: "Cyprus Ferries 2026: Piraeus Route, Egypt and Israel Status",
 		description:
-			"We found no scheduled 2026 ferry from Cyprus to Egypt, Haifa or Lebanon. The only one is Limassol to Piraeus, summer only. Dates, fares, cars.",
+			"Summer-only Limassol to Piraeus ferry: the 2026 season has ended. See routes, how booking works, Egypt, Lebanon and 2027 status.",
 		sections: [
 			{
 				heading: "The state of Cyprus ferry services",
