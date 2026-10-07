@@ -1,9 +1,8 @@
 /**
  * Healthcare section content. Its former panel component is archived in archive/homepage-map/.
  *
- * Curation: venues selected for relevance to relocators — English-speaking
- * staff, GeSY participation, and suitability for expat healthcare needs.
- * Prices and availability change; always verify directly with the venue.
+ * Venues without a recorded source were removed (REA-120). Prices and
+ * availability change; always verify directly with the venue.
  */
 
 import type { City } from "@/lib/food";
@@ -25,8 +24,8 @@ export type HealthcareVenue = {
   type: HealthcareType;
   /** For specialist type, e.g. "Oncology", "Cardiology" */
   specialty?: string;
-  /** Participates in the public GeSY system */
-  gesyAccepted: boolean;
+  /** Participates in the public GeSY system; omitted when not verified */
+  gesyAccepted?: boolean;
   englishSpoken: boolean;
   /** Starting consultation fee in EUR */
   consultationFrom?: number;
@@ -68,23 +67,23 @@ export const HEALTHCARE_TYPE_LABEL: Record<HealthcareType, string> = {
 export const HEALTHCARE_TIPS: ReadonlyArray<HealthcareTip> = [
   {
     heading: "GeSY vs private: the decision framework",
-    body: "GeSY (the national health system) is funded by contributions and has low co-payments, for example €6 per specialist visit, €10 per A&E visit and €1 per prescribed item, capped at €150 a year per person (€75 for under-21s and some low-income groups). Private clinics set their own fees; ask before booking. Most expats use both: GeSY for routine and non-urgent care, private for faster access and specialist appointments. The combination gives you full coverage without paying twice for everything.",
+    body: "GeSY (the national health system) is funded by contributions and has low co-payments, for example €6 per specialist visit, €10 per A&E visit and €1 per prescribed item, capped at €150 a year per person (€75 for under-21s and some low-income groups). Private clinics set their own fees; ask before booking. Waiting times for some specialists can be longer in the public system than in private care.",
   },
   {
     heading: "Register for GeSY on arrival",
-    body: "Registering for GeSY costs nothing and provides emergency coverage even if you already have private international insurance. Do it within the first weeks of arriving — you'll need your ARC (Alien Registration Certificate) and a Cypriot tax number (TIC). Registration is done online at the GeSY portal.",
+    body: "Registration is done through the GeSY portal at gesy.org.cy. Check the registration page there for the current requirements.",
   },
   {
     heading: "English-speaking doctors",
-    body: "Most private hospital staff speak English fluently — it's the default working language in private healthcare. GP clinics vary: some are entirely English-speaking, others mix Greek and English. Always check before booking. The venues listed here have been confirmed as English-friendly.",
+    body: "Most private hospital staff speak English fluently, and it's the default working language in private healthcare. GP clinics vary: some are entirely English-speaking, others mix Greek and English. Always check before booking.",
   },
   {
     heading: "Dental savings",
-    body: "Dental costs in Cyprus are 40–60% lower than in the UK or Germany. A routine clean runs €60–80, a composite filling €80–120, and a dental implant €800–1,200 (versus £2,000–3,000 in the UK). Many relocators specifically plan dental work around their first year in Cyprus.",
+    body: "Indicative dental prices from provider quotes: a routine clean runs €60–80, a composite filling €80–120, and a dental implant €800–1,200. Prices vary by clinic; ask for a written quote before treatment.",
   },
   {
     heading: "Health insurance for Cyprus",
-    body: "International health plans from AXA, Bupa, Cigna, and Allianz all cover Cyprus. Get quotes before arriving — pre-existing conditions are easier to include on a new policy than added later. Note: if you're employed in Cyprus, GeSY contributions (2.65% of salary) are deducted at source, so factor this into your net-pay calculations.",
+    body: "Check the insurer's policy schedule for Cyprus coverage and get quotes before arriving. If you are employed in Cyprus, GeSY contributions are deducted from salary, so factor this into your net-pay calculations.",
   },
 ];
 
@@ -98,18 +97,16 @@ export const HEALTHCARE_VENUES: ReadonlyArray<HealthcareVenue> = [
     name: "Mediterranean Hospital",
     city: "Limassol",
     type: "hospital",
-    gesyAccepted: false,
     englishSpoken: true,
-    why: "Full A&E, maternity, cardiology, and oncology. The main private hospital used by expats in Limassol. English-speaking staff throughout. Most international insurance accepted. Emergency walk-ins possible without appointment.",
+    why: "Private hospital in Limassol. Check services, insurance acceptance and GeSY participation with the hospital directly.",
     website: "https://www.mediterraneanhospital.com.cy",
   },
   {
     name: "Iasis Hospital",
     city: "Paphos",
     type: "hospital",
-    gesyAccepted: false,
     englishSpoken: true,
-    why: "The main private hospital serving the Paphos district. Full A&E, maternity, and most specialist services. Conveniently close to Paphos city centre.",
+    why: "Private hospital in Paphos. Check services, insurance acceptance and GeSY participation with the hospital directly.",
     website: "https://www.iasishospital.com",
   },
 
@@ -139,103 +136,23 @@ export const HEALTHCARE_VENUES: ReadonlyArray<HealthcareVenue> = [
     why: "Public hospital for the Larnaca district. GeSY-registered patients pay minimal co-payments. Functional and well-staffed for routine care and emergencies.",
   },
 
-  // ── GP Clinics ───────────────────────────────────────────────────────────
-  {
-    name: "Limassol Medical Centre",
-    city: "Limassol",
-    type: "gp-clinic",
-    gesyAccepted: true,
-    englishSpoken: true,
-    consultationFrom: 25,
-    why: "Multi-doctor GP practice in central Limassol. GeSY registered — free or minimal co-payment for registered patients. English-speaking GPs. Good for families needing a regular family doctor.",
-  },
-  {
-    name: "Paphos Medical Centre",
-    city: "Paphos",
-    type: "gp-clinic",
-    gesyAccepted: true,
-    englishSpoken: true,
-    consultationFrom: 25,
-    why: "Established GP group practice in Paphos. GeSY registered. English-speaking doctors familiar with expat patient profiles. Reasonable wait times outside summer peak.",
-  },
-  {
-    name: "Larnaca Clinic",
-    city: "Larnaca",
-    type: "gp-clinic",
-    gesyAccepted: true,
-    englishSpoken: true,
-    consultationFrom: 20,
-    why: "Well-regarded GP clinic in Larnaca city centre. GeSY registered. English-speaking. Efficient appointment booking.",
-  },
-
-  // ── Dental ───────────────────────────────────────────────────────────────
-  {
-    name: "Dental Excellence Limassol",
-    city: "Limassol",
-    type: "dental",
-    gesyAccepted: false,
-    englishSpoken: true,
-    consultationFrom: 60,
-    why: "Modern dental practice in Limassol with English-speaking dentists. Full range of treatments. Prices 40–50% below UK equivalents. Routine clean €60–80, composite filling €80–120. Commonly recommended by expat community.",
-  },
-  {
-    name: "Paphos Dental Clinic",
-    city: "Paphos",
-    type: "dental",
-    gesyAccepted: false,
-    englishSpoken: true,
-    consultationFrom: 55,
-    why: "Established dental practice in Kato Paphos. English-speaking. Competitive pricing. Implant work at half the cost of UK private dentists. Popular with long-stay expats for all dental needs.",
-  },
-  {
-    name: "Larnaca Dental Studio",
-    city: "Larnaca",
-    type: "dental",
-    gesyAccepted: false,
-    englishSpoken: true,
-    consultationFrom: 50,
-    why: "Affordable dental care in Larnaca. English-speaking staff. Routine work and cosmetic treatments at significantly lower prices than Western Europe.",
-  },
-
   // ── Specialist ───────────────────────────────────────────────────────────
   {
     name: "German Oncology Centre",
     city: "Limassol",
     type: "specialist",
     specialty: "Oncology",
-    gesyAccepted: false,
     englishSpoken: true,
-    why: "Cyprus's leading private oncology centre, affiliated with German Cancer Research Center protocols. Attracts patients from across the region. Important for expats with cancer history or ongoing treatment needs.",
+    why: "Private oncology centre in Limassol. Contact the centre directly for services and fees.",
     website: "https://www.germanoncology.com.cy",
-  },
-  {
-    name: "Heart Institute",
-    city: "Limassol",
-    type: "specialist",
-    specialty: "Cardiology",
-    gesyAccepted: false,
-    englishSpoken: true,
-    consultationFrom: 80,
-    why: "Dedicated cardiology centre in Limassol. Full cardiac diagnostics, stress testing, and intervention. Used by the Four Seasons and Mediterranean Hospital as a referral destination.",
   },
   {
     name: "Kypros Fertility Clinic",
     city: "Limassol",
     type: "specialist",
     specialty: "Fertility",
-    gesyAccepted: false,
     englishSpoken: true,
-    why: "One of Cyprus's leading fertility clinics. Well-regarded for IVF. Cyprus is a destination for fertility treatment tourism given EU standards at significantly lower cost than the UK or Germany.",
+    why: "Fertility clinic in Limassol. Contact the clinic directly for services and fees.",
     website: "https://www.kypros.org",
-  },
-
-  // ── Pharmacy ─────────────────────────────────────────────────────────────
-  {
-    name: "Pharmacy Savvidis",
-    city: "Limassol",
-    type: "pharmacy",
-    gesyAccepted: true,
-    englishSpoken: true,
-    why: "Large central Limassol pharmacy. GeSY registered — subsidised prescriptions for registered patients. Wide stock including many medications available over-the-counter that require a prescription elsewhere in Europe.",
   },
 ];
