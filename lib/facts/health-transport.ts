@@ -28,10 +28,10 @@ export const GESY_AE_COPAY = 10;
 /** GeSY co-payment per prescribed pharmaceutical item, in euros. KDP 36/2019 Annex I. Checked 2026-10-02. */
 export const GESY_RX_ITEM_COPAY = 1;
 
-/** GeSY annual co-payment cap per person, in euros. KDP 36/2019 Annex III. Checked 2026-10-02. */
+/** GeSY annual co-payment cap per person, in euros. KDP 36/2019 Annex IV. Checked 2026-10-02. */
 export const GESY_ANNUAL_CAP = 150;
 
-/** GeSY annual cap for under-21s, minimum-income recipients and low-income pensioners. KDP 36/2019 Annex III. Checked 2026-10-02. */
+/** GeSY annual cap for under-21s, minimum-income recipients and low-income pensioners. KDP 36/2019 Annex IV. Checked 2026-10-02. */
 export const GESY_ANNUAL_CAP_REDUCED = 75;
 
 // ---------------------------------------------------------------------------
