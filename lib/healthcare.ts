@@ -68,7 +68,7 @@ export const HEALTHCARE_TYPE_LABEL: Record<HealthcareType, string> = {
 export const HEALTHCARE_TIPS: ReadonlyArray<HealthcareTip> = [
   {
     heading: "GeSY vs private: the decision framework",
-    body: "GeSY (the national health system) is free but slower; private clinics are faster and typically €15–50 per consultation. Most expats use both: GeSY for routine and non-urgent care, private for faster access and specialist appointments. The combination gives you full coverage without paying twice for everything.",
+    body: "GeSY (the national health system) is funded by contributions and has low co-payments, for example €6 per specialist visit, €10 per A&E visit and €1 per prescribed item, capped at €150 a year per person (€75 for under-21s and some low-income groups). Private clinics set their own fees; ask before booking. Most expats use both: GeSY for routine and non-urgent care, private for faster access and specialist appointments. The combination gives you full coverage without paying twice for everything.",
   },
   {
     heading: "Register for GeSY on arrival",
@@ -120,7 +120,7 @@ export const HEALTHCARE_VENUES: ReadonlyArray<HealthcareVenue> = [
     type: "hospital",
     gesyAccepted: true,
     englishSpoken: true,
-    why: "The main public hospital for the Limassol district under GeSY. Free or low-cost for registered GeSY users. A&E and most specialist services available. Longer wait times than private but solid infrastructure.",
+    why: "The main public hospital for the Limassol district under GeSY. Low co-payment for GeSY beneficiaries (no co-payment for inpatient care, €10 per A&E visit). A&E and most specialist services available. Longer wait times than private but solid infrastructure.",
   },
   {
     name: "Paphos General Hospital",
@@ -128,7 +128,7 @@ export const HEALTHCARE_VENUES: ReadonlyArray<HealthcareVenue> = [
     type: "hospital",
     gesyAccepted: true,
     englishSpoken: true,
-    why: "Public hospital serving the Paphos district under GeSY. Free A&E and most specialist referrals for registered users. Recommended for non-urgent specialist consultations where the wait time is acceptable.",
+    why: "Public hospital serving the Paphos district under GeSY. A&E costs €10 per visit; specialist referrals €6 per visit. Recommended for non-urgent specialist consultations where the wait time is acceptable.",
   },
   {
     name: "Larnaca General Hospital",
