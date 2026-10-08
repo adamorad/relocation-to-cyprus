@@ -7,10 +7,25 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Callout } from "@/components/ui/Callout";
 import { Card, CardGrid, CardGridItem, LogoTile } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
-import { allDeveloperSlugs, developerBySlug } from "@/lib/developers";
+import {
+	allDeveloperSlugs,
+	type Developer,
+	developerBySlug,
+} from "@/lib/developers";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
+
+function projectSummary(listings: Developer["listings"]): string {
+	return listings
+		.map((l) => {
+			const price = formatListingPrice(l.priceRange);
+			const from = price.match(/€[\d,]+/)?.[0];
+			const vat = /VAT/.test(price) ? " (+ VAT)" : "";
+			return `${titleCaseName(l.title)}${from ? ` from ${from}${vat}` : ""}`;
+		})
+		.join(" and ");
+}
 
 export function generateStaticParams() {
 	return allDeveloperSlugs().map((slug) => ({ slug }));
@@ -32,8 +47,12 @@ export async function generateMetadata({
 	).sort();
 	const where = regions.length ? ` in ${regions.join(", ")}` : " in Cyprus";
 	// Root layout title template appends the site name.
-	const title = `${name}: projects and prices`;
-	const desc = `${name} new-build ${noun}${where}: ${count} ${noun} with locations, unit prices and details to compare. Browse every ${name} development on Realcy.`;
+	const title = `${name}: ${count} ${noun}${where}, prices${dev.address ? " and address" : ""}`;
+	const summary =
+		count <= 2
+			? `${projectSummary(dev.listings)}. See ${count === 1 ? "the project" : "both projects"}`
+			: `${count} projects with locations and prices. Browse every ${name} development`;
+	const desc = `${name} new-build ${noun}${where}: ${summary}${dev.address ? " and the developer's office address" : ""} on Realcy.`;
 	return {
 		title,
 		description: desc,
@@ -74,7 +93,7 @@ export default async function DeveloperPage({
 				],
 				eyebrow: "Property developer",
 				title: name,
-				intro: `${dev.listings.length} new-build ${dev.listings.length === 1 ? "project" : "projects"}${regions.length ? ` in ${regions.join(", ")}` : ""}.`,
+				intro: `${name} has ${dev.listings.length} new-build ${dev.listings.length === 1 ? "project" : "projects"}${regions.length ? ` in ${regions.join(", ")}` : ""} on Realcy${dev.listings.length <= 3 ? `: ${dev.listings.map((l) => `${titleCaseName(l.title)} in ${l.location ?? l.regionCity} (${formatListingPrice(l.priceRange)})`).join("; ")}` : ""}.${dev.address ? ` The developer's office is at ${dev.address}.` : ""}`,
 			}}
 			after={
 				<div className="space-y-6">

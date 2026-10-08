@@ -8,6 +8,7 @@ export type Developer = {
   slug: string;
   logo?: string;
   description?: string;
+  address?: string;
   listings: EnrichedListing[];
 };
 
@@ -32,6 +33,7 @@ export const DEVELOPERS: Developer[] = (() => {
         slug,
         logo: listing.developer?.logo ?? undefined,
         description: listing.developer?.description ?? undefined,
+        address: listing.developer?.address ?? undefined,
         listings: [],
       });
     }
