@@ -7,8 +7,9 @@ import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const h1 = "Cyprus property developers";
-const title = "Property developers in Cyprus: projects, locations and prices";
-const description = `Directory of ${DEVELOPERS.length} property developers in Cyprus with new-build projects, regions and prices in Paphos, Limassol, Larnaca and Ayia Napa. Compare before you buy.`;
+const projectCount = DEVELOPERS.reduce((n, d) => n + d.listings.length, 0);
+const title = `Property developers in Cyprus: ${DEVELOPERS.length} developers compared`;
+const description = `Property developers in Cyprus: ${DEVELOPERS.length} developers and ${projectCount} new-build projects in Paphos, Limassol, Larnaca and Ayia Napa, with locations and price ranges.`;
 
 export const metadata: Metadata = {
 	title,
@@ -24,7 +25,6 @@ export const metadata: Metadata = {
 };
 
 export default function DevelopersIndexPage() {
-	const projectCount = DEVELOPERS.reduce((n, d) => n + d.listings.length, 0);
 	return (
 		<HubTemplate
 			header={{
@@ -35,7 +35,7 @@ export default function DevelopersIndexPage() {
 				],
 				eyebrow: "Property developers",
 				title: h1,
-				intro: `${DEVELOPERS.length} developers behind ${projectCount} new-build projects across Cyprus.`,
+				intro: `Realcy lists ${DEVELOPERS.length} property developers in Cyprus behind ${projectCount} new-build projects. Pick a developer to see its projects, locations and price ranges. Prices are shown as stated by the developer and may exclude VAT.`,
 			}}
 		>
 			<h2 className="sr-only">All developers</h2>
