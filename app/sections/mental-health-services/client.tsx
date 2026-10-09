@@ -26,6 +26,17 @@ export default function MentalHealthServicesClient() {
 			(typeFilter === "All" || p.type === typeFilter),
 	);
 
+	if (MENTAL_HEALTH_PROVIDERS.length === 0) {
+		return (
+			<Callout tone="info" title="Provider listings paused">
+				We have paused our list of named therapists until each one is verified
+				against the official Cyprus registers. Ask your GeSY personal doctor
+				for a referral, or check a practitioner's registration yourself
+				before booking. For immediate danger call 112.
+			</Callout>
+		);
+	}
+
 	return (
 		<>
 			<div className="space-y-4 rounded-card border border-line bg-sky p-4 md:p-5">

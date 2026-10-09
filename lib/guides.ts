@@ -1608,6 +1608,12 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		title: "Dentist Costs in Cyprus 2026: Prices and GeSY Cover",
 		description:
 			"Indicative dental prices in Cyprus in 2026 (editorial estimates), what GeSY covers according to the HIO catalogue, and how to find an English-speaking dentist.",
+			sources: [
+				{
+					label: "HIO (GeSY): dentists' services (accessed 2026-10-09)",
+					url: "https://www.gesy.org.cy/en-us/hiodentistsservices",
+				},
+			],
 		sections: [
 			{
 				heading: "GeSY dental coverage: what is and is not included",
@@ -1615,7 +1621,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Private dental costs in Cyprus",
-				body: "Indicative editorial estimates; clinic quotes vary. Typical costs across Limassol, Paphos, and Larnaca: professional clean and scale (€60–€80), dental X-rays (€20–€40 for a full set of 4), composite filling (€80–€120 depending on size and surface), root canal treatment (€300–€500 per tooth), ceramic crown (€400–€600), dental implant including crown (€800–€1,200 for standard cases), Invisalign clear aligners (€2,500–€4,000 for a full course), and porcelain veneers (€400–€600 per tooth). Quality is generally high: Most dentists trained at European universities. Prices at tourist-area clinics (Ayia Napa, tourist strip in Paphos) can be 20–30% higher than equivalent care in residential areas.",
+				body: "Indicative editorial estimates; clinic quotes vary. Typical costs across Limassol, Paphos, and Larnaca: professional clean and scale (€60–€80), dental X-rays (€20–€40 for a full set of 4), composite filling (€80–€120 depending on size and surface), root canal treatment (€300–€500 per tooth), ceramic crown (€400–€600), dental implant including crown (€800–€1,200 for standard cases), Invisalign clear aligners (€2,500–€4,000 for a full course), and porcelain veneers (€400–€600 per tooth). Quality is generally high: Most dentists trained at European universities. We have no sourced comparison with UK or other countries' prices, so get written quotes from two or three clinics.",
 			},
 			{
 				heading: "How to find an English-speaking dentist",
@@ -1623,11 +1629,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Private dental insurance options",
-				body: "Private dental insurance in Cyprus is available but relatively limited compared to the UK market. Most local insurance providers (ERB Asfalistiki (formerly CNP Asfalistiki), AXA Cyprus, Interamerican) offer dental rider packages as add-ons to general health insurance rather than standalone dental policies. A typical add-on covers 50–80% of routine care costs up to an annual limit of €500–€1,000 per person, with an excess of €50–€100. Given that a clean, two fillings, and a check-up totals roughly €200–€250 per year, the insurance arithmetic only makes sense if you are expecting significant work (crowns, implants). An alternative approach used by many Limassol and Paphos residents: a dental savings plan offered directly by some larger dental clinics, you pay €200–€400 per year and receive discounted rates on all treatments plus two free check-ups. For anyone planning significant dental work, getting quotes from 2–3 clinics before committing is standard practice.",
+				body: "Private dental insurance in Cyprus is available but relatively limited compared to the UK market. Dental cover, where offered, is usually an optional extra on a general private health policy rather than a standalone product. Benefit levels, annual limits, excesses and waiting periods differ by insurer and plan, and we have not verified any insurer's current terms, so ask each insurer for its policy schedule before buying. Some clinics also run their own membership or discount plans; ask for the terms in writing. For anyone planning significant dental work, getting quotes from 2–3 clinics before committing is standard practice.",
 			},
 			{
 				heading: "Dental tourism context: Cyprus as a destination",
-				body: "Cyprus's combination of low costs, English language, and EU healthcare standards has made it a minor dental tourism destination, with clinics in Limassol and Paphos that specifically market to UK, German, and Scandinavian patients who come for multi-day implant or cosmetic work. For relocators this is relevant in two ways: first, these clinics are often the most internationally experienced and English-fluent options; second, availability at popular implant clinics can be tighter than at general practices. If you are planning major restorative work — full arch implants, significant cosmetic treatment — the total cost including flights and accommodation from the UK typically saves £1,500–£3,000 versus UK private rates even for a dedicated trip, which gives a sense of the scale of the price differential. Once resident in Cyprus, the same work is available at the same prices without the travel element, making Cyprus a compelling place to catch up on deferred dental work.",
+				body: "Cyprus's combination of low costs, English language, and EU healthcare standards has made it a minor dental tourism destination, with clinics in Limassol and Paphos that specifically market to UK, German, and Scandinavian patients who come for multi-day implant or cosmetic work. For relocators this is relevant in two ways: first, these clinics are often the most internationally experienced and English-fluent options; second, availability at popular implant clinics can be tighter than at general practices. If you are planning major restorative work, full arch implants, significant cosmetic treatment, get itemised quotes from several clinics and compare them with quotes in your home country before deciding.",
 			},
 		],
 		faqs: [

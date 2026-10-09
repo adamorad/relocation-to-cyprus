@@ -65,7 +65,7 @@ export const MENTAL_HEALTH_TIPS: ReadonlyArray<MentalHealthTip> = [
   },
   {
     heading: "Typical session costs",
-    body: "A standard 50-minute session with an English-speaking therapist in Cyprus runs €60–100. Psychiatrist consultations (first appointment) are typically €120–180; follow-up medication reviews €80–120. Some counsellors offer sliding-scale fees (€40–60) for clients who declare financial hardship. Private health insurance plans rarely cover more than 10–15 sessions per year; check your policy carefully. Some mental health care is available under GeSY; ask your personal doctor how referral works.",
+    body: "Private session fees are set by each practitioner and we have no sourced price list; ask for the fee and cancellation terms before booking. Some practitioners offer reduced fees on request. Private health insurance plans often limit mental health cover; check your policy schedule carefully. Some mental health care is available under GeSY; ask your personal doctor how referral works.",
   },
   {
     heading: "Crisis support",
@@ -73,7 +73,7 @@ export const MENTAL_HEALTH_TIPS: ReadonlyArray<MentalHealthTip> = [
   },
   {
     heading: "Relocation depression and expat-specific issues",
-    body: "Relocation depression is underdiagnosed and often shows up 3–9 months after the move — after the initial excitement fades and the practical reality of building a new life sets in. Common presentations include loss of identity, disconnection from the local culture, grief for the life left behind, and relationship strain. Several therapists on this list have specific experience with expat adjustment issues. If your presenting issue centres on the move itself, lead with that context — it shapes the therapeutic approach significantly.",
+    body: "Relocation depression is underdiagnosed and often shows up 3–9 months after the move, after the initial excitement fades and the practical reality of building a new life sets in. Common presentations include loss of identity, disconnection from the local culture, grief for the life left behind, and relationship strain. If your presenting issue centres on the move itself, lead with that context, it shapes the therapeutic approach significantly.",
   },
 ];
 
@@ -81,7 +81,16 @@ export const MENTAL_HEALTH_TIPS: ReadonlyArray<MentalHealthTip> = [
 // Mental Health Providers
 // ---------------------------------------------------------------------------
 
-export const MENTAL_HEALTH_PROVIDERS: ReadonlyArray<MentalHealthProvider> = [
+/**
+ * Public list. Empty on purpose (REA-168): the named clinicians below have no
+ * verified credentials. Re-publish an entry only after checking it against the
+ * Cyprus Psychologists Registration Board / Medical Council register or the
+ * provider's own site, and record the source in `sources`.
+ */
+export const MENTAL_HEALTH_PROVIDERS: ReadonlyArray<MentalHealthProvider> = [];
+
+/** Unverified entries, kept out of every public page until each is verified. */
+export const UNVERIFIED_MENTAL_HEALTH_PROVIDERS: ReadonlyArray<MentalHealthProvider> = [
   // ── Limassol ──────────────────────────────────────────────────────────────
   {
     name: "Maria Economidou",
