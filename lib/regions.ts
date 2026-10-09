@@ -101,7 +101,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 		healthcare: [
 			"Paphos General Hospital is the main public facility and part of GeSY, the national healthcare system that most legal residents can register with after immigration formalities (ask the Health Insurance Organisation on 17000 about your own eligibility). Contributions are deducted at source for employees and pensioners; private health insurance is still common but no longer essential.",
 			"Iasis Hospital and Evangelistria Medical Center cover most specialties privately, with shorter waits than GeSY for non-urgent referrals. For anything genuinely complex (major cardiac, oncology, neurosurgery) most expats still drive to Limassol or Nicosia. Pharmacies are abundant, English-speaking, and dispense most common UK and EU prescriptions without trouble.",
-			"Dental and optical care are private only and reasonably priced (a standard cleaning runs €40–€60). Call 112 in an emergency, as anywhere in the EU; ambulances are fast in central Paphos and occasionally slow in the inland villages.",
+			"Dental and optical care are private only and reasonably priced (a standard cleaning runs €40–€60). Call 112 in an emergency, as anywhere in the EU. Response can be slower in inland villages.",
 		],
 		schools: [
 			`The International School of Paphos is the largest: British curriculum from age 3 to 18, fees from ${eur(FEES_ISP.from)} (pre-reception and reception) to ${eur(FEES_ISP.to)} (sixth form) in 2026-27, and a waiting list at the upper end. Aspire Private British School (ages 4–18, ~14 per class, €5,500–€8,500) has a strong reputation among the British and Israeli communities.`,
@@ -378,7 +378,7 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 		],
 		healthcare: [
 			"Paralimni General Hospital is the public (GeSY) hospital for the whole area. It handles common emergencies and routine care, but its specialty depth is the thinnest of any major hospital on the island: anything complex (cardiac surgery, oncology, neurosurgery) is referred to Larnaca, Nicosia or Limassol. Private clinics are limited but growing: ECO Larnaca has a Paralimni satellite, and a handful of private GPs and dentists serve the resort towns year-round.",
-			"Families with chronic conditions sometimes drive to Larnaca or further three or four times a month. Emergency response is reasonable in the resort towns and can take 15–25 minutes in the inland villages (Liopetri, Frenaros, Sotira); 112 works throughout. Many full-time expats supplement GeSY with private insurance specifically to access Limassol or Nicosia specialists without GeSY referral delays.",
+			"Families with chronic conditions sometimes drive to Larnaca or further three or four times a month. Emergency response can be slower in the inland villages (Liopetri, Frenaros, Sotira); 112 works throughout. Many full-time expats supplement GeSY with private insurance specifically to access Limassol or Nicosia specialists without GeSY referral delays.",
 		],
 		schools: [
 			"The area has the thinnest international-school market of the four cities: the only registered English-language private school is Xenion in Paralimni, plus a handful of preschools and kindergartens. Public Greek-medium schools in Paralimni and Sotira are good and have absorbed a meaningful number of expat children, particularly in primary.",
