@@ -65,7 +65,7 @@ export const MENTAL_HEALTH_TIPS: ReadonlyArray<MentalHealthTip> = [
   },
   {
     heading: "Typical session costs",
-    body: "A standard 50-minute session with an English-speaking therapist in Cyprus runs €60–100. Psychiatrist consultations (first appointment) are typically €120–180; follow-up medication reviews €80–120. Some counsellors offer sliding-scale fees (€40–60) for clients who declare financial hardship. Private health insurance plans rarely cover more than 10–15 sessions per year; check your policy carefully. GeSY covers some mental health services via GP referral, but the number of GeSY-registered English-speaking therapists is still limited.",
+    body: "A standard 50-minute session with an English-speaking therapist in Cyprus runs €60–100. Psychiatrist consultations (first appointment) are typically €120–180; follow-up medication reviews €80–120. Some counsellors offer sliding-scale fees (€40–60) for clients who declare financial hardship. Private health insurance plans rarely cover more than 10–15 sessions per year; check your policy carefully. Some mental health care is available under GeSY; ask your personal doctor how referral works.",
   },
   {
     heading: "Crisis support",

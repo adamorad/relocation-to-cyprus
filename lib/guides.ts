@@ -1517,7 +1517,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "What does GeSY cover?",
-				a: "GeSY covers GP visits (no co-payment for your registered personal doctor), specialist visits via referral (€6 co-payment), prescription medications (€1 for generics), A&E, most public hospital admissions and procedures, physiotherapy (limited sessions), and mental health sessions (limited). Adult dental is almost entirely excluded — GeSY covers very little for teeth beyond emergency extractions. Private health insurance is commonly held alongside GeSY for faster specialist access and private hospital admissions.",
+				a: "GeSY covers GP visits (no co-payment for your registered personal doctor), specialist visits via referral (€6 co-payment), prescription medications (€1 for generics), A&E, most public hospital admissions and procedures, physiotherapy (limited sessions), and mental health sessions (limited). Dental cover under GeSY is limited and its scope changes; check the HIO dental services page (gesy.org.cy) before assuming you will pay privately. Private health insurance is commonly held alongside GeSY for faster specialist access and private hospital admissions.",
 			},
 		],
 	},
@@ -1615,11 +1615,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Private dental costs in Cyprus",
-				body: "Indicative editorial estimates; clinic quotes vary. Typical costs across Limassol, Paphos, and Larnaca: professional clean and scale (€60–€80), dental X-rays (€20–€40 for a full set of 4), composite filling (€80–€120 depending on size and surface), root canal treatment (€300–€500 per tooth), ceramic crown (€400–€600), dental implant including crown (€800–€1,200 for standard cases), Invisalign clear aligners (€2,500–€4,000 for a full course), and porcelain veneers (€400–€600 per tooth). Quality is generally high: Cyprus has several hundred registered dentists trained in European universities, and the dental schools in Nicosia have raised the overall standard in recent years. Prices at tourist-area clinics (Ayia Napa, tourist strip in Paphos) can be 20–30% higher than equivalent care in residential areas.",
+				body: "Indicative editorial estimates; clinic quotes vary. Typical costs across Limassol, Paphos, and Larnaca: professional clean and scale (€60–€80), dental X-rays (€20–€40 for a full set of 4), composite filling (€80–€120 depending on size and surface), root canal treatment (€300–€500 per tooth), ceramic crown (€400–€600), dental implant including crown (€800–€1,200 for standard cases), Invisalign clear aligners (€2,500–€4,000 for a full course), and porcelain veneers (€400–€600 per tooth). Quality is generally high: Most dentists trained at European universities. Prices at tourist-area clinics (Ayia Napa, tourist strip in Paphos) can be 20–30% higher than equivalent care in residential areas.",
 			},
 			{
 				heading: "How to find an English-speaking dentist",
-				body: "Finding an English-speaking dentist in Cyprus is straightforward in the four main cities — the majority of dentists trained either in the UK, Greece, or other EU countries with strong English fluency, and English is effectively the default language of Cypriot dentistry for non-Greek speakers. The most reliable methods: ask in the main expat Facebook groups for your city (Expats in Cyprus, Limassol Expats, Paphos Expats — each has tens of thousands of members and produces well-sourced recommendations), check Google Maps reviews filtered to English reviews, and ask your GeSY personal doctor for a referral to a colleague. The HIO portal does not provide a searchable dentist directory in the same way as GPs, since dentists are largely outside the GeSY referral system. Walk-in bookings are generally possible for new patients, though popular clinics in Limassol fill up quickly — booking a week ahead is typical. Ask about pricing before the appointment, not after; reputable clinics are transparent about costs.",
+				body: "Finding an English-speaking dentist in Cyprus is straightforward in the four main cities — the majority of dentists trained either in the UK, Greece, or other EU countries with strong English fluency, and English is effectively the default language of Cypriot dentistry for non-Greek speakers. The most reliable methods: ask in the main expat Facebook groups for your city (Expats in Cyprus, Limassol Expats, Paphos Expats — each has tens of thousands of members and produces well-sourced recommendations), check Google Maps reviews filtered to English reviews, and ask your GeSY personal doctor for a referral to a colleague. GeSY-contracted dentists are listed on the HIO provider search; check it for the current list. Walk-in bookings are generally possible for new patients, though popular clinics in Limassol fill up quickly — booking a week ahead is typical. Ask about pricing before the appointment, not after; reputable clinics are transparent about costs.",
 			},
 			{
 				heading: "Private dental insurance options",
@@ -1645,7 +1645,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "Are dentists in Cyprus good?",
-				a: "Yes, the standard of dentistry in Cyprus is generally high. The majority of Cypriot dentists trained at European universities — commonly in Greece, the UK, Italy, or Germany — and are registered with the Cyprus Dental Association. The University of Nicosia dental school has also raised the overall standard on the island in recent years. English is effectively the default language for non-Greek-speaking patients at most clinics in the four main cities.",
+				a: "Yes, the standard of dentistry in Cyprus is generally high. The majority of Cypriot dentists trained at European universities — commonly in Greece, the UK, Italy, or Germany — and are registered with the Cyprus Dental Council (check the register). English is effectively the default language for non-Greek-speaking patients at most clinics in the four main cities.",
 			},
 			{
 				q: "How do I find an English-speaking dentist in Cyprus?",
