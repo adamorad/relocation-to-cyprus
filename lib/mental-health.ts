@@ -73,7 +73,7 @@ export const MENTAL_HEALTH_TIPS: ReadonlyArray<MentalHealthTip> = [
   },
   {
     heading: "Relocation depression and expat-specific issues",
-    body: "Relocation depression is underdiagnosed and often shows up 3–9 months after the move — after the initial excitement fades and the practical reality of building a new life sets in. Common presentations include loss of identity, disconnection from the local culture, grief for the life left behind, and relationship strain. If your presenting issue centres on the move itself, lead with that context — it shapes the therapeutic approach significantly.",
+    body: "Relocation depression is underdiagnosed and often shows up 3–9 months after the move, after the initial excitement fades and the practical reality of building a new life sets in. Common presentations include loss of identity, disconnection from the local culture, grief for the life left behind, and relationship strain. If your presenting issue centres on the move itself, lead with that context, it shapes the therapeutic approach significantly.",
   },
 ];
 

@@ -1633,7 +1633,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Dental tourism context: Cyprus as a destination",
-				body: "Cyprus's combination of low costs, English language, and EU healthcare standards has made it a minor dental tourism destination, with clinics in Limassol and Paphos that specifically market to UK, German, and Scandinavian patients who come for multi-day implant or cosmetic work. For relocators this is relevant in two ways: first, these clinics are often the most internationally experienced and English-fluent options; second, availability at popular implant clinics can be tighter than at general practices. If you are planning major restorative work — full arch implants, significant cosmetic treatment — get itemised quotes from several clinics and compare them with quotes in your home country before deciding.",
+				body: "Cyprus's combination of low costs, English language, and EU healthcare standards has made it a minor dental tourism destination, with clinics in Limassol and Paphos that specifically market to UK, German, and Scandinavian patients who come for multi-day implant or cosmetic work. For relocators this is relevant in two ways: first, these clinics are often the most internationally experienced and English-fluent options; second, availability at popular implant clinics can be tighter than at general practices. If you are planning major restorative work, full arch implants, significant cosmetic treatment, get itemised quotes from several clinics and compare them with quotes in your home country before deciding.",
 			},
 		],
 		faqs: [
