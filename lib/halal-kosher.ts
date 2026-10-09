@@ -6,9 +6,7 @@
  * with reviews from 2025 or 2026) and halal evidence (the venue's own name or
  * site, or a halal directory such as Zabihah); `sourceUrl` points at that
  * evidence. Entries that could not be found were removed after the
- * 2026-10-01 fact-check, and the halal list was rebuilt on 2026-10-02. Note: kosher
- * certification in Cyprus is administered by the Chabad of Cyprus and the
- * Rabbinate; halal certification follows EU halal standards. Always verify
+ * 2026-10-01 fact-check, and the halal list was rebuilt on 2026-10-02. Always verify
  * current certification status directly with the venue before relying on it
  * for religious requirements.
  */
@@ -84,15 +82,15 @@ export const DIETARY_TIPS: ReadonlyArray<DietaryTip> = [
   },
   {
     heading: "Kosher options are concentrated around Limassol's Jewish community",
-    body: "Cyprus has an established Jewish community centred mainly in Limassol, supported by Chabad of Cyprus. Certified kosher restaurants and food products are available in Limassol, with the Chabad house providing information on current kosher availability.",
+    body: "Cyprus has an established Jewish community centred mainly in Limassol, supported by Chabad of Cyprus. Chabad of Limassol lists a kosher grocery and kosher restaurants on its food page; it does not state which authority supervises them, so ask Chabad.",
   },
   {
-    heading: "EU labelling laws apply: look for the certified symbols",
-    body: "Cyprus follows EU food labelling standards. Kosher products carry the Rabbinate or Chabad certification symbol. Halal products typically display one of the recognised European halal certification marks. Supermarket ranges vary by branch, so check the label rather than relying on a dedicated section.",
+    heading: "Check the certifier's mark on the pack",
+    body: "Cyprus follows EU food labelling rules, which do not regulate kosher or halal marks. Look for the certifier's mark on the pack, and ask the shop who certifies it. Supermarket ranges vary by branch.",
   },
   {
-    heading: "Online kosher delivery services available",
-    body: "For certified kosher packaged goods and products that are not available locally, several Israeli and UK-based online kosher delivery services ship to Cyprus. The Chabad of Cyprus (chabadcyprus.com) maintains an updated list of local resources and can connect new residents with the kosher supply network.",
+    heading: "Kosher resources in Limassol",
+    body: "Chabad of Limassol keeps a food page listing a kosher grocery and restaurants at chabadlimassol.com/en/c/food. Check it for current availability.",
   },
 ];
 
@@ -109,7 +107,7 @@ export const HALAL_KOSHER_VENUES: ReadonlyArray<HalalKosherVenue> = [
     type: "restaurant",
     certification: "halal",
     cuisine: "Syrian",
-    why: "Long-running Syrian meze restaurant, also known as the Syrian Arab Friendship Club. Zabihah lists it as halal. It is busy at weekends, so book ahead.",
+    why: "Long-running Syrian meze restaurant, also known as the Syrian Arab Friendship Club. Zabihah lists it as halal. It is busy at weekends, so book ahead. Halal status not independently verified.",
     website: "https://www.syrianrestaurantlimassol.com.cy/",
     sourceUrl:
       "https://www.zabihah.com/restaurants/ca20c038-7767-11ef-95ae-6045bdeb9f57/syrian-arab-friendship-club-limassol-cyprus",
@@ -121,7 +119,7 @@ export const HALAL_KOSHER_VENUES: ReadonlyArray<HalalKosherVenue> = [
     type: "restaurant",
     certification: "halal",
     cuisine: "Arabic",
-    why: "Arabic kitchen trading under a halal name, with shawarma, kafta and falafel. Listed for delivery on Wolt.",
+    why: "Arabic kitchen trading under a halal name, with shawarma, kafta and falafel. Listed for delivery on Wolt. Halal status not independently verified.",
     sourceUrl: "https://wolt.com/en/cyp/limassol/restaurant/cairo",
   },
   {
@@ -155,7 +153,7 @@ export const HALAL_KOSHER_VENUES: ReadonlyArray<HalalKosherVenue> = [
     type: "restaurant",
     certification: "halal",
     cuisine: "Arabic",
-    why: "Small Arabic takeaway known for shawarma, listed on Google as serving Arabic halal food.",
+    why: "Small Arabic takeaway known for shawarma, listed on Google as serving Arabic halal food. Halal status not independently verified.",
     sourceUrl:
       "https://wanderlog.com/place/details/3956601/helen-take-awayarabic-halal-food",
   },
@@ -166,7 +164,7 @@ export const HALAL_KOSHER_VENUES: ReadonlyArray<HalalKosherVenue> = [
     type: "restaurant",
     certification: "halal",
     cuisine: "Syrian",
-    why: "Syrian fast food near the old town that describes itself as halal, with a small shop selling halal meat and groceries. On Wolt as Lemar Tavern Halal.",
+    why: "Syrian fast food near the old town that describes itself as halal, with a small shop selling halal meat and groceries. On Wolt as Lemar Tavern Halal. Halal status not independently verified.",
     sourceUrl:
       "https://wanderlog.com/place/details/12483648/lemar-arabic-halal-fast-food",
   },
@@ -176,7 +174,7 @@ export const HALAL_KOSHER_VENUES: ReadonlyArray<HalalKosherVenue> = [
     address: "Arch. Makariou III Avenue 1e",
     type: "butcher",
     certification: "halal",
-    why: "Halal butcher selling lamb, goat, beef and chicken, with delivery through Wolt.",
+    why: "Halal butcher selling lamb, goat, beef and chicken, with delivery through Wolt. Halal status not independently verified.",
     sourceUrl: "https://wolt.com/en/cyp/paphos/venue/amir-butchery",
   },
   {
@@ -187,7 +185,7 @@ export const HALAL_KOSHER_VENUES: ReadonlyArray<HalalKosherVenue> = [
     type: "restaurant",
     certification: "halal",
     cuisine: "Lebanese and Syrian",
-    why: "Lebanese and Syrian grill near Nissi Beach. Its listed name includes the Arabic word for halal, and a local Ayia Napa guide lists it as halal-certified.",
+    why: "Lebanese and Syrian grill near Nissi Beach. Its listed name includes the Arabic word for halal, and a local Ayia Napa guide lists it as halal-certified. Halal status not independently verified.",
     website: "https://www.zaatarfoodarts.com/",
     sourceUrl:
       "https://restaurantguru.com/Zaatar-food-and-arts-project-Ayia-Napa-2",
@@ -195,20 +193,21 @@ export const HALAL_KOSHER_VENUES: ReadonlyArray<HalalKosherVenue> = [
 
   // -- Kosher -------------------------------------------------------------
   {
-    name: "Chabad of Limassol kosher shop",
+    name: "Kosher Limassol (grocery)",
     city: "Limassol",
-    neighbourhood: "Chabad of Limassol, 5 Porfyriou Dikaiou",
+    address: "Porfuriou Dikaiou 5, 3095 Limassol",
     type: "grocery",
     certification: "kosher",
-    why: "A small kosher shop (makolet) inside the Chabad of Limassol centre. Ask Chabad for current stock and opening times before a special trip.",
+    why: "Kosher grocery listed on the Chabad of Limassol food page, which does not name its supervising authority. Ask Chabad for current stock and opening times before a special trip. Delivers via Wolt.",
+    phone: "+357 95 167764",
     website: "https://chabadlimassol.com/en/c/food/",
   },
   {
-    name: "Chabad-supervised kosher restaurants",
+    name: "Kosher restaurants listed by Chabad of Limassol",
     city: "Limassol",
     type: "restaurant",
     certification: "kosher",
-    why: "Chabad of Limassol supervises kosher restaurants in the city, Allenby Kosher among them, and lists the current ones on its food page.",
+    why: "Chabad of Limassol's food page lists kosher restaurants, Allenby among them (tagged Mehadrin), described as under reliable supervision. Allenby phone: +357 25363770.",
     website: "https://chabadlimassol.com/en/c/food/",
   },
 ];

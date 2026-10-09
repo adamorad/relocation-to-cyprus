@@ -50,7 +50,7 @@ export default function PropertyManagementPage() {
 				eyebrow: "Property Management",
 				title: "Property Management in Cyprus",
 				intro:
-					"Licensed property managers across Limassol, Paphos, and Larnaca, for non-resident owners who need trusted local management of their Cyprus investment.",
+					"Property managers across Limassol, Paphos, and Larnaca, for non-resident owners who need trusted local management of their Cyprus investment.",
 			}}
 			info={PROPERTY_MANAGEMENT_TIPS.map((t) => ({
 				heading: t.heading,
@@ -62,10 +62,9 @@ export default function PropertyManagementPage() {
 				title: "Verify any agent",
 				content: (
 					<>
-						The Cyprus Real Estate Agents Registration Council (RERA) register
-						is searchable at{" "}
+						The Council of Real Estate Agents register is searchable at{" "}
 						<a
-							href="https://ktimatomesites.com"
+							href="https://ktimatomesites.com/agents/"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="font-semibold underline"
