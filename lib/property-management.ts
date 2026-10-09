@@ -1,10 +1,10 @@
 /**
  * Property management companies in Cyprus.
- * Covers licensed managers across Limassol, Paphos, and Larnaca.
+ * Covers property managers across Limassol, Paphos, and Larnaca.
  *
- * Always verify RICS/RERA licence status directly with the company and with
- * the Cyprus Real Estate Agents Registration Council (RERA) at
- * ktimatomesites.com before engaging any agent.
+ * REA-156: register status of each name is NOT yet verified (see factcheck
+ * REA-150 report), so licensedByRERA stays false until each name is checked
+ * at https://ktimatomesites.com/agents/.
  */
 
 import type { City } from "@/lib/food";
@@ -31,25 +31,28 @@ export type PropertyManagementTip = {
 
 export const PROPERTY_MANAGEMENT_TIPS: ReadonlyArray<PropertyManagementTip> = [
   {
-    heading: "Verify the RICS/RERA licence before signing anything",
-    body: "In Cyprus, property management and agency work requires a licence from the Real Estate Agents Registration Council (RERA), a statutory body under the Ministry of Interior. The RERA register is searchable at ktimatomesites.com: cross-check the company's name AND the individual agent's name before engaging. Unlicensed operators have no legal accountability, no professional indemnity insurance, and no recourse process. This is the single most important check.",
+    heading: "Check the company's registration before signing anything",
+    body: "Under the Real Estate Agents Law 71(I)/2010, anyone acting as an intermediary in selling, buying or letting property (leases over one month) must be registered with the Council of Real Estate Agents. Pure management work is not clearly covered by that law, so ask the company what it is licensed for. The Council's register is at ktimatomesites.com/agents: cross-check the company's name AND the individual agent's name before engaging. Unregistered operators are outside the Council's disciplinary process.",
   },
   {
     heading: "Understand what 'property management' covers — it varies widely",
-    body: "Cyprus property management contracts range from basic rent collection only (5–7% of monthly rent) to full-service management including maintenance coordination, tenant finding, utility management, annual property inspections, and tax filing assistance (10–15% of monthly rent). Get a written scope of services before signing. Common exclusions: major repairs above a threshold (typically €200–€500), legal disputes, and owner insurance. Verify these in writing.",
+    body: "Cyprus property management contracts range from basic rent collection only to full-service management including maintenance coordination, tenant finding, utility management, annual property inspections, and tax filing assistance. Fees are not regulated and quotes vary, so get 2-3 written quotes. Get a written scope of services before signing, and check in writing what is excluded, such as major repairs above a stated limit, legal disputes, and owner insurance.",
   },
   {
-    heading: "Non-resident owners: factor in the VAT and withholding tax implications",
-    body: "If you are a non-resident owner renting your Cyprus property, you have Cyprus rental income that must be declared locally. A good property manager will either handle this or work alongside your accountant. Ask specifically: 'Do you provide monthly rental statements and an annual summary for my tax filing?' Managers who cannot produce clear documentation create audit risk for you.",
+    heading: "Non-resident owners: rental income must be declared in Cyprus",
+    body: "If you are a non-resident owner renting your Cyprus property, rental income arising in Cyprus must be declared locally. Confirm the current rules with the Cyprus Tax Department (tax.gov.cy) or a Cyprus accountant. A good property manager will either handle this or work alongside your accountant. Ask specifically: 'Do you provide monthly rental statements and an annual summary for my tax filing?' Managers who cannot produce clear documentation create audit risk for you.",
   },
   {
     heading: "Inspect the property in person or via a trusted local agent before any management agreement",
-    body: "Property management companies are incentivised to sign management agreements quickly. Before signing, inspect the property's current condition, confirm the title deed status (a clean deed is required for legal rental), and check whether there are any outstanding community fees (koinos logos arrears). Inheriting undisclosed arrears from the previous owner is a common hidden cost.",
+    body: "Property management companies are incentivised to sign management agreements quickly. Before signing, inspect the property's current condition, check the title deed status and who owns the property before letting, and ask for a statement of any unpaid common-expense charges.",
   },
 ];
 
 // ---------------------------------------------------------------------------
-// Property management companies (10–12 entries across cities)
+// Property management companies
+// REA-156: removed entries with unverified existence or no official website
+// (Paphos Property Management Ltd, Larnaca Property Services, Remax, Century 21,
+// Prime Property) per REA-150 B11/B12. Re-add only with a verified source.
 // ---------------------------------------------------------------------------
 
 export const PROPERTY_MANAGERS: ReadonlyArray<PropertyManager> = [
@@ -57,78 +60,40 @@ export const PROPERTY_MANAGERS: ReadonlyArray<PropertyManager> = [
   {
     name: "Aristo Developers Property Management",
     cities: ["Limassol", "Paphos"],
-    why: "The property management arm of Aristo Developers — one of Cyprus's largest developers — handles a significant portfolio of apartments and villas in Limassol and Paphos. Experience with non-resident owners, multilingual team, and a track record across both investment-grade and residential properties.",
-    licensedByRERA: true,
+    why: "The property management arm of Aristo Developers, a Cyprus developer, handles apartments and villas in Limassol and Paphos. Check its scope of services with the company.",
+    licensedByRERA: false,
     website: "https://www.aristodevelopers.com",
   },
   {
     name: "DOM Real Estate",
     cities: ["Limassol"],
-    why: "Established Limassol-based agency with a dedicated property management division. Handles tenant finding, rent collection, maintenance coordination, and annual property reviews. English and Russian-speaking staff. Well-regarded in the expat community for transparent monthly reporting.",
-    licensedByRERA: true,
+    why: "Limassol-based agency with a property management division. Handles tenant finding, rent collection, maintenance coordination, and annual property reviews. Ask the company which languages it works in.",
+    licensedByRERA: false,
     website: "https://www.dom.com.cy",
   },
   {
     name: "Ledra Estates",
     cities: ["Limassol"],
-    why: "Long-established agency based in Limassol. Full management services including lease preparation, tenant vetting, utility transfers, and maintenance contractor network.",
-    licensedByRERA: true,
+    why: "Limassol-based agency. Management services including lease preparation, tenant vetting, utility transfers, and maintenance contractor network.",
+    licensedByRERA: false,
     website: "https://www.ledraestates.com",
-  },
-  {
-    name: "Remax Cyprus — Property Management Division",
-    cities: ["Limassol", "Paphos", "Larnaca"],
-    why: "Remax Cyprus operates property management services across all major cities through its franchise network. Standardised processes, international brand standards, and broad coverage. Good option for owners who want the consistency of a franchise structure over an independent agent.",
-    licensedByRERA: true,
-    website: "https://www.remax.com.cy",
   },
 
   // ── Paphos ───────────────────────────────────────────────────────────────
   {
-    name: "Paphos Property Management Ltd",
-    cities: ["Paphos"],
-    why: "Paphos-specialist property manager with one of the largest managed portfolios in the Kato Paphos and Coral Bay areas. Full-service management for holiday and long-term rental properties. Handles British expat owners particularly well given the established local community.",
-    licensedByRERA: true,
-    website: "https://www.bazaraki.com/search/?source=top_nav&q=property+management+paphos",
-  },
-  {
     name: "Pafilia Property Management",
     cities: ["Paphos"],
-    why: "The management arm of Pafilia, one of Paphos's largest developers. Handles complexes throughout the Paphos region. Particularly strong for owners of units within Pafilia-built developments where they already manage the common areas, making coordination seamless.",
-    licensedByRERA: true,
+    why: "The management arm of Pafilia, a Paphos developer. Handles complexes throughout the Paphos region. Most relevant to owners of units within Pafilia-built developments.",
+    licensedByRERA: false,
     website: "https://www.pafilia.com",
   },
-  {
-    name: "Prime Property Cyprus — Management Services",
-    cities: ["Paphos", "Limassol"],
-    why: "International-facing agency with a management services division used by non-resident overseas owners. Online owner portal with rent statements and maintenance logs. English, Russian, and German-speaking team. Competitive full-management rates.",
-    licensedByRERA: true,
-    website: "https://www.prime-property.com.cy",
-  },
-
-  // ── Larnaca ──────────────────────────────────────────────────────────────
-  {
-    name: "Larnaca Property Services",
-    cities: ["Larnaca"],
-    why: "Larnaca's most active property management agency, covering apartment portfolios in the Finikoudes, Mackenzie, and Dekelia Road areas. Trusted by Israeli and Lebanese owners who invest in Larnaca and need reliable local management. Bilingual English/Greek team.",
-    licensedByRERA: true,
-    website: "https://www.bazaraki.com/search/?source=top_nav&q=property+management+larnaca",
-  },
-  {
-    name: "Century 21 Cyprus — Larnaca Property Management",
-    cities: ["Larnaca", "Limassol"],
-    why: "The Larnaca franchise of Century 21 Cyprus offers property management services alongside its sales and rental business. Standardised international processes, online owner reporting, and coverage across Larnaca and eastern Limassol.",
-    licensedByRERA: true,
-    website: "https://www.century21.com.cy",
-  },
-
 
   // ── Island-wide / multi-city ──────────────────────────────────────────────
   {
     name: "Danos — Property & Facilities Management",
     cities: ["Limassol", "Larnaca", "Paphos"],
-    why: "One of Cyprus's largest and oldest real estate consultancies, with a dedicated property and facilities management division. RICS-regulated, island-wide presence, and experience with institutional, commercial, and high-end residential portfolios. Best choice for investors with multi-city holdings.",
-    licensedByRERA: true,
+    why: "Real estate consultancy with a property and facilities management division, listed for Limassol, Larnaca and Paphos. Check the company's own site for its accreditations and services.",
+    licensedByRERA: false,
     website: "https://www.danos.com.cy",
   },
 ];

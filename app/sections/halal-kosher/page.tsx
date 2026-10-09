@@ -62,7 +62,7 @@ export default function HalalKosherPage() {
 				eyebrow: "Food & Dining",
 				title,
 				intro:
-					"Halal and kosher food in Cyprus for Muslim and Jewish residents. Every venue below has a current listing we checked in October 2026: Syrian, Lebanese and Arabic halal kitchens in all four cities, a halal butcher in Paphos and the Chabad kosher outlets in Limassol.",
+					"Halal and kosher food in Cyprus for Muslim and Jewish residents. Every halal venue below has a current listing we checked on 2 October 2026: Syrian, Lebanese and Arabic halal kitchens in all four cities and a halal butcher in Paphos, plus the kosher outlets listed by Chabad of Limassol.",
 			}}
 			info={DIETARY_TIPS.map((t) => ({ heading: t.heading, body: t.body }))}
 			infoTitle="What to know before you search"
