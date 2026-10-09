@@ -602,7 +602,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "Who qualifies for the Cyprus Digital Nomad Visa",
-				body: "The Cyprus Digital Nomad Visa (DNV) is designed for non-EU/non-EEA nationals who work remotely — either as employees of a foreign company or as freelancers serving clients outside Cyprus. EU nationals do not need a DNV; they register as EU residents under the standard MEU1 process. The key eligibility criteria: you must be a non-EU/non-EEA national with a valid passport; the scheme is for work for an employer registered abroad or for clients located abroad; and you must have a stable and sufficient net monthly income of at least €3,500 (after the deduction of contributions and taxes). The Migration Department's page states a minimum net monthly income of €3,500 and does not publish a separate figure for family members; confirm with the Migration Department before applying with dependants. The scheme has a cap of 500 permits (source: Migration Department, accessed 2026-10-08). The income figure is a minimum — in practice, applications with income comfortably above the threshold proceed faster and with fewer requests for additional documentation.",
+				body: "The Cyprus Digital Nomad Visa (DNV) is designed for non-EU/non-EEA nationals who work remotely, either as employees of a foreign company or as freelancers serving clients outside Cyprus. EU nationals do not need a DNV; they register as EU residents under the standard MEU1 process. The key eligibility criteria: you must be a non-EU/non-EEA national with a valid passport; the scheme is for work for an employer registered abroad or for clients located abroad; and you must have a stable and sufficient net monthly income of at least €3,500 (after the deduction of contributions and taxes). The Migration Department's page states a minimum net monthly income of €3,500 and does not publish a separate figure for family members; confirm with the Migration Department before applying with dependants. The scheme has a cap of 500 permits (source: Migration Department, accessed 2026-10-08). The income figure is a minimum. In practice, applications with income comfortably above the threshold proceed faster and with fewer requests for additional documentation.",
 			},
 			{
 				heading: "Required documents",
@@ -615,11 +615,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Applying at the Migration Department",
-				body: "Applications are submitted at the Migration Department's central offices in Nicosia, in person or through an authorised representative, within three months of arrival. Check on gov.cy whether an appointment is needed. The fee is €70, plus €70 for first registration in the Aliens' Register. If you already live in Cyprus legally under another status, you may apply for the DNV permit at the Migration Department in Nicosia.",
+				body: "Applications are submitted at the Migration Department's central offices, in person or through an authorised representative, within three months of arrival. Check on gov.cy whether an appointment is needed. The fee is €70, plus €70 for first registration in the Aliens' Register. If you already live in Cyprus legally under another status, you may apply for the DNV permit at the Migration Department.",
 			},
 			{
 				heading: "Processing time and what to expect",
-				body: "The Migration Department's stated examination time is 5 to 7 weeks from submission of a complete file. Applications that are not accompanied by all the required documents will not be accepted for consideration. Once approved, you receive a letter explaining how to collect your temporary residence permit. Biometrics (photo, fingerprints) are taken at the Nicosia office or at a district Aliens and Immigration police unit; for children under 6, a photo only. If your application is refused, you receive a letter stating the reasons.",
+				body: "The Migration Department's stated examination time is 5 to 7 weeks from submission of a complete file. Applications that are not accompanied by all the required documents will not be accepted for consideration. Once approved, you receive a letter explaining how to collect your temporary residence permit. Biometrics (photo, fingerprints) are taken at the central office or at a district Aliens and Immigration police unit; for children under 6, a photo only. If your application is refused, you receive a letter stating the reasons.",
 			},
 			{
 				heading: "Renewal, three-year maximum, and family rights",
