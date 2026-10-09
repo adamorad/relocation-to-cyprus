@@ -2,21 +2,20 @@ import type { Metadata } from "next";
 import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { Callout } from "@/components/ui/Callout";
-import {
-	MENTAL_HEALTH_PROVIDERS,
-	MENTAL_HEALTH_TIPS,
-} from "@/lib/mental-health";
+import { MENTAL_HEALTH_TIPS } from "@/lib/mental-health";
 import { topicCrumb } from "@/lib/topic-map";
 import MentalHealthServicesClient from "./client";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
-const title = `${MENTAL_HEALTH_PROVIDERS.length} Therapists, Psychologists and Psychiatrists in Cyprus`;
-const description = `Directory of ${MENTAL_HEALTH_PROVIDERS.length} psychologists, psychotherapists, psychiatrists and counsellors in Limassol, Paphos and Larnaca. Filter by city and type; see languages, approaches and online availability.`;
+const title = "Mental Health Services in Cyprus: What to Know First";
+const description =
+	"How mental health care works in Cyprus: psychologist vs psychiatrist, online sessions, indicative costs and crisis support. Provider listings are paused while credentials are verified.";
 
 export const metadata: Metadata = {
 	title,
 	description,
+	robots: { index: false, follow: true },
 	alternates: { canonical: "/sections/mental-health-services/" },
 	openGraph: {
 		images: [DEFAULT_OG_IMAGE],
@@ -51,7 +50,7 @@ export default function MentalHealthServicesPage() {
 				eyebrow: "Healthcare",
 				title: "Mental Health Services in Cyprus",
 				intro:
-					"Psychologists, psychotherapists, psychiatrists, and counsellors across Cyprus who work in English, including those experienced with expat adjustment issues and relocation.",
+					"How mental health care works in Cyprus for English speakers. Our provider listings are paused while we verify each clinician's credentials with the official registers.",
 			}}
 			info={MENTAL_HEALTH_TIPS.map((t) => ({
 				heading: t.heading,
