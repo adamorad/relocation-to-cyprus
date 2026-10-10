@@ -1416,7 +1416,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "maternity-paternity-rights",
 		datePublished: "2026-05-29",
-		dateModified: "2026-10-02",
+			dateModified: "2026-10-10",
 		lastChecked: "2026-10-02",
 		sources: [
 			{
@@ -1427,7 +1427,12 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 				label:
 					"Business in Cyprus: Social insurance registration and contributions",
 				url: "https://www.businessincyprus.gov.cy/social-insurance-registration-and-contributions/",
-			},
+				},
+				{
+					label:
+						"Cyprus Government: Guide to non-discrimination due to pregnancy and protection of maternity (2024, Greek)",
+					url: "https://publications.gov.cy/assets/user/publications/2024/2024_010/HTML/index.html",
+				},
 		],
 		category: "family",
 		title:
@@ -1436,24 +1441,24 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			"What employed and self-employed parents in Cyprus are actually entitled to — maternity leave duration, benefit rates, paternity leave, parental leave, and how Social Insurance calculates the payments. Prices and rules change — verify with official Cyprus sources before acting.",
 		sections: [
 			{
-				heading: "Maternity leave: the 18-week structure",
-				body: "Employed women in Cyprus are entitled to 18 weeks of maternity leave under the Maternity Protection Law. Two weeks of that leave are compulsory and must be taken before the expected birth date — this is a legal minimum, not a recommendation. Of the 18 weeks total, the first 9 weeks after birth are paid by the Social Insurance Services at a rate of 75% of the mother's insurable earnings (subject to a weekly cap that is revised periodically — currently around €1,000 per week of benefit, meaning high earners are capped). The remaining weeks — weeks 10 through 18 — are paid by the employer, provided the employee has been on the payroll for at least 6 months continuously prior to the maternity leave start date. Employees who have been employed for fewer than 6 months are still entitled to the Social Insurance-funded portion; the employer top-up for the final 9 weeks is the part that requires 6 months of continuous employment. Dismissal of a pregnant employee or a woman on maternity leave is illegal in Cyprus; it is one of the most clearly protected labour rights in Cypriot employment law.",
+				heading: "Maternity leave: the 22-week structure",
+				body: "Employed women in Cyprus are entitled to 22 weeks of maternity leave under the Maternity Protection Law (26 weeks for a third or later child). Two weeks of that leave are compulsory and must be taken before the week of the expected birth. In total 11 weeks are compulsory and cannot be moved; the rest can be taken earlier at the employee's request. The Social Insurance Services pay a maternity allowance for the leave period. The basic rate is 72% of the insured person's insurable earnings; it rises to 80%, 90% or 100% with one, two or three dependants. You do not receive the allowance for any period in which your employer pays full wages, and it is reduced if your employer pays part of your wages. Dismissal is prohibited from the date you notify your employer in writing of the pregnancy until five months after maternity leave ends, with narrow exceptions (serious misconduct, closure of the entire business, or a fixed-term contract that expires for reasons unrelated to the pregnancy). Source: Cyprus Government guide on non-discrimination due to pregnancy and protection of maternity (2024), checked 2026-10-10.",
 			},
 			{
 				heading: "Maternity benefit calculation",
-				body: `The Social Insurance maternity benefit is calculated as 75% of the mother's average insurable earnings during the relevant contribution period, specifically the earnings in the contribution year two years prior to the benefit year. Cyprus Social Insurance uses 'insurable earnings' rather than gross salary, and insurable earnings are subject to an annual ceiling (${eur(SI_MAX_INSURABLE_ANNUAL)} a year for 2026, revised each January). In practice, this means a mother earning €30,000 per year gross will receive approximately €433 per week during the Social Insurance-funded period (€30,000 ÷ 52 × 75%). A mother earning €75,000 per year, above the insurable ceiling, will receive the same capped amount as a mother earning at the ceiling. The benefit is paid directly by Social Insurance Services and is separate from any employer-paid salary continuation. To claim, you submit Form M1 to the Social Insurance Services office at least 3 months before the expected due date, along with your employer's certificate of employment.`,
+				body: `The Social Insurance maternity allowance is calculated from the insured person's insurable earnings. The basic rate is 72%, and Cyprus Social Insurance uses 'insurable earnings' rather than gross salary, subject to an annual ceiling (${eur(SI_MAX_INSURABLE_ANNUAL)} a year for 2026, revised each January). Earnings above the ceiling do not increase the allowance. The allowance is paid by Social Insurance Services and is reduced for any period in which your employer pays wages. Applications are made online through the government maternity benefit portal (maternity-benefit.service.gov.cy) or through the Social Insurance Services or a KEP; check the current procedure and deadlines there before you apply.`,
 			},
 			{
 				heading: "Paternity leave: the 2-week entitlement",
-				body: "Employed fathers in Cyprus are entitled to 2 weeks (10 working days) of paternity leave, which must be taken within 16 weeks of the birth. Unlike maternity leave, paternity leave is funded directly by Social Insurance Services — not by the employer — at 72% of insurable earnings using the same calculation methodology as maternity benefit. This means paternity leave is not dependent on the employer's goodwill or payroll policies; it is a statutory right with Social Insurance funding. The practical process: the father notifies the employer, submits the birth certificate and Form M4 to Social Insurance, and the benefit is paid to his bank account. Paternity leave in Cyprus is still relatively short compared to Scandinavian standards, but it is properly funded and enforced. An important point: paternity leave is distinct from parental leave — the 2 weeks are specifically linked to the birth event.",
+				body: "Employed fathers in Cyprus are entitled to 2 weeks of paternity leave around the birth, with an allowance paid by Social Insurance Services. We have not yet verified the exact rate, the time window within which the leave must be taken, or the application procedure against the current law, so confirm these with the Social Insurance Services (mlsi.gov.cy) before planning. Paternity leave is distinct from parental leave: the 2 weeks are linked to the birth.",
 			},
 			{
-				heading: "Parental leave: 18 weeks per parent",
-				body: "In addition to maternity and paternity leave, each parent is entitled to 18 weeks of parental leave per child (the same 18 weeks cannot be shared: each parent has their own 18-week entitlement). Parental leave in Cyprus was unpaid in 2025: unlike the maternity benefit, there was no Social Insurance payment during parental leave. It can be taken at any point until the child's 8th birthday, and it can be taken all at once or in separate blocks. The employer cannot refuse the request but can ask for it to be scheduled in a way that does not disrupt operations; they can defer it by up to a month in certain circumstances. For families where one partner earns significantly more than the other, the practical use of parental leave tends to fall to the lower earner since there is no income replacement. Calls to make parental leave paid (following EU Parental Leave Directive requirements) have been discussed in Cypriot parliament; in 2025 parental leave was unpaid, but this is worth verifying if you are planning leave more than 12 months out.",
+				heading: "Parental leave",
+				body: "In addition to maternity and paternity leave, each parent is entitled to parental leave per child, which can be taken until the child reaches a set age (generally 8) and in separate blocks. The duration, whether any allowance is paid, and the notice rules were changed by legislation in 2022 and 2024, and we have not yet verified the current position. Check the current Social Insurance Services rules and the text of the law before planning leave.",
 			},
 			{
 				heading: "Self-employed maternity benefit",
-				body: `Self-employed mothers in Cyprus are entitled to maternity benefit from Social Insurance under the same 18-week framework, provided they have made sufficient Social Insurance contributions. The self-employed rate is calculated on the basis of declared insurable earnings rather than payslips: specifically, the self-employed person's insurable earnings from the contribution year two years prior. The practical implication: if you have under-declared insurable earnings (a common situation for self-employed people in Cyprus who want to minimize contributions), your maternity benefit will be proportionally reduced. The Social Insurance contribution for self-employed individuals is ${pct(SI_SELF_EMPLOYED_RATE)} of insurable earnings (the rate since 2024), covering both the employee and employer portions. Self-employed mothers should request Form M1SE from Social Insurance and submit it at least 3 months before expected delivery. There is no employer top-up for self-employed mothers: the full 18 weeks of benefit, if any, comes from Social Insurance at the 75% rate, subject to the usual caps.`,
+				body: `Self-employed mothers in Cyprus can claim the maternity allowance from Social Insurance under the same 22-week framework, provided they have made sufficient Social Insurance contributions and are up to date with them. The allowance is based on insurable earnings, so lower declared earnings give a lower allowance. The Social Insurance contribution for self-employed individuals is ${pct(SI_SELF_EMPLOYED_RATE)} of insurable earnings (the rate since 2024). There is no employer top-up for self-employed mothers. Check the application route and deadlines with Social Insurance Services.`,
 			},
 		],
 	},
