@@ -128,7 +128,7 @@ export const GUIDES_BATCH2: GuideInfo[] = [
 		faqs: [
 			{
 				q: "Do I have to register for Social Insurance even if my self-employment income is very low?",
-				a: "Yes. Social Insurance registration is mandatory for all self-employed persons in Cyprus regardless of income level — there is no earnings floor that exempts you. Moreover, contributions are calculated on estimated insurable earnings, not on your actual net profit. Even in a low-income year you may owe contributions based on the minimum insurable earnings that apply to you. Contact the Social Insurance Services directly to confirm them.",
+				a: "Yes. Social Insurance registration is mandatory for all self-employed persons in Cyprus regardless of income level: there is no earnings floor that exempts you. Moreover, contributions are calculated on estimated insurable earnings, not on your actual net profit. Even in a low-income year you may owe contributions based on the minimum insurable earnings that apply to you. Contact the Social Insurance Services directly to confirm them.",
 			},
 			{
 				q: "Can I voluntarily register for VAT before my turnover reaches €15,600?",
