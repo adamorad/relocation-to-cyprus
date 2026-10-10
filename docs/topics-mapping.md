@@ -31,7 +31,7 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | --- | --- | --- | --- | --- |
 | [Air Quality & Allergens in Cyprus: Expat Guide](/guides/air-quality-allergens/) | Health | Home & bills |  | Old category Environment; the practical advice is about allergies and breathing. |
 | [Dentist Costs in Cyprus 2026: Prices and GeSY Cover](/guides/dental-care-guide/) | Health |  |  |  |
-| [112 and Ambulance Number in Cyprus: Emergency Guide](/guides/emergency-services-guide/) | Health |  |  |  |
+| [112 Cyprus: Emergency Numbers for Ambulance, Police & Fire](/guides/emergency-services-guide/) | Health |  |  |  |
 | [GeSY Registration Guide 2026: Step-by-Step](/guides/gesy-registration-guide/) | Health | Money & paperwork |  |  |
 | [Healthcare in Cyprus 2026: GeSY & Private Guide](/guides/healthcare-in-cyprus/) | Health | Moving to Cyprus |  |  |
 | [Pharmacies in Cyprus: Over-the-Counter and Prescriptions](/guides/pharmacies-medication/) | Health |  |  |  |

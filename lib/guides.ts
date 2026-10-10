@@ -1680,11 +1680,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sources: [
 			HT_SRC.gesyCopay,
 			{
-				label: "State Health Services Organisation (SHSO): information for patients, ambulance (accessed 2026-10-05)",
+				label: "State Health Services Organisation (SHSO): information for patients, ambulance (accessed 2026-10-09)",
 				url: "https://www.shso.org.cy/en/plirofories-gia-asthenofora/",
 			},
 			{
-				label: "Cyprus Deputy Ministry of Tourism: health and safety, emergency numbers (accessed 2026-10-05)",
+				label: "Cyprus Deputy Ministry of Tourism: health and safety, emergency numbers (accessed 2026-10-09)",
 				url: "https://www.visitcyprus.com/useful-info/health-safety/",
 			},
 			{
@@ -1693,10 +1693,14 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 		],
 		category: "healthcare",
-		title: "112 and Ambulance Number in Cyprus: Emergency Guide",
+		title: "112 Cyprus: Emergency Numbers for Ambulance, Police & Fire",
 		description:
-			"Call 112 for police, fire and ambulance in Cyprus. Which hospitals have 24-hour A&E, how the ambulance service works and what to tell the operator.",
+			"Dial 112 in Cyprus for ambulance, police and fire. Free call. Ambulance control centre 22887171, 24-hour A&E list and what to say.",
 		sections: [
+			{
+				heading: "Emergency numbers in Cyprus: 112",
+				body: "Call 112 for an ambulance, the police or the fire service anywhere in the Republic of Cyprus. The call is free. Ambulances are run by the State Health Services Organisation (SHSO); its Ambulance Control Centre direct line is 22887171, but 112 is the number to use. Sources: SHSO, Visit Cyprus (accessed 2026-10-09).",
+			},
 			{
 				heading: "112: the single emergency number",
 				body: "Call 112 (the EU-wide number) for police, fire and ambulance. It is free. If you are deaf or hard of hearing, texting 112 is not a confirmed option. Secondary sources list SMS to 8112 and fax to 1408 or 1409 for users with disabilities; check with Cyprus Police before relying on them. A real-time-text 112 service is planned. The call is handled by the police, who dispatch the appropriate service: police (Astynomia), fire brigade (Pyrosvestiki Ypiresia), or the ambulance service. The Ambulance Control Centre direct line is 22887171 (24h); prefer 112 in an emergency. In an emergency, the ambulance response and transport to a public or private A&E department is free of charge; non-emergency transport to private centres is charged. In practice, for medical emergencies the most important information to have ready: your exact address (include landmark references since rural addresses can be difficult to locate by number alone), the nature of the emergency, the patient's approximate age, and whether they are conscious and breathing. Cyprus police response times for non-emergency incidents have been criticized, but for genuine emergencies the dispatch system is reliable.",
