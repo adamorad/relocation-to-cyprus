@@ -1417,7 +1417,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		slug: "maternity-paternity-rights",
 		datePublished: "2026-05-29",
 			dateModified: "2026-10-10",
-		lastChecked: "2026-10-02",
+		lastChecked: "2026-10-10",
 		sources: [
 			{
 				label: "Social Insurance Services: Basic insurable earnings 1981-2026",
@@ -1432,6 +1432,14 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 					label:
 						"Cyprus Government: Guide to non-discrimination due to pregnancy and protection of maternity (2024, Greek)",
 					url: "https://publications.gov.cy/assets/user/publications/2024/2024_010/HTML/index.html",
+				},
+			{
+					label: "Law 216(I)/2022 on paternity, parental, carers and force majeure leave (Greek, cylaw.org)",
+					url: "https://cylaw.org/nomoi/arith/2022_1_216.pdf",
+				},
+				{
+					label: "Law 67(I)/2024 amending the parental leave allowance (Greek, cylaw.org)",
+					url: "https://cylaw.org/nomoi/arith/2024_1_067.pdf",
 				},
 		],
 		category: "family",
@@ -1450,11 +1458,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Paternity leave: the 2-week entitlement",
-				body: "Employed fathers in Cyprus are entitled to 2 weeks of paternity leave around the birth, with an allowance paid by Social Insurance Services. We have not yet verified the exact rate, the time window within which the leave must be taken, or the application procedure against the current law, so confirm these with the Social Insurance Services (mlsi.gov.cy) before planning. Paternity leave is distinct from parental leave: the 2 weeks are linked to the birth.",
+				body: "An employed father is entitled to 2 consecutive weeks of paternity leave. It can be taken from the week of the birth (or adoption of a child up to 12 years old) until 2 weeks after the end of the mother's maternity leave period. There is no minimum length of service. If the mother dies before or during the birth or maternity leave, the father's paternity leave is extended by the weeks of maternity leave that remained. The allowance is paid by Social Insurance Services under the Social Insurance Law, and the employee must give the employer 2 weeks' written notice. Source: Law 216(I)/2022 (cylaw.org), articles 5 to 7, checked 2026-10-10. Confirm the allowance rate and claim procedure with Social Insurance Services (mlsi.gov.cy).",
 			},
 			{
 				heading: "Parental leave",
-				body: "In addition to maternity and paternity leave, each parent is entitled to parental leave per child, which can be taken until the child reaches a set age (generally 8) and in separate blocks. The duration, whether any allowance is paid, and the notice rules were changed by legislation in 2022 and 2024, and we have not yet verified the current position. Check the current Social Insurance Services rules and the text of the law before planning leave.",
+				body: "Each employed parent with at least 6 months of continuous service with the same employer is entitled to up to 18 weeks of parental leave per child (23 weeks for a widowed or single parent). The right is individual, except that 9 weeks may be transferred to the other parent, and only from the unpaid part of the leave. It can be taken after maternity or paternity leave until the child's 8th birthday (the 18th for a child with a disability). It can be taken in blocks of at least one day, up to 5 weeks per calendar year, and the employer may postpone it for serious operational reasons after consulting the employee. The employee gives 3 weeks' written notice. An allowance is paid by Social Insurance Services under the Social Insurance Law, so check the eligibility conditions and number of paid weeks with Social Insurance Services before planning. Source: Law 216(I)/2022 as amended by Law 67(I)/2024 (cylaw.org), checked 2026-10-10.",
 			},
 			{
 				heading: "Self-employed maternity benefit",
