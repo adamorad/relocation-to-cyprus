@@ -264,13 +264,20 @@ export function CardGrid({
  */
 export function CardGridItem({
 	filter,
+	id,
 	children,
 }: {
 	filter?: string;
+	/** Anchor id for a shareable `#fragment` URL. */
+	id?: string;
 	children: ReactNode;
 }) {
 	return (
-		<li className="flex" data-filter-item={filter}>
+		<li
+			id={id}
+			className={id ? "flex scroll-mt-24" : "flex"}
+			data-filter-item={filter}
+		>
 			{children}
 		</li>
 	);

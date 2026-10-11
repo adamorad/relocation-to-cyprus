@@ -16,14 +16,17 @@ export type Winery = {
   city: City;
   /** Village name if not in the city centre (most Troodos wineries are in villages). */
   village?: string;
-  grapeVarieties: string[];
-  tastingAvailable: boolean;
-  tourAvailable: boolean;
-  restaurantOnSite: boolean;
+  grapeVarieties?: string[];
+  tastingAvailable?: boolean;
+  tourAvailable?: boolean;
+  restaurantOnSite?: boolean;
   /** Price band: 1=budget (tastings free or <€5), 2=mid (€5–15), 3=premium (>€15). */
-  priceRange: 1 | 2 | 3;
-  why: string;
+  priceRange?: 1 | 2 | 3;
+  why?: string;
   website?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
 };
 
 export type WineTip = {
@@ -233,5 +236,14 @@ export const WINERIES: ReadonlyArray<Winery> = [
     restaurantOnSite: false,
     priceRange: 1,
     why: "One of the Commandaria zone producers accessible from Larnaca. Family winery in the village of Tochni producing traditional Commandaria alongside table wines. Good entry point to understanding Commandaria production from a smaller, personal producer.",
+  },
+  {
+    name: "Nelion Winery",
+    city: "Paphos",
+    village: "Pretori",
+    address: "8630 Pretori, Pafos, Cyprus",
+    phone: "+357 25 442445",
+    email: "nelion@cytanet.com.cy",
+    website: "http://www.nelionwinery.com",
   },
 ];

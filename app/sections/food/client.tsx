@@ -6,11 +6,13 @@ import { UrlPrefilter, useUrlFilter } from "@/components/templates/UrlFilter";
 import { Badge } from "@/components/ui/Badge";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup } from "@/components/ui/Chip";
+import { ListingContact } from "@/components/ui/ListingContact";
 import {
 	ALL_CATEGORIES,
 	CATEGORY_LABEL,
 	type Category,
 	FOOD_PLACES,
+	listingId,
 	PRICE_LABEL,
 } from "@/lib/food";
 import { CITY_NAME, CITY_SLUGS, type CitySlug, isCitySlug } from "@/lib/topics";
@@ -91,6 +93,7 @@ export default function FoodClient() {
 						<CardGridItem
 							key={`${place.city}-${place.category}-${place.name}`}
 							filter={citySlugOf(place.city)}
+							id={listingId(place.name)}
 						>
 							<Card
 								variant="text"
@@ -100,21 +103,39 @@ export default function FoodClient() {
 									<>
 										{place.city}
 										{place.neighbourhood ? ` · ${place.neighbourhood}` : ""}
-										{" · "}
-										<span>{PRICE_LABEL[place.price]}</span>
+										{place.price ? (
+											<>
+												{" · "}
+												<span>{PRICE_LABEL[place.price]}</span>
+											</>
+										) : null}
 									</>
 								}
 								text={place.why}
 								footer={
-									place.instagram ? (
-										<a
-											href={`https://www.instagram.com/${place.instagram}/`}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
-										>
-											Instagram @{place.instagram}
-										</a>
+									place.instagram ||
+									place.address ||
+									place.phone ||
+									place.email ||
+									place.website ? (
+										<>
+											{place.instagram ? (
+												<a
+													href={`https://www.instagram.com/${place.instagram}/`}
+													target="_blank"
+													rel="noopener noreferrer"
+													className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
+												>
+													Instagram @{place.instagram}
+												</a>
+											) : null}
+											<ListingContact
+												address={place.address}
+												phone={place.phone}
+												email={place.email}
+												website={place.website}
+											/>
+										</>
 									) : undefined
 								}
 							/>

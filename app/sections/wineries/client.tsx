@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/Badge";
 import { Callout } from "@/components/ui/Callout";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { Chip, ChipGroup } from "@/components/ui/Chip";
+import { ListingContact } from "@/components/ui/ListingContact";
+import { listingId } from "@/lib/food";
 import { ALL_CITIES, type City, WINERIES } from "@/lib/wineries";
 
 const PRICE_LABEL: Record<1 | 2 | 3, string> = {
@@ -91,12 +93,17 @@ export default function WineriesClient() {
 			) : (
 				<CardGrid className="mt-5">
 					{filtered.map((winery) => (
-						<CardGridItem key={`${winery.name}-${winery.city}`}>
+						<CardGridItem
+							key={`${winery.name}-${winery.city}`}
+							id={listingId(winery.name)}
+						>
 							<Card
 								variant="text"
 								eyebrow={
 									<span className="flex flex-wrap gap-1.5">
-										<Badge>{PRICE_LABEL[winery.priceRange]}</Badge>
+										{winery.priceRange ? (
+											<Badge>{PRICE_LABEL[winery.priceRange]}</Badge>
+										) : null}
 										{winery.tastingAvailable ? <Badge>Tastings</Badge> : null}
 										{winery.tourAvailable ? <Badge>Tours</Badge> : null}
 										{winery.restaurantOnSite ? <Badge>Restaurant</Badge> : null}
@@ -106,22 +113,26 @@ export default function WineriesClient() {
 								meta={`${winery.city} district${winery.village ? ` · ${winery.village}` : ""}`}
 								text={winery.why}
 								footer={
+									winery.grapeVarieties?.length ||
+									winery.address ||
+									winery.phone ||
+									winery.email ||
+									winery.website ? (
 									<>
-										<p className="text-muted">
-											<span className="font-semibold text-ink">Grapes: </span>
-											{winery.grapeVarieties.join(", ")}
-										</p>
-										{winery.website ? (
-											<a
-												href={winery.website}
-												target="_blank"
-												rel="noopener noreferrer"
-												className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
-											>
-												Website
-											</a>
+										{winery.grapeVarieties?.length ? (
+											<p className="text-muted">
+												<span className="font-semibold text-ink">Grapes: </span>
+												{winery.grapeVarieties.join(", ")}
+											</p>
 										) : null}
+										<ListingContact
+											address={winery.address}
+											phone={winery.phone}
+											email={winery.email}
+											website={winery.website}
+										/>
 									</>
+									) : undefined
 								}
 							/>
 						</CardGridItem>
