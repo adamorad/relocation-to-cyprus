@@ -68,7 +68,6 @@ export const HOME_SERVICES: ReadonlyArray<HomeService> = [
 	row("Plumbair Plumbing & Air Conditioning", "Plumbers", ["Limassol"], "https://plumbairservices.com/", "+357 96 301520"),
 	row("Chillout HomeServe", "Plumbers", ["Larnaca", "Limassol", "Paralimni", "Protaras", "Ayia Napa"], "https://chillouthomeserve.com/", "+357 22 353550"),
 	row("ConstruX", "Plumbers", ["Larnaca", "Limassol", "Ayia Napa"], "https://construx-cyprus.com/", "+357 99 857 807"),
-	row("Build in Cyprus (BuildInCyprus Project Management & More)", "Plumbers", ["Paphos"], "https://buildincyprus.com/", "+357 96 922 275"),
 	row("Cyprus HomeCare", "Plumbers", ["Paphos"], "https://www.cyprushomecare.com/", "00357-99900696"),
 	row("Green Air Ltd", "Plumbers", ["Paphos"], "https://www.greenair-cy.com/", "+357 26 941 555"),
 	row("NeolithicStones", "Plumbers", ["Paphos"], "https://neolithicstones.com/", "+357 99 845 410"),
