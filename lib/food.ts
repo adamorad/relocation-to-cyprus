@@ -22,13 +22,28 @@ export type Category =
   | "dinner"
   | "sweets";
 
+/** City union plus Troodos mountain villages (not one of the four city pages). */
+export type FoodCity = City | "Troodos";
+
+/** URL anchor id for a listing: lowercase name, non-alphanumerics to hyphens. */
+export const listingId = (name: string): string =>
+  name
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
 export type Place = {
   name: string;
   neighbourhood?: string;
-  why: string;
+  why?: string;
   /** Price band: 1=€ (<€10pp), 2=€€ (€10–25), 3=€€€ (€25–50), 4=€€€€ (>€50). */
-  price: 1 | 2 | 3 | 4;
+  price?: 1 | 2 | 3 | 4;
   instagram?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
+  website?: string;
 };
 
 export type FoodEvent = {
@@ -373,7 +388,7 @@ export const LIFESTYLE_CREATORS: ReadonlyArray<Creator> = [
   },
 ];
 
-export const PLACES: Record<City, Record<Category, Place[]>> = {
+export const PLACES: Record<FoodCity, Record<Category, Place[]>> = {
   Limassol: {
     breakfast: [
       {
@@ -647,6 +662,22 @@ export const PLACES: Record<City, Record<Category, Place[]>> = {
       },
     ],
   },
+  Troodos: {
+    breakfast: [],
+    snack: [],
+    lunch: [],
+    dinner: [
+      {
+        name: "The Mill Hotel & Restaurant",
+        neighbourhood: "Kakopetria",
+        address: "8 Mill Str., 2800 Kakopetria, Cyprus",
+        phone: "+357 22 922536",
+        email: "info@millhotelcyprus.com",
+        website: "https://www.millhotelcyprus.com",
+      },
+    ],
+    sweets: [],
+  },
 };
 
 export const ALL_CITIES: ReadonlyArray<City> = [
@@ -673,7 +704,7 @@ export const CATEGORY_LABEL: Record<Category, string> = {
 };
 
 /** Price band labels for the 1–4 `price` field (see `Place`). */
-export const PRICE_LABEL: Record<Place["price"], string> = {
+export const PRICE_LABEL: Record<NonNullable<Place["price"]>, string> = {
   1: "€",
   2: "€€",
   3: "€€€",
@@ -681,10 +712,12 @@ export const PRICE_LABEL: Record<Place["price"], string> = {
 };
 
 /** One place with its city and meal category, for the /sections/food/ directory. */
-export type FoodPlace = Place & { city: City; category: Category };
+export type FoodPlace = Place & { city: FoodCity; category: Category };
 
 /** PLACES flattened in city, then category order. */
-export const FOOD_PLACES: ReadonlyArray<FoodPlace> = ALL_CITIES.flatMap(
+export const FOOD_PLACES: ReadonlyArray<FoodPlace> = (
+  [...ALL_CITIES, "Troodos"] as ReadonlyArray<FoodCity>
+).flatMap(
   (city) =>
     ALL_CATEGORIES.flatMap((category) =>
       PLACES[city][category].map((p) => ({ ...p, city, category })),
