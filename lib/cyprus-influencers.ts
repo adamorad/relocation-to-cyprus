@@ -87,21 +87,12 @@ export const INFLUENCERS: ReadonlyArray<Influencer> = [
     instagram: { handle: "paphos_life", followers: "3.9K" },
   },
   {
-    name: "Cyprus Adventures",
-    category: "Places and things to do",
-    city: "Island-wide",
-    language: "English",
-    why: "Hidden spots and travel tips around the island.",
-    tiktok: { handle: "cyprus_adventures", followers: "41K" },
-  },
-  {
     name: "Anastasiia (Nastia on the Island)",
     category: "Expat life",
     city: "Island-wide",
     language: "English",
     why: "Cyprus life, local tips, events and things to do.",
     instagram: { handle: "nastiaontheisland", followers: "3.3K" },
-    tiktok: { handle: "nastiaontheisland", followers: "5.6K" },
   },
   {
     name: "Melona",
@@ -110,22 +101,6 @@ export const INFLUENCERS: ReadonlyArray<Influencer> = [
     language: "German",
     why: "A German who moved to Cyprus alone, posting about expat life.",
     instagram: { handle: "melinamelona", followers: "11K" },
-  },
-  {
-    name: "Cypriot Way",
-    category: "Culture and language",
-    city: "Island-wide",
-    language: "English and Greek",
-    why: "Cypriot memes and humour: a quick way into local culture.",
-    tiktok: { handle: "cypriotway", followers: "55K" },
-  },
-  {
-    name: "My Cypriot Self",
-    category: "Culture and language",
-    city: "Island-wide",
-    language: "English and Greek",
-    why: "Short lessons on Cypriot Greek for people who cannot follow the dialect.",
-    tiktok: { handle: "my.cypriot.self", followers: "3K" },
   },
   {
     name: "Sketching Cyprus",
@@ -142,7 +117,6 @@ export const INFLUENCERS: ReadonlyArray<Influencer> = [
     language: "Greek",
     why: "Restaurant spots in Cyprus (and Greece).",
     instagram: { handle: "world_food360", followers: "126K" },
-    tiktok: { handle: "world_food360", followers: "87K" },
   },
   {
     name: "Charis Eats Quality",
@@ -159,7 +133,6 @@ export const INFLUENCERS: ReadonlyArray<Influencer> = [
     language: "Greek and English",
     why: "Recommendations of local restaurants.",
     instagram: { handle: "myfoodcase_cy", followers: "22K" },
-    tiktok: { handle: "myfoodcase_cy", followers: "14K" },
   },
   {
     name: "Feedmecy",
