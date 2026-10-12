@@ -1579,7 +1579,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "How the pharmacy system works",
-				body: "Cyprus has a dense network of pharmacies (farmakeio in Greek) identified by the standard green cross sign. In Limassol, Paphos, and Larnaca, there is typically a pharmacy within a 5–10 minute walk in any suburban area. Unlike supermarket pharmacy counters in the UK or US, Cypriot pharmacies are standalone businesses staffed by qualified pharmacists, and they are genuinely consultative — it is normal to describe symptoms and receive a recommendation without a GP visit for straightforward ailments. Hours vary by pharmacy. A duty (efimeria) rota operates in each district; the on-duty pharmacy is usually posted on the door of closed pharmacies. Ask a nearby pharmacy or check the district pharmacists' association.",
+				body: "Cyprus has a dense network of pharmacies (farmakeio in Greek) identified by the standard green cross sign. In Limassol, Paphos, and Larnaca, there is typically a pharmacy within a 5–10 minute walk in any suburban area. Unlike supermarket pharmacy counters in the UK or US, Cypriot pharmacies are standalone businesses staffed by qualified pharmacists, and they are genuinely consultative, so it is normal to describe symptoms and receive a recommendation without a GP visit for straightforward ailments. Hours vary by pharmacy. A duty (efimeria) rota operates in each district; the on-duty pharmacy is usually posted on the door of closed pharmacies. Ask a nearby pharmacy or check the district pharmacists' association.",
 			},
 			{
 				heading: "GeSY prescription coverage and co-payments",
@@ -1587,7 +1587,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Transferring a foreign prescription to Cyprus",
-				body: "Prescriptions from another EU member state should be recognised under Directive 2011/24/EU, but pharmacies may still ask for a Cyprus prescription for some medicines. Prescriptions from outside the EU (for example the UK, Israel or the US) are not dispensed; a Cyprus-registered doctor can issue a new one. The process in practice: bring your foreign prescription and, ideally, a recent medical letter from your doctor to a GeSY GP or private doctor in Cyprus, explain your treatment, and they will issue a Cypriot prescription. For routine chronic medications (blood pressure, diabetes, thyroid, antidepressants), most GPs will rewrite the prescription at the first visit without requiring extensive investigation, provided you have documentation of the diagnosis and current dosage. Allow at least one week between arrival and running out of a critical medication — booking the GP appointment takes a few days, and some medications may need to be ordered if the pharmacy does not stock them.",
+				body: "Prescriptions from another EU member state should be recognised under Directive 2011/24/EU, but pharmacies may still ask for a Cyprus prescription for some medicines. Prescriptions from outside the EU (for example the UK, Israel or the US) are not dispensed; a Cyprus-registered doctor can issue a new one. The process in practice: bring your foreign prescription and, ideally, a recent medical letter from your doctor to a GeSY GP or private doctor in Cyprus, explain your treatment, and they will issue a Cypriot prescription. For routine chronic medications (blood pressure, diabetes, thyroid, antidepressants), most GPs will rewrite the prescription at the first visit without requiring extensive investigation, provided you have documentation of the diagnosis and current dosage. Allow at least one week between arrival and running out of a critical medication, since booking the GP appointment takes a few days, and some medications may need to be ordered if the pharmacy does not stock them.",
 			},
 			{
 				heading: "Medications available OTC in Cyprus",
@@ -1599,7 +1599,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Bringing personal medication supply into Cyprus",
-				body: "Carry medicines in original packaging with a letter from your doctor. For controlled substances (opioids, benzodiazepines, ADHD stimulants) check the rules with the Pharmaceutical Services (moh.gov.cy/phs) before travelling. For ADHD medications (methylphenidate, amphetamines), Cypriot prescribing practices are more restrictive than in the US or UK — local psychiatrists do prescribe these, but the process takes longer, typically involving a fresh assessment rather than simply continuing a prior prescription. If this affects you, arrange a psychiatrist appointment as early as possible after arrival.",
+				body: "Carry medicines in original packaging with a letter from your doctor. For controlled substances (opioids, benzodiazepines, ADHD stimulants) check the rules with the Pharmaceutical Services (moh.gov.cy/phs) before travelling. For ADHD medications (methylphenidate, amphetamines), Cypriot prescribing practices are more restrictive than in the US or UK: local psychiatrists do prescribe these, but the process takes longer, typically involving a fresh assessment rather than simply continuing a prior prescription. If this affects you, arrange a psychiatrist appointment as early as possible after arrival.",
 			},
 		],
 		faqs: [
