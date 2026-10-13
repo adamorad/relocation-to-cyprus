@@ -328,7 +328,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "Does Cyprus tax foreign pension or employment income?",
-				a: `Foreign pension income from past employment abroad can be taxed at a flat 5% rate on the amount above ${eur(FOREIGN_PENSION_THRESHOLD)} a year (from tax year 2026; ${eur(FOREIGN_PENSION_THRESHOLD_2025)} for 2025 and earlier), (check the conditions for electing this rate with the Tax Department). Some employment income for work done outside Cyprus can be exempt under Article 8(23)/(23A) of the Income Tax Law; this depends on the employer and days abroad, not on non-dom status. Check with a Cyprus-registered accountant. Cyprus has a wide network of double-tax treaties, which further reduce withholding taxes on cross-border income.`,
+				a: `Foreign pension income from past employment abroad can be taxed at a flat 5% rate on the amount above ${eur(FOREIGN_PENSION_THRESHOLD)} a year (from tax year 2026; ${eur(FOREIGN_PENSION_THRESHOLD_2025)} for 2025 and earlier); check the conditions for this rate with the Tax Department. Some employment income for work done outside Cyprus can be exempt under Article 8(23)/(23A) of the Income Tax Law; this depends on the employer and days abroad, not on non-dom status. Check with a Cyprus-registered accountant. Cyprus has a wide network of double-tax treaties, which further reduce withholding taxes on cross-border income.`,
 			},
 			{
 				q: "Do I need to apply for non-dom status in Cyprus?",
