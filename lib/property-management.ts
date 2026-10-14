@@ -15,9 +15,12 @@ export { ALL_CITIES } from "@/lib/food";
 export type PropertyManager = {
   name: string;
   cities: City[];
-  why: string;
-  licensedByRERA: boolean;
+  why?: string;
+  licensedByRERA?: boolean;
   website?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
 };
 
 export type PropertyManagementTip = {
@@ -95,5 +98,23 @@ export const PROPERTY_MANAGERS: ReadonlyArray<PropertyManager> = [
     why: "Real estate consultancy with a property and facilities management division, listed for Limassol, Larnaca and Paphos. Check the company's own site for its accreditations and services.",
     licensedByRERA: false,
     website: "https://www.danos.com.cy",
+  },
+
+  // ── Business-confirmed listings ───────────────────────────────────────────
+  {
+    name: "BluCove Stays",
+    cities: ["Paphos"],
+    address: "Paphos, Cyprus",
+    phone: "+357 97 744 090",
+    website: "https://blucovestays.com",
+    email: "contact@blucovestays.com",
+  },
+  {
+    name: "NiSea Realty",
+    cities: ["Limassol"],
+    address:
+      "Omirou 38, Pavoka Center Block A-B, No 5, Ag. Nicolaos, 3095, Limassol",
+    phone: "+357 99 033 733",
+    website: "https://nisea.cy",
   },
 ];

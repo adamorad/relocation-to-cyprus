@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/Badge";
 import { Callout } from "@/components/ui/Callout";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup } from "@/components/ui/Chip";
+import { ListingContact } from "@/components/ui/ListingContact";
+import { listingId } from "@/lib/food";
 import {
 	ALL_CITIES,
 	type City,
@@ -51,7 +53,7 @@ export default function PropertyManagementClient() {
 			) : (
 				<CardGrid cols={2} className="mt-5">
 					{filtered.map((manager) => (
-						<CardGridItem key={manager.name}>
+						<CardGridItem key={manager.name} id={listingId(manager.name)}>
 							<Card
 								variant="text"
 								eyebrow={
@@ -61,15 +63,16 @@ export default function PropertyManagementClient() {
 								meta={manager.cities.join(" · ")}
 								text={manager.why}
 								footer={
+									manager.address ||
+									manager.phone ||
+									manager.email ||
 									manager.website ? (
-										<a
-											href={manager.website}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
-										>
-											Website
-										</a>
+										<ListingContact
+											address={manager.address}
+											phone={manager.phone}
+											email={manager.email}
+											website={manager.website}
+										/>
 									) : undefined
 								}
 							/>

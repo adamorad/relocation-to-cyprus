@@ -22,13 +22,18 @@ export type ImmigrationSpecialization =
 
 export type ImmigrationLawyer = {
   name: string;
-  firm: string;
+  /** Anchor id when it differs from listingId(name), e.g. a second office. */
+  anchor?: string;
+  firm?: string;
   city: City;
   specializations: ImmigrationSpecialization[];
   /** Omitted when not verified on the firm's own site. */
   languages?: string[];
-  why: string;
+  why?: string;
   website?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
   /** Editorial verification notes (not rendered). */
   notes?: string;
 };
@@ -150,5 +155,24 @@ export const IMMIGRATION_LAWYERS: ReadonlyArray<ImmigrationLawyer> = [
     why: "Larnaca firm whose site lists applications for immigration permits, permanent residence permits and visas, and work authorisations.",
     website: "https://akfirm.law/services/immigration-services/",
     notes: "Office and services quoted from the firm's own page, fetched 2026-10-05. Bar registration UNVERIFIED. Languages and fees UNVERIFIED.",
+  },
+  {
+    name: "Andreas Georghadjis LLC",
+    city: "Limassol",
+    specializations: [],
+    address: "Iris House, John Kennedy Street, 3106 Limassol, Cyprus",
+    phone: "+357 25 590 600",
+    website: "https://www.lloydslaw.com",
+    notes: "Business-confirmed listing (inbox file 2026-10-14). Website given as www.lloydslaw.com; https:// added.",
+  },
+  {
+    name: "Andreas Georghadjis LLC (Famagusta office)",
+    anchor: "andreas-georghadjis-llc-famagusta",
+    city: "Ayia Napa",
+    specializations: [],
+    address: "21 Giannaki Pappoulli Street, 5330 Ayia Napa, Famagusta, Cyprus",
+    phone: "+357 23 725 080",
+    website: "https://www.lloydslaw.com",
+    notes: "Business-confirmed listing (inbox file 2026-10-14). Website given as www.lloydslaw.com; https:// added.",
   },
 ];
