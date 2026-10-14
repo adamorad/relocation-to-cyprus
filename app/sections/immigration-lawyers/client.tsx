@@ -5,6 +5,8 @@ import { DirectoryFeatured } from "@/components/templates/DirectoryFeatured";
 import { Badge } from "@/components/ui/Badge";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup } from "@/components/ui/Chip";
+import { ListingContact } from "@/components/ui/ListingContact";
+import { listingId } from "@/lib/food";
 import {
 	ALL_CITIES,
 	ALL_IMMIGRATION_SPECIALIZATIONS,
@@ -74,7 +76,10 @@ export default function ImmigrationLawyersClient() {
 			{visible.length > 0 ? (
 				<CardGrid cols={2} className="mt-5">
 					{visible.map((l) => (
-						<CardGridItem key={`${l.name}-${l.firm}`}>
+						<CardGridItem
+							key={`${l.name}-${l.firm}`}
+							id={l.anchor ?? listingId(l.name)}
+						>
 							<Card
 								variant="text"
 								eyebrow={<Badge>{l.city}</Badge>}
@@ -97,16 +102,12 @@ export default function ImmigrationLawyersClient() {
 													{l.languages.join(", ")}
 												</span>
 											) : null}
-											{l.website ? (
-												<a
-													href={l.website}
-													target="_blank"
-													rel="noopener noreferrer"
-													className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
-												>
-													Website
-												</a>
-											) : null}
+											<ListingContact
+												address={l.address}
+												phone={l.phone}
+												email={l.email}
+												website={l.website}
+											/>
 										</div>
 									</div>
 								}

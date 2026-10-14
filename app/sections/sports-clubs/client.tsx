@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/Badge";
 import { Callout } from "@/components/ui/Callout";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup } from "@/components/ui/Chip";
+import { ListingContact } from "@/components/ui/ListingContact";
+import { listingId } from "@/lib/food";
 import {
 	ALL_CITIES,
 	ALL_SPORTS,
@@ -65,12 +67,17 @@ export default function SportsClubsClient() {
 			) : (
 				<CardGrid className="mt-5">
 					{filtered.map((club) => (
-						<CardGridItem key={`${club.name}-${club.city}`}>
+						<CardGridItem
+							key={`${club.name}-${club.city}`}
+							id={listingId(club.name)}
+						>
 							<Card
 								variant="text"
 								eyebrow={
 									<span className="flex flex-wrap gap-1.5">
-										<Badge className="capitalize">{club.level}</Badge>
+										{club.level ? (
+											<Badge className="capitalize">{club.level}</Badge>
+										) : null}
 										{club.englishWelcome ? (
 											<Badge>English welcome</Badge>
 										) : null}
@@ -80,18 +87,16 @@ export default function SportsClubsClient() {
 									</span>
 								}
 								title={club.name}
-								meta={`${club.city} · ${club.sport}`}
+								meta={[club.city, club.sport].filter(Boolean).join(" · ")}
 								text={club.why}
 								footer={
-									club.website ? (
-										<a
-											href={club.website}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
-										>
-											Website
-										</a>
+									club.address || club.phone || club.email || club.website ? (
+										<ListingContact
+											address={club.address}
+											phone={club.phone}
+											email={club.email}
+											website={club.website}
+										/>
 									) : undefined
 								}
 							/>

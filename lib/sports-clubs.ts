@@ -13,13 +13,16 @@ export { ALL_CITIES } from "@/lib/food";
 
 export type SportsClub = {
   name: string;
-  city: City;
-  sport: string;
-  level: "beginner" | "recreational" | "competitive" | "all";
-  englishWelcome: boolean;
+  city?: City;
+  sport?: string;
+  level?: "beginner" | "recreational" | "competitive" | "all";
+  englishWelcome?: boolean;
   annualFeeApprox?: number;
-  why: string;
+  why?: string;
   website?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
 };
 
 export type SportsTip = {
@@ -283,5 +286,17 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     englishWelcome: true,
     annualFeeApprox: 600,
     why: "Well-regarded yoga studio in Kato Paphos with classes in English. Hatha, Vinyasa, and Yin yoga, plus Pilates and meditation workshops. Popular with the British expat community in Paphos.",
+  },
+  // ── Business-confirmed listings ───────────────────────────────────────────
+  {
+    name: "NICOSIA PADEL CLUB",
+    address:
+      "200 Kyrenias Street, Aglatzia (behind Kapnos Shuttle Service), Nicosia 2112, CY",
+    phone: "+357 97 960525",
+    website: "https://www.nicosiapadelclub.com/",
+  },
+  {
+    name: "Dive Cypria",
+    website: "https://divecypria.cy",
   },
 ];

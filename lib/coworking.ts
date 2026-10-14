@@ -23,7 +23,7 @@ export type CoworkSpace = {
   name: string;
   city: City;
   neighbourhood?: string;
-  type: CoworkSpaceType;
+  type?: CoworkSpaceType;
   /** Day pass price in EUR, if available. */
   dayPassEuros?: number;
   /** Monthly hot-desk price in EUR. */
@@ -32,12 +32,15 @@ export type CoworkSpace = {
   monthlyDedicatedDesk?: number;
   /** Measured or advertised WiFi speed in Mbps. */
   wifiMbps?: number;
-  noiseLevel: NoiseLevel;
-  amenities: string[];
-  why: string;
+  noiseLevel?: NoiseLevel;
+  amenities?: string[];
+  why?: string;
   /** ISO date string (YYYY-MM-DD) of last known data verification. */
-  verifiedDate: string;
+  verifiedDate?: string;
   website?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
 };
 
 export type CoworkTip = {
@@ -274,5 +277,13 @@ export const COWORK_SPACES: ReadonlyArray<CoworkSpace> = [
     ],
     why: "The only proper coworking space in Ayia Napa. Very quiet outside July–August. Good for digital nomads who want a summer base on Cyprus's best beaches while maintaining a productive work setup. Rates are the lowest on the island.",
     verifiedDate: "2026-01-08",
+  },
+  // ── Business-confirmed listings ───────────────────────────────────────────
+  {
+    name: "Sandare Ltd",
+    city: "Limassol",
+    address: "25 Serifou, Office 201, 3046 Limassol, Cyprus",
+    phone: "+357 99279310",
+    website: "https://sandare.space/",
   },
 ];

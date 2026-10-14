@@ -5,6 +5,7 @@ import { DirectoryFeatured } from "@/components/templates/DirectoryFeatured";
 import { Badge } from "@/components/ui/Badge";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup } from "@/components/ui/Chip";
+import { ListingContact } from "@/components/ui/ListingContact";
 import {
 	ALL_CITIES,
 	ALL_COWORK_TYPES,
@@ -14,6 +15,7 @@ import {
 	type CoworkSpaceType,
 	NOISE_LEVEL_LABEL,
 } from "@/lib/coworking";
+import { listingId } from "@/lib/food";
 
 /** Filters first, then the space cards. Header and info live in page.tsx. */
 export default function CoworkingClient() {
@@ -66,13 +68,17 @@ export default function CoworkingClient() {
 			{visible.length > 0 ? (
 				<CardGrid className="mt-5">
 					{visible.map((space) => (
-						<CardGridItem key={space.name}>
+						<CardGridItem key={space.name} id={listingId(space.name)}>
 							<Card
 								variant="text"
 								eyebrow={
 									<span className="flex flex-wrap gap-1.5">
-										<Badge>{COWORK_TYPE_LABEL[space.type]}</Badge>
-										<Badge>{NOISE_LEVEL_LABEL[space.noiseLevel]}</Badge>
+										{space.type ? (
+											<Badge>{COWORK_TYPE_LABEL[space.type]}</Badge>
+										) : null}
+										{space.noiseLevel ? (
+											<Badge>{NOISE_LEVEL_LABEL[space.noiseLevel]}</Badge>
+										) : null}
 									</span>
 								}
 								title={space.name}
@@ -119,7 +125,7 @@ export default function CoworkingClient() {
 								text={space.why}
 								footer={
 									<div className="space-y-2">
-										{space.amenities.length > 0 ? (
+										{space.amenities?.length ? (
 											<div className="flex flex-wrap gap-1.5">
 												{space.amenities.map((a) => (
 													<Badge key={a}>{a}</Badge>
@@ -127,19 +133,17 @@ export default function CoworkingClient() {
 											</div>
 										) : null}
 										<div className="flex items-center justify-between gap-3">
-											<p className="text-xs text-muted">
-												Verified {space.verifiedDate}
-											</p>
-											{space.website ? (
-												<a
-													href={space.website}
-													target="_blank"
-													rel="noopener noreferrer"
-													className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
-												>
-													Website
-												</a>
+											{space.verifiedDate ? (
+												<p className="text-xs text-muted">
+													Verified {space.verifiedDate}
+												</p>
 											) : null}
+											<ListingContact
+												address={space.address}
+												phone={space.phone}
+												email={space.email}
+												website={space.website}
+											/>
 										</div>
 									</div>
 								}

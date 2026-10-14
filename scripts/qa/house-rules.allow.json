@@ -302,6 +302,21 @@
 			"file": "lib/startup-ecosystem.ts",
 			"context": "ed to Frederick University in Nicosia specialises in navigating exa",
 			"count": 1
+		},
+		{
+			"file": "lib/sports-clubs.ts",
+			"context": "behind Kapnos Shuttle Service Nicosia 2112 CY\"",
+			"count": 1
+		},
+		{
+			"file": "lib/sports-clubs.ts",
+			"context": "name \"NICOSIA PADEL CLUB\"",
+			"count": 1
+		},
+		{
+			"file": "lib/sports-clubs.ts",
+			"context": "website \"https //www.nicosiapadelclub.com/\"",
+			"count": 1
 		}
 	]
 }
