@@ -13,6 +13,7 @@ export type City =
   | "Limassol"
   | "Paphos"
   | "Larnaca"
+  | "Nicosia"
   | "Ayia Napa";
 
 export type Category =
@@ -662,6 +663,13 @@ export const PLACES: Record<FoodCity, Record<Category, Place[]>> = {
       },
     ],
   },
+  Nicosia: {
+    breakfast: [],
+    snack: [],
+    lunch: [],
+    dinner: [],
+    sweets: [],
+  },
   Troodos: {
     breakfast: [],
     snack: [],
@@ -684,6 +692,7 @@ export const ALL_CITIES: ReadonlyArray<City> = [
   "Limassol",
   "Paphos",
   "Larnaca",
+  "Nicosia",
   "Ayia Napa",
 ];
 

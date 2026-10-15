@@ -3,9 +3,10 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 
 /**
- * Owner rule: this region is intentionally excluded from RealCy.app. The old
- * URL is kept only as a static redirect stub to the regions index so existing
- * links do not 404. It is noindex and is not in the sitemap or any list.
+ * Nicosia has no city page yet (no entry in lib/regions.ts). Until it does,
+ * this URL is a static redirect stub to the regions index so existing links do
+ * not 404. It is noindex and is not in the sitemap or any list. Delete this
+ * file when the Nicosia entry is added to REGIONS.
  */
 const TARGET = "/regions/";
 

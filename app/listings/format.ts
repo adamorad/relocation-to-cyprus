@@ -77,6 +77,7 @@ export const CITY_SLUGS = {
 	limassol: "Limassol",
 	paphos: "Paphos",
 	larnaca: "Larnaca",
+	nicosia: "Nicosia",
 	"ayia-napa": "Ayia Napa",
 } as const;
 

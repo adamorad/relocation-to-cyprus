@@ -165,6 +165,7 @@ export const SUPERMARKETS: Record<City, Store[]> = {
       website: "https://www.lidl.com.cy",
     },
   ],
+  Nicosia: [],
 };
 
 // ---------------------------------------------------------------------------

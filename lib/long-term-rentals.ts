@@ -8,7 +8,7 @@
  * so they carry no figure. Verify current rates on the portals.
  */
 
-import { type Bedrooms, RENTS } from "@/lib/facts/rents";
+import { type Bedrooms, RENTS, type RentCity } from "@/lib/facts/rents";
 import type { City } from "@/lib/food";
 
 export type { City } from "@/lib/food";
@@ -71,7 +71,7 @@ export const RENTAL_TIPS: ReadonlyArray<RentalTip> = [
  * reliable Bazaraki cells. Empty when no reliable cell exists.
  */
 function districtAskingRange(
-  city: City,
+  city: RentCity,
   from: number,
   to: number,
 ): { monthlyFrom: number; monthlyTo: number } | Record<string, never> {
