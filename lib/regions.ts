@@ -9,6 +9,7 @@
 import {
 	eur,
 	FEES_AMERICAN_ACADEMY_LARNACA,
+	FEES_ENGLISH_SCHOOL_NICOSIA,
 	FEES_FOLEYS,
 	FEES_GRAMMAR_LIMASSOL,
 	FEES_HERITAGE,
@@ -448,7 +449,9 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 	},
 	{
 		// Sources checked 2026-10-15 (REA-215): publictransport.com.cy fares page,
-		// shso.org.cy Nicosia General Hospital page, visitnicosia.com.cy top places.
+		// shso.org.cy Nicosia General Hospital and contact pages, visitnicosia.com.cy
+		// top places, englishschool.ac.cy 2026-27 fees policy. Leisure facts are the
+		// REA-214 verified directory entries.
 		slug: "nicosia",
 		name: "Nicosia",
 		color: "#5867B0",
@@ -473,11 +476,16 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 			"An all-cities ticket covering Nicosia, Larnaca, Limassol, Paphos and Famagusta costs €20.00 a day, €75.00 a week or €225.00 a month (weekly and monthly need a personalised plastic Motion card).",
 		],
 		healthcare: [
-			"Nicosia General Hospital is a public hospital run by the State Health Services Organisation (SHSO). Its Accident and Emergency department is for emergencies such as accident injuries: a nurse assesses each patient on arrival (triage), then registration costs €10.00. Patients in critical condition are seen without registering first.",
+			"Nicosia General Hospital (215 Old Nicosia-Limassol Road, 2029 Strovolos; tel. 80000408) is a public hospital run by the State Health Services Organisation (SHSO). Its Accident and Emergency department is for emergencies such as accident injuries: a nurse assesses each patient on arrival (triage), then registration costs €10.00. Patients in critical condition are seen without registering first.",
 			"Call 112 in an emergency, as anywhere in the EU.",
 		],
-		schools: [],
-		leisure: [],
+		schools: [
+			`The English School in Nicosia lists tuition of ${eur(FEES_ENGLISH_SCHOOL_NICOSIA)} for 2026-27, with 10% off for a second child and 50% off for a third studying there at the same time.`,
+			"Public Greek-medium schools are free.",
+		],
+		leisure: [
+			"In the old town, the Leventis Municipal Museum and the State Gallery of Contemporary Art are both free to visit, and Hamam Omerye is a working bathhouse. The Strovolos Public Market runs every Friday from 06:00 in the covered GSP stadium car park.",
+		],
 		costs: { summary: "", rows: [], total: "", notes: [] },
 		faqs: [
 			{
