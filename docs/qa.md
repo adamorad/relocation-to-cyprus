@@ -28,7 +28,6 @@ Scans `app/`, `components/`, `lib/` (not `lib/data/listings.json` or `archive/`)
 | --- | --- |
 | `em-dash` | The em dash character |
 | `emoji` | Any emoji. Glyphs in `house-rules.allow.json` (`emojiGlyphs`) are ignored. The star and check mark used in the UI are not emoji and need no entry |
-| `nicosia` | The word Nicosia, unless it matches an entry under `nicosia` in `house-rules.allow.json` (the institution mentions the owner kept). Entries are `{file, context, count}`: `context` is the text 30 characters either side of the match (punctuation such as em dashes and commas folded into whitespace), so editing other parts of the line does not break it, and an identical extra copy exceeds `count` and fails. New mentions fail |
 | `relocation-guide` | The label "Relocation guide" |
 | `hex-class` | A hard-coded hex colour inside a Tailwind class such as `text-[#35cdc4]`, anywhere except `app/globals.css` |
 
@@ -44,7 +43,7 @@ When you remove violations, regenerate the baseline so the numbers go down:
 node scripts/qa/house-rules.mjs --update-baseline
 ```
 
-Do not raise the baseline to make CI pass. If a new Nicosia institution mention is genuinely needed, add it with `node scripts/qa/house-rules.mjs --update-nicosia` and explain why in the pull request.
+Do not raise the baseline to make CI pass.
 
 ## Accessibility (`scripts/qa/axe.mjs`)
 

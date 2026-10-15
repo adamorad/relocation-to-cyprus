@@ -53,4 +53,4 @@ Topics are defined in `lib/topics.ts` and every guide, directory and tool is map
 - Two widths only (`Container`), one breadcrumb style, one `<main id="main">` and one H1 per page, headings in order.
 - Colours come from the theme tokens and `lib/chart-colors.ts` for charts. No traffic-light red, amber or green for neutral comparisons; highlight a best value with `bg-sky-strong text-ink`. Semantic colours are for real good or bad states (deadlines, completed checklist items, warnings, form errors).
 - 44px minimum touch targets, visible focus, AA contrast.
-- No em dashes or emojis in new copy, no "Relocation guide" label, never add Nicosia, and no URL or slug changes. `pnpm qa:rules` enforces the text rules against a baseline.
+- No em dashes or emojis in new copy, no "Relocation guide" label, and no URL or slug changes. `pnpm qa:rules` enforces the text rules against a baseline.

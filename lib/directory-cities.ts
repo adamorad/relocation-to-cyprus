@@ -91,6 +91,7 @@ export function directoryCityCounts(slug: string): CityCounts | null {
 		limassol: 0,
 		paphos: 0,
 		larnaca: 0,
+		nicosia: 0,
 		"ayia-napa": 0,
 		islandWide: 0,
 	};

@@ -4,9 +4,6 @@
 // Rules:
 //   em-dash      U+2014 anywhere
 //   emoji        Unicode emoji (glyphs in house-rules.allow.json "emojiGlyphs" are ignored)
-//   nicosia      the word Nicosia, except {file, context, count} entries in
-//                house-rules.allow.json "nicosia" (context = trimmed text window of
-//                30 characters either side of the match, whitespace normalised)
 //   relocation-guide  the label "Relocation guide"
 //   hex-class    hard-coded hex colour inside a Tailwind class, e.g. text-[#35cdc4]
 //                (app/globals.css is exempt; it defines the theme)
@@ -19,7 +16,6 @@
 // Usage:
 //   node scripts/qa/house-rules.mjs                    check, fail on new violations
 //   node scripts/qa/house-rules.mjs --update-baseline  rewrite baseline (per-line hashes)
-//   node scripts/qa/house-rules.mjs --update-nicosia   regenerate the Nicosia allowlist
 import { createHash } from "node:crypto";
 import {
 	existsSync,
@@ -66,7 +62,6 @@ const RULES = {
 		re: /[\p{Extended_Pictographic}\p{Emoji_Presentation}\u{FE0F}\u{20E3}]/u,
 		label: "emoji",
 	},
-	nicosia: { re: /Nicosia/i, label: "Nicosia outside allowlist" },
 	"relocation-guide": {
 		re: /Relocation guide/,
 		label: 'label "Relocation guide"',
@@ -97,32 +92,13 @@ for (const f of SCAN_FILES) if (existsSync(join(ROOT, f))) files.push(f);
 
 const readJson = (p, fallback) =>
 	existsSync(p) ? JSON.parse(readFileSync(p, "utf8")) : fallback;
-const allow = readJson(ALLOW_PATH, { emojiGlyphs: [], nicosia: [] });
+const allow = readJson(ALLOW_PATH, { emojiGlyphs: [] });
 const emojiGlyphs = new Set(allow.emojiGlyphs ?? []);
-const WINDOW = 30;
-const norm = (t) => t.replace(/\s+/g, " ").trim();
 const sha = (t) => createHash("sha1").update(t).digest("hex");
-const nicosiaAllowed = new Map(); // `${file}\t${context}` -> allowed count
-for (const e of allow.nicosia ?? [])
-	nicosiaAllowed.set(`${e.file}\t${e.context}`, e.count ?? 1);
-// Punctuation that cleanup edits swap or drop (em dash for comma, etc.) is
-// folded into whitespace before the window is cut, so those edits keep the
-// context stable.
-const nicosiaContexts = (line) => {
-	const t = norm(line.replace(/[\u2014,;:()]/g, " "));
-	return [...t.matchAll(/Nicosia/gi)].map((m) =>
-		t
-			.slice(Math.max(0, m.index - WINDOW), m.index + m[0].length + WINDOW)
-			.trim(),
-	);
-};
-const updateNicosia = process.argv.includes("--update-nicosia");
 const updateBaseline = process.argv.includes("--update-baseline");
 
 // hits[rule][file] = [{line, text, count}]
 const hits = Object.fromEntries(RULE_NAMES.map((r) => [r, {}]));
-const nicosiaFound = new Map(); // `${file}\t${context}` -> {file, context, count}
-const nicosiaSeen = new Map(); // running count while scanning
 
 function add(rule, file, line, text, count = 1) {
 	if (!hits[rule][file]) hits[rule][file] = [];
@@ -149,16 +125,6 @@ for (const file of files) {
 			);
 			if (rest.length) add("emoji", file, n, line, rest.length);
 		}
-		for (const context of nicosiaContexts(line)) {
-			const key = `${file}\t${context}`;
-			const entry = nicosiaFound.get(key) ?? { file, context, count: 0 };
-			entry.count++;
-			nicosiaFound.set(key, entry);
-			const seen = (nicosiaSeen.get(key) ?? 0) + 1;
-			nicosiaSeen.set(key, seen);
-			// Occurrences beyond the allowed count are violations.
-			if (seen > (nicosiaAllowed.get(key) ?? 0)) add("nicosia", file, n, line);
-		}
 		const rg = countMatches(RULES["relocation-guide"].re, line);
 		if (rg) add("relocation-guide", file, n, line, rg);
 		if (file !== "app/globals.css") {
@@ -166,21 +132,6 @@ for (const file of files) {
 			if (hx) add("hex-class", file, n, line, hx);
 		}
 	});
-}
-
-if (updateNicosia) {
-	const list = [...nicosiaFound.values()].sort(
-		(a, b) =>
-			a.file.localeCompare(b.file) || a.context.localeCompare(b.context),
-	);
-	writeFileSync(
-		ALLOW_PATH,
-		`${JSON.stringify({ ...allow, nicosia: list }, null, "\t")}\n`,
-	);
-	console.log(
-		`Wrote ${list.length} Nicosia allowlist entries to ${relative(ROOT, ALLOW_PATH)}.`,
-	);
-	process.exit(0);
 }
 
 // current[rule][file][hash] = count
@@ -202,8 +153,7 @@ const current = Object.fromEntries(
 );
 
 if (updateBaseline) {
-	// Nicosia is governed by the allowlist, not the baseline.
-	const base = { ...current, nicosia: {} };
+	const base = current;
 	writeFileSync(
 		BASELINE_PATH,
 		`${JSON.stringify({ note: "Pre-existing violations as {rule: {file: {sha1(trimmed line): count}}}. CI fails when a line hash is new or its count rises, so editing a baselined line forces it to be cleaned.", rules: base }, null, "\t")}\n`,

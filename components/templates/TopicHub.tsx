@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { directoryCityCounts } from "@/lib/directory-cities";
+import { regionBySlug } from "@/lib/regions";
 import { itemsForTopic, type TopicItem } from "@/lib/topic-map";
 import { CITY_NAME, CITY_SLUGS, hubHref, type Topic } from "@/lib/topics";
 import { HubTemplate } from "./HubTemplate";
@@ -63,7 +64,7 @@ export function TopicHub({
 					description="Everyday life, areas and local listings in each city."
 				>
 					<CardGrid cols={4}>
-						{CITY_SLUGS.map((c) => (
+						{CITY_SLUGS.filter((c) => regionBySlug(c)).map((c) => (
 							<CardGridItem key={c}>
 								<Card
 									variant="row"

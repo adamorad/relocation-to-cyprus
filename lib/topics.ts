@@ -184,11 +184,12 @@ export const DAILY_TOPICS: ReadonlyArray<Topic> = TOPICS.filter(
 	(t) => t.slug !== "moving-here",
 );
 
-/** The four city pages used for city filters and "Explore by city". */
+/** The cities used for city filters and "Explore by city" (cards only where a city page exists). */
 export const CITY_SLUGS = [
 	"limassol",
 	"paphos",
 	"larnaca",
+	"nicosia",
 	"ayia-napa",
 ] as const;
 export type CitySlug = (typeof CITY_SLUGS)[number];
@@ -196,6 +197,7 @@ export const CITY_NAME: Record<CitySlug, string> = {
 	limassol: "Limassol",
 	paphos: "Paphos",
 	larnaca: "Larnaca",
+	nicosia: "Nicosia",
 	"ayia-napa": "Ayia Napa",
 };
 

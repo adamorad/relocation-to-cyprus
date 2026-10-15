@@ -290,6 +290,7 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
   // ── Business-confirmed listings ───────────────────────────────────────────
   {
     name: "NICOSIA PADEL CLUB",
+    city: "Nicosia",
     address:
       "200 Kyrenias Street, Aglatzia (behind Kapnos Shuttle Service), Nicosia 2112, CY",
     phone: "+357 97 960525",

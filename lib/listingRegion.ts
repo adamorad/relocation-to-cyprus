@@ -13,7 +13,7 @@ import {
 
 // Classifier positions include the hidden (non-public) cities so that listings
 // near them are classified correctly and then hidden, never misassigned.
-// Order matches the original city list (hidden entry first).
+// Order matches the original city list (Nicosia first).
 const CITY_SCENE_POSITIONS = [...HIDDEN_CLASSIFIER_CITIES, ...CITIES].map(
 	(c) => {
 		const [px, py] = project(c.lon, c.lat);
