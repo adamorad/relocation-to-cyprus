@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup } from "@/components/ui/Chip";
 import { trackEvent } from "@/lib/analytics";
+import { listingId } from "@/lib/food";
 import {
 	ALL_CITIES,
 	ALL_TRADES,
@@ -62,8 +63,15 @@ export default function HomeServicesClient() {
 
 			{filtered.length > 0 ? (
 				<CardGrid className="mt-5">
-					{filtered.map((s) => (
-						<CardGridItem key={`${s.website}-${s.trade}`}>
+					{filtered.map((s, i) => (
+						<CardGridItem
+							key={`${s.website}-${s.trade}`}
+							id={
+								filtered.findIndex((x) => x.name === s.name) === i
+									? listingId(s.name)
+									: undefined
+							}
+						>
 							<Card
 								variant="text"
 								eyebrow={<Badge>{s.trade}</Badge>}

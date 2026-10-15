@@ -128,6 +128,7 @@ export const HOME_SERVICES: ReadonlyArray<HomeService> = [
 	row("LuxeShine", "Cleaning and key holding", ["Limassol"], "https://luxeshine.cy/", "+357 96 034345"),
 	row("Genika Maintenance & Cleaning", "Cleaning and key holding", ["Larnaca"], "https://genikaservices.com/", "94 210 787"),
 	row("Cyprus Property Solutions (Paphos Cleaning Services)", "Cleaning and key holding", ["Limassol", "Paphos"], "https://cypruspropertysolutions.com/en/", "+357 96 393 914"),
+	row("Ctrl Plus Clean", "Cleaning and key holding", ["Larnaca"], "https://ctrlplusclean.com", "+357 94 33 55 75"),
 ];
 
 /** Distinct businesses (the same website can be listed under several trades). */
