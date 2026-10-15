@@ -22,16 +22,19 @@ export type Nursery = {
   city: City;
   neighbourhood?: string;
   /** Minimum age accepted, in months. */
-  ageRangeFrom: number;
+  ageRangeFrom?: number;
   /** Maximum age accepted, in years. */
-  ageRangeTo: number;
-  languagesOffered: string[];
+  ageRangeTo?: number;
+  languagesOffered?: string[];
   /** Approximate annual fee in EUR; undefined = on request. */
   annualFeeFrom?: number;
   /** Whether full-day (up to 17:00 or later) sessions are available. */
-  fullDay: boolean;
-  why: string;
+  fullDay?: boolean;
+  why?: string;
   website?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
 };
 
 export type ChildcareTip = {
@@ -185,4 +188,13 @@ export const NURSERIES: ReadonlyArray<Nursery> = [
     why: "Lower-cost bilingual option in the Aradippou district, east of Larnaca. Morning-only; popular with families where one parent is home in the afternoon. Year-round operation with a summer club available.",
   },
 
+  {
+    name: "The English Nursery School",
+    city: "Nicosia",
+    neighbourhood: "Strovolos",
+    why: "Takes children from babies to pre-school age.",
+    address: "24 Dasoupoleos, 2015 Strovolos",
+    phone: "+357 22428879",
+    website: "https://www.englishnursery.com.cy",
+  },
 ];

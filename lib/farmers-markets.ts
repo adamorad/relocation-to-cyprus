@@ -20,9 +20,9 @@ export type FarmersMarket = {
   dayOfWeek: string;
   /** Days the market runs, for the day filter (defaults to [dayOfWeek]). */
   days?: ReadonlyArray<string>;
-  hours: string;
-  produces: string[];
-  why: string;
+  hours?: string;
+  produces?: string[];
+  why?: string;
   parkingNotes?: string;
 };
 
@@ -130,5 +130,28 @@ export const FARMERS_MARKETS: ReadonlyArray<FarmersMarket> = [
       "olives",
     ],
     why: "The main covered market in Paphos, in the old town (Ktima) by Kennedy Square. Good mix of Paphos region produce: the district produces excellent citrus, almonds, and carobs. Village producers often sell their own halloumi here.",
+  },
+  {
+    name: "Strovolos Public Market",
+    city: "Nicosia",
+    location: "Covered GSP stadium parking area, Strovolos",
+    dayOfWeek: "Friday",
+    hours: "From 06:00; closes 19:00 (winter), 20:00 (spring and autumn), 20:30 (summer)",
+  },
+  {
+    name: "Central Municipal Market",
+    city: "Nicosia",
+    location: "Old Town Hall market, Nicosia",
+    dayOfWeek: "Daily",
+    days: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ],
+    why: "Busiest on Saturdays. Opening hours are not published; check with Nicosia Municipality.",
   },
 ];

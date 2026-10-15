@@ -71,7 +71,7 @@ export const STARTUP_TIPS: ReadonlyArray<StartupTip> = [
   },
   {
     heading: "Cyprus has EU funding advantages few founders exploit",
-    body: "As an EU member state, Cyprus companies can apply for Horizon Europe grants, ERDF-funded incubator programmes, and the Cyprus Research and Innovation Foundation (RTDI) funding. The ecosystem is small enough that a well-prepared application from a foreign-born founder stands out. IDEA Innovation Centre (linked to Frederick University in Nicosia) specialises in navigating exactly these routes for early-stage companies.",
+    body: "As an EU member state, Cyprus companies can apply for Horizon Europe grants, ERDF-funded incubator programmes, and the Cyprus Research and Innovation Foundation (RTDI) funding. The ecosystem is small enough that a well-prepared application from a foreign-born founder stands out. IDEA Innovation Centre in Nicosia (founded by Bank of Cyprus and partners) runs an incubator programme for early-stage companies.",
   },
 ];
 
@@ -151,5 +151,13 @@ export const STARTUP_VENUES: ReadonlyArray<StartupVenue> = [
     focusAreas: ["tourism tech", "remote workers", "digital nomads"],
     membershipFrom: 90,
     why: "The only serious coworking option in the Famagusta free area. Built around the digital nomad community that spends summers in Ayia Napa. Quiet outside the summer season; good for focused solo work.",
+  },
+  {
+    name: "IDEA Innovation Centre",
+    city: "Nicosia",
+    type: "incubator",
+    focusAreas: [],
+    why: "Founded in 2015 by Bank of Cyprus and partners. A nine-month incubator with EUR 20,000 seed funding, mentoring, and legal, accounting, marketing and ICT services.",
+    website: "https://ideacy.net",
   },
 ];

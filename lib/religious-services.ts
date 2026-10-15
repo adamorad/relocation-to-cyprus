@@ -29,11 +29,13 @@ export type ReligiousService = {
   name: string;
   city: City;
   faith: Faith;
-  languagesOffered: string[];
-  serviceFrequency: string;
-  why: string;
+  languagesOffered?: string[];
+  serviceFrequency?: string;
+  why?: string;
   address?: string;
   website?: string;
+  phone?: string;
+  email?: string;
 };
 
 export const ALL_FAITHS: ReadonlyArray<Faith> = [
@@ -228,5 +230,21 @@ export const RELIGIOUS_SERVICES: ReadonlyArray<ReligiousService> = [
     address: "Limassol",
   },
 
+  {
+    name: "St Paul's Anglican Church",
+    city: "Nicosia",
+    faith: "Anglican",
+    why: "Check the church website for service times.",
+    address: "Leoforos Vyronos, Nicosia",
+    phone: "+357 22 677 897",
+    website: "https://www.st-pauls-nicosia.com",
+  },
+  {
+    name: "Cathedral of Agios Ioannis",
+    city: "Nicosia",
+    faith: "Orthodox",
+    why: "Next to the Archbishopric. Open Tue-Fri 09:00-15:00, Sat 09:00-12:00 and during mass; closed Mondays, Sundays and public holidays. Free.",
+    address: "Plateia Archiepiskopou Kyprianou, Nicosia",
+  },
   // ── Non-denominational / Other ───────────────────────────────────────────
 ];

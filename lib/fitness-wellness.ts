@@ -29,9 +29,12 @@ export type FitnessVenue = {
   type: FitnessType;
   monthlyFrom?: number;
   dropInFrom?: number;
-  englishSpoken: boolean;
-  why: string;
+  englishSpoken?: boolean;
+  why?: string;
   website?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
 };
 
 export type FitnessTip = {
@@ -299,5 +302,13 @@ export const FITNESS_VENUES: ReadonlyArray<FitnessVenue> = [
     englishSpoken: true,
     why: "Full spa at the Adams Beach Hotel. Day passes available. Good for a recovery day between viewings — sports massage and thalassotherapy treatments available. English spoken throughout.",
     website: "https://www.adams.com.cy/coralspa/",
+  },
+  {
+    name: "Nicosia Municipal Swimming Pool",
+    city: "Nicosia",
+    neighbourhood: "Ayios Andreas",
+    type: "swimming",
+    why: "Summer season only, early May to late September, daily 10:00-19:00. Near the House of Representatives and Supreme Court; parking from Loukis Akritas Ave.",
+    phone: "+357 22797646",
   },
 ];

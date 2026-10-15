@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Callout } from "@/components/ui/Callout";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup } from "@/components/ui/Chip";
+import { listingId } from "@/lib/food";
 import {
 	ALL_CITIES,
 	ALL_STARTUP_VENUE_TYPES,
@@ -70,7 +71,7 @@ export default function StartupEcosystemClient() {
 			) : (
 				<CardGrid className="mt-5">
 					{visible.map((venue) => (
-						<CardGridItem key={venue.name}>
+						<CardGridItem key={venue.name} id={listingId(venue.name)}>
 							<Card
 								variant="text"
 								eyebrow={<Badge>{STARTUP_VENUE_TYPE_LABEL[venue.type]}</Badge>}

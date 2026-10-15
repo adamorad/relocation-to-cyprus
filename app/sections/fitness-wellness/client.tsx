@@ -5,6 +5,7 @@ import { DirectoryFeatured } from "@/components/templates/DirectoryFeatured";
 import { Badge } from "@/components/ui/Badge";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup } from "@/components/ui/Chip";
+import { ListingContact } from "@/components/ui/ListingContact";
 import {
 	ALL_CITIES,
 	ALL_FITNESS_TYPES,
@@ -13,6 +14,7 @@ import {
 	FITNESS_VENUES,
 	type FitnessType,
 } from "@/lib/fitness-wellness";
+import { listingId } from "@/lib/food";
 
 /** Filters first, then the venue cards. Header and info live in page.tsx. */
 export default function FitnessWellnessClient() {
@@ -65,7 +67,10 @@ export default function FitnessWellnessClient() {
 			{filtered.length > 0 ? (
 				<CardGrid className="mt-5">
 					{filtered.map((venue) => (
-						<CardGridItem key={`${venue.name}-${venue.city}`}>
+						<CardGridItem
+							key={`${venue.name}-${venue.city}`}
+							id={listingId(venue.name)}
+						>
 							<Card
 								variant="text"
 								eyebrow={
@@ -104,15 +109,16 @@ export default function FitnessWellnessClient() {
 								}
 								text={venue.why}
 								footer={
+									venue.address ||
+									venue.phone ||
+									venue.email ||
 									venue.website ? (
-										<a
-											href={venue.website}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
-										>
-											Website
-										</a>
+										<ListingContact
+											address={venue.address}
+											phone={venue.phone}
+											email={venue.email}
+											website={venue.website}
+										/>
 									) : undefined
 								}
 							/>

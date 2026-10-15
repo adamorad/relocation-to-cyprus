@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/Badge";
 import { Callout } from "@/components/ui/Callout";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup } from "@/components/ui/Chip";
+import { ListingContact } from "@/components/ui/ListingContact";
+import { listingId } from "@/lib/food";
 import {
 	ALL_CITIES,
 	ALL_FAITHS,
@@ -69,13 +71,15 @@ export default function ReligiousServicesClient() {
 			) : (
 				<CardGrid className="mt-5">
 					{filtered.map((service) => (
-						<CardGridItem key={service.name}>
+						<CardGridItem key={service.name} id={listingId(service.name)}>
 							<Card
 								variant="text"
 								eyebrow={
 									<span className="flex flex-wrap gap-1.5">
 										<Badge>{FAITH_LABEL[service.faith]}</Badge>
-										<Badge>{service.serviceFrequency}</Badge>
+										{service.serviceFrequency ? (
+											<Badge>{service.serviceFrequency}</Badge>
+										) : null}
 									</span>
 								}
 								title={service.name}
@@ -83,7 +87,7 @@ export default function ReligiousServicesClient() {
 								text={service.why}
 								footer={
 									<>
-										{service.languagesOffered.length > 0 ? (
+										{service.languagesOffered?.length ? (
 											<p className="text-muted">
 												<span className="font-semibold text-ink">
 													Languages:{" "}
@@ -91,18 +95,16 @@ export default function ReligiousServicesClient() {
 												{service.languagesOffered.join(", ")}
 											</p>
 										) : null}
-										{service.address ? (
-											<p className="mt-1 text-muted">{service.address}</p>
-										) : null}
-										{service.website ? (
-											<a
-												href={service.website}
-												target="_blank"
-												rel="noopener noreferrer"
-												className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
-											>
-												Visit website
-											</a>
+										{service.address ||
+										service.phone ||
+										service.email ||
+										service.website ? (
+											<ListingContact
+												address={service.address}
+												phone={service.phone}
+												email={service.email}
+												website={service.website}
+											/>
 										) : null}
 									</>
 								}
