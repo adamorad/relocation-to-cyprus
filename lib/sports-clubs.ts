@@ -299,5 +299,7 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
   {
     name: "Dive Cypria",
     website: "https://divecypria.cy",
+    address: "390 Leoforo Protaras, Cavo Gkreko, 5296, Paralimni, Famagusta, Cyprus",
+    phone: "+357 97 754194",
   },
 ];
