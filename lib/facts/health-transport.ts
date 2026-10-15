@@ -141,6 +141,9 @@ export const FEES_ISP: FeeRange = { from: 4815, to: 9515 };
 /** The American Academy Larnaca, Junior and Senior School. AAL 2026-27 tuition PDFs. Checked 2026-10-02. */
 export const FEES_AMERICAN_ACADEMY_LARNACA: FeeRange = { from: 4130, to: 7470 };
 
+/** The English School, Nicosia, single tuition figure. Tuition Fees Policy 2026-27 (June 2026), section 5 table. Checked 2026-10-15. */
+export const FEES_ENGLISH_SCHOOL_NICOSIA = 9550;
+
 /** "€7,020 to €13,200" */
 export function feeRange(range: FeeRange): string {
 	return `${eur(range.from)} to ${eur(range.to)}`;
