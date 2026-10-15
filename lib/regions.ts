@@ -446,6 +446,54 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 			},
 		],
 	},
+	{
+		// Sources checked 2026-10-15 (REA-215): publictransport.com.cy fares page,
+		// shso.org.cy Nicosia General Hospital page, visitnicosia.com.cy top places.
+		slug: "nicosia",
+		name: "Nicosia",
+		color: "#5867B0",
+		image: {
+			src: "/images/cities/nicosia-1600.webp",
+			srcSmall: "/images/cities/nicosia-800.webp",
+			width: 1600,
+			height: 900,
+			alt: "Sunlit old town promenade in Nicosia with cafe tables, palm trees, a stone church bell tower and the old city walls, modern towers behind",
+		},
+		oneLiner:
+			"The inland capital and seat of government, with an old walled city divided by the UN-patrolled Green Line.",
+		summary:
+			"Daily life in Nicosia: the old walled city, buses, the main public hospital and practical answers for the capital of the Republic of Cyprus.",
+		intro:
+			"Nicosia (Lefkosia) is the capital of the Republic of Cyprus and sits inland, so it has no beach of its own. The old walled city is split by the UN-patrolled Green Line, and this page covers the government-controlled southern part only.",
+		areas: [
+			"The Venetian walls ring the old city. Inside them, Eleftheria Square, designed by Zaha Hadid, links the old town with modern Nicosia, and the pedestrian Ledra and Onasagorou streets are the commercial heart.",
+		],
+		gettingAround: [
+			"Urban buses are run by Cyprus Public Transport. A single costs €2.70 cash or €2.00 on a Motion card; the night single (21:00 to 04:00) is €4.70 cash or €3.50 on a card. A 30-day pass is €66.90 on a personalised card or €93.60 on an anonymous card.",
+			"An all-cities ticket covering Nicosia, Larnaca, Limassol, Paphos and Famagusta costs €20.00 a day, €75.00 a week or €225.00 a month (weekly and monthly need a personalised plastic Motion card).",
+		],
+		healthcare: [
+			"Nicosia General Hospital is a public hospital run by the State Health Services Organisation (SHSO). Its Accident and Emergency department is for emergencies such as accident injuries: a nurse assesses each patient on arrival (triage), then registration costs €10.00. Patients in critical condition are seen without registering first.",
+			"Call 112 in an emergency, as anywhere in the EU.",
+		],
+		schools: [],
+		leisure: [],
+		costs: { summary: "", rows: [], total: "", notes: [] },
+		faqs: [
+			{
+				question: "Does this page cover the north of Nicosia?",
+				answer:
+					"No. It covers the government-controlled southern part of the city only.",
+			},
+			{
+				question: "Does Nicosia have a beach?",
+				answer:
+					"No. Nicosia is inland, so a beach day means driving to the coast.",
+			},
+		],
+		practical: [],
+		property: [],
+	},
 ];
 
 export function regionBySlug(slug: string): RegionInfo | undefined {

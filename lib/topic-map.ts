@@ -394,7 +394,7 @@ export const DIRECTORY_TOPICS = {
 	"halal-kosher": { topic: "food-and-shopping" },
 	food: {
 		topic: "food-and-shopping",
-		cities: ["limassol", "paphos", "larnaca", "ayia-napa"],
+		cities: ["limassol", "paphos", "larnaca", "ayia-napa", "nicosia"],
 		why: "Restored from the archived homepage Food panel.",
 	},
 	shopping: {
