@@ -5,6 +5,7 @@ import { DirectoryFeatured } from "@/components/templates/DirectoryFeatured";
 import { Badge } from "@/components/ui/Badge";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup } from "@/components/ui/Chip";
+import { ListingContact } from "@/components/ui/ListingContact";
 import {
 	ALL_CITIES,
 	ALL_VENUE_TYPES,
@@ -13,6 +14,7 @@ import {
 	VENUE_TYPE_LABEL,
 	type VenueType,
 } from "@/lib/art-culture";
+import { listingId } from "@/lib/food";
 
 /** Filters first, then the venue cards. Header and info live in page.tsx. */
 export default function ArtCultureClient() {
@@ -69,12 +71,17 @@ export default function ArtCultureClient() {
 			{filtered.length > 0 ? (
 				<CardGrid className="mt-5">
 					{filtered.map((venue) => (
-						<CardGridItem key={`${venue.name}-${venue.city}`}>
+						<CardGridItem
+							key={`${venue.name}-${venue.city}`}
+							id={listingId(venue.name)}
+						>
 							<Card
 								variant="text"
 								eyebrow={
 									<span className="flex flex-wrap gap-1.5">
-										<Badge>{VENUE_TYPE_LABEL[venue.type]}</Badge>
+										{venue.type ? (
+											<Badge>{VENUE_TYPE_LABEL[venue.type]}</Badge>
+										) : null}
 										{venue.admissionEuros !== undefined ? (
 											<Badge>
 												{venue.admissionEuros === 0
@@ -90,22 +97,25 @@ export default function ArtCultureClient() {
 									<>
 										{venue.city}
 										{venue.neighbourhood ? ` · ${venue.neighbourhood}` : ""}
-										<span className="mt-1 block italic">
-											{venue.highlights}
-										</span>
+										{venue.highlights ? (
+											<span className="mt-1 block italic">
+												{venue.highlights}
+											</span>
+										) : null}
 									</>
 								}
 								text={venue.why}
 								footer={
+									venue.address ||
+									venue.phone ||
+									venue.email ||
 									venue.website ? (
-										<a
-											href={venue.website}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
-										>
-											Website
-										</a>
+										<ListingContact
+											address={venue.address}
+											phone={venue.phone}
+											email={venue.email}
+											website={venue.website}
+										/>
 									) : undefined
 								}
 							/>

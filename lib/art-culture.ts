@@ -22,12 +22,15 @@ export type CulturalVenue = {
   name: string;
   city: City;
   neighbourhood?: string;
-  type: VenueType;
-  englishSupport: boolean;
+  type?: VenueType;
+  englishSupport?: boolean;
   admissionEuros?: number;
-  highlights: string;
-  why: string;
+  highlights?: string;
+  why?: string;
   website?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
 };
 
 export type CultureTip = {
@@ -205,5 +208,13 @@ export const CULTURAL_VENUES: ReadonlyArray<CulturalVenue> = [
     admissionEuros: 0,
     highlights: "Rotating exhibitions of Cypriot contemporary art, permanent collection of 20th-century works",
     why: "The main public gallery in Larnaca with a rotating programme of contemporary Cypriot exhibitions. Free entry. Smaller than LIMART in Limassol but a good first introduction to the local art scene.",
+  },
+  // ── Business-confirmed listings ───────────────────────────────────────────
+  {
+    name: "The Gallery 45",
+    city: "Limassol",
+    address: "45 Saint Andrew St., Limassol",
+    phone: "+357 97901106",
+    website: "https://www.thegallery45.com",
   },
 ];
