@@ -12,6 +12,7 @@ import {
 	FARMERS_MARKETS,
 	type MarketDay,
 } from "@/lib/farmers-markets";
+import { listingId } from "@/lib/food";
 
 /** Filters first, then the market cards. Header and info live in page.tsx. */
 export default function FarmersMarketsClient() {
@@ -64,7 +65,10 @@ export default function FarmersMarketsClient() {
 			{visible.length > 0 ? (
 				<CardGrid className="mt-5">
 					{visible.map((market) => (
-						<CardGridItem key={`${market.name}-${market.city}`}>
+						<CardGridItem
+							key={`${market.name}-${market.city}`}
+							id={listingId(market.name)}
+						>
 							<Card
 								variant="text"
 								eyebrow={<Badge>{market.dayOfWeek}</Badge>}
@@ -72,19 +76,20 @@ export default function FarmersMarketsClient() {
 								meta={
 									<>
 										{market.city}
-										{" · "}
-										{market.hours}
+										{market.hours ? ` · ${market.hours}` : ""}
 										<span className="mt-1 block">{market.location}</span>
 									</>
 								}
 								text={market.why}
 								footer={
 									<div className="space-y-2">
-										<div className="flex flex-wrap gap-1.5">
-											{market.produces.map((item) => (
-												<Badge key={item}>{item}</Badge>
-											))}
-										</div>
+										{market.produces?.length ? (
+											<div className="flex flex-wrap gap-1.5">
+												{market.produces.map((item) => (
+													<Badge key={item}>{item}</Badge>
+												))}
+											</div>
+										) : null}
 										{market.parkingNotes ? (
 											<p className="text-muted">
 												<span className="font-semibold text-ink">Parking:</span>{" "}

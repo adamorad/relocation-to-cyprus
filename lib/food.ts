@@ -667,7 +667,13 @@ export const PLACES: Record<FoodCity, Record<Category, Place[]>> = {
     breakfast: [],
     snack: [],
     lunch: [],
-    dinner: [],
+    dinner: [
+      {
+        name: "Piatsa Gourounaki",
+        address: "92 Faneromenis St, Nicosia 1011",
+        website: "https://piatsaexpress.com",
+      },
+    ],
     sweets: [],
   },
   Troodos: {

@@ -302,4 +302,11 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     address: "390 Leoforo Protaras, Cavo Gkreko, 5296, Paralimni, Famagusta, Cyprus",
     phone: "+357 97 754194",
   },
+  {
+    name: "Nicosia Rugby",
+    city: "Nicosia",
+    sport: "Rugby",
+    why: "The only Nicosia club on the Cyprus Rugby Federation's club page. Federation contact: secretary@cyprus-rugby.com.",
+    website: "https://www.facebook.com/nicosiarugby",
+  },
 ];

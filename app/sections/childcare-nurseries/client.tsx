@@ -5,7 +5,9 @@ import { DirectoryFeatured } from "@/components/templates/DirectoryFeatured";
 import { Badge } from "@/components/ui/Badge";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup } from "@/components/ui/Chip";
+import { ListingContact } from "@/components/ui/ListingContact";
 import { ALL_CITIES, type City, NURSERIES } from "@/lib/childcare";
+import { listingId } from "@/lib/food";
 
 /** Filters first, then the nursery cards. Header and info live in page.tsx. */
 export default function ChildcareNurseriesClient() {
@@ -45,44 +47,49 @@ export default function ChildcareNurseriesClient() {
 			{visible.length > 0 ? (
 				<CardGrid cols={2} className="mt-5">
 					{visible.map((n) => (
-						<CardGridItem key={`${n.name}-${n.city}`}>
+						<CardGridItem key={`${n.name}-${n.city}`} id={listingId(n.name)}>
 							<Card
 								variant="text"
 								eyebrow={
-									<Badge>{n.fullDay ? "Full day" : "Morning only"}</Badge>
+									n.fullDay !== undefined ? (
+										<Badge>{n.fullDay ? "Full day" : "Morning only"}</Badge>
+									) : undefined
 								}
 								title={n.name}
 								meta={
 									<>
 										{n.city}
 										{n.neighbourhood ? ` · ${n.neighbourhood}` : ""}
-										<span className="mt-1 block">
-											Ages{" "}
-											{n.ageRangeFrom < 24
-												? `${n.ageRangeFrom} months`
-												: `${Math.floor(n.ageRangeFrom / 12)} yrs`}
-											{" – "}
-											{n.ageRangeTo} yrs
-											{n.annualFeeFrom !== undefined
-												? ` · from €${n.annualFeeFrom.toLocaleString()}/yr`
-												: ""}
-										</span>
-										<span className="block">
-											Languages: {n.languagesOffered.join(", ")}
-										</span>
+										{n.ageRangeFrom !== undefined &&
+										n.ageRangeTo !== undefined ? (
+											<span className="mt-1 block">
+												Ages{" "}
+												{n.ageRangeFrom < 24
+													? `${n.ageRangeFrom} months`
+													: `${Math.floor(n.ageRangeFrom / 12)} yrs`}
+												{" – "}
+												{n.ageRangeTo} yrs
+												{n.annualFeeFrom !== undefined
+													? ` · from €${n.annualFeeFrom.toLocaleString()}/yr`
+													: ""}
+											</span>
+										) : null}
+										{n.languagesOffered?.length ? (
+											<span className="block">
+												Languages: {n.languagesOffered.join(", ")}
+											</span>
+										) : null}
 									</>
 								}
 								text={n.why}
 								footer={
-									n.website ? (
-										<a
-											href={n.website}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
-										>
-											Website
-										</a>
+									n.address || n.phone || n.email || n.website ? (
+										<ListingContact
+											address={n.address}
+											phone={n.phone}
+											email={n.email}
+											website={n.website}
+										/>
 									) : undefined
 								}
 							/>
