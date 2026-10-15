@@ -81,6 +81,7 @@ export const HOME_CITIES: ReadonlyArray<HomeCity> = [
 	{ name: "Paphos", href: "/regions/paphos/" },
 	{ name: "Larnaca", href: "/regions/larnaca/" },
 	{ name: "Ayia Napa", href: "/regions/ayia-napa/" },
+	{ name: "Nicosia", href: "/regions/nicosia/" },
 ];
 
 export const HOME_TOOLS_HEADING = "Practical tools";

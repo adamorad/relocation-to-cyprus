@@ -126,7 +126,7 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Coworking Spaces](/sections/coworking/) | Money & paperwork | Community & leisure |  | Work sits in Money & paperwork (no Work topic); also a place to meet people. |
 | [Startup Ecosystem](/sections/startup-ecosystem/) | Money & paperwork | Moving to Cyprus |  | Business support for founders; no Work topic. |
 | [Farmers Markets](/sections/farmers-markets/) | Food & shopping |  |  |  |
-| [Where to Eat](/sections/food/) | Food & shopping |  | limassol, paphos, larnaca, ayia-napa | Restored from the archived homepage Food panel. |
+| [Where to Eat](/sections/food/) | Food & shopping |  | limassol, paphos, larnaca, ayia-napa, nicosia | Restored from the archived homepage Food panel. |
 | [Halal & Kosher Food](/sections/halal-kosher/) | Food & shopping |  |  |  |
 | [International Grocery Stores](/sections/international-grocery/) | Food & shopping |  |  |  |
 | [Supermarkets & Markets](/sections/shopping/) | Food & shopping |  | limassol, paphos, larnaca, ayia-napa | Restored from the archived homepage Shopping panel. |
