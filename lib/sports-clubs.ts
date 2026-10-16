@@ -309,4 +309,10 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     why: "The only Nicosia club on the Cyprus Rugby Federation's club page. Federation contact: secretary@cyprus-rugby.com.",
     website: "https://www.facebook.com/nicosiarugby",
   },
+  {
+    name: "Pittakouris Riding Club",
+    address: "Spyrou Kyprianou 100 (entrance from Lexeko), Lythrodontas 2565",
+    phone: "+357 94 268826",
+    website: "http://pittakourisridingclub.com/",
+  },
 ];
