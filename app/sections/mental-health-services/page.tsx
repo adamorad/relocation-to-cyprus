@@ -3,14 +3,14 @@ import { DirectoryTemplate } from "@/components/templates/DirectoryTemplate";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { Callout } from "@/components/ui/Callout";
 import { MENTAL_HEALTH_TIPS } from "@/lib/mental-health";
+import { DEFAULT_OG_IMAGE } from "@/lib/og";
 import { topicCrumb } from "@/lib/topic-map";
 import MentalHealthServicesClient from "./client";
-import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
 const title = "Mental Health Services in Cyprus: What to Know First";
 const description =
-	"How mental health care works in Cyprus: psychologist vs psychiatrist, online sessions, indicative costs and crisis support. Provider listings are paused while credentials are verified.";
+	"How mental health care works in Cyprus: psychologist vs psychiatrist, online sessions, indicative costs, crisis support and clinicians checked on their own sites.";
 
 export const metadata: Metadata = {
 	title,
@@ -50,7 +50,7 @@ export default function MentalHealthServicesPage() {
 				eyebrow: "Healthcare",
 				title: "Mental Health Services in Cyprus",
 				intro:
-					"How mental health care works in Cyprus for English speakers. Our provider listings are paused while we verify each clinician's credentials with the official registers.",
+					"How mental health care works in Cyprus for English speakers. We list a clinician only after checking their credentials on their own website or an official register; confirm registration yourself before booking.",
 			}}
 			info={MENTAL_HEALTH_TIPS.map((t) => ({
 				heading: t.heading,

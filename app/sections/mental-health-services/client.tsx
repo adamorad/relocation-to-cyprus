@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/Badge";
 import { Callout } from "@/components/ui/Callout";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup } from "@/components/ui/Chip";
+import { ListingContact } from "@/components/ui/ListingContact";
+import { listingId } from "@/lib/food";
 import {
 	ALL_CITIES,
 	ALL_PROVIDER_TYPES,
@@ -30,9 +32,9 @@ export default function MentalHealthServicesClient() {
 		return (
 			<Callout tone="info" title="Provider listings paused">
 				We have paused our list of named therapists until each one is verified
-				against the official Cyprus registers. Ask your GeSY personal doctor
-				for a referral, or check a practitioner's registration yourself
-				before booking. For immediate danger call 112.
+				against the official Cyprus registers. Ask your GeSY personal doctor for
+				a referral, or check a practitioner's registration yourself before
+				booking. For immediate danger call 112.
 			</Callout>
 		);
 	}
@@ -81,7 +83,10 @@ export default function MentalHealthServicesClient() {
 			) : (
 				<CardGrid className="mt-5">
 					{filtered.map((provider) => (
-						<CardGridItem key={`${provider.name}-${provider.city}`}>
+						<CardGridItem
+							key={`${provider.name}-${provider.city}`}
+							id={listingId(provider.name)}
+						>
 							<Card
 								variant="text"
 								eyebrow={
@@ -109,23 +114,21 @@ export default function MentalHealthServicesClient() {
 													{provider.approaches.join(" · ")}
 												</p>
 											) : null}
-											<p>
-												<span className="font-semibold text-ink">
-													Languages:{" "}
-												</span>
-												{provider.languages.join(", ")}
-											</p>
+											{provider.languages?.length ? (
+												<p>
+													<span className="font-semibold text-ink">
+														Languages:{" "}
+													</span>
+													{provider.languages.join(", ")}
+												</p>
+											) : null}
 										</div>
-										{provider.website ? (
-											<a
-												href={provider.website}
-												target="_blank"
-												rel="noopener noreferrer"
-												className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
-											>
-												Website
-											</a>
-										) : null}
+										<ListingContact
+											address={provider.address}
+											phone={provider.phone}
+											email={provider.email}
+											website={provider.website}
+										/>
 									</>
 								}
 							/>
@@ -139,14 +142,15 @@ export default function MentalHealthServicesClient() {
 				<a href="tel:112" className="font-semibold underline">
 					112
 				</a>{" "}
-				(emergency services, free, 24/7) or go to the nearest hospital
-				emergency department. To talk to someone about loneliness, a
-				psychological crisis or thoughts of suicide, call the emotional
-				support line{" "}
+				(emergency services, free, 24/7) or go to the nearest hospital emergency
+				department. To talk to someone about loneliness, a psychological crisis
+				or thoughts of suicide, call the emotional support line{" "}
 				<a href="tel:116123" className="font-semibold underline">
 					116 123
 				</a>{" "}
-				run by SPAVO. According to SPAVO, it is staffed Monday to Friday, 8:30 to 16:00, so it is not available at night or at weekends; outside those hours call 112 or go to an emergency department.
+				run by SPAVO. According to SPAVO, it is staffed Monday to Friday, 8:30
+				to 16:00, so it is not available at night or at weekends; outside those
+				hours call 112 or go to an emergency department.
 			</Callout>
 		</>
 	);
