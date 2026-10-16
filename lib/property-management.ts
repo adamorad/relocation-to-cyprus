@@ -117,4 +117,11 @@ export const PROPERTY_MANAGERS: ReadonlyArray<PropertyManager> = [
     phone: "+357 99 033 733",
     website: "https://nisea.cy",
   },
+  {
+    name: "Maximus Cyprus",
+    cities: ["Paphos"],
+    address: "9 Alonion, Peyia, 8560, Cyprus",
+    phone: "+357 96 331 064",
+    website: "https://maximuscyprus.com/en",
+  },
 ];

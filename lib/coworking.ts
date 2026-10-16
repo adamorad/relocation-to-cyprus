@@ -21,6 +21,8 @@ export type NoiseLevel = "quiet" | "moderate" | "lively";
 
 export type CoworkSpace = {
   name: string;
+  /** URL anchor id when it differs from listingId(name). */
+  anchor?: string;
   city: City;
   neighbourhood?: string;
   type?: CoworkSpaceType;
@@ -285,5 +287,13 @@ export const COWORK_SPACES: ReadonlyArray<CoworkSpace> = [
     address: "25 Serifou, Office 201, 3046 Limassol, Cyprus",
     phone: "+357 99279310",
     website: "https://sandare.space/",
+  },
+  {
+    name: "BO.KA Workspace",
+    anchor: "boka-workspace",
+    city: "Paphos",
+    address: "Neofytou Nikolaidi 17, 8011 Paphos",
+    phone: "+357 97 854057",
+    website: "https://bokawork.space",
   },
 ];
