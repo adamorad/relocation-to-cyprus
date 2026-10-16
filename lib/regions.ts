@@ -476,7 +476,9 @@ export const REGIONS: ReadonlyArray<RegionInfo> = [
 			"An all-cities ticket covering Nicosia, Larnaca, Limassol, Paphos and Famagusta costs €20.00 a day, €75.00 a week or €225.00 a month (weekly and monthly need a personalised plastic Motion card).",
 		],
 		healthcare: [
-			"Nicosia General Hospital is a public hospital run by the State Health Services Organisation (SHSO). Its Accident and Emergency department is for emergencies such as accident injuries: a nurse assesses each patient on arrival (triage), then registration costs €10.00. Patients in critical condition are seen without registering first.",
+			// Address and phone: https://www.shso.org.cy/en/pos-na-mas-vreite/ (Greek
+			// address "Παλαιός Δρόμος Λευκωσίας Λεμεσού 215, 2029 Στρόβολος"), checked 2026-10-16.
+			"Nicosia General Hospital (215 Old Nicosia-Limassol Road, 2029 Strovolos; tel. 80000408) is a public hospital run by the State Health Services Organisation (SHSO). Its Accident and Emergency department is for emergencies such as accident injuries: a nurse assesses each patient on arrival (triage), then registration costs €10.00. Patients in critical condition are seen without registering first.",
 			"Call 112 in an emergency, as anywhere in the EU.",
 		],
 		schools: [
