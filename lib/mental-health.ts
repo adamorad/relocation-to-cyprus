@@ -24,11 +24,16 @@ export type MentalHealthProvider = {
   city: City;
   type: ProviderType;
   approaches: string[];
-  languages: string[];
-  onlineAvailable: boolean;
+  languages?: string[];
+  onlineAvailable?: boolean;
   sessionFrom?: number;
-  why: string;
+  why?: string;
   website?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
+  /** Where the credentials were checked, with the date. Not rendered. */
+  sources?: string[];
 };
 
 export const ALL_PROVIDER_TYPES: ReadonlyArray<ProviderType> = [
@@ -87,7 +92,23 @@ export const MENTAL_HEALTH_TIPS: ReadonlyArray<MentalHealthTip> = [
  * Cyprus Psychologists Registration Board / Medical Council register or the
  * provider's own site, and record the source in `sources`.
  */
-export const MENTAL_HEALTH_PROVIDERS: ReadonlyArray<MentalHealthProvider> = [];
+export const MENTAL_HEALTH_PROVIDERS: ReadonlyArray<MentalHealthProvider> = [
+  {
+    name: "Athena Christou",
+    title: "Licensed Clinical Psychologist",
+    city: "Nicosia",
+    type: "psychologist",
+    approaches: [
+      "Individual therapy",
+      "Couple therapy",
+      "Family and parent counselling",
+    ],
+    address: "12 Axiou Street, 2013 Strovolos, Nicosia",
+    phone: "+357 99876155",
+    website: "https://www.athenachristou.com/",
+    sources: ["https://www.athenachristou.com/ (own site, checked 2026-10-16)"],
+  },
+];
 
 /** Unverified entries, kept out of every public page until each is verified. */
 export const UNVERIFIED_MENTAL_HEALTH_PROVIDERS: ReadonlyArray<MentalHealthProvider> = [
