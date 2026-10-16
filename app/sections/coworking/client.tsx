@@ -68,7 +68,10 @@ export default function CoworkingClient() {
 			{visible.length > 0 ? (
 				<CardGrid className="mt-5">
 					{visible.map((space) => (
-						<CardGridItem key={space.name} id={listingId(space.name)}>
+						<CardGridItem
+							key={space.name}
+							id={space.anchor ?? listingId(space.name)}
+						>
 							<Card
 								variant="text"
 								eyebrow={
