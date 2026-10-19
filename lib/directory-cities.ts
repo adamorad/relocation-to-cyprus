@@ -25,6 +25,7 @@ import { HALAL_KOSHER_VENUES } from "./halal-kosher";
 import { HOME_SERVICES } from "./home-services";
 import { IMMIGRATION_LAWYERS } from "./immigration-lawyers";
 import { INTERNATIONAL_STORES } from "./international-grocery";
+import { LASER_TAG_VENUES } from "./laser-tag";
 import { RENTAL_LISTINGS } from "./long-term-rentals";
 import { MENTAL_HEALTH_PROVIDERS } from "./mental-health";
 import { PROPERTY_LAWYERS } from "./property-lawyers";
@@ -61,6 +62,7 @@ const DATA: Record<string, ReadonlyArray<Entry>> = {
 	"home-services": HOME_SERVICES,
 	"immigration-lawyers": IMMIGRATION_LAWYERS,
 	"international-grocery": INTERNATIONAL_STORES,
+	"laser-tag": LASER_TAG_VENUES,
 	"long-term-rentals": RENTAL_LISTINGS,
 	"mental-health-services": MENTAL_HEALTH_PROVIDERS,
 	"property-lawyers": PROPERTY_LAWYERS,
