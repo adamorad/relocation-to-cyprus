@@ -175,4 +175,23 @@ export const IMMIGRATION_LAWYERS: ReadonlyArray<ImmigrationLawyer> = [
     website: "https://www.lloydslaw.com",
     notes: "Business-confirmed listing (inbox file 2026-10-14). Website given as www.lloydslaw.com; https:// added.",
   },
+  {
+    name: "Dionysiou Legal (RAFAELLA DIONYSIOU & CO LLC)",
+    anchor: "dionysiou-legal",
+    city: "Nicosia",
+    specializations: [],
+    address: "Athalassas Ave.38, 2019, Nicosia, CY",
+    phone: "+357 22 252109",
+    website: "https://dionysiou.legal",
+    notes: "Business-confirmed listing (inbox file 2026-10-16). Website given as dionysiou.legal; https:// added.",
+  },
+  {
+    name: "Connor Legal",
+    city: "Nicosia",
+    specializations: [],
+    address: "Polyviou Dimitrakopoulou 3, 2nd Floor, Office 201, Nicosia 1090, Cyprus",
+    phone: "+357 22 210075",
+    website: "https://connorlegalllc.com/",
+    notes: "Business-confirmed listing (inbox file 2026-10-16).",
+  },
 ];

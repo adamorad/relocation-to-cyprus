@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/Badge";
 import { Callout } from "@/components/ui/Callout";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup } from "@/components/ui/Chip";
+import { ListingContact } from "@/components/ui/ListingContact";
+import { listingId } from "@/lib/food";
 import {
 	ALL_CITIES,
 	type City,
@@ -86,7 +88,10 @@ export default function PropertyLawyersClient() {
 			) : (
 				<CardGrid cols={2} className="mt-5">
 					{visible.map((lawyer) => (
-						<CardGridItem key={`${lawyer.name}-${lawyer.firm}`}>
+						<CardGridItem
+							key={`${lawyer.name}-${lawyer.firm}`}
+							id={listingId(lawyer.name)}
+						>
 							<Card
 								variant="text"
 								eyebrow={<Badge>{lawyer.city}</Badge>}
@@ -100,32 +105,20 @@ export default function PropertyLawyersClient() {
 												<Badge key={s}>{s}</Badge>
 											))}
 										</p>
-										<p className="text-muted">
-											<span className="font-semibold text-ink">
-												Languages:{" "}
-											</span>
-											{lawyer.languages.join(", ")}
-										</p>
-										<div className="flex flex-wrap gap-x-5 gap-y-1">
-											{lawyer.website ? (
-												<a
-													href={lawyer.website}
-													target="_blank"
-													rel="noopener noreferrer"
-													className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
-												>
-													Website
-												</a>
-											) : null}
-											{lawyer.phone ? (
-												<a
-													href={`tel:${lawyer.phone}`}
-													className="inline-flex min-h-11 items-center font-semibold text-ink underline-offset-2 hover:underline"
-												>
-													{lawyer.phone}
-												</a>
-											) : null}
-										</div>
+										{lawyer.languages?.length ? (
+											<p className="text-muted">
+												<span className="font-semibold text-ink">
+													Languages:{" "}
+												</span>
+												{lawyer.languages.join(", ")}
+											</p>
+										) : null}
+										<ListingContact
+											address={lawyer.address}
+											phone={lawyer.phone}
+											email={lawyer.email}
+											website={lawyer.website}
+										/>
 									</>
 								}
 							/>

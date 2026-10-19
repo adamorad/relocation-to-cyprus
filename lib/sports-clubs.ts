@@ -315,4 +315,9 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     phone: "+357 94 268826",
     website: "http://pittakourisridingclub.com/",
   },
+  {
+    name: "Cyprus International Sailing Club",
+    phone: "+357 96 655136",
+    website: "https://cisc.cy/",
+  },
 ];
