@@ -130,6 +130,13 @@ export const SECTIONS_INDEX: ReadonlyArray<SectionEntry> = [
 		description:
 			"Tennis, golf, sailing, padel, hiking groups, and more — with membership fees.",
 	},
+	{
+		name: "Laser Tag",
+		slug: "laser-tag",
+		category: "Active Living",
+		description:
+			"Laser tag venues in Cyprus, with contact details confirmed by each venue.",
+	},
 
 	// Community
 	{
