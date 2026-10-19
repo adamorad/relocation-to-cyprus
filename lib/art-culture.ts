@@ -253,4 +253,11 @@ export const CULTURAL_VENUES: ReadonlyArray<CulturalVenue> = [
     phone: "+357 22 797979",
     email: "theatre@nicosiamunicipality.org.cy",
   },
+  {
+    name: "My Art Loft",
+    city: "Limassol",
+    address: "Agora Anexartisias, Shop 40, 3036 Limassol, Cyprus",
+    phone: "+357 96 537736",
+    website: "https://www.myartloft.cy/",
+  },
 ];
