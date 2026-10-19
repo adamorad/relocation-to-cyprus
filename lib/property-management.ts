@@ -124,4 +124,11 @@ export const PROPERTY_MANAGERS: ReadonlyArray<PropertyManager> = [
     phone: "+357 96 331 064",
     website: "https://maximuscyprus.com/en",
   },
+  {
+    name: "STAY Short Lets",
+    cities: ["Nicosia", "Limassol", "Ayia Napa"],
+    address: "Services are Cyprus wide (offices in Nicosia, Limassol and Ayia Napa)",
+    phone: "+357 7000 25 75",
+    website: "https://stayshortlets.com",
+  },
 ];

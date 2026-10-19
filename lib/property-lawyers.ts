@@ -14,13 +14,16 @@ export { ALL_CITIES } from "@/lib/food";
 
 export type PropertyLawyer = {
   name: string;
-  firm: string;
+  firm?: string;
   city: City;
   specializations: string[];
-  languages: string[];
-  why: string;
+  languages?: string[];
+  why?: string;
   website?: string;
+  address?: string;
   phone?: string;
+  email?: string;
+  notes?: string;
 };
 
 export type PropertyLawyerTip = {
@@ -129,5 +132,14 @@ export const PROPERTY_LAWYERS: ReadonlyArray<PropertyLawyer> = [
     ],
     languages: ["English", "Greek"],
     why: "Covers both the legal purchase and the subsequent short-term rental registration process for buyers who intend to list their Ayia Napa property on Airbnb or Booking.com — a growing compliance requirement in Cyprus's east coast resort zone.",
+  },
+  {
+    name: "ASC Law Firm",
+    city: "Nicosia",
+    specializations: [],
+    address: "44, Andrea Paraskeva str., Nicosia-2024",
+    phone: "+357 22 000420",
+    website: "https://www.asclawfirm.com",
+    notes: "Business-confirmed listing (inbox file 2026-10-16). Website given as www.asclawfirm.com; https:// added.",
   },
 ];
