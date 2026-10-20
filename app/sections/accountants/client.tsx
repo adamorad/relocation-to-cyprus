@@ -5,6 +5,7 @@ import { DirectoryFeatured } from "@/components/templates/DirectoryFeatured";
 import { Badge } from "@/components/ui/Badge";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup } from "@/components/ui/Chip";
+import { ListingContact } from "@/components/ui/ListingContact";
 import {
 	ACCOUNTANT_SPEC_LABEL,
 	ACCOUNTANTS,
@@ -14,6 +15,7 @@ import {
 	type City,
 	REGISTERED_OFFICE_PROVIDERS,
 } from "@/lib/accountants";
+import { listingId } from "@/lib/food";
 
 /**
  * Filters first, then the accountant cards, then registered office providers
@@ -92,7 +94,7 @@ export default function AccountantsClient() {
 			{visible.length > 0 ? (
 				<CardGrid cols={2} className="mt-5">
 					{visible.map((a) => (
-						<CardGridItem key={`${a.name}-${a.firm}`}>
+						<CardGridItem key={`${a.name}-${a.firm}`} id={listingId(a.name)}>
 							<Card
 								variant="text"
 								eyebrow={<Badge>{a.city}</Badge>}
@@ -101,29 +103,27 @@ export default function AccountantsClient() {
 								text={a.why}
 								footer={
 									<div className="space-y-2">
-										<div className="flex flex-wrap gap-1.5">
-											{a.specializations.map((s) => (
-												<Badge key={s}>{ACCOUNTANT_SPEC_LABEL[s]}</Badge>
-											))}
-										</div>
-										<div className="flex flex-wrap items-center gap-x-5 text-muted">
-											<span>
+										{a.specializations.length > 0 ? (
+											<div className="flex flex-wrap gap-1.5">
+												{a.specializations.map((s) => (
+													<Badge key={s}>{ACCOUNTANT_SPEC_LABEL[s]}</Badge>
+												))}
+											</div>
+										) : null}
+										{a.languages?.length ? (
+											<p className="text-muted">
 												<span className="font-semibold text-ink">
 													Languages:
 												</span>{" "}
 												{a.languages.join(", ")}
-											</span>
-											{a.website ? (
-												<a
-													href={a.website}
-													target="_blank"
-													rel="noopener noreferrer"
-													className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
-												>
-													Website
-												</a>
-											) : null}
-										</div>
+											</p>
+										) : null}
+										<ListingContact
+											address={a.address}
+											phone={a.phone}
+											email={a.email}
+											website={a.website}
+										/>
 									</div>
 								}
 							/>

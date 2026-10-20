@@ -117,6 +117,17 @@ export default function HomeServicesClient() {
 										>
 											{s.phone}
 										</a>
+										{s.email ? (
+											<a
+												href={`mailto:${s.email}`}
+												className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
+											>
+												{s.email}
+											</a>
+										) : null}
+										{s.address ? (
+											<span className="text-muted">{s.address}</span>
+										) : null}
 									</span>
 								}
 							/>
