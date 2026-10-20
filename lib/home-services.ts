@@ -15,7 +15,8 @@ export type Trade =
 	| "Handyman"
 	| "Locksmiths"
 	| "Pest control"
-	| "Cleaning and key holding";
+	| "Cleaning and key holding"
+	| "Removals";
 
 export type City =
 	| "Limassol"
@@ -33,6 +34,8 @@ export type HomeService = {
 	website: string;
 	/** Exactly as shown on the business website. */
 	phone: string;
+	address?: string;
+	email?: string;
 };
 
 export const ALL_TRADES: ReadonlyArray<Trade> = [
@@ -43,6 +46,7 @@ export const ALL_TRADES: ReadonlyArray<Trade> = [
 	"Locksmiths",
 	"Pest control",
 	"Cleaning and key holding",
+	"Removals",
 ];
 
 export const ALL_CITIES: ReadonlyArray<City> = [
@@ -129,6 +133,10 @@ export const HOME_SERVICES: ReadonlyArray<HomeService> = [
 	row("Genika Maintenance & Cleaning", "Cleaning and key holding", ["Larnaca"], "https://genikaservices.com/", "94 210 787"),
 	row("Cyprus Property Solutions (Paphos Cleaning Services)", "Cleaning and key holding", ["Limassol", "Paphos"], "https://cypruspropertysolutions.com/en/", "+357 96 393 914"),
 	row("Ctrl Plus Clean", "Cleaning and key holding", ["Larnaca"], "https://ctrlplusclean.com", "+357 94 33 55 75"),
+	// Carpetstery: file gave address "Linassol" (read as Limassol) and website "https//www.carpetsterycleaning.com" (colon added).
+	row("Carpetstery Cleaning Services", "Cleaning and key holding", ["Limassol"], "https://www.carpetsterycleaning.com", "+357 99387767"),
+	// Kivotos: file gave website "www.kivotosshipping.com" (https:// added).
+	{ ...row("Kivotos Moving", "Removals", ["Limassol"], "https://www.kivotosshipping.com", "+357 25256401"), address: "31 Stratigou Macriyianni str., CY-3022, Limassol, Cyprus", email: "info@kivotosmoving.com" },
 ];
 
 /** Distinct businesses (the same website can be listed under several trades). */

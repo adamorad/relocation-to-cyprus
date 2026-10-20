@@ -42,12 +42,16 @@ export type RegisteredOfficeProvider = {
 
 export type Accountant = {
   name: string;
-  firm: string;
+  firm?: string;
   city: City;
   specializations: AccountantSpecialization[];
-  languages: string[];
-  why: string;
+  languages?: string[];
+  why?: string;
   website?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
+  notes?: string;
 };
 
 export type AccountantTip = {
@@ -141,6 +145,15 @@ export const ACCOUNTANTS: ReadonlyArray<Accountant> = [
     specializations: ["expat-individual", "non-dom", "vat"],
     languages: ["English", "Greek", "Russian"],
     why: "One of the few qualified ICPAC accountants based in Ayia Napa, which avoids the need for east-coast residents to travel to Larnaca for routine filings. Handles non-dom individual returns, VAT registration for short-term rental operators, and standard expat compliance for the Famagusta district.",
+  },
+  {
+    name: "Lappas & Co",
+    city: "Limassol",
+    specializations: [],
+    address: "Andrea Araouzou 2, Office 101, 4150 Limassol, Cyprus",
+    phone: "+357 25 392592",
+    website: "https://www.lappas.cy",
+    notes: "Business-confirmed listing (inbox file 2026-10-19). Website given as www.lappas.cy; https:// added.",
   },
 ];
 
