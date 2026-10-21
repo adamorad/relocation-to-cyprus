@@ -107,6 +107,8 @@ export const HOME_SERVICES: ReadonlyArray<HomeService> = [
 	row("Waves & Noble Paphos Property Management", "Handyman", ["Paphos"], "https://wavesandnoblepaphospropertymanagement.com/", "+35797824629"),
 	row("Nicks Maintenance Services", "Handyman", ["Paphos"], "https://www.n-m-services.eu/", "(00357) 99009798"),
 	row("Genika Maintenance & Cleaning", "Handyman", ["Larnaca"], "https://genikaservices.com/", "94 210 787"),
+	// Re-added 2026-10-21 as Handyman (owner); phone and Paphos checked on buildincyprus.com and /contact/ that day.
+	row("Build in Cyprus (BuildInCyprus Project Management & More)", "Handyman", ["Paphos"], "https://buildincyprus.com/", "+357 96 922 275"),
 	row("Atom Exterminators", "Pest control", ["Larnaca", "Limassol", "Paphos", "Paralimni", "Ayia Napa"], "https://atomexterminators.com/", "777-77-890"),
 	row("GG Pest Control", "Pest control", ["Limassol"], "https://pestcontrollimassol.com/", "99 03 68 72"),
 	row("Cvenviropest", "Pest control", ["Larnaca", "Limassol", "Paphos"], "https://cvenviropest.com/", "+357 96 698386"),
