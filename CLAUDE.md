@@ -9,6 +9,8 @@
 - Old work goes to `archive/` instead of being deleted.
 - Project-specific docs live in `docs/`.
 - Notable changes recorded in `CHANGES.md`.
+- Listings (any business row in lib/*.ts directory data) must not be removed, renamed in a way that changes its anchor, or moved to another section or trade without Adam's explicit OK in the task or PR thread. This applies to fact-check, cleanup and dead-link PRs too: flag the row in the PR description and leave it in place until Adam approves. Businesses are emailed that they are listed, so a silent removal breaks a promise made to them.
+- Every PR that removes, moves or renames a listing must have a "Listing removals and moves" section in its description: business name, file, section/trade before and after, old and new anchor, reason, and where Adam approved it. If there are none, write "Listing removals and moves: none".
 
 ---
 

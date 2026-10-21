@@ -160,6 +160,7 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     why: "Clifftop 18-hole course with sea views, designed by Cabell B. Robinson. One of the best courses in the Eastern Mediterranean. The resort setting means full practice facilities and a pro shop.",
     website: "https://www.aphroditehills.com/golf",
   },
+  // 2026-10-21: why text copied from the club's own description (email from golfmarketing@eleagolfclub.com, 14 Oct 2026).
   {
     name: "Elea Golf Club",
     city: "Paphos",
@@ -167,7 +168,7 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     level: "all",
     englishWelcome: true,
     annualFeeApprox: 2200,
-    why: "Jack Nicklaus Signature course at Elea Estate. Challenging 18-hole layout in a residential golf community. Cyprus's newest championship course with excellent teaching academy.",
+    why: "Located in the heart of Pafos, Cyprus, close to five-star hotels and resorts, archaeological sites, places of interest, and the Pafos International Airport, lies the prestigious, award-winning Eléa Golf Club, designed by golfing great Sir Nick Faldo.",
     website: "https://www.eleagolfclub.com",
   },
   {
