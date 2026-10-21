@@ -321,4 +321,10 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     phone: "+357 96 655136",
     website: "https://cisc.cy/",
   },
+  {
+    name: "Pissouri Bay Divers",
+    phone: "+357 96 530761",
+    website: "https://www.pissouribaydivers.com",
+    email: "info@pissouribaydivers.com",
+  },
 ];
