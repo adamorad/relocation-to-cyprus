@@ -54,8 +54,9 @@ export const PROPERTY_MANAGEMENT_TIPS: ReadonlyArray<PropertyManagementTip> = [
 // ---------------------------------------------------------------------------
 // Property management companies
 // REA-156: removed entries with unverified existence or no official website
-// (Paphos Property Management Ltd, Larnaca Property Services, Remax, Century 21,
+// (Paphos Property Management Ltd, Larnaca Property Services, Century 21,
 // Prime Property) per REA-150 B11/B12. Re-add only with a verified source.
+// Remax re-added 2026-10-21 by owner decision.
 // ---------------------------------------------------------------------------
 
 export const PROPERTY_MANAGERS: ReadonlyArray<PropertyManager> = [
@@ -80,6 +81,14 @@ export const PROPERTY_MANAGERS: ReadonlyArray<PropertyManager> = [
     why: "Limassol-based agency. Management services including lease preparation, tenant vetting, utility transfers, and maintenance contractor network.",
     licensedByRERA: false,
     website: "https://www.ledraestates.com",
+  },
+  // Re-added 2026-10-21 by owner decision (removed in #167, REA-156). Website checked live 2026-10-21.
+  {
+    name: "Remax Cyprus, Property Management Division",
+    cities: ["Limassol", "Paphos", "Larnaca"],
+    why: "Remax Cyprus operates property management services across all major cities through its franchise network. Standardised processes, international brand standards, and broad coverage. Good option for owners who want the consistency of a franchise structure over an independent agent.",
+    licensedByRERA: false,
+    website: "https://www.remax.com.cy",
   },
 
   // ── Paphos ───────────────────────────────────────────────────────────────
