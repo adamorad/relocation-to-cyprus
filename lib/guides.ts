@@ -464,7 +464,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				label: "Central Bank of Cyprus: Payment accounts with basic features (accessed 2026-10-05)",
-				url: "https://www.centralbank.cy/en/licensing-supervision/financial-conduct/directive-on-the-comparability-of-fees-related-to-payment-accounts-payment-account-switching-and-access-to-payment-accounts-with-basic-features",
+				url: "https://www.centralbank.cy/en/legal-framework/licensing-supervision/legislation/legislation-regarding-payment-accounts/law-on-the-comparability-of-fees-related-to-payment-accounts-payment-account-switching-and-access-to-payment-accounts-with-basic-features-of-2017",
 			},
 		],
 		category: "business",
