@@ -24,7 +24,8 @@ export type City =
 	| "Larnaca"
 	| "Ayia Napa"
 	| "Protaras"
-	| "Paralimni";
+	| "Paralimni"
+	| "Nicosia";
 
 export type HomeService = {
 	name: string;
@@ -56,6 +57,7 @@ export const ALL_CITIES: ReadonlyArray<City> = [
 	"Ayia Napa",
 	"Protaras",
 	"Paralimni",
+	"Nicosia",
 ];
 
 const row = (
@@ -119,6 +121,8 @@ export const HOME_SERVICES: ReadonlyArray<HomeService> = [
 	row("Damian Pest Control & Public Health", "Pest control", ["Paphos"], "https://damian.cy/", "+357 99 439 008"),
 	row("OnTarget Pest Control Cyprus", "Pest control", ["Larnaca"], "https://ontargetpestcontrolcy.com/", "7000 8474; 99 007 616"),
 	row("HireKill Pest Control", "Pest control", ["Larnaca"], "https://www.hirekill.com", "700-05-105"),
+	// Revo: business-confirmed (inbox file 2026-10-21).
+	{ ...row("Revo Pest Solutions", "Pest control", ["Nicosia"], "https://revopestcontrol.com/", "+357 96 582 997"), address: "Latsia, Nicosia", email: "revopest@gmail.com" },
 	row("Lock Hero", "Locksmiths", ["Limassol"], "https://locksmith.cy/", "+357 96-409-419"),
 	row("Pavlos Locksmith Services", "Locksmiths", ["Limassol"], "https://www.pavlos24hours.com/", "+35799624770"),
 	row("Panikos Locksmith", "Locksmiths", ["Limassol"], "https://www.panikos-kleidaras.com/", "99557238"),
