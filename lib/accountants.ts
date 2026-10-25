@@ -125,6 +125,15 @@ export const ACCOUNTANTS: ReadonlyArray<Accountant> = [
 
 
   // ── Paphos ────────────────────────────────────────────────────────────────
+  {
+    name: "Cyprus Consult",
+    city: "Paphos",
+    specializations: [],
+    address: "Kosta Monti 3, 8025 Paphos",
+    website: "https://cyprus-consult.com",
+    email: "info@cyprus-consult.com",
+    notes: "Business-confirmed listing (inbox file 2026-10-25).",
+  },
 
   // ── Larnaca ───────────────────────────────────────────────────────────────
   {
