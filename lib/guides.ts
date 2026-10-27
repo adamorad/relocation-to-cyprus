@@ -237,7 +237,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Transport and the realistic monthly budget",
-				body: "Cyprus is a car culture. Public transport is functional within Limassol and almost non-existent everywhere else; outside the cities a car is essentially mandatory. New cars carry significant registration tax, so many newcomers buy used; check current dealer listings and fuel prices. We do not publish a single "realistic" monthly budget because the main inputs (rent, school fees, car) vary widely: build yours from the asking-rent figures above, quotes for insurance and school fees, and your own spending habits. If you are not ready to buy, a [long-term car rental in Cyprus](/guides/long-term-car-rental-cyprus/) on a monthly contract is the usual bridge for the first months.",
+				body: "Cyprus is a car culture. Public transport is functional within Limassol and almost non-existent everywhere else; outside the cities a car is essentially mandatory. New cars carry significant registration tax, so many newcomers buy used; check current dealer listings and fuel prices. We do not publish a single realistic monthly budget because the main inputs (rent, school fees, car) vary widely: build yours from the asking-rent figures above, quotes for insurance and school fees, and your own spending habits. If you are not ready to buy, a [long-term car rental in Cyprus](/guides/long-term-car-rental-cyprus/) on a monthly contract is the usual bridge for the first months.",
 			},
 		],
 		faqs: [
