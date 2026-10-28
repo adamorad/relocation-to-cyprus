@@ -141,6 +141,8 @@ export const HOME_SERVICES: ReadonlyArray<HomeService> = [
 	row("Ctrl Plus Clean", "Cleaning and key holding", ["Larnaca"], "https://ctrlplusclean.com", "+357 94 33 55 75"),
 	// Carpetstery: file gave address "Linassol" (read as Limassol) and website "https//www.carpetsterycleaning.com" (colon added).
 	row("Carpetstery Cleaning Services", "Cleaning and key holding", ["Limassol"], "https://www.carpetsterycleaning.com", "+357 99387767"),
+	// Makedonas: business-confirmed (REA-276, confirmed 26 Oct 2026); both phones given.
+	{ ...row("I.D.(Makedonas) General Cleaning Services & Sons Ltd", "Cleaning and key holding", ["Limassol"], "https://www.makedonasgcs.com", "+357 25 310024; +357 99 693564"), address: "Lysis 19 K Fasi Moutagiaka, 4527, Limassol, Cyprus", email: "info@makedonasgcs.com" },
 	// Kivotos: file gave website "www.kivotosshipping.com" (https:// added).
 	{ ...row("Kivotos Moving", "Removals", ["Limassol"], "https://www.kivotosshipping.com", "+357 25256401"), address: "31 Stratigou Macriyianni str., CY-3022, Limassol, Cyprus", email: "info@kivotosmoving.com" },
 ];
