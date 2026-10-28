@@ -417,6 +417,7 @@ export const DIRECTORY_TOPICS = {
 	"art-culture": { topic: "community-and-leisure" },
 	"sports-clubs": { topic: "community-and-leisure" },
 	"laser-tag": { topic: "community-and-leisure" },
+	"adventure-activities": { topic: "community-and-leisure" },
 	"fitness-wellness": {
 		topic: "community-and-leisure",
 		also: ["health"],

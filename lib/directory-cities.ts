@@ -9,6 +9,7 @@
  */
 
 import { ACCOUNTANTS, REGISTERED_OFFICE_PROVIDERS } from "./accountants";
+import { ADVENTURE_ACTIVITIES } from "./adventure-activities";
 import { AFTER_SCHOOL_ACTIVITIES } from "./after-school";
 import { CULTURAL_VENUES } from "./art-culture";
 import { NURSERIES } from "./childcare";
@@ -46,6 +47,7 @@ type Entry = { city?: string; cities?: ReadonlyArray<string> };
 
 const DATA: Record<string, ReadonlyArray<Entry>> = {
 	accountants: [...ACCOUNTANTS, ...REGISTERED_OFFICE_PROVIDERS],
+	"adventure-activities": ADVENTURE_ACTIVITIES,
 	"after-school-activities": AFTER_SCHOOL_ACTIVITIES,
 	"art-culture": CULTURAL_VENUES,
 	"childcare-nurseries": NURSERIES,
