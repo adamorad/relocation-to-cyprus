@@ -161,6 +161,7 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     website: "https://www.aphroditehills.com/golf",
   },
   // 2026-10-21: why text copied from the club's own description (email from golfmarketing@eleagolfclub.com, 14 Oct 2026).
+  // 2026-10-28: "five-star hotels and resorts" removed at the club's request (REA-277, email 26 Oct 2026: the club has no hotel yet).
   {
     name: "Elea Golf Club",
     city: "Paphos",
@@ -168,7 +169,7 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     level: "all",
     englishWelcome: true,
     annualFeeApprox: 2200,
-    why: "Located in the heart of Pafos, Cyprus, close to five-star hotels and resorts, archaeological sites, places of interest, and the Pafos International Airport, lies the prestigious, award-winning Eléa Golf Club, designed by golfing great Sir Nick Faldo.",
+    why: "Located in the heart of Pafos, Cyprus, close to archaeological sites, places of interest, and the Pafos International Airport, lies the prestigious, award-winning Eléa Golf Club, designed by golfing great Sir Nick Faldo.",
     website: "https://www.eleagolfclub.com",
   },
   {
