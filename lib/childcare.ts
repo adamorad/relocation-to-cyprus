@@ -197,4 +197,13 @@ export const NURSERIES: ReadonlyArray<Nursery> = [
     phone: "+357 22428879",
     website: "https://www.englishnursery.com.cy",
   },
+  // Business-confirmed listing (REA-276, confirmed 27 Oct 2026).
+  {
+    name: "Golden Oak Private School",
+    city: "Limassol",
+    address: "30 Nikis Avenue, Agios Athanasios, Limassol, Cyprus, 4108",
+    phone: "+357 99 309749",
+    email: "finance@goldenoakcyprus.com",
+    website: "https://goldenoakcyprus.com/",
+  },
 ];
