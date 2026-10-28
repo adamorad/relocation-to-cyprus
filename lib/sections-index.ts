@@ -137,6 +137,13 @@ export const SECTIONS_INDEX: ReadonlyArray<SectionEntry> = [
 		description:
 			"Laser tag venues in Cyprus, with contact details confirmed by each venue.",
 	},
+	{
+		name: "Adventure Activities",
+		slug: "adventure-activities",
+		category: "Active Living",
+		description:
+			"Outdoor adventure parks, ropes courses, team-building and similar outdoor activity providers in Cyprus.",
+	},
 
 	// Community
 	{
