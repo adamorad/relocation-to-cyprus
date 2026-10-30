@@ -172,7 +172,7 @@ export const ACCOUNTANTS: ReadonlyArray<Accountant> = [
     why: "Your one-stop shop for professional services in Cyprus. Whether you are establishing a business, navigating tax requirements or planning your next stage of growth, our team is here to support local and international businesses, as well as high-net-worth individuals, with tailored solutions.",
     address: "13 Kypranoros str, Ground Floor, 1061, Nicosia",
     phone: "+357 22 510057",
-    email: "sdemosthenous@splcy.com",
+    email: "info@splcy.com",
     website: "https://splcy.com/",
     notes: "Business-confirmed listing (REA-276, confirmed 27 Oct 2026). Firm lists: Accounting, Audit, Tax, VAT, Payroll, Advisory, Corporate Services, Migration; only VAT and Corporate match the site's filter tags.",
   },
