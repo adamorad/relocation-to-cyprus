@@ -203,7 +203,7 @@ export const NURSERIES: ReadonlyArray<Nursery> = [
     city: "Limassol",
     address: "30 Nikis Avenue, Agios Athanasios, Limassol, Cyprus, 4108",
     phone: "+357 99 309749",
-    email: "finance@goldenoakcyprus.com",
+    email: "admin@goldenoakcyprus.com",
     website: "https://goldenoakcyprus.com/",
   },
 ];
