@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { formatListingPrice, titleCaseName } from "@/app/listings/format";
 import { HubTemplate } from "@/components/templates/HubTemplate";
@@ -99,7 +100,15 @@ export default async function DeveloperPage({
 				<div className="space-y-6">
 					<Section
 						title="Next steps"
-						description="Browse all developers or explore new developments by city."
+						description={
+							<>
+								Browse all{" "}
+								<Link href="/developers/" className="underline">
+									Cyprus property developers
+								</Link>{" "}
+								or explore new developments by city.
+							</>
+						}
 					>
 						<div className="flex flex-wrap gap-3">
 							<ButtonLink href="/developers/" variant="secondary">
