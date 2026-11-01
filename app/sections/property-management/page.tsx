@@ -10,8 +10,8 @@ import PropertyManagementClient from "./client";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
-const title = `${PROPERTY_MANAGERS.length} Property Managers in Cyprus: Limassol, Paphos, Larnaca`;
-const description = `Directory of ${PROPERTY_MANAGERS.length} property management companies in Cyprus. Filter by Limassol, Paphos or Larnaca, see what each offers, and what to check before you sign.`;
+const title = "Property Management in Cyprus: Managers for Non-Resident Owners";
+const description = `Compare ${PROPERTY_MANAGERS.length} property management companies in Limassol, Paphos and Larnaca for landlords who live abroad. See services offered and what to check before you sign.`;
 
 export const metadata: Metadata = {
 	title,
@@ -50,7 +50,7 @@ export default function PropertyManagementPage() {
 				eyebrow: "Property Management",
 				title: "Property Management in Cyprus",
 				intro:
-					"Property managers across Limassol, Paphos, and Larnaca, for non-resident owners who need trusted local management of their Cyprus investment.",
+					"Property managers in Cyprus look after a home you own but do not live in: finding tenants, collecting rent, handling repairs and utility bills. This directory lists companies in Limassol, Paphos and Larnaca. Check the company's credentials and ask for a written contract before you sign.",
 			}}
 			info={PROPERTY_MANAGEMENT_TIPS.map((t) => ({
 				heading: t.heading,

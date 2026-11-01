@@ -31,7 +31,7 @@ export async function generateMetadata({
 	const name = titleCaseName(l.title);
 	const desc =
 		l.description?.slice(0, 160) ??
-		`${name}: new-build development in ${l.location ?? l.regionCity}, Cyprus. ${formatListingPrice(l.priceRange)}.`;
+		`${name}: new-build development in ${l.location ?? l.regionCity}, Cyprus. ${formatListingPrice(l.priceRange)}. Prices and completion date per developer; confirm before reserving.`;
 	return {
 		title: `${name}: ${l.location ?? l.regionCity}`,
 		description: desc,

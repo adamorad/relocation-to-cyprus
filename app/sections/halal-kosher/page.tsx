@@ -13,9 +13,6 @@ const title = "Halal & Kosher Food in Cyprus";
 const halalVenues = HALAL_KOSHER_VENUES.filter(
 	(v) => v.certification !== "kosher",
 );
-const kosherVenues = HALAL_KOSHER_VENUES.filter(
-	(v) => v.certification !== "halal",
-);
 const cityList = (venues: ReadonlyArray<{ city: string }>) => {
 	const cities = [...new Set(venues.map((v) => v.city))];
 	return cities.length > 1
@@ -23,7 +20,7 @@ const cityList = (venues: ReadonlyArray<{ city: string }>) => {
 		: cities[0];
 };
 const metaTitle = `${title}: ${halalVenues.length} Halal Venues by City`;
-const description = `${halalVenues.length} halal restaurants and butchers in ${cityList(halalVenues)}, plus kosher outlets in ${cityList(kosherVenues)}. Each halal venue links to a current listing; verify certification with the venue.`;
+const description = `Halal restaurants and a halal butcher in ${cityList(halalVenues)}, plus kosher outlets. Each venue links to a listing; confirm certification with the venue.`;
 
 export const metadata: Metadata = {
 	title: metaTitle,
