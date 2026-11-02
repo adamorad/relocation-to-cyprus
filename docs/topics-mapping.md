@@ -12,7 +12,7 @@ Decisions were made on the owner's behalf in Phase 2A and are open for review. R
 
 | Topic | Hub | Guides | Directories | Tools | Total primary | Listed on hub (incl. secondary) |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| Health | `/health/` | 7 | 3 | 1 | 11 | 12 |
+| Health | `/health/` | 8 | 3 | 1 | 12 | 13 |
 | Getting around | `/getting-around/` | 8 | 1 | 2 | 11 | 10 |
 | Home & bills | `/home-and-bills/` | 8 | 3 | 3 | 14 | 18 |
 | Money & paperwork | `/money-and-paperwork/` | 16 | 3 | 10 | 29 | 41 |
@@ -21,7 +21,7 @@ Decisions were made on the owner's behalf in Phase 2A and are open for review. R
 | Community & leisure | `/community-and-leisure/` | 5 | 12 | 2 | 19 | 24 |
 | Moving to Cyprus | `/moving-to-cyprus/` | 16 | 1 | 7 | 24 | 45 |
 | Property | `/property/` | 9 | 2 | 5 | 16 | 16 |
-| **All** | | 81 | 33 | 31 | 145 | |
+| **All** | | 82 | 33 | 31 | 146 | |
 
 Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). They keep a topic for their own breadcrumb and "More on" block but are not shown on hubs, indexes, other pages or the sitemap.
 
@@ -36,6 +36,7 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Healthcare in Cyprus 2026: GeSY & Private Guide](/guides/healthcare-in-cyprus/) | Health | Moving to Cyprus |  |  |
 | [Pharmacies in Cyprus: Over-the-Counter and Prescriptions](/guides/pharmacies-medication/) | Health |  |  |  |
 | [Private Health Insurance in Cyprus 2026](/guides/private-health-insurance-cyprus/) | Health | Money & paperwork |  |  |
+| [Storm and Flood Alerts in Cyprus: CY-Alert and What to Do](/guides/storm-flood-alerts-cyprus/) | Health |  |  |  |
 | [Cyprus Airport Transfers 2026: All Options](/guides/airport-transfers-guide/) | Getting around |  |  |  |
 | [Importing and Registering a Car in Cyprus](/guides/car-import-registration/) | Getting around | Moving to Cyprus |  |  |
 | [Cycling in Cyprus: Best Routes & Infrastructure](/guides/cycling-guide/) | Getting around | Community & leisure |  |  |
