@@ -1590,6 +1590,10 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 				body: "Cyprus has a dense network of pharmacies (farmakeio in Greek) identified by the standard green cross sign. In Limassol, Paphos, and Larnaca, there is typically a pharmacy within a 5–10 minute walk in any suburban area. Unlike supermarket pharmacy counters in the UK or US, Cypriot pharmacies are standalone businesses staffed by qualified pharmacists, and they are genuinely consultative, so it is normal to describe symptoms and receive a recommendation without a GP visit for straightforward ailments. Hours vary by pharmacy. A duty (efimeria) rota operates in each district; the on-duty pharmacy is usually posted on the door of closed pharmacies. Ask a nearby pharmacy or check the district pharmacists' association.",
 			},
 			{
+				heading: "Medicine prices in Cyprus: is there an official price list?",
+				body: "Yes. The Ministry of Health's Pharmaceutical Services publishes an official medicines price list. Its Pricing Sector prepares the list and publishes it in the Official Gazette of the Republic of Cyprus. Supplementary lists add newly priced products, and prices are also published on the Pharmaceutical Services website and in the EU price database EURIPID. The Pharmaceutical Services page is in Greek and showed the list updated on 21/10/2026 (checked 2 November 2026). We have not verified whether the listed price is a binding maximum price at the pharmacy counter; ask your pharmacist if a price looks different. Source: https://www.moh.gov.cy/moh/phs/phs.nsf/pricelist_el/pricelist_el (accessed 2026-11-02).",
+			},
+			{
 				heading: "GeSY prescription coverage and co-payments",
 				body: `With a GeSY-registered personal doctor and a GeSY prescription, medications are dispensed at a co-payment of ${eur(GESY_RX_ITEM_COPAY)} per item for generic drugs. Branded medications that have a generic equivalent are dispensed at the generic price plus the difference if you specifically request the brand; ask the pharmacist whether a generic is available. Medications with no generic equivalent are covered at GeSY's reference price, which may be less than the pharmacist's retail price; the patient pays the gap. To use GeSY at a pharmacy, present your HIO card or beneficiary number; the pharmacist scans the prescription in the GeSY system directly. Pharmacies that accept GeSY display the GeSY logo. Not all private pharmacies in Cyprus are contracted with GeSY, though the majority in urban areas are. You need a beneficiary number first: see the [GeSY registration guide](/guides/gesy-registration-guide/).`,
 			},
@@ -1622,6 +1626,10 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			{
 				q: "How much does medication cost under GeSY in Cyprus?",
 				a: `With a GeSY prescription from your registered personal doctor, generic medications cost ${eur(GESY_RX_ITEM_COPAY)} per item. Branded medications cost more where no generic exists: you pay the gap between GeSY's reference price and the retail price.`,
+			},
+			{
+				q: "Is there an official medicines price list in Cyprus?",
+				a: "Yes. The Ministry of Health's Pharmaceutical Services publishes a medicines price list in the Official Gazette and on its website (Greek). Ask your pharmacist about a generic version.",
 			},
 			{
 				q: "Can I bring my own medication supply into Cyprus?",
