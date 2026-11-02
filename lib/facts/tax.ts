@@ -386,8 +386,8 @@ export const DNV_RENEWAL_MAX_YEARS = 2;
 export const TD1_STATUTORY_DEADLINE = "31 July";
 
 /**
- * Individual return (TD1) for tax year 2025: deadline extended to 31 October 2026 (ISO date).
- * Source: Tax Department, "Individual Income Tax Return" (posted 06 July 2026). Checked 2026-10-02.
+ * Individual return (TD1) for tax year 2025: deadline was 31 October 2026 (ISO date, now past).
+ * Source: Tax Department, "Individual Income Tax Return" (posted 06 July 2026). Re-checked 2026-11-02: no extension.
  */
 export const TD1_DEADLINE_TAX_YEAR_2025 = "2026-10-31";
 
