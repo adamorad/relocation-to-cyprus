@@ -1506,9 +1506,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 		],
 		category: "healthcare",
-		title: "GeSY Registration Guide 2026: Step-by-Step",
+		title: "GeSY Registration in Cyprus 2026: Step-by-Step for Expats",
 		description:
-			"Register for GeSY at gesyportal.hio.org.cy — step-by-step walkthrough for Cyprus expats: documents needed, GP selection, 2026 contribution rates, and what the public healthcare system covers.",
+			"How to register for GeSY, Cyprus's public healthcare system: what to prepare, where to start, choosing a personal doctor and who can register.",
 		sections: [
 			{
 				heading: "Who must register and why it matters",
@@ -2688,7 +2688,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		category: "tax",
 		title: "Cyprus Property Taxes 2026: VAT, Transfer Fees & CGT",
 		description:
-			"What buying, owning and selling Cyprus property costs in 2026: VAT incl. the reduced 5% rate for eligible homes, transfer fees, capital gains, rental tax.",
+			"What buying, owning and selling Cyprus property can cost: VAT, transfer fees, capital gains and rental income tax, with the 2026 changes explained.",
 		sections: [
 			{
 				heading: "The taxes you actually pay",
