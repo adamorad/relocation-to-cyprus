@@ -3316,6 +3316,72 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 		],
 	},
+	{
+		slug: "storm-flood-alerts-cyprus",
+		datePublished: "2026-11-02",
+		dateModified: "2026-11-02",
+		lastChecked: "2026-11-02",
+		sources: [
+			{
+				label: "Civil Defence: CY-Alert frequently asked questions (accessed 2026-11-02)",
+				url: "https://www.gov.cy/cy-alert/en/frequently-asked-questions/",
+			},
+			{
+				label: "Civil Defence: nationwide activation of CY-Alert due to severe weather, 29 Aug 2026 (accessed 2026-11-02)",
+				url: "https://www.gov.cy/moi-cd/en/uncategorized/nationwide-activation-of-cy-alert-due-to-severe-weather-conditions/",
+			},
+			{
+				label: "Civil Defence: orange warning for severe thunderstorms, public safety recommendations, 14 Oct 2026 (accessed 2026-11-02)",
+				url: "https://www.gov.cy/moi-cd/en/uncategorized/orange-warning-for-severe-thunderstorms-public-safety-recommendations/",
+			},
+			{
+				label: "Civil Defence: advice ahead of the yellow thunderstorm warning for 28 October 2026 (accessed 2026-11-02)",
+				url: "https://www.gov.cy/moi-cd/en/uncategorized/civil-defence-advice-ahead-of-the-yellow-thunderstorm-warning-for-28-october-2026/",
+			},
+			{
+				label: "Department of Meteorology: Weather Warnings Guide, PDF (accessed 2026-11-02)",
+				url: "https://dom.org.cy/FORECAST/Weather_warnings_guide.pdf",
+			},
+			{
+				label: "Civil Defence: news and advice (accessed 2026-11-02)",
+				url: "https://www.gov.cy/moi-cd/en/",
+			},
+		],
+		category: "environment",
+		title: "Storm and Flood Alerts in Cyprus: CY-Alert and What to Do",
+		description:
+			"How CY-Alert warns you about floods and severe weather in the Republic of Cyprus, how to make sure your phone receives it, and what Civil Defence says to do.",
+		sections: [
+			{
+				heading: "Short answer",
+				body: "In the Republic of Cyprus, Civil Defence sends severe-weather and flood warnings to mobile phones through CY-Alert. You do not register: you only need an up-to-date phone with wireless emergency alerts switched on. If an alert arrives, read it carefully and follow its instructions immediately. For emergency numbers, see our [emergency services guide](/guides/emergency-services-guide/). This guide covers the Republic of Cyprus only and is general information, not a substitute for official warnings. Source: Civil Defence CY-Alert FAQ (accessed 2026-11-02).",
+			},
+			{
+				heading: "What CY-Alert is",
+				body: "CY-Alert is the national public warning system of the Republic of Cyprus. It lets Civil Defence send immediate notifications to mobile phones in a specific geographical area during a crisis or emergency. It is used for serious incidents that threaten life, health or property, including fires, earthquakes, floods and extreme weather. It works by cell broadcast, so there is no registration and no phone number or other personal information is used; Civil Defence states that it does not collect phone numbers, track locations or store personal data. Alerts have levels: 1 Extreme national alert, 2 Extreme threat, 3 Severe threat, 4 Public safety message, 5 Kidnapping / missing person, plus test and exercise messages. Genuine alerts are sent exclusively by Civil Defence through the networks of licensed mobile network operators; you can confirm information at gov.cy/cy-alert and gov.cy/moi-cd. Source: Civil Defence CY-Alert FAQ (accessed 2026-11-02).",
+			},
+			{
+				heading: "Make sure your phone receives alerts",
+				body: "Update your phone's software and make sure wireless emergency alert (notification) reception is activated in your settings. Civil Defence lists the usual reasons an alert may not arrive: the device is off or in airplane mode, there is no signal, you are outside the targeted area, alerts are turned off, or the phone software is not up to date. Very old or basic devices may not receive such notifications. Source: Civil Defence CY-Alert FAQ (accessed 2026-11-02).",
+			},
+			{
+				heading: "A real example: the 29 August 2026 flood alert",
+				body: "On 29 August 2026 Civil Defence activated CY-Alert nationwide because of heavy rainfall and increased flood risk. It advised people to avoid unnecessary travel, remain in safe locations and follow the instructions of the competent authorities, and Civil Defence teams were deployed under Fire Service coordination. Sources: Civil Defence announcement of 29 Aug 2026 and CY-Alert FAQ (accessed 2026-11-02).",
+			},
+			{
+				heading: "What to do in severe thunderstorms (Civil Defence advice)",
+				body: "On 14 October 2026, with an orange thunderstorm warning in force from 15:00 on Wednesday 14 October to 05:00 on Thursday 15 October (local time), Civil Defence published these public safety recommendations: check that drains and gutters on your property are clear, and secure loose objects that could blow away, before the weather begins; limit travel during heavy rain and thunderstorms; never try to cross a flooded road, on foot or in any vehicle; avoid working or staying in basements at risk of flooding, and if water enters, move to a safe location on higher ground; in strong wind, avoid passing or sheltering beneath large trees, signs and unstable structures; and follow Department of Meteorology forecasts and warnings and the instructions of the competent authorities. For that event the Department of Meteorology expected rainfall of between 55 and 70 millimetres per hour in areas hit by severe thunderstorms, with possible hail and strong gusts. Ahead of a yellow warning in effect on 28 October 2026 (02:00 to 18:00, wind gusts up to 8 Beaufort), Civil Defence likewise advised avoiding unnecessary travel, never crossing flooded roads and monitoring official announcements. Those events are past; check current warnings before acting. Sources: Civil Defence, 14 Oct 2026 and 27 Oct 2026 (accessed 2026-11-02).",
+			},
+			{
+				heading: "What the warning colours mean",
+				body: "The Department of Meteorology Weather Warnings Guide describes three colours. Yellow: the weather is potentially dangerous. The forecast phenomena are not unusual, but be attentive if you plan activities exposed to weather risks, stay informed and do not take avoidable risks. Orange: the weather is dangerous. Unusual phenomena are forecast, and damage and casualties are likely. Be very vigilant, keep regularly informed, be aware of the risks that might be unavoidable, and follow any advice from the authorities. Red: the weather is very dangerous. Exceptionally intense phenomena are forecast; major damage and accidents are likely, in many cases with a threat to life and limb over a wide area. Follow the authorities' orders and advice under all circumstances and be prepared for extraordinary measures. The guide's wind gust thresholds are 95 km/h (10 Beaufort) for yellow, 115 km/h (11 Beaufort) for orange and 125 km/h (12 Beaufort) for red. It also sets thresholds for rain, thunderstorms and temperature; read those in the PDF itself. Source: Department of Meteorology Weather Warnings Guide (accessed 2026-11-02).",
+			},
+			{
+				heading: "Where to check",
+				body: "The Department of Meteorology's Weather Warnings Guide PDF is at dom.org.cy/FORECAST/Weather_warnings_guide.pdf. Civil Defence publishes its news and advice at gov.cy/moi-cd/en/, and CY-Alert information is at gov.cy/cy-alert. See the sources listed below (accessed 2026-11-02).",
+			},
+		],
+	},
 	...GUIDES_BATCH1,
 	...GUIDES_BATCH2,
 	...GUIDES_BATCH3,

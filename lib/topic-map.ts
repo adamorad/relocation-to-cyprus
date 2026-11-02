@@ -104,6 +104,7 @@ export const GUIDE_TOPICS = {
 	"pharmacies-medication": { topic: "health" },
 	"dental-care-guide": { topic: "health" },
 	"emergency-services-guide": { topic: "health" },
+	"storm-flood-alerts-cyprus": { topic: "health" },
 	"healthcare-in-cyprus": { topic: "health", also: ["moving-here"] },
 	"private-health-insurance-cyprus": {
 		topic: "health",
