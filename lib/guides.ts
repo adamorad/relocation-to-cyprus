@@ -2686,9 +2686,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 		],
 		category: "tax",
-		title: "Cyprus Property Taxes 2026: VAT & Transfer Fees",
+		title: "Cyprus Property Taxes 2026: VAT, Transfer Fees & CGT",
 		description:
-			"Every tax on Cyprus property in 2026: VAT (19% or reduced 5%), transfer fees, capital gains, rental income, and municipal taxes (stamp duty on property contracts abolished January 2026).",
+			"What buying, owning and selling Cyprus property costs in 2026: VAT incl. the reduced 5% rate for eligible homes, transfer fees, capital gains, rental tax.",
 		sections: [
 			{
 				heading: "The taxes you actually pay",

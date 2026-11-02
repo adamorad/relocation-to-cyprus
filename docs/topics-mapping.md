@@ -107,7 +107,7 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Cyprus Mortgages for Foreigners: 2026 Guide](/guides/cyprus-mortgage-foreigners/) | Property |  |  | Financing a purchase; moved from Money & paperwork in Phase 4. |
 | [Buying a New Development in Cyprus 2026](/guides/new-development-buying-guide/) | Property |  |  |  |
 | [Property Lawyers in Cyprus 2026: Fees & Guide](/guides/property-lawyers-cyprus/) | Property |  |  | Choosing a conveyancing lawyer; shown under Professionals on /property/. |
-| [Cyprus Property Taxes 2026: VAT & Transfer Fees](/guides/property-taxes-2026/) | Property |  |  | Taxes on buying and owning property; moved from Money & paperwork in Phase 4. |
+| [Cyprus Property Taxes 2026: VAT, Transfer Fees & CGT](/guides/property-taxes-2026/) | Property |  |  | Taxes on buying and owning property; moved from Money & paperwork in Phase 4. |
 | [Cyprus Rental Income Tax 2026: Landlord Guide](/guides/rental-income-tax-cyprus/) | Property |  |  | Landlord tax; moved from Money & paperwork in Phase 4. |
 | [Cyprus Title Deed Guide 2026: Full Overview](/guides/title-deed-status-guide/) | Property |  |  |  |
 
