@@ -153,7 +153,6 @@ export const IMMIGRATION_LAWYERS: ReadonlyArray<ImmigrationLawyer> = [
     city: "Larnaca",
     specializations: ["work-permits"],
     why: "Larnaca firm whose site lists applications for immigration permits, permanent residence permits and visas, and work authorisations.",
-    website: "https://akfirm.law/services/immigration-services/",
     notes: "Office and services quoted from the firm's own page, fetched 2026-10-05. Bar registration UNVERIFIED. Languages and fees UNVERIFIED.",
   },
   {
