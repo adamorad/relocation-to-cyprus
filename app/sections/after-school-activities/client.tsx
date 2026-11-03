@@ -85,7 +85,7 @@ export default function AfterSchoolActivitiesClient() {
 										{a.ageRangeFrom !== undefined &&
 										a.ageRangeTo !== undefined ? (
 											<span className="mt-1 block">
-												Ages {a.ageRangeFrom}–{a.ageRangeTo} yrs
+												Ages {a.ageRangeFrom} to {a.ageRangeTo} yrs
 												{a.weeklyFeeApprox !== undefined
 													? ` · ~€${a.weeklyFeeApprox}/week`
 													: ""}
