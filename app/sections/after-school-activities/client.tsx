@@ -5,6 +5,8 @@ import { DirectoryFeatured } from "@/components/templates/DirectoryFeatured";
 import { Badge } from "@/components/ui/Badge";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup } from "@/components/ui/Chip";
+import { ListingContact } from "@/components/ui/ListingContact";
+import { listingId } from "@/lib/food";
 import {
 	ACTIVITY_TYPE_LABEL,
 	type ActivityType,
@@ -71,7 +73,7 @@ export default function AfterSchoolActivitiesClient() {
 			{visible.length > 0 ? (
 				<CardGrid cols={2} className="mt-5">
 					{visible.map((a) => (
-						<CardGridItem key={`${a.name}-${a.city}`}>
+						<CardGridItem key={`${a.name}-${a.city}`} id={listingId(a.name)}>
 							<Card
 								variant="text"
 								eyebrow={<Badge>{ACTIVITY_TYPE_LABEL[a.type]}</Badge>}
@@ -80,28 +82,31 @@ export default function AfterSchoolActivitiesClient() {
 									<>
 										{a.city}
 										{a.neighbourhood ? ` · ${a.neighbourhood}` : ""}
-										<span className="mt-1 block">
-											Ages {a.ageRangeFrom}–{a.ageRangeTo} yrs
-											{a.weeklyFeeApprox !== undefined
-												? ` · ~€${a.weeklyFeeApprox}/week`
-												: ""}
-										</span>
-										<span className="block">
-											Languages: {a.languagesOffered.join(", ")}
-										</span>
+										{a.ageRangeFrom !== undefined &&
+										a.ageRangeTo !== undefined ? (
+											<span className="mt-1 block">
+												Ages {a.ageRangeFrom} to {a.ageRangeTo} yrs
+												{a.weeklyFeeApprox !== undefined
+													? ` · ~€${a.weeklyFeeApprox}/week`
+													: ""}
+											</span>
+										) : null}
+										{a.languagesOffered ? (
+											<span className="block">
+												Languages: {a.languagesOffered.join(", ")}
+											</span>
+										) : null}
 									</>
 								}
 								text={a.why}
 								footer={
-									a.website ? (
-										<a
-											href={a.website}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
-										>
-											Website
-										</a>
+									a.website || a.address || a.phone || a.email ? (
+										<ListingContact
+											address={a.address}
+											phone={a.phone}
+											email={a.email}
+											website={a.website}
+										/>
 									) : undefined
 								}
 							/>

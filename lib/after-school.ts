@@ -28,14 +28,17 @@ export type AfterSchoolActivity = {
   neighbourhood?: string;
   type: ActivityType;
   /** Minimum age accepted, in years. */
-  ageRangeFrom: number;
+  ageRangeFrom?: number;
   /** Maximum age accepted, in years. */
-  ageRangeTo: number;
-  languagesOffered: string[];
+  ageRangeTo?: number;
+  languagesOffered?: string[];
   /** Approximate weekly fee in EUR; undefined = on request. */
   weeklyFeeApprox?: number;
   why: string;
   website?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
 };
 
 export type ActivityTip = {
@@ -272,5 +275,16 @@ export const AFTER_SCHOOL_ACTIVITIES: ReadonlyArray<AfterSchoolActivity> = [
     languagesOffered: ["French", "English"],
     weeklyFeeApprox: 18,
     why: "DELF Junior examination preparation alongside conversational French for children. Run by the Alliance Française affiliate in Limassol. Good option for French-speaking families or those aiming at a French university pathway.",
+  },
+  {
+    name: "Insight Out Dance & Movement Psychotherapy Studio",
+    city: "Nicosia",
+    neighbourhood: "Lakatamia",
+    type: "dance",
+    why: "Dance and dance movement psychotherapy studio. Founder Stella Eftychiou (BA Dance, MA Dance Movement Psychotherapy).",
+    website: "https://insightout4all.com/",
+    address: "26 Alexias Street, Lakatamia, 2304, Nicosia, Cyprus",
+    phone: "22-210390 / 99884831",
+    email: "insightout4all@gmail.com",
   },
 ];
