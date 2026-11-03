@@ -29,4 +29,12 @@ export const ADVENTURE_ACTIVITIES: ReadonlyArray<AdventureActivity> = [
 		email: "info@adventuremountainpark.com",
 		website: "https://adventuremountainpark.com/",
 	},
+  {
+    name: "Zipline Cyprus",
+    city: "Limassol",
+    address: "Gerasa, 4543 Limassol, Cyprus",
+    phone: "+357 94 595594",
+    website: "https://www.zipline.cy",
+    email: "hi@zipline.cy",
+  },
 ];
