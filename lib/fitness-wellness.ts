@@ -311,4 +311,14 @@ export const FITNESS_VENUES: ReadonlyArray<FitnessVenue> = [
     why: "Summer season only, early May to late September, daily 10:00-19:00. Near the House of Representatives and Supreme Court; parking from Loukis Akritas Ave.",
     phone: "+357 22797646",
   },
+  {
+    name: "Me Time Therapy",
+    city: "Paphos",
+    type: "wellness-spa",
+    why: "Sports and medical massage therapy, plus running gait analysis (Gabriella Vetro).",
+    website: "https://metimetherapy.cy/",
+    address: "Agious Panaretou, Paphos",
+    phone: "+35794090760",
+    email: "info@metimetherapy.cy",
+  },
 ];

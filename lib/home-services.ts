@@ -16,7 +16,10 @@ export type Trade =
 	| "Locksmiths"
 	| "Pest control"
 	| "Cleaning and key holding"
-	| "Removals";
+	| "Removals"
+	| "Solar / photovoltaics"
+	| "Security systems"
+	| "Water filtration & treatment";
 
 export type City =
 	| "Limassol"
@@ -48,6 +51,9 @@ export const ALL_TRADES: ReadonlyArray<Trade> = [
 	"Pest control",
 	"Cleaning and key holding",
 	"Removals",
+	"Solar / photovoltaics",
+	"Security systems",
+	"Water filtration & treatment",
 ];
 
 export const ALL_CITIES: ReadonlyArray<City> = [
@@ -145,6 +151,11 @@ export const HOME_SERVICES: ReadonlyArray<HomeService> = [
 	{ ...row("I.D.(Makedonas) General Cleaning Services & Sons Ltd", "Cleaning and key holding", ["Limassol"], "https://www.makedonasgcs.com", "+357 25 310024; +357 99 693564"), address: "Lysis 19 K Fasi Moutagiaka, 4527, Limassol, Cyprus", email: "info@makedonasgcs.com" },
 	// Kivotos: file gave website "www.kivotosshipping.com" (https:// added).
 	{ ...row("Kivotos Moving", "Removals", ["Limassol"], "https://www.kivotosshipping.com", "+357 25256401"), address: "31 Stratigou Macriyianni str., CY-3022, Limassol, Cyprus", email: "info@kivotosmoving.com" },
+	// Added 2026-11-03 (REA-325, owner-approved, business-supplied details). Island-wide businesses use the city in their address.
+	{ ...row("Eletoyia Photovoltaics", "Solar / photovoltaics", ["Nicosia"], "http://www.eletoyia.com", "+357 70088555"), address: "Kappadokias 9, Strovolos, Nicosia, PC 2028", email: "info@eletoyia.com" },
+	{ ...row("Pansat Security LTD", "Security systems", ["Nicosia"], "https://pansatsecurity.com/", "70 000 199"), address: "86 Digeni Akrita Avenue, 1061 Nicosia, Cyprus", email: "info@pansatsecurity.com" },
+	{ ...row("AMC Security Cyprus", "Security systems", ["Nicosia"], "https://www.amc-security.com/", "70 000 199"), address: "86 Digeni Akrita Avenue, 1061 Nicosia, Cyprus", email: "info@pansatsecurity.com" },
+	{ ...row("altlab.", "Water filtration & treatment", ["Limassol"], "https://altlab.cy", "+357 95 515103"), address: "Limassol, Cyprus", email: "info@altlab.cy" },
 ];
 
 /** Distinct businesses (the same website can be listed under several trades). */
@@ -161,4 +172,4 @@ export function telHref(phone: string): string {
 
 export const HOME_SERVICES_TITLE =
 	"Home Services in Cyprus: Plumbers, Electricians and More";
-export const HOME_SERVICES_DESCRIPTION = `${BUSINESS_COUNT} businesses (${HOME_SERVICES.length} listings) for plumbing, electrical, air conditioning, handyman, locksmith and pest control work in Limassol, Paphos, Larnaca, Ayia Napa, Protaras and Paralimni, each checked on its own website on 4 and 5 October 2026.`;
+export const HOME_SERVICES_DESCRIPTION = `${BUSINESS_COUNT} businesses (${HOME_SERVICES.length} listings) for plumbing, electrical, air conditioning, handyman, locksmith, pest control, solar, security system and water filtration work in Limassol, Paphos, Larnaca, Ayia Napa, Protaras and Paralimni, each checked on its own website on 4 and 5 October 2026.`;
