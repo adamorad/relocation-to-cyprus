@@ -43,7 +43,7 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Converting Your Driving Licence in Cyprus](/guides/driving-licence-conversion/) | Getting around | Money & paperwork |  |  |
 | [Cyprus Ferries 2026: Piraeus Route, Egypt and Israel Status](/guides/ferry-routes-guide/) | Getting around |  |  |  |
 | [Getting Around Cyprus Without a Car (2026)](/guides/getting-around-cyprus-no-car/) | Getting around |  |  |  |
-| [Long Term Car Rental Cyprus: Monthly Rates 2026](/guides/long-term-car-rental-cyprus/) | Getting around |  |  | Old category Lifestyle; it is about getting a car for daily use. |
+| [Long Term Car Rental Cyprus: Monthly Hire Guide 2026](/guides/long-term-car-rental-cyprus/) | Getting around |  |  | Old category Lifestyle; it is about getting a car for daily use. |
 | [Driving in Cyprus: Road Safety & Culture Guide](/guides/road-safety-driving/) | Getting around |  |  |  |
 | [Earthquake Risk in Cyprus: How to Prepare](/guides/earthquake-preparedness/) | Home & bills |  |  | Old category Environment; preparing the home and household. |
 | [Finding a Tradesperson in Cyprus: Licences, Checks and Quotes](/guides/finding-tradespeople-cyprus/) | Home & bills |  |  | Licences, checks and quotes before hiring a tradesperson for the home. |

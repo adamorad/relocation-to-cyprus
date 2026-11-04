@@ -2877,9 +2877,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			HT_SRC.hertzCyMonthlyOffers,
 		],
 		category: "lifestyle",
-		title: "Long Term Car Rental Cyprus: Monthly Rates 2026",
+		title: "Long Term Car Rental Cyprus: Monthly Hire Guide 2026",
 		description:
-			"Monthly and long term car hire in Cyprus: published rates from 5 providers (from about €450/month), what is included and what to check. Available across Cyprus.",
+			"Monthly car hire in Cyprus: what is included, deposits, insurance and contract checks, with notes for Paphos, Limassol and Larnaca.",
 		sections: [
 			{
 				heading:
@@ -2887,7 +2887,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 				body: "Economy cars from about €450/month and SUVs from about €680, per provider pages checked October 2026. Long-term car rental in Cyprus (also called monthly car rental or long-term car hire) generally means renting a car for a month or more. Most car rental websites in Cyprus are built around 3–14 day holiday rentals. Long-term rental is a different product with different pricing, different contracts, and usually handled by a different department or a specialist company. Do not expect to price a 60-day stay by multiplying the daily rate by 60. Monthly contracts are priced as a separate category, usually cheaper per day than short-term rates, and they come with dedicated agreements covering mileage limits, maintenance responsibilities, and insurance terms. Some of the international chains (for example Hertz, which publishes monthly offers) quote monthly and multi-month rates; ask each one. Limassol and Larnaca are the primary hubs; Paphos has fewer options but major chains are present. Local operators such as Astra are worth asking for a quote alongside the international chains.",
 			},
 			{
-				heading: "Monthly car rental in Cyprus: how monthly contracts work",
+				heading: "Monthly car rental in Cyprus: what to check before you sign",
 				body: "Monthly car rental in Cyprus means renting for a month or more on a contract you can often renew, instead of a holiday daily rate. Ask each provider five things before you book: the minimum term (some offer 1 to 3 month plans, others 12 months), the mileage allowance per month and the charge above it, the deposit and whether a card hold or cash applies, what the excess is and whether zero-excess cover costs extra, and whether the quoted price includes 19% VAT. If you need the car only for your first weeks, a monthly contract is the usual bridge before you buy: see [buying and registering a car](/guides/car-import-registration/) and [what a car-free life looks like](/guides/getting-around-cyprus-no-car/). If you are still on a foreign licence, check the provider's licence rules and the [driving licence conversion](/guides/driving-licence-conversion/) timeline first. For the wider budget see [cost of living in Cyprus](/guides/cost-of-living/).",
 			},
 			{
