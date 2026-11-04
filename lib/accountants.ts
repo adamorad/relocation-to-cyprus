@@ -176,6 +176,15 @@ export const ACCOUNTANTS: ReadonlyArray<Accountant> = [
     website: "https://splcy.com/",
     notes: "Business-confirmed listing (REA-276, confirmed 27 Oct 2026). Firm lists: Accounting, Audit, Tax, VAT, Payroll, Advisory, Corporate Services, Migration; only VAT and Corporate match the site's filter tags.",
   },
+  {
+    name: "IOANNOU & CO",
+    city: "Paphos",
+    address: "Lambousas 5 Str., Tala, Paphos District, 8577",
+    phone: "+357 95 107007",
+    website: "https://cyprustaxaccounting.com/",
+    email: "info@cyprustaxaccounting.com",
+    specializations: [],
+  },
 ];
 
 // ---------------------------------------------------------------------------
