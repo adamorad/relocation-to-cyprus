@@ -1,6 +1,6 @@
 # Security policy
 
-Report vulnerabilities privately to adammor17@gmail.com — do not open public
+Report vulnerabilities privately to team@realcy.app — do not open public
 issues for security findings. Expected response: within 5 business days.
 
 ## Hardening baseline
