@@ -1506,9 +1506,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 		],
 		category: "healthcare",
-		title: "GeSY Registration in Cyprus 2026: Step-by-Step for Expats",
+		title: "How to Register for GeSY in Cyprus (2026 Guide)",
 		description:
-			"How to register for GeSY, Cyprus's public healthcare system: what to prepare, where to start, choosing a personal doctor and who can register.",
+			"How to register for GeSY, Cyprus's public healthcare system: who can enrol, documents, and choosing a personal doctor.",
 		sections: [
 			{
 				heading: "Who must register and why it matters",
