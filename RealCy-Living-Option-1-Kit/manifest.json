@@ -1,0 +1,150 @@
+{
+  "design": "Approved Living in Cyprus Option 1",
+  "files": [
+    {
+      "path": "AGENT-PROMPT.md",
+      "bytes": 3160,
+      "sha256": "0a837454d58c6322ee34ba91c2224e4f931b388fda092360b1f32fcb03df54b6"
+    },
+    {
+      "path": "ASSET-MAP.md",
+      "bytes": 1608,
+      "sha256": "6a4ad9cc86026e349f9389c38e273f9b743178984fa4920c1311df4d40536270"
+    },
+    {
+      "path": "DESIGN-SPEC.md",
+      "bytes": 3746,
+      "sha256": "e7ddbbdd5ab680e8aa17c45a5cec2704abddeb10895d031768e3e48eaa93d681"
+    },
+    {
+      "path": "QA-CHECKLIST.md",
+      "bytes": 1042,
+      "sha256": "64c2ce26cb8ce4d7b6afebdbe890ff7c1d6ac72a5e313e4e867aad3b58114de0"
+    },
+    {
+      "path": "START-HERE.md",
+      "bytes": 1360,
+      "sha256": "4ad9d71d5a126e5b3c14973f2a623808d8ee9e2bce8d47398681f4eceace4b82"
+    },
+    {
+      "path": "assets/brand/logo-mark.svg",
+      "bytes": 330,
+      "sha256": "dbc57979e8aab9fcea4a1b165d6fff5b9ad03202ed976261868e0720d1f60b46"
+    },
+    {
+      "path": "assets/brand/logo.svg",
+      "bytes": 529,
+      "sha256": "d718d5de0520e25c3147298aafaa9fe8fbc0d9ab14490785cea17544495bc732"
+    },
+    {
+      "path": "assets/hero-neighborhood.png",
+      "bytes": 2017759,
+      "sha256": "f34c430e59c86516aeb747df29b5f4783591b38514c1f854d6374660b839278d"
+    },
+    {
+      "path": "assets/icons/budget.svg",
+      "bytes": 273,
+      "sha256": "d3971a74db57925f72b257b02506975df3c5dbe84b6a3f6ad79132b743fe21d2"
+    },
+    {
+      "path": "assets/icons/checklist.svg",
+      "bytes": 295,
+      "sha256": "675b2204d0a679920b4505f5c3ee6f0e71916b987b29852c3de05d8838e1afd2"
+    },
+    {
+      "path": "assets/icons/close.svg",
+      "bytes": 199,
+      "sha256": "d2d816aa12e7cc731a3831416301a3be6a42000da6e22fe19c5f31aab1ba2928"
+    },
+    {
+      "path": "assets/icons/community.svg",
+      "bytes": 316,
+      "sha256": "d2df44dddefd1677d5664500b1868037aaeab514293ccc97b01be17c06131bdf"
+    },
+    {
+      "path": "assets/icons/healthcare.svg",
+      "bytes": 208,
+      "sha256": "be6cc904a46199aa11f332e90a15d576f9d7aa02fbac15bb08afe24d1a316ac2"
+    },
+    {
+      "path": "assets/icons/heart.svg",
+      "bytes": 279,
+      "sha256": "1f71442a6a69a60bfec4dee96400e2c0b0e7a16274074c65fbfbcf94c7b98588"
+    },
+    {
+      "path": "assets/icons/home.svg",
+      "bytes": 212,
+      "sha256": "38043e9be6adfdd625e2e4817de1ffe562f714d1efc3f1c169a2e18a22879ea9"
+    },
+    {
+      "path": "assets/icons/map.svg",
+      "bytes": 227,
+      "sha256": "6871153047fbb525e838698d163e0d46fdc52fcffd2c097af2af8b1ed385160c"
+    },
+    {
+      "path": "assets/icons/menu.svg",
+      "bytes": 202,
+      "sha256": "c8a2d0b7a83110db95aa07398c522c3d01f700972af6a52d1f68ad9f89fc6bb1"
+    },
+    {
+      "path": "assets/icons/paperwork.svg",
+      "bytes": 225,
+      "sha256": "42944c64dcf7517b5aa697265b250997b163145c662f1c393b06cc2e78b96312"
+    },
+    {
+      "path": "assets/icons/phone.svg",
+      "bytes": 235,
+      "sha256": "32cafc53fa4d01368ea806ed761e2658e194908b1421ca764279a535fb006433"
+    },
+    {
+      "path": "assets/icons/pin.svg",
+      "bytes": 258,
+      "sha256": "060fa1c9940aee3504c3ff46dad101f6bcb769f99da8dea112b53d75b87f692c"
+    },
+    {
+      "path": "assets/icons/search.svg",
+      "bytes": 220,
+      "sha256": "806bddab1c348a16ce1e8a79a8a95b163bdbcf241b73b3c5d7018a287ed28f0e"
+    },
+    {
+      "path": "assets/icons/shopping.svg",
+      "bytes": 230,
+      "sha256": "a24e9e8a5659603ba112c70212aff08872ceca332538d71fd39de4e3b801b718"
+    },
+    {
+      "path": "assets/icons/transport.svg",
+      "bytes": 269,
+      "sha256": "5e4d09c099c06ad2b0fadd4687f8e85c6279b43ff8609e72bf3bb450ff34322d"
+    },
+    {
+      "path": "content/home.json",
+      "bytes": 1958,
+      "sha256": "9687056a523e98f4d6b528bcb8a1a5a1506bf49c6a769e96a1462cd47b6beed8"
+    },
+    {
+      "path": "content/route-map.template.json",
+      "bytes": 653,
+      "sha256": "aa9935199e4054657b8416fea1ff0ab23ecd35b8ff6348e4687ea383ee86f9f6"
+    },
+    {
+      "path": "references/approved-desktop.png",
+      "bytes": 2182004,
+      "sha256": "fea5983204539606bfb7daec8cc248b8a714ff692bf36d54ea6be801fb04535e"
+    },
+    {
+      "path": "references/mobile-companion.png",
+      "bytes": 1822477,
+      "sha256": "345b86fc7ea433fb844537c200b1ce6b6192e3f501732ce22b4fd50319cb48a1"
+    },
+    {
+      "path": "styles/layout.css",
+      "bytes": 3491,
+      "sha256": "b2f95e9fbc02be425de9125bf901aa298d3457eba1b90275be0ea9a38a5c685f"
+    },
+    {
+      "path": "styles/tokens.css",
+      "bytes": 612,
+      "sha256": "033a082d03fea9ee62a7f34d429195c66cbaf6957738b07116ce5b95c90b62e2"
+    }
+  ]
+}

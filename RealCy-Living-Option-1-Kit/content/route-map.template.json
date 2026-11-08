@@ -1,0 +1,34 @@
+{
+  "note": "Resolve paths from repository. Do not ship unresolved links.",
+  "navigation": {
+    "Daily life": null,
+    "Places": null,
+    "Guides": null,
+    "Tools": null
+  },
+  "topics": {
+    "healthcare": null,
+    "transport": null,
+    "home": null,
+    "paperwork": null,
+    "shopping": null,
+    "community": null
+  },
+  "guides": {
+    "pharmacy": null,
+    "utilities": null,
+    "getting-around": null
+  },
+  "cities": {
+    "Limassol": null,
+    "Paphos": null,
+    "Larnaca": null,
+    "Nicosia": null
+  },
+  "tools": {
+    "Cost of living planner": null,
+    "Compare areas": null,
+    "Useful contacts": null
+  },
+  "search": null
+}

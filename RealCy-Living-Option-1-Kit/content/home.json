@@ -1,0 +1,84 @@
+{
+  "brand": "RealCy.app",
+  "headline": "Everyday life in Cyprus, made easier.",
+  "subtitle": "Local knowledge for feeling at home.",
+  "navigation": [
+    "Daily life",
+    "Places",
+    "Guides",
+    "Tools"
+  ],
+  "search": {
+    "label": "Search guides, places and tools",
+    "placeholder": "What do you need help with?",
+    "button": "Search"
+  },
+  "topicsHeading": "What are you looking for?",
+  "topics": [
+    {
+      "id": "healthcare",
+      "title": "Healthcare",
+      "description": "Doctors, clinics and health services.",
+      "icon": "healthcare"
+    },
+    {
+      "id": "transport",
+      "title": "Getting around",
+      "description": "Buses, driving and transport tips.",
+      "icon": "transport"
+    },
+    {
+      "id": "home",
+      "title": "Home & bills",
+      "description": "Utilities, internet and everyday services.",
+      "icon": "home"
+    },
+    {
+      "id": "paperwork",
+      "title": "Money & paperwork",
+      "description": "Banking, residency and official processes.",
+      "icon": "paperwork"
+    },
+    {
+      "id": "shopping",
+      "title": "Food & shopping",
+      "description": "Supermarkets, local food and daily essentials.",
+      "icon": "shopping"
+    },
+    {
+      "id": "community",
+      "title": "Community",
+      "description": "Meet people, events and local life.",
+      "icon": "community"
+    }
+  ],
+  "guidesHeading": "Useful for everyday life",
+  "guides": [
+    {
+      "id": "pharmacy",
+      "title": "Finding a pharmacy"
+    },
+    {
+      "id": "utilities",
+      "title": "Understanding utility bills"
+    },
+    {
+      "id": "getting-around",
+      "title": "Getting around your area"
+    }
+  ],
+  "areaHeading": "Your local area",
+  "areaLabel": "Choose your city",
+  "cities": [
+    "Limassol",
+    "Paphos",
+    "Larnaca",
+    "Nicosia"
+  ],
+  "toolsHeading": "Practical tools",
+  "tools": [
+    "Cost of living planner",
+    "Compare areas",
+    "Useful contacts"
+  ]
+}

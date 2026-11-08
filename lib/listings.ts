@@ -2,33 +2,37 @@
  * Server-safe accessors for listing data. Used by the static pages at
  * /listings/[slug] and /regions/[name] (called inside generateStaticParams).
  */
-import { LISTINGS, LISTINGS_BY_REGION, type EnrichedListing } from "./listingsData";
+import {
+	type EnrichedListing,
+	LISTINGS,
+	LISTINGS_BY_REGION,
+} from "./listingsData";
 
 export function allListings(): EnrichedListing[] {
-  return LISTINGS;
+	return LISTINGS;
 }
 
 export function listingBySlug(slug: string): EnrichedListing | undefined {
-  return LISTINGS.find((l) => l.slug === slug);
+	return LISTINGS.find((l) => l.slug === slug);
 }
 
 export function listingsForRegion(regionName: string): EnrichedListing[] {
-  return LISTINGS_BY_REGION[regionName] ?? [];
+	return LISTINGS_BY_REGION[regionName] ?? [];
 }
 
 export function allSlugs(): string[] {
-  return LISTINGS.map((l) => l.slug);
+	return LISTINGS.map((l) => l.slug);
 }
 
 /** Slugified region name → original region name lookup. */
 export const REGION_SLUGS: Record<string, string> = {
-  paphos: "Paphos",
-  limassol: "Limassol",
-  larnaca: "Larnaca",
-  nicosia: "Nicosia",
-  "ayia-napa": "Ayia Napa",
+	paphos: "Paphos",
+	limassol: "Limassol",
+	larnaca: "Larnaca",
+	nicosia: "Nicosia",
+	"ayia-napa": "Ayia Napa",
 };
 
 export function regionFromSlug(slug: string): string | undefined {
-  return REGION_SLUGS[slug];
+	return REGION_SLUGS[slug];
 }

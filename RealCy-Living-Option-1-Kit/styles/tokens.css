@@ -1,0 +1,10 @@
+:root {
+ --rc-ink:#0b2145; --rc-muted:#506580; --rc-primary:#087f98; --rc-primary-hover:#066d83;
+ --rc-sky:#e8f8ff; --rc-sky-strong:#d8f3fc; --rc-surface:#fff; --rc-border:#d9e5ef;
+ --rc-coral:#fa794d; --rc-focus:#075985;
+ --rc-font:Manrope,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+ --rc-r-sm:12px; --rc-r-card:18px; --rc-r-panel:24px;
+ --rc-space-1:4px; --rc-space-2:8px; --rc-space-3:12px; --rc-space-4:16px;
+ --rc-space-5:20px; --rc-space-6:24px; --rc-space-8:32px; --rc-space-12:48px; --rc-space-16:64px;
+ --rc-shadow:0 8px 28px rgb(25 85 112 / 8%); --rc-max:1280px;
+}

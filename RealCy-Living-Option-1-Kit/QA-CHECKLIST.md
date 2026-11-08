@@ -1,0 +1,15 @@
+# Done criteria
+- [ ] Approved blue Option1 style, living-in-Cyprus purpose and section order matched.
+- [ ] No old relocation hero, beige serif variant or Option2 assets mixed in.
+- [ ] Semantic live text/search/cards, not screenshot used as page.
+- [ ] New hero art has correct responsive crop and no embedded text.
+- [ ] All6 categories and4 cities usable on mobile.
+- [ ] 360/390/430/768/1024/1440px reviewed; no horizontal overflow or text crowding.
+- [ ] Body>=16px, line-height1.5, hit targets>=44px.
+- [ ] Real routes, search and tools work; mapping contains no unresolved live links.
+- [ ] Existing data, metadata, auth, saved items and deep links preserved.
+- [ ] Tab/keyboard/focus/menu, contrast and accessible form labels verified.
+- [ ] Loading, empty, error and long-title states checked.
+- [ ] Authentic authorized location photographs used, not generated landmarks.
+- [ ] Icon simplifications and any missing illustration/photo assets reported honestly.
+- [ ] Existing lint/type/build and relevant tests pass; no deployment.
