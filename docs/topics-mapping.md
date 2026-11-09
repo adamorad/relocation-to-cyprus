@@ -13,15 +13,15 @@ Decisions were made on the owner's behalf in Phase 2A and are open for review. R
 | Topic | Hub | Guides | Directories | Tools | Total primary | Listed on hub (incl. secondary) |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
 | Health | `/health/` | 8 | 3 | 1 | 12 | 13 |
-| Getting around | `/getting-around/` | 8 | 1 | 2 | 11 | 10 |
+| Getting around | `/getting-around/` | 8 | 1 | 2 | 11 | 11 |
 | Home & bills | `/home-and-bills/` | 8 | 3 | 3 | 14 | 18 |
-| Money & paperwork | `/money-and-paperwork/` | 16 | 3 | 10 | 29 | 41 |
+| Money & paperwork | `/money-and-paperwork/` | 16 | 4 | 10 | 30 | 42 |
 | Food & shopping | `/food-and-shopping/` | 5 | 5 | 0 | 10 | 11 |
 | Family & schools | `/family-and-schools/` | 7 | 3 | 1 | 11 | 13 |
-| Community & leisure | `/community-and-leisure/` | 5 | 12 | 2 | 19 | 24 |
+| Community & leisure | `/community-and-leisure/` | 5 | 14 | 2 | 21 | 26 |
 | Moving to Cyprus | `/moving-to-cyprus/` | 16 | 1 | 7 | 24 | 45 |
 | Property | `/property/` | 9 | 2 | 5 | 16 | 16 |
-| **All** | | 82 | 33 | 31 | 146 | |
+| **All** | | 82 | 36 | 31 | 149 | |
 
 Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). They keep a topic for their own breadcrumb and "More on" block but are not shown on hubs, indexes, other pages or the sitemap.
 
@@ -124,6 +124,7 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Home Services](/sections/home-services/) | Home & bills |  | limassol, paphos, larnaca | Plumbers, electricians and other trades for fixing the home. |
 | [Long-Term Rentals](/sections/long-term-rentals/) | Home & bills | Moving to Cyprus |  | Old category Property & Housing; renting a home is daily life. |
 | [Accountants & Tax Advisors](/sections/accountants/) | Money & paperwork |  |  |  |
+| [Corporate Services](/sections/corporate-services/) | Money & paperwork |  |  | Company service providers sit next to accountants; no Work topic. |
 | [Coworking Spaces](/sections/coworking/) | Money & paperwork | Community & leisure |  | Work sits in Money & paperwork (no Work topic); also a place to meet people. |
 | [Startup Ecosystem](/sections/startup-ecosystem/) | Money & paperwork | Moving to Cyprus |  | Business support for founders; no Work topic. |
 | [Farmers Markets](/sections/farmers-markets/) | Food & shopping |  |  |  |
@@ -136,11 +137,13 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [Summer Camps](/sections/summer-camps/) | Family & schools |  |  |  |
 | [Adventure Activities](/sections/adventure-activities/) | Community & leisure |  |  |  |
 | [Art Galleries & Museums](/sections/art-culture/) | Community & leisure |  |  |  |
+| [Bike Shops & Rentals](/sections/bike-shops/) | Community & leisure | Getting around |  | Cycling is leisure; bike shops and rentals also help with getting around. |
 | [Community Gardens](/sections/community-gardens/) *(not listed)* | Community & leisure |  |  |  |
 | [Cyprus Influencers](/sections/cyprus-influencers/) | Community & leisure |  |  |  |
 | [Expat Community Groups](/sections/expat-communities/) | Community & leisure |  |  |  |
 | [Fitness & Wellness Studios](/sections/fitness-wellness/) | Community & leisure | Health |  | Gyms and studios are leisure; wellness also listed under Health. |
 | [Laser Tag](/sections/laser-tag/) | Community & leisure |  |  |  |
+| [Photographers](/sections/photographers/) | Community & leisure |  |  | Photography services; no Services topic, closest fit is community and leisure. |
 | [Religious Services](/sections/religious-services/) | Community & leisure |  |  |  |
 | [Rooftop & Sea View Bars](/sections/rooftop-bars/) *(not listed)* | Community & leisure | Food & shopping |  |  |
 | [Sports & Recreation Clubs](/sections/sports-clubs/) | Community & leisure |  |  |  |
