@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { MoreOnTopic } from "@/components/templates/MoreOnTopic";
 import { ToolTemplate } from "@/components/templates/ToolTemplate";
 import { toolWebAppJsonLd } from "@/lib/tool-schema";
@@ -7,7 +8,8 @@ import IspComparisonClient from "./client";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
-const title = "Cyprus Internet & Mobile Plans: Cyta, Epic, Primetel, Cablenet";
+const title =
+	"Cyprus Internet & Mobile Providers Compared: Cyta, Epic, Primetel, Cablenet";
 const description =
 	"Compare 4 broadband providers and 3 mobile carriers in Cyprus side by side: coverage by city, technology and links to each provider's current plans. Verify prices before signing.";
 
@@ -45,8 +47,17 @@ export default function IspComparisonPage() {
 				],
 				eyebrow: getTopicForTool("isp-comparison").name,
 				title: "Internet & Mobile Providers in Cyprus",
-				intro:
-					"Compare home broadband and mobile carriers. Prices vary by provider, contract and bundle; check each provider's page.",
+				intro: (
+					<>
+						Compare Cyprus home broadband and mobile carriers by city coverage
+						and technology. Prices vary by provider, contract and bundle; check
+						each provider&apos;s page. Moving in? See{" "}
+						<Link href="/guides/utilities-setup-guide/" className="underline">
+							setting up utilities in Cyprus
+						</Link>
+						.
+					</>
+				),
 			}}
 			nextSteps={[
 				{

@@ -12,7 +12,7 @@ const topDevelopers = [...DEVELOPERS]
 	.sort((a, b) => b.listings.length - a.listings.length)
 	.slice(0, 3);
 const projectCount = DEVELOPERS.reduce((n, d) => n + d.listings.length, 0);
-const title = `Property developers in Cyprus: ${DEVELOPERS.length} developers compared`;
+const title = `Cyprus Property Developers: ${DEVELOPERS.length} Developers, ${projectCount} New-Build Projects`;
 const description = `Property developers in Cyprus: ${DEVELOPERS.length} developers and ${projectCount} new-build projects in Paphos, Limassol, Larnaca and Ayia Napa, with locations and price ranges.`;
 
 export const metadata: Metadata = {
@@ -52,8 +52,16 @@ export default function DevelopersIndexPage() {
 							</span>
 						))}
 						. Pick a developer to see its projects, locations and price
-						ranges. Prices are shown as stated by the developer and may
-						exclude VAT.
+						ranges, or browse every new-build home in the{" "}
+						<Link href="/listings/" className="underline">
+							new developments listings
+						</Link>
+						. For the wider buying picture, start at the{" "}
+						<Link href="/property/" className="underline">
+							Cyprus property hub
+						</Link>
+						. Prices are shown as stated by the developer and may exclude
+						VAT.
 					</>
 				),
 			}}
