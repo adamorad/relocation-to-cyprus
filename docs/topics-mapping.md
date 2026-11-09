@@ -34,7 +34,7 @@ Directories marked *(not listed)* were de-listed in Phase 3C (commit b0899d2). T
 | [112 Cyprus: Emergency Numbers for Ambulance, Police & Fire](/guides/emergency-services-guide/) | Health |  |  |  |
 | [How to Register for GeSY in Cyprus (2026 Guide)](/guides/gesy-registration-guide/) | Health | Money & paperwork |  |  |
 | [Healthcare in Cyprus 2026: GeSY & Private Guide](/guides/healthcare-in-cyprus/) | Health | Moving to Cyprus |  |  |
-| [Pharmacies in Cyprus: Over-the-Counter and Prescriptions](/guides/pharmacies-medication/) | Health |  |  |  |
+| [Cyprus Pharmacies: Antibiotics, Prescriptions & Price List](/guides/pharmacies-medication/) | Health |  |  |  |
 | [Private Health Insurance in Cyprus 2026](/guides/private-health-insurance-cyprus/) | Health | Money & paperwork |  |  |
 | [Storm and Flood Alerts in Cyprus: CY-Alert and What to Do](/guides/storm-flood-alerts-cyprus/) | Health |  |  |  |
 | [Cyprus Airport Transfers 2026: All Options](/guides/airport-transfers-guide/) | Getting around |  |  |  |
