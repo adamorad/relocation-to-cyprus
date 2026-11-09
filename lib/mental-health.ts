@@ -108,6 +108,21 @@ export const MENTAL_HEALTH_PROVIDERS: ReadonlyArray<MentalHealthProvider> = [
     website: "https://www.athenachristou.com/",
     sources: ["https://www.athenachristou.com/ (own site, checked 2026-10-16)"],
   },
+  {
+    name: "Dr Maria Markou",
+    title:
+      "Clinical Psychologist (Specialising in the evidence-based treatment of OCD, anxiety and related disorders)",
+    city: "Nicosia",
+    type: "psychologist",
+    approaches: [],
+    address: "46 Ilia Papakyriacou, Engomi, 2415 Nicosia, Cyprus",
+    phone: "99720580",
+    website: "https://www.mariamarkou.com",
+    email: "markou.p.maria@gmail.com",
+    sources: [
+      "Details supplied by the practitioner via Grok Bot (free listing, Featured declined 2026-11-07). Registration not yet checked against the Cyprus Psychologists Registration Board.",
+    ],
+  },
 ];
 
 /** Unverified entries, kept out of every public page until each is verified. */

@@ -246,4 +246,12 @@ export const WINERIES: ReadonlyArray<Winery> = [
     email: "nelion@cytanet.com.cy",
     website: "http://www.nelionwinery.com",
   },
+  {
+    name: "Cyprus Taste Tours",
+    city: "Larnaca",
+    address: "A. 5 Griva Digeni Street, Klavdia, Larnaca, 7576",
+    phone: "+357 96 645396",
+    email: "yum@cyprustastetours.com",
+    website: "https://cyprustastetours.com/",
+  },
 ];

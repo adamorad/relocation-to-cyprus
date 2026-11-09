@@ -379,6 +379,10 @@ export const DIRECTORY_TOPICS = {
 	},
 
 	accountants: { topic: "money-and-paperwork" },
+	"corporate-services": {
+		topic: "money-and-paperwork",
+		why: "Company service providers sit next to accountants; no Work topic.",
+	},
 	coworking: {
 		topic: "money-and-paperwork",
 		also: ["community-and-leisure"],
@@ -418,6 +422,15 @@ export const DIRECTORY_TOPICS = {
 	"art-culture": { topic: "community-and-leisure" },
 	"sports-clubs": { topic: "community-and-leisure" },
 	"laser-tag": { topic: "community-and-leisure" },
+	"bike-shops": {
+		topic: "community-and-leisure",
+		also: ["getting-around"],
+		why: "Cycling is leisure; bike shops and rentals also help with getting around.",
+	},
+	photographers: {
+		topic: "community-and-leisure",
+		why: "Photography services; no Services topic, closest fit is community and leisure.",
+	},
 	"adventure-activities": { topic: "community-and-leisure" },
 	"fitness-wellness": {
 		topic: "community-and-leisure",

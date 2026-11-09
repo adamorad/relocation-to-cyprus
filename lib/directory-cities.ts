@@ -15,6 +15,8 @@ import { CULTURAL_VENUES } from "./art-culture";
 import { NURSERIES } from "./childcare";
 import { CO_LIVING_LISTINGS } from "./co-living";
 import { COMMUNITY_GARDENS } from "./community-gardens";
+import { BIKE_SHOPS } from "./bike-shops";
+import { CORPORATE_SERVICE_PROVIDERS } from "./corporate-services";
 import { COWORK_SPACES } from "./coworking";
 import { INFLUENCERS } from "./cyprus-influencers";
 import { EV_CHARGERS } from "./ev-charging";
@@ -29,6 +31,7 @@ import { INTERNATIONAL_STORES } from "./international-grocery";
 import { LASER_TAG_VENUES } from "./laser-tag";
 import { RENTAL_LISTINGS } from "./long-term-rentals";
 import { MENTAL_HEALTH_PROVIDERS } from "./mental-health";
+import { PHOTOGRAPHERS } from "./photographers";
 import { PROPERTY_LAWYERS } from "./property-lawyers";
 import { PROPERTY_MANAGERS } from "./property-management";
 import { RELIGIOUS_SERVICES } from "./religious-services";
@@ -50,9 +53,11 @@ const DATA: Record<string, ReadonlyArray<Entry>> = {
 	"adventure-activities": ADVENTURE_ACTIVITIES,
 	"after-school-activities": AFTER_SCHOOL_ACTIVITIES,
 	"art-culture": CULTURAL_VENUES,
+	"bike-shops": BIKE_SHOPS,
 	"childcare-nurseries": NURSERIES,
 	"co-living": CO_LIVING_LISTINGS,
 	"community-gardens": COMMUNITY_GARDENS,
+	"corporate-services": CORPORATE_SERVICE_PROVIDERS,
 	coworking: COWORK_SPACES,
 	"cyprus-influencers": INFLUENCERS,
 	"ev-charging": EV_CHARGERS,
@@ -67,6 +72,7 @@ const DATA: Record<string, ReadonlyArray<Entry>> = {
 	"laser-tag": LASER_TAG_VENUES,
 	"long-term-rentals": RENTAL_LISTINGS,
 	"mental-health-services": MENTAL_HEALTH_PROVIDERS,
+	photographers: PHOTOGRAPHERS,
 	"property-lawyers": PROPERTY_LAWYERS,
 	"property-management": PROPERTY_MANAGERS,
 	"religious-services": RELIGIOUS_SERVICES,
