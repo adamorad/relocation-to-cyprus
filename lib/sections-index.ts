@@ -53,6 +53,14 @@ export const SECTIONS_INDEX: ReadonlyArray<SectionEntry> = [
 			"ICPAC-registered accountants with experience in expat non-dom filings and company tax, plus registered office providers.",
 	},
 
+	{
+		name: "Corporate Services",
+		slug: "corporate-services",
+		category: "Legal & Professional",
+		description:
+			"Corporate service providers in Cyprus, with contact details confirmed by each firm.",
+	},
+
 	// Business
 	{
 		name: "Startup Ecosystem",

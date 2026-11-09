@@ -328,4 +328,12 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     website: "https://www.pissouribaydivers.com",
     email: "info@pissouribaydivers.com",
   },
+  {
+    name: "Paphos Tigers",
+    city: "Paphos",
+    sport: "Rugby",
+    address: "Trains at Sportivo Emba, Paphos",
+    website: "https://www.paphostigers.com",
+    email: "rugby@paphostigers.com",
+  },
 ];

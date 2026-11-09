@@ -379,6 +379,10 @@ export const DIRECTORY_TOPICS = {
 	},
 
 	accountants: { topic: "money-and-paperwork" },
+	"corporate-services": {
+		topic: "money-and-paperwork",
+		why: "Company service providers sit next to accountants; no Work topic.",
+	},
 	coworking: {
 		topic: "money-and-paperwork",
 		also: ["community-and-leisure"],

@@ -15,6 +15,7 @@ import { CULTURAL_VENUES } from "./art-culture";
 import { NURSERIES } from "./childcare";
 import { CO_LIVING_LISTINGS } from "./co-living";
 import { COMMUNITY_GARDENS } from "./community-gardens";
+import { CORPORATE_SERVICE_PROVIDERS } from "./corporate-services";
 import { COWORK_SPACES } from "./coworking";
 import { INFLUENCERS } from "./cyprus-influencers";
 import { EV_CHARGERS } from "./ev-charging";
@@ -53,6 +54,7 @@ const DATA: Record<string, ReadonlyArray<Entry>> = {
 	"childcare-nurseries": NURSERIES,
 	"co-living": CO_LIVING_LISTINGS,
 	"community-gardens": COMMUNITY_GARDENS,
+	"corporate-services": CORPORATE_SERVICE_PROVIDERS,
 	coworking: COWORK_SPACES,
 	"cyprus-influencers": INFLUENCERS,
 	"ev-charging": EV_CHARGERS,
