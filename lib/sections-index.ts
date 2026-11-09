@@ -61,6 +61,15 @@ export const SECTIONS_INDEX: ReadonlyArray<SectionEntry> = [
 			"Corporate service providers in Cyprus, with contact details confirmed by each firm.",
 	},
 
+	// Services
+	{
+		name: "Photographers",
+		slug: "photographers",
+		category: "Services",
+		description:
+			"Photographers in Cyprus, with contact details confirmed by each business.",
+	},
+
 	// Business
 	{
 		name: "Startup Ecosystem",
@@ -144,6 +153,13 @@ export const SECTIONS_INDEX: ReadonlyArray<SectionEntry> = [
 		category: "Active Living",
 		description:
 			"Laser tag venues in Cyprus, with contact details confirmed by each venue.",
+	},
+	{
+		name: "Bike Shops & Rentals",
+		slug: "bike-shops",
+		category: "Active Living",
+		description:
+			"Bike shops and bike rentals in Cyprus, with contact details confirmed by each business.",
 	},
 	{
 		name: "Adventure Activities",
