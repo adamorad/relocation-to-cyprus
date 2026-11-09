@@ -1577,9 +1577,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			HT_SRC.gesyCopay,
 		],
 		category: "healthcare",
-		title: "Pharmacies in Cyprus: Over-the-Counter and Prescriptions",
+		title: "Cyprus Pharmacies: Prescriptions, OTC & Medicine Price List",
 		description:
-			"Pharmacy medicines in Cyprus: what usually needs a prescription, GeSY €1 generics and foreign prescription rules.",
+			"Pharmacies in Cyprus: what usually needs a prescription, the official medicine price list, GeSY €1 generics and foreign prescription rules.",
 		sections: [
 			{
 				heading: "Quick answer: what you can buy over the counter in Cyprus",
