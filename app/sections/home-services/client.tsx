@@ -65,7 +65,7 @@ export default function HomeServicesClient() {
 				<CardGrid className="mt-5">
 					{filtered.map((s, i) => (
 						<CardGridItem
-							key={`${s.website}-${s.trade}`}
+							key={`${s.website ?? s.name}-${s.trade}`}
 							id={
 								filtered.findIndex((x) => x.name === s.name) === i
 									? listingId(s.name)
@@ -79,26 +79,28 @@ export default function HomeServicesClient() {
 								meta={s.cities.join(", ")}
 								footer={
 									<span className="flex flex-col gap-1">
-										<a
-											href={s.website}
-											target="_blank"
-											rel="noopener noreferrer"
-											data-umami-event="listing_click"
-											data-umami-event-business={s.name}
-											data-umami-event-trade={s.trade}
-											data-umami-event-link="website"
-											onClick={() =>
-												trackEvent("listing_click", {
-													directory: "home-services",
-													business: s.name,
-													trade: s.trade,
-													link_type: "website",
-												})
-											}
-											className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
-										>
-											Website
-										</a>
+										{s.website ? (
+											<a
+												href={s.website}
+												target="_blank"
+												rel="noopener noreferrer"
+												data-umami-event="listing_click"
+												data-umami-event-business={s.name}
+												data-umami-event-trade={s.trade}
+												data-umami-event-link="website"
+												onClick={() =>
+													trackEvent("listing_click", {
+														directory: "home-services",
+														business: s.name,
+														trade: s.trade,
+														link_type: "website",
+													})
+												}
+												className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
+											>
+												Website
+											</a>
+										) : null}
 										<a
 											href={telHref(s.phone)}
 											data-umami-event="listing_click"
