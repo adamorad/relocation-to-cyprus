@@ -1707,16 +1707,16 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 	{
 		slug: "emergency-services-guide",
 		datePublished: "2026-05-29",
-		dateModified: "2026-10-02",
-		lastChecked: "2026-10-02",
+		dateModified: "2026-11-09",
+		lastChecked: "2026-11-09",
 		sources: [
 			HT_SRC.gesyCopay,
 			{
-				label: "State Health Services Organisation (SHSO): information for patients, ambulance (accessed 2026-10-09)",
+				label: "State Health Services Organisation (SHSO): information for patients, ambulance (accessed 2026-11-09)",
 				url: "https://www.shso.org.cy/en/plirofories-gia-asthenofora/",
 			},
 			{
-				label: "Cyprus Deputy Ministry of Tourism: health and safety, emergency numbers (accessed 2026-10-09)",
+				label: "Cyprus Deputy Ministry of Tourism: health and safety, emergency numbers (accessed 2026-11-09)",
 				url: "https://www.visitcyprus.com/useful-info/health-safety/",
 			},
 			{
@@ -1731,11 +1731,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 		sections: [
 			{
 				heading: "Emergency numbers in Cyprus: 112",
-				body: "Call 112 for an ambulance, the police or the fire service anywhere in the Republic of Cyprus. The call is free. Ambulances are run by the State Health Services Organisation (SHSO); its Ambulance Control Centre direct line is 22887171, but 112 is the number to use. Sources: SHSO, Visit Cyprus (accessed 2026-10-09).",
+				body: "Call 112 for an ambulance, the police or the fire service anywhere in the Republic of Cyprus. The call is free. Ambulances are run by the State Health Services Organisation (SHSO); its Ambulance Control Centre direct line is 22887171, but 112 is the number to use. Sources: SHSO, Visit Cyprus (accessed 2026-11-09).",
 			},
 			{
 				heading: "112: the single emergency number",
-				body: "Call 112 (the EU-wide number) for police, fire and ambulance. It is free. If you are deaf or hard of hearing, texting 112 is not a confirmed option. Secondary sources list SMS to 8112 and fax to 1408 or 1409 for users with disabilities; check with Cyprus Police before relying on them. A real-time-text 112 service is planned. The call is handled by the police, who dispatch the appropriate service: police (Astynomia), fire brigade (Pyrosvestiki Ypiresia), or the ambulance service. The Ambulance Control Centre direct line is 22887171 (24h); prefer 112 in an emergency. In an emergency, the ambulance response and transport to a public or private A&E department is free of charge; non-emergency transport to private centres is charged. In practice, for medical emergencies the most important information to have ready: your exact address (include landmark references since rural addresses can be difficult to locate by number alone), the nature of the emergency, the patient's approximate age, and whether they are conscious and breathing.",
+				body: "Call 112 (the EU-wide number) for police, fire and ambulance. It is free. If you are deaf or hard of hearing, texting 112 is not a confirmed option. Secondary sources list SMS to 8112 and fax to 1408 or 1409 for users with disabilities; check with Cyprus Police before relying on them. A real-time-text 112 service is planned. Per SHSO, the call is handled by the police, who dispatch the appropriate service: police (Astynomia), fire brigade (Pyrosvestiki Ypiresia), or the ambulance service. The Ambulance Control Centre direct line is 22887171 (24h); prefer 112 in an emergency. Per SHSO (accessed 2026-11-09), in an emergency the ambulance response and transport to a public or private A&E department is free of charge; non-emergency transport to private centres or other services is charged. In practice, for medical emergencies the most important information to have ready: your exact address (include landmark references since rural addresses can be difficult to locate by number alone), the nature of the emergency, the patient's approximate age, and whether they are conscious and breathing.",
 			},
 			{
 				heading: "Ambulance response times and coverage",
@@ -1751,7 +1751,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Air ambulance and serious trauma",
-				body: "For life-threatening trauma, major road accidents, serious falls and severe cardiac events in rural areas, air ambulance is dispatched by the emergency services for appropriate cases; it is not user-initiated. For international medical evacuation, if a patient requires treatment that is not available in Cyprus (specialized neurosurgery, severe burns requiring a specialist unit), the standard destination is Athens or Tel Aviv (both under 1.5 hours by air), and the coordination goes through the GeSY emergency services or private medical evacuation insurance. Private medical evacuation insurance covering repatriation to your home country is sold by Cyprus insurance brokers (ask for a quote) and is worth considering if you have a pre-existing condition that might require specialist care not available in Cyprus.",
+				body: "For life-threatening trauma, major road accidents, serious falls and severe cardiac events in rural areas, ring 112 and describe the situation; the operator decides which response is sent. We have not found an official source on air-ambulance dispatch, so do not count on it or try to arrange one yourself. For international medical evacuation, if a patient requires treatment that is not available in Cyprus (specialized neurosurgery, severe burns requiring a specialist unit), the standard destination is Athens or Tel Aviv (both under 1.5 hours by air), and the coordination goes through the GeSY emergency services or private medical evacuation insurance. Private medical evacuation insurance covering repatriation to your home country is sold by Cyprus insurance brokers (ask for a quote) and is worth considering if you have a pre-existing condition that might require specialist care not available in Cyprus.",
 			},
 		],
 	},
