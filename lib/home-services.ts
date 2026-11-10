@@ -19,7 +19,8 @@ export type Trade =
 	| "Removals"
 	| "Solar / photovoltaics"
 	| "Security systems"
-	| "Water filtration & treatment";
+	| "Water filtration & treatment"
+	| "Gardening / landscaping";
 
 export type City =
 	| "Limassol"
@@ -54,6 +55,7 @@ export const ALL_TRADES: ReadonlyArray<Trade> = [
 	"Solar / photovoltaics",
 	"Security systems",
 	"Water filtration & treatment",
+	"Gardening / landscaping",
 ];
 
 export const ALL_CITIES: ReadonlyArray<City> = [
@@ -156,6 +158,8 @@ export const HOME_SERVICES: ReadonlyArray<HomeService> = [
 	{ ...row("Pansat Security LTD", "Security systems", ["Nicosia"], "https://pansatsecurity.com/", "70 000 199"), address: "86 Digeni Akrita Avenue, 1061 Nicosia, Cyprus", email: "info@pansatsecurity.com" },
 	{ ...row("AMC Security Cyprus", "Security systems", ["Nicosia"], "https://www.amc-security.com/", "70 000 199"), address: "86 Digeni Akrita Avenue, 1061 Nicosia, Cyprus", email: "info@pansatsecurity.com" },
 	{ ...row("altlab.", "Water filtration & treatment", ["Limassol"], "https://altlab.cy", "+357 95 515103"), address: "Limassol, Cyprus", email: "info@altlab.cy" },
+	// Added 2026-11-10 (REA-374, owner-approved). Limassol without a street address, approved by Adam.
+	{ ...row("CN Garden Care", "Gardening / landscaping", ["Limassol"], "https://www.cngardencare.com", "96956898"), address: "Limassol", email: "xristosdimitriou31@gmail.com" },
 ];
 
 /** Distinct businesses (the same website can be listed under several trades). */
