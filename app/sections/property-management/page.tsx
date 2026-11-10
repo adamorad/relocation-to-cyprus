@@ -10,8 +10,8 @@ import PropertyManagementClient from "./client";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
 
 const SITE_URL = "https://realcy.app";
-const title = "Property Management in Cyprus: Managers for Non-Resident Owners";
-const description = `Compare ${PROPERTY_MANAGERS.length} property management companies in Limassol, Paphos and Larnaca for landlords who live abroad. See services offered and what to check before you sign.`;
+const title = `Property Management Cyprus: ${PROPERTY_MANAGERS.length} Companies by City`;
+const description = `Property management in Cyprus: ${PROPERTY_MANAGERS.length} companies in Limassol, Paphos and Larnaca, what each offers, and what to check in a management agreement before you sign.`;
 
 export const metadata: Metadata = {
 	title,
@@ -50,12 +50,18 @@ export default function PropertyManagementPage() {
 				eyebrow: "Property Management",
 				title: "Property Management in Cyprus",
 				intro:
-					"Property managers in Cyprus look after a home you own but do not live in: finding tenants, collecting rent, handling repairs and utility bills. This directory lists companies in Limassol, Paphos and Larnaca. Check the company's credentials and ask for a written contract before you sign.",
+					`Property management in Cyprus means a local company that finds tenants, collects rent, handles repairs and looks after the property while you are abroad. This directory lists ${PROPERTY_MANAGERS.length} property management companies in Limassol, Paphos and Larnaca. If a company also arranges lets or finds tenants, ask whether it is registered with the Council of Real Estate Agents (ktimatomesites.com).`,
 			}}
-			info={PROPERTY_MANAGEMENT_TIPS.map((t) => ({
-				heading: t.heading,
-				body: t.body,
-			}))}
+			info={[
+				{
+					heading: "What property managers in Cyprus usually do",
+					body: "Tenant search, rent collection, maintenance and repairs, and regular property inspections. Services differ by company, so ask for the list in writing.",
+				},
+				...PROPERTY_MANAGEMENT_TIPS.map((t) => ({
+					heading: t.heading,
+					body: t.body,
+				})),
+			]}
 			infoTitle="What to check before you engage"
 			notice={{
 				tone: "warning",
