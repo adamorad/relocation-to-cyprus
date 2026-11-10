@@ -1725,13 +1725,13 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 		],
 		category: "healthcare",
-		title: "112 Cyprus: Emergency Numbers for Ambulance, Police & Fire",
+		title: "Ambulance Number Cyprus: Call 112 or 22887171 (Free)",
 		description:
-			"Dial 112 in Cyprus for ambulance, police and fire. Free call. Ambulance control centre 22887171, 24-hour A&E list and what to say.",
+			"Ambulance number in Cyprus: call 112 (free) or the SHSO Ambulance Control Centre on 22887171. What to say when you call, plus the 24-hour A&E list.",
 		sections: [
 			{
-				heading: "Emergency numbers in Cyprus: 112",
-				body: "Call 112 for an ambulance, the police or the fire service anywhere in the Republic of Cyprus. The call is free. Ambulances are run by the State Health Services Organisation (SHSO); its Ambulance Control Centre direct line is 22887171, but 112 is the number to use. Sources: SHSO, Visit Cyprus (accessed 2026-11-09).",
+				heading: "Ambulance number in Cyprus: call 112",
+				body: "The ambulance number in Cyprus is 112. Calling 112 is free and is handled by the police; you can also call the SHSO Ambulance Control Centre directly on 22887171. Call 112 for an ambulance, the police or the fire service anywhere in the Republic of Cyprus. Ambulances are run by the State Health Services Organisation (SHSO); 112 is the number to use. Sources: SHSO, Visit Cyprus (accessed 2026-11-09).",
 			},
 			{
 				heading: "112: the single emergency number",
