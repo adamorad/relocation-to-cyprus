@@ -1,9 +1,12 @@
 /**
- * Home services directory: tradespeople with their own website.
+ * Home services directory: tradespeople, most with their own website.
  *
  * Each business was checked on its own website on 4 and 5 October 2026: site live,
  * phone and city shown there, trade shown there. Phones are copied exactly as
  * printed on the business site. Listings are not endorsements.
+ *
+ * website is optional: on 2026-11-09 two sites were down (meleshin.com.cy 402 subscription
+ * expired, pestcontrolincyprus.com 502); those rows keep the listing but drop the link.
  */
 
 export const CHECKED_AT = "2026-10-05";
@@ -35,7 +38,8 @@ export type HomeService = {
 	trade: Trade;
 	/** A business appears under every city listed here. */
 	cities: ReadonlyArray<City>;
-	website: string;
+	/** Omitted when the business has no working website. */
+	website?: string;
 	/** Exactly as shown on the business website. */
 	phone: string;
 	address?: string;
@@ -70,7 +74,7 @@ const row = (
 	name: string,
 	trade: Trade,
 	cities: ReadonlyArray<City>,
-	website: string,
+	website: string | undefined,
 	phone: string,
 ): HomeService => ({ name, trade, cities, website, phone });
 
@@ -101,13 +105,14 @@ export const HOME_SERVICES: ReadonlyArray<HomeService> = [
 	row("Plumbair Plumbing & Air Conditioning", "Air conditioning", ["Limassol"], "https://plumbairservices.com/", "+357 96 301520"),
 	row("Chillout HomeServe", "Air conditioning", ["Larnaca", "Limassol"], "https://chillouthomeserve.com/", "+357 22 353550"),
 	row("Kyriakos Electric", "Air conditioning", ["Larnaca", "Limassol"], "https://kyriakoselectric.com/", "+357 24 258 478; +357 94 492 292"),
-	row("ND-AC Air Conditioning Services", "Air conditioning", ["Paphos"], "https://nd-ac.com/", "+357 95 563 916"),
+	row("ND-AC Air Conditioning Services", "Air conditioning", ["Paphos"], "https://nd-ac.com/", "+357 95 164 778; 94117647"),
 	row("Klima King Air Conditioning (J&W Air Conditioning / J&W AC Enterprises)", "Air conditioning", ["Paphos"], "https://airconcyprus.com/", "+357 94044099; 94600125"),
 	row("Green Air Ltd", "Air conditioning", ["Paphos"], "https://www.greenair-cy.com/", "+357 26 941 555"),
 	row("T.C Multiklima Engineering Ltd", "Air conditioning", ["Larnaca"], "https://multiklima.com.cy/", "24821982"),
 	row("Leontiou Airconditions", "Air conditioning", ["Larnaca"], "https://leontiouairconditions.com/", "+357 96 830 940"),
 	row("FixNow.com.cy", "Handyman", ["Limassol"], "https://fixnow.com.cy/", "+357 94609781"),
-	row("Meleshin LTD Cyprus", "Handyman", ["Larnaca", "Limassol", "Paphos"], "https://meleshin.com.cy/en", "+357 9971 4018; +357 9927 9161"),
+	// 2026-11-09: meleshin.com.cy returns 402 (subscription expired); website link dropped, listing kept.
+	row("Meleshin LTD Cyprus", "Handyman", ["Larnaca", "Limassol", "Paphos"], undefined,"+357 9971 4018; +357 9927 9161"),
 	row("Butleraid", "Handyman", ["Larnaca", "Limassol", "Paphos"], "https://butleraid.com/handyman/", "080 077320"),
 	row("Cyprus Property Solutions (Paphos Cleaning Services)", "Handyman", ["Limassol", "Paphos"], "https://cypruspropertysolutions.com/en/", "+357 96 393 914"),
 	row("Remodium", "Handyman", ["Larnaca", "Limassol", "Paphos"], "https://remodium.cy/", "+357 99 857 807"),
@@ -122,7 +127,8 @@ export const HOME_SERVICES: ReadonlyArray<HomeService> = [
 	row("Cvenviropest", "Pest control", ["Larnaca", "Limassol", "Paphos"], "https://cvenviropest.com/", "+357 96 698386"),
 	row("FLY PEST CONTROL", "Pest control", ["Larnaca", "Limassol", "Paphos", "Paralimni"], "https://www.flypestcontrol.net/en", "22311698 / 99623363"),
 	row("Pest Protection Services (Cyprus) Holdings Ltd (PPS Cyprus)", "Pest control", ["Larnaca", "Limassol", "Paphos"], "https://ppscyprus.com/", "77 77 21 21 (24/7 hotline); +357 24 656 800"),
-	row("Pest Control in Cyprus", "Pest control", ["Larnaca", "Limassol"], "https://pestcontrolincyprus.com/", "+357 24023002"),
+	// 2026-11-09: pestcontrolincyprus.com returns 502 (apex and www); website link dropped, listing kept.
+	row("Pest Control in Cyprus", "Pest control", ["Larnaca", "Limassol"], undefined,"+357 24023002"),
 	row("Panic Pest Control", "Pest control", ["Paphos"], "https://www.panicpestcontroller.com/", "99489888"),
 	row("Damian Pest Control & Public Health", "Pest control", ["Paphos"], "https://damian.cy/", "+357 99 439 008"),
 	row("OnTarget Pest Control Cyprus", "Pest control", ["Larnaca"], "https://ontargetpestcontrolcy.com/", "7000 8474; 99 007 616"),
@@ -159,7 +165,7 @@ export const HOME_SERVICES: ReadonlyArray<HomeService> = [
 ];
 
 /** Distinct businesses (the same website can be listed under several trades). */
-export const BUSINESS_COUNT = new Set(HOME_SERVICES.map((s) => s.website)).size;
+export const BUSINESS_COUNT = new Set(HOME_SERVICES.map((s) => s.website ?? s.name)).size;
 
 export const HOME_SERVICES_NOTE =
 	"Listings are not endorsements. We checked each business's own website on 4 and 5 October 2026 (website live, phone and city shown there). Always ask for licences and a written quote.";
