@@ -420,6 +420,30 @@ export const PLACES: Record<FoodCity, Record<Category, Place[]>> = {
         why: "Open-late loukoumades specialist. Creative toppings. Locals stop in after dinner.",
         price: 1,
       },
+      {
+        name: "LaBarista Neapolis",
+        why: "Coffee shop.",
+        address: "Iakovou Tompazi 9-11, 3107 Limassol",
+        phone: "25 043740",
+        email: "labaristacoffeeshop@gmail.com",
+        website: "https://labaristacy.com",
+      },
+      {
+        name: "LaBarista Agios Ioannis",
+        why: "Coffee shop.",
+        address: "Arch. Makariou III Avenue 42E, 3065 Limassol",
+        phone: "95 713301",
+        email: "labaristacoffeeshop@gmail.com",
+        website: "https://labaristacy.com",
+      },
+      {
+        name: "LaBarista Mesa Geitonia",
+        why: "Coffee shop.",
+        address: "Arch. Makariou III Avenue 19, 4000 Limassol",
+        phone: "97 956510",
+        email: "labaristacoffeeshop@gmail.com",
+        website: "https://labaristacy.com",
+      },
     ],
     lunch: [
       {
