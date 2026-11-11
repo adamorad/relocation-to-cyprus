@@ -37,4 +37,12 @@ export const ADVENTURE_ACTIVITIES: ReadonlyArray<AdventureActivity> = [
     website: "https://www.zipline.cy",
     email: "hi@zipline.cy",
   },
+  {
+    name: "Ecophysis Bee & Nature Center",
+    city: "Larnaca",
+    address: "Vavla 7713, Larnaca",
+    phone: "+357 96 373013",
+    website: "https://www.ecophysiscy.com",
+    email: "contactus@ecophysiscy.com",
+  },
 ];
