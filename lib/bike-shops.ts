@@ -33,4 +33,12 @@ export const BIKE_SHOPS: ReadonlyArray<BikeShop> = [
     email: "info@radverleih-zypern.de",
     website: "https://www.radverleih-zypern.de",
   },
+  {
+    name: "Adventure Without Limits (AWOL)",
+    town: "Strovolos",
+    address: "Santaroza 17A, 2035 Strovolos",
+    phone: "22106367",
+    email: "info@awol.com.cy",
+    website: "https://www.awol.com.cy",
+  },
 ];

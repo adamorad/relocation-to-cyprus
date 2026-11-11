@@ -23,7 +23,8 @@ export type Specialty =
   | "paediatrics"
   | "ophthalmology"
   | "gastroenterology"
-  | "urology";
+  | "urology"
+  | "osteopathy";
 
 export type SpecialistDoctor = {
   name: string;
@@ -31,12 +32,15 @@ export type SpecialistDoctor = {
   city: City;
   specialty: Specialty;
   hospital?: string;
-  gesyAccepted: boolean;
-  englishSpoken: boolean;
+  /** Leave unset when the clinic has not confirmed it. */
+  gesyAccepted?: boolean;
+  englishSpoken?: boolean;
   consultationFrom?: number;
   why: string;
   website?: string;
   phone?: string;
+  email?: string;
+  address?: string;
 };
 
 export const ALL_SPECIALTIES: ReadonlyArray<Specialty> = [
@@ -50,6 +54,7 @@ export const ALL_SPECIALTIES: ReadonlyArray<Specialty> = [
   "ophthalmology",
   "gastroenterology",
   "urology",
+  "osteopathy",
 ];
 
 export const SPECIALTY_LABEL: Record<Specialty, string> = {
@@ -63,6 +68,7 @@ export const SPECIALTY_LABEL: Record<Specialty, string> = {
   ophthalmology: "Ophthalmology",
   gastroenterology: "Gastroenterology",
   urology: "Urology",
+  osteopathy: "Osteopathy & General practice",
 };
 
 // ---------------------------------------------------------------------------
@@ -243,5 +249,14 @@ export const SPECIALIST_DOCTORS: ReadonlyArray<SpecialistDoctor> = [
     englishSpoken: true,
     consultationFrom: 90,
     why: "Covers kidney stones, urinary tract conditions, and prostate health. One of the few English-speaking urologists in Larnaca. GeSY referrals accepted; private appointments within 3–5 days. Good choice for Larnaca-based expats.",
+  },
+  {
+    name: "Dr. Nicolas Artemov Osteopathy and General practice clinic",
+    title: "Osteopath and General Practitioner",
+    city: "Larnaca",
+    specialty: "osteopathy",
+    address: "40, Mystra street, 6042, Larnaca, Cyprus",
+    email: "nicolas.artemov@gmail.com",
+    why: "Osteopathic evaluation and treatment, and general practitioner services including referrals and prescription for medications. 6 years of emergency care experience in surgical hospitals in Cyprus as an ER doctor. Registered with the Cyprus Medical Association (6522) and the Cyprus Osteopathy association (number 2). Instagram: osteopathy_familymedicine.doc.",
   },
 ];
