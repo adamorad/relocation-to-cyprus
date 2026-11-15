@@ -123,6 +123,20 @@ export const MENTAL_HEALTH_PROVIDERS: ReadonlyArray<MentalHealthProvider> = [
       "Details supplied by the practitioner via Grok Bot (free listing, Featured declined 2026-11-07). Registration not yet checked against the Cyprus Psychologists Registration Board.",
     ],
   },
+  {
+    name: "Eleni Mouskou",
+    title: "Chartered Counselling Psychologist, Private Practice",
+    city: "Nicosia",
+    type: "psychologist",
+    approaches: ["CBT", "ACT"],
+    address: "13 Michalakopoulou, Alasia building, 2nd floor, 1076 Nicosia",
+    phone: "22377367",
+    website: "https://www.elenimouskou.com",
+    email: "info@elenimouskou.com",
+    sources: [
+      "Details supplied by the practitioner by email on 2026-11-12 (free listing, not Featured). Services stated: CBT and ACT therapy, face-to-face or online. Registration not yet checked against the Cyprus Psychologists Registration Board.",
+    ],
+  },
 ];
 
 /** Unverified entries, kept out of every public page until each is verified. */
