@@ -30,7 +30,7 @@ function getRecommendation(
 			type: "183-day",
 			title: "183-Day Rule: Clear Qualification",
 			description:
-				"You have spent more than 183 days in Cyprus this year. You qualify as a Cyprus tax resident under the straightforward 183-day test. No further conditions apply. File your TD1 return for the year by the deadline: 31 July of the following year by law, though the Tax Department can extend it (for tax year 2025 it was extended to 31 October 2026).",
+				"You have spent more than 183 days in Cyprus this year. You qualify as a Cyprus tax resident under the straightforward 183-day test. No further conditions apply. File your TD1 return for the year by the deadline: 31 July of the following year by law, though the Tax Department can extend it (for tax year 2025 it was extended, first to 31 October and then to 30 November 2026).",
 		};
 	}
 
