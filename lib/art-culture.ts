@@ -260,4 +260,12 @@ export const CULTURAL_VENUES: ReadonlyArray<CulturalVenue> = [
     phone: "+357 96 537736",
     website: "https://www.myartloft.cy/",
   },
+  {
+    name: "Theatro Ena",
+    city: "Nicosia",
+    address: "4 Athinas Avenue, 1016 Nicosia",
+    phone: "+357 22 348203",
+    website: "https://www.theatroena.com.cy",
+    email: "theatroena@cytanet.com.cy",
+  },
 ];
