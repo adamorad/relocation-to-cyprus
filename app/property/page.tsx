@@ -194,7 +194,7 @@ export default function PropertyPage() {
 				</CardGrid>
 				<p className="mt-6">
 					<ButtonLink href="/developers/" variant="secondary">
-						{`See all ${DEVELOPERS.length} developers`}
+						{`See all ${DEVELOPERS.length} developers in Cyprus`}
 					</ButtonLink>
 				</p>
 			</Section>

@@ -12,8 +12,8 @@ const topDevelopers = [...DEVELOPERS]
 	.sort((a, b) => b.listings.length - a.listings.length)
 	.slice(0, 3);
 const projectCount = DEVELOPERS.reduce((n, d) => n + d.listings.length, 0);
-const title = `Cyprus Property Developers: ${DEVELOPERS.length} Developers, ${projectCount} New-Build Projects`;
-const description = `Property developers in Cyprus: ${DEVELOPERS.length} developers and ${projectCount} new-build projects in Paphos, Limassol, Larnaca and Ayia Napa, with locations and price ranges.`;
+const title = `Developers in Cyprus: ${DEVELOPERS.length} property developers compared`;
+const description = `Developers in Cyprus: ${DEVELOPERS.length} property developers and ${projectCount} new-build projects in Paphos, Limassol, Larnaca and Ayia Napa, with locations and price ranges.`;
 
 export const metadata: Metadata = {
 	title,
@@ -60,12 +60,23 @@ export default function DevelopersIndexPage() {
 						<Link href="/property/" className="underline">
 							Cyprus property hub
 						</Link>
-						. Prices are shown as stated by the developer and may exclude
-						VAT.
+						. Prices are shown as stated by each developer.
 					</>
 				),
 			}}
 		>
+			<h2 className="text-xl font-semibold">How to compare developers</h2>
+			<ul className="mb-8 mt-3 list-disc space-y-1 pl-5">
+				<li>Number of projects: shown on each developer card.</li>
+				<li>Regions: the cities where each developer has projects.</li>
+				<li>
+					Shortlist the ones you like in{" "}
+					<Link href="/my-shortlist/" className="underline">
+						My shortlist
+					</Link>
+					.
+				</li>
+			</ul>
 			<h2 className="sr-only">All developers</h2>
 			<CardGrid>
 				{DEVELOPERS.map((dev) => {
