@@ -1725,7 +1725,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 		],
 		category: "healthcare",
-		title: "Ambulance Number Cyprus: Call 112 or 22887171 (Free)",
+		title: "Ambulance Number Cyprus: Call 112 (Free) or 22887171",
 		description:
 			"Ambulance number in Cyprus: call 112 (free) or the SHSO Ambulance Control Centre on 22887171. What to say when you call, plus the 24-hour A&E list.",
 		sections: [
