@@ -19,8 +19,8 @@ const cityList = (venues: ReadonlyArray<{ city: string }>) => {
 		? `${cities.slice(0, -1).join(", ")} and ${cities[cities.length - 1]}`
 		: cities[0];
 };
-const metaTitle = `${title}: ${halalVenues.length} Halal Venues by City`;
-const description = `Halal restaurants and a halal butcher in ${cityList(halalVenues)}, plus kosher outlets. Each venue links to a listing; confirm certification with the venue.`;
+const metaTitle = "Halal Food Cyprus: Restaurants, Butcher & Kosher";
+const description = `Halal restaurants and a halal butcher in ${cityList(halalVenues)}, plus kosher outlets in Limassol. Each venue lists its source; confirm certification before you go.`;
 
 export const metadata: Metadata = {
 	title: metaTitle,
@@ -61,7 +61,13 @@ export default function HalalKosherPage() {
 				intro:
 					"Halal and kosher food in Cyprus for Muslim and Jewish residents. Every halal venue below has a current listing we checked on 2 October 2026: Syrian, Lebanese and Arabic halal kitchens in all four cities and a halal butcher in Paphos, plus the kosher outlets listed by Chabad of Limassol.",
 			}}
-			info={DIETARY_TIPS.map((t) => ({ heading: t.heading, body: t.body }))}
+			info={[
+				{
+					heading: "Halal butcher in Cyprus",
+					body: "We list one halal butcher: Amir Butchery Halal in Paphos, which sells lamb, goat, beef and chicken, with delivery through Wolt. If you are looking for an Arabic butcher or halal meat elsewhere, ask the venue about its certification first.",
+				},
+				...DIETARY_TIPS.map((t) => ({ heading: t.heading, body: t.body })),
+			]}
 			infoTitle="What to know before you search"
 			notice={{
 				tone: "warning",
