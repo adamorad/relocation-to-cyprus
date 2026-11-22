@@ -46,7 +46,7 @@ const DEADLINES: Deadline[] = [
 		title: "Individual Income Tax Return: statutory deadline",
 		formRef: "TD1",
 		description:
-			"Statutory deadline for the individual income tax return (TD1) for the previous tax year. The Tax Department can extend it: for tax year 2025 it extended the deadline to 31 October 2026 (see October). For tax year 2025 you must file if your gross income was over €19,500; from tax year 2026 every resident with income, and every resident aged 25 to 70, must file.",
+			"Statutory deadline for the individual income tax return (TD1) for the previous tax year. The Tax Department can extend it: for tax year 2025 it extended the deadline, first to 31 October and then to 30 November 2026 (see November). For tax year 2025 you must file if your gross income was over €19,500; from tax year 2026 every resident with income, and every resident aged 25 to 70, must file.",
 		taxpayer: "individual",
 	},
 	{
@@ -67,7 +67,7 @@ const DEADLINES: Deadline[] = [
 		title: "Individual Income Tax Return for tax year 2025: extended deadline",
 		formRef: "TD1",
 		description:
-			"The Tax Department set 31 October 2026 as the deadline for submitting the individual return (TD1) for tax year 2025.",
+			"The Tax Department extended the deadline for the individual return (TD1) for tax year 2025 to 30 November 2026, with no interest or charges if you file by then.",
 		taxpayer: "individual",
 	},
 	{

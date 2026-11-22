@@ -386,10 +386,11 @@ export const DNV_RENEWAL_MAX_YEARS = 2;
 export const TD1_STATUTORY_DEADLINE = "31 July";
 
 /**
- * Individual return (TD1) for tax year 2025: deadline was 31 October 2026 (ISO date, now past).
- * Source: Tax Department, "Individual Income Tax Return" (posted 06 July 2026). Re-checked 2026-11-02: no extension.
+ * Individual return (TD1) for tax year 2025: deadline extended first to 31 October 2026, then to 30 November 2026
+ * (ISO date; no interest or charges if filed by then). After 30 November 2026 switch wording to past tense (REA-395 follow-up).
+ * Source: Tax Department homepage announcement dated 28 October 2026 (https://www.mof.gov.cy/mof/tax/taxdep.nsf/All/88A7B920B681122AC22582510035432D). Checked 2026-11-16.
  */
-export const TD1_DEADLINE_TAX_YEAR_2025 = "2026-10-31";
+export const TD1_DEADLINE_TAX_YEAR_2025 = "2026-11-30";
 
 // ---------------------------------------------------------------------------
 // Sources
