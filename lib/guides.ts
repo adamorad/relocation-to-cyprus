@@ -2877,9 +2877,9 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			HT_SRC.hertzCyMonthlyOffers,
 		],
 		category: "lifestyle",
-		title: "Long Term Car Rental Cyprus: Monthly Hire Guide 2026",
+		title: "Long Term Car Rental Cyprus: Monthly Rates 2026",
 		description:
-			"Monthly car hire in Cyprus: what is included, deposits, insurance and contract checks, with notes for Paphos, Limassol and Larnaca.",
+			"Long term car rental in Cyprus from about €450/month: provider rates, what is included, deposits and contract checks for Paphos, Limassol and Larnaca.",
 		sections: [
 			{
 				heading:
@@ -2905,7 +2905,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "The main providers",
-				body: "Hertz and Avis have the widest fleet variety and the most straightforward online long-term booking portals, but their rates are typically the highest among the options available in Cyprus. Enterprise and Europcar are competitive on price and strong on fleet condition. Budget and Sixt are present in Cyprus and worth getting quotes from. Local operators such as Astra (branches in all four cities and both airports) and Auto Union can be cheaper than the international chains for monthly contracts, so get quotes from both. Ask local operators whether they have older vehicles at a lower rate, which is worth considering if your primary need is reliable daily transport rather than a new vehicle. For stays over six months, ask about operational leasing; Hertz in Cyprus (run by Autohellas) offers it. Whichever provider you choose, contact the long-term or fleet desk directly rather than booking the advertised online rate, because the website prices are tourist daily rates and rarely reflect the monthly contract price.",
+				body: "Hertz Cyprus publishes monthly offers, and the providers in the price table above publish their own monthly rates. Local operators such as Astra and Auto Union can be worth a quote alongside the international chains, so get quotes from both. Ask local operators whether they have older vehicles at a lower rate, which is worth considering if your primary need is reliable daily transport rather than a new vehicle. For stays over six months, ask about operational leasing; Hertz in Cyprus (run by Autohellas) offers it. Whichever provider you choose, contact the long-term or fleet desk directly rather than booking the advertised online rate, because the website prices are tourist daily rates and rarely reflect the monthly contract price.",
 			},
 			{
 				heading: "Long-term car rental in Limassol",
@@ -2925,11 +2925,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				heading: "Long-term rental vs buying a used car — which makes sense",
-				body: "The break-even for renting versus buying a used car in Cyprus typically falls around the 9–12 month mark for a mid-range car. As a rough worked example: renting a compact at about €500/month is close to €6,000 over a year with nothing to show at the end; buying the same car for around €9,000 and reselling it a year later for roughly €7,500 (typical 10–15% depreciation), plus about €1,500 in insurance, road tax and running costs, nets out near €3,000. Buying looks cheaper on paper, but it ties up capital and carries resale friction — private sales in Cyprus commonly take 4–8 weeks, and dealer buybacks sit 15–20% below market. A used compact or mid-size car in good condition costs €6,000–€14,000 from a Cypriot dealer, plus registration (if importing), insurance (€500–€1,200/year), annual road tax (€50–€140/year), and maintenance. If you buy for €10,000 and sell after two years, your effective cost assuming 10% depreciation and annual running costs is roughly €2,500–€3,500/year — less than renting a compact car for 12 months. For stays under 12 months, renting wins on simplicity: no registration hassle, no insurance setup, no resale risk, and no capital tied up. For stays over 18 months that look likely to extend, buying makes more sense economically. For a first year in Cyprus when you are still uncertain about your city, neighbourhood, and long-term commitment, renting preserves flexibility and frees up capital for the decisions that matter more — your apartment deposit and initial setup costs.",
+				body: "The figures in this section are illustrative assumptions, not sourced prices; check current prices before you decide. As a rough worked example: renting a compact at about €500/month is close to €6,000 over a year with nothing to show at the end; buying the same car for around €9,000 and reselling it a year later for roughly €7,500 (typical 10–15% depreciation), plus about €1,500 in insurance, road tax and running costs, nets out near €3,000. Buying looks cheaper on paper, but it ties up capital and carries resale friction: private sales in Cyprus commonly take 4–8 weeks, and dealer buybacks sit 15–20% below market. A used compact or mid-size car in good condition costs €6,000–€14,000 from a Cypriot dealer, plus registration (if importing), insurance (€500–€1,200/year), annual road tax (€50–€140/year), and maintenance. If you buy for €10,000 and sell after two years, your effective cost assuming 10% depreciation and annual running costs is roughly €2,500–€3,500/year, which is less than renting a compact car for 12 months. For stays under 12 months, renting wins on simplicity: no registration hassle, no insurance setup, no resale risk, and no capital tied up. For stays over 18 months that look likely to extend, buying makes more sense economically. For a first year in Cyprus when you are still uncertain about your city, neighbourhood, and long-term commitment, renting preserves flexibility and frees up capital for the decisions that matter more: your apartment deposit and initial setup costs.",
 			},
 			{
 				heading: "Practical things they do not tell you",
-				body: "A credit card with a sufficient available limit is almost universally required at pickup for the damage deposit, even if you have paid for full CDW. Most providers require a minimum credit card limit of €1,500–€3,000 at pickup and will not accept debit cards for the security pre-authorisation. Your driving licence must be from a country whose licence Cyprus recognises: EU licences are fully accepted; many non-EU licences (UK, US, Australian, Israeli) are accepted for short periods; for stays over three months on a non-EU licence, check with the provider whether an International Driving Permit is required. Confirm whether the quoted rate includes 19% VAT or is ex-VAT, as providers present this differently. Taking the car to other countries: most standard monthly contracts prohibit taking the vehicle outside Cyprus or restrict travel to EU countries only. If you plan to take a ferry to Greece or drive through a border, clarify this before signing and obtain a written authorisation letter if required. Finally, the fuel policy in Cyprus is almost always full-to-full: return the car with the same fuel level it was handed over with. Providers charge a premium refuelling fee if you return with less fuel.",
+				body: "Ask each provider which payment card it accepts for the deposit and what limit it needs, and check its driving licence rules before you book. Confirm whether the quoted rate includes 19% VAT or is ex-VAT, as providers present this differently. Taking the car to other countries: most standard monthly contracts prohibit taking the vehicle outside Cyprus or restrict travel to EU countries only. If you plan to take a ferry to Greece or drive through a border, clarify this before signing and obtain a written authorisation letter if required. Finally, the fuel policy in Cyprus is almost always full-to-full: return the car with the same fuel level it was handed over with. Providers charge a premium refuelling fee if you return with less fuel.",
 			},
 		],
 		faqs: [
@@ -2939,7 +2939,7 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "How do I find the cheapest long-term car rental in Cyprus?",
-				a: "Start the contract outside June to September, choose an economy or older compact car, commit to six or twelve months if you can, and get quotes from both local operators and the international chains. Compare the same package (mileage, excess, servicing, VAT) across quotes, because a low headline rate can hide a mileage cap or a high excess.",
+				a: "Ask whether a contract starting outside the summer months is priced differently, choose an economy or older compact car, commit to six or twelve months if you can, and get quotes from both local operators and the international chains. Compare the same package (mileage, excess, servicing, VAT) across quotes, because a low headline rate can hide a mileage cap or a high excess.",
 			},
 			{
 				q: "What is the difference between long-term car hire and car leasing in Cyprus?",
@@ -2951,11 +2951,11 @@ export const GUIDES: ReadonlyArray<GuideInfo> = [
 			},
 			{
 				q: "Which companies offer long-term monthly car rental in Cyprus?",
-				a: "All major international chains operate in Cyprus: Hertz, Avis, Budget, Enterprise, Europcar, and Sixt. Local providers such as Astra and Auto Union can be cheaper on monthly contracts. For stays over six months, Hertz Cyprus offers operational leasing.",
+				a: "Providers with monthly prices published on their own pages include MAS Cars, Infinite Car Rentals, 7777 Rent-A-Car, Priority Rentals and Hertz Cyprus; see the price table above. Ask local operators such as Astra and Auto Union for a quote too. Hertz Cyprus offers operational leasing for longer stays.",
 			},
 			{
 				q: "Can I get a long-term car rental in Cyprus without a credit card?",
-				a: "Unlikely with most major providers. A credit card with a minimum available limit of €1,500–€3,000 is almost always required for the security pre-authorisation at pickup, even if you've purchased full CDW coverage. Some local independent operators accept debit cards, but this is not standard practice. Check before booking if this is a constraint.",
+				a: "It depends on the provider. Deposit and payment-card rules differ, so ask each provider which cards it accepts for the deposit and what limit it needs before you book. Infinite Car Rentals, for example, states a €300 deposit on its monthly page.",
 			},
 			{
 				q: "Is it cheaper to rent long-term or buy a used car in Cyprus for one year?",
