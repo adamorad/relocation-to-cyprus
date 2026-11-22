@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Callout } from "@/components/ui/Callout";
 import { Card, CardGrid, CardGridItem } from "@/components/ui/Card";
 import { ChipGroup } from "@/components/ui/Chip";
+import { listingId } from "@/lib/food";
 import {
 	ALL_CITIES,
 	ALL_SPECIALTIES,
@@ -74,7 +75,10 @@ export default function SpecialistDoctorsClient() {
 			) : (
 				<CardGrid className="mt-5">
 					{filtered.map((doctor) => (
-						<CardGridItem key={`${doctor.name}-${doctor.city}`}>
+						<CardGridItem
+							key={`${doctor.name}-${doctor.city}`}
+							id={listingId(doctor.name)}
+						>
 							<Card
 								variant="text"
 								eyebrow={
@@ -95,8 +99,27 @@ export default function SpecialistDoctorsClient() {
 								meta={`${doctor.title} · ${doctor.city}${doctor.hospital ? ` · ${doctor.hospital}` : ""}`}
 								text={doctor.why}
 								footer={
-									doctor.phone || doctor.website ? (
+									doctor.phone ||
+									doctor.website ||
+									doctor.email ||
+									doctor.address ? (
 										<div className="flex flex-wrap gap-x-5 gap-y-1">
+											{doctor.address ? (
+												<p className="w-full text-muted">
+													<span className="font-semibold text-ink">
+														Address:{" "}
+													</span>
+													{doctor.address}
+												</p>
+											) : null}
+											{doctor.email ? (
+												<a
+													href={`mailto:${doctor.email}`}
+													className="inline-flex min-h-11 items-center font-semibold text-primary-hover underline-offset-2 hover:underline"
+												>
+													{doctor.email}
+												</a>
+											) : null}
 											{doctor.phone ? (
 												<a
 													href={`tel:${doctor.phone.replace(/\s/g, "")}`}

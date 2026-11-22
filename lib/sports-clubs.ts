@@ -336,4 +336,13 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     website: "https://www.paphostigers.com",
     email: "rugby@paphostigers.com",
   },
+  {
+    name: "Larnaca Chess Club",
+    city: "Larnaca",
+    address: "Caffe Nero, Mackenzie, Larnaca",
+    why: "Meets at Caffe Nero, Mackenzie, Larnaca, on Fridays 18:00-22:00. Also on Facebook (Larnaca Chess Club) and Instagram (@larnacachessclub).",
+    phone: "+357 95957371 / +357 99484088",
+    website: "https://larnacachess.com",
+    email: "info@larnacachess.com",
+  },
 ];
