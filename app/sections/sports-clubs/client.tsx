@@ -69,7 +69,7 @@ export default function SportsClubsClient() {
 					{filtered.map((club) => (
 						<CardGridItem
 							key={`${club.name}-${club.city}`}
-							id={listingId(club.name)}
+							id={club.anchor ?? listingId(club.name)}
 						>
 							<Card
 								variant="text"

@@ -13,6 +13,8 @@ export { ALL_CITIES } from "@/lib/food";
 
 export type SportsClub = {
   name: string;
+  /** URL anchor id when it differs from listingId(name), e.g. after a rename. */
+  anchor?: string;
   city?: City;
   sport?: string;
   level?: "beginner" | "recreational" | "competitive" | "all";
@@ -329,7 +331,8 @@ export const SPORTS_CLUBS: ReadonlyArray<SportsClub> = [
     email: "info@pissouribaydivers.com",
   },
   {
-    name: "Paphos Tigers",
+    name: "Paphos Rugby Union Football Club",
+    anchor: "paphos-tigers",
     city: "Paphos",
     sport: "Rugby",
     address: "Trains at Sportivo Emba, Paphos",
